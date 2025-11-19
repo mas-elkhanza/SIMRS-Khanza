@@ -4674,7 +4674,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"ServiceRequest\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/acsn/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +

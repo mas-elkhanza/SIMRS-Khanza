@@ -624,23 +624,57 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(KdPJ.getText().equals("")||NmPJ.getText().equals("")){
-            Valid.textKosong(btnPJ,"Penanggung Jawab Verifikasi");
+            Valid.textKosong(btnPJ,"Penanggung Jawab Laborat");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
             Valid.textKosong(TNoValidasi,"Pelanggan");
+        }else if(KodeVerifikator.getText().equals("")||NamaVerifikator.getText().equals("")){
+            Valid.textKosong(TNoValidasi,"Penanggung Jawab Verifikasi");
         }else if(TNoPermintaan.getText().equals("")){
             Valid.textKosong(TNoPermintaan,"Nomor Permintaan");
         }else if(TNoValidasi.getText().equals("")){
-            Valid.textKosong(TNoValidasi,"Nomor Verifikasi");
+            Valid.textKosong(TNoValidasi,"Nomor Validasi");
         }else if(KodeSampel.getText().equals("")||NamaSampel.getText().equals("")){
             Valid.textKosong(TNoValidasi,"Sampel");
         }else if(tabMode.getRowCount()==0){
-            Valid.textKosong(TNoValidasi,"Data Verifikasi");
+            Valid.textKosong(TNoValidasi,"Data Validasi");
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 ChkJln.setSelected(false);
-                
+                try {                    
+                    Sequel.AutoComitFalse();
+                    berhasil=true;
+                    /*if(Sequel.menyimpantf2("laborat_kesling_verifikasi_pengujian_sampel","?,?,?,?,?,?,?,'Belum Divalidasi'","No.Penugasan",7,new String[]{
+                            TNoPermintaan.getText(),TNoVerifikasi.getText(),KdPJ.getText(),Valid.SetTgl(TanggalVerifikasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText(),
+                            Valid.SetTgl(TglPengujian1.getSelectedItem()+"")+" "+TglPengujian1.getSelectedItem().toString().substring(11,19),Valid.SetTgl(TglPengujian2.getSelectedItem()+"")+" "+TglPengujian2.getSelectedItem().toString().substring(11,19)
+                        })==true){
+                        for(i=0;i<tbVerifikasi.getRowCount();i++){
+                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?,?","Verifikasi",6,new String[]{
+                                TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,0).toString(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
+                            })==true){
+                                Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
+                            }else{
+                                berhasil=false;
+                            }                
+                        } 
+                    }else{
+                        berhasil=false;
+                    }   */
+                    
+                    if(berhasil==true){
+                        Sequel.Commit();
+                        JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+                        Valid.tabelKosong(tabMode);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+                    
+                    Sequel.AutoComitTrue();                   
+                } catch (Exception e) {
+                    System.out.println(e);
+                }    
                 ChkJln.setSelected(true);    
                 this.setCursor(Cursor.getDefaultCursor());
             }  
