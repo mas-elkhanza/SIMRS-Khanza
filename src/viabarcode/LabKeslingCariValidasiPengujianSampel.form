@@ -765,13 +765,13 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="widget.Table" name="tbRekapVerifikasi">
+                <Component class="widget.Table" name="tbRekapValidasi">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="0" rowCount="4"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau dihapus"/>
-                    <Property name="name" type="java.lang.String" value="tbRekapVerifikasi" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="tbRekapValidasi" noResource="true"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
