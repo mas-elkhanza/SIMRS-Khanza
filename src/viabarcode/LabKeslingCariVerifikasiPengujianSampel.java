@@ -49,7 +49,7 @@ public class LabKeslingCariVerifikasiPengujianSampel extends javax.swing.JDialog
         initComponents();
 
         tabModeVerifikasi=new DefaultTableModel(null,new Object[]{
-                "Tgl.Verifikasi","No.Verifikasi","NIP P.J.","Nama P.J. Verifikasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","Mulai Pengujian","Selesai Pengujian"
+                "Tgl.Verifikasi","No.Verifikasi","NIP PJ","Nama PJ Verifikasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","Mulai Pengujian","Selesai Pengujian"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

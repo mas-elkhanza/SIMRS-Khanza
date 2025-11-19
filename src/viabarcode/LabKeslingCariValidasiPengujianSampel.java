@@ -38,8 +38,6 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private File file;
-    private FileWriter fileWriter;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -49,7 +47,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         initComponents();
 
         tabModeVerifikasi=new DefaultTableModel(null,new Object[]{
-                "Tgl.Verifikasi","No.Verifikasi","NIP P.J.","Nama P.J. Verifikasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","Mulai Pengujian","Selesai Pengujian"
+                "Tgl.Validasi","No.Validasi","NIP PJ Validasi","Nama PJ Validasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","NIP PJ Verifikasi","Nama PJ Verifikasi"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -261,9 +259,8 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppSuratVerifikasi = new javax.swing.JMenuItem();
-        ppHapusVerifikasiPengujian = new javax.swing.JMenuItem();
-        ppValidasiPengujian = new javax.swing.JMenuItem();
+        ppSuratValidasi = new javax.swing.JMenuItem();
+        ppHapusValidasiPengujian = new javax.swing.JMenuItem();
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
@@ -311,53 +308,37 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppSuratVerifikasi.setBackground(new java.awt.Color(255, 255, 254));
-        ppSuratVerifikasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSuratVerifikasi.setForeground(new java.awt.Color(50, 50, 50));
-        ppSuratVerifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppSuratVerifikasi.setText("Cetak Hasil Uji Sementara");
-        ppSuratVerifikasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSuratVerifikasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSuratVerifikasi.setName("ppSuratVerifikasi"); // NOI18N
-        ppSuratVerifikasi.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppSuratVerifikasi.addActionListener(new java.awt.event.ActionListener() {
+        ppSuratValidasi.setBackground(new java.awt.Color(255, 255, 254));
+        ppSuratValidasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSuratValidasi.setForeground(new java.awt.Color(50, 50, 50));
+        ppSuratValidasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSuratValidasi.setText("Cetak Hasil Uji Laboratorium");
+        ppSuratValidasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSuratValidasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSuratValidasi.setName("ppSuratValidasi"); // NOI18N
+        ppSuratValidasi.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppSuratValidasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppSuratVerifikasiActionPerformed(evt);
+                ppSuratValidasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(ppSuratVerifikasi);
+        jPopupMenu1.add(ppSuratValidasi);
 
-        ppHapusVerifikasiPengujian.setBackground(new java.awt.Color(255, 255, 254));
-        ppHapusVerifikasiPengujian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusVerifikasiPengujian.setForeground(new java.awt.Color(50, 50, 50));
-        ppHapusVerifikasiPengujian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapusVerifikasiPengujian.setText("Hapus Verifikasi Pengujian");
-        ppHapusVerifikasiPengujian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapusVerifikasiPengujian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusVerifikasiPengujian.setName("ppHapusVerifikasiPengujian"); // NOI18N
-        ppHapusVerifikasiPengujian.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppHapusVerifikasiPengujian.addActionListener(new java.awt.event.ActionListener() {
+        ppHapusValidasiPengujian.setBackground(new java.awt.Color(255, 255, 254));
+        ppHapusValidasiPengujian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppHapusValidasiPengujian.setForeground(new java.awt.Color(50, 50, 50));
+        ppHapusValidasiPengujian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppHapusValidasiPengujian.setText("Hapus Validasi Pengujian");
+        ppHapusValidasiPengujian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppHapusValidasiPengujian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppHapusValidasiPengujian.setName("ppHapusValidasiPengujian"); // NOI18N
+        ppHapusValidasiPengujian.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppHapusValidasiPengujian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppHapusVerifikasiPengujianActionPerformed(evt);
+                ppHapusValidasiPengujianActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(ppHapusVerifikasiPengujian);
-
-        ppValidasiPengujian.setBackground(new java.awt.Color(255, 255, 254));
-        ppValidasiPengujian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppValidasiPengujian.setForeground(new java.awt.Color(50, 50, 50));
-        ppValidasiPengujian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppValidasiPengujian.setText("Validasi Pengujian");
-        ppValidasiPengujian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppValidasiPengujian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppValidasiPengujian.setName("ppValidasiPengujian"); // NOI18N
-        ppValidasiPengujian.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppValidasiPengujian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppValidasiPengujianActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppValidasiPengujian);
+        jPopupMenu1.add(ppHapusValidasiPengujian);
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1330,70 +1311,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         sampel.setVisible(true);
     }//GEN-LAST:event_btnSampelActionPerformed
 
-    private void ppValidasiPengujianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppValidasiPengujianActionPerformed
-        if(tbValidasi.getSelectedRow()!= -1){
-            if(ChkAccor.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail verifikasi terlebih dahulu...!!!");
-            }else{
-                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-                    try {
-                        file=new File("./cache/validasipengujiansampellabkesling.iyem");
-                        file.createNewFile();
-                        fileWriter = new FileWriter(file);
-                        StringBuilder iyembuilder = new StringBuilder();
-
-                        for(i=0;i<tbDetailValidasi.getRowCount();i++){
-                            iyembuilder.append("{\"Kode\":\"").append(tbDetailValidasi.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailValidasi.getValueAt(i,1).toString()).append("\",\"Satuan\":\"").append(tbDetailValidasi.getValueAt(i,2).toString()).append("\",\"HasilPemeriksaan\":\"").append(tbDetailValidasi.getValueAt(i,3).toString()).append("\",\"Keterangan\":\"").append(tbDetailValidasi.getValueAt(i,4).toString()).append("\",\"NilaiNormal\":\"").append(tbDetailValidasi.getValueAt(i,5).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailValidasi.getValueAt(i,6).toString()).append("\",\"Kategori\":\"").append(tbDetailValidasi.getValueAt(i,7).toString()).append("\",\"NoPenugasan\":\"").append(tbDetailValidasi.getValueAt(i,8).toString()).append("\",\"NIPAnalis\":\"").append(tbDetailValidasi.getValueAt(i,9).toString()).append("\",\"NamaAnalis\":\"").append(tbDetailValidasi.getValueAt(i,10).toString()).append("\",\"NIPPJPengujian\":\"").append(tbDetailValidasi.getValueAt(i,11).toString()).append("\",\"NamaPJPengujian\":\"").append(tbDetailValidasi.getValueAt(i,12).toString()).append("\",\"JasaSarana\":\"").append(tbDetailValidasi.getValueAt(i,13).toString()).append("\",\"PaketBHP\":\"").append(tbDetailValidasi.getValueAt(i,14).toString()).append("\",\"JasaPJLab\":\"").append(tbDetailValidasi.getValueAt(i,15).toString()).append("\",\"JasaPJPengujian\":\"").append(tbDetailValidasi.getValueAt(i,16).toString()).append("\",\"JasaVerifikator\":\"").append(tbDetailValidasi.getValueAt(i,17).toString()).append("\",\"JasaPetugas\":\"").append(tbDetailValidasi.getValueAt(i,18).toString()).append("\",\"KSO\":\"").append(tbDetailValidasi.getValueAt(i,19).toString()).append("\",\"JasaMenejemen\":\"").append(tbDetailValidasi.getValueAt(i,20).toString()).append("\",\"Total\":\"").append(tbDetailValidasi.getValueAt(i,21).toString()).append("\"},");
-                        }
-
-                        if (iyembuilder.length() > 0) {
-                            iyembuilder.setLength(iyembuilder.length() - 1);
-                            fileWriter.write("{\"validasipengujiansampellabkesling\":["+iyembuilder+"]}");
-                            fileWriter.flush();
-                        }
-
-                        fileWriter.close();
-                        iyembuilder=null;
-                    } catch (Exception e) {
-                        System.out.println("Notifikasi : "+e);
-                    }
-                    LabKeslingValidasiPengujianSampel form=new LabKeslingValidasiPengujianSampel(null,false);
-                    form.addWindowListener(new WindowListener() {
-                        @Override
-                        public void windowOpened(WindowEvent e) {}
-                        @Override
-                        public void windowClosing(WindowEvent e) {}
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            if(form.berhasil==true){
-                                tbValidasi.setValueAt("Sudah Divalidasi",tbValidasi.getSelectedRow(),9);
-                            }
-                        }
-                        @Override
-                        public void windowIconified(WindowEvent e) {}
-                        @Override
-                        public void windowDeiconified(WindowEvent e) {}
-                        @Override
-                        public void windowActivated(WindowEvent e) {}
-                        @Override
-                        public void windowDeactivated(WindowEvent e) {}
-                    });
-                    form.isCek();
-                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    form.setLocationRelativeTo(this);
-                    form.setData(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),5).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),6).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),7).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),8).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),2).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),3).toString(),Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString())+" s.d."+Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),12).toString()),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString());
-                    form.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
-                }else{
-                    JOptionPane.showMessageDialog(null,"Sudah divalidasi...!");
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data verifikasi...!!!");
-        }
-    }//GEN-LAST:event_ppValidasiPengujianActionPerformed
-
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         if(TabData.getSelectedIndex()==0){
             tampil();
@@ -1455,7 +1372,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         }else{
             ChkAccor.setSelected(false);
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data verifikasi...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data validasi...!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
@@ -1463,10 +1380,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         ChkAccorActionPerformed(null);
     }//GEN-LAST:event_tbValidasiMouseClicked
 
-    private void ppSuratVerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSuratVerifikasiActionPerformed
+    private void ppSuratValidasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSuratValidasiActionPerformed
         if(tbValidasi.getSelectedRow()!= -1){
             if(ChkAccor.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail verifikasi terlebih dahulu...!!!");
+                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail validasi terlebih dahulu...!!!");
             }else{
                 if(tbDetailValidasi.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1505,17 +1422,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih data verifikasi...!!!");
         }
-    }//GEN-LAST:event_ppSuratVerifikasiActionPerformed
+    }//GEN-LAST:event_ppSuratValidasiActionPerformed
 
-    private void ppHapusVerifikasiPengujianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusVerifikasiPengujianActionPerformed
+    private void ppHapusValidasiPengujianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusValidasiPengujianActionPerformed
         if(tbValidasi.getSelectedRow()!= -1){
             if(ChkAccor.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail verifikasi terlebih dahulu...!!!");
+                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail validasi terlebih dahulu...!!!");
             }else{
                 if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
-                    if(Sequel.queryutf("delete from laborat_kesling_verifikasi_pengujian_sampel where no_verifikasi='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
+                    if(Sequel.queryutf("delete from laborat_kesling_validasi_pengujian_sampel where no_validasi='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
                         for(i=0;i<tbDetailValidasi.getRowCount();i++){
-                            Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Belum Diverifikasi' where no_penugasan='"+tbDetailValidasi.getValueAt(i,8).toString()+"' and kode_parameter='"+tbDetailValidasi.getValueAt(i,0).toString()+"'");               
+                            Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Belum Divalidasi' where no_penugasan='"+tbDetailValidasi.getValueAt(i,8).toString()+"' and kode_parameter='"+tbDetailValidasi.getValueAt(i,0).toString()+"'");               
                         } 
                         tabModeVerifikasi.removeRow(tbValidasi.getSelectedRow());
                         Valid.tabelKosong(tabModeDetailVerifikasi);
@@ -1526,9 +1443,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data verifikasi...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data validasi...!!!");
         }
-    }//GEN-LAST:event_ppHapusVerifikasiPengujianActionPerformed
+    }//GEN-LAST:event_ppHapusValidasiPengujianActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1586,9 +1503,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppHapusVerifikasiPengujian;
-    private javax.swing.JMenuItem ppSuratVerifikasi;
-    private javax.swing.JMenuItem ppValidasiPengujian;
+    private javax.swing.JMenuItem ppHapusValidasiPengujian;
+    private javax.swing.JMenuItem ppSuratValidasi;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPaneDetail;
@@ -1725,9 +1641,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         TCari.requestFocus();
-        BtnPrint.setEnabled(akses.getverifikasi_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppValidasiPengujian.setEnabled(akses.getvalidasi_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppSuratVerifikasi.setEnabled(akses.getverifikasi_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppHapusVerifikasiPengujian.setEnabled(akses.getverifikasi_pengujian_sampel_lab_kesehatan_lingkungan());
+        BtnPrint.setEnabled(akses.getvalidasi_pengujian_sampel_lab_kesehatan_lingkungan());
+        ppSuratValidasi.setEnabled(akses.getvalidasi_pengujian_sampel_lab_kesehatan_lingkungan());
+        ppHapusValidasiPengujian.setEnabled(akses.getvalidasi_pengujian_sampel_lab_kesehatan_lingkungan());
     }
 }
