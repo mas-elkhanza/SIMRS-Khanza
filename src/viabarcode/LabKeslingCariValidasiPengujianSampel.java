@@ -97,7 +97,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         tbDetailValidasi.setModel(tabModeDetailValidasi);
         tbDetailValidasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbDetailValidasi.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(55);
@@ -1381,20 +1381,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.queryu("delete from temporary");
                     for(i=0;i<tbDetailValidasi.getRowCount();i++){ 
                         Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                            "0",tbDetailValidasi.getValueAt(i,0).toString(),tbDetailValidasi.getValueAt(i,1).toString(),tbDetailValidasi.getValueAt(i,2).toString(),tbDetailValidasi.getValueAt(i,6).toString(),tbDetailValidasi.getValueAt(i,3).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                            "0",tbDetailValidasi.getValueAt(i,1).toString(),tbDetailValidasi.getValueAt(i,2).toString(),tbDetailValidasi.getValueAt(i,3).toString(),tbDetailValidasi.getValueAt(i,5).toString(),tbDetailValidasi.getValueAt(i,6).toString(),tbDetailValidasi.getValueAt(i,7).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });               
                     }
 
+                    //"Tgl.Validasi"0,"No.Validasi"1,"NIP PJ Validasi"2,"Nama PJ Validasi"3,"No.Permintaan"4,"No.Pelanggan"5,"Nama Pelanggan"6,"Kode Sampel"7,"Nama Sampel"8,"Status Validasi"9,"Catatan"10,"NIP PJ Verifikasi"11,"Nama PJ Verifikasi"12
                     Map<String, Object> param = new HashMap<>();
+                    param.put("nomorpermintaan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString());
+                    param.put("novalidasi",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString());
+                    param.put("namapelanggan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),6).toString());
+                    param.put("alamatpelanggan",Sequel.cariIsi("select laborat_kesling_pelanggan.alamat from laborat_kesling_pelanggan where laborat_kesling_pelanggan.kode_pelanggan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),5).toString()));
+                    param.put("jenisampel",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),8).toString());
+                    param.put("bakumutu",Sequel.cariIsi("select laborat_kesling_master_sampel.baku_mutu from laborat_kesling_master_sampel where laborat_kesling_master_sampel.kode_sampel=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),7).toString()));
+                    param.put("titiksampling",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()));
+                    param.put("disamplingoleh",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()));
+                    param.put("waktusampling",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()));
+                    param.put("waktuterimasampel",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()));
+                    param.put("rentangwaktu",Sequel.cariIsi("select concat(date_format(laborat_kesling_verifikasi_pengujian_sampel.mulai_pengujian,'%d/%m/%Y %H:%i:%s'),' s.d. ',date_format(laborat_kesling_verifikasi_pengujian_sampel.selesai_pengujian,'%d/%m/%Y %H:%i:%s')) from laborat_kesling_verifikasi_pengujian_sampel where laborat_kesling_verifikasi_pengujian_sampel.no_permintaan=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()));
+                    param.put("tanggalvalidasi",Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),0).toString()));
                     param.put("pjlaborat",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),3).toString());
                     param.put("kodepjlaborat",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),2).toString());
-                    param.put("noverifikasi",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString());
-                    param.put("nomorpermintaan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString());
-                    param.put("jenisampel",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),8).toString());
-                    param.put("kodesampel",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),7).toString());
-                    param.put("kodepelanggan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),5).toString());
-                    param.put("namapelanggan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),6).toString());
-                    param.put("tanggalpengujian",Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString())+" s.d. "+Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),12).toString()));
+                    param.put("namapjpengujian",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),12).toString());
+                    param.put("kodepjpengujian",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString());
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
@@ -1404,14 +1412,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),2).toString());
                     param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),3).toString()+"\nID "+(finger.equals("")?tbValidasi.getValueAt(tbValidasi.getSelectedRow(),2).toString():finger)+"\n"+Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),0).toString())); 
-                    Valid.MyReport("rptVerifikasiPengujianSampelLaboratKesling.jasper","report","::[ Laporan Hasil Uji Sementara ]::",param);      
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString());
+                    param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),12).toString()+"\nID "+(finger.equals("")?tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString():finger)+"\n"+Valid.SetTgl5(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),0).toString())); 
+                    Valid.MyReport("rptValidasiPengujianSampelLaboratKesling.jasper","report","::[ Laporan Hasil Uji Laboratorium ]::",param);       
                     this.setCursor(Cursor.getDefaultCursor());
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail verifikasi terlebih dahulu...!!!");
+                    JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail validasi terlebih dahulu...!!!");
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data verifikasi...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data validasi...!!!");
         }
     }//GEN-LAST:event_ppSuratValidasiActionPerformed
 
