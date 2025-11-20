@@ -1491,15 +1491,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         
                         jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
                         for(i=0;i<tbDetailValidasi.getRowCount();i++){ 
-                            jasa_sarana=jasa_sarana+Double.parseDouble(tbDetailValidasi.getValueAt(i,13).toString());
-                            paket_bhp=paket_bhp+Double.parseDouble(tbDetailValidasi.getValueAt(i,14).toString());
-                            jasa_pj_lab=jasa_pj_lab+Double.parseDouble(tbDetailValidasi.getValueAt(i,15).toString());
-                            jasa_pj_pengujian=jasa_pj_pengujian+Double.parseDouble(tbDetailValidasi.getValueAt(i,16).toString());
-                            jasa_verifikator=jasa_verifikator+Double.parseDouble(tbDetailValidasi.getValueAt(i,17).toString());
-                            jasa_petugas=jasa_petugas+Double.parseDouble(tbDetailValidasi.getValueAt(i,18).toString());
-                            kso=kso+Double.parseDouble(tbDetailValidasi.getValueAt(i,19).toString());
-                            jasa_menejemen=jasa_menejemen+Double.parseDouble(tbDetailValidasi.getValueAt(i,20).toString());
-                            total=total+Double.parseDouble(tbDetailValidasi.getValueAt(i,21).toString());
+                            jasa_sarana=jasa_sarana+Double.parseDouble(tbDetailValidasi.getValueAt(i,12).toString());
+                            paket_bhp=paket_bhp+Double.parseDouble(tbDetailValidasi.getValueAt(i,13).toString());
+                            jasa_pj_lab=jasa_pj_lab+Double.parseDouble(tbDetailValidasi.getValueAt(i,14).toString());
+                            jasa_pj_pengujian=jasa_pj_pengujian+Double.parseDouble(tbDetailValidasi.getValueAt(i,15).toString());
+                            jasa_verifikator=jasa_verifikator+Double.parseDouble(tbDetailValidasi.getValueAt(i,16).toString());
+                            jasa_petugas=jasa_petugas+Double.parseDouble(tbDetailValidasi.getValueAt(i,17).toString());
+                            kso=kso+Double.parseDouble(tbDetailValidasi.getValueAt(i,18).toString());
+                            jasa_menejemen=jasa_menejemen+Double.parseDouble(tbDetailValidasi.getValueAt(i,19).toString());
+                            total=total+Double.parseDouble(tbDetailValidasi.getValueAt(i,20).toString());
                         }
                         
                         if(Sequel.queryutf("delete from laborat_kesling_validasi_pengujian_sampel where no_validasi='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
