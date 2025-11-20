@@ -750,7 +750,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Pelayanan_Lab_Kesling+"','HPP BHP Pelayanan Lab Kesling','"+paket_bhp+"','0'","debet=debet+'"+(paket_bhp)+"'","kd_rek='"+HPP_BHP_Pelayanan_Lab_Kesling+"'")==false){
                                     berhasil=false;
                                 }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Pelayanan_Lab_Kesling+"','Utang Jasa Medik Petugas Radiologi Ranap','0','"+paket_bhp+"'","kredit=kredit+'"+(paket_bhp)+"'","kd_rek='"+Persediaan_BHP_Pelayanan_Lab_Kesling+"'")==false){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Pelayanan_Lab_Kesling+"','Persediaan BHP Pelayanan Lab Kesling','0','"+paket_bhp+"'","kredit=kredit+'"+(paket_bhp)+"'","kd_rek='"+Persediaan_BHP_Pelayanan_Lab_Kesling+"'")==false){
                                     berhasil=false;
                                 }                              
                             }
