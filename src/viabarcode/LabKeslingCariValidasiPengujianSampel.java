@@ -29,15 +29,24 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 import java.util.HashMap;
 import java.util.Map;
+import keuangan.Jurnal;
 
 public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
     private final DefaultTableModel tabModeValidasi,tabModeDetailValidasi,tabModeRekapValidasi;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Jurnal jur=new Jurnal();
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private boolean berhasil=false;
+    private double jasa_sarana=0,paket_bhp=0,jasa_pj_lab=0,jasa_pj_pengujian=0,jasa_verifikator=0,jasa_petugas=0,kso=0,jasa_menejemen=0,total=0;
+    private String Suspen_Piutang_Pelayanan_Lab_Kesling,Pendapatan_Pelayanan_Lab_Kesling,Beban_Jasa_Sarana_Pelayanan_Lab_Kesling,Utang_Jasa_sarana_Pelayanan_Lab_Kesling, 
+                   HPP_BHP_Pelayanan_Lab_Kesling,Persediaan_BHP_Pelayanan_Lab_Kesling,Beban_Jasa_PJLab_Pelayanan_Lab_Kesling,Utang_Jasa_PJLab_Pelayanan_Lab_Kesling,
+                   Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling,Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling,Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling, 
+                   Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,Beban_Jasa_Analis_Pelayanan_Lab_Kesling,Utang_Jasa_Analis_Pelayanan_Lab_Kesling,Beban_KSO_Pelayanan_Lab_Kesling, 
+                   Utang_KSO_Pelayanan_Lab_Kesling,Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling,Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -47,7 +56,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         initComponents();
 
         tabModeValidasi=new DefaultTableModel(null,new Object[]{
-                "Tgl.Validasi","No.Validasi","NIP PJ Validasi","Nama PJ Validasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","NIP PJ Verifikasi","Nama PJ Verifikasi"
+                "Tgl.Validasi","No.Validasi","NIP PJ Validasi","Nama PJ Validasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Bayar","Catatan","NIP PJ Verifikasi","Nama PJ Verifikasi"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -131,7 +140,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         tbDetailValidasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeRekapValidasi=new DefaultTableModel(null,new Object[]{
-                "Tgl.Validasi","No.Validasi","NIP PJ Validasi","Nama PJ Validasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Validasi","Catatan","NIP PJ Verifikasi",
+                "Tgl.Validasi","No.Validasi","NIP PJ Validasi","Nama PJ Validasi","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Bayar","Catatan","NIP PJ Verifikasi",
                 "Nama PJ Verifikasi","Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori","NIP Analis","Nama Analis","NIP PJ Pengujian","Nama PJ Pengujian"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -243,6 +252,51 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            ps=koneksi.prepareStatement(
+                "select set_akun2.Suspen_Piutang_Pelayanan_Lab_Kesling,set_akun2.Pendapatan_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_Sarana_Pelayanan_Lab_Kesling,"+
+                "set_akun2.Utang_Jasa_sarana_Pelayanan_Lab_Kesling,set_akun2.HPP_BHP_Pelayanan_Lab_Kesling,set_akun2.Persediaan_BHP_Pelayanan_Lab_Kesling,"+
+                "set_akun2.Beban_Jasa_PJLab_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_PJLab_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling,"+
+                "set_akun2.Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,"+
+                "set_akun2.Beban_Jasa_Analis_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_Analis_Pelayanan_Lab_Kesling,set_akun2.Beban_KSO_Pelayanan_Lab_Kesling,"+
+                "set_akun2.Utang_KSO_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling from set_akun2"
+            );
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Suspen_Piutang_Pelayanan_Lab_Kesling=rs.getString("Suspen_Piutang_Pelayanan_Lab_Kesling");
+                    Pendapatan_Pelayanan_Lab_Kesling=rs.getString("Pendapatan_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_Sarana_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Sarana_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_sarana_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_sarana_Pelayanan_Lab_Kesling");
+                    HPP_BHP_Pelayanan_Lab_Kesling=rs.getString("HPP_BHP_Pelayanan_Lab_Kesling");
+                    Persediaan_BHP_Pelayanan_Lab_Kesling=rs.getString("Persediaan_BHP_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_PJLab_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJLab_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_PJLab_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJLab_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_Analis_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Analis_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_Analis_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_Analis_Pelayanan_Lab_Kesling");
+                    Beban_KSO_Pelayanan_Lab_Kesling=rs.getString("Beban_KSO_Pelayanan_Lab_Kesling");
+                    Utang_KSO_Pelayanan_Lab_Kesling=rs.getString("Utang_KSO_Pelayanan_Lab_Kesling");
+                    Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling");
+                    Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -905,7 +959,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Validasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
@@ -965,7 +1019,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Validasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
@@ -1016,7 +1070,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         case "Laporan 3 (CSV)":
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\"Tgl.Validasi\";\"No.Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Validasi\";\"Catatan\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\"\n"
+                                    "\"Tgl.Validasi\";\"No.Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Bayar\";\"Catatan\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\"\n"
                                 ); 
                                 for (int i = 0; i < tabModeValidasi.getRowCount(); i++) {
                                     htmlContent.append("\"").append(tbValidasi.getValueAt(i,0).toString()).append("\";\"").append(tbValidasi.getValueAt(i,1).toString()).append("\";\"").append(tbValidasi.getValueAt(i,2).toString()).append("\";\"").append(tbValidasi.getValueAt(i,3).toString()).append("\";\"").append(tbValidasi.getValueAt(i,4).toString()).append("\";\"").append(tbValidasi.getValueAt(i,5).toString()).append("\";\"").append(tbValidasi.getValueAt(i,6).toString()).append("\";\"").append(tbValidasi.getValueAt(i,7).toString()).append("\";\"").append(tbValidasi.getValueAt(i,8).toString()).append("\";\"").append(tbValidasi.getValueAt(i,9).toString()).append("\";\"").append(tbValidasi.getValueAt(i,10).toString()).append("\";\"").append(tbValidasi.getValueAt(i,11).toString()).append("\";\"").append(tbValidasi.getValueAt(i,12).toString()).append("\"\n");
@@ -1073,7 +1127,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Validasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
@@ -1157,7 +1211,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Validasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
@@ -1232,7 +1286,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         case "Laporan 3 (CSV)":
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\"Tgl.Validasi\";\"No.Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Validasi\";\"Catatan\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\";\"Kode\";\"Nama Parameter\";\"Satuan\";\"Hasil Pemeriksaan\";\"Keterangan\";\"Nilai Normal\";\"Metode Pengujian\";\"Kategori\";\"NIP Analis\";\"Nama Analis\";\"NIP PJ Pengujian\";\"Nama PJ Pengujian\"\n"
+                                    "\"Tgl.Validasi\";\"No.Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Bayar\";\"Catatan\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\";\"Kode\";\"Nama Parameter\";\"Satuan\";\"Hasil Pemeriksaan\";\"Keterangan\";\"Nilai Normal\";\"Metode Pengujian\";\"Kategori\";\"NIP Analis\";\"Nama Analis\";\"NIP PJ Pengujian\";\"Nama PJ Pengujian\"\n"
                                 ); 
                                 for (int i = 0; i < tabModeRekapValidasi.getRowCount(); i++) {
                                     htmlContent.append("\"").append(tbRekapValidasi.getValueAt(i,0).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,1).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,2).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,3).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,4).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,5).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,6).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,7).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,8).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,9).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,10).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,11).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,12).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,13).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,14).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,15).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,16).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,17).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,18).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,19).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,20).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,21).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,22).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,23).toString()).append("\";\"").append(tbRekapValidasi.getValueAt(i,24).toString()).append("\"\n");
@@ -1385,7 +1439,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         });               
                     }
 
-                    //"Tgl.Validasi"0,"No.Validasi"1,"NIP PJ Validasi"2,"Nama PJ Validasi"3,"No.Permintaan"4,"No.Pelanggan"5,"Nama Pelanggan"6,"Kode Sampel"7,"Nama Sampel"8,"Status Validasi"9,"Catatan"10,"NIP PJ Verifikasi"11,"Nama PJ Verifikasi"12
                     Map<String, Object> param = new HashMap<>();
                     param.put("nomorpermintaan",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString());
                     param.put("novalidasi",tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString());
@@ -1430,17 +1483,114 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(ChkAccor.isSelected()==false){
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail validasi terlebih dahulu...!!!");
             }else{
-                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
-                    if(Sequel.queryutf("delete from laborat_kesling_validasi_pengujian_sampel where no_validasi='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
-                        for(i=0;i<tbDetailValidasi.getRowCount();i++){
-                            Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Belum Divalidasi' where no_penugasan='"+tbDetailValidasi.getValueAt(i,8).toString()+"' and kode_parameter='"+tbDetailValidasi.getValueAt(i,0).toString()+"'");               
-                        } 
-                        tabModeValidasi.removeRow(tbValidasi.getSelectedRow());
-                        Valid.tabelKosong(tabModeDetailValidasi);
-                        LTotal.setText(tbValidasi.getRowCount()+"");
-                    }
+                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Bayar")){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    try {                    
+                        Sequel.AutoComitFalse();
+                        berhasil=true;
+                        
+                        jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
+                        for(i=0;i<tbDetailValidasi.getRowCount();i++){ 
+                            jasa_sarana=jasa_sarana+Double.parseDouble(tbDetailValidasi.getValueAt(i,13).toString());
+                            paket_bhp=paket_bhp+Double.parseDouble(tbDetailValidasi.getValueAt(i,14).toString());
+                            jasa_pj_lab=jasa_pj_lab+Double.parseDouble(tbDetailValidasi.getValueAt(i,15).toString());
+                            jasa_pj_pengujian=jasa_pj_pengujian+Double.parseDouble(tbDetailValidasi.getValueAt(i,16).toString());
+                            jasa_verifikator=jasa_verifikator+Double.parseDouble(tbDetailValidasi.getValueAt(i,17).toString());
+                            jasa_petugas=jasa_petugas+Double.parseDouble(tbDetailValidasi.getValueAt(i,18).toString());
+                            kso=kso+Double.parseDouble(tbDetailValidasi.getValueAt(i,19).toString());
+                            jasa_menejemen=jasa_menejemen+Double.parseDouble(tbDetailValidasi.getValueAt(i,20).toString());
+                            total=total+Double.parseDouble(tbDetailValidasi.getValueAt(i,21).toString());
+                        }
+                        
+                        if(Sequel.queryutf("delete from laborat_kesling_validasi_pengujian_sampel where no_validasi='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
+                            Sequel.queryu("delete from tampjurnal");  
+                            if(jasa_sarana>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_sarana_Pelayanan_Lab_Kesling+"','Beban Jasa Sarana Pelayanan Lab Kesling','"+jasa_sarana+"','0'","debet=debet+'"+(jasa_sarana)+"'","kd_rek='"+Utang_Jasa_sarana_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Pelayanan_Lab_Kesling+"','Utang Jasa Sarana Pelayanan Lab Kesling','0','"+jasa_sarana+"'","kredit=kredit+'"+(jasa_sarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                              
+                            }
+                            if(paket_bhp>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Pelayanan_Lab_Kesling+"','HPP BHP Pelayanan Lab Kesling','"+paket_bhp+"','0'","debet=debet+'"+(paket_bhp)+"'","kd_rek='"+Persediaan_BHP_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Pelayanan_Lab_Kesling+"','Utang Jasa Medik Petugas Radiologi Ranap','0','"+paket_bhp+"'","kredit=kredit+'"+(paket_bhp)+"'","kd_rek='"+HPP_BHP_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                              
+                            }
+                            if(jasa_pj_lab>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJLab_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Lab Pelayanan Lab Kesling','"+jasa_pj_lab+"','0'","debet=debet+'"+(jasa_pj_lab)+"'","kd_rek='"+Utang_Jasa_PJLab_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJLab_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Lab Pelayanan Lab Kesling','0','"+jasa_pj_lab+"'","kredit=kredit+'"+(jasa_pj_lab)+"'","kd_rek='"+Beban_Jasa_PJLab_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                             
+                            }
+                            if(jasa_pj_pengujian>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Pengujian Pelayanan Lab Kesling','"+jasa_pj_pengujian+"','0'","debet=debet+'"+(jasa_pj_pengujian)+"'","kd_rek='"+Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }      
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Pengujian Pelayanan Lab Kesling','0','"+jasa_pj_pengujian+"'","kredit=kredit+'"+(jasa_pj_pengujian)+"'","kd_rek='"+Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                              
+                            }
+                            if(jasa_verifikator>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Verifikasi Pelayanan Lab Kesling','"+jasa_verifikator+"','0'","debet=debet+'"+(jasa_verifikator)+"'","kd_rek='"+Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }      
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Verifikasi Pelayanan Lab Kesling','0','"+jasa_verifikator+"'","kredit=kredit+'"+(jasa_verifikator)+"'","kd_rek='"+Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                             
+                            }
+                            if(jasa_petugas>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Analis_Pelayanan_Lab_Kesling+"','Beban Jasa Analis Pelayanan Lab Kesling','"+jasa_petugas+"','0'","debet=debet+'"+(jasa_petugas)+"'","kd_rek='"+Utang_Jasa_Analis_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Analis_Pelayanan_Lab_Kesling+"','Utang Jasa Analis Pelayanan Lab Kesling','0','"+jasa_petugas+"'","kredit=kredit+'"+(jasa_petugas)+"'","kd_rek='"+Beban_Jasa_Analis_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                             
+                            }
+                            if(kso>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Pelayanan_Lab_Kesling+"','Beban KSO Pelayanan Lab Kesling','"+kso+"','0'","debet=debet+'"+(kso)+"'","kd_rek='"+Utang_KSO_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Pelayanan_Lab_Kesling+"','Utang KSO Pelayanan Lab Kesling','0','"+kso+"'","kredit=kredit+'"+(kso)+"'","kd_rek='"+Beban_KSO_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                             
+                            }
+                            if(jasa_menejemen>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling+"','Beban Jasa Menejemen Pelayanan Lab Kesling','"+jasa_menejemen+"','0'","debet=debet+'"+(jasa_menejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }     
+                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling+"','Utang Jasa Menejemen Pelayanan Lab Kesling','0','"+jasa_menejemen+"'","kredit=kredit+'"+(jasa_menejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                             
+                            }
+                            if(total>0){
+                                if(Sequel.menyimpantf("tampjurnal","'"+Pendapatan_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling','"+total+"','0'","debet=debet+'"+(total)+"'","kd_rek='"+Pendapatan_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }    
+                                if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Pendapatan Pelayanan Lab Kesling','0','"+total+"'","kredit=kredit+'"+(total)+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
+                                    berhasil=false;
+                                }                                
+                            }
+                            if(berhasil==true){
+                                berhasil=jur.simpanJurnal(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString(),"U","PEMBATALAN PELAYANAN LABORATORIUM KESEHATAN LINGKUNGAN "+NamaPelanggan.getText()+" DIPOSTING OLEH "+akses.getkode()); 
+                            }  
+                            Sequel.queryu("update laborat_kesling_verifikasi_pengujian_sampel set status='Belum Divalidasi' where no_permintaan='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()+"'");
+                        }else{
+                            berhasil=false;
+                        }
+                        
+                        Sequel.AutoComitTrue();                   
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    } 
+                    this.setCursor(Cursor.getDefaultCursor());
                 }else{
-                    JOptionPane.showMessageDialog(null,"Sudah divalidasi, tidak bisa dihapus...!");
+                    JOptionPane.showMessageDialog(null,"Sudah bayar, tidak bisa dihapus...!");
                 }
             }
         }else{
