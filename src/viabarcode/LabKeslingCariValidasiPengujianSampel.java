@@ -86,7 +86,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(130);
             }else if(i==9){
-                column.setPreferredWidth(88);
+                column.setPreferredWidth(78);
             }else if(i==10){
                 column.setPreferredWidth(200);
             }else if(i==11){
@@ -1586,7 +1586,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(berhasil==true){
                             Sequel.queryu("update laborat_kesling_verifikasi_pengujian_sampel set status='Belum Divalidasi' where no_permintaan='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString()+"'");
                             Sequel.Commit();
-                            JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+                            JOptionPane.showMessageDialog(null,"Proses hapus selesai...!");
                             tabModeValidasi.removeRow(tbValidasi.getSelectedRow());
                             LTotal.setText(tbValidasi.getRowCount()+"");
                             Valid.tabelKosong(tabModeDetailValidasi);
