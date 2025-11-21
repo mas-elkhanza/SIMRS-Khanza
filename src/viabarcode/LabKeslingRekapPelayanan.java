@@ -29,7 +29,7 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeTidakDapatDilayani,tabModeDetailPermintaan;
+    private final DefaultTableModel tabModeTidakDapatDilayani;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -74,33 +74,6 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         }
         tbTidakDapatDilayani.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDetailPermintaan=new DefaultTableModel(null,new Object[]{
-                "Kode","Nama Parameter","Metode Pengujian","Satuan","Kategori","Nilai Normal"
-            }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-        };
-        tbDetailPermintaan.setModel(tabModeDetailPermintaan);
-        tbDetailPermintaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (i = 0; i < 6; i++) {
-            TableColumn column = tbDetailPermintaan.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(70);
-            }else if(i==1){
-                column.setPreferredWidth(220);
-            }else if(i==2){
-                column.setPreferredWidth(140);
-            }else if(i==3){
-                column.setPreferredWidth(70);
-            }else if(i==4){
-                column.setPreferredWidth(70);
-            }else if(i==5){
-                column.setPreferredWidth(80);
-            }
-        }
-        tbDetailPermintaan.setDefaultRenderer(Object.class, new WarnaTable());
-
-        NoPermintaan.setDocument(new batasInput((byte)20).getKata(NoPermintaan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -142,10 +115,6 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
-        ChkAccor.setSelected(false);
-        PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-        scrollPaneDetail.setVisible(false); 
     }
 
     /** This method is called from within the constructor to
@@ -167,35 +136,31 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        BtnAll = new widget.Button();
         label9 = new widget.Label();
         LTotal = new widget.Label();
-        BtnHapus = new widget.Button();
+        BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
+        KategoriParameter = new widget.ComboBox();
         Tanggal1 = new widget.Tanggal();
         label12 = new widget.Label();
         Tanggal2 = new widget.Tanggal();
-        label15 = new widget.Label();
-        NoPermintaan = new widget.TextBox();
-        label7 = new widget.Label();
-        NamaSampel = new widget.TextBox();
-        btnSampel = new widget.Button();
+        jLabel19 = new widget.Label();
+        KategoriParameter1 = new widget.ComboBox();
         panelisi3 = new widget.panelisi();
-        label13 = new widget.Label();
-        NamaPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
         label17 = new widget.Label();
         NamaPelanggan = new widget.TextBox();
         btnPelanggan = new widget.Button();
+        label7 = new widget.Label();
+        NamaSampel = new widget.TextBox();
+        btnSampel = new widget.Button();
+        label13 = new widget.Label();
+        NamaPetugas = new widget.TextBox();
+        btnPetugas = new widget.Button();
         scrollPane3 = new widget.ScrollPane();
         tbTidakDapatDilayani = new widget.Table();
-        PanelAccor = new widget.PanelBiasa();
-        ChkAccor = new widget.CekBox();
-        scrollPaneDetail = new widget.ScrollPane();
-        tbDetailPermintaan = new widget.Table();
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -232,7 +197,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -257,11 +222,23 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnCari);
 
+        label9.setText("Record :");
+        label9.setName("label9"); // NOI18N
+        label9.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelisi1.add(label9);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelisi1.add(LTotal);
+
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
+        BtnAll.setText("Semua");
         BtnAll.setToolTipText("Alt+M");
         BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAllActionPerformed(evt);
@@ -273,35 +250,6 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnAll);
-
-        label9.setText("Record :");
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelisi1.add(label9);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi1.add(LTotal);
-
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
-        BtnHapus.setToolTipText("Alt+H");
-        BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnHapus);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -345,10 +293,15 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Waktu Diterima :");
+        label11.setText("Tanggal Pencarian :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(90, 23));
+        label11.setPreferredSize(new java.awt.Dimension(104, 23));
         panelisi4.add(label11);
+
+        KategoriParameter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Keluar Hasil Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
+        KategoriParameter.setName("KategoriParameter"); // NOI18N
+        KategoriParameter.setPreferredSize(new java.awt.Dimension(215, 23));
+        panelisi4.add(KategoriParameter);
 
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
@@ -376,41 +329,15 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         });
         panelisi4.add(Tanggal2);
 
-        label15.setText("Nomor :");
-        label15.setName("label15"); // NOI18N
-        label15.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label15);
+        jLabel19.setText("Kategori Parameter :");
+        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel19.setPreferredSize(new java.awt.Dimension(130, 23));
+        panelisi4.add(jLabel19);
 
-        NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(160, 23));
-        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanKeyPressed(evt);
-            }
-        });
-        panelisi4.add(NoPermintaan);
-
-        label7.setText("Sampel :");
-        label7.setName("label7"); // NOI18N
-        label7.setPreferredSize(new java.awt.Dimension(57, 23));
-        panelisi4.add(label7);
-
-        NamaSampel.setEditable(false);
-        NamaSampel.setName("NamaSampel"); // NOI18N
-        NamaSampel.setPreferredSize(new java.awt.Dimension(140, 23));
-        panelisi4.add(NamaSampel);
-
-        btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnSampel.setMnemonic('1');
-        btnSampel.setToolTipText("Alt+1");
-        btnSampel.setName("btnSampel"); // NOI18N
-        btnSampel.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnSampel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSampelActionPerformed(evt);
-            }
-        });
-        panelisi4.add(btnSampel);
+        KategoriParameter1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Fisika", "Kimia", "Mikrobiologi" }));
+        KategoriParameter1.setName("KategoriParameter1"); // NOI18N
+        KategoriParameter1.setPreferredSize(new java.awt.Dimension(117, 23));
+        panelisi4.add(KategoriParameter1);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -420,36 +347,14 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label13.setText("Diterima Oleh :");
-        label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(84, 23));
-        panelisi3.add(label13);
-
-        NamaPetugas.setEditable(false);
-        NamaPetugas.setName("NamaPetugas"); // NOI18N
-        NamaPetugas.setPreferredSize(new java.awt.Dimension(221, 23));
-        panelisi3.add(NamaPetugas);
-
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("Alt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
-            }
-        });
-        panelisi3.add(btnPetugas);
-
         label17.setText("Pelanggan :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(100, 23));
+        label17.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi3.add(label17);
 
         NamaPelanggan.setEditable(false);
         NamaPelanggan.setName("NamaPelanggan"); // NOI18N
-        NamaPelanggan.setPreferredSize(new java.awt.Dimension(290, 23));
+        NamaPelanggan.setPreferredSize(new java.awt.Dimension(190, 23));
         panelisi3.add(NamaPelanggan);
 
         btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -463,6 +368,50 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnPelanggan);
+
+        label7.setText("Sampel :");
+        label7.setName("label7"); // NOI18N
+        label7.setPreferredSize(new java.awt.Dimension(54, 23));
+        panelisi3.add(label7);
+
+        NamaSampel.setEditable(false);
+        NamaSampel.setName("NamaSampel"); // NOI18N
+        NamaSampel.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi3.add(NamaSampel);
+
+        btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnSampel.setMnemonic('1');
+        btnSampel.setToolTipText("Alt+1");
+        btnSampel.setName("btnSampel"); // NOI18N
+        btnSampel.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnSampel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSampelActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnSampel);
+
+        label13.setText("Parameter :");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(69, 23));
+        panelisi3.add(label13);
+
+        NamaPetugas.setEditable(false);
+        NamaPetugas.setName("NamaPetugas"); // NOI18N
+        NamaPetugas.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi3.add(NamaPetugas);
+
+        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugas.setMnemonic('2');
+        btnPetugas.setToolTipText("Alt+2");
+        btnPetugas.setName("btnPetugas"); // NOI18N
+        btnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetugasActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnPetugas);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -485,52 +434,6 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         scrollPane3.setViewportView(tbTidakDapatDilayani);
 
         internalFrame1.add(scrollPane3, java.awt.BorderLayout.CENTER);
-
-        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
-        PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
-        PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
-
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
-        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.setSelected(true);
-        ChkAccor.setFocusable(false);
-        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setName("ChkAccor"); // NOI18N
-        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
-        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkAccorActionPerformed(evt);
-            }
-        });
-        PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
-
-        scrollPaneDetail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "Detail Permintaan :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        scrollPaneDetail.setName("scrollPaneDetail"); // NOI18N
-        scrollPaneDetail.setOpaque(true);
-
-        tbDetailPermintaan.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbDetailPermintaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDetailPermintaan.setName("tbDetailPermintaan"); // NOI18N
-        scrollPaneDetail.setViewportView(tbDetailPermintaan);
-
-        PanelAccor.add(scrollPaneDetail, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -584,7 +487,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void Tanggal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal1KeyPressed
-        Valid.pindah(evt,NoPermintaan,TCari);
+        //Valid.pindah(evt,NoPermintaan,TCari);
     }//GEN-LAST:event_Tanggal1KeyPressed
 
     private void btnPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPelangganActionPerformed
@@ -630,10 +533,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         pelanggan.setVisible(true);
     }//GEN-LAST:event_btnPelangganActionPerformed
 
-    private void NoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanKeyPressed
-        Valid.pindah(evt, BtnKeluar,TCari);
-    }//GEN-LAST:event_NoPermintaanKeyPressed
-
     private void Tanggal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal2KeyPressed
@@ -664,7 +563,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        NoPermintaan.setText("");
         KodeSampel.setText("");
         NamaSampel.setText("");
         KodePelanggan.setText("");
@@ -879,77 +777,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         sampel.setVisible(true);
     }//GEN-LAST:event_btnSampelActionPerformed
 
-    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbTidakDapatDilayani.getSelectedRow()!= -1){
-            if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString()+"'")==true){
-                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString()+"'");
-                tabModeTidakDapatDilayani.removeRow(tbTidakDapatDilayani.getSelectedRow());
-                Valid.tabelKosong(tabModeDetailPermintaan);
-                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
-        }
-    }//GEN-LAST:event_BtnHapusActionPerformed
-
-    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnHapusActionPerformed(null);
-        }else{
-            Valid.pindah(evt, TCari, BtnPrint);
-        }
-    }//GEN-LAST:event_BtnHapusKeyPressed
-
-    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        if(tbTidakDapatDilayani.getSelectedRow()!= -1){
-            if(ChkAccor.isSelected()==true){
-                ChkAccor.setVisible(false);
-                PanelAccor.setPreferredSize(new Dimension(670,HEIGHT));
-                scrollPaneDetail.setVisible(true);
-                ChkAccor.setVisible(true);
-                Valid.tabelKosong(tabModeDetailPermintaan);
-                try {
-                    ps=koneksi.prepareStatement(
-                        "select laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_nilai_normal_baku_mutu.nilai_normal from laborat_kesling_detail_permintaan_pengujian_sampel inner join laborat_kesling_parameter_pengujian "+
-                        "on laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter inner join laborat_kesling_nilai_normal_baku_mutu "+
-                        "on laborat_kesling_nilai_normal_baku_mutu.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter where laborat_kesling_detail_permintaan_pengujian_sampel.no_permintaan=? "+
-                        "and laborat_kesling_nilai_normal_baku_mutu.kode_sampel=? order by laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter"
-                    );
-                    try {
-                        ps.setString(1,tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString());
-                        ps.setString(2,tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),4).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeDetailPermintaan.addRow(new Object[]{
-                                rs.getString("kode_parameter"),rs.getString("nama_parameter"),rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getString("kategori"),rs.getString("nilai_normal")
-                            });
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
-            }else if(ChkAccor.isSelected()==false){
-                ChkAccor.setVisible(false);
-                PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-                scrollPaneDetail.setVisible(false);
-                ChkAccor.setVisible(true);
-            }
-        }else{
-            ChkAccor.setSelected(false);
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data permintaan...!!!");
-        }
-    }//GEN-LAST:event_ChkAccorActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -969,10 +796,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.CekBox ChkAccor;
+    private widget.ComboBox KategoriParameter;
+    private widget.ComboBox KategoriParameter1;
     private widget.TextBox KodePelanggan;
     private widget.TextBox KodePetugas;
     private widget.TextBox KodeSampel;
@@ -981,8 +808,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox NamaPelanggan;
     private widget.TextBox NamaPetugas;
     private widget.TextBox NamaSampel;
-    private widget.TextBox NoPermintaan;
-    private widget.PanelBiasa PanelAccor;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
@@ -990,12 +815,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button btnPetugas;
     private widget.Button btnSampel;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel19;
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label13;
-    private widget.Label label15;
     private widget.Label label17;
     private widget.Label label7;
     private widget.Label label9;
@@ -1003,13 +828,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane3;
-    private widget.ScrollPane scrollPaneDetail;
-    private widget.Table tbDetailPermintaan;
     private widget.Table tbTidakDapatDilayani;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        Valid.tabelKosong(tabModeTidakDapatDilayani);
+        /*Valid.tabelKosong(tabModeTidakDapatDilayani);
         try{  
             ps=koneksi.prepareStatement(
                         "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,"+
@@ -1057,12 +880,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }        
+        }  */      
     }
     
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
-        BtnHapus.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
     }
 }
