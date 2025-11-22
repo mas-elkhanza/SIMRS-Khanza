@@ -701,7 +701,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 
                 for(i=0;i<tbPengujian.getRowCount();i++){ 
                     if(tbPengujian.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("laborat_kesling_hasil_pengujian_sampel","?,?,?,?,?","Hasil Pengujian",5,new String[]{
+                        if(Sequel.menyimpantf2("labkesling_hasil_pengujian_sampel","?,?,?,?,?","Hasil Pengujian",5,new String[]{
                             TNoPenugasan.getText(),tbPengujian.getValueAt(i,1).toString(),tbPengujian.getValueAt(i,7).toString(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),"Belum Diverifikasi"
                         })==false){
                             berhasil=false;
@@ -710,7 +710,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
                 
                 if(berhasil==true){
-                    Sequel.queryu("update laborat_kesling_penugasan_pengujian_sampel set status='Sudah Keluar Hasil' where no_penugasan='"+TNoPenugasan.getText()+"'");
+                    Sequel.queryu("update labkesling_penugasan_pengujian_sampel set status='Sudah Keluar Hasil' where no_penugasan='"+TNoPenugasan.getText()+"'");
                     Sequel.Commit();
                     JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
                     for(i=0;i<tbPengujian.getRowCount();i++){

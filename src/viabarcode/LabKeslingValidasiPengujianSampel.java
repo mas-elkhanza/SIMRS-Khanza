@@ -713,12 +713,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 try {                    
                     Sequel.AutoComitFalse();
                     berhasil=true;
-                    if(Sequel.menyimpantf2("laborat_kesling_validasi_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
+                    if(Sequel.menyimpantf2("labkesling_validasi_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
                             TNoPermintaan.getText(),TNoValidasi.getText(),KdPJ.getText(),KodeVerifikator.getText(),Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
                         })==true){
                         jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
                         for(i=0;i<tbValidasi.getRowCount();i++){
-                            if(Sequel.menyimpantf2("laborat_kesling_detail_validasi_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Verifikasi",16,new String[]{
+                            if(Sequel.menyimpantf2("labkesling_detail_validasi_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Verifikasi",16,new String[]{
                                 TNoValidasi.getText(),tbValidasi.getValueAt(i,11).toString(),tbValidasi.getValueAt(i,9).toString(),tbValidasi.getValueAt(i,0).toString(),tbValidasi.getValueAt(i,5).toString(),tbValidasi.getValueAt(i,3).toString(),
                                 tbValidasi.getValueAt(i,4).toString(),tbValidasi.getValueAt(i,13).toString(),tbValidasi.getValueAt(i,14).toString(),tbValidasi.getValueAt(i,15).toString(),tbValidasi.getValueAt(i,16).toString(),
                                 tbValidasi.getValueAt(i,17).toString(),tbValidasi.getValueAt(i,18).toString(),tbValidasi.getValueAt(i,19).toString(),tbValidasi.getValueAt(i,20).toString(),tbValidasi.getValueAt(i,21).toString()
@@ -819,7 +819,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }   
                     
                     if(berhasil==true){
-                        Sequel.queryu("update laborat_kesling_verifikasi_pengujian_sampel set status='Sudah Divalidasi' where no_verifikasi='"+NoVerifikasi.getText()+"'");
+                        Sequel.queryu("update labkesling_verifikasi_pengujian_sampel set status='Sudah Divalidasi' where no_verifikasi='"+NoVerifikasi.getText()+"'");
                         Sequel.Commit();
                         JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
                         Valid.tabelKosong(tabMode);
@@ -896,13 +896,13 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("nomorpermintaan",TNoPermintaan.getText());
             param.put("novalidasi",TNoValidasi.getText());
             param.put("namapelanggan",NamaPelanggan.getText());
-            param.put("alamatpelanggan",Sequel.cariIsi("select laborat_kesling_pelanggan.alamat from laborat_kesling_pelanggan where laborat_kesling_pelanggan.kode_pelanggan=?",KodePelanggan.getText()));
+            param.put("alamatpelanggan",Sequel.cariIsi("select labkesling_pelanggan.alamat from labkesling_pelanggan where labkesling_pelanggan.kode_pelanggan=?",KodePelanggan.getText()));
             param.put("jenisampel",NamaSampel.getText());
-            param.put("bakumutu",Sequel.cariIsi("select laborat_kesling_master_sampel.baku_mutu from laborat_kesling_master_sampel where laborat_kesling_master_sampel.kode_sampel=?",KodeSampel.getText()));
-            param.put("titiksampling",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
-            param.put("disamplingoleh",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
-            param.put("waktusampling",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
-            param.put("waktuterimasampel",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("bakumutu",Sequel.cariIsi("select labkesling_master_sampel.baku_mutu from labkesling_master_sampel where labkesling_master_sampel.kode_sampel=?",KodeSampel.getText()));
+            param.put("titiksampling",Sequel.cariIsi("select labkesling_permintaan_pengujian_sampel.lokasi_sampling from labkesling_permintaan_pengujian_sampel where labkesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("disamplingoleh",Sequel.cariIsi("select labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh from labkesling_permintaan_pengujian_sampel where labkesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("waktusampling",Sequel.cariIsi("select date_format(labkesling_permintaan_pengujian_sampel.waktu_sampling,'%d/%m/%Y %H:%i:%s') from labkesling_permintaan_pengujian_sampel where labkesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("waktuterimasampel",Sequel.cariIsi("select date_format(labkesling_permintaan_pengujian_sampel.waktu_diterima,'%d/%m/%Y %H:%i:%s') from labkesling_permintaan_pengujian_sampel where labkesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
             param.put("rentangwaktu",Rentang.getText());
             param.put("tanggalvalidasi",TanggalValidasi.getSelectedItem().toString());
             param.put("pjlaborat",NmPJ.getText());
@@ -1154,7 +1154,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_validasi_pengujian_sampel.no_validasi,5),signed)),0) from laborat_kesling_validasi_pengujian_sampel inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_permintaan_pengujian_sampel.no_permintaan=laborat_kesling_validasi_pengujian_sampel.no_permintaan where date_format(laborat_kesling_validasi_pengujian_sampel.tanggal,'%Y')='"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"/LHU/",5,TNoValidasi);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_validasi_pengujian_sampel.no_validasi,5),signed)),0) from labkesling_validasi_pengujian_sampel inner join labkesling_permintaan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_validasi_pengujian_sampel.no_permintaan where date_format(labkesling_validasi_pengujian_sampel.tanggal,'%Y')='"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"' and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"/LHU/",5,TNoValidasi);   
         }        
     }
 }

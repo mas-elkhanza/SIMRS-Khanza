@@ -509,7 +509,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         }else if(NilaiNormal.getText().trim().equals("")){
             Valid.textKosong(NilaiNormal,"Nilai Normal");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_nilai_normal_baku_mutu","?,?,?","Kode",3,new String[]{
+            if(Sequel.menyimpantf("labkesling_nilai_normal_baku_mutu","?,?,?","Kode",3,new String[]{
                     KodeSampel.getText(),KodeParameter.getText(),NilaiNormal.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
@@ -541,7 +541,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Sequel.queryu2tf("delete from laborat_kesling_nilai_normal_baku_mutu where kode_sampel=? and kode_parameter=?",2,
+        if(Sequel.queryu2tf("delete from labkesling_nilai_normal_baku_mutu where kode_sampel=? and kode_parameter=?",2,
             new String[]{KodeSampel.getText(),KodeParameter.getText()})==true){
             if(tbBangsal.getSelectedRow()!= -1){
                 tabMode.removeRow(tbBangsal.getSelectedRow());
@@ -568,7 +568,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
             Valid.textKosong(NilaiNormal,"Nilai Normal");
         }else{
             if(tbBangsal.getSelectedRow()>-1){
-                if(Sequel.mengedittf("laborat_kesling_nilai_normal_baku_mutu","kode_sampel=? and kode_parameter=?","kode_sampel=?,kode_parameter=?,nilai_normal=?",5,new String[]{
+                if(Sequel.mengedittf("labkesling_nilai_normal_baku_mutu","kode_sampel=? and kode_parameter=?","kode_sampel=?,kode_parameter=?,nilai_normal=?",5,new String[]{
                     KodeSampel.getText(),KodeParameter.getText(),NilaiNormal.getText(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString()
                 })==true){
                     tbBangsal.setValueAt(KodeParameter.getText(),tbBangsal.getSelectedRow(),0);
@@ -873,13 +873,13 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                    "laborat_kesling_nilai_normal_baku_mutu.nilai_normal,laborat_kesling_master_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_master_sampel.baku_mutu from laborat_kesling_nilai_normal_baku_mutu "+
-                    "inner join laborat_kesling_parameter_pengujian on laborat_kesling_parameter_pengujian.kode_parameter=laborat_kesling_nilai_normal_baku_mutu.kode_parameter "+
-                    "inner join laborat_kesling_master_sampel on laborat_kesling_master_sampel.kode_sampel=laborat_kesling_nilai_normal_baku_mutu.kode_sampel "+
-                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? or "+
-                    "laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_master_sampel.kode_sampel like ? or laborat_kesling_master_sampel.nama_sampel like ? or "+
-                    "laborat_kesling_master_sampel.baku_mutu like ?")+"order by laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_master_sampel.kode_sampel");
+                    "select labkesling_parameter_pengujian.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,"+
+                    "labkesling_nilai_normal_baku_mutu.nilai_normal,labkesling_master_sampel.kode_sampel,labkesling_master_sampel.nama_sampel,labkesling_master_sampel.baku_mutu from labkesling_nilai_normal_baku_mutu "+
+                    "inner join labkesling_parameter_pengujian on labkesling_parameter_pengujian.kode_parameter=labkesling_nilai_normal_baku_mutu.kode_parameter "+
+                    "inner join labkesling_master_sampel on labkesling_master_sampel.kode_sampel=labkesling_nilai_normal_baku_mutu.kode_sampel "+
+                    (TCari.getText().trim().equals("")?"":"where labkesling_parameter_pengujian.kode_parameter like ? or labkesling_parameter_pengujian.nama_parameter like ? or "+
+                    "labkesling_parameter_pengujian.metode_pengujian like ? or labkesling_master_sampel.kode_sampel like ? or labkesling_master_sampel.nama_sampel like ? or "+
+                    "labkesling_master_sampel.baku_mutu like ?")+"order by labkesling_parameter_pengujian.kode_parameter,labkesling_master_sampel.kode_sampel");
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");

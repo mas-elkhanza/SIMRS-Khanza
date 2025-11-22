@@ -801,8 +801,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbDapatDilayani.getSelectedRow()!= -1){
-            if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_dilayani where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'")==true){
-                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'");
+            if(Sequel.queryutf("delete from labkesling_permintaan_pengujian_sampel_dilayani where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'")==true){
+                Sequel.queryu("update labkesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'");
                 tabModeTidakDapatDilayani.removeRow(tbDapatDilayani.getSelectedRow());
                 Valid.tabelKosong(tabModeDetailPermintaan);
                 LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
@@ -1015,11 +1015,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Valid.tabelKosong(tabModeDetailPermintaan);
                 try {
                     ps=koneksi.prepareStatement(
-                        "select laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_nilai_normal_baku_mutu.nilai_normal from laborat_kesling_detail_permintaan_pengujian_sampel inner join laborat_kesling_parameter_pengujian "+
-                        "on laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter inner join laborat_kesling_nilai_normal_baku_mutu "+
-                        "on laborat_kesling_nilai_normal_baku_mutu.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter where laborat_kesling_detail_permintaan_pengujian_sampel.no_permintaan=? "+
-                        "and laborat_kesling_nilai_normal_baku_mutu.kode_sampel=? order by laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter"
+                        "select labkesling_detail_permintaan_pengujian_sampel.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,"+
+                        "labkesling_parameter_pengujian.kategori,labkesling_nilai_normal_baku_mutu.nilai_normal from labkesling_detail_permintaan_pengujian_sampel inner join labkesling_parameter_pengujian "+
+                        "on labkesling_detail_permintaan_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter inner join labkesling_nilai_normal_baku_mutu "+
+                        "on labkesling_nilai_normal_baku_mutu.kode_parameter=labkesling_parameter_pengujian.kode_parameter where labkesling_detail_permintaan_pengujian_sampel.no_permintaan=? "+
+                        "and labkesling_nilai_normal_baku_mutu.kode_sampel=? order by labkesling_detail_permintaan_pengujian_sampel.kode_parameter"
                     );
                     try {
                         ps.setString(1,tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString());
@@ -1123,18 +1123,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabModeTidakDapatDilayani);
         try{  
             ps=koneksi.prepareStatement(
-                        "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan,laborat_kesling_permintaan_pengujian_sampel_dilayani.status "+
-                        "from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
-                        "inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                        "inner join laborat_kesling_permintaan_pengujian_sampel_dilayani on laborat_kesling_permintaan_pengujian_sampel_dilayani.no_permintaan=laborat_kesling_permintaan_pengujian_sampel.no_permintaan "+
-                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
-                        (NamaPetugas.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.nip='"+KodePetugas.getText()+"' ")+
-                        (NamaPelanggan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
-                        (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
-                        (TCari.getText().trim().equals("")?"":" and (laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling like ? or laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.jenis_sampel like ? "+
-                        "or laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or laborat_kesling_permintaan_pengujian_sampel.wadah_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel like ? "+
-                        "or laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan like ? or laborat_kesling_permintaan_pengujian_sampel_dilayani.status like ?) ")+"order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
+                        "select labkesling_permintaan_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_permintaan_pengujian_sampel.waktu_diterima,"+
+                        "labkesling_permintaan_pengujian_sampel.kode_sampel,labkesling_master_sampel.nama_sampel,labkesling_permintaan_pengujian_sampel_dilayani.keterangan,labkesling_permintaan_pengujian_sampel_dilayani.status "+
+                        "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                        "inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                        "inner join labkesling_permintaan_pengujian_sampel_dilayani on labkesling_permintaan_pengujian_sampel_dilayani.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                        "where labkesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
+                        (NamaPetugas.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.nip='"+KodePetugas.getText()+"' ")+
+                        (NamaPelanggan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
+                        (NamaSampel.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
+                        (TCari.getText().trim().equals("")?"":" and (labkesling_permintaan_pengujian_sampel.lokasi_sampling like ? or labkesling_permintaan_pengujian_sampel.deskripsi_sampel like ? or labkesling_permintaan_pengujian_sampel.jenis_sampel like ? "+
+                        "or labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or labkesling_permintaan_pengujian_sampel.wadah_sampel like ? or labkesling_permintaan_pengujian_sampel.kondisi_wadah_sampel like ? "+
+                        "or labkesling_permintaan_pengujian_sampel_dilayani.keterangan like ? or labkesling_permintaan_pengujian_sampel_dilayani.status like ?) ")+"order by labkesling_permintaan_pengujian_sampel.waktu_diterima,labkesling_permintaan_pengujian_sampel.no_permintaan");
                 
             try {
                 ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");

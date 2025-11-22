@@ -1412,16 +1412,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Valid.tabelKosong(tabModeDetailVerifikasi);
                 try {
                     ps=koneksi.prepareStatement(
-                        "select laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.satuan,laborat_kesling_detail_verifikasi_pengujian_sampel.hasil_pengujian,"+
-                        "laborat_kesling_detail_verifikasi_pengujian_sampel.keterangan,laborat_kesling_detail_verifikasi_pengujian_sampel.nilai_normal,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.kategori,"+
-                        "laborat_kesling_detail_verifikasi_pengujian_sampel.no_penugasan,laborat_kesling_penugasan_pengujian_sampel.nip_pelaksana,analis.nama as analis,laborat_kesling_penugasan_pengujian_sampel.nip_pj,pjpengujian.nama as pjpengujian,"+
-                        "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_pj_pengujian,laborat_kesling_parameter_pengujian.jasa_verifikator,"+
-                        "laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total "+
-                        "from laborat_kesling_detail_verifikasi_pengujian_sampel inner join laborat_kesling_parameter_pengujian on laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter "+
-                        "inner join laborat_kesling_penugasan_pengujian_sampel on laborat_kesling_detail_verifikasi_pengujian_sampel.no_penugasan=laborat_kesling_penugasan_pengujian_sampel.no_penugasan "+
-                        "inner join petugas as analis on laborat_kesling_penugasan_pengujian_sampel.nip_pelaksana=analis.nip "+
-                        "inner join petugas as pjpengujian on laborat_kesling_penugasan_pengujian_sampel.nip_pj=pjpengujian.nip "+
-                        "where laborat_kesling_detail_verifikasi_pengujian_sampel.no_verifikasi=? order by laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter"
+                        "select labkesling_detail_verifikasi_pengujian_sampel.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.satuan,labkesling_detail_verifikasi_pengujian_sampel.hasil_pengujian,"+
+                        "labkesling_detail_verifikasi_pengujian_sampel.keterangan,labkesling_detail_verifikasi_pengujian_sampel.nilai_normal,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.kategori,"+
+                        "labkesling_detail_verifikasi_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.nip_pelaksana,analis.nama as analis,labkesling_penugasan_pengujian_sampel.nip_pj,pjpengujian.nama as pjpengujian,"+
+                        "labkesling_parameter_pengujian.jasa_sarana,labkesling_parameter_pengujian.paket_bhp,labkesling_parameter_pengujian.jasa_pj_lab,labkesling_parameter_pengujian.jasa_pj_pengujian,labkesling_parameter_pengujian.jasa_verifikator,"+
+                        "labkesling_parameter_pengujian.jasa_petugas,labkesling_parameter_pengujian.kso,labkesling_parameter_pengujian.jasa_menejemen,labkesling_parameter_pengujian.total "+
+                        "from labkesling_detail_verifikasi_pengujian_sampel inner join labkesling_parameter_pengujian on labkesling_detail_verifikasi_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter "+
+                        "inner join labkesling_penugasan_pengujian_sampel on labkesling_detail_verifikasi_pengujian_sampel.no_penugasan=labkesling_penugasan_pengujian_sampel.no_penugasan "+
+                        "inner join petugas as analis on labkesling_penugasan_pengujian_sampel.nip_pelaksana=analis.nip "+
+                        "inner join petugas as pjpengujian on labkesling_penugasan_pengujian_sampel.nip_pj=pjpengujian.nip "+
+                        "where labkesling_detail_verifikasi_pengujian_sampel.no_verifikasi=? order by labkesling_detail_verifikasi_pengujian_sampel.kode_parameter"
                     );
                     try {
                         ps.setString(1,tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString());
@@ -1513,9 +1513,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail verifikasi terlebih dahulu...!!!");
             }else{
                 if(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
-                    if(Sequel.queryutf("delete from laborat_kesling_verifikasi_pengujian_sampel where no_verifikasi='"+tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString()+"'")==true){
+                    if(Sequel.queryutf("delete from labkesling_verifikasi_pengujian_sampel where no_verifikasi='"+tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString()+"'")==true){
                         for(i=0;i<tbDetailVerifikasi.getRowCount();i++){
-                            Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Belum Diverifikasi' where no_penugasan='"+tbDetailVerifikasi.getValueAt(i,8).toString()+"' and kode_parameter='"+tbDetailVerifikasi.getValueAt(i,0).toString()+"'");               
+                            Sequel.queryu("update labkesling_hasil_pengujian_sampel set status='Belum Diverifikasi' where no_penugasan='"+tbDetailVerifikasi.getValueAt(i,8).toString()+"' and kode_parameter='"+tbDetailVerifikasi.getValueAt(i,0).toString()+"'");               
                         } 
                         tabModeVerifikasi.removeRow(tbVerifikasi.getSelectedRow());
                         Valid.tabelKosong(tabModeDetailVerifikasi);
@@ -1601,22 +1601,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabModeVerifikasi);
         try{  
             ps=koneksi.prepareStatement(
-                        "select laborat_kesling_verifikasi_pengujian_sampel.tanggal,laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi,laborat_kesling_verifikasi_pengujian_sampel.nip_pj,petugas.nama,"+
-                        "laborat_kesling_verifikasi_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,"+
-                        "laborat_kesling_master_sampel.nama_sampel,laborat_kesling_verifikasi_pengujian_sampel.status,laborat_kesling_verifikasi_pengujian_sampel.catatan,laborat_kesling_verifikasi_pengujian_sampel.mulai_pengujian,"+
-                        "laborat_kesling_verifikasi_pengujian_sampel.selesai_pengujian from laborat_kesling_verifikasi_pengujian_sampel "+
-                        "inner join petugas on petugas.nip=laborat_kesling_verifikasi_pengujian_sampel.nip_pj "+
-                        "inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_verifikasi_pengujian_sampel.no_permintaan=laborat_kesling_permintaan_pengujian_sampel.no_permintaan "+
-                        "inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
-                        "inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                        "where laborat_kesling_verifikasi_pengujian_sampel.tanggal between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_verifikasi_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
-                        (Status.getSelectedItem().toString().equals("Semua")?"":" and laborat_kesling_verifikasi_pengujian_sampel.status='"+Status.getSelectedItem().toString()+"' ")+
-                        (NamaPetugas.getText().trim().equals("")?"":" and laborat_kesling_verifikasi_pengujian_sampel.nip_pj='"+KodePetugas.getText()+"' ")+
-                        (NamaPelanggan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
-                        (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
-                        (TCari.getText().trim().equals("")?"":" and (laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi like ? or laborat_kesling_verifikasi_pengujian_sampel.catatan like ? or "+
-                        "laborat_kesling_verifikasi_pengujian_sampel.mulai_pengujian like ?) ")+
-                        "order by laborat_kesling_verifikasi_pengujian_sampel.tanggal,laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi,laborat_kesling_verifikasi_pengujian_sampel.no_permintaan");
+                        "select labkesling_verifikasi_pengujian_sampel.tanggal,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.nip_pj,petugas.nama,"+
+                        "labkesling_verifikasi_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_permintaan_pengujian_sampel.kode_sampel,"+
+                        "labkesling_master_sampel.nama_sampel,labkesling_verifikasi_pengujian_sampel.status,labkesling_verifikasi_pengujian_sampel.catatan,labkesling_verifikasi_pengujian_sampel.mulai_pengujian,"+
+                        "labkesling_verifikasi_pengujian_sampel.selesai_pengujian from labkesling_verifikasi_pengujian_sampel "+
+                        "inner join petugas on petugas.nip=labkesling_verifikasi_pengujian_sampel.nip_pj "+
+                        "inner join labkesling_permintaan_pengujian_sampel on labkesling_verifikasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                        "inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                        "inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                        "where labkesling_verifikasi_pengujian_sampel.tanggal between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and labkesling_verifikasi_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
+                        (Status.getSelectedItem().toString().equals("Semua")?"":" and labkesling_verifikasi_pengujian_sampel.status='"+Status.getSelectedItem().toString()+"' ")+
+                        (NamaPetugas.getText().trim().equals("")?"":" and labkesling_verifikasi_pengujian_sampel.nip_pj='"+KodePetugas.getText()+"' ")+
+                        (NamaPelanggan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
+                        (NamaSampel.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
+                        (TCari.getText().trim().equals("")?"":" and (labkesling_verifikasi_pengujian_sampel.no_verifikasi like ? or labkesling_verifikasi_pengujian_sampel.catatan like ? or "+
+                        "labkesling_verifikasi_pengujian_sampel.mulai_pengujian like ?) ")+
+                        "order by labkesling_verifikasi_pengujian_sampel.tanggal,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.no_permintaan");
                 
             try {
                 ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
@@ -1654,32 +1654,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabModeRekapVerifikasi);
         try{  
             ps=koneksi.prepareStatement(
-                "select laborat_kesling_verifikasi_pengujian_sampel.tanggal,laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi,laborat_kesling_verifikasi_pengujian_sampel.nip_pj,petugas.nama,"+
-                "laborat_kesling_verifikasi_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,"+
-                "laborat_kesling_master_sampel.nama_sampel,laborat_kesling_verifikasi_pengujian_sampel.status,laborat_kesling_verifikasi_pengujian_sampel.catatan,laborat_kesling_verifikasi_pengujian_sampel.mulai_pengujian,"+
-                "laborat_kesling_verifikasi_pengujian_sampel.selesai_pengujian,laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,"+
-                "laborat_kesling_parameter_pengujian.satuan,laborat_kesling_detail_verifikasi_pengujian_sampel.hasil_pengujian,laborat_kesling_detail_verifikasi_pengujian_sampel.keterangan,"+
-                "laborat_kesling_detail_verifikasi_pengujian_sampel.nilai_normal,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.kategori,"+
-                "laborat_kesling_detail_verifikasi_pengujian_sampel.no_penugasan,laborat_kesling_penugasan_pengujian_sampel.nip_pelaksana,analis.nama as analis,laborat_kesling_penugasan_pengujian_sampel.nip_pj as nippengujian,"+
-                "pjpengujian.nama as pjpengujian from laborat_kesling_verifikasi_pengujian_sampel inner join petugas on petugas.nip=laborat_kesling_verifikasi_pengujian_sampel.nip_pj "+
-                "inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_verifikasi_pengujian_sampel.no_permintaan=laborat_kesling_permintaan_pengujian_sampel.no_permintaan "+
-                "inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
-                "inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                "inner join laborat_kesling_detail_verifikasi_pengujian_sampel on laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi=laborat_kesling_detail_verifikasi_pengujian_sampel.no_verifikasi "+
-                "inner join laborat_kesling_parameter_pengujian on laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter "+
-                "inner join laborat_kesling_penugasan_pengujian_sampel on laborat_kesling_detail_verifikasi_pengujian_sampel.no_penugasan=laborat_kesling_penugasan_pengujian_sampel.no_penugasan "+
-                "inner join petugas as analis on laborat_kesling_penugasan_pengujian_sampel.nip_pelaksana=analis.nip "+
-                "inner join petugas as pjpengujian on laborat_kesling_penugasan_pengujian_sampel.nip_pj=pjpengujian.nip "+
-                "where laborat_kesling_verifikasi_pengujian_sampel.tanggal between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_verifikasi_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
-                (Status.getSelectedItem().toString().equals("Semua")?"":" and laborat_kesling_verifikasi_pengujian_sampel.status='"+Status.getSelectedItem().toString()+"' ")+
-                (NamaPetugas.getText().trim().equals("")?"":" and laborat_kesling_verifikasi_pengujian_sampel.nip_pj='"+KodePetugas.getText()+"' ")+
-                (NamaPelanggan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
-                (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
-                (TCari.getText().trim().equals("")?"":" and (laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi like ? or laborat_kesling_verifikasi_pengujian_sampel.catatan like ? or "+
-                "laborat_kesling_verifikasi_pengujian_sampel.mulai_pengujian like ? or laborat_kesling_detail_verifikasi_pengujian_sampel.kode_parameter like ? or "+
-                "laborat_kesling_parameter_pengujian.nama_parameter like ? or laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_parameter_pengujian.kategori like ? or "+
-                "laborat_kesling_detail_verifikasi_pengujian_sampel.no_penugasan like ? or laborat_kesling_penugasan_pengujian_sampel.nip_pelaksana like ? or analis.nama like ?) ")+
-                "order by laborat_kesling_verifikasi_pengujian_sampel.tanggal,laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi,laborat_kesling_verifikasi_pengujian_sampel.no_permintaan"
+                "select labkesling_verifikasi_pengujian_sampel.tanggal,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.nip_pj,petugas.nama,"+
+                "labkesling_verifikasi_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_permintaan_pengujian_sampel.kode_sampel,"+
+                "labkesling_master_sampel.nama_sampel,labkesling_verifikasi_pengujian_sampel.status,labkesling_verifikasi_pengujian_sampel.catatan,labkesling_verifikasi_pengujian_sampel.mulai_pengujian,"+
+                "labkesling_verifikasi_pengujian_sampel.selesai_pengujian,labkesling_detail_verifikasi_pengujian_sampel.kode_parameter,labkesling_parameter_pengujian.nama_parameter,"+
+                "labkesling_parameter_pengujian.satuan,labkesling_detail_verifikasi_pengujian_sampel.hasil_pengujian,labkesling_detail_verifikasi_pengujian_sampel.keterangan,"+
+                "labkesling_detail_verifikasi_pengujian_sampel.nilai_normal,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.kategori,"+
+                "labkesling_detail_verifikasi_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.nip_pelaksana,analis.nama as analis,labkesling_penugasan_pengujian_sampel.nip_pj as nippengujian,"+
+                "pjpengujian.nama as pjpengujian from labkesling_verifikasi_pengujian_sampel inner join petugas on petugas.nip=labkesling_verifikasi_pengujian_sampel.nip_pj "+
+                "inner join labkesling_permintaan_pengujian_sampel on labkesling_verifikasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                "inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                "inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                "inner join labkesling_detail_verifikasi_pengujian_sampel on labkesling_verifikasi_pengujian_sampel.no_verifikasi=labkesling_detail_verifikasi_pengujian_sampel.no_verifikasi "+
+                "inner join labkesling_parameter_pengujian on labkesling_detail_verifikasi_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter "+
+                "inner join labkesling_penugasan_pengujian_sampel on labkesling_detail_verifikasi_pengujian_sampel.no_penugasan=labkesling_penugasan_pengujian_sampel.no_penugasan "+
+                "inner join petugas as analis on labkesling_penugasan_pengujian_sampel.nip_pelaksana=analis.nip "+
+                "inner join petugas as pjpengujian on labkesling_penugasan_pengujian_sampel.nip_pj=pjpengujian.nip "+
+                "where labkesling_verifikasi_pengujian_sampel.tanggal between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and labkesling_verifikasi_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
+                (Status.getSelectedItem().toString().equals("Semua")?"":" and labkesling_verifikasi_pengujian_sampel.status='"+Status.getSelectedItem().toString()+"' ")+
+                (NamaPetugas.getText().trim().equals("")?"":" and labkesling_verifikasi_pengujian_sampel.nip_pj='"+KodePetugas.getText()+"' ")+
+                (NamaPelanggan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
+                (NamaSampel.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
+                (TCari.getText().trim().equals("")?"":" and (labkesling_verifikasi_pengujian_sampel.no_verifikasi like ? or labkesling_verifikasi_pengujian_sampel.catatan like ? or "+
+                "labkesling_verifikasi_pengujian_sampel.mulai_pengujian like ? or labkesling_detail_verifikasi_pengujian_sampel.kode_parameter like ? or "+
+                "labkesling_parameter_pengujian.nama_parameter like ? or labkesling_parameter_pengujian.metode_pengujian like ? or labkesling_parameter_pengujian.kategori like ? or "+
+                "labkesling_detail_verifikasi_pengujian_sampel.no_penugasan like ? or labkesling_penugasan_pengujian_sampel.nip_pelaksana like ? or analis.nama like ?) ")+
+                "order by labkesling_verifikasi_pengujian_sampel.tanggal,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.no_permintaan"
             );
                 
             try {

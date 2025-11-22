@@ -384,7 +384,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,laborat_kesling_parameter_pengujian.kategori from laborat_kesling_parameter_pengujian");
+            ps=koneksi.prepareStatement("select labkesling_parameter_pengujian.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,labkesling_parameter_pengujian.kategori from labkesling_parameter_pengujian");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){

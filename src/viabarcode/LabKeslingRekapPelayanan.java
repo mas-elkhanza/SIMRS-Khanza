@@ -29,7 +29,7 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeTidakDapatDilayani;
+    private final DefaultTableModel tabModeRekapPelayanan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -44,18 +44,21 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabModeTidakDapatDilayani=new DefaultTableModel(null,new Object[]{
-                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya"
+        tabModeRekapPelayanan=new DefaultTableModel(null,new Object[]{
+                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
+                "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
+                "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Tanggal Penugasan","Nomor Penugasan",
+                "Catatan Penugasan","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","Mulai Pengujian","Selesai Pengujian"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
-        tbTidakDapatDilayani.setModel(tabModeTidakDapatDilayani);
+        tbRekapPelayanan.setModel(tabModeRekapPelayanan);
 
-        tbTidakDapatDilayani.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbTidakDapatDilayani.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbRekapPelayanan.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbRekapPelayanan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 7; i++) {
-            TableColumn column = tbTidakDapatDilayani.getColumnModel().getColumn(i);
+        for (i = 0; i < 23; i++) {
+            TableColumn column = tbRekapPelayanan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
             }else if(i==1){
@@ -65,14 +68,46 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(150);
             }else if(i==5){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==6){
-                column.setPreferredWidth(700);
+                column.setPreferredWidth(150);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(118);
+            }else if(i==11){
+                column.setPreferredWidth(160);
+            }else if(i==12){
+                column.setPreferredWidth(160);
+            }else if(i==13){
+                column.setPreferredWidth(120);
+            }else if(i==14){
+                column.setPreferredWidth(64);
+            }else if(i==15){
+                column.setPreferredWidth(129);
+            }else if(i==16){
+                column.setPreferredWidth(84);
+            }else if(i==17){
+                column.setPreferredWidth(110);
+            }else if(i==18){
+                column.setPreferredWidth(130);
+            }else if(i==19){
+                column.setPreferredWidth(70);
+            }else if(i==20){
+                column.setPreferredWidth(130);
+            }else if(i==21){
+                column.setPreferredWidth(200);
+            }else if(i==22){
+                column.setPreferredWidth(105);
             }
         }
-        tbTidakDapatDilayani.setDefaultRenderer(Object.class, new WarnaTable());
+        tbRekapPelayanan.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -128,7 +163,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
 
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
-        KodePetugas = new widget.TextBox();
+        KodeParameter = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -143,12 +178,12 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
-        KategoriParameter = new widget.ComboBox();
+        WaktuPencarian = new widget.ComboBox();
         Tanggal1 = new widget.Tanggal();
         label12 = new widget.Label();
         Tanggal2 = new widget.Tanggal();
         jLabel19 = new widget.Label();
-        KategoriParameter1 = new widget.ComboBox();
+        KategoriParameter = new widget.ComboBox();
         panelisi3 = new widget.panelisi();
         label17 = new widget.Label();
         NamaPelanggan = new widget.TextBox();
@@ -157,10 +192,10 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
         label13 = new widget.Label();
-        NamaPetugas = new widget.TextBox();
+        NamaParameter = new widget.TextBox();
         btnPetugas = new widget.Button();
         scrollPane3 = new widget.ScrollPane();
-        tbTidakDapatDilayani = new widget.Table();
+        tbRekapPelayanan = new widget.Table();
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -168,8 +203,8 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         KodePelanggan.setName("KodePelanggan"); // NOI18N
         KodePelanggan.setPreferredSize(new java.awt.Dimension(80, 23));
 
-        KodePetugas.setName("KodePetugas"); // NOI18N
-        KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
+        KodeParameter.setName("KodeParameter"); // NOI18N
+        KodeParameter.setPreferredSize(new java.awt.Dimension(80, 23));
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -298,10 +333,10 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(104, 23));
         panelisi4.add(label11);
 
-        KategoriParameter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Keluar Hasil Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
-        KategoriParameter.setName("KategoriParameter"); // NOI18N
-        KategoriParameter.setPreferredSize(new java.awt.Dimension(215, 23));
-        panelisi4.add(KategoriParameter);
+        WaktuPencarian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
+        WaktuPencarian.setName("WaktuPencarian"); // NOI18N
+        WaktuPencarian.setPreferredSize(new java.awt.Dimension(215, 23));
+        panelisi4.add(WaktuPencarian);
 
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
@@ -334,10 +369,10 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(130, 23));
         panelisi4.add(jLabel19);
 
-        KategoriParameter1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Fisika", "Kimia", "Mikrobiologi" }));
-        KategoriParameter1.setName("KategoriParameter1"); // NOI18N
-        KategoriParameter1.setPreferredSize(new java.awt.Dimension(117, 23));
-        panelisi4.add(KategoriParameter1);
+        KategoriParameter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Fisika", "Kimia", "Mikrobiologi" }));
+        KategoriParameter.setName("KategoriParameter"); // NOI18N
+        KategoriParameter.setPreferredSize(new java.awt.Dimension(117, 23));
+        panelisi4.add(KategoriParameter);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -396,10 +431,10 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         label13.setPreferredSize(new java.awt.Dimension(69, 23));
         panelisi3.add(label13);
 
-        NamaPetugas.setEditable(false);
-        NamaPetugas.setName("NamaPetugas"); // NOI18N
-        NamaPetugas.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelisi3.add(NamaPetugas);
+        NamaParameter.setEditable(false);
+        NamaParameter.setName("NamaParameter"); // NOI18N
+        NamaParameter.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi3.add(NamaParameter);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -418,7 +453,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         scrollPane3.setName("scrollPane3"); // NOI18N
         scrollPane3.setOpaque(true);
 
-        tbTidakDapatDilayani.setModel(new javax.swing.table.DefaultTableModel(
+        tbRekapPelayanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -429,9 +464,9 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
 
             }
         ));
-        tbTidakDapatDilayani.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
-        tbTidakDapatDilayani.setName("tbTidakDapatDilayani"); // NOI18N
-        scrollPane3.setViewportView(tbTidakDapatDilayani);
+        tbRekapPelayanan.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
+        tbRekapPelayanan.setName("tbRekapPelayanan"); // NOI18N
+        scrollPane3.setViewportView(tbRekapPelayanan);
 
         internalFrame1.add(scrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -465,8 +500,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             @Override
             public void windowClosed(WindowEvent e) {
                 if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    KodeParameter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NamaParameter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                 }  
                 btnPetugas.requestFocus();
             }
@@ -567,8 +602,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NamaSampel.setText("");
         KodePelanggan.setText("");
         NamaPelanggan.setText("");
-        KodePetugas.setText("");
-        NamaPetugas.setText("");
+        KodeParameter.setText("");
+        NamaParameter.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -582,10 +617,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabModeTidakDapatDilayani.getRowCount()==0){
+        if(tabModeRekapPelayanan.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabModeTidakDapatDilayani.getRowCount()!=0){
+        }else if(tabModeRekapPelayanan.getRowCount()!=0){
             try{
                 File g = new File("file2.css");            
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
@@ -619,15 +654,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
                                         append("</tr>");
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
+                            for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,0).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,1).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,2).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,3).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,4).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,5).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -667,15 +702,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
                                         append("</tr>");
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
+                            for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,0).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,1).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,2).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,3).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,4).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,5).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbTidakDapatDilayani.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -709,8 +744,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent.append(                             
                                 "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya\"\n"
                             ); 
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbTidakDapatDilayani.getValueAt(i,0).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,1).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,2).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,3).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,4).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,5).toString()).append("\";\"").append(tbTidakDapatDilayani.getValueAt(i,6).toString()).append("\"\n");
+                            for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
+                                htmlContent.append("\"").append(tbRekapPelayanan.getValueAt(i,0).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,1).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,2).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,3).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("\"\n");
                             }
                             f = new File("DataPermintaanPengujianSampelTidakDilayani.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
@@ -799,18 +834,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.ComboBox KategoriParameter;
-    private widget.ComboBox KategoriParameter1;
+    private widget.TextBox KodeParameter;
     private widget.TextBox KodePelanggan;
-    private widget.TextBox KodePetugas;
     private widget.TextBox KodeSampel;
     private widget.Label LTotal;
     private widget.editorpane LoadHTML;
+    private widget.TextBox NamaParameter;
     private widget.TextBox NamaPelanggan;
-    private widget.TextBox NamaPetugas;
     private widget.TextBox NamaSampel;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
+    private widget.ComboBox WaktuPencarian;
     private widget.Button btnPelanggan;
     private widget.Button btnPetugas;
     private widget.Button btnSampel;
@@ -828,28 +863,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane3;
-    private widget.Table tbTidakDapatDilayani;
+    private widget.Table tbRekapPelayanan;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        /*Valid.tabelKosong(tabModeTidakDapatDilayani);
+        Valid.tabelKosong(tabModeRekapPelayanan);
         try{  
             ps=koneksi.prepareStatement(
-                        "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani.keterangan from laborat_kesling_permintaan_pengujian_sampel "+
-                        "inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
-                        "inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                        "inner join laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani on laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani.no_permintaan=laborat_kesling_permintaan_pengujian_sampel.no_permintaan "+
-                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
-                        (NamaPetugas.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.nip='"+KodePetugas.getText()+"' ")+
-                        (NamaPelanggan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
-                        (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
-                        (TCari.getText().trim().equals("")?"":" and (laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling like ? or laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.jenis_sampel like ? "+
-                        "or laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or laborat_kesling_permintaan_pengujian_sampel.wadah_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel like ? "+
-                        "or laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani.keterangan like ?) ")+"order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
+                        "select labkesling_permintaan_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_pelanggan.alamat,labkesling_pelanggan.no_telp,"+
+                        "labkesling_pelanggan.kegiatan_usaha,labkesling_pelanggan.personal_dihubungi,labkesling_permintaan_pengujian_sampel.nip,petugas.nama,labkesling_permintaan_pengujian_sampel.waktu_sampling,"+
+                        "labkesling_permintaan_pengujian_sampel.waktu_diterima,labkesling_permintaan_pengujian_sampel.lokasi_sampling,labkesling_permintaan_pengujian_sampel.deskripsi_sampel,labkesling_permintaan_pengujian_sampel.jenis_sampel,"+
+                        "labkesling_permintaan_pengujian_sampel.jumlah_sampel,labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,labkesling_permintaan_pengujian_sampel.volume_sampel,labkesling_permintaan_pengujian_sampel.wadah_sampel,"+
+                        "labkesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,labkesling_permintaan_pengujian_sampel.kode_sampel,labkesling_master_sampel.nama_sampel,labkesling_master_sampel.baku_mutu,"+
+                        "labkesling_penugasan_pengujian_sampel.tanggal as tanggalpenugasan,labkesling_penugasan_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.catatan as catatanpenugasan,"+
+                        "labkesling_verifikasi_pengujian_sampel.tanggal as tanggalverifikasi,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.catatan as catatanverifikasi,"+
+                        "labkesling_verifikasi_pengujian_sampel.mulai_pengujian,labkesling_verifikasi_pengujian_sampel.selesai_pengujian "+
+                        "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                        "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                        "inner join labkesling_penugasan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_penugasan_pengujian_sampel.no_permintaan ");
                 
             try {
-                ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
+                /*ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+"")+" 23:59:59");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText()+"%");
@@ -858,16 +892,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                }
+                }*/
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabModeTidakDapatDilayani.addRow(new Object[]{
-                        rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("keterangan")
+                    tabModeRekapPelayanan.addRow(new Object[]{
+                        rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("alamat"),rs.getString("kegiatan_usaha"),
+                        rs.getString("personal_dihubungi"),rs.getString("no_telp"),rs.getString("nip"),rs.getString("nama"),rs.getString("waktu_sampling"),rs.getString("lokasi_sampling"),rs.getString("deskripsi_sampel"),
+                        rs.getString("jenis_sampel"),rs.getString("jumlah_sampel"),rs.getString("sampling_dilakukan_oleh"),rs.getString("volume_sampel"),rs.getString("wadah_sampel"),rs.getString("kondisi_wadah_sampel"),
+                        rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("baku_mutu"),rs.getString("tanggalpenugasan"),rs.getString("no_penugasan"),rs.getString("catatanpenugasan"),
+                        rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),
                     }); 
                 }        
-                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
+                LTotal.setText(tabModeRekapPelayanan.getRowCount()+"");
             } catch (Exception e) {
                 System.out.println("Note : "+e);
             } finally{
@@ -880,8 +917,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }  */      
+        }        
     }
+    
     
     public void isCek(){
         TCari.requestFocus();

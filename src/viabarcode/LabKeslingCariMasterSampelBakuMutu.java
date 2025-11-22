@@ -380,7 +380,7 @@ public final class LabKeslingCariMasterSampelBakuMutu extends javax.swing.JDialo
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select * from laborat_kesling_master_sampel");
+            ps=koneksi.prepareStatement("select * from labkesling_master_sampel");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){

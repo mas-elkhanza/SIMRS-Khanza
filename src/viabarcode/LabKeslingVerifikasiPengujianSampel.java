@@ -628,15 +628,15 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 try {                    
                     Sequel.AutoComitFalse();
                     berhasil=true;
-                    if(Sequel.menyimpantf2("laborat_kesling_verifikasi_pengujian_sampel","?,?,?,?,?,?,?,'Belum Divalidasi'","No.Verifikasi",7,new String[]{
+                    if(Sequel.menyimpantf2("labkesling_verifikasi_pengujian_sampel","?,?,?,?,?,?,?,'Belum Divalidasi'","No.Verifikasi",7,new String[]{
                             TNoPermintaan.getText(),TNoVerifikasi.getText(),KdPJ.getText(),Valid.SetTgl(TanggalVerifikasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText(),
                             Valid.SetTgl(TglPengujian1.getSelectedItem()+"")+" "+TglPengujian1.getSelectedItem().toString().substring(11,19),Valid.SetTgl(TglPengujian2.getSelectedItem()+"")+" "+TglPengujian2.getSelectedItem().toString().substring(11,19)
                         })==true){
                         for(i=0;i<tbVerifikasi.getRowCount();i++){
-                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?,?","Verifikasi",6,new String[]{
+                            if(Sequel.menyimpantf2("labkesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?,?","Verifikasi",6,new String[]{
                                 TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,0).toString(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
                             })==true){
-                                Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
+                                Sequel.queryu("update labkesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
                             }else{
                                 berhasil=false;
                             }                
@@ -953,7 +953,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_verifikasi_pengujian_sampel.no_verifikasi,5),signed)),0) from laborat_kesling_verifikasi_pengujian_sampel inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_permintaan_pengujian_sampel.no_permintaan=laborat_kesling_verifikasi_pengujian_sampel.no_permintaan where date_format(laborat_kesling_verifikasi_pengujian_sampel.tanggal,'%Y')='"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"/LHUS/",5,TNoVerifikasi);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_verifikasi_pengujian_sampel.no_verifikasi,5),signed)),0) from labkesling_verifikasi_pengujian_sampel inner join labkesling_permintaan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_verifikasi_pengujian_sampel.no_permintaan where date_format(labkesling_verifikasi_pengujian_sampel.tanggal,'%Y')='"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"' and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"/LHUS/",5,TNoVerifikasi);   
         }        
     }
 }

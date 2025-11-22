@@ -410,7 +410,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         }else if(BakuMutu.getText().trim().equals("")){
             Valid.textKosong(BakuMutu,"Baku Mutu");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_master_sampel","'"+KodeSampel.getText()+"','"+NamaSampel.getText()+"','"+BakuMutu.getText()+"'","Kode Sampel")==true){
+            if(Sequel.menyimpantf("labkesling_master_sampel","'"+KodeSampel.getText()+"','"+NamaSampel.getText()+"','"+BakuMutu.getText()+"'","Kode Sampel")==true){
                 tabMode.addRow(new Object[]{
                     KodeSampel.getText(),NamaSampel.getText(),BakuMutu.getText()
                 });
@@ -439,7 +439,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,KodeSampel,"laborat_kesling_master_sampel","kode_sampel")==true){
+        if(Valid.hapusTabletf(tabMode,KodeSampel,"labkesling_master_sampel","kode_sampel")==true){
             if(tbSpesialis.getSelectedRow()!= -1){
                 tabMode.removeRow(tbSpesialis.getSelectedRow());
                 LCount.setText(""+tabMode.getRowCount());
@@ -464,7 +464,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         }else if(BakuMutu.getText().trim().equals("")){
             Valid.textKosong(BakuMutu,"Baku Mutu");
         }else{
-            if(Valid.editTabletf(tabMode,"laborat_kesling_master_sampel","kode_sampel",KodeSampel,"nama_sampel='"+NamaSampel.getText()+"',baku_mutu='"+BakuMutu.getText()+"'")==true){
+            if(Valid.editTabletf(tabMode,"labkesling_master_sampel","kode_sampel",KodeSampel,"nama_sampel='"+NamaSampel.getText()+"',baku_mutu='"+BakuMutu.getText()+"'")==true){
                 if(tbSpesialis.getSelectedRow()>-1){
                     tabMode.setValueAt(KodeSampel.getText(),tbSpesialis.getSelectedRow(),0);
                     tabMode.setValueAt(NamaSampel.getText(),tbSpesialis.getSelectedRow(),1);
@@ -608,7 +608,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select * from laborat_kesling_master_sampel "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_master_sampel.kode_sampel like ? or laborat_kesling_master_sampel.nama_sampel like ? or laborat_kesling_master_sampel.baku_mutu like ?")+" order by laborat_kesling_master_sampel.kode_sampel ");
+                "select * from labkesling_master_sampel "+(TCari.getText().trim().equals("")?"":"where labkesling_master_sampel.kode_sampel like ? or labkesling_master_sampel.nama_sampel like ? or labkesling_master_sampel.baku_mutu like ?")+" order by labkesling_master_sampel.kode_sampel ");
             try{
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1, "%"+TCari.getText().trim()+"%");

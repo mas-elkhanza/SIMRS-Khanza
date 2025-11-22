@@ -744,7 +744,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         }else if(TotalTarif.getText().trim().equals("")){
             Valid.textKosong(TotalTarif,"Total Tarif");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_parameter_pengujian","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Periksa",14,new String[]{
+            if(Sequel.menyimpantf("labkesling_parameter_pengujian","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Periksa",14,new String[]{
                 Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Kategori.getSelectedItem().toString(),
                 JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPJPengujian.getText(),JasaPJVerifikator.getText(),JasaPetugas.getText(),
                 KSO.getText(),Manajemen.getText(),TotalTarif.getText()
@@ -782,7 +782,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,Kode,"laborat_kesling_parameter_pengujian","kode_parameter")==true){
+        if(Valid.hapusTabletf(tabMode,Kode,"labkesling_parameter_pengujian","kode_parameter")==true){
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
                 LCount.setText(""+tabMode.getRowCount());
@@ -825,7 +825,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         }else if(TotalTarif.getText().trim().equals("")){
             Valid.textKosong(TotalTarif,"Total Tarif");
         }else{
-            if(Sequel.mengedittf("laborat_kesling_parameter_pengujian","kode_parameter=?","kode_parameter=?,nama_parameter=?,metode_pengujian=?,satuan=?,kategori=?,jasa_sarana=?,"+
+            if(Sequel.mengedittf("labkesling_parameter_pengujian","kode_parameter=?","kode_parameter=?,nama_parameter=?,metode_pengujian=?,satuan=?,kategori=?,jasa_sarana=?,"+
                 "paket_bhp=?,jasa_pj_lab=?,jasa_pj_pengujian=?,jasa_verifikator=?,jasa_petugas=?,kso=?,jasa_menejemen=?,total=?",15,new String[]{   
                 Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Kategori.getSelectedItem().toString(),
                 JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPJPengujian.getText(),JasaPJVerifikator.getText(),JasaPetugas.getText(),
@@ -886,12 +886,12 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptTarifLabKesLing.jasper","report","::[ Tarif & Parameter Pengujian Laboratorium Kesehatan Lingkungan ]::",
-                    "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                    "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_pj_pengujian,"+
-                    "laborat_kesling_parameter_pengujian.jasa_verifikator,laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,"+
-                    "laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or "+
-                    "laborat_kesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' or "+
-                    "laborat_kesling_parameter_pengujian.kategori like '%"+TCari.getText().trim()+"%' ")+"order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
+                    "select labkesling_parameter_pengujian.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,"+
+                    "labkesling_parameter_pengujian.jasa_sarana,labkesling_parameter_pengujian.paket_bhp,labkesling_parameter_pengujian.jasa_pj_lab,labkesling_parameter_pengujian.jasa_pj_pengujian,"+
+                    "labkesling_parameter_pengujian.jasa_verifikator,labkesling_parameter_pengujian.jasa_petugas,labkesling_parameter_pengujian.kso,labkesling_parameter_pengujian.jasa_menejemen,"+
+                    "labkesling_parameter_pengujian.total from labkesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where labkesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or "+
+                    "labkesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' or labkesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' or "+
+                    "labkesling_parameter_pengujian.kategori like '%"+TCari.getText().trim()+"%' ")+"order by labkesling_parameter_pengujian.kode_parameter",param);   
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1137,11 +1137,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                        "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_pj_pengujian,"+
-                        "laborat_kesling_parameter_pengujian.jasa_verifikator,laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total "+
-                        "from laborat_kesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? "+
-                        "or laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_parameter_pengujian.kategori like ? ")+"order by laborat_kesling_parameter_pengujian.kode_parameter");
+                        "select labkesling_parameter_pengujian.kode_parameter,labkesling_parameter_pengujian.nama_parameter,labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,"+
+                        "labkesling_parameter_pengujian.kategori,labkesling_parameter_pengujian.jasa_sarana,labkesling_parameter_pengujian.paket_bhp,labkesling_parameter_pengujian.jasa_pj_lab,labkesling_parameter_pengujian.jasa_pj_pengujian,"+
+                        "labkesling_parameter_pengujian.jasa_verifikator,labkesling_parameter_pengujian.jasa_petugas,labkesling_parameter_pengujian.kso,labkesling_parameter_pengujian.jasa_menejemen,labkesling_parameter_pengujian.total "+
+                        "from labkesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where labkesling_parameter_pengujian.kode_parameter like ? or labkesling_parameter_pengujian.nama_parameter like ? "+
+                        "or labkesling_parameter_pengujian.metode_pengujian like ? or labkesling_parameter_pengujian.kategori like ? ")+"order by labkesling_parameter_pengujian.kode_parameter");
             try {    
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1186,7 +1186,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         KSO.setText("0");        
         Manajemen.setText("0");
         TotalTarif.setText("0");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_parameter_pengujian.kode_parameter,3),signed)),0) from laborat_kesling_parameter_pengujian","",3,Kode);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_parameter_pengujian.kode_parameter,3),signed)),0) from labkesling_parameter_pengujian","",3,Kode);
         Kode.requestFocus();
     }
 
