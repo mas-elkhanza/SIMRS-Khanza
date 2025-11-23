@@ -266,12 +266,14 @@
                 <Component class="widget.ComboBox" name="WaktuPencarian">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
+                      <StringArray count="7">
                         <StringItem index="0" value="Waktu Sampel Diambil"/>
                         <StringItem index="1" value="Waktu Sampel Diterima"/>
                         <StringItem index="2" value="Waktu Penugasan Pengujian"/>
-                        <StringItem index="3" value="Waktu Verifikasi Hasil Pengujian"/>
-                        <StringItem index="4" value="Waktu Validasi Hasil Pengujian"/>
+                        <StringItem index="3" value="Waktu Mulai Pengujian"/>
+                        <StringItem index="4" value="Waktu Selesai Pengujian"/>
+                        <StringItem index="5" value="Waktu Verifikasi Hasil Pengujian"/>
+                        <StringItem index="6" value="Waktu Validasi Hasil Pengujian"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="WaktuPencarian" noResource="true"/>

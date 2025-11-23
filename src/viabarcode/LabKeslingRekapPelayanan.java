@@ -48,7 +48,8 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
                 "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
                 "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Tanggal Penugasan","Nomor Penugasan",
-                "Catatan Penugasan","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","Mulai Pengujian","Selesai Pengujian"
+                "Catatan Penugasan","Mulai Pengujian","Selesai Pengujian","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","NIP PJ Verif",
+                "Nama PJ Verifikasi","Tanggal Validasi","No.Validasi","Catatan Validasi","NIP PJ Validasi"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -57,7 +58,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         tbRekapPelayanan.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRekapPelayanan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 36; i++) {
             TableColumn column = tbRekapPelayanan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
@@ -104,7 +105,11 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
             }else if(i==21){
                 column.setPreferredWidth(200);
             }else if(i==22){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(115);
+            }else if(i==23){
+                column.setPreferredWidth(120);
+            }else{
+                column.setPreferredWidth(150);
             }
         }
         tbRekapPelayanan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -333,7 +338,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(104, 23));
         panelisi4.add(label11);
 
-        WaktuPencarian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
+        WaktuPencarian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Mulai Pengujian", "Waktu Selesai Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
         WaktuPencarian.setName("WaktuPencarian"); // NOI18N
         WaktuPencarian.setPreferredSize(new java.awt.Dimension(215, 23));
         panelisi4.add(WaktuPencarian);
@@ -870,17 +875,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabModeRekapPelayanan);
         try{  
             ps=koneksi.prepareStatement(
-                        "select labkesling_permintaan_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_pelanggan.alamat,labkesling_pelanggan.no_telp,"+
-                        "labkesling_pelanggan.kegiatan_usaha,labkesling_pelanggan.personal_dihubungi,labkesling_permintaan_pengujian_sampel.nip,petugas.nama,labkesling_permintaan_pengujian_sampel.waktu_sampling,"+
-                        "labkesling_permintaan_pengujian_sampel.waktu_diterima,labkesling_permintaan_pengujian_sampel.lokasi_sampling,labkesling_permintaan_pengujian_sampel.deskripsi_sampel,labkesling_permintaan_pengujian_sampel.jenis_sampel,"+
-                        "labkesling_permintaan_pengujian_sampel.jumlah_sampel,labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,labkesling_permintaan_pengujian_sampel.volume_sampel,labkesling_permintaan_pengujian_sampel.wadah_sampel,"+
-                        "labkesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,labkesling_permintaan_pengujian_sampel.kode_sampel,labkesling_master_sampel.nama_sampel,labkesling_master_sampel.baku_mutu,"+
-                        "labkesling_penugasan_pengujian_sampel.tanggal as tanggalpenugasan,labkesling_penugasan_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.catatan as catatanpenugasan,"+
-                        "labkesling_verifikasi_pengujian_sampel.tanggal as tanggalverifikasi,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.catatan as catatanverifikasi,"+
-                        "labkesling_verifikasi_pengujian_sampel.mulai_pengujian,labkesling_verifikasi_pengujian_sampel.selesai_pengujian "+
-                        "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
-                        "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
-                        "inner join labkesling_penugasan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_penugasan_pengujian_sampel.no_permintaan ");
+                "select labkesling_permintaan_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_pelanggan.alamat,labkesling_pelanggan.no_telp,"+
+                "labkesling_pelanggan.kegiatan_usaha,labkesling_pelanggan.personal_dihubungi,labkesling_permintaan_pengujian_sampel.nip,petugas.nama,labkesling_permintaan_pengujian_sampel.waktu_sampling,"+
+                "labkesling_permintaan_pengujian_sampel.waktu_diterima,labkesling_permintaan_pengujian_sampel.lokasi_sampling,labkesling_permintaan_pengujian_sampel.deskripsi_sampel,labkesling_permintaan_pengujian_sampel.jenis_sampel,"+
+                "labkesling_permintaan_pengujian_sampel.jumlah_sampel,labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,labkesling_permintaan_pengujian_sampel.volume_sampel,labkesling_permintaan_pengujian_sampel.wadah_sampel,"+
+                "labkesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,labkesling_permintaan_pengujian_sampel.kode_sampel,labkesling_master_sampel.nama_sampel,labkesling_master_sampel.baku_mutu,"+
+                "labkesling_penugasan_pengujian_sampel.tanggal as tanggalpenugasan,labkesling_penugasan_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.catatan as catatanpenugasan,"+
+                "labkesling_verifikasi_pengujian_sampel.tanggal as tanggalverifikasi,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.catatan as catatanverifikasi,"+
+                "labkesling_verifikasi_pengujian_sampel.mulai_pengujian,labkesling_verifikasi_pengujian_sampel.selesai_pengujian,labkesling_validasi_pengujian_sampel.no_validasi,labkesling_validasi_pengujian_sampel.nip_pj as nippjvalidasi,"+
+                "labkesling_validasi_pengujian_sampel.nip_verifikator,pjverifikator.nama as pjverifikator,labkesling_validasi_pengujian_sampel.tanggal as tanggalvalidasi,labkesling_validasi_pengujian_sampel.catatan as catatanvalidasi "+
+                "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                "inner join labkesling_penugasan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_penugasan_pengujian_sampel.no_permintaan "+
+                "inner join labkesling_verifikasi_pengujian_sampel on labkesling_verifikasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                "inner join labkesling_validasi_pengujian_sampel on labkesling_validasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                "inner join petugas as pjverifikator on labkesling_validasi_pengujian_sampel.nip_verifikator=pjverifikator.nip"
+            );
                 
             try {
                 /*ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
@@ -901,7 +911,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("personal_dihubungi"),rs.getString("no_telp"),rs.getString("nip"),rs.getString("nama"),rs.getString("waktu_sampling"),rs.getString("lokasi_sampling"),rs.getString("deskripsi_sampel"),
                         rs.getString("jenis_sampel"),rs.getString("jumlah_sampel"),rs.getString("sampling_dilakukan_oleh"),rs.getString("volume_sampel"),rs.getString("wadah_sampel"),rs.getString("kondisi_wadah_sampel"),
                         rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("baku_mutu"),rs.getString("tanggalpenugasan"),rs.getString("no_penugasan"),rs.getString("catatanpenugasan"),
-                        rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),
+                        rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("nip_verifikator"),
+                        rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),
+                        rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi")
                     }); 
                 }        
                 LTotal.setText(tabModeRekapPelayanan.getRowCount()+"");
