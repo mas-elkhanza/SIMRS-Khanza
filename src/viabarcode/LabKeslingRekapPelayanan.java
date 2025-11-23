@@ -48,18 +48,38 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
                 "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
                 "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Tanggal Penugasan","Nomor Penugasan",
-                "Catatan Penugasan","NIP PJ Pengujian","Nama PJ Pengujian","NIP Analis","Nama Analis","Mulai Pengujian","Selesai Pengujian","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","NIP PJ Verifikasi",
-                "Nama PJ Verifikasi","Tanggal Validasi","No.Validasi","Catatan Validasi","NIP PJ Validasi","Nama PJ Validasi","kode_parameter","nilai_normal","hasil_pengujian",
-                "keterangan","jasa_sarana","paket_bhp","jasa_pj_lab","jasa_pj_pengujian","jasa_verifikator","jasa_petugas","kso","jasa_menejemen","total"
+                "Catatan Penugasan","NIP PJ Pengujian","Nama PJ Pengujian","NIP Analis","Nama Analis","Mulai Pengujian","Selesai Pengujian","Tanggal Verifikasi",
+                "No.Verifikasi","Catatan Verifikasi","NIP PJ Verifikasi","Nama PJ Verifikasi","Tanggal Validasi","No.Validasi","Catatan Validasi",
+                "NIP PJ Validasi","Nama PJ Validasi","Kode","Nama Parameter","Metode Pengujian","Satuan","Kategori","Nilai Normal","Hasil Pemeriksaan",
+                "Keterangan","Jasa Sarana","Paket BHP","Jasa P.J. Lab/Validasi","Jasa P.J. Pengujian","Jasa P.J.Verifikasi","Jasa Petugas/Analis","K.S.O",
+                "Jasa Manajemen","Total"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         tbRekapPelayanan.setModel(tabModeRekapPelayanan);
 
         tbRekapPelayanan.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRekapPelayanan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 54; i++) {
+        for (i = 0; i < 58; i++) {
             TableColumn column = tbRekapPelayanan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
@@ -143,8 +163,24 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==40){
                 column.setPreferredWidth(150);
-            }else{
+            }else if(i==41){
+                column.setPreferredWidth(50);
+            }else if(i==42){
                 column.setPreferredWidth(150);
+            }else if(i==43){
+                column.setPreferredWidth(100);
+            }else if(i==44){
+                column.setPreferredWidth(50);
+            }else if(i==45){
+                column.setPreferredWidth(100);
+            }else if(i==46){
+                column.setPreferredWidth(95);
+            }else if(i==47){
+                column.setPreferredWidth(97);
+            }else if(i==48){
+                column.setPreferredWidth(140);
+            }else{
+                column.setPreferredWidth(100);
             }
         }
         tbRekapPelayanan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -923,7 +959,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "analis.nama as analis,labkesling_detail_validasi_pengujian_sampel.kode_parameter,labkesling_detail_validasi_pengujian_sampel.nilai_normal,labkesling_detail_validasi_pengujian_sampel.hasil_pengujian,"+
                 "labkesling_detail_validasi_pengujian_sampel.keterangan,labkesling_detail_validasi_pengujian_sampel.jasa_sarana,labkesling_detail_validasi_pengujian_sampel.paket_bhp,labkesling_detail_validasi_pengujian_sampel.jasa_pj_lab,"+
                 "labkesling_detail_validasi_pengujian_sampel.jasa_pj_pengujian,labkesling_detail_validasi_pengujian_sampel.jasa_verifikator,labkesling_detail_validasi_pengujian_sampel.jasa_petugas,"+
-                "labkesling_detail_validasi_pengujian_sampel.kso,labkesling_detail_validasi_pengujian_sampel.jasa_menejemen,labkesling_detail_validasi_pengujian_sampel.total "+
+                "labkesling_detail_validasi_pengujian_sampel.kso,labkesling_detail_validasi_pengujian_sampel.jasa_menejemen,labkesling_detail_validasi_pengujian_sampel.total,labkesling_parameter_pengujian.nama_parameter,"+
+                "labkesling_parameter_pengujian.metode_pengujian,labkesling_parameter_pengujian.satuan,labkesling_parameter_pengujian.kategori "+
                 "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
                 "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip "+
                 "inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
@@ -935,6 +972,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "inner join labkesling_detail_validasi_pengujian_sampel on labkesling_detail_validasi_pengujian_sampel.no_validasi=labkesling_validasi_pengujian_sampel.no_validasi "+
                 "inner join petugas as pjpengujian on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=pjpengujian.nip "+
                 "inner join petugas as analis on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=analis.nip "+
+                "inner join labkesling_parameter_pengujian on labkesling_detail_validasi_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter "+
                 "group by labkesling_validasi_pengujian_sampel.no_validasi,labkesling_detail_validasi_pengujian_sampel.kode_parameter"
             );
                 
@@ -957,11 +995,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("personal_dihubungi"),rs.getString("no_telp"),rs.getString("nip"),rs.getString("nama"),rs.getString("waktu_sampling"),rs.getString("lokasi_sampling"),rs.getString("deskripsi_sampel"),
                         rs.getString("jenis_sampel"),rs.getString("jumlah_sampel"),rs.getString("sampling_dilakukan_oleh"),rs.getString("volume_sampel"),rs.getString("wadah_sampel"),rs.getString("kondisi_wadah_sampel"),
                         rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("baku_mutu"),rs.getString("tanggalpenugasan"),rs.getString("no_penugasan"),rs.getString("catatanpenugasan"),
-                        rs.getString("nip_pjpengujian"),rs.getString("pjpengujian"),rs.getString("nip_analis"),rs.getString("analis"),
-                        rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("nip_verifikator"),
-                        rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi"),rs.getString("pjvalidasi"),
-                        rs.getString("kode_parameter"),rs.getString("nilai_normal"),rs.getString("hasil_pengujian"),rs.getString("keterangan"),rs.getString("jasa_sarana"),rs.getString("paket_bhp"),rs.getString("jasa_pj_lab"),
-                        rs.getString("jasa_pj_pengujian"),rs.getString("jasa_verifikator"),rs.getString("jasa_petugas"),rs.getString("kso"),rs.getString("jasa_menejemen"),rs.getString("total")
+                        rs.getString("nip_pjpengujian"),rs.getString("pjpengujian"),rs.getString("nip_analis"),rs.getString("analis"),rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),
+                        rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("nip_verifikator"),rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),
+                        rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi"),rs.getString("pjvalidasi"),rs.getString("kode_parameter"),rs.getString("nama_parameter"),
+                        rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getString("kategori"),rs.getString("nilai_normal"),rs.getString("hasil_pengujian"),rs.getString("keterangan"),
+                        rs.getString("jasa_sarana"),rs.getString("paket_bhp"),rs.getString("jasa_pj_lab"),rs.getString("jasa_pj_pengujian"),rs.getString("jasa_verifikator"),rs.getString("jasa_petugas"),
+                        rs.getString("kso"),rs.getString("jasa_menejemen"),rs.getString("total")
                     }); 
                 }        
                 LTotal.setText(tabModeRekapPelayanan.getRowCount()+"");
