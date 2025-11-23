@@ -48,8 +48,9 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
                 "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
                 "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Tanggal Penugasan","Nomor Penugasan",
-                "Catatan Penugasan","Mulai Pengujian","Selesai Pengujian","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","NIP PJ Verif",
-                "Nama PJ Verifikasi","Tanggal Validasi","No.Validasi","Catatan Validasi","NIP PJ Validasi"
+                "Catatan Penugasan","NIP PJ Pengujian","NIP Analis","Mulai Pengujian","Selesai Pengujian","Tanggal Verifikasi","No.Verifikasi","Catatan Verifikasi","NIP PJ Verifikasi",
+                "Nama PJ Verifikasi","Tanggal Validasi","No.Validasi","Catatan Validasi","NIP PJ Validasi","Nama PJ Validasi","kode_parameter","nilai_normal","hasil_pengujian",
+                "keterangan","jasa_sarana","paket_bhp","jasa_pj_lab","jasa_pj_pengujian","jasa_verifikator","jasa_petugas","kso","jasa_menejemen","total"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -58,7 +59,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         tbRekapPelayanan.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRekapPelayanan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 36; i++) {
+        for (i = 0; i < 52; i++) {
             TableColumn column = tbRekapPelayanan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
@@ -883,13 +884,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "labkesling_penugasan_pengujian_sampel.tanggal as tanggalpenugasan,labkesling_penugasan_pengujian_sampel.no_penugasan,labkesling_penugasan_pengujian_sampel.catatan as catatanpenugasan,"+
                 "labkesling_verifikasi_pengujian_sampel.tanggal as tanggalverifikasi,labkesling_verifikasi_pengujian_sampel.no_verifikasi,labkesling_verifikasi_pengujian_sampel.catatan as catatanverifikasi,"+
                 "labkesling_verifikasi_pengujian_sampel.mulai_pengujian,labkesling_verifikasi_pengujian_sampel.selesai_pengujian,labkesling_validasi_pengujian_sampel.no_validasi,labkesling_validasi_pengujian_sampel.nip_pj as nippjvalidasi,"+
-                "labkesling_validasi_pengujian_sampel.nip_verifikator,pjverifikator.nama as pjverifikator,labkesling_validasi_pengujian_sampel.tanggal as tanggalvalidasi,labkesling_validasi_pengujian_sampel.catatan as catatanvalidasi "+
+                "pjvalidasi.nama as pjvalidasi,labkesling_validasi_pengujian_sampel.nip_verifikator,pjverifikator.nama as pjverifikator,labkesling_validasi_pengujian_sampel.tanggal as tanggalvalidasi,"+
+                "labkesling_validasi_pengujian_sampel.catatan as catatanvalidasi,labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian,labkesling_detail_validasi_pengujian_sampel.nip_analis,"+
+                "labkesling_detail_validasi_pengujian_sampel.kode_parameter,labkesling_detail_validasi_pengujian_sampel.nilai_normal,labkesling_detail_validasi_pengujian_sampel.hasil_pengujian,"+
+                "labkesling_detail_validasi_pengujian_sampel.keterangan,labkesling_detail_validasi_pengujian_sampel.jasa_sarana,labkesling_detail_validasi_pengujian_sampel.paket_bhp,labkesling_detail_validasi_pengujian_sampel.jasa_pj_lab,"+
+                "labkesling_detail_validasi_pengujian_sampel.jasa_pj_pengujian,labkesling_detail_validasi_pengujian_sampel.jasa_verifikator,labkesling_detail_validasi_pengujian_sampel.jasa_petugas,"+
+                "labkesling_detail_validasi_pengujian_sampel.kso,labkesling_detail_validasi_pengujian_sampel.jasa_menejemen,labkesling_detail_validasi_pengujian_sampel.total "+
                 "from labkesling_permintaan_pengujian_sampel inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
-                "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
+                "inner join petugas on labkesling_permintaan_pengujian_sampel.nip=petugas.nip "+
+                "inner join labkesling_master_sampel on labkesling_permintaan_pengujian_sampel.kode_sampel=labkesling_master_sampel.kode_sampel "+
                 "inner join labkesling_penugasan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_penugasan_pengujian_sampel.no_permintaan "+
-                "inner join labkesling_verifikasi_pengujian_sampel on labkesling_verifikasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
-                "inner join labkesling_validasi_pengujian_sampel on labkesling_validasi_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
-                "inner join petugas as pjverifikator on labkesling_validasi_pengujian_sampel.nip_verifikator=pjverifikator.nip"
+                "inner join labkesling_verifikasi_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_verifikasi_pengujian_sampel.no_permintaan "+
+                "inner join labkesling_validasi_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_validasi_pengujian_sampel.no_permintaan "+
+                "inner join petugas as pjverifikator on labkesling_validasi_pengujian_sampel.nip_verifikator=pjverifikator.nip "+
+                "inner join petugas as pjvalidasi on labkesling_validasi_pengujian_sampel.nip_pj=pjvalidasi.nip "+
+                "inner join labkesling_detail_validasi_pengujian_sampel on labkesling_detail_validasi_pengujian_sampel.no_validasi=labkesling_validasi_pengujian_sampel.no_validasi "+
+                "group by labkesling_validasi_pengujian_sampel.no_validasi,labkesling_detail_validasi_pengujian_sampel.kode_parameter"
             );
                 
             try {
@@ -911,9 +921,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("personal_dihubungi"),rs.getString("no_telp"),rs.getString("nip"),rs.getString("nama"),rs.getString("waktu_sampling"),rs.getString("lokasi_sampling"),rs.getString("deskripsi_sampel"),
                         rs.getString("jenis_sampel"),rs.getString("jumlah_sampel"),rs.getString("sampling_dilakukan_oleh"),rs.getString("volume_sampel"),rs.getString("wadah_sampel"),rs.getString("kondisi_wadah_sampel"),
                         rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("baku_mutu"),rs.getString("tanggalpenugasan"),rs.getString("no_penugasan"),rs.getString("catatanpenugasan"),
+                        rs.getString("nip_pjpengujian"),rs.getString("nip_analis"),
                         rs.getString("mulai_pengujian"),rs.getString("selesai_pengujian"),rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("nip_verifikator"),
-                        rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),
-                        rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi")
+                        rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi"),rs.getString("pjvalidasi"),
+                        rs.getString("kode_parameter"),rs.getString("nilai_normal"),rs.getString("hasil_pengujian"),rs.getString("keterangan"),rs.getString("jasa_sarana"),rs.getString("paket_bhp"),rs.getString("jasa_pj_lab"),
+                        rs.getString("jasa_pj_pengujian"),rs.getString("jasa_verifikator"),rs.getString("jasa_petugas"),rs.getString("kso"),rs.getString("jasa_menejemen"),rs.getString("total")
                     }); 
                 }        
                 LTotal.setText(tabModeRekapPelayanan.getRowCount()+"");
@@ -935,6 +947,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         TCari.requestFocus();
-        BtnPrint.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
+        BtnPrint.setEnabled(akses.getrekap_pelayanan_lab_kesehatan_lingkungan());
     }
 }
