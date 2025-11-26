@@ -36,6 +36,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private double jasa_sarana,paket_bhp,jasa_pj_lab,jasa_pj_pengujian,jasa_verifikator,jasa_petugas,kso,jasa_menejemen,total;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -179,8 +180,24 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 column.setPreferredWidth(97);
             }else if(i==48){
                 column.setPreferredWidth(140);
-            }else{
-                column.setPreferredWidth(100);
+            }else if(i==49){
+                column.setPreferredWidth(80);
+            }else if(i==50){
+                column.setPreferredWidth(80);
+            }else if(i==51){
+                column.setPreferredWidth(113);
+            }else if(i==52){
+                column.setPreferredWidth(102);
+            }else if(i==53){
+                column.setPreferredWidth(96);
+            }else if(i==54){
+                column.setPreferredWidth(106);
+            }else if(i==55){
+                column.setPreferredWidth(80);
+            }else if(i==56){
+                column.setPreferredWidth(89);
+            }else if(i==57){
+                column.setPreferredWidth(120);
             }
         }
         tbRekapPelayanan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -989,6 +1006,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }*/
                     
                 rs=ps.executeQuery();
+                jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
                 while(rs.next()){
                     tabModeRekapPelayanan.addRow(new Object[]{
                         rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("alamat"),rs.getString("kegiatan_usaha"),
@@ -999,11 +1017,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("tanggalverifikasi"),rs.getString("no_verifikasi"),rs.getString("catatanverifikasi"),rs.getString("nip_verifikator"),rs.getString("pjverifikator"),rs.getString("tanggalvalidasi"),
                         rs.getString("no_validasi"),rs.getString("catatanvalidasi"),rs.getString("nippjvalidasi"),rs.getString("pjvalidasi"),rs.getString("kode_parameter"),rs.getString("nama_parameter"),
                         rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getString("kategori"),rs.getString("nilai_normal"),rs.getString("hasil_pengujian"),rs.getString("keterangan"),
-                        rs.getString("jasa_sarana"),rs.getString("paket_bhp"),rs.getString("jasa_pj_lab"),rs.getString("jasa_pj_pengujian"),rs.getString("jasa_verifikator"),rs.getString("jasa_petugas"),
-                        rs.getString("kso"),rs.getString("jasa_menejemen"),rs.getString("total")
+                        rs.getDouble("jasa_sarana"),rs.getDouble("paket_bhp"),rs.getDouble("jasa_pj_lab"),rs.getDouble("jasa_pj_pengujian"),rs.getDouble("jasa_verifikator"),rs.getDouble("jasa_petugas"),
+                        rs.getDouble("kso"),rs.getDouble("jasa_menejemen"),rs.getDouble("total")
                     }); 
+                    jasa_sarana=jasa_sarana+rs.getDouble("jasa_sarana");
+                    paket_bhp=paket_bhp+rs.getDouble("paket_bhp");
+                    jasa_pj_lab=jasa_pj_lab+rs.getDouble("jasa_pj_lab");
+                    jasa_pj_pengujian=jasa_pj_pengujian+rs.getDouble("jasa_pj_pengujian");
+                    jasa_verifikator=jasa_verifikator+rs.getDouble("jasa_verifikator");
+                    jasa_petugas=jasa_petugas+rs.getDouble("jasa_petugas");
+                    kso=kso+rs.getDouble("kso");
+                    jasa_menejemen=jasa_menejemen+rs.getDouble("jasa_menejemen");
+                    total=total+rs.getDouble("total");
                 }        
                 LTotal.setText(tabModeRekapPelayanan.getRowCount()+"");
+                if(tabModeRekapPelayanan.getRowCount()>0){
+                    tabModeRekapPelayanan.addRow(new Object[]{
+                        ">> Total :","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",jasa_sarana,paket_bhp,jasa_pj_lab,jasa_pj_pengujian,jasa_verifikator,jasa_petugas,kso,jasa_menejemen,total
+                    }); 
+                }
             } catch (Exception e) {
                 System.out.println("Note : "+e);
             } finally{
