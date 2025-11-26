@@ -267,8 +267,8 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="7">
-                        <StringItem index="0" value="Waktu Sampel Diambil"/>
-                        <StringItem index="1" value="Waktu Sampel Diterima"/>
+                        <StringItem index="0" value="Waktu Sampel Diterima"/>
+                        <StringItem index="1" value="Waktu Sampel Diambil"/>
                         <StringItem index="2" value="Waktu Penugasan Pengujian"/>
                         <StringItem index="3" value="Waktu Mulai Pengujian"/>
                         <StringItem index="4" value="Waktu Selesai Pengujian"/>
@@ -449,20 +449,20 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="widget.Button" name="btnPetugas">
+            <Component class="widget.Button" name="btnParameter">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/190.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="50"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+2"/>
-                <Property name="name" type="java.lang.String" value="btnPetugas" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="btnParameter" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[28, 23]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPetugasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnParameterActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

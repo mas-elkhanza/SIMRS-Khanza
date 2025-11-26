@@ -26,17 +26,16 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPetugas;
 
 public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
     private final DefaultTableModel tabModeRekapPelayanan;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
     private double jasa_sarana,paket_bhp,jasa_pj_lab,jasa_pj_pengujian,jasa_verifikator,jasa_petugas,kso,jasa_menejemen,total;
+    private String tanggalpencarian="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -286,7 +285,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         btnSampel = new widget.Button();
         label13 = new widget.Label();
         NamaParameter = new widget.TextBox();
-        btnPetugas = new widget.Button();
+        btnParameter = new widget.Button();
         scrollPane3 = new widget.ScrollPane();
         tbRekapPelayanan = new widget.Table();
 
@@ -426,7 +425,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(104, 23));
         panelisi4.add(label11);
 
-        WaktuPencarian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diambil", "Waktu Sampel Diterima", "Waktu Penugasan Pengujian", "Waktu Mulai Pengujian", "Waktu Selesai Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
+        WaktuPencarian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Waktu Sampel Diterima", "Waktu Sampel Diambil", "Waktu Penugasan Pengujian", "Waktu Mulai Pengujian", "Waktu Selesai Pengujian", "Waktu Verifikasi Hasil Pengujian", "Waktu Validasi Hasil Pengujian" }));
         WaktuPencarian.setName("WaktuPencarian"); // NOI18N
         WaktuPencarian.setPreferredSize(new java.awt.Dimension(215, 23));
         panelisi4.add(WaktuPencarian);
@@ -529,17 +528,17 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
         NamaParameter.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi3.add(NamaParameter);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("Alt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        btnParameter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnParameter.setMnemonic('2');
+        btnParameter.setToolTipText("Alt+2");
+        btnParameter.setName("btnParameter"); // NOI18N
+        btnParameter.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnParameter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
+                btnParameterActionPerformed(evt);
             }
         });
-        panelisi3.add(btnPetugas);
+        panelisi3.add(btnParameter);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -583,20 +582,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 }//GEN-LAST:event_TKdKeyPressed
 */
 
-    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-        petugas.addWindowListener(new WindowListener() {
+    private void btnParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParameterActionPerformed
+        LabKeslingCariParameterPengujian form=new LabKeslingCariParameterPengujian(null,false);
+        form.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KodeParameter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaParameter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                if(form.getTable().getSelectedRow()!= -1){                   
+                    KodeParameter.setText(form.getTable().getValueAt(form.getTable().getSelectedRow(),0).toString());
+                    NamaParameter.setText(form.getTable().getValueAt(form.getTable().getSelectedRow(),1).toString());
                 }  
-                btnPetugas.requestFocus();
+                btnParameter.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -607,12 +606,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             @Override
             public void windowDeactivated(WindowEvent e) {}
         }); 
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
-    }//GEN-LAST:event_btnPetugasActionPerformed
+        form.emptTeks();
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnParameterActionPerformed
 
     private void Tanggal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal1KeyPressed
         //Valid.pindah(evt,NoPermintaan,TCari);
@@ -697,6 +696,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NamaPelanggan.setText("");
         KodeParameter.setText("");
         NamaParameter.setText("");
+        KategoriParameter.setSelectedIndex(0);
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -743,9 +743,60 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Personal Dihubungi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kontak Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sampel Diterima Oleh</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Sampling</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lokasi Sampling</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Deskripsi Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sampling Dilakukan Oleh</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Volume Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Wadah Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Wadah Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baku Mutu</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mulai Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Selesai Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Parameter</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Satuan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kategori</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nilai Normal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Sarana</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paket BHP</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J. Lab/Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J. Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J.Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Petugas/Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K.S.O</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Manajemen</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -756,27 +807,78 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,20).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,21).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,22).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,23).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,24).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,25).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,26).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,27).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,28).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,29).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,30).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,31).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,32).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,33).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,34).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,35).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,36).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,37).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,38).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,39).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,40).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,41).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,42).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,43).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,44).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,45).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,46).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,47).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,48).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,49).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,50).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,51).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,52).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,53).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,54).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,55).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,56).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,57).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='5000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.html");            
+                            f = new File("DataRekapPelayananLabkesling.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='5000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL TIDAK DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA REKAP PELAYANAN LAB KESEHATAN LINGKUNGAN<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -791,9 +893,60 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Personal Dihubungi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kontak Pelanggan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sampel Diterima Oleh</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Sampling</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lokasi Sampling</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Deskripsi Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sampling Dilakukan Oleh</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Volume Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Wadah Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Wadah Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baku Mutu</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Penugasan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mulai Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Selesai Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Parameter</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Satuan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kategori</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nilai Normal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Sarana</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paket BHP</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J. Lab/Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J. Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa P.J.Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Petugas/Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K.S.O</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jasa Manajemen</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -804,27 +957,78 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,20).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,21).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,22).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,23).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,24).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,25).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,26).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,27).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,28).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,29).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,30).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,31).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,32).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,33).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,34).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,35).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,36).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,37).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,38).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,39).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,40).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,41).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,42).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,43).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,44).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,45).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,46).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,47).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,48).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,49).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,50).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,51).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,52).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,53).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,54).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,55).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,56).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbRekapPelayanan.getValueAt(i,57).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='5000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.wps");            
+                            f = new File("DataRekapPelayananLabkesling.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='5000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL TIDAK DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA REKAP PELAYANAN LAB KESEHATAN LINGKUNGAN<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -835,12 +1039,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya\"\n"
+                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Alamat Pelanggan\";\"Kegiatan Usaha\";\"Personal Dihubungi\";\"Kontak Pelanggan\";\"NIP\";\"Sampel Diterima Oleh\";\"Waktu Sampling\";\"Lokasi Sampling\";\"Deskripsi Sampel\";\"Jenis Sampel\";\"Jml.Sampel\";\"Sampling Dilakukan Oleh\";\"Volume Sampel\";\"Wadah Sampel\";\"Kondisi Wadah Sampel\";\"Kode Sampel\";\"Nama Sampel\";\"Baku Mutu\";\"Tanggal Penugasan\";\"Nomor Penugasan\";\"Catatan Penugasan\";\"NIP PJ Pengujian\";\"Nama PJ Pengujian\";\"NIP Analis\";\"Nama Analis\";\"Mulai Pengujian\";\"Selesai Pengujian\";\"Tanggal Verifikasi\";\"No.Verifikasi\";\"Catatan Verifikasi\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\";\"Tanggal Validasi\";\"No.Validasi\";\"Catatan Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"Kode\";\"Nama Parameter\";\"Metode Pengujian\";\"Satuan\";\"Kategori\";\"Nilai Normal\";\"Hasil Pemeriksaan\";\"Keterangan\";\"Jasa Sarana\";\"Paket BHP\";\"Jasa P.J. Lab/Validasi\";\"Jasa P.J. Pengujian\";\"Jasa P.J.Verifikasi\";\"Jasa Petugas/Analis\";\"K.S.O\";\"Jasa Manajemen\";\"Total\"\n"
                             ); 
                             for (int i = 0; i < tabModeRekapPelayanan.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbRekapPelayanan.getValueAt(i,0).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,1).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,2).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,3).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("\"\n");
+                                htmlContent.append("\"").append(tbRekapPelayanan.getValueAt(i,0).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,1).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,2).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,3).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,4).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,5).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,6).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,7).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,8).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,9).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,10).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,11).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,12).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,13).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,14).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,15).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,16).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,17).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,18).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,19).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,20).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,21).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,22).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,23).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,24).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,25).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,26).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,27).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,28).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,29).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,30).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,31).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,32).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,33).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,34).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,35).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,36).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,37).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,38).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,39).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,40).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,41).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,42).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,43).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,44).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,45).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,46).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,47).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,48).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,49).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,50).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,51).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,52).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,53).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,54).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,55).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,56).toString()).append("\";\"").append(tbRekapPelayanan.getValueAt(i,57).toString()).append("\"\n");
                             }
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.csv");            
+                            f = new File("DataRekapPelayananLabkesling.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -939,8 +1143,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private widget.ComboBox WaktuPencarian;
+    private widget.Button btnParameter;
     private widget.Button btnPelanggan;
-    private widget.Button btnPetugas;
     private widget.Button btnSampel;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
@@ -962,6 +1166,33 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void tampil() {
         Valid.tabelKosong(tabModeRekapPelayanan);
         try{  
+            tanggalpencarian="labkesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? ";
+            switch (WaktuPencarian.getSelectedIndex()) {
+                case 0:
+                    tanggalpencarian="labkesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? ";
+                    break;
+                case 1:
+                    tanggalpencarian="labkesling_permintaan_pengujian_sampel.waktu_sampling between ? and ? ";
+                    break;
+                case 2:
+                    tanggalpencarian="labkesling_penugasan_pengujian_sampel.tanggal between ? and ? ";
+                    break;
+                case 3:
+                    tanggalpencarian="labkesling_verifikasi_pengujian_sampel.mulai_pengujian between ? and ? ";
+                    break;
+                case 4:
+                    tanggalpencarian="labkesling_verifikasi_pengujian_sampel.selesai_pengujian between ? and ? ";
+                    break;
+                case 5:
+                    tanggalpencarian="labkesling_verifikasi_pengujian_sampel.tanggal between ? and ? ";
+                    break;
+                case 6:
+                    tanggalpencarian="labkesling_validasi_pengujian_sampel.tanggal between ? and ? ";
+                    break;
+                default:
+                    break;
+            }
+            
             ps=koneksi.prepareStatement(
                 "select labkesling_permintaan_pengujian_sampel.no_permintaan,labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_pelanggan.alamat,labkesling_pelanggan.no_telp,"+
                 "labkesling_pelanggan.kegiatan_usaha,labkesling_pelanggan.personal_dihubungi,labkesling_permintaan_pengujian_sampel.nip,petugas.nama,labkesling_permintaan_pengujian_sampel.waktu_sampling,"+
@@ -990,11 +1221,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "inner join petugas as pjpengujian on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=pjpengujian.nip "+
                 "inner join petugas as analis on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=analis.nip "+
                 "inner join labkesling_parameter_pengujian on labkesling_detail_validasi_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter "+
+                "where "+tanggalpencarian+(NamaPelanggan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
+                (NamaSampel.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
+                (NamaParameter.getText().trim().equals("")?"":" and labkesling_parameter_pengujian.kode_parameter='"+KodeParameter.getText()+"' ")+ 
+                (KategoriParameter.getSelectedItem().toString().equals("Semua")?"":" and labkesling_parameter_pengujian.kategori='"+KategoriParameter.getSelectedItem().toString()+"' ")+    
+                (TCari.getText().trim().equals("")?"":"and (labkesling_permintaan_pengujian_sampel.no_permintaan like ? or labkesling_pelanggan.kegiatan_usaha like ? or "+
+                "petugas.nama like ? or labkesling_permintaan_pengujian_sampel.jenis_sampel like ? or labkesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or "+
+                "labkesling_penugasan_pengujian_sampel.no_penugasan like ? or labkesling_verifikasi_pengujian_sampel.no_verifikasi like ? or labkesling_validasi_pengujian_sampel.no_validasi like ? or "+
+                "pjvalidasi.nama like ? or pjverifikator.nama like ? or analis.nama like ? or pjpengujian.nama like ?)")+
                 "group by labkesling_validasi_pengujian_sampel.no_validasi,labkesling_detail_validasi_pengujian_sampel.kode_parameter"
             );
                 
             try {
-                /*ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+"")+" 23:59:59");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText()+"%");
@@ -1003,7 +1242,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                }*/
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
+                    ps.setString(13,"%"+TCari.getText()+"%");
+                    ps.setString(14,"%"+TCari.getText()+"%");
+                }
                     
                 rs=ps.executeQuery();
                 jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;

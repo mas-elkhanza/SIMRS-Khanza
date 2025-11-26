@@ -1,0 +1,713 @@
+<html>
+  <head><link href="file2.css" rel="stylesheet" type="text/css" /><table width='4800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'><tr class='isi2'><td valign='top' align='center'><font size='4' face='Tahoma'>RS SIMRS KHANZA</font><br>GUWOSARI, Pajangan, Bantul<br>Hp: 08562675039, 085296559963, E-mail : khanzasoftmedia@gmail.com<br><br><font size='2' face='Tahoma'>DATA REKAP PELAYANAN LAB KESEHATAN LINGKUNGAN<br><br></font></td></tr></table>
+    
+  </head>
+  <body>
+    <table width="4800px" border="0" align="center" cellpadding="1px" cellspacing="0" class="tbl_form">
+      <tr class="isi">
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Waktu Diterima</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Permintaan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Alamat Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kegiatan Usaha</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Personal Dihubungi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kontak Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>NIP</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Sampel Diterima Oleh</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Waktu Sampling</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Lokasi Sampling</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Deskripsi Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jenis Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jml.Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Sampling Dilakukan Oleh</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Volume Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Wadah Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kondisi Wadah Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kode Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Baku Mutu</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tanggal Penugasan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nomor Penugasan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Catatan Penugasan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>NIP PJ Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama PJ Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>NIP Analis</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Analis</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Mulai Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Selesai Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tanggal Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Catatan Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>NIP PJ Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama PJ Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tanggal Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Catatan Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>NIP PJ Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama PJ Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kode</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Parameter</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Metode Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Satuan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kategori</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nilai Normal</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Hasil Pemeriksaan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Keterangan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa Sarana</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Paket BHP</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa P.J. Lab/Validasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa P.J. Pengujian</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa P.J.Verifikasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa Petugas/Analis</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>K.S.O</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jasa Manajemen</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Total</b>
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          2025-11-12 13:30:16.0
+        </td>
+        <td valign="top">
+          AB/2025/PPS/00004
+        </td>
+        <td valign="top">
+          000001
+        </td>
+        <td valign="top">
+          PT MAJU MUNDUR
+        </td>
+        <td valign="top">
+          JOGJA
+        </td>
+        <td valign="top">
+          PABRIK ROTI
+        </td>
+        <td valign="top">
+          PAIJO
+        </td>
+        <td valign="top">
+          -
+        </td>
+        <td valign="top">
+          123124
+        </td>
+        <td valign="top">
+          FREDIAN AHMAD
+        </td>
+        <td valign="top">
+          2025-11-12 13:29:55.0
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          2
+        </td>
+        <td valign="top">
+          3
+        </td>
+        <td valign="top">
+          4
+        </td>
+        <td valign="top">
+          5
+        </td>
+        <td valign="top">
+          6
+        </td>
+        <td valign="top">
+          7
+        </td>
+        <td valign="top">
+          8
+        </td>
+        <td valign="top">
+          AB
+        </td>
+        <td valign="top">
+          Air Bersih
+        </td>
+        <td valign="top">
+          Permenkes No. 2 Tahun 2023
+        </td>
+        <td valign="top">
+          2025-11-12 15:16:53.0
+        </td>
+        <td valign="top">
+          AB/2025/STP/00003
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          01010101
+        </td>
+        <td valign="top">
+          RAHMI DEWI
+        </td>
+        <td valign="top">
+          156798
+        </td>
+        <td valign="top">
+          RAHMI DEWI
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:21.0
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:21.0
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:35.0
+        </td>
+        <td valign="top">
+          AB/2025/LHUS/00002
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          12/09/1988/001
+        </td>
+        <td valign="top">
+          ANJASMARA
+        </td>
+        <td valign="top">
+          2025-11-23 17:58:48.0
+        </td>
+        <td valign="top">
+          AB/2025/LHU/00001
+        </td>
+        <td valign="top">
+          ok
+        </td>
+        <td valign="top">
+          156798
+        </td>
+        <td valign="top">
+          SUSI SUSANTI
+        </td>
+        <td valign="top">
+          101
+        </td>
+        <td valign="top">
+          Kekeruhan
+        </td>
+        <td valign="top">
+          Spektrofotometri
+        </td>
+        <td valign="top">
+          NTU
+        </td>
+        <td valign="top">
+          Fisika
+        </td>
+        <td valign="top">
+          3
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          8
+        </td>
+        <td valign="top">
+          1000.0
+        </td>
+        <td valign="top">
+          2000.0
+        </td>
+        <td valign="top">
+          3000.0
+        </td>
+        <td valign="top">
+          4000.0
+        </td>
+        <td valign="top">
+          5000.0
+        </td>
+        <td valign="top">
+          6000.0
+        </td>
+        <td valign="top">
+          7000.0
+        </td>
+        <td valign="top">
+          8000.0
+        </td>
+        <td valign="top">
+          36000.0
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          2025-11-12 13:30:16.0
+        </td>
+        <td valign="top">
+          AB/2025/PPS/00004
+        </td>
+        <td valign="top">
+          000001
+        </td>
+        <td valign="top">
+          PT MAJU MUNDUR
+        </td>
+        <td valign="top">
+          JOGJA
+        </td>
+        <td valign="top">
+          PABRIK ROTI
+        </td>
+        <td valign="top">
+          PAIJO
+        </td>
+        <td valign="top">
+          -
+        </td>
+        <td valign="top">
+          123124
+        </td>
+        <td valign="top">
+          FREDIAN AHMAD
+        </td>
+        <td valign="top">
+          2025-11-12 13:29:55.0
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          2
+        </td>
+        <td valign="top">
+          3
+        </td>
+        <td valign="top">
+          4
+        </td>
+        <td valign="top">
+          5
+        </td>
+        <td valign="top">
+          6
+        </td>
+        <td valign="top">
+          7
+        </td>
+        <td valign="top">
+          8
+        </td>
+        <td valign="top">
+          AB
+        </td>
+        <td valign="top">
+          Air Bersih
+        </td>
+        <td valign="top">
+          Permenkes No. 2 Tahun 2023
+        </td>
+        <td valign="top">
+          2025-11-12 15:16:53.0
+        </td>
+        <td valign="top">
+          AB/2025/STP/00003
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          01010101
+        </td>
+        <td valign="top">
+          RAHMI DEWI
+        </td>
+        <td valign="top">
+          156798
+        </td>
+        <td valign="top">
+          RAHMI DEWI
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:21.0
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:21.0
+        </td>
+        <td valign="top">
+          2025-11-16 09:57:35.0
+        </td>
+        <td valign="top">
+          AB/2025/LHUS/00002
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          12/09/1988/001
+        </td>
+        <td valign="top">
+          ANJASMARA
+        </td>
+        <td valign="top">
+          2025-11-23 17:58:48.0
+        </td>
+        <td valign="top">
+          AB/2025/LHU/00001
+        </td>
+        <td valign="top">
+          ok
+        </td>
+        <td valign="top">
+          156798
+        </td>
+        <td valign="top">
+          SUSI SUSANTI
+        </td>
+        <td valign="top">
+          102
+        </td>
+        <td valign="top">
+          Warna
+        </td>
+        <td valign="top">
+          Spektrofotometri
+        </td>
+        <td valign="top">
+          Pt/Co
+        </td>
+        <td valign="top">
+          Fisika
+        </td>
+        <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          3
+        </td>
+        <td valign="top">
+          9
+        </td>
+        <td valign="top">
+          5000.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          0.0
+        </td>
+        <td valign="top">
+          5000.0
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          &gt;&gt; Total :
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          
+        </td>
+        <td valign="top">
+          6000.0
+        </td>
+        <td valign="top">
+          2000.0
+        </td>
+        <td valign="top">
+          3000.0
+        </td>
+        <td valign="top">
+          4000.0
+        </td>
+        <td valign="top">
+          5000.0
+        </td>
+        <td valign="top">
+          6000.0
+        </td>
+        <td valign="top">
+          7000.0
+        </td>
+        <td valign="top">
+          8000.0
+        </td>
+        <td valign="top">
+          41000.0
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
