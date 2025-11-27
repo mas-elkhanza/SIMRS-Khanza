@@ -228,13 +228,13 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
 
         label9.setText("Record :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(50, 23));
+        label9.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi1.add(label9);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(60, 23));
+        LTotal.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi1.add(LTotal);
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
@@ -242,7 +242,7 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
         BtnHapus.setText("Bayar Tagihan");
         BtnHapus.setToolTipText("Alt+H");
         BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(150, 30));
+        BtnHapus.setPreferredSize(new java.awt.Dimension(145, 30));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -296,7 +296,7 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
         BtnHapus1.setText("Rekap Pembayaran");
         BtnHapus1.setToolTipText("Alt+R");
         BtnHapus1.setName("BtnHapus1"); // NOI18N
-        BtnHapus1.setPreferredSize(new java.awt.Dimension(155, 30));
+        BtnHapus1.setPreferredSize(new java.awt.Dimension(165, 30));
         BtnHapus1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapus1ActionPerformed(evt);
