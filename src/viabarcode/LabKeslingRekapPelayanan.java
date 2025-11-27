@@ -54,7 +54,7 @@ public class LabKeslingRekapPelayanan extends javax.swing.JDialog {
                 "Keterangan","Jasa Sarana","Paket BHP","Jasa P.J. Lab/Validasi","Jasa P.J. Pengujian","Jasa P.J.Verifikasi","Jasa Petugas/Analis","K.S.O",
                 "Jasa Manajemen","Total"
             }){
-                @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 

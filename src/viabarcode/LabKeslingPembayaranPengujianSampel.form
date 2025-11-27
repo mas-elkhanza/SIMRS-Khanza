@@ -143,7 +143,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Button" name="BtnHapus">
+                <Component class="widget.Button" name="BtnBayarTagihan">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/picture/gaji.png"/>
@@ -151,14 +151,14 @@
                     <Property name="mnemonic" type="int" value="72"/>
                     <Property name="text" type="java.lang.String" value="Bayar Tagihan"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+H"/>
-                    <Property name="name" type="java.lang.String" value="BtnHapus" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="BtnBayarTagihan" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[145, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnHapusActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnHapusKeyPressed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnBayarTagihanActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnBayarTagihanKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="widget.Button" name="BtnAll">
@@ -197,7 +197,7 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnPrintKeyPressed"/>
                   </Events>
                 </Component>
-                <Component class="widget.Button" name="BtnHapus1">
+                <Component class="widget.Button" name="BtnRekapPembayaran">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/picture/Agenda-1-16x16.png"/>
@@ -205,14 +205,14 @@
                     <Property name="mnemonic" type="int" value="82"/>
                     <Property name="text" type="java.lang.String" value="Rekap Pembayaran"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+R"/>
-                    <Property name="name" type="java.lang.String" value="BtnHapus1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="BtnRekapPembayaran" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[165, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnHapus1ActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnHapus1KeyPressed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRekapPembayaranActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnRekapPembayaranKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="widget.Button" name="BtnKeluar">
@@ -482,17 +482,20 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="widget.Table" name="tbTidakDapatDilayani">
+            <Component class="widget.Table" name="tbValidasi">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau dihapus"/>
-                <Property name="name" type="java.lang.String" value="tbTidakDapatDilayani" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="tbValidasi" noResource="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbValidasiMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -576,13 +579,13 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="widget.Table" name="tbDetailPermintaan">
+                <Component class="widget.Table" name="tbDetailValidasi">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="0" rowCount="4"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
-                    <Property name="name" type="java.lang.String" value="tbDetailPermintaan" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="tbDetailValidasi" noResource="true"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
