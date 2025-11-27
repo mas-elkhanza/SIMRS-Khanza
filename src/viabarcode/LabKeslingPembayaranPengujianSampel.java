@@ -206,9 +206,9 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
         panelisi1 = new widget.panelisi();
         label9 = new widget.Label();
         LTotal = new widget.Label();
-        BtnBayarTagihan = new widget.Button();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
+        BtnBayarTagihan = new widget.Button();
         BtnRekapPembayaran = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
@@ -277,24 +277,6 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
         LTotal.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi1.add(LTotal);
 
-        BtnBayarTagihan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
-        BtnBayarTagihan.setMnemonic('H');
-        BtnBayarTagihan.setText("Bayar Tagihan");
-        BtnBayarTagihan.setToolTipText("Alt+H");
-        BtnBayarTagihan.setName("BtnBayarTagihan"); // NOI18N
-        BtnBayarTagihan.setPreferredSize(new java.awt.Dimension(145, 30));
-        BtnBayarTagihan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBayarTagihanActionPerformed(evt);
-            }
-        });
-        BtnBayarTagihan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBayarTagihanKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnBayarTagihan);
-
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
         BtnAll.setText("Semua");
@@ -330,6 +312,24 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnPrint);
+
+        BtnBayarTagihan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
+        BtnBayarTagihan.setMnemonic('H');
+        BtnBayarTagihan.setText("Bayar Tagihan");
+        BtnBayarTagihan.setToolTipText("Alt+H");
+        BtnBayarTagihan.setName("BtnBayarTagihan"); // NOI18N
+        BtnBayarTagihan.setPreferredSize(new java.awt.Dimension(145, 30));
+        BtnBayarTagihan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBayarTagihanActionPerformed(evt);
+            }
+        });
+        BtnBayarTagihan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBayarTagihanKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnBayarTagihan);
 
         BtnRekapPembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
         BtnRekapPembayaran.setMnemonic('R');
@@ -635,6 +635,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NamaSampel.setText("");
         KodePelanggan.setText("");
         NamaPelanggan.setText("");
+        Status.setSelectedIndex(0);
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -677,13 +678,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Validasi</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeValidasi.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -694,6 +701,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,12).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -704,7 +717,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.html");            
+                            f = new File("DataValidasiPengujianSampel.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -714,7 +727,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL TIDAK DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA VALIDASI PENGUJIAN SAMPEL<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -725,13 +738,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 2 (WPS)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Validasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Validasi</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Bayar</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Catatan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP PJ Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama PJ Verifikasi</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeValidasi.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -742,6 +761,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbValidasi.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbValidasi.getValueAt(i,12).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -752,7 +777,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.wps");            
+                            f = new File("DataValidasiPengujianSampel.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -762,7 +787,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL TIDAK DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA VALIDASI PENGUJIAN SAMPEL<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -773,12 +798,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya\"\n"
+                                "\"Tgl.Validasi\";\"No.Validasi\";\"NIP PJ Validasi\";\"Nama PJ Validasi\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Bayar\";\"Catatan\";\"NIP PJ Verifikasi\";\"Nama PJ Verifikasi\"\n"
                             ); 
                             for (int i = 0; i < tabModeValidasi.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbValidasi.getValueAt(i,0).toString()).append("\";\"").append(tbValidasi.getValueAt(i,1).toString()).append("\";\"").append(tbValidasi.getValueAt(i,2).toString()).append("\";\"").append(tbValidasi.getValueAt(i,3).toString()).append("\";\"").append(tbValidasi.getValueAt(i,4).toString()).append("\";\"").append(tbValidasi.getValueAt(i,5).toString()).append("\";\"").append(tbValidasi.getValueAt(i,6).toString()).append("\"\n");
+                                htmlContent.append("\"").append(tbValidasi.getValueAt(i,0).toString()).append("\";\"").append(tbValidasi.getValueAt(i,1).toString()).append("\";\"").append(tbValidasi.getValueAt(i,2).toString()).append("\";\"").append(tbValidasi.getValueAt(i,3).toString()).append("\";\"").append(tbValidasi.getValueAt(i,4).toString()).append("\";\"").append(tbValidasi.getValueAt(i,5).toString()).append("\";\"").append(tbValidasi.getValueAt(i,6).toString()).append("\";\"").append(tbValidasi.getValueAt(i,7).toString()).append("\";\"").append(tbValidasi.getValueAt(i,8).toString()).append("\";\"").append(tbValidasi.getValueAt(i,9).toString()).append("\";\"").append(tbValidasi.getValueAt(i,10).toString()).append("\";\"").append(tbValidasi.getValueAt(i,11).toString()).append("\";\"").append(tbValidasi.getValueAt(i,12).toString()).append("\"\n");
                             }
-                            f = new File("DataPermintaanPengujianSampelTidakDilayani.csv");            
+                            f = new File("DataValidasiPengujianSampel.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
