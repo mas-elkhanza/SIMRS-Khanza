@@ -200,7 +200,7 @@
                 <Component class="widget.Button" name="BtnRekapPembayaran">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/Agenda-1-16x16.png"/>
+                      <Image iconType="3" name="/picture/EDIT2.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="82"/>
                     <Property name="text" type="java.lang.String" value="Rekap Pembayaran"/>

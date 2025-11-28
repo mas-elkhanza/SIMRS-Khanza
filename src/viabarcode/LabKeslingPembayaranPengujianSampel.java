@@ -331,7 +331,7 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
         });
         panelisi1.add(BtnBayarTagihan);
 
-        BtnRekapPembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnRekapPembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/EDIT2.png"))); // NOI18N
         BtnRekapPembayaran.setMnemonic('R');
         BtnRekapPembayaran.setText("Rekap Pembayaran");
         BtnRekapPembayaran.setToolTipText("Alt+R");
