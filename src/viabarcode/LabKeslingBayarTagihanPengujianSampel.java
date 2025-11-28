@@ -568,7 +568,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         scrollPane3.setViewportView(tbAkunBayar);
 
         panelBayar.add(scrollPane3);
-        scrollPane3.setBounds(105, 65, 590, 200);
+        scrollPane3.setBounds(105, 65, 573, 200);
 
         jLabel10.setText("Kembali : Rp.");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -584,7 +584,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
             }
         });
         panelBayar.add(TCari);
-        TCari.setBounds(105, 40, 538, 23);
+        TCari.setBounds(105, 40, 517, 23);
 
         BtnCariBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariBayar.setMnemonic('3');
@@ -602,7 +602,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
             }
         });
         panelBayar.add(BtnCariBayar);
-        BtnCariBayar.setBounds(647, 40, 25, 23);
+        BtnCariBayar.setBounds(625, 40, 25, 23);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('2');
@@ -620,7 +620,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
             }
         });
         panelBayar.add(BtnAll);
-        BtnAll.setBounds(675, 40, 25, 23);
+        BtnAll.setBounds(653, 40, 25, 23);
 
         scrollPane8.setViewportView(panelBayar);
 
@@ -912,40 +912,19 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_NoVerifikasiKeyPressed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
-        if(TabData.getSelectedIndex()==0){
-            tampil();
-        }else if(TabData.getSelectedIndex()==1){
-            tampil2();
-        }
+        
     }//GEN-LAST:event_TabDataMouseClicked
 
     private void TtlSemuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TtlSemuaKeyPressed
-        Valid.pindah(evt,BtnKeluar,BtnNota);
+       // Valid.pindah(evt,BtnKeluar,BtnNota);
     }//GEN-LAST:event_TtlSemuaKeyPressed
 
     private void tbAkunBayarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbAkunBayarPropertyChange
-        if(this.isVisible()==true){
-            isKembali();
-        }
+        
     }//GEN-LAST:event_tbAkunBayarPropertyChange
 
     private void tbAkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbAkunBayarKeyPressed
-        if(tabModeAkunBayar.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                if(tbAkunBayar.getRowCount()!=0){
-                    if((tbAkunBayar.getSelectedColumn()==2)||(tbAkunBayar.getSelectedColumn()==3)||(tbAkunBayar.getSelectedColumn()==4)){
-                        if(!tabModeAkunBayar.getValueAt(tbAkunBayar.getSelectedRow(),2).toString().equals("")){
-                            tbAkunBayar.setValueAt(
-                                Valid.roundUp((Valid.SetAngka(tbAkunBayar.getValueAt(tbAkunBayar.getSelectedRow(),3).toString())/100)*
-                                    Valid.SetAngka(tbAkunBayar.getValueAt(tbAkunBayar.getSelectedRow(),2).toString()),100),tbAkunBayar.getSelectedRow(),4);
-                        }else{
-                            tbAkunBayar.setValueAt("",tbAkunBayar.getSelectedRow(),4);
-                        }
-                    }
-                }
-                isKembali();
-            }
-        }
+       
     }//GEN-LAST:event_tbAkunBayarKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -955,13 +934,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariBayarActionPerformed
-        if(status.equals("belum")){
-            tampilAkunBayar2();
-        }else if(status.equals("sudah")){
-            tampilAkunBayarTersimpan();
-        }
-        isHitung();
-        isKembali();
+        
     }//GEN-LAST:event_BtnCariBayarActionPerformed
 
     private void BtnCariBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariBayarKeyPressed
@@ -969,19 +942,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnCariBayarKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        if(status.equals("belum")){
-            TCari.setText("");
-            tampilAkunBayar();
-            tampilAkunBankJateng();
-            tampilAkunBankPapua();
-            tampilAkunBankBRI();
-            tampilAkunBankJabar();
-            tampilAkunBankMandiri();
-        }else if(status.equals("sudah")){
-            tampilAkunBayarTersimpan();
-        }
-        isHitung();
-        isKembali();
+        
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
