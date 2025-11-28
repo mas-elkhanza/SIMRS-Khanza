@@ -255,10 +255,6 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         jLabel8 = new widget.Label();
         KodeVerifikator = new widget.TextBox();
         NamaVerifikator = new widget.TextBox();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        Scroll2 = new widget.ScrollPane();
-        tbValidasi = new widget.Table();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -267,6 +263,9 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         LCount = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
+        jPanel3 = new javax.swing.JPanel();
+        Scroll2 = new widget.ScrollPane();
+        tbValidasi = new widget.Table();
 
         Rentang.setHighlighter(null);
         Rentang.setName("Rentang"); // NOI18N
@@ -349,7 +348,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 80, 23);
 
-        TanggalValidasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2025" }));
+        TanggalValidasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2025" }));
         TanggalValidasi.setDisplayFormat("dd-MM-yyyy");
         TanggalValidasi.setName("TanggalValidasi"); // NOI18N
         TanggalValidasi.setOpaque(false);
@@ -509,28 +508,6 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setName("jPanel3"); // NOI18N
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
-        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll2.setName("Scroll2"); // NOI18N
-        Scroll2.setOpaque(true);
-
-        tbValidasi.setName("tbValidasi"); // NOI18N
-        Scroll2.setViewportView(tbValidasi);
-
-        jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(jPanel1, java.awt.BorderLayout.CENTER);
-
         panelGlass8.setName("panelGlass8"); // NOI18N
         panelGlass8.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
@@ -637,6 +614,21 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         panelGlass8.add(BtnKeluar);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
+
+        jPanel3.setName("jPanel3"); // NOI18N
+        jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
+        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbValidasi.setName("tbValidasi"); // NOI18N
+        Scroll2.setViewportView(tbValidasi);
+
+        jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -1015,7 +1007,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private widget.Label label11;
     private widget.panelisi panelGlass8;

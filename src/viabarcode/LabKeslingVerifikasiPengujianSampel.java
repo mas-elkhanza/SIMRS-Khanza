@@ -180,10 +180,6 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         jLabel17 = new widget.Label();
         jLabel6 = new widget.Label();
         Catatan = new widget.TextBox();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        Scroll2 = new widget.ScrollPane();
-        tbVerifikasi = new widget.Table();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -192,6 +188,9 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         LCount = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
+        jPanel3 = new javax.swing.JPanel();
+        Scroll2 = new widget.ScrollPane();
+        tbVerifikasi = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -258,7 +257,7 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 85, 23);
 
-        TanggalVerifikasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2025" }));
+        TanggalVerifikasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-11-2025" }));
         TanggalVerifikasi.setDisplayFormat("dd-MM-yyyy");
         TanggalVerifikasi.setName("TanggalVerifikasi"); // NOI18N
         TanggalVerifikasi.setOpaque(false);
@@ -385,14 +384,14 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel16);
         jLabel16.setBounds(0, 100, 85, 23);
 
-        TglPengujian1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2025 10:48:51" }));
+        TglPengujian1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-11-2025 12:58:21" }));
         TglPengujian1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglPengujian1.setName("TglPengujian1"); // NOI18N
         TglPengujian1.setOpaque(false);
         PanelInput.add(TglPengujian1);
         TglPengujian1.setBounds(89, 100, 130, 23);
 
-        TglPengujian2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2025 10:52:46" }));
+        TglPengujian2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-11-2025 12:58:21" }));
         TglPengujian2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglPengujian2.setName("TglPengujian2"); // NOI18N
         TglPengujian2.setOpaque(false);
@@ -425,28 +424,6 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         FormInput.add(scrollInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
-
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setName("jPanel3"); // NOI18N
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
-        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll2.setName("Scroll2"); // NOI18N
-        Scroll2.setOpaque(true);
-
-        tbVerifikasi.setName("tbVerifikasi"); // NOI18N
-        Scroll2.setViewportView(tbVerifikasi);
-
-        jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
         panelGlass8.setPreferredSize(new java.awt.Dimension(55, 55));
@@ -554,6 +531,21 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         panelGlass8.add(BtnKeluar);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
+
+        jPanel3.setName("jPanel3"); // NOI18N
+        jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
+        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbVerifikasi.setName("tbVerifikasi"); // NOI18N
+        Scroll2.setViewportView(tbVerifikasi);
+
+        jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -823,7 +815,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private widget.Label label11;
     private widget.panelisi panelGlass8;
