@@ -33,7 +33,13 @@
           <b>Nama Sampel</b>
         </td>
         <td valign="middle" bgcolor="#FFFAFA" align="center">
-          <b>Status Validasi</b>
+          <b>Titik Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Penerimaan Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Status Bayar</b>
         </td>
         <td valign="middle" bgcolor="#FFFAFA" align="center">
           <b>Catatan</b>
@@ -47,57 +53,16 @@
       </tr>
       <tr class="isi">
         <td valign="top">
-          2025-11-19 15:52:33.0
+          2025-11-23 17:58:48.0
         </td>
         <td valign="top">
           AB/2025/LHU/00001
         </td>
         <td valign="top">
-          12/09/1988/001
+          156798
         </td>
         <td valign="top">
-          ANJASMARA
-        </td>
-        <td valign="top">
-          AB/2025/PPS/00003
-        </td>
-        <td valign="top">
-          000001
-        </td>
-        <td valign="top">
-          PT MAJU MUNDUR
-        </td>
-        <td valign="top">
-          AB
-        </td>
-        <td valign="top">
-          Air Bersih
-        </td>
-        <td valign="top">
-          Belum Bayar
-        </td>
-        <td valign="top">
-          tes
-        </td>
-        <td valign="top">
-          12/09/1988/001
-        </td>
-        <td valign="top">
-          ANJASMARA
-        </td>
-      </tr>
-      <tr class="isi">
-        <td valign="top">
-          2025-11-19 18:48:19.0
-        </td>
-        <td valign="top">
-          AB/2025/LHU/00002
-        </td>
-        <td valign="top">
-          12/09/1988/001
-        </td>
-        <td valign="top">
-          ANJASMARA
+          SUSI SUSANTI
         </td>
         <td valign="top">
           AB/2025/PPS/00004
@@ -115,10 +80,16 @@
           Air Bersih
         </td>
         <td valign="top">
+          1
+        </td>
+        <td valign="top">
+          2025-11-12 13:30:16.0
+        </td>
+        <td valign="top">
           Belum Bayar
         </td>
         <td valign="top">
-          tes
+          ok
         </td>
         <td valign="top">
           12/09/1988/001

@@ -74,11 +74,11 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(130);
             }else if(i==9){
-                column.setPreferredWidth(78);
-            }else if(i==10){
                 column.setPreferredWidth(150);
-            }else if(i==11){
+            }else if(i==10){
                 column.setPreferredWidth(118);
+            }else if(i==11){
+                column.setPreferredWidth(75);
             }else if(i==12){
                 column.setPreferredWidth(200);
             }else if(i==13){
@@ -839,12 +839,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnBayarTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBayarTagihanActionPerformed
         if(tbValidasi.getSelectedRow()!= -1){
-            if(Sequel.queryutf("delete from labkesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'")==true){
-                Sequel.queryu("update labkesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbValidasi.getValueAt(tbValidasi.getSelectedRow(),1).toString()+"'");
-                tabModeValidasi.removeRow(tbValidasi.getSelectedRow());
-                Valid.tabelKosong(tabModeDetailValidasi);
-                LTotal.setText(tabModeValidasi.getRowCount()+"");
-            }
+            
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
         }

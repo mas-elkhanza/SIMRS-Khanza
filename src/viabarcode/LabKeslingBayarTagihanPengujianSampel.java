@@ -688,7 +688,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 try {                    
                     Sequel.AutoComitFalse();
                     berhasil=true;
-                    if(Sequel.menyimpantf2("labkesling_validasi_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
+                    if(Sequel.menyimpantf2("labkesling_pembayaran_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
                             NoPermintaan.getText(),NoBayar.getText(),KdPJ.getText(),KodeVerifikator.getText(),Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),DibayarOleh.getText()
                         })==true){
                         jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
@@ -1120,7 +1120,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_validasi_pengujian_sampel.no_validasi,5),signed)),0) from labkesling_validasi_pengujian_sampel inner join labkesling_permintaan_pengujian_sampel on labkesling_permintaan_pengujian_sampel.no_permintaan=labkesling_validasi_pengujian_sampel.no_permintaan where date_format(labkesling_validasi_pengujian_sampel.tanggal,'%Y')='"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"' and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"/LHU/",5,NoBayar);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_pembayaran_pengujian_sampel.no_pembayaran,5),signed)),0) from labkesling_pembayaran_pengujian_sampel where date_format(labkesling_pembayaran_pengujian_sampel.tanggal,'%Y-%m-%d')='"+Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+"'","LKL"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+TanggalValidasi.getSelectedItem().toString().substring(3,5)+TanggalValidasi.getSelectedItem().toString().substring(0,2),5,NoBayar);   
         }        
     }
 }
