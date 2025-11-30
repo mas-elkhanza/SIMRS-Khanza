@@ -33,6 +33,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -58,7 +59,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
     private FileReader myObj;
     public boolean berhasil=false;
     private double total=0,bayar=0,besarppn=0,tagihanppn=0,kekurangan=0;
-    private String Suspen_Piutang_Pelayanan_Lab_Kesling;
+    private String Suspen_Piutang_Pelayanan_Lab_Kesling,pilih="";
     private File file;
     private FileWriter fileWriter;
     private WarnaTable2 warna=new WarnaTable2();
@@ -855,10 +856,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }); 
             jml++;
             Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                jml+"","Penerimaan Sample",": "+Valid.SetTgl5(PenerimaanSampel.getText()),"","","","","","","","","","","","","","Header",akses.getkode()
-            }); 
-            jml++;
-            Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
                 jml+"","Tanggal Uji",": "+Sequel.cariIsi("select concat(date_format(labkesling_verifikasi_pengujian_sampel.mulai_pengujian,'%d/%m/%Y %H:%i:%s'),' s.d. ',date_format(labkesling_verifikasi_pengujian_sampel.selesai_pengujian,'%d/%m/%Y %H:%i:%s')) from labkesling_verifikasi_pengujian_sampel where labkesling_verifikasi_pengujian_sampel.no_permintaan=?",NoPermintaan.getText()),"","","","","","","","","","","","","","Header",akses.getkode()
             }); 
             jml++;
@@ -872,34 +869,62 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             jml++;
             for(i=0;i<tbValidasi.getRowCount();i++){ 
                 Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                    jml+"",tbValidasi.getValueAt(i,0).toString(),tbValidasi.getValueAt(i,1).toString(),tbValidasi.getValueAt(i,2).toString(),tbValidasi.getValueAt(i,3).toString(),"","","","","","","","","","","","Tagihan",akses.getkode()
+                    jml+"",tbValidasi.getValueAt(i,0).toString(),tbValidasi.getValueAt(i,1).toString(),tbValidasi.getValueAt(i,2).toString(),tbValidasi.getValueAt(i,3).toString(),tbValidasi.getValueAt(i,4).toString(),"","","","","","","","","","","Tagihan",akses.getkode()
                 });    
                 jml++;
             }
             Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                jml+"","Total Biaya Pemeriksaan",":","","",TtlSemua.getText(),"","","","","","","","","","","Total Tagihan",akses.getkode()
+                jml+"","Total Biaya Pemeriksaan","","","",TtlSemua.getText(),"","","","","","","","","","","Total Tagihan",akses.getkode()
             });    
             jml++;
             Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                jml+"","PPN",":","","",Valid.SetAngka(besarppn),"","","","","","","","","","","Total Tagihan",akses.getkode()
+                jml+"","PPN","","","",Valid.SetAngka(besarppn),"","","","","","","","","","","Total Tagihan",akses.getkode()
             });    
             jml++;
             Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                jml+"","Total Pembayaran",":","","",TagihanPPn.getText(),"","","","","","","","","","","Total Tagihan",akses.getkode()
+                jml+"","Total Pembayaran","","","",TagihanPPn.getText(),"","","","","","","","","","","Total Tagihan",akses.getkode()
             });    
             jml++;
             for(i=0;i<tbAkunBayar.getRowCount();i++){
                 if(Valid.SetAngka(tbAkunBayar.getValueAt(i,2).toString())>0){
                     Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                        jml+"","- "+tbAkunBayar.getValueAt(i,0).toString(),":","","",Valid.SetAngka((Valid.SetAngka(tbAkunBayar.getValueAt(i,2).toString())+Valid.SetAngka(tbAkunBayar.getValueAt(i,4).toString()))),"","","","","","","","","","","Total Tagihan",akses.getkode()
+                        jml+"","- "+tbAkunBayar.getValueAt(i,0).toString(),"","","",Valid.SetAngka((Valid.SetAngka(tbAkunBayar.getValueAt(i,2).toString())+Valid.SetAngka(tbAkunBayar.getValueAt(i,4).toString()))),"","","","","","","","","","","Total Tagihan",akses.getkode()
                     });
                     jml++;
                 } 
             }
             Sequel.menyimpan("temporary_bayar_labkesling","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                jml+"","Dibayar Lunas Oleh ",":"+DibayarOleh.getText(),"","","","","","","","","","","","","","Total Tagihan",akses.getkode()
+                jml+"","Dibayar Lunas Oleh ",DibayarOleh.getText(),"","","","","","","","","","","","","","Dibayar",akses.getkode()
             });    
-            jml++;   
+            jml++;  
+            
+            i = 0;
+            try{
+                pilih = (String)JOptionPane.showInputDialog(null,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota", "Kwitansi", "Nota & Kwitansi"},"Nota");
+                switch (pilih) {
+                    case "Nota":
+                          i=1;
+                          break;
+                    case "Kwitansi":
+                          i=2;
+                          break;
+                    case "Nota & Kwitansi":
+                          i=3;
+                          break;
+               }
+            }catch(Exception e){
+                i=0;
+            }
+            if(i>0){ 
+                if(i==1){
+                    Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                }else if(i==2){
+                    
+                }else if(i==3){
+                    Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                                                 
+                }
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
