@@ -223,7 +223,6 @@ import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenACRS;
 import rekammedis.RMSkriningInstrumenAMT;
-import rekammedis.RMSkriningInstrumenESAT;
 import rekammedis.RMSkriningInstrumenMentalEmosional;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
@@ -270,6 +269,15 @@ import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
+
+
+
+
+
+
+
+
+import java.util.Locale;  //tambahan by ichsan
 /**
  *
  * @author dosen
@@ -287,7 +295,7 @@ public final class DlgReg extends javax.swing.JDialog {
     public  DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
     private PreparedStatement ps,ps3,pscaripiutang;
     private ResultSet rs;
-    private int pilihan=0,i=0,kuota=0,jmlparsial=0;
+    private int pilihan=0,i=0,kuota=0,jmlparsial=0, reply=0;  //tambahan [reply=0] by ichsan untuk layar tampilan yes / no;
     private boolean ceksukses=false;
     private String nosisrute="",aktifkanparsial="no",BASENOREG="",TANGGALMUNDUR="yes",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",terbitsep="",
@@ -439,7 +447,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabMode2=new DefaultTableModel(null,new Object[]{
-            "P","No.Rawat","Tanggal","Jam","Kode Dokter","Dokter Rujukan","Nomer RM",
+            "P","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Rujukan","Nomer RM",
             "Pasien","J.K.","Umur","Poliklinik Rujukan","Jenis Bayar","Penanggung Jawab",
             "Alamat P.J.","Hubungan P.J.","Status","No.Telp","Stts Rawat","Kode Poli","Kode PJ"
             }){
@@ -1426,6 +1434,65 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas = new widget.Table();
         Scroll1 = new widget.ScrollPane();
         tbPetugas2 = new widget.Table();
+
+        /////////////////////////////TAMBAHAN CUSTOM TOMBOL CHECKIN
+        Checkin = new widget.TextBox();   //tambahan checkin by ichsan
+        Booking = new widget.TextBox();   //tambahan checkin by ichsan
+        BtnCheckin = new widget.Button(); //tambahan checkin by ichsan
+        
+        
+        
+        jLabel500 = new widget.Label(); //tambahan tulisan checkin
+        jLabel501 = new widget.Label(); //tambahan tulisan booking
+        
+        jLabel500.setName("jLabel500"); //isi tulisan checkin
+        jLabel500.setText("Status Checkin :"); //isi tulisan checkin
+        FormInput.add(jLabel500);  //inisiasi isi tulisan checkin
+        jLabel500.setBounds(890,20,98,23);  //lokasi isi tulisan checkin        
+        
+        jLabel501.setName("jLabel501"); //isi tulisan booking
+        jLabel501.setText("No. booking :"); //isi tulisan booking
+        FormInput.add(jLabel501);  //inisiasi isi tulisan booking
+        jLabel501.setBounds(890,50,98,23);  //lokasi isi tulisan booking
+
+        Checkin.setName("Checkin"); // NOI18N
+        Checkin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CheckinKeyPressed(evt);
+            }
+        });
+        
+        FormInput.add(Checkin);
+        Checkin.setBounds(990, 20, 150, 23);  //letak tombol checkink di atas kanan by ichsan
+
+        Booking.setName("Booking"); // NOI18N
+        Booking.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BookingKeyPressed(evt);
+            }
+        });
+        FormInput.add(Booking);
+        Booking.setBounds(990, 50, 150, 23);
+
+        BtnCheckin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2rightarrow.png"))); // NOI18N
+        BtnCheckin.setMnemonic('S');
+        BtnCheckin.setText("Check in");
+        BtnCheckin.setToolTipText("Alt+S");
+        BtnCheckin.setName("BtnCheckin"); // NOI18N
+        BtnCheckin.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCheckin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCheckinActionPerformed(evt);
+            }
+        });
+        BtnCheckin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCheckinKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnCheckin);
+        BtnCheckin.setBounds(890, 70, 120, 30);   //dua angka di kiri adalah koordinat x dan y
+/////////////////////////////TAMBAHAN CUSTOM TOMBOL CHECKIN
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -6573,10 +6640,11 @@ public final class DlgReg extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(490, 225));   ////////// TAMBAHAN MODIFIKASI ICHSAN UNTUK MENYETEL KETINGGIAN FORM INPUT
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(490, 167));
+        FormInput.setPreferredSize(new java.awt.Dimension(490, 225));
         FormInput.setLayout(null);
 
         jLabel3.setText("No. Reg. :");
@@ -7016,6 +7084,81 @@ public final class DlgReg extends javax.swing.JDialog {
         Valid.pindah(evt,TNoReg,DTPReg);
 }//GEN-LAST:event_TNoRwKeyPressed
 
+    ////////////////////////////////////////////////////////////////////////////// tombol checkin by ichsan
+    private void CheckinKeyPressed(java.awt.event.KeyEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
+    private void BookingKeyPressed(java.awt.event.KeyEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
+    /*private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if (Sequel.mengedittf("referensi_mobilejkn_bpjs", "no_rawat=?", "status='Checkin',validasi=now()", 1, new String[]{
+            TNoRw.getText()
+        }) == true) {
+            Sequel.meghapus("referensi_mobilejkn_bpjs_batal", "nobooking", Booking.getText());
+            Sequel.queryu("update reg_periksa set jam_reg=current_time() where no_rawat='" + TNoRw.getText() + "'");
+        }
+        getData();
+    } */
+    
+    private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    // Langkah 1: Validasi Awal sebelum melakukan aksi apapun
+    String noRawat = TNoRw.getText();
+    if (noRawat.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Silakan pilih data pasien terlebih dahulu.");
+        return; // Keluar dari fungsi jika tidak ada no_rawat yang dipilih
+    }
+
+    // Cek apakah pasien ini sudah pernah divalidasi/check-in sebelumnya
+    String waktuValidasi = Sequel.cariIsi("SELECT validasi FROM referensi_mobilejkn_bpjs WHERE no_rawat=?", noRawat);
+
+    // Langkah 2: Cek Kondisi
+    // Jika waktuValidasi tidak null, tidak kosong, dan bukan '0000-00-00 00:00:00'
+    if (waktuValidasi != null && !waktuValidasi.equals("0000-00-00 00:00:00") && !waktuValidasi.trim().isEmpty()) {
+        // Tampilkan pesan bahwa sudah check-in dan hentikan proses
+        JOptionPane.showMessageDialog(null, "Pasien ini sudah melakukan check-in sebelumnya pada " + waktuValidasi + ".\nJam check-in tidak dapat diubah lagi.");
+        return; // Keluar dari fungsi, tidak ada update yang dijalankan
+    }
+
+    // Langkah 3: Proses check-in jika validasi awal lolos (kode original Anda)
+    if (Sequel.mengedittf("referensi_mobilejkn_bpjs", "no_rawat=?", "status='Checkin',validasi=now()", 1, new String[]{noRawat}) == true) {
+        Sequel.meghapus("referensi_mobilejkn_bpjs_batal", "nobooking", Booking.getText());
+        Sequel.queryu("update reg_periksa set jam_reg=current_time() where no_rawat='" + noRawat + "'");
+        JOptionPane.showMessageDialog(null, "Check-in berhasil divalidasi!"); // Notifikasi sukses
+    }
+    
+    // Refresh tampilan data
+    getData();
+}
+
+    private void BtnCheckinKeyPressed(java.awt.event.KeyEvent evt) {          //ketika tombol checkin ditekan                             
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+            BtnCheckinActionPerformed(null);            
+            ////////////////////Selesai tekan tombol checkin, dilanjutkan dengan script untuk mengirim pesan WA ke nomor hp pasien             
+        try { //////////////// start - fungsi untuk cek ke database.xml, kalau disetting yes pada WA Notif Pasien,  maka jalankan script untuk kirim WA - ichsan
+             if(koneksiDB.WANOTIFPASIEN().equals("yes")){
+                 kirimWhatsAppMessageMJKN();  //kirim pesan WA by ichsan
+                 reply = JOptionPane.showConfirmDialog(rootPane,"Mau sekalian bikin SEP..?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                 if (reply == JOptionPane.YES_OPTION) {                                    
+                               //MnSEPActionPerformed(new java.awt.event.ActionEvent(this, ActionEvent.ACTION_PERFORMED, "MnSEP")); // Trigger SEP action
+                                MnSEP.doClick();  // Simulates user clicking the MnSEP menu item
+                                } 
+                             }else{
+                                 JOptionPane.showMessageDialog(null,"Maaf ada kesalahan, mungkin kunjungan ini bukan pasien BPJS");
+                             }            
+        } catch (Exception e) {
+            e.printStackTrace(); // Debugging: shows the actual error in the console
+            emptTeks();  //kosongkan isi form setelah tekan simpan
+        }  ////////////////////// end - fungsi untuk cek ke database.xml, kalau disetting yes pada WA Notif Pasien,  maka jalankan script untuk kirim WA - ichsan     
+        
+        } else {
+            Valid.pindah(evt, BtnCari, BtnBatal);
+        }
+    }  
+ /////////////////////////////////////////////////////////////////// checkin by ichsan
+    
     private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPRegKeyPressed
         Valid.pindah(evt,TNoRw,CmbJam);
 }//GEN-LAST:event_DTPRegKeyPressed
@@ -7122,10 +7265,284 @@ public final class DlgReg extends javax.swing.JDialog {
                 }else{
                     isRegistrasi();
                 }  
-            }                          
+            }
+            
+           ////////////////////Selesai tekan tombol registrasi, dilanjutkan dengan script untuk mengirim pesan WA ke nomor hp pasien
+             //////////////// fungsi untuk cek ke database.xml, kalau disetting yes pada WA Notif Pasien,  maka jalankan script untuk kirim WA - ichsan
+        try {
+            if(koneksiDB.WANOTIFPASIEN().equals("yes")){   
+                kirimWhatsAppMessage();  //kirim pesan WA by ichsan                
+                emptTeks();  //kosongkan isi form setelah tekan simpan
+            }else{
+                emptTeks();  //kosongkan isi form setelah tekan simpan
+            }
+        } catch (Exception e) {
+            emptTeks();  //kosongkan isi form setelah tekan simpan
+        }
+        ////////////////////// fungsi untuk cek ke database.xml, kalau disetting yes pada WA Notif Pasien,  maka jalankan script untuk kirim WA - ichsan 
+            
+            
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
+    //////////////////////////////////////////////////// script untuk kirim WA by ichsan
+    private String getGoogleMapUrl() { ///////// START - kode untuk mengambil URL google di table setting_url pada kolom google_map
+    String googleMapUrl = ""; 
+    try {
+        PreparedStatement psMap = koneksi.prepareStatement("SELECT google_map FROM setting_url LIMIT 1");
+        ResultSet rsMap = psMap.executeQuery(); 
+        if (rsMap.next()) { 
+            googleMapUrl = rsMap.getString("google_map"); 
+        }
+        rsMap.close(); 
+        psMap.close(); 
+    } catch (Exception e) { 
+        System.out.println("gagal mengambil Google Maps URL: " + e); 
+    }
+
+    // Fallback to a default URL if nothing is found
+    if (googleMapUrl == null || googleMapUrl.trim().isEmpty()) { 
+        googleMapUrl = "";  //kalau belum ada, diisi kosong saja
+    }
+
+    //System.out.println("Fetched Google Map URL: " + googleMapUrl);  //aktifkan line ini kalau mau debug print ke kotak hitam
+    return googleMapUrl; 
+}   //////////////////////////  END - kode untuk mengambil URL google di table setting_url pada kolom google_map
+    
+    
+    private void kirimWhatsAppMessage() {
+    String googleMapUrl = getGoogleMapUrl(); // Ambil url googlemap dari kode di atas    
+    String waktukirim = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+    // Fetch nomor hp pasien, gender, serta tanggal kontrol
+    String nohppasien = "";  //ubah format nomor hp pasien
+    String jk = "";  //ubah format jenis kelamin
+    String formattedTanggal = "";  //ubah format tanggal kontrol
+    
+    try {
+        /////////format tanggal dan jam kunjungan        
+        //System.out.println("Raw value of TanggalPeriksa: " + TanggalPeriksa.getSelectedItem());        // aktifkan baris ini untuk Print debug ke kotak hitam
+        String rawDate = DTPReg.getSelectedItem().toString().trim(); // Convert to string properly      
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));   //penyesuaian menjadi format yang enak dibaca           
+        Date date = inputFormat.parse(rawDate);  // Parse the input date string into a Date object        
+        formattedTanggal = outputFormat.format(date); // Format the date into the desired Indonesian format                 
+        /////////format tanggal dan jam kontrol         
+        
+        PreparedStatement ps = koneksi.prepareStatement("SELECT no_tlp, jk FROM pasien WHERE no_tlp IS NOT NULL and no_rkm_medis = ?");
+        ps.setString(1, TNoRM.getText());    
+        //System.out.println("Menjalankan query: SELECT no_tlp, jk FROM pasien WHERE no_rkm_medis = '" + TNoRM.getText() + "'");  //debug
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        nohppasien = rs.getString("no_tlp");
+        jk = rs.getString("jk");
+        System.out.println("Nomor HP ditemukan: " + nohppasien);
+        System.out.println("Jenis Kelamin ditemukan: " + jk);
+        
+        // Validation: Ensure the phone number is valid
+        nohppasien = nohppasien.replaceAll("\\s+", ""); // remove all whitespace
+        // **Validation: Ensure the phone number is valid**
+        if (nohppasien == null || nohppasien.trim().isEmpty() || nohppasien.length() < 9 || !nohppasien.trim().matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "Nomor HP tidak sesuai! (" + nohppasien + ")", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        return; // Stop execution if phone number is invalid
+        }
+
+        // Pastikan nomor telepon memiliki format yang benar
+        if (nohppasien == null || nohppasien.trim().isEmpty()) {
+            System.out.println("Nomor telepon pasien kosong!");
+        } else if (nohppasien.startsWith("0")) {
+            nohppasien = "62" + nohppasien.substring(1);
+            System.out.println("Nomor telepon setelah konversi: " + nohppasien);
+        }
+         } else {
+        System.out.println("Data pasien tidak ditemukan!");
+            }    
+         rs.close();
+         ps.close();
+        } catch (Exception e) {
+            System.out.println("Error saat mengambil nomor telepon pasien: " + e);
+        }
+
+    // ========== 🆕 Tambahkan greeting berdasarkan waktu saat ini ==========
+    int currentHour = java.time.LocalTime.now().getHour(); // 🆕 Ambil jam saat ini
+
+    String greeting; // 🆕 Variabel untuk menyimpan greeting
+    if (currentHour >= 4 && currentHour <= 10) {
+        greeting = "Selamat Pagi"; // 🆕 Pagi (04.00 - 10.00)
+    } else if (currentHour >= 10 && currentHour <= 15) {
+        greeting = "Selamat Siang"; // 🆕 Siang (10.01 - 15.00)
+    } else if (currentHour >= 15 && currentHour <= 18) {
+        greeting = "Selamat Sore"; // 🆕 Sore (15.01 - 18.00)
+    } else {
+        greeting = "Selamat Malam"; // 🆕 Malam (18.01 - 03.59)
+    }
+    
+    // ========== 🆕 Gunakan greeting ini ke dalam salam pembuka ==========
+    String salampembuka;
+    if ("L".equalsIgnoreCase(jk)) {
+        salampembuka = greeting + ", Bpk " + TPasien.getText() + "\n"; // 🆕 Tambahkan greeting sebelum Bpk
+    } else if ("P".equalsIgnoreCase(jk)) {
+        salampembuka = greeting + ", Ibu " + TPasien.getText() + "\n"; // 🆕 Tambahkan greeting sebelum Ibu
+    } else {
+        salampembuka = greeting + ", Bpk / Ibu " + TPasien.getText() + "\n"; // 🆕 Jika gender tidak diketahui
+    }
+
+
+    // Membuat isi pesan ke dalam whatsapp
+    String pesan = salampembuka + " - (" + TNoRM.getText() + ") \n 0xF0 0x9F 0x91 0x8B  0xF0 0x9F 0x98 0x8A \n \n" +
+        "Terima kasih telah melakukan registrasi di " + akses.getnamars() + ". Berikut adalah informasi antrian Anda:\n\n" +        
+        "0xF0 0x9F 0x94 0x84 *Nomor Antrian Poli : " + TNoReg.getText() + "*\n" +
+        "0xF0 0x9F 0x93 0x91 Nomor Kunjungan : " + TNoRw.getText() + "\n" +
+        "0xF0 0x9F 0x93 0x9D Nomor Rekam Medis : " + TNoRM.getText() + "\n" +
+        "0xF0 0x9F 0x8F 0xA5 Spesialis : " + TPoli.getText() + "\n" +
+        "0xF0 0x9F 0x91 0xA8 Dokter : " + TDokter.getText() + "\n" +
+        "0xF0 0x9F 0x93 0x85 Tanggal: " + formattedTanggal +  "\n" +//format tanggal kirim yang sudah di-breakdown menjadi bahasa indonesia        
+        "0xF0 0x9F 0x92 0xB3 Penjamin : " + nmpnj.getText() + "\n" +
+        "Mohon menuju loket perawat / menunggu dipanggil oleh petugas pelayanan untuk dilakukan pemeriksaan awal kesehatan.\n" +
+        "Terima kasih atas perhatiannya. \n Salam sehat. 0xF0 0x9F 0x99 0x8F 0xF0 0x9F 0x99 0x8F \n \n *Pendaftaran " + akses.getnamars() + "*"+
+        "\n \n ---\n"+
+        "_Ini adalah pesan otomatis berdasarkan nomor pasien yang terdaftar di " + akses.getnamars() + ". Anda bisa membalas pesan ini untuk konfirmasi apabila terdapat kekeliruan._";
+
+    // Insert into wa_outbox
+    try {
+        String sql = "INSERT INTO wa_outbox (NOMOR, NOWA, PESAN, TANGGAL_JAM, STATUS, SOURCE, SENDER, SUCCESS, RESPONSE, REQUEST, TYPE, FILE) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement psWa = koneksi.prepareStatement(sql);
+        psWa.setLong(1, 0);
+        psWa.setString(2, nohppasien + "@c.us");
+        psWa.setString(3, pesan);
+        psWa.setString(4, waktukirim);
+        psWa.setString(5, "ANTRIAN");
+        psWa.setString(6, "KHANZA");
+        psWa.setString(7, "NODEJS");
+        psWa.setString(8, "");
+        psWa.setString(9, "");
+        psWa.setString(10, "");
+        psWa.setString(11, "TEXT");
+        psWa.setString(12, "");
+        psWa.executeUpdate();
+
+        //System.out.println("Tanggal booking : " + formattedTanggal);
+        //System.out.println("Pesan Whatsapp dalam antrian untuk dikirim ke pasien.");
+    } catch (Exception e) {
+        System.out.println("Gagal mengirim pesan WA ke Pasien: " + e);
+    }
+}
+    
+    private void kirimWhatsAppMessageMJKN() {    
+    String waktukirim = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+    // Fetch nomor hp pasien, gender, serta tanggal kontrol
+    String nohppasien = "";  //ubah format nomor hp pasien
+    String jk = "";  //ubah format jenis kelamin
+    String formattedTanggal = "";  //ubah format tanggal kontrol
+    
+    try {
+        /////////format tanggal dan jam kunjungan        
+        //System.out.println("Raw value of TanggalPeriksa: " + TanggalPeriksa.getSelectedItem());        // aktifkan baris ini untuk Print debug ke kotak hitam
+        String rawDate = DTPReg.getSelectedItem().toString().trim(); // Convert to string properly      
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));   //penyesuaian menjadi format yang enak dibaca           
+        Date date = inputFormat.parse(rawDate);  // Parse the input date string into a Date object        
+        formattedTanggal = outputFormat.format(date); // Format the date into the desired Indonesian format                 
+        /////////format tanggal dan jam kontrol
+        
+        PreparedStatement ps = koneksi.prepareStatement("SELECT no_tlp, jk FROM pasien WHERE no_tlp IS NOT NULL and no_rkm_medis = ?");
+        ps.setString(1, TNoRM.getText());    
+        //System.out.println("Menjalankan query: SELECT no_tlp, jk FROM pasien WHERE no_rkm_medis = '" + TNoRM.getText() + "'");  //debug
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        nohppasien = rs.getString("no_tlp");
+        jk = rs.getString("jk");
+        System.out.println("Nomor HP ditemukan: " + nohppasien);
+        System.out.println("Jenis Kelamin ditemukan: " + jk);
+        
+        // **Validation: Ensure the phone number is valid**
+        if (nohppasien == null || nohppasien.trim().isEmpty() || nohppasien.length() < 9 || !nohppasien.trim().matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "Nomor HP tidak sesuai! (" + nohppasien + ")", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        return; // Stop execution if phone number is invalid
+        }
+        // Validation: Ensure the phone number is valid
+           nohppasien = nohppasien.replaceAll("\\s+", ""); // remove all whitespace
+        // Pastikan nomor telepon memiliki format yang benar
+        if (nohppasien == null || nohppasien.trim().isEmpty()) {
+            System.out.println("Nomor telepon pasien kosong!");
+        } else if (nohppasien.startsWith("0")) {
+            nohppasien = "62" + nohppasien.substring(1);
+            System.out.println("Nomor telepon setelah konversi: " + nohppasien);
+        }
+         } else {
+        System.out.println("Data pasien tidak ditemukan!");
+            }    
+         rs.close();
+         ps.close();
+        } catch (Exception e) {
+            System.out.println("Error saat mengambil nomor telepon pasien: " + e);
+        }
+
+     // ========== 🆕 Tambahkan greeting berdasarkan waktu saat ini ==========
+    int currentHour = java.time.LocalTime.now().getHour(); // 🆕 Ambil jam saat ini
+
+    String greeting; // 🆕 Variabel untuk menyimpan greeting
+    if (currentHour >= 4 && currentHour <= 10) {
+        greeting = "Selamat Pagi"; // 🆕 Pagi (04.00 - 10.00)
+    } else if (currentHour >= 10 && currentHour <= 15) {
+        greeting = "Selamat Siang"; // 🆕 Siang (10.01 - 15.00)
+    } else if (currentHour >= 15 && currentHour <= 18) {
+        greeting = "Selamat Sore"; // 🆕 Sore (15.01 - 18.00)
+    } else {
+        greeting = "Selamat Malam"; // 🆕 Malam (18.01 - 03.59)
+    }
+    
+    // ========== 🆕 Gunakan greeting ini ke dalam salam pembuka ==========
+    String salampembuka;
+    if ("L".equalsIgnoreCase(jk)) {
+        salampembuka = greeting + ", Bpk " + TPasien.getText() + "\n"; // 🆕 Tambahkan greeting sebelum Bpk
+    } else if ("P".equalsIgnoreCase(jk)) {
+        salampembuka = greeting + ", Ibu " + TPasien.getText() + "\n"; // 🆕 Tambahkan greeting sebelum Ibu
+    } else {
+        salampembuka = greeting + ", Bpk / Ibu " + TPasien.getText() + "\n"; // 🆕 Jika gender tidak diketahui
+    }
+
+    // Membuat isi pesan ke dalam whatsapp
+    String pesan = salampembuka + " - (" + TNoRM.getText() + ") \n 0xF0 0x9F 0x91 0x8B  0xF0 0x9F 0x98 0x8A \n \n" +
+        "Terima kasih telah menggunakan MJKN dan melakukan registrasi di " + akses.getnamars() + ". menggunakan aplikasi MJKN BPJS. \n"+
+        "Berikut adalah informasi antrian Anda:\n\n" +        
+        "*Nomor Antrian Poli : " + TNoReg.getText() + "*\n" +
+        "Nomor Kunjungan : " + TNoRw.getText() + "\n" +
+        "Nomor Rekam Medis : " + TNoRM.getText() + "\n" +
+        "0xF0 0x9F 0x8F 0xA5 Spesialis : " + TPoli.getText() + "\n" +
+        "0xF0 0x9F 0x91 0xA8 Dokter : " + TDokter.getText() + "\n" +
+        "0xF0 0x9F 0x93 0x85 Tanggal: " + formattedTanggal +  "\n" +//format tanggal kirim yang sudah di-breakdown menjadi bahasa indonesia        
+        "Mohon menuju loket perawat / menunggu dipanggil oleh petugas pelayanan untuk dilakukan pemeriksaan awal kesehatan.\n" +
+        "Terima kasih atas perhatiannya. \n Salam sehat. 0xF0 0x9F 0x99 0x8F 0xF0 0x9F 0x99 0x8F \n \n *Pendaftaran " + akses.getnamars() + "*";
+
+    // Insert into wa_outbox
+    try {
+        String sql = "INSERT INTO wa_outbox (NOMOR, NOWA, PESAN, TANGGAL_JAM, STATUS, SOURCE, SENDER, SUCCESS, RESPONSE, REQUEST, TYPE, FILE) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement psWa = koneksi.prepareStatement(sql);
+        psWa.setLong(1, 0);
+        psWa.setString(2, nohppasien + "@c.us");
+        psWa.setString(3, pesan);
+        psWa.setString(4, waktukirim);
+        psWa.setString(5, "ANTRIAN");
+        psWa.setString(6, "KHANZA");
+        psWa.setString(7, "NODEJS");
+        psWa.setString(8, "");
+        psWa.setString(9, "");
+        psWa.setString(10, "");
+        psWa.setString(11, "TEXT");
+        psWa.setString(12, "");
+        psWa.executeUpdate();
+    } catch (Exception e) {
+        System.out.println("Gagal mengirim pesan WA ke Pasien: " + e);
+    }
+}
+    //////////////////////////////////////////////////// script untuk kirim WA by ichsan
+    
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
@@ -16215,29 +16632,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
-    private void MnSkriningInstrumenESATActionPerformed(java.awt.event.ActionEvent evt) {
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TNoReg.requestFocus();
-        }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            tbPetugas.requestFocus();
-        }else{
-            if(tbPetugas.getSelectedRow()!= -1){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                RMSkriningInstrumenESAT form=new RMSkriningInstrumenESAT(null,false);
-                form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
-                form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
-                this.setCursor(Cursor.getDefaultCursor());  
-            }                
-        }
-    }
-    
     /**
     * @param args the command line arguments
     */
@@ -16670,6 +17064,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppSuratPRI;
     private widget.Table tbPetugas;
     private widget.Table tbPetugas2;
+    /////////////////////////////////////////////////
+    private widget.TextBox Checkin;  //tambahan chekin by ichsan
+    private widget.Button BtnCheckin; //tambahan chekin by ichsan
+    private widget.TextBox Booking;  //tambahan booking by ichsan
+    private widget.Label jLabel500;  //tambahan text tulisan checkin
+    private widget.Label jLabel501;  //tambahan text tulisan booking
+/////////////////////////////////////////////////
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianRisikoJatuhDewasa,MnPenilaianRisikoJatuhAnak,MnPenilaianRisikoJatuhLansia,MnPenilaianRisikoJatuhNeonatus,MnPenilaianRisikoJatuhGeriatri,MnPenilaianRisikoJatuhPsikiatri,MnPenilaianLanjutanSkriningFungsional,
             MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,
@@ -16678,8 +17079,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnSkriningDiabetesMelitus,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi,MnLayananKedokteranFisikRehabilitasi,MnSkriningKesehatanGigiMulutBalita,
             MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
             MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
-            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,
-            MnSkriningInstrumenESAT;
+            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen;
     
     private synchronized void tampil() {
@@ -16813,7 +17213,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             i=0;
                             while(rs.next()){
                                 Object[] row = new Object[]{
-                                    false,rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
+                                    rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
                                     rs.getString("jam_reg"),rs.getString("kd_dokter"),
                                     rs.getString("nm_dokter"),rs.getString("no_rkm_medis"),
                                     rs.getString("nm_pasien"),rs.getString("jk"),
@@ -16894,7 +17294,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             kdpnj.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),22).toString()); 
             Sequel.cariIsi("select rujuk_masuk.perujuk from rujuk_masuk where rujuk_masuk.no_rawat=?", AsalRujukan,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             TNoRw.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
-            TNoReg.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),1).toString());    
+            TNoReg.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),1).toString());
+            Checkin.setText(Sequel.cariIsi("select referensi_mobilejkn_bpjs.status from referensi_mobilejkn_bpjs where no_rawat=?", TNoRw.getText()));   // tambahan checkin by ichsan
+            Booking.setText(Sequel.cariIsi("select referensi_mobilejkn_bpjs.nobooking from referensi_mobilejkn_bpjs where no_rawat=?", TNoRw.getText()));  // tambahan checkin by ichsan
         }
     }
 
@@ -17317,7 +17719,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningInstrumenACRS.setEnabled(akses.getskrining_instrumen_acrs());
         MnSkriningInstrumenMentalEmosional.setEnabled(akses.getskrining_instrumen_mental_emosional());
         MnSkriningInstrumenAMT.setEnabled(akses.getskrining_instrumen_amt());
-        MnSkriningInstrumenESAT.setEnabled(akses.getskrining_instrumen_esat());
         MnSkriningPneumoniaSeverityIndex.setEnabled(akses.getskrining_pneumonia_severity_index());
         MnSkriningKankerKolorektal.setEnabled(akses.getskrining_kanker_kolorektal());
         MnSkriningDiabetesMelitus.setEnabled(akses.getskrining_diabetes_melitus());
@@ -17582,7 +17983,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 });
                 LCount.setText(""+tabMode.getRowCount());
             } 
-            emptTeks();  
+            // emptTeks(); //proses pengosongan form dipindah ke atas, setelah sukses mengirim whatsapp - ichsan
             ceksukses=false;
         }  
     }
@@ -18350,18 +18751,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(200, 26));
         MnSkriningInstrumenAMT.addActionListener(this::MnSkriningInstrumenAMTActionPerformed);
         
-        MnSkriningInstrumenESAT = new javax.swing.JMenuItem();
-        MnSkriningInstrumenESAT.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningInstrumenESAT.setFont(new java.awt.Font("Tahoma", 0, 11));
-        MnSkriningInstrumenESAT.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningInstrumenESAT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
-        MnSkriningInstrumenESAT.setText("ESAT");
-        MnSkriningInstrumenESAT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnSkriningInstrumenESAT.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnSkriningInstrumenESAT.setName("MnSkriningInstrumenESAT");
-        MnSkriningInstrumenESAT.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningInstrumenESAT.addActionListener(this::MnSkriningInstrumenESATActionPerformed);
-        
         MnSkriningPneumoniaSeverityIndex = new javax.swing.JMenuItem();
         MnSkriningPneumoniaSeverityIndex.setBackground(new java.awt.Color(255, 255, 254));
         MnSkriningPneumoniaSeverityIndex.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -18810,7 +19199,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
         MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
         MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
-        MnSkriningInstrumen.add(MnSkriningInstrumenESAT);
         MnRMSkrining.add(MnSkriningDiabetesMelitus);
         MnRMSkrining.add(MnSkriningAnemia);
         MnRMSkrining.add(MnSkriningHipertensi);

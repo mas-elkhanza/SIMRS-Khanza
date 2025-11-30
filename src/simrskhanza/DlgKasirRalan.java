@@ -204,7 +204,6 @@ import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenACRS;
 import rekammedis.RMSkriningInstrumenAMT;
-import rekammedis.RMSkriningInstrumenESAT;
 import rekammedis.RMSkriningInstrumenMentalEmosional;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
@@ -252,6 +251,17 @@ import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
+
+
+
+
+
+
+
+
+
+
+import java.text.SimpleDateFormat;  //tambahan ichsan
 
 /**
  *
@@ -360,7 +370,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
         
         tabModekasir2=new DefaultTableModel(null,new String[]{
-            "Kode Dokter","Dokter Rujukan","Nomer RM","Pasien",
+            "Kd.Dokter","Dokter Rujukan","Nomer RM","Pasien",
             "Poliklinik Rujukan","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
             "Jenis Bayar","Status","No.Rawat","Tanggal","Jam","Kode Poli","Kode PJ","No.Telp Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -827,8 +837,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnSuratBebasTato = new javax.swing.JMenuItem();
         MnSuratKewaspadaanKesehatan = new javax.swing.JMenuItem();
         MnCetakSuratBebasTBC = new javax.swing.JMenuItem();
-        MnCetakSuratSehat = new javax.swing.JMenuItem();
-        MnCetakSuratSehat1 = new javax.swing.JMenuItem();
+        //MnCetakSuratSehat = new javax.swing.JMenuItem();
+        //MnCetakSuratSehat1 = new javax.swing.JMenuItem();
         MnCetakSuratSehat2 = new javax.swing.JMenuItem();
         MnCetakBebasNarkoba = new javax.swing.JMenuItem();
         MnCetakSuratSakit = new javax.swing.JMenuItem();
@@ -1061,6 +1071,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
+        jLabel11 = new widget.Label(); //tambahan by ichsan
+        BtnPanggil = new widget.Button();  //tambahan by ichsan
+        TLoket = new widget.TextBox();  //tambahan by ichsan
         panelGlass7 = new widget.panelisi();
         jLabel14 = new widget.Label();
         CrPtg = new widget.TextBox();
@@ -1068,6 +1081,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         CrPoli = new widget.TextBox();
         BtnSeek4 = new widget.Button();
+        BtnKasir = new widget.Button();  //tambahan by ichsan
         panelGlass8 = new widget.panelisi();
         jLabel15 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
@@ -3392,7 +3406,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnSuratSurat.add(MnCetakSuratBebasTBC);
-
+        
+        /*
         MnCetakSuratSehat.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratSehat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratSehat.setForeground(new java.awt.Color(50, 50, 50));
@@ -3424,7 +3439,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnSuratSurat.add(MnCetakSuratSehat1);
-
+        */
         MnCetakSuratSehat2.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratSehat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratSehat2.setForeground(new java.awt.Color(50, 50, 50));
@@ -3440,6 +3455,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnSuratSurat.add(MnCetakSuratSehat2);
+        
 
         MnCetakBebasNarkoba.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakBebasNarkoba.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -6499,6 +6515,45 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(BtnKeluar);
+        
+        //tambahan button panggil poli by ichsan
+        BtnPanggil.setBorder(null);
+        BtnPanggil.setForeground(new java.awt.Color(51, 0, 204));
+        BtnPanggil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/speaker.png"))); // NOI18N
+        BtnPanggil.setMnemonic('P');
+        BtnPanggil.setText("Loket");
+        BtnPanggil.setToolTipText("Alt+P");
+        BtnPanggil.setGlassColor(new java.awt.Color(0, 255, 102));
+        BtnPanggil.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BtnPanggil.setName("BtnPanggil"); // NOI18N
+        BtnPanggil.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPanggil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPanggilActionPerformed(evt);
+            }
+        });
+        BtnPanggil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPanggilKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(BtnPanggil);
+        BtnPanggil.getAccessibleContext().setAccessibleDescription("");
+        ////////////////
+        jLabel11.setText("Loket :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(35, 30));
+        panelGlass6.add(jLabel11);
+        ////////
+        TLoket.setName("TLoket"); // NOI18N
+        TLoket.setPreferredSize(new java.awt.Dimension(35, 23));
+        TLoket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TLoketKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(TLoket);
+        //tambahan button panggil poli by ichsan
 
         jPanel2.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
@@ -6549,6 +6604,30 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnSeek4);
+        
+        ////// add button kasir by ichsan
+        BtnKasir.setBorder(null);
+        BtnKasir.setForeground(new java.awt.Color(51, 0, 204));
+        BtnKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/sound.png"))); // NOI18N
+        BtnKasir.setMnemonic('P');
+        BtnKasir.setText("Kasir");
+        BtnKasir.setToolTipText("Alt+P");
+        BtnKasir.setGlassColor(new java.awt.Color(0, 204, 255));
+        BtnKasir.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BtnKasir.setName("BtnKasir"); // NOI18N
+        BtnKasir.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKasir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKasirActionPerformed(evt);
+            }
+        });
+        BtnKasir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKasirKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(BtnKasir);
+        /////////
 
         jPanel2.add(panelGlass7, java.awt.BorderLayout.CENTER);
 
@@ -6622,7 +6701,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbKasirRalan.setToolTipText("Klik 2X Kode Dokter= Jendela Tindakan, Dokter Dituju=Jendela Obat, Nomer RM=Jendela Billing, Pasien=Jendela Total Obat, Poliklinik=Set Sudah Periksa, Penanggung Jawab=Masukan tindakan otomatis");
+        tbKasirRalan.setToolTipText("Klik 2X Kd.Dokter= Jendela Tindakan, Dokter Dituju=Jendela Obat, Nomer RM=Jendela Billing, Pasien=Jendela Total Obat, Poliklinik=Set Sudah Periksa, Penanggung Jawab=Masukan tindakan otomatis");
         tbKasirRalan.setComponentPopupMenu(jPopupMenu1);
         tbKasirRalan.setName("tbKasirRalan"); // NOI18N
         tbKasirRalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -6645,7 +6724,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbKasirRalan2.setToolTipText("Klik 2X Kode Dokter= Jendela Tindakan, Dokter Dituju=Jendela Obat, Nomer RM=Jendela Billing, Pasien=Jendela Total Obat, Poliklinik=Set Sudah Periksa, Penanggung Jawab=Masukan tindakan otomatis");
+        tbKasirRalan2.setToolTipText("Klik 2X Kd.Dokter= Jendela Tindakan, Dokter Dituju=Jendela Obat, Nomer RM=Jendela Billing, Pasien=Jendela Total Obat, Poliklinik=Set Sudah Periksa, Penanggung Jawab=Masukan tindakan otomatis");
         tbKasirRalan2.setComponentPopupMenu(jPopupMenu2);
         tbKasirRalan2.setName("tbKasirRalan2"); // NOI18N
         tbKasirRalan2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -7861,8 +7940,8 @@ private void MnDataRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
                     JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
                 }else {
-                    dlgrwjl2.emptTeks();
                     dlgrwjl2.isCek();
+                    dlgrwjl2.emptTeks();
                     dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgrwjl2.setLocationRelativeTo(internalFrame1);
                     dlgrwjl2.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString());
@@ -13679,6 +13758,65 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnPenilaianUlangNyeriActionPerformed
 
+    //button panggil poli by ichsan
+    private void BtnPanggilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPanggilActionPerformed
+        // TODO add your handling code here:
+         if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else if(TLoket.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan isi nomor Loket terlebih dahulu...!!!");
+            TLoket.requestFocus();
+        }else{
+             if(tbKasirRalan.getSelectedRow()!= -1){
+                Date tanggalSekarang = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String tanggalFormatted = dateFormat.format(tanggalSekarang);
+                Sequel.queryu("delete from antriadmisi where kd_loket='"+TLoket.getText()+"'");
+                Sequel.queryu("insert into antriadmisi values('"+TLoket.getText()+"','loket','1','"+TNoRMCari.getText()+"','"+ tanggalFormatted +"')");
+            
+             }
+        }
+    }//GEN-LAST:event_BtnPanggilActionPerformed
+    
+    private void BtnPanggilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPanggilKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPanggilKeyPressed
+
+    private void TLoketKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TLoketKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TLoketKeyPressed
+    
+    private void BtnKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKasirActionPerformed
+        // TODO add your handling code here:
+         if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+             if(tbKasirRalan.getSelectedRow()!= -1){
+                Date tanggalSekarang = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String tanggalFormatted = dateFormat.format(tanggalSekarang);
+                Sequel.queryu("delete from antriadmisi where kd_loket='"+TLoket.getText()+"'");
+                Sequel.queryu("insert into antriadmisi values('99','kasir','1','"+TNoRMCari.getText()+"','"+ tanggalFormatted +"')");
+            
+             }
+        }
+    }//GEN-LAST:event_BtnKasirActionPerformed
+    
+    private void BtnKasirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKasirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnKasirKeyPressed
+    
+    
+    //button panggil poli by ichsan
+    
     private void MnPenilaianTerapiWicaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianTerapiWicaraActionPerformed
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -15437,29 +15575,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
-    private void MnSkriningInstrumenESATActionPerformed(java.awt.event.ActionEvent evt) {
-        if(tabModekasir.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            //TNoReg.requestFocus();
-        }else if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            tbKasirRalan.requestFocus();
-        }else{
-            if(tbKasirRalan.getSelectedRow()!= -1){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                RMSkriningInstrumenESAT form=new RMSkriningInstrumenESAT(null,false);
-                form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
-                form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
-                this.setCursor(Cursor.getDefaultCursor());  
-            }                
-        }
-    }
-    
     /**
     * @param args the command line arguments
     */
@@ -15484,9 +15599,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Button BtnCloseIn1;
     private widget.Button BtnCloseIn4;
     private widget.Button BtnCloseIn5;
+    private widget.Button BtnKasir;  //tambahan by ichsan
     private widget.Button BtnKeluar;
     private widget.Button BtnKeluar2;
     private widget.Button BtnKeluar4;
+    private widget.Button BtnPanggil;  //tambahan by ichsan
     private widget.Button BtnPrint;
     private widget.Button BtnPrint2;
     private widget.Button BtnPrint5;
@@ -15536,8 +15653,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnCetakSuratSakit;
     private javax.swing.JMenuItem MnCetakSuratSakit1;
     private javax.swing.JMenuItem MnCetakSuratSakitPihak2;
-    private javax.swing.JMenuItem MnCetakSuratSehat;
-    private javax.swing.JMenuItem MnCetakSuratSehat1;
+    //private javax.swing.JMenuItem MnCetakSuratSehat;
+    //private javax.swing.JMenuItem MnCetakSuratSehat1;
     private javax.swing.JMenuItem MnCetakSuratSehat2;
     private javax.swing.JMenuItem MnCheckListKriteriaMasukHCU;
     private javax.swing.JMenuItem MnCheckListKriteriaMasukICU;
@@ -15798,6 +15915,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox TCari;
     private widget.TextBox TDokter;
     private widget.TextBox TKdPny;
+    private widget.TextBox TLoket; //tambahan by ichsan
     private widget.TextBox TNoRMCari;
     private widget.TextBox TNoReg;
     private widget.TextBox TNoRw;
@@ -15826,6 +15944,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.InternalFrame internalFrame7;
     private widget.InternalFrame internalFrame8;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;  //tambahan ichsan
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
@@ -15906,7 +16025,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,
                                   MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
                                   MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,
-                                  MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT;
+                                  MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen;
     
     private synchronized void tampilkasir() { 
@@ -16318,7 +16437,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSkriningInstrumenACRS.setEnabled(akses.getskrining_instrumen_acrs());
         MnSkriningInstrumenMentalEmosional.setEnabled(akses.getskrining_instrumen_mental_emosional());
         MnSkriningInstrumenAMT.setEnabled(akses.getskrining_instrumen_amt());
-        MnSkriningInstrumenESAT.setEnabled(akses.getskrining_instrumen_esat());
         MnSkriningPneumoniaSeverityIndex.setEnabled(akses.getskrining_pneumonia_severity_index());
         MnSkriningKankerKolorektal.setEnabled(akses.getskrining_kanker_kolorektal());
         MnSkriningDiabetesMelitus.setEnabled(akses.getskrining_diabetes_melitus());
@@ -17502,18 +17620,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(200, 26));
         MnSkriningInstrumenAMT.addActionListener(this::MnSkriningInstrumenAMTActionPerformed);
         
-        MnSkriningInstrumenESAT = new javax.swing.JMenuItem();
-        MnSkriningInstrumenESAT.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningInstrumenESAT.setFont(new java.awt.Font("Tahoma", 0, 11));
-        MnSkriningInstrumenESAT.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningInstrumenESAT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
-        MnSkriningInstrumenESAT.setText("ESAT");
-        MnSkriningInstrumenESAT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnSkriningInstrumenESAT.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnSkriningInstrumenESAT.setName("MnSkriningInstrumenESAT");
-        MnSkriningInstrumenESAT.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningInstrumenESAT.addActionListener(this::MnSkriningInstrumenESATActionPerformed);
-        
         MnSkriningPneumoniaSeverityIndex = new javax.swing.JMenuItem();
         MnSkriningPneumoniaSeverityIndex.setBackground(new java.awt.Color(255, 255, 254));
         MnSkriningPneumoniaSeverityIndex.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -18062,7 +18168,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
         MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
         MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
-        MnSkriningInstrumen.add(MnSkriningInstrumenESAT);
         MnRMSkrining.add(MnSkriningKankerKolorektal);
         MnRMSkrining.add(MnSkriningDiabetesMelitus);
         MnRMSkrining.add(MnSkriningAnemia);

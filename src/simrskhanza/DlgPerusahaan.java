@@ -35,7 +35,7 @@ public class DlgPerusahaan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode","Nama Instansi/Perusahaan","Alamat Instansi/Perusahaan","Kota","No.Telp","Password"};
+        Object[] row={"Kode","Nama Instansi/Perusahaan","Instansi/Perusahaan/Asuransi","Kota","No.Telp","Password"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
