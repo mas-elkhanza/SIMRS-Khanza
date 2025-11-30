@@ -844,7 +844,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(ChkAccor.isSelected()==false){
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail pemeriksaan terlebih dahulu...!!!");
             }else{
-                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
+                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),11).toString().equals("Belum Bayar")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
                     try {
                         file=new File("./cache/bayartagihansampellabkesling.iyem");
