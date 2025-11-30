@@ -2,26 +2,26 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Component class="widget.TextBox" name="Rentang">
+    <Component class="widget.TextBox" name="PenerimaanSampel">
       <Properties>
         <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="null"/>
         </Property>
-        <Property name="name" type="java.lang.String" value="Rentang" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="PenerimaanSampel" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RentangKeyPressed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PenerimaanSampelKeyPressed"/>
       </Events>
     </Component>
-    <Component class="widget.TextBox" name="NoVerifikasi">
+    <Component class="widget.TextBox" name="TitikSampel">
       <Properties>
         <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="null"/>
         </Property>
-        <Property name="name" type="java.lang.String" value="NoVerifikasi" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="TitikSampel" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoVerifikasiKeyPressed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TitikSampelKeyPressed"/>
       </Events>
     </Component>
   </NonVisualComponents>

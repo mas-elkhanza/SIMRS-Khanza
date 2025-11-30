@@ -2714,7 +2714,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "{" +
                                                     "\"coding\": [" +
                                                         "{" +
-                                                            "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                            "\"system\": \"http://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
                                                             "\"code\": \"IM-Program\"," +
                                                             "\"display\" : \"Imunisasi Program\"" +
                                                         "}" +
@@ -2853,7 +2853,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "{" +
                                                     "\"coding\": [" +
                                                         "{" +
-                                                            "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                            "\"system\": \"http://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
                                                             "\"code\": \"IM-Program\"," +
                                                             "\"display\" : \"Imunisasi Program\"" +
                                                         "}" +

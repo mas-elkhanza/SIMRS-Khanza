@@ -61,12 +61,8 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
     private FileReader myObj;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public boolean berhasil=false;
-    private double jasa_sarana=0,paket_bhp=0,jasa_pj_lab=0,jasa_pj_pengujian=0,jasa_verifikator=0,jasa_petugas=0,kso=0,jasa_menejemen=0,total=0;
-    private String Suspen_Piutang_Pelayanan_Lab_Kesling,Pendapatan_Pelayanan_Lab_Kesling,Beban_Jasa_Sarana_Pelayanan_Lab_Kesling,Utang_Jasa_sarana_Pelayanan_Lab_Kesling, 
-                   HPP_BHP_Pelayanan_Lab_Kesling,Persediaan_BHP_Pelayanan_Lab_Kesling,Beban_Jasa_PJLab_Pelayanan_Lab_Kesling,Utang_Jasa_PJLab_Pelayanan_Lab_Kesling,
-                   Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling,Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling,Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling, 
-                   Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,Beban_Jasa_Analis_Pelayanan_Lab_Kesling,Utang_Jasa_Analis_Pelayanan_Lab_Kesling,Beban_KSO_Pelayanan_Lab_Kesling, 
-                   Utang_KSO_Pelayanan_Lab_Kesling,Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling,Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling;
+    private double total=0;
+    private String Suspen_Piutang_Pelayanan_Lab_Kesling;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -76,23 +72,11 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-              "Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori","No.Penugasan","NIP Analis","Nama Analis","NIP PJ","Nama PJ Pengujian",
-              "Jasa Sarana","Paket BHP","Jasa PJ Lab","Jasa PJ Pengujian","Jasa Verifikator","Jasa Petugas","KSO","Jasa Menejemen","Total"
+              "Nama Parameter","Jumlah","Biaya (Rp)","Total Biaya (Rp)"
             }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if ((colIndex==3)||(colIndex==4)) {
-                    a=true;
-                }
-                return a;
-             }
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -104,37 +88,16 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         tbValidasi.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbValidasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 22; i++) {
+        for(i = 0; i < 4; i++) {
             TableColumn column = tbValidasi.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(40);
             }else if(i==2){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(97);
-            }else if(i==4){
-                column.setPreferredWidth(140);
-            }else if(i==5){
-                column.setPreferredWidth(70);
-            }else if(i==6){
-                column.setPreferredWidth(130);
-            }else if(i==7){
-                column.setPreferredWidth(80);
-            }else if(i==8){
-                column.setPreferredWidth(120);
-            }else if(i==9){
                 column.setPreferredWidth(90);
-            }else if(i==10){
-                column.setPreferredWidth(150);
-            }else if(i==11){
-                column.setPreferredWidth(90);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
             }
         }
         tbValidasi.setDefaultRenderer(Object.class, new WarnaTable());
@@ -144,34 +107,12 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         
         try {
             ps=koneksi.prepareStatement(
-                "select set_akun2.Suspen_Piutang_Pelayanan_Lab_Kesling,set_akun2.Pendapatan_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_Sarana_Pelayanan_Lab_Kesling,"+
-                "set_akun2.Utang_Jasa_sarana_Pelayanan_Lab_Kesling,set_akun2.HPP_BHP_Pelayanan_Lab_Kesling,set_akun2.Persediaan_BHP_Pelayanan_Lab_Kesling,"+
-                "set_akun2.Beban_Jasa_PJLab_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_PJLab_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling,"+
-                "set_akun2.Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling,"+
-                "set_akun2.Beban_Jasa_Analis_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_Analis_Pelayanan_Lab_Kesling,set_akun2.Beban_KSO_Pelayanan_Lab_Kesling,"+
-                "set_akun2.Utang_KSO_Pelayanan_Lab_Kesling,set_akun2.Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling,set_akun2.Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling from set_akun2"
+                "select set_akun2.Suspen_Piutang_Pelayanan_Lab_Kesling from set_akun2"
             );
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     Suspen_Piutang_Pelayanan_Lab_Kesling=rs.getString("Suspen_Piutang_Pelayanan_Lab_Kesling");
-                    Pendapatan_Pelayanan_Lab_Kesling=rs.getString("Pendapatan_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_Sarana_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Sarana_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_sarana_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_sarana_Pelayanan_Lab_Kesling");
-                    HPP_BHP_Pelayanan_Lab_Kesling=rs.getString("HPP_BHP_Pelayanan_Lab_Kesling");
-                    Persediaan_BHP_Pelayanan_Lab_Kesling=rs.getString("Persediaan_BHP_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_PJLab_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJLab_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_PJLab_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJLab_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_Analis_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Analis_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_Analis_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_Analis_Pelayanan_Lab_Kesling");
-                    Beban_KSO_Pelayanan_Lab_Kesling=rs.getString("Beban_KSO_Pelayanan_Lab_Kesling");
-                    Utang_KSO_Pelayanan_Lab_Kesling=rs.getString("Utang_KSO_Pelayanan_Lab_Kesling");
-                    Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling=rs.getString("Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling");
-                    Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling=rs.getString("Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling");
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : "+e);
@@ -200,8 +141,8 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Rentang = new widget.TextBox();
-        NoVerifikasi = new widget.TextBox();
+        PenerimaanSampel = new widget.TextBox();
+        TitikSampel = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -243,19 +184,19 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         BtnCariBayar = new widget.Button();
         BtnAll = new widget.Button();
 
-        Rentang.setHighlighter(null);
-        Rentang.setName("Rentang"); // NOI18N
-        Rentang.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenerimaanSampel.setHighlighter(null);
+        PenerimaanSampel.setName("PenerimaanSampel"); // NOI18N
+        PenerimaanSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RentangKeyPressed(evt);
+                PenerimaanSampelKeyPressed(evt);
             }
         });
 
-        NoVerifikasi.setHighlighter(null);
-        NoVerifikasi.setName("NoVerifikasi"); // NOI18N
-        NoVerifikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TitikSampel.setHighlighter(null);
+        TitikSampel.setName("TitikSampel"); // NOI18N
+        TitikSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoVerifikasiKeyPressed(evt);
+                TitikSampelKeyPressed(evt);
             }
         });
 
@@ -903,13 +844,13 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         Valid.pindah(evt,NoBayar,BtnSimpan);
     }//GEN-LAST:event_DibayarOlehKeyPressed
 
-    private void RentangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RentangKeyPressed
+    private void PenerimaanSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenerimaanSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RentangKeyPressed
+    }//GEN-LAST:event_PenerimaanSampelKeyPressed
 
-    private void NoVerifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoVerifikasiKeyPressed
+    private void TitikSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TitikSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NoVerifikasiKeyPressed
+    }//GEN-LAST:event_TitikSampelKeyPressed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         
@@ -987,14 +928,14 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NamaSampel;
     private widget.TextBox NoBayar;
     private widget.TextBox NoPermintaan;
-    private widget.TextBox NoVerifikasi;
     private widget.PanelBiasa PanelInput;
-    private widget.TextBox Rentang;
+    private widget.TextBox PenerimaanSampel;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
     public widget.TextBox TKembali;
     private javax.swing.JTabbedPane TabData;
     private widget.Tanggal TanggalValidasi;
+    private widget.TextBox TitikSampel;
     private widget.TextBox TtlSemua;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
@@ -1018,20 +959,13 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {   
         try {
             Valid.tabelKosong(tabMode);
-            myObj = new FileReader("./cache/validasipengujiansampellabkesling.iyem");
+            myObj = new FileReader("./cache/bayartagihansampellabkesling.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("validasipengujiansampellabkesling");
+            response = root.path("bayartagihansampellabkesling");
             if(response.isArray()){
                 for(JsonNode list:response){
                     tabMode.addRow(new Object[]{
-                        list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("Satuan").asText(),
-                        list.path("HasilPemeriksaan").asText(),list.path("Keterangan").asText(),list.path("NilaiNormal").asText(),
-                        list.path("MetodePengujian").asText(),list.path("Kategori").asText(),list.path("NoPenugasan").asText(),
-                        list.path("NIPAnalis").asText(),list.path("NamaAnalis").asText(),list.path("NIPPJPengujian").asText(),
-                        list.path("NamaPJPengujian").asText(),list.path("JasaSarana").asText(),list.path("PaketBHP").asText(),
-                        list.path("JasaPJLab").asText(),list.path("JasaPJPengujian").asText(),list.path("JasaVerifikator").asText(),
-                        list.path("JasaPetugas").asText(),list.path("KSO").asText(),list.path("JasaMenejemen").asText(),
-                        list.path("Total").asText()
+                        list.path("NamaParameter").asText(),"1",list.path("Total").asDouble(),list.path("Total").asDouble()
                     });
                 }
             }
@@ -1045,16 +979,14 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }
     
-    public void setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel,String kodeverifikator,String namaverifikator,String rentang,String noverifikasi) {
+    public void setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel,String titiksampel,String tanggalpenerimaan) {
         NoPermintaan.setText(nopermintaan);
         KodePelanggan.setText(kodepelanggan);
         NamaPelanggan.setText(namapelanggan);
         KodeSampel.setText(kodesampel);
         NamaSampel.setText(namasampel);
-        //KodeVerifikator.setText(kodeverifikator);
-        //NamaVerifikator.setText(namaverifikator);
-        Rentang.setText(rentang);
-        NoVerifikasi.setText(noverifikasi);
+        TitikSampel.setText(titiksampel);
+        PenerimaanSampel.setText(tanggalpenerimaan);
         autoNomor();
     }
     

@@ -35,6 +35,8 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private File file;
+    private FileWriter fileWriter;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -839,9 +841,65 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnBayarTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBayarTagihanActionPerformed
         if(tbValidasi.getSelectedRow()!= -1){
-            
+            if(ChkAccor.isSelected()==false){
+                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail pemeriksaan terlebih dahulu...!!!");
+            }else{
+                if(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString().equals("Belum Divalidasi")){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
+                    try {
+                        file=new File("./cache/bayartagihansampellabkesling.iyem");
+                        file.createNewFile();
+                        fileWriter = new FileWriter(file);
+                        StringBuilder iyembuilder = new StringBuilder();
+
+                        for(i=0;i<tbDetailValidasi.getRowCount();i++){
+                            iyembuilder.append("{\"NamaParameter\":\"").append(tbDetailValidasi.getValueAt(i,1).toString()).append("\",\"Total\":\"").append(tbDetailValidasi.getValueAt(i,20).toString()).append("\"},");
+                        }
+
+                        if (iyembuilder.length() > 0) {
+                            iyembuilder.setLength(iyembuilder.length() - 1);
+                            fileWriter.write("{\"bayartagihansampellabkesling\":["+iyembuilder+"]}");
+                            fileWriter.flush();
+                        }
+
+                        fileWriter.close();
+                        iyembuilder=null;
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    }
+                    LabKeslingBayarTagihanPengujianSampel form=new LabKeslingBayarTagihanPengujianSampel(null,false);
+                    form.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(form.berhasil==true){
+                                tbValidasi.setValueAt("Sudah Bayar",tbValidasi.getSelectedRow(),9);
+                            }
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(this);
+                    form.setData(tbValidasi.getValueAt(tbValidasi.getSelectedRow(),4).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),5).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),6).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),7).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),8).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),9).toString(),tbValidasi.getValueAt(tbValidasi.getSelectedRow(),10).toString());
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Sudah dibayar...!");
+                }
+            }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data pemeriksaan...!!!");
         }
     }//GEN-LAST:event_BtnBayarTagihanActionPerformed
 
