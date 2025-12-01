@@ -58,8 +58,8 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
     private JsonNode response;
     private FileReader myObj;
     public boolean berhasil=false;
-    private double total=0,bayar=0,besarppn=0,tagihanppn=0,kekurangan=0;
-    private String Suspen_Piutang_Pelayanan_Lab_Kesling,pilih="";
+    private double total=0,bayar=0,besarppn=0,tagihanppn=0,kekurangan=0,itembayar;
+    private String Suspen_Piutang_Pelayanan_Lab_Kesling,pilih="",notakesling="";
     private File file;
     private FileWriter fileWriter;
     private WarnaTable2 warna=new WarnaTable2();
@@ -155,10 +155,48 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
             );
             try {
                 rs=ps.executeQuery();
-                while(rs.next()){
+                if(rs.next()){
                     Suspen_Piutang_Pelayanan_Lab_Kesling=rs.getString("Suspen_Piutang_Pelayanan_Lab_Kesling");
                 }
             } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        try {
+            ps=koneksi.prepareStatement(
+                "select set_nota.cetaknotasimpanlabkesling,set_nota.tampilkan_tombol_nota_labkesling from set_nota"
+            );
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    notakesling=rs.getString("cetaknotasimpanlabkesling");
+                    if(rs.getString("tampilkan_tombol_nota_labkesling").equals("Yes")){
+                        BtnNota.setVisible(true);
+                    }else{
+                        if(akses.getkode().equals("Admin Utama")){
+                            BtnNota.setVisible(true);
+                        }else{
+                            BtnNota.setVisible(false);
+                        }            
+                    }
+                }
+            } catch (Exception e) {
+                notakesling="No";
+                if(akses.getkode().equals("Admin Utama")){
+                    BtnNota.setVisible(true);
+                }else{
+                    BtnNota.setVisible(false);
+                } 
                 System.out.println("Notif Rekening : "+e);
             } finally{
                 if(rs!=null){
@@ -190,7 +228,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
-        BtnPrint = new widget.Button();
+        BtnNota = new widget.Button();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         PanelInput = new widget.PanelBiasa();
@@ -281,23 +319,23 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         });
         panelGlass8.add(BtnSimpan);
 
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Nota");
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+        BtnNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnNota.setMnemonic('T');
+        BtnNota.setText("Nota");
+        BtnNota.setToolTipText("Alt+T");
+        BtnNota.setName("BtnNota"); // NOI18N
+        BtnNota.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
+                BtnNotaActionPerformed(evt);
             }
         });
-        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnNota.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPrintKeyPressed(evt);
+                BtnNotaKeyPressed(evt);
             }
         });
-        panelGlass8.add(BtnPrint);
+        panelGlass8.add(BtnNota);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -667,151 +705,33 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(KdPJ.getText().equals("")||NmPJ.getText().equals("")){
-            Valid.textKosong(btnPJ,"Penanggung Jawab Laborat");
+        if(DibayarOleh.getText().equals("")){
+            Valid.textKosong(DibayarOleh,"Pihak Pelanggan Yang Membayar");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
             Valid.textKosong(NoBayar,"Pelanggan");
-        }else if(KodeVerifikator.getText().equals("")||NamaVerifikator.getText().equals("")){
-            Valid.textKosong(NoBayar,"Penanggung Jawab Verifikasi");
         }else if(NoPermintaan.getText().equals("")){
             Valid.textKosong(NoPermintaan,"Nomor Permintaan");
         }else if(NoBayar.getText().equals("")){
-            Valid.textKosong(NoBayar,"Nomor Validasi");
+            Valid.textKosong(NoBayar,"Nomor Verifikasi");
         }else if(KodeSampel.getText().equals("")||NamaSampel.getText().equals("")){
             Valid.textKosong(NoBayar,"Sampel");
         }else if(tabMode.getRowCount()==0){
-            Valid.textKosong(NoBayar,"Data Validasi");
+            Valid.textKosong(NoBayar,"Data Pembayaran");
+        }else if(Sequel.cariInteger("select count(labkesling_pembayaran_pengujian_sampel.no_permintaan) from labkesling_pembayaran_pengujian_sampel where labkesling_pembayaran_pengujian_sampel.no_permintaan=? ",NoPermintaan.getText())>0){
+            JOptionPane.showMessageDialog(null,"Maaf, data tagihan pengujian dengan No.Permintaan tersebut sudah pernah disimpan...!!!");
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                ChkJln.setSelected(false);
-                try {                    
-                    Sequel.AutoComitFalse();
-                    berhasil=true;
-                    if(Sequel.menyimpantf2("labkesling_pembayaran_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
-                            NoPermintaan.getText(),NoBayar.getText(),KdPJ.getText(),KodeVerifikator.getText(),Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),DibayarOleh.getText()
-                        })==true){
-                        jasa_sarana=0;paket_bhp=0;jasa_pj_lab=0;jasa_pj_pengujian=0;jasa_verifikator=0;jasa_petugas=0;kso=0;jasa_menejemen=0;total=0;
-                        for(i=0;i<tbValidasi.getRowCount();i++){
-                            if(Sequel.menyimpantf2("labkesling_detail_validasi_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Verifikasi",16,new String[]{
-                                NoBayar.getText(),tbValidasi.getValueAt(i,11).toString(),tbValidasi.getValueAt(i,9).toString(),tbValidasi.getValueAt(i,0).toString(),tbValidasi.getValueAt(i,5).toString(),tbValidasi.getValueAt(i,3).toString(),
-                                tbValidasi.getValueAt(i,4).toString(),tbValidasi.getValueAt(i,13).toString(),tbValidasi.getValueAt(i,14).toString(),tbValidasi.getValueAt(i,15).toString(),tbValidasi.getValueAt(i,16).toString(),
-                                tbValidasi.getValueAt(i,17).toString(),tbValidasi.getValueAt(i,18).toString(),tbValidasi.getValueAt(i,19).toString(),tbValidasi.getValueAt(i,20).toString(),tbValidasi.getValueAt(i,21).toString()
-                            })==false){
-                                berhasil=false;
-                            }else{
-                                jasa_sarana=jasa_sarana+Double.parseDouble(tbValidasi.getValueAt(i,13).toString());
-                                paket_bhp=paket_bhp+Double.parseDouble(tbValidasi.getValueAt(i,14).toString());
-                                jasa_pj_lab=jasa_pj_lab+Double.parseDouble(tbValidasi.getValueAt(i,15).toString());
-                                jasa_pj_pengujian=jasa_pj_pengujian+Double.parseDouble(tbValidasi.getValueAt(i,16).toString());
-                                jasa_verifikator=jasa_verifikator+Double.parseDouble(tbValidasi.getValueAt(i,17).toString());
-                                jasa_petugas=jasa_petugas+Double.parseDouble(tbValidasi.getValueAt(i,18).toString());
-                                kso=kso+Double.parseDouble(tbValidasi.getValueAt(i,19).toString());
-                                jasa_menejemen=jasa_menejemen+Double.parseDouble(tbValidasi.getValueAt(i,20).toString());
-                                total=total+Double.parseDouble(tbValidasi.getValueAt(i,21).toString());
-                            }                
-                        } 
-                        if(berhasil==true){
-                            Sequel.queryu("delete from tampjurnal");  
-                            if(jasa_sarana>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Pelayanan_Lab_Kesling+"','Beban Jasa Sarana Pelayanan Lab Kesling','"+jasa_sarana+"','0'","debet=debet+'"+(jasa_sarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_sarana_Pelayanan_Lab_Kesling+"','Utang Jasa Sarana Pelayanan Lab Kesling','0','"+jasa_sarana+"'","kredit=kredit+'"+(jasa_sarana)+"'","kd_rek='"+Utang_Jasa_sarana_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                              
-                            }
-                            if(paket_bhp>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Pelayanan_Lab_Kesling+"','HPP BHP Pelayanan Lab Kesling','"+paket_bhp+"','0'","debet=debet+'"+(paket_bhp)+"'","kd_rek='"+HPP_BHP_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Pelayanan_Lab_Kesling+"','Persediaan BHP Pelayanan Lab Kesling','0','"+paket_bhp+"'","kredit=kredit+'"+(paket_bhp)+"'","kd_rek='"+Persediaan_BHP_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                              
-                            }
-                            if(jasa_pj_lab>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJLab_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Lab Pelayanan Lab Kesling','"+jasa_pj_lab+"','0'","debet=debet+'"+(jasa_pj_lab)+"'","kd_rek='"+Beban_Jasa_PJLab_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJLab_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Lab Pelayanan Lab Kesling','0','"+jasa_pj_lab+"'","kredit=kredit+'"+(jasa_pj_lab)+"'","kd_rek='"+Utang_Jasa_PJLab_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                             
-                            }
-                            if(jasa_pj_pengujian>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Pengujian Pelayanan Lab Kesling','"+jasa_pj_pengujian+"','0'","debet=debet+'"+(jasa_pj_pengujian)+"'","kd_rek='"+Beban_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }      
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Pengujian Pelayanan Lab Kesling','0','"+jasa_pj_pengujian+"'","kredit=kredit+'"+(jasa_pj_pengujian)+"'","kd_rek='"+Utang_Jasa_PJPengujian_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                              
-                            }
-                            if(jasa_verifikator>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"','Beban Jasa PJ Verifikasi Pelayanan Lab Kesling','"+jasa_verifikator+"','0'","debet=debet+'"+(jasa_verifikator)+"'","kd_rek='"+Beban_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }      
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"','Utang Jasa PJ Verifikasi Pelayanan Lab Kesling','0','"+jasa_verifikator+"'","kredit=kredit+'"+(jasa_verifikator)+"'","kd_rek='"+Utang_Jasa_PJVerifikasi_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                             
-                            }
-                            if(jasa_petugas>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Analis_Pelayanan_Lab_Kesling+"','Beban Jasa Analis Pelayanan Lab Kesling','"+jasa_petugas+"','0'","debet=debet+'"+(jasa_petugas)+"'","kd_rek='"+Beban_Jasa_Analis_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Analis_Pelayanan_Lab_Kesling+"','Utang Jasa Analis Pelayanan Lab Kesling','0','"+jasa_petugas+"'","kredit=kredit+'"+(jasa_petugas)+"'","kd_rek='"+Utang_Jasa_Analis_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                             
-                            }
-                            if(kso>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Pelayanan_Lab_Kesling+"','Beban KSO Pelayanan Lab Kesling','"+kso+"','0'","debet=debet+'"+(kso)+"'","kd_rek='"+Beban_KSO_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Pelayanan_Lab_Kesling+"','Utang KSO Pelayanan Lab Kesling','0','"+kso+"'","kredit=kredit+'"+(kso)+"'","kd_rek='"+Utang_KSO_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                             
-                            }
-                            if(jasa_menejemen>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling+"','Beban Jasa Menejemen Pelayanan Lab Kesling','"+jasa_menejemen+"','0'","debet=debet+'"+(jasa_menejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling+"','Utang Jasa Menejemen Pelayanan Lab Kesling','0','"+jasa_menejemen+"'","kredit=kredit+'"+(jasa_menejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                             
-                            }
-                            if(total>0){
-                                if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling','"+total+"','0'","debet=debet+'"+(total)+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }    
-                                if(Sequel.menyimpantf("tampjurnal","'"+Pendapatan_Pelayanan_Lab_Kesling+"','Pendapatan Pelayanan Lab Kesling','0','"+total+"'","kredit=kredit+'"+(total)+"'","kd_rek='"+Pendapatan_Pelayanan_Lab_Kesling+"'")==false){
-                                    berhasil=false;
-                                }                                
-                            }
-                            if(berhasil==true){
-                                berhasil=jur.simpanJurnal(NoBayar.getText(),"U","PELAYANAN LABORATORIUM KESEHATAN LINGKUNGAN "+NamaPelanggan.getText()+" DIPOSTING OLEH "+akses.getkode()); 
-                            }  
-                        }
-                    }else{
-                        berhasil=false;
-                    }   
-                    
-                    if(berhasil==true){
-                        Sequel.queryu("update labkesling_verifikasi_pengujian_sampel set status='Sudah Divalidasi' where no_verifikasi='"+NoVerifikasi.getText()+"'");
-                        Sequel.Commit();
-                        JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
-                        Valid.tabelKosong(tabMode);
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                        Sequel.RollBack();
-                    }
-                    
-                    Sequel.AutoComitTrue();                   
-                } catch (Exception e) {
-                    System.out.println(e);
-                }    
-                ChkJln.setSelected(true);    
-                this.setCursor(Cursor.getDefaultCursor());
-            }  
-        }*/
+            if(kekurangan<0){
+                JOptionPane.showMessageDialog(null,"Maaf, pembayaran tagihan masih kurang ...!!!");
+            }else if(kekurangan>0){
+                if(countbayar>1){
+                    JOptionPane.showMessageDialog(null,"Maaf, kembali harus bernilai 0 untuk cara bayar lebih dari 1...!!!");
+                }else{
+                    isSimpan();
+                }                        
+            }else if(kekurangan==0){
+                isSimpan();
+            } 
+        }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -822,7 +742,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+    private void BtnNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNotaActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(DibayarOleh.getText().equals("")){
             Valid.textKosong(DibayarOleh,"Pihak Pelanggan Yang Membayar");
@@ -916,26 +836,32 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 i=0;
             }
             if(i>0){ 
-                if(i==1){
-                    Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
-                }else if(i==2){
-                    
-                }else if(i==3){
-                    Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
-                                                 
+                switch (i) {
+                    case 1:
+                        Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                        break;
+                    case 2:
+                        Valid.panggilUrl("billing/KwitansiLabkesling.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                        break;
+                    case 3:
+                        Valid.panggilUrl("billing/NotaLabkesLing.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                        Valid.panggilUrl("billing/KwitansiLabkesling.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+TanggalValidasi.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+                        break;
+                    default:
+                        break;
                 }
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnPrintActionPerformed
+    }//GEN-LAST:event_BtnNotaActionPerformed
 
-    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
+    private void BtnNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnNotaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnPrintActionPerformed(null);
+            BtnNotaActionPerformed(null);
         }else{
-            //Valid.pindah(evt, BtnBatal,BtnCari);
+            Valid.pindah(evt, BtnSimpan,BtnCari);
         }
-    }//GEN-LAST:event_BtnPrintKeyPressed
+    }//GEN-LAST:event_BtnNotaKeyPressed
 
     private void TanggalValidasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalValidasiItemStateChanged
         try {
@@ -1054,7 +980,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnCari;
     private widget.Button BtnCariBayar;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPrint;
+    private widget.Button BtnNota;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkJln;
     private widget.ComboBox CmbDetik;
@@ -1193,7 +1119,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     public void isCek(){        
         BtnSimpan.setEnabled(akses.getpembayaran_pengujian_sampel_lab_kesehatan_lingkungan());
-        BtnPrint.setEnabled(akses.getpembayaran_pengujian_sampel_lab_kesehatan_lingkungan());
+        BtnNota.setEnabled(akses.getpembayaran_pengujian_sampel_lab_kesehatan_lingkungan());
     }
   
     private void autoNomor() {
@@ -1327,5 +1253,88 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         kekurangan=(bayar+besarppn)-tagihanppn;
         
         TKembali.setText(Valid.SetAngka3(kekurangan));  
+    }
+    
+    private void isSimpan(){
+        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            ChkJln.setSelected(false);
+            berhasil=true; 
+            try { 
+                if(notakesling.equals("Yes")){
+                    BtnNotaActionPerformed(null);
+                }
+                Sequel.AutoComitFalse();
+                if(Sequel.menyimpantf2("labkesling_pembayaran_pengujian_sampel","?,?,?,?","No.Bayar/Nota",4,new String[]{
+                        NoPermintaan.getText(),NoBayar.getText(),Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),DibayarOleh.getText()
+                    })==true){
+                    Sequel.queryu2("delete from tampjurnal");
+                    itembayar=0;besarppn=0;
+                    for(i=0;i<tbAkunBayar.getRowCount();i++){
+                        if(Valid.SetAngka(tbAkunBayar.getValueAt(i,2).toString())>0){
+                            try {
+                                itembayar=Double.parseDouble(tbAkunBayar.getValueAt(i,2).toString()); 
+                            } catch (Exception e) {
+                                itembayar=0;
+                            }    
+
+                            if(!tbAkunBayar.getValueAt(i,4).toString().equals("")){
+                                try {
+                                    besarppn=Valid.roundUp(Double.parseDouble(tbAkunBayar.getValueAt(i,4).toString()),100); 
+                                } catch (Exception e) {
+                                    besarppn=0;
+                                }               
+                            }  
+                            
+                            if(Sequel.menyimpantf2("labkesling_detail_pembayaran_pengujian_sampel","?,?,?,?","Akun bayar",4,new String[]{
+                                    NoBayar.getText(),tbAkunBayar.getValueAt(i,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
+                                })==true){
+                                if(Sequel.menyimpantf("tampjurnal","'"+tbAkunBayar.getValueAt(i,1).toString()+"','"+tbAkunBayar.getValueAt(i,0).toString()+"','"+Double.toString(itembayar)+"','0'","debet=debet+'"+Double.toString(itembayar)+"'","kd_rek='"+tbAkunBayar.getValueAt(i,1).toString()+"'")==false){
+                                    berhasil=false;
+                                }
+                            }else{
+                                berhasil=false;
+                            }
+                        }
+                    }
+                    
+                    if(berhasil==true){
+                        if(total>0){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling,'"+total+"','0'","debet=debet+'"+total+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
+                                berhasil=false;
+                            }
+                        }
+                    }
+                    
+                    if(berhasil==true){
+                        berhasil=jur.simpanJurnal(NoBayar.getText(),"U","PEMBAYARAN PELAYANAN LABORATORIUM KESEHATAN LINGKUNGAN "+NamaPelanggan.getText()+" DIPOSTING OLEH "+akses.getkode());
+                        if(Sequel.menyimpantf2("tagihan_sadewa","'"+NoBayar.getText()+"','"+KodePelanggan.getText()+"','"+NamaPelanggan.getText().replaceAll("'","")+"','"+Sequel.cariIsi("select labkesling_pelanggan.alamat from labkesling_pelanggan where labkesling_pelanggan.kode_pelanggan=?",KodePelanggan.getText()).replaceAll("'","")+"','"+Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"','Pelunasan','"+total+"','"+total+"','Sudah','"+akses.getkode()+"'","No.Bayar")==false){
+                            berhasil=false;
+                        }
+                    }
+                }else{
+                    berhasil=false;
+                } 
+                
+                if(berhasil==true){
+                    Sequel.Commit();
+                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+            } catch (Exception e) {
+                System.out.println(e);
+            }  
+            ChkJln.setSelected(true);    
+            this.setCursor(Cursor.getDefaultCursor());
+            if(berhasil==true){
+                if(notakesling.equals("Yes")){
+                    this.dispose();
+                }
+            }
+        }
     }
 }
