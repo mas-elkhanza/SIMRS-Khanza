@@ -42,7 +42,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
     private ResultSet rs,rsakunbayar,rsakunpiutang;
     private double all=0,bayar=0,piutangobat=0;
     private int i,kolom=0,kolom2=0,kolompiutang=0,no=0;
-    private String nonota="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="",
+    private String nonota="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="",notakesling="",
                    akunpiutangobat=Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Sequel.cariIsi("select set_akun.Piutang_Obat from set_akun"));
     private String[] namabayar,namapiutang,akunrekening,namarekening;
     private double[] totalbayar,totalpiutang,totalbayar2;
@@ -612,6 +612,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                     notajual="";
                     carabayar="";
                     nodeposit="";
+                    notakesling="";
                     nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
                         norawatinap=rs.getString("no_nota");
@@ -632,8 +633,14 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                     nodeposit=rs.getString("no_nota");
                                     carabayar="Deposit Pasien";
                                 }else{
-                                    nodeposit="";
-                                    carabayar="Transaksi Tidak Ditemukan";
+                                    nonota=Sequel.cariIsi("select labkesling_pembayaran_pengujian_sampel.no_pembayaran from labkesling_pembayaran_pengujian_sampel where labkesling_pembayaran_pengujian_sampel.no_pembayaran=?",rs.getString("no_nota"));
+                                    if(!nonota.equals("")){
+                                        notakesling=rs.getString("no_nota");
+                                        carabayar="Lab Kesehatan Lingkungan";
+                                    }else{
+                                        notakesling="";
+                                        carabayar="Transaksi Tidak Ditemukan";
+                                    }
                                 }
                             }                                             
                         }
@@ -661,6 +668,8 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                 bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+notajual+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             }else if(!nodeposit.equals("")){
                                 bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='"+nodeposit+"' and deposit.nama_bayar='"+namabayar[i]+"'");
+                            }else if(!notakesling.equals("")){
+                                bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+notakesling+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
                             }else{
                                 bayar=0;
                             }
@@ -1015,6 +1024,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                     notajual="";
                     carabayar="";
                     nodeposit="";
+                    notakesling="";
                     nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
                         norawatinap=rs.getString("no_nota");
@@ -1035,8 +1045,14 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                     nodeposit=rs.getString("no_nota");
                                     carabayar="Deposit Pasien";
                                 }else{
-                                    nodeposit="";
-                                    carabayar="Transaksi Tidak Ditemukan";
+                                    nonota=Sequel.cariIsi("select labkesling_pembayaran_pengujian_sampel.no_pembayaran from labkesling_pembayaran_pengujian_sampel where labkesling_pembayaran_pengujian_sampel.no_pembayaran=?",rs.getString("no_nota"));
+                                    if(!nonota.equals("")){
+                                        notakesling=rs.getString("no_nota");
+                                        carabayar="Lab Kesehatan Lingkungan";
+                                    }else{
+                                        notakesling="";
+                                        carabayar="Transaksi Tidak Ditemukan";
+                                    }
                                 }
                             }                                             
                         }
@@ -1064,6 +1080,8 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                 bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+notajual+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             }else if(!nodeposit.equals("")){
                                 bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='"+nodeposit+"' and deposit.nama_bayar='"+namabayar[i]+"'");
+                            }else if(!notakesling.equals("")){
+                                bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+notakesling+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
                             }else{
                                 bayar=0;
                             }

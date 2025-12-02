@@ -1169,7 +1169,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampilAkunBayar2() {         
          try{           
              jml=0;
-             for(i=0;1<tbAkunBayar.getRowCount();i++){
+             for(i=0;i<tbAkunBayar.getRowCount();i++){
                 if(!tbAkunBayar.getValueAt(i,2).toString().equals("")){
                     jml++;
                 }
@@ -1301,7 +1301,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     
                     if(berhasil==true){
                         if(total>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling,'"+total+"','0'","debet=debet+'"+total+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling','0','"+total+"'","kredit=kredit+'"+total+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
                                 berhasil=false;
                             }
                         }
@@ -1318,6 +1318,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 } 
                 
                 if(berhasil==true){
+                    Sequel.queryu("update labkesling_validasi_pengujian_sampel set status='Sudah Bayar' where no_permintaan='"+NoPermintaan.getText()+"'");
                     Sequel.Commit();
                     JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
                 }else{

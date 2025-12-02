@@ -612,15 +612,15 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
         try{        
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>").append(
                 "</tr>"
             );           
             LoadHTML.setText(
@@ -687,15 +687,15 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
         try{        
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>").append(
                 "</tr>"
             );   
             
@@ -743,26 +743,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("png_jawab")+"</td>"+
-                                "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("png_jawab")).append("</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap where detail_nota_inap.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_inap.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -796,26 +796,77 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("png_jawab")+"</td>"+
-                                "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("png_jawab")).append("</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan where detail_nota_jalan.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_jalan.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
+                            "</tr>"
+                        ); 
+                        no++;
+                    }                                
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+            
+            //labkesling
+            ps= koneksi.prepareStatement(
+                    "select labkesling_pembayaran_pengujian_sampel.no_pembayaran,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas "+
+                    "from tagihan_sadewa inner join labkesling_pembayaran_pengujian_sampel on tagihan_sadewa.no_nota=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                    "where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                rs=ps.executeQuery();
+                while(rs.next()){                            
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
+                    
+                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_pembayaran").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                        all=all+rs.getDouble("jumlah_bayar");
+                        htmlContent.append(                             
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_pembayaran")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Lab Kesehatan Lingkungan</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
+                                    "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
+                        for(i=0;i<kolom;i++){
+                            bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+rs.getString("no_pembayaran")+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
+                            if(bayar>0){
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
+                                totalbayar[i]=totalbayar[i]+bayar;
+                            }
+                        }
+                        htmlContent.append( 
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -847,26 +898,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Penjualan Apotek</td>"+
-                                "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Penjualan Apotek</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -898,26 +949,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Deposit Pasien</td>"+
-                                "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Deposit Pasien</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='"+rs.getString("no_nota")+"' and deposit.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -976,26 +1027,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>"+
-                                "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom2;i++){
                             bayar=Sequel.cariIsiAngka("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='"+rs.getString("no_nota")+"' and kategori_pemasukan_lain.kd_rek2='"+akunrekening[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namarekening[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namarekening[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                                 totalbayar2[i]=totalbayar2[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1015,10 +1066,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             for(i=0;i<kolom;i++){
                 if(totalbayar[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='6'>Total "+namabayar[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='6'>Total ").append(namabayar[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(totalbayar[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1027,10 +1078,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             for(i=0;i<kolom2;i++){
                 if(totalbayar2[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='6'>Total "+namarekening[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar2[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='6'>Total ").append(namarekening[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(totalbayar2[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1038,10 +1089,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             
             if(all>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='6'><b>Jumlah Total<b></td>"+
-                        "<td valign='middle' align='right'><b>"+Valid.SetAngka(all)+"<b></td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='6'><b>Jumlah Total<b></td>").append(
+                        "<td valign='middle' align='right'><b>").append(Valid.SetAngka(all)).append("<b></td>").append(
                     "</tr>"
                 ); 
             }
@@ -1063,15 +1114,15 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
         try{        
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='400px'>Akun Bayar</td>").append(
                 "</tr>"
             );   
             
@@ -1119,26 +1170,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("png_jawab")+"</td>"+
-                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("png_jawab")).append("</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap where detail_nota_inap.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_inap.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1172,26 +1223,77 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("png_jawab")+"</td>"+
-                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("png_jawab")).append("</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan where detail_nota_jalan.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_jalan.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
+                            "</tr>"
+                        ); 
+                        no++;
+                    }                                
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+            
+            //labkesling
+            ps= koneksi.prepareStatement(
+                    "select labkesling_pembayaran_pengujian_sampel.no_pembayaran,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas "+
+                    "from tagihan_sadewa inner join labkesling_pembayaran_pengujian_sampel on tagihan_sadewa.no_nota=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                    "where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                rs=ps.executeQuery();
+                while(rs.next()){                            
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
+                    
+                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_pembayaran").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                        all=all+rs.getDouble("jumlah_bayar");
+                        htmlContent.append(                             
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_pembayaran")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Lab Kesehatan Lingkungan</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
+                                    "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
+                        for(i=0;i<kolom;i++){
+                            bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+rs.getString("no_pembayaran")+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
+                            if(bayar>0){
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
+                                totalbayar[i]=totalbayar[i]+bayar;
+                            }
+                        }
+                        htmlContent.append( 
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1223,26 +1325,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Penjualan Apotek</td>"+
-                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Penjualan Apotek</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1274,26 +1376,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Deposit Pasien</td>"+
-                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Deposit Pasien</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
                             bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='"+rs.getString("no_nota")+"' and deposit.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1352,26 +1454,26 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>"+
-                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
-                                "<td valign='middle' align='left'>"+petugas+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_nota")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom2;i++){
                             bayar=Sequel.cariIsiAngka("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='"+rs.getString("no_nota")+"' and kategori_pemasukan_lain.kd_rek2='"+akunrekening[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namarekening[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namarekening[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                                 totalbayar2[i]=totalbayar2[i]+bayar;
                             }
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1391,10 +1493,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             for(i=0;i<kolom;i++){
                 if(totalbayar[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='6'>Total "+namabayar[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Math.round(totalbayar[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='6'>Total ").append(namabayar[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Math.round(totalbayar[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1403,10 +1505,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             for(i=0;i<kolom2;i++){
                 if(totalbayar2[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='6'>Total "+namarekening[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Math.round(totalbayar2[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='6'>Total ").append(namarekening[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Math.round(totalbayar2[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1414,10 +1516,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             
             if(all>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='6'><b>Jumlah Total<b></td>"+
-                        "<td valign='middle' align='right'><b>"+Math.round(all)+"<b></td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='6'><b>Jumlah Total<b></td>").append(
+                        "<td valign='middle' align='right'><b>").append(Math.round(all)).append("<b></td>").append(
                     "</tr>"
                 ); 
             }

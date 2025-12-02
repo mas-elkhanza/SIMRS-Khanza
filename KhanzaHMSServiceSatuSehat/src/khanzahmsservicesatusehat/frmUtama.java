@@ -217,6 +217,10 @@ public class frmUtama extends javax.swing.JFrame {
                     medication();
                 }
                 
+                if(detik.equals("01")&&(nilai_menit%4==0)){
+                    servicerequestradiologi();
+                }
+                
                 if((nilai_jam%4==0)&&(detik.equals("01")&&menit.equals("01"))){
                     encounter();
                     observationTTV();
@@ -228,7 +232,6 @@ public class frmUtama extends javax.swing.JFrame {
                     medicationrequest();
                     medicationdispense();
                     medicationstatement();
-                    servicerequestradiologi();
                     specimenradiologi();
                     observationradiologi();
                     diagnosticreportradiologi();

@@ -853,6 +853,54 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                 }
             } 
             
+            //labkesling
+            ps= koneksi.prepareStatement(
+                    "select labkesling_pembayaran_pengujian_sampel.no_pembayaran,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas "+
+                    "from tagihan_sadewa inner join labkesling_pembayaran_pengujian_sampel on tagihan_sadewa.no_nota=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                    "where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                rs=ps.executeQuery();
+                while(rs.next()){                            
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
+                    
+                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                        all=all+rs.getDouble("jumlah_bayar");
+                        htmlContent.append(                             
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_pembayaran")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Lab Kesehatan Lingkungan</td>").append(
+                                "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>");
+                        for(i=0;i<kolom;i++){
+                            bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+rs.getString("no_pembayaran")+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
+                            htmlContent.append("<td valign='middle' align='right'>").append(Valid.SetAngka(bayar)).append("</td>");
+                            totalbayar[i]=totalbayar[i]+bayar;
+                        }
+                        for(i=0;i<kolom2;i++){
+                            htmlContent.append("<td valign='middle' align='right'>0</td>");
+                        }
+                        htmlContent.append(
+                            "</tr>"
+                        );
+                        no++;
+                    }                                
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+            
             //penjualan bebas
             ps= koneksi.prepareStatement(
                     "select tagihan_sadewa.no_nota,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas "+
@@ -1081,6 +1129,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             }
             totalbayar=new double[kolom]; 
             
+            kolom2=0;
             psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
@@ -1147,7 +1196,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                         }
                         htmlContent.append( 
                             "</tr>"
-                        );
+                        ); 
                         no++;
                     }                                
                 }
@@ -1197,7 +1246,55 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                         }
                         htmlContent.append(
                             "</tr>"
-                        ); 
+                        );
+                        no++;
+                    }                                
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+            
+            //labkesling
+            ps= koneksi.prepareStatement(
+                    "select labkesling_pembayaran_pengujian_sampel.no_pembayaran,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas "+
+                    "from tagihan_sadewa inner join labkesling_pembayaran_pengujian_sampel on tagihan_sadewa.no_nota=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                    "where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                rs=ps.executeQuery();
+                while(rs.next()){                            
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
+                    
+                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                        all=all+rs.getDouble("jumlah_bayar");
+                        htmlContent.append(                             
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("no_pembayaran")).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Lab Kesehatan Lingkungan</td>").append(
+                                "<td valign='middle' align='right'>").append(Math.round(rs.getDouble("jumlah_bayar"))).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(petugas).append("</td>");
+                        for(i=0;i<kolom;i++){
+                            bayar=Sequel.cariIsiAngka("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='"+rs.getString("no_pembayaran")+"' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='"+namabayar[i]+"'");
+                            htmlContent.append("<td valign='middle' align='right'>").append(Math.round(bayar)).append("</td>");
+                            totalbayar[i]=totalbayar[i]+bayar;
+                        }
+                        for(i=0;i<kolom2;i++){
+                            htmlContent.append("<td valign='middle' align='right'>0</td>");
+                        }
+                        htmlContent.append(
+                            "</tr>"
+                        );
                         no++;
                     }                                
                 }
