@@ -7509,7 +7509,7 @@ public class frmUtama extends javax.swing.JFrame {
                 ps.setString(2,Tanggal2.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationstatement").equals("")){
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
@@ -7652,7 +7652,7 @@ public class frmUtama extends javax.swing.JFrame {
                 ps.setString(2,Tanggal2.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationstatement").equals("")){
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
@@ -7797,7 +7797,7 @@ public class frmUtama extends javax.swing.JFrame {
                 ps.setString(2,Tanggal2.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationstatement").equals("")){
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
@@ -7942,7 +7942,7 @@ public class frmUtama extends javax.swing.JFrame {
                 ps.setString(2,Tanggal2.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationstatement").equals("")){
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");

@@ -152,11 +152,11 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Label" name="LTotal1">
+                <Component class="widget.Label" name="LTotalBayar">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="LTotal1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="LTotalBayar" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[212, 23]"/>
                     </Property>
