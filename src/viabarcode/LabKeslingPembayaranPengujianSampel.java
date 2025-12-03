@@ -348,11 +348,6 @@ public class LabKeslingPembayaranPengujianSampel extends javax.swing.JDialog {
                 BtnRekapPembayaranActionPerformed(evt);
             }
         });
-        BtnRekapPembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnRekapPembayaranKeyPressed(evt);
-            }
-        });
         panelisi1.add(BtnRekapPembayaran);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -1066,12 +1061,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_NoPermintaanKeyPressed
 
     private void BtnRekapPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRekapPembayaranActionPerformed
-        // TODO add your handling code here:
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
+        LabKeslingRekapPembayaran form=new LabKeslingRekapPembayaran(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnRekapPembayaranActionPerformed
-
-    private void BtnRekapPembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnRekapPembayaranKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRekapPembayaranKeyPressed
 
     private void tbValidasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbValidasiMouseClicked
         ChkAccorActionPerformed(null);

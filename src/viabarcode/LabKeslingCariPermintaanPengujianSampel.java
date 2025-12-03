@@ -1916,7 +1916,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void BtnTutup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutup2ActionPerformed
-        WindowInput.dispose();
+        WindowInput2.dispose();
     }//GEN-LAST:event_BtnTutup2ActionPerformed
 
     private void BtnTutup2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTutup2KeyPressed

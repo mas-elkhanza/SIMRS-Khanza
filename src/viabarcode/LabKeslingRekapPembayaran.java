@@ -940,15 +940,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSampelActionPerformed
 
     private void NoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanKeyPressed
-        //Valid.pindah(evt, BtnKeluar,Status);
+        Valid.pindah(evt, BtnKeluar,TCari);
     }//GEN-LAST:event_NoPermintaanKeyPressed
 
     private void Tanggal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal1KeyPressed
-        //Valid.pindah(evt,NoPermintaan,Status);
+        Valid.pindah(evt,NoPermintaan,Tanggal2);
     }//GEN-LAST:event_Tanggal1KeyPressed
 
     private void Tanggal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tanggal1,TCari);
     }//GEN-LAST:event_Tanggal2KeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -976,12 +976,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        //tampilAkunBayar();
-        //isKembali();
+        TCari.setText("");
+        NoPermintaan.setText("");
+        KodeSampel.setText("");
+        NamaSampel.setText("");
+        KodePelanggan.setText("");
+        NamaPelanggan.setText("");
+        tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnPrint, BtnKeluar);
+        }
     }//GEN-LAST:event_BtnAllKeyPressed
 
     /**

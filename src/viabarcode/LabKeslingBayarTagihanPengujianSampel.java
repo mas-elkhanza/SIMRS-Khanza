@@ -270,19 +270,9 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
 
         PenerimaanSampel.setHighlighter(null);
         PenerimaanSampel.setName("PenerimaanSampel"); // NOI18N
-        PenerimaanSampel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PenerimaanSampelKeyPressed(evt);
-            }
-        });
 
         TitikSampel.setHighlighter(null);
         TitikSampel.setName("TitikSampel"); // NOI18N
-        TitikSampel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TitikSampelKeyPressed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -391,7 +381,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         PanelInput.add(NamaPelanggan);
         NamaPelanggan.setBounds(169, 70, 233, 23);
 
-        TanggalValidasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2025" }));
+        TanggalValidasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2025" }));
         TanggalValidasi.setDisplayFormat("dd-MM-yyyy");
         TanggalValidasi.setName("TanggalValidasi"); // NOI18N
         TanggalValidasi.setOpaque(false);
@@ -684,7 +674,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-    LabKeslingCariValidasiPengujianSampel form=new LabKeslingCariValidasiPengujianSampel(null,false);
+    LabKeslingRekapPembayaran form=new LabKeslingRekapPembayaran(null,false);
     form.isCek();
     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     form.setLocationRelativeTo(this);
@@ -693,14 +683,14 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void TanggalValidasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalValidasiKeyPressed
-        //Valid.pindah(evt, KdPJ, NoBayar);
+        Valid.pindah(evt, DibayarOleh, NoBayar);
     }//GEN-LAST:event_TanggalValidasiKeyPressed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt, NoBayar,BtnBatal);
+            Valid.pindah(evt, NoBayar,BtnKeluar);
         }
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -883,20 +873,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void NoBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoBayarKeyPressed
-        Valid.pindah(evt, BtnKeluar,DibayarOleh);
+        Valid.pindah(evt, DibayarOleh,BtnSimpan);
     }//GEN-LAST:event_NoBayarKeyPressed
 
     private void DibayarOlehKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DibayarOlehKeyPressed
-        Valid.pindah(evt,NoBayar,BtnSimpan);
+        Valid.pindah(evt,NoBayar,NoBayar);
     }//GEN-LAST:event_DibayarOlehKeyPressed
-
-    private void PenerimaanSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenerimaanSampelKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PenerimaanSampelKeyPressed
-
-    private void TitikSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TitikSampelKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TitikSampelKeyPressed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         
