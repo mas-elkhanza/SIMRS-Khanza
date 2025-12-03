@@ -586,13 +586,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Bayar</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Bayar/Nota</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dibayar Oleh</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembayaran</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModePembayaran.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -603,6 +605,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -634,13 +638,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 2 (WPS)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Bayar</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Bayar/Nota</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dibayar Oleh</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembayaran</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModePembayaran.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
@@ -651,6 +657,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -682,10 +690,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya\"\n"
+                                "\"Tanggal Bayar\";\"No.Bayar/Nota\";\"Dibayar Oleh\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Pembayaran\"\n"
                             ); 
                             for (int i = 0; i < tabModePembayaran.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbPembayaran.getValueAt(i,0).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,1).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,2).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,3).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,4).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,5).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,6).toString()).append("\"\n");
+                                htmlContent.append("\"").append(tbPembayaran.getValueAt(i,0).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,1).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,2).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,3).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,4).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,5).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,6).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,7).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,8).toString()).append("\"\n");
                             }
                             f = new File("DataRekapPembayaranPengujianSampel.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
