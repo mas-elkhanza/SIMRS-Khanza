@@ -26,6 +26,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import keuangan.Jurnal;
 
 public class LabKeslingRekapPembayaran extends javax.swing.JDialog {
     private final DefaultTableModel tabModePembayaran,tabModeDetailPermintaan;
@@ -36,6 +37,9 @@ public class LabKeslingRekapPembayaran extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private double total=0;
+    private boolean berhasil=false;
+    private String Suspen_Piutang_Pelayanan_Lab_Kesling;
+    private Jurnal jur=new Jurnal();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -140,6 +144,29 @@ public class LabKeslingRekapPembayaran extends javax.swing.JDialog {
             });
         }  
         
+        try {
+            ps=koneksi.prepareStatement(
+                "select set_akun2.Suspen_Piutang_Pelayanan_Lab_Kesling from set_akun2"
+            );
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    Suspen_Piutang_Pelayanan_Lab_Kesling=rs.getString("Suspen_Piutang_Pelayanan_Lab_Kesling");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -174,7 +201,6 @@ public class LabKeslingRekapPembayaran extends javax.swing.JDialog {
 
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
-        KodePetugas = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -216,9 +242,6 @@ public class LabKeslingRekapPembayaran extends javax.swing.JDialog {
 
         KodePelanggan.setName("KodePelanggan"); // NOI18N
         KodePelanggan.setPreferredSize(new java.awt.Dimension(80, 23));
-
-        KodePetugas.setName("KodePetugas"); // NOI18N
-        KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -606,9 +629,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,6).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,7).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top' align='right'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
                                             append("</tr>");
                             }
+                            htmlContent.append("<tr class='isi'>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='left' colspan='3'>Record : ").append(LTotal.getText()).append("</b></td>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='right' colspan='5'>Total Pembayaran :</td>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='right'>").append(LTotalBayar.getText()).append("</td>").
+                            append("</tr>");
                             LoadHTML.setText(
                                 "<html>"+
                                   "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
@@ -658,9 +686,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,6).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbPembayaran.getValueAt(i,7).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top' align='right'>").append(tbPembayaran.getValueAt(i,8).toString()).append("</td>").
                                             append("</tr>");
                             }
+                            htmlContent.append("<tr class='isi'>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='left' colspan='3'>Record : ").append(LTotal.getText()).append("</b></td>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='right' colspan='5'>Total Pembayaran :</td>").
+                                append("<td valign='middle' bgcolor='#FFFAFA' align='right'>").append(LTotalBayar.getText()).append("</td>").
+                            append("</tr>");
                             LoadHTML.setText(
                                 "<html>"+
                                   "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
@@ -689,12 +722,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         break;
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "\"Tanggal Bayar\";\"No.Bayar/Nota\";\"Dibayar Oleh\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Pembayaran\"\n"
-                            ); 
+                            htmlContent.append("\"Tanggal Bayar\";\"No.Bayar/Nota\";\"Dibayar Oleh\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Pembayaran\"\n"); 
                             for (int i = 0; i < tabModePembayaran.getRowCount(); i++) {
                                 htmlContent.append("\"").append(tbPembayaran.getValueAt(i,0).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,1).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,2).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,3).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,4).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,5).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,6).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,7).toString()).append("\";\"").append(tbPembayaran.getValueAt(i,8).toString()).append("\"\n");
                             }
+                            htmlContent.append("\"\";\"\";\"Record :\";\"").append(LTotal.getText()).append("\";\"\";\"\";\"\";\"Total Pembayaran : \";\"").append(total+"").append("\"\n"); 
                             f = new File("DataRekapPembayaranPengujianSampel.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
@@ -719,14 +751,50 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbPembayaran.getSelectedRow()!= -1){
-            if(Sequel.queryutf("delete from labkesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),1).toString()+"'")==true){
-                Sequel.queryu("update labkesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),1).toString()+"'");
-                tabModePembayaran.removeRow(tbPembayaran.getSelectedRow());
-                Valid.tabelKosong(tabModeDetailPermintaan);
-                LTotal.setText(tabModePembayaran.getRowCount()+"");
+            if(ChkAccor.isSelected()==false){
+                JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail pembayaran terlebih dahulu...!!!");
+            }else{
+                berhasil=true;
+                Sequel.AutoComitFalse();
+                if(Sequel.queryutf("delete from labkesling_pembayaran_pengujian_sampel where no_pembayaran='"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),1).toString()+"'")==false){
+                    berhasil=false;
+                }else{
+                    Sequel.queryu2("delete from tampjurnal");
+                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Pelayanan_Lab_Kesling+"','Suspen Piutang Pelayanan Lab Kesling','"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),8).toString()+"','0'","debet=debet+'"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),8).toString()+"'","kd_rek='"+Suspen_Piutang_Pelayanan_Lab_Kesling+"'")==false){
+                        berhasil=false;
+                    }
+                    if(berhasil==true){
+                        for(i=0;i<tbDetailPembayaran.getRowCount();i++){
+                            if(Sequel.menyimpantf("tampjurnal","'"+tbDetailPembayaran.getValueAt(i,2).toString()+"','"+tbDetailPembayaran.getValueAt(i,0).toString()+"','0','"+tbDetailPembayaran.getValueAt(i,1).toString()+"'","kredit=kredit+'"+tbDetailPembayaran.getValueAt(i,1).toString()+"'","kd_rek='"+tbDetailPembayaran.getValueAt(i,2).toString()+"'")==false){
+                                berhasil=false;
+                            }
+                        }
+                    }
+                    if(berhasil==true){
+                        berhasil=jur.simpanJurnal(tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),1).toString(),"U","PEMBATALAN PEMBAYARAN PELAYANAN LABORATORIUM KESEHATAN LINGKUNGAN "+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),5).toString()+" DIPOSTING OLEH "+akses.getkode());
+                        if(berhasil==true){
+                            if(Sequel.meghapustf("tagihan_sadewa","no_nota",tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),1).toString())==false){
+                                berhasil=false;
+                            }
+                        }
+                    }
+                }
+                if(berhasil==true){
+                    Sequel.queryu("update labkesling_validasi_pengujian_sampel set status='Belum Bayar' where no_permintaan='"+tbPembayaran.getValueAt(tbPembayaran.getSelectedRow(),3).toString()+"'");
+                    Sequel.Commit();
+                    JOptionPane.showMessageDialog(null,"Proses hapus berhasil...!");  
+                    tabModePembayaran.removeRow(tbPembayaran.getSelectedRow());
+                    Valid.tabelKosong(tabModeDetailPermintaan);
+                    LTotal.setText(tabModePembayaran.getRowCount()+"");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+
+                Sequel.AutoComitTrue();
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data pembayaran...!!!");
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -940,7 +1008,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnPrint;
     private widget.CekBox ChkAccor;
     private widget.TextBox KodePelanggan;
-    private widget.TextBox KodePetugas;
     private widget.TextBox KodeSampel;
     private widget.Label LTotal;
     private widget.Label LTotalBayar;
@@ -1028,6 +1095,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.getpembayaran_pengujian_sampel_lab_kesehatan_lingkungan());
-        BtnHapus.setEnabled(akses.getpembayaran_pengujian_sampel_lab_kesehatan_lingkungan());
+        BtnHapus.setEnabled(akses.gethapus_nota_salah());  
     }
 }
