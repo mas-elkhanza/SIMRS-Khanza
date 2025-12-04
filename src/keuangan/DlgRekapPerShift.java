@@ -34,34 +34,13 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public class DlgRekapPerShift extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeRalan,tabModeRanap,tabModePemasukan,tabModePengeluaran;
+    private final DefaultTableModel tabModeRalan,tabModeRanap,tabModePemasukan,tabModePengeluaran,tabModeDeposit;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement psjamshift,pspasienralan,psbilling,pspasienranap,pspemasukan,pspengeluaran;
+    private PreparedStatement psjamshift,pspasienralan,psbilling,pspasienranap,pspemasukan,pspengeluaran,psdeposit;
     private ResultSet rs,rspasien,rsbilling;
-    private String tanggal2="",
-            sqlpsjamshift="select * from closing_kasir where shift like ? ",
-            sqlpsbilling="select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ",
-            sqlpspasienranap="select reg_periksa.no_rawat,nota_inap.no_nota,pasien.nm_pasien,nota_inap.tanggal,nota_inap.jam,penjab.png_jawab "+
-                        "from reg_periksa inner join pasien inner join penjab inner join nota_inap "+
-                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
-                        "reg_periksa.no_rawat=nota_inap.no_rawat where reg_periksa.status_lanjut='Ranap' and "+
-                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                        "concat(nota_inap.tanggal,' ',nota_inap.jam) between ? and ? order by nota_inap.no_nota",
-            sqlpspasienralan="select reg_periksa.no_rawat,nota_jalan.no_nota,pasien.nm_pasien,nota_jalan.tanggal,nota_jalan.jam,dokter.nm_dokter,penjab.png_jawab "+
-                        "from reg_periksa inner join pasien inner join penjab inner join dokter inner join nota_jalan "+
-                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
-                        "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=nota_jalan.no_rawat where reg_periksa.status_lanjut='Ralan' and "+
-                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? order by nota_jalan.no_nota",
-            sqlpspemasukan="select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, kategori_pemasukan_lain.nama_kategori "+
-                        "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
-                        "where pemasukan_lain.tanggal between ? and ? order by pemasukan_lain.tanggal",
-            sqlpspengeluaran="select pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya,  "+
-                        "kategori_pengeluaran_harian.nama_kategori from pengeluaran_harian inner join kategori_pengeluaran_harian "+
-                        "on pengeluaran_harian.kode_kategori=kategori_pengeluaran_harian.kode_kategori "+
-                        "where pengeluaran_harian.tanggal between ? and ? order by pengeluaran_harian.tanggal";
+    private String tanggal2="";
     private int i;
     private double all=0,Laborat=0,Radiologi=0,Obat=0,Ralan_Dokter=0,Ralan_Dokter_Paramedis=0,Ralan_Paramedis=0,Tambahan=0,Potongan=0,Registrasi=0,Service=0,
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,ttlOperasi=0,
@@ -88,7 +67,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         for (i = 0; i < 15; i++) {
             TableColumn column = tbRalan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -116,7 +95,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         for (i = 0; i < 18; i++) {
             TableColumn column = tbRanap.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -145,7 +124,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         for (i = 0; i < 4; i++) {
             TableColumn column = tbPemasukan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==1){
                 column.setPreferredWidth(230);
             }else if(i==2){
@@ -156,6 +135,35 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         }
 
         tbPemasukan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDeposit=new DefaultTableModel(null,new Object[]{
+                "Tanggal","No.Deposit","No.Rawat","No.RM","Pasien","Besar Deposit"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbDeposit.setModel(tabModeDeposit);
+        tbDeposit.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDeposit.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 6; i++) {
+            TableColumn column = tbDeposit.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(140);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(105);
+            }else if(i==3){
+                column.setPreferredWidth(70);
+            }else if(i==4){
+                column.setPreferredWidth(160);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }
+        }
+
+        tbDeposit.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModePengeluaran=new DefaultTableModel(null,new Object[]{
             "Tanggal","Kategori","Pengeluaran","Keterangan"}){
@@ -169,7 +177,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         for (i = 0; i < 4; i++) {
             TableColumn column = tbPengeluaran.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==1){
                 column.setPreferredWidth(230);
             }else if(i==2){
@@ -180,8 +188,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         }
 
         tbPengeluaran.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        
     }
 
     /** This method is called from within the constructor to
@@ -213,6 +219,9 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         internalFrame4 = new widget.InternalFrame();
         Scroll3 = new widget.ScrollPane();
         tbPemasukan = new widget.Table();
+        internalFrame6 = new widget.InternalFrame();
+        Scroll5 = new widget.ScrollPane();
+        tbDeposit = new widget.Table();
         internalFrame5 = new widget.InternalFrame();
         Scroll4 = new widget.ScrollPane();
         tbPengeluaran = new widget.Table();
@@ -220,11 +229,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
@@ -386,6 +390,33 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         TabRawat.addTab("Rekap Pemasukan Lain-Lain", internalFrame4);
 
+        internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame6.setBorder(null);
+        internalFrame6.setName("internalFrame6"); // NOI18N
+        internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll5.setName("Scroll5"); // NOI18N
+        Scroll5.setOpaque(true);
+
+        tbDeposit.setAutoCreateRowSorter(true);
+        tbDeposit.setToolTipText("");
+        tbDeposit.setName("tbDeposit"); // NOI18N
+        tbDeposit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDepositMouseClicked(evt);
+            }
+        });
+        tbDeposit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDepositKeyPressed(evt);
+            }
+        });
+        Scroll5.setViewportView(tbDeposit);
+
+        internalFrame6.add(Scroll5, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Rekap Deposit", internalFrame6);
+
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
         internalFrame5.setName("internalFrame5"); // NOI18N
@@ -430,168 +461,197 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnPrint,Tgl1);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(TabRawat.getSelectedIndex()==0){
-           tampilralan();
-        }else if(TabRawat.getSelectedIndex()==1){
-           tampilranap();
-        }else if(TabRawat.getSelectedIndex()==2){
-           tampilpemasukan();
-        }else if(TabRawat.getSelectedIndex()==3){
-           tampilpengeluaran();
-        }
-    }//GEN-LAST:event_formWindowOpened
-
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==0){
-           tampilralan();
-        }else if(TabRawat.getSelectedIndex()==1){
-           tampilranap();
-        }else if(TabRawat.getSelectedIndex()==2){
-           tampilpemasukan();
-        }else if(TabRawat.getSelectedIndex()==3){
-           tampilpengeluaran();
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                tampilralan();
+                break;
+            case 1:
+                tampilranap();
+                break;
+            case 2:
+                tampilpemasukan();
+                break;
+            case 3:
+                tampildeposit();
+                break;
+            case 4:
+                tampilpengeluaran();
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        //if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-        //    BtnPrintActionPerformed(null);
-        //}else{
-        //    Valid.pindah(evt,BtnAll,BtnKeluar);
-       // }
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnPrintActionPerformed(null);
+        }else{
+            Valid.pindah(evt,BtnCari1,BtnKeluar);
+        }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if(tabModeRalan.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            }else if(tabModeRalan.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabModeRalan.getRowCount();r++){  
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                if(tabModeRalan.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                }else if(tabModeRalan.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");  
+                    for(int r=0;r<tabModeRalan.getRowCount();r++){
                         Sequel.menyimpan("temporary","'"+r+"','"+
-                                        tabModeRalan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                        tabModeRalan.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
-                                        tabModeRalan.getValueAt(r,13).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
-                }
-                
-                Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapPendapatanRalan.jasper","report","::[ Rekap Pendapatan Ralan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-           if(tabModeRanap.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            }else if(tabModeRanap.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabModeRanap.getRowCount();r++){  
+                                tabModeRalan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                tabModeRalan.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
+                                tabModeRalan.getValueAt(r,13).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
+                    }
+                    
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                    Valid.MyReportqry("rptRekapPendapatanRalan.jasper","report","::[ Rekap Pendapatan Ralan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   break;
+            case 1:
+                if(tabModeRanap.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                }else if(tabModeRanap.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabModeRanap.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'"+r+"','"+
-                                        tabModeRanap.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                        tabModeRanap.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
-                                        tabModeRanap.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
-                }
-                
-                Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapPendapatanRanap.jasper","report","::[ Rekap Pendapatan Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }else if(TabRawat.getSelectedIndex()==2){
-           if(tabModePemasukan.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            }else if(tabModePemasukan.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabModePemasukan.getRowCount();r++){  
+                                tabModeRanap.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                tabModeRanap.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
+                                tabModeRanap.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
+                    }
+                    
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                    Valid.MyReportqry("rptRekapPendapatanRanap.jasper","report","::[ Rekap Pendapatan Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   break;
+            case 2:
+                if(tabModePemasukan.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                }else if(tabModePemasukan.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabModePemasukan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'"+r+"','"+
-                                        tabModePemasukan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                        tabModePemasukan.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                        tabModePemasukan.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                        tabModePemasukan.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
-                }
-                
-                Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapPemasukanLain.jasper","report","::[ Rekap Pemasukan Lain ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }else if(TabRawat.getSelectedIndex()==3){
-           if(tabModePengeluaran.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            }else if(tabModePengeluaran.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabModePengeluaran.getRowCount();r++){  
+                                tabModePemasukan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                tabModePemasukan.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                tabModePemasukan.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                tabModePemasukan.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
+                    }
+                    
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                    Valid.MyReportqry("rptRekapPemasukanLain.jasper","report","::[ Rekap Pemasukan Lain ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   break;
+            case 3:
+                if(tabModeDeposit.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                }else if(tabModeDeposit.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabModeDeposit.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'"+r+"','"+
-                                        tabModePengeluaran.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                        tabModePengeluaran.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                        tabModePengeluaran.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                        tabModePengeluaran.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
-                }
-                
-                Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapPengeluaranHarian.jasper","report","::[ Rekap Pengeluaran Harian ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }            
+                                tabModeDeposit.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                tabModeDeposit.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                tabModeDeposit.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                tabModeDeposit.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                tabModeDeposit.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                tabModeDeposit.getValueAt(r,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
+                    }
+                    
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                    Valid.MyReportqry("rptRekapDeposit.jasper","report","::[ Rekap Deposit ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   break;
+            case 4:
+                if(tabModePengeluaran.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                }else if(tabModePengeluaran.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabModePengeluaran.getRowCount();r++){  
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                                tabModePengeluaran.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                tabModePengeluaran.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                tabModePengeluaran.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                tabModePengeluaran.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
+                    }
+                    
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                    Valid.MyReportqry("rptRekapPengeluaranHarian.jasper","report","::[ Rekap Pengeluaran Harian ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   break;
+            default:            
+                break;
+        }
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
@@ -599,13 +659,13 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil();
+            TabRawatMouseClicked(null);
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            Valid.pindah(evt, TKd, BtnPrint);
-        }*/
+            Valid.pindah(evt, Tgl1, BtnPrint);
+        }
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void tbPemasukanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemasukanMouseClicked
@@ -623,6 +683,14 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private void tbPengeluaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengeluaranKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbPengeluaranKeyPressed
+
+    private void tbDepositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDepositMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDepositMouseClicked
+
+    private void tbDepositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDepositKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDepositKeyPressed
 
     /**
     * @param args the command line arguments
@@ -649,6 +717,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
+    private widget.ScrollPane Scroll5;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.InternalFrame internalFrame1;
@@ -656,10 +725,12 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.InternalFrame internalFrame6;
     private widget.Label jLabel9;
     private widget.Label label12;
     private widget.Label label19;
     private widget.panelisi panelGlass5;
+    private widget.Table tbDeposit;
     private widget.Table tbPemasukan;
     private widget.Table tbPengeluaran;
     private widget.Table tbRalan;
@@ -670,7 +741,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabModeRalan);
         try{      
-            psjamshift=koneksi.prepareStatement(sqlpsjamshift);
+            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ? ");
             try {
                 psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
@@ -678,7 +749,12 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     tabModeRalan.addRow(new Object[]{
                         "Shift : "+rs.getString("shift"),rs.getString("jam_masuk")+" - "+rs.getString("jam_pulang"),"","","","","","","","","","","",""
                     });
-                    pspasienralan= koneksi.prepareStatement(sqlpspasienralan);
+                    pspasienralan= koneksi.prepareStatement("select reg_periksa.no_rawat,nota_jalan.no_nota,pasien.nm_pasien,nota_jalan.tanggal,nota_jalan.jam,dokter.nm_dokter,penjab.png_jawab "+
+                        "from reg_periksa inner join pasien inner join penjab inner join dokter inner join nota_jalan "+
+                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
+                        "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=nota_jalan.no_rawat where reg_periksa.status_lanjut='Ralan' and "+
+                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
+                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? order by nota_jalan.no_nota");
                     try {
                         pspasienralan.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
                         if(rs.getString("shift").equals("Malam")){
@@ -693,7 +769,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                         i=1;
                         while(rspasien.next()){
                             Operasi=0;Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_Paramedis=0;Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
-                            psbilling=koneksi.prepareStatement(sqlpsbilling);
+                            psbilling=koneksi.prepareStatement("select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ");
                             try {
                                 psbilling.setString(1,rspasien.getString("no_rawat"));
                                 rsbilling=psbilling.executeQuery(); 
@@ -806,7 +882,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabModeRanap);
         try{
-            psjamshift=koneksi.prepareStatement(sqlpsjamshift);
+            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ? ");
             try{
                 psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
@@ -814,7 +890,12 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     tabModeRanap.addRow(new Object[]{
                         "Shift : "+rs.getString("shift"),rs.getString("jam_masuk")+" - "+rs.getString("jam_pulang"),"","","","","","","","","","","","","","","",""
                     });
-                    pspasienranap=koneksi.prepareStatement(sqlpspasienranap);
+                    pspasienranap=koneksi.prepareStatement("select reg_periksa.no_rawat,nota_inap.no_nota,pasien.nm_pasien,nota_inap.tanggal,nota_inap.jam,penjab.png_jawab "+
+                        "from reg_periksa inner join pasien inner join penjab inner join nota_inap "+
+                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
+                        "reg_periksa.no_rawat=nota_inap.no_rawat where reg_periksa.status_lanjut='Ranap' and "+
+                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
+                        "concat(nota_inap.tanggal,' ',nota_inap.jam) between ? and ? order by nota_inap.no_nota");
                     try{
                         pspasienranap.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
                         if(rs.getString("shift").equals("Malam")){
@@ -835,7 +916,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                             Potongan=0;Registrasi=0;Retur_Obat=0;Resep_Pulang=0;Harian=0;Kamar=0;Service=0;
                             Ralan_Dokter_Paramedis=0;Operasi=0;Ranap_Dokter=0;Ranap_Dokter_Paramedis=0;
                             Ranap_Paramedis=0;
-                            psbilling=koneksi.prepareStatement(sqlpsbilling);
+                            psbilling=koneksi.prepareStatement("select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ");
                             try{
                                 psbilling.setString(1,rspasien.getString("no_rawat"));
                                 rsbilling=psbilling.executeQuery(); 
@@ -973,7 +1054,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabModePemasukan);
         try{
-            psjamshift=koneksi.prepareStatement(sqlpsjamshift);
+            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ? ");
             try{
                 psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
@@ -981,7 +1062,9 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     tabModePemasukan.addRow(new Object[]{
                         "Shift : "+rs.getString("shift"),rs.getString("jam_masuk")+" - "+rs.getString("jam_pulang"),"",""
                     });
-                    pspemasukan=koneksi.prepareStatement(sqlpspemasukan);
+                    pspemasukan=koneksi.prepareStatement("select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, kategori_pemasukan_lain.nama_kategori "+
+                        "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
+                        "where pemasukan_lain.tanggal between ? and ? order by pemasukan_lain.tanggal");
                     try{
                         pspemasukan.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
                         if(rs.getString("shift").equals("Malam")){
@@ -1030,13 +1113,79 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
         this.setCursor(Cursor.getDefaultCursor());        
-    }   
+    }  
+    
+    private void tampildeposit() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+        Valid.tabelKosong(tabModeDeposit);
+        try{
+            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ? ");
+            try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                rs=psjamshift.executeQuery();
+                while(rs.next()){
+                    tabModeDeposit.addRow(new Object[]{
+                        "Shift : "+rs.getString("shift"),rs.getString("jam_masuk")+" - "+rs.getString("jam_pulang"),"","","",""
+                    });
+                    psdeposit=koneksi.prepareStatement(
+                        "select deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.tgl_deposit,deposit.besar_deposit "+
+                        "from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "where deposit.tgl_deposit between ? and ? order by deposit.tgl_deposit");
+                    try{
+                        psdeposit.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
+                        if(rs.getString("shift").equals("Malam")){
+                            tanggal2=Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang")+"',INTERVAL 1 DAY)");
+                            psdeposit.setString(2,tanggal2);
+                        }else{
+                            psdeposit.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
+                        }
+                        
+                        rsbilling=psdeposit.executeQuery();
+                        i=1;
+                        all=0;
+                        while(rsbilling.next()){
+                            all=all+rsbilling.getDouble("besar_deposit");
+                            tabModeDeposit.addRow(new Object[]{
+                                i+". "+rsbilling.getString("tgl_deposit"),rsbilling.getString("no_deposit"),rsbilling.getString("no_rawat"),
+                                rsbilling.getString("no_rkm_medis"),rsbilling.getString("nm_pasien"),Valid.SetAngka(rsbilling.getDouble("besar_deposit"))
+                            });
+                            i++;
+                        }
+                        tabModeDeposit.addRow(new Object[]{
+                            "   >> Total ",":","","","",Valid.SetAngka(all)
+                        }); 
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rsbilling!=null){
+                            rsbilling.close();
+                        }
+                        if(psdeposit!=null){
+                            psdeposit.close();
+                        }
+                    }  
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(psjamshift!=null){
+                    psjamshift.close();
+                }
+            } 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());        
+    }  
     
     private void tampilpengeluaran() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabModePengeluaran);
         try{
-            psjamshift=koneksi.prepareStatement(sqlpsjamshift);
+            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ? ");
             try{
                 psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
@@ -1044,7 +1193,10 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     tabModePengeluaran.addRow(new Object[]{
                         "Shift : "+rs.getString("shift"),rs.getString("jam_masuk")+" - "+rs.getString("jam_pulang"),"",""
                     });
-                    pspengeluaran=koneksi.prepareStatement(sqlpspengeluaran);
+                    pspengeluaran=koneksi.prepareStatement("select pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya,  "+
+                        "kategori_pengeluaran_harian.nama_kategori from pengeluaran_harian inner join kategori_pengeluaran_harian "+
+                        "on pengeluaran_harian.kode_kategori=kategori_pengeluaran_harian.kode_kategori "+
+                        "where pengeluaran_harian.tanggal between ? and ? order by pengeluaran_harian.tanggal");
                     try{
                         pspengeluaran.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
                         if(rs.getString("shift").equals("Malam")){
