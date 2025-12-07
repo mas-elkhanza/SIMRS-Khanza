@@ -33,13 +33,13 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8,tabMode9,tabMode10,tabMode11;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private double rawatjalan=0,rawatinap=0,jualbebas=0,pemasukanlain=0,deposit=0,bayarpiutang=0,bayarpiutanguang=0,bayarpiutangjasa=0;
+    private double rawatjalan=0,rawatinap=0,jualbebas=0,pemasukanlain=0,deposit=0,bayarpiutang=0,bayarpiutanguang=0,bayarpiutangjasa=0,labkesling=0,jualtoko=0,bayarpiutangtoko=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -327,6 +327,111 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             }
         }
         tbPiutangJasaDibayar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode9=new DefaultTableModel(null,new Object[]{"Tanggal","No.Bayar/Nota","No.Permintaan","No.Pelanggan","Nama Pelanggan","Akun Bayar","Pembayaran"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Double.class 
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbLabKesehatanLingkungan.setModel(tabMode9);
+        tbLabKesehatanLingkungan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbLabKesehatanLingkungan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 7; i++) {
+            TableColumn column = tbLabKesehatanLingkungan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(65);
+            }else if(i==1){
+                column.setPreferredWidth(103);
+            }else if(i==2){
+                column.setPreferredWidth(103);
+            }else if(i==3){
+                column.setPreferredWidth(80);
+            }else if(i==4){
+                column.setPreferredWidth(210);
+            }else if(i==5){
+                column.setPreferredWidth(180);
+            }else if(i==6){
+                column.setPreferredWidth(100);
+            }
+        }
+        tbLabKesehatanLingkungan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode10=new DefaultTableModel(null,new Object[]{"Tanggal","No.Nota","Jenis Jual","No.Member","Nama Member","Akun Bayar","Pembayaran"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Double.class, 
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPenjualanToko.setModel(tabMode10);
+        tbPenjualanToko.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPenjualanToko.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 7; i++) {
+            TableColumn column = tbPenjualanToko.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(65);
+            }else if(i==1){
+                column.setPreferredWidth(103);
+            }else if(i==2){
+                column.setPreferredWidth(103);
+            }else if(i==3){
+                column.setPreferredWidth(80);
+            }else if(i==4){
+                column.setPreferredWidth(180);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(100);
+            }
+        }
+        tbPenjualanToko.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode11=new DefaultTableModel(null,new Object[]{"Tanggal","No.Tagihan","No.Member","Nama Member","Akun Bayar","Pembayaran"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPiutangTokoDibayar.setModel(tabMode11);
+        tbPiutangTokoDibayar.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPiutangTokoDibayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 6; i++) {
+            TableColumn column = tbPiutangTokoDibayar.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(65);
+            }else if(i==1){
+                column.setPreferredWidth(103);
+            }else if(i==2){
+                column.setPreferredWidth(80);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(166);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }
+        }
+        tbPiutangTokoDibayar.setDefaultRenderer(Object.class, new WarnaTable());
     }  
 
     /** This method is called from within the constructor to
@@ -367,6 +472,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
         LCountPiutangUang = new javax.swing.JLabel();
         LCountPiutangJasa = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        LCountKesehatanLingkungan = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        LCountJualToko = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        LCountPiutangTokoDibayar = new javax.swing.JLabel();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbRawatJalan = new widget.Table();
@@ -384,6 +495,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         tbPiutangUangDibayar = new widget.Table();
         Scroll10 = new widget.ScrollPane();
         tbPiutangJasaDibayar = new widget.Table();
+        Scroll11 = new widget.ScrollPane();
+        tbLabKesehatanLingkungan = new widget.Table();
+        Scroll12 = new widget.ScrollPane();
+        tbPenjualanToko = new widget.Table();
+        Scroll13 = new widget.ScrollPane();
+        tbPiutangTokoDibayar = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -395,7 +512,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 130));
+        jPanel3.setPreferredSize(new java.awt.Dimension(44, 160));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass8.setName("panelGlass8"); // NOI18N
@@ -408,7 +525,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         panelGlass8.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -422,7 +539,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         panelGlass8.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -501,7 +618,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 74));
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 104));
         panelGlass9.setLayout(null);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -619,7 +736,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel17);
-        jLabel17.setBounds(646, 10, 85, 23);
+        jLabel17.setBounds(0, 70, 120, 23);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(50, 50, 50));
@@ -628,7 +745,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         jLabel18.setName("jLabel18"); // NOI18N
         jLabel18.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel18);
-        jLabel18.setBounds(646, 40, 85, 23);
+        jLabel18.setBounds(234, 70, 80, 23);
 
         LCountPiutangUang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPiutangUang.setForeground(new java.awt.Color(50, 50, 50));
@@ -637,7 +754,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         LCountPiutangUang.setName("LCountPiutangUang"); // NOI18N
         LCountPiutangUang.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPiutangUang);
-        LCountPiutangUang.setBounds(735, 10, 110, 23);
+        LCountPiutangUang.setBounds(124, 70, 110, 23);
 
         LCountPiutangJasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPiutangJasa.setForeground(new java.awt.Color(50, 50, 50));
@@ -646,7 +763,61 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         LCountPiutangJasa.setName("LCountPiutangJasa"); // NOI18N
         LCountPiutangJasa.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPiutangJasa);
-        LCountPiutangJasa.setBounds(735, 40, 110, 23);
+        LCountPiutangJasa.setBounds(318, 70, 110, 23);
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel20.setText("Lab Kesling :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        jLabel20.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass9.add(jLabel20);
+        jLabel20.setBounds(430, 70, 100, 23);
+
+        LCountKesehatanLingkungan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCountKesehatanLingkungan.setForeground(new java.awt.Color(50, 50, 50));
+        LCountKesehatanLingkungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountKesehatanLingkungan.setText("0");
+        LCountKesehatanLingkungan.setName("LCountKesehatanLingkungan"); // NOI18N
+        LCountKesehatanLingkungan.setPreferredSize(new java.awt.Dimension(180, 23));
+        panelGlass9.add(LCountKesehatanLingkungan);
+        LCountKesehatanLingkungan.setBounds(534, 70, 110, 23);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel22.setText("Penjualan Toko :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass9.add(jLabel22);
+        jLabel22.setBounds(647, 10, 100, 23);
+
+        LCountJualToko.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCountJualToko.setForeground(new java.awt.Color(50, 50, 50));
+        LCountJualToko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountJualToko.setText("0");
+        LCountJualToko.setName("LCountJualToko"); // NOI18N
+        LCountJualToko.setPreferredSize(new java.awt.Dimension(180, 23));
+        panelGlass9.add(LCountJualToko);
+        LCountJualToko.setBounds(751, 10, 110, 23);
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel23.setText("Piutang Toko :");
+        jLabel23.setName("jLabel23"); // NOI18N
+        jLabel23.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass9.add(jLabel23);
+        jLabel23.setBounds(647, 40, 100, 23);
+
+        LCountPiutangTokoDibayar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCountPiutangTokoDibayar.setForeground(new java.awt.Color(50, 50, 50));
+        LCountPiutangTokoDibayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountPiutangTokoDibayar.setText("0");
+        LCountPiutangTokoDibayar.setName("LCountPiutangTokoDibayar"); // NOI18N
+        LCountPiutangTokoDibayar.setPreferredSize(new java.awt.Dimension(180, 23));
+        panelGlass9.add(LCountPiutangTokoDibayar);
+        LCountPiutangTokoDibayar.setBounds(751, 40, 110, 23);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -657,11 +828,6 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setName("Scroll"); // NOI18N
@@ -734,6 +900,33 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         Scroll10.setViewportView(tbPiutangJasaDibayar);
 
         TabRawat.addTab("Piutang Jasa Perusahaan Dibayar", Scroll10);
+
+        Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll11.setName("Scroll11"); // NOI18N
+        Scroll11.setOpaque(true);
+
+        tbLabKesehatanLingkungan.setName("tbLabKesehatanLingkungan"); // NOI18N
+        Scroll11.setViewportView(tbLabKesehatanLingkungan);
+
+        TabRawat.addTab("Lab Kesehatan Lingkungan", Scroll11);
+
+        Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll12.setName("Scroll12"); // NOI18N
+        Scroll12.setOpaque(true);
+
+        tbPenjualanToko.setName("tbPenjualanToko"); // NOI18N
+        Scroll12.setViewportView(tbPenjualanToko);
+
+        TabRawat.addTab("Penjualan Toko", Scroll12);
+
+        Scroll13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll13.setName("Scroll13"); // NOI18N
+        Scroll13.setOpaque(true);
+
+        tbPiutangTokoDibayar.setName("tbPiutangTokoDibayar"); // NOI18N
+        Scroll13.setViewportView(tbPiutangTokoDibayar);
+
+        TabRawat.addTab("Piutang Toko Dibayar", Scroll13);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -840,7 +1033,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
                 "select DATE_FORMAT(pemasukan_lain.tanggal,'%Y-%m-%d') as tanggal,pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
                 "pemasukan_lain.keperluan,kategori_pemasukan_lain.nama_kategori,pemasukan_lain.besar "+
                 "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
-                "where pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by pemasukan_lain.tanggal ",param);
+                "where pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by pemasukan_lain.tanggal ",param);
         }
         
         if(tabMode5.getRowCount()!=0){
@@ -873,7 +1066,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
                 "from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join rekening on rekening.kd_rek=bayar_piutang.kd_rek "+
                 "inner join rekening as rekening2 on rekening2.kd_rek=bayar_piutang.kd_rek_kontra "+
-                "where bayar_piutang.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_piutang.tgl_bayar ",param);
+                "where bayar_piutang.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by bayar_piutang.tgl_bayar ",param);
         }
         
         if(tabMode7.getRowCount()!=0){
@@ -889,7 +1082,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
                 "select DATE_FORMAT(bayar_piutang_lainlain.tgl_bayar,'%Y-%m-%d') as tanggal,bayar_piutang_lainlain.nota_piutang,bayar_piutang_lainlain.kode_peminjam,"+
                 "peminjampiutang.nama_peminjam,bayar_piutang_lainlain.nama_bayar,bayar_piutang_lainlain.besar_cicilan "+
                 "from bayar_piutang_lainlain inner join peminjampiutang on bayar_piutang_lainlain.kode_peminjam=peminjampiutang.kode_peminjam "+
-                "where bayar_piutang_lainlain.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_piutang_lainlain.tgl_bayar ",param);
+                "where bayar_piutang_lainlain.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by bayar_piutang_lainlain.tgl_bayar ",param);
         }
         
         if(tabMode8.getRowCount()!=0){
@@ -905,18 +1098,62 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
                 "select DATE_FORMAT(bayar_piutang_jasa_perusahaan.tgl_bayar,'%Y-%m-%d') as tanggal,bayar_piutang_jasa_perusahaan.no_piutang,bayar_piutang_jasa_perusahaan.kode_perusahaan,"+
                 "perusahaan_pasien.nama_perusahaan,bayar_piutang_jasa_perusahaan.nama_bayar,bayar_piutang_jasa_perusahaan.besar_cicilan "+
                 "from bayar_piutang_jasa_perusahaan inner join perusahaan_pasien on bayar_piutang_jasa_perusahaan.kode_perusahaan=perusahaan_pasien.kode_perusahaan "+
-                "where bayar_piutang_jasa_perusahaan.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_piutang_jasa_perusahaan.tgl_bayar ",param);
+                "where bayar_piutang_jasa_perusahaan.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by bayar_piutang_jasa_perusahaan.tgl_bayar ",param);
         }
+        
+        if(tabMode9.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptOmsetLabKesehetanLingkungan.jasper","report","::[ Penerimaan Pembayaran Laborat Kesehatan Lingkungan ]::",
+                "select DATE_FORMAT(labkesling_pembayaran_pengujian_sampel.tanggal,'%Y-%m-%d'),labkesling_pembayaran_pengujian_sampel.no_pembayaran,labkesling_pembayaran_pengujian_sampel.no_permintaan,"+
+                "labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_detail_pembayaran_pengujian_sampel.nama_bayar,labkesling_detail_pembayaran_pengujian_sampel.besar_bayar "+
+                "from labkesling_pembayaran_pengujian_sampel inner join labkesling_permintaan_pengujian_sampel on labkesling_pembayaran_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                "inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                "inner join labkesling_detail_pembayaran_pengujian_sampel on labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                "where labkesling_pembayaran_pengujian_sampel.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by labkesling_pembayaran_pengujian_sampel.tanggal ",param);
+        }
+        
+        if(tabMode10.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptOmsetPenjualanToko.jasper","report","::[ Penerimaan Penjualan Toko ]::",
+                "select DATE_FORMAT(tokopenjualan.tgl_jual,'%Y-%m-%d') as tanggal,tokopenjualan.nota_jual,tokopenjualan.jns_jual,tokopenjualan.no_member,"+
+                "tokopenjualan.nm_member,tokopenjualan.nama_bayar,(tokopenjualan.ongkir+tokopenjualan.ppn+tokopenjualan.total) as total "+
+                "from tokopenjualan where tokopenjualan.tgl_jual between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' "+
+                "order by tokopenjualan.tgl_jual,tokopenjualan.nota_jual ",param);
+        }
+        
+        if(tabMode11.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptOmsetPiutangTokoDibayar.jasper","report","::[ Penerimaan Pembayaran Piutang Toko ]::",
+                "select DATE_FORMAT(toko_bayar_piutang.tgl_bayar,'%Y-%m-%d') as tanggal,toko_bayar_piutang.nota_piutang,"+
+                "toko_bayar_piutang.no_member,tokomember.nama,rekening.nm_rek,toko_bayar_piutang.besar_cicilan "+
+                "from toko_bayar_piutang inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member "+
+                "inner join rekening on rekening.kd_rek=toko_bayar_piutang.kd_rek "+
+                "where toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59' order by toko_bayar_piutang.tgl_bayar ",param);
+        }
+        
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==0){
-            tampil();
-        }else if(TabRawat.getSelectedIndex()==1){
-            //tampil2();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     /**
     * @param args the command line arguments
@@ -942,15 +1179,21 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private javax.swing.JLabel LCountDeposit;
     private javax.swing.JLabel LCountJualBebas;
+    private javax.swing.JLabel LCountJualToko;
+    private javax.swing.JLabel LCountKesehatanLingkungan;
     private javax.swing.JLabel LCountPemasukanLain;
     private javax.swing.JLabel LCountPiutangDibayar;
     private javax.swing.JLabel LCountPiutangJasa;
+    private javax.swing.JLabel LCountPiutangTokoDibayar;
     private javax.swing.JLabel LCountPiutangUang;
     private javax.swing.JLabel LCountRawatInap;
     private javax.swing.JLabel LCountRawatJalan;
     private javax.swing.JLabel LCountTotal;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll10;
+    private widget.ScrollPane Scroll11;
+    private widget.ScrollPane Scroll12;
+    private widget.ScrollPane Scroll13;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -969,15 +1212,21 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private widget.Label jLabel19;
+    private javax.swing.JLabel jLabel20;
     private widget.Label jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbDeposit;
+    private widget.Table tbLabKesehatanLingkungan;
     private widget.Table tbPemasukanLain;
     private widget.Table tbPenjualanBebas;
+    private widget.Table tbPenjualanToko;
     private widget.Table tbPiutangJasaDibayar;
     private widget.Table tbPiutangPasienDibayar;
+    private widget.Table tbPiutangTokoDibayar;
     private widget.Table tbPiutangUangDibayar;
     private widget.Table tbRawatInap;
     private widget.Table tbRawatJalan;
@@ -1224,13 +1473,99 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             }
             LCountPiutangJasa.setText(Valid.SetAngka(bayarpiutangjasa));
             
-            LCountTotal.setText(Valid.SetAngka(rawatjalan+rawatinap+jualbebas+pemasukanlain+deposit+bayarpiutang+bayarpiutanguang+bayarpiutangjasa));
+            Valid.tabelKosong(tabMode9);
+            labkesling=0;
+            ps=koneksi.prepareStatement(
+                    "select DATE_FORMAT(labkesling_pembayaran_pengujian_sampel.tanggal,'%Y-%m-%d'),labkesling_pembayaran_pengujian_sampel.no_pembayaran,labkesling_pembayaran_pengujian_sampel.no_permintaan,"+
+                    "labkesling_permintaan_pengujian_sampel.kode_pelanggan,labkesling_pelanggan.nama_pelanggan,labkesling_detail_pembayaran_pengujian_sampel.nama_bayar,labkesling_detail_pembayaran_pengujian_sampel.besar_bayar "+
+                    "from labkesling_pembayaran_pengujian_sampel inner join labkesling_permintaan_pengujian_sampel on labkesling_pembayaran_pengujian_sampel.no_permintaan=labkesling_permintaan_pengujian_sampel.no_permintaan "+
+                    "inner join labkesling_pelanggan on labkesling_permintaan_pengujian_sampel.kode_pelanggan=labkesling_pelanggan.kode_pelanggan "+
+                    "inner join labkesling_detail_pembayaran_pengujian_sampel on labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran=labkesling_pembayaran_pengujian_sampel.no_pembayaran "+
+                    "where labkesling_pembayaran_pengujian_sampel.tanggal between ? and ? order by labkesling_pembayaran_pengujian_sampel.tanggal");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode9.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7)
+                    });
+                    labkesling=labkesling+rs.getDouble(7);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Labkesling : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCountKesehatanLingkungan.setText(Valid.SetAngka(labkesling));
+            
+            Valid.tabelKosong(tabMode10);
+            jualtoko=0;
+            ps=koneksi.prepareStatement(
+                    "select DATE_FORMAT(tokopenjualan.tgl_jual,'%Y-%m-%d'),tokopenjualan.nota_jual,tokopenjualan.jns_jual,tokopenjualan.no_member,"+
+                    "tokopenjualan.nm_member,tokopenjualan.nama_bayar,(tokopenjualan.ongkir+tokopenjualan.ppn+tokopenjualan.total) "+
+                    "from tokopenjualan where tokopenjualan.tgl_jual between ? and ? order by tokopenjualan.tgl_jual,tokopenjualan.nota_jual ");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem().toString()+""));
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode10.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),Math.round(rs.getDouble(7))
+                    });
+                    jualtoko=jualtoko+rs.getDouble(7);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Jual Toko : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCountJualToko.setText(Valid.SetAngka(jualtoko));
+            
+            Valid.tabelKosong(tabMode11);
+            bayarpiutangtoko=0;
+            ps=koneksi.prepareStatement(
+                    "select DATE_FORMAT(toko_bayar_piutang.tgl_bayar,'%Y-%m-%d'),toko_bayar_piutang.nota_piutang,"+
+                    "toko_bayar_piutang.no_member,tokomember.nama,rekening.nm_rek,toko_bayar_piutang.besar_cicilan "+
+                    "from toko_bayar_piutang inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member "+
+                    "inner join rekening on rekening.kd_rek=toko_bayar_piutang.kd_rek "+
+                    "where toko_bayar_piutang.tgl_bayar between ? and ? order by toko_bayar_piutang.tgl_bayar ");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode11.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDouble(6)
+                    });
+                    bayarpiutangtoko=bayarpiutangtoko+rs.getDouble(6);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Deposit : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCountPiutangTokoDibayar.setText(Valid.SetAngka(bayarpiutangtoko));
+            
+            LCountTotal.setText(Valid.SetAngka(rawatjalan+rawatinap+jualbebas+pemasukanlain+deposit+bayarpiutang+bayarpiutanguang+bayarpiutangjasa+labkesling+jualtoko+bayarpiutangtoko));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }
-
-    
-
 }

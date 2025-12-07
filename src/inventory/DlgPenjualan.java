@@ -1982,6 +1982,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_BtnGudangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Bayar.setText("0");
+        Ongkir.setText("0");
         tampil();
         try {
             if(Valid.daysOld("./cache/akunbayar.iyem")<8){

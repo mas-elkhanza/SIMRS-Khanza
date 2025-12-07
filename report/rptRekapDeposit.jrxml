@@ -191,7 +191,7 @@
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="290" y="0" width="180" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="254baf96-84a2-4a6b-acb3-a336280d5041"/>
+				<reportElement mode="Opaque" x="320" y="0" width="150" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="254baf96-84a2-4a6b-acb3-a336280d5041"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -207,7 +207,7 @@
 				<text><![CDATA[Besar Deposit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="240" y="0" width="50" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="f9978574-728f-4b5f-9415-859f2165cb2f"/>
+				<reportElement mode="Opaque" x="270" y="0" width="50" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="f9978574-728f-4b5f-9415-859f2165cb2f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -215,7 +215,7 @@
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="79" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="004483af-b40c-4995-8af8-91b7cee47831"/>
+				<reportElement mode="Opaque" x="1" y="0" width="99" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="004483af-b40c-4995-8af8-91b7cee47831"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -223,7 +223,7 @@
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="80" y="0" width="90" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="f98e62dd-fb89-44af-8c5c-840279ff31d0"/>
+				<reportElement mode="Opaque" x="100" y="0" width="90" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="f98e62dd-fb89-44af-8c5c-840279ff31d0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -231,7 +231,7 @@
 				<text><![CDATA[No.Deposit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="170" y="0" width="70" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="aa135ca4-9048-4554-be41-cdd94a62e6bf"/>
+				<reportElement mode="Opaque" x="190" y="0" width="80" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="aa135ca4-9048-4554-be41-cdd94a62e6bf"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -255,7 +255,7 @@
 	<detail>
 		<band height="10" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement x="2" y="0" width="78" height="10" uuid="3832a57a-231e-444b-b828-1aaa23f60a61"/>
+				<reportElement x="2" y="0" width="98" height="10" uuid="3832a57a-231e-444b-b828-1aaa23f60a61"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -263,7 +263,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="80" y="0" width="90" height="10" uuid="cae8d9dd-8302-41ff-a0ae-3561a4ede40b"/>
+				<reportElement x="100" y="0" width="90" height="10" uuid="cae8d9dd-8302-41ff-a0ae-3561a4ede40b"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -271,7 +271,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement x="170" y="0" width="70" height="10" uuid="ceac23d1-df57-4472-bd41-0635b7b1c11b"/>
+				<reportElement x="190" y="0" width="80" height="10" uuid="ceac23d1-df57-4472-bd41-0635b7b1c11b"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -279,7 +279,7 @@
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="240" y="0" width="50" height="10" uuid="2a75ca3c-ddba-4c0c-aeae-0b4e22a82482"/>
+				<reportElement x="270" y="0" width="50" height="10" uuid="2a75ca3c-ddba-4c0c-aeae-0b4e22a82482"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -287,7 +287,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="290" y="0" width="180" height="10" uuid="17dc2572-94dc-47d5-8c5b-d884941f0ec3"/>
+				<reportElement x="320" y="0" width="150" height="10" uuid="17dc2572-94dc-47d5-8c5b-d884941f0ec3"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
