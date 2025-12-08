@@ -69,8 +69,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "AMT1","N.AMT1","AMT2","N.AMT2","AMT3","N.AMT3","AMT4","N.AMT4","AMT5","N.AMT5",
-            "AMT6","N.AMT6","AMT7","N.AMT7","AMT8","N.AMT8","AMT9","N.AMT9","AMT10","N.AMT10",
+            "CURB1","N.CURB1","CURB2","N.CURB2","CURB3","N.CURB3","CURB4","N.CURB4","CURB5","N.CURB5",
             "N.Total","Kesimpulan"
             
         }){
@@ -82,7 +81,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 20; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -121,28 +120,8 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             }else if(i==17){
                 column.setPreferredWidth(55);
             }else if(i==18){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(60);
             }else if(i==19){
-                column.setPreferredWidth(55);
-            }else if(i==20){
-                column.setPreferredWidth(85);
-            }else if(i==21){
-                column.setPreferredWidth(55);
-            }else if(i==22){
-                column.setPreferredWidth(85);
-            }else if(i==23){
-                column.setPreferredWidth(55);
-            }else if(i==24){
-                column.setPreferredWidth(85);
-            }else if(i==25){
-                column.setPreferredWidth(55);
-            }else if(i==26){
-                column.setPreferredWidth(85);
-            }else if(i==27){
-                column.setPreferredWidth(60);
-            }else if(i==28){
-                column.setPreferredWidth(60);
-            }else if(i==29){
                 column.setPreferredWidth(250);
             }
         }
@@ -293,41 +272,21 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jLabel102 = new widget.Label();
         jLabel103 = new widget.Label();
         jLabel104 = new widget.Label();
-        jLabel105 = new widget.Label();
-        jLabel106 = new widget.Label();
-        jLabel107 = new widget.Label();
-        jLabel108 = new widget.Label();
-        jLabel109 = new widget.Label();
-        AMT1 = new widget.ComboBox();
-        AMT2 = new widget.ComboBox();
-        AMT3 = new widget.ComboBox();
-        AMT4 = new widget.ComboBox();
-        AMT5 = new widget.ComboBox();
-        AMT6 = new widget.ComboBox();
-        AMT7 = new widget.ComboBox();
-        AMT8 = new widget.ComboBox();
-        AMT9 = new widget.ComboBox();
-        AMT10 = new widget.ComboBox();
+        CURB1 = new widget.ComboBox();
+        CURB2 = new widget.ComboBox();
+        CURB3 = new widget.ComboBox();
+        CURB4 = new widget.ComboBox();
+        CURB5 = new widget.ComboBox();
         jLabel130 = new widget.Label();
-        NilaiAMT1 = new widget.TextBox();
+        NilaiCURB1 = new widget.TextBox();
         jLabel141 = new widget.Label();
         jLabel142 = new widget.Label();
         jLabel143 = new widget.Label();
         jLabel144 = new widget.Label();
-        jLabel145 = new widget.Label();
-        jLabel146 = new widget.Label();
-        jLabel147 = new widget.Label();
-        jLabel148 = new widget.Label();
-        jLabel149 = new widget.Label();
-        NilaiAMT2 = new widget.TextBox();
-        NilaiAMT3 = new widget.TextBox();
-        NilaiAMT4 = new widget.TextBox();
-        NilaiAMT5 = new widget.TextBox();
-        NilaiAMT6 = new widget.TextBox();
-        NilaiAMT7 = new widget.TextBox();
-        NilaiAMT8 = new widget.TextBox();
-        NilaiAMT9 = new widget.TextBox();
-        NilaiAMT10 = new widget.TextBox();
+        NilaiCURB2 = new widget.TextBox();
+        NilaiCURB3 = new widget.TextBox();
+        NilaiCURB4 = new widget.TextBox();
+        NilaiCURB5 = new widget.TextBox();
         jLabel160 = new widget.Label();
         jLabel161 = new widget.Label();
         Kesimpulan = new widget.TextBox();
@@ -339,11 +298,6 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jLabel112 = new widget.Label();
         jLabel113 = new widget.Label();
         jLabel114 = new widget.Label();
-        jLabel115 = new widget.Label();
-        jLabel116 = new widget.Label();
-        jLabel117 = new widget.Label();
-        jLabel118 = new widget.Label();
-        jLabel119 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel163 = new widget.Label();
 
@@ -377,7 +331,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Skrining Abbrevieted Mental Test (AMT) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Skrining CURB-65 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -543,7 +497,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -557,7 +511,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -618,7 +572,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 436));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 346));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -648,7 +602,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(830, 473));
+        FormInput.setPreferredSize(new java.awt.Dimension(830, 303));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -678,7 +632,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -795,7 +749,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("I. DETEKSI DINI FUNGSI KOGNITIF DENGAN MENGGUNAKAN ABBREVIATED MENTAL TEST");
+        jLabel99.setText("I. TINGKAT KEPARAHAN PNEUMONIA DENGAN CURB-65");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 700, 23);
@@ -830,195 +784,90 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         FormInput.add(jLabel104);
         jLabel104.setBounds(44, 210, 25, 23);
 
-        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel105.setText("6.");
-        jLabel105.setName("jLabel105"); // NOI18N
-        FormInput.add(jLabel105);
-        jLabel105.setBounds(44, 240, 25, 23);
-
-        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel106.setText("7.");
-        jLabel106.setName("jLabel106"); // NOI18N
-        FormInput.add(jLabel106);
-        jLabel106.setBounds(44, 270, 25, 23);
-
-        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("8.");
-        jLabel107.setName("jLabel107"); // NOI18N
-        FormInput.add(jLabel107);
-        jLabel107.setBounds(44, 300, 25, 23);
-
-        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel108.setText("9.");
-        jLabel108.setName("jLabel108"); // NOI18N
-        FormInput.add(jLabel108);
-        jLabel108.setBounds(44, 330, 25, 23);
-
-        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("10.");
-        jLabel109.setName("jLabel109"); // NOI18N
-        FormInput.add(jLabel109);
-        jLabel109.setBounds(44, 360, 25, 23);
-
-        AMT1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT1.setName("AMT1"); // NOI18N
-        AMT1.addItemListener(new java.awt.event.ItemListener() {
+        CURB1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CURB1.setName("CURB1"); // NOI18N
+        CURB1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT1ItemStateChanged(evt);
+                CURB1ItemStateChanged(evt);
             }
         });
-        AMT1.addKeyListener(new java.awt.event.KeyAdapter() {
+        CURB1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT1KeyPressed(evt);
+                CURB1KeyPressed(evt);
             }
         });
-        FormInput.add(AMT1);
-        AMT1.setBounds(620, 90, 80, 23);
+        FormInput.add(CURB1);
+        CURB1.setBounds(620, 90, 80, 23);
 
-        AMT2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT2.setName("AMT2"); // NOI18N
-        AMT2.addItemListener(new java.awt.event.ItemListener() {
+        CURB2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CURB2.setName("CURB2"); // NOI18N
+        CURB2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT2ItemStateChanged(evt);
+                CURB2ItemStateChanged(evt);
             }
         });
-        AMT2.addKeyListener(new java.awt.event.KeyAdapter() {
+        CURB2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT2KeyPressed(evt);
+                CURB2KeyPressed(evt);
             }
         });
-        FormInput.add(AMT2);
-        AMT2.setBounds(620, 120, 80, 23);
+        FormInput.add(CURB2);
+        CURB2.setBounds(620, 120, 80, 23);
 
-        AMT3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT3.setName("AMT3"); // NOI18N
-        AMT3.addItemListener(new java.awt.event.ItemListener() {
+        CURB3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CURB3.setName("CURB3"); // NOI18N
+        CURB3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT3ItemStateChanged(evt);
+                CURB3ItemStateChanged(evt);
             }
         });
-        AMT3.addKeyListener(new java.awt.event.KeyAdapter() {
+        CURB3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT3KeyPressed(evt);
+                CURB3KeyPressed(evt);
             }
         });
-        FormInput.add(AMT3);
-        AMT3.setBounds(620, 150, 80, 23);
+        FormInput.add(CURB3);
+        CURB3.setBounds(620, 150, 80, 23);
 
-        AMT4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT4.setName("AMT4"); // NOI18N
-        AMT4.addItemListener(new java.awt.event.ItemListener() {
+        CURB4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CURB4.setName("CURB4"); // NOI18N
+        CURB4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT4ItemStateChanged(evt);
+                CURB4ItemStateChanged(evt);
             }
         });
-        AMT4.addKeyListener(new java.awt.event.KeyAdapter() {
+        CURB4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT4KeyPressed(evt);
+                CURB4KeyPressed(evt);
             }
         });
-        FormInput.add(AMT4);
-        AMT4.setBounds(620, 180, 80, 23);
+        FormInput.add(CURB4);
+        CURB4.setBounds(620, 180, 80, 23);
 
-        AMT5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT5.setName("AMT5"); // NOI18N
-        AMT5.addItemListener(new java.awt.event.ItemListener() {
+        CURB5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CURB5.setName("CURB5"); // NOI18N
+        CURB5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT5ItemStateChanged(evt);
+                CURB5ItemStateChanged(evt);
             }
         });
-        AMT5.addKeyListener(new java.awt.event.KeyAdapter() {
+        CURB5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT5KeyPressed(evt);
+                CURB5KeyPressed(evt);
             }
         });
-        FormInput.add(AMT5);
-        AMT5.setBounds(620, 210, 80, 23);
-
-        AMT6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT6.setName("AMT6"); // NOI18N
-        AMT6.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT6ItemStateChanged(evt);
-            }
-        });
-        AMT6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT6KeyPressed(evt);
-            }
-        });
-        FormInput.add(AMT6);
-        AMT6.setBounds(620, 240, 80, 23);
-
-        AMT7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT7.setName("AMT7"); // NOI18N
-        AMT7.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT7ItemStateChanged(evt);
-            }
-        });
-        AMT7.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT7KeyPressed(evt);
-            }
-        });
-        FormInput.add(AMT7);
-        AMT7.setBounds(620, 270, 80, 23);
-
-        AMT8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT8.setName("AMT8"); // NOI18N
-        AMT8.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT8ItemStateChanged(evt);
-            }
-        });
-        AMT8.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT8KeyPressed(evt);
-            }
-        });
-        FormInput.add(AMT8);
-        AMT8.setBounds(620, 300, 80, 23);
-
-        AMT9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT9.setName("AMT9"); // NOI18N
-        AMT9.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT9ItemStateChanged(evt);
-            }
-        });
-        AMT9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT9KeyPressed(evt);
-            }
-        });
-        FormInput.add(AMT9);
-        AMT9.setBounds(620, 330, 80, 23);
-
-        AMT10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Salah", "Benar" }));
-        AMT10.setName("AMT10"); // NOI18N
-        AMT10.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AMT10ItemStateChanged(evt);
-            }
-        });
-        AMT10.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AMT10KeyPressed(evt);
-            }
-        });
-        FormInput.add(AMT10);
-        AMT10.setBounds(620, 360, 80, 23);
+        FormInput.add(CURB5);
+        CURB5.setBounds(620, 210, 80, 23);
 
         jLabel130.setText("Nilai :");
         jLabel130.setName("jLabel130"); // NOI18N
         FormInput.add(jLabel130);
         jLabel130.setBounds(700, 90, 40, 23);
 
-        NilaiAMT1.setHighlighter(null);
-        NilaiAMT1.setName("NilaiAMT1"); // NOI18N
-        FormInput.add(NilaiAMT1);
-        NilaiAMT1.setBounds(744, 90, 45, 23);
+        NilaiCURB1.setHighlighter(null);
+        NilaiCURB1.setName("NilaiCURB1"); // NOI18N
+        FormInput.add(NilaiCURB1);
+        NilaiCURB1.setBounds(744, 90, 45, 23);
 
         jLabel141.setText("Nilai :");
         jLabel141.setName("jLabel141"); // NOI18N
@@ -1040,86 +889,36 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         FormInput.add(jLabel144);
         jLabel144.setBounds(700, 210, 40, 23);
 
-        jLabel145.setText("Nilai :");
-        jLabel145.setName("jLabel145"); // NOI18N
-        FormInput.add(jLabel145);
-        jLabel145.setBounds(700, 240, 40, 23);
+        NilaiCURB2.setHighlighter(null);
+        NilaiCURB2.setName("NilaiCURB2"); // NOI18N
+        FormInput.add(NilaiCURB2);
+        NilaiCURB2.setBounds(744, 120, 45, 23);
 
-        jLabel146.setText("Nilai :");
-        jLabel146.setName("jLabel146"); // NOI18N
-        FormInput.add(jLabel146);
-        jLabel146.setBounds(700, 270, 40, 23);
+        NilaiCURB3.setHighlighter(null);
+        NilaiCURB3.setName("NilaiCURB3"); // NOI18N
+        FormInput.add(NilaiCURB3);
+        NilaiCURB3.setBounds(744, 150, 45, 23);
 
-        jLabel147.setText("Nilai :");
-        jLabel147.setName("jLabel147"); // NOI18N
-        FormInput.add(jLabel147);
-        jLabel147.setBounds(700, 300, 40, 23);
+        NilaiCURB4.setHighlighter(null);
+        NilaiCURB4.setName("NilaiCURB4"); // NOI18N
+        FormInput.add(NilaiCURB4);
+        NilaiCURB4.setBounds(744, 180, 45, 23);
 
-        jLabel148.setText("Nilai :");
-        jLabel148.setName("jLabel148"); // NOI18N
-        FormInput.add(jLabel148);
-        jLabel148.setBounds(700, 330, 40, 23);
-
-        jLabel149.setText("Nilai :");
-        jLabel149.setName("jLabel149"); // NOI18N
-        FormInput.add(jLabel149);
-        jLabel149.setBounds(700, 360, 40, 23);
-
-        NilaiAMT2.setHighlighter(null);
-        NilaiAMT2.setName("NilaiAMT2"); // NOI18N
-        FormInput.add(NilaiAMT2);
-        NilaiAMT2.setBounds(744, 120, 45, 23);
-
-        NilaiAMT3.setHighlighter(null);
-        NilaiAMT3.setName("NilaiAMT3"); // NOI18N
-        FormInput.add(NilaiAMT3);
-        NilaiAMT3.setBounds(744, 150, 45, 23);
-
-        NilaiAMT4.setHighlighter(null);
-        NilaiAMT4.setName("NilaiAMT4"); // NOI18N
-        FormInput.add(NilaiAMT4);
-        NilaiAMT4.setBounds(744, 180, 45, 23);
-
-        NilaiAMT5.setHighlighter(null);
-        NilaiAMT5.setName("NilaiAMT5"); // NOI18N
-        FormInput.add(NilaiAMT5);
-        NilaiAMT5.setBounds(744, 210, 45, 23);
-
-        NilaiAMT6.setHighlighter(null);
-        NilaiAMT6.setName("NilaiAMT6"); // NOI18N
-        FormInput.add(NilaiAMT6);
-        NilaiAMT6.setBounds(744, 240, 45, 23);
-
-        NilaiAMT7.setHighlighter(null);
-        NilaiAMT7.setName("NilaiAMT7"); // NOI18N
-        FormInput.add(NilaiAMT7);
-        NilaiAMT7.setBounds(744, 270, 45, 23);
-
-        NilaiAMT8.setHighlighter(null);
-        NilaiAMT8.setName("NilaiAMT8"); // NOI18N
-        FormInput.add(NilaiAMT8);
-        NilaiAMT8.setBounds(744, 300, 45, 23);
-
-        NilaiAMT9.setHighlighter(null);
-        NilaiAMT9.setName("NilaiAMT9"); // NOI18N
-        FormInput.add(NilaiAMT9);
-        NilaiAMT9.setBounds(744, 330, 45, 23);
-
-        NilaiAMT10.setHighlighter(null);
-        NilaiAMT10.setName("NilaiAMT10"); // NOI18N
-        FormInput.add(NilaiAMT10);
-        NilaiAMT10.setBounds(744, 360, 45, 23);
+        NilaiCURB5.setHighlighter(null);
+        NilaiCURB5.setName("NilaiCURB5"); // NOI18N
+        FormInput.add(NilaiCURB5);
+        NilaiCURB5.setBounds(744, 210, 45, 23);
 
         jLabel160.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel160.setText("Kesan/Kesimpulan");
         jLabel160.setName("jLabel160"); // NOI18N
         FormInput.add(jLabel160);
-        jLabel160.setBounds(44, 440, 100, 23);
+        jLabel160.setBounds(44, 290, 100, 23);
 
         jLabel161.setText(":");
         jLabel161.setName("jLabel161"); // NOI18N
         FormInput.add(jLabel161);
-        jLabel161.setBounds(0, 440, 140, 23);
+        jLabel161.setBounds(0, 290, 140, 23);
 
         Kesimpulan.setHighlighter(null);
         Kesimpulan.setName("Kesimpulan"); // NOI18N
@@ -1129,17 +928,17 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(144, 440, 645, 23);
+        Kesimpulan.setBounds(144, 290, 645, 23);
 
-        jLabel162.setText("Total Nilai AMT :");
+        jLabel162.setText("Total Nilai CURB-65 :");
         jLabel162.setName("jLabel162"); // NOI18N
         FormInput.add(jLabel162);
-        jLabel162.setBounds(610, 390, 130, 23);
+        jLabel162.setBounds(610, 240, 130, 23);
 
         TotalNilai.setHighlighter(null);
         TotalNilai.setName("TotalNilai"); // NOI18N
         FormInput.add(TotalNilai);
-        TotalNilai.setBounds(744, 390, 45, 23);
+        TotalNilai.setBounds(744, 240, 45, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1149,77 +948,47 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("Berapa umur Anda ?");
+        jLabel110.setText("C (Confusion) : Disorientasi / bingung ?");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
         jLabel110.setBounds(62, 90, 450, 23);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText("Jam berapa sekarang ?");
+        jLabel111.setText("U (Urea) : BUN > 20 mg/dL atau Urea > 7 mmol/L ?");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
         jLabel111.setBounds(62, 120, 450, 23);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel112.setText("Dimana alamat rumah Anda ?");
+        jLabel112.setText("R (Respiratory Rate) : RR ≥ 30 x/menit ?");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
         jLabel112.setBounds(62, 150, 450, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("Tahun berapa sekarang ?");
+        jLabel113.setText("B (Blood Pressure) : SBP < 90 atau DBP ≤ 60 ?");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
         jLabel113.setBounds(62, 180, 450, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText("Saat ini Kita sedang ada di mana ?");
+        jLabel114.setText("65 (Age ≥ 65) : Usia ≥ 65 tahun ?");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(62, 210, 490, 23);
-
-        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel115.setText("Apa nama keluarga Anda ?");
-        jLabel115.setName("jLabel115"); // NOI18N
-        FormInput.add(jLabel115);
-        jLabel115.setBounds(62, 240, 450, 23);
-
-        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel116.setText("Tahun berapa indonesia merdeka ?");
-        jLabel116.setName("jLabel116"); // NOI18N
-        FormInput.add(jLabel116);
-        jLabel116.setBounds(62, 270, 480, 23);
-
-        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel117.setText("Siapa nama Presiden/Kepala Negara saat ini ?");
-        jLabel117.setName("jLabel117"); // NOI18N
-        FormInput.add(jLabel117);
-        jLabel117.setBounds(62, 300, 450, 23);
-
-        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel118.setText("Tahun berapa Anda lahir ?");
-        jLabel118.setName("jLabel118"); // NOI18N
-        FormInput.add(jLabel118);
-        jLabel118.setBounds(62, 330, 450, 23);
-
-        jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel119.setText("Hitung mundur dari 20 ke 1");
-        jLabel119.setName("jLabel119"); // NOI18N
-        FormInput.add(jLabel119);
-        jLabel119.setBounds(62, 360, 450, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 420, 807, 1);
+        jSeparator2.setBounds(0, 270, 807, 1);
 
         jLabel163.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel163.setText("II. INTERPRETASI");
         jLabel163.setName("jLabel163"); // NOI18N
         FormInput.add(jLabel163);
-        jLabel163.setBounds(10, 420, 200, 23);
+        jLabel163.setBounds(10, 270, 200, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1603,13 +1372,11 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningInstrumenAMT.jasper","report","::[ Formulir Skrining Instrumen AMT ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_amt.nip,petugas.nama,skrining_instrumen_amt.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "skrining_instrumen_amt.pernyataanamt1,skrining_instrumen_amt.nilai_amt1,skrining_instrumen_amt.pernyataanamt2,skrining_instrumen_amt.nilai_amt2,skrining_instrumen_amt.pernyataanamt3,"+
-                    "skrining_instrumen_amt.nilai_amt3,skrining_instrumen_amt.pernyataanamt4,skrining_instrumen_amt.nilai_amt4,skrining_instrumen_amt.pernyataanamt5,skrining_instrumen_amt.nilai_amt5,"+
-                    "skrining_instrumen_amt.pernyataanamt6,skrining_instrumen_amt.nilai_amt6,skrining_instrumen_amt.pernyataanamt7,skrining_instrumen_amt.nilai_amt7,skrining_instrumen_amt.pernyataanamt8,"+
-                    "skrining_instrumen_amt.nilai_amt8,skrining_instrumen_amt.pernyataanamt9,skrining_instrumen_amt.nilai_amt9,skrining_instrumen_amt.pernyataanamt10,skrining_instrumen_amt.nilai_amt10,"+
-                    "skrining_instrumen_amt.nilai_total_amt,skrining_instrumen_amt.kesimpulan from skrining_instrumen_amt inner join reg_periksa on skrining_instrumen_amt.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_amt.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
+                    "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"+
+                    "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningInstrumenAMTActionPerformed
@@ -1618,98 +1385,53 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void AMT1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT1KeyPressed
-       Valid.pindah(evt,btnPetugas,AMT2);
-    }//GEN-LAST:event_AMT1KeyPressed
+    private void CURB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CURB1KeyPressed
+       Valid.pindah(evt,btnPetugas,CURB2);
+    }//GEN-LAST:event_CURB1KeyPressed
 
-    private void AMT2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT2KeyPressed
-        Valid.pindah(evt,AMT1,AMT3);
-    }//GEN-LAST:event_AMT2KeyPressed
+    private void CURB2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CURB2KeyPressed
+        Valid.pindah(evt,CURB1,CURB3);
+    }//GEN-LAST:event_CURB2KeyPressed
 
-    private void AMT3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT3KeyPressed
-        Valid.pindah(evt,AMT2,AMT4);
-    }//GEN-LAST:event_AMT3KeyPressed
+    private void CURB3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CURB3KeyPressed
+        Valid.pindah(evt,CURB2,CURB4);
+    }//GEN-LAST:event_CURB3KeyPressed
 
-    private void AMT4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT4KeyPressed
-        Valid.pindah(evt,AMT3,AMT5);
-    }//GEN-LAST:event_AMT4KeyPressed
+    private void CURB4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CURB4KeyPressed
+        Valid.pindah(evt,CURB3,CURB5);
+    }//GEN-LAST:event_CURB4KeyPressed
 
-    private void AMT5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT5KeyPressed
-        Valid.pindah(evt,AMT4,AMT6);
-    }//GEN-LAST:event_AMT5KeyPressed
+    private void CURB5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CURB5KeyPressed
+        Valid.pindah(evt,CURB4,Kesimpulan);
+    }//GEN-LAST:event_CURB5KeyPressed
 
-    private void AMT6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT6KeyPressed
-        Valid.pindah(evt,AMT5,AMT7);
-    }//GEN-LAST:event_AMT6KeyPressed
-
-    private void AMT7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT7KeyPressed
-        Valid.pindah(evt,AMT6,AMT8);
-    }//GEN-LAST:event_AMT7KeyPressed
-
-    private void AMT8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT8KeyPressed
-        Valid.pindah(evt,AMT7,AMT9);
-    }//GEN-LAST:event_AMT8KeyPressed
-
-    private void AMT9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT9KeyPressed
-        Valid.pindah(evt,AMT8,AMT10);
-    }//GEN-LAST:event_AMT9KeyPressed
-
-    private void AMT10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMT10KeyPressed
-        Valid.pindah(evt,AMT9,Kesimpulan);
-    }//GEN-LAST:event_AMT10KeyPressed
-
-    private void AMT1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT1ItemStateChanged
-        NilaiAMT1.setText(Integer.toString(AMT1.getSelectedIndex()));
+    private void CURB1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CURB1ItemStateChanged
+        NilaiCURB1.setText(Integer.toString(CURB1.getSelectedIndex()));
         isTotal();
-    }//GEN-LAST:event_AMT1ItemStateChanged
+    }//GEN-LAST:event_CURB1ItemStateChanged
 
-    private void AMT2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT2ItemStateChanged
-        NilaiAMT2.setText(Integer.toString(AMT2.getSelectedIndex()));
+    private void CURB2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CURB2ItemStateChanged
+        NilaiCURB2.setText(Integer.toString(CURB2.getSelectedIndex()));
         isTotal();
-    }//GEN-LAST:event_AMT2ItemStateChanged
+    }//GEN-LAST:event_CURB2ItemStateChanged
 
-    private void AMT3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT3ItemStateChanged
-       NilaiAMT3.setText(Integer.toString(AMT3.getSelectedIndex()));
+    private void CURB3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CURB3ItemStateChanged
+       NilaiCURB3.setText(Integer.toString(CURB3.getSelectedIndex()));
        isTotal();
-    }//GEN-LAST:event_AMT3ItemStateChanged
+    }//GEN-LAST:event_CURB3ItemStateChanged
 
-    private void AMT4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT4ItemStateChanged
-        NilaiAMT4.setText(Integer.toString(AMT4.getSelectedIndex()));
+    private void CURB4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CURB4ItemStateChanged
+        NilaiCURB4.setText(Integer.toString(CURB4.getSelectedIndex()));
         isTotal();
-    }//GEN-LAST:event_AMT4ItemStateChanged
+    }//GEN-LAST:event_CURB4ItemStateChanged
 
-    private void AMT5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT5ItemStateChanged
-        NilaiAMT5.setText(Integer.toString(AMT5.getSelectedIndex()));
+    private void CURB5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CURB5ItemStateChanged
+        NilaiCURB5.setText(Integer.toString(CURB5.getSelectedIndex()));
         isTotal();
-    }//GEN-LAST:event_AMT5ItemStateChanged
-
-    private void AMT6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT6ItemStateChanged
-       NilaiAMT6.setText(Integer.toString(AMT6.getSelectedIndex()));
-       isTotal();
-    }//GEN-LAST:event_AMT6ItemStateChanged
-
-    private void AMT7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT7ItemStateChanged
-        NilaiAMT7.setText(Integer.toString(AMT7.getSelectedIndex()));
-        isTotal();
-    }//GEN-LAST:event_AMT7ItemStateChanged
-
-    private void AMT8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT8ItemStateChanged
-        NilaiAMT8.setText(Integer.toString(AMT8.getSelectedIndex()));
-        isTotal();
-    }//GEN-LAST:event_AMT8ItemStateChanged
-
-    private void AMT9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT9ItemStateChanged
-        NilaiAMT9.setText(Integer.toString(AMT9.getSelectedIndex()));
-        isTotal();
-    }//GEN-LAST:event_AMT9ItemStateChanged
-
-    private void AMT10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMT10ItemStateChanged
-        NilaiAMT10.setText(Integer.toString(AMT10.getSelectedIndex()));
-        isTotal();
-    }//GEN-LAST:event_AMT10ItemStateChanged
+    }//GEN-LAST:event_CURB5ItemStateChanged
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah(evt,AMT10,BtnSimpan);
+        Valid.pindah(evt,CURB5,BtnSimpan);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     /**
@@ -1729,16 +1451,6 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox AMT1;
-    private widget.ComboBox AMT10;
-    private widget.ComboBox AMT2;
-    private widget.ComboBox AMT3;
-    private widget.ComboBox AMT4;
-    private widget.ComboBox AMT5;
-    private widget.ComboBox AMT6;
-    private widget.ComboBox AMT7;
-    private widget.ComboBox AMT8;
-    private widget.ComboBox AMT9;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1747,6 +1459,11 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.ComboBox CURB1;
+    private widget.ComboBox CURB2;
+    private widget.ComboBox CURB3;
+    private widget.ComboBox CURB4;
+    private widget.ComboBox CURB5;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
     private widget.Tanggal DTPCari1;
@@ -1761,16 +1478,11 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningInstrumenAMT;
-    private widget.TextBox NilaiAMT1;
-    private widget.TextBox NilaiAMT10;
-    private widget.TextBox NilaiAMT2;
-    private widget.TextBox NilaiAMT3;
-    private widget.TextBox NilaiAMT4;
-    private widget.TextBox NilaiAMT5;
-    private widget.TextBox NilaiAMT6;
-    private widget.TextBox NilaiAMT7;
-    private widget.TextBox NilaiAMT8;
-    private widget.TextBox NilaiAMT9;
+    private widget.TextBox NilaiCURB1;
+    private widget.TextBox NilaiCURB2;
+    private widget.TextBox NilaiCURB3;
+    private widget.TextBox NilaiCURB4;
+    private widget.TextBox NilaiCURB5;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1790,31 +1502,16 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private widget.Label jLabel102;
     private widget.Label jLabel103;
     private widget.Label jLabel104;
-    private widget.Label jLabel105;
-    private widget.Label jLabel106;
-    private widget.Label jLabel107;
-    private widget.Label jLabel108;
-    private widget.Label jLabel109;
     private widget.Label jLabel110;
     private widget.Label jLabel111;
     private widget.Label jLabel112;
     private widget.Label jLabel113;
     private widget.Label jLabel114;
-    private widget.Label jLabel115;
-    private widget.Label jLabel116;
-    private widget.Label jLabel117;
-    private widget.Label jLabel118;
-    private widget.Label jLabel119;
     private widget.Label jLabel130;
     private widget.Label jLabel141;
     private widget.Label jLabel142;
     private widget.Label jLabel143;
     private widget.Label jLabel144;
-    private widget.Label jLabel145;
-    private widget.Label jLabel146;
-    private widget.Label jLabel147;
-    private widget.Label jLabel148;
-    private widget.Label jLabel149;
     private widget.Label jLabel16;
     private widget.Label jLabel160;
     private widget.Label jLabel161;
@@ -1843,26 +1540,22 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         try{
            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_amt.nip,petugas.nama,skrining_instrumen_amt.tanggal,"+
-                    "skrining_instrumen_amt.pernyataanamt1,skrining_instrumen_amt.nilai_amt1,skrining_instrumen_amt.pernyataanamt2,skrining_instrumen_amt.nilai_amt2,skrining_instrumen_amt.pernyataanamt3,"+
-                    "skrining_instrumen_amt.nilai_amt3,skrining_instrumen_amt.pernyataanamt4,skrining_instrumen_amt.nilai_amt4,skrining_instrumen_amt.pernyataanamt5,skrining_instrumen_amt.nilai_amt5,"+
-                    "skrining_instrumen_amt.pernyataanamt6,skrining_instrumen_amt.nilai_amt6,skrining_instrumen_amt.pernyataanamt7,skrining_instrumen_amt.nilai_amt7,skrining_instrumen_amt.pernyataanamt8,"+
-                    "skrining_instrumen_amt.nilai_amt8,skrining_instrumen_amt.pernyataanamt9,skrining_instrumen_amt.nilai_amt9,skrining_instrumen_amt.pernyataanamt10,skrining_instrumen_amt.nilai_amt10,"+
-                    "skrining_instrumen_amt.nilai_total_amt,skrining_instrumen_amt.kesimpulan from skrining_instrumen_amt inner join reg_periksa on skrining_instrumen_amt.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_amt.nip=petugas.nip "+
-                    "where skrining_instrumen_amt.tanggal between ? and ? order by skrining_instrumen_amt.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,"+
+                    "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
+                    "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"+
+                    "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
+                    "where skrining_curb65.tanggal between ? and ? order by skrining_curb65.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_amt.nip,petugas.nama,skrining_instrumen_amt.tanggal,"+
-                    "skrining_instrumen_amt.pernyataanamt1,skrining_instrumen_amt.nilai_amt1,skrining_instrumen_amt.pernyataanamt2,skrining_instrumen_amt.nilai_amt2,skrining_instrumen_amt.pernyataanamt3,"+
-                    "skrining_instrumen_amt.nilai_amt3,skrining_instrumen_amt.pernyataanamt4,skrining_instrumen_amt.nilai_amt4,skrining_instrumen_amt.pernyataanamt5,skrining_instrumen_amt.nilai_amt5,"+
-                    "skrining_instrumen_amt.pernyataanamt6,skrining_instrumen_amt.nilai_amt6,skrining_instrumen_amt.pernyataanamt7,skrining_instrumen_amt.nilai_amt7,skrining_instrumen_amt.pernyataanamt8,"+
-                    "skrining_instrumen_amt.nilai_amt8,skrining_instrumen_amt.pernyataanamt9,skrining_instrumen_amt.nilai_amt9,skrining_instrumen_amt.pernyataanamt10,skrining_instrumen_amt.nilai_amt10,"+
-                    "skrining_instrumen_amt.nilai_total_amt,skrining_instrumen_amt.kesimpulan from skrining_instrumen_amt inner join reg_periksa on skrining_instrumen_amt.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_amt.nip=petugas.nip "+
-                    "where skrining_instrumen_amt.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_instrumen_amt.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_instrumen_amt.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,"+
+                    "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
+                    "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"+
+                    "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
+                    "where skrining_curb65.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_curb65.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_curb65.tanggal ");
             }
                 
             try {
@@ -1883,10 +1576,8 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("pernyataanamt1"),rs.getString("nilai_amt1"),rs.getString("pernyataanamt2"),rs.getString("nilai_amt2"),rs.getString("pernyataanamt3"),rs.getString("nilai_amt3"),rs.getString("pernyataanamt4"),
-                        rs.getString("nilai_amt4"),rs.getString("pernyataanamt5"),rs.getString("nilai_amt5"),rs.getString("pernyataanamt6"),rs.getString("nilai_amt6"),rs.getString("pernyataanamt7"),rs.getString("nilai_amt7"),
-                        rs.getString("pernyataanamt8"),rs.getString("nilai_amt8"),rs.getString("pernyataanamt9"),rs.getString("nilai_amt9"),rs.getString("pernyataanamt10"),rs.getString("nilai_amt10"),rs.getString("nilai_total_amt"),
-                        rs.getString("kesimpulan")
+                        rs.getString("pernyataancurb651"),rs.getString("nilai_curb651"),rs.getString("pernyataancurb652"),rs.getString("nilai_curb652"),rs.getString("pernyataancurb653"),rs.getString("nilai_curb653"),
+                        rs.getString("pernyataancurb654"),rs.getString("nilai_curb654"),rs.getString("pernyataancurb655"),rs.getString("nilai_curb655"),rs.getString("nilai_total_curb65"),rs.getString("kesimpulan")
                     });
                 }
             } catch (Exception e) {
@@ -1906,30 +1597,20 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        AMT1.setSelectedIndex(0);
-        NilaiAMT1.setText("0");
-        AMT2.setSelectedIndex(0);
-        NilaiAMT2.setText("0");
-        AMT3.setSelectedIndex(0);
-        NilaiAMT3.setText("0");
-        AMT4.setSelectedIndex(0);
-        NilaiAMT4.setText("0");
-        AMT5.setSelectedIndex(0);
-        NilaiAMT5.setText("0");
-        AMT6.setSelectedIndex(0);
-        NilaiAMT6.setText("0");
-        AMT7.setSelectedIndex(0);
-        NilaiAMT7.setText("0");
-        AMT8.setSelectedIndex(0);
-        NilaiAMT8.setText("0");
-        AMT9.setSelectedIndex(0);
-        NilaiAMT9.setText("0");
-        AMT10.setSelectedIndex(0);
-        NilaiAMT10.setText("0");
+        CURB1.setSelectedIndex(0);
+        NilaiCURB1.setText("0");
+        CURB2.setSelectedIndex(0);
+        NilaiCURB2.setText("0");
+        CURB3.setSelectedIndex(0);
+        NilaiCURB3.setText("0");
+        CURB4.setSelectedIndex(0);
+        NilaiCURB4.setText("0");
+        CURB5.setSelectedIndex(0);
+        NilaiCURB5.setText("0");
         TotalNilai.setText("0");
-        Kesimpulan.setText("Gangguan Ingatan Berat");
+        Kesimpulan.setText("Risiko Rendah, Tatalaksana Rawat Jalan");
         Tanggal.setDate(new Date());
-        AMT1.requestFocus();
+        CURB1.requestFocus();
     } 
 
     private void getData() {
@@ -1942,28 +1623,18 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            AMT1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NilaiAMT1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            AMT2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NilaiAMT2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            AMT3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            NilaiAMT3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            AMT4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NilaiAMT4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            AMT5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NilaiAMT5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            AMT6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            NilaiAMT6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            AMT7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            NilaiAMT7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            AMT8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            NilaiAMT8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            AMT9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiAMT9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            AMT10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            NilaiAMT10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            TotalNilai.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            CURB1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NilaiCURB1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            CURB2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaiCURB2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            CURB3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NilaiCURB3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            CURB4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NilaiCURB4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            CURB5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            NilaiCURB5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            TotalNilai.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -1972,7 +1643,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
-                    "reg_periksa.tgl_registrasi,reg_periksa.jam_reg "+
+                    "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {
@@ -1985,6 +1656,9 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
+                    if(rs.getString("sttsumur").equals("Th")&&(rs.getInt("umurdaftar")>=65)){
+                        CURB5.setSelectedIndex(1);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -2012,10 +1686,17 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
-            FormInput.setVisible(true);      
-            ChkInput.setVisible(true);
+            if(internalFrame1.getHeight()>518){
+                ChkInput.setVisible(false);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,346));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
+            }else{
+                ChkInput.setVisible(false);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
+            }
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
@@ -2025,10 +1706,10 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_instrumen_amt());
-        BtnHapus.setEnabled(akses.getskrining_instrumen_amt());
-        BtnEdit.setEnabled(akses.getskrining_instrumen_amt());
-        BtnPrint.setEnabled(akses.getskrining_instrumen_amt()); 
+        BtnSimpan.setEnabled(akses.getskrining_curb65());
+        BtnHapus.setEnabled(akses.getskrining_curb65());
+        BtnEdit.setEnabled(akses.getskrining_curb65());
+        BtnPrint.setEnabled(akses.getskrining_curb65()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2106,12 +1787,12 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_instrumen_amt","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataanamt1=?,nilai_amt1=?,pernyataanamt2=?,nilai_amt2=?,pernyataanamt3=?,nilai_amt3=?,pernyataanamt4=?,nilai_amt4=?,pernyataanamt5=?,nilai_amt5=?,"+
-                "pernyataanamt6=?,nilai_amt6=?,pernyataanamt7=?,nilai_amt7=?,pernyataanamt8=?,nilai_amt8=?,pernyataanamt9=?,nilai_amt9=?,pernyataanamt10=?,nilai_amt10=?,nilai_total_amt=?,kesimpulan=?",26,new String[]{
+        if(Sequel.mengedittf("skrining_curb65","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataancurb651=?,nilai_curb651=?,pernyataancurb652=?,nilai_curb652=?,pernyataancurb653=?,nilai_curb653=?,pernyataancurb654=?,"+
+                "nilai_curb654=?,pernyataancurb655=?,nilai_curb655=?,nilai_total_curb65=?,kesimpulan=?",16,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
-                AMT1.getSelectedItem().toString(),NilaiAMT1.getText(),AMT2.getSelectedItem().toString(),NilaiAMT2.getText(),AMT3.getSelectedItem().toString(),NilaiAMT3.getText(),AMT4.getSelectedItem().toString(),NilaiAMT4.getText(), 
-                AMT5.getSelectedItem().toString(),NilaiAMT5.getText(),AMT6.getSelectedItem().toString(),NilaiAMT6.getText(),AMT7.getSelectedItem().toString(),NilaiAMT7.getText(),AMT8.getSelectedItem().toString(),NilaiAMT8.getText(), 
-                AMT9.getSelectedItem().toString(),NilaiAMT9.getText(),AMT10.getSelectedItem().toString(),NilaiAMT10.getText(),TotalNilai.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                CURB1.getSelectedItem().toString(),NilaiCURB1.getText(),CURB2.getSelectedItem().toString(),NilaiCURB2.getText(),CURB3.getSelectedItem().toString(),NilaiCURB3.getText(),
+                CURB4.getSelectedItem().toString(),NilaiCURB4.getText(),CURB5.getSelectedItem().toString(),NilaiCURB5.getText(),TotalNilai.getText(),Kesimpulan.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2121,34 +1802,24 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(AMT1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(NilaiAMT1.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(AMT2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(NilaiAMT2.getText(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(AMT3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(NilaiAMT3.getText(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(AMT4.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(NilaiAMT4.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(AMT5.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(NilaiAMT5.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(AMT6.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(NilaiAMT6.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(AMT7.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(NilaiAMT7.getText(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(AMT8.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(NilaiAMT8.getText(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(AMT9.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(NilaiAMT9.getText(),tbObat.getSelectedRow(),25);
-               tbObat.setValueAt(AMT10.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-               tbObat.setValueAt(NilaiAMT10.getText(),tbObat.getSelectedRow(),27);
-               tbObat.setValueAt(TotalNilai.getText(),tbObat.getSelectedRow(),28);
-               tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(CURB1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(NilaiCURB1.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(CURB2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(NilaiCURB2.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(CURB3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(NilaiCURB3.getText(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(CURB4.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(NilaiCURB4.getText(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(CURB5.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(NilaiCURB5.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(TotalNilai.getText(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),19);
                emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_instrumen_amt where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_curb65 where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2160,17 +1831,15 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_instrumen_amt","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
+        if(Sequel.menyimpantf("skrining_curb65","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
-            AMT1.getSelectedItem().toString(),NilaiAMT1.getText(),AMT2.getSelectedItem().toString(),NilaiAMT2.getText(),AMT3.getSelectedItem().toString(),NilaiAMT3.getText(),AMT4.getSelectedItem().toString(),NilaiAMT4.getText(), 
-            AMT5.getSelectedItem().toString(),NilaiAMT5.getText(),AMT6.getSelectedItem().toString(),NilaiAMT6.getText(),AMT7.getSelectedItem().toString(),NilaiAMT7.getText(),AMT8.getSelectedItem().toString(),NilaiAMT8.getText(), 
-            AMT9.getSelectedItem().toString(),NilaiAMT9.getText(),AMT10.getSelectedItem().toString(),NilaiAMT10.getText(),TotalNilai.getText(),Kesimpulan.getText()
+            CURB1.getSelectedItem().toString(),NilaiCURB1.getText(),CURB2.getSelectedItem().toString(),NilaiCURB2.getText(),CURB3.getSelectedItem().toString(),NilaiCURB3.getText(),CURB4.getSelectedItem().toString(),NilaiCURB4.getText(), 
+            CURB5.getSelectedItem().toString(),NilaiCURB5.getText(),TotalNilai.getText(),Kesimpulan.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                AMT1.getSelectedItem().toString(),NilaiAMT1.getText(),AMT2.getSelectedItem().toString(),NilaiAMT2.getText(),AMT3.getSelectedItem().toString(),NilaiAMT3.getText(),AMT4.getSelectedItem().toString(),NilaiAMT4.getText(), 
-                AMT5.getSelectedItem().toString(),NilaiAMT5.getText(),AMT6.getSelectedItem().toString(),NilaiAMT6.getText(),AMT7.getSelectedItem().toString(),NilaiAMT7.getText(),AMT8.getSelectedItem().toString(),NilaiAMT8.getText(), 
-                AMT9.getSelectedItem().toString(),NilaiAMT9.getText(),AMT10.getSelectedItem().toString(),NilaiAMT10.getText(),TotalNilai.getText(),Kesimpulan.getText()
+                CURB1.getSelectedItem().toString(),NilaiCURB1.getText(),CURB2.getSelectedItem().toString(),NilaiCURB2.getText(),CURB3.getSelectedItem().toString(),NilaiCURB3.getText(),CURB4.getSelectedItem().toString(),NilaiCURB4.getText(), 
+                CURB5.getSelectedItem().toString(),NilaiCURB5.getText(),TotalNilai.getText(),Kesimpulan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
@@ -2180,15 +1849,14 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private void isTotal() {
         try {
             TotalNilai.setText(""+(
-                    Integer.parseInt(NilaiAMT1.getText())+Integer.parseInt(NilaiAMT2.getText())+Integer.parseInt(NilaiAMT3.getText())+Integer.parseInt(NilaiAMT4.getText())+Integer.parseInt(NilaiAMT5.getText())+
-                    Integer.parseInt(NilaiAMT6.getText())+Integer.parseInt(NilaiAMT7.getText())+Integer.parseInt(NilaiAMT8.getText())+Integer.parseInt(NilaiAMT9.getText())+Integer.parseInt(NilaiAMT10.getText())
+                    Integer.parseInt(NilaiCURB1.getText())+Integer.parseInt(NilaiCURB2.getText())+Integer.parseInt(NilaiCURB3.getText())+Integer.parseInt(NilaiCURB4.getText())+Integer.parseInt(NilaiCURB5.getText())
             ));
-            if((Integer.parseInt(TotalNilai.getText())>=0)&&(Integer.parseInt(TotalNilai.getText())<=3)){
-                Kesimpulan.setText("Gangguan Ingatan Berat");
-            }else if((Integer.parseInt(TotalNilai.getText())>=4)&&(Integer.parseInt(TotalNilai.getText())<=7)){
-                Kesimpulan.setText("Gangguan Ingatan Sedang");
-            }else if((Integer.parseInt(TotalNilai.getText())>=8)&&(Integer.parseInt(TotalNilai.getText())<=10)){
-                Kesimpulan.setText("Normal");
+            if((Integer.parseInt(TotalNilai.getText())>=0)&&(Integer.parseInt(TotalNilai.getText())<=1)){
+                Kesimpulan.setText("Risiko Rendah, Tatalaksana Rawat Jalan");
+            }else if((Integer.parseInt(TotalNilai.getText())==2)){
+                Kesimpulan.setText("Risiko Sedang, Tatalaksana Rawat Inap");
+            }else if((Integer.parseInt(TotalNilai.getText())>=3)){
+                Kesimpulan.setText("Risiko Tinggi, Tatalaksana Rawat Inap + Pertimbangkan ICU");
             }
         } catch (Exception e) {
             Kesimpulan.setText("Gangguan Ingatan Berat");
