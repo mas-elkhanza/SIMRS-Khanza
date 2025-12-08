@@ -170,6 +170,7 @@ import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
 import rekammedis.RMSkriningAnemia;
+import rekammedis.RMSkriningCURB65;
 import rekammedis.RMSkriningDiabetesMelitus;
 import rekammedis.RMSkriningFrailtySyndrome;
 import rekammedis.RMSkriningHipertensi;
@@ -12226,6 +12227,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnSkriningCURB65ActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMSkriningCURB65 form=new RMSkriningCURB65(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());  
+            }                
+        }
+    }
+    
     /**
     * @data args the command line arguments
     */
@@ -12559,8 +12583,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                   MnSkriningKesehatanGigiMulutBalita,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,MnCatatanPengkajianPaskaOperasi,
                                   MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,
                                   MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,
-                                  MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT;
-    private javax.swing.JMenu MnRMSkrining,MnEdukasi,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen;
+                                  MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65;
+    private javax.swing.JMenu MnRMSkrining,MnEdukasi,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
     private synchronized void tampil() {
         if(ceksukses==false){
@@ -13031,6 +13055,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPernyataanMemilihDPJP.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
         MnCheckListKriteriaMasukNICU.setEnabled(akses.getkriteria_masuk_nicu());   
         MnCheckListKriteriaMasukPICU.setEnabled(akses.getkriteria_masuk_picu());   
+        MnSkriningCURB65.setEnabled(akses.getskrining_curb65());
     }
     
     private void isNumber(){
@@ -13917,6 +13942,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCheckListKriteriaMasukPICU.setPreferredSize(new java.awt.Dimension(260, 26));
         MnCheckListKriteriaMasukPICU.addActionListener(this::MnCheckListKriteriaMasukPICUActionPerformed);
         
+        MnSkriningCURB65 = new javax.swing.JMenuItem();
+        MnSkriningCURB65.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningCURB65.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnSkriningCURB65.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningCURB65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSkriningCURB65.setText("Skrining CURB-65");
+        MnSkriningCURB65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkriningCURB65.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkriningCURB65.setName("MnSkriningCURB65");
+        MnSkriningCURB65.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningCURB65.addActionListener(this::MnSkriningCURB65ActionPerformed);
+        
         MnRMSkriningRisikoKanker = new javax.swing.JMenu();
         MnRMSkriningRisikoKanker.setBackground(new java.awt.Color(255, 255, 254));
         MnRMSkriningRisikoKanker.setForeground(new java.awt.Color(50, 50, 50));
@@ -13982,6 +14019,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningInstrumen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSkriningInstrumen.setName("MnSkriningInstrumen"); 
         MnSkriningInstrumen.setPreferredSize(new java.awt.Dimension(200, 26));
+        
+        MnSkriningParu = new javax.swing.JMenu();
+        MnSkriningParu.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningParu.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningParu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSkriningParu.setText("Skrining Paru");
+        MnSkriningParu.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnSkriningParu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkriningParu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkriningParu.setName("MnSkriningParu"); 
+        MnSkriningParu.setPreferredSize(new java.awt.Dimension(200, 26));
+        
         
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
@@ -14059,24 +14108,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnRMSkrining.add(MnSkriningObesitas);
         MnRMSkrining.add(MnRMSkriningRisikoKanker);
         MnRMSkrining.add(MnRMSkriningKesehatanGigiMulut);
-        MnRMSkrining.add(MnSkriningTBC);
-        MnRMSkrining.add(MnSkriningPUMA);
-        MnRMSkrining.add(MnSkriningPneumoniaSeverityIndex);
+        MnRMSkrining.add(MnSkriningParu);
         MnRMSkrining.add(MnSkriningAdiksiNikotin);
         MnRMSkrining.add(MnSkriningThalassemia);
         MnRMSkrining.add(MnSkriningInstrumen);
-        MnSkriningInstrumen.add(MnSkriningInstrumenSDQ);
-        MnSkriningInstrumen.add(MnSkriningInstrumenSRQ);
-        MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
-        MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
-        MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
-        MnSkriningInstrumen.add(MnSkriningInstrumenESAT);
         MnRMSkrining.add(MnSkriningDiabetesMelitus);
         MnRMSkrining.add(MnSkriningAnemia);
         MnRMSkrining.add(MnSkriningHipertensi);
         MnRMSkrining.add(MnSkriningKesehatanPenglihatan);
         MnRMSkrining.add(MnSkriningIndraPendengaran);
         MnRMSkrining.add(MnSkriningFrailtySyndrome);
+        
+        MnSkriningParu.add(MnSkriningTBC);
+        MnSkriningParu.add(MnSkriningPUMA);
+        MnSkriningParu.add(MnSkriningPneumoniaSeverityIndex);
+        MnSkriningParu.add(MnSkriningCURB65);
+        
+        MnSkriningInstrumen.add(MnSkriningInstrumenSDQ);
+        MnSkriningInstrumen.add(MnSkriningInstrumenSRQ);
+        MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
+        MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
+        MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
+        MnSkriningInstrumen.add(MnSkriningInstrumenESAT);
         
         MnRMSkriningKesehatanGigiMulut.add(MnSkriningKesehatanGigiMulutRemaja);
         MnRMSkriningKesehatanGigiMulut.add(MnSkriningKesehatanGigiMulutBalita);

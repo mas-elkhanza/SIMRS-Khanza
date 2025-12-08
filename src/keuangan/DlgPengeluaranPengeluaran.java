@@ -621,7 +621,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 160));
+        jPanel3.setPreferredSize(new java.awt.Dimension(44, 190));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass8.setName("panelGlass8"); // NOI18N
@@ -727,7 +727,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 104));
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 134));
         panelGlass9.setLayout(null);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -953,7 +953,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         jLabel25.setName("jLabel25"); // NOI18N
         jLabel25.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel25);
-        jLabel25.setBounds(888, 10, 100, 23);
+        jLabel25.setBounds(0, 100, 125, 23);
 
         LCountPengadaanToko.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPengadaanToko.setForeground(new java.awt.Color(50, 50, 50));
@@ -962,7 +962,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountPengadaanToko.setName("LCountPengadaanToko"); // NOI18N
         LCountPengadaanToko.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPengadaanToko);
-        LCountPengadaanToko.setBounds(992, 10, 110, 23);
+        LCountPengadaanToko.setBounds(129, 100, 110, 23);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 

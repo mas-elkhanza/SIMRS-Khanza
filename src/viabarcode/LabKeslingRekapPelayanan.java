@@ -1219,7 +1219,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "inner join petugas as pjvalidasi on labkesling_validasi_pengujian_sampel.nip_pj=pjvalidasi.nip "+
                 "inner join labkesling_detail_validasi_pengujian_sampel on labkesling_detail_validasi_pengujian_sampel.no_validasi=labkesling_validasi_pengujian_sampel.no_validasi "+
                 "inner join petugas as pjpengujian on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=pjpengujian.nip "+
-                "inner join petugas as analis on labkesling_detail_validasi_pengujian_sampel.nip_pjpengujian=analis.nip "+
+                "inner join petugas as analis on labkesling_detail_validasi_pengujian_sampel.nip_analis=analis.nip "+
                 "inner join labkesling_parameter_pengujian on labkesling_detail_validasi_pengujian_sampel.kode_parameter=labkesling_parameter_pengujian.kode_parameter "+
                 "where "+tanggalpencarian+(NamaPelanggan.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
                 (NamaSampel.getText().trim().equals("")?"":" and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
