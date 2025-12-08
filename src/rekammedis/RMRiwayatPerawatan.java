@@ -427,6 +427,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningGigiMulutLansia = new widget.CekBox();
         chkSkriningTBC = new widget.CekBox();
         chkSkriningPSI = new widget.CekBox();
+        chkSkriningCRUB65 = new widget.CekBox();
         chkSkriningPUMA = new widget.CekBox();
         chkSkriningAdiksiNikotin = new widget.CekBox();
         chkSkriningThalasemia = new widget.CekBox();
@@ -629,7 +630,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2025 07:12:59" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-12-2025 06:39:26" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -938,7 +939,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4515));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4560));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -2186,6 +2187,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningPSI.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningPSI);
 
+        chkSkriningCRUB65.setSelected(true);
+        chkSkriningCRUB65.setText("Skrining CRUB-65");
+        chkSkriningCRUB65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningCRUB65.setName("chkSkriningCRUB65"); // NOI18N
+        chkSkriningCRUB65.setOpaque(false);
+        chkSkriningCRUB65.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningCRUB65);
+
         chkSkriningPUMA.setSelected(true);
         chkSkriningPUMA.setText("Skrining PUMA");
         chkSkriningPUMA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -3226,6 +3235,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningPSI.setSelected(true);
             chkSkriningInstrumenESAT.setSelected(true);
             chkAsuhanMedisRanapJantung.setSelected(true);
+            chkSkriningCRUB65.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3423,6 +3433,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningPSI.setSelected(false);
             chkSkriningInstrumenESAT.setSelected(false);
             chkAsuhanMedisRanapJantung.setSelected(false);
+            chkSkriningCRUB65.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4191,6 +4202,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkorStewardPascaAnestesi;
     private widget.CekBox chkSkriningAdiksiNikotin;
     private widget.CekBox chkSkriningAnemia;
+    private widget.CekBox chkSkriningCRUB65;
     private widget.CekBox chkSkriningDiabetesMelitus;
     private widget.CekBox chkSkriningFrailtySyndrome;
     private widget.CekBox chkSkriningGigiMulutBalita;
@@ -4780,6 +4792,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSkriningKesehatanGigiMulutLansia(rs.getString("no_rawat"));
                     menampilkanSkriningTBC(rs.getString("no_rawat"));
                     menampilkanSkriningPSI(rs.getString("no_rawat"));
+                    menampilkanSkriningCRUB65(rs.getString("no_rawat"));
                     menampilkanSkriningPUMA(rs.getString("no_rawat"));
                     menampilkanSkriningAdiksiNikotin(rs.getString("no_rawat"));
                     menampilkanSkriningThalassemia(rs.getString("no_rawat"));
@@ -36662,6 +36675,109 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Asuhan Medis Rawat Inap Jantung : "+e);
+        }
+    }
+    
+    private void menampilkanSkriningCRUB65(String norawat) {
+        try {
+            if(chkSkriningCRUB65.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
+                        "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan "+
+                        "from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
+                        "where skrining_curb65.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append("<tr class='isi'>").
+                                        append("<td valign='top' width='2%'></td>").
+                                        append("<td valign='top' width='18%'>Skrining CRUB-65</td>").
+                                        append("<td valign='top' width='1%' align='center'>:</td>").
+                                        append("<td valign='top' width='79%'>").
+                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
+                        do{
+                            htmlContent.append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("YANG MELAKUKAN PENGKAJIAN").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").
+                                                        append("<td width='70%' border='0'>Petugas : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("I. TINGKAT KEPARAHAN PNEUMONIA DENGAN CURB-65").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>").
+                                                        append("<td valign='top' width='72%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>").
+                                                        append("<td valign='top' width='20%' bgcolor='#FFFAF8' align='center'>Jawaban</td>").
+                                                        append("<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td align='center'>1.</td>").
+                                                        append("<td>C (Confusion) : Disorientasi / Bingung ?</td>").
+                                                        append("<td align='center'>").append(rs2.getString("pernyataancurb651")).append("</td>").
+                                                        append("<td align='center'>").append(rs2.getString("nilai_curb651")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td align='center'>2.</td>").
+                                                        append("<td>U (Urea) : BUN > 20 mg/dL atau Urea > 7 mmol/L ?</td>").
+                                                        append("<td align='center'>").append(rs2.getString("pernyataancurb652")).append("</td>").
+                                                        append("<td align='center'>").append(rs2.getString("nilai_curb652")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td align='center'>3.</td>").
+                                                        append("<td>R (Respiratory Rate) : RR ≥ 30 x/menit ?</td>").
+                                                        append("<td align='center'>").append(rs2.getString("pernyataancurb653")).append("</td>").
+                                                        append("<td align='center'>").append(rs2.getString("nilai_curb653")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td align='center'>4.</td>").
+                                                        append("<td>B (Blood Pressure) : SBP < 90 atau DBP ≤ 60 ?</td>").
+                                                        append("<td align='center'>").append(rs2.getString("pernyataancurb654")).append("</td>").
+                                                        append("<td align='center'>").append(rs2.getString("nilai_curb654")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td align='center'>5.</td>").
+                                                        append("<td>65 (Age ≥ 65) : Usia ≥ 65 tahun ?</td>").
+                                                        append("<td align='center'>").append(rs2.getString("pernyataancurb655")).append("</td>").
+                                                        append("<td align='center'>").append(rs2.getString("nilai_curb655")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td colspan='3' bgcolor='#FFFAF8'>Total Nilai :</td>").
+                                                        append("<td align='center' bgcolor='#FFFAF8'>").append(rs2.getString("nilai_total_curb65")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("II. INTEPRETASI/KESIMPULAN HASIL PEMERIKSAAN").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='100%' border='0'>Kesan/Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>"); 
+                        }while(rs2.next());
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                append("</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining CRUB-65 : "+e);
         }
     }
 }

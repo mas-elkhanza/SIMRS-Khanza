@@ -69,7 +69,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "CURB1","N.CURB1","CURB2","N.CURB2","CURB3","N.CURB3","CURB4","N.CURB4","CURB5","N.CURB5",
+            "CURB65 1","N.CURB65 1","CURB65 2","N.CURB65 2","CURB65 3","N.CURB65 3","CURB65 4","N.CURB65 4","CURB65 5","N.CURB65 5",
             "N.Total","Kesimpulan"
             
         }){
@@ -100,25 +100,25 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==9){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==10){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==11){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==12){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==14){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==15){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==16){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==17){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==18){
                 column.setPreferredWidth(60);
             }else if(i==19){
@@ -219,7 +219,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenAMT = new javax.swing.JMenuItem();
+        MnSkriningInstrumenCURB65 = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -303,19 +303,19 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningInstrumenAMT.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningInstrumenAMT.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningInstrumenAMT.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningInstrumenAMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningInstrumenAMT.setText("Formulir Skrining AMT");
-        MnSkriningInstrumenAMT.setName("MnSkriningInstrumenAMT"); // NOI18N
-        MnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(180, 26));
-        MnSkriningInstrumenAMT.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningInstrumenCURB65.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningInstrumenCURB65.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningInstrumenCURB65.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningInstrumenCURB65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningInstrumenCURB65.setText("Formulir Skrining CURB-65");
+        MnSkriningInstrumenCURB65.setName("MnSkriningInstrumenCURB65"); // NOI18N
+        MnSkriningInstrumenCURB65.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSkriningInstrumenCURB65.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningInstrumenAMTActionPerformed(evt);
+                MnSkriningInstrumenCURB65ActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningInstrumenAMT);
+        jPopupMenu1.add(MnSkriningInstrumenCURB65);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -948,7 +948,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("C (Confusion) : Disorientasi / bingung ?");
+        jLabel110.setText("C (Confusion) : Disorientasi / Bingung ?");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
         jLabel110.setBounds(62, 90, 450, 23);
@@ -1144,26 +1144,16 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>KodePetugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NamaPetugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AMT10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.AMT10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CURB-65 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.CURB-65 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CURB-65 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.CURB-65 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CURB-65 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.CURB-65 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CURB-65 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.CURB-65 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CURB-65 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.CURB-65 5</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.Total</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                     "</tr>"
@@ -1191,21 +1181,11 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1226,17 +1206,17 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningInstrumenAMT.html");            
+                File f = new File("DataSkriningCURB65.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING INSTRUMEN AMT<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING CURB-65<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1359,7 +1339,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningInstrumenAMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenAMTActionPerformed
+    private void MnSkriningInstrumenCURB65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenCURB65ActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1371,7 +1351,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningInstrumenAMT.jasper","report","::[ Formulir Skrining Instrumen AMT ]::",
+            Valid.MyReportqry("rptFormulirSkriningCURB65.jasper","report","::[ Formulir Skrining CURB-65 ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
                     "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"+
@@ -1379,7 +1359,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningInstrumenAMTActionPerformed
+    }//GEN-LAST:event_MnSkriningInstrumenCURB65ActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1477,7 +1457,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenAMT;
+    private javax.swing.JMenuItem MnSkriningInstrumenCURB65;
     private widget.TextBox NilaiCURB1;
     private widget.TextBox NilaiCURB2;
     private widget.TextBox NilaiCURB3;

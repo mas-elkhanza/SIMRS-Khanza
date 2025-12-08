@@ -665,20 +665,22 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     Tambahan=0;Potongan=0;Kamar=0;Registrasi=0;Harian=0;Retur_Obat=0;Resep_Pulang=0;Service=0;
                     if(nmbangsal.getText().equals("")&&NmCaraBayar.getText().equals("")){
                         ps= koneksi.prepareStatement(
-                            "select kamar_inap.no_rawat,kamar_inap.tgl_keluar,kamar_inap.stts_pulang  from kamar_inap inner join reg_periksa inner join pasien inner join penjab inner join nota_inap "+
-                            "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and kamar_inap.tgl_keluar=? "+
-                            "order by kamar_inap.tgl_keluar");
+                            "select kamar_inap.no_rawat,kamar_inap.tgl_keluar,kamar_inap.stts_pulang from kamar_inap "+
+                            "inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                            "inner join nota_inap on reg_periksa.no_rawat=nota_inap.no_rawat "+
+                            "where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and kamar_inap.tgl_keluar=? "+
+                            "group by kamar_inap.no_rawat order by kamar_inap.tgl_keluar");
                     }else{
                         ps= koneksi.prepareStatement(
-                            "select kamar_inap.no_rawat,kamar_inap.tgl_keluar,kamar_inap.stts_pulang "+
-                           "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat "+
+                            "sselect kamar_inap.no_rawat,kamar_inap.tgl_keluar,kamar_inap.stts_pulang from kamar_inap "+
+                            "inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat "+
                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                            "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                             "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                            "inner join nota_inap on reg_periksa.no_rawat=nota_inap.no_rawat "+
                             "where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and kamar_inap.tgl_keluar=? and concat(kamar.kd_bangsal,bangsal.nm_bangsal) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ?"+
-                            "order by kamar_inap.tgl_keluar");
+                            "group by kamar_inap.no_rawat order by kamar_inap.tgl_keluar");
                     }
                         
                     try {
@@ -694,7 +696,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         while(rs.next()){
                             if(!rs.getString("stts_pulang").equals("-")){
                             if(!rs.getString("stts_pulang").equals("Pindah Kamar")){
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Laborat");
@@ -714,7 +716,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Radiologi");
@@ -734,7 +736,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Operasi");
@@ -754,7 +756,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Obat");
@@ -774,7 +776,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ranap Dokter");
@@ -794,7 +796,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ranap Dokter Paramedis");
@@ -814,7 +816,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ranap Paramedis");
@@ -834,7 +836,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ralan Dokter");
@@ -854,7 +856,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ralan Dokter Paramedis");
@@ -874,7 +876,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Ralan Paramedis");
@@ -894,7 +896,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Tambahan");
@@ -914,7 +916,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Potongan");
@@ -934,7 +936,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Kamar");
@@ -954,7 +956,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Registrasi");
@@ -974,7 +976,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Harian");
@@ -994,7 +996,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Retur Obat");
@@ -1014,7 +1016,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Resep Pulang");
@@ -1034,7 +1036,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     }
                                 }
                                 
-                                ps2=koneksi.prepareStatement("select sum(totalbiaya) from billing where no_rawat=? and status=? ");
+                                ps2=koneksi.prepareStatement("select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ");
                                 try{
                                     ps2.setString(1,rs.getString(1));
                                     ps2.setString(2,"Service");
