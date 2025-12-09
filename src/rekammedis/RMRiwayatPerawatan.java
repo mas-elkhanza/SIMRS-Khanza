@@ -67,6 +67,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.swing.SwingUtilities;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import java.util.List;
+import java.util.ArrayList;
 
 
 
@@ -4327,7 +4329,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
-                        while(rs2.next()){                            
+                        while(rs2.next()){       
                             tabModeRegistrasi.addRow(new Object[]{
                                 "",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
                                 rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
@@ -4389,7 +4391,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 if(ps!=null){
                     ps.close();
                 }
-            }                
+            } 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -4471,14 +4473,17 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 urut=1;
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    ps2=koneksi.prepareStatement(
+                        "select poliklinik.nm_poli,dokter.nm_dokter from rujukan_internal_poli "+
+                        "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli "+
+                        "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                        "where no_rawat=?"
+                    );
                     try {
                         dokterrujukan="";
                         polirujukan="";
-                        rs2=koneksi.prepareStatement(
-                            "select poliklinik.nm_poli,dokter.nm_dokter from rujukan_internal_poli "+
-                            "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli "+
-                            "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
-                            "where no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
                         while(rs2.next()){
                             polirujukan=polirujukan+", "+rs2.getString("nm_poli");
                             dokterrujukan=dokterrujukan+", "+rs2.getString("nm_dokter");
@@ -4488,6 +4493,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     } finally{
                         if(rs2!=null){
                             rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
                         }
                     }   
 
@@ -6552,14 +6560,16 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     append("<td valign='top' align='center'>").append(rs.getString("status_lanjut")).append("</td>").
                                     append("<td valign='top' align='center'>").
                                         append("<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0'>");
-                    try {
-                        rs2=koneksi.prepareStatement(
+                    
+                    ps2=koneksi.prepareStatement(
                                 "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
                                 "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.spo2,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
                                 "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.lingkar_perut,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,"+
                                 "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
-                                "pemeriksaan_ralan.no_rawat='"+rs.getString("no_rawat")+"' "+
-                                "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
+                                "pemeriksaan_ralan.no_rawat=? order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
                         if(rs2.next()){
                             htmlContent.append("<tr class='isi'>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>").
@@ -6590,10 +6600,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         if(rs2!=null){
                             rs2.close();
                         }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
                     }
                     
-                    try {
-                        rs2=koneksi.prepareStatement(
+                    ps2=koneksi.prepareStatement(
                                 "select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                 "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, " +
                                 "pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi, " +
@@ -6602,8 +6614,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 "pemeriksaan_ranap.instruksi,pemeriksaan_ranap.evaluasi,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn "+
                                 "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                 "inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
-                                "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' "+
-                                "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
+                                "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik where pemeriksaan_ranap.no_rawat=? "+
+                                "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
                         if(rs2.next()){
                             htmlContent.append("<tr class='isi'>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>").
@@ -6633,6 +6648,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     } finally{
                         if(rs2!=null){
                             rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
                         }
                     }
                     htmlContent.append("</table>").
@@ -17669,9 +17687,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     append("<td valign='top' width='18%'>Pengkajian Awal Medis Rawat Jalan Psikiatri</td>").
                                     append("<td valign='top' width='1%' align='center'>:</td>").
                                     append("<td valign='top' width='79%'>").
-                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
-                        do{
-                            htmlContent.append("<tr>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                    append("<tr>").
                                             append("<td valign='top'>").
                                                 append("YANG MELAKUKAN PENGKAJIAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
@@ -17810,9 +17827,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
-                                        append("</tr>"); 
-                        }while(rs2.next());
-                        htmlContent.append("</table>").
+                                        append("</tr>").
+                                    append("</table>").
                                     append("</td>").
                                     append("</tr>");
                     }
@@ -18462,9 +18478,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     append("<td valign='top' width='18%'>Pengkajian Awal Medis Rawat Jalan Neurologi</td>").
                                     append("<td valign='top' width='1%' align='center'>:</td>").
                                     append("<td valign='top' width='79%'>").
-                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
-                        do{
-                            htmlContent.append("<tr>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                    append("<tr>").
                                             append("<td valign='top'>").
                                                 append("YANG MELAKUKAN PENGKAJIAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
@@ -18590,9 +18605,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
-                                        append("</tr>");
-                        }while(rs2.next());
-                        htmlContent.append("</table>").
+                                        append("</tr>").
+                                    append("</table>").
                                     append("</td>").
                                     append("</tr>");
                     }
@@ -27836,9 +27850,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         append("<td valign='top' width='18%'>Skrining Risiko Kanker Paru</td>").
                                         append("<td valign='top' width='1%' align='center'>:</td>").
                                         append("<td valign='top' width='79%'>").
-                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
-                        do{
-                            htmlContent.append("<tr>").
+                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                        append("<tr>").
                                             append("<td valign='top'>").
                                                 append("YANG MELAKUKAN PENGKAJIAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
@@ -27932,11 +27945,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
-                                        append("</tr>");
-                        }while(rs2.next());
-                        htmlContent.append("</table>").
-                                    append("</td>").
-                                append("</tr>");
+                                        append("</tr>").
+                                        append("</table>").
+                                        append("</td>").
+                                    append("</tr>");
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -28106,9 +28118,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     append("<td valign='top' width='18%'>Skrining TBC</td>").
                                     append("<td valign='top' width='1%' align='center'>:</td>").
                                     append("<td valign='top' width='79%'>").
-                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
-                        do{
-                            htmlContent.append("<tr>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                        append("<tr>").
                                             append("<td valign='top'>").
                                                 append("YANG MELAKUKAN PENGKAJIAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
@@ -28281,9 +28292,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
-                                        append("</tr>"); 
-                        }while(rs2.next());
-                        htmlContent.append("</table>").
+                                        append("</tr>").
+                                    append("</table>").
                                     append("</td>").
                                     append("</tr>");
                     }
@@ -36709,5 +36719,4 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         });
     }
-
 }
