@@ -28,7 +28,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
+import java.util.List;
 import javax.swing.SwingWorker;
 import kepegawaian.DlgCariPetugas;
 import java.io.File;
@@ -3027,11 +3027,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil(){
+    private void tampil(){
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -3066,7 +3066,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3109,7 +3109,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3152,7 +3152,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3170,6 +3170,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     return null;
                 }
 
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
+                
                 @Override
                 protected void done() {
                     LCount.setText(Valid.SetAngka(sisapiutang));

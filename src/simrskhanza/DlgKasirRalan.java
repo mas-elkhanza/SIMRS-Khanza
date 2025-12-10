@@ -56,6 +56,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15933,11 +15934,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
-    private synchronized void tampilkasir() { 
+    private void tampilkasir() { 
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabModekasir);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{   
@@ -15988,7 +15989,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                     rskasir.getString("kd_pj"),rskasir.getString("kd_poli"),rskasir.getString("no_tlp")
                                 };
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabModekasir.addRow(row));
+                                publish(row);
                             }               
                         } catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16005,6 +16006,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     } 
                     return null;
                 }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabModekasir.addRow(row);
+                    }
+                }
 
                 @Override
                 protected void done() {
@@ -16015,11 +16023,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
-    private synchronized void tampilkasir2() {     
+    private void tampilkasir2() {     
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabModekasir2);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{   
@@ -16068,7 +16076,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                     rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj"),rskasir.getString("no_tlp")
                                 };
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabModekasir2.addRow(row));
+                                publish(row);
                             }                
                         } catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16084,6 +16092,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         System.out.println("Notifikasi : "+e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabModekasir2.addRow(row);
+                    }
                 }
 
                 @Override

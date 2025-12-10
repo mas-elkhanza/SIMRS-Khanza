@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
+import java.util.List;
 import javax.swing.SwingWorker;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
@@ -6793,12 +6793,12 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Table tbUser;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil() {  
+    private void tampil() {  
         if(ceksukses==false){
             ceksukses=true;
             try{    
                 Valid.tabelKosong(tabMode);
-                new SwingWorker<Void, Void>() {
+                new SwingWorker<Void, Object[]>() {
                     @Override
                     protected Void doInBackground() throws Exception {
                         ps=koneksi.prepareStatement(
@@ -8215,7 +8215,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("skrining_curb65")
                                         };
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                        publish(row);
                                     }   
                                 } catch (Exception e) {
                                     Object[] row = new Object[]{rs.getString(1),
@@ -9390,7 +9390,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("skrining_curb65")
                                     };
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    publish(row);
                                 }                                             
                              }
                         } catch (Exception e) {
@@ -9404,6 +9404,13 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             }
                         }
                         return null;
+                    }
+                    
+                    @Override
+                    protected void process(List<Object[]> data) {
+                        for (Object[] row : data) {
+                            tabMode.addRow(row);
+                        }
                     }
 
                     @Override

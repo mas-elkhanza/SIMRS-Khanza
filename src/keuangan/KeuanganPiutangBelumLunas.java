@@ -29,8 +29,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import java.util.List;
 
 /**
  *
@@ -1371,11 +1371,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil(){
+    private void tampil(){
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -1404,7 +1404,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     cicilan,(rs.getDouble(7)-cicilan),rs.getString(8),rs.getString(9),(rs.getDouble(7)-cicilan),0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble(7)-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -1421,6 +1421,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }
                     return null;
                 }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
 
                 @Override
                 protected void done() {
@@ -1431,11 +1438,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 
-    private synchronized void tampilperakun() {
+    private void tampilperakun() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -1463,7 +1470,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     cicilan,rs.getDouble(7),rs.getString(8),rs.getString(9),rs.getDouble(7),0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble(7)-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -1479,6 +1486,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         System.out.println("Notifikasi : "+e);
                     }
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
                 }
 
                 @Override

@@ -50,15 +50,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
@@ -8948,11 +8946,11 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Table tbPasien3;
     // End of variables declaration//GEN-END:variables
     
-    private synchronized void tampil() {    
+    private void tampil() {    
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{
@@ -9096,7 +9094,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("kecamatanpj"),rs.getString("kabupatenpj"),rs.getString("propinsipj")
                                 }; 
                                 z++;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -9114,6 +9112,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     } 
                     return null;
                 }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
 
                 @Override
                 protected void done() {
@@ -9124,11 +9129,11 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }
     
-    private synchronized void tampiltni() {     
+    private void tampiltni() {     
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode2);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{              
@@ -9301,7 +9306,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
                                 };
                                 z++;
-                                SwingUtilities.invokeLater(() -> tabMode2.addRow(row));
+                                publish(row);
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -9319,6 +9324,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     } 
                     return null;
                 }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode2.addRow(row);
+                    }
+                }
 
                 @Override
                 protected void done() {
@@ -9330,11 +9342,11 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }  
     }
     
-    private synchronized void tampilpolri() {  
+    private void tampilpolri() {  
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode3);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{             
@@ -9510,7 +9522,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
                                 };  
                                 z++;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -9527,6 +9539,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                         System.out.println(e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode3.addRow(row);
+                    }
                 }
 
                 @Override

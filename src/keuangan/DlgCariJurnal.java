@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -24,7 +25,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 public class DlgCariJurnal extends javax.swing.JDialog {
@@ -744,11 +744,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox tipe;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil() {
+    private void tampil() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -787,7 +787,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             Object[] row = new Object[]{
                                 rs.getString(1),rs.getString(2),rs.getString(3)+" "+rs.getString(8),jns,rs.getString(5),"",""
                             };
-                            SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                            publish(row);
 
                             rs2=koneksi.prepareStatement("select detailjurnal.kd_rek,rekening.nm_rek,detailjurnal.debet,detailjurnal.kredit "+
                                     " from detailjurnal inner join rekening on detailjurnal.kd_rek=rekening.kd_rek where "+
@@ -801,18 +801,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 ttlkredit=ttlkredit+rs2.getDouble(4);
                                 subttlkredit=subttlkredit+rs2.getDouble(4);                    
                                 Object[] row2 = new Object[]{"","","","",no+". "+rs2.getString(1)+", "+rs2.getString(2),Valid.SetAngka(rs2.getDouble(3)),Valid.SetAngka(rs2.getDouble(4))};
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row2));
+                                publish(row2);
                                 no++;
                             }
                             rs2.close();
                             Object[] row3 = new Object[]{"","","","","Total :",Valid.SetAngka(subttldebet),Valid.SetAngka(subttlkredit)};  
-                            SwingUtilities.invokeLater(() -> tabMode.addRow(row3));
+                            publish(row3);
                         }         
                         rs.close();
                     }catch(Exception e){
                         System.out.println("Notifikasi : "+e);
                     }
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
                 }
 
                 @Override

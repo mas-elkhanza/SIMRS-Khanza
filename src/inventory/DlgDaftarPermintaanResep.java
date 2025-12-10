@@ -21,10 +21,10 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
@@ -3315,11 +3315,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Table tbResepRanap;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil() {
+    private void tampil() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{  
@@ -3384,7 +3384,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
                                     };  
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    publish(row);
                                 }  
                             }else{
                                 while(rs.next()){
@@ -3396,7 +3396,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
                                         };
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                        publish(row);
                                     }                    
                                 }  
                             }   
@@ -3414,6 +3414,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         System.out.println("Notifikasi PS : "+e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
                 }
 
                 @Override
@@ -3864,11 +3871,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }
     
-    private synchronized void tampil3() {
+    private void tampil3() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode3);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{  
@@ -3938,7 +3945,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
                                     }; 
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
+                                    publish(row);
                                 }
                             }else{
                                 while(rs.next()){
@@ -3950,7 +3957,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
                                         }; 
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
+                                        publish(row);
                                     }                  
                                 } 
                             }               
@@ -4031,7 +4038,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
                                     };   
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
+                                    publish(row);
                                 } 
                             }else{
                                 while(rs.next()){
@@ -4043,7 +4050,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
                                         };  
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
+                                        publish(row);
                                     }                  
                                 }
                             }   
@@ -4061,6 +4068,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         System.out.println("Notifikasi : "+e);
                     }  
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode3.addRow(row);
+                    }
                 }
 
                 @Override
@@ -4528,11 +4542,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }  
     }
     
-    private synchronized void tampil5() {
+    private void tampil5() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode5);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{  
@@ -4597,7 +4611,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     };  
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
+                                    publish(row);
                                 } 
                             }else{
                                 while(rs.next()){
@@ -4608,7 +4622,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         }; 
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
+                                        publish(row);
                                     }                  
                                 }
                             }               
@@ -4684,7 +4698,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     }; 
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
+                                    publish(row);
                                 } 
                             }else{
                                 while(rs.next()){
@@ -4695,7 +4709,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         };  
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode5.addRow(row));  
+                                        publish(row);  
                                     }                  
                                 }
                             }      
@@ -4713,6 +4727,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         System.out.println("Notifikasi : "+e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode5.addRow(row);
+                    }
                 }
 
                 @Override
@@ -5125,11 +5146,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }  
     }
     
-    private synchronized void tampil7() {
+    private void tampil7() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode7);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try{  
@@ -5194,7 +5215,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     }; 
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode7.addRow(row));
+                                    publish(row);
                                 }
                             }else{
                                 while(rs.next()){
@@ -5205,7 +5226,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         }; 
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode7.addRow(row));  
+                                        publish(row);  
                                     }                  
                                 } 
                             }               
@@ -5281,7 +5302,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     }; 
                                     i++;
-                                    SwingUtilities.invokeLater(() -> tabMode7.addRow(row));           
+                                    publish(row);           
                                 }
                             }else{
                                 while(rs.next()){
@@ -5292,7 +5313,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         }; 
                                         i++;
-                                        SwingUtilities.invokeLater(() -> tabMode7.addRow(row));   
+                                        publish(row);   
                                     }                  
                                 } 
                             }
@@ -5310,6 +5331,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         System.out.println("Notifikasi : "+e);
                     }  
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode7.addRow(row);
+                    }
                 }
 
                 @Override

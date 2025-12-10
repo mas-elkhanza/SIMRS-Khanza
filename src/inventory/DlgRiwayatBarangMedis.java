@@ -15,13 +15,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import simrskhanza.DlgCariBangsal;
 
@@ -627,11 +627,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void prosesCari() {
+    private void prosesCari() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode); 
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{   
@@ -701,7 +701,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                      rs.getString("no_faktur"),rs.getString("keterangan")
                                 }; 
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }    
                          } catch (Exception e) {
                              System.out.println("Notifikasi Data Barang : "+e);
@@ -717,6 +717,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                          System.out.println("Notifikasi : "+e);
                      }
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
                 }
 
                 @Override

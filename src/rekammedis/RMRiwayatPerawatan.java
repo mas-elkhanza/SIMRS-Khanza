@@ -67,8 +67,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.swing.SwingUtilities;
 import org.apache.hc.core5.http.io.entity.StringEntity;
-import java.util.List;
-import java.util.ArrayList;
 
 
 
@@ -4265,7 +4263,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
-    private synchronized void tampilKunjungan() {
+    private void tampilKunjungan() {
         Valid.tabelKosong(tabModeRegistrasi);
         try{   
             if(R1.isSelected()==true){
@@ -4411,7 +4409,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    private synchronized void tampilPerawatan() {
+    private void tampilPerawatan() {
         try{   
             htmlContent = new StringBuilder();
             if(R1.isSelected()==true){
@@ -6512,7 +6510,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    private synchronized void tampilSoapi() {
+    private void tampilSoapi() {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>").
@@ -6680,7 +6678,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private synchronized void tampilPembelian() {
+    private void tampilPembelian() {
         try{
             htmlContent = new StringBuilder();
             htmlContent.append(
@@ -6916,7 +6914,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private synchronized void tampilPiutang() {
+    private void tampilPiutang() {
         try{
             htmlContent = new StringBuilder();
             htmlContent.append(
@@ -7064,7 +7062,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private synchronized void tampilRetensi() {
+    private void tampilRetensi() {
         try{
             htmlContent = new StringBuilder();
             try{

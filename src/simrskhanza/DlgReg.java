@@ -87,7 +87,6 @@ import bridging.ICareRiwayatPerawatanFKTP;
 import bridging.INACBGPerawatanCorona;
 import bridging.PilihanBridgingAsuransi;
 import inventory.DlgCopyResep;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
@@ -271,6 +270,7 @@ import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
+import java.util.List;
 /**
  *
  * @author dosen
@@ -16706,11 +16706,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningInstrumenESAT,MnSkriningCURB65;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
-    private synchronized void tampil() {
+    private void tampil() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode); 
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try {
@@ -16770,7 +16770,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                     rs.getString("kd_poli"),rs.getString("kd_pj"),rs.getString("status_bayar")
                                 };  
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }   
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16790,6 +16790,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
 
                 @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
+                
+                @Override
                 protected void done() {
                     LCount.setText(""+i);
                     ceksukses = false;
@@ -16798,11 +16805,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
 
-    private synchronized void tampil2() {
+    private void tampil2() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode2); 
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try {
@@ -16848,7 +16855,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                     rs.getString("stts"),rs.getString("kd_poli"),rs.getString("kd_pj")
                                 };
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabMode2.addRow(row));
+                                publish(row);
                             }                    
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16865,6 +16872,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         System.out.println("Notifikasi : "+e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode2.addRow(row);
+                    }
                 }
 
                 @Override
