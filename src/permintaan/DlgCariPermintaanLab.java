@@ -52,6 +52,8 @@ import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPeriksaLaboratorium;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
@@ -69,6 +71,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private BackgroundMusic music;
     private Date now;
     private boolean aktif=false,semua;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private ApiLICA lica=new ApiLICA();
     private ApiSOFTMEDIX softmedix=new ApiSOFTMEDIX();
     private ObjectMapper mapper = new ObjectMapper();
@@ -4206,6 +4210,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }   
                     
                 rs=ps.executeQuery();
+                i=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+
@@ -4215,6 +4220,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         rs.getString("nm_poli"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
                         rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
+                    i++;
                     ps2=koneksi.prepareStatement(
                             "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
                             "from permintaan_pemeriksaan_lab inner join jns_perawatan_lab on "+
@@ -4264,8 +4270,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }
-                rs.last();
-                LCount.setText(""+rs.getRow());
+                LCount.setText(""+i);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -4450,17 +4455,17 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     private void pilihRalan(){
         if(TabRawatJalan.getSelectedIndex()==0){
-            tampil();
+            runBackground(() -> tampil());
         }else if(TabRawatJalan.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() -> tampil2());
         }
     }
     
     private void pilihRanap(){
         if(TabRawatInap.getSelectedIndex()==0){
-            tampil3();
+            runBackground(() -> tampil3());
         }else if(TabRawatInap.getSelectedIndex()==1){
-            tampil4();
+            runBackground(() -> tampil4());
         }
     }
     
@@ -4523,6 +4528,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }
                     
                 rs=ps.executeQuery();
+                i=0;
                 while(rs.next()){
                     tabMode3.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+
@@ -4532,6 +4538,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         rs.getString("nm_bangsal"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
                         rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
+                    i++;
                     ps2=koneksi.prepareStatement(
                             "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
                             "from permintaan_pemeriksaan_lab inner join jns_perawatan_lab on "+
@@ -4581,8 +4588,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }
-                rs.last();
-                LCount.setText(""+rs.getRow());
+                LCount.setText(""+i);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -4873,4 +4879,21 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

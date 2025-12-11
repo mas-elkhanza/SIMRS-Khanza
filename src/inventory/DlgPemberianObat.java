@@ -40,6 +40,9 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
@@ -69,6 +72,8 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private int jmlparsial=0;
     private boolean sukses=true,hapusdata=true;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgPemberianObat
      * @param parent
@@ -147,19 +152,19 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilPO();
+                        runBackground(() -> tampilPO());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilPO();
+                        runBackground(() -> tampilPO());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilPO();
+                        runBackground(() -> tampilPO());
                     }
                 }
             });
@@ -173,7 +178,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgPemberianObat")){
-                    tampilPO();
+                    runBackground(() -> tampilPO());
                 }
             }
             @Override
@@ -194,7 +199,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgPemberianObat")){
-                    tampilPO();
+                    runBackground(() -> tampilPO());
                 }
             }
             @Override
@@ -854,7 +859,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampilPO();
+        runBackground(() -> tampilPO());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1044,7 +1049,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         TCariPasien.setText("");
-        tampilPO();
+        runBackground(() -> tampilPO());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1057,7 +1062,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
     private void TCariPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPasienKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilPO();
+            runBackground(() -> tampilPO());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnSeek4.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1257,7 +1262,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             public void windowClosed(WindowEvent e) {
                 if (depo.getTable().getSelectedRow() != -1) {
                     lokasi=depo.getTable().getValueAt(depo.getTable().getSelectedRow(),0).toString();
-                    tampilPO2();
+                    runBackground(() -> tampilPO2());
                 }
             }
 
@@ -1697,7 +1702,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 @Override
                 public void windowClosed(WindowEvent e) {
                     if(akses.getform().equals("DlgPemberianObat")){
-                        tampilPO();
+                        runBackground(() -> tampilPO());
                     }
                 }
                 @Override
@@ -1832,4 +1837,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

@@ -37,8 +37,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -66,6 +69,8 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -119,19 +124,19 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
             });
@@ -686,12 +691,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_TCariPeriksaKeyPressed
 
     private void btnCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPeriksaActionPerformed
-        tampil2();
+        runBackground(() -> tampil2());
     }//GEN-LAST:event_btnCariPeriksaActionPerformed
 
     private void btnCariPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariPeriksaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil2();
+            runBackground(() -> tampil2());
         }else{
             Valid.pindah(evt, TCariPeriksa, BtnAllPeriksa);
         }
@@ -699,8 +704,8 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void BtnAllPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksaActionPerformed
         TCariPeriksa.setText("");
-        tampil();
-        tampil2();
+        runBackground(() -> tampil());
+        runBackground(() -> tampil2());
     }//GEN-LAST:event_BtnAllPeriksaActionPerformed
 
     private void BtnAllPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllPeriksaKeyPressed
@@ -937,7 +942,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_TanggalItemStateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil2();
+        runBackground(() -> tampil2());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -1301,7 +1306,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         isPsien();
         try {
             if(Valid.daysOld("./cache/permintaanradiologi.iyem")<3){
-                tampil2();
+                runBackground(() -> tampil2());
             }
         } catch (Exception e) {
         }
@@ -1314,7 +1319,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         isPsien();
         try {
             if(Valid.daysOld("./cache/permintaanradiologi.iyem")<3){
-                tampil2();
+                runBackground(() -> tampil2());
             }
         } catch (Exception e) {
         }
@@ -1436,5 +1441,22 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ChkJln.setSelected(true);            
         }
     }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

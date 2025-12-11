@@ -22,8 +22,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +51,8 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private JsonNode root;
     private int i;
     private StringBuilder htmlContent;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening;
     private ResultSet rs,rs2,rs3,rs5,rsrekening;
     private String kamar,namakamar,pemeriksaan="",pilihan="",status="",finger="",statushasil="";
@@ -128,21 +133,21 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         statushasil="";
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         statushasil="";
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         statushasil="";
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
             });
@@ -1385,7 +1390,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         statushasil="";
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1404,7 +1409,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         kdptg.setText("");
         nmptg.setText("");
         statushasil="";
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1685,7 +1690,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         if(sukses==true){
                             Sequel.Commit();
                             statushasil="";
-                            tampil();
+                            runBackground(() -> tampil());
                         }else{
                             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                             Sequel.RollBack();
@@ -1734,7 +1739,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         statushasil="";
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void MnCetakNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakNotaActionPerformed
@@ -1964,7 +1969,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(Sequel.queryu2tf("update periksa_radiologi set kd_dokter=? where no_rawat=? and tgl_periksa=? and jam=?",4,new String[]{
                                 akses.getkode(),NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText()
                             })==true){
-                                tampil();
+                                runBackground(() -> tampil());
                             } 
                         }
                     }
@@ -1992,7 +1997,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()
                 }); 
                 statushasil="";
-                tampil();
+                runBackground(() -> tampil());
                 dokter.dispose();
                 petugas.dispose();
                 WindowGantiDokterParamedis.dispose();
@@ -2243,12 +2248,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void ppSudahKeluarBacaanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSudahKeluarBacaanBtnPrintActionPerformed
         statushasil="concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) in (select concat(hasil_radiologi.no_rawat,hasil_radiologi.tgl_periksa,hasil_radiologi.jam) from hasil_radiologi) and ";
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_ppSudahKeluarBacaanBtnPrintActionPerformed
 
     private void ppBelumKeluarBacaanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBelumKeluarBacaanBtnPrintActionPerformed
         statushasil="concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) not in (select concat(hasil_radiologi.no_rawat,hasil_radiologi.tgl_periksa,hasil_radiologi.jam) from hasil_radiologi) and ";
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_ppBelumKeluarBacaanBtnPrintActionPerformed
 
     /**
@@ -2508,7 +2513,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void SetNoRw(String norw){
         NoRawat.setText(norw);
         statushasil="";
-        tampil();
+        runBackground(() -> tampil());
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norw+"'", Tgl1);
     }
     
@@ -2715,5 +2720,23 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
             }
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

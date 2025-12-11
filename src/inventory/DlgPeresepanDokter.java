@@ -37,8 +37,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -73,6 +76,8 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private JsonNode response;
     private FileReader myObj;
     private String TANGGALMUNDUR="yes";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -908,7 +913,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(TabRawat.getSelectedIndex()==0){
-            tampilcacheresep();
+            runBackground(() -> tampilcacheresep());
         }else if(TabRawat.getSelectedIndex()==1){
             if(tbObatResepRacikan.getRowCount()!=0){
                 if(tbObatResepRacikan.getSelectedRow()!= -1){
@@ -921,7 +926,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                             tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),6).toString().equals("")){
                         JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                     }else{
-                        tampildetailracikanresep();
+                        runBackground(() -> tampildetailracikanresep());
                     }
                 }else{
                     JOptionPane.showMessageDialog(null,"Silahkan pilih racikan..!!");
@@ -1318,7 +1323,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_ChkJlnActionPerformed
 
     private void JeniskelasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JeniskelasItemStateChanged
-        tampilcacheresep();
+        runBackground(() -> tampilcacheresep());
     }//GEN-LAST:event_JeniskelasItemStateChanged
 
     private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JeniskelasKeyPressed
@@ -1428,7 +1433,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }
                 }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     if(i==6){
-                        tampildetailracikanresep();
+                        runBackground(() -> tampildetailracikanresep());
                     }
                 }
             } catch (Exception e) {
@@ -1603,7 +1608,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     public void tampilobat() {        
         buatcacheresep();
-        tampilcacheresep();           
+        runBackground(() -> tampilcacheresep());           
     }
     
     private void buatcacheresep(){
@@ -4194,5 +4199,23 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
         }               
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -36,8 +36,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -67,6 +70,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private String aktifkanparsial="no",noorder="",kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pilihan="",pemeriksaan="",kamar,namakamar,status="",url="";
     private double ttl=0,item=0;
     private boolean sukses=false;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private double ttljmdokter=0,ttljmpetugas=0,ttlkso=0,ttlpendapatan=0,ttlbhp=0,ttljasasarana=0,ttljmperujuk=0,ttlmenejemen=0;
     private String Suspen_Piutang_Radiologi_Ranap="",Radiologi_Ranap="",Beban_Jasa_Medik_Dokter_Radiologi_Ranap="",Utang_Jasa_Medik_Dokter_Radiologi_Ranap="",
             Beban_Jasa_Medik_Petugas_Radiologi_Ranap="",Utang_Jasa_Medik_Petugas_Radiologi_Ranap="",Beban_Kso_Radiologi_Ranap="",Utang_Kso_Radiologi_Ranap="",
@@ -197,19 +202,19 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        runBackground(() -> tampil());
                     }
                 }
             });
@@ -217,19 +222,19 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariBhp.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariBhp.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariBhp.getText().length()>2){
-                        tampil2();
+                        runBackground(() -> tampil2());
                     }
                 }
             });
@@ -1210,12 +1215,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_TCariPeriksaKeyPressed
 
     private void btnCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPeriksaActionPerformed
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_btnCariPeriksaActionPerformed
 
     private void btnCariPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariPeriksaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() -> tampil());
         }else{
             Valid.pindah(evt, TCariPeriksa, BtnAllPeriksa);
         }
@@ -1223,7 +1228,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void BtnAllPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksaActionPerformed
         TCariPeriksa.setText("");
-        tampil();
+        runBackground(() -> tampil());
     }//GEN-LAST:event_BtnAllPeriksaActionPerformed
 
     private void BtnAllPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllPeriksaKeyPressed
@@ -1280,7 +1285,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void TCariBhpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariBhpKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil2();
+            runBackground(() -> tampil2());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             btnCariBhp.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1289,12 +1294,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_TCariBhpKeyPressed
 
     private void btnCariBhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariBhpActionPerformed
-        tampil2();
+        runBackground(() -> tampil2());
     }//GEN-LAST:event_btnCariBhpActionPerformed
 
     private void btnCariBhpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariBhpKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil2();
+            runBackground(() -> tampil2());
         }else{
             Valid.pindah(evt, TCariBhp, BtnAllBhp);
         }
@@ -1302,7 +1307,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void BtnAllBhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllBhpActionPerformed
         TCariBhp.setText("");
-        tampil2();
+        runBackground(() -> tampil2());
     }//GEN-LAST:event_BtnAllBhpActionPerformed
 
     private void BtnAllBhpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllBhpKeyPressed
@@ -2208,18 +2213,18 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        isRawat();
-        isPsien();
-        tampil(order);
+        runBackground(() -> isRawat());
+        runBackground(() -> isPsien());
+        runBackground(() -> tampil(order));
     }
     
     public void setOrderFuji(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        isRawat();
-        isPsien();
-        tampilFuji(order);
+        runBackground(() -> isRawat());
+        runBackground(() -> isPsien());
+        runBackground(() -> tampilFuji(order));
     }
 
     private void simpan() {
@@ -2515,4 +2520,21 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

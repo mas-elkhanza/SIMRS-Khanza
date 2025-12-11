@@ -1366,10 +1366,7 @@ public final class validasi {
     }
 
     public void tabelKosong(DefaultTableModel tabMode) {
-        j=tabMode.getRowCount();
-        for(i=0;i<j;i++){
-            tabMode.removeRow(0);
-        }
+        tabMode.setRowCount(0);
     }
 
     public void textKosong(JComboBox teks, String pesan) {
