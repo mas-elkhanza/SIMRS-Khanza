@@ -2213,18 +2213,18 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
-        runBackground(() -> isPsien());
-        runBackground(() -> tampil(order));
+        isRawat();
+        isPsien();
+        tampil(order);
     }
     
     public void setOrderFuji(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
-        runBackground(() -> isPsien());
-        runBackground(() -> tampilFuji(order));
+        isRawat();
+        isPsien();
+        tampilFuji(order);
     }
 
     private void simpan() {

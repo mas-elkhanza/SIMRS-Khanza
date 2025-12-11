@@ -2791,7 +2791,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2813,16 +2813,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampil(order));
+        tampil(order);
     }
     
     public void setOrderSysmex(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2844,16 +2844,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilSysmex(order));
+        tampilSysmex(order);
     }
     
     public void setOrderELIMS(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2875,16 +2875,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilELIMS(order));
+        tampilELIMS(order);
     }
     
     public void setOrderSLIMS(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2906,16 +2906,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilSLIMS(order));
+        tampilSLIMS(order);
     }
     
     public void setOrderVANSLAB(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2937,16 +2937,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilVANSLAB(order));
+        tampilVANSLAB(order);
     }
     
     public void setOrderLICA(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2968,16 +2968,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilLICA(order));
+        tampilLICA(order);
     }
     
     public void setOrderSOFTMEDIX(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -2999,16 +2999,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilSOFTMEDIX(order));
+        tampilSOFTMEDIX(order);
     }
     
     public void setOrderMEDQLAB(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
-        runBackground(() -> isRawat());
+        isRawat();
         try {
             pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
             try {                              
@@ -3030,9 +3030,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        runBackground(() -> isPsien());
+        isPsien();
         tampiltarif(order);
-        runBackground(() -> tampilMEDQLAB());
+        tampilMEDQLAB();
     }
 
     private void simpan() {
