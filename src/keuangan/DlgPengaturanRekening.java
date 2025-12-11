@@ -4,6 +4,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,8 +13,11 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -28,6 +32,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i=0,barisdicopy=-1;
     private String Tindakan_Ralan, Laborat_Ralan, Radiologi_Ralan, Obat_Ralan, Registrasi_Ralan, 
             Tambahan_Ralan, Potongan_Ralan, Tindakan_Ranap, Laborat_Ranap, Radiologi_Ranap, 
@@ -976,7 +982,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Beban_Jasa_Menejemen_Pelayanan_Lab_Kesling,Utang_Jasa_Menejemen_Pelayanan_Lab_Kesling
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
-                tampil();
+                runBackground(() ->tampil());
             }
         }else if(TabRawat.getSelectedIndex()==1){
             for(i=0;i<tbPengaturanRalan.getRowCount();i++){ 
@@ -1001,7 +1007,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     });
                 }
             }
-            tampilralan();
+            runBackground(() ->tampilralan());
         }else if(TabRawat.getSelectedIndex()==2){
             for(i=0;i<tbPengaturanRanap.getRowCount();i++){ 
                 if((!tbPengaturanRanap.getValueAt(i,6).equals(""))&&(!tbPengaturanRanap.getValueAt(i,7).equals(""))&&(!tbPengaturanRanap.getValueAt(i,8).equals(""))&&
@@ -1025,7 +1031,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     });
                 }
             }
-            tampilranap();
+            runBackground(() ->tampilranap());
         }     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1046,7 +1052,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void tbPengaturanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaturanKeyPressed
@@ -1068,11 +1074,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampilralan();
+            runBackground(() ->tampilralan());
         }else if(TabRawat.getSelectedIndex()==2){
-            tampilranap();
+            runBackground(() ->tampilranap());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1201,7 +1207,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                             tbPengaturanRalan.getValueAt(barisdicopy,23).toString(),tbPengaturanRalan.getValueAt(barisdicopy,25).toString(),
                             tbPengaturanRalan.getValueAt(barisdicopy,27).toString(),tbPengaturanRalan.getValueAt(barisdicopy,29).toString()
                         });
-                        tampilralan();
+                        runBackground(() ->tampilralan());
                         barisdicopy=-1;
                         copyakun="";
                     }else{
@@ -3104,5 +3110,23 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

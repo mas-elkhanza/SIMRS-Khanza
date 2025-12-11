@@ -22,8 +22,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -61,6 +64,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             biaya_omloop4=0,biaya_omloop5=0,biayasarpras=0,biaya_dokter_pjanak=0,
             biaya_dokter_umum=0;
     private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -2990,34 +2995,34 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                tampil();
+                runBackground(() ->tampil());
                 break;
             case 1:
-                tampil2();
+                runBackground(() ->tampil2());
                 break;
             case 2:
-                tampil3();
+                runBackground(() ->tampil3());
                 break; 
             case 3:
-                tampil4();
+                runBackground(() ->tampil4());
                 break;
             case 4:
-                tampil5();
+                runBackground(() ->tampil5());
                 break;
             case 5:
-                tampil6();
+                runBackground(() ->tampil6());
                 break;
             case 6:
-                tampil7();
+                runBackground(() ->tampil7());
                 break;
             case 7:
-                tampil8();
+                runBackground(() ->tampil8());
                 break;
             case 8:
-                tampil9();
+                runBackground(() ->tampil9());
                 break;
             case 9:
-                tampil10();
+                runBackground(() ->tampil10());
                 break;
             default:
                 break;
@@ -8795,6 +8800,24 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 }    
             }
         }   
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
  
 }

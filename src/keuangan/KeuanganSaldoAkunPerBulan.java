@@ -15,15 +15,16 @@ import java.sql.ResultSet;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 
 public class KeuanganSaldoAkunPerBulan extends javax.swing.JDialog {
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
-    private Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,ps9,ps10,ps11,ps12,ps13;
     private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rs9,rs10,rs11,rs12,rs13;
-    private int i=0;
     private StringBuilder htmlContent;
     private double saldoawaljanuari=0,debetjanuari=0,kreditjanuari=0,saldoakhirjanuari=0,
             debetfebruari=0,kreditfebruari=0,saldoakhirfebruari=0,debetmaret=0,kreditmaret=0,
@@ -33,6 +34,8 @@ public class KeuanganSaldoAkunPerBulan extends javax.swing.JDialog {
             kreditseptember,saldoakhirseptember=0,debetoktober=0,kreditoktober=0,saldoakhiroktober=0,
             debetnovember=0,kreditnovember=0,saldoakhirnovember=0,debetdesember=0,kreditdesember=0,
             saldoakhirdesember=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -273,9 +276,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
     if(TCari.getText().trim().equals("")){
-        prosesCari();
+        runBackground(() ->prosesCari());
     }else{
-        prosesCari2();
+        runBackground(() ->prosesCari2());
     }
 }//GEN-LAST:event_btnCariActionPerformed
 
@@ -289,13 +292,13 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            prosesCari();
+            runBackground(() ->prosesCari());
         }else{
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
@@ -2094,4 +2097,21 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         BtnPrint.setEnabled(akses.getsaldo_akun_perbulan());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
