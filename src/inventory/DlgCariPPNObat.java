@@ -25,8 +25,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,6 +47,9 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;   
     private double total,totalppn,totalsemua,obat,ppnobat,obatdibayar;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
+    
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -283,23 +289,27 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 public void insertUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
                         if(TCari.getText().length()>2){
-                            tampil();
+                            runBackground(() ->tampil());
                         }
                     }else if(TabRawat.getSelectedIndex()==1){
                         if(TCari.getText().length()>2){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }else if(TabRawat.getSelectedIndex()==2){
                         if(TCari.getText().length()>2){
-                            tampil3();
+                            runBackground(() ->tampil3());
                         }
                     }else if(TabRawat.getSelectedIndex()==3){
                         if(TCari.getText().length()>2){
-                            tampil4();
+                            runBackground(() ->tampil4());
                         }
                     }else if(TabRawat.getSelectedIndex()==4){
                         if(TCari.getText().length()>2){
-                            tampil5();
+                            runBackground(() ->tampil5());
+                        }
+                    }else if(TabRawat.getSelectedIndex()==5){
+                        if(TCari.getText().length()>2){
+                            runBackground(() ->tampil6());
                         }
                     }
                 }
@@ -307,23 +317,27 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 public void removeUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
                         if(TCari.getText().length()>2){
-                            tampil();
+                            runBackground(() ->tampil());
                         }
                     }else if(TabRawat.getSelectedIndex()==1){
                         if(TCari.getText().length()>2){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }else if(TabRawat.getSelectedIndex()==2){
                         if(TCari.getText().length()>2){
-                            tampil3();
+                            runBackground(() ->tampil3());
                         }
                     }else if(TabRawat.getSelectedIndex()==3){
                         if(TCari.getText().length()>2){
-                            tampil4();
+                            runBackground(() ->tampil4());
                         }
                     }else if(TabRawat.getSelectedIndex()==4){
                         if(TCari.getText().length()>2){
-                            tampil5();
+                            runBackground(() ->tampil5());
+                        }
+                    }else if(TabRawat.getSelectedIndex()==5){
+                        if(TCari.getText().length()>2){
+                            runBackground(() ->tampil6());
                         }
                     }
                 }
@@ -331,23 +345,27 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
                         if(TCari.getText().length()>2){
-                            tampil();
+                            runBackground(() ->tampil());
                         }
                     }else if(TabRawat.getSelectedIndex()==1){
                         if(TCari.getText().length()>2){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }else if(TabRawat.getSelectedIndex()==2){
                         if(TCari.getText().length()>2){
-                            tampil3();
+                            runBackground(() ->tampil3());
                         }
                     }else if(TabRawat.getSelectedIndex()==3){
                         if(TCari.getText().length()>2){
-                            tampil4();
+                            runBackground(() ->tampil4());
                         }
                     }else if(TabRawat.getSelectedIndex()==4){
                         if(TCari.getText().length()>2){
-                            tampil5();
+                            runBackground(() ->tampil5());
+                        }
+                    }else if(TabRawat.getSelectedIndex()==5){
+                        if(TCari.getText().length()>2){
+                            runBackground(() ->tampil6());
                         }
                     }
                 }
@@ -740,17 +758,17 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }else if(TabRawat.getSelectedIndex()==2){
-            tampil3();
+            runBackground(() ->tampil3());
         }else if(TabRawat.getSelectedIndex()==3){
-            tampil4();
+            runBackground(() ->tampil4());
         }else if(TabRawat.getSelectedIndex()==4){
-            tampil5();
+            runBackground(() ->tampil5());
         }else if(TabRawat.getSelectedIndex()==5){
-            tampil6();
+            runBackground(() ->tampil6());
         }
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -775,43 +793,41 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-           TCari.setText("");
-           if(TabRawat.getSelectedIndex()==0){
-               tampil();
-           }else if(TabRawat.getSelectedIndex()==1){
-               tampil2();
-           }else if(TabRawat.getSelectedIndex()==2){
-                tampil3();
-           }else if(TabRawat.getSelectedIndex()==3){
-                tampil4();
-           }else if(TabRawat.getSelectedIndex()==4){
-                tampil5();
-           }else if(TabRawat.getSelectedIndex()==5){
-                tampil6();
-           }
+            TCari.setText("");
+            if(TabRawat.getSelectedIndex()==0){
+                runBackground(() ->tampil());
+            }else if(TabRawat.getSelectedIndex()==1){
+                runBackground(() ->tampil2());
+            }else if(TabRawat.getSelectedIndex()==2){
+                runBackground(() ->tampil3());
+            }else if(TabRawat.getSelectedIndex()==3){
+                runBackground(() ->tampil4());
+            }else if(TabRawat.getSelectedIndex()==4){
+                runBackground(() ->tampil5());
+            }else if(TabRawat.getSelectedIndex()==5){
+                runBackground(() ->tampil6());
+            }
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
-        }else{
-            
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }else if(TabRawat.getSelectedIndex()==2){
-            tampil3();
+            runBackground(() ->tampil3());
         }else if(TabRawat.getSelectedIndex()==3){
-            tampil4();
+            runBackground(() ->tampil4());
         }else if(TabRawat.getSelectedIndex()==4){
-            tampil5();
+            runBackground(() ->tampil5());
         }else if(TabRawat.getSelectedIndex()==5){
-            tampil6();
+            runBackground(() ->tampil6());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1185,4 +1201,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

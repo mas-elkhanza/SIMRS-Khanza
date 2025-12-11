@@ -30,10 +30,13 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -50,6 +53,8 @@ public final class DlgStokOpname extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstampil;
     private ResultSet rstampil;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private String order="order by opname.tanggal";
     /** Creates new form DlgPenyakit
      * @param parent
@@ -122,19 +127,19 @@ public final class DlgStokOpname extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -1114,7 +1119,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         order="order by opname.tanggal";
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1168,7 +1173,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         KdGudang.setText("");
         NmGudang.setText("");
         order="order by opname.tanggal";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
 private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
@@ -1380,72 +1385,72 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
 
     private void MnKodeBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangDescActionPerformed
         order=" order by opname.kode_brng desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKodeBarangDescActionPerformed
 
     private void MnKodeBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangAscActionPerformed
         order=" order by opname.kode_brng asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKodeBarangAscActionPerformed
 
     private void MnNamaBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangDescActionPerformed
         order=" order by databarang.nama_brng desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnNamaBarangDescActionPerformed
 
     private void MnNamaBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangAscActionPerformed
         order=" order by databarang.nama_brng asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnNamaBarangAscActionPerformed
 
     private void MnKategoriAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriAscActionPerformed
         order=" order by kategori_barang.nama asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKategoriAscActionPerformed
 
     private void MnKategoriDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriDescActionPerformed
         order=" order by kategori_barang.nama desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKategoriDescActionPerformed
 
     private void MnJenisDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJenisDescActionPerformed
         order=" order by jenis.nama desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnJenisDescActionPerformed
 
     private void MnJenisAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJenisAscActionPerformed
         order=" order by jenis.nama asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnJenisAscActionPerformed
 
     private void MnGolonganDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnGolonganDescActionPerformed
         order=" order by golongan_barang.nama desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnGolonganDescActionPerformed
 
     private void MnGolonganAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnGolonganAscActionPerformed
         order=" order by golongan_barang.nama asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnGolonganAscActionPerformed
 
     private void MnKodeLokasiOpnameDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeLokasiOpnameDescActionPerformed
         order=" order by opname.kd_bangsal desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKodeLokasiOpnameDescActionPerformed
 
     private void MnKodeLokasiOpnameAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeLokasiOpnameAscActionPerformed
         order=" order by opname.kd_bangsal asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnKodeLokasiOpnameAscActionPerformed
 
     private void MnNamaLokasiOpnameDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaLokasiOpnameDescActionPerformed
         order=" order by bangsal.nm_bangsal desc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnNamaLokasiOpnameDescActionPerformed
 
     private void MnNamaLokasiOpnameAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaLokasiOpnameAscActionPerformed
         order=" order by bangsal.nm_bangsal asc";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_MnNamaLokasiOpnameAscActionPerformed
 
     /**
@@ -1676,10 +1681,27 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     public JButton getButton(){
         return BtnKeluar;
     }
-    
         
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_opname_obat());
         BtnPrint.setEnabled(akses.getstok_opname_obat());    
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

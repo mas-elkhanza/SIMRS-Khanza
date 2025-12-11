@@ -31,8 +31,11 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -54,6 +57,8 @@ public class DlgBarang extends javax.swing.JDialog {
     private double totalstok, stokgudang;
     private PreparedStatement ps, ps2, ps3, ps4;
     private ResultSet rs, rs2, rs3;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i = 0;
     public String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select set_harga_obat.setharga from set_harga_obat");
     private String kdlokasi = "", nmlokasi = "", tanggal = "0000-00-00",qrystok="";
@@ -214,7 +219,7 @@ public class DlgBarang extends javax.swing.JDialog {
                 if (bangsal.getTable().getSelectedRow() != -1) {
                     kdlokasi = bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString();
                     nmlokasi = bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 1).toString();
-                    tampil3();
+                    runBackground(() ->tampil3());
                 }
             }
 
@@ -440,19 +445,19 @@ public class DlgBarang extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -1586,9 +1591,9 @@ public class DlgBarang extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(akses.getform().equals("tampil3")){
-            tampil3();
+            runBackground(() ->tampil3());
         }else{
-            tampil();
+            runBackground(() ->tampil());
         }   
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -1823,9 +1828,9 @@ public class DlgBarang extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         if(akses.getform().equals("tampil3")){
-            tampil3();
+            runBackground(() ->tampil3());
         }else{
-            tampil();
+            runBackground(() ->tampil());
         }        
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -2140,7 +2145,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_ChkInputActionPerformed
 
 private void ppStokBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStokBtnPrintActionPerformed
-    tampil2();
+    runBackground(() ->tampil2());
 }//GEN-LAST:event_ppStokBtnPrintActionPerformed
 
 private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KapasitasKeyPressed
@@ -2150,9 +2155,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(!akses.getform().equals("DlgReturJual")){
             if(akses.getform().equals("tampil3")){
-                tampil3();
+                runBackground(() ->tampil3());
             }else{
-                tampil();
+                runBackground(() ->tampil());
             }   
         }
     }//GEN-LAST:event_formWindowOpened
@@ -3097,7 +3102,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                     LCount.setText("" + tabMode.getRowCount());
                     if(tabMode.getRowCount()==0){
-                       tampil();
+                       runBackground(() ->tampil());
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
@@ -3171,14 +3176,14 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                     LCount.setText("" + tabMode.getRowCount());
                     if(tabMode.getRowCount()==0){
-                       tampil();
+                       runBackground(() ->tampil());
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
                 }
             }
         }else{
-            tampil();
+            runBackground(() ->tampil());
         }    
             
     }
@@ -3516,4 +3521,21 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             tbObat.setDefaultRenderer(Object.class, new WarnaTable());
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

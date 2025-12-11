@@ -3820,12 +3820,18 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_BtnCloseIn5ActionPerformed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==0){
-            runBackground(() -> tampil());
-        }else if(TabRawat.getSelectedIndex()==1){
-            runBackground(() -> tampil2());
-        }else if(TabRawat.getSelectedIndex()==2){
-            runBackground(() -> tampil3());
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                runBackground(() -> tampil());
+                break;
+            case 1:
+                runBackground(() -> tampil2());
+                break;
+            case 2:
+                runBackground(() -> tampil3());
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
