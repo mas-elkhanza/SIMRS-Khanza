@@ -31,9 +31,12 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.scheme.Scheme;
@@ -64,6 +67,8 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     private String requestJson="",user="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -358,7 +363,7 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
         if(NoSEP.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"No.SEP Masih kosong...!!");
         }else{
-            tampil(NoSEP.getText());
+            runBackground(() ->tampil(NoSEP.getText()));
         }   
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -537,4 +542,21 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
         }
     }
  
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

@@ -27,7 +27,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -51,6 +54,8 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgKamar
      * @param parent
@@ -90,19 +95,19 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
             });
@@ -316,7 +321,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
             BtnPropinsi.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil(Kabupaten.getText());
+            runBackground(() ->tampil(Kabupaten.getText()));
             this.setCursor(Cursor.getDefaultCursor());
         }            
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -450,5 +455,23 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     public void setPropinsi(String KdKab,String NmKab){
         this.KdKab.setText(KdKab);
         this.NmKab.setText(NmKab);
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

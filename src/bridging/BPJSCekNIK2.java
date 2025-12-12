@@ -37,7 +37,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -91,6 +94,8 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date parsedDate;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
 
     /** Creates new form DlgKamar
@@ -3994,7 +3999,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         if(TNik.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"NIK masih kosong..!!");
         }else{
-            tampil(TNik.getText().trim());
+            runBackground(() ->tampil(TNik.getText().trim()));
         }
             
         this.setCursor(Cursor.getDefaultCursor());
@@ -7430,7 +7435,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     public void SetNoKTP(String NoKTP){
         emptTeks();
         TNik.setText(NoKTP);
-        tampil(NoKTP);
+        runBackground(() ->tampil(NoKTP));
         empt=true;
     }
     
@@ -7627,5 +7632,23 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         }
         return statusantrean;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.koneksiDB;
 import java.awt.event.KeyEvent;

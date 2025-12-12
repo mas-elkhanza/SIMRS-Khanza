@@ -30,7 +30,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -55,6 +58,8 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
     private JsonNode response;
     private BPJSCekReferensiPoliHFIS poli=new BPJSCekReferensiPoliHFIS(null,false);
     private BPJSCekReferensiDokterHFIS dokter=new BPJSCekReferensiDokterHFIS(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -646,7 +651,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
             BtnPoli.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil();
+            runBackground(() ->tampil());
             this.setCursor(Cursor.getDefaultCursor());
         }   
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -710,7 +715,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metadata");
                 if(nameNode.path("code").asText().equals("200")){
-                    tampil();
+                    runBackground(() ->tampil());
                 }else {
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
                 }   
@@ -878,5 +883,23 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

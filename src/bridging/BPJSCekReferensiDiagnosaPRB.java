@@ -28,7 +28,10 @@ import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -52,6 +55,8 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -91,19 +96,19 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
+                        runBackground(() ->tampil(Poli.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
+                        runBackground(() ->tampil(Poli.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
+                        runBackground(() ->tampil(Poli.getText()));
                     }
                 }
             });
@@ -277,10 +282,10 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
 
     private void PoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(Poli.getText());
+            runBackground(() ->tampil(Poli.getText()));
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(Poli.getText());
+            runBackground(() ->tampil(Poli.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -290,7 +295,7 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(Poli.getText());
+        runBackground(() ->tampil(Poli.getText()));
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -372,5 +377,23 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
