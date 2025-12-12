@@ -1200,7 +1200,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                BtnCariActionPerformed(evt);
                 if(tabMode.getRowCount()==0){
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
@@ -1237,7 +1236,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             case 1:
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-
                     File g = new File("filepenerimaan.css");            
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                     bg.write(

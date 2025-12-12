@@ -14,8 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -29,6 +32,8 @@ public class DlgDaruratStok extends javax.swing.JDialog {
     private ResultSet rs,rsstok;
     private double stok=0;
     private String aktifkanbatch="no";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** 
      * @param parent
@@ -68,19 +73,19 @@ public class DlgDaruratStok extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -249,7 +254,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -310,7 +314,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -325,7 +329,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -429,4 +433,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
          BtnPrint.setEnabled(akses.getsirkulasi_obat());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

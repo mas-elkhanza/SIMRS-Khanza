@@ -36,7 +36,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -77,6 +80,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private DlgPropinsi propin=new DlgPropinsi(null,false);
     private BPJSCekNoKartu cekViaBPJSKartu=new BPJSCekNoKartu();
     private ApiBPJS api=new ApiBPJS();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private ApiMobileJKN apiMobileJKN=new ApiMobileJKN();
     private int pilih=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
@@ -2939,7 +2944,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         if(NoSKDP.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"No.SKDP masih kosong...!!");
         }else{
-            tampil(NoSKDP.getText().trim());
+            runBackground(() ->tampil(NoSKDP.getText().trim()));
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -7001,5 +7006,23 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             }
         }
         return statusantrean;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

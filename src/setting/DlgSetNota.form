@@ -904,7 +904,7 @@
                             </Component>
                             <Component class="widget.Label" name="jLabel26">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Tampilkan PPN Obat 10 % di Nota Ralan :"/>
+                                <Property name="text" type="java.lang.String" value="Tampilkan PPN Obat di Nota Ralan :"/>
                                 <Property name="name" type="java.lang.String" value="jLabel26" noResource="true"/>
                               </Properties>
                               <Constraints>
@@ -937,7 +937,7 @@
                             </Component>
                             <Component class="widget.Label" name="jLabel27">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Tampilkan PPN Obat 10 % di Nota Ranap :"/>
+                                <Property name="text" type="java.lang.String" value="Tampilkan PPN Obat di Nota Ranap :"/>
                                 <Property name="name" type="java.lang.String" value="jLabel27" noResource="true"/>
                               </Properties>
                               <Constraints>

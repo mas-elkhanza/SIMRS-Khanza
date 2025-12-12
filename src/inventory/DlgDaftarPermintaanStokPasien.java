@@ -12,9 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -25,8 +28,9 @@ public class DlgDaftarPermintaanStokPasien extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private final Properties prop = new Properties();
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form 
      * @param parent
@@ -63,6 +67,29 @@ public class DlgDaftarPermintaanStokPasien extends javax.swing.JDialog {
             }
         }
         tbPemisahan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }
 
     /** This method is called from within the constructor to
@@ -298,7 +325,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -310,7 +337,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -331,7 +358,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Permintaan yang mau dihapus ..!!");
             }else {
                 Sequel.meghapus("permintaan_stok_obat_pasien","no_permintaan",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
-                tampil();               
+                runBackground(() ->tampil());               
             }
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
@@ -540,5 +567,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     public void isCek(){
         BtnHapus.setEnabled(akses.getpermintaan_stok_obat_pasien());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

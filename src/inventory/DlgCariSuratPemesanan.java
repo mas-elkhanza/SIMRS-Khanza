@@ -16,8 +16,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -36,6 +39,8 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
     private double tagihan=0;
     private DlgPemesanan aplikasi=new DlgPemesanan(null,false);
     private int pilihan=0,i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -91,19 +96,19 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -536,11 +541,6 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Surat Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -1077,7 +1077,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1101,7 +1101,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmptg.setText("");
         KdIF.setText("");
         NmIF.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1169,14 +1169,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Pemesanan");
   }else{
      Sequel.queryu2("delete from surat_pemesanan_medis where no_pemesanan=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-     tampil();    
+     runBackground(() ->tampil());    
   }       
     
 }//GEN-LAST:event_ppHapusActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void KdIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdIFKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1218,7 +1214,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 aplikasi.setLocationRelativeTo(internalFrame1);
                 aplikasi.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
-                tampil();
+                runBackground(() ->tampil());
             }                
         }
     }//GEN-LAST:event_ppDatangActionPerformed
@@ -1228,7 +1224,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"pilihan data");
         }else{
             Sequel.queryu("update surat_pemesanan_medis set status='Proses Pesan' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_ppProsesActionPerformed
 
@@ -1574,4 +1570,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         ppSuratPemesanan.setEnabled(akses.getsurat_pemesanan_medis());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

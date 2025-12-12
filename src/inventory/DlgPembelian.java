@@ -22,8 +22,11 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -55,6 +58,8 @@ public class DlgPembelian extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -147,19 +152,19 @@ public class DlgPembelian extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
             });
@@ -1095,7 +1100,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil2();
+            runBackground(() ->tampil2());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1106,12 +1111,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil2();
+        runBackground(() ->tampil2());
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil2();
+            runBackground(() ->tampil2());
         }else{
             Valid.pindah(evt, BtnSimpan, BtnKeluar);
         }
@@ -1198,16 +1203,16 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_btnGudangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampilAkunBayar();
         try {
             if(Valid.daysOld("./cache/penerimaanobat.iyem")<8){
-                tampil2();
+                runBackground(() ->tampil2());
             }else{
                 tampil();
-                tampil2();
+                runBackground(() ->tampil2());
             }
         } catch (Exception e) {
         }
-        tampilAkunBayar();
     }//GEN-LAST:event_formWindowOpened
 
     private void tppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppnKeyPressed
@@ -1387,7 +1392,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
-        tampil2();
+        runBackground(() ->tampil2());
         LSubtotal.setText("0");
         LPotongan.setText("0");
         LTotal2.setText("0");
@@ -2603,5 +2608,23 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -13,18 +13,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 
 public class DlgKadaluarsaBatch extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -91,19 +94,19 @@ public class DlgKadaluarsaBatch extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -295,7 +298,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -355,7 +357,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -370,7 +372,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -383,7 +385,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -429,29 +431,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                "data_batch.asal,data_batch.no_faktur,data_batch.h_beli,data_batch.jumlahbeli,"+
                "data_batch.sisa from data_batch inner join databarang inner join kodesatuan "+
                "on data_batch.kode_brng=databarang.kode_brng and "+
-               "kodesatuan.kode_sat=databarang.kode_sat where "+
-               "data_batch.tgl_kadaluarsa between ? and ? and data_batch.no_batch like ? or "+
-               "data_batch.tgl_kadaluarsa between ? and ? and data_batch.kode_brng like ? or "+
-               "data_batch.tgl_kadaluarsa between ? and ? and databarang.nama_brng like ? or "+
-               "data_batch.tgl_kadaluarsa between ? and ? and data_batch.asal like ? or "+
-               "data_batch.tgl_kadaluarsa between ? and ? and data_batch.no_faktur like ? "+
+               "kodesatuan.kode_sat=databarang.kode_sat where data_batch.tgl_kadaluarsa between ? and ? "+
+               (TCari.getText().trim().equals("")?"":"and (data_batch.no_batch like ? or data_batch.kode_brng like ? or "+
+               "databarang.nama_brng like ? or data_batch.asal like ? or data_batch.no_faktur like ?) ")+
                "order by data_batch.tgl_kadaluarsa");
             try {
                 ps.setString(1,Valid.SetTgl(tanggal1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(tanggal2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(tanggal1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(tanggal2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(tanggal1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(tanggal2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(tanggal1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(tanggal2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(tanggal1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(tanggal2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -479,4 +473,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
          BtnPrint.setEnabled(akses.getkadaluarsa_batch());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

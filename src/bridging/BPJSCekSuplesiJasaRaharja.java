@@ -31,7 +31,10 @@ import java.awt.event.WindowListener;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -55,6 +58,8 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -306,7 +311,7 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
         if(NoKartu.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"No.Kartu masih kosong...!!");
         }else{
-            tampil(NoKartu.getText().trim());
+            runBackground(() ->tampil(NoKartu.getText().trim()));
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -456,4 +461,21 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
         return tbKamar;
     }
  
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

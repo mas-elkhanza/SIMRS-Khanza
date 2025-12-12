@@ -4,13 +4,17 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -23,6 +27,8 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private ResultSet rs,rs2,rs3;
     private String aktifkanparsial="no",norm="",kddokter="",kode_pj="",norawat="",status="",TAMPILKANCOPYRESEPDOKTERLAIN="no";
     private int jmlparsial=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form 
      * @param parent
@@ -281,12 +287,12 @@ public class DlgCopyResep extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, DTPCari1,BtnKeluar);
         }
@@ -362,7 +368,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void ChkTanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkTanggalItemStateChanged
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ChkTanggalItemStateChanged
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
@@ -413,7 +419,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
             }else {
                 Sequel.meghapus("resep_obat","no_resep",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
-                tampil();               
+                runBackground(() ->tampil());               
             }
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
@@ -628,5 +634,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         resep.isCek();
         resep.tampilobat(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
         resep.setVisible(true);   
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

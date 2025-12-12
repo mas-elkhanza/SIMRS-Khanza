@@ -15,8 +15,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -31,11 +34,13 @@ public class DlgObatPeresep extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2; 
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private int i=0,a=0;
+    private int i=0;
     private double total=0;
     private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private String  No="",Kode="",Nama="",Jml="",Satuan="",Harga="",Subtotal="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -92,7 +97,7 @@ public class DlgObatPeresep extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(dokter.getTable().getSelectedRow()!= -1){
                     nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
+                    runBackground(() ->prosesCari());
                 }      
                 nmdokter.requestFocus();
             }
@@ -115,7 +120,7 @@ public class DlgObatPeresep extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(poli.getTable().getSelectedRow()!= -1){
                     nmpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
+                    runBackground(() ->prosesCari());
                 }      
                 poli.requestFocus();
             }
@@ -139,7 +144,7 @@ public class DlgObatPeresep extends javax.swing.JDialog {
                 if(carabayar.getTable().getSelectedRow()!= -1){
                     nmpenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
                 }     
-                prosesCari();
+                runBackground(() ->prosesCari());
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -536,7 +541,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmdokter.setText("");
         nmpenjab.setText("");
         nmpoli.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -560,7 +565,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -728,4 +733,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }        
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

@@ -14,8 +14,8 @@ package inventory;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -24,7 +24,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -32,7 +35,6 @@ import simrskhanza.DlgCariBangsal;
 
 public class DlgCekStok extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstampil,psstok;
@@ -42,6 +44,8 @@ public class DlgCekStok extends javax.swing.JDialog {
     private double stokbarang=0;
     private WarnaTable warna=new WarnaTable();
     private String hppfarmasi="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -99,19 +103,19 @@ public class DlgCekStok extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -129,7 +133,7 @@ public class DlgCekStok extends javax.swing.JDialog {
                 if(bangsal.getTable().getSelectedRow()!= -1){                   
                     kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    tampil();
+                    runBackground(() ->tampil());
                 }  
                 kdgudang.requestFocus();
             }
@@ -178,13 +182,8 @@ public class DlgCekStok extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cek Stok Per Lokasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cek Stok Per Lokasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -319,7 +318,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil();
+            runBackground(() ->tampil());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -330,12 +329,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TCari, BtnKeluar);
         }
@@ -344,14 +343,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
         nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
-        tampil();
+        runBackground(() ->tampil());
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
         nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
-        tampil();
+        runBackground(() ->tampil());
         BtnKeluar.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
-        tampil();
+        runBackground(() ->tampil());
         TCari.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         BtnGudangActionPerformed(null);
@@ -365,10 +364,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     bangsal.setAlwaysOnTop(false);
     bangsal.setVisible(true);
 }//GEN-LAST:event_BtnGudangActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -459,6 +454,23 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
-        
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
