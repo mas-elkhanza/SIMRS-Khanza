@@ -7,11 +7,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgCariAturanPakai;
-import inventory.DlgCariMetodeRacik;
-import inventory.DlgCariPenjualan;
-import inventory.DlgCekStok;
-import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -26,8 +21,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -59,6 +57,8 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
 
     /** Creates new form DlgProgramStudi
@@ -301,19 +301,19 @@ public class DlgPenjualan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -1719,7 +1719,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnSimpan, BtnKeluar);
         }
@@ -1808,7 +1808,7 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
     if(TabRawat.getSelectedIndex()==0){
-        tampil();
+        runBackground(() ->tampil());
     }else if(TabRawat.getSelectedIndex()==1){
         if(tbObatRacikan.getRowCount()!=0){
             if(tbObatRacikan.getSelectedRow()!= -1){
@@ -1821,7 +1821,7 @@ private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),6).toString().equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                 }else{
-                    tampildetailracikanobat();
+                    runBackground(() ->tampildetailracikanobat());
                 }
             }else{
                 JOptionPane.showMessageDialog(null,"Silahkan pilih racikan..!!");
@@ -1964,7 +1964,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(bangsal.getTable().getSelectedRow()!= -1){                   
                     kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    tampil();
+                    runBackground(() ->tampil());
                 } 
                 kdgudang.requestFocus();
             }
@@ -1989,7 +1989,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Bayar.setText("0");
         Ongkir.setText("0");
-        tampil();
+        runBackground(() ->tampil());
         try {
             if(Valid.daysOld("./cache/akunbayar.iyem")<8){
                 tampilAkunBayar2();
@@ -2272,7 +2272,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),5).toString().equals("")){
                             JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                         }else{
-                            tampildetailracikanobat();
+                            runBackground(() ->tampildetailracikanobat());
                             TCari.requestFocus();
                         }
                     }else{
@@ -4225,17 +4225,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     private void tampil(){
         if(aktifkanbatch.equals("yes")){
-            tampil2();
+            runBackground(() ->tampil2());
         }else{
-            tampil1();
+            runBackground(() ->tampil1());
         }
     }
 
     private void tampildetailracikanobat() {
         if(aktifkanbatch.equals("yes")){
-            tampil4();
+            runBackground(() ->tampil4());
         }else{
-            tampil3();
+            runBackground(() ->tampil3());
         }
     }
 
@@ -4444,5 +4444,23 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception e) {
             Persenppn.setText("0");
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
