@@ -16,8 +16,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -34,7 +37,8 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private InventorySuratPemesanan form=new InventorySuratPemesanan(null,false);    
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -95,19 +99,19 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -500,7 +504,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -515,7 +519,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         TCari.setText("");
         kdbarang.setText("");
         nmbarang.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -531,13 +535,14 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda pilih...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));      
+            InventorySuratPemesanan form=new InventorySuratPemesanan(null,false);
             form.tampilkan=false;
             form.isCek();
             Valid.tabelKosong(form.tabMode());
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                    harga=Sequel.cariIsiAngka("select h_beli from databarang where kode_brng=?",tbDokter.getValueAt(i,1).toString());
+                    harga=Sequel.cariIsiAngka("select databarang.h_beli from databarang where databarang.kode_brng=?",tbDokter.getValueAt(i,1).toString());
                     jml=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
                     form.tabMode().addRow(new Object[]{
                         jml,tbDokter.getValueAt(i,6).toString(),
@@ -563,7 +568,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_BtnPrint1KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -658,23 +663,18 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join jenis inner join detail_permintaan_medis inner join permintaan_medis "+
                     "on databarang.kode_brng=detail_permintaan_medis.kode_brng and databarang.kode_sat=kodesatuan.kode_sat "+
                     "and databarang.kdjns=jenis.kdjns and detail_permintaan_medis.no_permintaan=permintaan_medis.no_permintaan "+
-                    "where permintaan_medis.tanggal between ? and ? and databarang.nama_brng like ? and databarang.kode_brng like ? or "+
-                    "permintaan_medis.tanggal between ? and ? and databarang.nama_brng like ? and databarang.nama_brng like ? or "+
-                    "permintaan_medis.tanggal between ? and ? and databarang.nama_brng like ? and jenis.nama like ? "+
+                    "where permintaan_medis.tanggal between ? and ? and databarang.nama_brng like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                     "group by databarang.kode_brng order by databarang.kode_brng");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(3,"%"+nmbarang.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(7,"%"+nmbarang.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(11,"%"+nmbarang.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }   
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -700,5 +700,21 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }               
     }
     
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

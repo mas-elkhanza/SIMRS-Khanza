@@ -13678,7 +13678,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningCURB65.setName("BtnSkriningCURB65"); 
         BtnSkriningCURB65.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnSkriningCURB65.setRoundRect(false);
-        BtnSkriningCURB65.addActionListener(this::BtnSkriningPneumoniaSeverityIndexActionPerformed);
+        BtnSkriningCURB65.addActionListener(this::BtnSkriningCURB65ActionPerformed);
         
         BtnSkriningInstrumenSRQ = new widget.Button();
         BtnSkriningInstrumenSRQ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 

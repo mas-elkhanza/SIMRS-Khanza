@@ -1585,7 +1585,10 @@
 				<text><![CDATA[Nomor Implan]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="314" y="121" width="219" height="34" uuid="0eb2ba18-b9cc-451a-966f-ec88070ccae0"/>
+				<reportElement x="314" y="121" width="219" height="34" isRemoveLineWhenBlank="true" uuid="0eb2ba18-b9cc-451a-966f-ec88070ccae0">
+					<printWhenExpression><![CDATA[(!$F{nomor_implan}.toLowerCase().equals("") ? 
+  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
+				</reportElement>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
 					<jr:codeExpression><![CDATA[$F{nomor_implan}]]></jr:codeExpression>
 				</jr:barbecue>
