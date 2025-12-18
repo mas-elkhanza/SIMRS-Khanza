@@ -15,8 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -30,7 +33,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
-    private InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     private DlgCariReturBeli form=new DlgCariReturBeli(null,false);  
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private PreparedStatement ps;
@@ -38,6 +40,8 @@ public class DlgReturBeli extends javax.swing.JDialog {
     private double ttlretur=0,jumlahretur=0,stokobat=0;
     private String aktifkanbatch="no";
     private boolean sukses=true;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -57,9 +61,9 @@ public class DlgReturBeli extends javax.swing.JDialog {
             "No.Faktur","Kode Barang","Nama Barang","Satuan","Hrg.Retur(Rp)","Jml.Retur","SubtotalRetur(Rp)","No.Batch","Kadaluarsa"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[] {
-                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.String.class,
-                java.lang.String.class
+                java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Object.class,
+                java.lang.Object.class
             };  
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -224,46 +228,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        suplier.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgReturBeli")){
-                    if(suplier.getTable().getSelectedRow()!= -1){                   
-                        kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
-                        nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    } 
-                    kdsup.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        suplier.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgReturBeli")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        suplier.dispose();
-                    }                
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
         });
         
         bangsal.addWindowListener(new WindowListener() {
@@ -929,13 +893,17 @@ public class DlgReturBeli extends javax.swing.JDialog {
                     }
                     JOptionPane.showMessageDialog(null,"Maaf, stok tidak mencukupi. Maksimal yang bisa diretur "+stokobat+" "+satuanretur.getText());
                 }else{
-                    Sequel.menyimpan("tampreturbeli","'"+NoFaktur.getText()+"','"+Kdbar.getText()+"','"+nmbar.getText()+"','"+Satuanbar.getText()+
-                                 "','0','0','"+Hargaretur.getText()+"','"+Jmlretur.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+jumlahretur+"','"+Kadaluwarsa.getText()+"','"+akses.getkode()+"'",
-                                 "nama_brng='"+nmbar.getText()+"',satuan='"+Satuanbar.getText()+"',h_beli='0',jml_beli='0',h_retur='"+
-                                  Hargaretur.getText()+"',jml_retur='"+jumlahretur+"',total='"+Subtotal.getText()+"',no_batch='"+NoBatch.getText()+"',jml_retur2='"+jumlahretur+"'",
-                                 "kode_brng='"+Kdbar.getText()+"' and no_faktur='"+NoFaktur.getText()+"'");
-                    emptTeks();            
-                    tampil();
+                    if(Sequel.menyimpantf("tampreturbeli","'"+NoFaktur.getText()+"','"+Kdbar.getText()+"','"+nmbar.getText()+"','"+Satuanbar.getText()+
+                           "','0','0','"+Hargaretur.getText()+"','"+Jmlretur.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+jumlahretur+"','"+Kadaluwarsa.getText()+"','"+akses.getkode()+"'",
+                           "nama_brng='"+nmbar.getText()+"',satuan='"+Satuanbar.getText()+"',h_beli='0',jml_beli='0',h_retur='"+Hargaretur.getText()+"',jml_retur='"+jumlahretur+"',total='"+Subtotal.getText()+"',"+
+                           "no_batch='"+NoBatch.getText()+"',jml_retur2='"+jumlahretur+"'","kode_brng='"+Kdbar.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")==true){
+                        tabMode.addRow(new Object[]{
+                            NoFaktur.getText(),Kdbar.getText(),nmbar.getText(),Satuanbar.getText(),Double.parseDouble(Hargaretur.getText()),Double.parseDouble(Jmlretur.getText()),Double.parseDouble(Subtotal.getText()),NoBatch.getText(),Kadaluwarsa.getText()
+                        });
+                        ttlretur=ttlretur+Double.parseDouble(Subtotal.getText());
+                        LTotal.setText(Valid.SetAngka(ttlretur));
+                        emptTeks();
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -956,9 +924,12 @@ public class DlgReturBeli extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kdbar," tampreturbeli","no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"' and petugas='"+akses.getkode()+"' and kode_brng");
-            tampil();
-            emptTeks();
+            if(Valid.hapusTabletf(tabMode,Kdbar," tampreturbeli","no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"' and petugas='"+akses.getkode()+"' and kode_brng")==true){
+                ttlretur=ttlretur-Double.parseDouble(Subtotal.getText());
+                LTotal.setText(""+Valid.SetAngka(ttlretur));
+                tabMode.removeRow(tbDokter.getSelectedRow());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1076,7 +1047,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         Sequel.queryu("delete from tampreturbeli where petugas='"+akses.getkode()+"'");
-        tampil();
+        Valid.tabelKosong(tabMode);
+        LTotal.setText("0");
         autonomer();
     }//GEN-LAST:event_BtnBatalActionPerformed
 
@@ -1178,6 +1150,46 @@ private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kds
 
 private void BtnSplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSplActionPerformed
         akses.setform("DlgReturBeli");
+        InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
+        suplier.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgReturBeli")){
+                    if(suplier.getTable().getSelectedRow()!= -1){                   
+                        kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
+                        nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
+                    } 
+                    kdsup.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        suplier.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgReturBeli")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        suplier.dispose();
+                    }                
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         suplier.emptTeks();
         suplier.isCek();
         suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1211,17 +1223,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_BtnGudangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void KdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            cariBarang();
+            runBackground(() ->cariBarang());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            cariBarang();
+            runBackground(() ->cariBarang());
             Kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            cariBarang();
+            runBackground(() ->cariBarang());
             Jmlretur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnBrgActionPerformed(null);
@@ -1230,12 +1242,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void NoBatchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoBatchKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            cariBatch();
+            runBackground(() ->cariBatch());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            cariBatch();
+            runBackground(() ->cariBatch());
             Kdbar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            cariBatch();
+            runBackground(() ->cariBatch());
             Jmlretur.requestFocus();
         }
     }//GEN-LAST:event_NoBatchKeyPressed
@@ -1450,7 +1462,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
  
     private void cariBarang(){
         try {
-            ps=koneksi.prepareStatement("select * from databarang where databarang.kode_brng=?");
+            ps=koneksi.prepareStatement("select databarang.nama_brng,databarang.kode_sat,databarang.dasar from databarang where databarang.kode_brng=?");
             try {
                 ps.setString(1,Kdbar.getText());
                 rs=ps.executeQuery();
@@ -1476,7 +1488,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     private void cariBatch() {
         try {
-            ps=koneksi.prepareStatement("select * from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.no_faktur=?");
+            ps=koneksi.prepareStatement("select data_batch.tgl_kadaluarsa,data_batch.dasar from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.no_faktur=?");
             try {
                 ps.setString(1,NoBatch.getText());
                 ps.setString(2,Kdbar.getText());
@@ -1546,5 +1558,23 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception ex) {
             System.out.println("Notif : "+ex);                    
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

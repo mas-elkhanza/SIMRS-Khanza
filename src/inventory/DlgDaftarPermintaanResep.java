@@ -2835,7 +2835,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2857,7 +2856,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2877,7 +2875,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2897,7 +2894,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }

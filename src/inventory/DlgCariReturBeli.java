@@ -983,29 +983,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select returbeli.no_retur_beli,returbeli.tgl_retur, "+
-                    "returbeli.nip,petugas.nama,returbeli.kode_suplier,datasuplier.nama_suplier,bangsal.nm_bangsal "+
-                    " from returbeli inner join petugas inner join bangsal  "+
-                    " inner join detreturbeli inner join databarang inner join kodesatuan inner join datasuplier "+
-                    " on detreturbeli.kode_brng=databarang.kode_brng "+
-                    " and detreturbeli.kode_sat=kodesatuan.kode_sat "+
-                    " and returbeli.kd_bangsal=bangsal.kd_bangsal "+
-                    " and returbeli.kode_suplier=datasuplier.kode_suplier "+
-                    " and returbeli.no_retur_beli=detreturbeli.no_retur_beli "+
-                    " and returbeli.nip=petugas.nip "+
-                    " where "+tanggal+noret+ptg+sat+bar+" and returbeli.no_retur_beli like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and returbeli.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and detreturbeli.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and returbeli.kode_suplier like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and datasuplier.nama_suplier like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and detreturbeli.no_faktur like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and detreturbeli.no_batch like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and kodesatuan.satuan like '%"+TCari.getText()+"%' or "+
-                    tanggal+noret+ptg+sat+bar+" and detreturbeli.kode_sat like '%"+TCari.getText()+"%' "+
-                    " group by returbeli.no_retur_beli order by returbeli.tgl_retur,returbeli.no_retur_beli ");
+            ps=koneksi.prepareStatement(
+                "select returbeli.no_retur_beli,returbeli.tgl_retur,returbeli.nip,petugas.nama,returbeli.kode_suplier,datasuplier.nama_suplier,bangsal.nm_bangsal "+
+                "from returbeli inner join petugas on returbeli.nip=petugas.nip inner join bangsal on returbeli.kd_bangsal=bangsal.kd_bangsal "+
+                "inner join detreturbeli on returbeli.no_retur_beli=detreturbeli.no_retur_beli inner join databarang on detreturbeli.kode_brng=databarang.kode_brng "+
+                "inner join kodesatuan on detreturbeli.kode_sat=kodesatuan.kode_sat inner join datasuplier on returbeli.kode_suplier=datasuplier.kode_suplier "+
+                "where "+tanggal+noret+ptg+sat+bar+(TCari.getText().trim().equals("")?"":
+                "and (returbeli.no_retur_beli like '%"+TCari.getText()+"%' or returbeli.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or "+
+                "detreturbeli.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or returbeli.kode_suplier like '%"+TCari.getText()+"%' or "+
+                "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or datasuplier.nama_suplier like '%"+TCari.getText()+"%' or detreturbeli.no_faktur like '%"+TCari.getText()+"%' or "+
+                "detreturbeli.no_batch like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%' or detreturbeli.kode_sat like '%"+TCari.getText()+"%') ")+
+                "group by returbeli.no_retur_beli order by returbeli.tgl_retur,returbeli.no_retur_beli "
+            );
             try {
                 rs=ps.executeQuery();
                 ttlretur=0;
@@ -1014,17 +1003,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
                         rs.getString(5)+", "+rs.getString(6),"Retur Beli : ","di "+rs.getString(7),"","","",""
                     });
-                    ps2=koneksi.prepareStatement("select detreturbeli.no_faktur,detreturbeli.kode_brng,databarang.nama_brng, "+
-                            "detreturbeli.kode_sat,kodesatuan.satuan,detreturbeli.h_retur,detreturbeli.jml_retur, "+
-                            "detreturbeli.total,detreturbeli.no_batch from detreturbeli inner join databarang inner join kodesatuan "+
-                            " on detreturbeli.kode_brng=databarang.kode_brng "+
-                            " and detreturbeli.kode_sat=kodesatuan.kode_sat where "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and detreturbeli.kode_brng like '%"+TCari.getText()+"%' or "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and detreturbeli.no_faktur like '%"+TCari.getText()+"%' or "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and detreturbeli.no_batch like '%"+TCari.getText()+"%' or "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and detreturbeli.kode_sat like '%"+TCari.getText()+"%' or "+
-                            " detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+" and kodesatuan.satuan like '%"+TCari.getText()+"%' order by detreturbeli.kode_brng  ");
+                    ps2=koneksi.prepareStatement(
+                            "select detreturbeli.no_faktur,detreturbeli.kode_brng,databarang.nama_brng,detreturbeli.kode_sat,kodesatuan.satuan,detreturbeli.h_retur,detreturbeli.jml_retur, "+
+                            "detreturbeli.total,detreturbeli.no_batch from detreturbeli inner join databarang on detreturbeli.kode_brng=databarang.kode_brng "+
+                            "inner join kodesatuan on detreturbeli.kode_sat=kodesatuan.kode_sat "+
+                            "where detreturbeli.no_retur_beli='"+rs.getString(1)+"' "+sat+bar+nofak+
+                            (TCari.getText().trim().equals("")?"":"and (detreturbeli.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                            "detreturbeli.no_faktur like '%"+TCari.getText()+"%' or detreturbeli.no_batch like '%"+TCari.getText()+"%' or detreturbeli.kode_sat like '%"+TCari.getText()+"%' or "+
+                            "kodesatuan.satuan like '%"+TCari.getText()+"%')")+" order by detreturbeli.kode_brng");
                     try {
                         subtotal=0;
                         int no=1;

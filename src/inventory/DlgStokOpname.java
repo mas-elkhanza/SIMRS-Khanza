@@ -224,11 +224,11 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         label10 = new widget.Label();
         LCount = new widget.Label();
         label13 = new widget.Label();
-        LTotalBeli = new widget.Label();
+        LTotalReal = new widget.Label();
         label12 = new widget.Label();
-        LTotal = new widget.Label();
+        LTotalHilang = new widget.Label();
         label14 = new widget.Label();
-        LTotal2 = new widget.Label();
+        LTotalLebih = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelBiasa1 = new widget.PanelBiasa();
@@ -879,33 +879,33 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         label13.setPreferredSize(new java.awt.Dimension(45, 30));
         panelisi1.add(label13);
 
-        LTotalBeli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotalBeli.setText("0");
-        LTotalBeli.setName("LTotalBeli"); // NOI18N
-        LTotalBeli.setPreferredSize(new java.awt.Dimension(100, 30));
-        panelisi1.add(LTotalBeli);
+        LTotalReal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalReal.setText("0");
+        LTotalReal.setName("LTotalReal"); // NOI18N
+        LTotalReal.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelisi1.add(LTotalReal);
 
         label12.setText("Hilang :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(50, 30));
         panelisi1.add(label12);
 
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(85, 30));
-        panelisi1.add(LTotal);
+        LTotalHilang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalHilang.setText("0");
+        LTotalHilang.setName("LTotalHilang"); // NOI18N
+        LTotalHilang.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotalHilang);
 
         label14.setText("Lebih :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(50, 30));
         panelisi1.add(label14);
 
-        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal2.setText("0");
-        LTotal2.setName("LTotal2"); // NOI18N
-        LTotal2.setPreferredSize(new java.awt.Dimension(85, 30));
-        panelisi1.add(LTotal2);
+        LTotalLebih.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalLebih.setText("0");
+        LTotalLebih.setName("LTotalLebih"); // NOI18N
+        LTotalLebih.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotalLebih);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -1025,9 +1025,16 @@ public final class DlgStokOpname extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and no_batch='"+nobatch.getText()+"' and no_faktur='"+nofaktur.getText()+"' and kode_brng");
-        BtnCariActionPerformed(evt);
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and no_batch='"+nobatch.getText()+"' and no_faktur='"+nofaktur.getText()+"' and kode_brng")==true){
+            totalreal=totalreal-Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString().replaceAll(",",""));
+            total=total-Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString().replaceAll(",",""));       
+            totallebih=totallebih-Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),11).toString().replaceAll(",",""));        
+            LTotalReal.setText(df2.format(totalreal));
+            LTotalHilang.setText(df2.format(total));
+            LTotalLebih.setText(df2.format(totallebih));
+            LCount.setText(""+tabMode.getRowCount());
+            tabMode.removeRow(tbKamar.getSelectedRow());
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1050,7 +1057,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tbKamar.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -1485,9 +1491,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.TextBox Kdbar;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
-    private widget.Label LTotal;
-    private widget.Label LTotal2;
-    private widget.Label LTotalBeli;
+    private widget.Label LTotalHilang;
+    private widget.Label LTotalLebih;
+    private widget.Label LTotalReal;
     private widget.TextBox Lebih;
     private javax.swing.JMenuItem MnGolonganAsc;
     private javax.swing.JMenuItem MnGolonganDesc;
@@ -1629,9 +1635,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
-        LTotalBeli.setText(df2.format(totalreal));
-        LTotal.setText(df2.format(total));
-        LTotal2.setText(df2.format(totallebih));
+        LTotalReal.setText(df2.format(totalreal));
+        LTotalHilang.setText(df2.format(total));
+        LTotalLebih.setText(df2.format(totallebih));
     }
 
     public void emptTeks() {

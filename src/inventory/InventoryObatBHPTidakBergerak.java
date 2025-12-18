@@ -14,8 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -29,6 +32,8 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
     private ResultSet rs,rsstok;
     private double stok=0;
     private String aktifkanbatch="no",hppfarmasi="",pilihan="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** 
      * @param parent
@@ -72,19 +77,19 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -305,7 +310,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -366,9 +370,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
-        this.setCursor(Cursor.getDefaultCursor());
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -381,9 +383,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        prosesCari();
-        this.setCursor(Cursor.getDefaultCursor());
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -447,14 +447,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
-                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                    "inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' and "+
-                    "databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
-                    "and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
+                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "where databarang.status='1' and databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
+                    (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
+                    "order by databarang.nama_brng");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();            
                 while(rs.next()){ 
                     if(aktifkanbatch.equals("yes")){
@@ -505,4 +508,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
          BtnPrint.setEnabled(akses.getobat_bhp_tidakbergerak());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

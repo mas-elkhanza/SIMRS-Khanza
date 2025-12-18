@@ -15,6 +15,9 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -30,6 +33,8 @@ public class DlgSisaStok extends javax.swing.JDialog {
     private int i=0,kolom=0,no=0;
     private double total=0,stok=0,totalaset=0;
     private String qrystok="",aktifkanbatch="no",hppfarmasi="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -63,19 +68,19 @@ public class DlgSisaStok extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -337,7 +342,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -355,7 +360,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmjns.setText("");
         nmkategori.setText("");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        prosesCari();
+        runBackground(() ->prosesCari());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -633,9 +638,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             totalaset=0;
             
             if(aktifkanbatch.equals("yes")){
-                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch<>'' and no_faktur<>''";
+                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
             }else{
-                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch='' and no_faktur=''";
+                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
             }
             
             ps= koneksi.prepareStatement(
@@ -721,4 +726,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnPrint.setEnabled(akses.getsisa_stok());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

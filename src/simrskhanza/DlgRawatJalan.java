@@ -7690,7 +7690,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 resep.setLocationRelativeTo(internalFrame1);
                 resep.setNoRm(TNoRw.getText(),KdDok.getText(),TDokter.getText(),TNoRM.getText()+" "+TPasien.getText());
                 resep.isCek();
-                resep.tampilobat();
                 resep.setVisible(true);                    
             }            
         }

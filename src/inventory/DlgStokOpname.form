@@ -1173,11 +1173,11 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Label" name="LTotalBeli">
+                <Component class="widget.Label" name="LTotalReal">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="LTotalBeli" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="LTotalReal" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
                     </Property>
@@ -1192,11 +1192,11 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Label" name="LTotal">
+                <Component class="widget.Label" name="LTotalHilang">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="LTotal" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="LTotalHilang" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[85, 30]"/>
                     </Property>
@@ -1211,11 +1211,11 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Label" name="LTotal2">
+                <Component class="widget.Label" name="LTotalLebih">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="LTotal2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="LTotalLebih" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[85, 30]"/>
                     </Property>

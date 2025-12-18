@@ -18,8 +18,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -42,6 +45,8 @@ public class InventoryCariHibahObatBHP extends javax.swing.JDialog {
     private String aktifkanbatch="no";
     private boolean sukses=true;
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
    
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -278,19 +283,19 @@ public class InventoryCariHibahObatBHP extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -372,11 +377,6 @@ public class InventoryCariHibahObatBHP extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Hibah Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -892,7 +892,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -916,7 +916,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmptg.setText("");
         KdIF.setText("");
         NmIF.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -929,7 +929,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -1061,7 +1060,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   }   
 
                   if(sukses==true){
-                      tampil();
+                      runBackground(() ->tampil());
                   }
 
                } catch (Exception e) {
@@ -1080,10 +1079,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }   
     }    
 }//GEN-LAST:event_ppHapusActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void KdIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdIFKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1174,32 +1169,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{     
-            ps=koneksi.prepareStatement("select hibah_obat_bhp.tgl_hibah,hibah_obat_bhp.no_hibah, "+
-                    "hibah_obat_bhp.kode_pemberi,pemberihibah.nama_pemberi, "+
-                    "hibah_obat_bhp.nip,petugas.nama,bangsal.nm_bangsal,hibah_obat_bhp.totalhibah,"+
-                    "hibah_obat_bhp.totalnilai "+
-                    " from hibah_obat_bhp inner join pemberihibah inner join petugas inner join bangsal  "+
-                    " inner join detailhibah_obat_bhp inner join databarang inner join kodesatuan inner join jenis "+
-                    " inner join industrifarmasi on detailhibah_obat_bhp.kode_brng=databarang.kode_brng "+
-                    " and detailhibah_obat_bhp.kode_sat=kodesatuan.kode_sat "+
-                    " and hibah_obat_bhp.kd_bangsal=bangsal.kd_bangsal "+
-                    " and hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah "+
-                    " and hibah_obat_bhp.kode_pemberi=pemberihibah.kode_pemberi "+
-                    " and databarang.kode_industri=industrifarmasi.kode_industri "+
-                    " and hibah_obat_bhp.nip=petugas.nip and databarang.kdjns=jenis.kdjns"+
-                    " where hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and hibah_obat_bhp.no_hibah like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and hibah_obat_bhp.kode_pemberi like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pemberihibah.nama_pemberi like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and hibah_obat_bhp.nip like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and petugas.nama like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and bangsal.nm_bangsal like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.kode_brng like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and databarang.nama_brng like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.kode_sat like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.no_batch like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and industrifarmasi.nama_industri like ? or "+
-                    " hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and jenis.nama like ? "+
-                    " group by hibah_obat_bhp.no_hibah order by hibah_obat_bhp.tgl_hibah,hibah_obat_bhp.no_hibah ");
+            ps=koneksi.prepareStatement(
+                "select hibah_obat_bhp.tgl_hibah,hibah_obat_bhp.no_hibah,hibah_obat_bhp.kode_pemberi,pemberihibah.nama_pemberi, "+
+                "hibah_obat_bhp.nip,petugas.nama,bangsal.nm_bangsal,hibah_obat_bhp.totalhibah,hibah_obat_bhp.totalnilai "+
+                "from hibah_obat_bhp inner join pemberihibah on hibah_obat_bhp.kode_pemberi=pemberihibah.kode_pemberi "+
+                "inner join petugas on hibah_obat_bhp.nip=petugas.nip inner join bangsal on hibah_obat_bhp.kd_bangsal=bangsal.kd_bangsal "+
+                "inner join detailhibah_obat_bhp on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah "+
+                "inner join databarang on detailhibah_obat_bhp.kode_brng=databarang.kode_brng inner join kodesatuan on detailhibah_obat_bhp.kode_sat=kodesatuan.kode_sat "+
+                "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                "where hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? "+
+                (TCari.getText().trim().equals("")?"":"and (hibah_obat_bhp.no_hibah like ? or hibah_obat_bhp.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or hibah_obat_bhp.nip like ? or petugas.nama like ? or bangsal.nm_bangsal like ? or "+
+                "detailhibah_obat_bhp.kode_brng like ? or databarang.nama_brng like ? or detailhibah_obat_bhp.kode_sat like ? or detailhibah_obat_bhp.no_batch like ? or industrifarmasi.nama_industri like ? or jenis.nama like ?) ")+
+                "group by hibah_obat_bhp.no_hibah order by hibah_obat_bhp.tgl_hibah,hibah_obat_bhp.no_hibah "
+            );
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
@@ -1209,106 +1191,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(6,"%"+nmsat.getText()+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 ps.setString(8,"%"+NmIF.getText()+"%");
-                ps.setString(9,"%"+TCari.getText()+"%");
-                ps.setString(10,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(12,"%"+NoFaktur.getText()+"%");
-                ps.setString(13,"%"+nmsup.getText()+"%");
-                ps.setString(14,"%"+nmptg.getText()+"%");
-                ps.setString(15,"%"+nmsat.getText()+"%");
-                ps.setString(16,"%"+nmbar.getText()+"%");
-                ps.setString(17,"%"+NmIF.getText()+"%");
-                ps.setString(18,"%"+TCari.getText()+"%");
-                ps.setString(19,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(21,"%"+NoFaktur.getText()+"%");
-                ps.setString(22,"%"+nmsup.getText()+"%");
-                ps.setString(23,"%"+nmptg.getText()+"%");
-                ps.setString(24,"%"+nmsat.getText()+"%");
-                ps.setString(25,"%"+nmbar.getText()+"%");
-                ps.setString(26,"%"+NmIF.getText()+"%");
-                ps.setString(27,"%"+TCari.getText()+"%");
-                ps.setString(28,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(29,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(30,"%"+NoFaktur.getText()+"%");
-                ps.setString(31,"%"+nmsup.getText()+"%");
-                ps.setString(32,"%"+nmptg.getText()+"%");
-                ps.setString(33,"%"+nmsat.getText()+"%");
-                ps.setString(34,"%"+nmbar.getText()+"%");
-                ps.setString(35,"%"+NmIF.getText()+"%");
-                ps.setString(36,"%"+TCari.getText()+"%");
-                ps.setString(37,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(38,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(39,"%"+NoFaktur.getText()+"%");
-                ps.setString(40,"%"+nmsup.getText()+"%");
-                ps.setString(41,"%"+nmptg.getText()+"%");
-                ps.setString(42,"%"+nmsat.getText()+"%");
-                ps.setString(43,"%"+nmbar.getText()+"%");
-                ps.setString(44,"%"+NmIF.getText()+"%");
-                ps.setString(45,"%"+TCari.getText()+"%");
-                ps.setString(46,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(47,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(48,"%"+NoFaktur.getText()+"%");
-                ps.setString(49,"%"+nmsup.getText()+"%");
-                ps.setString(50,"%"+nmptg.getText()+"%");
-                ps.setString(51,"%"+nmsat.getText()+"%");
-                ps.setString(52,"%"+nmbar.getText()+"%");
-                ps.setString(53,"%"+NmIF.getText()+"%");
-                ps.setString(54,"%"+TCari.getText()+"%");
-                ps.setString(55,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(56,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(57,"%"+NoFaktur.getText()+"%");
-                ps.setString(58,"%"+nmsup.getText()+"%");
-                ps.setString(59,"%"+nmptg.getText()+"%");
-                ps.setString(60,"%"+nmsat.getText()+"%");
-                ps.setString(61,"%"+nmbar.getText()+"%");
-                ps.setString(62,"%"+NmIF.getText()+"%");
-                ps.setString(63,"%"+TCari.getText()+"%");
-                ps.setString(64,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(65,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(66,"%"+NoFaktur.getText()+"%");
-                ps.setString(67,"%"+nmsup.getText()+"%");
-                ps.setString(68,"%"+nmptg.getText()+"%");
-                ps.setString(69,"%"+nmsat.getText()+"%");
-                ps.setString(70,"%"+nmbar.getText()+"%");
-                ps.setString(71,"%"+NmIF.getText()+"%");
-                ps.setString(72,"%"+TCari.getText()+"%");
-                ps.setString(73,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(74,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(75,"%"+NoFaktur.getText()+"%");
-                ps.setString(76,"%"+nmsup.getText()+"%");
-                ps.setString(77,"%"+nmptg.getText()+"%");
-                ps.setString(78,"%"+nmsat.getText()+"%");
-                ps.setString(79,"%"+nmbar.getText()+"%");
-                ps.setString(80,"%"+NmIF.getText()+"%");
-                ps.setString(81,"%"+TCari.getText()+"%");
-                ps.setString(82,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(83,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(84,"%"+NoFaktur.getText()+"%");
-                ps.setString(85,"%"+nmsup.getText()+"%");
-                ps.setString(86,"%"+nmptg.getText()+"%");
-                ps.setString(87,"%"+nmsat.getText()+"%");
-                ps.setString(88,"%"+nmbar.getText()+"%");
-                ps.setString(89,"%"+NmIF.getText()+"%");
-                ps.setString(90,"%"+TCari.getText()+"%");            
-                ps.setString(91,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(92,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(93,"%"+NoFaktur.getText()+"%");
-                ps.setString(94,"%"+nmsup.getText()+"%");
-                ps.setString(95,"%"+nmptg.getText()+"%");
-                ps.setString(96,"%"+nmsat.getText()+"%");
-                ps.setString(97,"%"+nmbar.getText()+"%");
-                ps.setString(98,"%"+NmIF.getText()+"%");
-                ps.setString(99,"%"+TCari.getText()+"%");
-                ps.setString(100,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(101,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(102,"%"+NoFaktur.getText()+"%");
-                ps.setString(103,"%"+nmsup.getText()+"%");
-                ps.setString(104,"%"+nmptg.getText()+"%");
-                ps.setString(105,"%"+nmsat.getText()+"%");
-                ps.setString(106,"%"+nmbar.getText()+"%");
-                ps.setString(107,"%"+NmIF.getText()+"%");
-                ps.setString(108,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
+                    ps.setString(13,"%"+TCari.getText()+"%");
+                    ps.setString(14,"%"+TCari.getText()+"%");
+                    ps.setString(15,"%"+TCari.getText()+"%");
+                    ps.setString(16,"%"+TCari.getText()+"%");
+                    ps.setString(17,"%"+TCari.getText()+"%");
+                    ps.setString(18,"%"+TCari.getText()+"%");
+                    ps.setString(19,"%"+TCari.getText()+"%");
+                    ps.setString(20,"%"+TCari.getText()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 tagihan=0;
                 while(rs.next()){
@@ -1316,50 +1213,33 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs.getString("tgl_hibah"),rs.getString("no_hibah"),rs.getString("kode_pemberi")+", "+rs.getString("nama_pemberi"),
                         rs.getString("nip")+", "+rs.getString("nama"),"Pembelian di "+rs.getString("nm_bangsal") +" :","","","","","",""
                     });    
-                    ps2=koneksi.prepareStatement("select detailhibah_obat_bhp.kode_brng,databarang.nama_brng, "+
+                    ps2=koneksi.prepareStatement(
+                        "select detailhibah_obat_bhp.kode_brng,databarang.nama_brng, "+
                         "detailhibah_obat_bhp.kode_sat,kodesatuan.satuan,detailhibah_obat_bhp.jumlah,detailhibah_obat_bhp.h_hibah, "+
                         "detailhibah_obat_bhp.subtotalhibah,detailhibah_obat_bhp.h_diakui,detailhibah_obat_bhp.subtotaldiakui,"+
                         "detailhibah_obat_bhp.no_batch,industrifarmasi.nama_industri,detailhibah_obat_bhp.kadaluarsa "+
-                        "from detailhibah_obat_bhp inner join databarang inner join kodesatuan inner join jenis inner join industrifarmasi "+
-                        " on detailhibah_obat_bhp.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
-                        " and detailhibah_obat_bhp.kode_sat=kodesatuan.kode_sat and databarang.kode_industri=industrifarmasi.kode_industri where "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.kode_brng like ? or "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and databarang.nama_brng like ? or "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.kode_sat like ? or "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailhibah_obat_bhp.no_batch like ? or "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and industrifarmasi.nama_industri like ? or "+
-                        " detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and jenis.nama like ? order by detailhibah_obat_bhp.kode_brng  ");
+                        "from detailhibah_obat_bhp inner join databarang on detailhibah_obat_bhp.kode_brng=databarang.kode_brng "+
+                        "inner join kodesatuan on detailhibah_obat_bhp.kode_sat=kodesatuan.kode_sat "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                        "where detailhibah_obat_bhp.no_hibah=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? "+
+                        (TCari.getText().trim().equals("")?"":"and (detailhibah_obat_bhp.kode_brng like ? or databarang.nama_brng like ? or "+
+                        "detailhibah_obat_bhp.kode_sat like ? or detailhibah_obat_bhp.no_batch like ? or industrifarmasi.nama_industri like ? or "+
+                        "jenis.nama like ?) ")+"order by detailhibah_obat_bhp.kode_brng"
+                    );
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmsat.getText()+"%");
                         ps2.setString(3,"%"+nmbar.getText()+"%");
                         ps2.setString(4,"%"+NmIF.getText()+"%");
-                        ps2.setString(5,"%"+TCari.getText()+"%");
-                        ps2.setString(6,rs.getString(2));
-                        ps2.setString(7,"%"+nmsat.getText()+"%");
-                        ps2.setString(8,"%"+nmbar.getText()+"%");
-                        ps2.setString(9,"%"+NmIF.getText()+"%");
-                        ps2.setString(10,"%"+TCari.getText()+"%");
-                        ps2.setString(11,rs.getString(2));
-                        ps2.setString(12,"%"+nmsat.getText()+"%");
-                        ps2.setString(13,"%"+nmbar.getText()+"%");
-                        ps2.setString(14,"%"+NmIF.getText()+"%");
-                        ps2.setString(15,"%"+TCari.getText()+"%");
-                        ps2.setString(16,rs.getString(2));
-                        ps2.setString(17,"%"+nmsat.getText()+"%");
-                        ps2.setString(18,"%"+nmbar.getText()+"%");
-                        ps2.setString(19,"%"+NmIF.getText()+"%");
-                        ps2.setString(20,"%"+TCari.getText()+"%");
-                        ps2.setString(21,rs.getString(2));
-                        ps2.setString(22,"%"+nmsat.getText()+"%");
-                        ps2.setString(23,"%"+nmbar.getText()+"%");
-                        ps2.setString(24,"%"+NmIF.getText()+"%");
-                        ps2.setString(25,"%"+TCari.getText()+"%");
-                        ps2.setString(26,rs.getString(2));
-                        ps2.setString(27,"%"+nmsat.getText()+"%");
-                        ps2.setString(28,"%"+nmbar.getText()+"%");
-                        ps2.setString(29,"%"+NmIF.getText()+"%");
-                        ps2.setString(30,"%"+TCari.getText()+"%");
+                        if(!TCari.getText().trim().equals("")){
+                            ps2.setString(5,"%"+TCari.getText()+"%");
+                            ps2.setString(6,"%"+TCari.getText()+"%");
+                            ps2.setString(7,"%"+TCari.getText()+"%");
+                            ps2.setString(8,"%"+TCari.getText()+"%");
+                            ps2.setString(9,"%"+TCari.getText()+"%");
+                            ps2.setString(10,"%"+TCari.getText()+"%");
+                        }   
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){
@@ -1410,4 +1290,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }  
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

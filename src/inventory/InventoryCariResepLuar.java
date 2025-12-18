@@ -24,14 +24,16 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -48,12 +50,11 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2,psracikan;
     private ResultSet rs,rs2,rsracikan;
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private Date date = new Date();
-    private String now=dateFormat.format(date),rincianobat="",finger="";
-    private DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
+    private String rincianobat="",finger="";
     private int i=0,pilihan=0;
     private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -154,50 +155,23 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }  
-        
-        aturanpakai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(aturanpakai.getTable().getSelectedRow()!= -1){ 
-                    if(pilihan==1){
-                        tbTambahan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan.getSelectedRow(),5);
-                        tbTambahan.requestFocus();
-                    }else if(pilihan==2){
-                        tbTambahan1.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan1.getSelectedRow(),5);
-                        tbTambahan1.requestFocus();
-                    }
-                }   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         Valid.SetTgl2(DTPCari1,format.format(new Date())+" 00:00:00");
         Valid.SetTgl2(DTPCari2,format.format(new Date())+" 23:59:59"); 
@@ -657,7 +631,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         }else if(tbResep.getSelectedRow()>-1){
             if(!tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().equals("")){
                 Sequel.meghapus("resep_luar","no_resep",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                tampil();
+                runBackground(() ->tampil());
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus resep. Pilih dulu data yang mau dihapus. Klik data Nomor Resep untuk memilih...!!!!");
             }   
@@ -729,7 +703,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -742,13 +716,13 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();        
+        runBackground(() ->tampil());        
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, TCari);
         }
@@ -769,7 +743,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 });
             }
             
-            tampil();
+            runBackground(() ->tampil());
             WindowInput3.dispose();
         }
     }//GEN-LAST:event_BtnSimpanInput3ActionPerformed
@@ -784,6 +758,33 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 i=tbTambahan.getSelectedColumn();
                 if(i==5){
                     pilihan=1;
+                    DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
+                    aturanpakai.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(aturanpakai.getTable().getSelectedRow()!= -1){ 
+                                if(pilihan==1){
+                                    tbTambahan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan.getSelectedRow(),5);
+                                    tbTambahan.requestFocus();
+                                }else if(pilihan==2){
+                                    tbTambahan1.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan1.getSelectedRow(),5);
+                                    tbTambahan1.requestFocus();
+                                }
+                            }   
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
                     aturanpakai.setSize(internalFrame4.getWidth()-20,internalFrame4.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame4);
                     aturanpakai.setVisible(true);
@@ -798,6 +799,33 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 i=tbTambahan1.getSelectedColumn();
                 if(i==5){
                     pilihan=2;
+                    DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
+                    aturanpakai.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(aturanpakai.getTable().getSelectedRow()!= -1){ 
+                                if(pilihan==1){
+                                    tbTambahan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan.getSelectedRow(),5);
+                                    tbTambahan.requestFocus();
+                                }else if(pilihan==2){
+                                    tbTambahan1.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbTambahan1.getSelectedRow(),5);
+                                    tbTambahan1.requestFocus();
+                                }
+                            }   
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
                     aturanpakai.setSize(internalFrame5.getWidth()-20,internalFrame5.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame5);
                     aturanpakai.setVisible(true);
@@ -820,7 +848,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 });
             }
             
-            tampil();
+            runBackground(() ->tampil());
             WindowInput4.dispose();
         }
     }//GEN-LAST:event_BtnSimpanInput4ActionPerformed
@@ -836,7 +864,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         }else if(tbResep.getSelectedRow()>-1){
             if(!tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().equals("")){
                 NoResepUbah3.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                tampilresep();
+                runBackground(() ->tampilresep());
                 WindowInput3.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 WindowInput3.setLocationRelativeTo(internalFrame1);
                 WindowInput3.setVisible(true);
@@ -851,7 +879,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         }else if(tbResep.getSelectedRow()>-1){
             if(!tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().equals("")){
                 NoResepUbah4.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                tampilresep2();
+                runBackground(() ->tampilresep2());
                 WindowInput4.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 WindowInput4.setLocationRelativeTo(internalFrame1);
                 WindowInput4.setVisible(true);
@@ -1058,22 +1086,26 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{  
-            ps=koneksi.prepareStatement("select resep_luar.no_resep,resep_luar.tgl_perawatan,resep_luar.jam,"+
-                    " resep_luar.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_luar.kd_dokter,dokter.nm_dokter "+
-                    " from resep_luar inner join reg_periksa on resep_luar.no_rawat=reg_periksa.no_rawat "+
-                    " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    " inner join dokter on resep_luar.kd_dokter=dokter.kd_dokter where "+
-                    " concat(resep_luar.tgl_perawatan,' ',resep_luar.jam) between ? and ? and "+
-                    " (resep_luar.no_resep like ? or resep_luar.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?) "+
-                    " order by resep_luar.tgl_perawatan,resep_luar.jam");
+            ps=koneksi.prepareStatement(
+                    "select resep_luar.no_resep,resep_luar.tgl_perawatan,resep_luar.jam,resep_luar.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_luar.kd_dokter,dokter.nm_dokter "+
+                    "from resep_luar inner join reg_periksa on resep_luar.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join dokter on resep_luar.kd_dokter=dokter.kd_dokter where "+
+                    "concat(resep_luar.tgl_perawatan,' ',resep_luar.jam) between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":"and (resep_luar.no_resep like ? or resep_luar.no_rawat like ? or "+
+                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?) ")+
+                    "order by resep_luar.tgl_perawatan,resep_luar.jam");
             try{
                 ps.setString(1,Valid.SetTglJam(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTglJam(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -1232,7 +1264,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 
     public void setNoRm(String norwt,Date tgl1) {
         TCari.setText(norwt);
-        tampil();
+        runBackground(() ->tampil());
         Valid.SetTgl2(DTPCari1,format.format(tgl1)+" 00:00:00");
         Valid.SetTgl2(DTPCari2,format.format(tgl1)+" 23:59:59");
     }
@@ -1240,5 +1272,23 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     public void isCek(){
         BtnHapus.setEnabled(akses.getresep_luar());
         BtnPrint.setEnabled(akses.getresep_luar());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
