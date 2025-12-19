@@ -32,8 +32,11 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -57,6 +60,8 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -175,19 +180,31 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        if(TabData.getSelectedIndex()==0){
+                            runBackground(() ->tampil());
+                        }else if(TabData.getSelectedIndex()==1){
+                            runBackground(() ->tampil2());
+                        }
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        if(TabData.getSelectedIndex()==0){
+                            runBackground(() ->tampil());
+                        }else if(TabData.getSelectedIndex()==1){
+                            runBackground(() ->tampil2());
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        if(TabData.getSelectedIndex()==0){
+                            runBackground(() ->tampil());
+                        }else if(TabData.getSelectedIndex()==1){
+                            runBackground(() ->tampil2());
+                        }
                     }
                 }
             });
@@ -1123,7 +1140,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 ObatTepatObat.getSelectedItem().toString(),ObatTepatDosis.getSelectedItem().toString(),ObatTepatCaraPemberian.getSelectedItem().toString(), 
                 ObatTepatWaktuPemberian.getSelectedItem().toString(),Nip.getText()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }   
         }
@@ -1391,9 +1408,9 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         if(TabData.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabData.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_TabDataMouseClicked
 
@@ -1768,7 +1785,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from telaah_farmasi where no_resep=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
@@ -1788,7 +1805,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 ObatTepatObat.getSelectedItem().toString(),ObatTepatDosis.getSelectedItem().toString(),ObatTepatCaraPemberian.getSelectedItem().toString(), 
                 ObatTepatWaktuPemberian.getSelectedItem().toString(),Nip.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-               tampil();
+               runBackground(() ->tampil());
                emptTeks();
         }
     }
@@ -2113,4 +2130,21 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
