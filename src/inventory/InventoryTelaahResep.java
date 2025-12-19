@@ -1826,15 +1826,11 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='21%'>Dokter Peresep</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
                 "</tr>");
-            ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,"+
-                    " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,"+
-                    " resep_obat.status,resep_obat.tgl_perawatan,resep_obat.jam "+
-                    " from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat  "+
-                    " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_perawatan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? "+
-                    (TCari.getText().trim().equals("")?"":"and (resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
-                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or resep_obat.kd_dokter like ? or dokter.nm_dokter like ? or "+
-                    "resep_obat.status like ?) ")+"order by resep_obat.tgl_perawatan,resep_obat.jam desc");
+            ps=koneksi.prepareStatement(
+                "select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,resep_obat.status,resep_obat.tgl_perawatan,resep_obat.jam "+
+                "from resep_obat inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                "where resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_perawatan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? "+(TCari.getText().trim().equals("")?"":"and (resep_obat.no_resep like ? or "+
+                "resep_obat.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or resep_obat.kd_dokter like ? or dokter.nm_dokter like ? or resep_obat.status like ?) ")+"order by resep_obat.tgl_perawatan,resep_obat.jam desc");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));

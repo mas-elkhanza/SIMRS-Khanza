@@ -595,7 +595,6 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -815,22 +814,17 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{       
-            ps=koneksi.prepareStatement("select rekeningtahun.thn,rekening.kd_rek, rekening.nm_rek, rekening.tipe, "+
-                "rekening.balance,rekeningtahun.saldo_awal  "+
-                "from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek "+
-                "where rekeningtahun.thn=? and rekening.kd_rek like ? or "+
-                "rekeningtahun.thn=? and rekening.nm_rek like ? or "+
-                "rekeningtahun.thn=? and rekening.tipe like ? or "+
-                "rekeningtahun.thn=? and rekening.balance like ? order by rekening.kd_rek");
+            ps=koneksi.prepareStatement(
+                "select rekeningtahun.thn,rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance,rekeningtahun.saldo_awal from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek where rekeningtahun.thn=? "+
+                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
             try {
                 ps.setString(1,Tahun.getSelectedItem().toString());
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,Tahun.getSelectedItem().toString());
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,Tahun.getSelectedItem().toString());
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Tahun.getSelectedItem().toString());
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     md = 0;mk = 0;saldoakhir=0;

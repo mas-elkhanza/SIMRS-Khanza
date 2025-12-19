@@ -27,8 +27,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,7 +47,8 @@ public class DlgAkunBayar extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJadwal
      * @param parent
@@ -52,9 +56,6 @@ public class DlgAkunBayar extends javax.swing.JDialog {
     public DlgAkunBayar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        this.setLocation(8,1);
-        setSize(628,674);
 
         Object[] row={"P","Nama Akun","Kode Rekening","Nama Rekening","PPN(%)"};
         tabMode=new DefaultTableModel(null,row){
@@ -103,71 +104,24 @@ public class DlgAkunBayar extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         } 
         
-        rekening.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgAkunBayar")){
-                    if(rekening.getTabel().getSelectedRow()!= -1){      
-                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
-                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
-                            kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                            nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
-                        }else{
-                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
-                        }
-                                                                      
-                        kdrek.requestFocus();
-                    }                 
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        rekening.getTabel().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgAkunBayar")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        rekening.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
-        
-        emptTeks();
     }
     
 
@@ -517,12 +471,18 @@ public class DlgAkunBayar extends javax.swing.JDialog {
             Valid.textKosong(nama,"Nama Akun");
         }else if(kdrek.getText().trim().equals("")||nmrek.getText().trim().equals("")){
             Valid.textKosong(kdrek,"Rekening");
+        }else if(ppn.getText().trim().equals("")){
+            Valid.textKosong(ppn,"PPN");
         }else{
-            Sequel.menyimpan("akun_bayar","?,?,?","Nama Akun",3,new String[]{
+            if(Sequel.menyimpantf("akun_bayar","?,?,?","Nama Akun",3,new String[]{
                 nama.getText(),kdrek.getText(),ppn.getText()
-            });
-            tampil();
-            emptTeks();
+            })==true){
+                tabMode.addRow(new Object[]{
+                    false,nama.getText(),kdrek.getText(),nmrek.getText(),Double.parseDouble(ppn.getText())
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -547,11 +507,13 @@ public class DlgAkunBayar extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(int i=0;i<tbJadwal.getRowCount();i++){ 
             if(tbJadwal.getValueAt(i,0).toString().equals("true")){
-                Sequel.meghapus("akun_bayar","nama_bayar",tbJadwal.getValueAt(i,1).toString());
+                if(Sequel.meghapustf("akun_bayar","nama_bayar",tbJadwal.getValueAt(i,1).toString())==true){
+                    tabMode.removeRow(i);
+                    i--;
+                }
             }
         } 
-        tampil();
-        emptTeks();
+        LCount.setText("" + tabMode.getRowCount());
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -567,13 +529,20 @@ public class DlgAkunBayar extends javax.swing.JDialog {
             Valid.textKosong(nama,"Nama Akun");
         }else if(kdrek.getText().trim().equals("")||nmrek.getText().trim().equals("")){
             Valid.textKosong(kdrek,"Rekening");
+        }else if(ppn.getText().trim().equals("")){
+            Valid.textKosong(ppn,"PPN");
         }else{
             if(tbJadwal.getSelectedRow()>-1){
-                Sequel.mengedit("akun_bayar","nama_bayar=?","nama_bayar=?,kd_rek=?,ppn=?",4,new String[]{
+                if(Sequel.mengedittf("akun_bayar","nama_bayar=?","nama_bayar=?,kd_rek=?,ppn=?",4,new String[]{
                     nama.getText(),kdrek.getText(),ppn.getText(),tbJadwal.getValueAt(tbJadwal.getSelectedRow(),1).toString()
-                });
-                tampil();
-                emptTeks();
+                })==true){
+                    tbJadwal.setValueAt(false,tbJadwal.getSelectedRow(),0);
+                    tbJadwal.setValueAt(nama.getText(),tbJadwal.getSelectedRow(),1);
+                    tbJadwal.setValueAt(kdrek.getText(),tbJadwal.getSelectedRow(),2);
+                    tbJadwal.setValueAt(nmrek.getText(),tbJadwal.getSelectedRow(),3);
+                    tbJadwal.setValueAt(Double.parseDouble(ppn.getText()),tbJadwal.getSelectedRow(),4);
+                    emptTeks();
+                }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
                 tbJadwal.requestFocus();
@@ -601,25 +570,22 @@ public class DlgAkunBayar extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptAkunBayar.jasper","report","::[ Akun Bayar ]::","select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
-                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
-                    "where akun_bayar.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
-                    "rekening.nm_rek like '%"+TCari.getText().trim()+"%' order by akun_bayar.nama_bayar",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptAkunBayar.jasper","report","::[ Akun Bayar ]::","select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
+                "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
+                "where akun_bayar.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
+                "rekening.nm_rek like '%"+TCari.getText().trim()+"%' order by akun_bayar.nama_bayar",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -643,7 +609,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -656,15 +622,15 @@ public class DlgAkunBayar extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            runBackground(() ->tampil());
         }else{
-           // Valid.pindah(evt, BtnCari,kddokter);
+            Valid.pindah(evt, BtnCari,nama);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -700,6 +666,52 @@ private void kdrekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdr
 
 private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
         akses.setform("DlgAkunBayar");
+        DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
+        rekening.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgAkunBayar")){
+                    if(rekening.getTabel().getSelectedRow()!= -1){      
+                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
+                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
+                            kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
+                        }else{
+                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
+                        }
+                                                                      
+                        kdrek.requestFocus();
+                    }                 
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        rekening.getTabel().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgAkunBayar")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        rekening.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
         rekening.emptTeks();
         rekening.tampil();
         rekening.isCek();
@@ -709,15 +721,15 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_BtnPoliActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void namaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, TCari, ppn);
     }//GEN-LAST:event_namaKeyPressed
 
     private void ppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ppnKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, nama, kdrek);
     }//GEN-LAST:event_ppnKeyPressed
 
     /**
@@ -770,12 +782,13 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
-                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
-                    "where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? order by akun_bayar.nama_bayar");
+                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
+                    (TCari.getText().trim().equals("")?"":"where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? ")+"order by akun_bayar.nama_bayar");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                }   
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -818,4 +831,21 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
