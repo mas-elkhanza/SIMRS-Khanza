@@ -1078,7 +1078,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         this.nopermintaan="";
     }
     
-    public void tampil2(String nopermintaan) {
+    private void tampil2(String nopermintaan) {
         this.nopermintaan=nopermintaan;
         Valid.tabelKosong(tabMode);
         try{
@@ -1282,6 +1282,10 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    public void tampil3(String nopermintaan) {
+        runBackground(() -> tampil2(nopermintaan));
     }
     
     private void getData() {

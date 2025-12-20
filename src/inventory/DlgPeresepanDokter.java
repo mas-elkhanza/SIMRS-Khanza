@@ -2158,7 +2158,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         new Timer(1000, taskPerformer).start();
     }
     
-    public void tampildetailracikanresep() {   
+    private void tampildetailracikanresep() {   
         try {
             double[] jumlah,harga,beli,stok,kapasitas,p1,p2;
             String[] no,kodebarang,namabarang,kodesatuan,kandungan,namajenis,industri,komposisi;
@@ -2506,7 +2506,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
     
-    public void tampilobat(String no_resep) {
+    private void tampilobat(String no_resep) {
         NoResep.setText(no_resep);
         ubah=true;
         try {
@@ -3314,7 +3314,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         } 
     }
     
-    public void tampilobat2(String no_resep) {
+    public void tampilobat3(String no_resep) {
+        runBackground(() -> tampilobat(no_resep));
+    }
+    
+    private void tampilobat2(String no_resep) {
         try {
             Valid.tabelKosong(tabModeResep);
             Valid.tabelKosong(tabModeResepRacikan);
@@ -4012,6 +4016,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         } 
+    }
+    
+    public void tampilobat4(String no_resep) {
+        runBackground(() -> tampilobat2(no_resep));
     }
 
     private void simpandata() {

@@ -4923,7 +4923,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         perawatan.emptTeks();
                         perawatan.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         perawatan.isCek();
-                        perawatan.tampil();
+                        perawatan.tampil3();
                         perawatan.setSize(this.getWidth()-20,this.getHeight()-20);
                         perawatan.setLocationRelativeTo(internalFrame1);
                         perawatan.setVisible(true);

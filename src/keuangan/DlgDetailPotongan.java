@@ -13,8 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -28,6 +31,8 @@ public class DlgDetailPotongan extends javax.swing.JDialog {
     private int i=0,a=0;
     private double jumlah;
     private String jml="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -66,18 +71,7 @@ public class DlgDetailPotongan extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
-        
-        try {
-            ps=koneksi.prepareStatement("select reg_periksa.tgl_registrasi from reg_periksa inner join pengurangan_biaya on reg_periksa.no_rawat=pengurangan_biaya.no_rawat "+
-                    "where reg_periksa.tgl_registrasi between ? and ? group by reg_periksa.tgl_registrasi");
-            pspasien=koneksi.prepareStatement("select reg_periksa.no_rawat,pasien.nm_pasien from reg_periksa inner join pasien "+
-                    "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat in (select no_rawat from pengurangan_biaya) and "+
-                    "reg_periksa.tgl_registrasi=?");
-            pstambahan=koneksi.prepareStatement("select nama_pengurangan,besar_pengurangan from pengurangan_biaya where no_rawat=?");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }     
+        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());  
     }
     
 
@@ -106,13 +100,8 @@ public class DlgDetailPotongan extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pengurangan Biaya Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pengurangan Biaya Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -295,7 +284,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -305,11 +294,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.pindah(evt, TglBeli2,BtnPrint);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        TglBeli1.requestFocus();
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
 
     private void TglBeli1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBeli1KeyPressed
         Valid.pindah(evt,BtnKeluar,TglBeli2);
@@ -352,41 +336,91 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCari() {
         try {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Valid.tabelKosong(tabMode);   
-            ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            rs=ps.executeQuery();
-            jumlah=0;
+            Valid.tabelKosong(tabMode);
+            ps=koneksi.prepareStatement("select reg_periksa.tgl_registrasi from reg_periksa inner join pengurangan_biaya on reg_periksa.no_rawat=pengurangan_biaya.no_rawat where reg_periksa.tgl_registrasi between ? and ? group by reg_periksa.tgl_registrasi");
+            try {
+                ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                rs=ps.executeQuery();
+                jumlah=0;
                 i=1;
-            while(rs.next()){
-                tabMode.addRow(new Object[]{i+".",rs.getString("tgl_registrasi"),"","",null});
-                pspasien.setString(1,rs.getString("tgl_registrasi"));
-                rspasien=pspasien.executeQuery();
-                while(rspasien.next()){                    
-                    pstambahan.setString(1,rspasien.getString("no_rawat"));
-                    rstambahan=pstambahan.executeQuery();
-                    a=1;
-                    while(rstambahan.next()){
-                        if(a==1){
-                            tabMode.addRow(new Object[]{"","",rspasien.getString("no_rawat")+" "+rspasien.getString("nm_pasien"),rstambahan.getString("nama_pengurangan"),rstambahan.getDouble("besar_pengurangan")});
-                        }else{
-                            tabMode.addRow(new Object[]{"","","",rstambahan.getString("nama_pengurangan"),rstambahan.getDouble("besar_pengurangan")});
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{i+".",rs.getString("tgl_registrasi"),"","",null});
+                    pspasien=koneksi.prepareStatement("select reg_periksa.no_rawat,pasien.nm_pasien from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat in (select pengurangan_biaya.no_rawat from pengurangan_biaya) and reg_periksa.tgl_registrasi=?");
+                    try{
+                        pspasien.setString(1,rs.getString("tgl_registrasi"));
+                        rspasien=pspasien.executeQuery();
+                        while(rspasien.next()){       
+                            pstambahan=koneksi.prepareStatement("select pengurangan_biaya.nama_pengurangan,pengurangan_biaya.besar_pengurangan from pengurangan_biaya where pengurangan_biaya.no_rawat=?");
+                            try {
+                                pstambahan.setString(1,rspasien.getString("no_rawat"));
+                                rstambahan=pstambahan.executeQuery();
+                                a=1;
+                                while(rstambahan.next()){
+                                    if(a==1){
+                                        tabMode.addRow(new Object[]{"","",rspasien.getString("no_rawat")+" "+rspasien.getString("nm_pasien"),rstambahan.getString("nama_pengurangan"),rstambahan.getDouble("besar_pengurangan")});
+                                    }else{
+                                        tabMode.addRow(new Object[]{"","","",rstambahan.getString("nama_pengurangan"),rstambahan.getDouble("besar_pengurangan")});
+                                    }
+                                    jumlah=jumlah+rstambahan.getDouble("besar_pengurangan");
+                                    a++;
+                                } 
+                            }catch (Exception eg) {
+                                System.out.println(eg);
+                            }finally{
+                                if(rstambahan!=null){
+                                    rstambahan.close();
+                                }
+                                if(pstambahan!=null){
+                                    pstambahan.close();
+                                }
+                            }                    
                         }
-                        jumlah=jumlah+rstambahan.getDouble("besar_pengurangan");
-                        a++;
-                    }                    
+                    }catch (Exception ef) {
+                        System.out.println(ef);
+                    }finally{
+                        if(rspasien!=null){
+                            rspasien.close();
+                        }
+                        if(pspasien!=null){
+                            pspasien.close();
+                        }
+                    } 
+                    i++;
                 }
-                i++;
-            }
-            if(jumlah>0){
-                tabMode.addRow(new Object[]{">>","Total :","","",jumlah});
-            }            
-            this.setCursor(Cursor.getDefaultCursor());              
+                if(jumlah>0){
+                    tabMode.addRow(new Object[]{">>","Total :","","",jumlah});
+                }   
+            } catch (SQLException e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                    
         } catch (Exception e) {
             System.out.println(e);
         }               
     }
     
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

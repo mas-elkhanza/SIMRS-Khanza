@@ -1289,10 +1289,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
    private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengeluaran_obat_bhp.no_keluar,3),signed)),0) from pengeluaran_obat_bhp where pengeluaran_obat_bhp.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
                 "SKM"+Tgl.getSelectedItem().toString().substring(6,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
-    }    
+   }    
 
  
-   public void tampil(String nopermintaan) {
+   private void tampil(String nopermintaan) {
         Valid.tabelKosong(tabMode);
         try{
             nomorpermintaan=nopermintaan;
@@ -1437,6 +1437,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             System.out.println("Notifikasi : "+e);
         }
     }
+   
+   public void tampil2(String nopermintaan) {
+       runBackground(() ->tampil2(nopermintaan));
+   }
    
    private void runBackground(Runnable task) {
         if (ceksukses) return;

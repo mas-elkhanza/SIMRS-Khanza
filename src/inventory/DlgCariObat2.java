@@ -1508,7 +1508,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             resep.emptTeks(); 
                             resep.isCek();
                             resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ranap");
-                            resep.tampil();
+                            resep.tampil2();
                             //resep.setAlwaysOnTop(true);
                             resep.dokter.setAlwaysOnTop(true);
                             resep.setVisible(true);
@@ -1591,7 +1591,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             resep.emptTeks(); 
             resep.isCek();
             resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
-            resep.tampil();
+            resep.tampil2();
             resep.setVisible(true);
         }
     }//GEN-LAST:event_ChkNoResepItemStateChanged
@@ -3256,7 +3256,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }            
     }
     
-    public void tampilobat2(String no_resep) { 
+    private void tampilobat2(String no_resep) { 
         this.noresep=no_resep;
         try{
             Valid.tabelKosong(tabMode);
@@ -4085,6 +4085,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    public void tampilobat3(String no_resep) {
+        runBackground(() -> tampilobat2(no_resep));
     }
     
     private void getDatadetailobatracikan(int data) {       

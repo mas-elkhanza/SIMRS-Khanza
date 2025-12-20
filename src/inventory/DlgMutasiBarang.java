@@ -1269,7 +1269,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
     
-    public void tampil(String nopermintaan) {
+    private void tampil(String nopermintaan) {
         Valid.tabelKosong(tabMode);
         try{
             kdke.setText(Sequel.cariIsi("select permintaan_medis.kd_bangsal from permintaan_medis where permintaan_medis.no_permintaan=?", nopermintaan));
@@ -1357,6 +1357,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    public void tampil2(String nopermintaan) {
+        runBackground(() ->tampil(nopermintaan));
     }
 
     public void isCek(){

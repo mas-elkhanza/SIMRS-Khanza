@@ -1792,7 +1792,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         resep.MatikanJam();
                         resep.setNoRm(NoRawat,Valid.SetTgl2(TglPeresepan),JamPeresepan.substring(0,2),JamPeresepan.substring(3,5),JamPeresepan.substring(6,8),KodeDokter,DokterPeresep,"ralan");
                         resep.isCek();
-                        resep.tampilobat(NoResep);
+                        resep.tampilobat3(NoResep);
                         TeksKosong();
                         resep.setVisible(true);                         
                     }                    
@@ -1830,7 +1830,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         resep.MatikanJam();
                         resep.setNoRm(NoRawat,Valid.SetTgl2(TglPeresepan),JamPeresepan.substring(0,2),JamPeresepan.substring(3,5),JamPeresepan.substring(6,8),KodeDokter,DokterPeresep,"ranap");
                         resep.isCek();
-                        resep.tampilobat(NoResep);
+                        resep.tampilobat3(NoResep);
                         TeksKosong();
                         resep.setVisible(true);                          
                     }                    
@@ -1865,7 +1865,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         permintaan.setLocationRelativeTo(internalFrame1);
                         permintaan.isCek();
                         permintaan.setNoRm(NoRawat,DTPCari1.getDate()); 
-                        permintaan.tampilObat(NoResep);
+                        permintaan.tampilObat2(NoResep);
                         permintaan.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                         TeksKosong();
@@ -1902,7 +1902,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         permintaan.setLocationRelativeTo(internalFrame1);
                         permintaan.isCek();
                         permintaan.setNoRm(NoRawat,DTPCari1.getDate()); 
-                        permintaan.tampilObat(NoResep);
+                        permintaan.tampilObat2(NoResep);
                         permintaan.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                         TeksKosong();
@@ -1928,7 +1928,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnRekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRekapActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgResepObat resep=new DlgResepObat(null,false);
-        resep.tampil();
+        resep.tampil2();
         resep.emptTeks();
         resep.isCek();
         resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2335,7 +2335,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             form.setLocationRelativeTo(internalFrame1);
                             form.isCek();
                             form.setNoRm3(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
-                            form.tampilPO();
+                            form.tampilPO3();
                             form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
@@ -2366,7 +2366,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             form.setLocationRelativeTo(internalFrame1);
                             form.isCek();
                             form.setNoRm2(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
-                            form.tampilPO();
+                            form.tampilPO3();
                             form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
@@ -2421,7 +2421,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             DlgResepPulang reseppulang=new DlgResepPulang(null,false);
                             reseppulang.isCek();
                             reseppulang.setNoRm(NoRawat,NoRM,Pasien,DTPCari1.getDate(),DTPCari2.getDate());
-                            reseppulang.tampil();
+                            reseppulang.tampil2();
                             reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             reseppulang.setLocationRelativeTo(internalFrame1);
                             reseppulang.setVisible(true);
@@ -3748,7 +3748,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgCariObat dlgobt=new DlgCariObat(null,false);
         dlgobt.setNoRm(NoRawat,NoRM,Pasien,TglPeresepan,JamPeresepan);
         dlgobt.isCek();
-        dlgobt.tampilobat2(NoResep);
+        dlgobt.tampilobat3(NoResep);
         dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgobt.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3784,7 +3784,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
         dlgobt2.setNoRm(NoRawat,NoRM,Pasien,Valid.SetTgl2(TglPeresepan));
         dlgobt2.isCek();
-        dlgobt2.tampilobat2(NoResep);
+        dlgobt2.tampilobat3(NoResep);
         dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgobt2.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3806,7 +3806,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgInputStokPasien dlgstok=new DlgInputStokPasien(null,false);
         dlgstok.setNoRm(NoRawat,NoRM+" "+Pasien);
         dlgstok.isCek();
-        dlgstok.tampil2(NoResep);
+        dlgstok.tampil3(NoResep);
         dlgstok.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgstok.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3828,7 +3828,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgInputResepPulang dlgresepulang=new DlgInputResepPulang(null,false);
         dlgresepulang.setNoRm(NoRawat,NoRM,Pasien,"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
         dlgresepulang.isCek();
-        dlgresepulang.tampil2(NoResep);
+        dlgresepulang.tampil3(NoResep);
         dlgresepulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgresepulang.setLocationRelativeTo(internalFrame1);
         TeksKosong();

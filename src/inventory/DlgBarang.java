@@ -2883,7 +2883,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    public void tampil3() {
+    private void tampil3() {
         Valid.tabelKosong(tabMode);
         try {
             if(aktifkanbatch.equals("yes")){
@@ -3028,6 +3028,10 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void tampil4(String NoRetur) {
+        runBackground(() ->tampilretur(NoRetur));
+    }
+    
+    private void tampilretur(String NoRetur) {
         if(akses.getform().equals("DlgReturJual")){
             if(aktifkanbatch.equals("yes")){
                 Valid.tabelKosong(tabMode);

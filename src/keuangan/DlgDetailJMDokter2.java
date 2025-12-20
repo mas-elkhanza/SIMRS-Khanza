@@ -8,7 +8,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -19,8 +18,11 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -30,8 +32,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private final Connection koneksi=koneksiDB.condb();
-    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
-    private int i=0,c=0;
+    private int i=0;
     private String pilihancarabayar="",tglkeluar="",namaruangan="",dpjp="";    
     private PreparedStatement psreg,pskamar,pstindakan;
     private ResultSet rsreg,rskamar,rstindakan;
@@ -39,6 +40,8 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private String totalsaranas="",totaljms="",totalbayars="",js="",jm="",tarif="",pilihan="";
     private final DefaultTableModel tabMode;
     private StringBuilder htmlContent;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -130,57 +133,23 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
-        } 
-        carabayar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    pilihancarabayar=carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString();
-                }     
-                prosesCari();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        carabayar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    carabayar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });        
+        }      
     }
 
     /** This method is called from within the constructor to
@@ -1072,7 +1041,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         pilihancarabayar="";
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1085,7 +1054,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     pilihancarabayar="";
-    prosesCari();       
+    runBackground(() ->prosesCari());       
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1110,26 +1079,61 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_formWindowOpened
 
     private void chkRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRalanActionPerformed
 
     private void chkRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRadiologiActionPerformed
 
     private void chkLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaboratActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkLaboratActionPerformed
 
     private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkOperasiActionPerformed
 
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRanapActionPerformed
 
     private void ppTampilkanSeleksiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanSeleksiBtnPrintActionPerformed
+        DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+        carabayar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(carabayar.getTable().getSelectedRow()!= -1){
+                    pilihancarabayar=carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString();
+                }     
+                runBackground(() ->prosesCari());
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {carabayar.onCari();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        carabayar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    carabayar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         carabayar.isCek();
         carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         carabayar.setLocationRelativeTo(internalFrame1);
@@ -1204,32 +1208,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "inner join dokter on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "and reg_periksa.kd_dokter=dokter.kd_dokter "+
                     "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and pasien.nm_pasien like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and dokter.nm_dokter like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and penjab.png_jawab like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and poliklinik.nm_poli like ? order by reg_periksa.tgl_registrasi");
+                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                    "dokter.nm_dokter like ? or penjab.png_jawab like ? or poliklinik.nm_poli like ?) ")+
+                    "order by reg_periksa.tgl_registrasi");
             try {
                 psreg.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 psreg.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 psreg.setString(3,"%"+pilihancarabayar+"%");
-                psreg.setString(4,"%"+TCari.getText().trim()+"%");
-                psreg.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                psreg.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                psreg.setString(7,"%"+pilihancarabayar+"%");
-                psreg.setString(8,"%"+TCari.getText().trim()+"%");
-                psreg.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                psreg.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                psreg.setString(11,"%"+pilihancarabayar+"%");
-                psreg.setString(12,"%"+TCari.getText().trim()+"%");
-                psreg.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                psreg.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                psreg.setString(15,"%"+pilihancarabayar+"%");
-                psreg.setString(16,"%"+TCari.getText().trim()+"%");
-                psreg.setString(17,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                psreg.setString(18,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                psreg.setString(19,"%"+pilihancarabayar+"%");
-                psreg.setString(20,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    psreg.setString(4,"%"+TCari.getText().trim()+"%");
+                    psreg.setString(5,"%"+TCari.getText().trim()+"%");
+                    psreg.setString(6,"%"+TCari.getText().trim()+"%");
+                    psreg.setString(7,"%"+TCari.getText().trim()+"%");
+                    psreg.setString(8,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rsreg=psreg.executeQuery();
                 totalsarana=0;totaljm=0;totalbayar=0;
                 while(rsreg.next()){
@@ -1758,4 +1752,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         //BtnPrint.setEnabled(var.getjm_ranap_dokter());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
