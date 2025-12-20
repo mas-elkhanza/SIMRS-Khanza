@@ -704,11 +704,15 @@ public final class DlgKamar extends javax.swing.JDialog {
         }else if(TTarif.getText().trim().equals("")){
             Valid.textKosong(TTarif,"Tarif");
         }else{
-            Sequel.menyimpan("kamar","?,?,?,?,?,?","Nomer Bad/Kamar",6,new String[]{
+            if(Sequel.menyimpantf("kamar","?,?,?,?,?,?","Nomer Bad/Kamar",6,new String[]{
                 TKd.getText(),kd_bangsal.getText(),TTarif.getText(),CmbStatus.getSelectedItem().toString(),Kelas.getSelectedItem().toString(),"1"
-            });
-            runBackground(() ->tampil());
-            emptTeks();
+            })==true){
+                tabMode.addRow(new Object[]{
+                    false,TKd.getText(),kd_bangsal.getText(),TBangsal.getText(),Kelas.getSelectedItem().toString(),Double.parseDouble(TTarif.getText()),CmbStatus.getSelectedItem().toString()
+                });
+                LCount.setText("" + tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -734,10 +738,11 @@ public final class DlgKamar extends javax.swing.JDialog {
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(tbKamar.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("kamar","kd_kamar='"+tbKamar.getValueAt(i,1).toString()+"'","statusdata='0'");
+                tabMode.removeRow(i);
+                i--;
             }
         } 
-        runBackground(() ->tampil());
-        emptTeks();
+        LCount.setText("" + tabMode.getRowCount());
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -757,12 +762,19 @@ public final class DlgKamar extends javax.swing.JDialog {
             Valid.textKosong(TTarif,"Tarif");
         }else{
             if(tbKamar.getSelectedRow()>-1){
-                Sequel.mengedit("kamar","kd_kamar=?","kd_bangsal=?,trf_kamar=?,status=?,kelas=?,kd_kamar=?",6,new String[]{
+                if(Sequel.mengedittf("kamar","kd_kamar=?","kd_bangsal=?,trf_kamar=?,status=?,kelas=?,kd_kamar=?",6,new String[]{
                     kd_bangsal.getText(),TTarif.getText(),CmbStatus.getSelectedItem().toString(),Kelas.getSelectedItem().toString(),
                     TKd.getText(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()
-                });
-                runBackground(() ->tampil());
-                emptTeks();
+                })==true){
+                    tbKamar.setValueAt(false,tbKamar.getSelectedRow(),0);
+                    tbKamar.setValueAt(TKd.getText(),tbKamar.getSelectedRow(),1);
+                    tbKamar.setValueAt(kd_bangsal.getText(),tbKamar.getSelectedRow(),2);
+                    tbKamar.setValueAt(TBangsal.getText(),tbKamar.getSelectedRow(),3);
+                    tbKamar.setValueAt(Kelas.getSelectedItem().toString(),tbKamar.getSelectedRow(),4);
+                    tbKamar.setValueAt(Double.parseDouble(TTarif.getText()),tbKamar.getSelectedRow(),5);
+                    tbKamar.setValueAt(CmbStatus.getSelectedItem().toString(),tbKamar.getSelectedRow(),6);
+                    emptTeks();
+                }
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed

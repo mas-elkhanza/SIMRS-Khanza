@@ -288,7 +288,6 @@ public final class DlgCariKategoriPemasukanLain extends javax.swing.JDialog {
         DlgKategoriPemasukan penjab=new DlgKategoriPemasukan(null,false);
         penjab.emptTeks();
         penjab.isCek();
-        penjab.tampil();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
