@@ -1060,7 +1060,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 akses.setform("DlgPengaturanRekening");
                 rekening.emptTeks();
-                rekening.tampil();
+                rekening.tampil2();
                 rekening.isCek();
                 rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 rekening.setLocationRelativeTo(internalFrame1);
@@ -1087,7 +1087,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 akses.setform("DlgPengaturanRekeningRalan");
                 rekening.emptTeks();
-                rekening.tampil();
+                rekening.tampil2();
                 rekening.isCek();
                 rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 rekening.setLocationRelativeTo(internalFrame1);
@@ -1129,7 +1129,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 akses.setform("DlgPengaturanRekeningRanap");
                 rekening.emptTeks();
-                rekening.tampil();
+                rekening.tampil2();
                 rekening.isCek();
                 rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 rekening.setLocationRelativeTo(internalFrame1);

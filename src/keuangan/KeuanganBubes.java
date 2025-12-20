@@ -423,7 +423,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         });  
         rekening.emptTeks();
         rekening.isCek();
-        rekening.tampil();
+        rekening.tampil2();
         rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         rekening.setLocationRelativeTo(internalFrame1);
         rekening.setVisible(true);

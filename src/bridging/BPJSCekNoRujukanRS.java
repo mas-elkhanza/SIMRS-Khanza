@@ -4905,7 +4905,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             kamar.load();
             kamar.isCek();
             kamar.emptTeks();
-            kamar.tampil();
+            kamar.tampil2();
             kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             kamar.setLocationRelativeTo(internalFrame1);
             kamar.setVisible(true);

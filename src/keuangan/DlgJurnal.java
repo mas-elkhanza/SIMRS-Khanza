@@ -697,7 +697,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnCari6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari6ActionPerformed
         akses.setform("DlgJurnal");        
         rekening.emptTeks();
-        rekening.tampil();
+        rekening.tampil2();
         rekening.isCek();
         rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         rekening.setLocationRelativeTo(internalFrame1);
@@ -768,7 +768,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         Valid.tabelKosong(tabMode);
         tampil();
-        NoJur.setText(Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,6),signed)),0) from jurnal where tgl_jurnal='"+Valid.SetTgl(TglJurnal.getSelectedItem()+"")+"' ","JR"+Valid.SetTgl(TglJurnal.getSelectedItem()+"").replaceAll("-",""),6));
+        NoJur.setText(Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(jurnal.no_jurnal,6),signed)),0) from jurnal where jurnal.tgl_jurnal='"+Valid.SetTgl(TglJurnal.getSelectedItem()+"")+"' ","JR"+Valid.SetTgl(TglJurnal.getSelectedItem()+"").replaceAll("-",""),6));
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -904,7 +904,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tabMode.getRowCount()>0){
                 LCount1.setText("Total Debet : "+df2.format(ttldebet));
                 LCount2.setText("Total Debet : "+df2.format(ttldebet));
-                //tabMode.addRow(new Object[]{"","<>> Total : ",ttldebet,ttlkredit});
             }   
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -923,11 +922,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     private void getData() {
-       int row=tbDokter.getSelectedRow();
+        int row=tbDokter.getSelectedRow();
         if(row!= -1){
             try {
                 kdrek.setText(tabMode.getValueAt(row,0).toString());
-                ps=koneksi.prepareStatement("select nm_rek, tipe, balance from rekening where kd_rek=?");
+                ps=koneksi.prepareStatement("select rekening.nm_rek, rekening.tipe, rekening.balance from rekening where rekening.kd_rek=?");
                 try {
                     ps.setString(1,kdrek.getText());
                     rs=ps.executeQuery();
@@ -946,7 +945,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps.close();
                     }
                 } 
-                Sequel.cariIsi("select saldo_awal from rekeningtahun where kd_rek=? order by thn desc limit 1",saldoawal,kdrek.getText());
+                Sequel.cariIsi("select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.kd_rek=? order by rekeningtahun.thn desc limit 1",saldoawal,kdrek.getText());
                 debet.setText(tabMode.getValueAt(row,2).toString());
                 kredit.setText(tabMode.getValueAt(row,3).toString());
             } catch (Exception ex) {
@@ -967,6 +966,4 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnBatal.setEnabled(akses.getposting_jurnal());
         BtnTambah.setEnabled(akses.getposting_jurnal());      
     }
-   
- 
 }
