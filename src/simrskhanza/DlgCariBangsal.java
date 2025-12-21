@@ -456,7 +456,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             myObj.close();
         } catch (Exception ex) {
             if(ex.toString().contains("java.io.FileNotFoundException")){
-                runBackground(() ->tampil());
+                tampil();
             }else{
                 System.out.println("Notifikasi : "+ex);
             }

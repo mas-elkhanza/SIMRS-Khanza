@@ -10807,7 +10807,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPerkiraanBiayaRanap resep=new DlgPerkiraanBiayaRanap(null,false);
         resep.isCek();
-        resep.tampil();
+        resep.tampil2();
         resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         resep.setLocationRelativeTo(internalFrame1);
         resep.setVisible(true);
