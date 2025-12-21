@@ -1481,7 +1481,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }        
     }
     
-    public void hitung(){
+    private void hitung(){
         total=0;
         for(i=0;i<tabMode.getRowCount();i++){
             if(!tbResep.getValueAt(i,0).toString().equals("")){

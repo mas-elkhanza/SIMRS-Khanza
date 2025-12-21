@@ -714,8 +714,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         }
                     }
                     if(sukses==true){
-                        sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
-                            "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+akses.getkode()+"'","No.Transaksi");
+                        sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+akses.getkode()+"'","No.Transaksi");
                     }   
                 } catch (Exception e) {
                     sukses=false;
@@ -736,10 +735,10 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             Sequel.AutoComitTrue();
             if(sukses==true){
                 tabMode.addRow(new Object[]{
-                    Nomor.getText(),Tanggal.getSelectedItem().toString(),NmKategori.getText(),NmPtg.getText(),Double.parseDouble(pemasukan.getText()),Keterangan.getText(),Keperluan.getText(),KdKategori.getText(),KdPtg.getText()
+                    Nomor.getText(),Tanggal.getSelectedItem().toString(),KdKategori.getText()+" "+NmKategori.getText(),KdPtg.getText()+" "+NmPtg.getText(),Double.parseDouble(pemasukan.getText()),Keterangan.getText(),Keperluan.getText(),KdKategori.getText(),KdPtg.getText()
                 });
-                LCount.setText("" + tabMode.getRowCount());
                 emptTeks();
+                hitung();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -829,7 +828,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 Sequel.AutoComitTrue();
                 if(sukses==true){
                     tabMode.removeRow(tbResep.getSelectedRow());
-                    LCount.setText("" + tabMode.getRowCount());
+                    emptTeks();
+                    hitung();
                 }
             }                
         }
@@ -1154,14 +1154,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                     
                 rs=ps.executeQuery();
-                total=0;
                 while(rs.next()){                
                     tabMode.addRow(new Object[]{
                         rs.getString("no_masuk"),rs.getString("tanggal"),rs.getString("kode_kategori")+" "+rs.getString("nama_kategori"),
                         rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("besar"),rs.getString("keterangan"),rs.getString("keperluan"),
                         rs.getString("kode_kategori"),rs.getString("nip")
                     });
-                    total=total+rs.getDouble("besar");
                 }
             } catch (Exception e){
                 System.out.println(e);
@@ -1172,14 +1170,26 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(ps!=null){
                     ps.close();
                 }
-            }
-                
-            if(total>0){
-                tabMode.addRow(new Object[]{"",">> Total Pemasukan :","","",total,"","",""}); 
-            }        
-            LCount.setText((""+(tabMode.getRowCount()-1)).replaceAll("-1","0"));                        
+            }  
+            hitung(); 
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
+        }        
+    }
+    
+    private void hitung(){
+        total=0;
+        for(int i=0;i<tabMode.getRowCount();i++){
+            if(!tbResep.getValueAt(i,0).toString().equals("")){
+                total=total+Valid.SetAngka(tbResep.getValueAt(i,4).toString());
+            }else{
+                tabMode.removeRow(i);
+                i--;
+            }
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        if(total>0){
+            tabMode.addRow(new Object[]{"",">> Total Pemasukan :","","",total,"","",""}); 
         }        
     }
 

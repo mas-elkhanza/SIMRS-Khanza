@@ -24,7 +24,10 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -46,6 +49,8 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private String[] namabayar,akunrekening,namarekening;
     private double[] totalbayar,totalbayar2;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -64,9 +69,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -74,9 +79,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -84,9 +89,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -96,9 +101,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void insertUpdate(DocumentEvent e) {
                     if(User.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -106,9 +111,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void removeUpdate(DocumentEvent e) {
                     if(User.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -116,9 +121,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {
                     if(User.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==0){
-                            tampil();
+                            runBackground(() ->tampil());
                         }else if(TabRawat.getSelectedIndex()==1){
-                            tampil2();
+                            runBackground(() ->tampil2());
                         }
                     }
                 }
@@ -526,9 +531,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else{
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -544,9 +549,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(TabRawat.getSelectedIndex()==0){
-                tampil();
+                runBackground(() ->tampil());
             }else{
-                tampil2();
+                runBackground(() ->tampil2());
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -556,9 +561,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else{
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -602,9 +607,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1535,4 +1540,22 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
         }
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
