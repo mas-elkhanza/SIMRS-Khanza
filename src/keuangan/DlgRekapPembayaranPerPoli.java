@@ -7,15 +7,18 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -24,12 +27,12 @@ public class DlgRekapPembayaranPerPoli extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement pspoli,psmasuk;
     private ResultSet rspoli,rsmasuk; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0,jmlpas=0,ttljmlpas=0;
     private double total=0,ttltotal=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -70,6 +73,29 @@ public class DlgRekapPembayaranPerPoli extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+            });
+        }  
     }
     
 
@@ -101,13 +127,8 @@ public class DlgRekapPembayaranPerPoli extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pembayaran Per Bagian/Unit Berdasarkan Tanggal Registrasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pembayaran Per Bagian/Unit Berdasarkan Tanggal Registrasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -304,11 +325,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{Valid.pindah(evt,BtnPrint,Tgl1);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Tgl1.requestFocus();
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
-
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnCariActionPerformed(null);
@@ -320,13 +336,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            prosesCari();
+            runBackground(() ->prosesCari());
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             Valid.pindah(evt,TCari, BtnPrint);
@@ -335,7 +351,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -384,20 +400,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);
-            pspoli=koneksi.prepareStatement("select kd_poli,nm_poli from poliklinik where nm_poli like ?");
+            pspoli=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik "+(TCari.getText().trim().equals("")?"":"where poliklinik.nm_poli like ? "));
             try {
-                pspoli.setString(1,"%"+TCari.getText().trim()+"%"); 
+                if(!TCari.getText().trim().equals("")){
+                    pspoli.setString(1,"%"+TCari.getText().trim()+"%");
+                }
+                     
                 rspoli=pspoli.executeQuery();
                 i=1;
                 ttljmlpas=0;
                 ttltotal=0;
                 while(rspoli.next()){
                     psmasuk=koneksi.prepareStatement(
-                            "select sum(besar_bayar),count(DISTINCT reg_periksa.no_rawat) from detail_nota_jalan inner join reg_periksa "+
-                            "on reg_periksa.no_rawat=detail_nota_jalan.no_rawat where "+
-                            "reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
-                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat "+
-                            "from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) "+
+                            "select sum(detail_nota_jalan.besar_bayar),count(DISTINCT reg_periksa.no_rawat) from detail_nota_jalan inner join reg_periksa "+
+                            "on reg_periksa.no_rawat=detail_nota_jalan.no_rawat where reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
+                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) "+
                             "and reg_periksa.tgl_registrasi between ? and ? ");
                     try {
                         psmasuk.setString(1,rspoli.getString(1));
@@ -450,8 +467,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         
     }
     
-    
-        
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
     
 }

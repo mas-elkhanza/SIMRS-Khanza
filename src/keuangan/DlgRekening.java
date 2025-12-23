@@ -1118,265 +1118,218 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance "+
-                    " from rekening where level='0' and kd_rek like ? or "+
-                    " level='0' and nm_rek like ? or "+
-                    " level='0' and tipe like ? or "+
-                    " level='0' and balance like ? order by kd_rek");
+            ps=koneksi.prepareStatement(
+                    "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening where rekening.level='0' "+
+                    (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+
+                    "order by rekening.kd_rek");
             try {            
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
                     });
-                    ps2=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                    ps2=koneksi.prepareStatement(
+                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(3,rs.getString(1));
-                        ps2.setString(4,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(5,rs.getString(1));
-                        ps2.setString(6,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(7,rs.getString(1));
-                        ps2.setString(8,"%"+TCari.getText().trim()+"%");
+                        if(!TCari.getText().trim().equals("")){
+                            ps2.setString(2,"%"+TCari.getText().trim()+"%");
+                            ps2.setString(3,"%"+TCari.getText().trim()+"%");
+                            ps2.setString(4,"%"+TCari.getText().trim()+"%");
+                            ps2.setString(5,"%"+TCari.getText().trim()+"%");
+                        }
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
                             tabMode.addRow(new Object[]{
                                 rs2.getString(1),rs2.getString(2)," "+rs2.getString(1)," "+rs2.getString(2),rs2.getString(3),rs2.getString(4)
                             });         
-                            ps3=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                            ps3=koneksi.prepareStatement(
+                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                             try {
                                 ps3.setString(1,rs2.getString(1));
-                                ps3.setString(2,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(3,rs2.getString(1));
-                                ps3.setString(4,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(5,rs2.getString(1));
-                                ps3.setString(6,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(7,rs2.getString(1));
-                                ps3.setString(8,"%"+TCari.getText().trim()+"%");
+                                if(!TCari.getText().trim().equals("")){
+                                    ps3.setString(2,"%"+TCari.getText().trim()+"%");
+                                    ps3.setString(3,"%"+TCari.getText().trim()+"%");
+                                    ps3.setString(4,"%"+TCari.getText().trim()+"%");
+                                    ps3.setString(5,"%"+TCari.getText().trim()+"%");
+                                }
                                 rs3=ps3.executeQuery();
                                 while(rs3.next()){
                                     tabMode.addRow(new Object[]{
                                         rs3.getString(1),rs3.getString(2),"  "+rs3.getString(1),"  "+rs3.getString(2),rs3.getString(3),rs3.getString(4)
                                     });      
-                                    ps4=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                    ps4=koneksi.prepareStatement(
+                                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                     try {
                                         ps4.setString(1,rs3.getString(1));
-                                        ps4.setString(2,"%"+TCari.getText().trim()+"%");
-                                        ps4.setString(3,rs3.getString(1));
-                                        ps4.setString(4,"%"+TCari.getText().trim()+"%");
-                                        ps4.setString(5,rs3.getString(1));
-                                        ps4.setString(6,"%"+TCari.getText().trim()+"%");
-                                        ps4.setString(7,rs3.getString(1));
-                                        ps4.setString(8,"%"+TCari.getText().trim()+"%");
+                                        if(!TCari.getText().trim().equals("")){
+                                            ps4.setString(2,"%"+TCari.getText().trim()+"%");
+                                            ps4.setString(3,"%"+TCari.getText().trim()+"%");
+                                            ps4.setString(4,"%"+TCari.getText().trim()+"%");
+                                            ps4.setString(5,"%"+TCari.getText().trim()+"%");
+                                        }
                                         rs4=ps4.executeQuery();
                                         while(rs4.next()){
                                             tabMode.addRow(new Object[]{
                                                 rs4.getString(1),rs4.getString(2),"   "+rs4.getString(1),"   "+rs4.getString(2),rs4.getString(3),rs4.getString(4)
                                             });     
-                                            ps5=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                            ps5=koneksi.prepareStatement(
+                                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                             try {
                                                 ps5.setString(1,rs4.getString(1));
-                                                ps5.setString(2,"%"+TCari.getText().trim()+"%");
-                                                ps5.setString(3,rs4.getString(1));
-                                                ps5.setString(4,"%"+TCari.getText().trim()+"%");
-                                                ps5.setString(5,rs4.getString(1));
-                                                ps5.setString(6,"%"+TCari.getText().trim()+"%");
-                                                ps5.setString(7,rs4.getString(1));
-                                                ps5.setString(8,"%"+TCari.getText().trim()+"%");
+                                                if(!TCari.getText().trim().equals("")){
+                                                    ps5.setString(2,"%"+TCari.getText().trim()+"%");
+                                                    ps5.setString(3,"%"+TCari.getText().trim()+"%");
+                                                    ps5.setString(4,"%"+TCari.getText().trim()+"%");
+                                                    ps5.setString(5,"%"+TCari.getText().trim()+"%");
+                                                }
                                                 rs5=ps5.executeQuery();
                                                 while(rs5.next()){
                                                     tabMode.addRow(new Object[]{
                                                         rs5.getString(1),rs5.getString(2),"    "+rs5.getString(1),"    "+rs5.getString(2),rs5.getString(3),rs5.getString(4)
                                                     });  
-                                                    ps6=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                    ps6=koneksi.prepareStatement(
+                                                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                     try {
                                                         ps6.setString(1,rs5.getString(1));
-                                                        ps6.setString(2,"%"+TCari.getText().trim()+"%");
-                                                        ps6.setString(3,rs5.getString(1));
-                                                        ps6.setString(4,"%"+TCari.getText().trim()+"%");
-                                                        ps6.setString(5,rs5.getString(1));
-                                                        ps6.setString(6,"%"+TCari.getText().trim()+"%");
-                                                        ps6.setString(7,rs5.getString(1));
-                                                        ps6.setString(8,"%"+TCari.getText().trim()+"%");
+                                                        if(!TCari.getText().trim().equals("")){
+                                                            ps6.setString(2,"%"+TCari.getText().trim()+"%");
+                                                            ps6.setString(3,"%"+TCari.getText().trim()+"%");
+                                                            ps6.setString(4,"%"+TCari.getText().trim()+"%");
+                                                            ps6.setString(5,"%"+TCari.getText().trim()+"%");
+                                                        }
                                                         rs6=ps6.executeQuery();
                                                         while(rs6.next()){
                                                             tabMode.addRow(new Object[]{
                                                                 rs6.getString(1),rs6.getString(2),"     "+rs6.getString(1),"     "+rs6.getString(2),rs6.getString(3),rs6.getString(4)
                                                             });
-                                                            ps7=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                            ps7=koneksi.prepareStatement(
+                                                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                             try {
                                                                 ps7.setString(1,rs6.getString(1));
-                                                                ps7.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                ps7.setString(3,rs6.getString(1));
-                                                                ps7.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                ps7.setString(5,rs6.getString(1));
-                                                                ps7.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                ps7.setString(7,rs6.getString(1));
-                                                                ps7.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                if(!TCari.getText().trim().equals("")){
+                                                                    ps7.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                    ps7.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                    ps7.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                    ps7.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                }
                                                                 rs7=ps7.executeQuery();
                                                                 while(rs7.next()){
                                                                     tabMode.addRow(new Object[]{
                                                                         rs7.getString(1),rs7.getString(2),"      "+rs7.getString(1),"      "+rs7.getString(2),rs7.getString(3),rs7.getString(4)
                                                                     });
-                                                                    ps8=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                    ps8=koneksi.prepareStatement(
+                                                                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                     try {
                                                                         ps8.setString(1,rs7.getString(1));
-                                                                        ps8.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                        ps8.setString(3,rs7.getString(1));
-                                                                        ps8.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                        ps8.setString(5,rs7.getString(1));
-                                                                        ps8.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                        ps8.setString(7,rs7.getString(1));
-                                                                        ps8.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                        if(!TCari.getText().trim().equals("")){
+                                                                            ps8.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                            ps8.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                            ps8.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                            ps8.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                        }
                                                                         rs8=ps8.executeQuery();
                                                                         while(rs8.next()){
                                                                             tabMode.addRow(new Object[]{
                                                                                 rs8.getString(1),rs8.getString(2),"       "+rs8.getString(1),"       "+rs8.getString(2),rs8.getString(3),rs8.getString(4)
                                                                             });
-                                                                            ps9=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                            ps9=koneksi.prepareStatement(
+                                                                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                             try {
                                                                                 ps9.setString(1,rs8.getString(1));
-                                                                                ps9.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                                ps9.setString(3,rs8.getString(1));
-                                                                                ps9.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                                ps9.setString(5,rs8.getString(1));
-                                                                                ps9.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                                ps9.setString(7,rs8.getString(1));
-                                                                                ps9.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                                if(!TCari.getText().trim().equals("")){
+                                                                                    ps9.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                                    ps9.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                                    ps9.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                                    ps9.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                                }
                                                                                 rs9=ps9.executeQuery();
                                                                                 while(rs9.next()){
                                                                                     tabMode.addRow(new Object[]{
                                                                                         rs9.getString(1),rs9.getString(2),"        "+rs9.getString(1),"        "+rs9.getString(2),rs9.getString(3),rs9.getString(4)
                                                                                     });
-                                                                                    ps10=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                                    ps10=koneksi.prepareStatement(
+                                                                                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                                     try {
                                                                                         ps10.setString(1,rs9.getString(1));
-                                                                                        ps10.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                                        ps10.setString(3,rs9.getString(1));
-                                                                                        ps10.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                                        ps10.setString(5,rs9.getString(1));
-                                                                                        ps10.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                                        ps10.setString(7,rs9.getString(1));
-                                                                                        ps10.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                                        if(!TCari.getText().trim().equals("")){
+                                                                                            ps10.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                                            ps10.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                                            ps10.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                                            ps10.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                                        }   
                                                                                         rs10=ps10.executeQuery();
                                                                                         while(rs10.next()){
                                                                                             tabMode.addRow(new Object[]{
                                                                                                 rs10.getString(1),rs10.getString(2),"         "+rs10.getString(1),"         "+rs10.getString(2),rs10.getString(3),rs10.getString(4)
                                                                                             });
-                                                                                            ps11=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                                            ps11=koneksi.prepareStatement(
+                                                                                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                                             try {
                                                                                                 ps11.setString(1,rs10.getString(1));
-                                                                                                ps11.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                                                ps11.setString(3,rs10.getString(1));
-                                                                                                ps11.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                                                ps11.setString(5,rs10.getString(1));
-                                                                                                ps11.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                                                ps11.setString(7,rs10.getString(1));
-                                                                                                ps11.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                                                if(!TCari.getText().trim().equals("")){
+                                                                                                    ps11.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                                                    ps11.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                                                    ps11.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                                                    ps11.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                                                } 
                                                                                                 rs11=ps11.executeQuery();
                                                                                                 while(rs11.next()){
                                                                                                     tabMode.addRow(new Object[]{
                                                                                                         rs11.getString(1),rs11.getString(2),"          "+rs11.getString(1),"          "+rs11.getString(2),rs11.getString(3),rs11.getString(4)
                                                                                                     });
-                                                                                                    ps12=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                                                    ps12=koneksi.prepareStatement(
+                                                                                                        "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                                                        (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                                                     try {
                                                                                                         ps12.setString(1,rs11.getString(1));
-                                                                                                        ps12.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                                                        ps12.setString(3,rs11.getString(1));
-                                                                                                        ps12.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                                                        ps12.setString(5,rs11.getString(1));
-                                                                                                        ps12.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                                                        ps12.setString(7,rs11.getString(1));
-                                                                                                        ps12.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                                                        if(!TCari.getText().trim().equals("")){
+                                                                                                            ps12.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                                                            ps12.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                                                            ps12.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                                                            ps12.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                                                        } 
                                                                                                         rs12=ps12.executeQuery();
                                                                                                         while(rs12.next()){
                                                                                                             tabMode.addRow(new Object[]{
                                                                                                                 rs12.getString(1),rs12.getString(2),"           "+rs12.getString(1),"           "+rs12.getString(2),rs12.getString(3),rs12.getString(4)
                                                                                                             });
-                                                                                                            ps13=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
-                                                                                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
-                                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
-                                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
-                                                                                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                                                                            ps13=koneksi.prepareStatement(
+                                                                                                                "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek=? and rekening.level='1' "+
+                                                                                                                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
                                                                                                             try {
                                                                                                                 ps13.setString(1,rs12.getString(1));
-                                                                                                                ps13.setString(2,"%"+TCari.getText().trim()+"%");
-                                                                                                                ps13.setString(3,rs12.getString(1));
-                                                                                                                ps13.setString(4,"%"+TCari.getText().trim()+"%");
-                                                                                                                ps13.setString(5,rs12.getString(1));
-                                                                                                                ps13.setString(6,"%"+TCari.getText().trim()+"%");
-                                                                                                                ps13.setString(7,rs12.getString(1));
-                                                                                                                ps13.setString(8,"%"+TCari.getText().trim()+"%");
+                                                                                                                if(!TCari.getText().trim().equals("")){
+                                                                                                                    ps13.setString(2,"%"+TCari.getText().trim()+"%");
+                                                                                                                    ps13.setString(3,"%"+TCari.getText().trim()+"%");
+                                                                                                                    ps13.setString(4,"%"+TCari.getText().trim()+"%");
+                                                                                                                    ps13.setString(5,"%"+TCari.getText().trim()+"%");
+                                                                                                                } 
                                                                                                                 rs13=ps13.executeQuery();
                                                                                                                 while(rs13.next()){
                                                                                                                     tabMode.addRow(new Object[]{
                                                                                                                         rs13.getString(1),rs13.getString(2),"            "+rs13.getString(1),"            "+rs13.getString(2),rs13.getString(3),rs13.getString(4)
                                                                                                                     });
-
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif 2 : "+e);
@@ -1526,19 +1479,22 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void tampil2() {
+    public void tampil3() {
+        runBackground(() ->tampil());
+    }
+    
+    private void tampil2() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance "+
-                    " from rekening where kd_rek like ? or "+
-                    " nm_rek like ? or "+
-                    " tipe like ? or "+
-                    " balance like ? order by kd_rek");
+            ps=koneksi.prepareStatement(
+                    "select rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance from rekening "+(TCari.getText().trim().equals("")?"":"where rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ? ")+"order by rekening.kd_rek");
             try {            
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

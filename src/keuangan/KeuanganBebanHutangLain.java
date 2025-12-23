@@ -36,10 +36,13 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  *
@@ -53,7 +56,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private String koderekening=Sequel.cariIsi("select Beban_Hutang_Lain from set_akun"),kontraakun="",namakontraakun="";
+    private String koderekening=Sequel.cariIsi("select set_akun.Beban_Hutang_Lain from set_akun"),kontraakun="",namakontraakun="";
     private boolean sukses=true;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
@@ -61,6 +64,8 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
     private FileReader myObj;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private double total=0,sisahutang=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -72,7 +77,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Nota","Tgl.Hutang","NIP","Nama Petugas","Kode","Nama Pemberi Hutang","Keterangan","Tgl.Tempo","Nilai Hutang","Sisa Hutang","Status"}){
+            "No.Hutang","Tgl.Hutang","NIP","Nama Petugas","Kode","Nama Pemberi Hutang","Keterangan","Tgl.Tempo","Nilai Hutang","Sisa Hutang","Status"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
@@ -127,19 +132,19 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -727,7 +732,14 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
             Sequel.AutoComitTrue();
             
             if(sukses==true){
-                BtnCariActionPerformed(evt);
+                tabMode.addRow(new Object[]{
+                    NoHutang.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),NmPetugas.getText(),KdPemberiHutang.getText(),NmPemberiHutang.getText(),Keterangan.getText(),Valid.SetTgl(Tempo.getSelectedItem()+""),Double.parseDouble(NilaiHutang.getText()),Double.parseDouble(NilaiHutang.getText()),"Belum Lunas"
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                total=total+Double.parseDouble(NilaiHutang.getText());
+                LTotal.setText(Valid.SetAngka(total));
+                sisahutang=sisahutang+Double.parseDouble(NilaiHutang.getText());
+                LTotal1.setText(Valid.SetAngka(sisahutang));
                 emptTeks();
             }
         }
@@ -785,13 +797,18 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
                 Sequel.Commit();
             }else{
                 sukses=false;
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nKemungkinan sudah ada transaksi pembayaran..!!");
                 Sequel.RollBack();
             }
             Sequel.AutoComitTrue();
 
             if(sukses==true){
-                BtnCariActionPerformed(evt);
+                total=total-Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString());
+                LTotal.setText(Valid.SetAngka(total));
+                sisahutang=sisahutang-Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString());
+                LTotal1.setText(Valid.SetAngka(sisahutang));
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }else{
@@ -819,7 +836,6 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnKeluar.requestFocus();
@@ -863,12 +879,12 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
@@ -896,7 +912,7 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
 private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPemberiHutangActionPerformed
@@ -999,7 +1015,7 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
             bayar.emptTeks();
             bayar.setData(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString());
             bayar.isCek();
-            bayar.tampil();
+            bayar.tampil2();
             bayar.setSize(this.getWidth()-20,this.getHeight()-20);
             bayar.setLocationRelativeTo(this);
             bayar.setAlwaysOnTop(false);
@@ -1076,10 +1092,9 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{    
-            //"No.Nota","Tgl.Piutang","NIP","Nama Petugas","Kode","Nama Pemberi Hutang","Keterangan","Tgl.Tempo","Nilai Hutang","Sisa Piutang","Status"
             ps=koneksi.prepareStatement(
                     "select beban_hutang_lain.no_hutang,beban_hutang_lain.tgl_hutang,beban_hutang_lain.nip,petugas.nama,beban_hutang_lain.kode_pemberi_hutang,"+
                     "pemberi_hutang_lain.nama_pemberi_hutang,beban_hutang_lain.keterangan,beban_hutang_lain.tgltempo,beban_hutang_lain.nominal,beban_hutang_lain.sisahutang,beban_hutang_lain.status "+
@@ -1186,5 +1201,23 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(beban_hutang_lain.no_hutang,4),signed)),0) from beban_hutang_lain where beban_hutang_lain.tgl_hutang like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "BHL"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoHutang); 
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
