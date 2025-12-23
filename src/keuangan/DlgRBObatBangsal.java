@@ -16,8 +16,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
@@ -27,9 +30,10 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private PreparedStatement psbangsal,psdokter,psobat;
     private ResultSet rsbangsal,rsdokter,rsobat; 
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int i=0,a=0;
     private double jmlbiaya=0,ttlbiaya=0,jmlembalase=0,ttlembalase=0,jmltuslah=0,ttltuslah=0,jmltotal=0,ttltotal=0;
 
@@ -66,63 +70,6 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
         kdbangsal.setDocument(new batasInput((byte)5).getKata(kdbangsal));
-                
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {;}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                   
-                    kdbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                    nmbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
-                }     
-                kdbangsal.requestFocus();                
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        bangsal.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    bangsal.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        try {
-            psbangsal=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where kd_bangsal in (select kd_bangsal from kamar group by kd_bangsal) and kd_bangsal like ?");
-            psdokter=koneksi.prepareStatement(
-                    "select dokter.kd_dokter,dokter.nm_dokter from dokter inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal "+
-                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar and "+
-                    "kamar.kd_bangsal=bangsal.kd_bangsal where bangsal.kd_bangsal=? and "+
-                    "kamar_inap.stts_pulang<>'Pindah Kamar' and kamar_inap.tgl_masuk between ? and ? group by dokter.kd_dokter");
-            psobat=koneksi.prepareStatement(
-                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"+
-                    "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,"+
-                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total "+
-                    "from detail_pemberian_obat inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal "+
-                    "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng and reg_periksa.no_rawat=kamar_inap.no_rawat and  "+
-                    "kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                    "where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.kd_bangsal=? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");       
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-     
     }
     
 
@@ -157,13 +104,8 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Penggunaan Obat Dokter Per Bangsal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Penggunaan Obat Dokter Per Bangsal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -418,9 +360,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbangsalKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-       kdbangsal.setText("");
+        kdbangsal.setText("");
         nmbangsal.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -432,6 +374,43 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {;}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){                   
+                    kdbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    nmbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    runBackground(() ->prosesCari());;
+                }     
+                kdbangsal.requestFocus();                
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        bangsal.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    bangsal.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         bangsal.isCek();
         bangsal.emptTeks();        
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -445,7 +424,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_btnBangsalKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());;
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -463,10 +442,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void Tgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl2KeyPressed
         Valid.pindah(evt,Tgl1,kdbangsal);
     }//GEN-LAST:event_Tgl2KeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Tgl1.requestFocus();
-    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -507,53 +482,96 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCari() {            
         try{   
-           this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-           Valid.tabelKosong(tabMode); 
-           psbangsal.setString(1,"%"+kdbangsal.getText()+"%"); 
-           rsbangsal=psbangsal.executeQuery();
-           i=1;
-           ttlbiaya=0;ttlembalase=0;ttltuslah=0;ttltotal=0;
-           while(rsbangsal.next()){
-               tabMode.addRow(new Object[]{i+". ",rsbangsal.getString(2),"","","","","",""});
-               psdokter.setString(1,rsbangsal.getString(1));
-               psdokter.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-               psdokter.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-               rsdokter=psdokter.executeQuery();
-               a=1;
-               while(rsdokter.next()){         
-                   tabMode.addRow(new Object[]{"",a+". "+rsdokter.getString(2),"","","","","",""});
-                   psobat.setString(1,rsdokter.getString(1));
-                   psobat.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                   psobat.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                   psobat.setString(4,rsbangsal.getString(1));
-                   rsobat=psobat.executeQuery();
-                   jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
-                   while(rsobat.next()){
-                       tabMode.addRow(new Object[]{
-                           "","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
-                           Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
-                       });
-                       jmlbiaya=jmlbiaya+rsobat.getDouble(4);
-                       ttlbiaya=ttlbiaya+rsobat.getDouble(4);
-                       jmlembalase=jmlembalase+rsobat.getDouble(5);
-                       ttlembalase=ttlembalase+rsobat.getDouble(5);
-                       jmltuslah=jmltuslah+rsobat.getDouble(6);
-                       ttltuslah=ttltuslah+rsobat.getDouble(6);
-                       jmltotal=jmltotal+rsobat.getDouble(7);
-                       ttltotal=ttltotal+rsobat.getDouble(7);
-                   }
-                   if(jmltotal>0){
-                       tabMode.addRow(new Object[]{
-                           "","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),
-                           Valid.SetAngka(jmltuslah),Valid.SetAngka(jmltotal)
-                       });
-                   }
-                   a++;
+            Valid.tabelKosong(tabMode); 
+            psbangsal=koneksi.prepareStatement("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal in (select bangsal.kd_bangsal from kamar group by bangsal.kd_bangsal) "+(nmbangsal.getText().trim().equals("")?"":"and bangsal.kd_bangsal like ? "));
+            try {
+                if(!nmbangsal.getText().trim().equals("")){
+                    psbangsal.setString(1,"%"+kdbangsal.getText()+"%");
+                }
+                rsbangsal=psbangsal.executeQuery();
+                i=1;
+                ttlbiaya=0;ttlembalase=0;ttltuslah=0;ttltotal=0;
+                while(rsbangsal.next()){
+                    tabMode.addRow(new Object[]{i+". ",rsbangsal.getString(2),"","","","","",""});
+                    psdokter=koneksi.prepareStatement(
+                        "select dokter.kd_dokter,dokter.nm_dokter from dokter inner join reg_periksa on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                        "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where bangsal.kd_bangsal=? and kamar_inap.stts_pulang<>'Pindah Kamar' "+
+                        "and kamar_inap.tgl_masuk between ? and ? group by dokter.kd_dokter");
+                    try{
+                        psdokter.setString(1,rsbangsal.getString(1));
+                        psdokter.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        psdokter.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rsdokter=psdokter.executeQuery();
+                        a=1;
+                        while(rsdokter.next()){         
+                            tabMode.addRow(new Object[]{"",a+". "+rsdokter.getString(2),"","","","","",""});
+                            psobat=koneksi.prepareStatement(
+                                "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,"+
+                                "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                                "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                                "where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.kd_bangsal=? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");  
+                            try{
+                                psobat.setString(1,rsdokter.getString(1));
+                                psobat.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                                psobat.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                psobat.setString(4,rsbangsal.getString(1));
+                                rsobat=psobat.executeQuery();
+                                jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
+                                while(rsobat.next()){
+                                    tabMode.addRow(new Object[]{
+                                        "","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
+                                        Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
+                                    });
+                                    jmlbiaya=jmlbiaya+rsobat.getDouble(4);
+                                    ttlbiaya=ttlbiaya+rsobat.getDouble(4);
+                                    jmlembalase=jmlembalase+rsobat.getDouble(5);
+                                    ttlembalase=ttlembalase+rsobat.getDouble(5);
+                                    jmltuslah=jmltuslah+rsobat.getDouble(6);
+                                    ttltuslah=ttltuslah+rsobat.getDouble(6);
+                                    jmltotal=jmltotal+rsobat.getDouble(7);
+                                    ttltotal=ttltotal+rsobat.getDouble(7);
+                                }
+                                if(jmltotal>0){
+                                    tabMode.addRow(new Object[]{
+                                        "","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),
+                                        Valid.SetAngka(jmltuslah),Valid.SetAngka(jmltotal)
+                                    });
+                                }
+                            } finally{
+                                if(rsobat!=null){
+                                    rsobat.close();
+                                }
+                                if(psobat!=null){
+                                    psobat.close();
+                                }
+                            } 
+                            a++;
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    } finally{
+                       if(rsdokter!=null){
+                           rsdokter.close();
+                       }
+                       if(psdokter!=null){
+                           psdokter.close();
+                       }
+                    }   
+                    i++;
+                }    
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+               if(rsbangsal!=null){
+                   rsbangsal.close();
                }
-               i++;
-           }
-           tabMode.addRow(new Object[]{">>","Total ",":","",Valid.SetAngka(ttlbiaya),Valid.SetAngka(ttlembalase),Valid.SetAngka(ttltuslah),Valid.SetAngka(ttltotal)});
-           this.setCursor(Cursor.getDefaultCursor());             
+               if(psbangsal!=null){
+                   psbangsal.close();
+               }
+            }
+                
+            tabMode.addRow(new Object[]{">>","Total ",":","",Valid.SetAngka(ttlbiaya),Valid.SetAngka(ttlembalase),Valid.SetAngka(ttltuslah),Valid.SetAngka(ttltotal)});
         }catch(Exception e){
             System.out.println("Catatan  "+e);
         }
@@ -563,6 +581,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void isCek(){
         //BtnPrint.setEnabled(var.getobat_per_kamar());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
     
 }

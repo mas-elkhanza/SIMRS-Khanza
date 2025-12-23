@@ -17,8 +17,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDepartemen;
@@ -38,11 +41,10 @@ public class DlgRHJmParamedis extends javax.swing.JDialog {
             rsdetaillab,rsperiksa_lab,rsasisten_operator1,rsasisten_operator2,rsasisten_operator3,
             rsinstrumen,rsperawaat_resusitas,rsasisten_anestesi,rsasisten_anestesi2,rsbidan,rsbidan2,rsbidan3,
             rsperawatluar,rsperiksa_radiologi,rsomloop,rsomloop2,rsomloop3,rsomloop4,rsomloop5;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgCariDepartemen departemen=new DlgCariDepartemen(null,false);
     private int i=0,a=0;
     private double total=0,totaljm=0,detaillab=0;
-    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -79,87 +81,6 @@ public class DlgRHJmParamedis extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
         kdptg.setDocument(new batasInput((byte)5).getKata(kdptg));
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }     
-                kdptg.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {petugas.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        carabayar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    KdCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
-                    NmCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        carabayar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    carabayar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        departemen.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(departemen.getTable().getSelectedRow()!= -1){
-                    kdDepartemen.setText(departemen.getTable().getValueAt(departemen.getTable().getSelectedRow(),0).toString());
-                    NmDepartemen.setText(departemen.getTable().getValueAt(departemen.getTable().getSelectedRow(),1).toString());
-                    BtnDepartemen.requestFocus();
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });  
         
         ChkInput.setSelected(false);
         isForm();
@@ -212,11 +133,6 @@ public class DlgRHJmParamedis extends javax.swing.JDialog {
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(70, 23));
-        kdptg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdptgKeyPressed(evt);
-            }
-        });
 
         KdCaraBayar.setEditable(false);
         KdCaraBayar.setName("KdCaraBayar"); // NOI18N
@@ -224,20 +140,10 @@ public class DlgRHJmParamedis extends javax.swing.JDialog {
 
         kdDepartemen.setName("kdDepartemen"); // NOI18N
         kdDepartemen.setPreferredSize(new java.awt.Dimension(70, 23));
-        kdDepartemen.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdDepartemenKeyPressed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Jasa Medis Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -621,20 +527,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{Valid.pindah(evt,BtnPrint,Tgl1);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmptg.setText(petugas.tampil3(kdptg.getText()));  
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmptg.setText(petugas.tampil3(kdptg.getText())); 
-            Tgl2.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmptg.setText(petugas.tampil3(kdptg.getText()));  
-            BtnAll.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnParamedisActionPerformed(null);
-        }
-    }//GEN-LAST:event_kdptgKeyPressed
-
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         //TCari.setText("");
         kdptg.setText("");
@@ -644,9 +536,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         kdDepartemen.setText("");
         NmDepartemen.setText("");
         cmbStatus.setSelectedIndex(0);
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        prosesCari();
-        this.setCursor(Cursor.getDefaultCursor());
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -658,9 +548,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    prosesCari();
-    this.setCursor(Cursor.getDefaultCursor());
+    runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -671,28 +559,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Tgl1.requestFocus();
-    }//GEN-LAST:event_formWindowOpened
-
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRanapActionPerformed
 
     private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkOperasiActionPerformed
 
     private void chkLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaboratActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkLaboratActionPerformed
 
     private void chkRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRadiologiActionPerformed
 
     private void chkRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRalanActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -708,6 +592,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void btnParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParamedisActionPerformed
+        DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){                   
+                    kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                }     
+                kdptg.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {petugas.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
@@ -720,6 +627,41 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_btnParamedisKeyPressed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
+        DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+        carabayar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(carabayar.getTable().getSelectedRow()!= -1){
+                    KdCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
+                    NmCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {carabayar.onCari();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        carabayar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    carabayar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         carabayar.isCek();
         carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         carabayar.setLocationRelativeTo(internalFrame1);
@@ -728,15 +670,34 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnCaraBayarRalanDokterActionPerformed
 
     private void BtnDepartemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDepartemenActionPerformed
+        DlgCariDepartemen departemen=new DlgCariDepartemen(null,false);
+        departemen.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(departemen.getTable().getSelectedRow()!= -1){
+                    kdDepartemen.setText(departemen.getTable().getValueAt(departemen.getTable().getSelectedRow(),0).toString());
+                    NmDepartemen.setText(departemen.getTable().getValueAt(departemen.getTable().getSelectedRow(),1).toString());
+                    BtnDepartemen.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });  
         departemen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         departemen.setLocationRelativeTo(internalFrame1);
         departemen.setAlwaysOnTop(false);
         departemen.setVisible(true);
     }//GEN-LAST:event_BtnDepartemenActionPerformed
-
-    private void kdDepartemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdDepartemenKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kdDepartemenKeyPressed
 
     /**
     * @param args the command line arguments
@@ -808,21 +769,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void prosesCariSemua() {
        try{   
-           if(NmDepartemen.getText().equals("")){
+            if(NmDepartemen.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? "+
-                    "and pegawai.departemen=? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and pegawai.departemen=? "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }
                 
             try {
                if(NmDepartemen.getText().equals("")){
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(1,kdptg.getText()+nmptg.getText());
+                    }   
                }else{
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
-                    ps.setString(2,kdDepartemen.getText());
+                    ps.setString(1,kdDepartemen.getText());
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(2,kdptg.getText()+nmptg.getText());
+                    }
                }
                rs=ps.executeQuery();
                i=1;
@@ -1578,22 +1542,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangBelumLunas() {
         try{   
-           if(NmDepartemen.getText().equals("")){
+            if(NmDepartemen.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? "+
-                    "and pegawai.departemen=? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and pegawai.departemen=? "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }
                 
             try {
                if(NmDepartemen.getText().equals("")){
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(1,kdptg.getText()+nmptg.getText());
+                    }   
                }else{
-                    System.out.println("Kode : "+kdDepartemen.getText());
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
-                    ps.setString(2,kdDepartemen.getText());
+                    ps.setString(1,kdDepartemen.getText());
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(2,kdptg.getText()+nmptg.getText());
+                    }
                }
                rs=ps.executeQuery();
                i=1;
@@ -2331,22 +2297,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangSudahLunas() {
         try{   
-           if(NmDepartemen.getText().equals("")){
+            if(NmDepartemen.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? "+
-                    "and pegawai.departemen=? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and pegawai.departemen=? "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }
                 
             try {
                if(NmDepartemen.getText().equals("")){
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(1,kdptg.getText()+nmptg.getText());
+                    }   
                }else{
-                    System.out.println("Kode : "+kdDepartemen.getText());
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
-                    ps.setString(2,kdDepartemen.getText());
+                    ps.setString(1,kdDepartemen.getText());
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(2,kdptg.getText()+nmptg.getText());
+                    }
                }
                rs=ps.executeQuery();
                i=1;
@@ -3084,22 +3052,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariSudahBayarNonPiutang() {
         try{   
-           if(NmDepartemen.getText().equals("")){
+            if(NmDepartemen.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? "+
-                    "and pegawai.departemen=? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and pegawai.departemen=? "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }
                 
             try {
                if(NmDepartemen.getText().equals("")){
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(1,kdptg.getText()+nmptg.getText());
+                    }   
                }else{
-                    System.out.println("Kode : "+kdDepartemen.getText());
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
-                    ps.setString(2,kdDepartemen.getText());
+                    ps.setString(1,kdDepartemen.getText());
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(2,kdptg.getText()+nmptg.getText());
+                    }
                }
                rs=ps.executeQuery();
                i=1;
@@ -3837,22 +3807,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariBelumTerclosing() {
         try{   
-           if(NmDepartemen.getText().equals("")){
+            if(NmDepartemen.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas where petugas.status='1' "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and concat(petugas.nip,petugas.nama) like ? "+
-                    "and pegawai.departemen=? order by petugas.nama");
+                    "select petugas.nip,petugas.nama from petugas inner join pegawai on petugas.nip=pegawai.nik where petugas.status='1' and pegawai.departemen=? "+(nmptg.getText().trim().equals("")?"":"and concat(petugas.nip,petugas.nama)=? ")+" order by petugas.nama");
             }
                 
             try {
                if(NmDepartemen.getText().equals("")){
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(1,kdptg.getText()+nmptg.getText());
+                    }   
                }else{
-                    System.out.println("Kode : "+kdDepartemen.getText());
-                    ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
-                    ps.setString(2,kdDepartemen.getText());
+                    ps.setString(1,kdDepartemen.getText());
+                    if(!nmptg.getText().trim().equals("")){
+                       ps.setString(2,kdptg.getText()+nmptg.getText());
+                    }
                }
                rs=ps.executeQuery();
                i=1;
@@ -4588,4 +4560,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
        }
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

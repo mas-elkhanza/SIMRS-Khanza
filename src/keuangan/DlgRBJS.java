@@ -591,23 +591,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "select jns_perawatan.nm_perawatan,rawat_jl_pr.material,count(rawat_jl_pr.kd_jenis_prw) as jml,sum(rawat_jl_pr.material) as total "+
                             "from reg_periksa inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat inner join jns_perawatan "+
                             "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where reg_periksa.tgl_registrasi between ? and ? and "+
-                            "reg_periksa.kd_pj like ? and rawat_jl_pr.material>0 "+
+                            "reg_periksa.kd_pj=? and rawat_jl_pr.material>0 "+
                             "group by rawat_jl_pr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
-                        psralandrpr=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,rawat_jl_drpr.material,"+
-                            "count(rawat_jl_drpr.kd_jenis_prw) as jml,"+
-                            "sum(rawat_jl_drpr.material) as total "+
-                            "from reg_periksa inner join jns_perawatan inner join rawat_jl_drpr "+
-                            "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
-                            "and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                            "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and rawat_jl_drpr.material>0 "+
+                        psralandrpr=koneksi.prepareStatement(
+                            "select jns_perawatan.nm_perawatan,rawat_jl_drpr.material,count(rawat_jl_drpr.kd_jenis_prw) as jml,sum(rawat_jl_drpr.material) as total "+
+                            "from reg_periksa inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat inner join jns_perawatan "+
+                            "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where reg_periksa.tgl_registrasi between ? and ? and "+
+                            "reg_periksa.kd_pj=? and rawat_jl_drpr.material>0 "+
                             "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
-                        psralandr=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,rawat_jl_dr.material,"+
-                            "count(rawat_jl_dr.kd_jenis_prw) as jml,"+
-                            "sum(rawat_jl_dr.material) as total "+
-                            "from reg_periksa inner join jns_perawatan inner join rawat_jl_dr "+
-                            "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                            "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                            "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and rawat_jl_dr.material>0 "+
+                        psralandr=koneksi.prepareStatement(
+                            "select jns_perawatan.nm_perawatan,rawat_jl_dr.material,count(rawat_jl_dr.kd_jenis_prw) as jml,sum(rawat_jl_dr.material) as total "+
+                            "from reg_periksa inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat inner join jns_perawatan "+
+                            "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where reg_periksa.tgl_registrasi between ? and ? and "+
+                            "reg_periksa.kd_pj=? and rawat_jl_dr.material>0 "+
                             "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
                         try {
                             psralanpr.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -682,9 +678,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    
                    //rawat inap               
                    if(chkRanap.isSelected()==true){
-                        psranappr=koneksi.prepareStatement("select jns_perawatan_inap.nm_perawatan,rawat_inap_pr.material,"+
-                                "count(rawat_inap_pr.kd_jenis_prw) as jml, " +
-                                "sum(rawat_inap_pr.material) as total "+
+                        psranappr=koneksi.prepareStatement(
+                                "select jns_perawatan_inap.nm_perawatan,rawat_inap_pr.material,count(rawat_inap_pr.kd_jenis_prw) as jml,sum(rawat_inap_pr.material) as total "+
                                 "from jns_perawatan_inap inner join rawat_inap_pr inner join reg_periksa "+
                                 "on rawat_inap_pr.no_rawat=reg_periksa.no_rawat and "+
                                 "rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
