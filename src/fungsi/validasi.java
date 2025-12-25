@@ -281,6 +281,24 @@ public final class validasi {
         }
     }
     
+    public void autoNomer7(String nomorterakhir,String strAwal,Integer pnj,javax.swing.JTextField teks){
+        try {
+            s="1";
+            while(rs.next()){
+                s=Integer.toString(Integer.parseInt(nomorterakhir)+1);
+            }            
+
+            j=s.length();
+            s1="";
+            for(i = 1;i<=pnj-j;i++){
+                s1=s1+"0";
+            }
+            teks.setText(strAwal+s1+s);
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     public String autoNomer(String tabel,String strAwal,Integer pnj){
         try {
             auto="";

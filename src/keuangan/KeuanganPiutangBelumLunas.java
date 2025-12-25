@@ -1507,6 +1507,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     public void tampiltagihan(String notagihan) {
         this.notagihan=notagihan;
         Valid.tabelKosong(tabMode);
+        System.out.println("No.Tagihan : "+notagihan);
         try{
             ps=koneksi.prepareStatement("select akun_piutang.kd_rek,akun_piutang.nama_bayar,akun_bayar.nama_bayar,"+
                     "penagihan_piutang.kd_pj from penagihan_piutang inner join akun_piutang on penagihan_piutang.kd_pj=akun_piutang.kd_pj "+
@@ -1519,6 +1520,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     nmpenjab.setText(rs.getString(2));
                     AkunBayar.setSelectedItem(rs.getString(3));
                     carabayar=rs.getString("kd_pj");
+                    System.out.println("Cara Bayar : "+carabayar);
                 }
             } catch (Exception e) {
                 System.out.println(e);

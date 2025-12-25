@@ -35,10 +35,13 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -67,6 +70,8 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -140,19 +145,19 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -976,14 +981,16 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 
                             if(sukses==true){
                                 Sequel.Commit();
-                                BtnCariActionPerformed(evt);
-                                emptTeks();
                             }else{
                                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                                 Sequel.RollBack();
                             }
 
                             Sequel.AutoComitTrue();
+                            if(sukses==true){
+                                runBackground(() ->tampil());
+                                emptTeks();
+                            }
                         }
                     }
                 }else{
@@ -1078,13 +1085,16 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                 
             if(sukses==true){
                 Sequel.Commit();
-                tabMode.removeRow(tbKamar.getSelectedRow());
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 Sequel.RollBack();
             }
             Sequel.AutoComitTrue();
+            if(sukses==true){
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }catch (Exception ex) {
             System.out.println(ex);
         }              
@@ -1110,7 +1120,6 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnKeluar.requestFocus();
@@ -1162,7 +1171,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1209,7 +1218,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         TCari.setText("");
         kdsup.setText("");
         nmsup.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void TglCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglCari1KeyPressed
@@ -1242,7 +1251,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                 if(suplier.getTable().getSelectedRow()!= -1){
                     kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
                     nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    tampil();
+                    runBackground(() ->tampil());
                 }      
                 kdsup.requestFocus();
             }
@@ -1281,15 +1290,6 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
-                tampilAkunBayar2();
-            }else{
-                tampilAkunBayar();
-            }
-        } catch (Exception e) {
-        }
-        
-        try {
             if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
                 tampilAkunBankMandiri2();
             }else{
@@ -1297,11 +1297,19 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
             }
         } catch (Exception e) {
         }
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
+                runBackground(() ->tampilAkunBayar2());
+            }else{
+                runBackground(() ->tampilAkunBayar());
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
-        tampilAkunBayar();
         tampilAkunBankMandiri();
+        runBackground(() ->tampilAkunBayar());
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     private void keteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keteranganKeyPressed
@@ -1620,7 +1628,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
@@ -1671,6 +1679,11 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
         LTotal.setText(Valid.SetAngka(total));
     }
+    
+    public void tampil2() {
+        runBackground(() ->tampil());
+    }
+    
 
     public void emptTeks() {
         Kd2.setText("");
@@ -1845,5 +1858,23 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
              kodemcm="";
              norekening="";
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -10770,7 +10770,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarPemesananFarmasi bayarpesan=new KeuanganBayarPemesananFarmasi(this,false);
-        bayarpesan.tampil();
+        bayarpesan.tampil2();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);
@@ -13018,7 +13018,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarPemesananNonMedis bayarpesan=new KeuanganBayarPemesananNonMedis(this,false);
-        bayarpesan.tampil();
+        bayarpesan.tampil2();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);
@@ -16458,7 +16458,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarPesanToko bayarpesan=new KeuanganBayarPesanToko(this,false);
-        bayarpesan.tampil();
+        bayarpesan.tampil2();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);
@@ -17991,7 +17991,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarPemesananAset bayarpesan=new KeuanganBayarPemesananAset(this,false);
-        bayarpesan.tampil();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);
@@ -22029,7 +22028,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarPemesananDapur bayarpesan=new KeuanganBayarPemesananDapur(this,false);
-        bayarpesan.tampil();
+        bayarpesan.tampil2();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);

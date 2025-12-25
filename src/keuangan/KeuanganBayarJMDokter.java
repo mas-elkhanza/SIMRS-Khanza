@@ -24,8 +24,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -48,6 +51,8 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
     private double total=0,bayar=0,totalrawatjalan=0,totalrawatinap=0,totallabrawatjalan=0,totallabrawatinap=0,totalradrawatjalan=0,totalradrawatinap=0,totaloperasirawatjalan=0,totaloperasirawatinap=0;
     private boolean sukses=true;  
     private KeuanganCariBayarJMDokter form=new KeuanganCariBayarJMDokter(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -120,19 +125,19 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        prosesCari();
+                        runBackground(() ->prosesCari());
                     }
                 }
             });
@@ -895,7 +900,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         TCari.setText("");
         KdCaraBayar.setText("");
         NmCaraBayar.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -917,12 +922,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            prosesCari();
+            runBackground(() ->prosesCari());
         }else{
             Valid.pindah(evt, TKd, BtnAll);
         }
@@ -931,9 +936,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
-                tampilAkunBayar2();
+                runBackground(() ->tampilAkunBayar2());
             }else{
-                tampilAkunBayar();
+                runBackground(() ->tampilAkunBayar());
             }
         } catch (Exception e) {
         }
@@ -1351,23 +1356,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void chkRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRalanActionPerformed
 
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRanapActionPerformed
 
     private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkOperasiActionPerformed
 
     private void chkLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaboratActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkLaboratActionPerformed
 
     private void chkRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologiActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_chkRadiologiActionPerformed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
@@ -1523,8 +1528,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnGajiKeyPressed
 
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
-        tampilAkunBayar();
         form.tampilAkunBankMandiri();
+        runBackground(() ->tampilAkunBayar());
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     private void BtnKeluarMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarMandiriActionPerformed
@@ -5878,5 +5883,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
          }catch(Exception e){
              System.out.println("Notifikasi : "+e);
          }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

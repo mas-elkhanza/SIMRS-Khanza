@@ -4320,10 +4320,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab")
                     });
                     ps2=koneksi.prepareStatement(
-                            "select rujukan_internal_poli.kd_dokter,dokter.nm_dokter,"+
-                            "rujukan_internal_poli.kd_poli,poliklinik.nm_poli from rujukan_internal_poli "+
-                            "inner join dokter inner join poliklinik on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
-                            "and rujukan_internal_poli.kd_poli=poliklinik.kd_poli where rujukan_internal_poli.no_rawat=?");
+                            "select rujukan_internal_poli.kd_dokter,dokter.nm_dokter,rujukan_internal_poli.kd_poli,poliklinik.nm_poli "+
+                            "from rujukan_internal_poli inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                            "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli where rujukan_internal_poli.no_rawat=?");
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();

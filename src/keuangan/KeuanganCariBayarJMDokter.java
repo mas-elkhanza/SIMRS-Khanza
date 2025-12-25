@@ -20,8 +20,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -31,13 +34,15 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private PreparedStatement ps,ps2,psrekening;
     private ResultSet rs,rs2,rsrekening;
     private String notagihan="",tanggal="",petugas="";
     private double totaltagihan=0;
+    public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private boolean sukses=true,rincian=false;  
     public Jurnal jur=new Jurnal();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     public File file;
     public FileWriter fileWriter;
     public String iyem,Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Utang_Jasa_Medik_Dokter_Laborat_Ralan="",Utang_Jasa_Medik_Dokter_Laborat_Ranap="",
@@ -163,15 +168,6 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
         }
         ChkInput.setSelected(false);
         isForm();
-        
-        try {
-            if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
-                tampilAkunBankMandiri2();
-            }else{
-                tampilAkunBankMandiri();
-            }
-        } catch (Exception e) {
-        }
     }
 
     /** This method is called from within the constructor to
@@ -521,7 +517,6 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        dokter.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -558,7 +553,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_Tanggal2KeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -573,7 +568,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NoBayar.setText("");
         kddokter.setText("");
         nmdokter.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -626,7 +621,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
+                runBackground(() ->tampilAkunBankMandiri2());
+            }else{
+                runBackground(() ->tampilAkunBankMandiri());
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -733,7 +735,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             
                             if(sukses==true){
                                 Sequel.queryu2("delete from bayar_jm_dokter where no_bayar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                                tampil();
+                                runBackground(() ->tampil());
                                 Sequel.Commit();
                             }else{
                                 sukses=false;
@@ -1393,12 +1395,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void ppRincianBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRincianBtnPrintActionPerformed
         rincian=false;
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRincianBtnPrintActionPerformed
 
     private void ppRincian2BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRincian2BtnPrintActionPerformed
         rincian=true;
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRincian2BtnPrintActionPerformed
 
     /**
@@ -2046,5 +2048,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
              kodemcm="";
              norekening="";
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

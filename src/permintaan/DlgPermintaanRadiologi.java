@@ -1377,6 +1377,24 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     } 
                     isReset();
                     emptTeks();
+                }else{
+                    Valid.autoNomer7(TNoPermintaan.getText().substring(TNoPermintaan.getText().length()-4),"PR"+Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-",""),4,TNoPermintaan); 
+                    if(Sequel.menyimpantf2("permintaan_radiologi","?,?,?,?,?,?,?,?,?,?,?,?","No.Permintaan",12,new String[]{
+                            TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                            CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText(),status.replaceAll("R","r"),
+                            InformasiTambahan.getText(),DiagnosisKlinis.getText()
+                        })==true){
+                        for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
+                            if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
+                                Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan radiologi",3,new String[]{
+                                    TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
+                                });
+                            }                        
+                        } 
+                        isReset();
+                        emptTeks();
+                    }
                 }
                 Sequel.AutoComitTrue();
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
