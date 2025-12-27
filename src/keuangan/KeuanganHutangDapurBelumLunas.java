@@ -1877,7 +1877,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }  
     }
     
-    public void tampilTagihan(String notagihan){
+    private void tampilTagihan(String notagihan){
         this.notagihan=notagihan;
         Valid.tabelKosong(tabMode);
         try{
@@ -1923,6 +1923,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    public void tampilTagihan2(String notagihan){
+        runBackground(() ->tampilTagihan(notagihan));
     }
     
     private void tampilAkunBankMandiri() { 

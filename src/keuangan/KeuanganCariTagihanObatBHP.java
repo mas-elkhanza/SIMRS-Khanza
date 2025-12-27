@@ -714,7 +714,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     KeuanganHutangObatBelumLunas form=new KeuanganHutangObatBelumLunas(null,false);
                     form.isCek();
-                    form.tampilTagihan(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    form.tampilTagihan2(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
                     form.setVisible(true);
