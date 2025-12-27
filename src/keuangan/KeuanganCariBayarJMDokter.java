@@ -735,7 +735,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             
                             if(sukses==true){
                                 Sequel.queryu2("delete from bayar_jm_dokter where no_bayar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                                runBackground(() ->tampil());
                                 Sequel.Commit();
                             }else{
                                 sukses=false;
@@ -743,6 +742,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 Sequel.RollBack();
                             }  
                             Sequel.AutoComitTrue();
+                            if(sukses==true){
+                                runBackground(() ->tampil());
+                            }
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);

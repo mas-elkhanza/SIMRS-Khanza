@@ -11873,7 +11873,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         DlgCopyResep daftar=new DlgCopyResep(null,false);
                         daftar.isCek();
                         daftar.setRM(TNoRwCari.getText(),TNoRMCari.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString(),"ralan");
-                        daftar.tampil();
+                        daftar.tampil2();
                         daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                         daftar.setLocationRelativeTo(internalFrame1);
                         daftar.setVisible(true);
@@ -11886,7 +11886,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             DlgCopyResep daftar=new DlgCopyResep(null,false);
                             daftar.isCek();
                             daftar.setRM(TNoRwCari.getText(),TNoRMCari.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString(),"ralan");
-                            daftar.tampil();
+                            daftar.tampil2();
                             daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                             daftar.setLocationRelativeTo(internalFrame1);
                             daftar.setVisible(true);
@@ -11931,7 +11931,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     DlgCopyResep daftar=new DlgCopyResep(null,false);
                     daftar.isCek();
                     daftar.setRM(TNoRwCari.getText(),TNoRMCari.getText(),tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),14).toString(),"ralan");
-                    daftar.tampil();
+                    daftar.tampil2();
                     daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                     daftar.setLocationRelativeTo(internalFrame1);
                     daftar.setVisible(true);

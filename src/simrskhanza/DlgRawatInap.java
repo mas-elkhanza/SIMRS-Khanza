@@ -6581,7 +6581,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             DlgCopyResep daftar=new DlgCopyResep(null,false);
             daftar.isCek();
             daftar.setRM(TNoRw.getText(),TNoRM.getText(),KdDok.getText(),jenisbayar,"ranap");
-            daftar.tampil();
+            daftar.tampil2();
             daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             daftar.setLocationRelativeTo(internalFrame1);
             daftar.setVisible(true);

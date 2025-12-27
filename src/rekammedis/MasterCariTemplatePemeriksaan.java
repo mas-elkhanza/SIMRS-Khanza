@@ -23,8 +23,11 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -51,6 +54,8 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
     private boolean sukses=true;
     private double ttljmdokter=0,ttlkso=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0,ttlpendapatan=0;
     private Jurnal jur=new Jurnal();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -489,19 +494,19 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -1068,7 +1073,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1081,7 +1086,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1114,334 +1119,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
-        if(tabMode.getRowCount()!=0){
-            if(tbDokter.getSelectedRow()>-1){
-                try {
-                    Subjek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
-                    Objek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                    Asesmen.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
-                    Plan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
-                    Instruksi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
-                    Evaluasi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
-                    
-                    Valid.tabelKosong(tabModeDiagnosa);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
-                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,template_pemeriksaan_dokter_penyakit.urut from template_pemeriksaan_dokter_penyakit "+
-                            "inner join penyakit on penyakit.kd_penyakit=template_pemeriksaan_dokter_penyakit.kd_penyakit "+
-                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg where "+
-                            "template_pemeriksaan_dokter_penyakit.no_template=? order by template_pemeriksaan_dokter_penyakit.urut");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeDiagnosa.addRow(new Object[]{
-                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
-                            });
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModeProsedur);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_prosedur.kode,icd9.deskripsi_panjang,icd9.deskripsi_pendek,template_pemeriksaan_dokter_prosedur.urut,template_pemeriksaan_dokter_prosedur.jumlah "+
-                            "from template_pemeriksaan_dokter_prosedur inner join icd9 on template_pemeriksaan_dokter_prosedur.kode=icd9.kode where template_pemeriksaan_dokter_prosedur.no_template=? "+
-                            "order by template_pemeriksaan_dokter_prosedur.urut");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeProsedur.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModeRadiologi);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_permintaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan from template_pemeriksaan_dokter_permintaan_radiologi "+
-                            "inner join jns_perawatan_radiologi on template_pemeriksaan_dokter_permintaan_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                            "where template_pemeriksaan_dokter_permintaan_radiologi.no_template=?");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeRadiologi.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModePK);
-                    Valid.tabelKosong(tabModeDetailPK);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
-                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
-                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='PK'");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModePK.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
-                            try {
-                                tabModeDetailPK.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
-                                ps2=koneksi.prepareStatement(
-                                        "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
-                                        "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
-                                        "template_pemeriksaan_dokter_detail_permintaan_lab.kd_jenis_prw=? order by template_laboratorium.urut");
-                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                                ps2.setString(2,rs.getString("kd_jenis_prw"));
-                                rs2=ps2.executeQuery();
-                                while(rs2.next()){
-                                    la="";ld="";pa="";pd="";
-                                    if(!rs2.getString("nilai_rujukan_ld").equals("")){
-                                        ld="LD : "+rs2.getString("nilai_rujukan_ld");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_la").equals("")){
-                                        la=", LA : "+rs2.getString("nilai_rujukan_la");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_pa").equals("")){
-                                        pd=", PD : "+rs2.getString("nilai_rujukan_pd");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_pd").equals("")){
-                                        pa=" PA : "+rs2.getString("nilai_rujukan_pa");
-                                    }
-                                    tabModeDetailPK.addRow(new Object[]{
-                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
-                                    });
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif : "+e);
-                            } finally{
-                                if(rs2!=null){
-                                    rs2.close();
-                                }
-                                if(ps2!=null){
-                                    ps2.close();
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModePA);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
-                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
-                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='PA'");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModePA.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModeMB);
-                    Valid.tabelKosong(tabModeDetailMB);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
-                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
-                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='MB'");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeMB.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
-                            try {
-                                tabModeDetailMB.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
-                                ps2=koneksi.prepareStatement(
-                                        "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
-                                        "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
-                                        "template_pemeriksaan_dokter_detail_permintaan_lab.kd_jenis_prw=? order by template_laboratorium.urut");
-                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                                ps2.setString(2,rs.getString("kd_jenis_prw"));
-                                rs2=ps2.executeQuery();
-                                while(rs2.next()){
-                                    la="";ld="";pa="";pd="";
-                                    if(!rs2.getString("nilai_rujukan_ld").equals("")){
-                                        ld="LD : "+rs2.getString("nilai_rujukan_ld");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_la").equals("")){
-                                        la=", LA : "+rs2.getString("nilai_rujukan_la");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_pa").equals("")){
-                                        pd=", PD : "+rs2.getString("nilai_rujukan_pd");
-                                    }
-                                    if(!rs2.getString("nilai_rujukan_pd").equals("")){
-                                        pa=" PA : "+rs2.getString("nilai_rujukan_pa");
-                                    }
-                                    tabModeDetailMB.addRow(new Object[]{
-                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
-                                    });
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif : "+e);
-                            } finally{
-                                if(rs2!=null){
-                                    rs2.close();
-                                }
-                                if(ps2!=null){
-                                    ps2.close();
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModeObatUmum);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_resep.kode_brng,databarang.nama_brng,kodesatuan.satuan,template_pemeriksaan_dokter_resep.jml,template_pemeriksaan_dokter_resep.aturan_pakai,jenis.nama,industrifarmasi.nama_industri, "+
-                            "databarang.kapasitas,databarang.letak_barang from template_pemeriksaan_dokter_resep inner join databarang on template_pemeriksaan_dokter_resep.kode_brng=databarang.kode_brng inner join kodesatuan on kodesatuan.kode_sat=databarang.kode_sat "+
-                            "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri where template_pemeriksaan_dokter_resep.no_template=? order by databarang.nama_brng");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeObatUmum.addRow(new Object[]{
-                                rs.getString("jml"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("letak_barang"),rs.getString("nama"),rs.getString("aturan_pakai"),rs.getString("nama_industri"),rs.getDouble("kapasitas")
-                            });
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    Valid.tabelKosong(tabModeObatRacikan);
-                    Valid.tabelKosong(tabModeDetailObatRacikan);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_resep_racikan.no_racik,template_pemeriksaan_dokter_resep_racikan.kd_racik,template_pemeriksaan_dokter_resep_racikan.nama_racik,metode_racik.nm_racik,template_pemeriksaan_dokter_resep_racikan.jml_dr,template_pemeriksaan_dokter_resep_racikan.aturan_pakai,"+
-                            "template_pemeriksaan_dokter_resep_racikan.keterangan from template_pemeriksaan_dokter_resep_racikan inner join metode_racik on metode_racik.kd_racik=template_pemeriksaan_dokter_resep_racikan.kd_racik where template_pemeriksaan_dokter_resep_racikan.no_template=? "+
-                            "order by template_pemeriksaan_dokter_resep_racikan.no_racik");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            tabModeObatRacikan.addRow(new Object[]{
-                                rs.getString("no_racik"),rs.getString("nama_racik"),rs.getString("kd_racik"),rs.getString("nm_racik"),rs.getString("jml_dr"),rs.getString("aturan_pakai"),rs.getString("keterangan")
-                            });
-                            try {
-                                ps2=koneksi.prepareStatement(
-                                        "select template_pemeriksaan_dokter_resep_racikan_detail.kode_brng,databarang.nama_brng,kodesatuan.satuan,template_pemeriksaan_dokter_resep_racikan_detail.jml,jenis.nama,"+
-                                        "databarang.kapasitas,template_pemeriksaan_dokter_resep_racikan_detail.p1,template_pemeriksaan_dokter_resep_racikan_detail.p2,template_pemeriksaan_dokter_resep_racikan_detail.kandungan,"+
-                                        "industrifarmasi.nama_industri,databarang.letak_barang from template_pemeriksaan_dokter_resep_racikan_detail inner join databarang on template_pemeriksaan_dokter_resep_racikan_detail.kode_brng=databarang.kode_brng "+
-                                        "inner join jenis on databarang.kdjns=jenis.kdjns inner join kodesatuan on kodesatuan.kode_sat=databarang.kode_sat inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
-                                        "where template_pemeriksaan_dokter_resep_racikan_detail.no_template=? and template_pemeriksaan_dokter_resep_racikan_detail.no_racik=? order by template_pemeriksaan_dokter_resep_racikan_detail.kode_brng");
-                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                                ps2.setString(2,rs.getString("no_racik"));
-                                rs2=ps2.executeQuery();
-                                while(rs2.next()){
-                                    tabModeDetailObatRacikan.addRow(new Object[]{
-                                        rs.getString("no_racik"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("satuan"),
-                                        rs2.getString("nama"),rs2.getDouble("kapasitas"),rs2.getDouble("p1"),"/",rs2.getDouble("p2"),rs2.getString("kandungan"),
-                                        rs2.getDouble("jml"),rs2.getString("nama_industri"),rs2.getString("letak_barang")
-                                    });
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif : "+e);
-                            } finally{
-                                if(rs2!=null){
-                                    rs2.close();
-                                }
-                                if(ps2!=null){
-                                    ps2.close();
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-
-                    Valid.tabelKosong(TabModeTindakan);
-                    ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_tindakan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,jns_perawatan.total_byrdr,jns_perawatan.bhp,jns_perawatan.material,"+
-                            "jns_perawatan.tarif_tindakandr,jns_perawatan.kso,jns_perawatan.menejemen from template_pemeriksaan_dokter_tindakan inner join jns_perawatan "+
-                            "on template_pemeriksaan_dokter_tindakan.kd_jenis_prw=jns_perawatan.kd_jenis_prw inner join kategori_perawatan on kategori_perawatan.kd_kategori=jns_perawatan.kd_kategori "+
-                            "where template_pemeriksaan_dokter_tindakan.no_template=?");
-                    try {
-                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            TabModeTindakan.addRow(new Object[]{
-                                rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori"),rs.getDouble("total_byrdr"),
-                                rs.getDouble("material"),rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),rs.getDouble("kso"),rs.getDouble("menejemen")
-                            });
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                }
-            }
-        }
+        runBackground(() ->tampilDetailTemplate());
     }//GEN-LAST:event_tbDokterMouseClicked
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -1798,7 +1476,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
     public widget.Table tbTindakan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -1846,6 +1524,10 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
     
+    public void tampil2() {
+        runBackground(() ->tampil());
+    }
+    
     public void emptTeks() {
         TCari.requestFocus();
     }
@@ -1864,5 +1546,354 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
     
     public void isCek(){        
         BtnTambah.setEnabled(akses.gettemplate_pemeriksaan());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
+
+    private void tampilDetailTemplate() {
+        if(tabMode.getRowCount()!=0){
+            if(tbDokter.getSelectedRow()>-1){
+                try {
+                    Subjek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                    Objek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                    Asesmen.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+                    Plan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+                    Instruksi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+                    Evaluasi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
+                    
+                    Valid.tabelKosong(tabModeDiagnosa);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
+                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,template_pemeriksaan_dokter_penyakit.urut from template_pemeriksaan_dokter_penyakit "+
+                            "inner join penyakit on penyakit.kd_penyakit=template_pemeriksaan_dokter_penyakit.kd_penyakit "+
+                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg where "+
+                            "template_pemeriksaan_dokter_penyakit.no_template=? order by template_pemeriksaan_dokter_penyakit.urut");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeDiagnosa.addRow(new Object[]{
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModeProsedur);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_prosedur.kode,icd9.deskripsi_panjang,icd9.deskripsi_pendek,template_pemeriksaan_dokter_prosedur.urut,template_pemeriksaan_dokter_prosedur.jumlah "+
+                            "from template_pemeriksaan_dokter_prosedur inner join icd9 on template_pemeriksaan_dokter_prosedur.kode=icd9.kode where template_pemeriksaan_dokter_prosedur.no_template=? "+
+                            "order by template_pemeriksaan_dokter_prosedur.urut");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeProsedur.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModeRadiologi);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_permintaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan from template_pemeriksaan_dokter_permintaan_radiologi "+
+                            "inner join jns_perawatan_radiologi on template_pemeriksaan_dokter_permintaan_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
+                            "where template_pemeriksaan_dokter_permintaan_radiologi.no_template=?");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeRadiologi.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModePK);
+                    Valid.tabelKosong(tabModeDetailPK);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
+                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='PK'");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModePK.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
+                            try {
+                                tabModeDetailPK.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
+                                ps2=koneksi.prepareStatement(
+                                        "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
+                                        "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
+                                        "template_pemeriksaan_dokter_detail_permintaan_lab.kd_jenis_prw=? order by template_laboratorium.urut");
+                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                ps2.setString(2,rs.getString("kd_jenis_prw"));
+                                rs2=ps2.executeQuery();
+                                while(rs2.next()){
+                                    la="";ld="";pa="";pd="";
+                                    if(!rs2.getString("nilai_rujukan_ld").equals("")){
+                                        ld="LD : "+rs2.getString("nilai_rujukan_ld");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_la").equals("")){
+                                        la=", LA : "+rs2.getString("nilai_rujukan_la");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_pa").equals("")){
+                                        pd=", PD : "+rs2.getString("nilai_rujukan_pd");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_pd").equals("")){
+                                        pa=" PA : "+rs2.getString("nilai_rujukan_pa");
+                                    }
+                                    tabModeDetailPK.addRow(new Object[]{
+                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
+                                    });
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(ps2!=null){
+                                    ps2.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModePA);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
+                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='PA'");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModePA.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModeMB);
+                    Valid.tabelKosong(tabModeDetailMB);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from template_pemeriksaan_dokter_permintaan_lab "+
+                            "inner join jns_perawatan_lab on template_pemeriksaan_dokter_permintaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                            "where template_pemeriksaan_dokter_permintaan_lab.no_template=? and jns_perawatan_lab.kategori='MB'");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeMB.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
+                            try {
+                                tabModeDetailMB.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
+                                ps2=koneksi.prepareStatement(
+                                        "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
+                                        "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
+                                        "template_pemeriksaan_dokter_detail_permintaan_lab.kd_jenis_prw=? order by template_laboratorium.urut");
+                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                ps2.setString(2,rs.getString("kd_jenis_prw"));
+                                rs2=ps2.executeQuery();
+                                while(rs2.next()){
+                                    la="";ld="";pa="";pd="";
+                                    if(!rs2.getString("nilai_rujukan_ld").equals("")){
+                                        ld="LD : "+rs2.getString("nilai_rujukan_ld");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_la").equals("")){
+                                        la=", LA : "+rs2.getString("nilai_rujukan_la");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_pa").equals("")){
+                                        pd=", PD : "+rs2.getString("nilai_rujukan_pd");
+                                    }
+                                    if(!rs2.getString("nilai_rujukan_pd").equals("")){
+                                        pa=" PA : "+rs2.getString("nilai_rujukan_pa");
+                                    }
+                                    tabModeDetailMB.addRow(new Object[]{
+                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
+                                    });
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(ps2!=null){
+                                    ps2.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModeObatUmum);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_resep.kode_brng,databarang.nama_brng,kodesatuan.satuan,template_pemeriksaan_dokter_resep.jml,template_pemeriksaan_dokter_resep.aturan_pakai,jenis.nama,industrifarmasi.nama_industri, "+
+                            "databarang.kapasitas,databarang.letak_barang from template_pemeriksaan_dokter_resep inner join databarang on template_pemeriksaan_dokter_resep.kode_brng=databarang.kode_brng inner join kodesatuan on kodesatuan.kode_sat=databarang.kode_sat "+
+                            "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri where template_pemeriksaan_dokter_resep.no_template=? order by databarang.nama_brng");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeObatUmum.addRow(new Object[]{
+                                rs.getString("jml"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("letak_barang"),rs.getString("nama"),rs.getString("aturan_pakai"),rs.getString("nama_industri"),rs.getDouble("kapasitas")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    Valid.tabelKosong(tabModeObatRacikan);
+                    Valid.tabelKosong(tabModeDetailObatRacikan);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_resep_racikan.no_racik,template_pemeriksaan_dokter_resep_racikan.kd_racik,template_pemeriksaan_dokter_resep_racikan.nama_racik,metode_racik.nm_racik,template_pemeriksaan_dokter_resep_racikan.jml_dr,template_pemeriksaan_dokter_resep_racikan.aturan_pakai,"+
+                            "template_pemeriksaan_dokter_resep_racikan.keterangan from template_pemeriksaan_dokter_resep_racikan inner join metode_racik on metode_racik.kd_racik=template_pemeriksaan_dokter_resep_racikan.kd_racik where template_pemeriksaan_dokter_resep_racikan.no_template=? "+
+                            "order by template_pemeriksaan_dokter_resep_racikan.no_racik");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabModeObatRacikan.addRow(new Object[]{
+                                rs.getString("no_racik"),rs.getString("nama_racik"),rs.getString("kd_racik"),rs.getString("nm_racik"),rs.getString("jml_dr"),rs.getString("aturan_pakai"),rs.getString("keterangan")
+                            });
+                            try {
+                                ps2=koneksi.prepareStatement(
+                                        "select template_pemeriksaan_dokter_resep_racikan_detail.kode_brng,databarang.nama_brng,kodesatuan.satuan,template_pemeriksaan_dokter_resep_racikan_detail.jml,jenis.nama,"+
+                                        "databarang.kapasitas,template_pemeriksaan_dokter_resep_racikan_detail.p1,template_pemeriksaan_dokter_resep_racikan_detail.p2,template_pemeriksaan_dokter_resep_racikan_detail.kandungan,"+
+                                        "industrifarmasi.nama_industri,databarang.letak_barang from template_pemeriksaan_dokter_resep_racikan_detail inner join databarang on template_pemeriksaan_dokter_resep_racikan_detail.kode_brng=databarang.kode_brng "+
+                                        "inner join jenis on databarang.kdjns=jenis.kdjns inner join kodesatuan on kodesatuan.kode_sat=databarang.kode_sat inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                        "where template_pemeriksaan_dokter_resep_racikan_detail.no_template=? and template_pemeriksaan_dokter_resep_racikan_detail.no_racik=? order by template_pemeriksaan_dokter_resep_racikan_detail.kode_brng");
+                                ps2.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                ps2.setString(2,rs.getString("no_racik"));
+                                rs2=ps2.executeQuery();
+                                while(rs2.next()){
+                                    tabModeDetailObatRacikan.addRow(new Object[]{
+                                        rs.getString("no_racik"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("satuan"),
+                                        rs2.getString("nama"),rs2.getDouble("kapasitas"),rs2.getDouble("p1"),"/",rs2.getDouble("p2"),rs2.getString("kandungan"),
+                                        rs2.getDouble("jml"),rs2.getString("nama_industri"),rs2.getString("letak_barang")
+                                    });
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(ps2!=null){
+                                    ps2.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+
+                    Valid.tabelKosong(TabModeTindakan);
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_tindakan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,jns_perawatan.total_byrdr,jns_perawatan.bhp,jns_perawatan.material,"+
+                            "jns_perawatan.tarif_tindakandr,jns_perawatan.kso,jns_perawatan.menejemen from template_pemeriksaan_dokter_tindakan inner join jns_perawatan "+
+                            "on template_pemeriksaan_dokter_tindakan.kd_jenis_prw=jns_perawatan.kd_jenis_prw inner join kategori_perawatan on kategori_perawatan.kd_kategori=jns_perawatan.kd_kategori "+
+                            "where template_pemeriksaan_dokter_tindakan.no_template=?");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            TabModeTindakan.addRow(new Object[]{
+                                rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori"),rs.getDouble("total_byrdr"),
+                                rs.getDouble("material"),rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),rs.getDouble("kso"),rs.getDouble("menejemen")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+            }
+        }
     }
 }

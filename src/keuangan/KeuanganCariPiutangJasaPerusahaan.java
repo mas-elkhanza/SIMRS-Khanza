@@ -18,8 +18,11 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,6 +40,8 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
     private int i=0;
     private boolean sukses=true;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private String Piutang_Jasa_Perusahaan=Sequel.cariIsi("select set_akun2.Piutang_Jasa_Perusahaan from set_akun2"),
                    Pendapatan_Piutang_Jasa_Perusahaan=Sequel.cariIsi("select set_akun2.Pendapatan_Piutang_Jasa_Perusahaan from set_akun2");
     
@@ -84,19 +89,19 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -587,7 +592,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -605,7 +610,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NmPerusahaan.setText("");
         KdPetugas.setText("");
         NmPetugas.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -808,7 +813,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
                 Sequel.AutoComitTrue();
                 if(sukses==true){
-                     tampil();
+                     runBackground(() ->tampil());
                 } 
             } 
         }
@@ -833,7 +838,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 String kodeperusahaan=Sequel.cariIsi("select piutang_jasa_perusahaan.kode_perusahaan from piutang_jasa_perusahaan where piutang_jasa_perusahaan.no_piutang=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 String namaperusahaan=Sequel.cariIsi("select perusahaan_pasien.nama_perusahaan from perusahaan_pasien where perusahaan_pasien.kode_perusahaan=?",kodeperusahaan);
                 bayarpiutang.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),kodeperusahaan,namaperusahaan);
-                bayarpiutang.tampil();
+                bayarpiutang.tampil2();
                 bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                 bayarpiutang.setLocationRelativeTo(this);
                 bayarpiutang.setAlwaysOnTop(false);
@@ -1060,6 +1065,24 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         NoPiutang.setText(notagihan);
         TglPiutang1.setDate(Taggal);
         TglPiutang2.setDate(Taggal);
-        tampil();
+        runBackground(() ->tampil());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

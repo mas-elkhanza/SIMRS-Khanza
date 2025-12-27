@@ -26,6 +26,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -49,13 +51,13 @@ public final class KeuanganHutangDapurBelumLunas extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
     private String koderekening="",tanggaldatang="",tanggaltempo="",Bayar_Pemesanan_Dapur=Sequel.cariIsi("select set_akun2.Bayar_Pemesanan_Dapur from set_akun2"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
-    private boolean sukses=false,ceksukses=false;
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
     private String notagihan="";
@@ -63,6 +65,8 @@ public final class KeuanganHutangDapurBelumLunas extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -143,19 +147,19 @@ public final class KeuanganHutangDapurBelumLunas extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -182,7 +186,7 @@ public final class KeuanganHutangDapurBelumLunas extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });   
+        }); 
         
         ChkAccor.setSelected(false);
         isPhoto();
@@ -1002,7 +1006,7 @@ public final class KeuanganHutangDapurBelumLunas extends javax.swing.JDialog {
         TCari.setText("");
         KodeSuplier.setText("");
         NamaSuplier.setText("");
-        tampil();
+        runBackground(() ->tampil());
 
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1066,12 +1070,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TKd, BtnAll);
         }
@@ -1080,19 +1084,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         NoBukti.requestFocus();
         try {
-            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
-                tampilAkunBayar2();
-            }else{
-                tampilAkunBayar();
-            }
-        } catch (Exception e) {
-        }
-        
-        try {
             if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
                 tampilAkunBankMandiri2();
             }else{
                 tampilAkunBankMandiri();
+            }
+        } catch (Exception e) {
+        }
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                runBackground(() ->tampilAkunBayar2());
+            }else{
+                runBackground(() ->tampilAkunBayar());
             }
         } catch (Exception e) {
         }
@@ -1120,7 +1123,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(suplier.getTable().getSelectedRow()!= -1){
                     KodeSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
                     NamaSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    tampil();
+                    runBackground(() ->tampil());
                 }      
                 KodeSuplier.requestFocus();
             }
@@ -1295,9 +1298,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_NoBuktiKeyPressed
 
     private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NamaPetugas.setText(petugas.tampil3(Nip.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             Keterangan.requestFocus();
@@ -1411,8 +1412,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
-        tampilAkunBayar();
         tampilAkunBankMandiri();
+        runBackground(() ->tampilAkunBayar());
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     private void BtnKeluarMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarMandiriActionPerformed
@@ -1690,79 +1691,64 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public synchronized void tampil(){
-        if(ceksukses==false){
-            ceksukses=true;
-            Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    try{
-                        tanggaldatang="";
-                        tanggaltempo="";
-                        if(ChkTanggalDatang.isSelected()==true){
-                            tanggaldatang=" dapurpemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
-                        }
-                        if(ChkTanggalTempo.isSelected()==true){
-                            tanggaltempo=" dapurpemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
-                        }
-                        ps=koneksi.prepareStatement(
-                                "select dapurpemesanan.no_faktur,dapurpemesanan.no_order,dapursuplier.nama_suplier, "+
-                                "petugas.nama,dapurpemesanan.tgl_tempo,dapurpemesanan.tgl_pesan,dapurpemesanan.tgl_faktur,dapurpemesanan.tagihan,"+
-                                "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_dapur where bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur) as bayar, "+
-                                "dapursuplier.nama_bank,dapursuplier.rekening from dapurpemesanan inner join dapursuplier on dapurpemesanan.kode_suplier=dapursuplier.kode_suplier "+
-                                "inner join petugas on dapurpemesanan.nip=petugas.nip where "+
-                                tanggaldatang+tanggaltempo+"(dapurpemesanan.status='Belum Dibayar' or dapurpemesanan.status='Belum Lunas') and dapursuplier.nama_suplier like ? "+
-                                (TCari.getText().trim().equals("")?"":"and (dapurpemesanan.no_faktur like ? or dapurpemesanan.no_order like ? or dapurpemesanan.tgl_tempo like ? or "+
-                                "dapursuplier.nama_suplier like ? or petugas.nama like ?)")+" order by dapurpemesanan.tgl_tempo ");
-                        try {
-                            ps.setString(1,"%"+NamaSuplier.getText().trim()+"%");
-                            if(!TCari.getText().trim().equals("")){
-                                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                            }
-
-                            rs=ps.executeQuery();
-                            sisahutang=0;
-                            cicilan=0;
-                            while(rs.next()){
-                                Object[] row = new Object[]{
-                                    false,rs.getString("no_faktur"),rs.getString("no_order"),
-                                    rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
-                                    rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
-                                    rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                                    0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),
-                                    rs.getString("rekening")
-                                };
-                                sisahutang=sisahutang+rs.getDouble("tagihan");
-                                cicilan=cicilan+rs.getDouble("bayar");
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi Data Hutang: "+e);
-                        } finally{
-                            if(rs!=null){
-                                rs.close();
-                            }
-                            if(ps!=null){
-                                ps.close();
-                            }
-                        }
-                    }catch(Exception e){
-                        System.out.println("Notifikasi : "+e);
-                    }
-                    return null;
+    private void tampil(){
+        Valid.tabelKosong(tabMode);
+        try{
+            tanggaldatang="";
+            tanggaltempo="";
+            if(ChkTanggalDatang.isSelected()==true){
+                tanggaldatang=" dapurpemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
+            }
+            if(ChkTanggalTempo.isSelected()==true){
+                tanggaltempo=" dapurpemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
+            }
+            ps=koneksi.prepareStatement(
+                    "select dapurpemesanan.no_faktur,dapurpemesanan.no_order,dapursuplier.nama_suplier, "+
+                    "petugas.nama,dapurpemesanan.tgl_tempo,dapurpemesanan.tgl_pesan,dapurpemesanan.tgl_faktur,dapurpemesanan.tagihan,"+
+                    "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_dapur where bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur) as bayar, "+
+                    "dapursuplier.nama_bank,dapursuplier.rekening from dapurpemesanan inner join dapursuplier on dapurpemesanan.kode_suplier=dapursuplier.kode_suplier "+
+                    "inner join petugas on dapurpemesanan.nip=petugas.nip where "+
+                    tanggaldatang+tanggaltempo+"(dapurpemesanan.status='Belum Dibayar' or dapurpemesanan.status='Belum Lunas') and dapursuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (dapurpemesanan.no_faktur like ? or dapurpemesanan.no_order like ? or dapurpemesanan.tgl_tempo like ? or "+
+                    "dapursuplier.nama_suplier like ? or petugas.nama like ?)")+" order by dapurpemesanan.tgl_tempo ");
+            try {
+                ps.setString(1,"%"+NamaSuplier.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
                 }
 
-                @Override
-                protected void done() {
-                    LCount.setText(Valid.SetAngka(sisahutang-cicilan));
-                    ceksukses = false;
+                rs=ps.executeQuery();
+                sisahutang=0;
+                cicilan=0;
+                while(rs.next()){
+                    sisahutang=sisahutang+rs.getDouble("tagihan");
+                    cicilan=cicilan+rs.getDouble("bayar");
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("no_faktur"),rs.getString("no_order"),
+                        rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
+                        rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
+                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),
+                        rs.getString("rekening")
+                    });
                 }
-            }.execute();
+                LCount.setText(Valid.SetAngka(sisahutang-cicilan));
+            } catch (Exception e) {
+                System.out.println("Notifikasi Data Hutang: "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
     
@@ -1998,5 +1984,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              kodemcm="";
              norekening="";
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

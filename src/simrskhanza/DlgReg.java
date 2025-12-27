@@ -12667,7 +12667,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     daftar.setLocationRelativeTo(internalFrame1);
                     daftar.setVisible(true);
                     daftar.setRM(TNoRw.getText(),TNoRM.getText(),KdDokter.getText(),kdpnj.getText(),"ralan");
-                    daftar.tampil();
+                    daftar.tampil2();
                     this.setCursor(Cursor.getDefaultCursor());
                 }    
             }

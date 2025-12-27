@@ -1533,43 +1533,4 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public DefaultTableModel tabMode(){
         return tabMode;
     }
-    
-    public void panggilgetData(){
-        getData();
-    }
-    
-    public void panggilgetData(String nopengajuan){
-        try{
-            ps=koneksi.prepareStatement(
-                "select databarang.kode_brng, databarang.nama_brng,detail_pengajuan_barang_medis.kode_sat as satbesar,databarang.kode_sat,"+
-                "detail_pengajuan_barang_medis.h_pengajuan,detail_pengajuan_barang_medis.jumlah,detail_pengajuan_barang_medis.total, "+
-                "detail_pengajuan_barang_medis.jumlah2,databarang.isi from databarang inner join jenis inner join detail_pengajuan_barang_medis "+
-                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=detail_pengajuan_barang_medis.kode_brng "+
-                " where detail_pengajuan_barang_medis.no_pengajuan=?");
-            try {
-                ps.setString(1,nopengajuan);
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString("satbesar"),rs.getString(2),
-                        rs.getString("nama_brng"),rs.getString("kode_sat"),rs.getDouble("h_pengajuan"),
-                        rs.getDouble("total"),0,0,rs.getDouble("total"),rs.getDouble("jumlah2"),rs.getDouble("isi"),
-                        (rs.getDouble("isi")/(rs.getDouble("jumlah2")/rs.getDouble("jumlah")))
-                    });
-                }        
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }         
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
-        }
-        getData();
-    }
 }
