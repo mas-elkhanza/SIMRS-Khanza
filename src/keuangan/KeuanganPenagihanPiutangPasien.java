@@ -19,8 +19,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -38,8 +41,6 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
-    private DlgAkunPenagihanPiutang akuntagih=new DlgAkunPenagihanPiutang(null,false);
     private int jml=0,i=0,index=0;
     private String status="";
     private double total=0;
@@ -48,6 +49,8 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
     private String[] norawat,tglpiutang,norm,pasien,statusrawat,carabayar,nokartu,asalperusahaan,nip,nonota;
     private boolean[] pilih;
     private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -195,85 +198,6 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
                 }
             });
         }  
-        
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    kdpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString()); 
-                    Perusahaan.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),3).toString());
-                    AlamatAsuransi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),4).toString());
-                    NoTelp.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),5).toString());
-                    Ditujukan.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),6).toString());
-                    TabRawatMouseClicked(null);
-                }      
-                kdpenjab.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        akuntagih.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akuntagih.getTable().getSelectedRow()!= -1){
-                    KdAkun.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),1).toString());
-                    NamaBank.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),3).toString());
-                    AtasNama.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),4).toString());
-                    NoRek.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),5).toString());
-                }      
-                KdAkun.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        akuntagih.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    akuntagih.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         petugas.addWindowListener(new WindowListener() {
             @Override
@@ -1032,6 +956,47 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_MnDetailPiutangActionPerformed
 
     private void BtnPenjaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjaminActionPerformed
+        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penjab.getTable().getSelectedRow()!= -1){
+                    kdpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                    nmpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString()); 
+                    Perusahaan.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),3).toString());
+                    AlamatAsuransi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),4).toString());
+                    NoTelp.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),5).toString());
+                    Ditujukan.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),6).toString());
+                    TabRawatMouseClicked(null);
+                }      
+                kdpenjab.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
@@ -1092,7 +1057,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        penjab.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1141,18 +1105,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
                     if(sukses==true){
                         Sequel.Commit();
-                        Valid.tabelKosong(tabMode);
-                        tampil();
-
-                        jml=0;
-                        total=0;
-                        LCountDipilih1.setText("0");
-                        LCountDipilih2.setText("0");
                     }else{
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                         Sequel.RollBack();
                     }
                     Sequel.AutoComitTrue();
+                    if(sukses==true){
+                        Valid.tabelKosong(tabMode);
+                        runBackground(() ->tampil());
+
+                        jml=0;
+                        total=0;
+                        LCountDipilih1.setText("0");
+                        LCountDipilih2.setText("0");
+                    }
                     autoNomor();
                 }
             }else if(TabRawat.getSelectedIndex()==1){
@@ -1179,18 +1145,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
                     if(sukses==true){
                         Sequel.Commit();
-                        Valid.tabelKosong(tabMode2);
-                        tampil2();
-
-                        jml=0;
-                        total=0;
-                        LCountDipilih1.setText("0");
-                        LCountDipilih2.setText("0");
                     }else{
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                         Sequel.RollBack();
                     }
                     Sequel.AutoComitTrue();
+                    if(sukses==true){
+                        Valid.tabelKosong(tabMode2);
+                        runBackground(() ->tampil2());
+
+                        jml=0;
+                        total=0;
+                        LCountDipilih1.setText("0");
+                        LCountDipilih2.setText("0");
+                    }
                     autoNomor();
                 }
             }
@@ -1392,6 +1360,44 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_KdAkunKeyPressed
 
     private void BtnPenagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenagihanActionPerformed
+        DlgAkunPenagihanPiutang akuntagih=new DlgAkunPenagihanPiutang(null,false);
+        akuntagih.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akuntagih.getTable().getSelectedRow()!= -1){
+                    KdAkun.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),1).toString());
+                    NamaBank.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),3).toString());
+                    AtasNama.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),4).toString());
+                    NoRek.setText(akuntagih.getTable().getValueAt(akuntagih.getTable().getSelectedRow(),5).toString());
+                }      
+                KdAkun.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        akuntagih.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    akuntagih.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         akuntagih.isCek();
         akuntagih.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         akuntagih.setLocationRelativeTo(internalFrame1);
@@ -1434,9 +1440,9 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1632,7 +1638,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Table tbBelumLunas;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
+    private void tampil(){
         try{
             jml=0;
             for(i=0;i<tbBelumLunas.getRowCount();i++){
@@ -1704,15 +1710,25 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) "+
-                       " order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 "+(nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_jalan.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    }    
+                        
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1742,15 +1758,24 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) "+
-                       " order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 "+(nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_inap.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    }
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1780,15 +1805,24 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) "+
-                       " order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 "+(nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_jalan.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    }
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1818,15 +1852,24 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) "+
-                       " order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 "+(nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_inap.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    }
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1855,7 +1898,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
     
-    public void tampil2(){
+    private void tampil2(){
         try{
             jml=0;
             for(i=0;i<tbBelumDitagihkan.getRowCount();i++){
@@ -1927,14 +1970,25 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 "+
+                       (nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_jalan.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    } 
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -1964,14 +2018,25 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 "+
+                       (nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_inap.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    } 
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -2001,14 +2066,25 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 "+
+                       (nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_jalan.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    } 
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -2038,14 +2114,25 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
-                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 "+
+                       (nmpenjab.getText().trim().equals("")?"":"and detail_piutang_pasien.kd_pj=? ")+
+                       (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                       "nota_inap.no_nota like ?) ")+"order by piutang_pasien.tgl_piutang");
                 try {
-                    ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    i=1;
+                    if(!nmpenjab.getText().trim().equals("")){
+                        ps.setString(i,kdpenjab.getText());
+                        i++;
+                    }
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText()+"%");
+                    } 
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -2125,5 +2212,23 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(penagihan_piutang.no_tagihan,3),signed)),0) from penagihan_piutang where penagihan_piutang.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPenagihan); 
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -1133,19 +1133,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              
              tanggal=" penagihan_piutang.tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' ";
              if(!Status.getSelectedItem().toString().equals("Semua")){
-                 status=" and penagihan_piutang.status like '%"+Status.getSelectedItem().toString()+"%' ";
+                 status=" and penagihan_piutang.status='"+Status.getSelectedItem().toString()+"' ";
              }
              
              if(!nmpenjab.getText().trim().equals("")){
-                 penjamin=" and concat(penagihan_piutang.kd_pj,penjab.nama_perusahaan) like '%"+kdpenjab.getText()+Perusahaan.getText()+"%' ";
+                 penjamin=" and penagihan_piutang.kd_pj='"+kdpenjab.getText()+"' ";
              }
              
              if(!NmPeg.getText().trim().equals("")){
-                 bagianpenagihan=" and concat(penagihan_piutang.nip,bagianpenagihan.nama) like '%"+KdPeg.getText()+NmPeg.getText()+"%' ";
+                 bagianpenagihan=" and penagihan_piutang.nip='"+KdPeg.getText()+"' ";
              }
              
              if(!NamaBank.getText().trim().equals("")){
-                 transfer=" and concat(akun_penagihan_piutang.nama_bank,akun_penagihan_piutang.no_rek) like '%"+NamaBank.getText()+NoRek.getText()+"%' ";
+                 transfer=" and concat(akun_penagihan_piutang.nama_bank,akun_penagihan_piutang.no_rek)='"+NamaBank.getText()+NoRek.getText()+"' ";
              }
              
              ps=koneksi.prepareStatement(
@@ -1157,20 +1157,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                      "inner join pegawai as menyetujui on menyetujui.nik=penagihan_piutang.nip_menyetujui "+
                      "inner join penjab on penagihan_piutang.kd_pj=penjab.kd_pj "+
                      "inner join akun_penagihan_piutang on akun_penagihan_piutang.kd_rek=penagihan_piutang.kd_rek where "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and penagihan_piutang.no_tagihan like ? or "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and bagianpenagihan.nama like ? or "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and menyetujui.nama like ? or "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and penjab.nama_perusahaan like ? or "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and akun_penagihan_piutang.nama_bank like ? or "+
-                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+" and akun_penagihan_piutang.no_rek like ? "+
-                     "order by penagihan_piutang.tanggal");
+                     tanggal+status+nopenagihan+penjamin+bagianpenagihan+transfer+(TCari.getText().trim().equals("")?"":"and (penagihan_piutang.no_tagihan like ? or "+
+                     "bagianpenagihan.nama like ? or menyetujui.nama like ? or penjab.nama_perusahaan like ? or akun_penagihan_piutang.nama_bank like ? or "+
+                     "akun_penagihan_piutang.no_rek like ?) ")+"order by penagihan_piutang.tanggal");
              try {
-                ps.setString(1,"%"+TCari.getText()+"%");
-                ps.setString(2,"%"+TCari.getText()+"%");
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,"%"+TCari.getText()+"%");
-                ps.setString(6,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText()+"%");
+                    ps.setString(2,"%"+TCari.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 totaltagihan=0;
                 while(rs.next()){
@@ -1291,7 +1290,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from bukti_penagihan_piutang where no_tagihan=?");
+                ps=koneksi.prepareStatement("select bukti_penagihan_piutang.photo from bukti_penagihan_piutang where bukti_penagihan_piutang.no_tagihan=?");
                 try {
                     ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
                     rs=ps.executeQuery();
