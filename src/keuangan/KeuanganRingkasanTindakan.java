@@ -20,8 +20,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -60,6 +63,8 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             biaya_dokter_umum=0;
     private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
     private int item=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -2634,34 +2639,34 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                tampil();
+                runBackground(() ->tampil());
                 break;
             case 1:
-                tampil2();
+                runBackground(() ->tampil2());
                 break;
             case 2:
-                tampil3();
+                runBackground(() ->tampil3());
                 break; 
             case 3:
-                tampil4();
+                runBackground(() ->tampil4());
                 break;
             case 4:
-                tampil5();
+                runBackground(() ->tampil5());
                 break;
             case 5:
-                tampil6();
+                runBackground(() ->tampil6());
                 break;
             case 6:
-                tampil7();
+                runBackground(() ->tampil7());
                 break;
             case 7:
-                tampil8();
+                runBackground(() ->tampil8());
                 break;
             case 8:
-                tampil9();
+                runBackground(() ->tampil9());
                 break;
             case 9:
-                tampil10();
+                runBackground(() ->tampil10());
                 break;
             default:
                 break;
@@ -3168,7 +3173,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
     private widget.Table tbRanapParamedis;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){     
+    private void tampil(){     
         Valid.tabelKosong(tabModeRalanDokter);
         try{
             if(KdDokterRalanDokter.getText().equals("")&&NmDokterRalanDokter.getText().equals("")&&KdPoliRalanDokter.getText().equals("")&&NmPoliRalanDokter.getText().equals("")&&KdCaraBayarRalanDokter.getText().equals("")&&NmCaraBayarRalanDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -3305,7 +3310,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
 
-    public void tampil2(){     
+    private void tampil2(){     
         Valid.tabelKosong(tabModeRalanParamedis);
         try{
             if(KdPetugasRalanParamedis.getText().equals("")&&NmPetugasRalanParamedis.getText().equals("")&&KdPoliRalanParamedis.getText().equals("")&&NmPoliRalanParamedis.getText().equals("")&&KdCaraBayarRalanParamedis.getText().equals("")&&NmCaraBayarRalanParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -3441,7 +3446,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil3(){     
+    private void tampil3(){     
         Valid.tabelKosong(tabModeRalanDokterParamedis);
         try{
             if(KdDokterRalanDokterParamedis.getText().equals("")&&NmDokterRalanDokterParamedis.getText().equals("")&&KdPetugasRalanDokterParamedis.getText().equals("")&&NmPetugasRalanDokterParamedis.getText().equals("")&&KdPoliRalanDokterParamedis.getText().equals("")&&NmPoliRalanDokterParamedis.getText().equals("")&&KdCaraBayarRalanDokterParamedis.getText().equals("")&&NmCaraBayarRalanDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -3585,7 +3590,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil4(){     
+    private void tampil4(){     
         Valid.tabelKosong(tabModeOperasi);
         try{
             if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -3847,7 +3852,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil5(){     
+    private void tampil5(){     
         Valid.tabelKosong(tabModeRanapDokter);
         try{
             if(KdDokterRanapDokter.getText().equals("")&&NmDokterRanapDokter.getText().equals("")&&KdCaraBayarRanapDokter.getText().equals("")&&NmCaraBayarRanapDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -3976,7 +3981,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil6(){     
+    private void tampil6(){     
         Valid.tabelKosong(tabModeRanapParamedis);
         try{
             if(KdPetugasRanapParamedis.getText().equals("")&&NmPetugasRanapParamedis.getText().equals("")&&KdCaraBayarRanapParamedis.getText().equals("")&&NmCaraBayarRanapParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -4105,7 +4110,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil7(){     
+    private void tampil7(){     
         Valid.tabelKosong(tabModeRanapDokterParamedis);
         try{
             if(KdDokterRanapDokterParamedis.getText().equals("")&&NmDokterRanapDokterParamedis.getText().equals("")&&KdPetugasRanapDokterParamedis.getText().equals("")&&NmPetugasRanapDokterParamedis.getText().equals("")&&KdCaraBayarRanapDokterParamedis.getText().equals("")&&NmCaraBayarRanapDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -4249,7 +4254,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
     }
 
     
-    public void tampil8(){     
+    private void tampil8(){     
         Valid.tabelKosong(tabModeRadiologi);
         try{
             if(KdDokterPerujukRad.getText().equals("")&&NmDokterPerujukRad.getText().equals("")&&KdPetugasRad.getText().equals("")&&NmPetugasRad.getText().equals("")&&KdCaraBayarRad.getText().equals("")&&NmCaraBayarRad.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -4404,7 +4409,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil9(){     
+    private void tampil9(){     
         Valid.tabelKosong(tabModeLaborat);
         try{
             if(KdDokterPerujukLab.getText().equals("")&&NmDokterPerujukLab.getText().equals("")&&KdPetugasLab.getText().equals("")&&NmPetugasLab.getText().equals("")&&KdCaraBayarLab.getText().equals("")&&NmCaraBayarLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -4558,7 +4563,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
         }
     }
     
-    public void tampil10(){     
+    private void tampil10(){     
         Valid.tabelKosong(tabModeDetailLaborat);
         try {
             if(KdDokterPerujukDetailLab.getText().equals("")&&NmDokterPerujukDetailLab.getText().equals("")&&KdPetugasDetailLab.getText().equals("")&&NmPetugasDetailLab.getText().equals("")&&KdCaraBayarDetailLab.getText().equals("")&&NmCaraBayarDetailLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
@@ -6010,6 +6015,24 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
                 }    
             }
         }   
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
  
 }

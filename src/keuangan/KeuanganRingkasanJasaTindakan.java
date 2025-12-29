@@ -17,6 +17,9 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -27,11 +30,10 @@ public class KeuanganRingkasanJasaTindakan extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private final Connection koneksi=koneksiDB.condb();
-    private DlgCariPegawai dokter=new DlgCariPegawai(null,false);
-    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
-    private StringBuilder htmlContent;
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private double subjasasarana=0,subjasamedis=0,subjasamenejemen=0,subbhp=0,subtotal=0,
                    ttljasasarana=0,ttljasamedis=0,ttljasamenejemen=0,ttlbhp=0,ttltotal=0,
                    jasasarana=0,jasamedis=0,jasamenejemen=0,bhp=0,total=0;
@@ -44,64 +46,6 @@ public class KeuanganRingkasanJasaTindakan extends javax.swing.JDialog {
 
         KdDokter.setDocument(new batasInput((byte)20).getKata(KdDokter));
                 
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                }  
-                KdDokter.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        carabayar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    KdCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
-                    NmCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        carabayar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    carabayar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-     
         ChkInput.setSelected(false);
         isForm();
         
@@ -649,9 +593,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         KdCaraBayar.setText("");
         NmCaraBayar.setText("");
         cmbStatus.setSelectedIndex(0);
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         prosesCari();
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -663,9 +605,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     prosesCari();
-    this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -677,7 +617,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        htmlContent = new StringBuilder();
+        StringBuilder htmlContent = new StringBuilder();
         htmlContent.append(
             "<tr class='isi'>"+
                  "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
@@ -727,6 +667,41 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_chkRanapActionPerformed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
+        DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+        carabayar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(carabayar.getTable().getSelectedRow()!= -1){
+                    KdCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
+                    NmCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {carabayar.onCari();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        carabayar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    carabayar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         carabayar.isCek();
         carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         carabayar.setLocationRelativeTo(internalFrame1);
@@ -747,6 +722,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_btnDokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        DlgCariPegawai dokter=new DlgCariPegawai(null,false);
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){
+                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                }  
+                KdDokter.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
@@ -830,42 +828,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void prosesCari() {
         if(TabRawat.getSelectedIndex()==0){
             if(cmbStatus.getSelectedItem().equals("Semua")){
-                prosesCariSemua();
+                runBackground(() ->prosesCariSemua());
             }else if(cmbStatus.getSelectedItem().equals("Piutang Belum Lunas")){
-                prosesCariPiutangBelumLunas();
+                runBackground(() ->prosesCariPiutangBelumLunas());
             }else if(cmbStatus.getSelectedItem().equals("Piutang Sudah Lunas")){
-                prosesCariPiutangSudahLunas();
+                runBackground(() ->prosesCariPiutangSudahLunas());
             }else if(cmbStatus.getSelectedItem().equals("Sudah Bayar Non Piutang")){
-                prosesCariSudahBayarNonPiutang();
+                runBackground(() ->prosesCariSudahBayarNonPiutang());
             }else if(cmbStatus.getSelectedItem().equals("Belum Terclosing Kasir")){
-                prosesCariBelumTerclosing();
+                runBackground(() ->prosesCariBelumTerclosing());
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(cmbStatus.getSelectedItem().equals("Semua")){
-                prosesCariSemua2();
+                runBackground(() ->prosesCariSemua2());
             }else if(cmbStatus.getSelectedItem().equals("Piutang Belum Lunas")){
-                prosesCariPiutangBelumLunas2();
+                runBackground(() ->prosesCariPiutangBelumLunas2());
             }else if(cmbStatus.getSelectedItem().equals("Piutang Sudah Lunas")){
-                prosesCariPiutangSudahLunas2();
+                runBackground(() ->prosesCariPiutangSudahLunas2());
             }else if(cmbStatus.getSelectedItem().equals("Sudah Bayar Non Piutang")){
-                prosesCariSudahBayarNonPiutang2();
+                runBackground(() ->prosesCariSudahBayarNonPiutang2());
             }else if(cmbStatus.getSelectedItem().equals("Belum Terclosing Kasir")){
-                prosesCariBelumTerclosing2();
+                runBackground(() ->prosesCariBelumTerclosing2());
             }
         }
     }
 
     private void prosesCariSemua() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -927,13 +925,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -1005,13 +1003,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RAWAT INAP</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1092,13 +1090,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RUANG OK/VK</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1167,13 +1165,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>LABORATORIUM</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1226,13 +1224,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RADIOLOGI</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1249,13 +1247,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             if(ttltotal>0){
                 htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttltotal)+"</i></td>"+
+                    "<tr class='isi'>").append(
+                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasasarana)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamedis)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamenejemen)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttlbhp)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttltotal)).append("</i></td>").append(
                     "</tr>"
                 );
             }
@@ -1274,15 +1272,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangBelumLunas() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -1348,13 +1346,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -1428,13 +1426,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RAWAT INAP</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1517,13 +1515,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RUANG OK/VK</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1594,13 +1592,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>LABORATORIUM</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1655,13 +1653,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RADIOLOGI</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1678,13 +1676,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             if(ttltotal>0){
                 htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttltotal)+"</i></td>"+
+                    "<tr class='isi'>").append(
+                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasasarana)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamedis)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamenejemen)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttlbhp)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttltotal)).append("</i></td>").append(
                     "</tr>"
                 );
             }
@@ -1703,15 +1701,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangSudahLunas() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -1777,13 +1775,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -1857,13 +1855,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RAWAT INAP</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -1946,13 +1944,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RUANG OK/VK</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2023,13 +2021,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>LABORATORIUM</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2084,13 +2082,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RADIOLOGI</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2107,13 +2105,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             if(ttltotal>0){
                 htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttltotal)+"</i></td>"+
+                    "<tr class='isi'>").append(
+                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasasarana)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamedis)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamenejemen)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttlbhp)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttltotal)).append("</i></td>").append(
                     "</tr>"
                 );
             }
@@ -2132,15 +2130,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariSudahBayarNonPiutang() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -2205,13 +2203,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -2284,13 +2282,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RAWAT INAP</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2372,13 +2370,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RUANG OK/VK</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2448,13 +2446,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>LABORATORIUM</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2508,13 +2506,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RADIOLOGI</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2531,13 +2529,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             if(ttltotal>0){
                 htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttltotal)+"</i></td>"+
+                    "<tr class='isi'>").append(
+                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasasarana)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamedis)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamenejemen)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttlbhp)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttltotal)).append("</i></td>").append(
                     "</tr>"
                 );
             }
@@ -2556,15 +2554,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariBelumTerclosing() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -2628,13 +2626,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -2707,13 +2705,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RAWAT INAP</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2794,13 +2792,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RUANG OK/VK</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2869,13 +2867,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>LABORATORIUM</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2928,13 +2926,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.last();
                     if(rs.getRow()>0){
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "<tr class='isi'>").append(
+                                 "<td valign='middle' align='left'>RADIOLOGI</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasasarana)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamedis)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subjasamenejemen)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subbhp)).append("</td>").append(
+                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(subtotal)).append("</td>").append(
                             "</tr>"
                         );
                     }
@@ -2951,13 +2949,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             if(ttltotal>0){
                 htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Valid.SetAngka(ttltotal)+"</i></td>"+
+                    "<tr class='isi'>").append(
+                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasasarana)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamedis)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttljasamenejemen)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttlbhp)).append("</i></td>").append(
+                         "<td valign='middle' align='right'><i>").append(Valid.SetAngka(ttltotal)).append("</i></td>").append(
                     "</tr>"
                 );
             }
@@ -2976,15 +2974,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void prosesCariSemua2() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -3046,13 +3044,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rs2.last();
                             if(rs2.getRow()>0){
                                 htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td>").append(
                                     "</tr>"
                                 );
                             }
@@ -3123,16 +3121,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RAWAT INAP</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3210,16 +3199,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RUANG OK/VK</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3285,16 +3265,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>LABORATORIUM</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3344,16 +3315,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RADIOLOGI</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3367,16 +3329,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             if(ttltotal>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttltotal)+"</i></td>"+
-                    "</tr>"
-                );
+                htmlContent.append("<tr class='isi'><td valign='middle' align='left'><i>JUMLAH TOTAL</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasasarana)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamedis)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamenejemen)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttlbhp)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttltotal)).append("</i></td></tr>");
             }
             
             LoadHTML2.setText(
@@ -3393,15 +3346,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangBelumLunas2() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -3466,16 +3419,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                             rs2.last();
                             if(rs2.getRow()>0){
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                    "</tr>"
-                                );
+                                htmlContent.append("<tr class='isi'><td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                             }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3546,16 +3490,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RAWAT INAP</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3635,16 +3570,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RUANG OK/VK</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3712,16 +3638,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>LABORATORIUM</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3773,16 +3690,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RADIOLOGI</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3796,16 +3704,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             if(ttltotal>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttltotal)+"</i></td>"+
-                    "</tr>"
-                );
+                htmlContent.append("<tr class='isi'><td valign='middle' align='left'><i>JUMLAH TOTAL</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasasarana)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamedis)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamenejemen)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttlbhp)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttltotal)).append("</i></td></tr>");
             }
             
             LoadHTML2.setText(
@@ -3822,15 +3721,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariPiutangSudahLunas2() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -3895,16 +3794,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                             rs2.last();
                             if(rs2.getRow()>0){
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                    "</tr>"
-                                );
+                                htmlContent.append("<tr class='isi'><td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                             }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3975,16 +3865,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RAWAT INAP</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4064,16 +3945,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RUANG OK/VK</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4141,16 +4013,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>LABORATORIUM</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4202,16 +4065,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RADIOLOGI</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4225,16 +4079,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             if(ttltotal>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttltotal)+"</i></td>"+
-                    "</tr>"
-                );
+                htmlContent.append("<tr class='isi'><td valign='middle' align='left'><i>JUMLAH TOTAL</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasasarana)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamedis)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamenejemen)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttlbhp)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttltotal)).append("</i></td></tr>");
             }
             
             LoadHTML2.setText(
@@ -4251,15 +4096,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariSudahBayarNonPiutang2() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -4323,16 +4168,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                             rs2.last();
                             if(rs2.getRow()>0){
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                    "</tr>"
-                                );
+                                htmlContent.append("<tr class='isi'><td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                             }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4402,16 +4238,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RAWAT INAP</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4490,16 +4317,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RUANG OK/VK</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4566,16 +4384,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>LABORATORIUM</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4626,16 +4435,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RADIOLOGI</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4649,16 +4449,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             if(ttltotal>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttltotal)+"</i></td>"+
-                    "</tr>"
-                );
+                htmlContent.append("<tr class='isi'><td valign='middle' align='left'><i>JUMLAH TOTAL</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasasarana)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamedis)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamenejemen)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttlbhp)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttltotal)).append("</i></td></tr>");
             }
             
             LoadHTML2.setText(
@@ -4675,15 +4466,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCariBelumTerclosing2() {
         try{
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44%'>Unit/Bagian</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Sarana</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Medis</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Jasa Menejemen</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Paket Obat/BHP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Total</td>").append(
                 "</tr>"
             );
             
@@ -4746,16 +4537,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                             rs2.last();
                             if(rs2.getRow()>0){
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left'>"+rs.getString("nm_poli").toUpperCase()+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                    "</tr>"
-                                );
+                                htmlContent.append("<tr class='isi'><td valign='middle' align='left'>").append(rs.getString("nm_poli").toUpperCase()).append("</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                             }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4825,16 +4607,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RAWAT INAP</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RAWAT INAP</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4912,16 +4685,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RUANG OK/VK</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RUANG OK/VK</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4987,16 +4751,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>LABORATORIUM</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>LABORATORIUM</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -5046,16 +4801,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     rs.last();
                     if(rs.getRow()>0){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left'>RADIOLOGI</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("<tr class='isi'><td valign='middle' align='left'>RADIOLOGI</td><td valign='middle' align='right'>").append(Math.round(subjasasarana)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamedis)).append("</td><td valign='middle' align='right'>").append(Math.round(subjasamenejemen)).append("</td><td valign='middle' align='right'>").append(Math.round(subbhp)).append("</td><td valign='middle' align='right'>").append(Math.round(subtotal)).append("</td></tr>");
                     }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -5069,16 +4815,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             if(ttltotal>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left'><i>JUMLAH TOTAL</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasasarana)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamedis)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttljasamenejemen)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttlbhp)+"</i></td>"+
-                         "<td valign='middle' align='right'><i>"+Math.round(ttltotal)+"</i></td>"+
-                    "</tr>"
-                );
+                htmlContent.append("<tr class='isi'><td valign='middle' align='left'><i>JUMLAH TOTAL</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasasarana)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamedis)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttljasamenejemen)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttlbhp)).append("</i></td><td valign='middle' align='right'><i>").append(Math.round(ttltotal)).append("</i></td></tr>");
             }
             
             LoadHTML2.setText(
@@ -5093,4 +4830,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
