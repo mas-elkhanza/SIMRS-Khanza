@@ -998,7 +998,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 KeuanganPiutangBelumLunas form=new KeuanganPiutangBelumLunas(null,false);
                 form.isCek();
-                form.tampiltagihan(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+                form.tampiltagihan2(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);

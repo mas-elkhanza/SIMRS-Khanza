@@ -601,11 +601,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);
-            psdokter=koneksi.prepareStatement("select dokter.kd_dokter,dokter.nm_dokter from dokter where dokter.status='1' "+(nmdokter.getText().trim().equals("")?"":"and dokter.kd_dokter like ? "));
+            psdokter=koneksi.prepareStatement("select dokter.kd_dokter,dokter.nm_dokter from dokter where dokter.status='1' "+(nmdokter.getText().trim().equals("")?"":"and dokter.kd_dokter=? ")+" order by dokter.nm_dokter");
             try {
-                if(!nmdokter.getText().trim().equals("")){
-                    psdokter.setString(1,"%"+kddokter.getText()+"%"); 
-                }   
+                 if(!nmdokter.getText().trim().equals("")){
+                    psdokter.setString(1,kddokter.getText()); 
+                 }  
                 rsdokter=psdokter.executeQuery();
                 i=1;
                 ttlbiaya=0;
