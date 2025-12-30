@@ -1272,6 +1272,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             notagihan="";
                         }
                         Sequel.Commit();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+                    Sequel.AutoComitTrue();
+                    if(sukses==true){
                         bayar=0;
                         LCount1.setText("0");
                         for(i=0;i<tbBangsal.getRowCount();i++){  
@@ -1280,11 +1286,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 i--;
                             }
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                        Sequel.RollBack();
                     }
-                    Sequel.AutoComitTrue();
                 }
             }
         }

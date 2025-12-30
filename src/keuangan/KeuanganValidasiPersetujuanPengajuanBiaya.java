@@ -19,8 +19,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,9 +40,10 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private int i;
     private double belumdivalidasi=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -119,60 +123,23 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
-        }   
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){
-                    kdpegawai.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                    nmpegawai.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
-                    tampil();
-                }      
-                kdpegawai.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {pegawai.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pegawai.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
+        } 
     }
 
     /** This method is called from within the constructor to
@@ -466,7 +433,6 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        pegawai.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -480,7 +446,7 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
         TCari.setText("");
         kdpegawai.setText("");
         nmpegawai.setText("");
-        tampil();
+        runBackground(() ->tampil());
 
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -503,12 +469,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TKd, BtnAll);
         }
@@ -546,6 +512,43 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_tbBangsalMouseClicked
 
     private void BtnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPegawaiActionPerformed
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){
+                    kdpegawai.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                    nmpegawai.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                    runBackground(() ->tampil());
+                }      
+                kdpegawai.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {pegawai.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -614,26 +617,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "from pengajuan_biaya inner join pegawai as peg1 on pengajuan_biaya.nik=peg1.nik "+
                    "inner join pegawai as peg2 on pengajuan_biaya.nik_pj=peg2.nik "+
                    "inner join pengajuan_biaya_disetujui on pengajuan_biaya_disetujui.no_pengajuan=pengajuan_biaya.no_pengajuan "+
-                   "where pengajuan_biaya.status='Disetujui' and pengajuan_biaya.nik_pj like ? "+
+                   "where pengajuan_biaya.status='Disetujui' "+(nmpegawai.getText().trim().equals("")?"":"and pengajuan_biaya.nik_pj=? ")+
                    (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like ? or pengajuan_biaya.nik like ? or peg1.nama like ? or "+
                    "peg1.bidang like ? or peg1.departemen like ? or pengajuan_biaya.urgensi like ? or pengajuan_biaya.uraian_latar_belakang like ? or "+
                    "pengajuan_biaya.tujuan_pengajuan like ? or pengajuan_biaya.lokasi_kegiatan like ? or pengajuan_biaya.keterangan like ? or "+
                    "pengajuan_biaya.nik_pj like ? or peg2.nama like ?)")+" order by pengajuan_biaya.tanggal");
             try {
-                ps.setString(1,"%"+kdpegawai.getText().trim()+"%");
+                i=1;
+                if(!nmpegawai.getText().trim().equals("")){
+                    ps.setString(i,kdpegawai.getText().trim());
+                    i++;
+                }
+                    
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+TCari.getText().trim()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(11,"%"+TCari.getText().trim()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,"%"+TCari.getText().trim()+"%");
-                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
                 }   
                 rs=ps.executeQuery();
                 i=1;
@@ -671,5 +690,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void isCek(){
         BtnBayar.setEnabled(akses.getpengeluaran());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

@@ -18,8 +18,11 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -45,6 +48,8 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
     private double sisahutang=0,cicilan=0,bayar=0;
     private WarnaTable3 warna=new WarnaTable3();
     private boolean sukses=true;    
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
 
     /** Creates new form DlgLhtBiaya
@@ -121,19 +126,19 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -732,7 +737,7 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
         TCari.setText("");
         kdsup.setText("");
         nmsup.setText("");
-        tampil();
+        runBackground(() ->tampil());
 
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -783,12 +788,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TKd, BtnAll);
         }
@@ -820,7 +825,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(suplier.getTable().getSelectedRow()!= -1){
                     kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
                     nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    tampil();
+                    runBackground(() ->tampil());
                 }      
                 kdsup.requestFocus();
             }
@@ -891,21 +896,30 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }
                     bayar=0;
-                    LCount1.setText("0");
                 }else{
                     sukses=false;
                     JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Tagihan sudah ada sebelumnya...!!");
                 }
                 if(sukses==true){
-                    autoNomor();
                     Sequel.Commit();
-                    tampil();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
 
                 Sequel.AutoComitTrue();
+                if(sukses==true){
+                    autoNomor();
+                    LCount1.setText("0");
+                    for(i=0;i<tbBangsal.getRowCount();i++){  
+                        if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                            sisahutang=sisahutang-Double.parseDouble(tbBangsal.getValueAt(i,10).toString());
+                            tabMode.removeRow(i);
+                            i--;
+                        }
+                    }
+                    LCount.setText(Valid.SetAngka(sisahutang));
+                }
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1072,7 +1086,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
+    private void tampil(){
         Valid.tabelKosong(tabMode);
         try{
             tanggaldatang="";
@@ -1205,5 +1219,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             BtnSimpan.setEnabled(akses.gettagihan_hutang_obat());
             nama_petugas.setText(petugas.tampil3(nip.getText()));
         }        
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
