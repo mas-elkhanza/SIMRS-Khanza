@@ -11,7 +11,6 @@
 
 package laporan;
 
-import laporan.DlgPenyakit;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -36,7 +35,6 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariPenyakit extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private String[] hlm;   

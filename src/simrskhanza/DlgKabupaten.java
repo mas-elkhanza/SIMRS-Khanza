@@ -18,6 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -30,6 +31,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -48,6 +52,8 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form Dlgkabupaten
      * @param parent
@@ -86,19 +92,19 @@ public class DlgKabupaten extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
             });
@@ -139,6 +145,9 @@ public class DlgKabupaten extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -332,7 +341,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kabupaten");
         }else{
             Sequel.menyimpan("kabupaten","'0','"+Nama.getText()+"'","Kode kabupaten");
-            tampil2();
+            runBackground(() ->tampil2());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -400,7 +409,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil2();
+        runBackground(() ->tampil2());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -413,7 +422,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -455,6 +464,17 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         onCari();
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            if(Valid.daysOld("./cache/masterkabupaten.iyem")<30){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -582,11 +602,11 @@ public class DlgKabupaten extends javax.swing.JDialog {
     public String tampil3(String nama) {
         try {
             if(Valid.daysOld("./cache/masterkabupaten.iyem")>7){
-                tampil();
+                runBackground(() ->tampil());
             }
         } catch (Exception e) {
             if(e.toString().contains("No such file or directory")){
-                tampil();
+                runBackground(() ->tampil());
             }
         }
         
@@ -631,5 +651,23 @@ public class DlgKabupaten extends javax.swing.JDialog {
     public void onCari(){
         TCari.setText("");
         TCari.requestFocus();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

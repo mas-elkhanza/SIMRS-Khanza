@@ -7280,7 +7280,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(0, 158, 96));
         jSeparator4.setForeground(new java.awt.Color(0, 158, 96));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         jSeparator4.setOpaque(true);
         jSeparator4.setPreferredSize(new java.awt.Dimension(1, 36));
@@ -7325,7 +7325,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(0, 158, 96));
         jSeparator5.setForeground(new java.awt.Color(0, 158, 96));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
+        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         jSeparator5.setOpaque(true);
         jSeparator5.setPreferredSize(new java.awt.Dimension(1, 36));
@@ -7385,7 +7385,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator9.setBackground(new java.awt.Color(0, 158, 96));
         jSeparator9.setForeground(new java.awt.Color(0, 158, 96));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
+        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
         jSeparator9.setName("jSeparator9"); // NOI18N
         jSeparator9.setOpaque(true);
         jSeparator9.setPreferredSize(new java.awt.Dimension(1, 36));
@@ -7430,7 +7430,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator7.setBackground(new java.awt.Color(0, 158, 96));
         jSeparator7.setForeground(new java.awt.Color(0, 158, 96));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         jSeparator7.setOpaque(true);
         jSeparator7.setPreferredSize(new java.awt.Dimension(1, 36));

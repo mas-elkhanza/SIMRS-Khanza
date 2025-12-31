@@ -5,8 +5,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -17,6 +15,9 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -24,14 +25,14 @@ import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariCaraBayar;
 
 public class DlgBulananHAIs extends javax.swing.JDialog {
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private int i=0,deku=0,urine=0,sputum=0,darah=0,antibiotik=0,pasien=0,jmlpasien=0,ETT=0,CVL=0,IVL=0,UC=0,VAP=0,IAD=0,PLEB=0,
+    private int i=0,deku=0,urine=0,sputum=0,darah=0,pasien=0,jmlpasien=0,ETT=0,CVL=0,IVL=0,UC=0,VAP=0,IAD=0,PLEB=0,
                 ISK=0,ILO=0,ANTIBIOTIK=0,jmlHAP,jmlTinea,jmlScabies,jmlETT,jmlCVL,jmlIVL,jmlUC,jmlVAP,jmlIAD,jmlPLEB,jmlISK,
                 HAP,Tinea,Scabies,jmlILO,jmldeku,jmlsputum,jmldarah,jmlurine,jmlANTIBIOTIK;
     private StringBuilder htmlContent;
@@ -59,64 +60,7 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML.setDocument(doc);
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    NmPenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                }      
-                NmPenjab.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                          
-                    NmKamar.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    NmKamar.requestFocus();                           
-                }                         
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -407,7 +351,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-    prosesCari();
+    runBackground(() ->prosesCari());
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
@@ -419,10 +363,72 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 }//GEN-LAST:event_btnCariKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Jml.Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%' colspan='4'>Hari Pemasangan</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='8'>Infeksi</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='2'>Deku</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%' colspan='3'>Hasil Kultur</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Antibiotik</td>").append(
+                "</tr>").append(
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ETT</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>CVL</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IVL</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>UC</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>VAP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IAD</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pleb</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ISK</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ILO</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>HAP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tinea</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Scabies</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sputum</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Darah</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Urine</td>").append(
+                "</tr>"
+            );  
+            
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("laporan.DlgRL4A.prosesCari() 5 : "+e);
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){                          
+                    NmKamar.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    NmKamar.requestFocus();                           
+                }                         
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.emptTeks();
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -435,6 +441,41 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }//GEN-LAST:event_BtnSeek2KeyPressed
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
+        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penjab.getTable().getSelectedRow()!= -1){
+                    NmPenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                }      
+                NmPenjab.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
@@ -449,14 +490,14 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         NmKamar.setText("");
         NmPenjab.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             NmKamar.setText("");
             NmPenjab.setText("");
-            prosesCari();
+            runBackground(() ->prosesCari());
         }else{
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
@@ -503,36 +544,35 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Jml.Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='8'>Infeksi</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='2'>Deku</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%' colspan='3'>Hasil Kultur</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Antibiotik</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ETT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>CVL</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IVL</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>UC</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>VAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pleb</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ISK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ILO</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>HAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tinea</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Scabies</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sputum</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Darah</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Urine</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Jml.Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%' colspan='4'>Hari Pemasangan</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='8'>Infeksi</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='2'>Deku</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%' colspan='3'>Hasil Kultur</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='2'>Antibiotik</td>").append(
+                "</tr>").append(
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ETT</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>CVL</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IVL</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>UC</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>VAP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>IAD</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pleb</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ISK</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>ILO</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>HAP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tinea</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Scabies</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sputum</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Darah</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Urine</td>").append(
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(
@@ -585,52 +625,52 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ANTIBIOTIK=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal inner join penjab on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj where data_HAIs.ANTIBIOTIK<>'' and tanggal=? and bangsal.nm_bangsal like ? and penjab.png_jawab like ?",rs.getString("tanggal"),"%"+NmKamar.getText().trim()+"%","%"+NmPenjab.getText().trim()+"%");
                     jmlANTIBIOTIK=jmlANTIBIOTIK+ANTIBIOTIK;
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+i+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tanggal")+"</td>"+
-                            "<td valign='middle' align='center'>"+pasien+"</td>"+
-                            "<td valign='middle' align='center'>"+ETT+"</td>"+
-                            "<td valign='middle' align='center'>"+CVL+"</td>"+
-                            "<td valign='middle' align='center'>"+IVL+"</td>"+
-                            "<td valign='middle' align='center'>"+UC+"</td>"+
-                            "<td valign='middle' align='center'>"+VAP+"</td>"+
-                            "<td valign='middle' align='center'>"+IAD+"</td>"+
-                            "<td valign='middle' align='center'>"+PLEB+"</td>"+
-                            "<td valign='middle' align='center'>"+ISK+"</td>"+
-                            "<td valign='middle' align='center'>"+ILO+"</td>"+
-                            "<td valign='middle' align='center'>"+HAP+"</td>"+
-                            "<td valign='middle' align='center'>"+Tinea+"</td>"+
-                            "<td valign='middle' align='center'>"+Scabies+"</td>"+
-                            "<td valign='middle' align='center'>"+deku+"</td>"+
-                            "<td valign='middle' align='center'>"+sputum+"</td>"+
-                            "<td valign='middle' align='center'>"+darah+"</td>"+
-                            "<td valign='middle' align='center'>"+urine+"</td>"+
-                            "<td valign='middle' align='center'>"+ANTIBIOTIK+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(i).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("tanggal")).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(pasien).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(ETT).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(CVL).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(IVL).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(UC).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(VAP).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(IAD).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(PLEB).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(ISK).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(ILO).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(HAP).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(Tinea).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(Scabies).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(deku).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(sputum).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(darah).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(urine).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(ANTIBIOTIK).append("</td>").append(
                         "</tr>"
                     ); 
                     i++;
                 }
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='2'>Total :</td>"+
-                        "<td valign='middle' align='center'>"+jmlpasien+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlETT+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlCVL+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlIVL+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlUC+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlVAP+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlIAD+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlPLEB+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlISK+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlILO+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlHAP+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlTinea+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlScabies+"</td>"+
-                        "<td valign='middle' align='center'>"+jmldeku+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlsputum+"</td>"+
-                        "<td valign='middle' align='center'>"+jmldarah+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlurine+"</td>"+
-                        "<td valign='middle' align='center'>"+jmlANTIBIOTIK+"</td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='right' colspan='2'>Total :</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlpasien).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlETT).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlCVL).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlIVL).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlUC).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlVAP).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlIAD).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlPLEB).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlISK).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlILO).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlHAP).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlTinea).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlScabies).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmldeku).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlsputum).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmldarah).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlurine).append("</td>").append(
+                        "<td valign='middle' align='center'>").append(jmlANTIBIOTIK).append("</td>").append(
                     "</tr>"
                 ); 
             } catch (Exception e) {
@@ -653,12 +693,27 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         } catch (Exception e) {
             System.out.println("laporan.DlgRL4A.prosesCari() 5 : "+e);
         } 
-        this.setCursor(Cursor.getDefaultCursor());
-        
     }
     
     public void isCek(){
         BtnPrint.setEnabled(akses.getbulanan_HAIs());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

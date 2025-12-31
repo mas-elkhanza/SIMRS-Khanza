@@ -1073,21 +1073,21 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         })==true){
                             simpandata();
                     }else{
-                        emptTeksobat();
+                        emptTeksobat2();
                         if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
                             NoResep.getText(),"0000-00-00","00:00:00",TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status,"0000-00-00","00:00:00"
                             })==true){
                                 simpandata();
                         }else{
-                            emptTeksobat();
+                            emptTeksobat2();
                             if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
                                 NoResep.getText(),"0000-00-00","00:00:00",TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status,"0000-00-00","00:00:00"
                                 })==true){
                                     simpandata();
                             }else{
-                                emptTeksobat();
+                                emptTeksobat2();
                                 sukses=false;
                             }
                         }
@@ -1195,6 +1195,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                     
                     Sequel.Commit();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+                if(sukses==true){
                     for(i=0;i<tbResep.getRowCount();i++){
                         tbResep.setValueAt("",i,1);
                         tbResep.setValueAt("",i,2);
@@ -1202,11 +1208,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     Valid.tabelKosong(tabModeResepRacikan);
                     Valid.tabelKosong(tabModeDetailResepRacikan);
                     dispose();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
                 }
-                Sequel.AutoComitTrue();
                 ChkJln.setSelected(true);
             }                
         }
@@ -2010,6 +2012,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(ChkRM.isSelected()==true){
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"'",
                 DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);        
+        } 
+    }
+    
+    private void emptTeksobat2() {
+        if(ChkRM.isSelected()==true){
+            Valid.autoNomer7(NoResep.getText().substring(NoResep.getText().length()-4),DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);  
         } 
     }
 

@@ -9371,7 +9371,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="7a" green="1" red="d9" type="rgb"/>
+                  <Color PropertyName="color" blue="60" green="9e" red="0" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -9442,7 +9442,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="7a" green="1" red="d9" type="rgb"/>
+                  <Color PropertyName="color" blue="60" green="9e" red="0" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -9534,7 +9534,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="7a" green="1" red="d9" type="rgb"/>
+                  <Color PropertyName="color" blue="60" green="9e" red="0" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -9605,7 +9605,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="7a" green="1" red="d9" type="rgb"/>
+                  <Color PropertyName="color" blue="60" green="9e" red="0" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>

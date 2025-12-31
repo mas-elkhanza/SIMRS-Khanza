@@ -18,7 +18,7 @@
 	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,
-                            pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,pemeriksaan_ralan.nip,pegawai.nama from reg_periksa inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis 
+                            pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip,pegawai.nama from reg_periksa inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis 
                             inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat 
                             inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 	</queryString>
@@ -79,6 +79,12 @@
 	<field name="penilaian" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="penilaian"/>
 		<property name="com.jaspersoft.studio.field.label" value="penilaian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="evaluasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="evaluasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="evaluasi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -472,6 +478,48 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rtl}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="33">
+			<line>
+				<reportElement positionType="Float" x="10" y="0" width="552" height="1" uuid="e6ab3c5c-6f1d-431a-8059-840c43751b76"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="14" y="3" width="540" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="011dd9b0-7df6-43bc-9ac6-14a05329f592"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Rencana Tindak Lanjut (Evaluasi/Rujuk/Selesai) :]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="10" y="0" width="1" height="33" uuid="a741712c-1596-49b5-ae0b-a0a0d6837d6d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="562" y="0" width="1" height="33" uuid="527587d0-758c-4c35-aa26-4f47c606ca7d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" mode="Transparent" x="24" y="20" width="530" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="db828912-3d80-431a-b466-54f8695da649">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evaluasi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
