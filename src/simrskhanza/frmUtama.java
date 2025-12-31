@@ -9370,7 +9370,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgIKBBayi lahir=new DlgIKBBayi(this,false);
-        lahir.tampil();
         lahir.isCek();
         lahir.emptTeks();
         lahir.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());

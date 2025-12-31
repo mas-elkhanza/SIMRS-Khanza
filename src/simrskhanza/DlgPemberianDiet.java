@@ -1359,7 +1359,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    public void tampil2() {   
+    private void tampil2() {   
         try{
             Valid.tabelKosong(tabMode2);  
             ps2=koneksi.prepareStatement(

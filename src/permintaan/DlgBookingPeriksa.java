@@ -30,9 +30,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -68,6 +71,8 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private DlgPropinsi prop=new DlgPropinsi(this,false);
     private DlgKecamatan kec=new DlgKecamatan(this,false);
     private DlgKelurahan kel=new DlgKelurahan(this,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private boolean sukses=true; 
     
     /**
@@ -133,19 +138,19 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -1365,7 +1370,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1396,7 +1401,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1494,7 +1499,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 DataBalasan.setText("");
                 ChkAccor.setSelected(false);
                 isMenu();
-                tampil();
+                runBackground(() ->tampil());
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -2208,7 +2213,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
-                    bookingbaru=Sequel.cariInteger("select count(*) from booking_periksa where status='Belum Dibalas'");
+                    bookingbaru=Sequel.cariInteger("select count(*) from booking_periksa where booking_periksa.status='Belum Dibalas'");
                     if(bookingbaru>0){
                         try {
                             music = new BackgroundMusic("./suara/alarm.mp3");
@@ -2222,7 +2227,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                             if(i==JOptionPane.YES_OPTION){
                                 R1.setSelected(true);
                                 TCari.setText("");
-                                tampil();
+                                runBackground(() ->tampil());
                             }
                         }
                     }
@@ -2487,13 +2492,15 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{TNo.getText()});            
             } 
             Sequel.Commit();
-            tampil();
-            BtnCloseBalasanActionPerformed(null);
         }else{
             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
             Sequel.RollBack();
         }
         Sequel.AutoComitTrue();
+        if(sukses==true){
+            runBackground(() ->tampil());
+            BtnCloseBalasanActionPerformed(null);
+        }
         autoNomor();
     }
     
@@ -2511,5 +2518,23 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             scrollBalasan.setVisible(false);   
             ChkAccor.setVisible(true);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }
