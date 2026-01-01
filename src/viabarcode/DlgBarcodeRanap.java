@@ -996,8 +996,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             rawatinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             rawatinap.setLocationRelativeTo(internalFrame1);
             rawatinap.isCek();
-            rawatinap.setNoRm(NoRawat.getText(),new Date(),new Date());    
-            rawatinap.tampilDr();
+            rawatinap.setNoRm(NoRawat.getText(),new Date(),new Date()); 
             rawatinap.setVisible(true);
         }
     }//GEN-LAST:event_BtnCariActionPerformed

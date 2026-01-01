@@ -28,7 +28,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private int i=0;
     private double jumlah,total,totalkeluar,jumlah2;
 
@@ -68,44 +67,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
         
         kdbarang.setDocument(new batasInput((byte)8).getKata(kdbarang));
                 
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(barang.getTable().getSelectedRow()!= -1){
-                    kdbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());
-                    nmbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
-                }    
-                kdbarang.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {barang.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    barang.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        
         try {
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsbarang.jenis "+
                     "from ipsrsbarang inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
@@ -421,6 +382,43 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+        IPSRSBarang barang=new IPSRSBarang(null,false);
+        barang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(barang.getTable().getSelectedRow()!= -1){
+                    kdbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());
+                    nmbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
+                    prosesCari();
+                }    
+                kdbarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {barang.onCari();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        barang.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    barang.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
