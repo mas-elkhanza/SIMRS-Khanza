@@ -16,8 +16,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -29,7 +32,9 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int i=0;
-    private double jumlah,total,totalkeluar,jumlah2;
+    private double jumlah,total,totalkeluar;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -66,17 +71,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
         kdbarang.setDocument(new batasInput((byte)8).getKata(kdbarang));
-                
-        try {
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsbarang.jenis "+
-                    "from ipsrsbarang inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    "where ipsrsbarang.kode_brng like ?  order by ipsrsbarang.nama_brng");
-            ps2=koneksi.prepareStatement("select sum(ipsrsdetailpengeluaran.jumlah) as jumlah,sum(ipsrsdetailpengeluaran.total) as total "+
-                    "from ipsrsdetailpengeluaran inner join ipsrspengeluaran on ipsrsdetailpengeluaran.no_keluar=ipsrspengeluaran.no_keluar "+
-                    "where ipsrsdetailpengeluaran.kode_brng=? and ipsrspengeluaran.tanggal between ? and ?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }     
     }
     
 
@@ -370,7 +364,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         kdbarang.setText("");
         nmbarang.setText("");
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -393,7 +387,7 @@ private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(barang.getTable().getSelectedRow()!= -1){
                     kdbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());
                     nmbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
+                    runBackground(() ->prosesCari());
                 }    
                 kdbarang.requestFocus();
             }
@@ -431,7 +425,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -444,7 +438,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Tgl1.requestFocus();
-        prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
     private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
@@ -494,39 +487,85 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCari() {
         try {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Valid.tabelKosong(tabMode);   
-            ps.setString(1,"%"+kdbarang.getText().trim()+"%");
-            rs=ps.executeQuery();
-            totalkeluar=0;
-            while(rs.next()){
-                jumlah=0;
-                total=0;
-                jumlah2=0;
-                ps2.setString(1,rs.getString("kode_brng"));
-                ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs2=ps2.executeQuery();
-                while(rs2.next()){
-                    jumlah=rs2.getDouble("jumlah");
-                    total=rs2.getDouble("total");
-                    totalkeluar=totalkeluar+total;
+            Valid.tabelKosong(tabMode);  
+            ps=koneksi.prepareStatement(
+                    "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsbarang.jenis "+
+                    "from ipsrsbarang inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
+                    (kdbarang.getText().trim().equals("")?"":"where ipsrsbarang.kode_brng=? ")+"order by ipsrsbarang.nama_brng"
+            );
+            try {
+                if(!kdbarang.getText().trim().equals("")){
+                    ps.setString(1,kdbarang.getText().trim());
                 }
-                if((jumlah+jumlah2)>0){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah+jumlah2),Valid.SetAngka(total)
-                    });                    
-                }                
-            }   
-            if((totalkeluar)>0){
-                tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar)
-                });
-            }
-            this.setCursor(Cursor.getDefaultCursor());              
+                rs=ps.executeQuery();
+                totalkeluar=0;
+                while(rs.next()){
+                    jumlah=0;
+                    total=0;
+                    ps2=koneksi.prepareStatement(
+                        "select sum(ipsrsdetailpengeluaran.jumlah) as jumlah,sum(ipsrsdetailpengeluaran.total) as total "+
+                        "from ipsrsdetailpengeluaran inner join ipsrspengeluaran on ipsrsdetailpengeluaran.no_keluar=ipsrspengeluaran.no_keluar "+
+                        "where ipsrsdetailpengeluaran.kode_brng=? and ipsrspengeluaran.tanggal between ? and ?"
+                    );
+                    try {
+                        ps2.setString(1,rs.getString("kode_brng"));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            jumlah=rs2.getDouble("jumlah");
+                            total=rs2.getDouble("total");
+                            totalkeluar=totalkeluar+total;
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }  
+                    if((jumlah)>0){
+                        tabMode.addRow(new Object[]{
+                            rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah),Valid.SetAngka(total)
+                        });                    
+                    }  
+                }   
+                if((totalkeluar)>0){
+                    tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar)});
+                }   
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }              
         } catch (Exception e) {
             System.out.println(e);
         }               
     }
     
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

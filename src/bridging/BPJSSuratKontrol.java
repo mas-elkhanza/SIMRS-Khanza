@@ -269,6 +269,13 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         KdDokter6 = new widget.TextBox();
         jLabel29 = new widget.Label();
         KdDokter7 = new widget.TextBox();
+        jLabel30 = new widget.Label();
+        jLabel31 = new widget.Label();
+        KdDokter8 = new widget.TextBox();
+        jLabel32 = new widget.Label();
+        KdDokter9 = new widget.TextBox();
+        jLabel33 = new widget.Label();
+        BlnCari1 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -933,6 +940,46 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         FormInput.add(KdDokter7);
         KdDokter7.setBounds(531, 180, 50, 23);
 
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Rata-rata TD");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(60, 210, 70, 23);
+
+        jLabel31.setText(":");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(0, 210, 130, 23);
+
+        KdDokter8.setEditable(false);
+        KdDokter8.setHighlighter(null);
+        KdDokter8.setName("KdDokter8"); // NOI18N
+        FormInput.add(KdDokter8);
+        KdDokter8.setBounds(130, 210, 50, 23);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("/");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(180, 210, 20, 23);
+
+        KdDokter9.setEditable(false);
+        KdDokter9.setHighlighter(null);
+        KdDokter9.setName("KdDokter9"); // NOI18N
+        FormInput.add(KdDokter9);
+        KdDokter9.setBounds(200, 210, 50, 23);
+
+        jLabel33.setText("Jantung Koroner :");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(260, 210, 90, 23);
+
+        BlnCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari1.setName("BlnCari1"); // NOI18N
+        BlnCari1.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari1);
+        BlnCari1.setBounds(360, 210, 90, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1419,6 +1466,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox BlnCari;
+    private widget.ComboBox BlnCari1;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1445,6 +1493,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdDokter5;
     private widget.TextBox KdDokter6;
     private widget.TextBox KdDokter7;
+    private widget.TextBox KdDokter8;
+    private widget.TextBox KdDokter9;
     private widget.TextBox KdPoli;
     private widget.Label LCount;
     private widget.Label LCount1;
@@ -1487,6 +1537,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
