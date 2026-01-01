@@ -84,6 +84,7 @@ import bridging.BPJSHistoriPelayanan;
 import bridging.BPJSMapingDokterDPJP;
 import bridging.BPJSMapingPoli;
 import bridging.BPJSMonitoringKlaim;
+import bridging.BPJSPotensiPRB;
 import bridging.BPJSProgramPRB;
 import bridging.BPJSRujukanKeluar;
 import bridging.BPJSRujukanKhusus;
@@ -23258,6 +23259,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSPotensiPRBActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSPotensiPRB form=new BPJSPotensiPRB(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23971,7 +23983,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
             btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani,btnLabKeslingPengujianSampelDapatDilayani,btnLabKeslingPenugasanPengujianSampel,btnLabKeslingHasilPengujianSampel,
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
-            btnSkriningCURB65;
+            btnSkriningCURB65,btnBPJSPotensiPRB;
     
     public void isWall(){
         try{            
@@ -26811,6 +26823,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_program_prb()==true){
                 Panelmenu.add(btnBPJSProgramPRB);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_potensi_prb()==true){
+                Panelmenu.add(btnBPJSPotensiPRB);
                 jmlmenu++;
             }
             
@@ -32619,6 +32636,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_program_prb()==true){
             Panelmenu.add(btnBPJSProgramPRB);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_potensi_prb()==true){
+            Panelmenu.add(btnBPJSPotensiPRB);
             jmlmenu++;
         }
         
@@ -39501,6 +39523,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBPJSProgramPRB);
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.getbpjs_potensi_prb()==true){
+            if(btnBPJSPotensiPRB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSPotensiPRB);
+                jmlmenu++;
+            } 
         }
         
         if(akses.getbpjs_mapping_dokterdpjp()==true){
@@ -49485,5 +49514,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnEEksekutif.setName("btnEEksekutif"); 
         btnEEksekutif.setPreferredSize(new java.awt.Dimension(200, 90));
         btnEEksekutif.addActionListener(this::btnEEksekutifActionPerformed);
+        
+        btnBPJSPotensiPRB = new widget.ButtonBig();
+        btnBPJSPotensiPRB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSPotensiPRB.setText("Potensi PRB di VClaim");
+        btnBPJSPotensiPRB.setIconTextGap(0);
+        btnBPJSPotensiPRB.setName("btnBPJSPotensiPRB"); 
+        btnBPJSPotensiPRB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSPotensiPRB.addActionListener(this::btnBPJSPotensiPRBActionPerformed);
     }
 }
