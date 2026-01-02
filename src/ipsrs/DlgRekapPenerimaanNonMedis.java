@@ -28,7 +28,7 @@ public class DlgRekapPenerimaanNonMedis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  IPSRSBarang barang=new IPSRSBarang(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private double tagihan=0,subtotal=0,diskon;

@@ -272,10 +272,35 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         jLabel30 = new widget.Label();
         jLabel31 = new widget.Label();
         KdDokter8 = new widget.TextBox();
-        jLabel32 = new widget.Label();
         KdDokter9 = new widget.TextBox();
         jLabel33 = new widget.Label();
         BlnCari1 = new widget.ComboBox();
+        jLabel34 = new widget.Label();
+        BlnCari2 = new widget.ComboBox();
+        jLabel35 = new widget.Label();
+        KdDokter10 = new widget.TextBox();
+        jLabel36 = new widget.Label();
+        jLabel37 = new widget.Label();
+        BlnCari3 = new widget.ComboBox();
+        jLabel38 = new widget.Label();
+        BlnCari4 = new widget.ComboBox();
+        jLabel39 = new widget.Label();
+        BlnCari5 = new widget.ComboBox();
+        jLabel40 = new widget.Label();
+        BlnCari6 = new widget.ComboBox();
+        jLabel41 = new widget.Label();
+        BlnCari7 = new widget.ComboBox();
+        jLabel42 = new widget.Label();
+        jLabel43 = new widget.Label();
+        jLabel45 = new widget.Label();
+        BlnCari9 = new widget.ComboBox();
+        jLabel44 = new widget.Label();
+        jLabel46 = new widget.Label();
+        BlnCari8 = new widget.ComboBox();
+        jLabel47 = new widget.Label();
+        BlnCari10 = new widget.ComboBox();
+        jLabel48 = new widget.Label();
+        BlnCari11 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -884,10 +909,10 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(163, 180, 40, 23);
 
-        jLabel24.setText("GD2JPP :");
+        jLabel24.setText("Rerata TD Diastolik :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(251, 180, 70, 23);
+        jLabel24.setBounds(207, 210, 118, 23);
 
         KdDokter3.setEditable(false);
         KdDokter3.setHighlighter(null);
@@ -941,44 +966,182 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         KdDokter7.setBounds(531, 180, 50, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel30.setText("Rata-rata TD");
+        jLabel30.setText("Rerata TD Sistolik");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(60, 210, 70, 23);
+        jLabel30.setBounds(60, 210, 110, 23);
 
         jLabel31.setText(":");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 210, 130, 23);
+        jLabel31.setBounds(0, 210, 154, 23);
 
         KdDokter8.setEditable(false);
         KdDokter8.setHighlighter(null);
         KdDokter8.setName("KdDokter8"); // NOI18N
         FormInput.add(KdDokter8);
-        KdDokter8.setBounds(130, 210, 50, 23);
-
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("/");
-        jLabel32.setName("jLabel32"); // NOI18N
-        FormInput.add(jLabel32);
-        jLabel32.setBounds(180, 210, 20, 23);
+        KdDokter8.setBounds(158, 210, 50, 23);
 
         KdDokter9.setEditable(false);
         KdDokter9.setHighlighter(null);
         KdDokter9.setName("KdDokter9"); // NOI18N
         FormInput.add(KdDokter9);
-        KdDokter9.setBounds(200, 210, 50, 23);
+        KdDokter9.setBounds(329, 210, 50, 23);
 
         jLabel33.setText("Jantung Koroner :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(260, 210, 90, 23);
+        jLabel33.setBounds(385, 210, 99, 23);
 
         BlnCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
         BlnCari1.setName("BlnCari1"); // NOI18N
         BlnCari1.setPreferredSize(new java.awt.Dimension(62, 23));
         FormInput.add(BlnCari1);
-        BlnCari1.setBounds(360, 210, 90, 23);
+        BlnCari1.setBounds(488, 210, 90, 23);
+
+        jLabel34.setText("Stroke :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(583, 210, 50, 23);
+
+        BlnCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari2.setName("BlnCari2"); // NOI18N
+        BlnCari2.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari2);
+        BlnCari2.setBounds(637, 210, 90, 23);
+
+        jLabel35.setText("RR Istirahat :");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(593, 240, 80, 23);
+
+        KdDokter10.setEditable(false);
+        KdDokter10.setHighlighter(null);
+        KdDokter10.setName("KdDokter10"); // NOI18N
+        FormInput.add(KdDokter10);
+        KdDokter10.setBounds(677, 240, 50, 23);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("Vaskular Perifer");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(60, 240, 110, 23);
+
+        jLabel37.setText(":");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(0, 240, 145, 23);
+
+        BlnCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari3.setName("BlnCari3"); // NOI18N
+        BlnCari3.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari3);
+        BlnCari3.setBounds(149, 240, 90, 23);
+
+        jLabel38.setText("Aritmia :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(245, 240, 60, 23);
+
+        BlnCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari4.setName("BlnCari4"); // NOI18N
+        BlnCari4.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari4);
+        BlnCari4.setBounds(309, 240, 90, 23);
+
+        jLabel39.setText("Atrial Fibrilasi :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(405, 240, 90, 23);
+
+        BlnCari5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari5.setName("BlnCari5"); // NOI18N
+        BlnCari5.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari5);
+        BlnCari5.setBounds(499, 240, 90, 23);
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel40.setText("Sesak Napas 3 Bulan");
+        jLabel40.setName("jLabel40"); // NOI18N
+        FormInput.add(jLabel40);
+        jLabel40.setBounds(60, 270, 130, 23);
+
+        BlnCari6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari6.setName("BlnCari6"); // NOI18N
+        BlnCari6.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari6);
+        BlnCari6.setBounds(171, 270, 90, 23);
+
+        jLabel41.setText("Nyeri Dada 3 Bulan :");
+        jLabel41.setName("jLabel41"); // NOI18N
+        FormInput.add(jLabel41);
+        jLabel41.setBounds(273, 270, 120, 23);
+
+        BlnCari7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari7.setName("BlnCari7"); // NOI18N
+        BlnCari7.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari7);
+        BlnCari7.setBounds(397, 270, 90, 23);
+
+        jLabel42.setText("GD2JPP :");
+        jLabel42.setName("jLabel42"); // NOI18N
+        FormInput.add(jLabel42);
+        jLabel42.setBounds(251, 180, 70, 23);
+
+        jLabel43.setText(":");
+        jLabel43.setName("jLabel43"); // NOI18N
+        FormInput.add(jLabel43);
+        jLabel43.setBounds(0, 270, 167, 23);
+
+        jLabel45.setText("Sesak Napas Aktivitas :");
+        jLabel45.setName("jLabel45"); // NOI18N
+        FormInput.add(jLabel45);
+        jLabel45.setBounds(493, 270, 140, 23);
+
+        BlnCari9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari9.setName("BlnCari9"); // NOI18N
+        BlnCari9.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari9);
+        BlnCari9.setBounds(637, 270, 90, 23);
+
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel44.setText("Nyeri Dada Aktivitas");
+        jLabel44.setName("jLabel44"); // NOI18N
+        FormInput.add(jLabel44);
+        jLabel44.setBounds(60, 300, 130, 23);
+
+        jLabel46.setText(":");
+        jLabel46.setName("jLabel46"); // NOI18N
+        FormInput.add(jLabel46);
+        jLabel46.setBounds(0, 300, 167, 23);
+
+        BlnCari8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari8.setName("BlnCari8"); // NOI18N
+        BlnCari8.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari8);
+        BlnCari8.setBounds(171, 300, 90, 23);
+
+        jLabel47.setText("Terkontrol :");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(266, 300, 80, 23);
+
+        BlnCari10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari10.setName("BlnCari10"); // NOI18N
+        BlnCari10.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari10);
+        BlnCari10.setBounds(350, 300, 90, 23);
+
+        jLabel48.setText("Gejala 2x/Lebih Dalam Seminggu :");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(443, 300, 190, 23);
+
+        BlnCari11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Tidak", "1. Ya" }));
+        BlnCari11.setName("BlnCari11"); // NOI18N
+        BlnCari11.setPreferredSize(new java.awt.Dimension(62, 23));
+        FormInput.add(BlnCari11);
+        BlnCari11.setBounds(637, 300, 90, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1467,6 +1630,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox BlnCari;
     private widget.ComboBox BlnCari1;
+    private widget.ComboBox BlnCari10;
+    private widget.ComboBox BlnCari11;
+    private widget.ComboBox BlnCari2;
+    private widget.ComboBox BlnCari3;
+    private widget.ComboBox BlnCari4;
+    private widget.ComboBox BlnCari5;
+    private widget.ComboBox BlnCari6;
+    private widget.ComboBox BlnCari7;
+    private widget.ComboBox BlnCari8;
+    private widget.ComboBox BlnCari9;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1487,6 +1660,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox JK;
     private widget.TextBox KdDokter;
     private widget.TextBox KdDokter1;
+    private widget.TextBox KdDokter10;
     private widget.TextBox KdDokter2;
     private widget.TextBox KdDokter3;
     private widget.TextBox KdDokter4;
@@ -1539,9 +1713,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel29;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
-    private widget.Label jLabel32;
     private widget.Label jLabel33;
+    private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
+    private widget.Label jLabel39;
     private widget.Label jLabel4;
+    private widget.Label jLabel40;
+    private widget.Label jLabel41;
+    private widget.Label jLabel42;
+    private widget.Label jLabel43;
+    private widget.Label jLabel44;
+    private widget.Label jLabel45;
+    private widget.Label jLabel46;
+    private widget.Label jLabel47;
+    private widget.Label jLabel48;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;

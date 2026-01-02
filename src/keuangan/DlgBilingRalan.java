@@ -2929,10 +2929,9 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             if(!tbBilling.getValueAt(0,1).toString().trim().contains("No.Nota")){
                 JOptionPane.showMessageDialog(null,"Pasien menggunakan billing parsial..!!");
             }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));   
                 Sequel.AutoComitFalse();
-                sukses=true;
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
-
+                sukses=true;   
                 Sequel.queryu2("delete from tampjurnal");
                 if((-1*ttlPotongan)>0){
                     if(Sequel.menyimpantf("tampjurnal","'"+Potongan_Ralan+"','Potongan_Ralan','0','"+(-1*ttlPotongan)+"'","kredit=kredit+'"+(-1*ttlPotongan)+"'","kd_rek='"+Potongan_Ralan+"'")==false){
@@ -3072,21 +3071,22 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                     Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
                     Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
                     Sequel.Commit();
-                    JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
-                    Valid.tabelKosong(tabModeAkunBayar);
-                    Valid.tabelKosong(tabModeAkunPiutang);
-                    isRawat();
                 }else{
                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                    Sequel.RollBack();
                }
 
                Sequel.AutoComitTrue();
+               if(sukses==true){
+                    JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
+                    Valid.tabelKosong(tabModeAkunBayar);
+                    Valid.tabelKosong(tabModeAkunPiutang);
+                    isRawat();
+               }
                this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(i<=0){
-            JOptionPane.showMessageDialog(rootPane,"Data belum pernah disimpan/diverifikasi.\n"+
-                    "Tidak perlu ada penghapusan data salah..!!");
+            JOptionPane.showMessageDialog(rootPane,"Data belum pernah disimpan/diverifikasi.\nTidak perlu ada penghapusan data salah..!!");
         }
     } catch (Exception e) {
         System.out.println("Notifikasi : "+e);
@@ -3169,7 +3169,7 @@ private void btnCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_btnCariDokterActionPerformed
 
 private void MnObatLangsungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnObatLangsungActionPerformed
-    TotalObat.setText(Sequel.cariIsi("select besar_tagihan from tagihan_obat_langsung where no_rawat=?",TNoRw.getText()));  
+    TotalObat.setText(Sequel.cariIsi("select tagihan_obat_langsung.besar_tagihan from tagihan_obat_langsung where tagihan_obat_langsung.no_rawat=?",TNoRw.getText()));  
     WindowObatLangsung.setSize(590,80);
     WindowObatLangsung.setLocationRelativeTo(internalFrame1);
     TotalObat.requestFocus();
@@ -3196,7 +3196,7 @@ private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Valid.textKosong(TNoRw,"No.Rawat");
         }else{
             Sequel.menyimpan("tagihan_obat_langsung","'"+TNoRw.getText()+"','"+TotalObat.getText()+"'","No.Rawat");
-            WindowObatLangsung.setVisible(false);
+            WindowObatLangsung.dispose();
             isRawat();
             isKembali();
         }
@@ -3211,7 +3211,7 @@ private void BtnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(TNoRw,"No.Rawat");
         }else{
             Sequel.queryu("delete from tagihan_obat_langsung where no_rawat=? ",TNoRw.getText());
-            WindowObatLangsung.setVisible(false);
+            WindowObatLangsung.dispose();
             isRawat();isKembali();
         }
 }//GEN-LAST:event_BtnBatal1ActionPerformed
@@ -6201,9 +6201,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     
                 if(sukses==true){
                     Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
-                    Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
-                    Sequel.Commit();
-                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
+                    Sequel.Commit();    
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -6211,6 +6209,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 Sequel.AutoComitTrue();
                 
                 if(sukses==true){
+                    Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
+                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!"); 
                     if(notaralan.equals("Yes")){
                         this.dispose();
                     }

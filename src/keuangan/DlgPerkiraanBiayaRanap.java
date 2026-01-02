@@ -214,6 +214,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         Diagnosa.setDocument(new batasInput((int)100).getKata(Diagnosa));
+        NilaiPerkiraanManual.setDocument(new batasInput((int)12).getOnlyAngka(NilaiPerkiraanManual));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -257,6 +258,14 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         MnJadikanPerkiraan1 = new javax.swing.JMenuItem();
         jPopupMenu3 = new javax.swing.JPopupMenu();
         MnJadikanPerkiraan2 = new javax.swing.JMenuItem();
+        MnPerkiraanBiayaManual = new javax.swing.JMenuItem();
+        WindowInput = new javax.swing.JDialog();
+        internalFrame2 = new widget.InternalFrame();
+        NilaiPerkiraanManual = new widget.TextBox();
+        jLabel8 = new widget.Label();
+        BtnCloseIn = new widget.Button();
+        BtnSimpan2 = new widget.Button();
+        BtnBatal1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -338,6 +347,101 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             }
         });
         jPopupMenu3.add(MnJadikanPerkiraan2);
+
+        MnPerkiraanBiayaManual.setBackground(new java.awt.Color(255, 255, 254));
+        MnPerkiraanBiayaManual.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPerkiraanBiayaManual.setForeground(java.awt.Color.darkGray);
+        MnPerkiraanBiayaManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPerkiraanBiayaManual.setText("Input Manual Perkiraan Biaya");
+        MnPerkiraanBiayaManual.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPerkiraanBiayaManual.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPerkiraanBiayaManual.setName("MnPerkiraanBiayaManual"); // NOI18N
+        MnPerkiraanBiayaManual.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPerkiraanBiayaManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPerkiraanBiayaManualActionPerformed(evt);
+            }
+        });
+        jPopupMenu3.add(MnPerkiraanBiayaManual);
+
+        WindowInput.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowInput.setName("WindowInput"); // NOI18N
+        WindowInput.setUndecorated(true);
+        WindowInput.setResizable(false);
+
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Nilai Perkiraan Biaya ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame2.setName("internalFrame2"); // NOI18N
+        internalFrame2.setLayout(null);
+
+        NilaiPerkiraanManual.setName("NilaiPerkiraanManual"); // NOI18N
+        NilaiPerkiraanManual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiPerkiraanManualKeyPressed(evt);
+            }
+        });
+        internalFrame2.add(NilaiPerkiraanManual);
+        NilaiPerkiraanManual.setBounds(100, 30, 140, 23);
+
+        jLabel8.setText("Perkiraan Biaya :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        internalFrame2.add(jLabel8);
+        jLabel8.setBounds(0, 30, 97, 23);
+
+        BtnCloseIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn.setMnemonic('3');
+        BtnCloseIn.setText("Tutup");
+        BtnCloseIn.setToolTipText("Alt+3");
+        BtnCloseIn.setName("BtnCloseIn"); // NOI18N
+        BtnCloseIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseInActionPerformed(evt);
+            }
+        });
+        BtnCloseIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCloseInKeyPressed(evt);
+            }
+        });
+        internalFrame2.add(BtnCloseIn);
+        BtnCloseIn.setBounds(465, 30, 100, 30);
+
+        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan2.setMnemonic('1');
+        BtnSimpan2.setText("Simpan");
+        BtnSimpan2.setToolTipText("Alt+1");
+        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
+        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan2ActionPerformed(evt);
+            }
+        });
+        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpan2KeyPressed(evt);
+            }
+        });
+        internalFrame2.add(BtnSimpan2);
+        BtnSimpan2.setBounds(255, 30, 100, 30);
+
+        BtnBatal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnBatal1.setMnemonic('2');
+        BtnBatal1.setText("Hapus");
+        BtnBatal1.setToolTipText("Alt+2");
+        BtnBatal1.setName("BtnBatal1"); // NOI18N
+        BtnBatal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal1ActionPerformed(evt);
+            }
+        });
+        BtnBatal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBatal1KeyPressed(evt);
+            }
+        });
+        internalFrame2.add(BtnBatal1);
+        BtnBatal1.setBounds(360, 30, 100, 30);
+
+        WindowInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -743,18 +847,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            runBackground(() ->tampildiagnosa());   
             Valid.tabelKosong(tabModeNilaiRS);
             Valid.tabelKosong(tabModeNilaiINACBG);
+            runBackground(() ->tampildiagnosa());   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbDiagnosa.requestFocus();
         }
     }//GEN-LAST:event_DiagnosaKeyPressed
 
     private void BtnCariPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakitActionPerformed
-        runBackground(() ->tampildiagnosa());  
         Valid.tabelKosong(tabModeNilaiRS);
         Valid.tabelKosong(tabModeNilaiINACBG);
+        runBackground(() ->tampildiagnosa());
     }//GEN-LAST:event_BtnCariPenyakitActionPerformed
 
     private void tbDiagnosaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDiagnosaMouseClicked
@@ -1076,6 +1180,69 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
 
+    private void NilaiPerkiraanManualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiPerkiraanManualKeyPressed
+        Valid.pindah(evt,BtnCloseIn,BtnSimpan2);
+    }//GEN-LAST:event_NilaiPerkiraanManualKeyPressed
+
+    private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
+        WindowInput.dispose();
+    }//GEN-LAST:event_BtnCloseInActionPerformed
+
+    private void BtnCloseInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCloseInKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            WindowInput.dispose();
+        }else{Valid.pindah(evt, BtnBatal1, NilaiPerkiraanManual);}
+    }//GEN-LAST:event_BtnCloseInKeyPressed
+
+    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
+        if(tbBangsal.getSelectedRow()!= -1){
+            if(tbDiagnosa.getSelectedRow()!= -1){
+                Sequel.menyimpan("perkiraan_biaya_ranap","'"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"','"+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString()+"','"+NilaiPerkiraanManual.getText()+"'","No.Rawat");
+                WindowInput.dispose();
+                runBackground(() ->tampil());
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu diagnosa pasien yang mau dimasukkan perkiraannya ...!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu pasien yang mau dimasukkan perkiraannya ...!!");
+        }
+    }//GEN-LAST:event_BtnSimpan2ActionPerformed
+
+    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
+        Valid.pindah(evt,NilaiPerkiraanManual,BtnBatal1);
+    }//GEN-LAST:event_BtnSimpan2KeyPressed
+
+    private void BtnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal1ActionPerformed
+        if(tbBangsal.getSelectedRow()!= -1){
+            Sequel.queryu("delete from perkiraan_biaya_ranap where perkiraan_biaya_ranap.no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
+            WindowInput.dispose();
+            runBackground(() ->tampil());
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu pasien yang mau dimasukkan perkiraannya ...!!");
+        }
+    }//GEN-LAST:event_BtnBatal1ActionPerformed
+
+    private void BtnBatal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatal1KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnBatal1ActionPerformed(null);
+        }else{Valid.pindah(evt, BtnSimpan2, BtnCloseIn);}
+    }//GEN-LAST:event_BtnBatal1KeyPressed
+
+    private void MnPerkiraanBiayaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPerkiraanBiayaManualActionPerformed
+        if(tbBangsal.getSelectedRow()!= -1){
+            if(tbDiagnosa.getSelectedRow()!= -1){
+                NilaiPerkiraanManual.setText(Sequel.cariIsi("select perkiraan_biaya_ranap.tarif from perkiraan_biaya_ranap where perkiraan_biaya_ranap.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()));  
+                WindowInput.setSize(590,80);
+                WindowInput.setLocationRelativeTo(internalFrame1);
+                WindowInput.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu diagnosa pasien yang mau dimasukkan perkiraannya ...!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu pasien yang mau dimasukkan perkiraannya ...!!");
+        }
+    }//GEN-LAST:event_MnPerkiraanBiayaManualActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1094,25 +1261,33 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
+    private widget.Button BtnBatal1;
     private widget.Button BtnCari1;
     private widget.Button BtnCariPenyakit;
+    private widget.Button BtnCloseIn;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
+    private widget.Button BtnSimpan2;
     private widget.CekBox ChkCari;
     public widget.TextBox Diagnosa;
     private javax.swing.JPanel FormCari;
     private javax.swing.JMenuItem MnJadikanPerkiraan;
     private javax.swing.JMenuItem MnJadikanPerkiraan1;
     private javax.swing.JMenuItem MnJadikanPerkiraan2;
+    private javax.swing.JMenuItem MnPerkiraanBiayaManual;
+    private widget.TextBox NilaiPerkiraanManual;
     private widget.TextBox NmBangsal;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
     private widget.TextBox TCari;
+    private javax.swing.JDialog WindowInput;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame2;
     private widget.Label jLabel13;
+    private widget.Label jLabel8;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
@@ -1136,16 +1311,25 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,bangsal.nm_bangsal,kamar.kd_kamar,reg_periksa.biaya_reg,kamar_inap.diagnosa_awal "+
                 "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "where kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? "+(TCari.getText().trim().equals("")?"":"and (kamar_inap.no_rawat like ? or "+
-                "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or kamar.kd_kamar like ?) ")+"order by bangsal.nm_bangsal"
+                "where kamar_inap.stts_pulang='-' "+(NmBangsal.getText().trim().equals("")?"":"and bangsal.nm_bangsal=? ")+
+                (TCari.getText().trim().equals("")?"":"and (kamar_inap.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                "pasien.nm_pasien like ? or kamar.kd_kamar like ?) ")+"order by bangsal.nm_bangsal"
             );
             try {
-                ps.setString(1,"%"+NmBangsal.getText()+"%");
+                i=1;
+                if(!NmBangsal.getText().trim().equals("")){
+                    ps.setString(i,NmBangsal.getText());
+                    i++;
+                }
+                
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -1398,11 +1582,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             Valid.tabelKosong(tabModeDiagnosa);
             pspenyakit=koneksi.prepareStatement(
                     "select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan,kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum "+
-                    "from kategori_penyakit inner join penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+(TCari.getText().trim().equals("")?"":"where penyakit.kd_penyakit like ? or "+
+                    "from kategori_penyakit inner join penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+(Diagnosa.getText().trim().equals("")?"":"where penyakit.kd_penyakit like ? or "+
                     "penyakit.nm_penyakit like ? or penyakit.ciri_ciri like ? or penyakit.keterangan like ? or kategori_penyakit.nm_kategori like ? or kategori_penyakit.ciri_umum like ?")+
                     "order by penyakit.kd_penyakit  LIMIT 1000");
             try {
-                if(!TCari.getText().trim().equals("")){
+                if(!Diagnosa.getText().trim().equals("")){
                     pspenyakit.setString(1,"%"+Diagnosa.getText().trim()+"%");
                     pspenyakit.setString(2,"%"+Diagnosa.getText().trim()+"%");
                     pspenyakit.setString(3,"%"+Diagnosa.getText().trim()+"%");
@@ -1414,8 +1598,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 rs=pspenyakit.executeQuery();
                 while(rs.next()){
                     tabModeDiagnosa.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getString(5),rs.getString(6)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
                     });
                 } 
             } catch (Exception e) {
