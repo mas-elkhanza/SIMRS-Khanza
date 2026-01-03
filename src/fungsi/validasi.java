@@ -283,11 +283,7 @@ public final class validasi {
     
     public void autoNomer7(String nomorterakhir,String strAwal,Integer pnj,javax.swing.JTextField teks){
         try {
-            s="1";
-            while(rs.next()){
-                s=Integer.toString(Integer.parseInt(nomorterakhir)+1);
-            }            
-
+            s=Integer.toString(Integer.parseInt(nomorterakhir)+1);
             j=s.length();
             s1="";
             for(i = 1;i<=pnj-j;i++){
