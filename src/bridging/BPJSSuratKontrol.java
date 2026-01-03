@@ -81,7 +81,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 "No.Rawat","No.SEP","No.Kartu","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Diagnosa","Tgl.Surat",
                 "No.Surat","Tgl.Kontrol","Kode Dokter","Nama Dokter/Sepesialis","Kode Poli","Nama Poli/Unit",
                 "HBA1C","GDP","GD2JPP","eGFR","TD Sis","TD Dias","LDL","Rerata TD Sis","Rerata TD Dias","Jantung Koroner",
-                "Stroke","Vaskular Perifer","Aritmia","Atrial Fibrilasi","Nadi Istirahat","Sesak Napas 3 Bulan",
+                "Stroke","Vaskular Perifer","Aritmia","Atrial Fibrilasi","RR Istirahat","Sesak Napas 3 Bulan",
                 "Nyeri Dada 3 Bulan","Sesak Napas Aktivitas","Nyeri Dada Aktivitas","Terkontrol","Gejala 2x Minggu",
                 "Bangun Malam","Keterbatasan Fisik","Fungsi Paru","Skor MMRC","Eksaserbasi 1 Tahun","Mampu Aktivitas",
                 "Epileptik 6 Bulan","Efek Samping OAB","Hamil Menyusui","Remisi","Terapi Rumatan","Usia","Asam Urat",
@@ -127,6 +127,34 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==14){
                 column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setPreferredWidth(50);
+            }else if(i==16){
+                column.setPreferredWidth(50);
+            }else if(i==17){
+                column.setPreferredWidth(50);
+            }else if(i==18){
+                column.setPreferredWidth(50);
+            }else if(i==19){
+                column.setPreferredWidth(50);
+            }else if(i==20){
+                column.setPreferredWidth(50);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setPreferredWidth(90);
+            }else if(i==25){
+                column.setPreferredWidth(90);
+            }else if(i==26){
+                column.setPreferredWidth(90);
+            }else if(i==27){
+                column.setPreferredWidth(90);
+            }else if(i==28){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
