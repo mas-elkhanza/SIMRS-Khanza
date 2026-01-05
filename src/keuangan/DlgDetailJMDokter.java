@@ -811,7 +811,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             kelas=false;
             if(TabRawat.getSelectedIndex()==0){
-                runBackground(() ->prosesCari());
                 if(tabMode.getRowCount()==0){
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     //TCari.requestFocus();
@@ -876,7 +875,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     Valid.MyReportqry("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }
             }else if(TabRawat.getSelectedIndex()==1){
-                runBackground(() ->jasamedis());
+                jasamedis();
                 try {            
                     File g = new File("detailjmdokter.css");            
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
@@ -913,7 +912,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     System.out.println("Notifikasi : "+e);
                 } 
             }else if(TabRawat.getSelectedIndex()==2){
-                runBackground(() ->jasamedis2());
+                jasamedis2();
                 try {            
                     File g = new File("detailjmdokter.css");            
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
@@ -969,7 +968,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             kelas=true;
             if(TabRawat.getSelectedIndex()==0){
-                runBackground(() ->prosesCari());
                 if(tabMode.getRowCount()==0){
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     //TCari.requestFocus();
