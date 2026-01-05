@@ -2115,7 +2115,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             StringBuilder iyembuilder = new StringBuilder();
             pstampil=koneksi.prepareStatement(
                 "select databarang.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,databarang."+hppfarmasi+" as dasar,"+
-                "databarang.expire from databarang inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' "+order
+                "if(databarang.expire='0000-00-00','',databarang.expire) as expire from databarang inner join jenis "+
+                "on databarang.kdjns=jenis.kdjns where databarang.status='1' "+order
             );
             try {
                 rstampil=pstampil.executeQuery();
