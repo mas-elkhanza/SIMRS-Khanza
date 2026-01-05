@@ -1838,10 +1838,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_NomorPAKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        try {
+        if(this.isActive()==true){
             autoNomor();
             autoNomor2();
-        } catch (Exception e) {
+            autoNomor3();
         }
     }//GEN-LAST:event_TanggalItemStateChanged
 

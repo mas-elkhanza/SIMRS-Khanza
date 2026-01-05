@@ -155,6 +155,50 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==28){
                 column.setPreferredWidth(90);
+            }else if(i==29){
+                column.setPreferredWidth(70);
+            }else if(i==30){
+                column.setPreferredWidth(110);
+            }else if(i==31){
+                column.setPreferredWidth(100);
+            }else if(i==32){
+                column.setPreferredWidth(115);
+            }else if(i==33){
+                column.setPreferredWidth(110);
+            }else if(i==34){
+                column.setPreferredWidth(90);
+            }else if(i==35){
+                column.setPreferredWidth(90);
+            }else if(i==36){
+                column.setPreferredWidth(90);
+            }else if(i==37){
+                column.setPreferredWidth(100);
+            }else if(i==38){
+                column.setPreferredWidth(67);
+            }else if(i==39){
+                column.setPreferredWidth(67);
+            }else if(i==40){
+                column.setPreferredWidth(110);
+            }else if(i==41){
+                column.setPreferredWidth(90);
+            }else if(i==42){
+                column.setPreferredWidth(90);
+            }else if(i==43){
+                column.setPreferredWidth(100);
+            }else if(i==44){
+                column.setPreferredWidth(90);
+            }else if(i==45){
+                column.setPreferredWidth(50);
+            }else if(i==46){
+                column.setPreferredWidth(90);
+            }else if(i==47){
+                column.setPreferredWidth(50);
+            }else if(i==48){
+                column.setPreferredWidth(65);
+            }else if(i==49){
+                column.setPreferredWidth(65);
+            }else if(i==50){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
