@@ -218,6 +218,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi4.add(label17);
 
+        kdbarang.setEditable(false);
         kdbarang.setName("kdbarang"); // NOI18N
         kdbarang.setPreferredSize(new java.awt.Dimension(90, 23));
         kdbarang.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -416,13 +417,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void kdbarangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarangKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbarang,kdbarang.getText()); 
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbarang,kdbarang.getText()); 
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbarang,kdbarang.getText()); 
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -653,17 +650,24 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join jenis inner join detail_permintaan_medis inner join permintaan_medis "+
                     "on databarang.kode_brng=detail_permintaan_medis.kode_brng and databarang.kode_sat=kodesatuan.kode_sat "+
                     "and databarang.kdjns=jenis.kdjns and detail_permintaan_medis.no_permintaan=permintaan_medis.no_permintaan "+
-                    "where permintaan_medis.tanggal between ? and ? and databarang.nama_brng like ? "+
+                    "where permintaan_medis.tanggal between ? and ? "+(nmbarang.getText().trim().equals("")?"":"and databarang.kode_brng=? ")+
                     (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                     "group by databarang.kode_brng order by databarang.kode_brng");
             try {
+                i=3;
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+nmbarang.getText().trim()+"%");
+                if(!nmbarang.getText().trim().equals("")){
+                    ps.setString(i,kdbarang.getText().trim());
+                    i++;
+                }
+                    
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
