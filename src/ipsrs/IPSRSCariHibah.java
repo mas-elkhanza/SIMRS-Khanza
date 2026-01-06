@@ -17,8 +17,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -40,6 +43,8 @@ public class IPSRSCariHibah extends javax.swing.JDialog {
     private boolean sukses=false;
     private riwayatnonmedis Trackbarang=new riwayatnonmedis();
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -87,19 +92,19 @@ public class IPSRSCariHibah extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -306,11 +311,6 @@ public class IPSRSCariHibah extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Hibah Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -705,7 +705,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -727,7 +727,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmsup.setText("");
         kdptg.setText("");
         nmptg.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -740,7 +740,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -833,7 +832,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       if(sukses==true){
                           Sequel.queryu2("delete from ipsrs_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
                           Sequel.Commit();
-                          tampil();
+                          runBackground(() ->tampil());
                       }else{
                           JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                           Sequel.RollBack();
@@ -859,10 +858,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         JOptionPane.showMessageDialog(null,"Silahkan pilih hibah yang mau dihapus..!");
     }   
 }//GEN-LAST:event_ppHapusActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
         akses.setform("IPSRSCariHibah");
@@ -933,35 +928,61 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah, "+
-                    "ipsrs_hibah.kode_pemberi,pemberihibah.nama_pemberi, "+
-                    "ipsrs_hibah.nip,petugas.nama,ipsrs_hibah.totalhibah,"+
-                    "ipsrs_hibah.keterangan from "+
+            ps=koneksi.prepareStatement(
+                    "select ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah,ipsrs_hibah.kode_pemberi,pemberihibah.nama_pemberi, "+
+                    "ipsrs_hibah.nip,petugas.nama,ipsrs_hibah.totalhibah,ipsrs_hibah.keterangan from "+
                     "ipsrs_hibah inner join pemberihibah on ipsrs_hibah.kode_pemberi=pemberihibah.kode_pemberi "+
                     "inner join petugas on ipsrs_hibah.nip=petugas.nip "+
                     "inner join ipsrs_detail_hibah on ipsrs_hibah.no_hibah=ipsrs_detail_hibah.no_hibah "+
                     "inner join ipsrsbarang on ipsrs_detail_hibah.kode_brng=ipsrsbarang.kode_brng "+
                     "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                    "where ipsrs_hibah.tgl_hibah between ? and ? and ipsrs_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (ipsrs_hibah.no_hibah like ? or ipsrs_hibah.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or ipsrs_hibah.nip like ? or petugas.nama like ? or "+
-                    "ipsrsjenisbarang.nm_jenis like ? or ipsrs_detail_hibah.kode_brng like ? or ipsrsbarang.nama_brng like ?)")+" group by ipsrs_hibah.no_hibah order by ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah ");
+                    "where ipsrs_hibah.tgl_hibah between ? and ? "+(NoFaktur.getText().trim().equals("")?"":"and ipsrs_hibah.no_hibah=? ")+
+                    (nmsup.getText().trim().equals("")?"":"and ipsrs_hibah.kode_pemberi=? ")+(nmptg.getText().trim().equals("")?"":"and ipsrs_hibah.nip=? ")+
+                    (nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis=? ")+(nmbar.getText().trim().equals("")?"":"and ipsrs_detail_hibah.kode_brng=? ")+
+                    (TCari.getText().trim().equals("")?"":"and (ipsrs_hibah.no_hibah like ? or ipsrs_hibah.kode_pemberi like ? or "+
+                    "pemberihibah.nama_pemberi like ? or ipsrs_hibah.nip like ? or petugas.nama like ? or ipsrsjenisbarang.nm_jenis like ? or "+
+                    "ipsrs_detail_hibah.kode_brng like ? or ipsrsbarang.nama_brng like ?) ")+
+                    "group by ipsrs_hibah.no_hibah order by ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(3,"%"+NoFaktur.getText()+"%");
-                ps.setString(4,"%"+nmsup.getText()+"%");
-                ps.setString(5,"%"+nmptg.getText()+"%");
-                ps.setString(6,"%"+nmjenis.getText()+"%");
-                ps.setString(7,"%"+nmbar.getText()+"%");
+                i=3;
+                if(!NoFaktur.getText().trim().equals("")){
+                    ps.setString(3,NoFaktur.getText());
+                    i++;
+                }
+                if(!nmsup.getText().trim().equals("")){
+                    ps.setString(i,kdsup.getText());
+                    i++;
+                }    
+                if(!nmptg.getText().trim().equals("")){
+                    ps.setString(i,kdptg.getText());
+                    i++;
+                }    
+                if(!nmjenis.getText().trim().equals("")){
+                    ps.setString(i,kdjenis.getText());
+                    i++;
+                }  
+                if(!nmbar.getText().trim().equals("")){
+                    ps.setString(i,kdbar.getText());
+                    i++;
+                }   
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
-                    ps.setString(11,"%"+TCari.getText()+"%");
-                    ps.setString(12,"%"+TCari.getText()+"%");
-                    ps.setString(13,"%"+TCari.getText()+"%");
-                    ps.setString(14,"%"+TCari.getText()+"%");
-                    ps.setString(15,"%"+TCari.getText()+"%");
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
                 totalhibah=0;
@@ -969,28 +990,36 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
                           rs.getString(5)+", "+rs.getString(6),"","",""
                     });      
-                    ps2=koneksi.prepareStatement("select ipsrs_detail_hibah.kode_brng,ipsrsbarang.nama_brng, "+
-                        "ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis,ipsrs_detail_hibah.jumlah,ipsrs_detail_hibah.h_hibah, "+
-                        "ipsrs_detail_hibah.subtotalhibah,ipsrs_detail_hibah.kode_sat "+
-                        "from ipsrs_detail_hibah inner join ipsrsbarang on ipsrs_detail_hibah.kode_brng=ipsrsbarang.kode_brng "+
-                        "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where "+
-                        " ipsrs_detail_hibah.no_hibah=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? "+
+                    ps2=koneksi.prepareStatement(
+                        "select ipsrs_detail_hibah.kode_brng,ipsrsbarang.nama_brng,ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis,ipsrs_detail_hibah.jumlah,ipsrs_detail_hibah.h_hibah, "+
+                        "ipsrs_detail_hibah.subtotalhibah,ipsrs_detail_hibah.kode_sat from ipsrs_detail_hibah inner join ipsrsbarang on ipsrs_detail_hibah.kode_brng=ipsrsbarang.kode_brng "+
+                        "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where ipsrs_detail_hibah.no_hibah=? "+
+                        (nmbar.getText().trim().equals("")?"":"and ipsrs_detail_hibah.kode_brng=? ")+(nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis=? ")+
                         (TCari.getText().trim().equals("")?"":"and (ipsrs_detail_hibah.kode_brng like ? or ipsrsbarang.nama_brng like ? or "+
                         "ipsrsjenisbarang.nm_jenis like ?)")+" order by ipsrs_detail_hibah.kode_brng  ");
                     try {
+                        i=2;
                         ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+nmbar.getText()+"%");
-                        ps2.setString(3,"%"+nmjenis.getText()+"%");
+                        if(!nmbar.getText().trim().equals("")){
+                            ps2.setString(i,kdbar.getText());
+                            i++;
+                        }
+                        if(!nmjenis.getText().trim().equals("")){
+                            ps2.setString(i,kdjenis.getText());
+                            i++;
+                        }    
+                            
                         if(!TCari.getText().trim().equals("")){
-                            ps2.setString(4,"%"+TCari.getText()+"%");
-                            ps2.setString(5,"%"+TCari.getText()+"%");
-                            ps2.setString(6,"%"+TCari.getText()+"%");
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
                         }
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{"",no+". "+rs2.getString(1),rs2.getString(2),rs2.getString(4),
-                                            rs2.getString(5)+" "+rs2.getString(8),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))});
+                            tabMode.addRow(new Object[]{"",no+". "+rs2.getString(1),rs2.getString(2),rs2.getString(4),rs2.getString(5)+" "+rs2.getString(8),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))});
                             no++;
                         }
                         tabMode.addRow(new Object[]{"","Keterangan :",rs.getString("keterangan"),"Total :","","",Valid.SetAngka(rs.getDouble("totalhibah"))});
@@ -1044,4 +1073,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         } 
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

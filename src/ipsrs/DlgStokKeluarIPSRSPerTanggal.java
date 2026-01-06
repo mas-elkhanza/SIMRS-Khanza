@@ -27,10 +27,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,13 +47,15 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
-    private String pilihan="",dateString,dayOfWeek,hari;
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private String dateString,dayOfWeek,hari;
     private double h1=0,h2=0,h3=0,h4=0,h5=0,h6=0,h7=0,h8=0,h9=0,h10=0,h11=0,h12=0,h13=0,
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
     private Date date = null;
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJadwal
      * @param parent
@@ -73,19 +78,19 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -277,7 +282,7 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -290,13 +295,13 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){            
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari,BtnKeluar);
         }
@@ -457,7 +462,6 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {  
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Object[] row={"Kode Barang","Nama Barang","Satuan","Jenis","Stok Saat Ini",
             "1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")",
             "2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")",
@@ -538,16 +542,17 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                  "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, "
-                + " kodesatuan.satuan,ipsrsjenisbarang.nm_jenis as ipsrsjenisbarang,ipsrsbarang.stok "
-                + " from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang  "
-                + " on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "
-                + " where ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or "
-                + " ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
+                "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,kodesatuan.satuan,ipsrsjenisbarang.nm_jenis as ipsrsjenisbarang,ipsrsbarang.stok "+
+                "from ipsrsbarang inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
+                (TCari.getText().trim().equals("")?"":"where ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsjenisbarang.nm_jenis like ? ")+
+                "order by ipsrsbarang.nama_brng");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -604,7 +609,6 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
-        this.setCursor(Cursor.getDefaultCursor());
     }
     
     
@@ -646,10 +650,24 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
     }
     
     private double JmlBarang(String tanggal,String kodebarang){
-        return Sequel.cariIsiAngka("select sum(ipsrsdetailpengeluaran.jumlah)"+
-                        " from ipsrspengeluaran inner join ipsrsdetailpengeluaran "+
-                        " on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                        " where ipsrsdetailpengeluaran.kode_brng='"+kodebarang+"' and ipsrspengeluaran.tanggal=?",tanggal);
+        return Sequel.cariIsiAngka("select sum(ipsrsdetailpengeluaran.jumlah) from ipsrspengeluaran inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar where ipsrsdetailpengeluaran.kode_brng='"+kodebarang+"' and ipsrspengeluaran.tanggal=?",tanggal);
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
