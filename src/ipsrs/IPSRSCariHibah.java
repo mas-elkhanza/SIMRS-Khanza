@@ -832,13 +832,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       if(sukses==true){
                           Sequel.queryu2("delete from ipsrs_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
                           Sequel.Commit();
-                          runBackground(() ->tampil());
                       }else{
                           JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                           Sequel.RollBack();
                       }
 
                       Sequel.AutoComitTrue();
+                      if(sukses==true){
+                          runBackground(() ->tampil());
+                      }
                   }   
                } catch (Exception e) {
                    System.out.println("Notif : "+e);

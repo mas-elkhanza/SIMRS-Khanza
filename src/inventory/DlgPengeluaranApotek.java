@@ -1439,7 +1439,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
    
    public void tampil2(String nopermintaan) {
-       runBackground(() ->tampil2(nopermintaan));
+       runBackground(() ->tampil(nopermintaan));
    }
    
    private void runBackground(Runnable task) {

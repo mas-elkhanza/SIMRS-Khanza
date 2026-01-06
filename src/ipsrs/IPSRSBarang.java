@@ -269,7 +269,7 @@ public final class IPSRSBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis & Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -663,12 +663,15 @@ public final class IPSRSBarang extends javax.swing.JDialog {
         }else if(kdjenis.getText().trim().equals("")||nmjenis.getText().trim().equals("")){
             Valid.textKosong(kdjenis,"Jenis Barang");
         }else {
-            Sequel.menyimpan("ipsrsbarang","?,?,?,?,?,?,?","Kode Barang",7,new String[]{
+            if(Sequel.menyimpantf("ipsrsbarang","?,?,?,?,?,?,?","Kode Barang",7,new String[]{
                 kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText(),"1"
-            });
-            kode_brng.requestFocus();
-            runBackground(() ->tampil());
-            emptTeks();
+            })==true){
+                tabMode.addRow(new Object[]{
+                    kode_brng.getText(),nama_brng.getText(),nama_sat.getText(),nmjenis.getText(),Double.parseDouble(stok.getText()),Double.parseDouble(harga.getText())
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -693,9 +696,10 @@ public final class IPSRSBarang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.mengedit("ipsrsbarang","kode_brng='"+kode_brng.getText()+"'","status='0'");
-        BtnCariActionPerformed(evt);
-        emptTeks();
+        if(Sequel.mengedittf("ipsrsbarang","kode_brng='"+kode_brng.getText()+"'","status='0'")==true){
+            tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -718,14 +722,17 @@ public final class IPSRSBarang extends javax.swing.JDialog {
         }else if(kdjenis.getText().trim().equals("")||nmjenis.getText().trim().equals("")){
             Valid.textKosong(kdjenis,"Jenis Barang");
         }else {
-                //menyimpan-------------------------------------------------
-                Sequel.mengedit("ipsrsbarang","kode_brng=?","kode_brng=?,nama_brng=?,kode_sat=?,jenis=?,stok=?,harga=?",7,new String[]{
+            if(Sequel.mengedittf("ipsrsbarang","kode_brng=?","kode_brng=?,nama_brng=?,kode_sat=?,jenis=?,stok=?,harga=?",7,new String[]{
                     kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
-                });
-                //----------------------------------------------------------
-                kode_brng.requestFocus();
-            runBackground(() ->tampil());
-            emptTeks();
+            })==true){
+                tabMode.setValueAt(kode_brng.getText(),tbJnsPerawatan.getSelectedRow(),0);
+                tabMode.setValueAt(nama_brng.getText(),tbJnsPerawatan.getSelectedRow(),1);
+                tabMode.setValueAt(nama_sat.getText(),tbJnsPerawatan.getSelectedRow(),2);
+                tabMode.setValueAt(nmjenis.getText(),tbJnsPerawatan.getSelectedRow(),3);
+                tabMode.setValueAt(Double.parseDouble(stok.getText()),tbJnsPerawatan.getSelectedRow(),4);
+                tabMode.setValueAt(Double.parseDouble(harga.getText()),tbJnsPerawatan.getSelectedRow(),5);
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1021,8 +1028,6 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         kdjenis.setText("");
         nmjenis.setText("");
         TCari.setText("");
-        kode_brng.requestFocus();
-        //Valid.autoNomer(" jns_perawatan ","JP",6,TKd);
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(ipsrsbarang.kode_brng,4),signed)),0) from ipsrsbarang  ","B",5,kode_brng);
         kode_brng.requestFocus();
     }
