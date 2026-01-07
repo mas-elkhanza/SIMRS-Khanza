@@ -1481,58 +1481,73 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
                 headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                URL = link+"/RencanaKontrol/v2/Insert";            
-                requestJson ="{" +
-                                "\"request\": {" +
-                                    "\"noSEP\":\""+NoSEP.getText()+"\"," +
-                                    "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
-                                    "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
-                                    "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
-                                    "\"user\":\""+user+"\"," +
-                                    "\"formPRB\": {" +
-                                        "\"kdStatusPRB\": "+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"," +
-                                        "\"data\": {" +
-                                            "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
-                                            "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
-                                            "\"GD2JPP\": "+(GD2JPP.getText().trim().equals("")?"null":GD2JPP.getText())+"," +
-                                            "\"eGFR\": "+(eGFR.getText().trim().equals("")?"null":eGFR.getText())+"," +
-                                            "\"TD_Sistolik\": "+(TDSistolik.getText().trim().equals("")?"null":TDSistolik.getText())+"," +
-                                            "\"TD_Diastolik\": "+(TDDiastolik.getText().trim().equals("")?"null":TDDiastolik.getText())+"," +
-                                            "\"LDL\": "+(LDL.getText().trim().equals("")?"null":LDL.getText())+"," +
-                                            "\"Rata_TD_Sistolik\": "+(RerataTDSistolik.getText().trim().equals("")?"null":RerataTDSistolik.getText())+"," +
-                                            "\"Rata_TD_Diastolik\": "+(RerataTDDiastolik.getText().trim().equals("")?"null":RerataTDDiastolik.getText())+"," +
-                                            "\"JantungKoroner\": "+(JantungKoroner.getSelectedIndex()==0?"null":JantungKoroner.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Stroke\": "+(Stroke.getSelectedIndex()==0?"null":Stroke.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"VaskularPerifer\": "+(VaskularPerifer.getSelectedIndex()==0?"null":VaskularPerifer.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Aritmia\": "+(Aritmia.getSelectedIndex()==0?"null":Aritmia.getSelectedItem().toString().substring(0,1))+", " +
-                                            "\"AtrialFibrilasi\": "+(AtrialFibrilasi.getSelectedIndex()==0?"null":AtrialFibrilasi.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"NadiIstirahat\": "+(RRIstirahat.getText().trim().equals("")?"null":RRIstirahat.getText())+"," +
-                                            "\"SesakNapas3Bulan\": "+(SesakNapas3Bulan.getSelectedIndex()==0?"null":SesakNapas3Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"NyeriDada3Bulan\": "+(NyeriDada3Bulan.getSelectedIndex()==0?"null":NyeriDada3Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"SesakNapasAktivitas\": "+(SesakNapasAktivitas.getSelectedIndex()==0?"null":SesakNapasAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"NyeriDadaAktivitas\": "+(NyeriDadaAktivitas.getSelectedIndex()==0?"null":NyeriDadaAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Terkontrol\": "+(Terkontrol.getSelectedIndex()==0?"null":Terkontrol.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Gejala2xMinggu\": "+(Gejala2xMinggu.getSelectedIndex()==0?"null":Gejala2xMinggu.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"BangunMalam\": "+(BangunMalam.getSelectedIndex()==0?"null":BangunMalam.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"KeterbatasanFisik\": "+(KeterbatasanFisik.getSelectedIndex()==0?"null":KeterbatasanFisik.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"FungsiParu\": "+(FungsiParu.getText().trim().equals("")?"null":FungsiParu.getText())+"," +
-                                            "\"SkorMMRC\": "+(SkorMMRC.getText().trim().equals("")?"null":SkorMMRC.getText())+"," +
-                                            "\"Eksaserbasi1Tahun\": "+(Eksaserbasi1Tahun.getSelectedIndex()==0?"null":Eksaserbasi1Tahun.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"MampuAktivitas\": "+(MampuAktivitas.getSelectedIndex()==0?"null":MampuAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Epileptik6Bulan\": "+(Epileptik6Bulan.getSelectedIndex()==0?"null":Epileptik6Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"EfekSampingOAB\": "+(EfekSampingOAB.getSelectedIndex()==0?"null":EfekSampingOAB.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"HamilMenyusui\": "+(HamilMenyusui.getSelectedIndex()==0?"null":HamilMenyusui.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Remisi\": "+(Remisi.getText().trim().equals("")?"null":Remisi.getText())+"," +
-                                            "\"TerapiRumatan\": "+(TerapiRumatan.getSelectedIndex()==0?"null":TerapiRumatan.getSelectedItem().toString().substring(0,1))+"," +
-                                            "\"Usia\": "+(Usia.getText().trim().equals("")?"null":Usia.getText())+"," +
-                                            "\"AsamUrat\": "+(AsamUrat.getText().trim().equals("")?"null":AsamUrat.getText())+"," +
-                                            "\"RemisiSLE\": "+(RemisiSLE.getText().trim().equals("")?"null":RemisiSLE.getText())+"," +
-                                            "\"Hamil\": "+(Hamil.getSelectedIndex()==0?"null":Hamil.getSelectedItem().toString().substring(0,1))+" " +
-                                        "}" +
-                                    "}"+
-                                "}" +
-                             "}";
-                System.out.println("JSON : "+requestJson);
+                if(StatusPRB.getSelectedIndex()==0){
+                    URL = link+"/RencanaKontrol/insert";            
+                    requestJson ="{" +
+                                    "\"request\": {" +
+                                        "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                        "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
+                                        "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
+                                        "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
+                                        "\"user\":\""+user+"\"" +
+                                    "}" +
+                                 "}";
+                    System.out.println("JSON : "+requestJson);
+                }else{
+                    URL = link+"/RencanaKontrol/v2/Insert";            
+                    requestJson ="{" +
+                                    "\"request\": {" +
+                                        "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                        "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
+                                        "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
+                                        "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
+                                        "\"user\":\""+user+"\"," +
+                                        "\"formPRB\": {" +
+                                            "\"kdStatusPRB\": \""+StatusPRB.getSelectedItem().toString().substring(0,2)+"\"," +
+                                            "\"data\": {" +
+                                                "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
+                                                "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
+                                                "\"GD2JPP\": "+(GD2JPP.getText().trim().equals("")?"null":GD2JPP.getText())+"," +
+                                                "\"eGFR\": "+(eGFR.getText().trim().equals("")?"null":eGFR.getText())+"," +
+                                                "\"TD_Sistolik\": "+(TDSistolik.getText().trim().equals("")?"null":TDSistolik.getText())+"," +
+                                                "\"TD_Diastolik\": "+(TDDiastolik.getText().trim().equals("")?"null":TDDiastolik.getText())+"," +
+                                                "\"LDL\": "+(LDL.getText().trim().equals("")?"null":LDL.getText())+"," +
+                                                "\"Rata_TD_Sistolik\": "+(RerataTDSistolik.getText().trim().equals("")?"null":RerataTDSistolik.getText())+"," +
+                                                "\"Rata_TD_Diastolik\": "+(RerataTDDiastolik.getText().trim().equals("")?"null":RerataTDDiastolik.getText())+"," +
+                                                "\"JantungKoroner\": "+(JantungKoroner.getSelectedIndex()==0?"null":JantungKoroner.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Stroke\": "+(Stroke.getSelectedIndex()==0?"null":Stroke.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"VaskularPerifer\": "+(VaskularPerifer.getSelectedIndex()==0?"null":VaskularPerifer.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Aritmia\": "+(Aritmia.getSelectedIndex()==0?"null":Aritmia.getSelectedItem().toString().substring(0,1))+", " +
+                                                "\"AtrialFibrilasi\": "+(AtrialFibrilasi.getSelectedIndex()==0?"null":AtrialFibrilasi.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"NadiIstirahat\": "+(RRIstirahat.getText().trim().equals("")?"null":RRIstirahat.getText())+"," +
+                                                "\"SesakNapas3Bulan\": "+(SesakNapas3Bulan.getSelectedIndex()==0?"null":SesakNapas3Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"NyeriDada3Bulan\": "+(NyeriDada3Bulan.getSelectedIndex()==0?"null":NyeriDada3Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"SesakNapasAktivitas\": "+(SesakNapasAktivitas.getSelectedIndex()==0?"null":SesakNapasAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"NyeriDadaAktivitas\": "+(NyeriDadaAktivitas.getSelectedIndex()==0?"null":NyeriDadaAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Terkontrol\": "+(Terkontrol.getSelectedIndex()==0?"null":Terkontrol.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Gejala2xMinggu\": "+(Gejala2xMinggu.getSelectedIndex()==0?"null":Gejala2xMinggu.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"BangunMalam\": "+(BangunMalam.getSelectedIndex()==0?"null":BangunMalam.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"KeterbatasanFisik\": "+(KeterbatasanFisik.getSelectedIndex()==0?"null":KeterbatasanFisik.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"FungsiParu\": "+(FungsiParu.getText().trim().equals("")?"null":FungsiParu.getText())+"," +
+                                                "\"SkorMMRC\": "+(SkorMMRC.getText().trim().equals("")?"null":SkorMMRC.getText())+"," +
+                                                "\"Eksaserbasi1Tahun\": "+(Eksaserbasi1Tahun.getSelectedIndex()==0?"null":Eksaserbasi1Tahun.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"MampuAktivitas\": "+(MampuAktivitas.getSelectedIndex()==0?"null":MampuAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Epileptik6Bulan\": "+(Epileptik6Bulan.getSelectedIndex()==0?"null":Epileptik6Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"EfekSampingOAB\": "+(EfekSampingOAB.getSelectedIndex()==0?"null":EfekSampingOAB.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"HamilMenyusui\": "+(HamilMenyusui.getSelectedIndex()==0?"null":HamilMenyusui.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Remisi\": "+(Remisi.getText().trim().equals("")?"null":Remisi.getText())+"," +
+                                                "\"TerapiRumatan\": "+(TerapiRumatan.getSelectedIndex()==0?"null":TerapiRumatan.getSelectedItem().toString().substring(0,1))+"," +
+                                                "\"Usia\": "+(Usia.getText().trim().equals("")?"null":Usia.getText())+"," +
+                                                "\"AsamUrat\": "+(AsamUrat.getText().trim().equals("")?"null":AsamUrat.getText())+"," +
+                                                "\"RemisiSLE\": "+(RemisiSLE.getText().trim().equals("")?"null":RemisiSLE.getText())+"," +
+                                                "\"Hamil\": "+(Hamil.getSelectedIndex()==0?"null":Hamil.getSelectedItem().toString().substring(0,1))+" " +
+                                            "}" +
+                                        "}"+
+                                    "}" +
+                                 "}";
+                    System.out.println("JSON : "+requestJson);
+                }
+                    
                 requestEntity = new HttpEntity(requestJson,headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
@@ -1806,59 +1821,75 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
                     headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                    URL = link+"/RencanaKontrol/v2/Update";            
-                    requestJson ="{" +
-                                    "\"request\": {" +
-                                        "\"noSuratKontrol\":\""+NoSurat.getText()+"\"," +
-                                        "\"noSEP\":\""+NoSEP.getText()+"\"," +
-                                        "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
-                                        "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
-                                        "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
-                                        "\"user\":\""+user+"\"," +
-                                        "\"formPRB\": {" +
-                                            "\"kdStatusPRB\": "+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"," +
-                                            "\"data\": {" +
-                                                "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
-                                                "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
-                                                "\"GD2JPP\": "+(GD2JPP.getText().trim().equals("")?"null":GD2JPP.getText())+"," +
-                                                "\"eGFR\": "+(eGFR.getText().trim().equals("")?"null":eGFR.getText())+"," +
-                                                "\"TD_Sistolik\": "+(TDSistolik.getText().trim().equals("")?"null":TDSistolik.getText())+"," +
-                                                "\"TD_Diastolik\": "+(TDDiastolik.getText().trim().equals("")?"null":TDDiastolik.getText())+"," +
-                                                "\"LDL\": "+(LDL.getText().trim().equals("")?"null":LDL.getText())+"," +
-                                                "\"Rata_TD_Sistolik\": "+(RerataTDSistolik.getText().trim().equals("")?"null":RerataTDSistolik.getText())+"," +
-                                                "\"Rata_TD_Diastolik\": "+(RerataTDDiastolik.getText().trim().equals("")?"null":RerataTDDiastolik.getText())+"," +
-                                                "\"JantungKoroner\": "+(JantungKoroner.getSelectedIndex()==0?"null":JantungKoroner.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Stroke\": "+(Stroke.getSelectedIndex()==0?"null":Stroke.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"VaskularPerifer\": "+(VaskularPerifer.getSelectedIndex()==0?"null":VaskularPerifer.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Aritmia\": "+(Aritmia.getSelectedIndex()==0?"null":Aritmia.getSelectedItem().toString().substring(0,1))+", " +
-                                                "\"AtrialFibrilasi\": "+(AtrialFibrilasi.getSelectedIndex()==0?"null":AtrialFibrilasi.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"NadiIstirahat\": "+(RRIstirahat.getText().trim().equals("")?"null":RRIstirahat.getText())+"," +
-                                                "\"SesakNapas3Bulan\": "+(SesakNapas3Bulan.getSelectedIndex()==0?"null":SesakNapas3Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"NyeriDada3Bulan\": "+(NyeriDada3Bulan.getSelectedIndex()==0?"null":NyeriDada3Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"SesakNapasAktivitas\": "+(SesakNapasAktivitas.getSelectedIndex()==0?"null":SesakNapasAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"NyeriDadaAktivitas\": "+(NyeriDadaAktivitas.getSelectedIndex()==0?"null":NyeriDadaAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Terkontrol\": "+(Terkontrol.getSelectedIndex()==0?"null":Terkontrol.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Gejala2xMinggu\": "+(Gejala2xMinggu.getSelectedIndex()==0?"null":Gejala2xMinggu.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"BangunMalam\": "+(BangunMalam.getSelectedIndex()==0?"null":BangunMalam.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"KeterbatasanFisik\": "+(KeterbatasanFisik.getSelectedIndex()==0?"null":KeterbatasanFisik.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"FungsiParu\": "+(FungsiParu.getText().trim().equals("")?"null":FungsiParu.getText())+"," +
-                                                "\"SkorMMRC\": "+(SkorMMRC.getText().trim().equals("")?"null":SkorMMRC.getText())+"," +
-                                                "\"Eksaserbasi1Tahun\": "+(Eksaserbasi1Tahun.getSelectedIndex()==0?"null":Eksaserbasi1Tahun.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"MampuAktivitas\": "+(MampuAktivitas.getSelectedIndex()==0?"null":MampuAktivitas.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Epileptik6Bulan\": "+(Epileptik6Bulan.getSelectedIndex()==0?"null":Epileptik6Bulan.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"EfekSampingOAB\": "+(EfekSampingOAB.getSelectedIndex()==0?"null":EfekSampingOAB.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"HamilMenyusui\": "+(HamilMenyusui.getSelectedIndex()==0?"null":HamilMenyusui.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Remisi\": "+(Remisi.getText().trim().equals("")?"null":Remisi.getText())+"," +
-                                                "\"TerapiRumatan\": "+(TerapiRumatan.getSelectedIndex()==0?"null":TerapiRumatan.getSelectedItem().toString().substring(0,1))+"," +
-                                                "\"Usia\": "+(Usia.getText().trim().equals("")?"null":Usia.getText())+"," +
-                                                "\"AsamUrat\": "+(AsamUrat.getText().trim().equals("")?"null":AsamUrat.getText())+"," +
-                                                "\"RemisiSLE\": "+(RemisiSLE.getText().trim().equals("")?"null":RemisiSLE.getText())+"," +
-                                                "\"Hamil\": "+(Hamil.getSelectedIndex()==0?"null":Hamil.getSelectedItem().toString().substring(0,1))+" " +
-                                            "}" +
-                                        "}"+
-                                    "}" +
-                                 "}";
-                    System.out.println("JSON : "+requestJson);
+                    if(StatusPRB.getSelectedIndex()==0){
+                        URL = link+"/RencanaKontrol/Update";            
+                        requestJson ="{" +
+                                        "\"request\": {" +
+                                            "\"noSuratKontrol\":\""+NoSurat.getText()+"\"," +
+                                            "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                            "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
+                                            "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
+                                            "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
+                                            "\"user\":\""+user+"\""+
+                                        "}" +
+                                     "}";
+                        System.out.println("JSON : "+requestJson); 
+                    }else{
+                        URL = link+"/RencanaKontrol/v2/Update";            
+                        requestJson ="{" +
+                                        "\"request\": {" +
+                                            "\"noSuratKontrol\":\""+NoSurat.getText()+"\"," +
+                                            "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                            "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
+                                            "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
+                                            "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
+                                            "\"user\":\""+user+"\"," +
+                                            "\"formPRB\": {" +
+                                                "\"kdStatusPRB\": \""+StatusPRB.getSelectedItem().toString().substring(0,2)+"\"," +
+                                                "\"data\": {" +
+                                                    "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
+                                                    "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
+                                                    "\"GD2JPP\": "+(GD2JPP.getText().trim().equals("")?"null":GD2JPP.getText())+"," +
+                                                    "\"eGFR\": "+(eGFR.getText().trim().equals("")?"null":eGFR.getText())+"," +
+                                                    "\"TD_Sistolik\": "+(TDSistolik.getText().trim().equals("")?"null":TDSistolik.getText())+"," +
+                                                    "\"TD_Diastolik\": "+(TDDiastolik.getText().trim().equals("")?"null":TDDiastolik.getText())+"," +
+                                                    "\"LDL\": "+(LDL.getText().trim().equals("")?"null":LDL.getText())+"," +
+                                                    "\"Rata_TD_Sistolik\": "+(RerataTDSistolik.getText().trim().equals("")?"null":RerataTDSistolik.getText())+"," +
+                                                    "\"Rata_TD_Diastolik\": "+(RerataTDDiastolik.getText().trim().equals("")?"null":RerataTDDiastolik.getText())+"," +
+                                                    "\"JantungKoroner\": "+(JantungKoroner.getSelectedIndex()==0?"null":JantungKoroner.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Stroke\": "+(Stroke.getSelectedIndex()==0?"null":Stroke.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"VaskularPerifer\": "+(VaskularPerifer.getSelectedIndex()==0?"null":VaskularPerifer.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Aritmia\": "+(Aritmia.getSelectedIndex()==0?"null":Aritmia.getSelectedItem().toString().substring(0,1))+", " +
+                                                    "\"AtrialFibrilasi\": "+(AtrialFibrilasi.getSelectedIndex()==0?"null":AtrialFibrilasi.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"NadiIstirahat\": "+(RRIstirahat.getText().trim().equals("")?"null":RRIstirahat.getText())+"," +
+                                                    "\"SesakNapas3Bulan\": "+(SesakNapas3Bulan.getSelectedIndex()==0?"null":SesakNapas3Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"NyeriDada3Bulan\": "+(NyeriDada3Bulan.getSelectedIndex()==0?"null":NyeriDada3Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"SesakNapasAktivitas\": "+(SesakNapasAktivitas.getSelectedIndex()==0?"null":SesakNapasAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"NyeriDadaAktivitas\": "+(NyeriDadaAktivitas.getSelectedIndex()==0?"null":NyeriDadaAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Terkontrol\": "+(Terkontrol.getSelectedIndex()==0?"null":Terkontrol.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Gejala2xMinggu\": "+(Gejala2xMinggu.getSelectedIndex()==0?"null":Gejala2xMinggu.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"BangunMalam\": "+(BangunMalam.getSelectedIndex()==0?"null":BangunMalam.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"KeterbatasanFisik\": "+(KeterbatasanFisik.getSelectedIndex()==0?"null":KeterbatasanFisik.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"FungsiParu\": "+(FungsiParu.getText().trim().equals("")?"null":FungsiParu.getText())+"," +
+                                                    "\"SkorMMRC\": "+(SkorMMRC.getText().trim().equals("")?"null":SkorMMRC.getText())+"," +
+                                                    "\"Eksaserbasi1Tahun\": "+(Eksaserbasi1Tahun.getSelectedIndex()==0?"null":Eksaserbasi1Tahun.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"MampuAktivitas\": "+(MampuAktivitas.getSelectedIndex()==0?"null":MampuAktivitas.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Epileptik6Bulan\": "+(Epileptik6Bulan.getSelectedIndex()==0?"null":Epileptik6Bulan.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"EfekSampingOAB\": "+(EfekSampingOAB.getSelectedIndex()==0?"null":EfekSampingOAB.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"HamilMenyusui\": "+(HamilMenyusui.getSelectedIndex()==0?"null":HamilMenyusui.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Remisi\": "+(Remisi.getText().trim().equals("")?"null":Remisi.getText())+"," +
+                                                    "\"TerapiRumatan\": "+(TerapiRumatan.getSelectedIndex()==0?"null":TerapiRumatan.getSelectedItem().toString().substring(0,1))+"," +
+                                                    "\"Usia\": "+(Usia.getText().trim().equals("")?"null":Usia.getText())+"," +
+                                                    "\"AsamUrat\": "+(AsamUrat.getText().trim().equals("")?"null":AsamUrat.getText())+"," +
+                                                    "\"RemisiSLE\": "+(RemisiSLE.getText().trim().equals("")?"null":RemisiSLE.getText())+"," +
+                                                    "\"Hamil\": "+(Hamil.getSelectedIndex()==0?"null":Hamil.getSelectedItem().toString().substring(0,1))+" " +
+                                                "}" +
+                                            "}"+
+                                        "}" +
+                                     "}";
+                        System.out.println("JSON : "+requestJson);
+                    }
+                        
                     requestEntity = new HttpEntity(requestJson,headers);
                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
                     nameNode = root.path("metaData");
