@@ -1490,7 +1490,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                                     "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
                                     "\"user\":\""+user+"\"," +
                                     "\"formPRB\": {" +
-                                        "\"kdStatusPRB\": \""+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"\"," +
+                                        "\"kdStatusPRB\": "+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"," +
                                         "\"data\": {" +
                                             "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
                                             "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
@@ -1816,7 +1816,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
                                         "\"user\":\""+user+"\"," +
                                         "\"formPRB\": {" +
-                                            "\"kdStatusPRB\": \""+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"\"," +
+                                            "\"kdStatusPRB\": "+(StatusPRB.getSelectedIndex()==0?"null":StatusPRB.getSelectedItem().toString().substring(0,2))+"," +
                                             "\"data\": {" +
                                                 "\"HBA1C\": "+(HBA1C.getText().trim().equals("")?"null":HBA1C.getText())+"," +
                                                 "\"GDP\": "+(GDP.getText().trim().equals("")?"null":GDP.getText())+"," +
