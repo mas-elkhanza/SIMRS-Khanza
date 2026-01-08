@@ -348,7 +348,7 @@ public class IPSRSCariPengeluaran extends javax.swing.JDialog {
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
@@ -500,7 +500,7 @@ public class IPSRSCariPengeluaran extends javax.swing.JDialog {
         nmjenis.setName("nmjenis"); // NOI18N
         nmjenis.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nmjenis);
-        nmjenis.setBounds(108, 10, 180, 23);
+        nmjenis.setBounds(118, 10, 170, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -510,12 +510,12 @@ public class IPSRSCariPengeluaran extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdjenis);
-        kdjenis.setBounds(45, 10, 61, 23);
+        kdjenis.setBounds(55, 10, 61, 23);
 
         label7.setText("Jenis :");
         label7.setName("label7"); // NOI18N
         panelisi4.add(label7);
-        label7.setBounds(0, 10, 42, 23);
+        label7.setBounds(0, 10, 52, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
