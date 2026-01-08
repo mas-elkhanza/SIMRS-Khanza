@@ -978,6 +978,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                 if(sukses==true){
                     Sequel.Commit();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+                if(sukses==true){
                     jml=tbDokter.getRowCount();
                     if(aktifkanbatch.equals("yes")){
                         for(i=0;i<jml;i++){ 
@@ -1004,11 +1010,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     Meterai.setText("0");
                     getData();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
                 }
-                Sequel.AutoComitTrue();
                 autoNomor();
             }
         }        
@@ -1743,8 +1745,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 tbDokter.setValueAt(0, row,9);               
                 tbDokter.setValueAt(0, row,10);               
                 tbDokter.setValueAt(0, row,11); 
-            }
-                
+            }   
         }
                 
         ttl=0;sbttl=0;ppn=0;ttldisk=0;

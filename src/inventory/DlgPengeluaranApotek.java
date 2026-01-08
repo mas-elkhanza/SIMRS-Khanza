@@ -784,12 +784,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 if(sukses==true){
                     Sequel.Commit();
-                    ttl=0;
-                    LTotal.setText("0");
-                    jml=tbDokter.getRowCount();
                     if(!nomorpermintaan.equals("")){
                         Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",nomorpermintaan);
                     }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                
+                Sequel.AutoComitTrue();
+                if(sukses==true){
+                    ttl=0;
+                    LTotal.setText("0");
+                    jml=tbDokter.getRowCount();
                     
                     for(i=0;i<jml;i++){ 
                         tbDokter.setValueAt("",i,0);
@@ -799,11 +806,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     nomorpermintaan="";
-                }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
                 }
-                Sequel.AutoComitTrue();
                 autoNomor();
             }
         }

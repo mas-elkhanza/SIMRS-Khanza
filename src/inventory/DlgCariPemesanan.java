@@ -1185,6 +1185,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmsup.setText("");
         kdptg.setText("");
         nmptg.setText("");
+        KdIF.setText("");
+        NmIF.setText("");
         TabRawatMouseClicked(null);
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1620,23 +1622,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
             
             if(!nmsup.getText().equals("")){
-                datasuplier=" and datasuplier.nama_suplier='"+nmsup.getText()+"' ";
+                datasuplier=" and pemesanan.kode_suplier='"+kdsup.getText()+"' ";
             }
             
             if(!nmptg.getText().equals("")){
-                datapetugas=" and petugas.nama='"+nmptg.getText()+"' ";
+                datapetugas=" and pemesanan.nip='"+kdptg.getText()+"' ";
             }
             
             if(!nmjenis.getText().equals("")){
-                datajenis=" and jenis.nama='"+nmjenis.getText()+"' ";
+                datajenis=" and databarang.kdjns='"+kdjenis.getText()+"' ";
             }
             
             if(!nmbar.getText().equals("")){
-                databarang=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                databarang=" and detailpesan.kode_brng='"+kdbar.getText()+"' ";
             }
             
             if(!NmIF.getText().equals("")){
-                dataindustri=" and industrifarmasi.nama_industri='"+NmIF.getText()+"' ";
+                dataindustri=" and databarang.kode_industri='"+KdIF.getText()+"' ";
             }
             
             if(!Status.getSelectedItem().toString().equals("Semua")){
@@ -1649,23 +1651,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                          " detailpesan.no_batch like '%"+TCari.getText()+"%' or industrifarmasi.nama_industri like '%"+TCari.getText()+"%' or pemesanan.no_order like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') ";
             }
             
-            ps=koneksi.prepareStatement("select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
-                    "pemesanan.kode_suplier,datasuplier.nama_suplier, "+
-                    "pemesanan.nip,petugas.nama,bangsal.nm_bangsal,pemesanan.tgl_faktur, "+
-                    "pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,"+
-                    "pemesanan.meterai,pemesanan.tagihan,pemesanan.no_order "+
-                    " from pemesanan inner join datasuplier inner join petugas inner join bangsal  "+
-                    " inner join detailpesan inner join databarang inner join kodesatuan "+
-                    " inner join jenis inner join industrifarmasi "+
-                    " on detailpesan.kode_brng=databarang.kode_brng "+
-                    " and detailpesan.kode_sat=kodesatuan.kode_sat "+
-                    " and pemesanan.kd_bangsal=bangsal.kd_bangsal "+
-                    " and pemesanan.no_faktur=detailpesan.no_faktur "+
-                    " and pemesanan.kode_suplier=datasuplier.kode_suplier "+
-                    " and databarang.kode_industri=industrifarmasi.kode_industri "+
-                    " and pemesanan.nip=petugas.nip and databarang.kdjns=jenis.kdjns"+
-                    " where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+statusbayar+datacari+
-                    " group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur ");
+            ps=koneksi.prepareStatement(
+                "select pemesanan.tgl_pesan,pemesanan.no_faktur,pemesanan.kode_suplier,datasuplier.nama_suplier,pemesanan.nip,petugas.nama,bangsal.nm_bangsal,"+
+                "pemesanan.tgl_faktur,pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,pemesanan.meterai,pemesanan.tagihan,pemesanan.no_order "+
+                "from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier inner join petugas on pemesanan.nip=petugas.nip "+
+                "inner join bangsal on pemesanan.kd_bangsal=bangsal.kd_bangsal inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
+                "inner join databarang on detailpesan.kode_brng=databarang.kode_brng inner join kodesatuan on detailpesan.kode_sat=kodesatuan.kode_sat "+
+                "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                "where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+statusbayar+datacari+
+                "group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur"
+            );
             try {
                 rs=ps.executeQuery();
                 tagihan=0;
@@ -1674,28 +1669,45 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           rs.getString(5)+", "+rs.getString(6),"Pengadaan di "+rs.getString(7) +" :","","","","","","",""
                     });  
                     
-                    ps2=koneksi.prepareStatement("select detailpesan.kode_brng,databarang.nama_brng, "+
-                        "detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
-                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,"+
-                        "detailpesan.no_batch,industrifarmasi.nama_industri,detailpesan.kadaluarsa "+
-                        "from detailpesan inner join databarang inner join kodesatuan inner join jenis inner join industrifarmasi "+
-                        " on detailpesan.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
-                        " and databarang.kode_industri=industrifarmasi.kode_industri and detailpesan.kode_sat=kodesatuan.kode_sat where "+
-                        " detailpesan.no_faktur=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and "+
-                        " (detailpesan.kode_brng like ? or databarang.nama_brng like ? or detailpesan.kode_sat like ? or detailpesan.no_batch like ? or "+
-                        " industrifarmasi.nama_industri like ? or jenis.nama like ?) order by detailpesan.kode_brng  ");
+                    ps2=koneksi.prepareStatement(
+                        "select detailpesan.kode_brng,databarang.nama_brng,detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
+                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,detailpesan.no_batch,industrifarmasi.nama_industri,detailpesan.kadaluarsa "+
+                        "from detailpesan inner join databarang on detailpesan.kode_brng=databarang.kode_brng inner join kodesatuan on detailpesan.kode_sat=kodesatuan.kode_sat "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                        "where detailpesan.no_faktur=? "+(nmjenis.getText().trim().equals("")?"":"and databarang.kdjns=? ")+(nmbar.getText().trim().equals("")?"":"and detailpesan.kode_brng=? ")+
+                        (NmIF.getText().trim().equals("")?"":"and databarang.kode_industri=? ")+(TCari.getText().trim().equals("")?"":"and (detailpesan.kode_brng like ? or "+
+                        "databarang.nama_brng like ? or detailpesan.kode_sat like ? or detailpesan.no_batch like ? or industrifarmasi.nama_industri like ? or jenis.nama like ?) ")+
+                        "order by detailpesan.kode_brng");
                     
                     try {
+                        i=2;
                         ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+nmjenis.getText()+"%");
-                        ps2.setString(3,"%"+nmbar.getText()+"%");
-                        ps2.setString(4,"%"+NmIF.getText()+"%");
-                        ps2.setString(5,"%"+TCari.getText()+"%");
-                        ps2.setString(6,"%"+TCari.getText()+"%");
-                        ps2.setString(7,"%"+TCari.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,"%"+TCari.getText()+"%");
-                        ps2.setString(10,"%"+TCari.getText()+"%");
+                        if(!nmjenis.getText().trim().equals("")){
+                            ps2.setString(i,kdjenis.getText());
+                            i++;
+                        }
+                        if(!nmbar.getText().trim().equals("")){
+                            ps2.setString(i,kdbar.getText());
+                            i++;
+                        }    
+                        if(!NmIF.getText().trim().equals("")){
+                            ps2.setString(i,KdIF.getText());
+                            i++;
+                        }    
+                        if(!TCari.getText().trim().equals("")){
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                        }    
+                            
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){
@@ -1748,42 +1760,34 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 tanggal=" pemesanan.tgl_faktur between '"+Valid.SetTgl(TglFaktur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglFaktur2.getSelectedItem()+"")+"' ";
             }
             
-            datanofaktur="";
             if(!NoFaktur.getText().equals("")){
-                datanofaktur=" and pemesanan.no_faktur like '%"+NoFaktur.getText()+"%' ";
+                datanofaktur=" and pemesanan.no_faktur='"+NoFaktur.getText()+"' ";
             }
             
-            datasuplier="";
             if(!nmsup.getText().equals("")){
-                datasuplier=" and datasuplier.nama_suplier like '%"+nmsup.getText()+"%' ";
+                datasuplier=" and pemesanan.kode_suplier='"+kdsup.getText()+"' ";
             }
             
-            datapetugas="";
             if(!nmptg.getText().equals("")){
-                datapetugas=" and petugas.nama like '%"+nmptg.getText()+"%' ";
+                datapetugas=" and pemesanan.nip='"+kdptg.getText()+"' ";
             }
             
-            datajenis="";
             if(!nmjenis.getText().equals("")){
-                datajenis=" and jenis.nama like '%"+nmjenis.getText()+"%' ";
+                datajenis=" and databarang.kdjns='"+kdjenis.getText()+"' ";
             }
             
-            databarang="";
             if(!nmbar.getText().equals("")){
-                databarang=" and databarang.nama_brng like '%"+nmbar.getText()+"%' ";
+                databarang=" and detailpesan.kode_brng='"+kdbar.getText()+"' ";
             }
             
-            dataindustri="";
             if(!NmIF.getText().equals("")){
-                dataindustri=" and industrifarmasi.nama_industri like '%"+NmIF.getText()+"%' ";
+                dataindustri=" and databarang.kode_industri='"+KdIF.getText()+"' ";
             }
             
-            statusbayar="";
             if(!Status.getSelectedItem().toString().equals("Semua")){
                 statusbayar=" and pemesanan.status='"+Status.getSelectedItem().toString()+"' ";
             }
             
-            datacari="";
             if(!TCari.getText().trim().equals("")){
                 datacari=" and (pemesanan.no_faktur like '%"+TCari.getText()+"%' or pemesanan.kode_suplier like '%"+TCari.getText()+"%' or datasuplier.nama_suplier like '%"+TCari.getText()+"%' or pemesanan.nip like '%"+TCari.getText()+"%' or "+
                          " petugas.nama like '%"+TCari.getText()+"%' or bangsal.nm_bangsal like '%"+TCari.getText()+"%' or detailpesan.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or detailpesan.kode_sat like '%"+TCari.getText()+"%' or "+
@@ -1813,23 +1817,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>PPN(Rp)</td>").append(
                     "<td valign='top' bgcolor='#FFFAFA' align='center' width='85px'>Tagihan(Rp)</td>").append(
                 "</tr>"); 
-            ps=koneksi.prepareStatement("select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
-                    "pemesanan.kode_suplier,datasuplier.nama_suplier, "+
-                    "pemesanan.nip,petugas.nama,bangsal.nm_bangsal,pemesanan.tgl_faktur, "+
-                    "pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,"+
-                    "pemesanan.meterai,pemesanan.tagihan,pemesanan.no_order "+
-                    " from pemesanan inner join datasuplier inner join petugas inner join bangsal  "+
-                    " inner join detailpesan inner join databarang inner join kodesatuan "+
-                    " inner join jenis inner join industrifarmasi "+
-                    " on detailpesan.kode_brng=databarang.kode_brng "+
-                    " and detailpesan.kode_sat=kodesatuan.kode_sat "+
-                    " and pemesanan.kd_bangsal=bangsal.kd_bangsal "+
-                    " and pemesanan.no_faktur=detailpesan.no_faktur "+
-                    " and pemesanan.kode_suplier=datasuplier.kode_suplier "+
-                    " and databarang.kode_industri=industrifarmasi.kode_industri "+
-                    " and pemesanan.nip=petugas.nip and databarang.kdjns=jenis.kdjns"+
-                    " where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+statusbayar+datacari+
-                    " group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur ");
+            ps=koneksi.prepareStatement(
+                "select pemesanan.tgl_pesan,pemesanan.no_faktur,pemesanan.kode_suplier,datasuplier.nama_suplier,pemesanan.nip,petugas.nama,bangsal.nm_bangsal,"+
+                "pemesanan.tgl_faktur,pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,pemesanan.meterai,pemesanan.tagihan,pemesanan.no_order "+
+                "from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier inner join petugas on pemesanan.nip=petugas.nip "+
+                "inner join bangsal on pemesanan.kd_bangsal=bangsal.kd_bangsal inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
+                "inner join databarang on detailpesan.kode_brng=databarang.kode_brng inner join kodesatuan on detailpesan.kode_sat=kodesatuan.kode_sat "+
+                "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                "where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+statusbayar+datacari+
+                "group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur"
+            );
             try {
                 rs=ps.executeQuery();
                 tagihan=0;
@@ -1850,28 +1847,44 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             "<td valign='top' align='right'>").append(rs.getString("tagihan")).append("</td>").append(
                         "</tr>");  
                     
-                    ps2=koneksi.prepareStatement("select detailpesan.kode_brng,databarang.nama_brng, "+
-                        "detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
-                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,"+
-                        "detailpesan.no_batch,industrifarmasi.nama_industri,detailpesan.kadaluarsa "+
-                        "from detailpesan inner join databarang inner join kodesatuan inner join jenis inner join industrifarmasi "+
-                        " on detailpesan.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
-                        " and databarang.kode_industri=industrifarmasi.kode_industri and detailpesan.kode_sat=kodesatuan.kode_sat where "+
-                        " detailpesan.no_faktur=? and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and "+
-                        " (detailpesan.kode_brng like ? or databarang.nama_brng like ? or detailpesan.kode_sat like ? or detailpesan.no_batch like ? or "+
-                        " industrifarmasi.nama_industri like ? or jenis.nama like ?) order by detailpesan.kode_brng  ");
+                    ps2=koneksi.prepareStatement(
+                        "select detailpesan.kode_brng,databarang.nama_brng,detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
+                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,detailpesan.no_batch,industrifarmasi.nama_industri,detailpesan.kadaluarsa "+
+                        "from detailpesan inner join databarang on detailpesan.kode_brng=databarang.kode_brng inner join kodesatuan on detailpesan.kode_sat=kodesatuan.kode_sat "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "+
+                        "where detailpesan.no_faktur=? "+(nmjenis.getText().trim().equals("")?"":"and databarang.kdjns=? ")+(nmbar.getText().trim().equals("")?"":"and detailpesan.kode_brng=? ")+
+                        (NmIF.getText().trim().equals("")?"":"and databarang.kode_industri=? ")+(TCari.getText().trim().equals("")?"":"and (detailpesan.kode_brng like ? or "+
+                        "databarang.nama_brng like ? or detailpesan.kode_sat like ? or detailpesan.no_batch like ? or industrifarmasi.nama_industri like ? or jenis.nama like ?) ")+
+                        "order by detailpesan.kode_brng");
                     
                     try {
+                        i=2;
                         ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+nmjenis.getText()+"%");
-                        ps2.setString(3,"%"+nmbar.getText()+"%");
-                        ps2.setString(4,"%"+NmIF.getText()+"%");
-                        ps2.setString(5,"%"+TCari.getText()+"%");
-                        ps2.setString(6,"%"+TCari.getText()+"%");
-                        ps2.setString(7,"%"+TCari.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,"%"+TCari.getText()+"%");
-                        ps2.setString(10,"%"+TCari.getText()+"%");
+                        if(!nmjenis.getText().trim().equals("")){
+                            ps2.setString(i,kdjenis.getText());
+                            i++;
+                        }
+                        if(!nmbar.getText().trim().equals("")){
+                            ps2.setString(i,kdbar.getText());
+                            i++;
+                        }    
+                        if(!NmIF.getText().trim().equals("")){
+                            ps2.setString(i,KdIF.getText());
+                            i++;
+                        }    
+                        if(!TCari.getText().trim().equals("")){
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                            i++;
+                            ps2.setString(i,"%"+TCari.getText()+"%");
+                        } 
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){

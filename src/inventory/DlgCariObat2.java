@@ -1486,11 +1486,6 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     
                     if(sukses==true){
                         Sequel.Commit();
-                        for(i=0;i<tbObat.getRowCount();i++){
-                            tbObat.setValueAt("",i,1);
-                        }
-                        Valid.tabelKosong(tabModeObatRacikan);
-                        Valid.tabelKosong(tabModeDetailObatRacikan);
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -1501,6 +1496,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ChkJln.setSelected(true);
                                                                     
                     if(sukses==true){
+                        for(i=0;i<tbObat.getRowCount();i++){
+                            tbObat.setValueAt("",i,1);
+                        }
+                        Valid.tabelKosong(tabModeObatRacikan);
+                        Valid.tabelKosong(tabModeDetailObatRacikan);
                         if(ChkNoResep.isSelected()==true){
                             DlgResepObat resep=new DlgResepObat(null,false);
                             resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
