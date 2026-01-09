@@ -25,8 +25,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -42,6 +45,8 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i=0,jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0;   
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -81,19 +86,19 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -309,13 +314,13 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-       tampil();
+       runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            tampil();
+            runBackground(() ->tampil());
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             Valid.pindah(evt, TCari, BtnPrint);
@@ -334,7 +339,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
            TCari.setText("");
-           tampil();
+           runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -377,15 +382,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){        
+    private void tampil(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
-                "from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.nm_perawatan like ? order by jns_perawatan_lab.nm_perawatan");
+                "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from jns_perawatan_lab where jns_perawatan_lab.status='1' "+(TCari.getText().trim().equals("")?"":"and jns_perawatan_lab.nm_perawatan like ? ")+"order by jns_perawatan_lab.nm_perawatan");
             try {
-                ps.setString(1,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText()+"%");
+                } 
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -455,6 +461,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }    
     }
 
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

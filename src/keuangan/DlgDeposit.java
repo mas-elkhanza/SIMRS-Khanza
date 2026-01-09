@@ -882,6 +882,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         ChkInput.setSelected(true);
         isForm(); 
         nilaippn=0;
+        Keterangan.setText("");
         BesarPPN.setText("0");
         BesarDeposit.setText("0");
         DibayarPasien.setText("0");
@@ -945,7 +946,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
                     if(sukses==true){
                         runBackground(() ->tampil());
-                        BtnBatalActionPerformed(evt);
+                        autoNomor();
                     }
                 }
             }

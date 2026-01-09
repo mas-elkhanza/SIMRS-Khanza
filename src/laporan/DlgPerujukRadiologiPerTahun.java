@@ -25,8 +25,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -42,6 +45,8 @@ public final class DlgPerujukRadiologiPerTahun extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i=0,ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,
             ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0,jan=0,
             feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0;   
@@ -83,19 +88,19 @@ public final class DlgPerujukRadiologiPerTahun extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -311,13 +316,13 @@ public final class DlgPerujukRadiologiPerTahun extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-       tampil();
+       runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            tampil();
+            runBackground(() ->tampil());
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             Valid.pindah(evt, TCari, BtnPrint);
@@ -336,7 +341,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
            TCari.setText("");
-           tampil();
+           runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -379,31 +384,33 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){        
+    private void tampil(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                "select kd_dokter,nm_dokter from dokter where status='1' and nm_dokter like ? order by nm_dokter");
+                "select kd_dokter,nm_dokter from dokter where status='1' "+(TCari.getText().trim().equals("")?"":"and nm_dokter like ? ")+"order by nm_dokter");
             try {
-                ps.setString(1,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 i=1;
                 ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;
                 ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
                 while(rs.next()){
-                    jan=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-01%");
-                    feb=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-02%");
-                    mar=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-03%");
-                    apr=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-04%");
-                    mei=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-05%");
-                    jun=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-06%");
-                    jul=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-07%");
-                    agu=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-08%");
-                    sep=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-09%");
-                    okt=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-10%");
-                    nov=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-11%");
-                    des=Sequel.cariInteger("select count(dokter_perujuk) from periksa_radiologi where dokter_perujuk=? and tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-12%");
+                    jan=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-01%");
+                    feb=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-02%");
+                    mar=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-03%");
+                    apr=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-04%");
+                    mei=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-05%");
+                    jun=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-06%");
+                    jul=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-07%");
+                    agu=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-08%");
+                    sep=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-09%");
+                    okt=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-10%");
+                    nov=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-11%");
+                    des=Sequel.cariInteger("select count(periksa_radiologi.dokter_perujuk) from periksa_radiologi where periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa like ?",rs.getString("kd_dokter"),"%"+ThnCari.getSelectedItem()+"-12%");
                     ttljan=ttljan+jan;
                     ttlfeb=ttlfeb+feb;
                     ttlmar=ttlmar+mar;
@@ -447,6 +454,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }    
     }
 
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
