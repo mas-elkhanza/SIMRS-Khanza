@@ -693,11 +693,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -1422,7 +1417,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
@@ -1736,11 +1730,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             }
         }
 }//GEN-LAST:event_tbDokterKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        statushasil="";
-        runBackground(() -> tampil());
-    }//GEN-LAST:event_formWindowOpened
 
     private void MnCetakNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakNotaActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2390,8 +2379,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inner join petugas on periksa_radiologi.nip=petugas.nip "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter where "+statushasil+
-                        "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                        "and petugas.nip like ? and (pasien.nm_pasien like ? or petugas.nama like ? or reg_periksa.no_rkm_medis like ? or penjab.png_jawab like ? ) "+
+                        "periksa_radiologi.tgl_periksa between ? and ? "+
+                        (NoRawat.getText().trim().equals("")?"":"and periksa_radiologi.no_rawat=? ")+
+                        (kdmem.getText().trim().equals("")?"":"and reg_periksa.no_rkm_medis=? ")+
+                        (kdptg.getText().trim().equals("")?"":"and petugas.nip=? ")+
+                        (TCari.getText().trim().equals("")?"":"and (pasien.nm_pasien like ? or "+
+                        "petugas.nama like ? or reg_periksa.no_rkm_medis like ? or penjab.png_jawab like ?) ")+
                         "group by concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) "+
                         "order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
             }
@@ -2403,13 +2396,28 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }else{
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(3,"%"+NoRawat.getText()+"%");
-                    ps.setString(4,"%"+kdmem.getText()+"%");
-                    ps.setString(5,"%"+kdptg.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+TCari.getText().trim()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    i=3;
+                    if(!NoRawat.getText().trim().equals("")){
+                        ps.setString(i,NoRawat.getText());
+                        i++;
+                    }
+                    if(!kdmem.getText().trim().equals("")){
+                        ps.setString(i,kdmem.getText());
+                        i++;
+                    }    
+                    if(!kdptg.getText().trim().equals("")){
+                        ps.setString(i,kdptg.getText());
+                        i++;
+                    }    
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(i,"%"+TCari.getText().trim()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText().trim()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText().trim()+"%");
+                        i++;
+                        ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    } 
                 }
                     
                 rs=ps.executeQuery();
