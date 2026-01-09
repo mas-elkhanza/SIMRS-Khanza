@@ -27,10 +27,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -51,6 +54,8 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
     private Date date = null;
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJadwal
      * @param parent
@@ -73,19 +78,19 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -472,7 +477,7 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari,BtnKeluar);
         }
@@ -481,7 +486,7 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         filter="Semua";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -494,7 +499,7 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         filter="Semua";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -513,27 +518,27 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
 
     private void ppRegistrasiPasienBaruBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienBaruBtnPrintActionPerformed
         filter="Registrasi Baru";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRegistrasiPasienBaruBtnPrintActionPerformed
 
     private void ppRegistrasiPasienLamaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienLamaBtnPrintActionPerformed
         filter="Registrasi Lama";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRegistrasiPasienLamaBtnPrintActionPerformed
 
     private void ppRegistrasiPasienBaru1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienBaru1BtnPrintActionPerformed
         filter="Registrasi Baru Batal";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRegistrasiPasienBaru1BtnPrintActionPerformed
 
     private void ppRegistrasiPasienLama1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienLama1BtnPrintActionPerformed
         filter="Registrasi Lama Batal";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRegistrasiPasienLama1BtnPrintActionPerformed
 
     private void ppRegistrasiPasienNonBatalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienNonBatalBtnPrintActionPerformed
         filter="Registrasi Non Batal";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppRegistrasiPasienNonBatalBtnPrintActionPerformed
 
     /**
@@ -769,5 +774,21 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
         return jml;
     }
     
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
