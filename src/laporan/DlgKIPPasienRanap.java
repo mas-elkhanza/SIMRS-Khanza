@@ -1,5 +1,4 @@
 package laporan;
-import keuangan.Jurnal;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -7,8 +6,6 @@ import fungsi.akses;
 import fungsi.batasInput;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -18,7 +15,10 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -29,8 +29,8 @@ public class DlgKIPPasienRanap extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
-    private StringBuilder htmlContent;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int hr0s6l=0,hr0s6p=0,hr7s28l=0,hr7s28p=0,hr28s1thl=0,hr28s1thp=0,th1s4l=0,th1s4p=0,th5s14l=0,th5s14p=0,
                 th15s24l=0,th15s24p=0,th25s44l=0,th25s44p=0,th45s64l=0,th45s64p=0,lbth65l=0,lbth65p=0,matilb48=0,
                 matikr48=0,pulang=0,aps=0,lari=0,rujuk=0,jamdiff=0;
@@ -65,31 +65,7 @@ public class DlgKIPPasienRanap extends javax.swing.JDialog {
         
         kdpenyakit.setDocument(new batasInput((byte)30).getKata(kdpenyakit));
         nmpenyakit.setDocument(new batasInput((byte)30).getKata(nmpenyakit)); 
-        
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penyakit.getTable().getSelectedRow()!= -1){                   
-                    kdpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
-                    nmpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
-                }     
-                kdpenyakit.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0;
 
     /** This method is called from within the constructor to
@@ -128,13 +104,8 @@ public class DlgKIPPasienRanap extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kartu Indeks Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kartu Indeks Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -268,7 +239,7 @@ public class DlgKIPPasienRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -388,9 +359,9 @@ private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         JOptionPane.showMessageDialog(null,"Silahkan masukkan penyakit yang mau dicari terlebih dahulu..!!!");
     }else{
         if(TabRawat.getSelectedIndex()==0){
-            prosesCari();
+            runBackground(() ->prosesCari());
         }else if(TabRawat.getSelectedIndex()==1){
-            prosesCari2();
+            runBackground(() ->prosesCari2());
         }
     }
 }//GEN-LAST:event_btnCariActionPerformed
@@ -403,15 +374,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         }
 }//GEN-LAST:event_btnCariKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
-
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            prosesCari();
+            runBackground(() ->prosesCari());
         }else if(TabRawat.getSelectedIndex()==1){
-            prosesCari2();
+            runBackground(() ->prosesCari2());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -430,6 +397,29 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }//GEN-LAST:event_nmpenyakitKeyPressed
 
     private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
+        DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penyakit.getTable().getSelectedRow()!= -1){                   
+                    kdpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
+                    nmpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                }     
+                kdpenyakit.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         penyakit.isCek();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
@@ -480,61 +470,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            htmlContent = new StringBuilder();
-            htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='3'>NO.R.M.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='3'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>NIK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.MASUK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.KELUAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='3'>LAMA</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>7-27hr</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>1-4th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>5-14th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>15-24th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>25-44th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>45-64th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>&rsaquo;&nbsp;64</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>PULANG</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>APS</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>LARI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>RUJUK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>&rsaquo;&nbsp;48&nbsp;JAM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>&lsaquo;&nbsp;48&nbsp;JAM</td>"+
-                "</tr>"
-            );   
+            StringBuilder htmlContent = new StringBuilder();
+            htmlContent.append("<tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='3'>NO.</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='3'>NO.R.M.</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='3'>Nama Pasien</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>NIK</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.MASUK</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.KELUAR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='3'>LAMA</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td></tr><tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>0-6 hr</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>7-27hr</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>28hr-&lsaquo;1th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>1-4th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>5-14th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>15-24th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>25-44th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>45-64th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>&rsaquo;&nbsp;64</td></tr><tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>PULANG</td><td valign='middle' bgcolor='#FFFAFA' align='center'>APS</td><td valign='middle' bgcolor='#FFFAFA' align='center'>LARI</td><td valign='middle' bgcolor='#FFFAFA' align='center'>RUJUK</td><td valign='middle' bgcolor='#FFFAFA' align='center'>&rsaquo;&nbsp;48&nbsp;JAM</td><td valign='middle' bgcolor='#FFFAFA' align='center'>&lsaquo;&nbsp;48&nbsp;JAM</td></tr>");   
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
                     "from reg_periksa inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
@@ -553,90 +491,93 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     sthr0s6l="";sthr0s6p="";sthr7s28l="";sthr7s28p="";sthr28s1thl="";sthr28s1thp="";stth1s4l="";stth1s4p="";
                     stth5s14l="";stth5s14p="";stth15s24l="";stth15s24p="";stth25s44l="";stth25s44p="";stth45s64l="";stth45s64p="";
                     stlbth65l="";stlbth65p="";
-                    if(rs.getString("sttsumur").equals("Hr")){
-                        if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=6)){
-                            if(rs.getString("jk").equals("L")){
-                                hr0s6l++;
-                                sthr0s6l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                hr0s6p++;
-                                sthr0s6p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
-                            if(rs.getString("jk").equals("L")){
-                                hr7s28l++;
-                                sthr7s28l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                hr7s28p++;
-                                sthr7s28p="V";
-                            }
-                        }else if(rs.getInt("umurdaftar")>=28){
+                    switch (rs.getString("sttsumur")) {
+                        case "Hr":
+                            if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=6)){
+                                if(rs.getString("jk").equals("L")){
+                                    hr0s6l++;
+                                    sthr0s6l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr0s6p++;
+                                    sthr0s6p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
+                                if(rs.getString("jk").equals("L")){
+                                    hr7s28l++;
+                                    sthr7s28l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr7s28p++;
+                                    sthr7s28p="V";
+                                }
+                            }else if(rs.getInt("umurdaftar")>=28){
+                                if(rs.getString("jk").equals("L")){
+                                    hr28s1thl++;
+                                    sthr28s1thl="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr28s1thp++;
+                                    sthr28s1thp="V";
+                                }
+                            }   break;
+                        case "Bl":
                             if(rs.getString("jk").equals("L")){
                                 hr28s1thl++;
                                 sthr28s1thl="V";
                             }else if(rs.getString("jk").equals("P")){
                                 hr28s1thp++;
                                 sthr28s1thp="V";
-                            }
-                        }
-                    }else if(rs.getString("sttsumur").equals("Bl")){
-                        if(rs.getString("jk").equals("L")){
-                            hr28s1thl++;
-                            sthr28s1thl="V";
-                        }else if(rs.getString("jk").equals("P")){
-                            hr28s1thp++;
-                            sthr28s1thp="V";
-                        }
-                    }else if(rs.getString("sttsumur").equals("Th")){
-                        if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=4)){
-                            if(rs.getString("jk").equals("L")){
-                                th1s4l++;
-                                stth1s4l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th1s4p++;
-                                stth1s4p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=5)&&(rs.getInt("umurdaftar")<=14)){
-                            if(rs.getString("jk").equals("L")){
-                                th5s14l++;
-                                stth5s14l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th5s14p++;
-                                stth5s14p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=15)&&(rs.getInt("umurdaftar")<=24)){
-                            if(rs.getString("jk").equals("L")){
-                                th15s24l++;
-                                stth15s24l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th15s24p++;
-                                stth15s24p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=25)&&(rs.getInt("umurdaftar")<=44)){
-                            if(rs.getString("jk").equals("L")){
-                                th25s44l++;
-                                stth25s44l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th25s44p++;
-                                stth25s44p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=45)&&(rs.getInt("umurdaftar")<=64)){
-                            if(rs.getString("jk").equals("L")){
-                                th45s64l++;
-                                stth45s64l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th45s64p++;
-                                stth45s64p="V";
-                            }
-                        }else if(rs.getInt("umurdaftar")>=65){
-                            if(rs.getString("jk").equals("L")){
-                                lbth65l++;
-                                stlbth65l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                lbth65p++;
-                                stlbth65p="V";
-                            }
-                        }
+                            }   break;
+                        case "Th":
+                            if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=4)){
+                                if(rs.getString("jk").equals("L")){
+                                    th1s4l++;
+                                    stth1s4l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th1s4p++;
+                                    stth1s4p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=5)&&(rs.getInt("umurdaftar")<=14)){
+                                if(rs.getString("jk").equals("L")){
+                                    th5s14l++;
+                                    stth5s14l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th5s14p++;
+                                    stth5s14p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=15)&&(rs.getInt("umurdaftar")<=24)){
+                                if(rs.getString("jk").equals("L")){
+                                    th15s24l++;
+                                    stth15s24l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th15s24p++;
+                                    stth15s24p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=25)&&(rs.getInt("umurdaftar")<=44)){
+                                if(rs.getString("jk").equals("L")){
+                                    th25s44l++;
+                                    stth25s44l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th25s44p++;
+                                    stth25s44p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=45)&&(rs.getInt("umurdaftar")<=64)){
+                                if(rs.getString("jk").equals("L")){
+                                    th45s64l++;
+                                    stth45s64l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th45s64p++;
+                                    stth45s64p="V";
+                                }
+                            }else if(rs.getInt("umurdaftar")>=65){
+                                if(rs.getString("jk").equals("L")){
+                                    lbth65l++;
+                                    stlbth65l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    lbth65p++;
+                                    stlbth65p="V";
+                                }
+                            }   break;
+                        default:
+                            break;
                     }
                     
                     diagnosa="";
@@ -674,54 +615,70 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             tglkeluar=rs2.getString("tgl_keluar")+" "+rs2.getString("jam_keluar");
                             lamainap=rs2.getString("lama");
-                            if(rs2.getString("stts_pulang").equals("Sehat")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Rujuk")){
-                                strujuk="V";
-                                rujuk++;
-                            }else if(rs2.getString("stts_pulang").equals("APS")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("+")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Meninggal")){
-                                jamdiff=Sequel.cariInteger("SELECT TIMESTAMPDIFF(HOUR,'"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"','"+tglkeluar+"')");
-                                if(jamdiff<=48){
-                                    stmatikr48="V";
-                                    matikr48++;
-                                }else if(jamdiff>48){
-                                    stmatilb48="V";
-                                    matilb48++;
-                                }
-                            }else if(rs2.getString("stts_pulang").equals("Sembuh")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Membaik")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Pulang Paksa")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("-")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Pindah Kamar")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Status Belum Lengkap")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Atas Persetujuan Dokter")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Atas Permintaan Sendiri")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("Lain-lain")){
-                                stlari="V";
-                                lari++;
+                            switch (rs2.getString("stts_pulang")) {
+                                case "Sehat":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Rujuk":
+                                    strujuk="V";
+                                    rujuk++;
+                                    break;
+                                case "APS":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "+":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Meninggal":
+                                    jamdiff=Sequel.cariInteger("SELECT TIMESTAMPDIFF(HOUR,'"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"','"+tglkeluar+"')");
+                                    if(jamdiff<=48){
+                                        stmatikr48="V";
+                                        matikr48++;
+                                    }else if(jamdiff>48){
+                                        stmatilb48="V";
+                                        matilb48++;
+                                    }   break;
+                                case "Sembuh":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Membaik":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Pulang Paksa":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "-":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Pindah Kamar":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Status Belum Lengkap":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Atas Persetujuan Dokter":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Atas Permintaan Sendiri":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "Lain-lain":
+                                    stlari="V";
+                                    lari++;
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     } catch (Exception e) {
@@ -735,42 +692,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     } 
                     
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+i+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
-                            "<td valign='middle' align='center'>"+tglkeluar+"</td>"+
-                            "<td valign='middle' align='center'>"+lamainap+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr0s6l+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr0s6p+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr7s28l+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr7s28p+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr28s1thl+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr28s1thp+"</td>"+
-                            "<td valign='middle' align='center'>"+stth1s4l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth1s4p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth5s14l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth5s14p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth15s24l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth15s24p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth25s44l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth25s44p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth45s64l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth45s64p+"</td>"+
-                            "<td valign='middle' align='center'>"+stlbth65l+"</td>"+
-                            "<td valign='middle' align='center'>"+stlbth65p+"</td>"+
-                            "<td valign='middle' align='center'>"+diagnosa+"</td>"+
-                            "<td valign='middle' align='center'>"+stpulang+"</td>"+
-                            "<td valign='middle' align='center'>"+staps+"</td>"+
-                            "<td valign='middle' align='center'>"+stlari+"</td>"+
-                            "<td valign='middle' align='center'>"+strujuk+"</td>"+
-                            "<td valign='middle' align='center'>"+stmatilb48+"</td>"+
-                            "<td valign='middle' align='center'>"+stmatikr48+"</td>"+
-                        "</tr>"
-                    );
+                    htmlContent.append("<tr class='isi'><td valign='middle' align='center'>").append(i).append("</td><td valign='middle' align='center'>").append(rs.getString("no_rkm_medis")).append("</td><td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td><td valign='middle' align='center'>").append(rs.getString("no_ktp")).append("</td><td valign='middle' align='center'>").append(rs.getString("tgl_registrasi")).append("</td><td valign='middle' align='center'>").append(tglkeluar).append("</td><td valign='middle' align='center'>").append(lamainap).append("</td><td valign='middle' align='center'>").append(sthr0s6l).append("</td><td valign='middle' align='center'>").append(sthr0s6p).append("</td><td valign='middle' align='center'>").append(sthr7s28l).append("</td><td valign='middle' align='center'>").append(sthr7s28p).append("</td><td valign='middle' align='center'>").append(sthr28s1thl).append("</td><td valign='middle' align='center'>").append(sthr28s1thp).append("</td><td valign='middle' align='center'>").append(stth1s4l).append("</td><td valign='middle' align='center'>").append(stth1s4p).append("</td><td valign='middle' align='center'>").append(stth5s14l).append("</td><td valign='middle' align='center'>").append(stth5s14p).append("</td><td valign='middle' align='center'>").append(stth15s24l).append("</td><td valign='middle' align='center'>").append(stth15s24p).append("</td><td valign='middle' align='center'>").append(stth25s44l).append("</td><td valign='middle' align='center'>").append(stth25s44p).append("</td><td valign='middle' align='center'>").append(stth45s64l).append("</td><td valign='middle' align='center'>").append(stth45s64p).append("</td><td valign='middle' align='center'>").append(stlbth65l).append("</td><td valign='middle' align='center'>").append(stlbth65p).append("</td><td valign='middle' align='center'>").append(diagnosa).append("</td><td valign='middle' align='center'>").append(stpulang).append("</td><td valign='middle' align='center'>").append(staps).append("</td><td valign='middle' align='center'>").append(stlari).append("</td><td valign='middle' align='center'>").append(strujuk).append("</td><td valign='middle' align='center'>").append(stmatilb48).append("</td><td valign='middle' align='center'>").append(stmatikr48).append("</td></tr>");
                     i++;
                 }
             } catch (Exception e) {
@@ -785,35 +707,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             }
             
             if((i-1)>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='7'>Total :</td>"+
-                        "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
-                        "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
-                        "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
-                        "<td valign='middle' align='center'>"+hr7s28p+"</td>"+
-                        "<td valign='middle' align='center'>"+hr28s1thl+"</td>"+
-                        "<td valign='middle' align='center'>"+hr28s1thp+"</td>"+
-                        "<td valign='middle' align='center'>"+th1s4l+"</td>"+
-                        "<td valign='middle' align='center'>"+th1s4p+"</td>"+
-                        "<td valign='middle' align='center'>"+th5s14l+"</td>"+
-                        "<td valign='middle' align='center'>"+th5s14p+"</td>"+
-                        "<td valign='middle' align='center'>"+th15s24l+"</td>"+
-                        "<td valign='middle' align='center'>"+th15s24p+"</td>"+
-                        "<td valign='middle' align='center'>"+th25s44l+"</td>"+
-                        "<td valign='middle' align='center'>"+th25s44p+"</td>"+
-                        "<td valign='middle' align='center'>"+th45s64l+"</td>"+
-                        "<td valign='middle' align='center'>"+th45s64p+"</td>"+
-                        "<td valign='middle' align='center'>"+lbth65l+"</td>"+
-                        "<td valign='middle' align='center'>"+lbth65p+"</td>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='center'>"+pulang+"</td>"+
-                        "<td valign='middle' align='center'>"+aps+"</td>"+
-                        "<td valign='middle' align='center'>"+lari+"</td>"+
-                        "<td valign='middle' align='center'>"+rujuk+"</td>"+
-                        "<td valign='middle' align='center'>"+matilb48+"</td>"+
-                        "<td valign='middle' align='center'>"+matikr48+"</td>"+
-                    "</tr>");
+                htmlContent.append("<tr class='isi'><td valign='middle' align='right' colspan='7'>Total :</td><td valign='middle' align='center'>").append(hr0s6l).append("</td><td valign='middle' align='center'>").append(hr0s6p).append("</td><td valign='middle' align='center'>").append(hr7s28l).append("</td><td valign='middle' align='center'>").append(hr7s28p).append("</td><td valign='middle' align='center'>").append(hr28s1thl).append("</td><td valign='middle' align='center'>").append(hr28s1thp).append("</td><td valign='middle' align='center'>").append(th1s4l).append("</td><td valign='middle' align='center'>").append(th1s4p).append("</td><td valign='middle' align='center'>").append(th5s14l).append("</td><td valign='middle' align='center'>").append(th5s14p).append("</td><td valign='middle' align='center'>").append(th15s24l).append("</td><td valign='middle' align='center'>").append(th15s24p).append("</td><td valign='middle' align='center'>").append(th25s44l).append("</td><td valign='middle' align='center'>").append(th25s44p).append("</td><td valign='middle' align='center'>").append(th45s64l).append("</td><td valign='middle' align='center'>").append(th45s64p).append("</td><td valign='middle' align='center'>").append(lbth65l).append("</td><td valign='middle' align='center'>").append(lbth65p).append("</td><td valign='middle' align='center'></td><td valign='middle' align='center'>").append(pulang).append("</td><td valign='middle' align='center'>").append(aps).append("</td><td valign='middle' align='center'>").append(lari).append("</td><td valign='middle' align='center'>").append(rujuk).append("</td><td valign='middle' align='center'>").append(matilb48).append("</td><td valign='middle' align='center'>").append(matikr48).append("</td></tr>");
             }
             
             LoadHTML.setText(
@@ -822,68 +716,16 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif 5 : "+e);
-        } 
-        this.setCursor(Cursor.getDefaultCursor());        
+        }   
     }
     
     private void prosesCari2() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            htmlContent = new StringBuilder();
-            htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='3'>NO.R.M.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='3'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>NIK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.MASUK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.KELUAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='3'>LAMA</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>7-27hr</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>1-4th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>5-14th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>15-24th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>25-44th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>45-64th</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>&rsaquo;&nbsp;64</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>PULANG</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>APS</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>LARI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>RUJUK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>&rsaquo;&nbsp;48&nbsp;JAM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>&lsaquo;&nbsp;48&nbsp;JAM</td>"+
-                "</tr>"
-            );   
+            StringBuilder htmlContent = new StringBuilder();
+            htmlContent.append("<tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='3'>NO.</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='4%' rowspan='3'>NO.R.M.</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='3'>Nama Pasien</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>NIK</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.MASUK</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='3'>TGL.KELUAR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='3'>LAMA</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td></tr><tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>0-6 hr</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>7-27hr</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>28hr-&lsaquo;1th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>1-4th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>5-14th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>15-24th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>25-44th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>45-64th</td><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>&rsaquo;&nbsp;64</td></tr><tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>L</td><td valign='middle' bgcolor='#FFFAFA' align='center'>P</td><td valign='middle' bgcolor='#FFFAFA' align='center'>PULANG</td><td valign='middle' bgcolor='#FFFAFA' align='center'>APS</td><td valign='middle' bgcolor='#FFFAFA' align='center'>LARI</td><td valign='middle' bgcolor='#FFFAFA' align='center'>RUJUK</td><td valign='middle' bgcolor='#FFFAFA' align='center'>&rsaquo;&nbsp;48&nbsp;JAM</td><td valign='middle' bgcolor='#FFFAFA' align='center'>&lsaquo;&nbsp;48&nbsp;JAM</td></tr>");   
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
                     "from reg_periksa inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
@@ -904,90 +746,93 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     sthr0s6l="";sthr0s6p="";sthr7s28l="";sthr7s28p="";sthr28s1thl="";sthr28s1thp="";stth1s4l="";stth1s4p="";
                     stth5s14l="";stth5s14p="";stth15s24l="";stth15s24p="";stth25s44l="";stth25s44p="";stth45s64l="";stth45s64p="";
                     stlbth65l="";stlbth65p="";
-                    if(rs.getString("sttsumur").equals("Hr")){
-                        if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=6)){
-                            if(rs.getString("jk").equals("L")){
-                                hr0s6l++;
-                                sthr0s6l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                hr0s6p++;
-                                sthr0s6p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
-                            if(rs.getString("jk").equals("L")){
-                                hr7s28l++;
-                                sthr7s28l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                hr7s28p++;
-                                sthr7s28p="V";
-                            }
-                        }else if(rs.getInt("umurdaftar")>=28){
+                    switch (rs.getString("sttsumur")) {
+                        case "Hr":
+                            if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=6)){
+                                if(rs.getString("jk").equals("L")){
+                                    hr0s6l++;
+                                    sthr0s6l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr0s6p++;
+                                    sthr0s6p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
+                                if(rs.getString("jk").equals("L")){
+                                    hr7s28l++;
+                                    sthr7s28l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr7s28p++;
+                                    sthr7s28p="V";
+                                }
+                            }else if(rs.getInt("umurdaftar")>=28){
+                                if(rs.getString("jk").equals("L")){
+                                    hr28s1thl++;
+                                    sthr28s1thl="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    hr28s1thp++;
+                                    sthr28s1thp="V";
+                                }
+                            }   break;
+                        case "Bl":
                             if(rs.getString("jk").equals("L")){
                                 hr28s1thl++;
                                 sthr28s1thl="V";
                             }else if(rs.getString("jk").equals("P")){
                                 hr28s1thp++;
                                 sthr28s1thp="V";
-                            }
-                        }
-                    }else if(rs.getString("sttsumur").equals("Bl")){
-                        if(rs.getString("jk").equals("L")){
-                            hr28s1thl++;
-                            sthr28s1thl="V";
-                        }else if(rs.getString("jk").equals("P")){
-                            hr28s1thp++;
-                            sthr28s1thp="V";
-                        }
-                    }else if(rs.getString("sttsumur").equals("Th")){
-                        if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=4)){
-                            if(rs.getString("jk").equals("L")){
-                                th1s4l++;
-                                stth1s4l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th1s4p++;
-                                stth1s4p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=5)&&(rs.getInt("umurdaftar")<=14)){
-                            if(rs.getString("jk").equals("L")){
-                                th5s14l++;
-                                stth5s14l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th5s14p++;
-                                stth5s14p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=15)&&(rs.getInt("umurdaftar")<=24)){
-                            if(rs.getString("jk").equals("L")){
-                                th15s24l++;
-                                stth15s24l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th15s24p++;
-                                stth15s24p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=25)&&(rs.getInt("umurdaftar")<=44)){
-                            if(rs.getString("jk").equals("L")){
-                                th25s44l++;
-                                stth25s44l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th25s44p++;
-                                stth25s44p="V";
-                            }
-                        }else if((rs.getInt("umurdaftar")>=45)&&(rs.getInt("umurdaftar")<=64)){
-                            if(rs.getString("jk").equals("L")){
-                                th45s64l++;
-                                stth45s64l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                th45s64p++;
-                                stth45s64p="V";
-                            }
-                        }else if(rs.getInt("umurdaftar")>=65){
-                            if(rs.getString("jk").equals("L")){
-                                lbth65l++;
-                                stlbth65l="V";
-                            }else if(rs.getString("jk").equals("P")){
-                                lbth65p++;
-                                stlbth65p="V";
-                            }
-                        }
+                            }   break;
+                        case "Th":
+                            if((rs.getInt("umurdaftar")>=0)&&(rs.getInt("umurdaftar")<=4)){
+                                if(rs.getString("jk").equals("L")){
+                                    th1s4l++;
+                                    stth1s4l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th1s4p++;
+                                    stth1s4p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=5)&&(rs.getInt("umurdaftar")<=14)){
+                                if(rs.getString("jk").equals("L")){
+                                    th5s14l++;
+                                    stth5s14l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th5s14p++;
+                                    stth5s14p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=15)&&(rs.getInt("umurdaftar")<=24)){
+                                if(rs.getString("jk").equals("L")){
+                                    th15s24l++;
+                                    stth15s24l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th15s24p++;
+                                    stth15s24p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=25)&&(rs.getInt("umurdaftar")<=44)){
+                                if(rs.getString("jk").equals("L")){
+                                    th25s44l++;
+                                    stth25s44l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th25s44p++;
+                                    stth25s44p="V";
+                                }
+                            }else if((rs.getInt("umurdaftar")>=45)&&(rs.getInt("umurdaftar")<=64)){
+                                if(rs.getString("jk").equals("L")){
+                                    th45s64l++;
+                                    stth45s64l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    th45s64p++;
+                                    stth45s64p="V";
+                                }
+                            }else if(rs.getInt("umurdaftar")>=65){
+                                if(rs.getString("jk").equals("L")){
+                                    lbth65l++;
+                                    stlbth65l="V";
+                                }else if(rs.getString("jk").equals("P")){
+                                    lbth65p++;
+                                    stlbth65p="V";
+                                }
+                            }   break;
+                        default:
+                            break;
                     }
                     
                     diagnosa="";
@@ -1027,54 +872,70 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             tglkeluar=rs2.getString("tgl_keluar")+" "+rs2.getString("jam_keluar");
                             lamainap=rs2.getString("lama");
-                            if(rs2.getString("stts_pulang").equals("Sehat")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Rujuk")){
-                                strujuk="V";
-                                rujuk++;
-                            }else if(rs2.getString("stts_pulang").equals("APS")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("+")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Meninggal")){
-                                jamdiff=Sequel.cariInteger("SELECT TIMESTAMPDIFF(HOUR,'"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"','"+tglkeluar+"')");
-                                if(jamdiff<=48){
-                                    stmatikr48="V";
-                                    matikr48++;
-                                }else if(jamdiff>48){
-                                    stmatilb48="V";
-                                    matilb48++;
-                                }
-                            }else if(rs2.getString("stts_pulang").equals("Sembuh")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Membaik")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Pulang Paksa")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("-")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Pindah Kamar")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Status Belum Lengkap")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Atas Persetujuan Dokter")){
-                                stpulang="V";
-                                pulang++;
-                            }else if(rs2.getString("stts_pulang").equals("Atas Permintaan Sendiri")){
-                                staps="V";
-                                aps++;
-                            }else if(rs2.getString("stts_pulang").equals("Lain-lain")){
-                                stlari="V";
-                                lari++;
+                            switch (rs2.getString("stts_pulang")) {
+                                case "Sehat":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Rujuk":
+                                    strujuk="V";
+                                    rujuk++;
+                                    break;
+                                case "APS":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "+":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Meninggal":
+                                    jamdiff=Sequel.cariInteger("SELECT TIMESTAMPDIFF(HOUR,'"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"','"+tglkeluar+"')");
+                                    if(jamdiff<=48){
+                                        stmatikr48="V";
+                                        matikr48++;
+                                    }else if(jamdiff>48){
+                                        stmatilb48="V";
+                                        matilb48++;
+                                    }   break;
+                                case "Sembuh":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Membaik":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Pulang Paksa":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "-":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Pindah Kamar":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Status Belum Lengkap":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Atas Persetujuan Dokter":
+                                    stpulang="V";
+                                    pulang++;
+                                    break;
+                                case "Atas Permintaan Sendiri":
+                                    staps="V";
+                                    aps++;
+                                    break;
+                                case "Lain-lain":
+                                    stlari="V";
+                                    lari++;
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     } catch (Exception e) {
@@ -1088,42 +949,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     } 
                     
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+i+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
-                            "<td valign='middle' align='center'>"+tglkeluar+"</td>"+
-                            "<td valign='middle' align='center'>"+lamainap+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr0s6l+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr0s6p+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr7s28l+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr7s28p+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr28s1thl+"</td>"+
-                            "<td valign='middle' align='center'>"+sthr28s1thp+"</td>"+
-                            "<td valign='middle' align='center'>"+stth1s4l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth1s4p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth5s14l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth5s14p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth15s24l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth15s24p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth25s44l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth25s44p+"</td>"+
-                            "<td valign='middle' align='center'>"+stth45s64l+"</td>"+
-                            "<td valign='middle' align='center'>"+stth45s64p+"</td>"+
-                            "<td valign='middle' align='center'>"+stlbth65l+"</td>"+
-                            "<td valign='middle' align='center'>"+stlbth65p+"</td>"+
-                            "<td valign='middle' align='center'>"+diagnosa+"</td>"+
-                            "<td valign='middle' align='center'>"+stpulang+"</td>"+
-                            "<td valign='middle' align='center'>"+staps+"</td>"+
-                            "<td valign='middle' align='center'>"+stlari+"</td>"+
-                            "<td valign='middle' align='center'>"+strujuk+"</td>"+
-                            "<td valign='middle' align='center'>"+stmatilb48+"</td>"+
-                            "<td valign='middle' align='center'>"+stmatikr48+"</td>"+
-                        "</tr>"
-                    );
+                    htmlContent.append("<tr class='isi'><td valign='middle' align='center'>").append(i).append("</td><td valign='middle' align='center'>").append(rs.getString("no_rkm_medis")).append("</td><td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td><td valign='middle' align='center'>").append(rs.getString("no_ktp")).append("</td><td valign='middle' align='center'>").append(rs.getString("tgl_registrasi")).append("</td><td valign='middle' align='center'>").append(tglkeluar).append("</td><td valign='middle' align='center'>").append(lamainap).append("</td><td valign='middle' align='center'>").append(sthr0s6l).append("</td><td valign='middle' align='center'>").append(sthr0s6p).append("</td><td valign='middle' align='center'>").append(sthr7s28l).append("</td><td valign='middle' align='center'>").append(sthr7s28p).append("</td><td valign='middle' align='center'>").append(sthr28s1thl).append("</td><td valign='middle' align='center'>").append(sthr28s1thp).append("</td><td valign='middle' align='center'>").append(stth1s4l).append("</td><td valign='middle' align='center'>").append(stth1s4p).append("</td><td valign='middle' align='center'>").append(stth5s14l).append("</td><td valign='middle' align='center'>").append(stth5s14p).append("</td><td valign='middle' align='center'>").append(stth15s24l).append("</td><td valign='middle' align='center'>").append(stth15s24p).append("</td><td valign='middle' align='center'>").append(stth25s44l).append("</td><td valign='middle' align='center'>").append(stth25s44p).append("</td><td valign='middle' align='center'>").append(stth45s64l).append("</td><td valign='middle' align='center'>").append(stth45s64p).append("</td><td valign='middle' align='center'>").append(stlbth65l).append("</td><td valign='middle' align='center'>").append(stlbth65p).append("</td><td valign='middle' align='center'>").append(diagnosa).append("</td><td valign='middle' align='center'>").append(stpulang).append("</td><td valign='middle' align='center'>").append(staps).append("</td><td valign='middle' align='center'>").append(stlari).append("</td><td valign='middle' align='center'>").append(strujuk).append("</td><td valign='middle' align='center'>").append(stmatilb48).append("</td><td valign='middle' align='center'>").append(stmatikr48).append("</td></tr>");
                     i++;
                 }
             } catch (Exception e) {
@@ -1138,35 +964,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             }
             
             if((i-1)>0){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='7'>Total :</td>"+
-                        "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
-                        "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
-                        "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
-                        "<td valign='middle' align='center'>"+hr7s28p+"</td>"+
-                        "<td valign='middle' align='center'>"+hr28s1thl+"</td>"+
-                        "<td valign='middle' align='center'>"+hr28s1thp+"</td>"+
-                        "<td valign='middle' align='center'>"+th1s4l+"</td>"+
-                        "<td valign='middle' align='center'>"+th1s4p+"</td>"+
-                        "<td valign='middle' align='center'>"+th5s14l+"</td>"+
-                        "<td valign='middle' align='center'>"+th5s14p+"</td>"+
-                        "<td valign='middle' align='center'>"+th15s24l+"</td>"+
-                        "<td valign='middle' align='center'>"+th15s24p+"</td>"+
-                        "<td valign='middle' align='center'>"+th25s44l+"</td>"+
-                        "<td valign='middle' align='center'>"+th25s44p+"</td>"+
-                        "<td valign='middle' align='center'>"+th45s64l+"</td>"+
-                        "<td valign='middle' align='center'>"+th45s64p+"</td>"+
-                        "<td valign='middle' align='center'>"+lbth65l+"</td>"+
-                        "<td valign='middle' align='center'>"+lbth65p+"</td>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='center'>"+pulang+"</td>"+
-                        "<td valign='middle' align='center'>"+aps+"</td>"+
-                        "<td valign='middle' align='center'>"+lari+"</td>"+
-                        "<td valign='middle' align='center'>"+rujuk+"</td>"+
-                        "<td valign='middle' align='center'>"+matilb48+"</td>"+
-                        "<td valign='middle' align='center'>"+matikr48+"</td>"+
-                    "</tr>");
+                htmlContent.append("<tr class='isi'><td valign='middle' align='right' colspan='7'>Total :</td><td valign='middle' align='center'>").append(hr0s6l).append("</td><td valign='middle' align='center'>").append(hr0s6p).append("</td><td valign='middle' align='center'>").append(hr7s28l).append("</td><td valign='middle' align='center'>").append(hr7s28p).append("</td><td valign='middle' align='center'>").append(hr28s1thl).append("</td><td valign='middle' align='center'>").append(hr28s1thp).append("</td><td valign='middle' align='center'>").append(th1s4l).append("</td><td valign='middle' align='center'>").append(th1s4p).append("</td><td valign='middle' align='center'>").append(th5s14l).append("</td><td valign='middle' align='center'>").append(th5s14p).append("</td><td valign='middle' align='center'>").append(th15s24l).append("</td><td valign='middle' align='center'>").append(th15s24p).append("</td><td valign='middle' align='center'>").append(th25s44l).append("</td><td valign='middle' align='center'>").append(th25s44p).append("</td><td valign='middle' align='center'>").append(th45s64l).append("</td><td valign='middle' align='center'>").append(th45s64p).append("</td><td valign='middle' align='center'>").append(lbth65l).append("</td><td valign='middle' align='center'>").append(lbth65p).append("</td><td valign='middle' align='center'></td><td valign='middle' align='center'>").append(pulang).append("</td><td valign='middle' align='center'>").append(aps).append("</td><td valign='middle' align='center'>").append(lari).append("</td><td valign='middle' align='center'>").append(rujuk).append("</td><td valign='middle' align='center'>").append(matilb48).append("</td><td valign='middle' align='center'>").append(matikr48).append("</td></tr>");
             }
             
             LoadHTML.setText(
@@ -1175,10 +973,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif 5 : "+e);
-        } 
-        this.setCursor(Cursor.getDefaultCursor());   
+        }   
     }
     
     
@@ -1187,4 +985,21 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         BtnPrint.setEnabled(akses.getkip_pasien_ranap());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }

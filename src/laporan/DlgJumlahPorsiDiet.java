@@ -26,10 +26,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -39,13 +42,15 @@ import javax.swing.table.TableColumn;
  */
 public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
     private DefaultTableModel tabMode;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
     private String dateString,dayOfWeek,hari;
     private Date date = null;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i=0,h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,
                 h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31,
                 jmlh1,jmlh2,jmlh3,jmlh4,jmlh5,jmlh6,jmlh7,jmlh8,jmlh9,jmlh10,
@@ -322,7 +327,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -441,9 +446,11 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select kd_bangsal,nm_bangsal from bangsal where status='1' and nm_bangsal like ? order by nm_bangsal");
+                    "select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal where bangsal.status='1' "+(TCari.getText().trim().equals("")?"":"and bangsal.nm_bangsal like ? ")+"order by bangsal.nm_bangsal");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 i=1;
                 jmlh1=0;jmlh2=0;jmlh3=0;jmlh4=0;jmlh5=0;jmlh6=0;jmlh7=0;jmlh8=0;jmlh9=0;jmlh10=0;
@@ -586,4 +593,21 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         return hari;
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
