@@ -14,10 +14,13 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import javax.swing.SwingUtilities;
 
 public class DlgPemeriksaanFisikRalanPerPenyakit extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
@@ -25,8 +28,8 @@ public class DlgPemeriksaanFisikRalanPerPenyakit extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private StringBuilder htmlContent;
-    private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -48,29 +51,6 @@ public class DlgPemeriksaanFisikRalanPerPenyakit extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penyakit.getTable().getSelectedRow()!= -1){                   
-                    kdpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
-                    nmpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
-                }     
-                kdpenyakit.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
    
 
@@ -107,11 +87,6 @@ public class DlgPemeriksaanFisikRalanPerPenyakit extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemeriksaan Fisik Rawat Jalan Per Penyakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -323,7 +298,7 @@ private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     if(nmpenyakit.getText().trim().equals("")){
         JOptionPane.showMessageDialog(null,"Silahkan masukkan penyakit yang mau dicari terlebih dahulu..!!!");
     }else{
-        prosesCari();
+        runBackground(() ->prosesCari());
     }
 }//GEN-LAST:event_btnCariActionPerformed
 
@@ -335,11 +310,30 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         }
 }//GEN-LAST:event_btnCariKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
-
     private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
+        DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penyakit.getTable().getSelectedRow()!= -1){                   
+                    kdpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
+                    nmpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                }     
+                kdpenyakit.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         penyakit.isCek();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
@@ -401,27 +395,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            htmlContent = new StringBuilder();
-            htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>NAMA PASIEN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>NO.KTP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>ICD X</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TINGGI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>BERAT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>L.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TENSI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>TEMPAT LAHIR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TANGGAL LAHIR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>PEKERJAAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='19%'>ALAMAT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>NO.RM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>REGISTRASI</td>"+
-                "</tr>"
-            ); 
-            
+            StringBuilder htmlContent = new StringBuilder();
+            htmlContent.append("<tr class='isi'><td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>NAMA PASIEN</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>NO.KTP</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>ICD X</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TINGGI</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>BERAT</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>L.P.</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TENSI</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>TEMPAT LAHIR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TANGGAL LAHIR</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>PEKERJAAN</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='19%'>ALAMAT</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>NO.RM</td><td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>REGISTRASI</td></tr>"); 
             ps=koneksi.prepareStatement(
                     "select pasien.nm_pasien,pasien.no_ktp,pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.lingkar_perut,"+
                     "pemeriksaan_ralan.tensi,pasien.tmp_lahir,pasien.tgl_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as alamat,"+
@@ -440,23 +416,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 ps.setString(3,kdpenyakit.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td align='center'>"+rs.getString("no_ktp")+"</td>"+
-                            "<td align='center'>"+kdpenyakit.getText()+"</td>"+
-                            "<td align='center'>"+rs.getString("tinggi")+"</td>"+
-                            "<td align='center'>"+rs.getString("berat")+"</td>"+
-                            "<td align='center'>"+rs.getString("lingkar_perut")+"</td>"+
-                            "<td align='center'>"+rs.getString("tensi")+"</td>"+
-                            "<td align='center'>"+rs.getString("tmp_lahir")+"</td>"+
-                            "<td align='center'>"+rs.getString("tgl_lahir")+"</td>"+
-                            "<td align='center'>"+rs.getString("pekerjaan")+"</td>"+
-                            "<td align='left'>"+rs.getString("alamat")+"</td>"+
-                            "<td align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
-                            "<td align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
-                        "</tr>"
-                    ); 
+                    htmlContent.append("<tr class='isi'><td align='left'>").append(rs.getString("nm_pasien")).append("</td><td align='center'>").append(rs.getString("no_ktp")).append("</td><td align='center'>").append(kdpenyakit.getText()).append("</td><td align='center'>").append(rs.getString("tinggi")).append("</td><td align='center'>").append(rs.getString("berat")).append("</td><td align='center'>").append(rs.getString("lingkar_perut")).append("</td><td align='center'>").append(rs.getString("tensi")).append("</td><td align='center'>").append(rs.getString("tmp_lahir")).append("</td><td align='center'>").append(rs.getString("tgl_lahir")).append("</td><td align='center'>").append(rs.getString("pekerjaan")).append("</td><td align='left'>").append(rs.getString("alamat")).append("</td><td align='center'>").append(rs.getString("no_rkm_medis")).append("</td><td align='center'>").append(rs.getString("tgl_registrasi")).append("</td></tr>"); 
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -468,23 +428,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.close();
                 }
             }
-            
-            
             LoadHTML.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
-        this.setCursor(Cursor.getDefaultCursor());
-        
     }
     
     public void isCek(){
         BtnPrint.setEnabled(akses.getpemeriksaan_fisik_ralan_per_penyakit());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
