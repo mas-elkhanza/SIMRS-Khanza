@@ -5387,23 +5387,12 @@ public final class DlgIGD extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         pasien.dispose();
-        pasien.bahasa.dispose();
-        pasien.cacat.dispose();
-        pasien.golonganpolri.dispose();
-        pasien.golongantni.dispose();
-        pasien.jabatanpolri.dispose();
-        pasien.jabatantni.dispose();
         pasien.kab.dispose();
         pasien.kec.dispose();
         pasien.kel.dispose();
-        pasien.pangkatpolri.dispose();
-        pasien.pangkattni.dispose();
         pasien.penjab.dispose();
         pasien.perusahaan.dispose();
         pasien.prop.dispose();
-        pasien.satuanpolri.dispose();
-        pasien.satuantni.dispose();
-        pasien.suku.dispose();
         rujukmasuk.WindowPerujuk.dispose();   
         DlgSakit2.dispose();
         DlgDemografi.dispose();
