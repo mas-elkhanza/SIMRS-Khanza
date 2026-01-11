@@ -7229,7 +7229,6 @@ public final class DlgReg extends javax.swing.JDialog {
         pasien.kec.dispose();
         pasien.kel.dispose();
         pasien.penjab.dispose();
-        pasien.perusahaan.dispose();
         pasien.prop.dispose();
         dokter.dispose();
         poli.dispose();
@@ -8904,7 +8903,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         rujukmasuk.emptTeks();
         rujukmasuk.isCek();
         rujukmasuk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
-        rujukmasuk.tampil();
+        rujukmasuk.tampil3();
         rujukmasuk.setVisible(true);
         //this.dispose();
     }
@@ -9386,7 +9385,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void btnPenjab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjab1ActionPerformed
         akses.setform("DlgReg");
-        rujukmasuk.tampil2();
+        rujukmasuk.tampil4();
         rujukmasuk.TCariPerujuk.requestFocus();
         rujukmasuk.WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
         rujukmasuk.WindowPerujuk.setLocationRelativeTo(internalFrame1);

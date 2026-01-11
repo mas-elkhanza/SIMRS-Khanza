@@ -9576,7 +9576,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
-        rujukmasuk.tampil();
         rujukmasuk.emptTeks();
         rujukmasuk.isCek();
         rujukmasuk.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());

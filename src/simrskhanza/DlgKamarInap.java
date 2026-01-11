@@ -7234,7 +7234,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }else if(R3.isSelected()==true){
                                     rujukmasuk.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate()); 
                                 }
-                                rujukmasuk.tampil();
+                                rujukmasuk.tampil3();
                                 rujukmasuk.setVisible(true);
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -7267,7 +7267,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }else if(R3.isSelected()==true){
                         rujukmasuk.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate()); 
                     }
-                    rujukmasuk.tampil();
+                    rujukmasuk.tampil3();
                     rujukmasuk.setVisible(true);
                 }
           }
