@@ -392,46 +392,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cmbMnt.setSelectedItem(now.substring(14,16));
         cmbDtk.setSelectedItem(now.substring(17,19));  
         
-        billing.rawatinap.pasien.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgKamarInap")){
-                    if(billing.rawatinap.pasien.getTable().getSelectedRow()!= -1){                   
-                        NoRmBayi.setText(billing.rawatinap.pasien.getTable().getValueAt(billing.rawatinap.pasien.getTable().getSelectedRow(),0).toString());                    
-                        NmBayi.setText(billing.rawatinap.pasien.getTable().getValueAt(billing.rawatinap.pasien.getTable().getSelectedRow(),1).toString());                    
-                    }
-                    NoRmBayi.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        billing.rawatinap.pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgKamarInap")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        billing.rawatinap.pasien.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
         kamar.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -8312,12 +8272,47 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }//GEN-LAST:event_NoRmBayiKeyPressed
 
     private void btnPasienRanapGabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienRanapGabungActionPerformed
-        akses.setform("DlgKamarInap");
-        billing.rawatinap.pasien.emptTeks();
-        billing.rawatinap.pasien.isCek();
-        billing.rawatinap.pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        billing.rawatinap.pasien.setLocationRelativeTo(internalFrame1);
-        billing.rawatinap.pasien.setVisible(true);
+        DlgCariPasien pasien=new DlgCariPasien(null,false);
+        pasien.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pasien.getTable().getSelectedRow()!= -1){                   
+                    NoRmBayi.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());                    
+                    NmBayi.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());                    
+                }
+                NoRmBayi.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+               if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        pasien.emptTeks();
+        pasien.isCek();
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setLocationRelativeTo(internalFrame1);
+        pasien.setVisible(true);
     }//GEN-LAST:event_btnPasienRanapGabungActionPerformed
 
     private void BtnHapusGabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusGabungActionPerformed
