@@ -1167,7 +1167,7 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             dokter2.setPoli(NmPoli.getText());
             dokter2.isCek();  
             dokter2.SetHari(TanggalPeriksa.getDate());   
-            dokter2.tampil();
+            dokter2.tampil3();
             dokter2.TCari.requestFocus();
             dokter2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dokter2.setLocationRelativeTo(internalFrame1);
@@ -1373,7 +1373,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }); 
                 poli2.isCek();                     
                 poli2.SetHari(TanggalPeriksa.getDate());
-                poli2.tampil(); 
+                poli2.tampil3(); 
                 poli2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 poli2.setLocationRelativeTo(internalFrame1);
                 poli2.setVisible(true);

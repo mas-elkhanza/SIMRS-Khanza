@@ -352,7 +352,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
                 });
                 dokter2.setPoli(TPoli.getText());
                 dokter2.isCek();
-                dokter2.tampil();
+                dokter2.tampil3();
                 dokter2.TCari.requestFocus();
                 dokter2.setSize(lebar-20,tinggi-20);
                 dokter2.setLocationRelativeTo(internalFrame1);
@@ -445,7 +445,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
                     public void windowDeactivated(WindowEvent e) {}
                 });  
                 poli2.isCek();
-                poli2.tampil();
+                poli2.tampil3();
                 poli2.setSize(lebar-20,tinggi-20);
                 poli2.setLocationRelativeTo(internalFrame1);
                 poli2.setVisible(true);
