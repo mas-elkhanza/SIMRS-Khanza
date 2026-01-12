@@ -29,6 +29,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.SwingUtilities;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.event.DocumentEvent;
 
 /**
  *
@@ -42,6 +46,8 @@ public final class DlgRl36 extends javax.swing.JDialog {
     private PreparedStatement ps,pscari;
     private ResultSet rs,rscari;
     private int i=0,khusus=0,besar=0,sedang=0,kecil;   
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -64,7 +70,7 @@ public final class DlgRl36 extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(50);
             }else if(i==1){
                 column.setPreferredWidth(250);
             }else{
@@ -74,15 +80,28 @@ public final class DlgRl36 extends javax.swing.JDialog {
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        
-        try {
-            ps=koneksi.prepareStatement(
-                    "select kode_paket,nm_perawatan from paket_operasi where kategori='Operasi' order by nm_perawatan");         
-            pscari=koneksi.prepareStatement("select count(operasi.kode_paket) from operasi where "+
-                    "operasi.kode_paket=? and operasi.tgl_operasi between ? and ? and operasi.kategori=?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }    
 
     /** This method is called from within the constructor to
@@ -113,16 +132,8 @@ public final class DlgRl36 extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RL 3.6 Kegiatan Pembedahan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RL 3.6 Kegiatan Pembedahan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -309,22 +320,16 @@ public final class DlgRl36 extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-       tampil();
+       runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            tampil();
-            this.setCursor(Cursor.getDefaultCursor());
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TCari, BtnPrint);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -338,21 +343,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
            TCari.setText("");
-           tampil();
+           runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
-        }else{
-            
         }
     }//GEN-LAST:event_BtnAllKeyPressed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        tampil();
-
-    }//GEN-LAST:event_formWindowActivated
 
     /**
     * @param args the command line arguments
@@ -388,62 +386,104 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){  
+    private void tampil(){  
         try {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Valid.tabelKosong(tabMode);   
-            rs=ps.executeQuery();
-            i=1;
-            while(rs.next()){
-                pscari.setString(1,rs.getString("kode_paket"));
-                pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
-                pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
-                pscari.setString(4,"Khusus");
-                rscari=pscari.executeQuery();
-                khusus=0;
-                if(rscari.next()){
-                    khusus=rscari.getInt(1);
+            Valid.tabelKosong(tabMode); 
+            ps=koneksi.prepareStatement("select paket_operasi.kode_paket,paket_operasi.nm_perawatan from paket_operasi where paket_operasi.kategori='Operasi' "+(TCari.getText().trim().equals("")?"":"and paket_operasi.nm_perawatan like ? ")+"order by paket_operasi.nm_perawatan");  
+            try {
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
                 }
-                
-                pscari.setString(1,rs.getString("kode_paket"));
-                pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
-                pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
-                pscari.setString(4,"Besar");
-                rscari=pscari.executeQuery();
-                besar=0;
-                if(rscari.next()){
-                    besar=rscari.getInt(1);
+                rs=ps.executeQuery();
+                i=1;
+                while(rs.next()){
+                    pscari=koneksi.prepareStatement("select count(operasi.kode_paket) from operasi where operasi.kode_paket=? and operasi.tgl_operasi between ? and ? and operasi.kategori=?");
+                    try{
+                        pscari.setString(1,rs.getString("kode_paket"));
+                        pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
+                        pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
+                        pscari.setString(4,"Khusus");
+                        rscari=pscari.executeQuery();
+                        khusus=0;
+                        if(rscari.next()){
+                            khusus=rscari.getInt(1);
+                        }
+
+                        pscari.setString(1,rs.getString("kode_paket"));
+                        pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
+                        pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
+                        pscari.setString(4,"Besar");
+                        rscari=pscari.executeQuery();
+                        besar=0;
+                        if(rscari.next()){
+                            besar=rscari.getInt(1);
+                        }
+
+                        pscari.setString(1,rs.getString("kode_paket"));
+                        pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
+                        pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
+                        pscari.setString(4,"Sedang");
+                        rscari=pscari.executeQuery();
+                        sedang=0;
+                        if(rscari.next()){
+                            sedang=rscari.getInt(1);
+                        }
+
+                        pscari.setString(1,rs.getString("kode_paket"));
+                        pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
+                        pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
+                        pscari.setString(4,"Kecil");
+                        rscari=pscari.executeQuery();
+                        kecil=0;
+                        if(rscari.next()){
+                            kecil=rscari.getInt(1);
+                        }
+                    }catch (Exception e) {
+                        System.out.println(e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+
+                    tabMode.addRow(new Object[]{
+                        i,rs.getString("nm_perawatan"),(khusus+besar+sedang+kecil),khusus,besar,sedang,kecil
+                    });
+                    i++;
+                }   
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
                 }
-                
-                pscari.setString(1,rs.getString("kode_paket"));
-                pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
-                pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
-                pscari.setString(4,"Sedang");
-                rscari=pscari.executeQuery();
-                sedang=0;
-                if(rscari.next()){
-                    sedang=rscari.getInt(1);
+                if(ps!=null){
+                    ps.close();
                 }
-                
-                pscari.setString(1,rs.getString("kode_paket"));
-                pscari.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00.0");
-                pscari.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59.0");
-                pscari.setString(4,"Kecil");
-                rscari=pscari.executeQuery();
-                kecil=0;
-                if(rscari.next()){
-                    kecil=rscari.getInt(1);
-                }
-                
-                tabMode.addRow(new Object[]{
-                    i,rs.getString("nm_perawatan"),(khusus+besar+sedang+kecil),khusus,besar,sedang,kecil
-                });
-                i++;
             }
-            this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
+    }
 }
