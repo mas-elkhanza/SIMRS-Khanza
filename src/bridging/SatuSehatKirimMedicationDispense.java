@@ -676,12 +676,12 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "\"resourceType\": \"MedicationDispense\"," +
                                     "\"identifier\": [" +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
                                         "}," +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
                                         "}" +

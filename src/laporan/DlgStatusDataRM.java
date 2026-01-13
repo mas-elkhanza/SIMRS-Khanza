@@ -849,7 +849,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             penyakit.setLocationRelativeTo(internalFrame1);
             penyakit.isCek();
             penyakit.setNoRm(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),Tgl1.getDate(),Tgl2.getDate(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString());
-            penyakit.panelDiagnosa1.tampil();
             penyakit.setVisible(true);
         }
     }//GEN-LAST:event_MnInputDiagnosaActionPerformed

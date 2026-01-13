@@ -999,7 +999,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     // End of variables declaration//GEN-END:variables
 
     
-    public void tampil() {         
+    private void tampil() {         
         try {             
             Valid.tabelKosong(tabMode);
             pstampilbarang=koneksi.prepareStatement(

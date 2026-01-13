@@ -19,8 +19,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -40,6 +43,8 @@ public class PanelDiagnosa extends widget.panelisi {
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,validcode,accpdx,asterisk,im,urut,multy;
     private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /**
      * Creates new form panelDiagnosa
      */
@@ -255,19 +260,19 @@ public class PanelDiagnosa extends widget.panelisi {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Diagnosa.getText().length()>2){
-                        tampildiagnosa();
+                        runBackground(() ->tampildiagnosa());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Diagnosa.getText().length()>2){
-                        tampildiagnosa();
+                        runBackground(() ->tampildiagnosa());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Diagnosa.getText().length()>2){
-                        tampildiagnosa();
+                        runBackground(() ->tampildiagnosa());
                     }
                 }
             });
@@ -278,19 +283,19 @@ public class PanelDiagnosa extends widget.panelisi {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Prosedur.getText().length()>2){
-                        tampilprosedure();
+                        runBackground(() ->tampilprosedure());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Prosedur.getText().length()>2){
-                        tampilprosedure();
+                        runBackground(() ->tampilprosedure());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Prosedur.getText().length()>2){
-                        tampilprosedure();
+                        runBackground(() ->tampilprosedure());
                     }
                 }
             });
@@ -534,7 +539,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
     private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampildiagnosa();            
+            runBackground(() ->tampildiagnosa());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             if(akses.getpenyakit()==true){
                 btnTambahPenyakitActionPerformed(null);
@@ -545,7 +550,7 @@ public class PanelDiagnosa extends widget.panelisi {
     }//GEN-LAST:event_DiagnosaKeyPressed
 
     private void BtnCariPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakitActionPerformed
-        tampildiagnosa();
+        runBackground(() ->tampildiagnosa());
     }//GEN-LAST:event_BtnCariPenyakitActionPerformed
 
     private void btnTambahPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPenyakitActionPerformed
@@ -561,7 +566,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
     private void ProsedurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsedurKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilprosedure();
+            runBackground(() ->tampilprosedure());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             if(akses.geticd9()==true){
                 btnTambahProsedurActionPerformed(null);
@@ -583,7 +588,7 @@ public class PanelDiagnosa extends widget.panelisi {
     }//GEN-LAST:event_btnTambahProsedurActionPerformed
 
     private void BtnCariProsedurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariProsedurActionPerformed
-        tampilprosedure();
+        runBackground(() ->tampilprosedure());
     }//GEN-LAST:event_BtnCariProsedurActionPerformed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -597,7 +602,7 @@ public class PanelDiagnosa extends widget.panelisi {
             Sequel.queryu2("update diagnosa_pasien set status_penyakit='Baru' where no_rawat=? and kd_penyakit=?",2,new String[]{
                 tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),2).toString(),tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),5).toString()
             });
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_MnStatusBaruActionPerformed
 
@@ -608,7 +613,7 @@ public class PanelDiagnosa extends widget.panelisi {
             Sequel.queryu2("update diagnosa_pasien set status_penyakit='Lama' where no_rawat=? and kd_penyakit=?",2,new String[]{
                 tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),2).toString(),tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),5).toString()
             });
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_MnStatusLamaActionPerformed
 
@@ -785,7 +790,7 @@ public class PanelDiagnosa extends widget.panelisi {
     public widget.Table tbProsedur;
     public widget.Table tbTindakanPasien;
     // End of variables declaration//GEN-END:variables
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(TabModeDiagnosaPasien);
         try{            
             psdiagnosapasien=koneksi.prepareStatement(
@@ -1023,7 +1028,7 @@ public class PanelDiagnosa extends widget.panelisi {
         }
     }
     
-    public void tampil2() {
+    private void tampil2() {
         Valid.tabelKosong(TabModeTindakanPasien);
         try{            
             pstindakanpasien=koneksi.prepareStatement(
@@ -1230,13 +1235,19 @@ public class PanelDiagnosa extends widget.panelisi {
     }
 
     public void pilihTab() {
-        if(TabRawat.getSelectedIndex()==0){
-            tampildiagnosa();
-            tampilprosedure();
-        }else if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }else if(TabRawat.getSelectedIndex()==2){
-            tampil2();
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                runBackground(() ->tampildiagnosa());
+                runBackground(() ->tampilprosedure());
+                break;
+            case 1:
+                runBackground(() ->tampil());
+                break;
+            case 2:
+                runBackground(() ->tampil2());
+                break;
+            default:
+                break;
         }
     }
     
@@ -1342,5 +1353,23 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

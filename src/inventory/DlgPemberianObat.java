@@ -59,8 +59,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private riwayatobat Trackobat=new riwayatobat();
-    public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
-    public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps,psrekening;
     private ResultSet rs,rsrekening;
@@ -170,48 +168,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             });
         } 
                  
-        dlgobt2.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemberianObat")){
-                    runBackground(() -> tampilPO());
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dlgobt.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemberianObat")){
-                    runBackground(() -> tampilPO());
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-         
         jam();   
         
         try {
@@ -1164,7 +1120,25 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{ 
-                akses.setform("DlgPemberianObat");
+                DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
+                dlgobt2.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        runBackground(() -> tampilPO());
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
                 dlgobt2.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate());
                 dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgobt2.setLocationRelativeTo(internalFrame1);
@@ -1690,6 +1664,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void panggilform() {
         if(status.equals("ranap")){
+            DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+            dlgobt.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(akses.getform().equals("DlgPemberianObat")){
+                        runBackground(() -> tampilPO());
+                    }
+                }
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });
             dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
             dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgobt.isCek();

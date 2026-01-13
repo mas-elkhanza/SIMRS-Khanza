@@ -24,6 +24,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventory.DlgCariObat2;
 import inventory.DlgReturJual;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -550,23 +551,6 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             }
         }
         tbApotek.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        beriobat.dlgobt.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {if(akses.getform().equals("DLgBilingRanap")){isRawat();}}
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         beriobat.addWindowListener(new WindowListener() {
             @Override
@@ -2708,12 +2692,29 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    beriobat.dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                                    beriobat.dlgobt.isCek();
-                                    beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    beriobat.dlgobt.tampil();
-                                    beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                                    beriobat.dlgobt.setVisible(true);
+                                    DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                                    dlgobt.addWindowListener(new WindowListener() {
+                                        @Override
+                                        public void windowOpened(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosing(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {isRawat();}
+                                        @Override
+                                        public void windowIconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeiconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowActivated(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeactivated(WindowEvent e) {}
+                                    });
+                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                    dlgobt.isCek();
+                                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    dlgobt.tampil();
+                                    dlgobt.setLocationRelativeTo(internalFrame1);
+                                    dlgobt.setVisible(true);
                                 }
                             }                        
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Tambahan Biaya")){
@@ -2765,12 +2766,29 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                         BtnNota.requestFocus();
                                     }else{
-                                        beriobat.dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                                        beriobat.dlgobt.isCek();
-                                        beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                        beriobat.dlgobt.tampil();
-                                        beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                                        beriobat.dlgobt.setVisible(true);
+                                        DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                                        dlgobt.addWindowListener(new WindowListener() {
+                                            @Override
+                                            public void windowOpened(WindowEvent e) {}
+                                            @Override
+                                            public void windowClosing(WindowEvent e) {}
+                                            @Override
+                                            public void windowClosed(WindowEvent e) {isRawat();}
+                                            @Override
+                                            public void windowIconified(WindowEvent e) {}
+                                            @Override
+                                            public void windowDeiconified(WindowEvent e) {}
+                                            @Override
+                                            public void windowActivated(WindowEvent e) {}
+                                            @Override
+                                            public void windowDeactivated(WindowEvent e) {}
+                                        });
+                                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                        dlgobt.isCek();
+                                        dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                        dlgobt.tampil();
+                                        dlgobt.setLocationRelativeTo(internalFrame1);
+                                        dlgobt.setVisible(true);
                                     }
                                 }                        
                             }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Tambahan Biaya")){
@@ -2883,12 +2901,29 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    beriobat.dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                                    beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    beriobat.dlgobt.isCek();
-                                    beriobat.dlgobt.tampil();
-                                    beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                                    beriobat.dlgobt.setVisible(true);
+                                    DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                                    dlgobt.addWindowListener(new WindowListener() {
+                                        @Override
+                                        public void windowOpened(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosing(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {isRawat();}
+                                        @Override
+                                        public void windowIconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeiconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowActivated(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeactivated(WindowEvent e) {}
+                                    });
+                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    dlgobt.isCek();
+                                    dlgobt.tampil();
+                                    dlgobt.setLocationRelativeTo(internalFrame1);
+                                    dlgobt.setVisible(true);
                                 }
                             }                        
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Tambahan Biaya")){
@@ -2939,12 +2974,29 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    beriobat.dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                                    beriobat.dlgobt.isCek();
-                                    beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    beriobat.dlgobt.tampil();
-                                    beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                                    beriobat.dlgobt.setVisible(true);
+                                    DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                                    dlgobt.addWindowListener(new WindowListener() {
+                                        @Override
+                                        public void windowOpened(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosing(WindowEvent e) {}
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {isRawat();}
+                                        @Override
+                                        public void windowIconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeiconified(WindowEvent e) {}
+                                        @Override
+                                        public void windowActivated(WindowEvent e) {}
+                                        @Override
+                                        public void windowDeactivated(WindowEvent e) {}
+                                    });
+                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                    dlgobt.isCek();
+                                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    dlgobt.tampil();
+                                    dlgobt.setLocationRelativeTo(internalFrame1);
+                                    dlgobt.setVisible(true);
                                 }
                             }                        
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Tambahan Biaya")){
@@ -3023,13 +3075,29 @@ private void MnInputObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 BtnNota.requestFocus();
             }else{
-                akses.setform("DLgBilingRanap");
-                beriobat.dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                beriobat.dlgobt.isCek();
-                beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                beriobat.dlgobt.tampil();
-                beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                beriobat.dlgobt.setVisible(true);         
+                DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                dlgobt.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {isRawat();}
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
+                dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                dlgobt.isCek();
+                dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgobt.tampil();
+                dlgobt.setLocationRelativeTo(internalFrame1);
+                dlgobt.setVisible(true);         
             }                 
         }
 }//GEN-LAST:event_MnInputObatActionPerformed
@@ -3953,13 +4021,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                akses.setform("DLgBilingRanap");
-                beriobat.dlgobt.isCek();
-                beriobat.dlgobt.setNoRm(norawatbayi,"-","By.Ny."+TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
-                beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                beriobat.dlgobt.tampil();
-                beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                beriobat.dlgobt.setVisible(true);
+                DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                dlgobt.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {isRawat();}
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
+                dlgobt.isCek();
+                dlgobt.setNoRm(norawatbayi,"-","By.Ny."+TPasien.getText(),DTPTgl.getDate(),"00","00","00",true);
+                dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgobt.tampil();
+                dlgobt.setLocationRelativeTo(internalFrame1);
+                dlgobt.setVisible(true);
             }                
         }
     }//GEN-LAST:event_MnInputObat1ActionPerformed

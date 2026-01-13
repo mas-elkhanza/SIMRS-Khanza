@@ -2464,7 +2464,6 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             penyakit.setLocationRelativeTo(internalFrame1);
             penyakit.isCek();
             penyakit.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
-            penyakit.panelDiagnosa1.tampil();
             penyakit.setVisible(true);
         }
     }//GEN-LAST:event_MnInputDiagnosaActionPerformed

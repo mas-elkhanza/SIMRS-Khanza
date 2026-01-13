@@ -37,6 +37,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventory.DlgCariObat2;
+import inventory.DlgCariObat3;
 import inventory.DlgInputStokPasien;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
@@ -211,7 +213,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     public  DlgKamar kamar=new DlgKamar(null,false);
     public  DlgBilingRanap billing=new DlgBilingRanap( null,false);
-    public  DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-MM-yyyy");
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -420,59 +421,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                     }  
                     kdkamar.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        diagnosa.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgKamarInap")){
-                    try {
-                        key="";
-                        psdiagnosa=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas asc");
-                        try{
-                            psdiagnosa.setString(1,norawat.getText());
-                            rs=psdiagnosa.executeQuery();                    
-                            while(rs.next()){
-                                key=rs.getString(1)+", "+key;
-                            }
-                        }catch(Exception ex){
-                            System.out.println("Notifikasi : "+ex);
-                        }finally{
-                            if(rs != null){
-                                rs.close();
-                            }
-                            if(psdiagnosa != null){
-                                psdiagnosa.close();
-                            }
-                        }
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
-                    
-                    if(WindowInputKamar.isVisible()==true){
-                        diagnosaakhir.setText(key);
-                        diagnosaakhir.requestFocus();
-                    }else if(WindowInputKamar.isVisible()==false){
-                        if(Sequel.mengedittf("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","diagnosa_akhir='"+key+"'")==true){
-                            if(tbKamIn.getSelectedRow()!= -1){
-                                tbKamIn.setValueAt(key,tbKamIn.getSelectedRow(),10);
-                            }
-                        }
-                    }                    
                 }
             }
             @Override
@@ -8161,19 +8109,68 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         }else{
-                akses.setform("DlgKamarInap");
-                diagnosa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                diagnosa.setLocationRelativeTo(internalFrame1);
-                diagnosa.isCek();
-                if(R1.isSelected()==true){
-                    diagnosa.setNoRm(norawat.getText(),new Date(),new Date(),"Ranap");
-                }else if(R2.isSelected()==true){
-                    diagnosa.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ranap");
-                }else if(R3.isSelected()==true){
-                    diagnosa.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate(),"Ranap");
+            DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
+            diagnosa.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    try {
+                        key="";
+                        psdiagnosa=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas asc");
+                        try{
+                            psdiagnosa.setString(1,norawat.getText());
+                            rs=psdiagnosa.executeQuery();                    
+                            while(rs.next()){
+                                key=rs.getString(1)+", "+key;
+                            }
+                        }catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                            if(rs != null){
+                                rs.close();
+                            }
+                            if(psdiagnosa != null){
+                                psdiagnosa.close();
+                            }
+                        }
+                    } catch (Exception ex) {
+                        System.out.println(ex);
+                    }
+
+                    if(WindowInputKamar.isVisible()==true){
+                        diagnosaakhir.setText(key);
+                        diagnosaakhir.requestFocus();
+                    }else if(WindowInputKamar.isVisible()==false){
+                        if(Sequel.mengedittf("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","diagnosa_akhir='"+key+"'")==true){
+                            if(tbKamIn.getSelectedRow()!= -1){
+                                tbKamIn.setValueAt(key,tbKamIn.getSelectedRow(),10);
+                            }
+                        }
+                    } 
                 }
-                diagnosa.panelDiagnosa1.tampil();
-                diagnosa.setVisible(true);
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });
+            diagnosa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            diagnosa.setLocationRelativeTo(internalFrame1);
+            diagnosa.isCek();
+            if(R1.isSelected()==true){
+                diagnosa.setNoRm(norawat.getText(),new Date(),new Date(),"Ranap");
+            }else if(R2.isSelected()==true){
+                diagnosa.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ranap");
+            }else if(R3.isSelected()==true){
+                diagnosa.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate(),"Ranap");
+            }
+            diagnosa.setVisible(true);
         }
     }//GEN-LAST:event_btnDiagnosaActionPerformed
 
@@ -8392,7 +8389,57 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
                             rs2=psanak.executeQuery();
                             if(rs2.next()){
-                                akses.setform("DlgKamarInap");
+                                DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
+                                diagnosa.addWindowListener(new WindowListener() {
+                                    @Override
+                                    public void windowOpened(WindowEvent e) {}
+                                    @Override
+                                    public void windowClosing(WindowEvent e) {}
+                                    @Override
+                                    public void windowClosed(WindowEvent e) {
+                                        try {
+                                            key="";
+                                            psdiagnosa=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas asc");
+                                            try{
+                                                psdiagnosa.setString(1,norawat.getText());
+                                                rs=psdiagnosa.executeQuery();                    
+                                                while(rs.next()){
+                                                    key=rs.getString(1)+", "+key;
+                                                }
+                                            }catch(Exception ex){
+                                                System.out.println("Notifikasi : "+ex);
+                                            }finally{
+                                                if(rs != null){
+                                                    rs.close();
+                                                }
+                                                if(psdiagnosa != null){
+                                                    psdiagnosa.close();
+                                                }
+                                            }
+                                        } catch (Exception ex) {
+                                            System.out.println(ex);
+                                        }
+
+                                        if(WindowInputKamar.isVisible()==true){
+                                            diagnosaakhir.setText(key);
+                                            diagnosaakhir.requestFocus();
+                                        }else if(WindowInputKamar.isVisible()==false){
+                                            if(Sequel.mengedittf("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","diagnosa_akhir='"+key+"'")==true){
+                                                if(tbKamIn.getSelectedRow()!= -1){
+                                                    tbKamIn.setValueAt(key,tbKamIn.getSelectedRow(),10);
+                                                }
+                                            }
+                                        } 
+                                    }
+                                    @Override
+                                    public void windowIconified(WindowEvent e) {}
+                                    @Override
+                                    public void windowDeiconified(WindowEvent e) {}
+                                    @Override
+                                    public void windowActivated(WindowEvent e) {}
+                                    @Override
+                                    public void windowDeactivated(WindowEvent e) {}
+                                });
                                 diagnosa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 diagnosa.setLocationRelativeTo(internalFrame1);
                                 diagnosa.isCek();
@@ -8408,7 +8455,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }else if(R3.isSelected()==true){
                                     diagnosa.setNoRm(rs2.getString("no_rawat2"),date,DTPCari4.getDate(),"Ranap");
                                 }   
-                                diagnosa.panelDiagnosa1.tampil();
                                 diagnosa.setVisible(true);  
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -8428,7 +8474,57 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         System.out.println(e);
                     }
                 }else{
-                    akses.setform("DlgKamarInap");
+                    DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
+                    diagnosa.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            try {
+                                key="";
+                                psdiagnosa=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas asc");
+                                try{
+                                    psdiagnosa.setString(1,norawat.getText());
+                                    rs=psdiagnosa.executeQuery();                    
+                                    while(rs.next()){
+                                        key=rs.getString(1)+", "+key;
+                                    }
+                                }catch(Exception ex){
+                                    System.out.println("Notifikasi : "+ex);
+                                }finally{
+                                    if(rs != null){
+                                        rs.close();
+                                    }
+                                    if(psdiagnosa != null){
+                                        psdiagnosa.close();
+                                    }
+                                }
+                            } catch (Exception ex) {
+                                System.out.println(ex);
+                            }
+
+                            if(WindowInputKamar.isVisible()==true){
+                                diagnosaakhir.setText(key);
+                                diagnosaakhir.requestFocus();
+                            }else if(WindowInputKamar.isVisible()==false){
+                                if(Sequel.mengedittf("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","diagnosa_akhir='"+key+"'")==true){
+                                    if(tbKamIn.getSelectedRow()!= -1){
+                                        tbKamIn.setValueAt(key,tbKamIn.getSelectedRow(),10);
+                                    }
+                                }
+                            } 
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
                     diagnosa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     diagnosa.setLocationRelativeTo(internalFrame1);
                     diagnosa.isCek();
@@ -8444,7 +8540,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }else if(R3.isSelected()==true){
                         diagnosa.setNoRm(norawat.getText(),date,DTPCari4.getDate(),"Ranap");
                     }
-                    diagnosa.panelDiagnosa1.tampil();
                     diagnosa.setVisible(true);  
                 } 
             }
@@ -19593,23 +19688,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void panggilobat(String norawat) {
         if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",norawat)>0){
-            billing.beriobat.dlgobt2.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari1.getDate());
-            billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
-            billing.beriobat.dlgobt2.setVisible(true); 
+            DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
+            dlgobt2.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari1.getDate());
+            dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgobt2.setLocationRelativeTo(internalFrame1);
+            dlgobt2.setVisible(true); 
         }else{
-            billing.beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
+            DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+            dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgobt.setLocationRelativeTo(internalFrame1);
             if(R1.isSelected()==true){
-                billing.beriobat.dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),new Date(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),new Date(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
             }else if(R2.isSelected()==true){
-                billing.beriobat.dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
             }else if(R3.isSelected()==true){
-                billing.beriobat.dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari3.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                dlgobt.setNoRm(norawat,TNoRMCari.getText(),TPasienCari.getText(),DTPCari3.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
             }   
-            billing.beriobat.dlgobt.isCek();
-            billing.beriobat.dlgobt.tampil();
-            billing.beriobat.dlgobt.setVisible(true);
+            dlgobt.isCek();
+            dlgobt.tampil();
+            dlgobt.setVisible(true);
         } 
     }
     
