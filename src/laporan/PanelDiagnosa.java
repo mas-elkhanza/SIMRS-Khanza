@@ -1236,10 +1236,6 @@ public class PanelDiagnosa extends widget.panelisi {
 
     public void pilihTab() {
         switch (TabRawat.getSelectedIndex()) {
-            case 0:
-                runBackground(() ->tampildiagnosa());
-                runBackground(() ->tampilprosedure());
-                break;
             case 1:
                 runBackground(() ->tampil());
                 break;
