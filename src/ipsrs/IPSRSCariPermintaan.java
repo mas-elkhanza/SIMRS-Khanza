@@ -798,7 +798,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             IPSRSPengeluaran aplikasi=new IPSRSPengeluaran(null,false);
             aplikasi.tampilkanpermintaan=false;
-            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()+", Ruangan "+tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString().trim()+", oleh "+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+            aplikasi.tampil2(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()+", Ruangan "+tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString().trim()+", oleh "+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
             aplikasi.isCek();
             aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             aplikasi.setLocationRelativeTo(internalFrame1);
