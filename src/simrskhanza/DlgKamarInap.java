@@ -40,6 +40,7 @@ import fungsi.akses;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
 import inventory.DlgInputStokPasien;
+import inventory.DlgPemberianObat;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
 import inventory.DlgPermintaanResepPulang;
@@ -6642,7 +6643,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                               psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
                               rs2=psanak.executeQuery();
                               if(rs2.next()){
-                                  akses.setform("DlgKamarInap");
                                   bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",Sequel.cariIsi("select kamar.kd_bangsal from kamar where kamar.kd_kamar=?",kdkamar.getText()));
                                   if(bangsal.equals("")){
                                       if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
@@ -6653,18 +6653,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                   }else{
                                       akses.setkdbangsal(bangsal);
                                   }
-                                  billing.beriobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                  billing.beriobat.setLocationRelativeTo(internalFrame1);
+                                  DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
+                                  beriobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                  beriobat.setLocationRelativeTo(internalFrame1);
                                   if(R1.isSelected()==true){
-                                      billing.beriobat.setNoRm(rs2.getString("no_rawat2"),new Date(),new Date(),"ranap");
+                                      beriobat.setNoRm(rs2.getString("no_rawat2"),new Date(),new Date(),"ranap");
                                   }else if(R2.isSelected()==true){
-                                      billing.beriobat.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
+                                      beriobat.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
                                   }else if(R3.isSelected()==true){
-                                      billing.beriobat.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate(),"ranap");
+                                      beriobat.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate(),"ranap");
                                   }
-                                  billing.beriobat.isCek();
-                                  billing.beriobat.tampilPO3();
-                                  billing.beriobat.setVisible(true);
+                                  beriobat.isCek();
+                                  beriobat.tampilPO3();
+                                  beriobat.setVisible(true);
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
                                   tbKamIn.requestFocus();
@@ -6683,7 +6684,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                           System.out.println(e);
                       } 
                 }else{    
-                      akses.setform("DlgKamarInap");
                       bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",Sequel.cariIsi("select kamar.kd_bangsal from kamar where kamar.kd_kamar=?",kdkamar.getText()));
                       if(bangsal.equals("")){
                           if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
@@ -6695,18 +6695,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
                           akses.setkdbangsal(bangsal);
                       }
 
-                      billing.beriobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                      billing.beriobat.setLocationRelativeTo(internalFrame1);
+                      DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
+                      beriobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                      beriobat.setLocationRelativeTo(internalFrame1);
                       if(R1.isSelected()==true){
-                          billing.beriobat.setNoRm(norawat.getText(),new Date(),new Date(),"ranap");
+                          beriobat.setNoRm(norawat.getText(),new Date(),new Date(),"ranap");
                       }else if(R2.isSelected()==true){
-                          billing.beriobat.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
+                          beriobat.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
                       }else if(R3.isSelected()==true){
-                          billing.beriobat.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate(),"ranap");
+                          beriobat.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate(),"ranap");
                       }
-                      billing.beriobat.isCek();
-                      billing.beriobat.tampilPO3();
-                      billing.beriobat.setVisible(true);
+                      beriobat.isCek();
+                      beriobat.tampilPO3();
+                      beriobat.setVisible(true);
                 }
           }
       } 
