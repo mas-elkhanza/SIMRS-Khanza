@@ -393,9 +393,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         runBackground(() ->tampil());
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -468,12 +466,12 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                LCountPengajuan.setText(Valid.SetAngka(response.path("rekap").path("totalbiayapengajuan").asDouble()));
-                LCountDisetujui.setText(Valid.SetAngka(response.path("rekap").path("totalbiayasetuju").asDouble()));
-                LCount.setText(response.path("rekap").path("jumlahdata").asText());
-                if(response.path("rekap").path("listsep").isArray()){
+                LCountPengajuan.setText(Valid.SetAngka(response.path("totalbiayapengajuan").asDouble()));
+                LCountDisetujui.setText(Valid.SetAngka(response.path("totalbiayasetuju").asDouble()));
+                LCount.setText(response.path("jumlahdata").asText());
+                if(response.path("listsep").isArray()){
                     if(TCari.getText().trim().equals("")){
-                        for(JsonNode list:response.path("rekap").path("listsep")){
+                        for(JsonNode list:response.path("listsep")){
                             tabMode.addRow(new Object[]{
                                 list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
                                 list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
@@ -482,7 +480,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
                             });
                         }
                     }else{
-                        for(JsonNode list:response.path("rekap").path("listsep")){
+                        for(JsonNode list:response.path("listsep")){
                             if(list.path("nosepapotek").asText().contains(TCari.getText())||list.path("nosepaasal").asText().contains(TCari.getText())||
                                     list.path("nokartu").asText().contains(TCari.getText())||list.path("namapeserta").asText().contains(TCari.getText())||
                                     list.path("tglpelayanan").asText().contains(TCari.getText())){

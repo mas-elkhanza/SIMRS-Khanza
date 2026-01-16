@@ -200,32 +200,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });
-        
-        barang.satuan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariReturBeli")){
-                    if(barang.satuan.getTable().getSelectedRow()!= -1){
-                        kdsat.setText(barang.satuan.getTable().getValueAt(barang.satuan.getTable().getSelectedRow(),0).toString());
-                        nmsat.setText(barang.satuan.getTable().getValueAt(barang.satuan.getTable().getSelectedRow(),1).toString());
-                    }                
-                    kdsat.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });      
+        });    
     }
     
 
@@ -775,13 +750,38 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
     }//GEN-LAST:event_nmsatKeyPressed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        akses.setform("DlgCariReturBeli");
-        barang.satuan.emptTeks();
-        barang.satuan.isCek();
-        barang.satuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.satuan.setLocationRelativeTo(internalFrame1);
-        barang.satuan.setAlwaysOnTop(false);
-        barang.satuan.setVisible(true);
+        DlgCariSatuan satuan = new DlgCariSatuan(null, false);
+        satuan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (satuan.getTable().getSelectedRow() != -1) {
+                    kdsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(), 0).toString());
+                    nmsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {
+                satuan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        satuan.isCek();
+        satuan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        satuan.setLocationRelativeTo(internalFrame1);
+        satuan.setAlwaysOnTop(false);
+        satuan.setVisible(true);
     }//GEN-LAST:event_btnSatuanActionPerformed
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed

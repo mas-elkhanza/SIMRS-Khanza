@@ -108,31 +108,6 @@ public class InventoryNilaiPenerimaanVendorFarmasiPerBulan extends javax.swing.J
             });
         }
         
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("InventoryNilaiPenerimaanVendorFarmasiPerBulan")){
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){                          
-                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());                        
-                    }                    
-                    kdjenis.requestFocus();
-                }                   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
         barang.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -172,46 +147,6 @@ public class InventoryNilaiPenerimaanVendorFarmasiPerBulan extends javax.swing.J
             @Override
             public void keyReleased(KeyEvent e) {}
         }); 
-        
-        barang.industri.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("InventoryNilaiPenerimaanVendorFarmasiPerBulan")){
-                    if(barang.industri.getTable().getSelectedRow()!= -1){                   
-                        KdIF.setText(barang.industri.getTable().getValueAt(barang.industri.getTable().getSelectedRow(),0).toString());                    
-                        NmIF.setText(barang.industri.getTable().getValueAt(barang.industri.getTable().getSelectedRow(),1).toString());                                        
-                    }   
-                    KdIF.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.industri.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("InventoryNilaiPenerimaanVendorFarmasiPerBulan")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        barang.industri.dispose();
-                    }      
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         Valid.LoadTahun(ThnCari);
     }
@@ -559,8 +494,6 @@ public class InventoryNilaiPenerimaanVendorFarmasiPerBulan extends javax.swing.J
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        barang.industri.dispose();
-        barang.jenis.dispose();
         barang.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -587,13 +520,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnBarangActionPerformed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        akses.setform("InventoryNilaiPenerimaanVendorFarmasiPerBulan");
-        barang.jenis.emptTeks();
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setAlwaysOnTop(false);
-        barang.jenis.setVisible(true);
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
     }//GEN-LAST:event_btnSatuanActionPerformed
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
@@ -721,13 +676,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_nmjenisKeyPressed
 
     private void btnIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIFActionPerformed
-        akses.setform("InventoryNilaiPenerimaanVendorFarmasiPerBulan");
-        barang.industri.emptTeks();
-        barang.industri.isCek();
-        barang.industri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.industri.setLocationRelativeTo(internalFrame1);
-        barang.industri.setAlwaysOnTop(false);
-        barang.industri.setVisible(true);
+        DlgCariIndustriFarmasi industri=new DlgCariIndustriFarmasi(null,false);
+        industri.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(industri.getTable().getSelectedRow()!= -1){                   
+                    KdIF.setText(industri.getTable().getValueAt(industri.getTable().getSelectedRow(),0).toString());                    
+                    NmIF.setText(industri.getTable().getValueAt(industri.getTable().getSelectedRow(),1).toString());
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        industri.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    industri.dispose();
+                } 
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        industri.isCek();
+        industri.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        industri.setLocationRelativeTo(internalFrame1);
+        industri.setAlwaysOnTop(false);
+        industri.setVisible(true);
     }//GEN-LAST:event_btnIFActionPerformed
 
     private void KdIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdIFKeyPressed

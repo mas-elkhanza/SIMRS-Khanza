@@ -93,7 +93,7 @@ public class InventoryRingkasanPiutangBarangMedis extends javax.swing.JDialog {
         nmmem.setDocument(new batasInput((byte)70).getKata(nmmem));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
-        kdsat.setDocument(new batasInput((byte)3).getKata(kdsat));
+        kdjenis.setDocument(new batasInput((byte)3).getKata(kdjenis));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -157,32 +157,7 @@ public class InventoryRingkasanPiutangBarangMedis extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });
-        
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariPenjualan")){
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){
-                        kdsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());
-                        nmsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
-                    }                
-                    kdsat.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
+        });  
     }    
 
     /** This method is called from within the constructor to
@@ -215,9 +190,9 @@ public class InventoryRingkasanPiutangBarangMedis extends javax.swing.JDialog {
         nmbar = new widget.TextBox();
         btnBarang = new widget.Button();
         label24 = new widget.Label();
-        kdsat = new widget.TextBox();
+        kdjenis = new widget.TextBox();
         btnSatuan = new widget.Button();
-        nmsat = new widget.TextBox();
+        nmjenis = new widget.TextBox();
         panelisi1 = new widget.panelisi();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
@@ -497,15 +472,15 @@ public class InventoryRingkasanPiutangBarangMedis extends javax.swing.JDialog {
         panelisi4.add(label24);
         label24.setBounds(0, 10, 74, 23);
 
-        kdsat.setName("kdsat"); // NOI18N
-        kdsat.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdsat.addKeyListener(new java.awt.event.KeyAdapter() {
+        kdjenis.setName("kdjenis"); // NOI18N
+        kdjenis.setPreferredSize(new java.awt.Dimension(80, 23));
+        kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdsatKeyPressed(evt);
+                kdjenisKeyPressed(evt);
             }
         });
-        panelisi4.add(kdsat);
-        kdsat.setBounds(79, 10, 53, 23);
+        panelisi4.add(kdjenis);
+        kdjenis.setBounds(79, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -520,15 +495,15 @@ public class InventoryRingkasanPiutangBarangMedis extends javax.swing.JDialog {
         panelisi4.add(btnSatuan);
         btnSatuan.setBounds(255, 10, 28, 23);
 
-        nmsat.setName("nmsat"); // NOI18N
-        nmsat.setPreferredSize(new java.awt.Dimension(80, 23));
-        nmsat.addKeyListener(new java.awt.event.KeyAdapter() {
+        nmjenis.setName("nmjenis"); // NOI18N
+        nmjenis.setPreferredSize(new java.awt.Dimension(80, 23));
+        nmjenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nmsatKeyPressed(evt);
+                nmjenisKeyPressed(evt);
             }
         });
-        panelisi4.add(nmsat);
-        nmsat.setBounds(134, 10, 116, 23);
+        panelisi4.add(nmjenis);
+        nmjenis.setBounds(134, 10, 116, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -919,7 +894,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
-            kdsat.requestFocus();
+            kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
             TCari.requestFocus();
@@ -938,33 +913,55 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         barang.setVisible(true);
     }//GEN-LAST:event_btnBarangActionPerformed
 
-    private void kdsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsatKeyPressed
+    private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from jenis where kdjns=?", nmsat,kdsat.getText());
+            Sequel.cariIsi("select nama from jenis where kdjns=?", nmjenis,kdjenis.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama from jenis where kdjns=?", nmsat,kdsat.getText());
+            Sequel.cariIsi("select nama from jenis where kdjns=?", nmjenis,kdjenis.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama from jenis where kdjns=?", nmsat,kdsat.getText());
+            Sequel.cariIsi("select nama from jenis where kdjns=?", nmjenis,kdjenis.getText());
             kdbar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
         }
-    }//GEN-LAST:event_kdsatKeyPressed
+    }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        akses.setform("DlgCariPenjualan");
-        barang.jenis.emptTeks();
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setAlwaysOnTop(false);
-        barang.jenis.setVisible(true);
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
     }//GEN-LAST:event_btnSatuanActionPerformed
 
-    private void nmsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmsatKeyPressed
+    private void nmjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmjenisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nmsatKeyPressed
+    }//GEN-LAST:event_nmjenisKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -995,8 +992,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NoNota.setText("");
         kdbar.setText("");
         nmbar.setText("");
-        kdsat.setText("");
-        nmsat.setText("");
+        kdjenis.setText("");
+        nmjenis.setText("");
         kdmem.setText("");
         nmmem.setText("");
         kdptg.setText("");
@@ -1040,8 +1037,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(!nmptg.getText().equals("")){
                 ptg=" and petugas.nama='"+nmptg.getText()+"' ";
             }
-            if(!nmsat.getText().equals("")){
-                sat=" and jenis.nama='"+nmsat.getText()+"' ";
+            if(!nmjenis.getText().equals("")){
+                sat=" and jenis.nama='"+nmjenis.getText()+"' ";
             }
             if(!nmbar.getText().equals("")){
                 bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
@@ -1192,9 +1189,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
     private widget.TextBox kdbar;
+    private widget.TextBox kdjenis;
     private widget.TextBox kdmem;
     private widget.TextBox kdptg;
-    private widget.TextBox kdsat;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label13;
@@ -1205,9 +1202,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmbar;
+    private widget.TextBox nmjenis;
     private widget.TextBox nmmem;
     private widget.TextBox nmptg;
-    private widget.TextBox nmsat;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
@@ -1227,8 +1224,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(!nmptg.getText().equals("")){
             ptg=" and petugas.nama='"+nmptg.getText()+"' ";
         }
-        if(!nmsat.getText().equals("")){
-            sat=" and jenis.nama='"+nmsat.getText()+"' ";
+        if(!nmjenis.getText().equals("")){
+            sat=" and jenis.nama='"+nmjenis.getText()+"' ";
         }
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
@@ -1273,7 +1270,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
-        kdsat.setText("");
+        kdjenis.setText("");
         kdbar.requestFocus();        
     }   
     

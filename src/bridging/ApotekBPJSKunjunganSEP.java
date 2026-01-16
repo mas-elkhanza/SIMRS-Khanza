@@ -28,7 +28,10 @@ import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -51,6 +54,8 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -88,19 +93,19 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(NoSEP.getText().length()>2){
-                        tampil(NoSEP.getText());
+                        runBackground(() ->tampil(NoSEP.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(NoSEP.getText().length()>2){
-                        tampil(NoSEP.getText());
+                        runBackground(() ->tampil(NoSEP.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(NoSEP.getText().length()>2){
-                        tampil(NoSEP.getText());
+                        runBackground(() ->tampil(NoSEP.getText()));
                     }
                 }
             });
@@ -272,10 +277,10 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
 
     private void NoSEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSEPKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(NoSEP.getText());
+            runBackground(() ->tampil(NoSEP.getText()));
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(NoSEP.getText());
+            runBackground(() ->tampil(NoSEP.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -284,9 +289,7 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_NoSEPKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(NoSEP.getText());
-        this.setCursor(Cursor.getDefaultCursor());
+        runBackground(() ->tampil(NoSEP.getText()));
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -326,7 +329,7 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String keyword) {
+    private void tampil(String keyword) {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -336,7 +339,7 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"/SEP/"+keyword;	
+            URL = link+"/sep/"+keyword;	
             System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
@@ -415,9 +418,31 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
         }
-    }    
+    }  
+    
+    public void tampil2(String keyword) {
+        runBackground(() ->tampil(keyword));
+    }
 
     public JTable getTable(){
         return tbKamar;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

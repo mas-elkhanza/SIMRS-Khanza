@@ -157,29 +157,6 @@ public class DlgCariPengajuanBarangMedis extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){                   
-                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
-                    }   
-                    kdjenis.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
 
     /** This method is called from within the constructor to
@@ -621,7 +598,6 @@ public class DlgCariPengajuanBarangMedis extends javax.swing.JDialog {
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         pegawai.dispose();
         barang.dispose();
-        barang.jenis.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -794,10 +770,35 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setVisible(true);
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void ppProsesPengajuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesPengajuanActionPerformed

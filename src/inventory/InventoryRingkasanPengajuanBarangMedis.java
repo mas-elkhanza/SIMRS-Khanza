@@ -150,29 +150,6 @@ public class InventoryRingkasanPengajuanBarangMedis extends javax.swing.JDialog 
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){                   
-                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
-                    }   
-                    kdjenis.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
 
     /** This method is called from within the constructor to
@@ -604,7 +581,7 @@ public class InventoryRingkasanPengajuanBarangMedis extends javax.swing.JDialog 
         label7.setText("Jenis :");
         label7.setName("label7"); // NOI18N
         panelisi4.add(label7);
-        label7.setBounds(0, 10, 42, 23);
+        label7.setBounds(0, 10, 45, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -614,7 +591,7 @@ public class InventoryRingkasanPengajuanBarangMedis extends javax.swing.JDialog 
             }
         });
         panelisi4.add(kdjenis);
-        kdjenis.setBounds(45, 10, 61, 23);
+        kdjenis.setBounds(48, 10, 58, 23);
 
         nmjenis.setEditable(false);
         nmjenis.setName("nmjenis"); // NOI18N
@@ -748,7 +725,6 @@ public class InventoryRingkasanPengajuanBarangMedis extends javax.swing.JDialog 
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         barang.dispose();
-        barang.jenis.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -955,10 +931,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setVisible(true);
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void MnKodeBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangDescActionPerformed

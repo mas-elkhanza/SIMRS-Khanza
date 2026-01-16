@@ -27,7 +27,10 @@ import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -51,6 +54,8 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -88,19 +93,19 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Keyword.getText().length()>2){
-                        tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText());
+                        runBackground(() ->tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Keyword.getText().length()>2){
-                        tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText());
+                        runBackground(() ->tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Keyword.getText().length()>2){
-                        tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText());
+                        runBackground(() ->tampil(Keyword.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
                     }
                 }
             });
@@ -322,9 +327,7 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(Jenis.getSelectedItem().toString().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText());
-        this.setCursor(Cursor.getDefaultCursor());
+        runBackground(() ->tampil(Jenis.getSelectedItem().toString().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -399,7 +402,7 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String kodejenis,String tanggal,String keyword) {
+    private void tampil(String kodejenis,String tanggal,String keyword) {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -436,5 +439,23 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        ceksukses = true;
+
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        executor.submit(() -> {
+            try {
+                task.run();
+            } finally {
+                ceksukses = false;
+                SwingUtilities.invokeLater(() -> {
+                    this.setCursor(Cursor.getDefaultCursor());
+                });
+            }
+        });
     }
 }

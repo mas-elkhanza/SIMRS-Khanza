@@ -134,77 +134,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){                   
-                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
-                    }   
-                    kdjenis.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.golongan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (barang.golongan.getTable().getSelectedRow() != -1) {
-                    kdgolongan.setText(barang.golongan.getTable().getValueAt(barang.golongan.getTable().getSelectedRow(), 0).toString());
-                    nmgolongan.setText(barang.golongan.getTable().getValueAt(barang.golongan.getTable().getSelectedRow(), 1).toString());
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {
-                barang.golongan.emptTeks();
-            }
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.kategori.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (barang.kategori.getTable().getSelectedRow() != -1) {
-                    kdkategori.setText(barang.kategori.getTable().getValueAt(barang.kategori.getTable().getSelectedRow(), 0).toString());
-                    nmkategori.setText(barang.kategori.getTable().getValueAt(barang.kategori.getTable().getSelectedRow(), 1).toString());
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {
-                barang.kategori.emptTeks();
-            }
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         ChkInput.setSelected(false);
         isForm();
     }
@@ -787,7 +716,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         barang.dispose();
-        barang.jenis.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1041,10 +969,35 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setVisible(true);
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void ppDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujuiActionPerformed
@@ -1103,19 +1056,75 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
-        barang.kategori.isCek();
-        barang.kategori.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
-        barang.kategori.setLocationRelativeTo(internalFrame1);
-        barang.kategori.setAlwaysOnTop(false);
-        barang.kategori.setVisible(true);
+        DlgCariKategori kategori = new DlgCariKategori(null, false);
+        kategori.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (kategori.getTable().getSelectedRow() != -1) {
+                    kdkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 0).toString());
+                    nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
+                }
+                BtnKategori.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {
+                kategori.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        kategori.isCek();
+        kategori.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        kategori.setLocationRelativeTo(internalFrame1);
+        kategori.setAlwaysOnTop(false);
+        kategori.setVisible(true);
     }//GEN-LAST:event_BtnKategoriActionPerformed
 
     private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
-        barang.golongan.isCek();
-        barang.golongan.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
-        barang.golongan.setLocationRelativeTo(internalFrame1);
-        barang.golongan.setAlwaysOnTop(false);
-        barang.golongan.setVisible(true);
+        DlgCariGolongan golongan = new DlgCariGolongan(null, false);
+        golongan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (golongan.getTable().getSelectedRow() != -1) {
+                    kdgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 0).toString());
+                    nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
+                }
+                BtnGolongan.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                golongan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        golongan.isCek();
+        golongan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        golongan.setLocationRelativeTo(internalFrame1);
+        golongan.setAlwaysOnTop(false);
+        golongan.setVisible(true);
     }//GEN-LAST:event_BtnGolonganActionPerformed
 
     private void kdgolonganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgolonganKeyPressed

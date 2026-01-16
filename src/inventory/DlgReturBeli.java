@@ -180,31 +180,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        form.barang.satuan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgReturBeli")){
-                    if(form.barang.satuan.getTable().getSelectedRow()!= -1){                   
-                        satuanretur.setText(form.barang.satuan.getTable().getValueAt(form.barang.satuan.getTable().getSelectedRow(),0).toString());   
-                        isHitung();
-                    }     
-                    satuanretur.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         form.petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -1107,13 +1082,38 @@ private void BtnBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 }//GEN-LAST:event_BtnBrgActionPerformed
 
 private void BtnKnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKnvActionPerformed
-        akses.setform("DlgReturBeli");
-        form.barang.satuan.emptTeks();
-        form.barang.satuan.isCek();
-        form.barang.satuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.barang.satuan.setLocationRelativeTo(internalFrame1);
-        form.barang.satuan.setAlwaysOnTop(false);
-        form.barang.satuan.setVisible(true);
+        DlgCariSatuan satuan = new DlgCariSatuan(null, false);
+        satuan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (satuan.getTable().getSelectedRow() != -1) {
+                    satuanretur.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(), 0).toString());
+                    isHitung();
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {
+                satuan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        satuan.isCek();
+        satuan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        satuan.setLocationRelativeTo(internalFrame1);
+        satuan.setAlwaysOnTop(false);
+        satuan.setVisible(true);
 }//GEN-LAST:event_BtnKnvActionPerformed
 
 private void satuanreturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_satuanreturKeyPressed
