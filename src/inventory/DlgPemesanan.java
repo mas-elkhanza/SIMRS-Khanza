@@ -29,6 +29,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariPetugas;
 import keuangan.Jurnal;
 import setting.DlgSetHarga;
 import simrskhanza.DlgCariBangsal;
@@ -42,7 +43,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariPemesanan form=new DlgCariPemesanan(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private double hargakonversi=0,meterai=0,ttl=0,y=0,w=0,ttldisk=0,
             sbttl=0,ppn=0,jmlkonversi=0,hargappn=0,hargadiskon=0;
     private int jml=0,i=0,row=0,index=0;
@@ -174,60 +175,18 @@ public class DlgPemesanan extends javax.swing.JDialog {
             });
         }
         
-        form.suplier.addWindowListener(new WindowListener() {
+        petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesanan")){
-                    if(form.suplier.getTable().getSelectedRow()!= -1){                   
-                        kdsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),0).toString());                    
-                        nmsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),1).toString());
-                    } 
-                    kdsup.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        form.suplier.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPemesanan")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        form.suplier.dispose();
-                    }                
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });            
-        
-        form.petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesanan")){
-                    if(form.petugas.getTable().getSelectedRow()!= -1){                   
-                        kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
-                        nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
-                    }  
-                    kdptg.requestFocus();
-                }
+                if(petugas.getTable().getSelectedRow()!= -1){                   
+                    kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                }            
+                kdptg.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -847,6 +806,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariPemesanan form=new DlgCariPemesanan(null,false);
         form.emptTeks();    
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -857,9 +817,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        form.suplier.dispose();
-        form.petugas.dispose();
-        form.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1248,13 +1205,9 @@ private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kds
 }//GEN-LAST:event_kdsupKeyPressed
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));          
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kdsup.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
             kdgudang.requestFocus();  
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -1262,23 +1215,57 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("DlgPemesanan");
-        form.suplier.emptTeks();
-        form.suplier.isCek();
-        form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.suplier.setLocationRelativeTo(internalFrame1);
-        form.suplier.setAlwaysOnTop(false);
-        form.suplier.setVisible(true);
+        InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
+        suplier.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(suplier.getTable().getSelectedRow()!= -1){                   
+                    kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
+                    nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
+                }  
+                kdsup.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        suplier.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    suplier.dispose();
+                } 
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        suplier.emptTeks();
+        suplier.isCek();
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        suplier.setLocationRelativeTo(internalFrame1);
+        suplier.setAlwaysOnTop(false);
+        suplier.setVisible(true);
 }//GEN-LAST:event_btnSuplierActionPerformed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgPemesanan");
-        form.petugas.emptTeks();
-        form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.petugas.setLocationRelativeTo(internalFrame1);
-        form.petugas.setAlwaysOnTop(false);
-        form.petugas.setVisible(true);
+        petugas.emptTeks();
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
 }//GEN-LAST:event_btnPetugasActionPerformed
 
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
@@ -1798,7 +1785,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
         }      
     }
     
