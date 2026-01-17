@@ -171,6 +171,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
+import rekammedis.RMDataSkriningGiziKehamilan;
 
 /**
  *
@@ -8936,6 +8937,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnSkriningGiziKehamilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSkriningGiziLanjutActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataSkriningGiziKehamilan form=new RMDataSkriningGiziKehamilan(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -9269,7 +9288,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnAwalKeperawatanNeonatus,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnAwalKeperawatanBayiAnak,BtnCatatanObservasiRestrainNonfarmakologi,
                           BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnLaporanTindakan,
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
-                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung;
+                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
+                          BtnSkriningGiziKehamilan;
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -9932,6 +9952,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaMasukHCU.setVisible(akses.getchecklist_kriteria_masuk_hcu()); 
         if(akses.getchecklist_kriteria_masuk_hcu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnSkriningGiziKehamilan.setVisible(akses.getskrining_gizi_kehamilan());   
+        if(akses.getskrining_gizi_kehamilan()==true){
             tinggi=tinggi+24;
         }
         BtnChecklistKriteriaKeluarHCU.setVisible(akses.getchecklist_kriteria_keluar_hcu()); 
@@ -11075,6 +11099,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnChecklistKriteriaKeluarNICU.setRoundRect(false);
         BtnChecklistKriteriaKeluarNICU.addActionListener(this::BtnChecklistKriteriaKeluarNICUActionPerformed);
         
+        BtnSkriningGiziKehamilan = new widget.Button();
+        BtnSkriningGiziKehamilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnSkriningGiziKehamilan.setText("Skrining Gizi Kehamilan");
+        BtnSkriningGiziKehamilan.setFocusPainted(false);
+        BtnSkriningGiziKehamilan.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnSkriningGiziKehamilan.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSkriningGiziKehamilan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSkriningGiziKehamilan.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSkriningGiziKehamilan.setName("BtnSkriningGiziKehamilan");
+        BtnSkriningGiziKehamilan.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSkriningGiziKehamilan.setRoundRect(false);
+        BtnSkriningGiziKehamilan.addActionListener(this::BtnSkriningGiziKehamilanActionPerformed);
+        
         TanggalRegistrasi = new widget.TextBox();
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi");
@@ -11180,6 +11217,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnSkriningNutrisiDewasa);
         FormMenu.add(BtnSkriningNutrisiLansia);
         FormMenu.add(BtnSkriningNutrisiAnak);
+        FormMenu.add(BtnSkriningGiziKehamilan);
         FormMenu.add(BtnSkriningGiziLanjut);
         FormMenu.add(BtnAsuhanGizi);
         FormMenu.add(BtnMonitoringAsuhanGizi);
