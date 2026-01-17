@@ -1057,18 +1057,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps2.setString(i,"%"+TCari.getText().trim()+"%");    
                     i++;
                     ps2.setString(i,"%"+TCari.getText().trim()+"%");   
-                    i++;
-                    ps2.setString(i,"%"+TCari.getText().trim()+"%"); 
                 }            
                      
                 rs=ps2.executeQuery();
                 while(rs.next()){
-                    TabModePasien.addRow(new Object[]{false,rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6)});
+                    TabModePasien.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                    });
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);

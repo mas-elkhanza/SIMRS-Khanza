@@ -2126,9 +2126,13 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Table tbObatRacikan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampilobat() {        
+    public void tampilobat() {     
+        runBackground(() -> loadData());            
+    }
+    
+    private void loadData() {        
         buatcacheberiobat();
-        runBackground(() -> tampilcacheberiobat());            
+        tampilcacheberiobat();            
     }
     
     private void buatcacheberiobat(){

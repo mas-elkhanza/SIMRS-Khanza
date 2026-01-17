@@ -256,7 +256,7 @@ public final class akses {
             template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat=false,penilaian_awal_medis_ranap_jantung=false,e_eksekutif=false,penugasan_pengujian_sampel_lab_kesehatan_lingkungan=false,
             hasil_pengujian_sampel_lab_kesehatan_lingkungan=false,verifikasi_pengujian_sampel_lab_kesehatan_lingkungan=false,validasi_pengujian_sampel_lab_kesehatan_lingkungan=false,
             rekap_pelayanan_lab_kesehatan_lingkungan=false,pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=false,skrining_curb65=false,bpjs_potensi_prb=false,
-            bpjs_riwayat_pelayanan_obat=false;
+            bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1451,6 +1451,7 @@ public final class akses {
                         akses.skrining_curb65=true;
                         akses.bpjs_potensi_prb=true;
                         akses.bpjs_riwayat_pelayanan_obat=true;
+                        akses.skrining_gizi_kehamilan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2629,6 +2630,7 @@ public final class akses {
                         akses.skrining_curb65=rs2.getBoolean("skrining_curb65");
                         akses.bpjs_potensi_prb=rs2.getBoolean("bpjs_potensi_prb");
                         akses.bpjs_riwayat_pelayanan_obat=rs2.getBoolean("bpjs_riwayat_pelayanan_obat");
+                        akses.skrining_gizi_kehamilan=rs2.getBoolean("skrining_gizi_kehamilan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3830,6 +3832,7 @@ public final class akses {
         akses.skrining_curb65=false;
         akses.bpjs_potensi_prb=false;
         akses.bpjs_riwayat_pelayanan_obat=false;
+        akses.skrining_gizi_kehamilan=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5045,4 +5048,5 @@ public final class akses {
     public static boolean getskrining_curb65(){return akses.skrining_curb65;}
     public static boolean getbpjs_potensi_prb(){return akses.bpjs_potensi_prb;}
     public static boolean getbpjs_riwayat_pelayanan_obat(){return akses.bpjs_riwayat_pelayanan_obat;}
+    public static boolean getskrining_gizi_kehamilan(){return akses.skrining_gizi_kehamilan;}
 }   

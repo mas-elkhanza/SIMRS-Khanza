@@ -183,8 +183,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private Connection koneksi=koneksiDB.condb();
-    public  DlgCariPerawatanRanap perawatan=new DlgCariPerawatanRanap(null,false);
-    public  DlgCariPerawatanRanap2 perawatan2=new DlgCariPerawatanRanap2(null,false);
+    private DlgCariPerawatanRanap perawatan=new DlgCariPerawatanRanap(null,false);
+    private DlgCariPerawatanRanap2 perawatan2=new DlgCariPerawatanRanap2(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);  
     private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening,ps6;
     private ResultSet rs,rsrekening;

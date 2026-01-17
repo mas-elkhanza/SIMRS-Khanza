@@ -2001,9 +2001,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.Table tbObatRacikan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {   
+    public void tampil() {  
+        runBackground(() ->loadData()); 
+    }
+    
+    private void loadData() {        
         buatcacheberiobat();
-        runBackground(() ->tampilcacheberiobat()); 
+        tampilcacheberiobat();            
     }
     
     private void buatcacheberiobat(){
