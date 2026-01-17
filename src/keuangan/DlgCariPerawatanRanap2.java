@@ -2050,7 +2050,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() { 
+    private void tampil() { 
         try{  
             jml=0;
             for(i=0;i<tbKamar.getRowCount();i++){
@@ -2587,7 +2587,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tbKamar.getRowCount());
     }
     
-    public void tampil2() { 
+    private void tampil2() { 
         try{ 
             Valid.tabelKosong(tabMode);
             try {
@@ -3057,6 +3057,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tbKamar.getRowCount());
     }
 
+    public void tampil3() { 
+        runBackground(() ->tampil2());
+    }
 
     private void emptTeks() {
         TCari.setText("");

@@ -12,6 +12,8 @@
 
 package fungsi;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -2055,6 +2058,114 @@ public final class sekuel {
             
         return dicari;
     }
+    
+    public String CariDokter(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/dokter.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("dokter");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeDokter").asText().equalsIgnoreCase(kode)){
+                        iyem=list.path("NamaDokter").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kode);
+        }
+        return iyem;
+    }
+    
+    public String CariPetugas(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/petugas.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("petugas");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
+                        iyem=list.path("NamaPetugas").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select petugas.nama from petugas where petugas.nip=?",kode);
+        }
+        return iyem;
+    }
+    
+    public String CariPegawai(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
+                        iyem=list.path("Nama").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",kode);
+        }
+        return iyem;
+    }
+    
+    public String CariJabatanPegawai(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                        iyem=list.path("Jabatan").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select pegawai.jbtn from pegawai where pegawai.nik=?",kode);
+        }
+        return iyem;
+    }
 
     private String gambar(String id) {
         return folder + File.separator + id.trim() + ".jpg";
@@ -2137,7 +2248,7 @@ public final class sekuel {
         }
     }
 
-   public class NIOCopier {
+    public class NIOCopier {
         public NIOCopier(String asal, String tujuan) throws IOException {
             FileOutputStream outFile;
             try (FileInputStream inFile = new FileInputStream(asal)) {
@@ -2154,7 +2265,7 @@ public final class sekuel {
                         }
                     }
                 }
-            outChannel.close();
+                outChannel.close();
             }
             outFile.close();
         }

@@ -759,6 +759,7 @@ import kepegawaian.SKPKategoriPenilaian;
 import kepegawaian.SKPKriteriaPenilaian;
 import kepegawaian.SKPPenilaianPegawai;
 import kepegawaian.SKPRekapitulasiPenilaianPegawai;
+import keuangan.DlgKamar;
 import keuangan.DlgKategoriPiutangJasaPerusahaan;
 import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankMandiri;
@@ -1188,6 +1189,7 @@ public class frmUtama extends javax.swing.JFrame {
     private final validasi Valid=new validasi();
     private final DlgKasirRalan kasirralan=new DlgKasirRalan(this,false);
     private final DlgReg reg=new DlgReg(this,false);
+    private final DlgKamarInap kamarinap=new DlgKamarInap(null,false);
     private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
     private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
     private static frmUtama myInstance;
@@ -8519,11 +8521,11 @@ public class frmUtama extends javax.swing.JFrame {
     private void BtnToolKamnapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolKamnapActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        kasirralan.kamarinap.isCek();
-        kasirralan.kamarinap.emptTeks();  
-        kasirralan.kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        kasirralan.kamarinap.setLocationRelativeTo(PanelUtama);
-        kasirralan.kamarinap.setVisible(true);
+        kamarinap.isCek();
+        kamarinap.emptTeks();  
+        kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        kamarinap.setLocationRelativeTo(PanelUtama);
+        kamarinap.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnToolKamnapActionPerformed
@@ -8662,11 +8664,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
-        kasirralan.kamarinap.kamar.emptTeks();
-        kasirralan.kamarinap.kamar.isCek();
-        kasirralan.kamarinap.kamar.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        kasirralan.kamarinap.kamar.setLocationRelativeTo(PanelUtama);
-        kasirralan.kamarinap.kamar.setVisible(true);
+        DlgKamar kamar=new DlgKamar(null,false);
+        kamar.emptTeks();
+        kamar.isCek();
+        kamar.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        kamar.setLocationRelativeTo(PanelUtama);
+        kamar.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKamarActionPerformed
@@ -8752,11 +8755,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarInapActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        kasirralan.kamarinap.isCek();
-        kasirralan.kamarinap.emptTeks();
-        kasirralan.kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        kasirralan.kamarinap.setLocationRelativeTo(PanelUtama);
-        kasirralan.kamarinap.setVisible(true);
+        kamarinap.isCek();
+        kamarinap.emptTeks();
+        kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        kamarinap.setLocationRelativeTo(PanelUtama);
+        kamarinap.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKamarInapActionPerformed
