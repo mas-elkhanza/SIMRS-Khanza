@@ -55,7 +55,7 @@ public final class ApotekBPJSCekReferensiPoli extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor;
     private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamar
@@ -381,15 +381,28 @@ public final class ApotekBPJSCekReferensiPoli extends javax.swing.JDialog {
 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+        if (executor == null || executor.isShutdown()) {
+            executor = Executors.newSingleThreadExecutor();
+        }
         executor.submit(() -> {
             try {
                 task.run();
             } finally {
                 ceksukses = false;
                 SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
+                    if (isDisplayable()) {
+                        setCursor(Cursor.getDefaultCursor());
+                    }
                 });
             }
         });
+    }
+    
+    @Override
+    public void dispose() {
+        if (executor != null && !executor.isShutdown()) {
+            executor.shutdownNow();
+        }
+        super.dispose();
     }
 }

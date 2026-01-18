@@ -203,6 +203,26 @@ import java.util.List;
 import kepegawaian.DlgCariDokter;
 import keuangan.DlgDeposit;
 import rekammedis.RMDataSkriningGiziKehamilan;
+import simrskhanza.DlgCariBangsal;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariPasien;
+import simrskhanza.DlgCariReg;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgInputResepPulang;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPeriksaLaboratorium;
+import simrskhanza.DlgPeriksaLaboratoriumMB;
+import simrskhanza.DlgPeriksaLaboratoriumPA;
+import simrskhanza.DlgPeriksaRadiologi;
+import simrskhanza.DlgRawatInap;
+import simrskhanza.DlgRawatJalan;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujukMasuk;
+import simrskhanza.DlgTagihanOperasi;
 
 /**
  *
@@ -18703,7 +18723,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else if(R3.isSelected()==true){
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
-                form.tampil();
+                form.tampil2();
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }

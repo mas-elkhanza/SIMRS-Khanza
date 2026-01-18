@@ -42,7 +42,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor;
     private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
@@ -513,15 +513,28 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+        if (executor == null || executor.isShutdown()) {
+            executor = Executors.newSingleThreadExecutor();
+        }
         executor.submit(() -> {
             try {
                 task.run();
             } finally {
                 ceksukses = false;
                 SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
+                    if (isDisplayable()) {
+                        setCursor(Cursor.getDefaultCursor());
+                    }
                 });
             }
         });
+    }
+    
+    @Override
+    public void dispose() {
+        if (executor != null && !executor.isShutdown()) {
+            executor.shutdownNow();
+        }
+        super.dispose();
     }
 }

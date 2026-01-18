@@ -15571,7 +15571,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setLocationRelativeTo(internalFrame1);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
+                form.tampil2();
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }

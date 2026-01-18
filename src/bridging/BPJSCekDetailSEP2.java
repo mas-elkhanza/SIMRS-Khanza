@@ -52,7 +52,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor;
     private volatile boolean ceksukses = false;
         
     /** Creates new form DlgKamar
@@ -315,7 +315,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String sep) {
+    private void tampil(String sep) {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -447,15 +447,28 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+        if (executor == null || executor.isShutdown()) {
+            executor = Executors.newSingleThreadExecutor();
+        }
         executor.submit(() -> {
             try {
                 task.run();
             } finally {
                 ceksukses = false;
                 SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
+                    if (isDisplayable()) {
+                        setCursor(Cursor.getDefaultCursor());
+                    }
                 });
             }
         });
+    }
+    
+    @Override
+    public void dispose() {
+        if (executor != null && !executor.isShutdown()) {
+            executor.shutdownNow();
+        }
+        super.dispose();
     }
 }
