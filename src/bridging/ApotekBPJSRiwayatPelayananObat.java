@@ -62,7 +62,7 @@ public final class ApotekBPJSRiwayatPelayananObat extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response,responselist;
-    private ExecutorService executor;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private DlgCariPasien pasien;
 
@@ -519,11 +519,8 @@ public final class ApotekBPJSRiwayatPelayananObat extends javax.swing.JDialog {
         if (ceksukses) return;
         ceksukses = true;
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        if (executor == null || executor.isShutdown()) {
-            executor = Executors.newSingleThreadExecutor();
-        }
         executor.submit(() -> {
             try {
                 task.run();
@@ -537,12 +534,10 @@ public final class ApotekBPJSRiwayatPelayananObat extends javax.swing.JDialog {
             }
         });
     }
-    
+
     @Override
     public void dispose() {
-        if (executor != null && !executor.isShutdown()) {
-            executor.shutdownNow();
-        }
+        executor.shutdownNow();
         super.dispose();
     }
 }

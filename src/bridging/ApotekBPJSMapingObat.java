@@ -50,7 +50,7 @@ public final class ApotekBPJSMapingObat extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private ExecutorService executor;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private DlgBarang barang;
     private ApotekBPJSCekReferensiDPHO barangbpjs;
@@ -807,11 +807,8 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if (ceksukses) return;
         ceksukses = true;
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        if (executor == null || executor.isShutdown()) {
-            executor = Executors.newSingleThreadExecutor();
-        }
         executor.submit(() -> {
             try {
                 task.run();
@@ -825,12 +822,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         });
     }
-    
+
     @Override
     public void dispose() {
-        if (executor != null && !executor.isShutdown()) {
-            executor.shutdownNow();
-        }
+        executor.shutdownNow();
         super.dispose();
     }
 }

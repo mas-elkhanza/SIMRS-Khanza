@@ -67,7 +67,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
-    private ExecutorService executor;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJnsPerawatanRalan
@@ -1269,11 +1269,8 @@ private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if (ceksukses) return;
         ceksukses = true;
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        if (executor == null || executor.isShutdown()) {
-            executor = Executors.newSingleThreadExecutor();
-        }
         executor.submit(() -> {
             try {
                 task.run();
@@ -1287,13 +1284,10 @@ private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         });
     }
-    
+
     @Override
     public void dispose() {
-        if (executor != null && !executor.isShutdown()) {
-            executor.shutdownNow();
-        }
+        executor.shutdownNow();
         super.dispose();
     }
-    
 }

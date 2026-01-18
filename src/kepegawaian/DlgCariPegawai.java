@@ -41,7 +41,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private JsonNode response;
     private FileReader myObj;
     private sekuel Sequel=new sekuel();
-    private ExecutorService executor;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     
     /** Creates new form DlgPenyakit
@@ -580,11 +580,8 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         if (ceksukses) return;
         ceksukses = true;
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        if (executor == null || executor.isShutdown()) {
-            executor = Executors.newSingleThreadExecutor();
-        }
         executor.submit(() -> {
             try {
                 task.run();
@@ -598,12 +595,10 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
         });
     }
-    
+
     @Override
     public void dispose() {
-        if (executor != null && !executor.isShutdown()) {
-            executor.shutdownNow();
-        }
+        executor.shutdownNow();
         super.dispose();
     }
 }
