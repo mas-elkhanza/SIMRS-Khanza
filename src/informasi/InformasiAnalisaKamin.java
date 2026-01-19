@@ -275,12 +275,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbangsalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmbangsal.setText(bangsal.tampil3(kdbangsal.getText()));
+            nmbangsal.setText(Sequel.CariBangsal(kdbangsal.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmbangsal.setText(bangsal.tampil3(kdbangsal.getText()));
+            nmbangsal.setText(Sequel.CariBangsal(kdbangsal.getText()));
             kdbangsal.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmbangsal.setText(bangsal.tampil3(kdbangsal.getText()));
+            nmbangsal.setText(Sequel.CariBangsal(kdbangsal.getText()));
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBangsalActionPerformed(null);

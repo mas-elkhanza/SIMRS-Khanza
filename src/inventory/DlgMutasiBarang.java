@@ -22,6 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -729,12 +730,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void kddariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmdari.setText(bangsal.tampil3(kddari.getText()));  
+            nmdari.setText(Sequel.CariBangsal(kddari.getText()));  
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmdari.setText(bangsal.tampil3(kddari.getText())); 
+            nmdari.setText(Sequel.CariBangsal(kddari.getText())); 
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmdari.setText(bangsal.tampil3(kddari.getText())); 
+            nmdari.setText(Sequel.CariBangsal(kddari.getText())); 
             kdke.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDariActionPerformed(null);
@@ -1368,7 +1369,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(!akses.getkode().equals("Admin Utama")){
             if(!DEPOAKTIFOBAT.equals("")){
                 kddari.setText(DEPOAKTIFOBAT);
-                nmdari.setText(bangsal.tampil3(DEPOAKTIFOBAT));
+                nmdari.setText(Sequel.CariBangsal(DEPOAKTIFOBAT));
                 btnDari.setEnabled(false);
             }
         }
@@ -1678,19 +1679,33 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void runBackground(Runnable task) {
         if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
         ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        executor.submit(() -> {
-            try {
-                task.run();
-            } finally {
-                ceksukses = false;
-                SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
-                });
-            }
-        });
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

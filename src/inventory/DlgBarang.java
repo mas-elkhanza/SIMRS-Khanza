@@ -2854,9 +2854,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.tabelKosong(tabMode);
         try {
             if(aktifkanbatch.equals("yes")){
-                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch<>'' and no_faktur<>''";
+                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
             }else{
-                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch='' and no_faktur=''";
+                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
             }
             if(TCari.getText().trim().equals("")){
                 ps = koneksi.prepareStatement(
@@ -3072,7 +3072,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                     LCount.setText("" + tabMode.getRowCount());
                     if(tabMode.getRowCount()==0){
-                       runBackground(() ->tampil());
+                       tampil();
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
@@ -3146,16 +3146,15 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                     LCount.setText("" + tabMode.getRowCount());
                     if(tabMode.getRowCount()==0){
-                       runBackground(() ->tampil());
+                       tampil();
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
                 }
             }
         }else{
-            runBackground(() ->tampil());
-        }    
-            
+            tampil();
+        }  
     }
 
     public void emptTeks() {
@@ -3513,6 +3512,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             });
         } catch (RejectedExecutionException ex) {
+            System.out.println("Notif : "+ex);
             ceksukses = false;
         }
     }

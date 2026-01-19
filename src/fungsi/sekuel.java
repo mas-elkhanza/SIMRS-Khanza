@@ -2166,6 +2166,33 @@ public final class sekuel {
         }
         return iyem;
     }
+    
+    public String CariBangsal(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/bangsal.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("bangsal");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeKamar").asText().equalsIgnoreCase(kode)){
+                        iyem=list.path("NamaKamar").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",kode);
+        }
+        return iyem;
+    }
 
     private String gambar(String id) {
         return folder + File.separator + id.trim() + ".jpg";
