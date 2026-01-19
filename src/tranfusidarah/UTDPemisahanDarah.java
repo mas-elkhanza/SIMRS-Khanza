@@ -1359,7 +1359,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasAftapActionPerformed(null);
         }else{
@@ -2055,7 +2055,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         btnTambahKomponen.setEnabled(akses.getutd_komponen_darah());
         if(akses.getjml2()>=1){
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
         } 
     }
     

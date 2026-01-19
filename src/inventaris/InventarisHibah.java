@@ -1030,7 +1030,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gethibah_aset_inventaris());
             BtnTambah.setEnabled(akses.getinventaris_koleksi());
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
         }        
     }
     

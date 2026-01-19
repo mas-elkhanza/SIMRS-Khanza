@@ -2840,7 +2840,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         if(akses.getjml2()>=1){
             BtnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(akses.getkode()));
+            NamaPetugas.setText(Sequel.CariPetugas(akses.getkode()));
             if(NamaPetugas.getText().equals("")){
                 KodePetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

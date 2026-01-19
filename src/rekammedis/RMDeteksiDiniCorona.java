@@ -1809,7 +1809,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
             kdptg.setText(akses.getkode());
-            nmptg.setText(petugas.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
         }
     }
     

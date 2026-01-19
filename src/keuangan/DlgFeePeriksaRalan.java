@@ -391,12 +391,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmdokter.setText(dokter.tampil3(kddokter.getText()));
+            nmdokter.setText(Sequel.CariDokter(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmdokter.setText(dokter.tampil3(kddokter.getText()));
+            nmdokter.setText(Sequel.CariDokter(kddokter.getText()));
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmdokter.setText(dokter.tampil3(kddokter.getText()));
+            nmdokter.setText(Sequel.CariDokter(kddokter.getText()));
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);

@@ -1820,13 +1820,13 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             switch (pilihtable) {
                 case "rawat_inap_dr":
-                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
+                    nmdokter.setText(Sequel.CariDokter(kddokter.getText()));
                     break;
                 case "rawat_inap_pr":
-                    nmdokter.setText(petugas.tampil3(kddokter.getText()));
+                    nmdokter.setText(Sequel.CariPetugas(kddokter.getText()));
                     break;
                 case "rawat_inap_drpr":
-                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
+                    nmdokter.setText(Sequel.CariDokter(kddokter.getText()));
                     break;
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -1896,7 +1896,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void KdPtg2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPtg2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            NmPtg2.setText(petugas.tampil3(KdPtg2.getText()));
+            NmPtg2.setText(Sequel.CariPetugas(KdPtg2.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_DOWN){

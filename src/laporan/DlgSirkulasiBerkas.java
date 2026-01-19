@@ -1200,12 +1200,12 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        NmPetugas.setText(petugas.tampil3(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        NmPetugas.setText(petugas.tampil3(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
         Tanggal.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        NmPetugas.setText(petugas.tampil3(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
@@ -1521,7 +1521,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             BtnIn.setEnabled(akses.getpeminjaman_berkas());
             BtnOut.setEnabled(akses.getpeminjaman_berkas());
             Nip.setText(akses.getkode());
-            NmPetugas.setText(petugas.tampil3(Nip.getText()));
+            NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
         } 
     }
     

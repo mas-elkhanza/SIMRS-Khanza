@@ -605,12 +605,12 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
 
     private void KdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Nmptg.setText(petugas.tampil3(Kdptg.getText()));         
+            Nmptg.setText(Sequel.CariPetugas(Kdptg.getText()));         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Nmptg.setText(petugas.tampil3(Kdptg.getText()));    
+            Nmptg.setText(Sequel.CariPetugas(Kdptg.getText()));    
             TglRetur1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Nmptg.setText(petugas.tampil3(Kdptg.getText()));    
+            Nmptg.setText(Sequel.CariPetugas(Kdptg.getText()));    
             NoNota.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);

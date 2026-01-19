@@ -1161,7 +1161,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             nip.setEditable(false);
             btnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            nmpetugas.setText(petugas.tampil3(nip.getText()));
+            nmpetugas.setText(Sequel.CariPetugas(nip.getText()));
         } 
     }
     

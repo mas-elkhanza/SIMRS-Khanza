@@ -1996,7 +1996,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
     private void KodePetugasAftapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasAftapKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NamaPetugasAftap.setText(petugas.tampil3(KodePetugasAftap.getText()));
+            NamaPetugasAftap.setText(Sequel.CariPetugas(KodePetugasAftap.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasAftapActionPerformed(null);
         }else{
@@ -2020,7 +2020,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
     private void KodePetugasUSaringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasUSaringKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NamaPetugasUSaring.setText(petugas.tampil3(KodePetugasUSaring.getText()));
+            NamaPetugasUSaring.setText(Sequel.CariPetugas(KodePetugasUSaring.getText()));
             TCariMedis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasUSaringActionPerformed(null);

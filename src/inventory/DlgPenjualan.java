@@ -1800,14 +1800,14 @@ private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdm
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_PAGE_DOWN:
-                nmptg.setText(petugas.tampil3(kdptg.getText()));
+                nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
                 break;
             case KeyEvent.VK_PAGE_UP:
-                nmptg.setText(petugas.tampil3(kdptg.getText()));
+                nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
                 Jenisjual.requestFocus();
                 break;
             case KeyEvent.VK_ENTER:
-                nmptg.setText(petugas.tampil3(kdptg.getText()));
+                nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
                 TCari.requestFocus();
                 break;
             case KeyEvent.VK_UP:
@@ -3941,7 +3941,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnSimpan.setEnabled(akses.getpenjualan_obat());
             BtnTambah.setEnabled(akses.getobat());
             kdptg.setText(akses.getkode());
-            nmptg.setText(petugas.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPetugas(kdptg.getText()));
         }    
         try {
             if(Sequel.cariIsi("select set_nota.tampilkan_tombol_nota_penjualan from set_nota").equals("Yes")){

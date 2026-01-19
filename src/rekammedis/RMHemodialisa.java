@@ -226,7 +226,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
         isForm();
         
         kddok.setText(Sequel.cariIsi("select set_pjlab.kd_dokterhemodialisa from set_pjlab"));
-        namadokter.setText(dokter.tampil3(kddok.getText()));
+        namadokter.setText(Sequel.CariDokter(kddok.getText()));
         
         jam();
         
@@ -1355,7 +1355,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
 
     private void kddokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            namadokter.setText(dokter.tampil3(kddok.getText()));
+            namadokter.setText(Sequel.CariDokter(kddok.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1739,7 +1739,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
             kddok.setEditable(false);
             btnDokter.setEnabled(false);
             kddok.setText(akses.getkode());
-            namadokter.setText(dokter.tampil3(kddok.getText()));
+            namadokter.setText(Sequel.CariDokter(kddok.getText()));
             if(namadokter.getText().equals("")){
                 kddok.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");

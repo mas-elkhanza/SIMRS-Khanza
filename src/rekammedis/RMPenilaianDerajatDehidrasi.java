@@ -1616,7 +1616,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             btnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            NamaDokter.setText(dokter.tampil3(KdDokter.getText()));
+            NamaDokter.setText(Sequel.CariDokter(KdDokter.getText()));
             if(NamaDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");

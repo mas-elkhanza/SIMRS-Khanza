@@ -1176,7 +1176,7 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         }else if(akses.getjml1()>=1){
             KdPetugas.setEditable(true);
             BtnPetugas.setEnabled(true);

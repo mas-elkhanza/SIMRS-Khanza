@@ -1349,7 +1349,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(akses.getjml2()>=1){
             BtnSeekPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
         } 
     }
     

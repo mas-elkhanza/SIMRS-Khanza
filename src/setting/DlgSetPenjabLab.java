@@ -660,7 +660,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter.setText(dokter.tampil3(kddokter.getText()));
+            TDokter.setText(Sequel.CariDokter(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
@@ -679,7 +679,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter2.setText(dokter.tampil3(kddokter2.getText()));
+            TDokter2.setText(Sequel.CariDokter(kddokter2.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter2ActionPerformed(null);
         }else{
@@ -698,7 +698,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter3.setText(dokter.tampil3(kddokter3.getText()));
+            TDokter3.setText(Sequel.CariDokter(kddokter3.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter3ActionPerformed(null);
         }else{
@@ -717,7 +717,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter4KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter4.setText(dokter.tampil3(kddokter4.getText()));
+            TDokter4.setText(Sequel.CariDokter(kddokter4.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter4ActionPerformed(null);
         }else{
@@ -736,7 +736,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter5KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter5.setText(dokter.tampil3(kddokter5.getText()));
+            TDokter5.setText(Sequel.CariDokter(kddokter5.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter5ActionPerformed(null);
         }else{
@@ -755,7 +755,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter6KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter6.setText(dokter.tampil3(kddokter6.getText()));
+            TDokter6.setText(Sequel.CariDokter(kddokter6.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter6ActionPerformed(null);
         }else{

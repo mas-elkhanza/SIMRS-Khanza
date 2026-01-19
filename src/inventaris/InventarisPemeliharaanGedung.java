@@ -1061,7 +1061,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             BtnEdit.setEnabled(akses.getpemeliharaan_gedung());
             BtnPrint.setEnabled(akses.getpemeliharaan_gedung());
             NIP.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(NIP.getText()));
         } 
         TCari.requestFocus();
     }

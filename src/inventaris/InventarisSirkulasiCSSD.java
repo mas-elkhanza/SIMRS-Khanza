@@ -1257,12 +1257,12 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
+        NamaPetugas.setText(Sequel.CariPetugas(NIP.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
+        NamaPetugas.setText(Sequel.CariPetugas(NIP.getText()));
         NoSirkulasi.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
+        NamaPetugas.setText(Sequel.CariPetugas(NIP.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
@@ -1536,7 +1536,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
             BtnOut.setEnabled(akses.getsirkulasi_cssd());
             BtnSteril.setEnabled(akses.getsirkulasi_cssd());
             NIP.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(NIP.getText()));
         } 
     }
     

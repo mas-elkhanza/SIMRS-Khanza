@@ -2003,7 +2003,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
             if(NamaPetugas.getText().equals("")){
                 KodePetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

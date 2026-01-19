@@ -1212,7 +1212,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     public void isCek(){
         KdPetugas.setText(akses.getkode());
-        NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
     }
     
     private void autoNomor() {

@@ -1813,7 +1813,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
             KdPerawat.setEditable(false);
             BtnPerawat.setEnabled(false);
             KdPerawat.setText(akses.getkode());
-            NmPerawat.setText(petugas.tampil3(akses.getkode()));
+            NmPerawat.setText(Sequel.CariPetugas(akses.getkode()));
             if(NmPerawat.getText().equals("")){
                 KdPerawat.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Petugas...!!");

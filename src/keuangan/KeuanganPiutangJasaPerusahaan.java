@@ -1528,7 +1528,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             btnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpiutang_jasa_perusahaan());
-            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         }        
     }
     

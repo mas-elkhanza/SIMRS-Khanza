@@ -1121,7 +1121,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             KdPJ.setEditable(false);
             btnPJ.setEnabled(false);
             KdPJ.setText(akses.getkode());
-            NmPJ.setText(petugas.tampil3(KdPJ.getText()));
+            NmPJ.setText(Sequel.CariPetugas(KdPJ.getText()));
             if(NmPJ.getText().equals("")){
                 KdPJ.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

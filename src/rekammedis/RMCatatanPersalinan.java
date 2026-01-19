@@ -2670,7 +2670,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             NIP.setEditable(false);
             BtnPetugas.setEnabled(false);
             NIP.setText(akses.getkode());
-            NmPetugas.setText(petugas.tampil3(NIP.getText()));
+            NmPetugas.setText(Sequel.CariPetugas(NIP.getText()));
             if(NmPetugas.getText().equals("")){
                 NIP.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

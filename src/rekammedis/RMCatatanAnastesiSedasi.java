@@ -3516,7 +3516,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             KdDokterAnestesi.setEditable(false);
             BtnDokterAnestesi.setEnabled(false);
             KdDokterAnestesi.setText(akses.getkode());
-            NmDokterAnastesi.setText(dokter.tampil3(KdDokterAnestesi.getText()));
+            NmDokterAnastesi.setText(Sequel.CariDokter(KdDokterAnestesi.getText()));
             if(NmDokterAnastesi.getText().equals("")){
                 KdDokterAnestesi.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");

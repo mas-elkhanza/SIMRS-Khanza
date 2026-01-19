@@ -1849,7 +1849,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Nip.setEditable(false);
             BtnPetugas.setEnabled(false);
             Nip.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(Nip.getText()));
+            NamaPetugas.setText(Sequel.CariPetugas(Nip.getText()));
         }  
     }
     

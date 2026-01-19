@@ -7049,10 +7049,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             i=0;
                             while(rs.next()){
                                 user="";
-                                user=dlgdokter.tampil3(rs.getString(1));
+                                user=Sequel.CariDokter(rs.getString(1));
                                 jabatan=Sequel.cariIsi("select spesialis.nm_sps from spesialis where spesialis.kd_sps=?",Sequel.cariIsi("select dokter.kd_sps from dokter where dokter.kd_dokter=?",rs.getString(1)));
                                 if(user.equals("")){    
-                                    user=dlgpetugas.tampil3(rs.getString(1));
+                                    user=Sequel.CariPetugas(rs.getString(1));
                                     jabatan=Sequel.cariIsi("select jabatan.nm_jbtn from jabatan where jabatan.kd_jbtn=?",Sequel.cariIsi("select petugas.kd_jbtn from petugas where petugas.nip=?",rs.getString(1)));
                                 }    
                                 try {
