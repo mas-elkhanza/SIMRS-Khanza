@@ -2193,6 +2193,114 @@ public final class sekuel {
         }
         return iyem;
     }
+    
+    public String CariKodePropinsi(String nama) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/masterpropinsi.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masterpropinsi");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaProp").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeProp").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",nama);
+        }
+        return iyem;
+    }
+    
+    public String CariKodeKabupaten(String nama) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/masterkabupaten.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masterkabupaten");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKab").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeKab").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",nama);
+        }
+        return iyem;
+    }
+    
+    public String CariKodeKecamatan(String nama) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/masterkecamatan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masterkecamatan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKec").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeKec").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",nama);
+        }
+        return iyem;
+    }
+    
+    public String CariKodeKelurahan(String nama) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/masterkelurahan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masterkelurahan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKel").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeKel").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",nama);
+        }
+        return iyem;
+    }
 
     private String gambar(String id) {
         return folder + File.separator + id.trim() + ".jpg";

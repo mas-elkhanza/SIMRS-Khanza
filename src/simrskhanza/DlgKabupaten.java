@@ -615,7 +615,6 @@ public class DlgKabupaten extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/masterkabupaten.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("masterkabupaten");
             if(response.isArray()){
                 for(JsonNode list:response){

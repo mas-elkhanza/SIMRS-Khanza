@@ -614,7 +614,6 @@ public class DlgKelurahan extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/masterkelurahan.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("masterkelurahan");
             if(response.isArray()){
                 for(JsonNode list:response){

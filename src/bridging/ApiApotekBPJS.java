@@ -80,7 +80,7 @@ public class ApiApotekBPJS {
     }
     
     public String Decrypt(String data,String utc)throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        System.out.println(data);
+        //System.out.println(data);
         mykey = ApiBPJSEnc.generateKey(Consid+Key+utc);
         data=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
         data=ApiBPJSLZString.decompressFromEncodedURIComponent(data);

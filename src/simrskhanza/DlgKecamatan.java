@@ -615,7 +615,6 @@ public class DlgKecamatan extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/masterkecamatan.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("masterkecamatan");
             if(response.isArray()){
                 for(JsonNode list:response){

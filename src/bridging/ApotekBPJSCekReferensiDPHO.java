@@ -68,8 +68,20 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"Kode Obat","Nama Obat","PRB","Kronis","Kemo","Harga","Restriksi","Generik","Aktif"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode=new DefaultTableModel(null,new String[]{
+                "Kode Obat","Nama Obat","PRB","Kronis","Kemo","Harga","Restriksi","Generik","Aktif","Sedia","Stok"
+            }){
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[]{
+                java.lang.Object.class,java.lang.Object.class,java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class,
+                java.lang.Double.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                java.lang.Object.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbKamar.setModel(tabMode);
 
@@ -77,26 +89,30 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 11; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
             }else if(i==1){
                 column.setPreferredWidth(170);
             }else if(i==2){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(33);
             }else if(i==3){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(40);
             }else if(i==4){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(38);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(60);
+            }else if(i==9){
+                column.setPreferredWidth(40);
+            }else if(i==10){
+                column.setPreferredWidth(40);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -375,8 +391,9 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
                            list.path("restriksi").asText().toLowerCase().contains(keyword.toLowerCase())||
                            list.path("generik").asText().toLowerCase().contains(keyword.toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                list.path("kodeobat").asText(),list.path("namaobat").asText(),list.path("prb").asText(),list.path("kronis").asText(),list.path("kemo").asText(),
-                                Valid.SetAngka(list.path("harga").asDouble()),list.path("restriksi").asText(),list.path("generik").asText(),list.path("aktif").asText()
+                                list.path("kodeobat").asText(),list.path("namaobat").asText(),Boolean.parseBoolean(list.path("prb").asText().toLowerCase()),Boolean.parseBoolean(list.path("kronis").asText().toLowerCase()),
+                                Boolean.parseBoolean(list.path("kemo").asText().toLowerCase()),list.path("harga").asDouble(),list.path("restriksi").asText(),list.path("generik").asText(),list.path("aktif").asText(),
+                                list.path("sedia").asText(),list.path("stok").asText()
                             });
                         }
                     }

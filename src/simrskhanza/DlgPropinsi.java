@@ -611,7 +611,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/masterpropinsi.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("masterpropinsi");
             if(response.isArray()){
                 for(JsonNode list:response){

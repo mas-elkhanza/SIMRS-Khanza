@@ -605,10 +605,6 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     } 
     
-    public void onCari(){        
-        TCari.requestFocus();
-    }
-    
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
