@@ -2489,19 +2489,10 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             + " inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "
                             + " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "
                             + " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "
-                            + " where databarang.status='1' and databarang.kode_brng like ? or "
-                            + " databarang.status='1' and databarang.nama_brng like ? or "
-                            + " databarang.status='1' and databarang.kode_sat like ? or "
-                            + " databarang.status='1' and kodesatuan.satuan like ? or "
-                            + " databarang.status='1' and databarang.kode_satbesar like ? or "
-                            + " databarang.status='1' and satuanbesar.satuan like ? or "
-                            + " databarang.status='1' and databarang.letak_barang like ? or "
-                            + " databarang.status='1' and databarang.kdjns like ? or "
-                            + " databarang.status='1' and kategori_barang.nama like ? or "
-                            + " databarang.status='1' and golongan_barang.nama like ? or "
-                            + " databarang.status='1' and jenis.nama like ? or "
-                            + " databarang.status='1' and databarang.kode_industri like ? or "
-                            + " databarang.status='1' and industrifarmasi.nama_industri like ? order by databarang.nama_brng");
+                            + " where databarang.status='1' and (databarang.kode_brng like ? or  databarang.nama_brng like ? or databarang.kode_sat like ? or "
+                            + " kodesatuan.satuan like ? or  databarang.kode_satbesar like ? or satuanbesar.satuan like ? or databarang.letak_barang like ? or "
+                            + " databarang.kdjns like ? or kategori_barang.nama like ? or golongan_barang.nama like ? or jenis.nama like ? or "
+                            + " databarang.kode_industri like ? or industrifarmasi.nama_industri like ?) order by databarang.nama_brng");
                 }
                     
                 try {
@@ -2588,21 +2579,12 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     + " inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "
                     + " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "
                     + " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "
-                    + " where data_batch.sisa>0 and data_batch.kode_brng like ? or "
-                    + " data_batch.sisa>0 and databarang.nama_brng like ? or "
-                    + " data_batch.sisa>0 and databarang.kode_sat like ? or "
-                    + " data_batch.sisa>0 and kodesatuan.satuan like ? or "
-                    + " data_batch.sisa>0 and databarang.kode_satbesar like ? or "
-                    + " data_batch.sisa>0 and satuanbesar.satuan like ? or "
-                    + " data_batch.sisa>0 and databarang.letak_barang like ? or "
-                    + " data_batch.sisa>0 and databarang.kdjns like ? or "
-                    + " data_batch.sisa>0 and kategori_barang.nama like ? or "
-                    + " data_batch.sisa>0 and golongan_barang.nama like ? or "
-                    + " data_batch.sisa>0 and data_batch.no_batch like ? or "
-                    + " data_batch.sisa>0 and data_batch.no_faktur like ? or "
-                    + " data_batch.sisa>0 and jenis.nama like ? or "
-                    + " data_batch.sisa>0 and databarang.kode_industri like ? or "
-                    + " data_batch.sisa>0 and industrifarmasi.nama_industri like ? order by data_batch.tgl_kadaluarsa");
+                    + " where data_batch.sisa>0 and (data_batch.kode_brng like ? or  databarang.nama_brng like ? or "
+                    + " databarang.kode_sat like ? or kodesatuan.satuan like ? or databarang.kode_satbesar like ? or "
+                    + " satuanbesar.satuan like ? or databarang.letak_barang like ? or databarang.kdjns like ? or "
+                    + " kategori_barang.nama like ? or golongan_barang.nama like ? or data_batch.no_batch like ? or "
+                    + " data_batch.no_faktur like ? or jenis.nama like ? or databarang.kode_industri like ? or "
+                    + " industrifarmasi.nama_industri like ?) order by data_batch.tgl_kadaluarsa");
                 try {
                     ps.setString(1, "%" + TCari.getText().trim() + "%");
                     ps.setString(2, "%" + TCari.getText().trim() + "%");
@@ -2715,19 +2697,11 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         + " inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "
                         + " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "
                         + " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "
-                        + " where databarang.status='1' and databarang.kode_brng like ? or "
-                        + " databarang.status='1' and databarang.nama_brng like ? or "
-                        + " databarang.status='1' and databarang.kode_sat like ? or "
-                        + " databarang.status='1' and kodesatuan.satuan like ? or "
-                        + " databarang.status='1' and databarang.kode_satbesar like ? or "
-                        + " databarang.status='1' and satuanbesar.satuan like ? or "
-                        + " databarang.status='1' and databarang.letak_barang like ? or "
-                        + " databarang.status='1' and databarang.kdjns like ? or "
-                        + " databarang.status='1' and kategori_barang.nama like ? or "
-                        + " databarang.status='1' and golongan_barang.nama like ? or "
-                        + " databarang.status='1' and jenis.nama like ? or "
-                        + " databarang.status='1' and databarang.kode_industri like ? or "
-                        + " databarang.status='1' and industrifarmasi.nama_industri like ? order by databarang.nama_brng");
+                        + " where databarang.status='1' and (databarang.kode_brng like ? or databarang.nama_brng like ? or "
+                        + " databarang.kode_sat like ? or kodesatuan.satuan like ? or databarang.kode_satbesar like ? or "
+                        + " satuanbesar.satuan like ? or databarang.letak_barang like ? or databarang.kdjns like ? or "
+                        + " kategori_barang.nama like ? or golongan_barang.nama like ? or jenis.nama like ? or "
+                        + " databarang.kode_industri like ? or industrifarmasi.nama_industri like ?) order by databarang.nama_brng");
             }
 
             try {
@@ -2878,19 +2852,11 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         + " inner join industrifarmasi on databarang.kode_industri=industrifarmasi.kode_industri "
                         + " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "
                         + " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "
-                        + " where databarang.status='1' and databarang.kode_brng like ? or "
-                        + " databarang.status='1' and databarang.nama_brng like ? or "
-                        + " databarang.status='1' and databarang.kode_sat like ? or "
-                        + " databarang.status='1' and kodesatuan.satuan like ? or "
-                        + " databarang.status='1' and databarang.kode_satbesar like ? or "
-                        + " databarang.status='1' and satuanbesar.satuan like ? or "
-                        + " databarang.status='1' and databarang.letak_barang like ? or "
-                        + " databarang.status='1' and databarang.kdjns like ? or "
-                        + " databarang.status='1' and kategori_barang.nama like ? or "
-                        + " databarang.status='1' and golongan_barang.nama like ? or "
-                        + " databarang.status='1' and jenis.nama like ? or "
-                        + " databarang.status='1' and databarang.kode_industri like ? or "
-                        + " databarang.status='1' and industrifarmasi.nama_industri like ? order by databarang.nama_brng");
+                        + " where databarang.status='1' and (databarang.kode_brng like ? or databarang.nama_brng like ? or "
+                        + " databarang.kode_sat like ? or kodesatuan.satuan like ? or databarang.kode_satbesar like ? or "
+                        + " satuanbesar.satuan like ? or databarang.letak_barang like ? or databarang.kdjns like ? or "
+                        + " kategori_barang.nama like ? or golongan_barang.nama like ? or jenis.nama like ? or "
+                        + " databarang.kode_industri like ? or industrifarmasi.nama_industri like ?) order by databarang.nama_brng");
             }
 
             try {
