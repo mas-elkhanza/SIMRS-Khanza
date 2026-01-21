@@ -19,8 +19,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -32,6 +34,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -210,42 +213,6 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-     
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                } 
-                kdpnj.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
        
         ChkInput.setSelected(false);
         isForm(); 
@@ -254,7 +221,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     public DlgCariPoli poli=new DlgCariPoli(null,false);
-    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+    public DlgCariCaraBayar penjab;
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1235,10 +1202,42 @@ private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdpnjKeyPressed
 
 private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
-        penjab.isCek();
-        penjab.onCari();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        penjab.setLocationRelativeTo(internalFrame1);
+        if (penjab == null || !penjab.isDisplayable()) {
+            penjab=new DlgCariCaraBayar(null,false);
+            penjab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            penjab.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                        nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    }    
+                    kdpnj.requestFocus();
+                    penjab=null;
+                }
+            }); 
+
+            penjab.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    } 
+                }
+            });   
+            penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            penjab.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (penjab == null) return;
+        if (!penjab.isVisible()) {
+            penjab.emptTeks();
+            penjab.isCek();
+        }  
+        if (penjab.isVisible()) {
+            penjab.toFront();
+            return;
+        }    
         penjab.setVisible(true);
 }//GEN-LAST:event_BtnPenjabActionPerformed
 

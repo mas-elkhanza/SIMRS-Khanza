@@ -2714,7 +2714,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
                     "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
                     "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
-                    "jns_perawatan_lab.kategori='PK' and jns_perawatan_lab.status='1' and (jns_perawatan_lab.kd_pj=? or jns_perawatan_lab.kd_pj='-') "+
+                    "jns_perawatan_lab.kategori='PK' and jns_perawatan_lab.status='1' and (jns_perawatan_lab.kd_pj=? or jns_perawatan_lab.kd_pj='-') and (jns_perawatan_lab.kelas=? or jns_perawatan_lab.kelas='-') "+
                     (Pemeriksaan.getText().trim().equals("")?"":"and (jns_perawatan_lab.kd_jenis_prw like ? or jns_perawatan_lab.nm_perawatan like ?) ")+
                     "order by jns_perawatan_lab.kd_jenis_prw");
             }else if(cara_bayar_lab.equals("No")&&kelas_lab.equals("Yes")){

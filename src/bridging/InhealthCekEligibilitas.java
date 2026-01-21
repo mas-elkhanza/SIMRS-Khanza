@@ -25,8 +25,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -41,6 +43,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -80,6 +83,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private DlgKecamatan kec=new DlgKecamatan(null,false);
     private DlgKelurahan kel=new DlgKelurahan(null,false);
     private DlgPropinsi propin=new DlgPropinsi(null,false);
+    private DlgCariCaraBayar penjab;
     private int pilih=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
             p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_pekerjaanpj=0,
@@ -3181,46 +3185,49 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     }//GEN-LAST:event_KdpnjKeyPressed
 
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
-        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                    Kdpnj.requestFocus();
-                }                  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        penjab.isCek();
-        penjab.onCari();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        penjab.setLocationRelativeTo(internalFrame1);
+        if (penjab == null || !penjab.isDisplayable()) {
+            penjab=new DlgCariCaraBayar(null,false);
+            penjab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            penjab.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                        nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                        if(tampilkantni.equals("Yes")){
+                            if(nmpnj.getText().toLowerCase().contains("tni")){
+                                chkTNI.setSelected(true);
+                            }
+                            if(nmpnj.getText().toLowerCase().contains("polri")){
+                                chkPolri.setSelected(true);
+                            }
+                        }
+                    } 
+                    penjab=null;
+                }
+            }); 
+
+            penjab.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    } 
+                }
+            });   
+            penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            penjab.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (penjab == null) return;
+        if (!penjab.isVisible()) {
+            penjab.emptTeks();
+            penjab.isCek();
+        }  
+        if (penjab.isVisible()) {
+            penjab.toFront();
+            return;
+        }    
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjabActionPerformed
 

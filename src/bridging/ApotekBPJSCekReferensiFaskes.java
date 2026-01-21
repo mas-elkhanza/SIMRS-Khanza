@@ -291,7 +291,11 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
     }//GEN-LAST:event_diagnosaKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil(diagnosa.getText()));
+        if(diagnosa.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Masukkan keyword terlebih dahulu...!");
+        }else{
+            runBackground(() ->tampil(diagnosa.getText()));
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -370,7 +374,11 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
         }
-        
+        if(i>1){
+            tabMode.addRow(new Object[]{
+                "","",""
+            });
+        }
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -384,9 +392,6 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){ 
-                tabMode.addRow(new Object[]{
-                    "","",""
-                });
                 tabMode.addRow(new Object[]{
                     "B","Faskes 2/RS",""
                 });

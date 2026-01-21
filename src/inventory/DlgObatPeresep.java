@@ -6,8 +6,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -21,6 +23,7 @@ import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -37,7 +40,7 @@ public class DlgObatPeresep extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int i=0;
     private double total=0;
-    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+    private DlgCariCaraBayar carabayar;
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private String  No="",Kode="",Nama="",Jml="",Satuan="",Harga="",Subtotal="";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -134,42 +137,6 @@ public class DlgObatPeresep extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         }); 
-        
-        carabayar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    nmpenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
-                }     
-                runBackground(() ->prosesCari());
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        carabayar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    carabayar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-     
     }
     
 
@@ -586,10 +553,41 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
-        carabayar.isCek();
-        carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        carabayar.setLocationRelativeTo(internalFrame1);
-        carabayar.setAlwaysOnTop(false);
+        if (carabayar == null || !carabayar.isDisplayable()) {
+            carabayar=new DlgCariCaraBayar(null,false);
+            carabayar.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            carabayar.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(carabayar.getTable().getSelectedRow()!= -1){
+                        nmpenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
+                    }     
+                    runBackground(() ->prosesCari()); 
+                    carabayar=null;
+                }
+            }); 
+
+            carabayar.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        carabayar.dispose();
+                    } 
+                }
+            });   
+            carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            carabayar.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (carabayar == null) return;
+        if (!carabayar.isVisible()) {
+            carabayar.emptTeks();
+            carabayar.isCek();
+        }  
+        if (carabayar.isVisible()) {
+            carabayar.toFront();
+            return;
+        }    
         carabayar.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
 

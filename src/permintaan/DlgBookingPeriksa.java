@@ -19,8 +19,9 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -38,6 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -58,6 +60,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private DlgCariCaraBayar penjab;
     private PreparedStatement ps;
     private ResultSet rs;
     private String pilihtampil="";
@@ -1864,46 +1867,42 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
-        DlgCariCaraBayar penjab=new DlgCariCaraBayar(this,false);
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                }  
-                kdpnj.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }  
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        penjab.onCari();
-        penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        penjab.setLocationRelativeTo(internalFrame1);
+        if (penjab == null || !penjab.isDisplayable()) {
+            penjab=new DlgCariCaraBayar(null,false);
+            penjab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            penjab.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                        nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    }    
+                    kdpnj.requestFocus();
+                    penjab=null;
+                }
+            }); 
+
+            penjab.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    } 
+                }
+            });   
+            penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            penjab.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (penjab == null) return;
+        if (!penjab.isVisible()) {
+            penjab.emptTeks();
+            penjab.isCek();
+        }  
+        if (penjab.isVisible()) {
+            penjab.toFront();
+            return;
+        }    
         penjab.setVisible(true);
     }//GEN-LAST:event_btnPenjabActionPerformed
 

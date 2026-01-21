@@ -294,7 +294,11 @@ public final class ApotekBPJSCekReferensiPoli extends javax.swing.JDialog {
     }//GEN-LAST:event_PoliKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil(Poli.getText()));
+        if(Poli.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Masukkan keyword terlebih dahulu...!");
+        }else{
+            runBackground(() ->tampil(Poli.getText()));
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed

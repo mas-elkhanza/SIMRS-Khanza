@@ -82,7 +82,7 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(400);
             }else if(i==2){
                 column.setPreferredWidth(150);
             }
@@ -136,15 +136,14 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
         tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
+        Jenis = new widget.ComboBox();
         jLabel18 = new widget.Label();
         Tanggal = new widget.Tanggal();
         jLabel19 = new widget.Label();
         Keyword = new widget.TextBox();
         BtnCari = new widget.Button();
-        BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        Jenis = new widget.ComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -166,42 +165,47 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 80));
-        panelGlass6.setLayout(null);
+        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel16.setText("Jenis :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(40, 23));
         panelGlass6.add(jLabel16);
-        jLabel16.setBounds(0, 40, 60, 23);
+
+        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Obat PRB", "2. Obat Kronis Belum Stabil", "3. Obat Kemoterapi" }));
+        Jenis.setName("Jenis"); // NOI18N
+        Jenis.setPreferredSize(new java.awt.Dimension(185, 23));
+        Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(Jenis);
 
         jLabel18.setText("Tanggal :");
         jLabel18.setName("jLabel18"); // NOI18N
         jLabel18.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass6.add(jLabel18);
-        jLabel18.setBounds(450, 10, 60, 23);
 
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass6.add(Tanggal);
-        Tanggal.setBounds(514, 10, 90, 23);
 
         jLabel19.setText("Keyword :");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass6.add(jLabel19);
-        jLabel19.setBounds(0, 10, 60, 23);
 
         Keyword.setName("Keyword"); // NOI18N
-        Keyword.setPreferredSize(new java.awt.Dimension(120, 23));
+        Keyword.setPreferredSize(new java.awt.Dimension(150, 23));
         Keyword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KeywordKeyPressed(evt);
             }
         });
         panelGlass6.add(Keyword);
-        Keyword.setBounds(64, 10, 360, 23);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
@@ -219,29 +223,9 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(BtnCari);
-        BtnCari.setBounds(314, 40, 28, 23);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(BtnAll);
-        BtnAll.setBounds(345, 40, 28, 23);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
         BtnPrint.setName("BtnPrint"); // NOI18N
         BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
@@ -251,11 +235,9 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(BtnPrint);
-        BtnPrint.setBounds(400, 40, 100, 30);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
@@ -270,17 +252,6 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(BtnKeluar);
-        BtnKeluar.setBounds(505, 40, 100, 30);
-
-        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Obat PRB", "2. Obat Kronis Belum Stabil", "3. Obat Kemoterapi" }));
-        Jenis.setName("Jenis"); // NOI18N
-        Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JenisKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(Jenis);
-        Jenis.setBounds(64, 40, 247, 23);
 
         internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
@@ -328,7 +299,11 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil(Jenis.getSelectedItem().toString().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
+        if(Keyword.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Masukkan keyword terlebih dahulu...!");
+        }else{
+            runBackground(() ->tampil(Jenis.getSelectedItem().toString().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+""),Keyword.getText()));
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -352,20 +327,6 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_KeywordKeyPressed
 
-    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        Keyword.setText("");
-        BtnCariActionPerformed(null);
-    }//GEN-LAST:event_BtnAllActionPerformed
-
-    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            Keyword.setText(null);
-            BtnCariActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnCari, Tanggal);
-        }
-    }//GEN-LAST:event_BtnAllKeyPressed
-
     private void JenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKeyPressed
         Valid.pindah(evt,Jenis,Tanggal);
     }//GEN-LAST:event_JenisKeyPressed
@@ -387,7 +348,6 @@ public final class ApotekBPJSCekReferensiObat extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;

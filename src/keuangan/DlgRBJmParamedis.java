@@ -6,8 +6,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -18,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDepartemen;
@@ -29,7 +32,7 @@ public class DlgRBJmParamedis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
+    private DlgCariCaraBayar penjab;
     private DlgCariDepartemen departemen=new DlgCariDepartemen(null,false);
     private PreparedStatement ps,psralanpr,psralandrpr,psperiksalab,psranappr,psranapdrpr,psbiayaasisten_operator1,
             psbiayaasisten_operator2,psbiayaasisten_operator3,psbiayainstrumen,psbiayaperawaat_resusitas,
@@ -93,41 +96,6 @@ public class DlgRBJmParamedis extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {petugas.emptTeks();}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        carabayar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    KdCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
-                    NmCaraBayar.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        carabayar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    carabayar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
         });
         
         departemen.addWindowListener(new WindowListener() {
@@ -691,11 +659,43 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnParamedisKeyPressed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
-        carabayar.isCek();
-        carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        carabayar.setLocationRelativeTo(internalFrame1);
-        carabayar.setAlwaysOnTop(false);
-        carabayar.setVisible(true);
+        if (penjab == null || !penjab.isDisplayable()) {
+            penjab=new DlgCariCaraBayar(null,false);
+            penjab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            penjab.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        KdCaraBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                        NmCaraBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    }    
+                    KdCaraBayar.requestFocus();
+                    penjab=null;
+                }
+            }); 
+
+            penjab.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    } 
+                }
+            });   
+            penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            penjab.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (penjab == null) return;
+        if (!penjab.isVisible()) {
+            penjab.emptTeks();
+            penjab.isCek();
+        }  
+        if (penjab.isVisible()) {
+            penjab.toFront();
+            return;
+        }    
+        penjab.setVisible(true);
     }//GEN-LAST:event_BtnCaraBayarRalanDokterActionPerformed
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
