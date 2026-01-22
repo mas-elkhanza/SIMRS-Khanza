@@ -53,7 +53,10 @@
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d2" green="f0" red="d2" type="rgb"/>
+                  <Color blue="cd" green="f0" red="cd" type="rgb"/>
+                </Property>
+                <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f5" green="ff" red="f5" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -485,7 +488,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="18/01/2026"/>
+            <StringItem index="0" value="22/01/2026"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -9318,8 +9321,11 @@
           <Dimension value="[40, 42]"/>
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+        <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f5" green="ff" red="f5" type="rgb"/>
+        </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="eb" red="cd" type="rgb"/>
+          <Color blue="c8" green="eb" red="c8" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9676,7 +9682,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="f0" red="d2" type="rgb"/>
+          <Color blue="cd" green="f0" red="cd" type="rgb"/>
+        </Property>
+        <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f5" green="ff" red="f5" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>

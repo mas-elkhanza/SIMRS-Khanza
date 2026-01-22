@@ -22,12 +22,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.FileReader;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 
 /**
@@ -37,12 +42,14 @@ import javax.swing.event.DocumentEvent;
 public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private YaskiReferensiPropinsi propinsi=new YaskiReferensiPropinsi(null,false);
+    private YaskiReferensiPropinsi propinsi;
     private int i=0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -81,60 +88,23 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
             });
         } 
-        
-        propinsi.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(propinsi.getTable().getSelectedRow()!= -1){                   
-                    KdProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),1).toString());
-                    NmProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),2).toString());
-                    KdProp.requestFocus();
-                }                  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        propinsi.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    propinsi.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
     }
     
     
@@ -273,7 +243,6 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        propinsi.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -300,9 +269,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil(Kabupaten.getText());
-            this.setCursor(Cursor.getDefaultCursor());
+            runBackground(() ->tampil(Kabupaten.getText()));
         }            
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -315,9 +282,38 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        propinsi.setLocationRelativeTo(internalFrame1);
-        propinsi.setVisible(true);
+        if (propinsi == null || !propinsi.isDisplayable()) {
+                propinsi=new YaskiReferensiPropinsi(null,false);
+                propinsi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                propinsi.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(propinsi.getTable().getSelectedRow()!= -1){   
+                            KdProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),1).toString());
+                            NmProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),2).toString().toUpperCase());
+                        } 
+                        propinsi=null;
+                    }
+                }); 
+
+                propinsi.getTable().addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                            propinsi.dispose();
+                        } 
+                    }
+                });   
+                propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                propinsi.setLocationRelativeTo(internalFrame1);
+            }
+
+            if (propinsi == null) return;
+            if (propinsi.isVisible()) {
+                propinsi.toFront();
+                return;
+            }    
+            propinsi.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
 
     /**
@@ -352,7 +348,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String poli) {
+    private void tampil(String poli) {
         try {
             myObj = new FileReader("./cache/kabupaten.iyem");
             root = mapper.readTree(myObj);
@@ -382,6 +378,38 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     public void setPropinsi(String KdProp,String NmProp){
         this.KdProp.setText(KdProp);
         this.NmProp.setText(NmProp);
-        tampil("");
+        runBackground(() ->tampil(""));
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

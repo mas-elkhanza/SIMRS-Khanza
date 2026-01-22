@@ -5283,8 +5283,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
-                    kel.tampil3(Kelurahan.getText()),kec.tampil3(Kecamatan.getText()),
-                    kab.tampil3(Kabupaten.getText()),PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),
+                    Sequel.CariKodeKelurahan(Kelurahan.getText()),Sequel.CariKodeKecamatan(Kecamatan.getText()),
+                    Sequel.CariKodeKabupaten(Kabupaten.getText()),PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),
                     KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),
                     propin.tampil3(Propinsi.getText()),PropinsiPj.getText()
                 })==true){
@@ -5320,9 +5320,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     Alamat.getText(),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
-                    kel.tampil3(Kelurahan.getText()),
-                    kec.tampil3(Kecamatan.getText()),
-                    kab.tampil3(Kabupaten.getText()),NmIbu.getText(),PekerjaanPj.getText(),AlamatPj.getText(),
+                    Sequel.CariKodeKelurahan(Kelurahan.getText()),
+                    Sequel.CariKodeKecamatan(Kecamatan.getText()),
+                    Sequel.CariKodeKabupaten(Kabupaten.getText()),NmIbu.getText(),PekerjaanPj.getText(),AlamatPj.getText(),
                     KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),
                     kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),propin.tampil3(Propinsi.getText()),
                     PropinsiPj.getText(),TNo.getText()

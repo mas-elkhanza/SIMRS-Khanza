@@ -2384,41 +2384,41 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         if(StatusBalas.getSelectedItem().toString().equals("Diterima")){
             if(Kelurahan.isEditable()==true){
                 Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                kdkel=kel.tampil3(Kelurahan.getText());
+                kdkel=Sequel.CariKodeKelurahan(Kelurahan.getText());
             }else if(Kelurahan.isEditable()==false){
                 if(kdkel.equals("")){
                     Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                    kdkel=kel.tampil3(Kelurahan.getText());
+                    kdkel=Sequel.CariKodeKelurahan(Kelurahan.getText());
                 }
             }
 
             if(Kecamatan.isEditable()==true){
                 Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText()});
-                kdkec=kec.tampil3(Kecamatan.getText());
+                kdkec=Sequel.CariKodeKecamatan(Kecamatan.getText());
             }else if(Kecamatan.isEditable()==false){
                 if(kdkec.equals("")){
                     Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText()});
-                    kdkec=kec.tampil3(Kecamatan.getText());
+                    kdkec=Sequel.CariKodeKecamatan(Kecamatan.getText());
                 }
             }
 
             if(Kabupaten.isEditable()==true){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                kdkab=kab.tampil3(Kabupaten.getText());
+                kdkab=Sequel.CariKodeKabupaten(Kabupaten.getText());
             }else if(Kabupaten.isEditable()==false){
                 if(kdkab.equals("")){
                     Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                    kdkab=kab.tampil3(Kabupaten.getText());
+                    kdkab=Sequel.CariKodeKabupaten(Kabupaten.getText());
                 }
             }
 
             if(Propinsi.isEditable()==true){
                Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText()}); 
-               kdprop=prop.tampil3(Propinsi.getText());
+               kdprop=Sequel.CariKodePropinsi(Propinsi.getText());
             }else if(Propinsi.isEditable()==false){
                 if(kdprop.equals("")){
                     Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText()}); 
-                    kdprop=prop.tampil3(Propinsi.getText());
+                    kdprop=Sequel.CariKodePropinsi(Propinsi.getText());
                 }
             }
             

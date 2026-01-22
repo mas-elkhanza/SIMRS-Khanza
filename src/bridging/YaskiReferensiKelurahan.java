@@ -22,12 +22,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.FileReader;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 
 /**
@@ -37,12 +42,14 @@ import javax.swing.event.DocumentEvent;
 public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private YaskiReferensiKecamatan propinsi=new YaskiReferensiKecamatan(null,false);
+    private YaskiReferensiKecamatan kecamatan;
     private int i=0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private FileReader myObj;;
+    private FileReader myObj;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -81,60 +88,23 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(Kabupaten.getText().length()>2){
-                        tampil(Kabupaten.getText());
+                        runBackground(() ->tampil(Kabupaten.getText()));
                     }
                 }
             });
         } 
-        
-        propinsi.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(propinsi.getTable().getSelectedRow()!= -1){                   
-                    KdProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),1).toString());
-                    NmProp.setText(propinsi.getTable().getValueAt(propinsi.getTable().getSelectedRow(),2).toString());
-                    KdProp.requestFocus();
-                }                  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        propinsi.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    propinsi.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
     }
     
     
@@ -156,8 +126,8 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
         Kabupaten = new widget.TextBox();
         BtnCari = new widget.Button();
         jLabel19 = new widget.Label();
-        KdProp = new widget.TextBox();
-        NmProp = new widget.TextBox();
+        KdKec = new widget.TextBox();
+        NmKec = new widget.TextBox();
         BtnPropinsi = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -220,16 +190,16 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel19);
 
-        KdProp.setEditable(false);
-        KdProp.setHighlighter(null);
-        KdProp.setName("KdProp"); // NOI18N
-        KdProp.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelGlass6.add(KdProp);
+        KdKec.setEditable(false);
+        KdKec.setHighlighter(null);
+        KdKec.setName("KdKec"); // NOI18N
+        KdKec.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass6.add(KdKec);
 
-        NmProp.setEditable(false);
-        NmProp.setName("NmProp"); // NOI18N
-        NmProp.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelGlass6.add(NmProp);
+        NmKec.setEditable(false);
+        NmKec.setName("NmKec"); // NOI18N
+        NmKec.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelGlass6.add(NmKec);
 
         BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPropinsi.setMnemonic('3');
@@ -273,7 +243,6 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        propinsi.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -296,13 +265,11 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     }//GEN-LAST:event_KabupatenKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        if(KdProp.getText().trim().equals("")||NmProp.getText().trim().equals("")){
+        if(KdKec.getText().trim().equals("")||NmKec.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil(Kabupaten.getText());
-            this.setCursor(Cursor.getDefaultCursor());
+            runBackground(() ->tampil(Kabupaten.getText()));
         }            
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -315,9 +282,38 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        propinsi.setLocationRelativeTo(internalFrame1);
-        propinsi.setVisible(true);
+        if (kecamatan == null || !kecamatan.isDisplayable()) {
+            kecamatan=new YaskiReferensiKecamatan(null,false);
+            kecamatan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            kecamatan.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(kecamatan.getTable().getSelectedRow()!= -1){   
+                        KdKec.setText(kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),1).toString());
+                        NmKec.setText(kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),2).toString().toUpperCase());
+                    } 
+                    kecamatan=null;
+                }
+            }); 
+
+            kecamatan.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        kecamatan.dispose();
+                    } 
+                }
+            });   
+            kecamatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kecamatan.setLocationRelativeTo(internalFrame1);
+        }
+
+        if (kecamatan == null) return;
+        if (kecamatan.isVisible()) {
+            kecamatan.toFront();
+            return;
+        }    
+        kecamatan.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
 
     /**
@@ -341,8 +337,8 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPropinsi;
     private widget.TextBox Kabupaten;
-    private widget.TextBox KdProp;
-    private widget.TextBox NmProp;
+    private widget.TextBox KdKec;
+    private widget.TextBox NmKec;
     private widget.ScrollPane Scroll;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
@@ -352,7 +348,7 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String poli) {
+    private void tampil(String poli) {
         try {
             myObj = new FileReader("./cache/kelurahan.iyem");
             root = mapper.readTree(myObj);
@@ -361,7 +357,7 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
             if(response.isArray()){
                 i=1;
                 for(JsonNode list:response){
-                    if(list.path("nama").asText().toLowerCase().contains(poli.toLowerCase())&&list.path("id_kecamatan").asText().equals(KdProp.getText())){
+                    if(list.path("nama").asText().toLowerCase().contains(poli.toLowerCase())&&list.path("id_kecamatan").asText().equals(KdKec.getText())){
                         tabMode.addRow(new Object[]{
                             i+".",list.path("id").asText(),list.path("nama").asText()
                         });
@@ -380,8 +376,40 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     }
     
     public void setPropinsi(String KdProp,String NmProp){
-        this.KdProp.setText(KdProp);
-        this.NmProp.setText(NmProp);
-        tampil("");
+        this.KdKec.setText(KdProp);
+        this.NmKec.setText(NmProp);
+        runBackground(() ->tampil(""));
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
