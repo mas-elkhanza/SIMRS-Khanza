@@ -32,6 +32,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
@@ -44,6 +45,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
@@ -62,6 +64,10 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps,psrekening;
+    private DlgCariObat2 ObatRanap;
+    private DlgCariObat ObatRalan;
+    private DlgCariObat3 ObatUDD;
+    private DlgCariObatPenyakit ObatPenyakit;
     private ResultSet rs,rsrekening;
     private double ttljual,ttlhpp,jumlahtotal=0;
     private String aktifkanbatch="no",aktifkanparsial="no",kodedokter="",namadokter="",statusberi="",
@@ -1121,29 +1127,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{ 
-                DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
-                dlgobt2.addWindowListener(new WindowListener() {
-                    @Override
-                    public void windowOpened(WindowEvent e) {}
-                    @Override
-                    public void windowClosing(WindowEvent e) {}
-                    @Override
-                    public void windowClosed(WindowEvent e) {
-                        runBackground(() -> tampilPO());
-                    }
-                    @Override
-                    public void windowIconified(WindowEvent e) {}
-                    @Override
-                    public void windowDeiconified(WindowEvent e) {}
-                    @Override
-                    public void windowActivated(WindowEvent e) {}
-                    @Override
-                    public void windowDeactivated(WindowEvent e) {}
-                });
-                dlgobt2.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate());
-                dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                dlgobt2.setLocationRelativeTo(internalFrame1);
-                dlgobt2.setVisible(true);        
+                if (ObatUDD == null || !ObatUDD.isDisplayable()) {
+                    ObatUDD=new DlgCariObat3(null,false);
+                    ObatUDD.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    ObatUDD.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            runBackground(() -> tampilPO());
+                            ObatUDD=null;
+                        }
+                    }); 
+
+                    ObatUDD.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    ObatUDD.setLocationRelativeTo(internalFrame1);
+                }
+                if (ObatUDD == null) return;
+                if (!ObatUDD.isVisible()) {  
+                    ObatUDD.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate());
+                }
+
+                if (ObatUDD.isVisible()) {
+                    ObatUDD.toFront();
+                    return;
+                }
+                ObatUDD.setVisible(true);       
             }        
         } 
     }//GEN-LAST:event_BtnObat2ActionPerformed
@@ -1157,12 +1164,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 TCari.requestFocus();
             }else{ 
                 if(status.equals("ralan")){
-                    akses.setform("DlgPemberianObat");
-                    DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
-                    dlgobtpny.setNoRm(TNoRw.getText(),Sequel.cariIsi("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas limit 1",TNoRw.getText()));
-                    dlgobtpny.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgobtpny.setLocationRelativeTo(internalFrame1);
-                    dlgobtpny.setVisible(true);
+                    if (ObatPenyakit == null || !ObatPenyakit.isDisplayable()) {
+                        ObatPenyakit=new DlgCariObatPenyakit(null,false);
+                        ObatPenyakit.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        ObatPenyakit.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                runBackground(() -> tampilPO());
+                                ObatPenyakit=null;
+                            }
+                        }); 
+
+                        ObatPenyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        ObatPenyakit.setLocationRelativeTo(internalFrame1);
+                    }
+                    if (ObatPenyakit == null) return;
+                    if (!ObatPenyakit.isVisible()) {  
+                        ObatPenyakit.setNoRm(TNoRw.getText(),Sequel.cariIsi("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas limit 1",TNoRw.getText()));
+                    }
+
+                    if (ObatPenyakit.isVisible()) {
+                        ObatPenyakit.toFront();
+                        return;
+                    }
+                    ObatPenyakit.setVisible(true);
                 }        
             }
         } 
@@ -1665,64 +1690,63 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void panggilform() {
         if(status.equals("ranap")){
-            DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
-            dlgobt.addWindowListener(new WindowListener() {
-                @Override
-                public void windowOpened(WindowEvent e) {}
-                @Override
-                public void windowClosing(WindowEvent e) {}
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(akses.getform().equals("DlgPemberianObat")){
+            if (ObatRanap == null || !ObatRanap.isDisplayable()) {
+                ObatRanap=new DlgCariObat2(null,false);
+                ObatRanap.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                ObatRanap.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
                         runBackground(() -> tampilPO());
+                        ObatRanap=null;
                     }
-                }
-                @Override
-                public void windowIconified(WindowEvent e) {}
-                @Override
-                public void windowDeiconified(WindowEvent e) {}
-                @Override
-                public void windowActivated(WindowEvent e) {}
-                @Override
-                public void windowDeactivated(WindowEvent e) {}
-            });
-            dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-            dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            dlgobt.isCek();
-            dlgobt.tampil();
-            dlgobt.setLocationRelativeTo(internalFrame1);
-            dlgobt.setVisible(true);
-        }else if(status.equals("ralan")){
-            DlgCariObat dlgobtjalan=new DlgCariObat(null,false);
-            dlgobtjalan.addWindowListener(new WindowListener() {
-                @Override
-                public void windowOpened(WindowEvent e) {}
-                @Override
-                public void windowClosing(WindowEvent e) {}
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(akses.getform().equals("DlgPemberianObat")){
-                        runBackground(() -> tampilPO());
-                    }
-                }
-                @Override
-                public void windowIconified(WindowEvent e) {}
-                @Override
-                public void windowDeiconified(WindowEvent e) {}
-                @Override
-                public void windowActivated(WindowEvent e) {}
-                @Override
-                public void windowDeactivated(WindowEvent e) {}
-            });
-            dlgobtjalan.setNoRm2(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),ChkJln.isSelected());
-            dlgobtjalan.isCek();
-            if(!namadokter.equals("")){
-                dlgobtjalan.setDokter(kodedokter, namadokter);
+                }); 
+
+                ObatRanap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                ObatRanap.setLocationRelativeTo(internalFrame1);
             }
-            dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            dlgobtjalan.tampilobat();
-            dlgobtjalan.setLocationRelativeTo(internalFrame1);
-            dlgobtjalan.setVisible(true);
+            if (ObatRanap == null) return;
+            if (!ObatRanap.isVisible()) {  
+                ObatRanap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);  
+                ObatRanap.isCek();    
+                ObatRanap.tampil(); 
+                ObatRanap.emptTeks(); 
+            }
+
+            if (ObatRanap.isVisible()) {
+                ObatRanap.toFront();
+                return;
+            }
+            ObatRanap.setVisible(true);
+        }else if(status.equals("ralan")){
+            if (ObatRalan == null || !ObatRalan.isDisplayable()) {
+                ObatRalan=new DlgCariObat(null,false);
+                ObatRalan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                ObatRalan.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        runBackground(() -> tampilPO());
+                        ObatRalan=null;
+                    }
+                }); 
+
+                ObatRalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                ObatRalan.setLocationRelativeTo(internalFrame1);
+            }
+            if (ObatRalan == null) return;
+            if (!ObatRalan.isVisible()) {  
+                ObatRalan.setNoRm2(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),ChkJln.isSelected());
+                ObatRalan.isCek();    
+                if(!namadokter.equals("")){
+                    ObatRalan.setDokter(kodedokter, namadokter);
+                }
+                ObatRalan.tampilobat();
+            }
+
+            if (ObatRalan.isVisible()) {
+                ObatRalan.toFront();
+                return;
+            }
+            ObatRalan.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
         }

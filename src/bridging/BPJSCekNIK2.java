@@ -81,9 +81,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSCekReferensiPropinsi propinsikll=new BPJSCekReferensiPropinsi(null,false);
-    private BPJSCekReferensiKabupaten kabupatenkll=new BPJSCekReferensiKabupaten(null,false);
-    private BPJSCekReferensiKecamatan kecamatankll=new BPJSCekReferensiKecamatan(null,false);
+    private BPJSCekReferensiPropinsi propinsikll;
+    private BPJSCekReferensiKabupaten kabupatenkll;
+    private BPJSCekReferensiKecamatan kecamatankll;
     private DlgKabupaten kab;
     private DlgPropinsi prop;
     private DlgKecamatan kec;
@@ -5784,8 +5784,37 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void btnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropinsiActionPerformed
-        propinsikll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        propinsikll.setLocationRelativeTo(internalFrame1);
+        if (propinsikll == null || !propinsikll.isDisplayable()) {
+            propinsikll=new BPJSCekReferensiPropinsi(null,false);
+            propinsikll.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            propinsikll.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(propinsikll.getTable().getSelectedRow()!= -1){                   
+                        KdPropinsi.setText(propinsikll.getTable().getValueAt(propinsikll.getTable().getSelectedRow(),1).toString());
+                        NmPropinsi.setText(propinsikll.getTable().getValueAt(propinsikll.getTable().getSelectedRow(),2).toString());
+                        KdPropinsi.requestFocus();
+                    }     
+                    propinsikll=null;
+                }
+            });
+
+            propinsikll.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        propinsikll.dispose();
+                    }
+                }
+            }); 
+            propinsikll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            propinsikll.setLocationRelativeTo(internalFrame1);
+        }
+        if (propinsikll == null) return;
+        if (propinsikll.isVisible()) {
+            propinsikll.toFront();
+            return;
+        }      
         propinsikll.setVisible(true);
     }//GEN-LAST:event_btnPropinsiActionPerformed
 
@@ -5798,9 +5827,40 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
             btnPropinsi.requestFocus();
         }else{
-            kabupatenkll.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
-            kabupatenkll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            kabupatenkll.setLocationRelativeTo(internalFrame1);
+            if (kabupatenkll == null || !kabupatenkll.isDisplayable()) {
+                kabupatenkll=new BPJSCekReferensiKabupaten(null,false);
+                kabupatenkll.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                kabupatenkll.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(kabupatenkll.getTable().getSelectedRow()!= -1){                   
+                            KdKabupaten.setText(kabupatenkll.getTable().getValueAt(kabupatenkll.getTable().getSelectedRow(),1).toString());
+                            NmKabupaten.setText(kabupatenkll.getTable().getValueAt(kabupatenkll.getTable().getSelectedRow(),2).toString());
+                            KdKabupaten.requestFocus();
+                        }     
+                        kabupatenkll=null;
+                    }
+                });
+
+                kabupatenkll.getTable().addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                            kabupatenkll.dispose();
+                        }
+                    }
+                }); 
+                kabupatenkll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kabupatenkll.setLocationRelativeTo(internalFrame1);
+            }
+            if (kabupatenkll == null) return;
+            if (!kabupatenkll.isVisible()) {
+                kabupatenkll.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
+            } 
+            if (kabupatenkll.isVisible()) {
+                kabupatenkll.toFront();
+                return;
+            }      
             kabupatenkll.setVisible(true);
         }
     }//GEN-LAST:event_btnKabupatenActionPerformed
@@ -5814,9 +5874,40 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
             btnKabupaten.requestFocus();
         }else{
-            kecamatankll.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());
-            kecamatankll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            kecamatankll.setLocationRelativeTo(internalFrame1);
+            if (kecamatankll == null || !kecamatankll.isDisplayable()) {
+                kecamatankll=new BPJSCekReferensiKecamatan(null,false);
+                kecamatankll.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                kecamatankll.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(kecamatankll.getTable().getSelectedRow()!= -1){                   
+                            KdKecamatan.setText(kecamatankll.getTable().getValueAt(kecamatankll.getTable().getSelectedRow(),1).toString());
+                            NmKecamatan.setText(kecamatankll.getTable().getValueAt(kecamatankll.getTable().getSelectedRow(),2).toString());
+                            KdKecamatan.requestFocus();
+                        }     
+                        kecamatankll=null;
+                    }
+                });
+
+                kecamatankll.getTable().addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                            kecamatankll.dispose();
+                        }
+                    }
+                }); 
+                kecamatankll.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kecamatankll.setLocationRelativeTo(internalFrame1);
+            }
+            if (kecamatankll == null) return;
+            if (!kecamatankll.isVisible()) {
+                kecamatankll.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());
+            } 
+            if (kecamatankll.isVisible()) {
+                kecamatankll.toFront();
+                return;
+            }      
             kecamatankll.setVisible(true);
         }
     }//GEN-LAST:event_btnKecamatanActionPerformed

@@ -21,6 +21,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.swing.JOptionPane;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.HttpEntity;
@@ -111,5 +112,115 @@ public class ApiBPJS {
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         return new RestTemplate(factory);
     }
-
+    
+    public String tampilPropinsi(String poli) {
+        String utc;
+        HttpHeaders headers ;
+        HttpEntity requestEntity;
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode nameNode;
+        JsonNode response;
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(getRest().exchange(koneksiDB.URLAPIBPJS()+"/referensi/propinsi", HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            if(nameNode.path("code").asText().equals("200")){
+                response = mapper.readTree(Decrypt(root.path("response").asText(),utc));
+                if(response.path("list").isArray()){
+                    for(JsonNode list:response.path("list")){
+                        if(list.path("kode").asText().toLowerCase().contains(poli.toLowerCase())){
+                            poli=list.path("nama").asText();
+                        }
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }   
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        return poli;
+    } 
+    
+    public String tampilKabupaten(String poli,String propinsi) {
+        String utc;
+        HttpHeaders headers ;
+        HttpEntity requestEntity;
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode nameNode;
+        JsonNode response;
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+            root = mapper.readTree(getRest().exchange(koneksiDB.URLAPIBPJS()+"/referensi/kabupaten/propinsi/"+propinsi, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            if(nameNode.path("code").asText().equals("200")){
+                response = mapper.readTree(Decrypt(root.path("response").asText(),utc));
+                if(response.path("list").isArray()){
+                    for(JsonNode list:response.path("list")){
+                        if(list.path("kode").asText().toLowerCase().contains(poli.toLowerCase())){
+                            poli=list.path("nama").asText();
+                        }
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }   
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        return poli;
+    }  
+    
+    public String tampilKecamatan(String poli,String kabupaten) {
+        String utc;
+        HttpHeaders headers ;
+        HttpEntity requestEntity;
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode nameNode;
+        JsonNode response;
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+            root = mapper.readTree(getRest().exchange(koneksiDB.URLAPIBPJS()+"/referensi/kecamatan/kabupaten/"+kabupaten, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            if(nameNode.path("code").asText().equals("200")){
+                response = mapper.readTree(Decrypt(root.path("response").asText(),utc));
+                if(response.path("list").isArray()){
+                    for(JsonNode list:response.path("list")){
+                        if(list.path("kode").asText().toLowerCase().contains(poli.toLowerCase())){
+                            poli=list.path("nama").asText();
+                        }
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }   
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        return poli;
+    } 
 }

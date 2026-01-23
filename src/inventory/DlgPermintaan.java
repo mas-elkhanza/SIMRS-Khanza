@@ -11,8 +11,9 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -27,6 +28,7 @@ import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -53,7 +55,8 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private FileReader myObj;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+    private DlgCariPegawai pegawai;
+    private DlgCariBangsal bangsal;
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -125,46 +128,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
                 }
             });
         }
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){     
-                    if(i==1){
-                        kdptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                        nmptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                        kdptg.requestFocus();
-                    }
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    if(i==1){
-                        pegawai.dispose();
-                    }
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         try {
             DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
@@ -768,10 +731,42 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_ppStok1ActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        i=1;
-        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pegawai.setLocationRelativeTo(internalFrame1);
-        pegawai.setAlwaysOnTop(false);
+        if (pegawai == null || !pegawai.isDisplayable()) {
+            pegawai=new DlgCariPegawai(null,false);
+            pegawai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            pegawai.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(pegawai.getTable().getSelectedRow()!= -1){                   
+                        kdptg.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                        nmptg.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                    }  
+                    kdptg.requestFocus();
+                    pegawai=null;
+                }
+            });
+            
+            pegawai.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pegawai.dispose();
+                    }
+                }
+            });
+
+            pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            pegawai.setLocationRelativeTo(internalFrame1);
+        }
+        if (pegawai == null) return;
+        if (!pegawai.isVisible()) {
+            pegawai.emptTeks();
+        }
+        
+        if (pegawai.isVisible()) {
+            pegawai.toFront();
+            return;
+        }
         pegawai.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
@@ -849,34 +844,34 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_NoPermintaanKeyPressed
 
     private void btnSuplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplier1ActionPerformed
-        DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){   
-                    kdgudangasal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                    nmgudangasal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+        if (bangsal == null || !bangsal.isDisplayable()) {
+            bangsal=new DlgCariBangsal(null,false);
+            bangsal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            bangsal.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(bangsal.getTable().getSelectedRow()!= -1){                   
+                        kdgudangasal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                        nmgudangasal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    } 
                     kdgudangasal.requestFocus();
-                } 
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        bangsal.isCek();
-        bangsal.emptTeks();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
+                    bangsal=null;
+                }
+            }); 
+
+            bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            bangsal.setLocationRelativeTo(internalFrame1);
+        }
+        if (bangsal == null) return;
+        if (!bangsal.isVisible()) {
+            bangsal.isCek();    
+            bangsal.emptTeks();
+        }
+
+        if (bangsal.isVisible()) {
+            bangsal.toFront();
+            return;
+        }
         bangsal.setVisible(true);
     }//GEN-LAST:event_btnSuplier1ActionPerformed
 

@@ -70,7 +70,7 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.SEP Apotek","No.SEP Asal","Nomor Kartu","Nama Peserta","No.Resep","Jenis Obat","Tgl.Pelayanan","Biaya Pengajuan","Biaya Disetujui"
+                "No","Nama Peserta","Nomor Kartu","Alamat","Tanggal SRB","Diagnosa","Obat","DPJP","Asal Faskes"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,23 +83,23 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(160);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(90);
-            }else if(i==5){
                 column.setPreferredWidth(120);
+            }else if(i==5){
+                column.setPreferredWidth(60);
             }else if(i==6){
-                column.setPreferredWidth(76);
+                column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(150);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -312,7 +312,7 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptApotekBPJSMonitoringKlaim.jasper","report","[ Monitoring Klaim Obat Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptApotekBPJSRekapPesertaPRB.jasper","report","[ Daftar Peserta Pasien PRB Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }     
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -375,7 +375,7 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        /*try {
+        try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("x-cons-id",koneksiDB.CONSIDAPIAPOTEKBPJS());
@@ -384,33 +384,31 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"/monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
+            URL = link+"/Prb/rekappeserta/tahun/"+Tahun.getSelectedItem().toString()+"/bulan/"+Bulan.getSelectedItem().toString();
             System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                if(response.path("listsep").isArray()){
+                if(response.path("list").isArray()){
                     if(TCari.getText().trim().equals("")){
-                        for(JsonNode list:response.path("listsep")){
+                        for(JsonNode list:response.path("list")){
                             tabMode.addRow(new Object[]{
-                                list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
-                                list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
-                                list.path("tglpelayanan").asText(),Valid.SetAngka(list.path("biayapengajuan").asDouble()),
-                                Valid.SetAngka(list.path("biayasetuju").asDouble())
+                                list.path("No").asText(),list.path("NamaPeserta").asText(),list.path("NomorKaPst").asText(),
+                                list.path("Alamat").asText(),list.path("TglSRB").asText(),list.path("Diagnosa").asText(),
+                                list.path("Obat").asText(),list.path("DPJP").asText(),list.path("AsalFaskes").asText()
                             });
                         }
                     }else{
-                        for(JsonNode list:response.path("listsep")){
-                            if(list.path("nosepapotek").asText().contains(TCari.getText())||list.path("nosepaasal").asText().contains(TCari.getText())||
-                                    list.path("nokartu").asText().contains(TCari.getText())||list.path("namapeserta").asText().contains(TCari.getText())||
-                                    list.path("tglpelayanan").asText().contains(TCari.getText())){
+                        for(JsonNode list:response.path("list")){
+                            if(list.path("NamaPeserta").asText().contains(TCari.getText())||list.path("NomorKaPst").asText().contains(TCari.getText())||
+                                    list.path("DPJP").asText().contains(TCari.getText())||list.path("Diagnosa").asText().contains(TCari.getText())||
+                                    list.path("Obat").asText().contains(TCari.getText())){
                                 tabMode.addRow(new Object[]{
-                                    list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
-                                    list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
-                                    list.path("tglpelayanan").asText(),Valid.SetAngka(list.path("biayapengajuan").asDouble()),
-                                    Valid.SetAngka(list.path("biayasetuju").asDouble())
+                                    list.path("No").asText(),list.path("NamaPeserta").asText(),list.path("NomorKaPst").asText(),
+                                    list.path("Alamat").asText(),list.path("NomorKaPst").asText(),list.path("Diagnosa").asText(),
+                                    list.path("Obat").asText(),list.path("DPJP").asText(),list.path("AsalFaskes").asText()
                                 });
                             }
                         }
@@ -424,7 +422,7 @@ public final class ApotekBPJSRekapPesertaPRB extends javax.swing.JDialog {
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
-        }*/
+        }
     }    
 
     public JTable getTable(){

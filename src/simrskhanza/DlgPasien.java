@@ -95,7 +95,7 @@ public class DlgPasien extends javax.swing.JDialog {
     private YaskiReferensiKabupaten kabupatenref;
     private YaskiReferensiKecamatan kecamatanref;
     private YaskiReferensiKelurahan kelurahanref;
-    private int pilih=0,z=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
+    private int z=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
             p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_pekerjaanpj=0,
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,
@@ -5330,7 +5330,6 @@ private void KelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
             BtnKelurahan.requestFocus();
         }else{
-            pilih=1;
             if (kelurahanref == null || !kelurahanref.isDisplayable()) {
                 kelurahanref=new YaskiReferensiKelurahan(null,false);
                 kelurahanref.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

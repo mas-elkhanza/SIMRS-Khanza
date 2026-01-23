@@ -304,7 +304,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String nomorrujukan) {
+    private void tampil(String nomorrujukan) {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

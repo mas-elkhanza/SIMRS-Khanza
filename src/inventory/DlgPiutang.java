@@ -1621,7 +1621,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }   
                 } 
                 kdgudang.requestFocus();
-                kdgudang.requestFocus();
                 bangsal=null;
             }
         }); 
