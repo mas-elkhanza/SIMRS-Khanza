@@ -49,6 +49,7 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -68,6 +69,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import javax.swing.WindowConstants;
 import kepegawaian.DlgCariDokter;
 import keuangan.DlgBilingParsialRalan;
 import keuangan.DlgCariPerawatanRalan;
@@ -268,6 +270,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement psotomatis,psotomatis2,pskasir,pscaripiutang,psrekening;
     private ResultSet rskasir,rsrekening;
+    private DlgRawatJalan formrawatjalan;
     private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select set_jam_minimal.kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",
             namadokter="",namapoli="",order="reg_periksa.no_rawat desc",validasicatatan="No",
             Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",
@@ -7768,33 +7771,33 @@ private void MnDataRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
                     JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
                 }else {
-                    DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
-                    dlgrwjl2.addWindowListener(new WindowListener() {
-                        @Override
-                        public void windowOpened(WindowEvent e) {}
-                        @Override
-                        public void windowClosing(WindowEvent e) {}
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            TabRawatMouseClicked(null);
-                        }
-                        @Override
-                        public void windowIconified(WindowEvent e) {}
-                        @Override
-                        public void windowDeiconified(WindowEvent e) {}
-                        @Override
-                        public void windowActivated(WindowEvent e) {}
-                        @Override
-                        public void windowDeactivated(WindowEvent e) {}
-                    });
-                    dlgrwjl2.emptTeks();
-                    dlgrwjl2.isCek();
-                    dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgrwjl2.setLocationRelativeTo(internalFrame1);
-                    dlgrwjl2.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString());
-                    dlgrwjl2.SetPj(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
-                    dlgrwjl2.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());    
-                    dlgrwjl2.setVisible(true);
+                    if (formrawatjalan == null || !formrawatjalan.isDisplayable()) {
+                        formrawatjalan=new DlgRawatJalan(null,false);
+                        formrawatjalan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        formrawatjalan.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                TabRawatMouseClicked(null);
+                                formrawatjalan=null;
+                            }
+                        });
+
+                        formrawatjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        formrawatjalan.setLocationRelativeTo(internalFrame1);
+                    }
+                    if (formrawatjalan == null) return;
+                    if (!formrawatjalan.isVisible()) {
+                        formrawatjalan.emptTeks();
+                        formrawatjalan.isCek();
+                        formrawatjalan.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString());
+                        formrawatjalan.SetPj(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+                        formrawatjalan.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());  
+                    }  
+                    if (formrawatjalan.isVisible()) {
+                        formrawatjalan.toFront();
+                        return;
+                    }    
+                    formrawatjalan.setVisible(true);
                 } 
             }                               
         }
@@ -9319,38 +9322,38 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString())>0){
                     JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
                 }else{      
-                    DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
-                    dlgrwjl2.addWindowListener(new WindowListener() {
-                        @Override
-                        public void windowOpened(WindowEvent e) {}
-                        @Override
-                        public void windowClosing(WindowEvent e) {}
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            TabRawatMouseClicked(null);
-                        }
-                        @Override
-                        public void windowIconified(WindowEvent e) {}
-                        @Override
-                        public void windowDeiconified(WindowEvent e) {}
-                        @Override
-                        public void windowActivated(WindowEvent e) {}
-                        @Override
-                        public void windowDeactivated(WindowEvent e) {}
-                    });
-                    dlgrwjl2.emptTeks();
-                    dlgrwjl2.isCek();
-                    dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgrwjl2.setLocationRelativeTo(internalFrame1);
-                    dlgrwjl2.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
-                    dlgrwjl2.SetPj(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),14).toString());
-                    dlgrwjl2.setNoRm(
-                        tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString(),
-                        DTPCari1.getDate(),DTPCari2.getDate(),
-                        tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),
-                        tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
-                    );    
-                    dlgrwjl2.setVisible(true);
+                    if (formrawatjalan == null || !formrawatjalan.isDisplayable()) {
+                        formrawatjalan=new DlgRawatJalan(null,false);
+                        formrawatjalan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        formrawatjalan.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                TabRawatMouseClicked(null);
+                                formrawatjalan=null;
+                            }
+                        });
+
+                        formrawatjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        formrawatjalan.setLocationRelativeTo(internalFrame1);
+                    }
+                    if (formrawatjalan == null) return;
+                    if (!formrawatjalan.isVisible()) {
+                        formrawatjalan.emptTeks();
+                        formrawatjalan.isCek();
+                        formrawatjalan.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
+                        formrawatjalan.SetPj(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),14).toString());
+                        formrawatjalan.setNoRm(
+                            tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString(),
+                            DTPCari1.getDate(),DTPCari2.getDate(),
+                            tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),
+                            tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
+                        );   
+                    }  
+                    if (formrawatjalan.isVisible()) {
+                        formrawatjalan.toFront();
+                        return;
+                    }    
+                    formrawatjalan.setVisible(true);
                 } 
             }                               
         }
