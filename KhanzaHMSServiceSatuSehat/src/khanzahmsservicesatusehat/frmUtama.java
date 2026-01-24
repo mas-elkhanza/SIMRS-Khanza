@@ -4679,7 +4679,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/acsn/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder").toString().replaceAll("PR","")+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +

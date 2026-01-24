@@ -1490,8 +1490,6 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             resep.isCek();
                             resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ranap");
                             resep.tampil2();
-                            //resep.setAlwaysOnTop(true);
-                            resep.dokter.setAlwaysOnTop(true);
                             resep.setVisible(true);
                         }
                         dispose();  

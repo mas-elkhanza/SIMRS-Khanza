@@ -25,8 +25,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +37,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -52,11 +53,11 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariPetugas petugas;
+    private DlgCariDokter dokter;
     private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,pstampil,pstampil2,pstampil3,pstampil4,
             psset_tarif,pssetpj,psrekening;
-    private ResultSet rstindakan,rstampil,rscari,rsset_tarif,rssetpj,rsrekening;
+    private ResultSet rstindakan,rstampil,rsset_tarif,rssetpj,rsrekening;
     private boolean[] pilih,pilih2; 
     private String[] kode,nama,pemeriksaan2,hasil2,satuan2,nilai_rujukan2,keterangan2,idtemplate2;
     private double[] total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen,
@@ -235,63 +236,7 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
             });
         } 
         ChkJln.setSelected(true);
-        jam();        
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPeriksaLaboratorium")){
-                    if(petugas.getTable().getSelectedRow()!= -1){                   
-                        KdPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                        NmPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    } 
-                    KdPtg.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPeriksaLaboratorium")){
-                    if(dokter.getTable().getSelectedRow()!= -1){
-                        if(pilihan.equals("perujuk")){
-                            KodePerujuk.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmPerujuk.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            KodePerujuk.requestFocus();
-                        }else if(pilihan.equals("penjab")){
-                            KodePj.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterPj.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            KodePj.requestFocus();
-                        }                        
-                    }  
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+        jam();   
         
         try {
             psrekening=koneksi.prepareStatement(
@@ -451,7 +396,6 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         Pemeriksaan = new widget.TextBox();
         jLabel12 = new widget.Label();
         KdPtg = new widget.TextBox();
-        btnPetugas = new widget.Button();
         NmPtg = new widget.TextBox();
         Tanggal = new widget.Tanggal();
         CmbJam = new widget.ComboBox();
@@ -460,7 +404,6 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         ChkJln = new widget.CekBox();
         jLabel16 = new widget.Label();
         BtnCari1 = new widget.Button();
-        btnDokter = new widget.Button();
         Scroll1 = new widget.ScrollPane();
         tbTarif = new widget.Table();
         jLabel15 = new widget.Label();
@@ -469,8 +412,10 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         KodePj = new widget.TextBox();
         KodePerujuk = new widget.TextBox();
         NmPerujuk = new widget.TextBox();
-        btnDokterPj = new widget.Button();
         TUmur = new widget.TextBox();
+        btnDokterPj = new widget.Button();
+        btnDokter = new widget.Button();
+        btnPetugas = new widget.Button();
         PanelCariUtama = new javax.swing.JPanel();
         Scroll = new widget.ScrollPane();
         tbPemeriksaan = new widget.Table();
@@ -798,25 +743,13 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         PanelInput.add(KdPtg);
         KdPtg.setBounds(464, 42, 80, 23);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("Alt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
-            }
-        });
-        PanelInput.add(btnPetugas);
-        btnPetugas.setBounds(798, 42, 28, 23);
-
         NmPtg.setEditable(false);
         NmPtg.setName("NmPtg"); // NOI18N
         PanelInput.add(NmPtg);
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-10-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -877,18 +810,6 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         PanelInput.add(BtnCari1);
         BtnCari1.setBounds(767, 102, 28, 23);
 
-        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDokter.setMnemonic('4');
-        btnDokter.setToolTipText("ALt+4");
-        btnDokter.setName("btnDokter"); // NOI18N
-        btnDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterActionPerformed(evt);
-            }
-        });
-        PanelInput.add(btnDokter);
-        btnDokter.setBounds(373, 72, 28, 23);
-
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll1.setName("Scroll1"); // NOI18N
 
@@ -945,6 +866,12 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         PanelInput.add(NmPerujuk);
         NmPerujuk.setBounds(177, 72, 193, 23);
 
+        TUmur.setEditable(false);
+        TUmur.setHighlighter(null);
+        TUmur.setName("TUmur"); // NOI18N
+        PanelInput.add(TUmur);
+        TUmur.setBounds(716, 12, 110, 23);
+
         btnDokterPj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDokterPj.setMnemonic('4');
         btnDokterPj.setToolTipText("ALt+4");
@@ -957,11 +884,29 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         PanelInput.add(btnDokterPj);
         btnDokterPj.setBounds(373, 42, 28, 23);
 
-        TUmur.setEditable(false);
-        TUmur.setHighlighter(null);
-        TUmur.setName("TUmur"); // NOI18N
-        PanelInput.add(TUmur);
-        TUmur.setBounds(716, 12, 110, 23);
+        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnDokter.setMnemonic('4');
+        btnDokter.setToolTipText("ALt+4");
+        btnDokter.setName("btnDokter"); // NOI18N
+        btnDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDokterActionPerformed(evt);
+            }
+        });
+        PanelInput.add(btnDokter);
+        btnDokter.setBounds(373, 72, 28, 23);
+
+        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugas.setMnemonic('2');
+        btnPetugas.setToolTipText("Alt+2");
+        btnPetugas.setName("btnPetugas"); // NOI18N
+        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetugasActionPerformed(evt);
+            }
+        });
+        PanelInput.add(btnPetugas);
+        btnPetugas.setBounds(798, 42, 28, 23);
 
         FormInput.add(PanelInput, java.awt.BorderLayout.CENTER);
 
@@ -1236,15 +1181,6 @@ private void KdPtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdP
         }
 }//GEN-LAST:event_KdPtgKeyPressed
 
-private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgPeriksaLaboratorium");
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
-}//GEN-LAST:event_btnPetugasActionPerformed
-
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
     DlgCariPeriksaLabMB form=new DlgCariPeriksaLabMB(null,false);
@@ -1377,26 +1313,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_KodePerujukKeyPressed
 
-    private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        pilihan="perujuk";
-        akses.setform("DlgPeriksaLaboratorium");
-        dokter.emptTeks();
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setVisible(true);
-    }//GEN-LAST:event_btnDokterActionPerformed
-
-    private void btnDokterPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterPjActionPerformed
-        pilihan="penjab";
-        akses.setform("DlgPeriksaLaboratorium");
-        dokter.emptTeks();
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setVisible(true);
-    }//GEN-LAST:event_btnDokterPjActionPerformed
-
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
         for(i=0;i<tbPemeriksaan.getRowCount();i++){
             tbPemeriksaan.setValueAt(false,i,0);
@@ -1438,6 +1354,100 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void rbDewasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDewasaMouseClicked
         tbTarifMouseClicked(evt);
     }//GEN-LAST:event_rbDewasaMouseClicked
+
+    private void btnDokterPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterPjActionPerformed
+        if (dokter == null || !dokter.isDisplayable()) {
+            dokter=new DlgCariDokter(null,false);
+            dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            dokter.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(dokter.getTable().getSelectedRow()!= -1){
+                        KodePj.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokterPj.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        KodePj.requestFocus();
+                    }
+                    dokter=null;
+                }
+            });
+            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setLocationRelativeTo(internalFrame1);
+        }
+
+        if (dokter == null) return;
+        if (!dokter.isVisible()) {
+            dokter.isCek();
+            dokter.emptTeks();
+        }
+        if (dokter.isVisible()) {
+            dokter.toFront();
+            return;
+        }
+        dokter.setVisible(true);
+    }//GEN-LAST:event_btnDokterPjActionPerformed
+
+    private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        if (dokter == null || !dokter.isDisplayable()) {
+            dokter=new DlgCariDokter(null,false);
+            dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            dokter.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(dokter.getTable().getSelectedRow()!= -1){
+                        KodePerujuk.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmPerujuk.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        KodePerujuk.requestFocus();
+                    }
+                    dokter=null;
+                }
+            });
+            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setLocationRelativeTo(internalFrame1);
+        }
+
+        if (dokter == null) return;
+        if (!dokter.isVisible()) {
+            dokter.isCek();
+            dokter.emptTeks();
+        }
+        if (dokter.isVisible()) {
+            dokter.toFront();
+            return;
+        }
+        dokter.setVisible(true);
+    }//GEN-LAST:event_btnDokterActionPerformed
+
+    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){
+                        KdPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }
+                    KdPtg.requestFocus();
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();
+            petugas.emptTeks();
+        }
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }
+        petugas.setVisible(true);
+    }//GEN-LAST:event_btnPetugasActionPerformed
 
     /**
     * @param args the command line arguments

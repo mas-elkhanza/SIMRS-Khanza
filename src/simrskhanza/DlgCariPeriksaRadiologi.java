@@ -13,8 +13,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -48,8 +48,9 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private DlgCariDokter dokter;
+    private DlgCariPasien member;
     private DlgCariPetugas petugas;
+    private DlgCariDokter dokter;
     private boolean sukses=false;
     private JsonNode root;
     private int i;
@@ -1136,53 +1137,45 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
-        akses.setform("DlgCariPeriksaRadiologi");
-        DlgCariPasien member=new DlgCariPasien(null,false);
-        member.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariPeriksaRadiologi")){
+        if (member == null || !member.isDisplayable()) {
+            member=new DlgCariPasien(null,false);
+            member.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            member.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
                     if(member.getTable().getSelectedRow()!= -1){                   
                         kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),0).toString());
                         nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
-                    } 
+                    }  
                     kdmem.requestFocus();
+                    member=null;
                 }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        member.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgCariPeriksaRadiologi")){
+            });
+
+            member.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
                 }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        member.emptTeks();
-        member.isCek();
-        member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        member.setLocationRelativeTo(internalFrame1);
-        member.setAlwaysOnTop(false);
-        member.setVisible(true);
+            });
+
+            member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            member.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (member == null) return;
+        if (!member.isVisible()) {
+            member.isCek();    
+            member.emptTeks();
+        }
+        
+        if (member.isVisible()) {
+            member.toFront();
+            return;
+        }
+        member.setVisible(true); 
     }//GEN-LAST:event_btnPasienActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
