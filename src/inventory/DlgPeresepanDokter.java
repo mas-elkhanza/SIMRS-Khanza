@@ -1077,14 +1077,30 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     })==true){
                                         simpandata();
                                 }else{
-                                    emptTeksobat2();
+                                    emptTeksobat();
                                     if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
                                         NoResep.getText(),"0000-00-00","00:00:00",TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status,"0000-00-00","00:00:00"
                                         })==true){
                                             simpandata();
                                     }else{
-                                        sukses=false;
+                                        emptTeksobat2();
+                                        if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
+                                            NoResep.getText(),"0000-00-00","00:00:00",TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
+                                            cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status,"0000-00-00","00:00:00"
+                                            })==true){
+                                                simpandata();
+                                        }else{
+                                            emptTeksobat2();
+                                            if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
+                                                NoResep.getText(),"0000-00-00","00:00:00",TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
+                                                cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status,"0000-00-00","00:00:00"
+                                                })==true){
+                                                    simpandata();
+                                            }else{
+                                                sukses=false;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1284,7 +1300,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             dokter.setLocationRelativeTo(internalFrame1);
         }   
         if (dokter == null) return;
-        dokter.isCek();
+        if (!dokter.isVisible()) {
+            dokter.isCek();    
+            dokter.emptTeks();
+        } 
         if (dokter.isVisible()) {
             dokter.toFront();
             return;

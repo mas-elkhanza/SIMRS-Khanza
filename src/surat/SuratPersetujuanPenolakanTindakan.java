@@ -2407,7 +2407,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -2494,6 +2494,10 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public void tampil2() {
+        runBackground(() ->tampil());
     }
 
     public void emptTeks() {
