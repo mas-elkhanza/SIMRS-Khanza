@@ -5359,7 +5359,7 @@ private void KelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
             if (kelurahanref == null) return;
             if (!kelurahanref.isVisible()) {
-                kelurahanref.setPropinsi(KdKab.getText(),Kabupaten.getText());
+                kelurahanref.setPropinsi(KdKec.getText(),Kecamatan.getText());
             }  
             if (kelurahanref.isVisible()) {
                 kelurahanref.toFront();
@@ -5464,7 +5464,6 @@ private void KabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             KdKab.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),1).toString());
                             kdkab="";
                             Kabupaten.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
-                            KabupatenPj.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
                         } 
                         kabupatenref=null;
                     }
@@ -6294,7 +6293,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
                 if (kelurahanref == null) return;
                 if (!kelurahanref.isVisible()) {
-                    kelurahanref.setPropinsi(KdKab.getText(),Kabupaten.getText());
+                    kelurahanref.setPropinsi(KdKec.getText(),KecamatanPj.getText());
                 }  
                 if (kelurahanref.isVisible()) {
                     kelurahanref.toFront();

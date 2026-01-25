@@ -544,7 +544,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        pegawai.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

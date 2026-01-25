@@ -278,7 +278,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Update 2026-01-20"/>
+                <Property name="text" type="java.lang.String" value="Update 2026-02-01"/>
                 <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
               </Properties>
               <Constraints>
