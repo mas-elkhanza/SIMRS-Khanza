@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -33,10 +34,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -61,8 +67,9 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgInsidenKeselamatan insiden=new DlgInsidenKeselamatan(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -137,7 +144,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        nip.setDocument(new batasInput((byte)20).getKata(nip));
+        KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         KodeInsiden.setDocument(new batasInput((byte)5).getKata(KodeInsiden));
         Lokasi.setDocument(new batasInput((int)60).getKata(Lokasi));
         UnitTerkait.setDocument(new batasInput((int)60).getKata(UnitTerkait));
@@ -153,84 +160,23 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    namapetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }  
-                nip.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        insiden.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(insiden.getTabel().getSelectedRow()!= -1){  
-                    KodeInsiden.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),1).toString());
-                    NmInsiden.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),2).toString());
-                    Jenis.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),3).toString());
-                    Dampak.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),4).toString());
-                }  
-                KodeInsiden.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        insiden.getTabel().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    insiden.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -300,8 +246,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         DetikLapor = new widget.ComboBox();
         ChkLapor = new widget.CekBox();
         jLabel18 = new widget.Label();
-        nip = new widget.TextBox();
-        namapetugas = new widget.TextBox();
+        KdPetugas = new widget.TextBox();
+        NmPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
         jLabel24 = new widget.Label();
         UnitTerkait = new widget.TextBox();
@@ -609,7 +555,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -623,7 +569,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -718,7 +664,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TPasien.setBounds(361, 10, 424, 23);
 
         Kejadian.setForeground(new java.awt.Color(50, 70, 50));
-        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
+        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         Kejadian.setDisplayFormat("dd-MM-yyyy");
         Kejadian.setName("Kejadian"); // NOI18N
         Kejadian.setOpaque(false);
@@ -808,7 +754,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel17.setBounds(420, 40, 50, 23);
 
         Lapor.setForeground(new java.awt.Color(50, 70, 50));
-        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
+        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         Lapor.setDisplayFormat("dd-MM-yyyy");
         Lapor.setName("Lapor"); // NOI18N
         Lapor.setOpaque(false);
@@ -864,21 +810,21 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(0, 70, 100, 23);
 
-        nip.setEditable(false);
-        nip.setHighlighter(null);
-        nip.setName("nip"); // NOI18N
-        nip.addKeyListener(new java.awt.event.KeyAdapter() {
+        KdPetugas.setEditable(false);
+        KdPetugas.setHighlighter(null);
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nipKeyPressed(evt);
+                KdPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(nip);
-        nip.setBounds(104, 70, 70, 23);
+        FormInput.add(KdPetugas);
+        KdPetugas.setBounds(104, 70, 70, 23);
 
-        namapetugas.setEditable(false);
-        namapetugas.setName("namapetugas"); // NOI18N
-        FormInput.add(namapetugas);
-        namapetugas.setBounds(176, 70, 184, 23);
+        NmPetugas.setEditable(false);
+        NmPetugas.setName("NmPetugas"); // NOI18N
+        FormInput.add(NmPetugas);
+        NmPetugas.setBounds(176, 70, 184, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -1071,8 +1017,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(nip.getText().trim().equals("")||namapetugas.getText().trim().equals("")){
-            Valid.textKosong(nip,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(KdPetugas,"Petugas");
         }else if(KodeInsiden.getText().trim().equals("")||NmInsiden.getText().trim().equals("")){
             Valid.textKosong(KodeInsiden,"Insiden");
         }else if(Lokasi.getText().trim().equals("")){
@@ -1093,9 +1039,9 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             if(Sequel.menyimpantf("insiden_keselamatan_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),Kronologis.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
+                KdPetugas.getText(),Lokasi.getText(),Kronologis.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }   
         }
@@ -1127,7 +1073,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 tbObat.getValueAt(tbObat.getSelectedRow(),4).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
@@ -1147,8 +1093,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(nip.getText().trim().equals("")||namapetugas.getText().trim().equals("")){
-            Valid.textKosong(nip,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(KdPetugas,"Petugas");
         }else if(KodeInsiden.getText().trim().equals("")||NmInsiden.getText().trim().equals("")){
             Valid.textKosong(KodeInsiden,"Insiden");
         }else if(Lokasi.getText().trim().equals("")){
@@ -1169,11 +1115,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Sequel.mengedit("insiden_keselamatan_pasien","tgl_kejadian=? and jam_kejadian=? and no_rawat=?","no_rawat=?,tgl_kejadian=?,jam_kejadian=?,tgl_lapor=?,jam_lapor=?,kode_insiden=?,nip=?,lokasi=?,unit_terkait=?,akibat=?,tindakan_insiden=?,identifikasi_masalah=?,rtl=?,kronologis=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),Kronologis.getText(),
+                KdPetugas.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),Kronologis.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),4).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             });
-            if(tabMode.getRowCount()!=0){tampil();}
+            if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -1187,8 +1133,6 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
-        insiden.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1242,7 +1186,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1255,12 +1199,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
@@ -1300,7 +1244,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void LokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiKeyPressed
-        Valid.pindah(evt,nip,KodeInsiden);
+        Valid.pindah(evt,KdPetugas,KodeInsiden);
     }//GEN-LAST:event_LokasiKeyPressed
 
     private void JamKejadianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKejadianKeyPressed
@@ -1328,12 +1272,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_MenitLaporKeyPressed
 
     private void DetikLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikLaporKeyPressed
-        Valid.pindah(evt,MenitLapor,nip);
+        Valid.pindah(evt,MenitLapor,KdPetugas);
     }//GEN-LAST:event_DetikLaporKeyPressed
 
-    private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
+    private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            namapetugas.setText(Sequel.CariPetugas(nip.getText()));
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             DetikLapor.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1341,13 +1285,37 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
-    }//GEN-LAST:event_nipKeyPressed
+    }//GEN-LAST:event_KdPetugasKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }   
+                    KdPetugas.requestFocus(); 
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }  
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }    
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
@@ -1360,6 +1328,44 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_AkibatKeyPressed
 
     private void btnInsidenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsidenActionPerformed
+        DlgInsidenKeselamatan insiden=new DlgInsidenKeselamatan(null,false);
+        insiden.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(insiden.getTabel().getSelectedRow()!= -1){  
+                    KodeInsiden.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),1).toString());
+                    NmInsiden.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),2).toString());
+                    Jenis.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),3).toString());
+                    Dampak.setText(insiden.getTabel().getValueAt(insiden.getTabel().getSelectedRow(),4).toString());
+                }  
+                KodeInsiden.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        insiden.getTabel().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    insiden.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         insiden.emptTeks();
         insiden.isCek();
         insiden.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1604,6 +1610,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.ComboBox JamKejadian;
     private widget.ComboBox JamLapor;
     private widget.TextBox Jenis;
+    private widget.TextBox KdPetugas;
     private widget.Tanggal Kejadian;
     private widget.TextBox KodeInsiden;
     private widget.TextBox Kronologis;
@@ -1613,6 +1620,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.ComboBox MenitKejadian;
     private widget.ComboBox MenitLapor;
     private widget.TextBox NmInsiden;
+    private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1643,8 +1651,6 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private widget.TextBox namapetugas;
-    private widget.TextBox nip;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerDampak;
@@ -1657,7 +1663,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -1769,8 +1775,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        nip.setText("");
-        namapetugas.setText("");
+        KdPetugas.setText("");
+        NmPetugas.setText("");
         KodeInsiden.setText("");
         NmInsiden.setText("");
         Jenis.setText("");
@@ -1798,8 +1804,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             JamLapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             MenitLapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             DetikLapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            namapetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             KodeInsiden.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             NmInsiden.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
@@ -1834,6 +1840,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         isPsien();              
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
     
     private void isForm(){
@@ -1855,8 +1862,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getinsiden_keselamatan_pasien());
         BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
         if(akses.getjml2()>=1){
-            nip.setText(akses.getkode());
-            namapetugas.setText(Sequel.CariPetugas(nip.getText()));
+            KdPetugas.setText(akses.getkode());
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         }            
     }
 
@@ -1964,5 +1971,37 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         };
         // Timer
         new Timer(1000, taskPerformer).start();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

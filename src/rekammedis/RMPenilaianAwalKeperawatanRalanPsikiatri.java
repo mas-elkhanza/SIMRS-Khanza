@@ -18,7 +18,6 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -29,8 +28,12 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -52,7 +55,9 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int i=0,jml=0,index=0;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private boolean[] pilih; 
     private String[] kode,masalah;
     private String masalahkeperawatan="",finger=""; 
@@ -539,19 +544,19 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -560,45 +565,23 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariMasalah.getText().length()>2){
-                        tampilMasalah2();
+                        runBackground(() ->tampilMasalah2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariMasalah.getText().length()>2){
-                        tampilMasalah2();
+                        runBackground(() ->tampilMasalah2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariMasalah.getText().length()>2){
-                        tampilMasalah2();
+                        runBackground(() ->tampilMasalah2());
                     }
                 }
             });
         }
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){ 
-                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());   
-                }              
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         BB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override
@@ -4239,7 +4222,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -4252,13 +4235,13 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
         }
@@ -4395,16 +4378,16 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<30){
-                tampilMasalah2();
+                runBackground(() ->tampilMasalah2());
             }else{
-                tampilMasalah();
+                runBackground(() ->tampilMasalah());
             }
         } catch (Exception e) {
         }
@@ -4938,7 +4921,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
         if(tabModeMasalah.getRowCount()!=0){
             try {
-                tampilRencana2();
+                runBackground(() ->tampilRencana2());
             } catch (java.lang.NullPointerException e) {
             }
         }
@@ -4957,7 +4940,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         if(tabModeMasalah.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
-                    tampilRencana2();
+                    runBackground(() ->tampilRencana2());
                 } catch (java.lang.NullPointerException e) {
                 }
             }
@@ -4980,8 +4963,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void BtnAllRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllRencanaActionPerformed
         TCariRencana.setText("");
-        tampilRencana();
-        tampilRencana2();
+        runBackground(() ->LoadRencana());
     }//GEN-LAST:event_BtnAllRencanaActionPerformed
 
     private void BtnAllRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRencanaKeyPressed
@@ -4993,12 +4975,12 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_BtnAllRencanaKeyPressed
 
     private void BtnCariRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRencanaActionPerformed
-        tampilRencana2();
+        runBackground(() ->tampilRencana2());
     }//GEN-LAST:event_BtnCariRencanaActionPerformed
 
     private void BtnCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariRencanaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilRencana2();
+            runBackground(() ->tampilRencana2());
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             BtnSimpan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -5008,7 +4990,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void TCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariRencanaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilRencana2();
+            runBackground(() ->tampilRencana2());
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             BtnCariRencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -5028,7 +5010,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
         TCari.setText("");
-        tampilMasalah();
+        runBackground(() ->tampilMasalah());
     }//GEN-LAST:event_BtnAllMasalahActionPerformed
 
     private void BtnAllMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllMasalahKeyPressed
@@ -5040,12 +5022,12 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_BtnAllMasalahKeyPressed
 
     private void BtnCariMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMasalahActionPerformed
-        tampilMasalah2();
+        runBackground(() ->tampilMasalah2());
     }//GEN-LAST:event_BtnCariMasalahActionPerformed
 
     private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilMasalah2();
+            runBackground(() ->tampilMasalah2());
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -5055,7 +5037,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilMasalah2();
+            runBackground(() ->tampilMasalah2());
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -6415,5 +6397,42 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 TPasien1.setText(TPasien.getText());
                 emptTeks();
         }
+    }
+    
+    private void LoadRencana(){
+        tampilRencana();
+        tampilRencana2();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

@@ -11,6 +11,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -19,8 +20,13 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -38,10 +44,9 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private String inventariscari="",tglcari="";
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private PerpustakaanInventaris perpustakaan_inventaris=new PerpustakaanInventaris(null,false);
-    private PerpustakaanAnggota anggota=new PerpustakaanAnggota(null,false);
-    private int pilihan=0;
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -98,7 +103,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
 
         
         TNoA.setDocument(new batasInput((byte)10).getFilter(TNoA));
-        TNIP.setDocument(new batasInput((byte)20).getKata(TNIP));
+        KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         TNoI.setDocument(new batasInput((byte)20).getKata(TNoI));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         InventarisCari.setDocument(new batasInput((byte)100).getKata(InventarisCari));
@@ -106,128 +111,24 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         WindowInput.setSize(735,245);
         WindowInput.setLocationRelativeTo(null);  
         
-        perpustakaan_inventaris.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(perpustakaan_inventaris.getTable().getSelectedRow()!= -1){                   
-                    if(pilihan==1){
-                        TNoI.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),0).toString());
-                        TJudul.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),1).toString()+", "+perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),2).toString());
-                        Penerbit.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),4).toString());
-                        Pengarang.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),8).toString());
-                        StatusBuku.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),12).toString());                        
-                        TNoI.requestFocus();
-                    }else if(pilihan==2){
-                        InventarisCari.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),2).toString());
-                        InventarisCari.requestFocus();
-                    }
-                }                
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        perpustakaan_inventaris.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    perpustakaan_inventaris.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    TNIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    TNmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }   
-                TNIP.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        anggota.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(anggota.getTable().getSelectedRow()!= -1){                   
-                    TNoA.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),0).toString());
-                    TNmA.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),1).toString());
-                    lblTglKdl.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),9).toString());
-                }   
-                TNoA.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        anggota.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    anggota.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -262,9 +163,9 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         Pengarang = new widget.TextBox();
         label11 = new widget.Label();
         label6 = new widget.Label();
-        TNIP = new widget.TextBox();
+        KdPetugas = new widget.TextBox();
         label8 = new widget.Label();
-        TNmPetugas = new widget.TextBox();
+        NmPetugas = new widget.TextBox();
         btnPtg = new widget.Button();
         label12 = new widget.Label();
         tgl = new widget.Tanggal();
@@ -444,24 +345,24 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         internalFrame2.add(label6);
         label6.setBounds(0, 85, 100, 23);
 
-        TNIP.setName("TNIP"); // NOI18N
-        TNIP.addKeyListener(new java.awt.event.KeyAdapter() {
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNIPKeyPressed(evt);
+                KdPetugasKeyPressed(evt);
             }
         });
-        internalFrame2.add(TNIP);
-        TNIP.setBounds(103, 145, 130, 23);
+        internalFrame2.add(KdPetugas);
+        KdPetugas.setBounds(103, 145, 130, 23);
 
         label8.setText("Petugas :");
         label8.setName("label8"); // NOI18N
         internalFrame2.add(label8);
         label8.setBounds(0, 145, 100, 23);
 
-        TNmPetugas.setEditable(false);
-        TNmPetugas.setName("TNmPetugas"); // NOI18N
-        internalFrame2.add(TNmPetugas);
-        TNmPetugas.setBounds(235, 145, 450, 23);
+        NmPetugas.setEditable(false);
+        NmPetugas.setName("NmPetugas"); // NOI18N
+        internalFrame2.add(NmPetugas);
+        NmPetugas.setBounds(235, 145, 450, 23);
 
         btnPtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPtg.setMnemonic('3');
@@ -483,7 +384,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         label12.setBounds(367, 55, 80, 23);
 
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -625,11 +526,6 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman Koleksi perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -856,7 +752,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         ChkTanggal.setPreferredSize(new java.awt.Dimension(135, 23));
         panelCari.add(ChkTanggal);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -874,7 +770,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
         panelCari.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -989,7 +885,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         }else if((! TJudul.getText().trim().equals(""))&&(! TOut.getText().trim().equals(""))){
             try{
                 Sequel.queryu("delete from perpustakaan_peminjaman where no_anggota='"+TNoA.getText()+"' and no_inventaris='"+TNoI.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
-                tampil();
+                runBackground(() ->tampil());
             }catch(Exception e){
                 System.out.println("Pesan Error : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
@@ -1091,7 +987,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1107,7 +1003,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         InventarisCari.setText("");
         StatusCari.setSelectedItem("Semua");
         ChkTanggal.setSelected(false);
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1142,8 +1038,8 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
             Valid.textKosong(TNoI,"Inventaris");
         }else if(TNoA.getText().trim().equals("")||TNmA.getText().trim().equals("")){
             Valid.textKosong(TNoA,"Anggota");
-        }else if(TNIP.getText().trim().equals("")||TNmPetugas.getText().trim().equals("")){
-            Valid.textKosong(TNIP,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(KdPetugas,"Petugas");
         }else {
             if(TNoI.isEditable()==true){
                 if(lblIjnKdl.getText().trim().equals("tidak")){
@@ -1157,7 +1053,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
                     TNoI.requestFocus();
                 }else if(StatusBuku.getText().trim().equals("Ada")){
                     if(Sequel.menyimpantf("perpustakaan_peminjaman","?,?,?,?,?,?","Peminjaman",6,new String[]{
-                            TNoA.getText(),TNoI.getText(),Valid.SetTgl(tgl.getSelectedItem()+""),"0000-00-00",TNIP.getText(),"Masih Dipinjam"
+                            TNoA.getText(),TNoI.getText(),Valid.SetTgl(tgl.getSelectedItem()+""),"0000-00-00",KdPetugas.getText(),"Masih Dipinjam"
                         })==true){
                             Sequel.queryu("update perpustakaan_inventaris set status_buku='Dipinjam' where no_inventaris='"+TNoI.getText()+"'");
                             TNoI.requestFocus();
@@ -1169,12 +1065,12 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
                     }
                 }
             }else if(TNoI.isEditable()==false){
-                Sequel.queryu("update perpustakaan_peminjaman set tgl_kembali='"+Valid.SetTgl(tgl.getSelectedItem()+"")+"',nip='"+TNIP.getText()+"',status_pinjam='Sudah Kembali' where no_anggota='"+TNoA.getText()+"' and no_inventaris='"+TNoI.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
+                Sequel.queryu("update perpustakaan_peminjaman set tgl_kembali='"+Valid.SetTgl(tgl.getSelectedItem()+"")+"',nip='"+KdPetugas.getText()+"',status_pinjam='Sudah Kembali' where no_anggota='"+TNoA.getText()+"' and no_inventaris='"+TNoI.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
                 Sequel.queryu("update perpustakaan_inventaris set status_buku='Ada' where no_inventaris='"+TNoI.getText()+"'");
                 emptTeks();
                 WindowInput.dispose();
             }
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1235,7 +1131,41 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
 }//GEN-LAST:event_tbKamInKeyPressed
 
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-    pilihan=2;
+    PerpustakaanInventaris perpustakaan_inventaris=new PerpustakaanInventaris(null,false);
+    perpustakaan_inventaris.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(perpustakaan_inventaris.getTable().getSelectedRow()!= -1){   
+                InventarisCari.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),2).toString());
+                InventarisCari.requestFocus();
+            }                
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
+
+    perpustakaan_inventaris.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                perpustakaan_inventaris.dispose();
+            }
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });
     perpustakaan_inventaris.isCek();
     perpustakaan_inventaris.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     perpustakaan_inventaris.setLocationRelativeTo(internalFrame1);
@@ -1249,13 +1179,9 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void InventarisCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InventarisCariKeyPressed
          if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil();
+            runBackground(() ->tampil());
         }else{Valid.pindah(evt, TglPinjam2, TCari);}
 }//GEN-LAST:event_InventarisCariKeyPressed
-
-private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    tampil();
-}//GEN-LAST:event_formWindowOpened
 
 private void TNoIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoIKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1272,7 +1198,45 @@ private void TNoIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoI
 }//GEN-LAST:event_TNoIKeyPressed
 
 private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
-    pilihan=1;
+    PerpustakaanInventaris perpustakaan_inventaris=new PerpustakaanInventaris(null,false);
+    perpustakaan_inventaris.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(perpustakaan_inventaris.getTable().getSelectedRow()!= -1){     
+                TNoI.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),0).toString());
+                TJudul.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),1).toString()+", "+perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),2).toString());
+                Penerbit.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),4).toString());
+                Pengarang.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),8).toString());
+                StatusBuku.setText(perpustakaan_inventaris.getTable().getValueAt(perpustakaan_inventaris.getTable().getSelectedRow(),12).toString());                        
+                TNoI.requestFocus();
+            }                
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
+
+    perpustakaan_inventaris.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                perpustakaan_inventaris.dispose();
+            }
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });
     perpustakaan_inventaris.isCek();
     perpustakaan_inventaris.tampil();
     perpustakaan_inventaris.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1281,23 +1245,47 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     perpustakaan_inventaris.setVisible(true);        
 }//GEN-LAST:event_btnInvActionPerformed
 
-private void TNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNIPKeyPressed
+private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        TNmPetugas.setText(Sequel.CariPetugas(TNIP.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        TNmPetugas.setText(Sequel.CariPetugas(TNIP.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
     }
-}//GEN-LAST:event_TNIPKeyPressed
+}//GEN-LAST:event_KdPetugasKeyPressed
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
-    petugas.isCek();
-    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-    petugas.setLocationRelativeTo(internalFrame1);
-    petugas.setAlwaysOnTop(false);
-    petugas.setVisible(true);
+    if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }   
+                    KdPetugas.requestFocus(); 
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }  
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }    
+        petugas.setVisible(true);
 }//GEN-LAST:event_btnPtgActionPerformed
 
 private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKeyPressed
@@ -1320,14 +1308,14 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
             Valid.textKosong(TNoI,"Inventaris");
         }else if(TNoA.getText().trim().equals("")||TNmA.getText().trim().equals("")){
             Valid.textKosong(TNoI,"Anggota");
-        }else if(TNIP.getText().trim().equals("")||TNmPetugas.getText().trim().equals("")){
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(TNoI,"Petugas");
         }else {
             if(TNoI.isEditable()==false){
-                Sequel.queryu("update perpustakaan_peminjaman set tgl_pinjam='"+Valid.SetTgl(tgl.getSelectedItem()+"")+"',nip='"+TNIP.getText()+"' where no_anggota='"+TNoA.getText()+"' and no_inventaris='"+TNoI.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
+                Sequel.queryu("update perpustakaan_peminjaman set tgl_pinjam='"+Valid.SetTgl(tgl.getSelectedItem()+"")+"',nip='"+KdPetugas.getText()+"' where no_anggota='"+TNoA.getText()+"' and no_inventaris='"+TNoI.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
                 WindowInput.dispose();
             }
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
     }//GEN-LAST:event_BtnPerpanjangActionPerformed
@@ -1337,6 +1325,43 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     }//GEN-LAST:event_BtnPerpanjangKeyPressed
 
     private void btnAngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngActionPerformed
+        PerpustakaanAnggota anggota=new PerpustakaanAnggota(null,false);
+        anggota.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(anggota.getTable().getSelectedRow()!= -1){                   
+                    TNoA.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),0).toString());
+                    TNmA.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),1).toString());
+                    lblTglKdl.setText(anggota.getTable().getValueAt(anggota.getTable().getSelectedRow(),9).toString());
+                }   
+                TNoA.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        anggota.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    anggota.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         anggota.isCek();
         anggota.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         anggota.setLocationRelativeTo(internalFrame1);
@@ -1346,7 +1371,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
 
     private void TNoAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoAKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TNIP.requestFocus();
+            KdPetugas.requestFocus();
             Sequel.cariIsi("select nama_anggota from perpustakaan_anggota where no_anggota='"+TNoA.getText()+"'", TNmA);
             Sequel.cariIsi("select masa_berlaku from perpustakaan_anggota where no_anggota='"+TNoA.getText()+"'", lblTglKdl);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1395,6 +1420,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     private widget.Button BtnSimpan;
     private widget.CekBox ChkTanggal;
     private widget.TextBox InventarisCari;
+    private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private javax.swing.JLabel LHrIni;
     private widget.Label LblDenda;
@@ -1405,6 +1431,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     private javax.swing.JLabel LblSetPnjm;
     private widget.Label LblTerlambat;
     private widget.Label LblTgl;
+    private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelCariUtama;
     private widget.TextBox Penerbit;
     private widget.TextBox Pengarang;
@@ -1414,9 +1441,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     private widget.TextBox TCari;
     private widget.TextBox TIn;
     private widget.TextBox TJudul;
-    private widget.TextBox TNIP;
     private widget.TextBox TNmA;
-    private widget.TextBox TNmPetugas;
     private widget.TextBox TNoA;
     private widget.TextBox TNoI;
     private widget.TextBox TOut;
@@ -1449,7 +1474,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     private widget.Tanggal tgl;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             inventariscari="";
@@ -1544,13 +1569,13 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     
     public void isCek(){
         if(akses.getjml2()>=1){
-            TNIP.setEditable(false);
+            KdPetugas.setEditable(false);
             btnPtg.setEnabled(false);
             BtnSimpan.setEnabled(akses.getpeminjaman_perpustakaan());
             BtnIn.setEnabled(akses.getpeminjaman_perpustakaan());
             BtnOut.setEnabled(akses.getpeminjaman_perpustakaan());
-            TNIP.setText(akses.getkode());
-            TNmPetugas.setText(Sequel.CariPetugas(TNIP.getText()));
+            KdPetugas.setText(akses.getkode());
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         } 
     }
     
@@ -1608,5 +1633,37 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

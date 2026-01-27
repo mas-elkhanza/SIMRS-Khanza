@@ -7982,7 +7982,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCatatanObservasiIGDActionPerformed
@@ -8167,7 +8166,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPemantauanPEWSAnakActionPerformed
@@ -8219,7 +8217,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhDewasaActionPerformed
@@ -8237,7 +8234,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhAnakActionPerformed
@@ -8407,7 +8403,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkriningGiziLanjutActionPerformed
@@ -8425,7 +8420,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnAsuhanGiziActionPerformed
@@ -8443,7 +8437,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnMonitoringAsuhanGiziActionPerformed
@@ -8461,7 +8454,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnKonselingFarmasiActionPerformed
@@ -8479,7 +8471,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnInformasiObatActionPerformed
@@ -8497,7 +8488,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnTransferAntarRuangActionPerformed
@@ -8515,7 +8505,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCatatanCekGDSActionPerformed
@@ -8652,7 +8641,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnMonitoringReaksiTranfusiActionPerformed
@@ -8687,7 +8675,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhLansiaActionPerformed
@@ -8722,7 +8709,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnEdukasiPasienKeluargaActionPerformed
@@ -8740,7 +8726,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPemantauanPEWSDewasaActionPerformed
@@ -8846,7 +8831,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPemantauanMEOWSActionPerformed
@@ -8916,7 +8900,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnDokumentasiESWLActionPerformed
@@ -8969,7 +8952,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhGeriatriActionPerformed
@@ -8987,7 +8969,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPemantauanEWSNeonatusActionPerformed
@@ -9039,7 +9020,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhPsikiatriActionPerformed
@@ -9057,7 +9037,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanSkriningFungsionalActionPerformed
@@ -9169,7 +9148,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPengkajianRestrainActionPerformed
@@ -9204,7 +9182,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCatatanKeperawatanActionPerformed
@@ -9222,7 +9199,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCatatanPersalinananActionPerformed
@@ -9240,7 +9216,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkorAldrettePascaAnestesiActionPerformed
@@ -9258,7 +9233,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkorStewardPascaAnestesiActionPerformed
@@ -9276,7 +9250,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     } 
@@ -9365,7 +9338,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -9490,7 +9462,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -9670,7 +9641,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -9778,7 +9748,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -10026,7 +9995,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }

@@ -16,6 +16,7 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
@@ -36,6 +37,11 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 
 /**
@@ -50,7 +56,9 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private String finger="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
@@ -287,47 +295,23 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){  
-                    KodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    btnPetugas.requestFocus();
-                }  
-                    
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
         
         ChkInput.setSelected(false);
         isForm();
@@ -400,9 +384,9 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir = new widget.TextBox();
         Tanggal = new widget.Tanggal();
         jLabel23 = new widget.Label();
-        KodePetugas = new widget.TextBox();
-        NamaPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
+        KdPetugas = new widget.TextBox();
+        NmPetugas = new widget.TextBox();
+        BtnPetugas = new widget.Button();
         jLabel5 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -841,7 +825,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -855,7 +839,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1004,7 +988,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023 06:18:12" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2026 03:45:19" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1021,33 +1005,33 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel23);
         jLabel23.setBounds(221, 40, 140, 23);
 
-        KodePetugas.setEditable(false);
-        KodePetugas.setHighlighter(null);
-        KodePetugas.setName("KodePetugas"); // NOI18N
-        FormInput.add(KodePetugas);
-        KodePetugas.setBounds(365, 40, 127, 23);
+        KdPetugas.setEditable(false);
+        KdPetugas.setHighlighter(null);
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        FormInput.add(KdPetugas);
+        KdPetugas.setBounds(365, 40, 127, 23);
 
-        NamaPetugas.setEditable(false);
-        NamaPetugas.setName("NamaPetugas"); // NOI18N
-        FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(494, 40, 265, 23);
+        NmPetugas.setEditable(false);
+        NmPetugas.setName("NmPetugas"); // NOI18N
+        FormInput.add(NmPetugas);
+        NmPetugas.setBounds(494, 40, 265, 23);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("ALt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas.setMnemonic('2');
+        BtnPetugas.setToolTipText("ALt+2");
+        BtnPetugas.setName("BtnPetugas"); // NOI18N
+        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
+                BtnPetugasActionPerformed(evt);
             }
         });
-        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPetugasKeyPressed(evt);
+                BtnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(btnPetugas);
-        btnPetugas.setBounds(761, 40, 28, 23);
+        FormInput.add(BtnPetugas);
+        BtnPetugas.setBounds(761, 40, 28, 23);
 
         jLabel5.setText(":");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -3245,8 +3229,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(BtnPetugas,"Petugas");
         }else{
             if(Sequel.menyimpantf("penilaian_level_kecemasan_ranap_anak","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",89,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
@@ -3262,7 +3246,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
                 Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
                 MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
-                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText()
+                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KdPetugas.getText()
             })==true){
                 tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
@@ -3278,7 +3262,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                     BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
                     Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
                     MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
-                    KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText(),NamaPetugas.getText()
+                    KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KdPetugas.getText(),NmPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -3333,8 +3317,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(BtnPetugas,"Petugas");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -3361,7 +3345,6 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3645,7 +3628,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -3658,13 +3641,13 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
         }
@@ -3750,19 +3733,44 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-       Valid.pindah(evt,TCari,btnPetugas);
+       Valid.pindah(evt,TCari,BtnPetugas);
     }//GEN-LAST:event_TanggalKeyPressed
 
-    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
-    }//GEN-LAST:event_btnPetugasActionPerformed
+    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }  
+                    BtnPetugas.requestFocus();
+                    petugas=null;
+                }
+            });
 
-    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }
+        
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }
+        petugas.setVisible(true); 
+    }//GEN-LAST:event_BtnPetugasActionPerformed
+
+    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
        Valid.pindah(evt,Tanggal,Cemas);
-    }//GEN-LAST:event_btnPetugasKeyPressed
+    }//GEN-LAST:event_BtnPetugasKeyPressed
 
     private void FirasatBurukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FirasatBurukKeyPressed
         Valid.pindah(evt,Cemas,TakutPikiranSendiri);
@@ -3773,7 +3781,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_TakutPikiranSendiriKeyPressed
 
     private void CemasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CemasKeyPressed
-        Valid.pindah(evt,btnPetugas,FirasatBuruk);
+        Valid.pindah(evt,BtnPetugas,FirasatBuruk);
     }//GEN-LAST:event_CemasKeyPressed
 
     private void MudahTersinggungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahTersinggungKeyPressed
@@ -4466,6 +4474,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.ComboBox BuluBerdiri;
@@ -4491,11 +4500,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.TextBox JK;
     private widget.ComboBox JariGemetar;
     private widget.ComboBox Kaku;
+    private widget.TextBox KdPetugas;
     private widget.ComboBox KedutanOtot;
     private widget.ComboBox KehilanganBB;
     private widget.ComboBox KerutKening;
     private widget.TextBox KeteranganSkor;
-    private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.ComboBox Lesu;
     private widget.editorpane LoadHTML;
@@ -4518,9 +4527,9 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox MukaTegang;
     private widget.ComboBox MulutKering;
     private widget.ComboBox Muntah;
-    private widget.TextBox NamaPetugas;
     private widget.ComboBox NapasPendek;
     private widget.ComboBox NapasPendekWawancara;
+    private widget.TextBox NmPetugas;
     private widget.ComboBox NyeriDiDada;
     private widget.ComboBox NyeriMakan;
     private javax.swing.JPanel PanelInput;
@@ -4565,7 +4574,6 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox Tinnitus;
     private widget.ComboBox TonusMeningkat;
     private widget.TextBox TotalSkor;
-    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
@@ -4742,7 +4750,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -5108,6 +5116,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         isRawat();
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
     
     private void isForm(){
@@ -5129,12 +5138,12 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         BtnHapus.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
         BtnEdit.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
         if(akses.getjml2()>=1){
-            KodePetugas.setEditable(false);
-            btnPetugas.setEnabled(false);
-            KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
-            if(NamaPetugas.getText().equals("")){
-                KodePetugas.setText("");
+            KdPetugas.setEditable(false);
+            BtnPetugas.setEnabled(false);
+            KdPetugas.setText(akses.getkode());
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
+            if(NmPetugas.getText().equals("")){
+                KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
         } 
@@ -5160,7 +5169,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
                 Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
                 MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
-                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText(),
+                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KdPetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -5255,8 +5264,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             tbObat.setValueAt(MukaMerahWawancara.getSelectedItem().toString(),tbObat.getSelectedRow(),89);
             tbObat.setValueAt(TotalSkor.getText(),tbObat.getSelectedRow(),90);
             tbObat.setValueAt(KeteranganSkor.getText(),tbObat.getSelectedRow(),91);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),92);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),93);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),92);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),93);
             emptTeks();
         }
     }
@@ -5333,5 +5342,37 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             TotalSkor.setText("0");
             KeteranganSkor.setText("Tidak Mengalami Kecemasan");
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

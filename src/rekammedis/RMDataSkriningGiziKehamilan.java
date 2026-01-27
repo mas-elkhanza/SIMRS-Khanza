@@ -1048,8 +1048,7 @@ public final class RMDataSkriningGiziKehamilan extends javax.swing.JDialog {
                     "inner join petugas on skrining_gizi_kehamilan.nip=petugas.nip where "+
                     "skrining_gizi_kehamilan.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%'  or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
-                    "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_gizi_kehamilan.alergi like '%"+TCari.getText().trim()+"%' "+
-                    "or skrining_gizi_kehamilan.parameter_total like '%"+TCari.getText().trim()+"%' or skrining_gizi_kehamilan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
+                    "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_gizi_kehamilan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
                     "order by skrining_gizi_kehamilan.tanggal ",param);
             }  
         }
@@ -1365,7 +1364,7 @@ public final class RMDataSkriningGiziKehamilan extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on skrining_gizi_kehamilan.nip=petugas.nip where "+
                     "skrining_gizi_kehamilan.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_gizi_kehamilan.alergi like ? or skrining_gizi_kehamilan.parameter_total like ? or skrining_gizi_kehamilan.nip like ? or petugas.nama like ?) "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_gizi_kehamilan.nip like ? or petugas.nama like ?) "+
                     "order by skrining_gizi_kehamilan.tanggal ");
             }
                 
@@ -1381,8 +1380,6 @@ public final class RMDataSkriningGiziKehamilan extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();

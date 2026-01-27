@@ -12,6 +12,7 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
@@ -22,8 +23,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,6 +50,9 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private String aksi="";
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -126,47 +135,24 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         WindowInput.setSize(735,245);
         WindowInput.setLocationRelativeTo(null);  
         
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }   
-                NIP.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -190,8 +176,6 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
     }
-
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1065,7 +1049,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1078,7 +1062,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1117,7 +1101,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
                         NoInventaris.requestFocus();  
                         emptTeks();
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
-                        tampil();
+                        runBackground(() ->tampil());
                     }   
                 }
             }else if(aksi.equals("steril")){
@@ -1190,7 +1174,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
 }//GEN-LAST:event_tbKamInKeyPressed
 
 private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    tampil();
+    runBackground(() ->tampil());
 }//GEN-LAST:event_formWindowOpened
 
 private void NoInventarisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoInventarisKeyPressed
@@ -1270,10 +1254,33 @@ private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKe
 }//GEN-LAST:event_NIPKeyPressed
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
-    petugas.isCek();
-    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-    petugas.setLocationRelativeTo(internalFrame1);
-    petugas.setAlwaysOnTop(false);
+    if (petugas == null || !petugas.isDisplayable()) {
+        petugas=new DlgCariPetugas(null,false);
+        petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        petugas.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){                   
+                    NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                } 
+                petugas=null;
+            }
+        });
+
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+    }
+
+    if (petugas == null) return;
+    if (!petugas.isVisible()) {
+        petugas.isCek();    
+        petugas.emptTeks();
+    }  
+    if (petugas.isVisible()) {
+        petugas.toFront();
+        return;
+    }    
     petugas.setVisible(true);
 }//GEN-LAST:event_btnPtgActionPerformed
 
@@ -1403,7 +1410,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.Table tbKamIn;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             /*"No.Sirkulasi","No.Inventaris","Kode Barang","Nama Barang","Produsen","Type/Merk","Thn.Produksi",
@@ -1540,7 +1547,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         } 
     }
     
-    public void isInventaris(){
+    private void isInventaris(){
         try {
             ps=koneksi.prepareStatement(
                "select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
@@ -1576,5 +1583,37 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         } catch (SQLException ex) {
             System.out.println("Notifikasi : "+ex);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

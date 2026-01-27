@@ -13,7 +13,9 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
@@ -25,8 +27,13 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -48,10 +55,11 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
-    private DlgCariMasterMenolakAnjuranMedis penolakan=new DlgCariMasterMenolakAnjuranMedis(null,false);
+    private DlgCariPegawai pegawai;
     private StringBuilder htmlContent;
     private String finger="",lokasifile="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     public SuratPenolakanAnjuranMedis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -132,69 +140,23 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }  
-                KodePenolakan.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        penolakan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penolakan.getTable().getSelectedRow()!= -1){                   
-                    KodePenolakan.setText(penolakan.getTable().getValueAt(penolakan.getTable().getSelectedRow(),0).toString());
-                    NamaPenolakan.setText(penolakan.getTable().getValueAt(penolakan.getTable().getSelectedRow(),1).toString());
-                }  
-                KodePenolakan.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
         
         ChkInput.setSelected(false);
         isForm();
@@ -1113,7 +1075,6 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1249,7 +1210,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1262,12 +1223,12 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
@@ -1378,10 +1339,43 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
+        if (pegawai == null || !pegawai.isDisplayable()) {
+            pegawai=new DlgCariPegawai(null,false);
+            pegawai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            pegawai.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(pegawai.getTable().getSelectedRow()!= -1){                   
+                        KodePetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                        NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                    }  
+                    KodePetugas.requestFocus();
+                    pegawai=null;
+                }
+            });
+            
+            pegawai.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pegawai.dispose();
+                    }
+                }
+            });
+
+            pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            pegawai.setLocationRelativeTo(internalFrame1);
+        }
+        if (pegawai == null) return;
+        if (!pegawai.isVisible()) {
+            pegawai.emptTeks();
+        }
+        
+        if (pegawai.isVisible()) {
+            pegawai.toFront();
+            return;
+        }
+        pegawai.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
@@ -1389,6 +1383,29 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void btnPenolakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenolakanActionPerformed
+        DlgCariMasterMenolakAnjuranMedis penolakan=new DlgCariMasterMenolakAnjuranMedis(null,false);
+        penolakan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penolakan.getTable().getSelectedRow()!= -1){                   
+                    KodePenolakan.setText(penolakan.getTable().getValueAt(penolakan.getTable().getSelectedRow(),0).toString());
+                    NamaPenolakan.setText(penolakan.getTable().getValueAt(penolakan.getTable().getSelectedRow(),1).toString());
+                }  
+                KodePenolakan.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        }); 
         penolakan.emptTeks();
         penolakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penolakan.setLocationRelativeTo(internalFrame1);
@@ -1533,7 +1550,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -1689,6 +1706,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         isRawat();
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
     private void isForm(){
         if(ChkInput.isSelected()==true){
@@ -1809,6 +1827,38 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                 System.out.println("Notif : "+e);
             }
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
 

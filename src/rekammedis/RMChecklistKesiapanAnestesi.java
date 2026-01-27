@@ -56,8 +56,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;   
-    private DlgCariPetugas petugas;
     private String TANGGALMUNDUR="yes";
+    private DlgCariPetugas petugas;
     private DlgCariDokter dokter;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;

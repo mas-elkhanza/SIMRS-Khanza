@@ -939,7 +939,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(tbDokter.getRowCount()+"");
+        LCount.setText(tabMode.getRowCount()+"");
     }
 
     public void emptTeks() {

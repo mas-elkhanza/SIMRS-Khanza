@@ -50,10 +50,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private ResultSet rs;
     private PreparedStatement ps;
     private int i=0;
-    private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double material=0,bhp=0,jmdokter=0,jmpetugas=0,jmperujuk=0,kso=0,
             menejemen=0,total=0,biayaoperator1=0,biayaoperator2=0, 
             biayaoperator3=0,biayaasisten_operator1=0,biayaasisten_operator2=0,
@@ -889,287 +885,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    switch (TabRawat.getSelectedIndex()) {
-                        case 0:
-                            KdDokterRalanDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterRalanDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterRalanDokter.requestFocus();
-                            break;
-                        case 2:
-                            KdDokterRalanDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterRalanDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterRalanDokterParamedis.requestFocus();
-                            break;
-                        case 3:
-                            KdOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnOperatorOperasi.requestFocus();
-                            break;
-                        case 4:
-                            KdDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterRanapDokter.requestFocus();
-                            break;
-                        case 6:
-                            KdDokterRanapDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterRanapDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterRanapDokterParamedis.requestFocus();
-                            break;
-                        case 7:
-                            KdDokterPerujukRad.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterPerujukRad.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterPerujukRad.requestFocus();
-                            break;
-                        case 8:
-                            KdDokterPerujukLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterPerujukLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterPerujukLab.requestFocus();
-                            break;
-                        case 9:
-                            KdDokterPerujukDetailLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                            NmDokterPerujukDetailLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                            BtnDokterPerujukDetailLab.requestFocus();
-                            break;
-                        default:
-                            break;
-                    }
-                }      
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        dokter.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    dokter.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){
-                    switch (TabRawat.getSelectedIndex()) {
-                        case 1:
-                            KdPetugasRalanParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasRalanParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasRalanParamedis.requestFocus();
-                            break;
-                        case 2:
-                            KdPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasRalanDokterParamedis.requestFocus();
-                            break;
-                        case 3:
-                            KdAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnAsistenOperasi.requestFocus();
-                            break;
-                        case 5:
-                            KdPetugasRanapParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasRanapParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasRanapParamedis.requestFocus();
-                            break;
-                        case 6:
-                            KdPetugasRanapDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasRanapDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasRanapDokterParamedis.requestFocus();
-                            break;
-                        case 7:
-                            KdPetugasRad.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasRad.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasRad.requestFocus();
-                            break;
-                        case 8:
-                            KdPetugasLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasLab.requestFocus();
-                            break;
-                        case 9:
-                            KdPetugasDetailLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                            NmPetugasDetailLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                            BtnPetugasDetailLab.requestFocus();
-                            break;
-                        default:
-                            break;
-                    }
-                }      
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        petugas.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    petugas.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){
-                    switch (TabRawat.getSelectedIndex()) {
-                        case 0:
-                            KdPoliRalanDokter.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                            NmPoliRalanDokter.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                            BtnPoliRalanDokter.requestFocus();
-                            break;
-                        case 1:
-                            KdPoliRalanParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                            NmPoliRalanParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                            BtnPoliRalanParamedis.requestFocus();
-                            break;
-                        case 2:
-                            KdPoliRalanDokterParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                            NmPoliRalanDokterParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                            BtnPoliRalanDokterParamedis.requestFocus();
-                            break;
-                        default:
-                            break;
-                    }
-                }      
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {poli.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    switch (TabRawat.getSelectedIndex()) {
-                        case 0:
-                            KdCaraBayarRalanDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRalanDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRalanDokter.requestFocus();
-                            break;
-                        case 1:
-                            KdCaraBayarRalanParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRalanParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRalanParamedis.requestFocus();
-                            break;
-                        case 2:
-                            KdCaraBayarRalanDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRalanDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRalanDokterParamedis.requestFocus();
-                            break;
-                        case 3:
-                            KdCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarOperasi.requestFocus();
-                            break;
-                        case 4:
-                            KdCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRanapDokter.requestFocus();
-                            break;
-                        case 5:
-                            KdCaraBayarRanapParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRanapParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRanapParamedis.requestFocus();
-                            break;
-                        case 6:
-                            KdCaraBayarRanapDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRanapDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRanapDokterParamedis.requestFocus();
-                            break;
-                        case 7:
-                            KdCaraBayarRad.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarRad.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarRad.requestFocus();
-                            break;
-                        case 8:
-                            KdCaraBayarLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarLab.requestFocus();
-                            break;
-                        case 9:
-                            KdCaraBayarDetailLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            NmCaraBayarDetailLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                            BtnCaraBayarDetailLab.requestFocus();
-                            break;
-                        default:
-                            break;
-                    }
-                }      
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-            
         ChkInput.setSelected(false);
         isForm();
         ChkInput1.setSelected(false);
@@ -3149,6 +2864,83 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnDokterRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterRalanDokterActionPerformed
+        DlgCariDokter dokter=new DlgCariDokter(null,false);
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){
+                    switch (TabRawat.getSelectedIndex()) {
+                        case 0:
+                            KdDokterRalanDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterRalanDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterRalanDokter.requestFocus();
+                            break;
+                        case 2:
+                            KdDokterRalanDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterRalanDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterRalanDokterParamedis.requestFocus();
+                            break;
+                        case 3:
+                            KdOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnOperatorOperasi.requestFocus();
+                            break;
+                        case 4:
+                            KdDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterRanapDokter.requestFocus();
+                            break;
+                        case 6:
+                            KdDokterRanapDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterRanapDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterRanapDokterParamedis.requestFocus();
+                            break;
+                        case 7:
+                            KdDokterPerujukRad.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterPerujukRad.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterPerujukRad.requestFocus();
+                            break;
+                        case 8:
+                            KdDokterPerujukLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterPerujukLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterPerujukLab.requestFocus();
+                            break;
+                        case 9:
+                            KdDokterPerujukDetailLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmDokterPerujukDetailLab.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnDokterPerujukDetailLab.requestFocus();
+                            break;
+                        default:
+                            break;
+                    }
+                }      
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        dokter.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    dokter.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -3157,6 +2949,93 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterRalanDokterActionPerformed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
+        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penjab.getTable().getSelectedRow()!= -1){
+                    switch (TabRawat.getSelectedIndex()) {
+                        case 0:
+                            KdCaraBayarRalanDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRalanDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRalanDokter.requestFocus();
+                            break;
+                        case 1:
+                            KdCaraBayarRalanParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRalanParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRalanParamedis.requestFocus();
+                            break;
+                        case 2:
+                            KdCaraBayarRalanDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRalanDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRalanDokterParamedis.requestFocus();
+                            break;
+                        case 3:
+                            KdCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarOperasi.requestFocus();
+                            break;
+                        case 4:
+                            KdCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRanapDokter.requestFocus();
+                            break;
+                        case 5:
+                            KdCaraBayarRanapParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRanapParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRanapParamedis.requestFocus();
+                            break;
+                        case 6:
+                            KdCaraBayarRanapDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRanapDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRanapDokterParamedis.requestFocus();
+                            break;
+                        case 7:
+                            KdCaraBayarRad.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarRad.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarRad.requestFocus();
+                            break;
+                        case 8:
+                            KdCaraBayarLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarLab.requestFocus();
+                            break;
+                        case 9:
+                            KdCaraBayarDetailLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarDetailLab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarDetailLab.requestFocus();
+                            break;
+                        default:
+                            break;
+                    }
+                }      
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
@@ -3165,6 +3044,45 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCaraBayarRalanDokterActionPerformed
 
     private void BtnPoliRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliRalanDokterActionPerformed
+        DlgCariPoli poli=new DlgCariPoli(null,false);
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){
+                    switch (TabRawat.getSelectedIndex()) {
+                        case 0:
+                            KdPoliRalanDokter.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                            NmPoliRalanDokter.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                            BtnPoliRalanDokter.requestFocus();
+                            break;
+                        case 1:
+                            KdPoliRalanParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                            NmPoliRalanParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                            BtnPoliRalanParamedis.requestFocus();
+                            break;
+                        case 2:
+                            KdPoliRalanDokterParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                            NmPoliRalanDokterParamedis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                            BtnPoliRalanDokterParamedis.requestFocus();
+                            break;
+                        default:
+                            break;
+                    }
+                }      
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {poli.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         poli.isCek();
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
@@ -3181,6 +3099,83 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInput1ActionPerformed
 
     private void BtnPetugasRalanParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasRalanParamedisActionPerformed
+        DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){
+                    switch (TabRawat.getSelectedIndex()) {
+                        case 1:
+                            KdPetugasRalanParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasRalanParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasRalanParamedis.requestFocus();
+                            break;
+                        case 2:
+                            KdPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasRalanDokterParamedis.requestFocus();
+                            break;
+                        case 3:
+                            KdAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnAsistenOperasi.requestFocus();
+                            break;
+                        case 5:
+                            KdPetugasRanapParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasRanapParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasRanapParamedis.requestFocus();
+                            break;
+                        case 6:
+                            KdPetugasRanapDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasRanapDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasRanapDokterParamedis.requestFocus();
+                            break;
+                        case 7:
+                            KdPetugasRad.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasRad.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasRad.requestFocus();
+                            break;
+                        case 8:
+                            KdPetugasLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasLab.requestFocus();
+                            break;
+                        case 9:
+                            KdPetugasDetailLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmPetugasDetailLab.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnPetugasDetailLab.requestFocus();
+                            break;
+                        default:
+                            break;
+                    }
+                }      
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {petugas.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        petugas.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    petugas.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);

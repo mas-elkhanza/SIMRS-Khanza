@@ -9524,7 +9524,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         InventarisSirkulasi ktginventaris=new InventarisSirkulasi(this,false);
-        ktginventaris.tampil();
         ktginventaris.isCek();
         ktginventaris.emptTeks();
         ktginventaris.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -12957,7 +12956,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnInsidenKeselamatanPasienActionPerformed
@@ -16005,7 +16003,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
-        form.tampil();
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
@@ -16078,7 +16075,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
-        form.tampil();
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
@@ -16560,7 +16556,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMDeteksiDiniCorona form=new RMDeteksiDiniCorona(this,false);
         form.isCek();
-        form.tampil();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -17210,7 +17205,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
-        form.tampil();
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
@@ -19573,7 +19567,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanRisikoJatuhDewasa aplikasi=new RMPenilaianLanjutanRisikoJatuhDewasa(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -19586,7 +19579,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanRisikoJatuhAnak aplikasi=new RMPenilaianLanjutanRisikoJatuhAnak(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -19599,7 +19591,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanRisikoJatuhLansia aplikasi=new RMPenilaianLanjutanRisikoJatuhLansia(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -20615,7 +20606,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanRisikoJatuhGeriatri aplikasi=new RMPenilaianLanjutanRisikoJatuhGeriatri(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -20640,7 +20630,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPemantauanEWSNeonatus aplikasi=new RMPemantauanEWSNeonatus(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -20741,7 +20730,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanRisikoJatuhPsikiatri aplikasi=new RMPenilaianLanjutanRisikoJatuhPsikiatri(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -20754,7 +20742,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMPenilaianLanjutanSkriningFungsional aplikasi=new RMPenilaianLanjutanSkriningFungsional(this,false);
         aplikasi.isCek();
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -22468,7 +22455,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         InventarisSirkulasiCSSD ktginventaris=new InventarisSirkulasiCSSD(this,false);
-        ktginventaris.tampil();
         ktginventaris.isCek();
         ktginventaris.emptTeks();
         ktginventaris.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -49525,7 +49511,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSkriningGiziKehamilan = new widget.ButtonBig();
         btnSkriningGiziKehamilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/meal_4814223.png"))); 
-        btnSkriningGiziKehamilan.setText("Skrining Nutrisi Kehamilan");
+        btnSkriningGiziKehamilan.setText("Skrining Gizi Kehamilan");
         btnSkriningGiziKehamilan.setIconTextGap(0);
         btnSkriningGiziKehamilan.setName("btnSkriningGiziKehamilan");
         btnSkriningGiziKehamilan.setPreferredSize(new java.awt.Dimension(200, 90));

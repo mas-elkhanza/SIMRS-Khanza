@@ -13,6 +13,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -21,8 +22,13 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -39,6 +45,9 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -84,7 +93,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
 
         peminjam.setDocument(new batasInput((byte)60).getKata(peminjam));
-        Nip.setDocument(new batasInput((byte)20).getKata(Nip));
+        KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         KdRuang.setDocument(new batasInput((byte)5).getKata(KdRuang));
         NoRm.setDocument(new batasInput((byte)10).getKata(NoRm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -93,53 +102,28 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }  
         
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    Nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }   
-                Nip.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         WindowInput.setSize(735,275);
         WindowInput.setLocationRelativeTo(null);         
         
     }
-
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to
@@ -170,7 +154,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         label11 = new widget.Label();
         PertamaDaftar = new widget.TextBox();
         label6 = new widget.Label();
-        Nip = new widget.TextBox();
+        KdPetugas = new widget.TextBox();
         label8 = new widget.Label();
         NmPetugas = new widget.TextBox();
         btnPtg = new widget.Button();
@@ -216,7 +200,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         WindowInput.setUndecorated(true);
         WindowInput.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(null);
 
@@ -361,14 +345,14 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         internalFrame2.add(label6);
         label6.setBounds(10, 85, 100, 23);
 
-        Nip.setName("Nip"); // NOI18N
-        Nip.addKeyListener(new java.awt.event.KeyAdapter() {
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NipKeyPressed(evt);
+                KdPetugasKeyPressed(evt);
             }
         });
-        internalFrame2.add(Nip);
-        Nip.setBounds(113, 175, 130, 23);
+        internalFrame2.add(KdPetugas);
+        KdPetugas.setBounds(113, 175, 130, 23);
 
         label8.setText("Petugas :");
         label8.setName("label8"); // NOI18N
@@ -400,7 +384,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         label12.setBounds(457, 55, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -482,7 +466,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -708,7 +692,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         panelCari.add(ChkTanggal);
 
         TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -727,7 +711,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2026" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -827,7 +811,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString(),
                 tbKamIn.getValueAt(tbKamIn.getSelectedRow(),3).toString(),TIn.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString()
             });
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();            
         }
         
@@ -919,7 +903,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -935,7 +919,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         RmCari.setText("");
         ChkTanggal.setSelected(false);
         StatusCari.setSelectedItem("Semua");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -966,8 +950,8 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             Valid.textKosong(NoRm,"Berkas Pasien");
         }else if(peminjam.getText().trim().equals("")){
             Valid.textKosong(peminjam,"Peminjam");
-        }else if(Nip.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(Nip,"Petugas");
+        }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(KdPetugas,"Petugas");
         }else if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
             Valid.textKosong(KdRuang,"Ruang Peminjam");
         }else {
@@ -978,7 +962,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 }else{
                     //menyimpan data peminjaman berkas
                     Sequel.menyimpan("peminjaman_berkas","?,?,?,?,?,?,?",7,new String[]{
-                        peminjam.getText(),KdRuang.getText(),NoRm.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"0000-00-00",Nip.getText(),"Masih Dipinjam"
+                        peminjam.getText(),KdRuang.getText(),NoRm.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"0000-00-00",KdPetugas.getText(),"Masih Dipinjam"
                     });
                     NoRm.requestFocus();  
                     emptTeks();
@@ -986,7 +970,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             }else if(NoRm.isEditable()==false){
                 //mengedit-------------------------------------------------
                 Sequel.mengedit("peminjaman_berkas","nip=? and peminjam=? and no_rkm_medis=? and tgl_pinjam=? and id_ruang=?","tgl_kembali=?,nip=?,status_pinjam=?",8,new String[]{
-                    Valid.SetTgl(Tanggal.getSelectedItem()+""),Nip.getText(),"Sudah Kembali",
+                    Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),"Sudah Kembali",
                     tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString(),
                     tbKamIn.getValueAt(tbKamIn.getSelectedRow(),3).toString(),TIn.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString()
                 });
@@ -994,7 +978,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 WindowInput.dispose();
             }
            
-            tampil();
+            runBackground(() ->tampil());
             
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1002,7 +986,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
-        }else{Valid.pindah(evt,Nip,BtnBatal);}
+        }else{Valid.pindah(evt,KdPetugas,BtnBatal);}
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -1116,12 +1100,12 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void RmCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RmCariKeyPressed
          if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil();
+            runBackground(() ->tampil());
         }else{Valid.pindah(evt, TglPinjam2, TCari);}
 }//GEN-LAST:event_RmCariKeyPressed
 
 private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    tampil();
+    runBackground(() ->tampil());
 }//GEN-LAST:event_formWindowOpened
 
 private void NoRmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmKeyPressed
@@ -1198,26 +1182,50 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     pasien.setVisible(true);        
 }//GEN-LAST:event_btnInvActionPerformed
 
-private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
+private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         Tanggal.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
+        NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
     }
-}//GEN-LAST:event_NipKeyPressed
+}//GEN-LAST:event_KdPetugasKeyPressed
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
-    petugas.isCek();
-    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-    petugas.setLocationRelativeTo(internalFrame1);
-    petugas.setAlwaysOnTop(false);
-    petugas.setVisible(true);
+    if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }   
+                    KdPetugas.requestFocus(); 
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }  
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }    
+        petugas.setVisible(true);
 }//GEN-LAST:event_btnPtgActionPerformed
 
 private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
@@ -1238,7 +1246,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Tanggal.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Nip.requestFocus();
+            KdPetugas.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnRuangActionPerformed(null);
         }
@@ -1319,11 +1327,11 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Button BtnSeek2;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkTanggal;
+    private widget.TextBox KdPetugas;
     private widget.TextBox KdRuang;
     private widget.Label LCount;
     private widget.Label LblTgl;
     private widget.Label LblTgl1;
-    private widget.TextBox Nip;
     private widget.TextBox NmPasien;
     private widget.TextBox NmPetugas;
     private widget.TextBox NmRuang;
@@ -1515,13 +1523,13 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     
     public void isCek(){
         if(akses.getjml2()>=1){
-            Nip.setEditable(false);
+            KdPetugas.setEditable(false);
             btnPtg.setEnabled(false);
             BtnSimpan.setEnabled(akses.getpeminjaman_berkas());
             BtnIn.setEnabled(akses.getpeminjaman_berkas());
             BtnOut.setEnabled(akses.getpeminjaman_berkas());
-            Nip.setText(akses.getkode());
-            NmPetugas.setText(Sequel.CariPetugas(Nip.getText()));
+            KdPetugas.setText(akses.getkode());
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
         } 
     }
     
@@ -1556,5 +1564,37 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

@@ -929,13 +929,12 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
                 form.emptTeks();
-                form.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),new Date());
                 form.Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
                 form.NoPermintaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 form.PermintaanTerapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
                 form.DTPCari1.setDate(Valid.SetTgl2(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
                 form.TCari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                form.tampil();
+                form.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),new Date());
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data...!!!!");
