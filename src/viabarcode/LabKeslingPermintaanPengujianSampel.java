@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -44,6 +45,11 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -65,7 +71,9 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -132,46 +140,23 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil2();
+                        runBackground(() ->tampil2());
                     }
                 }
             });
         }  
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }  
-                KdPetugas.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
         
         ChkJln.setSelected(true);
         jam();
@@ -218,7 +203,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         ChkJln = new widget.CekBox();
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
+        BtnPetugas = new widget.Button();
         jLabel15 = new widget.Label();
         jLabel4 = new widget.Label();
         TNoPermintaan = new widget.TextBox();
@@ -489,7 +474,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 100, 23);
 
-        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2025" }));
+        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2025" }));
         WaktuDiterima.setDisplayFormat("dd-MM-yyyy");
         WaktuDiterima.setName("WaktuDiterima"); // NOI18N
         WaktuDiterima.setOpaque(false);
@@ -546,17 +531,17 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(NmPetugas);
         NmPetugas.setBounds(211, 10, 200, 23);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('4');
-        btnPetugas.setToolTipText("ALt+4");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas.setMnemonic('4');
+        BtnPetugas.setToolTipText("ALt+4");
+        BtnPetugas.setName("BtnPetugas"); // NOI18N
+        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
+                BtnPetugasActionPerformed(evt);
             }
         });
-        PanelInput.add(btnPetugas);
-        btnPetugas.setBounds(413, 10, 28, 23);
+        PanelInput.add(BtnPetugas);
+        BtnPetugas.setBounds(413, 10, 28, 23);
 
         jLabel15.setText("Waktu Diterima :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -635,7 +620,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel16);
         jLabel16.setBounds(446, 10, 100, 23);
 
-        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2025 12:16:47" }));
+        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2025 13:48:56" }));
         WaktuSampling.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         WaktuSampling.setName("WaktuSampling"); // NOI18N
         WaktuSampling.setOpaque(false);
@@ -938,7 +923,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
             Valid.textKosong(BtnSampel,"Kode Sampel");
         }else{
-            tampil2();
+            runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_btnCariPeriksaActionPerformed
 
@@ -947,7 +932,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
                 Valid.textKosong(BtnSampel,"Kode Sampel");
             }else{
-                tampil2();
+                runBackground(() ->tampil2());
             }
         }else{
             Valid.pindah(evt, TCariPeriksa, BtnAllPeriksa);
@@ -959,8 +944,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(BtnSampel,"Kode Sampel");
         }else{
             TCariPeriksa.setText("");
-            tampil();
-            tampil2();
+            runBackground(() ->LoadPermintaan());
         }
     }//GEN-LAST:event_BtnAllPeriksaActionPerformed
 
@@ -988,7 +972,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
         }
         if(KdPetugas.getText().equals("")||NmPetugas.getText().equals("")){
-            Valid.textKosong(btnPetugas,"Penerima Sampel");
+            Valid.textKosong(BtnPetugas,"Penerima Sampel");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
             Valid.textKosong(btnPelanggan,"Pelanggan");
         }else if(TNoPermintaan.getText().equals("")){
@@ -1115,19 +1099,43 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
+            BtnPetugasActionPerformed(null);
         }else{            
             Valid.pindah(evt,TCariPeriksa,WaktuDiterima);
         }
     }//GEN-LAST:event_KdPetugasKeyPressed
 
-    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
+    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }  
+                    BtnPetugas.requestFocus();
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }
+        
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }
         petugas.setVisible(true);
-    }//GEN-LAST:event_btnPetugasActionPerformed
+    }//GEN-LAST:event_BtnPetugasActionPerformed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1138,7 +1146,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
         }
         if(KdPetugas.getText().equals("")||NmPetugas.getText().equals("")){
-            Valid.textKosong(btnPetugas,"Penerima Sampel");
+            Valid.textKosong(BtnPetugas,"Penerima Sampel");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
             Valid.textKosong(btnPelanggan,"Pelanggan");
         }else if(TNoPermintaan.getText().equals("")){
@@ -1320,7 +1328,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     KodeSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),0).toString());
                     NamaSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),1).toString());
                     BakuMutu.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),2).toString());
-                    tampil2();
+                    runBackground(() ->tampil2());
                     autoNomor();
                 }  
                 BtnSampel.requestFocus();
@@ -1356,7 +1364,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/permintaanpengujiansampellabkesling.iyem")>30){
-                tampil();
+                runBackground(() ->tampil());
             }
         } catch (Exception e) {
         }
@@ -1434,6 +1442,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSampel;
     private widget.Button BtnSimpan;
@@ -1472,7 +1481,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Tanggal WaktuSampling;
     private widget.Button btnCariPeriksa;
     private widget.Button btnPelanggan;
-    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -1733,7 +1741,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BtnTambah.setEnabled(akses.getnilai_normal_baku_mutu_lab_kesehatan_lingkungan());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
-            btnPetugas.setEnabled(false);
+            BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
             if(NmPetugas.getText().equals("")){
@@ -1769,5 +1777,41 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(labkesling_permintaan_pengujian_sampel.no_permintaan,5),signed)),0) from labkesling_permintaan_pengujian_sampel where date_format(labkesling_permintaan_pengujian_sampel.waktu_diterima,'%Y')='"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"' and labkesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"/PPS/",5,TNoPermintaan);   
         }        
     }
+    
+    private void LoadPermintaan(){
+        tampil();
+        tampil2();
+    }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

@@ -13006,7 +13006,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     resume.setLocationRelativeTo(internalFrame1);
                                     resume.setVisible(true);
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
-                                    resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13034,7 +13033,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     resume.setLocationRelativeTo(internalFrame1);
                     resume.setVisible(true);
                     resume.setNoRm(TNoRwCari.getText(),new Date());
-                    resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13414,7 +13412,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     resume.setLocationRelativeTo(internalFrame1);
                                     resume.setVisible(true);
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
-                                    resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13442,7 +13439,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     resume.setLocationRelativeTo(internalFrame1);
                     resume.setVisible(true);
                     resume.setNoRm(TNoRwCari.getText(),new Date());
-                    resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13592,7 +13588,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     resume.setVisible(true);
                                     resume.emptTeks();
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
-                                    resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13620,7 +13615,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     resume.setVisible(true);
                     resume.emptTeks();
                     resume.setNoRm(TNoRwCari.getText(),new Date());
-                    resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -14618,7 +14612,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     resume.setLocationRelativeTo(internalFrame1);
                                     resume.setVisible(true);
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
-                                    resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -14646,7 +14639,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     resume.setLocationRelativeTo(internalFrame1);
                     resume.setVisible(true);
                     resume.setNoRm(TNoRwCari.getText(),new Date());
-                    resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
