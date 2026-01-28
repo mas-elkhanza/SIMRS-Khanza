@@ -332,7 +332,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="17-03-2023"/>
+                        <StringItem index="0" value="28-01-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -360,7 +360,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="17-03-2023"/>
+                        <StringItem index="0" value="28-01-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -622,7 +622,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="17-03-2023 09:32:02"/>
+                            <StringItem index="0" value="28-01-2026 08:06:52"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -688,13 +688,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="KodeDokterBedah">
+                    <Component class="widget.TextBox" name="KdDokter">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="null"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="KodeDokterBedah" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KdDokter" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -702,10 +702,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NamaDokterBedah">
+                    <Component class="widget.TextBox" name="NmDokter">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="name" type="java.lang.String" value="NamaDokterBedah" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NmDokter" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -713,18 +713,18 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.Button" name="btnDokterBedah">
+                    <Component class="widget.Button" name="BtnDokter">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/190.png"/>
                         </Property>
                         <Property name="mnemonic" type="int" value="50"/>
                         <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
-                        <Property name="name" type="java.lang.String" value="btnDokterBedah" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BtnDokter" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDokterBedahActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnDokterBedahKeyPressed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDokterActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnDokterKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -732,18 +732,18 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.Button" name="btnDokterAnestesi">
+                    <Component class="widget.Button" name="BtnDokter2">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/190.png"/>
                         </Property>
                         <Property name="mnemonic" type="int" value="50"/>
                         <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
-                        <Property name="name" type="java.lang.String" value="btnDokterAnestesi" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BtnDokter2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDokterAnestesiActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnDokterAnestesiKeyPressed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDokter2ActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnDokter2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -751,10 +751,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NamaDokterAnestesi">
+                    <Component class="widget.TextBox" name="NmDokter2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="name" type="java.lang.String" value="NamaDokterAnestesi" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NmDokter2" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -762,13 +762,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="KodeDokterAnestesi">
+                    <Component class="widget.TextBox" name="KdDokter2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="null"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="KodeDokterAnestesi" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KdDokter2" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -876,13 +876,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="KdPetugasOK">
+                    <Component class="widget.TextBox" name="KdPetugas">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="null"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="KdPetugasOK" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KdPetugas" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -890,10 +890,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NmPetugasOK">
+                    <Component class="widget.TextBox" name="NmPetugas">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="name" type="java.lang.String" value="NmPetugasOK" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NmPetugas" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -901,18 +901,18 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.Button" name="btnPetugasOK">
+                    <Component class="widget.Button" name="BtnPetugas">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/190.png"/>
                         </Property>
                         <Property name="mnemonic" type="int" value="50"/>
                         <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
-                        <Property name="name" type="java.lang.String" value="btnPetugasOK" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BtnPetugas" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPetugasOKActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnPetugasOKKeyPressed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnPetugasActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnPetugasKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1438,7 +1438,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="17-03-2023"/>
+                            <StringItem index="0" value="28-01-2026"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

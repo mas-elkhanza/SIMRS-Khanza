@@ -19,8 +19,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -31,9 +31,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -55,7 +60,9 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private String finger="";
     private StringBuilder htmlContent;
     private String TANGGALMUNDUR="yes",pilihan="";
@@ -143,19 +150,19 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -190,29 +197,6 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
                 isHipertensi();
             }
         });
-        
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                }  
-                KdPetugas.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
         
         ChkInput.setSelected(false);
         isForm();
@@ -298,7 +282,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         jLabel18 = new widget.Label();
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
+        BtnPetugas = new widget.Button();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel100 = new widget.Label();
         jLabel8 = new widget.Label();
@@ -764,22 +748,22 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         FormInput.add(NmPetugas);
         NmPetugas.setBounds(570, 40, 187, 23);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("ALt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas.setMnemonic('2');
+        BtnPetugas.setToolTipText("ALt+2");
+        BtnPetugas.setName("BtnPetugas"); // NOI18N
+        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
+                BtnPetugasActionPerformed(evt);
             }
         });
-        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPetugasKeyPressed(evt);
+                BtnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(btnPetugas);
-        btnPetugas.setBounds(761, 40, 28, 23);
+        FormInput.add(BtnPetugas);
+        BtnPetugas.setBounds(761, 40, 28, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1246,7 +1230,6 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1484,7 +1467,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1497,12 +1480,12 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
@@ -1546,20 +1529,44 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     }//GEN-LAST:event_MenitKeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
-        Valid.pindah(evt,Menit,btnPetugas);
+        Valid.pindah(evt,Menit,BtnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
-    }//GEN-LAST:event_btnPetugasActionPerformed
+    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }  
+                    BtnPetugas.requestFocus();
+                    petugas=null;
+                }
+            });
 
-    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }
+        
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }
+        petugas.setVisible(true); 
+    }//GEN-LAST:event_BtnPetugasActionPerformed
+
+    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
         //Valid.pindah(evt,Detik,BB);
-    }//GEN-LAST:event_btnPetugasKeyPressed
+    }//GEN-LAST:event_BtnPetugasKeyPressed
 
     private void MnSkriningHipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningHipertensiActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -1588,7 +1595,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void Anamnesis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis1KeyPressed
-        Valid.pindah(evt,btnPetugas,Anamnesis2);
+        Valid.pindah(evt,BtnPetugas,Anamnesis2);
     }//GEN-LAST:event_Anamnesis1KeyPressed
 
     private void Anamnesis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis2KeyPressed
@@ -1666,6 +1673,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
@@ -1696,7 +1704,6 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel100;
@@ -1746,7 +1753,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -1895,6 +1902,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         isRawat(); 
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
     
     private void isForm(){
@@ -1925,7 +1933,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getskrining_hipertensi()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
-            btnPetugas.setEnabled(false);
+            BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
             if(NmPetugas.getText().equals("")){
@@ -2113,5 +2121,37 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             Klasifikasi.setForeground(new Color(50,50,50));
             Klasifikasi.setText("");
         } 
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

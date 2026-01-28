@@ -48,7 +48,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private String param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14, param15, param16,finger="";
     
     /** Creates new form DlgRujuk
@@ -121,28 +120,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                 }
             });
         }
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){ 
-                    KdPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());   
-                }              
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -1465,6 +1442,28 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
     }//GEN-LAST:event_KdPetugasKeyPressed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){ 
+                    KdPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                    NmPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());   
+                }              
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -1538,7 +1537,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                 RMSkriningMPPFormB form=new RMSkriningMPPFormB(null,false);
                 form.isCek();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -1955,7 +1953,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            NmPetugas.setText(pegawai.tampil3(KdPetugas.getText()));
+            NmPetugas.setText(Sequel.CariPegawai(KdPetugas.getText()));
         }         
     }
 

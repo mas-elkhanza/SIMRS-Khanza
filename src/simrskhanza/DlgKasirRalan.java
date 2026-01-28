@@ -12509,7 +12509,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12532,7 +12531,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12555,7 +12553,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -14307,7 +14304,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14330,7 +14326,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14353,7 +14348,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14376,7 +14370,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14399,7 +14392,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14422,7 +14414,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14445,7 +14436,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14490,7 +14480,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14535,7 +14524,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14558,7 +14546,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14581,7 +14568,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14626,7 +14612,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14738,7 +14723,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14828,7 +14812,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14873,7 +14856,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14896,7 +14878,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14941,7 +14922,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -14964,7 +14944,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15010,7 +14989,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15033,7 +15011,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15078,7 +15055,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15238,7 +15214,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15284,7 +15259,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15351,7 +15325,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15374,7 +15347,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
@@ -15487,7 +15459,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());  
             }                
         }
