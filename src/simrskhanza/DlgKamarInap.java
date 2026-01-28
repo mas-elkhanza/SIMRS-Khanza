@@ -14545,7 +14545,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else if(R3.isSelected()==true){
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -14571,7 +14570,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else if(R3.isSelected()==true){
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -14597,7 +14595,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else if(R3.isSelected()==true){
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -15307,7 +15304,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
                 form.emptTeks();
-                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }

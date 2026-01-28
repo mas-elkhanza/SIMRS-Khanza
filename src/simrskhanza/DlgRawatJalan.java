@@ -8743,7 +8743,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianTambahanBunuhDiriActionPerformed
@@ -8761,7 +8760,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianTambahanPerilakuKekerasanActionPerformed
@@ -8779,7 +8777,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianTambahanMelarikanDiriActionPerformed
@@ -8934,7 +8931,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanRisikoJatuhNeonatusActionPerformed
@@ -9676,7 +9672,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -9941,7 +9936,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
@@ -10384,7 +10378,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
