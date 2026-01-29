@@ -227,8 +227,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         Tanggal = new widget.Tanggal();
         jLabel23 = new widget.Label();
-        KodeDokter = new widget.TextBox();
-        NamaDokter = new widget.TextBox();
+        KdDokter = new widget.TextBox();
+        NmDokter = new widget.TextBox();
         BtnDokter = new widget.Button();
         Listrik3 = new widget.ComboBox();
         jLabel58 = new widget.Label();
@@ -534,7 +534,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -548,7 +548,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -697,7 +697,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025 22:09:35" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2026 16:14:50" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -714,16 +714,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(381, 70, 100, 23);
 
-        KodeDokter.setEditable(false);
-        KodeDokter.setHighlighter(null);
-        KodeDokter.setName("KodeDokter"); // NOI18N
-        FormInput.add(KodeDokter);
-        KodeDokter.setBounds(485, 70, 97, 23);
+        KdDokter.setEditable(false);
+        KdDokter.setHighlighter(null);
+        KdDokter.setName("KdDokter"); // NOI18N
+        FormInput.add(KdDokter);
+        KdDokter.setBounds(485, 70, 97, 23);
 
-        NamaDokter.setEditable(false);
-        NamaDokter.setName("NamaDokter"); // NOI18N
-        FormInput.add(NamaDokter);
-        NamaDokter.setBounds(584, 70, 175, 23);
+        NmDokter.setEditable(false);
+        NmDokter.setName("NmDokter"); // NOI18N
+        FormInput.add(NmDokter);
+        NmDokter.setBounds(584, 70, 175, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -1639,7 +1639,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(KodeDokter.getText().trim().equals("")||NamaDokter.getText().trim().equals("")){
+        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter Anestesi");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Asisten Anestesi");
@@ -1706,7 +1706,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
-        }else if(KodeDokter.getText().trim().equals("")||NamaDokter.getText().trim().equals("")){
+        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter Anestesi");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Asisten Anestesi");
@@ -2199,8 +2199,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
                 @Override
                 public void windowClosed(WindowEvent e) {
                     if(dokter.getTable().getSelectedRow()!= -1){        
-                         KodeDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                         NamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                         KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                         NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                     }  
                     BtnDokter.requestFocus();
                     dokter=null;
@@ -2469,8 +2469,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.ComboBox JalanNapas7;
     private widget.ComboBox JalanNapas8;
     private widget.ComboBox JalanNapas9;
+    private widget.TextBox KdDokter;
     private widget.TextArea KeteranganLainnya;
-    private widget.TextBox KodeDokter;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.ComboBox LainLain1;
@@ -2492,8 +2492,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.ComboBox MesinAnestesi4;
     private widget.ComboBox MesinAnestesi5;
     private javax.swing.JMenuItem MnCetakLaporan;
-    private widget.TextBox NamaDokter;
     private widget.TextBox NamaPetugas;
+    private widget.TextBox NmDokter;
     private widget.ComboBox ObatObat1;
     private widget.ComboBox ObatObat2;
     private widget.ComboBox ObatObat3;
@@ -2865,7 +2865,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
                 "gasmedis1=?,gasmedis2=?,gasmedis3=?,gasmedis4=?,gasmedis5=?,gasmedis6=?,mesinanes1=?,mesinanes2=?,mesinanes3=?,mesinanes4=?,mesinanes5=?,jalannapas1=?,jalannapas2=?,jalannapas3=?,jalannapas4=?,"+
                 "jalannapas5=?,jalannapas6=?,jalannapas7=?,jalannapas8=?,jalannapas9=?,lainlain1=?,lainlain2=?,lainlain3=?,lainlain4=?,lainlain5=?,lainlain6=?,lainlain7=?,lainlain8=?,obatobat1=?,obatobat2=?,"+
                 "obatobat3=?,obatobat4=?,obatobat5=?,obatobat6=?,keterangan_lainnya=?",47,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),KodeDokter.getText(),Tindakan.getText(), 
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),KdDokter.getText(),Tindakan.getText(), 
                 TeknikAnestesi.getText(),Listrik1.getSelectedItem().toString(),Listrik2.getSelectedItem().toString(),Listrik3.getSelectedItem().toString(),Listrik4.getSelectedItem().toString(),
                 GasMedis1.getSelectedItem().toString(),GasMedis2.getSelectedItem().toString(),GasMedis3.getSelectedItem().toString(),GasMedis4.getSelectedItem().toString(),GasMedis5.getSelectedItem().toString(),
                 GasMedis6.getSelectedItem().toString(),MesinAnestesi1.getSelectedItem().toString(),MesinAnestesi2.getSelectedItem().toString(),MesinAnestesi3.getSelectedItem().toString(),
@@ -2885,8 +2885,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(KodeDokter.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(NamaDokter.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),9);
             tbObat.setValueAt(Tindakan.getText(),tbObat.getSelectedRow(),10);
             tbObat.setValueAt(TeknikAnestesi.getText(),tbObat.getSelectedRow(),11);
             tbObat.setValueAt(Listrik1.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
@@ -2946,7 +2946,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
 
     private void simpan() {
         if(Sequel.menyimpantf("checklist_kesiapan_anestesi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",45,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),KodeDokter.getText(),Tindakan.getText(), 
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),KdDokter.getText(),Tindakan.getText(), 
             TeknikAnestesi.getText(),Listrik1.getSelectedItem().toString(),Listrik2.getSelectedItem().toString(),Listrik3.getSelectedItem().toString(),Listrik4.getSelectedItem().toString(),
             GasMedis1.getSelectedItem().toString(),GasMedis2.getSelectedItem().toString(),GasMedis3.getSelectedItem().toString(),GasMedis4.getSelectedItem().toString(),GasMedis5.getSelectedItem().toString(),
             GasMedis6.getSelectedItem().toString(),MesinAnestesi1.getSelectedItem().toString(),MesinAnestesi2.getSelectedItem().toString(),MesinAnestesi3.getSelectedItem().toString(),
@@ -2959,7 +2959,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                KodePetugas.getText(),NamaPetugas.getText(),KodeDokter.getText(),NamaDokter.getText(),Tindakan.getText(),TeknikAnestesi.getText(),Listrik1.getSelectedItem().toString(),Listrik2.getSelectedItem().toString(),
+                KodePetugas.getText(),NamaPetugas.getText(),KdDokter.getText(),NmDokter.getText(),Tindakan.getText(),TeknikAnestesi.getText(),Listrik1.getSelectedItem().toString(),Listrik2.getSelectedItem().toString(),
                 Listrik3.getSelectedItem().toString(),Listrik4.getSelectedItem().toString(),GasMedis1.getSelectedItem().toString(),GasMedis2.getSelectedItem().toString(),GasMedis3.getSelectedItem().toString(),
                 GasMedis4.getSelectedItem().toString(),GasMedis5.getSelectedItem().toString(),GasMedis6.getSelectedItem().toString(),MesinAnestesi1.getSelectedItem().toString(),MesinAnestesi2.getSelectedItem().toString(),
                 MesinAnestesi3.getSelectedItem().toString(),MesinAnestesi4.getSelectedItem().toString(),MesinAnestesi5.getSelectedItem().toString(),JalanNapas1.getSelectedItem().toString(),JalanNapas2.getSelectedItem().toString(),

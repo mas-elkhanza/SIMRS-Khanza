@@ -1000,13 +1000,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
+                aplikasi.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        runBackground(() ->tampil());
+                    }
+                });
                 aplikasi.isCek();
                 aplikasi.tampil2(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi.setLocationRelativeTo(internalFrame1);
                 aplikasi.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
-                runBackground(() ->tampil());
             }else{
                 JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
             }
@@ -1029,6 +1034,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
+                aplikasi2.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        runBackground(() ->tampil());
+                    }
+                });
                 aplikasi2.tampilkanpermintaan=false;
                 aplikasi2.isCek();
                 aplikasi2.tampil2(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
@@ -1036,7 +1047,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 aplikasi2.setLocationRelativeTo(internalFrame1);
                 aplikasi2.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
-                runBackground(() ->tampil());
             }else{
                 JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
             }

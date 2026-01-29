@@ -2167,6 +2167,33 @@ public final class sekuel {
         return iyem;
     }
     
+    public String CariDepartemenPegawai(String kode) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj;
+        String iyem="";
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                        iyem=list.path("Departemen").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=cariIsi("select pegawai.departemen from pegawai where pegawai.nik=?",kode);
+        }
+        return iyem;
+    }
+    
     public String CariBangsal(String kode) {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root;
