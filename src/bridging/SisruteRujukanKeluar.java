@@ -63,7 +63,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private SisruteCekReferensiFaskes faskes=new SisruteCekReferensiFaskes(null,false);
     private SisruteCekReferensiAlasanRujuk alasanrujuk=new SisruteCekReferensiAlasanRujuk(null,false);
     private SisruteCekReferensiDiagnosa diagnosa=new SisruteCekReferensiDiagnosa(null,false);
@@ -673,48 +672,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     kriteriaSarana.dispose();
                 }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){  
-                    if(pilihan==1){
-                        KdDokter.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
-                        DokterPerujuk.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                        KdDokter.requestFocus();
-                    }else if(pilihan==2){
-                        KdPetugas.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
-                        PetugasEntry.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                        KdPetugas.requestFocus();
-                    }                        
-                }   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pegawai.dispose();
-                }                
             }
             @Override
             public void keyReleased(KeyEvent e) {}
@@ -2729,7 +2686,42 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDiagnosaKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        pilihan=1;
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){  
+                    KdDokter.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
+                    DokterPerujuk.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                    KdDokter.requestFocus();
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -2741,7 +2733,42 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
-        pilihan=2;
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){  
+                    KdPetugas.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
+                    PetugasEntry.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                    KdPetugas.requestFocus();
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -3492,7 +3519,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",KdPetugas,akses.getkode());
-            PetugasEntry.setText(pegawai.tampil3(akses.getkode()));
+            PetugasEntry.setText(Sequel.CariPegawai(akses.getkode()));
         }  
     }
     

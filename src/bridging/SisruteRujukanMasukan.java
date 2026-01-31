@@ -57,7 +57,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
     private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private BackgroundMusic music;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -171,42 +170,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
-                    NoKTP.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
-                    Nama.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                }   
-                NoKTP.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pegawai.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         try {
             link=koneksiDB.URLAPISISRUTE();
@@ -922,6 +885,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_NoKTPKeyPressed
 
     private void BtnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPegawaiActionPerformed
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){                   
+                    NoKTP.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),23).toString());
+                    Nama.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                }   
+                NoKTP.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -1111,7 +1110,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getjml2()>=1){            
             Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",Nama,akses.getkode());
             BtnPegawai.setEnabled(false);
-            Nama.setText(pegawai.tampil3(akses.getkode()));
+            Nama.setText(Sequel.CariPegawai(akses.getkode()));
         }else{
             BtnPegawai.setEnabled(true);
         }    

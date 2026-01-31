@@ -705,48 +705,13 @@ public class InventarisPemesanan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        InventarisCariSuplier suplier=new InventarisCariSuplier(null,false);
-        suplier.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(suplier.getTable().getSelectedRow()!= -1){                   
-                    kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
-                    nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                }  
-                kdsup.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        suplier.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    suplier.dispose();
-                } 
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        suplier.emptTeks();
-        suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        suplier.setLocationRelativeTo(internalFrame1);
-        suplier.setAlwaysOnTop(false);
-        suplier.setVisible(true);
+        InventarisCariPemesanan form=new InventarisCariPemesanan(null,false);
+        form.emptTeks();
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setAlwaysOnTop(false);
+        form.setVisible(true);
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed

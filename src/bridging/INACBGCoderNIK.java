@@ -12,13 +12,13 @@
 package bridging;
 
 import kepegawaian.DlgCariPegawai;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -27,9 +27,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -45,7 +49,8 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -63,7 +68,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
         };
 
         tbSpesialis.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -89,46 +94,23 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
-        }  
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
-                    NIK.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                    Nama.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                                        
-                }   
-                NIK.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+        } 
     }
 
     /** This method is called from within the constructor to
@@ -443,7 +425,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
             Valid.textKosong(CoderNIK,"Coder NIK");
         }else{
             Sequel.menyimpan("inacbg_coder_nik","'"+NIK.getText()+"','"+CoderNIK.getText()+"'","NIP");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -468,7 +450,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         Valid.hapusTable(tabMode,NIK,"inacbg_coder_nik","nik");
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -487,7 +469,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
             Valid.textKosong(CoderNIK,"Coder NIK");
         }else{
             Valid.editTable(tabMode,"inacbg_coder_nik","nik",NIK,"no_ik='"+CoderNIK.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
+            if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -521,7 +503,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-       tampil();
+       runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -538,7 +520,7 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         emptTeks();
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -559,10 +541,33 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
 }//GEN-LAST:event_tbSpesialisMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnCariPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPegawaiActionPerformed
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){                   
+                    NIK.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                    Nama.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                                        
+                }   
+                NIK.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
@@ -695,5 +700,37 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.getinacbg_coder_nik());
         BtnHapus.setEnabled(akses.getinacbg_coder_nik());
         BtnEdit.setEnabled(akses.getinacbg_coder_nik());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

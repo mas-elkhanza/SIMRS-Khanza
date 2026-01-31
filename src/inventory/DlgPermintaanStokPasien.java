@@ -50,7 +50,6 @@ public class DlgPermintaanStokPasien extends javax.swing.JDialog {
     private PreparedStatement pstampil;
     private ResultSet rstampil;
     private WarnaTable2 warna=new WarnaTable2();
-    public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private double ttl=0,y=0,ppnobat=0,kenaikan=0;
     private int jml=0,i=0,index=0;
     private String norawatibu,tampilkan_ppnobat_ranap="",aktifkanbatch="no",kelas="",bangsal="",kamar="",hppfarmasi="";
@@ -204,29 +203,6 @@ public class DlgPermintaanStokPasien extends javax.swing.JDialog {
                 }
             });
         }       
-        
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){        
-                     KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                     NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                }  
-                KdDokter.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         jam();
            
@@ -983,6 +959,29 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_KdDokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        DlgCariDokter dokter=new DlgCariDokter(null,false);
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){        
+                     KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                     NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                }  
+                KdDokter.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.isCek();
         dokter.setLocationRelativeTo(internalFrame1);
