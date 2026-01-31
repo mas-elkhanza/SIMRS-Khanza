@@ -207,15 +207,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="kdsup">
+            <Component class="widget.TextBox" name="kdmem">
               <Properties>
-                <Property name="name" type="java.lang.String" value="kdsup" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="kdmem" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 23]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdsupKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdmemKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -253,10 +253,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="nmsup">
+            <Component class="widget.TextBox" name="nmmem">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="nmsup" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="nmmem" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[207, 23]"/>
                 </Property>

@@ -17,23 +17,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariPetugas;
 import keuangan.Jurnal;
 
 public class TokoReturJual extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private validasi Valid=new validasi();
     private riwayattoko Trackbarang=new riwayattoko();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private TokoCariReturJual form=new TokoCariReturJual(null,false);
     private double ttl=0,y=0,kolom,stokbarang;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan,nofaktur;
@@ -101,7 +107,7 @@ public class TokoReturJual extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoRetur.setDocument(new batasInput((byte)20).getKata(NoRetur));
-        kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
+        kdmem.setDocument(new batasInput((byte)5).getKata(kdmem));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg)); 
         Catatan.setDocument(new batasInput((int)40).getKata(Catatan));         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -110,107 +116,23 @@ public class TokoReturJual extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
-        }  
-        
-        form.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                autoNomor();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        form.member.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoReturJual")){
-                    if(form.member.getTable().getSelectedRow()!= -1){                   
-                        kdsup.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),0).toString());                    
-                        nmsup.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),1).toString());
-                    } 
-                    kdsup.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        form.member.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("TokoReturJual")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        form.member.dispose();
-                    }                
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });            
-        
-        form.petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoReturJual")){
-                    if(form.petugas.getTable().getSelectedRow()!= -1){                   
-                        kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
-                        nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
-                    }  
-                    kdptg.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
+        } 
           
         try {
             hpptoko=koneksiDB.HPPTOKO();
@@ -238,17 +160,17 @@ public class TokoReturJual extends javax.swing.JDialog {
         label15 = new widget.Label();
         NoRetur = new widget.TextBox();
         label13 = new widget.Label();
-        kdsup = new widget.TextBox();
+        kdmem = new widget.TextBox();
         label16 = new widget.Label();
         kdptg = new widget.TextBox();
-        nmsup = new widget.TextBox();
+        nmmem = new widget.TextBox();
         nmptg = new widget.TextBox();
-        btnSuplier = new widget.Button();
-        btnPetugas = new widget.Button();
         label11 = new widget.Label();
         TglRetur = new widget.Tanggal();
         label18 = new widget.Label();
         Catatan = new widget.TextBox();
+        btnSuplier = new widget.Button();
+        btnPetugas = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         label10 = new widget.Label();
@@ -353,15 +275,15 @@ public class TokoReturJual extends javax.swing.JDialog {
         panelisi3.add(label13);
         label13.setBounds(395, 40, 60, 23);
 
-        kdsup.setName("kdsup"); // NOI18N
-        kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdsup.addKeyListener(new java.awt.event.KeyAdapter() {
+        kdmem.setName("kdmem"); // NOI18N
+        kdmem.setPreferredSize(new java.awt.Dimension(80, 23));
+        kdmem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdsupKeyPressed(evt);
+                kdmemKeyPressed(evt);
             }
         });
-        panelisi3.add(kdsup);
-        kdsup.setBounds(459, 10, 80, 23);
+        panelisi3.add(kdmem);
+        kdmem.setBounds(459, 10, 80, 23);
 
         label16.setText("Member :");
         label16.setName("label16"); // NOI18N
@@ -379,43 +301,17 @@ public class TokoReturJual extends javax.swing.JDialog {
         panelisi3.add(kdptg);
         kdptg.setBounds(459, 40, 80, 23);
 
-        nmsup.setEditable(false);
-        nmsup.setName("nmsup"); // NOI18N
-        nmsup.setPreferredSize(new java.awt.Dimension(207, 23));
-        panelisi3.add(nmsup);
-        nmsup.setBounds(541, 10, 210, 23);
+        nmmem.setEditable(false);
+        nmmem.setName("nmmem"); // NOI18N
+        nmmem.setPreferredSize(new java.awt.Dimension(207, 23));
+        panelisi3.add(nmmem);
+        nmmem.setBounds(541, 10, 210, 23);
 
         nmptg.setEditable(false);
         nmptg.setName("nmptg"); // NOI18N
         nmptg.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmptg);
         nmptg.setBounds(541, 40, 210, 23);
-
-        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnSuplier.setMnemonic('1');
-        btnSuplier.setToolTipText("Alt+1");
-        btnSuplier.setName("btnSuplier"); // NOI18N
-        btnSuplier.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnSuplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuplierActionPerformed(evt);
-            }
-        });
-        panelisi3.add(btnSuplier);
-        btnSuplier.setBounds(753, 10, 28, 23);
-
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("Alt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
-            }
-        });
-        panelisi3.add(btnPetugas);
-        btnPetugas.setBounds(753, 40, 28, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -453,6 +349,32 @@ public class TokoReturJual extends javax.swing.JDialog {
         });
         panelisi3.add(Catatan);
         Catatan.setBounds(67, 40, 280, 23);
+
+        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnSuplier.setMnemonic('1');
+        btnSuplier.setToolTipText("Alt+1");
+        btnSuplier.setName("btnSuplier"); // NOI18N
+        btnSuplier.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnSuplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuplierActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnSuplier);
+        btnSuplier.setBounds(753, 10, 28, 23);
+
+        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugas.setMnemonic('2');
+        btnPetugas.setToolTipText("Alt+2");
+        btnPetugas.setName("btnPetugas"); // NOI18N
+        btnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetugasActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnPetugas);
+        btnPetugas.setBounds(753, 40, 28, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -612,65 +534,41 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_tbDokterKeyPressed
 
 private void NoReturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoReturKeyPressed
-        Valid.pindah(evt, BtnSimpan, kdsup);
+        Valid.pindah(evt, BtnSimpan, kdmem);
 }//GEN-LAST:event_NoReturKeyPressed
 
-private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
+private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdmemKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmsup,kdsup.getText());           
+            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmmem,kdmem.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmmem,kdmem.getText());
             NoRetur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_member from tokomember where kode_member=?", nmmem,kdmem.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
         }
-}//GEN-LAST:event_kdsupKeyPressed
+}//GEN-LAST:event_kdmemKeyPressed
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));          
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
-            kdsup.requestFocus();
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kdmem.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
             BtnSimpan.requestFocus();  
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
 }//GEN-LAST:event_kdptgKeyPressed
 
-private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("TokoReturJual");
-        form.member.emptTeks();
-        form.member.isCek();
-        form.member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.member.setLocationRelativeTo(internalFrame1);
-        form.member.setAlwaysOnTop(false);
-        form.member.setVisible(true);
-}//GEN-LAST:event_btnSuplierActionPerformed
-
-private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("TokoReturJual");
-        form.petugas.emptTeks();
-        form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.petugas.setLocationRelativeTo(internalFrame1);
-        form.petugas.setAlwaysOnTop(false);
-        form.petugas.setVisible(true);
-}//GEN-LAST:event_btnPetugasActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampikan==true){
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void TglReturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglReturKeyPressed
-        Valid.pindah(evt,NoRetur,kdsup);
+        Valid.pindah(evt,NoRetur,kdmem);
     }//GEN-LAST:event_TglReturKeyPressed
 
     private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
@@ -680,19 +578,17 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_tbDokterPropertyChange
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
-        Valid.pindah(evt,NoRetur,kdsup);
+        Valid.pindah(evt,NoRetur,kdmem);
     }//GEN-LAST:event_CatatanKeyPressed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        akses.setform("TokoReturJual");
-        form.barang.emptTeks();
-        form.barang.isCek();
-        form.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.barang.setLocationRelativeTo(internalFrame1);
-        form.barang.setAlwaysOnTop(false);
-        form.barang.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
+        TokoBarang barang=new TokoBarang(null,false);
+        barang.emptTeks();
+        barang.isCek();
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setLocationRelativeTo(internalFrame1);
+        barang.setAlwaysOnTop(false);
+        barang.setVisible(true);
     }//GEN-LAST:event_BtnTambahActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
@@ -714,35 +610,34 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoCariReturJual form=new TokoCariReturJual(null,false);
         form.emptTeks();
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnSimpan, BtnKeluar);
         }
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil();
+            runBackground(() ->tampil());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kdsup.requestFocus();
+            kdmem.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbDokter.requestFocus();
         }
@@ -759,8 +654,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoRetur.getText().trim().equals("")){
             Valid.textKosong(NoRetur,"No.Retur");
-        }else if(nmsup.getText().trim().equals("")){
-            Valid.textKosong(kdsup,"Supplier");
+        }else if(nmmem.getText().trim().equals("")){
+            Valid.textKosong(kdmem,"Supplier");
         }else if(nmptg.getText().trim().equals("")){
             Valid.textKosong(kdptg,"Petugas");
         }else if(Catatan.getText().trim().equals("")){
@@ -777,7 +672,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 Sequel.AutoComitFalse();
                 sukses=true;
                 if(Sequel.menyimpantf2("tokoreturjual","?,?,?,?,?,?","No.Retur",6,new String[]{
-                    NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),kdptg.getText(),kdsup.getText(),Catatan.getText(),ttl+""
+                    NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),Catatan.getText(),ttl+""
                 })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){
@@ -838,6 +733,83 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }//GEN-LAST:event_TglReturItemStateChanged
 
+    private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
+        TokoMember member=new TokoMember(null,false);
+        member.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(member.getTable().getSelectedRow()!= -1){
+                    kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),0).toString());
+                    nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
+                }
+                kdmem.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        member.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    member.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        member.emptTeks();
+        member.isCek();
+        member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        member.setLocationRelativeTo(internalFrame1);
+        member.setAlwaysOnTop(false);
+        member.setVisible(true);
+    }//GEN-LAST:event_btnSuplierActionPerformed
+
+    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
+        DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){
+                    kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                }
+                kdptg.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        petugas.emptTeks();
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
+    }//GEN-LAST:event_btnPetugasActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -870,8 +842,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Button btnPetugas;
     private widget.Button btnSuplier;
     private widget.InternalFrame internalFrame1;
+    private widget.TextBox kdmem;
     private widget.TextBox kdptg;
-    private widget.TextBox kdsup;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
@@ -879,8 +851,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label label15;
     private widget.Label label16;
     private widget.Label label18;
+    private widget.TextBox nmmem;
     private widget.TextBox nmptg;
-    private widget.TextBox nmsup;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
@@ -1013,7 +985,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gettoko_retur_jual());
             BtnTambah.setEnabled(akses.gettoko_barang());
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPegawai(kdptg.getText()));
         }        
     }
     
@@ -1021,4 +993,35 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,3),signed)),0) from tokoreturjual where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"'","TRJ"+TglRetur.getSelectedItem().toString().substring(6,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
     }
  
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

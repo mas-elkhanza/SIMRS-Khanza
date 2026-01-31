@@ -1771,7 +1771,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where "+
                     "reg_periksa.tgl_registrasi between ? and ? "+(TCari.getText().trim().equals("")?"":"and "+
                     "(rujuk_masuk.perujuk like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or reg_periksa.almt_pj like ? or rujuk_masuk.no_rujuk like ? or "+
+                    "pasien.nm_pasien like ? or poliklinik.nm_poli like ? or rujuk_masuk.no_rujuk like ? or "+
                     "rujuk_masuk.dokter_perujuk like ? or penyakit.nm_penyakit like ? or rujuk_masuk.kategori_rujuk like ? or "+
                     "rujuk_masuk.keterangan like ? or rujuk_masuk.no_balasan like ? or rujuk_masuk.kd_penyakit like ?) ")+
                     "order by reg_periksa.tgl_registrasi ");

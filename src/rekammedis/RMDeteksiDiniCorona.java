@@ -1170,7 +1170,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
                     dlgrjk.emptTeks();
                     dlgrjk.isCek();
                     dlgrjk.setNoRm(NoRawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());
-                    dlgrjk.tampil();
                     dlgrjk.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }else if(TindakLanjut.getSelectedIndex()==0){

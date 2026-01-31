@@ -2822,6 +2822,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         isRawat();
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
     
     private void isForm(){
