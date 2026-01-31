@@ -31,9 +31,13 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -53,17 +57,11 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private K3RSJenisPekerjaan jenispekerjaan=new K3RSJenisPekerjaan(null,false);
-    private K3RSLokasiKejadian lokasikejadian=new K3RSLokasiKejadian(null,false);
-    private K3RSPenyebab penyebab=new K3RSPenyebab(null,false);
-    private K3RSJenisCidera jeniscidera=new K3RSJenisCidera(null,false);
-    private K3RSJenisLuka jenisluka=new K3RSJenisLuka(null,false);
-    private K3RSBagianTubuh bagiantubuh=new K3RSBagianTubuh(null,false);
-    private K3RSDampakCidera dampakcidera=new K3RSDampakCidera(null,false);
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private LocalDate birthday;
     private Period p;
 
@@ -199,329 +197,23 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
-        }  
-        
-        jenispekerjaan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(jenispekerjaan.getTable().getSelectedRow()!= -1){
-                    KdJenisPekerjaan.setText(jenispekerjaan.getTable().getValueAt(jenispekerjaan.getTable().getSelectedRow(),0).toString());
-                    NmJenisPekerjaan.setText(jenispekerjaan.getTable().getValueAt(jenispekerjaan.getTable().getSelectedRow(),1).toString());
-                }  
-                BtnJenisPekerjaan.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        jenispekerjaan.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    jenispekerjaan.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        lokasikejadian.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(lokasikejadian.getTable().getSelectedRow()!= -1){
-                    KdLokasiKejadian.setText(lokasikejadian.getTable().getValueAt(lokasikejadian.getTable().getSelectedRow(),0).toString());
-                    NmLokasiKejadian.setText(lokasikejadian.getTable().getValueAt(lokasikejadian.getTable().getSelectedRow(),1).toString());
-                }  
-                btnLokasiKejadian.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        lokasikejadian.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    lokasikejadian.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        penyebab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penyebab.getTable().getSelectedRow()!= -1){
-                    KdPenyebab.setText(penyebab.getTable().getValueAt(penyebab.getTable().getSelectedRow(),0).toString());
-                    NmPenyebab.setText(penyebab.getTable().getValueAt(penyebab.getTable().getSelectedRow(),1).toString());
-                }  
-                BtnPenyebab.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penyebab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penyebab.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        jeniscidera.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(jeniscidera.getTable().getSelectedRow()!= -1){
-                    KdJenisCidera.setText(jeniscidera.getTable().getValueAt(jeniscidera.getTable().getSelectedRow(),0).toString());
-                    NmJenisCidera.setText(jeniscidera.getTable().getValueAt(jeniscidera.getTable().getSelectedRow(),1).toString());
-                }  
-                btnJenisCidera.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        jeniscidera.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    jeniscidera.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        jenisluka.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(jenisluka.getTable().getSelectedRow()!= -1){
-                    KdJenisLuka.setText(jenisluka.getTable().getValueAt(jenisluka.getTable().getSelectedRow(),0).toString());
-                    NmJenisLuka.setText(jenisluka.getTable().getValueAt(jenisluka.getTable().getSelectedRow(),1).toString());
-                }  
-                btnJenisLuka.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        jenisluka.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    jenisluka.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        bagiantubuh.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bagiantubuh.getTable().getSelectedRow()!= -1){
-                    KdBagianTubuh.setText(bagiantubuh.getTable().getValueAt(bagiantubuh.getTable().getSelectedRow(),0).toString());
-                    NmBagianTubuh.setText(bagiantubuh.getTable().getValueAt(bagiantubuh.getTable().getSelectedRow(),1).toString());
-                }  
-                btnBagianTubuh.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        bagiantubuh.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    bagiantubuh.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        dampakcidera.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dampakcidera.getTable().getSelectedRow()!= -1){
-                    KdDampak.setText(dampakcidera.getTable().getValueAt(dampakcidera.getTable().getSelectedRow(),0).toString());
-                    NmDampak.setText(dampakcidera.getTable().getValueAt(dampakcidera.getTable().getSelectedRow(),1).toString());
-                }  
-                BtnDampak.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dampakcidera.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    dampakcidera.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){   
-                    if(i==1){
-                        NIKKorban.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                        NmKorban.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                        JK.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),2).toString().replaceAll("Wanita","P").replaceAll("Pria","L"));
-                        Jabatan.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),3).toString());
-                        Bidang.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),6).toString());
-                        Departemen.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),5).toString());
-                        Valid.SetTgl(TglLahir,pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),12).toString());
-                        TglInsidenItemStateChanged(null);
-                        btnKorban.requestFocus();
-                    } else if(i==2){
-                        NIKPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                        NmPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                        BidangPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),6).toString());
-                        DepartemenPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),5).toString());
-                        btnPelapor.requestFocus();
-                    } else if(i==3){
-                        NIKK3.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                        NmPetugasK3.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                    }  
-                }   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pegawai.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
+        } 
     }
     
     /** This method is called from within the constructor to
@@ -2169,7 +1861,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         if(tbJnsPerawatan.getSelectedRow() > -1){
             Sequel.meghapus("k3rs_peristiwa","no_k3rs",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
             emptTeks();
-            tampil();
+            runBackground(() ->tampil());
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -2234,7 +1926,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
                     })==true){
                         emptTeks();
                         TabRawat.setSelectedIndex(1);
-                        tampil();
+                        runBackground(() ->tampil());
                 }
             }
         }
@@ -2301,7 +1993,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -2314,12 +2006,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnPrint, BtnKeluar);
@@ -2352,7 +2044,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -2430,6 +2122,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_KronologiKeyPressed
 
     private void BtnJenisPekerjaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisPekerjaanActionPerformed
+        K3RSJenisPekerjaan jenispekerjaan=new K3RSJenisPekerjaan(null,false);
+        jenispekerjaan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(jenispekerjaan.getTable().getSelectedRow()!= -1){
+                    KdJenisPekerjaan.setText(jenispekerjaan.getTable().getValueAt(jenispekerjaan.getTable().getSelectedRow(),0).toString());
+                    NmJenisPekerjaan.setText(jenispekerjaan.getTable().getValueAt(jenispekerjaan.getTable().getSelectedRow(),1).toString());
+                }  
+                BtnJenisPekerjaan.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        jenispekerjaan.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    jenispekerjaan.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         jenispekerjaan.isCek();
         jenispekerjaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jenispekerjaan.setLocationRelativeTo(internalFrame1);
@@ -2437,6 +2165,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnJenisPekerjaanActionPerformed
 
     private void btnLokasiKejadianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLokasiKejadianActionPerformed
+        K3RSLokasiKejadian lokasikejadian=new K3RSLokasiKejadian(null,false);
+        lokasikejadian.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(lokasikejadian.getTable().getSelectedRow()!= -1){
+                    KdLokasiKejadian.setText(lokasikejadian.getTable().getValueAt(lokasikejadian.getTable().getSelectedRow(),0).toString());
+                    NmLokasiKejadian.setText(lokasikejadian.getTable().getValueAt(lokasikejadian.getTable().getSelectedRow(),1).toString());
+                }  
+                btnLokasiKejadian.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        lokasikejadian.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    lokasikejadian.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         lokasikejadian.isCek();
         lokasikejadian.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         lokasikejadian.setLocationRelativeTo(internalFrame1);
@@ -2444,6 +2208,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnLokasiKejadianActionPerformed
 
     private void BtnPenyebabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenyebabActionPerformed
+        K3RSPenyebab penyebab=new K3RSPenyebab(null,false);
+        penyebab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penyebab.getTable().getSelectedRow()!= -1){
+                    KdPenyebab.setText(penyebab.getTable().getValueAt(penyebab.getTable().getSelectedRow(),0).toString());
+                    NmPenyebab.setText(penyebab.getTable().getValueAt(penyebab.getTable().getSelectedRow(),1).toString());
+                }  
+                BtnPenyebab.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penyebab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penyebab.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         penyebab.isCek();
         penyebab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyebab.setLocationRelativeTo(internalFrame1);
@@ -2451,7 +2251,48 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPenyebabActionPerformed
 
     private void btnKorbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKorbanActionPerformed
-        i=1;
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){   
+                    NIKKorban.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                    NmKorban.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                    JK.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),2).toString().replaceAll("Wanita","P").replaceAll("Pria","L"));
+                    Jabatan.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),3).toString());
+                    Bidang.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),6).toString());
+                    Departemen.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),5).toString());
+                    Valid.SetTgl(TglLahir,pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),12).toString());
+                    TglInsidenItemStateChanged(null);
+                    btnKorban.requestFocus();  
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -2489,6 +2330,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBagianTubuhKeyPressed
 
     private void btnJenisCideraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisCideraActionPerformed
+        K3RSJenisCidera jeniscidera=new K3RSJenisCidera(null,false);
+        jeniscidera.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(jeniscidera.getTable().getSelectedRow()!= -1){
+                    KdJenisCidera.setText(jeniscidera.getTable().getValueAt(jeniscidera.getTable().getSelectedRow(),0).toString());
+                    NmJenisCidera.setText(jeniscidera.getTable().getValueAt(jeniscidera.getTable().getSelectedRow(),1).toString());
+                }  
+                btnJenisCidera.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        jeniscidera.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    jeniscidera.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         jeniscidera.isCek();
         jeniscidera.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jeniscidera.setLocationRelativeTo(internalFrame1);
@@ -2496,6 +2373,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnJenisCideraActionPerformed
 
     private void btnJenisLukaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisLukaActionPerformed
+        K3RSJenisLuka jenisluka=new K3RSJenisLuka(null,false);
+        jenisluka.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(jenisluka.getTable().getSelectedRow()!= -1){
+                    KdJenisLuka.setText(jenisluka.getTable().getValueAt(jenisluka.getTable().getSelectedRow(),0).toString());
+                    NmJenisLuka.setText(jenisluka.getTable().getValueAt(jenisluka.getTable().getSelectedRow(),1).toString());
+                }  
+                btnJenisLuka.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        jenisluka.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    jenisluka.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         jenisluka.isCek();
         jenisluka.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jenisluka.setLocationRelativeTo(internalFrame1);
@@ -2503,6 +2416,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnJenisLukaActionPerformed
 
     private void btnBagianTubuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBagianTubuhActionPerformed
+        K3RSBagianTubuh bagiantubuh=new K3RSBagianTubuh(null,false);
+        bagiantubuh.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bagiantubuh.getTable().getSelectedRow()!= -1){
+                    KdBagianTubuh.setText(bagiantubuh.getTable().getValueAt(bagiantubuh.getTable().getSelectedRow(),0).toString());
+                    NmBagianTubuh.setText(bagiantubuh.getTable().getValueAt(bagiantubuh.getTable().getSelectedRow(),1).toString());
+                }  
+                btnBagianTubuh.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        bagiantubuh.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    bagiantubuh.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         bagiantubuh.isCek();
         bagiantubuh.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bagiantubuh.setLocationRelativeTo(internalFrame1);
@@ -2526,6 +2475,42 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_PekerjaanKeyPressed
 
     private void BtnDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDampakActionPerformed
+        K3RSDampakCidera dampakcidera=new K3RSDampakCidera(null,false);
+        dampakcidera.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dampakcidera.getTable().getSelectedRow()!= -1){
+                    KdDampak.setText(dampakcidera.getTable().getValueAt(dampakcidera.getTable().getSelectedRow(),0).toString());
+                    NmDampak.setText(dampakcidera.getTable().getValueAt(dampakcidera.getTable().getSelectedRow(),1).toString());
+                }  
+                BtnDampak.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        dampakcidera.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    dampakcidera.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         dampakcidera.isCek();
         dampakcidera.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dampakcidera.setLocationRelativeTo(internalFrame1);
@@ -2545,7 +2530,44 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_BarangBuktiKeyPressed
 
     private void btnPelaporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPelaporActionPerformed
-        i=2;
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){  
+                    NIKPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                    NmPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                    BidangPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),6).toString());
+                    DepartemenPelapor.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),5).toString());
+                    btnPelapor.requestFocus();
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -2577,7 +2599,41 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnTIMK3KeyPressed
 
     private void btnTIMK3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTIMK3ActionPerformed
-        i=3;
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){   
+                    NIKK3.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                    NmPetugasK3.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pegawai.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -3507,7 +3563,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     
     public void isCek(){
         TabRawat.setSelectedIndex(1);
-        tampil();
+        runBackground(() ->tampil());
         if(akses.getjml2()>=1){
             NIKK3.setEditable(false);
             btnTIMK3.setEnabled(false);
@@ -3520,7 +3576,35 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getperistiwa_k3rs());
     }
     
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
 
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
     
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }
