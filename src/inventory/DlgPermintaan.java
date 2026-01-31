@@ -803,7 +803,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmptg.setText(pegawai.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPegawai(kdptg.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kdgudangTujuan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1069,7 +1069,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpermintaan_medis());
             BtnTambah.setEnabled(akses.getobat());
-            nmptg.setText(pegawai.tampil3(kdptg.getText()));
+            nmptg.setText(Sequel.CariPegawai(kdptg.getText()));
             if(!DEPOAKTIFOBAT.equals("")){
                 kdgudangasal.setText(DEPOAKTIFOBAT);
                 nmgudangasal.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",DEPOAKTIFOBAT));

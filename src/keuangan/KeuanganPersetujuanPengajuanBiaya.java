@@ -911,7 +911,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             kdpegawai.setEditable(false);
             BtnPegawai.setEnabled(false);
             kdpegawai.setText(akses.getkode());
-            nmpegawai.setText(pegawai.tampil3(kdpegawai.getText()));
+            nmpegawai.setText(Sequel.CariPegawai(kdpegawai.getText()));
         }  
     }
     

@@ -40,6 +40,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private sekuel Sequel=new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
     private int jml=0,i=0,row=0,index=0;
@@ -879,9 +880,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnPenilaiActionPerformed
 
     private void KdPenilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPenilaiKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmPenilai.setText(pegawai.tampil3(KdPenilai.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             NoPenilaian.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             KdDInilai.requestFocus();
@@ -924,7 +923,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void KdDInilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDInilaiKeyPressed
         /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmDinilai.setText(pegawai.tampil3(KdDInilai.getText()));
+            NmDinilai.setText(Sequel.CariPegawai(KdDInilai.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             KdDInilai.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1158,7 +1157,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             btnPenilai.setEnabled(false);
             KdPenilai.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getskp_penilaian());
-            NmPenilai.setText(pegawai.tampil3(KdPenilai.getText()));
+            NmPenilai.setText(Sequel.CariPegawai(KdPenilai.getText()));
         }        
     }
     

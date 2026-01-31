@@ -1620,8 +1620,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getsurat_pemesanan_dapur());
             BtnTambah.setEnabled(akses.getdapur_barang());
-            nmptg.setText(pegawai.tampil3(kdptg.getText())); 
-            Departemen.setText(pegawai.tampilDepartemen(kdptg.getText()));
+            nmptg.setText(Sequel.CariPegawai(kdptg.getText())); 
+            Departemen.setText(Sequel.CariDepartemenPegawai(kdptg.getText()));
         }        
     }
     

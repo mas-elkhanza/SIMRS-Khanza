@@ -1252,7 +1252,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
             NIP.setText(akses.getkode());
-            NamaPetugas.setText(pegawai.tampil3(NIP.getText()));
+            NamaPetugas.setText(Sequel.CariPegawai(NIP.getText()));
         }            
     }
   

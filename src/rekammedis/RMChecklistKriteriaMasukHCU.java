@@ -2101,7 +2101,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         if(akses.getjml2()>=1){
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(pegawai.tampil3(akses.getkode()));
+            NamaPetugas.setText(Sequel.CariPegawai(akses.getkode()));
         }
         if(TANGGALMUNDUR.equals("no")){
             if(!akses.getkode().equals("Admin Utama")){

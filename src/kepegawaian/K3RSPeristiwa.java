@@ -3512,7 +3512,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             NIKK3.setEditable(false);
             btnTIMK3.setEnabled(false);
             NIKK3.setText(akses.getkode());
-            NmPetugasK3.setText(pegawai.tampil3(NIKK3.getText()));
+            NmPetugasK3.setText(Sequel.CariPegawai(NIKK3.getText()));
         }   
         BtnSimpan.setEnabled(akses.getperistiwa_k3rs());
         BtnHapus.setEnabled(akses.getperistiwa_k3rs());
