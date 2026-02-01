@@ -7486,7 +7486,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgrjk.setLocationRelativeTo(internalFrame1);
                                 dlgrjk.isCek();
                                 dlgrjk.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")); 
-                                dlgrjk.tampil();
                                 dlgrjk.setVisible(true);
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -7521,7 +7520,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     dlgrjk.setLocationRelativeTo(internalFrame1);
                     dlgrjk.isCek();
                     dlgrjk.setNoRm(norawat.getText(),TNoRM.getText()+" "+TPasien.getText()); 
-                    dlgrjk.tampil();
                     dlgrjk.setVisible(true);
                 }
             }
