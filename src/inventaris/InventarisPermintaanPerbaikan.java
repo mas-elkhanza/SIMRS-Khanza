@@ -16,7 +16,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -34,6 +33,11 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import java.awt.Cursor;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -46,7 +50,8 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -117,47 +122,23 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }
-        
-         petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    nama_petugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    departemen.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),5).toString());
-                }   
-                nip.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
 
     /** This method is called from within the constructor to
@@ -703,7 +684,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
                     nopermintaan.getText(),no_inventaris.getText(),nip.getText(),Valid.SetTgl(tgl_permintaan.getSelectedItem()+"")+" "+tgl_permintaan.getSelectedItem().toString().substring(11,19),deskripsi.getText()
                 })==true){
                 Sequel.mengedit("inventaris","no_inventaris='"+no_inventaris.getText()+"'","status_barang='Perbaikan'");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }   
         }
@@ -767,7 +748,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
                         if(Sequel.mengedittf("permintaan_perbaikan_inventaris","no_permintaan=?","no_permintaan=?,no_inventaris=?,nik=?,tanggal=?,deskripsi_kerusakan=?",6,new String[]{
                                 nopermintaan.getText(),no_inventaris.getText(),nip.getText(),Valid.SetTgl(tgl_permintaan.getSelectedItem()+"")+" "+tgl_permintaan.getSelectedItem().toString().substring(11,19),deskripsi.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                             })==true){
-                                tampil();
+                                runBackground(() ->tampil());
                                 emptTeks();
                         }
                     }else{
@@ -777,7 +758,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
                     if(Sequel.mengedittf("permintaan_perbaikan_inventaris","no_permintaan=?","no_permintaan=?,no_inventaris=?,nik=?,tanggal=?,deskripsi_kerusakan=?",6,new String[]{
                             nopermintaan.getText(),no_inventaris.getText(),nip.getText(),Valid.SetTgl(tgl_permintaan.getSelectedItem()+"")+" "+tgl_permintaan.getSelectedItem().toString().substring(11,19),deskripsi.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                         })==true){
-                            tampil();
+                            runBackground(() ->tampil());
                             emptTeks();
                     }
                 }
@@ -885,7 +866,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -899,7 +880,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         nm_ruangcari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -941,7 +922,7 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
 }//GEN-LAST:event_tgl_permintaanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnRuang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuang1ActionPerformed
@@ -1051,6 +1032,30 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_nipKeyPressed
 
     private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
+        DlgCariPegawai petugas=new DlgCariPegawai(null,false);
+         petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){                   
+                    nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    nama_petugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    departemen.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),5).toString());
+                }   
+                nip.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
@@ -1368,5 +1373,35 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
         }
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
     
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

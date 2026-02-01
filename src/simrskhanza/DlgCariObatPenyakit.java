@@ -40,6 +40,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -134,42 +135,30 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         }
         warna.kolom=4;
         tbKamar.setDefaultRenderer(Object.class,warna);
-        TNoRw.setDocument(new batasInput((byte)20).getKata(TNoRw));        
+        TNoRw.setDocument(new batasInput((byte)20).getKata(TNoRw)); 
         
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penyakit.getTable().getSelectedRow()!= -1){                   
-                    PenyakitCari.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
-                }    
-                PenyakitCari.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penyakit.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penyakit.dispose();
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            PenyakitCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(PenyakitCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
                 }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(PenyakitCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(PenyakitCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
          
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -186,7 +175,6 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         jam();
     }
-    public DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     
     private String[] hlm;
 
@@ -559,6 +547,41 @@ private void PenyakitCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 }//GEN-LAST:event_PenyakitCariKeyPressed
 
 private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
+        DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penyakit.getTable().getSelectedRow()!= -1){                   
+                    PenyakitCari.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                }    
+                PenyakitCari.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penyakit.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penyakit.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         penyakit.emptTeks();
         penyakit.isCek();
         penyakit.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

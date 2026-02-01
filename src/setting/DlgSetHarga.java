@@ -28,8 +28,12 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -42,10 +46,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    public DlgCariJenis jenis = new DlgCariJenis(null, false);
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgBarang barang=new DlgBarang(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgAdmin 
      *@param parent
@@ -177,68 +181,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         ranapvipperbarang.setDocument(new batasInput((byte)10).getKata(ranapvipperbarang));
         ranapvvipperbarang.setDocument(new batasInput((byte)10).getKata(ranapvvipperbarang));
         beliluarperbarang.setDocument(new batasInput((byte)10).getKata(beliluarperbarang));
-        jualbebasperbarang.setDocument(new batasInput((byte)10).getKata(jualbebasperbarang));        
-        
-        jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (jenis.getTable().getSelectedRow() != -1) {
-                    kdjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
-                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
-                }
-                kdjns.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(barang.getTable().getSelectedRow()!= -1){                   
-                    kdbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
-                    nmbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
-                }     
-                kdbarang.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    barang.dispose();
-                }  
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
+        jualbebasperbarang.setDocument(new batasInput((byte)10).getKata(jualbebasperbarang));   
     }
 
     /** This method is called from within the constructor to
@@ -1806,7 +1749,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                         ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
                         ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
                         jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(TabSetting.getSelectedIndex()==3){
@@ -1893,7 +1836,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvip.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(TabSetting.getSelectedIndex()==3){
@@ -2067,7 +2010,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                         ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
                         ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
                         jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(TabSetting.getSelectedIndex()==3){
@@ -2258,6 +2201,31 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_kdjnsKeyPressed
 
     private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+                kdjns.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         jenis.isCek();
         jenis.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
         jenis.setLocationRelativeTo(internalFrame1);
@@ -2271,7 +2239,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         }else if(TabSetting.getSelectedIndex()==1){
             tampilpengaturanhargaumum();
         }else if(TabSetting.getSelectedIndex()==2){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabSetting.getSelectedIndex()==3){
             tampilpengaturanhargaperbarang();
         }
@@ -2656,6 +2624,42 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_kdbarangKeyPressed
 
     private void BtnbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnbarangActionPerformed
+        DlgBarang barang=new DlgBarang(null,false);
+        barang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(barang.getTable().getSelectedRow()!= -1){                   
+                    kdbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
+                    nmbarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+                }     
+                kdbarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        barang.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    barang.dispose();
+                }  
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2695,7 +2699,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -2708,7 +2712,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -3168,5 +3172,37 @@ public class DlgSetHarga extends javax.swing.JDialog {
             nmbarang.setText("");
             ralanperbarang.requestFocus();
         }            
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
