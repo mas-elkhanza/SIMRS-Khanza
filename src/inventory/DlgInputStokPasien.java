@@ -54,8 +54,6 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private ResultSet rstampil,rsrekening;
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private DlgCariAturanPakai aturan=new DlgCariAturanPakai(null,false);
     private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0,stokobat,kenaikan=0;
     private int jml=0,i=0,index=0;
     private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
@@ -219,52 +217,6 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         }       
         
         TCari.requestFocus();
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                   
-                    kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                    nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                }   
-                kdgudang.requestFocus();
-                runBackground(() ->tampil());
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        aturan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(aturan.getTable().getSelectedRow()!= -1){  
-                    tbDokter.setValueAt(aturan.getTable().getValueAt(aturan.getTable().getSelectedRow(),0).toString(),tbDokter.getSelectedRow(),12);
-                }   
-                tbDokter.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         jam();
            
@@ -969,6 +921,30 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_kdgudangKeyPressed
 
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
+    DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    bangsal.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(bangsal.getTable().getSelectedRow()!= -1){                   
+                kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+            }   
+            kdgudang.requestFocus();
+            runBackground(() ->tampil());
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
     bangsal.isCek();
     bangsal.emptTeks();
     bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1013,6 +989,28 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 i=tbDokter.getSelectedColumn();
                 if(i==12){
+                    DlgCariAturanPakai aturan=new DlgCariAturanPakai(null,false);
+                    aturan.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(aturan.getTable().getSelectedRow()!= -1){  
+                                tbDokter.setValueAt(aturan.getTable().getValueAt(aturan.getTable().getSelectedRow(),0).toString(),tbDokter.getSelectedRow(),12);
+                            }   
+                            tbDokter.requestFocus();
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
                     aturan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                     aturan.setLocationRelativeTo(internalFrame1);
                     aturan.setVisible(true);
@@ -1143,7 +1141,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         jml=0;
         for(i=0;i<tbDokter.getRowCount();i++){
             if(!tbDokter.getValueAt(i,0).toString().equals("")){

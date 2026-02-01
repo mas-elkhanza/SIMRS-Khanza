@@ -4,6 +4,7 @@ import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -12,7 +13,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -25,7 +30,8 @@ public class InformasiKamarInap extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private validasi Valid=new validasi();
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     private String kmr="",key="";
     private PreparedStatement ps;
@@ -98,46 +104,24 @@ public class InformasiKamarInap extends javax.swing.JDialog {
         tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                   
-                    BangsalCari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                }     
-                BangsalCari.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
@@ -539,7 +523,7 @@ public class InformasiKamarInap extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -552,7 +536,7 @@ public class InformasiKamarInap extends javax.swing.JDialog {
 
     private void DTPCari1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari1ItemStateChanged
          R2.setSelected(true);
-         tampil();          
+         runBackground(() ->tampil());          
        
 }//GEN-LAST:event_DTPCari1ItemStateChanged
 
@@ -561,7 +545,29 @@ public class InformasiKamarInap extends javax.swing.JDialog {
 }//GEN-LAST:event_DTPCari2KeyPressed
 
 private void btnBangsalCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalCariActionPerformed
-       bangsal.isCek();
+       DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){                   
+                    BangsalCari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                }     
+                BangsalCari.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        bangsal.isCek();
         bangsal.emptTeks();        
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
@@ -575,7 +581,7 @@ private void btnBangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
 
 private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangsalCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBangsalCariActionPerformed(null);
         }else{Valid.pindah(evt, DTPCari2, TCari);}
@@ -583,7 +589,7 @@ private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void DTPCari3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari3ItemStateChanged
    R3.setSelected(true);
-   tampil(); 
+   runBackground(() ->tampil()); 
 }//GEN-LAST:event_DTPCari3ItemStateChanged
 
 private void DTPCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari3KeyPressed
@@ -592,7 +598,7 @@ private void DTPCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void cmbJam1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJam1ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbJam1ItemStateChanged
 
 private void cmbJam1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJam1KeyPressed
@@ -617,7 +623,7 @@ private void cmbMnt2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_c
 
 private void cmbJam2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJam2ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbJam2ItemStateChanged
 
 private void cmbJam2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJam2KeyPressed
@@ -626,38 +632,38 @@ private void cmbJam2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_c
 
 private void cmbMnt1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMnt1ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbMnt1ItemStateChanged
 
 private void cmbDtk1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbDtk1ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbDtk1ItemStateChanged
 
 private void cmbMnt2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMnt2ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbMnt2ItemStateChanged
 
 private void cmbDtk2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbDtk2ItemStateChanged
    R3.setSelected(true);
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_cmbDtk2ItemStateChanged
 
 private void R1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_R1ItemStateChanged
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_R1ItemStateChanged
 
 private void R2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_R2ItemStateChanged
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_R2ItemStateChanged
 
 private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_R3ItemStateChanged
-   tampil();
+   runBackground(() ->tampil());
 }//GEN-LAST:event_R3ItemStateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
@@ -667,14 +673,14 @@ private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         BangsalCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
             BangsalCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, BtnKeluar);
         }
@@ -816,5 +822,35 @@ private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
 
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

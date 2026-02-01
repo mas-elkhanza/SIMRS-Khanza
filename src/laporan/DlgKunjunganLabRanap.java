@@ -57,7 +57,6 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private DlgCariBangsal kamar=new DlgCariBangsal(null,false);
     private int i=0,laki=0,per=0,jmldiagnosa=0,jmlnolab=0;   
     private String umurlk="",umurpr="",kddiangnosa="",diagnosa="",no_lab="",tindakan="";
     /** Creates new form DlgLhtBiaya

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -25,8 +25,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
@@ -43,9 +47,9 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);    
-    private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private int i, pilihan=0;
+    private int i;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -127,68 +131,6 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
         KodeDepoRalan.setDocument(new batasInput((byte)5).getKata(KodeDepoRalan)); 
         KodeDepoRanap.setDocument(new batasInput((byte)5).getKata(KodeDepoRanap)); 
         KodeBangsalRanap.setDocument(new batasInput((byte)5).getKata(KodeBangsalRanap)); 
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){  
-                    if(pilihan==1){
-                        kdbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                        nmbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        kdbangsal.requestFocus();
-                    }else if(pilihan==2){
-                        KodeDepoRalan.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                        NmDepoRalan.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        KodeDepoRalan.requestFocus();
-                    }else if(pilihan==3){
-                        KodeBangsalRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                        NamaBangsalRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        KodeBangsalRanap.requestFocus();
-                    }else if(pilihan==4){
-                        KodeDepoRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                        NamaDepoRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        KodeDepoRanap.requestFocus();
-                    }                        
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){        
-                    KodePoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                    KodePoli.requestFocus();
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        
     }
     
 
@@ -708,7 +650,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
                 Valid.textKosong(nmbangsal,"Nama Lokasi");
             }else if(tabMode.getRowCount()==0){
                 Sequel.menyimpan("set_lokasi","'"+kdbangsal.getText()+"','"+cmbstok.getSelectedItem()+"'","Lokasi");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }else if(tabMode.getRowCount()>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu lokasi ...!!!!");
@@ -765,7 +707,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! nmbangsal.getText().trim().equals("")){
                 Sequel.queryu("delete from set_lokasi where kd_bangsal='"+kdbangsal.getText()+"'");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -852,7 +794,29 @@ private void nmbangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_nmbangsalKeyPressed
 
 private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
-        pilihan=1;
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false); 
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){  
+                    kdbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    nmbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    kdbangsal.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
@@ -864,7 +828,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_btnBangsalKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbstokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbstokKeyPressed
@@ -880,7 +844,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }else{
                 Sequel.queryu("delete from set_lokasi where kd_bangsal='"+kdbangsal.getText()+"'");
                 Sequel.menyimpan("set_lokasi","'"+kdbangsal.getText()+"','"+cmbstok.getSelectedItem()+"'","Lokasi");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -923,7 +887,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
             tampilralan();
         }else if(TabRawat.getSelectedIndex()==2){
@@ -940,6 +904,29 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_NmPoliKeyPressed
 
     private void btnBangsal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal1ActionPerformed
+        DlgCariPoli poli=new DlgCariPoli(null,false);
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){        
+                    KodePoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    KodePoli.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        }); 
         poli.isCek();        
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
@@ -999,7 +986,29 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_NmDepoRalanKeyPressed
 
     private void btnBangsal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal3ActionPerformed
-        pilihan=2;
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false); 
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){  
+                    KodeDepoRalan.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    NmDepoRalan.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    KodeDepoRalan.requestFocus();                       
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
@@ -1011,7 +1020,29 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_btnBangsal3KeyPressed
 
     private void btnBangsal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal2ActionPerformed
-        pilihan=3;
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false); 
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){  
+                    KodeBangsalRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    NamaBangsalRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    KodeBangsalRanap.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
@@ -1039,7 +1070,29 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_NamaDepoRanapKeyPressed
 
     private void btnBangsal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal4ActionPerformed
-        pilihan=4;
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false); 
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){  
+                    KodeDepoRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    NamaDepoRanap.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    KodeDepoRanap.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
@@ -1239,5 +1292,37 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             KodeDepoRanap.setText(tbRanap.getValueAt(row,2).toString());
             NamaDepoRanap.setText(tbRanap.getValueAt(row,3).toString());
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

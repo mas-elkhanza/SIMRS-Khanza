@@ -16,6 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -24,8 +25,12 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -42,7 +47,8 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -67,7 +73,7 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
         };
 
         tbSpesialis.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -90,43 +96,6 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
         kdpj.setDocument(new batasInput((byte)3).getKata(kdpj));
         TKd.setDocument(new batasInput((byte)30).getKata(TKd));
         TPass.setDocument(new batasInput((byte)30).getKata(TPass));
-        
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    kdpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                }  
-                kdpj.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });        
-        
     }
     
     /** This method is called from within the constructor to
@@ -371,10 +340,46 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
+        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penjab.getTable().getSelectedRow()!= -1){
+                    kdpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                    nmpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                }  
+                kdpj.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         penjab.isCek();
         penjab.emptTeks();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -427,7 +432,7 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
                 if(Sequel.menyimpantf("password_asuransi","?,aes_encrypt(?,'nur'),aes_encrypt(?,'windi')","Cara Bayar",3,new String[]{
                     kdpj.getText(),TKd.getText(),TPass.getText()
                 })==true){
-                    tampil();
+                    runBackground(() ->tampil());
                     emptTeks();
                 }
             }
@@ -444,7 +449,7 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         Valid.hapusTable(tabMode,kdpj,"password_asuransi","kd_pj");
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -477,7 +482,7 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
             if(Sequel.menyimpantf("password_asuransi","?,aes_encrypt(?,'nur'),aes_encrypt(?,'windi')","Cara Bayar",3,new String[]{
                 kdpj.getText(),TKd.getText(),TPass.getText()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }else if(tabMode.getRowCount()>0){
@@ -601,9 +606,35 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
         }
     }
     
-    
-    
-    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
 
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }
