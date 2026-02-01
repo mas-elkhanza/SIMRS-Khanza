@@ -1725,28 +1725,40 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(TabRawat.getSelectedIndex()==0){
-            DlgCariPermintaanLab form=new DlgCariPermintaanLab(null,false);
-            form.isCek();
-            form.setPasien(TNoRw.getText());
-            form.setSize(this.getWidth(),this.getHeight());
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
-        }else if(TabRawat.getSelectedIndex()==1){
-            DlgCariPermintaanLabPA form=new DlgCariPermintaanLabPA(null,false);
-            form.isCek();
-            form.setPasien(TNoRw.getText());
-            form.setSize(this.getWidth(),this.getHeight());
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
-        }else if(TabRawat.getSelectedIndex()==2){
-            DlgCariPermintaanLabMB form=new DlgCariPermintaanLabMB(null,false);
-            form.isCek();
-            form.setPasien(TNoRw.getText());
-            form.setSize(this.getWidth(),this.getHeight());
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
-        }   
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                {
+                    DlgCariPermintaanLab form=new DlgCariPermintaanLab(null,false);
+                    form.isCek();
+                    form.setPasien(TNoRw.getText());
+                    form.setSize(this.getWidth(),this.getHeight());
+                    form.setLocationRelativeTo(this);
+                    form.setVisible(true);
+                    break;
+                }
+            case 1:
+                {
+                    DlgCariPermintaanLabPA form=new DlgCariPermintaanLabPA(null,false);
+                    form.isCek();
+                    form.setPasien(TNoRw.getText());
+                    form.setSize(this.getWidth(),this.getHeight());
+                    form.setLocationRelativeTo(this);
+                    form.setVisible(true);
+                    break;
+                }
+            case 2:   
+                {
+                    DlgCariPermintaanLabMB form=new DlgCariPermintaanLabMB(null,false);
+                    form.isCek();
+                    form.setPasien(TNoRw.getText());
+                    form.setSize(this.getWidth(),this.getHeight());
+                    form.setLocationRelativeTo(this);
+                    form.setVisible(true);
+                    break;
+                }
+            default:
+                break;
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 

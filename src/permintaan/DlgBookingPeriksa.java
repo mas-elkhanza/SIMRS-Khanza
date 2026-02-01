@@ -71,10 +71,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private String[] arrSplit;
     private String kelurahan="",kecamatan="",kabupaten="",propinsi="",kdkel="",kdkec="",kdkab="",kdprop="",
                    aktifjadwal="",URUTNOREG="";
-    private DlgKabupaten kab=new DlgKabupaten(this,false);
-    private DlgPropinsi prop=new DlgPropinsi(this,false);
-    private DlgKecamatan kec=new DlgKecamatan(this,false);
-    private DlgKelurahan kel=new DlgKelurahan(this,false);
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private boolean sukses=true; 
@@ -158,99 +154,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                     }
                 }
             });
-        }      
-        
-        prop.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(prop.getTable().getSelectedRow()!= -1){
-                    Propinsi.setText(prop.getTable().getValueAt(prop.getTable().getSelectedRow(),0).toString());
-                    kdprop=prop.getTable().getValueAt(prop.getTable().getSelectedRow(),1).toString();
-                    Propinsi.requestFocus();
-                }     
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kab.getTable().getSelectedRow()!= -1){
-                    Kabupaten.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
-                    kdkab=kab.getTable().getValueAt(kab.getTable().getSelectedRow(),1).toString();
-                    Kabupaten.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kec.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kec.getTable().getSelectedRow()!= -1){
-                    Kecamatan.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
-                    kdkec=kec.getTable().getValueAt(kec.getTable().getSelectedRow(),1).toString();
-                    Kecamatan.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kel.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kel.getTable().getSelectedRow()!= -1){
-                    Kelurahan.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
-                    kdkel=kel.getTable().getValueAt(kel.getTable().getSelectedRow(),1).toString();
-                    Kelurahan.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+        } 
         
         try {
             aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
@@ -1382,10 +1286,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        kab.dispose();
-        kec.dispose();
-        prop.dispose();
-        kel.dispose();
         WindowBalas.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -1487,10 +1387,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         aktif=false;
-        kab.dispose();
-        kec.dispose();
-        prop.dispose();
-        kel.dispose();
         WindowBalas.dispose();
     }//GEN-LAST:event_formWindowClosed
 
@@ -1519,10 +1415,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnCloseBalasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseBalasanActionPerformed
-        kab.dispose();
-        kec.dispose();
-        prop.dispose();
-        kel.dispose();
         WindowBalas.dispose();
     }//GEN-LAST:event_BtnCloseBalasanActionPerformed
 
@@ -1621,12 +1513,58 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_KelurahanKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
+        DlgKelurahan kel=new DlgKelurahan(this,false);
+        kel.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kel.getTable().getSelectedRow()!= -1){
+                    Kelurahan.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
+                    kdkel=kel.getTable().getValueAt(kel.getTable().getSelectedRow(),1).toString();
+                    Kelurahan.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kel.setLocationRelativeTo(internalFrame1);
         kel.setVisible(true);
     }//GEN-LAST:event_BtnKelurahanActionPerformed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
+        DlgKecamatan kec=new DlgKecamatan(this,false);
+        kec.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kec.getTable().getSelectedRow()!= -1){
+                    Kecamatan.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
+                    kdkec=kec.getTable().getValueAt(kec.getTable().getSelectedRow(),1).toString();
+                    Kecamatan.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);
@@ -1701,6 +1639,29 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_KabupatenKeyPressed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
+        DlgKabupaten kab=new DlgKabupaten(this,false);
+        kab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kab.getTable().getSelectedRow()!= -1){
+                    Kabupaten.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
+                    kdkab=kab.getTable().getValueAt(kab.getTable().getSelectedRow(),1).toString();
+                    Kabupaten.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
@@ -1738,6 +1699,29 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_PropinsiKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
+        DlgPropinsi prop=new DlgPropinsi(this,false);
+        prop.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(prop.getTable().getSelectedRow()!= -1){
+                    Propinsi.setText(prop.getTable().getValueAt(prop.getTable().getSelectedRow(),0).toString());
+                    kdprop=prop.getTable().getValueAt(prop.getTable().getSelectedRow(),1).toString();
+                    Propinsi.requestFocus();
+                }     
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         prop.setLocationRelativeTo(internalFrame1);
         prop.setVisible(true);
