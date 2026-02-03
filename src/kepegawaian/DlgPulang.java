@@ -16,14 +16,19 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -41,6 +46,8 @@ public final class DlgPulang extends javax.swing.JDialog {
     private ResultSet rs;
     private String say=" rekap_presensi.jam_datang like '%"+Sequel.cariString("select current_date()")+"%' and rekap_presensi.durasi!='' ";
     private String[] primary;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgBangsal
      * @param parent
@@ -89,48 +96,23 @@ public final class DlgPulang extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }  
-        try{
-            ps=koneksi.prepareStatement(
-                "select  pegawai.id, "+
-                "pegawai.nik, "+
-                "pegawai.nama, "+
-                "rekap_presensi.shift, "+
-                "rekap_presensi.jam_datang, "+
-                "rekap_presensi.jam_pulang, "+
-                "rekap_presensi.status, "+
-                "rekap_presensi.keterlambatan, "+
-                "rekap_presensi.durasi, "+
-                "rekap_presensi.keterangan "+
-                " from pegawai inner join rekap_presensi on pegawai.id=rekap_presensi.id where "+
-                "  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and pegawai.nama like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.shift like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.status like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.keterlambatan like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.jam_datang like ? and "+say+" or "+
-                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.keterangan like ? and "+say+" or "+
-                " pegawai.stts_aktif<>'KELUAR' and rekap_presensi.jam_pulang like ? and "+say+" order by rekap_presensi.jam_datang ");            
-        }catch(Exception ex){            
-            System.out.println(ex);
-        }
-        
         DlgInput.setSize(744,127);
         DlgInput.setVisible(false);
     }
@@ -436,7 +418,7 @@ public final class DlgPulang extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -449,13 +431,13 @@ public final class DlgPulang extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
@@ -482,7 +464,7 @@ public final class DlgPulang extends javax.swing.JDialog {
         }else{
             Valid.editTable(tabMode,"rekap_presensi","jam_datang='"+jam_datang.getText()+
                 "' and id",id_pegawai,"keterangan='"+catatan.getText()+"'");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
             DlgInput.dispose();
         }
@@ -585,34 +567,65 @@ public final class DlgPulang extends javax.swing.JDialog {
 
     public void tampil() {        
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,"%"+TCari.getText().trim()+"%");
-            ps.setString(8,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            rs.last();
-            primary=new String[rs.getRow()];
-            rs.beforeFirst();
-            int i=0;            
-            while(rs.next()){
-                String[] data={rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10)};
-                tabMode.addRow(data);
-                primary[i]=rs.getString(1);
-                i++;
-             }
+        try{  
+            ps=koneksi.prepareStatement(
+                "select  pegawai.id, "+
+                "pegawai.nik, "+
+                "pegawai.nama, "+
+                "rekap_presensi.shift, "+
+                "rekap_presensi.jam_datang, "+
+                "rekap_presensi.jam_pulang, "+
+                "rekap_presensi.status, "+
+                "rekap_presensi.keterlambatan, "+
+                "rekap_presensi.durasi, "+
+                "rekap_presensi.keterangan "+
+                " from pegawai inner join rekap_presensi on pegawai.id=rekap_presensi.id where "+
+                "  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and pegawai.nama like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.shift like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.status like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.keterlambatan like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.jam_datang like ? and "+say+" or "+
+                "  pegawai.stts_aktif<>'KELUAR' and rekap_presensi.keterangan like ? and "+say+" or "+
+                " pegawai.stts_aktif<>'KELUAR' and rekap_presensi.jam_pulang like ? and "+say+" order by rekap_presensi.jam_datang ");   
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                rs.last();
+                primary=new String[rs.getRow()];
+                rs.beforeFirst();
+                int i=0;            
+                while(rs.next()){
+                    String[] data={rs.getString(2),
+                                   rs.getString(3),
+                                   rs.getString(4),
+                                   rs.getString(5),
+                                   rs.getString(6),
+                                   rs.getString(7),
+                                   rs.getString(8),
+                                   rs.getString(9),
+                                   rs.getString(10)};
+                    tabMode.addRow(data);
+                    primary[i]=rs.getString(1);
+                    i++;
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Bangsal : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
@@ -635,4 +648,35 @@ public final class DlgPulang extends javax.swing.JDialog {
         jam_datang.setText("");
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

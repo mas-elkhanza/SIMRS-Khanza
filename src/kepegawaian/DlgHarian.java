@@ -30,10 +30,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -50,9 +54,10 @@ public final class DlgHarian extends javax.swing.JDialog {
     private PreparedStatement ps,psketerlambatan;
     private ResultSet rs,rsketerlambatan;
     private String masuk="",pulang="",pilih="";
-    private DlgBarcode bar=new DlgBarcode(null,false);
     private String[] id;
     private String[] tgl;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     int no=0,i=0,toleransi=0,terlambat1=0,terlambat2=0;
     /** Creates new form DlgBangsal
@@ -103,90 +108,50 @@ public final class DlgHarian extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        runBackground(() ->tampil());
                     }
                 }
             });
         }  
         Valid.loadCombo(Departemen,"nama","departemen");
         Departemen.addItem("Semua");
-        Departemen.setSelectedItem("Semua");        
-        
-        bar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bar.getTable().getSelectedRow()!= -1){                   
-                    Idpresensi.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),0).toString());                        
-                    Nik.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),1).toString());                        
-                    Nm.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),2).toString());                        
-                }  
-                catatan.requestFocus();
-                
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}            
-        });
-        
-        bar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    bar.dispose();                    
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
+        Departemen.setSelectedItem("Semua");    
         
         try {
-            ps=koneksi.prepareStatement(
-                "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
-                "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
-                "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
-                "on pegawai.departemen=departemen.dep_id and pegawai.id=rekap_presensi.id where "+
-                " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? and rekap_presensi.jam_datang between ? and ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? and  rekap_presensi.jam_datang between ? and ?  "+                   
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.shift like ? and  rekap_presensi.jam_datang between ? and ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.status like ? and  rekap_presensi.jam_datang between ? and ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.keterlambatan like ? and  rekap_presensi.jam_datang between ? and ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_datang like ? and  rekap_presensi.jam_datang between ? and ? "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_pulang like ? and  rekap_presensi.jam_datang between ? and ?  order by pegawai.nama ");
             psketerlambatan=koneksi.prepareStatement("select * from set_keterlambatan");
-            rsketerlambatan=psketerlambatan.executeQuery();
-            if(rsketerlambatan.next()){
-                toleransi=rsketerlambatan.getInt(1);
-                terlambat1=rsketerlambatan.getInt(2);
-                terlambat2=rsketerlambatan.getInt(3);
-            }else{
-                toleransi=0;
-                terlambat1=0;
-                terlambat2=0;
-            }
+            try {
+                rsketerlambatan=psketerlambatan.executeQuery();
+                if(rsketerlambatan.next()){
+                    toleransi=rsketerlambatan.getInt(1);
+                    terlambat1=rsketerlambatan.getInt(2);
+                    terlambat2=rsketerlambatan.getInt(3);
+                }else{
+                    toleransi=0;
+                    terlambat1=0;
+                    terlambat2=0;
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Bangsal : "+e);
+            } finally{
+                if(rsketerlambatan!=null){
+                    rsketerlambatan.close();
+                }
+                if(psketerlambatan!=null){
+                    psketerlambatan.close();
+                }
+            }   
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -722,7 +687,7 @@ public final class DlgHarian extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -784,7 +749,7 @@ public final class DlgHarian extends javax.swing.JDialog {
                     +"keterlambatan=if(TIME_TO_SEC('"+masuk+"')-TIME_TO_SEC("+jam+")>"+(toleransi*60)+",SEC_TO_TIME(TIME_TO_SEC('"+masuk+"')-TIME_TO_SEC("+jam+")),'')");
                 DlgInput.dispose();
             }
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -846,7 +811,7 @@ public final class DlgHarian extends javax.swing.JDialog {
             tbBangsal.requestFocus();
         }else{
             Valid.hapusTable(tabMode,Idpresensi,"rekap_presensi","jam_datang='"+tgl[no]+"' and  id");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1081,7 +1046,7 @@ public final class DlgHarian extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1127,8 +1092,45 @@ public final class DlgHarian extends javax.swing.JDialog {
     }//GEN-LAST:event_NmKeyPressed
 
     private void CariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CariActionPerformed
+        DlgBarcode bar=new DlgBarcode(null,false);
+        bar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bar.getTable().getSelectedRow()!= -1){                   
+                    Idpresensi.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),0).toString());                        
+                    Nik.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),1).toString());                        
+                    Nm.setText(bar.getTable().getValueAt(bar.getTable().getSelectedRow(),2).toString());                        
+                }  
+                catatan.requestFocus();
+                
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}            
+        });
+        
+        bar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    bar.dispose();                    
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         bar.emptTeks();
-        bar.tampil();
         bar.isCek();
         bar.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
         bar.setLocationRelativeTo(internalFrame1);
@@ -1212,64 +1214,86 @@ public final class DlgHarian extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{    
-            ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(4,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(5,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(8,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(9,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(10,"%"+TCari.getText().trim()+"%");
-            ps.setString(11,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(12,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(13,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(14,"%"+TCari.getText().trim()+"%");
-            ps.setString(15,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(16,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(17,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(18,"%"+TCari.getText().trim()+"%");
-            ps.setString(19,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(20,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(21,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(22,"%"+TCari.getText().trim()+"%");
-            ps.setString(23,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(24,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(25,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(26,"%"+TCari.getText().trim()+"%");
-            ps.setString(27,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(28,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
-            rs=ps.executeQuery();
-            rs.last();
-            
-            id=new String[rs.getRow()];
-            tgl=new String[rs.getRow()];
-            
-            rs.beforeFirst();
-            
-            i=0;
-            
-            while(rs.next()){
-                String[] data={rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10)};
-                tabMode.addRow(data);
-                id[i]=rs.getString(1);
-                tgl[i]=rs.getString(5);
-                i++;
-             }
+            ps=koneksi.prepareStatement(
+                "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
+                "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
+                "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
+                "on pegawai.departemen=departemen.dep_id and pegawai.id=rekap_presensi.id where "+
+                " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? and rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? and  rekap_presensi.jam_datang between ? and ?  "+                   
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.shift like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.status like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.keterlambatan like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_datang like ? and  rekap_presensi.jam_datang between ? and ? "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_pulang like ? and  rekap_presensi.jam_datang between ? and ?  order by pegawai.nama ");
+            try {
+                ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(4,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(5,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                ps.setString(11,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(12,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(13,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(14,"%"+TCari.getText().trim()+"%");
+                ps.setString(15,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(16,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(17,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(20,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(21,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(22,"%"+TCari.getText().trim()+"%");
+                ps.setString(23,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(24,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(25,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(26,"%"+TCari.getText().trim()+"%");
+                ps.setString(27,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(28,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+                rs=ps.executeQuery();
+                rs.last();
+
+                id=new String[rs.getRow()];
+                tgl=new String[rs.getRow()];
+
+                rs.beforeFirst();
+
+                i=0;
+
+                while(rs.next()){
+                    String[] data={rs.getString(2),
+                                   rs.getString(3),
+                                   rs.getString(4),
+                                   rs.getString(5),
+                                   rs.getString(6),
+                                   rs.getString(7),
+                                   rs.getString(8),
+                                   rs.getString(9),
+                                   rs.getString(10)};
+                    tabMode.addRow(data);
+                    id[i]=rs.getString(1);
+                    tgl[i]=rs.getString(5);
+                    i++;
+                }
+                LCount.setText(""+tabMode.getRowCount());
+            } catch (Exception e) {
+                System.out.println("Notif Bangsal : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
-
     }
 
     public void emptTeks() {
@@ -1340,4 +1364,35 @@ public final class DlgHarian extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getpresensi_harian());
      }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

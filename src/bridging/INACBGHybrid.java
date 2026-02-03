@@ -185,7 +185,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -228,7 +228,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -272,7 +272,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -314,7 +314,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                     public void windowClosing(WindowEvent e) {}
                                                     @Override
                                                     public void windowClosed(WindowEvent e) {
-                                                        loadURL(URL);
+                                                        runBackground(() ->loadURL(URL));
                                                     }
                                                     @Override
                                                     public void windowIconified(WindowEvent e) {}
@@ -340,7 +340,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                     public void windowClosing(WindowEvent e) {}
                                                     @Override
                                                     public void windowClosed(WindowEvent e) {
-                                                        loadURL(URL);
+                                                        runBackground(() ->loadURL(URL));
                                                     }
                                                     @Override
                                                     public void windowIconified(WindowEvent e) {}

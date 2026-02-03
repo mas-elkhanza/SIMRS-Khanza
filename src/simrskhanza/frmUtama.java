@@ -8650,7 +8650,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         isTutup();
         DlgBarcode barcode=new DlgBarcode(this,false);
-        barcode.tampil();
         barcode.isCek();
         barcode.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         barcode.setLocationRelativeTo(PanelUtama);

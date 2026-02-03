@@ -21,6 +21,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -63,6 +66,8 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     private final JProgressBar progressBar = new JProgressBar();
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     
     public DlgRiwayatJabatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -96,7 +101,7 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     
     private void initComponents2() {           
         txtURL.addActionListener((ActionEvent e) -> {
-            loadURL(txtURL.getText());
+            runBackground(() ->loadURL(txtURL.getText()));
         });
   
         progressBar.setPreferredSize(new Dimension(150, 18));
@@ -384,7 +389,7 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         try {
             if(engine.getLocation().contains("ListRiwayatPangkat")){
-                loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatPangkat&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_"));
+                runBackground(() ->loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatPangkat&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_")));
             }                
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
@@ -449,6 +454,36 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     private widget.panelisi panel;
     private widget.panelisi panelGlass5;
     // End of variables declaration//GEN-END:variables
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
 
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
    
 }

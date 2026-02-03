@@ -70,9 +70,6 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="tbJadwal" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbJadwalKeyPressed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
