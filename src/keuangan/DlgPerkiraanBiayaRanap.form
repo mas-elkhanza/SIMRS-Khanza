@@ -332,9 +332,6 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="tbBangsal" noResource="true"/>
               </Properties>
               <Events>
