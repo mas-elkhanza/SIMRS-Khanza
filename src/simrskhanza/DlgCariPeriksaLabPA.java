@@ -24,8 +24,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.HyperlinkEvent;
@@ -45,6 +49,8 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPasien member;
     private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private int i,jmlkunjungan=0,jmlpemeriksaan=0,jmlsubpemeriksaan=0;
     private PreparedStatement ps,ps2,ps3,ps4,psrekening,ps5,pspermintaan;
     private ResultSet rs,rs2,rs3,rs5,rsrekening,rspermintaan;
@@ -131,19 +137,19 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        TabRawatMouseClicked(null);
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        TabRawatMouseClicked(null);
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        TabRawatMouseClicked(null);
                     }
                 }
             });
@@ -251,12 +257,12 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         LoadHTML.setEditable(false);
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              Desktop desktop = Desktop.getDesktop();
-              try {
-                desktop.browse(e.getURL().toURI());
-              } catch (Exception ex) {
-                ex.printStackTrace();
-              }
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                   desktop.browse(e.getURL().toURI());
+                } catch (Exception ex) {
+                   ex.printStackTrace();
+                }
             }
         });
         StyleSheet styleSheet2 = kit2.getStyleSheet();
@@ -1502,9 +1508,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil3();
+            runBackground(() ->tampil3());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1715,7 +1721,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 DiagnosaKlinis.getText(),Makroskopis.getText(),Mikroskopis.getText(),Kesimpulan.getText(),Kesan.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
                 tbDokter.getValueAt(tbDokter.getSelectedRow(),14).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 JOptionPane.showMessageDialog(null,"Proses update berhasil.....!"); 
             }else{
                 JOptionPane.showMessageDialog(null,"Proses update gagal.....!"); 
@@ -2053,7 +2059,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
                             if(sukses==true){
                                 Sequel.Commit();
-                                tampil();
+                                runBackground(() ->tampil());
                             }else{
                                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                                 Sequel.RollBack();
@@ -2399,7 +2405,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         
     }
     
-    public void tampil3(){        
+    private void tampil3(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
@@ -2669,7 +2675,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     
     public void SetNoRw(String norw){
         NoRawat.setText(norw);
-        tampil();
+        runBackground(() ->tampil());
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norw+"'", Tgl1);
     }
     
@@ -2749,4 +2755,35 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }
  
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }
