@@ -3236,7 +3236,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -3577,6 +3577,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
+        runBackground(() ->tampil());
     }
     
     private void isForm(){

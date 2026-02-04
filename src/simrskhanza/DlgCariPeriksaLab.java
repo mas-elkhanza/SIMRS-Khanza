@@ -180,7 +180,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
                 "set_akun_ranap.Utang_Jasa_Medik_Dokter_Laborat_Ranap,set_akun_ranap.Beban_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Petugas_Laborat_Ranap,"+
                 "set_akun_ranap.Beban_Kso_Laborat_Ranap,set_akun_ranap.Utang_Kso_Laborat_Ranap,set_akun_ranap.HPP_Persediaan_Laborat_Rawat_inap,set_akun_ranap.Persediaan_BHP_Laborat_Rawat_Inap,"+
                 "set_akun_ranap.Beban_Jasa_Sarana_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Laborat_Ranap,set_akun_ranap.Beban_Jasa_Perujuk_Laborat_Ranap,"+
-                "set_akun_ranap.Utang_Jasa_Perujuk_Laborat_Ranap from set_akun_ranap"
+                "set_akun_ranap.Utang_Jasa_Perujuk_Laborat_Ranap,set_akun_ranap.Beban_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Laborat_Ranap from set_akun_ranap"
             );
             try {
                 rsrekening=psrekening.executeQuery();

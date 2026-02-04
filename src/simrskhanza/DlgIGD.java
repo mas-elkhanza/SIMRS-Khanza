@@ -9384,7 +9384,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 resume.setVisible(true);
                 resume.setLocationRelativeTo(internalFrame1);
                 resume.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                resume.tampil2();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
