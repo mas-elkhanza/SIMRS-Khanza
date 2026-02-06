@@ -491,27 +491,10 @@ public final class DlgIGD extends javax.swing.JDialog {
             IPPRINTERTRACER=koneksiDB.IPPRINTERTRACER();
             URUTNOREG=koneksiDB.URUTNOREG();            
             aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
-            ps3=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama,poliklinik.kd_poli from poliklinik where poliklinik.kd_poli='IGDK'");
-            try {
-                rs=ps3.executeQuery();
-                if(rs.next()){
-                    biayabaru=rs.getDouble("registrasi");
-                    biayalama=rs.getDouble("registrasilama");
-                    kdigd=rs.getString("kd_poli");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps3!=null){
-                    ps3.close();
-                }
-            }
         } catch (Exception ex) {
             IPPRINTERTRACER="";
-            URUTNOREG="";
+            URUTNOREG="dokter+poli";
+            aktifkanparsial="no";
         }
         
         try {
@@ -6978,7 +6961,31 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            ps3=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama,poliklinik.kd_poli from poliklinik where poliklinik.kd_poli='IGDK'");
+            try {
+                rs=ps3.executeQuery();
+                if(rs.next()){
+                    biayabaru=rs.getDouble("registrasi");
+                    biayalama=rs.getDouble("registrasilama");
+                    kdigd=rs.getString("kd_poli");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps3!=null){
+                    ps3.close();
+                }
+            }
+        }catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
         tampil();
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
