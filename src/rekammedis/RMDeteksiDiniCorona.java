@@ -135,29 +135,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         RiwayatPeriksaSebelumnya.setDocument(new batasInput((byte)50).getKata(RiwayatPeriksaSebelumnya));
         AsalDaerah.setDocument(new batasInput((byte)50).getKata(AsalDaerah));
 
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        } 
-        
         ChkInput.setSelected(false);
         isForm();
         
@@ -294,6 +271,11 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Deteksi Dini Pasien Corona ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -458,7 +440,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -471,7 +453,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -682,7 +664,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(644, 70, 80, 23);
 
-        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2026" }));
         TglGejala.setDisplayFormat("dd-MM-yyyy");
         TglGejala.setName("TglGejala"); // NOI18N
         TglGejala.setOpaque(false);
@@ -742,7 +724,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(A3);
         A3.setBounds(733, 180, 85, 23);
 
-        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2026" }));
         TglSkrining.setDisplayFormat("dd-MM-yyyy");
         TglSkrining.setName("TglSkrining"); // NOI18N
         TglSkrining.setOpaque(false);
@@ -873,7 +855,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(310, 360, 10, 23);
 
-        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2026" }));
         TglKedatangan.setDisplayFormat("dd-MM-yyyy");
         TglKedatangan.setName("TglKedatangan"); // NOI18N
         TglKedatangan.setOpaque(false);
@@ -1549,6 +1531,31 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnCetakDeteksiDiniActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
