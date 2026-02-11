@@ -95,29 +95,6 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         
         Dokter.setDocument(new batasInput((byte)100).getKata(Dokter));
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(Dokter.getText().length()>2){
-                        runBackground(() ->tampil(Dokter.getText()));
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(Dokter.getText().length()>2){
-                        runBackground(() ->tampil(Dokter.getText()));
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(Dokter.getText().length()>2){
-                        runBackground(() ->tampil(Dokter.getText()));
-                    }
-                }
-            });
-        } 
-        
         try {
             link=koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
@@ -160,8 +137,13 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         setIconImages(null);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -255,7 +237,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -419,6 +401,31 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         spesialis.setLocationRelativeTo(internalFrame1);
         spesialis.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        runBackground(() ->tampil(Dokter.getText()));
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        runBackground(() ->tampil(Dokter.getText()));
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        runBackground(() ->tampil(Dokter.getText()));
+                    }
+                }
+            });
+        } 
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments

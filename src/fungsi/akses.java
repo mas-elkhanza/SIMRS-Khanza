@@ -256,7 +256,7 @@ public final class akses {
             template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat=false,penilaian_awal_medis_ranap_jantung=false,e_eksekutif=false,penugasan_pengujian_sampel_lab_kesehatan_lingkungan=false,
             hasil_pengujian_sampel_lab_kesehatan_lingkungan=false,verifikasi_pengujian_sampel_lab_kesehatan_lingkungan=false,validasi_pengujian_sampel_lab_kesehatan_lingkungan=false,
             rekap_pelayanan_lab_kesehatan_lingkungan=false,pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=false,skrining_curb65=false,bpjs_potensi_prb=false,
-            bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false,bpjs_rekap_peserta_prb_apotek=false;
+            bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false,bpjs_rekap_peserta_prb_apotek=false,serah_terima_anggota_tubuh_barang=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1453,6 +1453,7 @@ public final class akses {
                         akses.bpjs_riwayat_pelayanan_obat=true;
                         akses.skrining_gizi_kehamilan=true;
                         akses.bpjs_rekap_peserta_prb_apotek=true;
+                        akses.serah_terima_anggota_tubuh_barang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2633,6 +2634,7 @@ public final class akses {
                         akses.bpjs_riwayat_pelayanan_obat=rs2.getBoolean("bpjs_riwayat_pelayanan_obat");
                         akses.skrining_gizi_kehamilan=rs2.getBoolean("skrining_gizi_kehamilan");
                         akses.bpjs_rekap_peserta_prb_apotek=rs2.getBoolean("bpjs_rekap_peserta_prb_apotek");
+                        akses.serah_terima_anggota_tubuh_barang=rs2.getBoolean("serah_terima_anggota_tubuh_barang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3836,6 +3838,7 @@ public final class akses {
         akses.bpjs_riwayat_pelayanan_obat=false;
         akses.skrining_gizi_kehamilan=false;
         akses.bpjs_rekap_peserta_prb_apotek=false;
+        akses.serah_terima_anggota_tubuh_barang=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5053,4 +5056,5 @@ public final class akses {
     public static boolean getbpjs_riwayat_pelayanan_obat(){return akses.bpjs_riwayat_pelayanan_obat;}
     public static boolean getskrining_gizi_kehamilan(){return akses.skrining_gizi_kehamilan;}
     public static boolean getbpjs_rekap_peserta_prb_apotek(){return akses.bpjs_rekap_peserta_prb_apotek;}
+    public static boolean getserah_terima_anggota_tubuh_barang(){return akses.serah_terima_anggota_tubuh_barang;}
 }   

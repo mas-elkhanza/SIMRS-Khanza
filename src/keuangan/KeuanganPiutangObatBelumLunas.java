@@ -128,52 +128,6 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        }
-        
-        try {
-            ps=koneksi.prepareStatement(
-                    "select set_akun.Diskon_Piutang,set_akun.Piutang_Tidak_Terbayar,set_akun.Piutang_Obat from set_akun");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    Diskon_Piutang=rs.getString("Diskon_Piutang");
-                    Piutang_Tidak_Terbayar=rs.getString("Piutang_Tidak_Terbayar");
-                    akunpiutang=rs.getString("Piutang_Obat");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }
     }
     
 
@@ -825,6 +779,53 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 runBackground(() ->tampilAkunBayar());
             }
         } catch (Exception e) {
+        }
+        
+        try {
+            ps=koneksi.prepareStatement(
+                    "select set_akun.Diskon_Piutang,set_akun.Piutang_Tidak_Terbayar,set_akun.Piutang_Obat from set_akun");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    Diskon_Piutang=rs.getString("Diskon_Piutang");
+                    Piutang_Tidak_Terbayar=rs.getString("Piutang_Tidak_Terbayar");
+                    akunpiutang=rs.getString("Piutang_Obat");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
         }
     }//GEN-LAST:event_formWindowOpened
 

@@ -77,30 +77,6 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         Propinsi.setDocument(new batasInput((byte)100).getKata(Propinsi));
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            Propinsi.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(Propinsi.getText().length()>2){
-                        runBackground(() ->tampil(Propinsi.getText()));
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(Propinsi.getText().length()>2){
-                        runBackground(() ->tampil(Propinsi.getText()));
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(Propinsi.getText().length()>2){
-                        runBackground(() ->tampil(Propinsi.getText()));
-                    }
-                }
-            });
-        } 
-              
     }
     
     
@@ -247,6 +223,28 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         runBackground(() ->tampil(Propinsi.getText()));
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            Propinsi.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        runBackground(() ->tampil(Propinsi.getText()));
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        runBackground(() ->tampil(Propinsi.getText()));
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        runBackground(() ->tampil(Propinsi.getText()));
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**

@@ -16,15 +16,20 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -39,6 +44,8 @@ public final class DlgTemplateLaboratorium extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -331,11 +338,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
+        runBackground(() ->LoadData());
+    }
+    
+    private void LoadData() {
         Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_ld, nilai_rujukan_la, nilai_rujukan_pd,"+
-                        "nilai_rujukan_pa,bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen,biaya_item,urut "+
-                        "from template_laboratorium where kd_jenis_prw=? order by urut");
+            ps=koneksi.prepareStatement(
+                    "select urut.id_template,urut.Pemeriksaan,urut.satuan,urut.nilai_rujukan_ld,urut.nilai_rujukan_la,urut.nilai_rujukan_pd,"+
+                    "urut.nilai_rujukan_pa,urut.bagian_rs,urut.bhp,urut.bagian_perujuk,urut.bagian_dokter,urut.bagian_laborat,urut.kso,urut.menejemen,"+
+                    "urut.biaya_item,urut.urut from template_laboratorium where urut.kd_jenis_prw=? order urut.by urut");
             try {
                 ps.setString(1,KdPeriksa.getText());
                 rs=ps.executeQuery();
@@ -399,5 +411,37 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                   tbKamar.setValueAt(i, i,15);
             }
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

@@ -41,10 +41,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -93,6 +97,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private String[] arrSplit;
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
+    
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -412,29 +419,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Respiratory.setDocument(new batasInput((byte)3).getOnlyAngka(Respiratory));
         Heartrate.setDocument(new batasInput((byte)3).getOnlyAngka(Heartrate));
         TSuhu.setDocument(new batasInput((byte)5).getFilter(TSuhu));
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }  
         
         try {
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
@@ -3396,7 +3380,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -3519,6 +3503,29 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             } 
             TNoRw.requestFocus();
         }
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        TabRawatMouseClicked(null);
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        TabRawatMouseClicked(null);
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        TabRawatMouseClicked(null);
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void TanggalDaftarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalDaftarKeyPressed
@@ -3535,11 +3542,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
-            tampil();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==2){
-            tampil2();
+            runBackground(() ->tampil2());
         }else if(TabRawat.getSelectedIndex()==3){
-            tampil3();
+            runBackground(() ->tampil3());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -4535,7 +4542,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_TCari1KeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil2();
+        runBackground(() ->tampil2());
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
@@ -5014,12 +5021,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void ppFilterTerkirimBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppFilterTerkirimBtnPrintActionPerformed
         status="Terkirim";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppFilterTerkirimBtnPrintActionPerformed
 
     private void ppFilterGagalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppFilterGagalBtnPrintActionPerformed
         status="Gagal";
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppFilterGagalBtnPrintActionPerformed
 
     private void ppSinkronGagalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSinkronGagalBtnPrintActionPerformed
@@ -5084,7 +5091,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }
             }
         }
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_ppSinkronGagalBtnPrintActionPerformed
 
     private void ppJadikanKunjunganBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppJadikanKunjunganBtnPrintActionPerformed
@@ -5795,7 +5802,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_TCari2KeyPressed
 
     private void BtnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari2ActionPerformed
-        tampil3();
+        runBackground(() ->tampil3());
     }//GEN-LAST:event_BtnCari2ActionPerformed
 
     private void BtnCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari2KeyPressed
@@ -8419,11 +8426,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("pcare_pendaftaran","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
                 Sequel.meghapus("reg_periksa","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
-                tampil();
+                runBackground(() ->tampil());
             }else if(nameNode.path("code").asText().equals("304")){
                 Sequel.meghapus("pcare_pendaftaran","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
                 Sequel.meghapus("reg_periksa","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
-                tampil();
+                runBackground(() ->tampil());
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
@@ -8559,7 +8566,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("pcare_kunjungan_umum","no_rawat",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),0).toString());
-                tampil2();
+                runBackground(() ->tampil2());
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
@@ -8627,7 +8634,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("pcare_rujuk_subspesialis","no_rawat",tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString());
-                tampil2();
+                runBackground(() ->tampil2());
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
@@ -8694,7 +8701,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
                         try {
                             PesanKirim.append("MEMULAI PENGIRIMAN DATA\n");
-                            tampil();
+                            runBackground(() ->tampil());
                             PesanKirim.append("Pengiriman data pendaftaran PCare dimulai\n");
                             for(i=0;i<tbPendaftaran.getRowCount();i++){
                                 if(tbPendaftaran.getValueAt(i,20).toString().equals("Gagal")){
@@ -9798,5 +9805,37 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("Notif : "+ex);
         }
         return statusantrean;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
