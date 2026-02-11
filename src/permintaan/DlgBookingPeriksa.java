@@ -133,28 +133,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         BalasanPesan.setDocument(new batasInput((int)200).getKata(BalasanPesan));
         DataBalasan.setDocument(new batasInput((int)200).getKata(DataBalasan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        } 
         
         try {
             aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
@@ -169,74 +147,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         } catch (Exception e) {
             alarm="no";
         }
-        
-        try {
-            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
-                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));                    
-                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));                    
-                    Propinsi.setEditable(rs.getBoolean("propinsi"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    kelurahan=rs.getString("kelurahan");
-                    p_kelurahan=rs.getInt("p_kelurahan");
-                    kecamatan=rs.getString("kecamatan");
-                    p_kecamatan=rs.getInt("p_kecamatan");
-                    kabupaten=rs.getString("kabupaten");
-                    p_kabupaten=rs.getInt("p_kabupaten");
-                    propinsi=rs.getString("propinsi");
-                    p_propinsi=rs.getInt("p_propinsi");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    pengurutan=rs.getString("urutan");
-                    tahun=rs.getString("tahun");
-                    bulan=rs.getString("bulan");
-                    posisitahun=rs.getString("posisi_tahun_bulan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        } 
         
         if(alarm.equals("yes")){
             jam();
@@ -1342,7 +1252,97 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         aktif=true;
-        tampil();
+        runBackground(() ->tampil());
+        try {
+            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
+                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));                    
+                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));                    
+                    Propinsi.setEditable(rs.getBoolean("propinsi"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    kelurahan=rs.getString("kelurahan");
+                    p_kelurahan=rs.getInt("p_kelurahan");
+                    kecamatan=rs.getString("kecamatan");
+                    p_kecamatan=rs.getInt("p_kecamatan");
+                    kabupaten=rs.getString("kabupaten");
+                    p_kabupaten=rs.getInt("p_kabupaten");
+                    propinsi=rs.getString("propinsi");
+                    p_propinsi=rs.getInt("p_propinsi");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnJawabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabActionPerformed

@@ -17,6 +17,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -25,7 +26,11 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -41,7 +46,8 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private MasterMasalahKeperawatanNeonatus masalah=new MasterMasalahKeperawatanNeonatus(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -57,7 +63,7 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
         };
 
         tbSpesialis.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -81,64 +87,6 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
         kdrencana.setDocument(new batasInput((byte)3).getKata(kdrencana));
         namarencana.setDocument(new batasInput((int)1000).getKata(namarencana));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }
-        
-        masalah.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(masalah.getTable().getSelectedRow()!= -1){
-                    kdmasalah.setText(masalah.getTable().getValueAt(masalah.getTable().getSelectedRow(),0).toString());
-                    nmmasalah.setText(masalah.getTable().getValueAt(masalah.getTable().getSelectedRow(),1).toString());
-                }  
-                btnPemeriksaan.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        masalah.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    masalah.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
     }
 
     /** This method is called from within the constructor to
@@ -487,7 +435,7 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
             Valid.textKosong(namarencana,"Pengkajian");
         }else{
             Sequel.menyimpan("master_rencana_keperawatan_neonatus","'"+kdmasalah.getText()+"','"+kdrencana.getText()+"','"+namarencana.getText()+"'","Kode");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -538,7 +486,7 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
                 Sequel.mengedit("master_rencana_keperawatan_neonatus","kode_rencana=?","kode_rencana=?,rencana_keperawatan=?,kode_masalah=?",4,new String[]{
                     kdrencana.getText(),namarencana.getText(),kdmasalah.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2).toString()
                 });
-                if(tabMode.getRowCount()!=0){tampil();}
+                if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
                 emptTeks();
             }
         }
@@ -575,7 +523,7 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -592,7 +540,7 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
        emptTeks();
-       tampil();
+       runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -626,8 +574,30 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tbSpesialisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbSpesialisKeyReleased
@@ -650,6 +620,42 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_nmmasalahKeyPressed
 
     private void btnPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPemeriksaanActionPerformed
+        MasterMasalahKeperawatanNeonatus masalah=new MasterMasalahKeperawatanNeonatus(null,false);
+        masalah.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(masalah.getTable().getSelectedRow()!= -1){
+                    kdmasalah.setText(masalah.getTable().getValueAt(masalah.getTable().getSelectedRow(),0).toString());
+                    nmmasalah.setText(masalah.getTable().getValueAt(masalah.getTable().getSelectedRow(),1).toString());
+                }  
+                btnPemeriksaan.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        masalah.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    masalah.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         masalah.isCek();
         masalah.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         masalah.setLocationRelativeTo(internalFrame1);
@@ -764,5 +770,37 @@ public class MasterRencanaKeperawatanNeonatus extends javax.swing.JDialog {
        BtnSimpan.setEnabled(akses.getmaster_rencana_keperawatan_neonatus());
        BtnHapus.setEnabled(akses.getmaster_rencana_keperawatan_neonatus());
        BtnEdit.setEnabled(akses.getmaster_rencana_keperawatan_neonatus());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

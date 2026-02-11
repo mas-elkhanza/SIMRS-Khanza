@@ -301,29 +301,6 @@ public class DlgPenjualan extends javax.swing.JDialog {
         Ongkir.setDocument(new batasInput((byte)14).getOnlyAngka(Ongkir));   
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        }
-        
         PersenppnObat.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent e) {isKembali();}
@@ -352,80 +329,6 @@ public class DlgPenjualan extends javax.swing.JDialog {
         });
         
         TCari.requestFocus();
-        
-        try {
-            ps=koneksi.prepareStatement("select set_nota.cetaknotasimpanpenjualan,set_nota.verifikasi_penjualan_di_kasir,set_nota.tampilkan_ppnobat_ralan from set_nota");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    notapenjualan=rs.getString("cetaknotasimpanpenjualan");
-                    verifikasi_penjualan_di_kasir=rs.getString("verifikasi_penjualan_di_kasir");
-                    tampilkan_ppnobat_ralan=rs.getString("tampilkan_ppnobat_ralan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            if(notapenjualan.equals("")){
-                notapenjualan="No";
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e); 
-        }
-        
-        try {
-            ps=koneksi.prepareStatement(
-                    "select set_akun.Penjualan_Obat,set_akun.HPP_Obat_Jual_Bebas,set_akun.Persediaan_Obat_Jual_Bebas,set_akun.PPN_Keluaran from set_akun");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    Penjualan_Obat=rs.getString("Penjualan_Obat");
-                    HPP_Obat_Jual_Bebas=rs.getString("HPP_Obat_Jual_Bebas");
-                    Persediaan_Obat_Jual_Bebas=rs.getString("Persediaan_Obat_Jual_Bebas");
-                    PPN_Keluaran=rs.getString("PPN_Keluaran");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }
-        
-        try {
-            ps=koneksi.prepareStatement("select set_embalase.embalase_per_obat,set_embalase.tuslah_per_obat from set_embalase");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    embalasen=rs.getDouble("embalase_per_obat");
-                    tuslahn=rs.getDouble("tuslah_per_obat");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }
         
         try {
             hppfarmasi=koneksiDB.HPPFARMASI();
@@ -1969,10 +1872,108 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }
         } catch (Exception e) {
         }
+        
         Bayar.setText("0");
         Ongkir.setText("0");
+        try {
+            ps=koneksi.prepareStatement("select set_nota.cetaknotasimpanpenjualan,set_nota.verifikasi_penjualan_di_kasir,set_nota.tampilkan_ppnobat_ralan from set_nota");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    notapenjualan=rs.getString("cetaknotasimpanpenjualan");
+                    verifikasi_penjualan_di_kasir=rs.getString("verifikasi_penjualan_di_kasir");
+                    tampilkan_ppnobat_ralan=rs.getString("tampilkan_ppnobat_ralan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            if(notapenjualan.equals("")){
+                notapenjualan="No";
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e); 
+        }
+        
+        try {
+            ps=koneksi.prepareStatement(
+                    "select set_akun.Penjualan_Obat,set_akun.HPP_Obat_Jual_Bebas,set_akun.Persediaan_Obat_Jual_Bebas,set_akun.PPN_Keluaran from set_akun");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    Penjualan_Obat=rs.getString("Penjualan_Obat");
+                    HPP_Obat_Jual_Bebas=rs.getString("HPP_Obat_Jual_Bebas");
+                    Persediaan_Obat_Jual_Bebas=rs.getString("Persediaan_Obat_Jual_Bebas");
+                    PPN_Keluaran=rs.getString("PPN_Keluaran");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            ps=koneksi.prepareStatement("select set_embalase.embalase_per_obat,set_embalase.tuslah_per_obat from set_embalase");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    embalasen=rs.getDouble("embalase_per_obat");
+                    tuslahn=rs.getDouble("tuslah_per_obat");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
         runBackground(() ->tampil());
         cariPPN(); 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed

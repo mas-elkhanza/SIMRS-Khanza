@@ -312,8 +312,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSimpan.setEnabled(true);
         BtnHapus.setEnabled(true);
         BtnEdit.setEnabled(true);
-       
-        
     }
 
 

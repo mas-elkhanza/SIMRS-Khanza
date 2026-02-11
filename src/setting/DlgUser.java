@@ -280,7 +280,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Pengkajian Awal Medis Ralan Jantung","[M]Pengkajian Awal Medis Ralan Urologi","[M]Hasil Pemeriksaan Treadmill","[M]Hasil Pemeriksaan ECHO Pediatrik","[M]Master Template Informasi & Edukasi",
                 "[M]Skrining Instrumen ESAT","[M]Pengkajian Awal Medis Ranap Jantung","[B]Data Penugasan Pengujian Sampel Lab Kesling","[B]Data Hasil Pengujian Sampel Lab Kesling",
                 "[B]Data Verifikasi Pengujian Sampel Lab Kesling","[B]Data Validasi Pengujian Sampel Lab Kesling","[B]Rekap Pelayanan Lab Kesling","[B]Pembayaran Pengujian Sampel Lab Kesling",
-                "[M]Skrining CURB-65","[L]Potensi PRB di VClaim","[L]Riwayat Pelayanan Obat Apotek BPJS","[M]Skrining Gizi Kehamilan","[L]Rekap Peserta PRB Apotek BPJS"
+                "[M]Skrining CURB-65","[L]Potensi PRB di VClaim","[L]Riwayat Pelayanan Obat Apotek BPJS","[M]Skrining Gizi Kehamilan","[L]Rekap Peserta PRB Apotek BPJS","[P]Serah Terima Anggota Tubuh/Barang"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -611,7 +611,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1176;i++) {
+        for (i = 0; i < 1177;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3593,6 +3593,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1175:
                     column.setPreferredWidth(176);
                     break;
+                case 1176:
+                    column.setPreferredWidth(201);
+                    break;
                 default:
                     column.setPreferredWidth(133);
                     break;
@@ -4023,7 +4026,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -4053,7 +4056,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5276,7 +5279,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_potensi_prb='"+tbUser.getValueAt(i,1172).toString()+"',"+
                     "bpjs_riwayat_pelayanan_obat='"+tbUser.getValueAt(i,1173).toString()+"',"+
                     "skrining_gizi_kehamilan='"+tbUser.getValueAt(i,1174).toString()+"',"+
-                    "bpjs_rekap_peserta_prb_apotek='"+tbUser.getValueAt(i,1175).toString()+"'")==true){
+                    "bpjs_rekap_peserta_prb_apotek='"+tbUser.getValueAt(i,1175).toString()+"',"+
+                    "serah_terima_anggota_tubuh_barang='"+tbUser.getValueAt(i,1176).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6714,7 +6718,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "bpjs_potensi_prb='"+tbUser.getValueAt(barisdicopy,1172).toString()+"',"+
                                         "bpjs_riwayat_pelayanan_obat='"+tbUser.getValueAt(barisdicopy,1173).toString()+"',"+
                                         "skrining_gizi_kehamilan='"+tbUser.getValueAt(barisdicopy,1174).toString()+"',"+
-                                        "bpjs_rekap_peserta_prb_apotek='"+tbUser.getValueAt(barisdicopy,1175).toString()+"'");
+                                        "bpjs_rekap_peserta_prb_apotek='"+tbUser.getValueAt(barisdicopy,1175).toString()+"',"+
+                                        "serah_terima_anggota_tubuh_barang='"+tbUser.getValueAt(barisdicopy,1176).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -7046,7 +7051,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.penilaian_awal_medis_ranap_jantung,user.penugasan_pengujian_sampel_lab_kesehatan_lingkungan,user.hasil_pengujian_sampel_lab_kesehatan_lingkungan,"+
                             "user.verifikasi_pengujian_sampel_lab_kesehatan_lingkungan,user.validasi_pengujian_sampel_lab_kesehatan_lingkungan,user.rekap_pelayanan_lab_kesehatan_lingkungan,"+
                             "user.pembayaran_pengujian_sampel_lab_kesehatan_lingkungan,user.skrining_curb65,user.bpjs_potensi_prb,user.bpjs_riwayat_pelayanan_obat,user.skrining_gizi_kehamilan,"+
-                            "user.bpjs_rekap_peserta_prb_apotek from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -8235,7 +8240,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("bpjs_potensi_prb"),
                                            rs.getBoolean("bpjs_riwayat_pelayanan_obat"),
                                            rs.getBoolean("skrining_gizi_kehamilan"),
-                                           rs.getBoolean("bpjs_rekap_peserta_prb_apotek")
+                                           rs.getBoolean("bpjs_rekap_peserta_prb_apotek"),
+                                           rs.getBoolean("serah_terima_anggota_tubuh_barang")
                                         };
                                         i++;
                                         publish(row);
@@ -9414,7 +9420,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("bpjs_potensi_prb"),
                                        rs.getBoolean("bpjs_riwayat_pelayanan_obat"),
                                        rs.getBoolean("skrining_gizi_kehamilan"),
-                                       rs.getBoolean("bpjs_rekap_peserta_prb_apotek")
+                                       rs.getBoolean("bpjs_rekap_peserta_prb_apotek"),
+                                       rs.getBoolean("serah_terima_anggota_tubuh_barang")
                                     };
                                     i++;
                                     publish(row);

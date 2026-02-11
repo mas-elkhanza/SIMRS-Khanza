@@ -488,131 +488,6 @@ public class DlgPasien extends javax.swing.JDialog {
         NIP.setDocument(new batasInput((byte)30).getKata(NIP));
         TNoPeserta.setDocument(new batasInput((byte)25).getKata(TNoPeserta));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihantampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihantampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihantampil();
-                    }
-                }
-            });
-        } 
-        
-        try {
-            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
-                    KelurahanPj.setEditable(rs.getBoolean("kelurahan"));
-                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));
-                    KecamatanPj.setEditable(rs.getBoolean("kecamatan"));                    
-                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));
-                    KabupatenPj.setEditable(rs.getBoolean("kabupaten"));                    
-                    Propinsi.setEditable(rs.getBoolean("propinsi"));
-                    PropinsiPj.setEditable(rs.getBoolean("propinsi"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement("select set_urut_no_rkm_medis.urutan,set_urut_no_rkm_medis.tahun,set_urut_no_rkm_medis.bulan,set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    pengurutan=rs.getString("urutan");
-                    tahun=rs.getString("tahun");
-                    bulan=rs.getString("bulan");
-                    posisitahun=rs.getString("posisi_tahun_bulan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-
-            
-            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    no_ktp=rs.getString("no_ktp");
-                    p_no_ktp=rs.getInt("p_no_ktp");
-                    tmp_lahir=rs.getString("tmp_lahir");
-                    p_tmp_lahir=rs.getInt("p_tmp_lahir");
-                    nm_ibu=rs.getString("nm_ibu");
-                    p_nm_ibu=rs.getInt("p_nm_ibu");
-                    alamat=rs.getString("alamat");
-                    p_alamat=rs.getInt("p_alamat");
-                    pekerjaan=rs.getString("pekerjaan");
-                    p_pekerjaan=rs.getInt("p_pekerjaan");
-                    no_tlp=rs.getString("no_tlp");
-                    p_no_tlp=rs.getInt("p_no_tlp");
-                    umur=rs.getString("umur");
-                    p_umur=rs.getInt("p_umur");
-                    namakeluarga=rs.getString("namakeluarga");
-                    p_namakeluarga=rs.getInt("p_namakeluarga");
-                    no_peserta=rs.getString("no_peserta");
-                    p_no_peserta=rs.getInt("p_no_peserta");
-                    kelurahan=rs.getString("kelurahan");
-                    p_kelurahan=rs.getInt("p_kelurahan");
-                    kecamatan=rs.getString("kecamatan");
-                    p_kecamatan=rs.getInt("p_kecamatan");
-                    kabupaten=rs.getString("kabupaten");
-                    p_kabupaten=rs.getInt("p_kabupaten");
-                    pekerjaanpj=rs.getString("pekerjaanpj");
-                    p_pekerjaanpj=rs.getInt("p_pekerjaanpj");
-                    alamatpj=rs.getString("alamatpj");
-                    p_alamatpj=rs.getInt("p_alamatpj");
-                    kelurahanpj=rs.getString("kelurahanpj");
-                    p_kelurahanpj=rs.getInt("p_kelurahanpj");
-                    kecamatanpj=rs.getString("kecamatanpj");
-                    p_kecamatanpj=rs.getInt("p_kecamatanpj");
-                    kabupatenpj=rs.getString("kabupatenpj");
-                    p_kabupatenpj=rs.getInt("p_kabupatenpj");
-                    propinsi=rs.getString("propinsi");
-                    p_propinsi=rs.getInt("p_propinsi");
-                    propinsipj=rs.getString("propinsipj");
-                    p_propinsipj=rs.getInt("p_propinsipj");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        } 
         
         if(tampilkantni.equals("Yes")){
             chkPolri.setVisible(true);
@@ -2203,6 +2078,9 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -2516,7 +2394,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2648,7 +2526,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -8639,6 +8517,133 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void CmbKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbKeluargaKeyPressed
         Valid.pindah(evt,NmIbu,Saudara);
     }//GEN-LAST:event_CmbKeluargaKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
+                    KelurahanPj.setEditable(rs.getBoolean("kelurahan"));
+                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));
+                    KecamatanPj.setEditable(rs.getBoolean("kecamatan"));                    
+                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));
+                    KabupatenPj.setEditable(rs.getBoolean("kabupaten"));                    
+                    Propinsi.setEditable(rs.getBoolean("propinsi"));
+                    PropinsiPj.setEditable(rs.getBoolean("propinsi"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select set_urut_no_rkm_medis.urutan,set_urut_no_rkm_medis.tahun,set_urut_no_rkm_medis.bulan,set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    no_ktp=rs.getString("no_ktp");
+                    p_no_ktp=rs.getInt("p_no_ktp");
+                    tmp_lahir=rs.getString("tmp_lahir");
+                    p_tmp_lahir=rs.getInt("p_tmp_lahir");
+                    nm_ibu=rs.getString("nm_ibu");
+                    p_nm_ibu=rs.getInt("p_nm_ibu");
+                    alamat=rs.getString("alamat");
+                    p_alamat=rs.getInt("p_alamat");
+                    pekerjaan=rs.getString("pekerjaan");
+                    p_pekerjaan=rs.getInt("p_pekerjaan");
+                    no_tlp=rs.getString("no_tlp");
+                    p_no_tlp=rs.getInt("p_no_tlp");
+                    umur=rs.getString("umur");
+                    p_umur=rs.getInt("p_umur");
+                    namakeluarga=rs.getString("namakeluarga");
+                    p_namakeluarga=rs.getInt("p_namakeluarga");
+                    no_peserta=rs.getString("no_peserta");
+                    p_no_peserta=rs.getInt("p_no_peserta");
+                    kelurahan=rs.getString("kelurahan");
+                    p_kelurahan=rs.getInt("p_kelurahan");
+                    kecamatan=rs.getString("kecamatan");
+                    p_kecamatan=rs.getInt("p_kecamatan");
+                    kabupaten=rs.getString("kabupaten");
+                    p_kabupaten=rs.getInt("p_kabupaten");
+                    pekerjaanpj=rs.getString("pekerjaanpj");
+                    p_pekerjaanpj=rs.getInt("p_pekerjaanpj");
+                    alamatpj=rs.getString("alamatpj");
+                    p_alamatpj=rs.getInt("p_alamatpj");
+                    kelurahanpj=rs.getString("kelurahanpj");
+                    p_kelurahanpj=rs.getInt("p_kelurahanpj");
+                    kecamatanpj=rs.getString("kecamatanpj");
+                    p_kecamatanpj=rs.getInt("p_kecamatanpj");
+                    kabupatenpj=rs.getString("kabupatenpj");
+                    p_kabupatenpj=rs.getInt("p_kabupatenpj");
+                    propinsi=rs.getString("propinsi");
+                    p_propinsi=rs.getInt("p_propinsi");
+                    propinsipj=rs.getString("propinsipj");
+                    p_propinsipj=rs.getInt("p_propinsipj");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihantampil();
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihantampil();
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihantampil();
+                    }
+                }
+            });
+        } 
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @data args the command line arguments

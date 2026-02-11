@@ -122,56 +122,8 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));
         InformasiTambahan.setDocument(new batasInput((int)60).getKata(InformasiTambahan));
         DiagnosisKlinis.setDocument(new batasInput((int)80).getKata(DiagnosisKlinis));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCariPeriksa.getText().length()>2){
-                        runBackground(() -> tampil2());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCariPeriksa.getText().length()>2){
-                        runBackground(() -> tampil2());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCariPeriksa.getText().length()>2){
-                        runBackground(() -> tampil2());
-                    }
-                }
-            });
-        }  
-        
         ChkJln.setSelected(true);
         jam();
-        
-        try {
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
-            try {
-                rsset_tarif=psset_tarif.executeQuery();
-                if(rsset_tarif.next()){
-                    cara_bayar_radiologi=rsset_tarif.getString("cara_bayar_radiologi");
-                    kelas_radiologi=rsset_tarif.getString("kelas_radiologi");
-                }else{
-                    cara_bayar_radiologi="Yes";
-                    kelas_radiologi="Yes";
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rsset_tarif!=null){
-                    rsset_tarif.close();
-                }
-                if(psset_tarif!=null){
-                    psset_tarif.close();
-                }
-            }  
-        } catch (Exception e) {
-            System.out.println(e);
-        } 
         
         try {
             aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
@@ -944,6 +896,53 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         runBackground(() -> tampil2());
+        try {
+            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
+            try {
+                rsset_tarif=psset_tarif.executeQuery();
+                if(rsset_tarif.next()){
+                    cara_bayar_radiologi=rsset_tarif.getString("cara_bayar_radiologi");
+                    kelas_radiologi=rsset_tarif.getString("kelas_radiologi");
+                }else{
+                    cara_bayar_radiologi="Yes";
+                    kelas_radiologi="Yes";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rsset_tarif!=null){
+                    rsset_tarif.close();
+                }
+                if(psset_tarif!=null){
+                    psset_tarif.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariPeriksa.getText().length()>2){
+                        runBackground(() -> tampil2());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariPeriksa.getText().length()>2){
+                        runBackground(() -> tampil2());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariPeriksa.getText().length()>2){
+                        runBackground(() -> tampil2());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**

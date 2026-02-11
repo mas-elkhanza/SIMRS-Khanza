@@ -187,7 +187,11 @@ public class DlgPenggajian extends javax.swing.JDialog {
         });
     }
  
-    public void loadURL(String url) {  
+    public void LoadPenggajian(String url){
+        runBackground(() ->loadURL(url));
+    }
+    
+    private void loadURL(String url) {  
         try {
             createScene();
         } catch (Exception e) {

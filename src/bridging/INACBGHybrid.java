@@ -381,7 +381,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
             }
         });
     }
- 
+     
     public void loadURL(String url) {  
         try {
             createScene();
