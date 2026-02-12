@@ -16,14 +16,19 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -38,6 +43,8 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -60,7 +67,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         };
 
         tbAdmin.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -404,7 +411,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             Valid.textKosong(fee,"Fee Perujuk Ranap");
         }else if(tabMode.getRowCount()==0){
             Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"','"+cmbYes3.getSelectedItem()+"','"+cmbYes4.getSelectedItem()+"','"+cmbYes5.getSelectedItem()+"'","Set Kamar Inap");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }else if(tabMode.getRowCount()>0){
             JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu setup ...!!!!");
@@ -438,7 +445,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! Jam.getText().trim().equals("")){
             Sequel.queryu("delete from set_jam_minimal");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -492,7 +499,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
 }//GEN-LAST:event_JamKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       tampil();
+       runBackground(() ->tampil());
        emptTeks();
     }//GEN-LAST:event_formWindowOpened
 
@@ -510,7 +517,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
         }else{
             Sequel.queryu("delete from set_jam_minimal");
             Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"','"+cmbYes3.getSelectedItem()+"','"+cmbYes4.getSelectedItem()+"','"+cmbYes5.getSelectedItem()+"'","Set Kamar Inap");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
     }//GEN-LAST:event_BtnEditActionPerformed
@@ -594,7 +601,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{   
             ps=koneksi.prepareStatement("select * from set_jam_minimal ");
@@ -648,5 +655,37 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
         cmbYes4.setSelectedItem("No");
         cmbYes5.setSelectedItem("No");
         Jam.requestFocus();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

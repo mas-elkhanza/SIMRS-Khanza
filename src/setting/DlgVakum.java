@@ -15,14 +15,19 @@ import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +41,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgVakum
      * @param parent
@@ -334,7 +341,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -350,7 +357,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -367,14 +374,14 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
         TCari.requestFocus();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari,TCari);
         }
@@ -431,16 +438,16 @@ public class DlgVakum extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    public void hapus(String nm_table){
+    private void hapus(String nm_table){
         int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus isi tabel "+nm_table+" ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
-            if(jawab==JOptionPane.YES_OPTION){
-                try{                    
-                    koneksi.prepareStatement("delete from "+nm_table).executeUpdate();
-                    JOptionPane.showMessageDialog(null,"Proses hapus tabel "+nm_table+" selesai..!!!!");
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(null,"Maaf, gagal menghapus tabel "+nm_table+". "+e);
-                }
+        if(jawab==JOptionPane.YES_OPTION){
+            try{                    
+                koneksi.prepareStatement("delete from "+nm_table).executeUpdate();
+                JOptionPane.showMessageDialog(null,"Proses hapus tabel "+nm_table+" selesai..!!!!");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Maaf, gagal menghapus tabel "+nm_table+". "+e);
             }
+        }
     }
     
     private void tampil() {
@@ -469,5 +476,37 @@ public class DlgVakum extends javax.swing.JDialog {
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

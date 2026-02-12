@@ -16,17 +16,22 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -41,6 +46,10 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -58,7 +67,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
         };
 
         tbSpesialis.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -84,66 +93,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
         BiayaHarian.setDocument(new batasInput((byte)15).getOnlyAngka(BiayaHarian));
         Jumlah.setDocument(new batasInput((byte)15).getOnlyAngka(Jumlah));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }         
-        kamar.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kamar.getTable().getSelectedRow()!= -1){                   
-                    kdkamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),1).toString());
-                    isKmr();
-                }  
-                kdkamar.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kamar.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    kamar.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });        
     }
-    
-    private DlgKamar kamar=new DlgKamar(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -509,7 +459,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
             Valid.textKosong(Jumlah,"Jumlah Tindakan Harian");
         }else{
             Sequel.menyimpan("biaya_harian","'"+kdkamar.getText()+"','"+NmBiaya.getText()+"','"+BiayaHarian.getText()+"','"+Jumlah.getText()+"'","Nama Biaya");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -534,7 +484,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         Valid.hapusTable(tabMode,NmBiaya,"biaya_harian","kd_kamar='"+kdkamar.getText()+"' and nama_biaya");
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -558,7 +508,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
         }else{
             Sequel.mengedit("biaya_harian","kd_kamar='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0)+"' and nama_biaya='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2)+"'","kd_kamar='"+kdkamar.getText()+"',nama_biaya='"+NmBiaya.getText()+
                             "',jml='"+Jumlah.getText()+"',besar_biaya='"+BiayaHarian.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
+            if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -592,7 +542,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -609,7 +559,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -653,6 +603,42 @@ private void TBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_TBangsalKeyPressed
 
 private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
+        DlgKamar kamar=new DlgKamar(null,false);
+        kamar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kamar.getTable().getSelectedRow()!= -1){                   
+                    kdkamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),1).toString());
+                    isKmr();
+                }  
+                kdkamar.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kamar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kamar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         kamar.load();
         kamar.isCek();
         kamar.emptTeks();
@@ -671,7 +657,29 @@ private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ju
 }//GEN-LAST:event_JumlahKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -723,27 +731,38 @@ private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ju
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select biaya_harian.kd_kamar,bangsal.nm_bangsal,biaya_harian.nama_biaya,jml,biaya_harian.besar_biaya"+
-                   " from biaya_harian inner join kamar inner join bangsal "+
-                   " on biaya_harian.kd_kamar=kamar.kd_kamar " +
-                   " and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                   " where biaya_harian.kd_kamar like '%"+TCari.getText().trim()+"%' or  "+
-                   " bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or  "+
-                   " biaya_harian.nama_biaya like '%"+TCari.getText().trim()+"%' or  "+
-                   " biaya_harian.besar_biaya like '%"+TCari.getText().trim()+"%' "+
-                   "order by bangsal.nm_bangsal,nama_biaya";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            ResultSet rs=koneksi.createStatement().executeQuery(sql);
-            while(rs.next()){
-                String[] data={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),Valid.SetAngka(rs.getDouble(5))};
-                tabMode.addRow(data);
-             }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement(
+                "select biaya_harian.kd_kamar,bangsal.nm_bangsal,biaya_harian.nama_biaya,jml,biaya_harian.besar_biaya from biaya_harian "+
+                "inner join kamar on biaya_harian.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                (TCari.getText().trim().equals("")?"":"where biaya_harian.kd_kamar like ? or bangsal.nm_bangsal like ? or "+
+                "biaya_harian.nama_biaya like ? or biaya_harian.besar_biaya like ? ")+"order by bangsal.nm_bangsal,biaya_harian.nama_biaya"
+            );
+            try {
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),Valid.SetAngka(rs.getDouble(5))
+                    });
+                 }
+            } catch (Exception e) {
+                System.out.println("Notif Map : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }   
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -783,5 +802,35 @@ private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ju
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=? ",TBangsal,TKdBngsal.getText());
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
 
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

@@ -81,29 +81,6 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil2());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil2());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil2());
-                    }
-                }
-            });
-        } 
     }
 
 
@@ -320,8 +297,6 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        //ruangoperasi.setModal(true);
         DlgRuangOperasi ruangoperasi=new DlgRuangOperasi(null,false);
         ruangoperasi.emptTeks();
         ruangoperasi.isCek();
@@ -329,7 +304,6 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         ruangoperasi.setLocationRelativeTo(internalFrame1);
         ruangoperasi.setAlwaysOnTop(false);
         ruangoperasi.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());   
         
     }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -346,6 +320,28 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
             }
         } catch (Exception e) {
         }
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil2());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil2());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil2());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**

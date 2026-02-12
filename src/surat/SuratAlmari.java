@@ -680,8 +680,7 @@ public final class SuratAlmari extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }
-                
+            }   
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
