@@ -28,9 +28,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,13 +48,14 @@ public final class DlgPenyakit extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private DlgKtgPenyakit ktg=new DlgKtgPenyakit(null,false);
     private String[] hlm;
     private String awal="0";
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double jumlah=0,x=0,i=0;
     private int z=0,j=0,mulai=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -120,29 +125,6 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         TCiri.setDocument(new batasInput((int)1500).getKata(TCiri));
         TKeterangan.setDocument(new batasInput((byte)60).getKata(TKeterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        } 
-        
         ChkInput.setSelected(false);
         isForm(); 
     }
@@ -209,15 +191,6 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-            public void windowDeactivated(java.awt.event.WindowEvent evt) {
-                formWindowDeactivated(evt);
-            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -708,7 +681,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
                 cmbValidCode.getSelectedItem().toString(),cmbACCPDX.getSelectedItem().toString(),cmbAsterisk.getSelectedItem().toString(),
                 cmbIM.getSelectedItem().toString()
             })==true){
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }
@@ -740,7 +713,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
                 Sequel.meghapus("penyakit","kd_penyakit",tbPenyakit.getValueAt(z,1).toString());
             }
         } 
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -768,7 +741,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
                 TNm.getText(),TCiri.getText(),TKeterangan.getText(),kd_ktg.getText(),TKd.getText(),cmbStatus.getSelectedItem().toString(),cmbValidCode.getSelectedItem().toString(),cmbACCPDX.getSelectedItem().toString(),
                 cmbAsterisk.getSelectedItem().toString(),cmbIM.getSelectedItem().toString(),tbPenyakit.getValueAt(tbPenyakit.getSelectedRow(),1).toString()
             })==true){
-                if(tabMode.getRowCount()!=0){tampil();}
+                if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
                 emptTeks();
             }
         }
@@ -841,12 +814,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
@@ -854,19 +827,55 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, kd_ktg);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void btnKtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKtgActionPerformed
+        DlgKtgPenyakit ktg=new DlgKtgPenyakit(null,false);
+        ktg.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(ktg.getTable().getSelectedRow()!= -1){                   
+                    kd_ktg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),1).toString());                    
+                    TKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),2).toString());
+                }   
+                kd_ktg.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        ktg.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    ktg.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         ktg.emptTeks();
         ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ktg.setLocationRelativeTo(internalFrame1);
@@ -916,63 +925,35 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
   isForm();                
 }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        ktg.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(ktg.getTable().getSelectedRow()!= -1){                   
-                    kd_ktg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),1).toString());                    
-                    TKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),2).toString());
-                }   
-                kd_ktg.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        ktg.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    ktg.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
-       
-    }//GEN-LAST:event_formWindowActivated
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        ktg.removeWindowListener(null);
-        ktg.getTable().removeKeyListener(null);
-    }//GEN-LAST:event_formWindowClosed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbStatusKeyPressed
         Valid.pindah(evt,TKeterangan,kd_ktg);
     }//GEN-LAST:event_cmbStatusKeyPressed
-
-    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
-        ktg.removeWindowListener(null);
-        ktg.getTable().removeKeyListener(null);
-    }//GEN-LAST:event_formWindowDeactivated
 
     private void cmbIMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbIMKeyPressed
         Valid.pindah(evt,cmbAsterisk,BtnSimpan);
@@ -1203,5 +1184,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnHapus.setEnabled(akses.getpenyakit());
         BtnEdit.setEnabled(akses.getpenyakit());
         BtnPrint.setEnabled(akses.getpenyakit());
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

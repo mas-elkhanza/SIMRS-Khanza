@@ -12,19 +12,26 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 public class DlgLamaPelayananPasien extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
+    private final sekuel Sequel=new sekuel();
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
     private String resepdikirim="",resepdivalidasi="",dilayanipoli="";
     private StringBuilder htmlContent;
     private int i=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private double ttlJRsdSB=0,ttlJRsdBP=0,JRsdDP=0,ttlJRsdDP=0,JRsdRDk=0,ttlJRsdRDk=0,JRsdRDv=0,ttlJRsdRDv=0,ttlJRsdTB=0,ttlSBsdBP=0,ttlSBsdDP=0,SBsdDP=0,ttlSBsdRDk=0,SBsdRDk=0,
             ttlSBsdRDv=0,SBsdRDv=0,ttlSBsdTB=0,BPsdDP=0,ttlBPsdDP=0,BPsdRDk=0,ttlBPsdRDk=0,BPsdRDv=0,ttlBPsdRDv=0,ttlBPsdTB=0,DPsdRDk=0,ttlDPsdRDk=0,DPsdRDv=0,ttlDPsdRDv=0,
             DPsdTB=0,ttlDPsdTB=0,RDksdRDv=0,ttlRDksdRDv=0,RDksdTB=0,ttlRDksdTB=0,RDvsdTB=0,ttlRDvsdTB=0;
@@ -284,7 +291,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-    prosesCari();
+    runBackground(() ->tampil());
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
@@ -341,6 +348,29 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                    htmlContent.toString()+
                   "</table>"+
                 "</html>");
+        htmlContent=null;
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -355,7 +385,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        prosesCari();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -401,7 +431,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.panelisi panelisi1;
     // End of variables declaration//GEN-END:variables
 
-    private void prosesCari() {
+    private void tampil() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
@@ -602,5 +632,35 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
     
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

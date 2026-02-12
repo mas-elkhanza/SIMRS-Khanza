@@ -24,8 +24,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -46,6 +50,8 @@ public class frmPengaduan extends javax.swing.JFrame {
     private boolean aktif=false;
     private String nol_detik,detik,alarm="",nopengaduan="";
     private BackgroundMusic music;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     /**
      * Creates new form frmPengaduan
      */
@@ -95,28 +101,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         tbPengaduan.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        } 
         
         try {
             alarm=koneksiDB.ALARMPENGADUANPASIEN();
@@ -651,7 +635,7 @@ public class frmPengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -660,7 +644,7 @@ public class frmPengaduan extends javax.swing.JFrame {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -689,7 +673,7 @@ public class frmPengaduan extends javax.swing.JFrame {
         i=JOptionPane.showConfirmDialog(null, "Yakin semua data pengaduan mau dihapus ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION){
             Sequel.queryu("delete from pengaduan");
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_BtnHapusTotalActionPerformed
 
@@ -699,7 +683,29 @@ public class frmPengaduan extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         aktif=true;
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
@@ -815,7 +821,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                 nopengaduan="";
                 BalasanPesan.setText("");
                 WindowBalas.dispose();
-                tampil();
+                runBackground(() ->tampil());
             }
         }
     }//GEN-LAST:event_BtnSimpanBalasActionPerformed
@@ -1026,7 +1032,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
                     pesanbaru=0;
-                    tampil();
+                    runBackground(() ->tampil());
                     for(i=0;i<tbPengaduan.getRowCount();i++){
                         if(tbPengaduan.getValueAt(i,6).toString().equals("")){
                             pesanbaru++;
@@ -1046,7 +1052,35 @@ public class frmPengaduan extends javax.swing.JFrame {
         new Timer(1000, taskPerformer).start();
     }
 
-    public void isCek() {
-        
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

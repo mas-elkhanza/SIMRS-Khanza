@@ -88,29 +88,6 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
         TCari.setDocument(new batasInput((int)90).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        } 
-        
         ChkInput.setSelected(false);
         isForm();
      
@@ -1486,7 +1463,28 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
 }//GEN-LAST:event_ppGrafikTerkecilPieActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
@@ -1515,9 +1513,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             runBackground(() ->tampil());
-            this.setCursor(Cursor.getDefaultCursor());
         }else{
             Valid.pindah(evt,kdpoli, BtnPrint);
         }

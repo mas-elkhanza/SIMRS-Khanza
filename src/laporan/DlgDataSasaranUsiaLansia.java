@@ -31,6 +31,7 @@ import simrskhanza.DlgKelurahan;
 import simrskhanza.DlgCariCaraBayar;
 import java.util.concurrent.RejectedExecutionException;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 
 public class DlgDataSasaranUsiaLansia extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
@@ -899,9 +900,33 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("laporan.DlgRL4A.prosesCari() 5 : "+e);
         } 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->prosesCari());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
