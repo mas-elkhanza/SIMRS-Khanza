@@ -1969,7 +1969,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        rTabDataMouseClicked(null);
+                        TabDataMouseClicked(null);
                     }
                 }
             });
