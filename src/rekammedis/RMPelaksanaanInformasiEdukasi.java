@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
@@ -36,6 +37,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -62,6 +64,8 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private String dpjp="";
     private String TANGGALMUNDUR="yes";
     private StringBuilder htmlContent;
+    private MasterCariTemplateInformasiEdukasi templateedukasi;
+    private DlgCariPegawai pegawai;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -1258,32 +1262,31 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     }//GEN-LAST:event_NIPKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
-                    NIP.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
-                }  
-                NIP.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        pegawai.emptTeks();
-        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pegawai.setLocationRelativeTo(internalFrame1);
+        if (pegawai == null || !pegawai.isDisplayable()) {
+            pegawai=new DlgCariPegawai(null,false);
+            pegawai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            pegawai.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(pegawai.getTable().getSelectedRow()!= -1){                   
+                        NIP.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                        NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                    }  
+                    NIP.requestFocus();
+                    pegawai=null;
+                }
+            }); 
+            pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            pegawai.setLocationRelativeTo(internalFrame1);
+        }
+        if (pegawai == null) return;
+        if (!pegawai.isVisible()) {
+            pegawai.emptTeks();
+        }  
+        if (pegawai.isVisible()) {
+            pegawai.toFront();
+            return;
+        }     
         pegawai.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
@@ -1386,34 +1389,45 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
     private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
-        MasterCariTemplateInformasiEdukasi templateedukasi=new MasterCariTemplateInformasiEdukasi(null,false);
-        templateedukasi.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(templateedukasi.getTable().getSelectedRow()!= -1){                   
-                    Materi.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),1).toString());
-                    Lama.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),2).toString());
-                    Metode.setSelectedItem(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),3).toString());
-                } 
-                Materi.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        templateedukasi.emptTeks();
-        templateedukasi.isCek();
-        templateedukasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        templateedukasi.setLocationRelativeTo(internalFrame1);
+        if (templateedukasi == null || !templateedukasi.isDisplayable()) {
+            templateedukasi=new MasterCariTemplateInformasiEdukasi(null,false);
+            templateedukasi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            templateedukasi.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(templateedukasi.getTable().getSelectedRow()!= -1){                   
+                        Materi.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),1).toString());
+                        Lama.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),2).toString());
+                        Metode.setSelectedItem(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),3).toString());
+                    } 
+                    Materi.requestFocus();
+                    templateedukasi=null;
+                }
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });
+            templateedukasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            templateedukasi.setLocationRelativeTo(internalFrame1);
+        }
+        if (templateedukasi == null) return;
+        if (!templateedukasi.isVisible()) {
+            templateedukasi.isCek();    
+            templateedukasi.emptTeks();
+        }  
+        if (templateedukasi.isVisible()) {
+            templateedukasi.toFront();
+            return;
+        }    
         templateedukasi.setVisible(true);
     }//GEN-LAST:event_BtnSeekActionPerformed
 

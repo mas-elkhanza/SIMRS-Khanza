@@ -7,8 +7,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -19,12 +21,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariPetugas;
 
 public class UTDStokDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -33,10 +38,12 @@ public class UTDStokDarah extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private UTDKomponenDarah komponen=new UTDKomponenDarah(null,true);
+    private UTDKomponenDarah komponen;
     private int i;
     private Calendar cal;
     private SimpleDateFormat sdf;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -86,71 +93,8 @@ public class UTDStokDarah extends javax.swing.JDialog {
         NoKantong.setDocument(new batasInput((byte)20).getKata(NoKantong));
         KodeKomponen.setDocument(new batasInput((byte)5).getKata(KodeKomponen));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }   
+          
         
-        komponen.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(komponen.getTable().getSelectedRow()!= -1){ 
-                    KodeKomponen.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),0).toString());
-                    NoKantong.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),0).toString()+NoKantong.getText());
-                    NamaKomponen.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),1).toString());
-                    KodeKomponen.requestFocus();
-                    cal = Calendar.getInstance();
-                    cal.setTime(Aftap.getDate());
-                    cal.add( Calendar.DATE,Integer.parseInt(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),2).toString()));
-                    sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Valid.SetTgl(Kadaluarsa,sdf.format(cal.getTime()));
-                    NoKantong.requestFocus();
-                } 
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        komponen.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        komponen.dispose();
-                    }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
         ChkInput.setSelected(false);
         panelCari.setVisible(false);
         posisi(); 
@@ -765,7 +709,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -802,7 +746,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             tbDokter.requestFocus();
         }else{
             Valid.hapusTable(tabMode,NoKantong,"utd_stok_darah","no_kantong");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -830,7 +774,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString()
               })==true){
                 emptTeks();
-                tampil();
+                runBackground(() ->tampil());
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -907,7 +851,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -941,7 +885,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                 "Ada"
               })==true){
                 emptTeks();
-                tampil();
+                runBackground(() ->tampil());
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -980,13 +924,33 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_ChkInputActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void KodeKomponenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeKomponenKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from utd_komponen_darah where kode=?",NamaKomponen,KodeKomponen.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKomponenActionPerformed(null);
         }else{
             Valid.pindah(evt,NoKantong,Aftap);
@@ -994,11 +958,47 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KodeKomponenKeyPressed
 
     private void btnKomponenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKomponenActionPerformed
-        komponen.emptTeks();
-        komponen.isCek();
-        komponen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        komponen.setLocationRelativeTo(internalFrame1);        
-        komponen.setVisible(true);
+        if (komponen == null || !komponen.isDisplayable()) {
+            komponen=new UTDKomponenDarah(null,true);
+            komponen.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(komponen.getTable().getSelectedRow()!= -1){ 
+                        KodeKomponen.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),0).toString());
+                        NoKantong.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),0).toString()+NoKantong.getText());
+                        NamaKomponen.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),1).toString());
+                        KodeKomponen.requestFocus();
+                        cal = Calendar.getInstance();
+                        cal.setTime(Aftap.getDate());
+                        cal.add( Calendar.DATE,Integer.parseInt(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),2).toString()));
+                        sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Valid.SetTgl(Kadaluarsa,sdf.format(cal.getTime()));
+                        NoKantong.requestFocus();
+                    } 
+                    komponen=null;
+                }
+            });
+
+            komponen.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        komponen.dispose();
+                    }
+                }
+            });  
+            komponen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            komponen.setLocationRelativeTo(internalFrame1);   
+        }
+        if (komponen == null) return;
+        if (!komponen.isVisible()) {
+            komponen.emptTeks();
+        }  
+        if (komponen.isVisible()) {
+            komponen.toFront();
+            return;
+        }     
+        komponen.setVisible(true);   
     }//GEN-LAST:event_btnKomponenActionPerformed
 
     private void GolonganDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GolonganDarahKeyPressed
@@ -1022,14 +1022,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_AsalKeyPressed
 
     private void CmbCrStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCrStatusItemStateChanged
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_CmbCrStatusItemStateChanged
 
     private void ChkCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCariActionPerformed
         if(ChkCari.isSelected()==true){
             panelCari.setVisible(true);
             TCari.setText("");
-            tampil();
+            runBackground(() ->tampil());
             posisi();
         }else if(ChkCari.isSelected()==false){
             panelCari.setVisible(false);
@@ -1051,15 +1051,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_CmbCariAsalKeyPressed
 
     private void CmbCariResusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCariResusItemStateChanged
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_CmbCariResusItemStateChanged
 
     private void CmbCariGdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCariGdItemStateChanged
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_CmbCariGdItemStateChanged
 
     private void CmbCariAsalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCariAsalItemStateChanged
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_CmbCariAsalItemStateChanged
 
     /**
@@ -1273,4 +1273,35 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
  
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

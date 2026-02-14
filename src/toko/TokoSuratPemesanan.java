@@ -1452,7 +1452,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
     
     private void getData(){        

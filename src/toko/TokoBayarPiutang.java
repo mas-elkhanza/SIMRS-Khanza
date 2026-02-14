@@ -35,10 +35,14 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -53,11 +57,12 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
     private validasi Valid=new validasi();    
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private TokoMember tokomember=new TokoMember(null,false);
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private double total=0,sisapiutang=0;
     private PreparedStatement ps;
     private ResultSet rs;
-    private String koderekening="",kontraakun=Sequel.cariIsi("select Piutang_Toko from set_akun");
+    private String koderekening="",kontraakun=Sequel.cariIsi("select set_akun.Piutang_Toko from set_akun");
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
@@ -127,94 +132,29 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
         Kdmem.setDocument(new batasInput((byte)15).getKata(Kdmem));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-            
-            Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-            });
-        }  
         
-        tokomember.addWindowListener(new WindowListener() {
+        Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(tokomember.getTable().getSelectedRow()!= -1){                   
-                    Kdmem.setText(tokomember.getTable().getValueAt(tokomember.getTable().getSelectedRow(),1).toString());
-                    Nmmem.setText(tokomember.getTable().getValueAt(tokomember.getTable().getSelectedRow(),2).toString());
-                    sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(tokopiutang.sisapiutang),0) FROM tokopiutang where tokopiutang.no_member=?",Kdmem.getText())
-                               - 
-                               Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_piutang.besar_cicilan),0) FROM toko_bayar_piutang where toko_bayar_piutang.no_member=?",Kdmem.getText());
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                           Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                    Sequel.cariIsi("select nota_piutang from tokopiutang where no_member=? order by tgl_piutang desc limit 1", NoNota,Kdmem.getText());
-                }  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        tokomember.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    tokomember.dispose();
+            public void insertUpdate(DocumentEvent e) {
+                Sisa.setText(Valid.SetAngka(sisapiutang));
+                if(!Cicilan.getText().equals("")){                           
+                     Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
                 }
             }
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void removeUpdate(DocumentEvent e) {
+                Sisa.setText(Valid.SetAngka(sisapiutang));
+                if(!Cicilan.getText().equals("")){                           
+                     Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                Sisa.setText(Valid.SetAngka(sisapiutang));
+                if(!Cicilan.getText().equals("")){                           
+                     Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                }
+            }
         });
         
         ChkInput.setSelected(false);
@@ -899,7 +839,7 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1009,7 +949,7 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void SisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SisaKeyPressed
@@ -1041,6 +981,49 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
 }//GEN-LAST:event_ppNotaPiutangBtnPrintActionPerformed
 
 private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
+        TokoMember tokomember=new TokoMember(null,false);
+        tokomember.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(tokomember.getTable().getSelectedRow()!= -1){                   
+                    Kdmem.setText(tokomember.getTable().getValueAt(tokomember.getTable().getSelectedRow(),1).toString());
+                    Nmmem.setText(tokomember.getTable().getValueAt(tokomember.getTable().getSelectedRow(),2).toString());
+                    sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(tokopiutang.sisapiutang),0) FROM tokopiutang where tokopiutang.no_member=?",Kdmem.getText())
+                               - 
+                               Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_piutang.besar_cicilan),0) FROM toko_bayar_piutang where toko_bayar_piutang.no_member=?",Kdmem.getText());
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                           Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                    Sequel.cariIsi("select tokopiutang.nota_piutang from tokopiutang where tokopiutang.no_member=? order by tokopiutang.tgl_piutang desc limit 1", NoNota,Kdmem.getText());
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        tokomember.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    tokomember.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         tokomember.emptTeks();
         tokomember.isCek();
         tokomember.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1061,9 +1044,9 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(NoNota.getText().trim().equals("")){
             Valid.textKosong(NoNota,"No.Tagihan/No.Rawat");
         }else{
-            if(Sequel.cariInteger("select count(nota_piutang) from tokopiutang where nota_piutang=?",NoNota.getText())>0){
-                Kdmem.setText(Sequel.cariIsi("select no_member from tokopiutang where nota_piutang=?",NoNota.getText()));
-                Nmmem.setText(Sequel.cariIsi("select nm_member from tokopiutang where nota_piutang=?",NoNota.getText()));
+            if(Sequel.cariInteger("select count(tokopiutang.nota_piutang) from tokopiutang where tokopiutang.nota_piutang=?",NoNota.getText())>0){
+                Kdmem.setText(Sequel.cariIsi("select tokopiutang.no_member from tokopiutang where tokopiutang.nota_piutang=?",NoNota.getText()));
+                Nmmem.setText(Sequel.cariIsi("select tokopiutang.nm_member from tokopiutang where tokopiutang.nota_piutang=?",NoNota.getText()));
                 sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(tokopiutang.sisapiutang),0) FROM tokopiutang where tokopiutang.nota_piutang=?",NoNota.getText())
                         -Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_piutang.besar_cicilan),0) FROM toko_bayar_piutang where toko_bayar_piutang.nota_piutang=?",NoNota.getText());
                 Sisa.setText(Valid.SetAngka(Valid.roundUp(sisapiutang,100)));
@@ -1075,6 +1058,28 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampilAkunBayar();
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -1284,5 +1289,37 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

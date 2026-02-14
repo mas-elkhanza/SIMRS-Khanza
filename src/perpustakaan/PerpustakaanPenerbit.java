@@ -25,8 +25,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -42,6 +46,8 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -94,29 +100,6 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
     
         ChkInput.setSelected(false);
         isForm(); 
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }
     }
     
 
@@ -526,16 +509,16 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Nama Penerbit");
         }else {
-                //menyimpan-------------------------------------------------
-                Sequel.menyimpan("perpustakaan_penerbit","'"+TKd.getText()+"','"+
-                        TNm.getText()+"','"+
-                        TAlamat.getText()+"','"+
-                        TTlp.getText()+"','"+
-                        TEmail.getText()+"','"+
-                        TWeb.getText()+"' ","Kode Penerbit");
-                //----------------------------------------------------------
-                TKd.requestFocus();
-            tampil();
+            //menyimpan-------------------------------------------------
+            Sequel.menyimpan("perpustakaan_penerbit","'"+TKd.getText()+"','"+
+                    TNm.getText()+"','"+
+                    TAlamat.getText()+"','"+
+                    TTlp.getText()+"','"+
+                    TEmail.getText()+"','"+
+                    TWeb.getText()+"' ","Kode Penerbit");
+            //----------------------------------------------------------
+            TKd.requestFocus();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -589,7 +572,7 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
                         "website_penerbit='"+TWeb.getText()+"'");
                 //----------------------------------------------------------
                 TKd.requestFocus();
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
                 
@@ -664,7 +647,7 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -677,12 +660,12 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnPrint,BtnKeluar);
@@ -736,7 +719,29 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 }//GEN-LAST:event_TAlamatKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -807,24 +812,23 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select perpustakaan_penerbit.kode_penerbit, perpustakaan_penerbit.nama_penerbit, perpustakaan_penerbit.alamat_penerbit, perpustakaan_penerbit.no_telp,"+
-                   "perpustakaan_penerbit.email, perpustakaan_penerbit.website_penerbit from perpustakaan_penerbit "+
-                   "where perpustakaan_penerbit.kode_penerbit like ? "+
-                    "or perpustakaan_penerbit.nama_penerbit like ? "+
-                    "or perpustakaan_penerbit.alamat_penerbit like ? "+
-                    "or perpustakaan_penerbit.no_telp like ? "+
-                    "or perpustakaan_penerbit.email like ? "+
-                    "or perpustakaan_penerbit.website_penerbit like ? order by perpustakaan_penerbit.kode_penerbit");
+            ps=koneksi.prepareStatement(
+                "select perpustakaan_penerbit.kode_penerbit,perpustakaan_penerbit.nama_penerbit,perpustakaan_penerbit.alamat_penerbit,perpustakaan_penerbit.no_telp,perpustakaan_penerbit.email,perpustakaan_penerbit.website_penerbit from perpustakaan_penerbit "+
+                (TCari.getText().trim().equals("")?"":"where perpustakaan_penerbit.kode_penerbit like ? or perpustakaan_penerbit.nama_penerbit like ? or perpustakaan_penerbit.alamat_penerbit like ? or perpustakaan_penerbit.no_telp like ? or "+
+                "perpustakaan_penerbit.email like ? or perpustakaan_penerbit.website_penerbit like ? ")+"order by perpustakaan_penerbit.kode_penerbit");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -857,7 +861,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         TAlamat.setText("");
         TCari.setText("");
         TKd.requestFocus();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kode_penerbit,4),signed)),0) from perpustakaan_penerbit  ","PK",8,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(perpustakaan_penerbit.kode_penerbit,4),signed)),0) from perpustakaan_penerbit","PK",8,TKd);
         TKd.requestFocus();
     }
 
@@ -897,5 +901,35 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         BtnPrint.setEnabled(akses.getpenerbit_perpustakaan());
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
     
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }
