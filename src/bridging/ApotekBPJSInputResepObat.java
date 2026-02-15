@@ -719,7 +719,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Dengan Iterasi" }));
         Iterasi.setName("Iterasi"); // NOI18N
         FormInput.add(Iterasi);
-        Iterasi.setBounds(590, 70, 110, 24);
+        Iterasi.setBounds(590, 70, 115, 24);
 
         jLabel16.setText("Iterasi :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -731,7 +731,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         JnsObat.setSelectedIndex(1);
         JnsObat.setName("JnsObat"); // NOI18N
         FormInput.add(JnsObat);
-        JnsObat.setBounds(390, 130, 175, 24);
+        JnsObat.setBounds(390, 130, 185, 24);
 
         jLabel17.setText("Jns Obat :");
         jLabel17.setName("jLabel17"); // NOI18N
