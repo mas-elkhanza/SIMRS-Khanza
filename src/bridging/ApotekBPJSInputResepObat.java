@@ -566,18 +566,18 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 165));
         FormInput.setLayout(null);
 
-        jLabel8.setText("Tanggal :");
+        jLabel8.setText("Pelayanan :");
         jLabel8.setName("jLabel8"); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(68, 23));
         FormInput.add(jLabel8);
-        jLabel8.setBounds(290, 100, 90, 23);
+        jLabel8.setBounds(330, 100, 90, 23);
 
         Jam.setEditable(false);
         Jam.setText("2026-01-01 00:00:00");
         Jam.setHighlighter(null);
         Jam.setName("Jam"); // NOI18N
         FormInput.add(Jam);
-        Jam.setBounds(400, 70, 130, 24);
+        Jam.setBounds(400, 40, 130, 24);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
         DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2026" }));
@@ -591,7 +591,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPTgl);
-        DTPTgl.setBounds(390, 100, 90, 23);
+        DTPTgl.setBounds(430, 100, 90, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
@@ -602,7 +602,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbJam);
-        cmbJam.setBounds(480, 100, 62, 23);
+        cmbJam.setBounds(520, 100, 62, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
@@ -613,7 +613,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbMnt);
-        cmbMnt.setBounds(550, 100, 62, 23);
+        cmbMnt.setBounds(590, 100, 62, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
@@ -624,7 +624,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbDtk);
-        cmbDtk.setBounds(610, 100, 62, 23);
+        cmbDtk.setBounds(650, 100, 62, 23);
 
         ChkJln.setBorder(null);
         ChkJln.setSelected(true);
@@ -639,7 +639,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(ChkJln);
-        ChkJln.setBounds(680, 100, 22, 23);
+        ChkJln.setBounds(720, 100, 22, 23);
 
         TanggalPelayanan.setForeground(new java.awt.Color(50, 70, 50));
         TanggalPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2026" }));
@@ -658,19 +658,19 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(TanggalPelayanan);
-        TanggalPelayanan.setBounds(300, 70, 90, 23);
+        TanggalPelayanan.setBounds(300, 40, 90, 23);
 
         jLabel20.setText("Tgl.Resep :");
         jLabel20.setName("jLabel20"); // NOI18N
         jLabel20.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(jLabel20);
-        jLabel20.setBounds(210, 70, 80, 23);
+        jLabel20.setBounds(210, 40, 80, 23);
 
         NmPoli.setEditable(false);
         NmPoli.setHighlighter(null);
         NmPoli.setName("NmPoli"); // NOI18N
         FormInput.add(NmPoli);
-        NmPoli.setBounds(150, 130, 170, 23);
+        NmPoli.setBounds(160, 130, 170, 23);
 
         KdPoli.setEditable(false);
         KdPoli.setHighlighter(null);
@@ -698,12 +698,12 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         NmDPJP.setHighlighter(null);
         NmDPJP.setName("NmDPJP"); // NOI18N
         FormInput.add(NmDPJP);
-        NmDPJP.setBounds(150, 100, 170, 23);
+        NmDPJP.setBounds(160, 100, 170, 23);
 
-        jLabel14.setText("No Resep :");
+        jLabel14.setText("No.Resep :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(0, 70, 80, 23);
+        jLabel14.setBounds(510, 40, 80, 23);
 
         TResep.setHighlighter(null);
         TResep.setName("TResep"); // NOI18N
@@ -713,30 +713,30 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(TResep);
-        TResep.setBounds(84, 70, 145, 23);
+        TResep.setBounds(590, 40, 145, 23);
 
         Iterasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Dengan Iterasi" }));
         Iterasi.setName("Iterasi"); // NOI18N
         FormInput.add(Iterasi);
-        Iterasi.setBounds(590, 70, 115, 24);
+        Iterasi.setBounds(380, 130, 135, 24);
 
         jLabel16.setText("Iterasi :");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(540, 70, 50, 23);
+        jLabel16.setBounds(330, 130, 50, 23);
 
         JnsObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         JnsObat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Obat PRB", "2. Obat Kronis Belum Stabil", "3. Obat Kemoterapi" }));
         JnsObat.setSelectedIndex(1);
         JnsObat.setName("JnsObat"); // NOI18N
         FormInput.add(JnsObat);
-        JnsObat.setBounds(390, 130, 185, 24);
+        JnsObat.setBounds(530, 70, 185, 24);
 
-        jLabel17.setText("Jns Obat :");
+        jLabel17.setText("Jenis :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(340, 130, 50, 23);
+        jLabel17.setBounds(480, 70, 50, 23);
 
         jLabel4.setText("No.Kartu :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -758,12 +758,12 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         NoSEP.setHighlighter(null);
         NoSEP.setName("NoSEP"); // NOI18N
         FormInput.add(NoSEP);
-        NoSEP.setBounds(290, 40, 190, 23);
+        NoSEP.setBounds(280, 70, 190, 23);
 
         jLabel18.setText("No.SEP :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(240, 40, 50, 23);
+        jLabel18.setBounds(230, 70, 50, 23);
 
         TNoRw1.setHighlighter(null);
         TNoRw1.setName("TNoRw1"); // NOI18N
@@ -773,29 +773,29 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw1);
-        TNoRw1.setBounds(84, 12, 120, 23);
+        TNoRw1.setBounds(84, 10, 120, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(196, 12, 487, 23);
+        TPasien.setBounds(210, 10, 487, 23);
 
         jLabel3.setText("No.Rawat :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 12, 80, 23);
+        jLabel3.setBounds(0, 10, 80, 23);
 
         NoSEP1.setEditable(false);
         NoSEP1.setHighlighter(null);
         NoSEP1.setName("NoSEP1"); // NOI18N
         FormInput.add(NoSEP1);
-        NoSEP1.setBounds(550, 40, 130, 23);
+        NoSEP1.setBounds(80, 70, 130, 23);
 
         jLabel19.setText("Tgl.SEP :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(500, 40, 50, 23);
+        jLabel19.setBounds(30, 70, 50, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
