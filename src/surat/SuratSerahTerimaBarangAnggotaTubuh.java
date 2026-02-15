@@ -212,7 +212,6 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
-        jLabel8 = new widget.Label();
         NamaPJ = new widget.TextBox();
         jLabel9 = new widget.Label();
         PendidikanPJ = new widget.ComboBox();
@@ -235,19 +234,16 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         NoKTP = new widget.TextBox();
         NoTelp = new widget.TextBox();
         jLabel20 = new widget.Label();
-        jLabel22 = new widget.Label();
-        RuangDipilih = new widget.TextBox();
-        jLabel23 = new widget.Label();
-        jLabel12 = new widget.Label();
-        KelasDipilih = new widget.ComboBox();
-        jLabel13 = new widget.Label();
-        HakKelas = new widget.ComboBox();
         jLabel24 = new widget.Label();
         jLabel25 = new widget.Label();
         Pembiayaan = new widget.TextBox();
         jLabel26 = new widget.Label();
         NamaKeluarga = new widget.TextBox();
-        jLabel27 = new widget.Label();
+        jLabel28 = new widget.Label();
+        jLabel29 = new widget.Label();
+        Pembiayaan1 = new widget.TextBox();
+        RuangDipilih = new widget.TextBox();
+        jLabel30 = new widget.Label();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -519,7 +515,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 265));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 255));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -558,11 +554,6 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         FormInput.add(TNoRM);
         TNoRM.setBounds(212, 10, 111, 23);
 
-        jLabel8.setText(":");
-        jLabel8.setName("jLabel8"); // NOI18N
-        FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 180, 130, 23);
-
         NamaPJ.setName("NamaPJ"); // NOI18N
         NamaPJ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -572,12 +563,12 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         FormInput.add(NamaPJ);
         NamaPJ.setBounds(104, 90, 190, 23);
 
-        jLabel9.setText("Pendidikan :");
+        jLabel9.setText("Hubungan Dengan Pasien :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(285, 120, 80, 23);
+        jLabel9.setBounds(265, 120, 148, 23);
 
-        PendidikanPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TS", "TK", "SD", "SMP", "SMA", "SLTA/SEDERAJAT", "D1", "D2", "D3", "D4", "S1", "S2", "S3", "-" }));
+        PendidikanPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Ibu", "Saudara", "Keponakan", "Diri Sendiri", "Teman" }));
         PendidikanPJ.setName("PendidikanPJ"); // NOI18N
         PendidikanPJ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -585,7 +576,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             }
         });
         FormInput.add(PendidikanPJ);
-        PendidikanPJ.setBounds(369, 120, 140, 23);
+        PendidikanPJ.setBounds(417, 120, 110, 23);
 
         jLabel10.setText("Nama :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -597,7 +588,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         FormInput.add(jLabel11);
         jLabel11.setBounds(310, 90, 55, 23);
 
-        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Ibu", "Saudara", "Keponakan", "Diri Saya" }));
+        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Barang Pasien", "Anggota Tubuh" }));
         Hubungan.setName("Hubungan"); // NOI18N
         Hubungan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -605,7 +596,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             }
         });
         FormInput.add(Hubungan);
-        Hubungan.setBounds(134, 180, 110, 23);
+        Hubungan.setBounds(104, 170, 125, 23);
 
         AlamatPj.setName("AlamatPj"); // NOI18N
         AlamatPj.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -679,7 +670,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         Tanggal.setBounds(74, 40, 90, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Pembuat Persetujuan :");
+        jLabel14.setText("Penerima Barang :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
         jLabel14.setBounds(16, 70, 130, 23);
@@ -720,73 +711,22 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(583, 120, 150, 23);
+        NoTelp.setBounds(593, 120, 140, 23);
 
         jLabel20.setText("No.Telp :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(509, 120, 70, 23);
+        jLabel20.setBounds(529, 120, 60, 23);
 
-        jLabel22.setText(":");
-        jLabel22.setName("jLabel22"); // NOI18N
-        FormInput.add(jLabel22);
-        jLabel22.setBounds(-2, 150, 90, 23);
-
-        RuangDipilih.setName("RuangDipilih"); // NOI18N
-        RuangDipilih.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RuangDipilihKeyPressed(evt);
-            }
-        });
-        FormInput.add(RuangDipilih);
-        RuangDipilih.setBounds(92, 150, 230, 23);
-
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel23.setText("Ruang Dipilih");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(16, 150, 80, 23);
-
-        jLabel12.setText("Kelas :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        FormInput.add(jLabel12);
-        jLabel12.setBounds(340, 150, 50, 23);
-
-        KelasDipilih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
-        KelasDipilih.setName("KelasDipilih"); // NOI18N
-        KelasDipilih.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KelasDipilihKeyPressed(evt);
-            }
-        });
-        FormInput.add(KelasDipilih);
-        KelasDipilih.setBounds(394, 150, 115, 23);
-
-        jLabel13.setText("Hak Kelas Pasien :");
-        jLabel13.setName("jLabel13"); // NOI18N
-        FormInput.add(jLabel13);
-        jLabel13.setBounds(504, 150, 110, 23);
-
-        HakKelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP", "-" }));
-        HakKelas.setName("HakKelas"); // NOI18N
-        HakKelas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HakKelasKeyPressed(evt);
-            }
-        });
-        FormInput.add(HakKelas);
-        HakKelas.setBounds(618, 150, 115, 23);
-
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("Persetujuan Terhadap");
+        jLabel24.setText("Jenis :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(16, 180, 120, 23);
+        jLabel24.setBounds(0, 170, 100, 23);
 
-        jLabel25.setText("Pembayaran/Pembiayaan Secara :");
+        jLabel25.setText("Jumlah :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(269, 180, 180, 23);
+        jLabel25.setBounds(230, 170, 60, 23);
 
         Pembiayaan.setName("Pembiayaan"); // NOI18N
         Pembiayaan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -795,12 +735,12 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             }
         });
         FormInput.add(Pembiayaan);
-        Pembiayaan.setBounds(453, 180, 280, 23);
+        Pembiayaan.setBounds(294, 170, 153, 23);
 
-        jLabel26.setText(":");
+        jLabel26.setText("Uraian :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(1, 210, 190, 23);
+        jLabel26.setBounds(0, 200, 100, 23);
 
         NamaKeluarga.setName("NamaKeluarga"); // NOI18N
         NamaKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -809,13 +749,41 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             }
         });
         FormInput.add(NamaKeluarga);
-        NamaKeluarga.setBounds(195, 210, 538, 23);
+        NamaKeluarga.setBounds(104, 200, 295, 23);
 
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel27.setText("Nama & Alamat Keluarga Terdekat");
-        jLabel27.setName("jLabel27"); // NOI18N
-        FormInput.add(jLabel27);
-        jLabel27.setBounds(16, 210, 180, 23);
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText("Yang Diserahkan :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(16, 150, 130, 23);
+
+        jLabel29.setText("Wadah/Label :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(446, 170, 90, 23);
+
+        Pembiayaan1.setName("Pembiayaan1"); // NOI18N
+        Pembiayaan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Pembiayaan1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Pembiayaan1);
+        Pembiayaan1.setBounds(540, 170, 193, 23);
+
+        RuangDipilih.setName("RuangDipilih"); // NOI18N
+        RuangDipilih.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RuangDipilihKeyPressed(evt);
+            }
+        });
+        FormInput.add(RuangDipilih);
+        RuangDipilih.setBounds(463, 200, 270, 23);
+
+        jLabel30.setText("Kondisi :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(399, 200, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -866,7 +834,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
-        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Bukti Pengambilan Persetujuan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Bukti Pengambilan Pernyataan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPhoto.setName("FormPhoto"); // NOI18N
         FormPhoto.setPreferredSize(new java.awt.Dimension(115, 73));
         FormPhoto.setLayout(new java.awt.BorderLayout());
@@ -954,7 +922,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         }else if(NoSurat.getText().trim().equals("")){
             Valid.textKosong(NoSurat,"No.Persetujuan");
         }else{
-            if(Sequel.menyimpantf("surat_persetujuan_rawat_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
+            /*if(Sequel.menyimpantf("surat_persetujuan_rawat_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
                     PendidikanPJ.getSelectedItem().toString(),AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),
                     KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),HakKelas.getSelectedItem().toString(),
@@ -968,7 +936,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
-            }
+            }*/
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1290,7 +1258,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     }//GEN-LAST:event_AlamatPjKeyPressed
 
     private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,HakKelas,Pembiayaan);
+        //Valid.pindah(evt,HakKelas,Pembiayaan);
     }//GEN-LAST:event_HubunganKeyPressed
 
     private void PendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPJKeyPressed
@@ -1362,18 +1330,6 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
-    private void RuangDipilihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuangDipilihKeyPressed
-        Valid.pindah(evt,NoTelp,KelasDipilih);
-    }//GEN-LAST:event_RuangDipilihKeyPressed
-
-    private void KelasDipilihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasDipilihKeyPressed
-        Valid.pindah(evt,RuangDipilih,HakKelas);
-    }//GEN-LAST:event_KelasDipilihKeyPressed
-
-    private void HakKelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HakKelasKeyPressed
-        Valid.pindah(evt,KelasDipilih,Hubungan);
-    }//GEN-LAST:event_HakKelasKeyPressed
-
     private void PembiayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembiayaanKeyPressed
         Valid.pindah(evt,Hubungan,NamaKeluarga);
     }//GEN-LAST:event_PembiayaanKeyPressed
@@ -1435,6 +1391,14 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void Pembiayaan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pembiayaan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pembiayaan1KeyPressed
+
+    private void RuangDipilihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuangDipilihKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RuangDipilihKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1471,11 +1435,9 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
-    private widget.ComboBox HakKelas;
     private widget.ComboBox Hubungan;
     private widget.TextBox JK;
     private widget.TextBox KdPetugas;
-    private widget.ComboBox KelasDipilih;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML;
@@ -1489,6 +1451,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pembiayaan;
+    private widget.TextBox Pembiayaan1;
     private widget.ComboBox PendidikanPJ;
     private widget.TextBox RuangDipilih;
     private widget.ScrollPane Scroll;
@@ -1503,8 +1466,6 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
-    private widget.Label jLabel12;
-    private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -1513,17 +1474,16 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
-    private widget.Label jLabel22;
-    private widget.Label jLabel23;
     private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
-    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel3;
+    private widget.Label jLabel30;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
@@ -1611,8 +1571,6 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
         NamaPJ.setText("");
         Hubungan.setSelectedIndex(0);
         PendidikanPJ.setSelectedIndex(0);
-        KelasDipilih.setSelectedIndex(0);
-        HakKelas.setSelectedIndex(0);
         Pembiayaan.setText("");
         NamaKeluarga.setText("");
         NoTelp.setText("");
@@ -1640,9 +1598,9 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             AlamatPj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             RuangDipilih.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            KelasDipilih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            //KelasDipilih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            HakKelas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            //HakKelas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             NamaKeluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Pembiayaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
@@ -1694,7 +1652,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,265));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,255));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1724,7 +1682,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
     }
   
     private void ganti() {
-        if(Sequel.mengedittf("surat_persetujuan_rawat_inap","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,no_ktppj=?,pendidikan_pj=?,alamatpj=?,"+
+        /*if(Sequel.mengedittf("surat_persetujuan_rawat_inap","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,no_ktppj=?,pendidikan_pj=?,alamatpj=?,"+
             "no_telppj=?,ruang=?,kelas=?,hubungan=?,hak_kelas=?,nama_alamat_keluarga_terdekat=?,bayar_secara=?,nip=?",16,new String[]{
             NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
             PendidikanPJ.getSelectedItem().toString(),AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),
@@ -1753,7 +1711,7 @@ public final class SuratSerahTerimaBarangAnggotaTubuh extends javax.swing.JDialo
             tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),19);
             tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),20);
             emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {

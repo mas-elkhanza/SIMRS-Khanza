@@ -476,7 +476,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         panelisi3.setName("panelisi3"); // NOI18N
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel5.setText("Total :");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -504,10 +504,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 23));
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -517,10 +516,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
         BtnHapus.setToolTipText("Alt+H");
         BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -534,10 +532,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         panelisi3.add(BtnHapus);
 
         CariDataObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        CariDataObat.setText("Data obat");
         CariDataObat.setToolTipText("");
         CariDataObat.setName("CariDataObat"); // NOI18N
-        CariDataObat.setPreferredSize(new java.awt.Dimension(100, 23));
+        CariDataObat.setPreferredSize(new java.awt.Dimension(28, 23));
         CariDataObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CariDataObatActionPerformed(evt);
@@ -552,10 +549,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('5');
-        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+5");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 23));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -584,7 +580,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         Jam.setBounds(400, 70, 130, 24);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2026" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2026" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -646,7 +642,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         ChkJln.setBounds(680, 100, 22, 23);
 
         TanggalPelayanan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2026" }));
+        TanggalPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2026" }));
         TanggalPelayanan.setDisplayFormat("dd-MM-yyyy");
         TanggalPelayanan.setName("TanggalPelayanan"); // NOI18N
         TanggalPelayanan.setOpaque(false);
@@ -680,7 +676,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         KdPoli.setHighlighter(null);
         KdPoli.setName("KdPoli"); // NOI18N
         FormInput.add(KdPoli);
-        KdPoli.setBounds(70, 130, 75, 23);
+        KdPoli.setBounds(84, 130, 75, 23);
 
         jLabel13.setText("Asal Poli :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -696,7 +692,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         KdDPJP.setHighlighter(null);
         KdDPJP.setName("KdDPJP"); // NOI18N
         FormInput.add(KdDPJP);
-        KdDPJP.setBounds(70, 100, 75, 23);
+        KdDPJP.setBounds(84, 100, 75, 23);
 
         NmDPJP.setEditable(false);
         NmDPJP.setHighlighter(null);
@@ -717,7 +713,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(TResep);
-        TResep.setBounds(70, 70, 145, 23);
+        TResep.setBounds(84, 70, 145, 23);
 
         Iterasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Dengan Iterasi" }));
@@ -756,7 +752,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoKartu);
-        NoKartu.setBounds(80, 40, 140, 23);
+        NoKartu.setBounds(84, 40, 140, 23);
 
         NoSEP.setEditable(false);
         NoSEP.setHighlighter(null);
@@ -777,7 +773,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw1);
-        TNoRw1.setBounds(75, 12, 120, 23);
+        TNoRw1.setBounds(84, 12, 120, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);

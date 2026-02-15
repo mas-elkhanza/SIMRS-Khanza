@@ -1113,6 +1113,7 @@ import surat.SuratRak;
 import surat.SuratRuang;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
+import surat.SuratSerahTerimaBarangAnggotaTubuh;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import surat.SuratTidakHamil;
@@ -23153,6 +23154,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratSerahTerimaBarangAnggotaTubuhActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratSerahTerimaBarangAnggotaTubuh aplikasi=new SuratSerahTerimaBarangAnggotaTubuh(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23866,7 +23879,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
             btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani,btnLabKeslingPengujianSampelDapatDilayani,btnLabKeslingPenugasanPengujianSampel,btnLabKeslingHasilPengujianSampel,
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
-            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek;
+            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh;
     
     public void isWall(){
         try{            
@@ -29405,6 +29418,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_pernyataan_memilih_dpjp()==true){
                 Panelmenu.add(btnSuratPernyataanMemilihDPJP);
+                jmlmenu++;
+            }
+            
+            if(akses.getserah_terima_anggota_tubuh_barang()==true){
+                Panelmenu.add(btnSuratSerahTerimaBarangAnggotaTubuh);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==16){ 
@@ -35229,6 +35247,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_pernyataan_memilih_dpjp()==true){
             Panelmenu.add(btnSuratPernyataanMemilihDPJP);
+            jmlmenu++;
+        }
+        
+        if(akses.getserah_terima_anggota_tubuh_barang()==true){
+            Panelmenu.add(btnSuratSerahTerimaBarangAnggotaTubuh);
             jmlmenu++;
         }
 
@@ -43213,6 +43236,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getserah_terima_anggota_tubuh_barang()==true){
+            if(btnSuratSerahTerimaBarangAnggotaTubuh.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratSerahTerimaBarangAnggotaTubuh);                 
+                jmlmenu++;
+            }
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -49480,5 +49510,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningGiziKehamilan.setName("btnSkriningGiziKehamilan");
         btnSkriningGiziKehamilan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningGiziKehamilan.addActionListener(this::btnSkriningGiziKehamilanActionPerformed);
+        
+        btnSuratSerahTerimaBarangAnggotaTubuh = new widget.ButtonBig();
+        btnSuratSerahTerimaBarangAnggotaTubuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/file-manager.png"))); 
+        btnSuratSerahTerimaBarangAnggotaTubuh.setText("Serah Terima Anggota Tubuh/Barang");
+        btnSuratSerahTerimaBarangAnggotaTubuh.setIconTextGap(0);
+        btnSuratSerahTerimaBarangAnggotaTubuh.setName("btnSuratSerahTerimaBarangAnggotaTubuh");
+        btnSuratSerahTerimaBarangAnggotaTubuh.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratSerahTerimaBarangAnggotaTubuh.addActionListener(this::btnSuratSerahTerimaBarangAnggotaTubuhActionPerformed);
     }
 }
