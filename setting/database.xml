@@ -49,10 +49,10 @@
     <entry key="CONSIDAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="USERKEYAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="ADDANTRIANAPIMOBILEJKN">yes</entry>
-    <entry key="URLAPIAPOTEKBPJS">https://apijkn-dev.bpjs-kesehatan.go.id/apotek-rest-dev</entry>
-    <entry key="SECRETKEYAPIAPOTEKBPJS">wDSMeVPeG6SaiKGy+B4gTA==</entry>
-    <entry key="CONSIDAPIAPOTEKBPJS">hm6qdil6uyCLAyJl/gTmZg==</entry>
-    <entry key="USERKEYAPIAPOTEKBPJS">Qp3l5/s3oAzpQrb+Ba4ixNuLq1jFim7eM5LXs/LyfeEn82lyfktXUb26ETJJuvuA</entry>
+    <entry key="URLAPIAPOTEKBPJS">https://dev-soa.bpjs-kesehatan.go.id/apotek-rest</entry>
+    <entry key="SECRETKEYAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="USERKEYAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="JADIKANPIUTANGAPOTEKBPJS">yes</entry>
     <entry key="URLAPIICARE">https://apijkn-dev.bpjs-kesehatan.go.id/ihs_dev/api/rs</entry>
     <entry key="SECRETKEYAPIICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
