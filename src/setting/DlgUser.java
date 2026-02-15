@@ -242,7 +242,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya","[M]Pengkajian Awal Medis Ralan Kulit & Kelamin","[L]Host To Host Bank Mandiri","[M]Pengkajian Awal Medis Pasien Hemodialisa",
                 "[M]Pengkajian Level Kecemasan Ranap Anak","[M]Pengkajian Lanjutan Risiko Jatuh Psikiatri","[M]Pengkajian Lanjutan Skrining Fungsional","[M]Pengkajian Awal Medis Ralan Fisik & Rehabilitasi",
                 "[M]Laporan Anestesi","[P]Template Persetujuan Penolakan Tindakan","[M]Pengkajian Awal Medis IGD Psikiatri","[L]Referensi Setting PPK Apotek BPJS","[L]Referensi Obat Apotek BPJS",
-                "[L]Mapping Obat Apotek BPJS","[K]Pembayaran Bank Mandiri","[M]Pengkajian Ulang Nyeri","[M]Pengkajian Terapi Wicara","[L]Obat 23 Hari Apotek BPJS","[M]Pengkajian Restrain",
+                "[L]Mapping Obat Apotek BPJS","[K]Pembayaran Bank Mandiri","[M]Pengkajian Ulang Nyeri","[M]Pengkajian Terapi Wicara","[L]Obat ApOL Apotek BPJS","[M]Pengkajian Restrain",
                 "[L]Pencarian SEP Apotek BPJS","[L]Monitoring Klaim Apotek BPJS","[L]Daftar Pelayanan Obat Apotek BPJS","[M]Pengkajian Awal Medis Ralan Paru","[M]Catatan Keperawatan Ralan",
                 "[M]Catatan Persalinan","[M]Skor Aldrette Pasca Anestesi","[M]Skor Steward Pasca Anestesi","[M]Skor Bromage Pasca Anestesi","[M]Pengkajian Pre Induksi","[M]Hasil USG Urologi",
                 "[M]Hasil USG Gynecologi","[M]Hasil Pemeriksaan EKG","[L]Hapus/Edit SEP VClaim","[L]Kirim Diet Satu Sehat","[L]Mapping Obat/Alkes/BHP Satu Sehat","[F]Ringkasan Pengadaan Barang Dapur",
