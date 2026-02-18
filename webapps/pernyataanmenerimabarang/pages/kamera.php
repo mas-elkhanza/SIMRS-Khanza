@@ -55,7 +55,7 @@
               "surat_serah_terima_barang_anggota_tubuh.uraian_barang,surat_serah_terima_barang_anggota_tubuh.jumlah_barang,surat_serah_terima_barang_anggota_tubuh.kondisi_barang,".
               "surat_serah_terima_barang_anggota_tubuh.wadah_label,surat_serah_terima_barang_anggota_tubuh.nama_pj,surat_serah_terima_barang_anggota_tubuh.no_ktppj,".
               "surat_serah_terima_barang_anggota_tubuh.alamatpj,surat_serah_terima_barang_anggota_tubuh.no_telppj,surat_serah_terima_barang_anggota_tubuh.hubungan ".
-              "from surat_serah_terima_barang_anggota_tubuh where surat_serah_terima_barang_anggota_tubuh.no_surat='$nopernyataan'" ;  
+              "from surat_serah_terima_barang_anggota_tubuh where surat_serah_terima_barang_anggota_tubuh.no_pernyataan='$nopernyataan'" ;  
     $hasil2 = bukaquery2($_sql2);
     while ($data2  = mysqli_fetch_array ($hasil2)){
         $tanggal          = $data2['tanggal'];       

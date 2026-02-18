@@ -12,7 +12,7 @@
     }
 
     function cekSessiAdmin() {
-        if (isset($_SESSION['ses_admin_persetujuanrawatinap'])) {
+        if (isset($_SESSION['ses_admin_pernyataanmenerimabarang'])) {
             return true;
         } else {
             return false;
@@ -21,7 +21,7 @@
 
 
     function cekUser() {
-        if (isset($_SESSION['ses_admin_persetujuanrawatinap'])) {
+        if (isset($_SESSION['ses_admin_pernyataanmenerimabarang'])) {
             return true;
         } else {
             return false;
@@ -30,7 +30,7 @@
 
     function adminAktif() {
         if (cekSessiAdmin()) {
-            return $_SESSION['ses_admin_persetujuanrawatinap'];
+            return $_SESSION['ses_admin_pernyataanmenerimabarang'];
         }
     }
 

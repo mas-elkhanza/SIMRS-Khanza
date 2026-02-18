@@ -152,6 +152,12 @@
                                       </a>
                                     </td>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=pernyataanmenerimabarang/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/file-manager.png'/><br>
+                                         Serah Terima Anggota Tubuh/Barang                                          
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               
