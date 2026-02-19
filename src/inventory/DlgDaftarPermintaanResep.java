@@ -3099,7 +3099,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
-            JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat jalan kebutuhan klaim 23 hari...!!!!");     
+            JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat jalan kebutuhan klaim obat Apotek Online BPJS...!!!!");     
         }
     }//GEN-LAST:event_BtnSEPBPJSActionPerformed
 
@@ -3110,7 +3110,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data pasien yang mau dibuatkan resep luar..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data pasien terlebih dahulu..!!");
                 }else{
                     if (apol == null || !apol.isDisplayable()) {
                         apol=new ApotekBPJSInputResepObat(null,false);
@@ -3137,12 +3137,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     apol.setVisible(true);
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep Rawat Jalan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat jalan kebutuhan klaim 23 hari...!!!!");
                 TCari.requestFocus();
             }
-        }else {
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep Rawat Jalan...!!!!");
-            TCari.requestFocus();
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat jalan kebutuhan klaim obat Apotek Online BPJS...!!!!");     
         }
     }//GEN-LAST:event_BtnObat23HariBPJSActionPerformed
 

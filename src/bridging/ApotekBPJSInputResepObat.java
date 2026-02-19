@@ -486,7 +486,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         LTotal.setText("0");
         LTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(80, 23));
+        LTotal.setPreferredSize(new java.awt.Dimension(181, 23));
         panelisi3.add(LTotal);
 
         jLabel7.setText("Total+PPN :");
@@ -498,7 +498,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         LTotalTagihan.setText("0");
         LTotalTagihan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LTotalTagihan.setName("LTotalTagihan"); // NOI18N
-        LTotalTagihan.setPreferredSize(new java.awt.Dimension(80, 23));
+        LTotalTagihan.setPreferredSize(new java.awt.Dimension(270, 23));
         panelisi3.add(LTotalTagihan);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
