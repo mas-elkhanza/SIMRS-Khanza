@@ -56,7 +56,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(459,539);
 
-        Object[] row={"Kode Jabatan","Nama Jabatan"};
+        Object[] row={"Kode Aktivitas","Nama Jenis Aktivitas"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,15 +70,15 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbJabatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(450);
             }
         }
         tbJabatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeAktivitas.setDocument(new batasInput((byte)5).getKata(KodeAktivitas));
-        NamaAktivitas.setDocument(new batasInput((byte)40).getKata(NamaAktivitas));
+        NamaAktivitas.setDocument(new batasInput((byte)60).getKata(NamaAktivitas));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
     }
 
@@ -123,7 +123,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jenis Aktivitas Proyek ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jenis Aktivitas Proyek/Klasifikasi Jenis Pekerjaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -372,7 +372,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         }else if(NamaAktivitas.getText().trim().equals("")){
             Valid.textKosong(NamaAktivitas,"nama aktivitas");
         }else{
-            if(Sequel.menyimpantf("pcra_icra_jenis_aktivitas_proyek","'"+KodeAktivitas.getText()+"','"+NamaAktivitas.getText()+"'","Kode Jabatan")==true){
+            if(Sequel.menyimpantf("pcra_icra_jenis_aktivitas_proyek","'"+KodeAktivitas.getText()+"','"+NamaAktivitas.getText()+"'","Kode Aktivitas")==true){
                 tabMode.addRow(new Object[]{
                     KodeAktivitas.getText(),NamaAktivitas.getText()
                 });

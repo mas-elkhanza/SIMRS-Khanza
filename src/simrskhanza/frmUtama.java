@@ -839,6 +839,7 @@ import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
 import pcraicra.PCRAICRAJenisAktivitasProyek;
+import pcraicra.PCRAICRALokasiKelompokRisikoArea;
 import permintaan.DlgBookingMCUPerusahaan;
 import surat.MasterMenolakAnjuranMedis;
 import permintaan.DlgBookingPeriksa;
@@ -23172,6 +23173,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         PCRAICRAJenisAktivitasProyek form=new PCRAICRAJenisAktivitasProyek(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.emptTeks();
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPCRAICRALokasiKelompokRisikoActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        PCRAICRALokasiKelompokRisikoArea form=new PCRAICRALokasiKelompokRisikoArea(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.emptTeks();
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
@@ -23891,7 +23905,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
             btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani,btnLabKeslingPengujianSampelDapatDilayani,btnLabKeslingPenugasanPengujianSampel,btnLabKeslingHasilPengujianSampel,
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
-            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh,btnPCRAICRAJenisAktivitasProyek;
+            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh,btnPCRAICRAJenisAktivitasProyek,
+            btnPCRAICRALokasiKelompokRisiko;
     
     public void isWall(){
         try{            
@@ -29516,6 +29531,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu=0;
             if(akses.getpcra_icra_jenis_aktivitas_proyek()==true){
                 Panelmenu.add(btnPCRAICRAJenisAktivitasProyek);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcra_icra_lokasi_kelompok_risiko_area()==true){
+                Panelmenu.add(btnPCRAICRALokasiKelompokRisiko);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){  
@@ -35349,6 +35369,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpcra_icra_jenis_aktivitas_proyek()==true){
             Panelmenu.add(btnPCRAICRAJenisAktivitasProyek);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcra_icra_lokasi_kelompok_risiko_area()==true){
+            Panelmenu.add(btnPCRAICRALokasiKelompokRisiko);
             jmlmenu++;
         }
 
@@ -43364,6 +43389,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getpcra_icra_lokasi_kelompok_risiko_area()==true){
+            if(btnPCRAICRALokasiKelompokRisiko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCRAICRALokasiKelompokRisiko);
+                jmlmenu++;
+            }
+        }
+        
         if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             Panelmenu.add(btnPenelitianPerpustakaan);
             jmlmenu++;
@@ -49556,5 +49588,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRAJenisAktivitasProyek.setName("btnPCRAICRAJenisAktivitasProyek"); 
         btnPCRAICRAJenisAktivitasProyek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRAJenisAktivitasProyek.addActionListener(this::btnPCRAICRAJenisAktivitasProyekActionPerformed);
+        
+        btnPCRAICRALokasiKelompokRisiko = new widget.ButtonBig();
+        btnPCRAICRALokasiKelompokRisiko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/construction_16675584.png")));
+        btnPCRAICRALokasiKelompokRisiko.setText("Lokasi & Kelompok Risiko Area");
+        btnPCRAICRALokasiKelompokRisiko.setIconTextGap(0);
+        btnPCRAICRALokasiKelompokRisiko.setName("btnPCRAICRALokasiKelompokRisiko"); 
+        btnPCRAICRALokasiKelompokRisiko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCRAICRALokasiKelompokRisiko.addActionListener(this::btnPCRAICRALokasiKelompokRisikoActionPerformed);
     }
 }

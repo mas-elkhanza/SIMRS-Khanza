@@ -222,7 +222,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             penilaian_awal_medis_ralan_urologi=false,hasil_pemeriksaan_treadmill=false,hasil_pemeriksaan_echo_pediatrik=false,template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat=false,
             penilaian_awal_medis_ranap_jantung=false,penugasan_pengujian_sampel_lab_kesehatan_lingkungan=false,hasil_pengujian_sampel_lab_kesehatan_lingkungan=false,verifikasi_pengujian_sampel_lab_kesehatan_lingkungan=false,
             validasi_pengujian_sampel_lab_kesehatan_lingkungan=false,rekap_pelayanan_lab_kesehatan_lingkungan=false,pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=false,skrining_curb65=false,bpjs_potensi_prb=false,
-            bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false,bpjs_rekap_peserta_prb_apotek=false,serah_terima_anggota_tubuh_barang=false,pcra_icra_jenis_aktivitas_proyek=false;
+            bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false,bpjs_rekap_peserta_prb_apotek=false,serah_terima_anggota_tubuh_barang=false,pcra_icra_jenis_aktivitas_proyek=false,
+            pcra_icra_lokasi_kelompok_risiko_area=false;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
@@ -895,6 +896,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         penilaian_awal_medis_ranap_jantung=false;penugasan_pengujian_sampel_lab_kesehatan_lingkungan=false;hasil_pengujian_sampel_lab_kesehatan_lingkungan=false;verifikasi_pengujian_sampel_lab_kesehatan_lingkungan=false;
         validasi_pengujian_sampel_lab_kesehatan_lingkungan=false;rekap_pelayanan_lab_kesehatan_lingkungan=false;pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=false;skrining_curb65=false;bpjs_potensi_prb=false;
         bpjs_riwayat_pelayanan_obat=false;skrining_gizi_kehamilan=false;bpjs_rekap_peserta_prb_apotek=false;serah_terima_anggota_tubuh_barang=false;pcra_icra_jenis_aktivitas_proyek=false;
+        pcra_icra_lokasi_kelompok_risiko_area=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1155,7 +1157,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.penilaian_awal_medis_ranap_jantung,user.penugasan_pengujian_sampel_lab_kesehatan_lingkungan,user.hasil_pengujian_sampel_lab_kesehatan_lingkungan,"+
                 "user.verifikasi_pengujian_sampel_lab_kesehatan_lingkungan,user.validasi_pengujian_sampel_lab_kesehatan_lingkungan,user.rekap_pelayanan_lab_kesehatan_lingkungan,"+
                 "user.pembayaran_pengujian_sampel_lab_kesehatan_lingkungan,user.skrining_curb65,user.bpjs_potensi_prb,user.bpjs_riwayat_pelayanan_obat,user.skrining_gizi_kehamilan,"+
-                "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang,user.pcra_icra_jenis_aktivitas_proyek from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang,user.pcra_icra_jenis_aktivitas_proyek,user.pcra_icra_lokasi_kelompok_risiko_area from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1290,7 +1292,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     master_sampel_bakumutu=rs.getBoolean("master_sampel_bakumutu");skrining_instrumen_amt=rs.getBoolean("skrining_instrumen_amt");parameter_pengujian_lab_kesehatan_lingkungan=rs.getBoolean("parameter_pengujian_lab_kesehatan_lingkungan");nilai_normal_baku_mutu_lab_kesehatan_lingkungan=rs.getBoolean("nilai_normal_baku_mutu_lab_kesehatan_lingkungan");skrining_pneumonia_severity_index=rs.getBoolean("skrining_pneumonia_severity_index");permintaan_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("permintaan_pengujian_sampel_lab_kesehatan_lingkungan");penilaian_awal_medis_ralan_jantung=rs.getBoolean("penilaian_awal_medis_ralan_jantung");
                     penilaian_awal_medis_ralan_urologi=rs.getBoolean("penilaian_awal_medis_ralan_urologi");hasil_pemeriksaan_treadmill=rs.getBoolean("hasil_pemeriksaan_treadmill");hasil_pemeriksaan_echo_pediatrik=rs.getBoolean("hasil_pemeriksaan_echo_pediatrik");template_pelaksanaan_informasi_edukasi=rs.getBoolean("template_pelaksanaan_informasi_edukasi");skrining_instrumen_esat=rs.getBoolean("skrining_instrumen_esat");penilaian_awal_medis_ranap_jantung=rs.getBoolean("penilaian_awal_medis_ranap_jantung");penugasan_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("penugasan_pengujian_sampel_lab_kesehatan_lingkungan");
                     hasil_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("hasil_pengujian_sampel_lab_kesehatan_lingkungan");verifikasi_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("verifikasi_pengujian_sampel_lab_kesehatan_lingkungan");validasi_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("validasi_pengujian_sampel_lab_kesehatan_lingkungan");rekap_pelayanan_lab_kesehatan_lingkungan=rs.getBoolean("rekap_pelayanan_lab_kesehatan_lingkungan");pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=rs.getBoolean("pembayaran_pengujian_sampel_lab_kesehatan_lingkungan");skrining_curb65=rs.getBoolean("skrining_curb65");
-                    bpjs_potensi_prb=rs.getBoolean("bpjs_potensi_prb");bpjs_riwayat_pelayanan_obat=rs.getBoolean("bpjs_riwayat_pelayanan_obat");skrining_gizi_kehamilan=rs.getBoolean("skrining_gizi_kehamilan");bpjs_rekap_peserta_prb_apotek=rs.getBoolean("bpjs_rekap_peserta_prb_apotek");serah_terima_anggota_tubuh_barang=rs.getBoolean("serah_terima_anggota_tubuh_barang");pcra_icra_jenis_aktivitas_proyek=rs.getBoolean("pcra_icra_jenis_aktivitas_proyek");
+                    bpjs_potensi_prb=rs.getBoolean("bpjs_potensi_prb");bpjs_riwayat_pelayanan_obat=rs.getBoolean("bpjs_riwayat_pelayanan_obat");skrining_gizi_kehamilan=rs.getBoolean("skrining_gizi_kehamilan");bpjs_rekap_peserta_prb_apotek=rs.getBoolean("bpjs_rekap_peserta_prb_apotek");serah_terima_anggota_tubuh_barang=rs.getBoolean("serah_terima_anggota_tubuh_barang");pcra_icra_jenis_aktivitas_proyek=rs.getBoolean("pcra_icra_jenis_aktivitas_proyek");pcra_icra_lokasi_kelompok_risiko_area=rs.getBoolean("pcra_icra_lokasi_kelompok_risiko_area");
                     setTampil();setTampil2();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -5749,6 +5751,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[R]Jenis Aktivitas Proyek",pcra_icra_jenis_aktivitas_proyek});
         }
         
+        if("[R]Lokasi & Kelompok Risiko Area".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[R]Lokasi & Kelompok Risiko Area",pcra_icra_lokasi_kelompok_risiko_area});
+        }
+                
         if("[S]Suplier Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[S]Suplier Toko",toko_suplier});
         }
@@ -10462,6 +10468,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[R]Jenis Aktivitas Proyek".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcra_icra_jenis_aktivitas_proyek='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[R]Lokasi & Kelompok Risiko Area".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcra_icra_lokasi_kelompok_risiko_area='"+tbUser.getValueAt(i,2).toString()+"'");
             }
                     
             if("[S]Suplier Toko".equals(tbUser.getValueAt(i,1).toString())){
