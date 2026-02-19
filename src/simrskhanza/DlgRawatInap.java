@@ -173,6 +173,9 @@ import java.util.concurrent.RejectedExecutionException;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import rekammedis.RMDataSkriningGiziKehamilan;
+//CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+import rekammedis.RMCatatanSBAR;
+//
 
 /**
  *
@@ -1069,6 +1072,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPenilaianTambahanBunuhDiri = new widget.Button();
         BtnPenilaianTambahanPerilakuKekerasan = new widget.Button();
         BtnPenilaianTambahanMelarikanDiri = new widget.Button();
+        //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+        BtnSBARRanap = new widget.Button();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -4319,6 +4324,24 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnPenilaianTambahanMelarikanDiriActionPerformed(evt);
             }
         });
+        
+        //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+        BtnSBARRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnSBARRanap.setText("SBAR Ranap");
+        BtnSBARRanap.setFocusPainted(false);
+        BtnSBARRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnSBARRanap.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSBARRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSBARRanap.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSBARRanap.setName("BtnSBARRanap"); // NOI18N
+        BtnSBARRanap.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSBARRanap.setRoundRect(false);
+        BtnSBARRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSBARRanapActionPerformed(evt);
+            }
+        });
+        //
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -8903,6 +8926,26 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+    private void BtnSBARRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResepObatActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{            
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{
+                RMCatatanSBAR cacatansbarranap=new RMCatatanSBAR(null,false);
+                cacatansbarranap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                cacatansbarranap.setLocationRelativeTo(internalFrame1);
+                cacatansbarranap.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"ranap");
+                cacatansbarranap.isCek();
+                cacatansbarranap.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_BtnResepObatActionPerformed
+    //
+    
     /**
     * @param args the command line arguments
     */
@@ -9016,6 +9059,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnSkriningNutrisiLansia;
     private widget.Button BtnTimeOutSebelumInsisi;
     private widget.Button BtnTransferAntarRuang;
+    //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+    private widget.Button BtnSBARRanap;
+    //
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkInput1;
@@ -10106,6 +10152,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getchecklist_kesiapan_anestesi()==true){
             tinggi=tinggi+24;
         }
+        //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+        BtnSBARRanap.setVisible(akses.getresume_pasien()); 
+        if(akses.getresume_pasien()==true){
+            tinggi=tinggi+24;
+        }
+        //
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
         
         if(akses.getjml2()>=1){
@@ -11065,6 +11117,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TanggalRegistrasi.setName("TanggalRegistrasi");
         
         FormMenu.add(BtnRiwayat);
+        //CUSTOM RS ISLAM LUMAJANG - Kamis, 19 Februari 2026
+        FormMenu.add(BtnSBARRanap);
+        //
         FormMenu.add(BtnResepObat);
         FormMenu.add(BtnCopyResep);
         FormMenu.add(BtnPermintaanStok);
