@@ -326,6 +326,7 @@ public final class MasterCariTemplatePersetujuanPenolakanTindakan extends javax.
     }//GEN-LAST:event_tbKamarKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        runBackground(() ->tampil());
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

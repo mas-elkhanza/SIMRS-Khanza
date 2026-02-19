@@ -17,6 +17,7 @@ import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
 import java.awt.Canvas;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -27,12 +28,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -47,6 +53,10 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -63,7 +73,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         };
 
         tbAdmin.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -596,7 +606,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             Sequel.menyimpan("setting","'"+Nm.getText()+"','"+Almt.getText()+"','"+Kota.getText()+
                              "','"+Propinsi.getText()+"','"+Kontak.getText()+"','"+Email.getText()+
                              "','"+YesNo.getSelectedItem()+"','"+kdPPK.getText()+"','"+kdPPK1.getText()+"','"+kdPPK2.getText()+"'","Setting",EGb,ELogo);
-            tampil();
+            runBackground(() ->tampil());
         }else if(tabMode.getRowCount()>0){
             JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Set Aplikasi...!!!!");
             Nm.requestFocus();
@@ -629,7 +639,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! Nm.getText().trim().equals("")){
             Sequel.queryu("delete from setting ");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
@@ -657,7 +667,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     }//GEN-LAST:event_YesNoKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void KontakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakKeyPressed
@@ -705,7 +715,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             Sequel.menyimpan("setting","'"+Nm.getText()+"','"+Almt.getText()+"','"+Kota.getText()+
                              "','"+Propinsi.getText()+"','"+Kontak.getText()+"','"+Email.getText()+
                              "','"+YesNo.getSelectedItem()+"','"+kdPPK.getText()+"','"+kdPPK1.getText()+"','"+kdPPK2.getText()+"'","Setting",EGb,ELogo);
-            tampil();
+            runBackground(() ->tampil());
         }
     }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -789,23 +799,30 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo,kode_ppk,kode_ppkinhealth,kode_ppkkemenkes from setting";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            ResultSet rs=koneksi.prepareStatement(sql).executeQuery();
-            while(rs.next()){
-                Object[] data={rs.getString(1),rs.getString(2),rs.getString(3),
-                               rs.getString(4),rs.getString(5),rs.getBlob(6),
-                               rs.getString(7),rs.getString(8),rs.getBlob(9),
-                               rs.getString(10),rs.getString(11),rs.getString(12)
-                };
-                tabMode.addRow(data);
-            }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo,kode_ppk,kode_ppkinhealth,kode_ppkkemenkes from setting");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Object[] data={rs.getString(1),rs.getString(2),rs.getString(3),
+                                   rs.getString(4),rs.getString(5),rs.getBlob(6),
+                                   rs.getString(7),rs.getString(8),rs.getBlob(9),
+                                   rs.getString(10),rs.getString(11),rs.getString(12)
+                    };
+                    tabMode.addRow(data);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Map : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
     }
@@ -903,4 +920,35 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         System.out.println(str);
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

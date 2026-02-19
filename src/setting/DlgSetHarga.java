@@ -1684,7 +1684,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                     cmbHargaDasar.getSelectedItem().toString(),
                     cmbPPN.getSelectedItem().toString()
                 });
-                tampilpengaturanumum();
+                runBackground(() ->tampilpengaturanumum());
                 emptTeks();
             }
         }else if(TabSetting.getSelectedIndex()==1){
@@ -1717,7 +1717,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                             ranapk2umum.getText()+"','"+ranapk3umum.getText()+"','"+ranaputamaumum.getText()+"','"+
                             ranapvipumum.getText()+"','"+ranapvvipumum.getText()+"','"+beliluarumum.getText()+"','"+
                             jualbebasumum.getText()+"','"+karyawanumum.getText()+"'","Set Harga");
-                    tampilpengaturanhargaumum();
+                    runBackground(() ->tampilpengaturanhargaumum());
                     emptTeks();
                 }                
             }
@@ -1780,7 +1780,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                         ranapk2perbarang.getText()+"','"+ranapk3perbarang.getText()+"','"+ranaputamaperbarang.getText()+"','"+
                         ranapvipperbarang.getText()+"','"+ranapvvipperbarang.getText()+"','"+beliluarperbarang.getText()+"','"+
                         jualbebasperbarang.getText()+"','"+karyawanperbarang.getText()+"','"+kdbarang.getText()+"'","Set Harga");
-                tampilpengaturanhargaperbarang();
+                runBackground(() ->tampilpengaturanhargaperbarang());
                 emptTeks();
             }
         }            
@@ -1815,7 +1815,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(TabSetting.getSelectedIndex()==0){
             Sequel.queryu("delete from set_harga_obat");
-            tampilpengaturanumum();
+            runBackground(() ->tampilpengaturanumum());
             emptTeks();
         }else if(TabSetting.getSelectedIndex()==1){
             if(tabModePengaturanHargaUmum.getRowCount()==0){
@@ -1825,7 +1825,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvipumum.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualanumum");
-                tampilpengaturanhargaumum();
+                runBackground(() ->tampilpengaturanhargaumum());
                 emptTeks();
             }
         }else if(TabSetting.getSelectedIndex()==2){
@@ -1847,7 +1847,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvipperbarang.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualanperbarang where kode_brng='"+kdbarang.getText()+"'");
-                tampilpengaturanhargaperbarang();
+                runBackground(() ->tampilpengaturanhargaperbarang());
                 emptTeks();
             }
         }             
@@ -1949,7 +1949,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 cmbHargaDasar.getSelectedItem().toString(),
                 cmbPPN.getSelectedItem().toString()
             });
-            tampilpengaturanumum();
+            runBackground(() ->tampilpengaturanumum());
             emptTeks();
         }else if(TabSetting.getSelectedIndex()==1){            
             if(ralanumum.getText().trim().equals("")){
@@ -1978,7 +1978,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                         ranapk2umum.getText()+"','"+ranapk3umum.getText()+"','"+ranaputamaumum.getText()+"','"+
                         ranapvipumum.getText()+"','"+ranapvvipumum.getText()+"','"+beliluarumum.getText()+"','"+
                         jualbebasumum.getText()+"','"+karyawanumum.getText()+"'","Set Harga");
-                tampilpengaturanhargaumum();
+                runBackground(() ->tampilpengaturanhargaumum());
                 emptTeks();
             }   
         }else if(TabSetting.getSelectedIndex()==2){
@@ -2042,7 +2042,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                         ranapk2perbarang.getText()+"','"+ranapk3perbarang.getText()+"','"+ranaputamaperbarang.getText()+"','"+
                         ranapvipperbarang.getText()+"','"+ranapvvipperbarang.getText()+"','"+beliluarperbarang.getText()+"','"+
                         jualbebasperbarang.getText()+"','"+karyawanperbarang.getText()+"','"+kdbarang.getText()+"'","Set Harga");
-                tampilpengaturanhargaperbarang();
+                runBackground(() ->tampilpengaturanhargaperbarang());
                 emptTeks();
             }
         }              
@@ -2235,13 +2235,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
     private void TabSettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabSettingMouseClicked
         if(TabSetting.getSelectedIndex()==0){
-            tampilpengaturanumum();
+            runBackground(() ->tampilpengaturanumum());
         }else if(TabSetting.getSelectedIndex()==1){
-            tampilpengaturanhargaumum();
+            runBackground(() ->tampilpengaturanhargaumum());
         }else if(TabSetting.getSelectedIndex()==2){
             runBackground(() ->tampil());
         }else if(TabSetting.getSelectedIndex()==3){
-            tampilpengaturanhargaperbarang();
+            runBackground(() ->tampilpengaturanhargaperbarang());
         }
     }//GEN-LAST:event_TabSettingMouseClicked
 
@@ -2734,7 +2734,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_TCari1KeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampilpengaturanhargaperbarang();
+        runBackground(() ->tampilpengaturanhargaperbarang());
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
@@ -2747,7 +2747,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
         TCari1.setText("");
-        tampilpengaturanhargaperbarang();
+        runBackground(() ->tampilpengaturanhargaperbarang());
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     private void BtnAll1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAll1KeyPressed

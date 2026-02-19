@@ -3890,8 +3890,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[L]Mapping Obat Apotek BPJS",bpjs_mapping_obat_apotek});
         }
         
-        if("[L]Obat 23 Hari Apotek BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[L]Obat 23 Hari Apotek BPJS",bpjs_obat_23hari_apotek});
+        if("[L]Obat ApOL Apotek BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Obat ApOL Apotek BPJS",bpjs_obat_23hari_apotek});
         }
         
         if("[L]Pencarian SEP Apotek BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -8597,7 +8597,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_mapping_obat_apotek='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Obat 23 Hari Apotek BPJS".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Obat ApOL Apotek BPJS".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_obat_23hari_apotek='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

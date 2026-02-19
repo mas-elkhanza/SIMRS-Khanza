@@ -25,8 +25,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -43,6 +47,8 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     private String gabung="",habis="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -107,29 +113,6 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
     
         ChkInput.setSelected(false);
         isForm(); 
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }
     }
     
 
@@ -736,7 +719,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
                     Alamat.getText(),NoTelp.getText(),Email.getText(),Valid.SetTgl(Gabung.getSelectedItem()+""),Valid.SetTgl(Habis.getSelectedItem()+""),
                     Jenis.getSelectedItem().toString(),NoID.getText()
                 })==true){
-                    tampil();
+                    runBackground(() ->tampil());
                     emptTeks();
             }
         }
@@ -797,7 +780,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
                         NoAnggota.getText(),NmAnggota.getText(),TmpLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JK.getSelectedItem().toString().substring(0,1),Alamat.getText(),NoTelp.getText(),Email.getText(),
                         Valid.SetTgl(Gabung.getSelectedItem()+""),Valid.SetTgl(Habis.getSelectedItem()+""),Jenis.getSelectedItem().toString(),NoID.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                     })==true){
-                        tampil();
+                        runBackground(() ->tampil());
                         emptTeks();
                 }
             }
@@ -881,7 +864,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -896,12 +879,12 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         TCari.setText("");
         ChkHabis.setSelected(false);
         chkGabung.setSelected(false);
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             TCari.setText("");
         }else{
             Valid.pindah(evt, BtnPrint,BtnKeluar);
@@ -951,7 +934,29 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
 }//GEN-LAST:event_EmailKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -1096,7 +1101,7 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             gabung="";
@@ -1110,12 +1115,11 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
             }
                
             ps=koneksi.prepareStatement(
-                    "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
-                    "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where "+
-                    gabung+habis+" no_anggota like ? or "+gabung+habis+" nama_anggota like ? or "+
-                    gabung+habis+" alamat like ? or "+gabung+habis+" no_telp like ? or "+
-                    gabung+habis+" jenis_anggota like ? or "+gabung+habis+" nomer_id like ? "+
-                    "order by no_anggota");
+                "select perpustakaan_anggota.no_anggota,perpustakaan_anggota.nama_anggota,perpustakaan_anggota.tmp_lahir,perpustakaan_anggota.tgl_lahir,perpustakaan_anggota.j_kel,perpustakaan_anggota.alamat,perpustakaan_anggota.no_telp,"+
+                "perpustakaan_anggota.email,perpustakaan_anggota.tgl_gabung,perpustakaan_anggota.masa_berlaku,perpustakaan_anggota.jenis_anggota,perpustakaan_anggota.nomer_id from perpustakaan_anggota where "+
+                gabung+habis+" perpustakaan_anggota.no_anggota like ? or "+gabung+habis+" perpustakaan_anggota.nama_anggota like ? or "+gabung+habis+" perpustakaan_anggota.alamat like ? or "+gabung+habis+" perpustakaan_anggota.no_telp like ? or "+
+                gabung+habis+" perpustakaan_anggota.jenis_anggota like ? or "+gabung+habis+" perpustakaan_anggota.nomer_id like ? order by perpustakaan_anggota.no_anggota"
+            );
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1200,5 +1204,35 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         BtnEdit.setEnabled(akses.getanggota_perpustakaan());
     }
 
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
     
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }

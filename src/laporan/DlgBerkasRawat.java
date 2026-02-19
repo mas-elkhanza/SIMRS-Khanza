@@ -27,6 +27,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -76,6 +79,8 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private final Connection koneksi=koneksiDB.condb();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     public DlgBerkasRawat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -84,7 +89,7 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
     
     private void initComponents2() {           
         txtURL.addActionListener((ActionEvent e) -> {
-            loadURL(txtURL.getText());
+            runBackground(() ->loadURL(txtURL.getText()));
         });
   
         progressBar.setPreferredSize(new Dimension(150, 18));
@@ -320,5 +325,37 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
     public void setJudul(String Judul,String Pages){
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), Judul, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); 
         this.halaman=Pages;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

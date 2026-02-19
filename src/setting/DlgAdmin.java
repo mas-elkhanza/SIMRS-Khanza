@@ -18,13 +18,18 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -39,6 +44,8 @@ public class DlgAdmin extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private ResultSet rs;
     private PreparedStatement ps;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -49,14 +56,13 @@ public class DlgAdmin extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(457,249);
 
-        Object[] row={"ID Admin",
-                      "Password"};
+        Object[] row={"ID Admin","Password"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
         tbAdmin.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -292,7 +298,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             Valid.textKosong(TNm,"Password");
         }else if(tabMode.getRowCount()==0){
             Sequel.menyimpan("admin","AES_ENCRYPT('"+TKd.getText()+"','nur'),AES_ENCRYPT('"+TNm.getText()+"','windi')","Kode Admin");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }else if(tabMode.getRowCount()>0){
             JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Admin Utama ...!!!!");
@@ -326,7 +332,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! TNm.getText().trim().equals("")){
             Sequel.queryu("delete from admin");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -347,7 +353,7 @@ public class DlgAdmin extends javax.swing.JDialog {
         }else{
             Sequel.queryu("delete from admin");
             Sequel.menyimpan("admin","AES_ENCRYPT('"+TKd.getText()+"','nur'),AES_ENCRYPT('"+TNm.getText()+"','windi')","Kode Admin");
-            if(tabMode.getRowCount()!=0){tampil();}
+            if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -400,7 +406,7 @@ public class DlgAdmin extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -439,7 +445,7 @@ public class DlgAdmin extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select AES_DECRYPT(usere,'nur'),AES_DECRYPT(passworde,'windi') from admin");
+            ps=koneksi.prepareStatement("select AES_DECRYPT(admin.usere,'nur'),AES_DECRYPT(admin.passworde,'windi') from admin");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -476,5 +482,37 @@ public class DlgAdmin extends javax.swing.JDialog {
         TKd.setText("");
         TNm.setText("");
         TKd.requestFocus();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

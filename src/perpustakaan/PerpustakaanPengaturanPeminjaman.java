@@ -16,13 +16,18 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -37,6 +42,8 @@ public class PerpustakaanPengaturanPeminjaman extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -51,7 +58,7 @@ public class PerpustakaanPengaturanPeminjaman extends javax.swing.JDialog {
         };
 
         tbAdmin.setModel(tabMode);
-        //tampil();
+        //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -310,7 +317,7 @@ public class PerpustakaanPengaturanPeminjaman extends javax.swing.JDialog {
             Valid.textKosong(Denda,"Denda Keterlambatan Perhari");
         }else if(tabMode.getRowCount()==0){
             Sequel.menyimpan("perpustakaan_set_peminjaman","'"+MakBuku.getText()+"','"+Lama.getText()+"','"+Denda.getText()+"'","Pengaturan Peminjaman");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }else if(tabMode.getRowCount()>0){
             JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Pengaturan Peminjaman di Perpustakaan...!!!!");
@@ -344,7 +351,7 @@ public class PerpustakaanPengaturanPeminjaman extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! MakBuku.getText().trim().equals("")){
             Sequel.queryu("delete from perpustakaan_set_peminjaman");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -398,7 +405,7 @@ private void MakBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_M
 }//GEN-LAST:event_MakBukuKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
@@ -412,7 +419,7 @@ private void MakBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_M
             if(tbAdmin.getSelectedRow()> -1){
                 Sequel.queryu("delete from perpustakaan_set_peminjaman");
                 Sequel.menyimpan("perpustakaan_set_peminjaman","'"+MakBuku.getText()+"','"+Lama.getText()+"','"+Denda.getText()+"'","Pengaturan Peminjaman");
-                tampil();
+                runBackground(() ->tampil());
                 emptTeks();
             }
         }
@@ -511,5 +518,37 @@ private void MakBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_M
         Lama.setText("0");
         Denda.setText("0");
         MakBuku.requestFocus();
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

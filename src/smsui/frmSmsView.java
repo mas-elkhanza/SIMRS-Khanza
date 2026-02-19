@@ -8,9 +8,12 @@ package smsui;
 import fungsi.koneksiDB;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import smsobj.Status;
 import smsservice.SMSReadService;
 
@@ -21,7 +24,7 @@ import smsservice.SMSReadService;
 public class frmSmsView extends javax.swing.JFrame {
     private final Status status;
     private Connection koneksi = null;
-    private final DlgPesanMasuk dlgPesan = new DlgPesanMasuk(null,true);
+    private DlgPesanMasuk dlgPesan;
     /**
      * Creates new form frmSmsViewe
      */
@@ -31,7 +34,6 @@ public class frmSmsView extends javax.swing.JFrame {
         this.setLocation(10,10);
         setSize(552,638);
         status = new Status();
-        dlgPesan.setLocationRelativeTo(null);
     }
 
     /**
@@ -194,8 +196,24 @@ public class frmSmsView extends javax.swing.JFrame {
         if(koneksi == null ){
             JOptionPane.showMessageDialog(this, "Start Service terlebih dahulu!!");
         }else{
-            dlgPesan.setSize(screen.width-100,screen.height-100);
-            dlgPesan.setLocationRelativeTo(null);
+            if (dlgPesan == null || !dlgPesan.isDisplayable()) {
+                dlgPesan=new DlgPesanMasuk(null,false);
+                dlgPesan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                dlgPesan.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        dlgPesan=null;
+                    }
+                }); 
+                dlgPesan.setSize(screen.width-100,screen.height-100);
+                dlgPesan.setLocationRelativeTo(null);
+            }
+            if (dlgPesan == null) return;
+            if (dlgPesan.isVisible()) {
+                dlgPesan.toFront();
+                return;
+            }     
+            
             dlgPesan.setVisible(true);            
         }
     }//GEN-LAST:event_BtnPesanActionPerformed

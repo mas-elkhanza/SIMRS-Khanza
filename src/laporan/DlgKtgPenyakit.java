@@ -26,8 +26,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -44,6 +48,8 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgKtgPenyakit
      * @param parent
@@ -96,34 +102,8 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
         TNm.setDocument(new batasInput((byte)30).getKata(TNm));
         TCiri.setDocument(new batasInput((int)200).getKata(TCiri));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        } 
+        
         TKd.requestFocus();
-        try {
-            ps=koneksi.prepareStatement("select * from kategori_penyakit where kd_ktg like ? or nm_kategori like ? or ciri_umum like ? order by kd_ktg");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -461,7 +441,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
             Valid.textKosong(TCiri,"ciri-ciri umum");
         }else{
             Sequel.menyimpan("kategori_penyakit","'"+TKd.getText()+"','"+TNm.getText()+"','"+TCiri.getText()+"'","Kode Kategori");
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -490,7 +470,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
                 Sequel.meghapus("kategori_penyakit","kd_ktg",tbKtgPny.getValueAt(i,1).toString());
             }
         }
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -513,7 +493,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
             Valid.editTable(tabMode,"kategori_penyakit","kd_ktg","?","kd_ktg=?,nm_kategori=?,ciri_umum=?",4,new String[]{
                 TKd.getText(),TNm.getText(),TCiri.getText(),tbKtgPny.getValueAt(tbKtgPny.getSelectedRow(),1).toString()
             });
-            if(tabMode.getRowCount()!=0){tampil();}
+            if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -581,7 +561,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -597,13 +577,13 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyReleased
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        tampil();
+        runBackground(() ->tampil());
         emptTeks();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            runBackground(() ->tampil());
             emptTeks();
         }else{
             Valid.pindah(evt, BtnCari, TKd);
@@ -634,7 +614,29 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_tbKtgPnyKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        runBackground(() ->tampil());
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -684,14 +686,28 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                    false,rs.getString(1),rs.getString(2),rs.getString(3)
-                });
+            ps=koneksi.prepareStatement("select * from kategori_penyakit "+(TCari.getText().trim().equals("")?"":"where kategori_penyakit.kd_ktg like ? or kategori_penyakit.nm_kategori like ? or kategori_penyakit.ciri_umum like ? ")+"order by kategori_penyakit.kd_ktg");
+            try {
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                }   
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3)
+                    });
+                }
+            }catch (Exception e) {
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -719,5 +735,37 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKtgPny;
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

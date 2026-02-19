@@ -12,6 +12,10 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -20,11 +24,13 @@ public class DlgJumlahPengunjungRalanTNI extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private final Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private String[] kodecari,kodebayar;
     private StringBuilder htmlContent;
-    private int kolom=0,jumlahcari=0,jumlahcarabayar=0,total=0,i=0,no=0;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
+    private int kolom=0,jumlahcari=0,jumlahcarabayar=0,total=0,i=0;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -359,13 +365,13 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            prosesCari();
+            runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            prosesCari2();
+            runBackground(() ->tampil2());
         }else if(TabRawat.getSelectedIndex()==2){
-            prosesCari3();
+            runBackground(() ->tampil3());
         }else if(TabRawat.getSelectedIndex()==3){
-            prosesCari4();
+            runBackground(() ->tampil4());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -408,7 +414,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.panelisi panelisi1;
     // End of variables declaration//GEN-END:variables
 
-    private void prosesCari() {
+    private void tampil() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             jumlahcari=Sequel.cariInteger("select count(golongan_tni.id) from golongan_tni order by golongan_tni.id");
@@ -550,7 +556,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getDefaultCursor());
     }
     
-    private void prosesCari2() {
+    private void tampil2() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             jumlahcari=Sequel.cariInteger("select count(satuan_tni.id) from satuan_tni order by satuan_tni.id");
@@ -692,7 +698,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getDefaultCursor());
     }
     
-    private void prosesCari3() {
+    private void tampil3() {
          this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             jumlahcari=Sequel.cariInteger("select count(pangkat_tni.id) from pangkat_tni order by pangkat_tni.id");
@@ -834,7 +840,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getDefaultCursor());
     }
     
-    private void prosesCari4() {
+    private void tampil4() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             jumlahcari=Sequel.cariInteger("select count(jabatan_tni.id) from jabatan_tni order by jabatan_tni.id");
@@ -980,4 +986,35 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         BtnPrint.setEnabled(akses.getjumlah_pengunjung_ralan_tni());
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
 }
