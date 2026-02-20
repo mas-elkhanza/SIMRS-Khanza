@@ -229,7 +229,7 @@
                 <td width="57%">
                     <input name="keluar" class="text" type=text class="inputbox" 
                         value="<?php if($status_lanjut=="Ralan"){
-                                         echo $tgl_registrasi." ".$jam_reg;
+                                         echo $tgl_registrasi." 23:59:59";
                                      }else{
                                          $keluarpasien = getOne("select concat(kamar_inap.tgl_keluar,' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='".$norawat."' order by kamar_inap.tgl_keluar desc limit 1");
                                          if(empty($keluarpasien)){

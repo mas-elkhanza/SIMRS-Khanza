@@ -210,7 +210,7 @@
             }         
 
             if($action=="Kirim") {
-                $_sql   = "select bridging_sep.no_kartu,bridging_sep.no_sep,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tanggal_lahir,bridging_sep.jkel,bridging_sep.tglsep,if(bridging_sep.tglpulang='0000-00-00 00:00:00',concat(bridging_sep.tglsep,' 23:00:00'),bridging_sep.tglpulang) as tglpulang,bridging_sep.jnspelayanan,bridging_sep.klsrawat,bridging_sep.no_rawat,bridging_sep.asal_rujukan,bridging_sep.klsnaik from bridging_sep where bridging_sep.no_sep='".$no_sep."'";
+                $_sql   = "select bridging_sep.no_kartu,bridging_sep.no_sep,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tanggal_lahir,bridging_sep.jkel,bridging_sep.tglsep,bridging_sep.tglpulang,bridging_sep.jnspelayanan,bridging_sep.klsrawat,bridging_sep.no_rawat,bridging_sep.asal_rujukan,bridging_sep.klsnaik from bridging_sep where bridging_sep.no_sep='".$no_sep."'";
                 $hasil  = bukaquery($_sql);
                 $baris  = mysqli_fetch_array($hasil);
                 $gender = "";
@@ -362,11 +362,11 @@
 
                 BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
                 EditUlangKlaim($baris["no_sep"]);
-                UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
+                UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),str_replace("00:00:00","23:59:59",$baris["tglpulang"]),$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
 
                 echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&action=no&keyword=$keyword&statuskirim=$statuskirim'>";
             }else if($action=="KirimInternal") {
-                $_sql   = "select bridging_sep_internal.no_kartu,bridging_sep_internal.no_sep,bridging_sep_internal.nomr,bridging_sep_internal.nama_pasien,bridging_sep_internal.tanggal_lahir,bridging_sep_internal.jkel,bridging_sep_internal.tglsep,if(bridging_sep_internal.tglpulang='0000-00-00 00:00:00',concat(bridging_sep_internal.tglsep,' 23:00:00'),bridging_sep_internal.tglpulang) as tglpulang,bridging_sep_internal.jnspelayanan,bridging_sep_internal.klsrawat,bridging_sep_internal.no_rawat,bridging_sep_internal.asal_rujukan,bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_sep='".$no_sep."'";
+                $_sql   = "select bridging_sep_internal.no_kartu,bridging_sep_internal.no_sep,bridging_sep_internal.nomr,bridging_sep_internal.nama_pasien,bridging_sep_internal.tanggal_lahir,bridging_sep_internal.jkel,bridging_sep_internal.tglpulang,bridging_sep_internal.jnspelayanan,bridging_sep_internal.klsrawat,bridging_sep_internal.no_rawat,bridging_sep_internal.asal_rujukan,bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_sep='".$no_sep."'";
                 $hasil  = bukaquery($_sql);
                 $baris  = mysqli_fetch_array($hasil);
                 $gender = "";
@@ -519,7 +519,7 @@
 
                 BuatKlaimBaruInternal($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
                 EditUlangKlaim($baris["no_sep"]);
-                UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
+                UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),str_replace("00:00:00","23:59:59",$baris["tglpulang"]),$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
 
                 echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&action=no&keyword=$keyword&statuskirim=$statuskirim'>";
             }else if(($action=="InputDiagnosa")||($action=="InputCorona")||($action=="RiwayatPerawatan")||($action=="DataBilling")) {
