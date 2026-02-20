@@ -70,9 +70,9 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbJabatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==1){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(430);
             }
         }
         tbJabatan.setDefaultRenderer(Object.class, new WarnaTable());
