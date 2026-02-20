@@ -839,6 +839,7 @@ import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
 import pcraicra.PCRAICRAJenisAktivitasProyek;
+import pcraicra.PCRAICRAKelasRisikoPencegahan;
 import pcraicra.PCRAICRALokasiKelompokRisikoArea;
 import permintaan.DlgBookingMCUPerusahaan;
 import surat.MasterMenolakAnjuranMedis;
@@ -23192,6 +23193,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPCRAICRAKelasRisikoPencegahanActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        PCRAICRAKelasRisikoPencegahan form=new PCRAICRAKelasRisikoPencegahan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.emptTeks();
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23906,7 +23919,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani,btnLabKeslingPengujianSampelDapatDilayani,btnLabKeslingPenugasanPengujianSampel,btnLabKeslingHasilPengujianSampel,
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
             btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh,btnPCRAICRAJenisAktivitasProyek,
-            btnPCRAICRALokasiKelompokRisiko;
+            btnPCRAICRALokasiKelompokRisiko,btnPCRAICRAKelasRisikoPencegahan;
     
     public void isWall(){
         try{            
@@ -29536,6 +29549,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpcra_icra_lokasi_kelompok_risiko_area()==true){
                 Panelmenu.add(btnPCRAICRALokasiKelompokRisiko);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcra_icra_kelas_risiko_pencegahan()==true){
+                Panelmenu.add(btnPCRAICRAKelasRisikoPencegahan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){  
@@ -35374,6 +35392,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpcra_icra_lokasi_kelompok_risiko_area()==true){
             Panelmenu.add(btnPCRAICRALokasiKelompokRisiko);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcra_icra_kelas_risiko_pencegahan()==true){
+            Panelmenu.add(btnPCRAICRAKelasRisikoPencegahan);
             jmlmenu++;
         }
 
@@ -43396,6 +43419,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getpcra_icra_kelas_risiko_pencegahan()==true){
+            if(btnPCRAICRAKelasRisikoPencegahan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCRAICRAKelasRisikoPencegahan);
+                jmlmenu++;
+            }
+        }
+        
         if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             Panelmenu.add(btnPenelitianPerpustakaan);
             jmlmenu++;
@@ -49596,5 +49626,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRALokasiKelompokRisiko.setName("btnPCRAICRALokasiKelompokRisiko"); 
         btnPCRAICRALokasiKelompokRisiko.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRALokasiKelompokRisiko.addActionListener(this::btnPCRAICRALokasiKelompokRisikoActionPerformed);
+        
+        btnPCRAICRAKelasRisikoPencegahan = new widget.ButtonBig();
+        btnPCRAICRAKelasRisikoPencegahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/construction_13585266.png")));
+        btnPCRAICRAKelasRisikoPencegahan.setText("Kelas Risiko/Kelas Pencegahan");
+        btnPCRAICRAKelasRisikoPencegahan.setIconTextGap(0);
+        btnPCRAICRAKelasRisikoPencegahan.setName("btnPCRAICRAKelasRisikoPencegahan"); 
+        btnPCRAICRAKelasRisikoPencegahan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCRAICRAKelasRisikoPencegahan.addActionListener(this::btnPCRAICRAKelasRisikoPencegahanActionPerformed);
     }
 }

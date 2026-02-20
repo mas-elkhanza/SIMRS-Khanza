@@ -56,7 +56,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(459,539);
 
-        Object[] row={"Kode Area","Nama Lokasi & Kelompok Risiko Area"};
+        Object[] row={"Kode Kelas","Nama Kelas Risiko/Kelas Pencegahan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -77,8 +77,8 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         }
         tbJabatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        KodeArea.setDocument(new batasInput((byte)4).getKata(KodeArea));
-        NamaLokasiArea.setDocument(new batasInput((byte)40).getKata(NamaLokasiArea));
+        KodeArea.setDocument(new batasInput((byte)3).getKata(KodeArea));
+        NamaLokasiArea.setDocument(new batasInput((byte)30).getKata(NamaLokasiArea));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
     }
 
@@ -123,7 +123,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Lokasi & Kelompok Risiko Area ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kelas Risiko/Kelas Pencegahan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -151,7 +151,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
         panelGlass7.setLayout(null);
 
-        jLabel3.setText("Kode Area :");
+        jLabel3.setText("Kode Kelas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
         jLabel3.setBounds(0, 12, 70, 23);
@@ -166,7 +166,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         panelGlass7.add(KodeArea);
         KodeArea.setBounds(73, 12, 60, 23);
 
-        jLabel4.setText("Nama Lokasi & Kelompok :");
+        jLabel4.setText("Kelas Risiko/Pencegahan :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
         jLabel4.setBounds(138, 12, 140, 23);
@@ -368,11 +368,11 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(KodeArea.getText().trim().equals("")){
-            Valid.textKosong(KodeArea,"kode area");
+            Valid.textKosong(KodeArea,"kode kelas");
         }else if(NamaLokasiArea.getText().trim().equals("")){
-            Valid.textKosong(NamaLokasiArea,"nama lokasi & kelompok");
+            Valid.textKosong(NamaLokasiArea,"nama kelas risiko/kelas pencegahan");
         }else{
-            if(Sequel.menyimpantf("pcra_icra_lokasi_kelompok_risiko_area","'"+KodeArea.getText()+"','"+NamaLokasiArea.getText()+"'","Kode Area")==true){
+            if(Sequel.menyimpantf("pcra_icra_kelas_risiko_pencegahan","'"+KodeArea.getText()+"','"+NamaLokasiArea.getText()+"'","Kode Area")==true){
                 tabMode.addRow(new Object[]{
                     KodeArea.getText(),NamaLokasiArea.getText()
                 });
@@ -402,7 +402,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbJabatan.getSelectedRow()!= -1){
-            if(Sequel.meghapustf("pcra_icra_lokasi_kelompok_risiko_area","kode_area",tbJabatan.getValueAt(tbJabatan.getSelectedRow(),0).toString())==true){
+            if(Sequel.meghapustf("pcra_icra_kelas_risiko_pencegahan","kode_kelas",tbJabatan.getValueAt(tbJabatan.getSelectedRow(),0).toString())==true){
                 tabMode.removeRow(tbJabatan.getSelectedRow());
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -422,12 +422,12 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(KodeArea.getText().trim().equals("")){
-            Valid.textKosong(KodeArea,"kode area");
+            Valid.textKosong(KodeArea,"kode kelas");
         }else if(NamaLokasiArea.getText().trim().equals("")){
-            Valid.textKosong(NamaLokasiArea,"nama lokasi & kelompok");
+            Valid.textKosong(NamaLokasiArea,"nama kelas risiko/kelas pencegahan");
         }else{
             if(tbJabatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("pcra_icra_lokasi_kelompok_risiko_area","kode_area=?","kode_area=?,nama_area=?",3,new String[]{
+                if(Sequel.mengedittf("pcra_icra_kelas_risiko_pencegahan","kode_kelas=?","kode_kelas=?,nama_kelas=?",3,new String[]{
                         KodeArea.getText(),NamaLokasiArea.getText(),tbJabatan.getValueAt(tbJabatan.getSelectedRow(), 0).toString()
                     })==true){
                     tabMode.setValueAt(KodeArea.getText(),tbJabatan.getSelectedRow(),0);
@@ -588,7 +588,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select pcra_icra_lokasi_kelompok_risiko_area.kode_area,pcra_icra_lokasi_kelompok_risiko_area.nama_area from pcra_icra_lokasi_kelompok_risiko_area "+(TCari.getText().trim().equals("")?"":"where pcra_icra_lokasi_kelompok_risiko_area.kode_area like ? or pcra_icra_lokasi_kelompok_risiko_area.nama_area like ? ")+"order by pcra_icra_lokasi_kelompok_risiko_area.kode_area"
+                "select pcra_icra_kelas_risiko_pencegahan.kode_kelas,pcra_icra_kelas_risiko_pencegahan.nama_kelas from pcra_icra_kelas_risiko_pencegahan "+(TCari.getText().trim().equals("")?"":"where pcra_icra_kelas_risiko_pencegahan.kode_kelas like ? or pcra_icra_kelas_risiko_pencegahan.nama_kelas like ? ")+"order by pcra_icra_kelas_risiko_pencegahan.kode_kelas"
             );
             try {
                 if(!TCari.getText().trim().equals("")){
@@ -630,7 +630,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         NamaLokasiArea.setText("");
         TCari.setText("");
         KodeArea.requestFocus();
-        Valid.autoNomer(" pcra_icra_lokasi_kelompok_risiko_area ","A",3,KodeArea);
+        Valid.autoNomer(" pcra_icra_kelas_risiko_pencegahan ","R",2,KodeArea);
     }
     
     public JTextField getTextField(){
