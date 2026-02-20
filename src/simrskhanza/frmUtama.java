@@ -49613,7 +49613,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPCRAICRAJenisAktivitasProyek = new widget.ButtonBig();
         btnPCRAICRAJenisAktivitasProyek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/construction_12539761.png")));
-        btnPCRAICRAJenisAktivitasProyek.setText("Jenis Aktivitas Proyek");
+        btnPCRAICRAJenisAktivitasProyek.setText("Jenis Aktivitas Proyek PCRA");
         btnPCRAICRAJenisAktivitasProyek.setIconTextGap(0);
         btnPCRAICRAJenisAktivitasProyek.setName("btnPCRAICRAJenisAktivitasProyek"); 
         btnPCRAICRAJenisAktivitasProyek.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -49621,7 +49621,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPCRAICRALokasiKelompokRisiko = new widget.ButtonBig();
         btnPCRAICRALokasiKelompokRisiko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/construction_16675584.png")));
-        btnPCRAICRALokasiKelompokRisiko.setText("Lokasi & Kelompok Risiko Area");
+        btnPCRAICRALokasiKelompokRisiko.setText("Lokasi & Kelompok Risiko Area PCRA");
         btnPCRAICRALokasiKelompokRisiko.setIconTextGap(0);
         btnPCRAICRALokasiKelompokRisiko.setName("btnPCRAICRALokasiKelompokRisiko"); 
         btnPCRAICRALokasiKelompokRisiko.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -49629,7 +49629,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPCRAICRAKelasRisikoPencegahan = new widget.ButtonBig();
         btnPCRAICRAKelasRisikoPencegahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/construction_13585266.png")));
-        btnPCRAICRAKelasRisikoPencegahan.setText("Kelas Risiko/Kelas Pencegahan");
+        btnPCRAICRAKelasRisikoPencegahan.setText("Kelas Risiko/Kelas Pencegahan PCRA");
         btnPCRAICRAKelasRisikoPencegahan.setIconTextGap(0);
         btnPCRAICRAKelasRisikoPencegahan.setName("btnPCRAICRAKelasRisikoPencegahan"); 
         btnPCRAICRAKelasRisikoPencegahan.setPreferredSize(new java.awt.Dimension(200, 90));
