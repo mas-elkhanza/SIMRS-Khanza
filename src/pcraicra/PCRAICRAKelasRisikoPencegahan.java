@@ -164,12 +164,12 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(KodeArea);
-        KodeArea.setBounds(73, 12, 60, 23);
+        KodeArea.setBounds(74, 12, 60, 23);
 
         jLabel4.setText("Kelas Risiko/Pencegahan :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(138, 12, 140, 23);
+        jLabel4.setBounds(137, 12, 140, 23);
 
         NamaLokasiArea.setName("NamaLokasiArea"); // NOI18N
         NamaLokasiArea.addKeyListener(new java.awt.event.KeyAdapter() {

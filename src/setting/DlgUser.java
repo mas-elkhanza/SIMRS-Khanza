@@ -282,7 +282,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Skrining Instrumen ESAT","[M]Pengkajian Awal Medis Ranap Jantung","[B]Data Penugasan Pengujian Sampel Lab Kesling","[B]Data Hasil Pengujian Sampel Lab Kesling",
                 "[B]Data Verifikasi Pengujian Sampel Lab Kesling","[B]Data Validasi Pengujian Sampel Lab Kesling","[B]Rekap Pelayanan Lab Kesling","[B]Pembayaran Pengujian Sampel Lab Kesling",
                 "[M]Skrining CURB-65","[L]Potensi PRB di VClaim","[L]Riwayat Pelayanan Obat Apotek BPJS","[M]Skrining Gizi Kehamilan","[L]Rekap Peserta PRB Apotek BPJS","[P]Serah Terima Anggota Tubuh/Barang",
-                "[R]Jenis Aktivitas Proyek PCRA","[R]Lokasi & Kelompok Risiko Area PCRA","[R]Kelas Risiko/Kelas Pencegahan PCRA","[R]Tindakan Pengendalian PCRA"
+                "[R]Jenis Aktivitas Proyek PCRA","[R]Lokasi & Kelompok Risiko Area PCRA","[R]Kelas Risiko/Kelas Pencegahan PCRA","[R]Tindakan Pengendalian PCRA","[R]Identifikasi Risiko Infeksi PCRA",
+                "[R]Identifikasi Risiko Keselamatan PCRA"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -614,7 +615,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1181;i++) {
+        for (i = 0; i < 1183;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3609,7 +3610,13 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(202);
                     break;
                 case 1180:
-                    column.setPreferredWidth(190);
+                    column.setPreferredWidth(165);
+                    break;
+                case 1181:
+                    column.setPreferredWidth(175);
+                    break;
+                case 1182:
+                    column.setPreferredWidth(205);
                     break;
                 default:
                     column.setPreferredWidth(133);
@@ -4041,7 +4048,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -4071,7 +4078,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5299,7 +5306,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcra_icra_jenis_aktivitas_proyek='"+tbUser.getValueAt(i,1177).toString()+"',"+
                     "pcra_icra_lokasi_kelompok_risiko_area='"+tbUser.getValueAt(i,1178).toString()+"',"+
                     "pcra_icra_kelas_risiko_pencegahan='"+tbUser.getValueAt(i,1179).toString()+"',"+
-                    "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(i,1180).toString()+"'")==true){
+                    "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(i,1180).toString()+"',"+
+                    "pcra_icra_identifkasi_risiko_infeksi='"+tbUser.getValueAt(i,1181).toString()+"',"+
+                    "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(i,1182).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6764,7 +6773,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "pcra_icra_jenis_aktivitas_proyek='"+tbUser.getValueAt(barisdicopy,1177).toString()+"',"+
                                         "pcra_icra_lokasi_kelompok_risiko_area='"+tbUser.getValueAt(barisdicopy,1178).toString()+"',"+
                                         "pcra_icra_kelas_risiko_pencegahan='"+tbUser.getValueAt(barisdicopy,1179).toString()+"',"+
-                                        "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(barisdicopy,1180).toString()+"'");
+                                        "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(barisdicopy,1180).toString()+"',"+
+                                        "pcra_icra_identifkasi_risiko_infeksi='"+tbUser.getValueAt(barisdicopy,1181).toString()+"',"+
+                                        "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(barisdicopy,1182).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -7097,7 +7108,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.verifikasi_pengujian_sampel_lab_kesehatan_lingkungan,user.validasi_pengujian_sampel_lab_kesehatan_lingkungan,user.rekap_pelayanan_lab_kesehatan_lingkungan,"+
                             "user.pembayaran_pengujian_sampel_lab_kesehatan_lingkungan,user.skrining_curb65,user.bpjs_potensi_prb,user.bpjs_riwayat_pelayanan_obat,user.skrining_gizi_kehamilan,"+
                             "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang,user.pcra_icra_jenis_aktivitas_proyek,user.pcra_icra_lokasi_kelompok_risiko_area,"+
-                            "user.pcra_icra_kelas_risiko_pencegahan,user.pcra_icra_tindakan_pengendalian from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.pcra_icra_kelas_risiko_pencegahan,user.pcra_icra_tindakan_pengendalian,user.pcra_icra_identifkasi_risiko_infeksi,user.pcra_icra_identifkasi_risiko_keselamatan from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -8291,7 +8302,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("pcra_icra_jenis_aktivitas_proyek"),
                                            rs.getBoolean("pcra_icra_lokasi_kelompok_risiko_area"),
                                            rs.getBoolean("pcra_icra_kelas_risiko_pencegahan"),
-                                           rs.getBoolean("pcra_icra_tindakan_pengendalian")
+                                           rs.getBoolean("pcra_icra_tindakan_pengendalian"),
+                                           rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi"),
+                                           rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan")
                                         };
                                         i++;
                                         publish(row);
@@ -9475,7 +9488,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("pcra_icra_jenis_aktivitas_proyek"),
                                        rs.getBoolean("pcra_icra_lokasi_kelompok_risiko_area"),
                                        rs.getBoolean("pcra_icra_kelas_risiko_pencegahan"),
-                                       rs.getBoolean("pcra_icra_tindakan_pengendalian")
+                                       rs.getBoolean("pcra_icra_tindakan_pengendalian"),
+                                       rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi"),
+                                       rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan")
                                     };
                                     i++;
                                     publish(row);

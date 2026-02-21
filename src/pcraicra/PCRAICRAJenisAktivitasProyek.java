@@ -154,7 +154,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         jLabel3.setText("Kode Aktivitas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 95, 23);
+        jLabel3.setBounds(0, 12, 94, 23);
 
         KodeAktivitas.setHighlighter(null);
         KodeAktivitas.setName("KodeAktivitas"); // NOI18N
@@ -169,7 +169,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         jLabel4.setText("Nama Aktivitas :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(178, 12, 90, 23);
+        jLabel4.setBounds(177, 12, 90, 23);
 
         NamaAktivitas.setName("NamaAktivitas"); // NOI18N
         NamaAktivitas.addKeyListener(new java.awt.event.KeyAdapter() {
