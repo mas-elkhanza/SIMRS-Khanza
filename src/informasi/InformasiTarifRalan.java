@@ -322,19 +322,19 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabRawatMouseClicked(null);
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabRawatMouseClicked(null);
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabRawatMouseClicked(null);
                     }
                 }
             });
@@ -367,9 +367,9 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
         if(TabRawat.getSelectedIndex()==0){
             runBackground(() ->tampil());
         }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
+            runBackground(() ->tampil2());
         }else if(TabRawat.getSelectedIndex()==2){
-            tampil3();
+            runBackground(() ->tampil3());
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 

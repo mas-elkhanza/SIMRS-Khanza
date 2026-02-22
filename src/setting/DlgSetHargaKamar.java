@@ -59,7 +59,7 @@ public class DlgSetHargaKamar extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"No.Bed/Kamar","Kode Bangsal","Nama Bangsal/Kamar","Kode Bayar","Cara Bayar","Tarif Kamar"};
         tabMode=new DefaultTableModel(null,row){

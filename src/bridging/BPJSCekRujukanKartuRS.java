@@ -3559,6 +3559,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -3587,6 +3589,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -3615,6 +3619,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         if (kab == null) return;
         if (!kab.isVisible()) {
@@ -3762,6 +3768,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -3877,6 +3885,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         
         if (kab == null) return;
@@ -3904,6 +3914,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -4338,6 +4350,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -4444,6 +4458,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;

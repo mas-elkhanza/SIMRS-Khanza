@@ -59,7 +59,7 @@ public class DlgBiayaHarian extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Nomer Kamar","Nama Kamar","Nama Biaya","Jumlah","Besar Biaya"};
         tabMode=new DefaultTableModel(null,row){

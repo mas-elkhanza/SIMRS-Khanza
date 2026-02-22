@@ -58,7 +58,7 @@ public class DlgPasswordBPJS extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Kode Bayar","Cara Bayar","User","Pasword"};
         tabMode=new DefaultTableModel(null,row){

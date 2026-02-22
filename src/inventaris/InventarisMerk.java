@@ -53,7 +53,7 @@ public class InventarisMerk extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"ID Merk","Nama Merk"};
         tabMode=new DefaultTableModel(null,row){

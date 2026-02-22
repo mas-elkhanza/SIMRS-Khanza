@@ -258,7 +258,7 @@ public final class akses {
             rekap_pelayanan_lab_kesehatan_lingkungan=false,pembayaran_pengujian_sampel_lab_kesehatan_lingkungan=false,skrining_curb65=false,bpjs_potensi_prb=false,
             bpjs_riwayat_pelayanan_obat=false,skrining_gizi_kehamilan=false,bpjs_rekap_peserta_prb_apotek=false,serah_terima_anggota_tubuh_barang=false,pcra_icra_jenis_aktivitas_proyek=false,
             pcra_icra_lokasi_kelompok_risiko_area=false,pcra_icra_kelas_risiko_pencegahan=false,pcra_icra_tindakan_pengendalian=false,pcra_icra_identifkasi_risiko_infeksi=false,
-            pcra_icra_identifkasi_risiko_keselamatan=false;
+            pcra_icra_identifkasi_risiko_keselamatan=false,pcra_icra_identifkasi_risiko_kebakaran=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1462,6 +1462,7 @@ public final class akses {
                         akses.pcra_icra_tindakan_pengendalian=true;
                         akses.pcra_icra_identifkasi_risiko_infeksi=true;
                         akses.pcra_icra_identifkasi_risiko_keselamatan=true;
+                        akses.pcra_icra_identifkasi_risiko_kebakaran=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2649,6 +2650,7 @@ public final class akses {
                         akses.pcra_icra_tindakan_pengendalian=rs2.getBoolean("pcra_icra_tindakan_pengendalian");
                         akses.pcra_icra_identifkasi_risiko_infeksi=rs2.getBoolean("pcra_icra_identifkasi_risiko_infeksi");
                         akses.pcra_icra_identifkasi_risiko_keselamatan=rs2.getBoolean("pcra_icra_identifkasi_risiko_keselamatan");
+                        akses.pcra_icra_identifkasi_risiko_kebakaran=rs2.getBoolean("pcra_icra_identifkasi_risiko_kebakaran");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3859,6 +3861,7 @@ public final class akses {
         akses.pcra_icra_tindakan_pengendalian=false;
         akses.pcra_icra_identifkasi_risiko_infeksi=false;
         akses.pcra_icra_identifkasi_risiko_keselamatan=false;
+        akses.pcra_icra_identifkasi_risiko_kebakaran=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5083,4 +5086,5 @@ public final class akses {
     public static boolean getpcra_icra_tindakan_pengendalian(){return akses.pcra_icra_tindakan_pengendalian;}
     public static boolean getpcra_icra_identifkasi_risiko_infeksi(){return akses.pcra_icra_identifkasi_risiko_infeksi;}
     public static boolean getpcra_icra_identifkasi_risiko_keselamatan(){return akses.pcra_icra_identifkasi_risiko_keselamatan;}
+    public static boolean getpcra_icra_identifkasi_risiko_kebakaran(){return akses.pcra_icra_identifkasi_risiko_kebakaran;}
 }   

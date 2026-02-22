@@ -54,7 +54,7 @@ public final class PCRAICRAKelasRisikoPencegahan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Kode Kelas","Nama Kelas Risiko/Kelas Pencegahan"};
         tabMode=new DefaultTableModel(null,row){

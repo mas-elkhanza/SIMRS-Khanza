@@ -54,7 +54,7 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"P","Kode Kategori","Nama Kategori"};
         tabMode=new DefaultTableModel(null,row){

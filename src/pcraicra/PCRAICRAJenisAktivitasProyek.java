@@ -54,7 +54,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Kode Aktivitas","Nama Jenis Aktivitas"};
         tabMode=new DefaultTableModel(null,row){

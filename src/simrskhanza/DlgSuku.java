@@ -55,7 +55,7 @@ public class DlgSuku extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         tabMode=new DefaultTableModel(null,new Object[]{"ID","Suku/Bangsa Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}

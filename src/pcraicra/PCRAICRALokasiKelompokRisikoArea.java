@@ -54,7 +54,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         super(parent, modal);
         initComponents();
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Kode Area","Nama Lokasi & Kelompok Risiko Area"};
         tabMode=new DefaultTableModel(null,row){
