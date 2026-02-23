@@ -981,7 +981,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"pilihan data");
         }else{
             if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
                 aplikasi.addWindowListener(new WindowAdapter() {
                     @Override
@@ -994,7 +993,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi.setLocationRelativeTo(internalFrame1);
                 aplikasi.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
             }
@@ -1015,7 +1013,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"pilihan data");
         }else{
             if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
                 aplikasi2.addWindowListener(new WindowAdapter() {
                     @Override
@@ -1029,7 +1026,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 aplikasi2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi2.setLocationRelativeTo(internalFrame1);
                 aplikasi2.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
             }

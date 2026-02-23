@@ -53,7 +53,7 @@ public class DlgAturanPakai extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Aturan Pakai"};
         tabMode=new DefaultTableModel(null,row){

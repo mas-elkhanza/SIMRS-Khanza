@@ -55,7 +55,7 @@ public class DlgBahasa extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         tabMode=new DefaultTableModel(null,new Object[]{"ID","Bahasa Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}

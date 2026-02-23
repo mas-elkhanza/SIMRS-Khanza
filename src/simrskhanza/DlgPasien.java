@@ -5387,6 +5387,8 @@ private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -5415,6 +5417,8 @@ private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -5443,6 +5447,8 @@ private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         if (kab == null) return;
         if (!kab.isVisible()) {
@@ -5544,6 +5550,8 @@ private void BtnSeek8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -5575,6 +5583,8 @@ private void BtnSeek9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -5606,6 +5616,8 @@ private void BtnSeek10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         
         if (kab == null) return;
@@ -5967,6 +5979,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -6068,6 +6082,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         
         if (kab == null) return;
@@ -6095,6 +6111,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -7849,6 +7867,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -8005,6 +8025,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -8094,6 +8116,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;

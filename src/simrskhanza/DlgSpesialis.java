@@ -57,7 +57,7 @@ public class DlgSpesialis extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"Kode Spesialis",
                       "Nama Spesialis"};

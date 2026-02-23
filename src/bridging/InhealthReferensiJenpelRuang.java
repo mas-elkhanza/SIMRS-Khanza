@@ -50,7 +50,7 @@ public class InhealthReferensiJenpelRuang extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(10,10);
-        setSize(459,539);
+        
 
         Object[] row={"No.Bed/Kamar","Kode Bangsal","Nama Bangsal/Kamar","Kode Jenis","Jenis Pelayanan Ruang Rawat","Tarif"};
         tabMode=new DefaultTableModel(null,row){
