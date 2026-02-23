@@ -1484,7 +1484,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())==0){
                                     JOptionPane.showMessageDialog(null,"Kapasitas obat masih kosong..!!!");
                                 }else{
-                                    tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())*
+                                    //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+                                    //Mengubah SetAngka8 menjadi SetAngka9 agar nilai 2 angka di belakang koma
+                                    tbDetailResepObatRacikan.setValueAt(Valid.SetAngka9(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())*
                                         (Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())/Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString())),1),
                                             tbDetailResepObatRacikan.getSelectedRow(),12);
                                 }                                
@@ -2121,8 +2123,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void setNoRm(String norwt,String KodeDokter,String NamaDokter,String Pasien,String kodepj,String status) {        
         TNoRw.setText(norwt);
         TPasien.setText(Pasien);
-        KdDokter.setText(KodeDokter);
-        NmDokter.setText(NamaDokter);
+        //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+        //MENGHILANGKAN KODE DOKTER DAN NAMA DOKTER PADA SAAT COPY RESEP
+        //KdDokter.setText(KodeDokter);
+        //NmDokter.setText(NamaDokter);
         KdPj.setText(kodepj);
         TCari.requestFocus();
         this.status=status;
@@ -2521,7 +2525,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void getDatadetailresepracikan() {
         if(tbDetailResepObatRacikan.getSelectedRow()!= -1){
             try {
-                tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8((Double.parseDouble(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),4).toString())
+                //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+                //SetAngka8 menjadi SetAngka9
+                tbDetailResepObatRacikan.setValueAt(Valid.SetAngka9((Double.parseDouble(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),4).toString())
                                 *Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString()))
                                 /Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString()),1)
                                 ,tbDetailResepObatRacikan.getSelectedRow(),13);
@@ -2547,7 +2553,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         }
                     }
                 }
-                tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8((jumlahracik*(persenracik/100))/kapasitasracik,1),r,13);
+                //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+                //setAngka8 di ganti ke SetAngka9 
+                tbDetailResepObatRacikan.setValueAt(Valid.SetAngka9((jumlahracik*(persenracik/100))/kapasitasracik,1),r,13);
             } catch (Exception e) {
                 tbDetailResepObatRacikan.setValueAt(0,r,13);
             }

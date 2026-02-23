@@ -1419,6 +1419,11 @@ public final class validasi {
     public double SetAngka8(double value,int places){      
         return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
     }
+    //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+    //Untuk Form DlgPeresepanDokter.java
+    public double SetAngka9(double value,int places){      
+        return new BigDecimal(value).setScale(places=2, RoundingMode.HALF_UP).doubleValue();
+    }
     
     public double SetAngka(String txt){
         double x;   
