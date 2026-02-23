@@ -373,31 +373,33 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_ChkTanggalItemStateChanged
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-        }else if(tbPemisahan.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
-        }else{
-            if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep ..!!");
-            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
-                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
-            }else {
-                jmlparsial=0;
-                if(aktifkanparsial.equals("yes")){
-                    jmlparsial=Sequel.cariInteger("select count(set_input_parsial.kd_pj) from set_input_parsial where set_input_parsial.kd_pj=?",kode_pj);
-                }
-                if(jmlparsial>0){
-                    panggilform2();
-                }else{
-                    if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                    }else{ 
-                        panggilform2();                             
-                    }
-                }                
-            }
-        }
+    //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+    JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
+//        if(tabMode.getRowCount()==0){
+//            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+//        }else if(tbPemisahan.getSelectedRow()<= -1){
+//            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
+//        }else{
+//            if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
+//                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep ..!!");
+//            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
+//                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
+//            }else {
+//                jmlparsial=0;
+//                if(aktifkanparsial.equals("yes")){
+//                    jmlparsial=Sequel.cariInteger("select count(set_input_parsial.kd_pj) from set_input_parsial where set_input_parsial.kd_pj=?",kode_pj);
+//                }
+//                if(jmlparsial>0){
+//                    panggilform2();
+//                }else{
+//                    if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
+//                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+//                    }else{ 
+//                        panggilform2();                             
+//                    }
+//                }                
+//            }
+//        }
     }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -409,20 +411,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-        }else if(tbPemisahan.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
-        }else{
-            if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep..!!");
-            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
-                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
-            }else {
-                Sequel.meghapus("resep_obat","no_resep",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
-                runBackground(() ->tampil());               
-            }
-        }
+    //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+    JOptionPane.showMessageDialog(rootPane,"Resep sudah di validasi bagian Farmasi, silakan hubungi bagian Farmasi..!!");
+//        if(tabMode.getRowCount()==0){
+//            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+//        }else if(tbPemisahan.getSelectedRow()<= -1){
+//            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
+//        }else{
+//            if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
+//                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep..!!");
+//            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
+//                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
+//            }else {
+//                Sequel.meghapus("resep_obat","no_resep",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
+//                runBackground(() ->tampil());               
+//            }
+//        }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
