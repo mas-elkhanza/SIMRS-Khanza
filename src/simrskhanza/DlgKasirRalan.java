@@ -376,6 +376,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         tbKasirRalan2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbKasirRalan2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //CUSTOM RS ISLAM LMJ -  Rabu, 25 Februari 2026
+        //Non Aktifkan geser-geser tabel
+        tbKasirRalan.getTableHeader().setReorderingAllowed(false);
 
         for (i = 0; i < 16; i++) {
             TableColumn column = tbKasirRalan2.getColumnModel().getColumn(i);
@@ -907,6 +910,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TNoRMCari = new widget.TextBox();
         jLabel8 = new widget.Label();
         TPasienCari = new widget.TextBox();
+        //CUSTOM
+        jLabel9 = new widget.Label();
+        TNikCari = new widget.TextBox();
+        jLabel11 = new widget.Label();
+        TSEPCari = new widget.TextBox();
 
         jPopupMenu1.setForeground(new java.awt.Color(50, 50, 50));
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -6533,8 +6541,34 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TPasienCari.setEditable(false);
         TPasienCari.setHighlighter(null);
         TPasienCari.setName("TPasienCari"); // NOI18N
-        TPasienCari.setPreferredSize(new java.awt.Dimension(250, 23));
+        TPasienCari.setPreferredSize(new java.awt.Dimension(230, 23));
         panelGlass9.add(TPasienCari);
+        
+        //CUSTOM RS ISLAM LMJ - Rabu, 25 Februari 2026
+        //Menambahkan text NIK
+        jLabel9.setText("NIK :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass9.add(jLabel9);
+        
+        TNikCari.setEditable(false);
+        TNikCari.setHighlighter(null);
+        TNikCari.setName("TNikCari"); // NOI18N
+        TNikCari.setPreferredSize(new java.awt.Dimension(120, 23));
+        panelGlass9.add(TNikCari);
+        
+        //CUSTOM RS ISLAM LMJ - Rabu, 25 Februari 2026
+        //Menambahkan text SEP
+        jLabel11.setText("SEP :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass9.add(jLabel11);
+        
+        TSEPCari.setEditable(false);
+        TSEPCari.setHighlighter(null);
+        TSEPCari.setName("TSEPCari"); // NOI18N
+        TSEPCari.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelGlass9.add(TSEPCari);
 
         internalFrame1.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -15545,6 +15579,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox CrPtg;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    //CUSTOM
+    private widget.TextBox TNikCari;
+    private widget.TextBox TSEPCari;
+    //
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgSakit;
     private javax.swing.JDialog DlgSakit2;
@@ -15889,6 +15927,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
+    //CUSTOM
+    private widget.Label jLabel9;
+    private widget.Label jLabel11;
+    //
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JPanel jPanel2;
@@ -16138,6 +16180,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             TNoReg.setText(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),14).toString());
             TNoRMCari.setText(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString());
             TPasienCari.setText(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),3).toString());
+            //CUSTOM RS ISLAM LMJ - Rabu, 25 Februari 2026
+            //(Mencari NIK pasien dan data SEP ketika di Klik)
+            Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?", TNikCari,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString());
+            Sequel.cariIsi("select bridging_sep.no_sep from bridging_sep where bridging_sep.no_rawat=?", TSEPCari,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),11).toString());
         }
     }
 
