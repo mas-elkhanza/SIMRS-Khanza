@@ -534,7 +534,7 @@ public class koneksiDB {
     public static String JADIKANPIUTANGAPOTEKBPJS(){
         try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);
-            var=EnkripsiAES.decrypt(prop.getProperty("JADIKANPIUTANGAPOTEKBPJS"));
+            var=prop.getProperty("JADIKANPIUTANGAPOTEKBPJS");
         }catch(Exception e){
             var="no"; 
         }

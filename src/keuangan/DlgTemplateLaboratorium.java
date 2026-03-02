@@ -345,9 +345,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.tabelKosong(tabMode);
         try{            
             ps=koneksi.prepareStatement(
-                    "select urut.id_template,urut.Pemeriksaan,urut.satuan,urut.nilai_rujukan_ld,urut.nilai_rujukan_la,urut.nilai_rujukan_pd,"+
-                    "urut.nilai_rujukan_pa,urut.bagian_rs,urut.bhp,urut.bagian_perujuk,urut.bagian_dokter,urut.bagian_laborat,urut.kso,urut.menejemen,"+
-                    "urut.biaya_item,urut.urut from template_laboratorium where urut.kd_jenis_prw=? order urut.by urut");
+                    "select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
+                    "template_laboratorium.nilai_rujukan_pa,template_laboratorium.bagian_rs,template_laboratorium.bhp,template_laboratorium.bagian_perujuk,template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,template_laboratorium.kso,template_laboratorium.menejemen,"+
+                    "template_laboratorium.biaya_item,template_laboratorium.urut from template_laboratorium where template_laboratorium.kd_jenis_prw=? order template_laboratorium.by urut");
             try {
                 ps.setString(1,KdPeriksa.getText());
                 rs=ps.executeQuery();
