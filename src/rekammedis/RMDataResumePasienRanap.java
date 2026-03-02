@@ -1994,6 +1994,11 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 }else{
                     if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString())){
                         ganti();
+                    //CUSTOM RS ISLAM LUMAJANG - Kamis, 26 Februari 2026
+                    }else if(Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J025' and petugas.nip=?",akses.getkode())>0){
+                        JOptionPane.showMessageDialog(null,"Data sudah berhasil di ganti oleh petugas Jaminan Kesehatan");
+                        ganti();
+                    //
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
                     }
@@ -3613,7 +3618,13 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
             NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
-            if(NmDokter.getText().equals("")){
+            //CUSTOM RS ISLAM LMJ - Senin, 02 Maret 2026
+            if(Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J025' and petugas.nip=?",akses.getkode())>0){
+                KdDokter.setEditable(false);
+                BtnDokter.setEnabled(true);
+            }else
+            //
+                if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
             }

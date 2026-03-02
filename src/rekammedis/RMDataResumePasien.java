@@ -377,7 +377,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume Medis Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Discharge Summary Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -544,7 +544,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -558,7 +558,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -651,7 +651,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 651));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Keluhan Utama Riwayat Penyakit Yang Positif :");
+        jLabel4.setText("Anamnesa :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 70, 240, 23);
@@ -770,7 +770,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 10, 100, 23);
 
-        jLabel8.setText("Jalannya Penyakit Selama Perawatan :");
+        jLabel8.setText("Pemeriksaan Fisik :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
         jLabel8.setBounds(0, 127, 240, 23);
@@ -1074,7 +1074,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(BtnDokter);
         BtnDokter.setBounds(519, 40, 28, 23);
 
-        Kondisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hidup", "Meninggal" }));
+        Kondisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kontrol Ulang", "Rujuk Poli Spesialis", "MRS" }));
         Kondisi.setName("Kondisi"); // NOI18N
         Kondisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1100,7 +1100,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter1);
-        BtnDokter1.setBounds(180, 96, 28, 23);
+        BtnDokter1.setBounds(210, 90, 28, 23);
 
         BtnDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter2.setMnemonic('2');
@@ -1152,7 +1152,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter5);
-        BtnDokter5.setBounds(212, 96, 28, 23);
+        BtnDokter5.setBounds(210, 150, 28, 23);
 
         BtnDokter6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter6.setMnemonic('2');
@@ -1165,7 +1165,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter6);
-        BtnDokter6.setBounds(212, 153, 28, 23);
+        BtnDokter6.setBounds(180, 150, 28, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1174,6 +1174,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        internalFrame1.getAccessibleContext().setAccessibleName("::[ Discharge Summary Pasien Rawat Jalan ]::");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1248,7 +1249,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
+                //CUSTOM RS ISLAM LMJ - Kamis, 26 Februari 2026
+                if (Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J027' and petugas.nip=?", akses.getkode()) > 0) {
+                    JOptionPane.showMessageDialog(null, "Data berhasil dihapus oleh petugas poliklinik..!!");
+                    hapus();
+                }else if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter yang bersangkutan..!!");
@@ -1284,7 +1289,15 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
+                    //CUSTOM (Else If untuk edit data khusus login JAMKES)
+                    if(Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J025' and petugas.nip=?",akses.getkode())>0){
+                        JOptionPane.showMessageDialog(null,"Data sudah berhasil di ganti oleh petugas Jaminan Kesehatan");
+                        ganti();
+                        //CUSTOMM (Else If untuk edit data khusu login perawat Poli)
+                    }else if(Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J027' and petugas.nip=?",akses.getkode())>0){
+                        JOptionPane.showMessageDialog(null,"Data sudah berhasil di ganti oleh petugas Perawat Poli");
+                        ganti();
+                    }else if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
@@ -1981,9 +1994,10 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 @Override
                 public void windowClosed(WindowEvent e) {
                     if(caripemeriksaan.getTable().getSelectedRow()!= -1){
-                        Keluhan.append(caripemeriksaan.getTable().getValueAt(caripemeriksaan.getTable().getSelectedRow(),2).toString()+", ");
-                        Keluhan.requestFocus();
-                    }
+                        //CUSTOM RS ISLAM LMJ, Kamis 26 Februari 2026
+                        JalannyaPenyakit.append(caripemeriksaan.getTable().getValueAt(caripemeriksaan.getTable().getSelectedRow(),2).toString()+", ");
+                        JalannyaPenyakit.requestFocus();
+                    }   
                 }
                 @Override
                 public void windowIconified(WindowEvent e) {}
@@ -2438,8 +2452,20 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getdata_resume_pasien());
         BtnPrint.setEnabled(akses.getdata_resume_pasien()); 
         MnInputDiagnosa.setEnabled(akses.getdiagnosa_pasien());   
-        ppBerkasDigital.setEnabled(akses.getberkas_digital_perawatan());    
-        if(akses.getjml2()>=1){
+        ppBerkasDigital.setEnabled(akses.getberkas_digital_perawatan());
+        //CUSTOM RS ISLAM LMJ - Kamis, 26 Februari 2026
+        if (Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J025' and petugas.nip=?", akses.getkode()) > 0) {
+            KdDokter.setEditable(false);
+            BtnDokter.setEnabled(true);
+        } else if (Sequel.cariInteger("select count(petugas.nip) from petugas where petugas.kd_jbtn='J027' and petugas.nip=?", akses.getkode()) > 0) {
+            KdDokter.setEditable(false);
+            BtnDokter.setEnabled(true);
+            if (NmDokter.getText().equals("")) {
+                KdDokter.setText("");
+                JOptionPane.showMessageDialog(null, "Anda login sebagai perawat poli, pilih terlebih dahulu nama Dokter..!!!");
+            }
+        }
+            else if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
