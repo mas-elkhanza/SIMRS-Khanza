@@ -1,4 +1,5 @@
 package simrskhanza;
+//import simrskhanza.DlgCariPasien;
 import kepegawaian.DlgCariPegawai;
 import bridging.DUKCAPILJakartaCekNik;
 import bridging.DUKCAPILJakartaPostLahir;
@@ -17,7 +18,9 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -39,6 +42,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -66,7 +70,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             bpjsibu="",bpjsayah="",notlp="",bpjsby="",nikplpr="",nmplpr="",almtplpr="",
             krjplpr="",niks1="",nms1="",almts1="",krjs1="",niks2="",nms2="",almts2="",
             krjs2="",umribu="",umrayah="",umrplpr="",umrs1="",umrs2="";
-
+    private DlgCariPasien CariPasien;
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -495,6 +499,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         N10 = new widget.TextBox2();
         N5 = new widget.TextBox2();
         N1 = new widget.TextBox2();
+        BtnPasien = new widget.Button();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
 
@@ -1724,6 +1729,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         FormInput.add(label12);
         label12.setBounds(0, 12, 85, 23);
 
+        NoRm.setEditable(false);
         NoRm.setName("NoRm"); // NOI18N
         NoRm.setPreferredSize(new java.awt.Dimension(207, 23));
         NoRm.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1856,6 +1862,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         FormInput.add(Diagnosa);
         Diagnosa.setBounds(130, 362, 135, 23);
 
+        Nmibu.setEditable(false);
         Nmibu.setName("Nmibu"); // NOI18N
         Nmibu.setPreferredSize(new java.awt.Dimension(207, 23));
         Nmibu.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2011,6 +2018,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         FormInput.add(scrollPane2);
         scrollPane2.setBounds(130, 302, 335, 52);
 
+        NmBayi.setEditable(false);
         NmBayi.setName("NmBayi"); // NOI18N
         NmBayi.setPreferredSize(new java.awt.Dimension(207, 23));
         NmBayi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2019,7 +2027,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmBayi);
-        NmBayi.setBounds(191, 12, 244, 23);
+        NmBayi.setBounds(191, 12, 230, 23);
 
         label35.setText("Umur Ayah :");
         label35.setName("label35"); // NOI18N
@@ -2164,7 +2172,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPenjab);
-        BtnPenjab.setBounds(437, 272, 28, 23);
+        BtnPenjab.setBounds(440, 273, 28, 23);
 
         BtnKelurahan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
         BtnKelurahan1.setMnemonic('2');
@@ -2176,7 +2184,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnKelurahan1);
-        BtnKelurahan1.setBounds(437, 12, 28, 23);
+        BtnKelurahan1.setBounds(450, 12, 28, 23);
 
         label66.setText("Riwayat Persalinan :");
         label66.setName("label66"); // NOI18N
@@ -2358,6 +2366,23 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         N1.setName("N1"); // NOI18N
         FormInput.add(N1);
         N1.setBounds(785, 218, 29, 27);
+
+        BtnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPasien.setMnemonic('1');
+        BtnPasien.setToolTipText("ALt+1");
+        BtnPasien.setName("BtnPasien"); // NOI18N
+        BtnPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPasienActionPerformed(evt);
+            }
+        });
+        BtnPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPasienKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnPasien);
+        BtnPasien.setBounds(420, 12, 28, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -3841,6 +3866,65 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPasienActionPerformed
+        if (CariPasien == null || !CariPasien.isDisplayable()) {
+            CariPasien=new DlgCariPasien(null,false);
+            CariPasien.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            CariPasien.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(CariPasien.getTable().getSelectedRow()!= -1){
+                        NoRm.setText(CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),0).toString());
+                        NmBayi.setText(CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),1).toString());
+                        Nmibu.setText(CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),6).toString());
+                        NmAyah.setText(CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),17).toString());
+//                        String noRM = CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),0).toString();
+//
+//                        int cekAyah = Sequel.cariInteger(
+//                                "SELECT COUNT(*) FROM pasien WHERE keluarga='AYAH' AND no_rkm_medis=?",
+//                                noRM
+//                        );
+//
+//                        if (cekAyah > 0) {
+//                            NmAyah.setText(CariPasien.getTable().getValueAt(CariPasien.getTable().getSelectedRow(),17).toString());
+//                        } else {
+//                            NmAyah.setText("-");
+//                            JOptionPane.showMessageDialog(null, "Data AYAH tidak ditemukan");
+//                        }
+                    }    
+                    UmurIbu.requestFocus();
+                    CariPasien=null;
+                }
+            }); 
+
+            CariPasien.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        CariPasien.dispose();
+                    } 
+                }
+            });   
+            CariPasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            CariPasien.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (CariPasien == null) return;
+        if (!CariPasien.isVisible()) {
+            CariPasien.emptTeks();
+            CariPasien.isCek();
+        }  
+        if (CariPasien.isVisible()) {
+            CariPasien.toFront();
+            return;
+        }    
+        CariPasien.setVisible(true);
+    }//GEN-LAST:event_BtnPasienActionPerformed
+
+    private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPasienKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPasienKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3881,6 +3965,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnKeluar;
     private widget.Button BtnKeluar2;
     private widget.Button BtnKelurahan1;
+    private widget.Button BtnPasien;
     private widget.Button BtnPenjab;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
