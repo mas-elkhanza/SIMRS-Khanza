@@ -724,11 +724,11 @@ public final class ApotekBPJSResepObat extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-            utc=String.valueOf(api.GetUTCdatetimeAsString());
-	    headers.add("X-Timestamp",utc);
-	    headers.add("X-Signature",api.getHmac(utc));
-            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+            headers.add("x-cons-id", koneksiDB.CONSIDAPIAPOTEKBPJS());
+            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("x-timestamp", utc);
+            headers.add("x-signature", api.getHmac(utc));
+            headers.add("user_key", koneksiDB.USERKEYAPIAPOTEKBPJS());
             URL = link+"/hapusresep";
             requestJson ="{\"nosjp\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"\",\"refasalsjp\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"\",\"noresep\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"\"}";            
             System.out.println(URL);
