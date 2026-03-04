@@ -109,13 +109,13 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(30);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(120);
             }else if(i==7){
                 column.setPreferredWidth(75);
             }else if(i==8){
                 column.setPreferredWidth(90);
             }else if(i==9){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }else if(i==10){
                 column.setPreferredWidth(57);
             }else if(i==11){
@@ -318,9 +318,10 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,10).toString()+"','"+
                                 tabMode.getValueAt(i,11).toString()+"','"+
                                 tabMode.getValueAt(i,12).toString()+"','"+
+                                tabMode.getValueAt(i,13).toString()+"','"+
                                 tabMode.getValueAt(i,14).toString()+"','"+
                                 tabMode.getValueAt(i,15).toString()+"','"+
-                                tabMode.getValueAt(i,16).toString()+"','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Daftar Pelayanan Obat Apotek BPJS"); 
+                                tabMode.getValueAt(i,16).toString()+"','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Daftar Pelayanan Obat Apotek BPJS"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 

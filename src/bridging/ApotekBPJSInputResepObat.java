@@ -1119,8 +1119,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             System.out.println("Respon JSON : "+nameNode);
                                             if(nameNode.path("code").asText().equals("200")) {
                                                 if(Sequel.menyimpantf("bridging_resep_apotek_bpjs_racikan","?,?,?,?,?,?,?,?,?","Obat Racikan",9,new String[]{
-                                                    response.path("noApotik").asText(),"No."+tbDetailObatRacikan.getValueAt(i,0).toString(),NoResep.getText(),tbDetailObatRacikan.getValueAt(i,2).toString(), 
-                                                    tbDetailObatRacikan.getValueAt(i,4).toString(),tbDetailObatRacikan.getValueAt(i,5).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(), 
+                                                    response.path("noApotik").asText(),(tbDetailObatRacikan.getValueAt(i,0).toString().length()==1?"R.0"+tbDetailObatRacikan.getValueAt(i,0).toString():"R."+tbDetailObatRacikan.getValueAt(i,0).toString()),NoResep.getText(),
+                                                    tbDetailObatRacikan.getValueAt(i,2).toString(),tbDetailObatRacikan.getValueAt(i,4).toString(),tbDetailObatRacikan.getValueAt(i,5).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(), 
                                                     tbDetailObatRacikan.getValueAt(i,6).toString()
                                                 })==false) {
                                                     sukses=false;
@@ -1185,12 +1185,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     try {
                                         Double piutang=Valid.SetAngka(tabModeDetailObatRacikan.getValueAt(r,7).toString());
                                         if(piutang>0){
-                                            Double totalpiutang=piutang*Valid.SetAngka(tabModeobat.getValueAt(r,9).toString());
-                                            if(Sequel.menyimpantf2("detailpiutang","'"+nopiutang+"','"+tabModeobat.getValueAt(r,11).toString()+"','"+tabModeobat.getValueAt(r,12).toString()+"','"+tabModeobat.getValueAt(r,9).toString()+"','"+tabModeobat.getValueAt(r,8).toString()+"','"+piutang+"',"+
-                                                    "'"+totalpiutang+"','0','0','"+totalpiutang+"','"+tabModeobat.getValueAt(r,13).toString()+"','"+tabModeobat.getValueAt(r,14).toString()+"','"+tabModeobat.getValueAt(r,4).toString()+"x"+tabModeobat.getValueAt(r,5).toString()+"'","Obat/BHP/Alkes"
+                                            Double totalpiutang=piutang*Valid.SetAngka(tabModeDetailObatRacikan.getValueAt(r,9).toString());
+                                            if(Sequel.menyimpantf2("detailpiutang","'"+nopiutang+"','"+tabModeDetailObatRacikan.getValueAt(r,11).toString()+"','"+tabModeDetailObatRacikan.getValueAt(r,12).toString()+"','"+tabModeDetailObatRacikan.getValueAt(r,9).toString()+"','"+tabModeDetailObatRacikan.getValueAt(r,8).toString()+"','"+piutang+"',"+
+                                                    "'"+totalpiutang+"','0','0','"+totalpiutang+"','"+tabModeDetailObatRacikan.getValueAt(r,13).toString()+"','"+tabModeDetailObatRacikan.getValueAt(r,14).toString()+"','"+tabModeDetailObatRacikan.getValueAt(r,4).toString()+"x"+tabModeDetailObatRacikan.getValueAt(r,5).toString()+"'","Obat/BHP/Alkes"
                                                 )==true){
-                                                Trackobat.catatRiwayat(tabModeobat.getValueAt(r,11).toString(),0,piutang,"Piutang",akses.getkode(),kdgudang.getText(),"Simpan","","",nopiutang+" "+nopiutang+" "+TPasien.getText());
-                                                Sequel.menyimpan("gudangbarang","'"+tabModeobat.getValueAt(r,11).toString()+"','"+kdgudang.getText()+"','-"+piutang+"','',''","stok=stok-'"+piutang+"'","kode_brng='"+tabModeobat.getValueAt(r,11).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
+                                                Trackobat.catatRiwayat(tabModeDetailObatRacikan.getValueAt(r,11).toString(),0,piutang,"Piutang",akses.getkode(),kdgudang.getText(),"Simpan","","",nopiutang+" "+nopiutang+" "+TPasien.getText());
+                                                Sequel.menyimpan("gudangbarang","'"+tabModeDetailObatRacikan.getValueAt(r,11).toString()+"','"+kdgudang.getText()+"','-"+piutang+"','',''","stok=stok-'"+piutang+"'","kode_brng='"+tabModeDetailObatRacikan.getValueAt(r,11).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
                                             }else{
                                                sukses=false;
                                             }
