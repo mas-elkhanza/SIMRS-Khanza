@@ -44,6 +44,7 @@ import bridging.ApotekBPJSKunjunganSEP;
 import bridging.ApotekBPJSMapingObat;
 import bridging.ApotekBPJSMonitoringKlaim;
 import bridging.ApotekBPJSRekapPesertaPRB;
+import bridging.ApotekBPJSResepObat;
 import bridging.ApotekBPJSRiwayatPelayananObat;
 import bridging.BPJSAntreanPerTanggal;
 import bridging.BPJSCekDataIndukKecelakaan;
@@ -23270,6 +23271,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSResepObatApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSResepObat form=new ApotekBPJSResepObat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23985,7 +23997,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
             btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh,btnPCRAICRAJenisAktivitasProyek,
             btnPCRAICRALokasiKelompokRisiko,btnPCRAICRAKelasRisikoPencegahan,btnPCRAICRATindakanPengendalian,btnPCRAICRAIdentifikasiRisikoInfeksi,btnPCRAICRAIdentifikasiRisikoKeselamatan,
-            btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas;
+            btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas,btnBPJSResepObatApotek;
     
     public void isWall(){
         try{            
@@ -26980,6 +26992,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_rekap_peserta_prb_apotek()==true){
                 Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_daftar_resep_apotek()==true){
+                Panelmenu.add(btnBPJSResepObatApotek);
                 jmlmenu++;
             }
             
@@ -32854,6 +32871,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_rekap_peserta_prb_apotek()==true){
             Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_daftar_resep_apotek()==true){
+            Panelmenu.add(btnBPJSResepObatApotek);
             jmlmenu++;
         }
         
@@ -39863,6 +39885,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
                 jmlmenu++;
             } 
+        }
+        
+        if(akses.getbpjs_daftar_resep_apotek()==true){
+            if(btnBPJSResepObatApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSResepObatApotek);
+                jmlmenu++;
+            }
         }
         
         if(akses.getriwayat_perawatan_icare_bpjs()==true){
@@ -49826,5 +49855,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRAIdentifikasiRisikoUtilitas.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRAIdentifikasiRisikoUtilitas.addActionListener(this::btnPCRAICRAIdentifikasiRisikoUtilitasActionPerformed);
         
+        btnBPJSResepObatApotek = new widget.ButtonBig();
+        btnBPJSResepObatApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSResepObatApotek.setText("Resep Obat Apotek BPJS");
+        btnBPJSResepObatApotek.setIconTextGap(0);
+        btnBPJSResepObatApotek.setName("btnBPJSResepObatApotek"); 
+        btnBPJSResepObatApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSResepObatApotek.addActionListener(this::btnBPJSResepObatApotekActionPerformed);
     }
 }

@@ -531,6 +531,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String KODEPPKAPOTEKBPJS(){
+        try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
+            prop.loadFromXML(fis);
+            var=EnkripsiAES.decrypt(prop.getProperty("KODEPPKAPOTEKBPJS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String JADIKANPIUTANGAPOTEKBPJS(){
         try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);

@@ -85,7 +85,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.SEP Asal","No.SEP Apotek","Tanggal SEP","Jenis","ID User SEP","No.Resp","Tgl.Resep","Tgl.Pelayanan","Iterasi","PPK Rujukan","ByTagRsp","ByVerRsp"
+                "No.SEP Asal","No.SEP Apotek","Tanggal SEP","No.Rawat","No.RM","Nama Pasien","No.Kartu","Jenis","ID User SEP","No.Resep","Tgl.Resep","Tgl.Pelayanan","Iterasi","PPK Rujukan","ByTagRsp","ByVerRsp"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -530,10 +530,13 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
+            //"No.SEP Asal","No.SEP Apotek","Tanggal SEP","No.Rawat","No.RM","Nama Pasien","No.Kartu","Jenis","ID User SEP","No.Resep","Tgl.Resep","Tgl.Pelayanan","Iterasi","PPK Rujukan","ByTagRsp","ByVerRsp"
             ps=koneksi.prepareStatement(
-                    "SELECT bridging_apotek_bpjs.no_apotek, bridging_apotek_bpjs.no_sep, bridging_apotek_bpjs.no_resep, bridging_sep.no_kartu,bridging_sep.nama_pasien, "+
-                    "bridging_apotek_bpjs.jenis_obat,bridging_apotek_bpjs.tgl_pelayanan, bridging_apotek_bpjs.tgl_resep  FROM bridging_apotek_bpjs JOIN bridging_sep ON "+
-                    "bridging_apotek_bpjs.no_sep=bridging_sep.no_sep WHERE bridging_apotek_bpjs.tgl_pelayanan BETWEEN ? and ? "+(TCari.getText().trim().equals("")? "": "and bridging_apotek_bpjs.no_apotek like ? or bridging_sep.no_sep like ? or bridging_sep.nama_pasien like ? or bridging_sep.no_kartu like ? or bridging_apotek_bpjs.no_resep like ? "));
+                "select bridging_resep_apotek_bpjs.no_sep,bridging_resep_apotek_bpjs.no_sep_apotek,bridging_resep_apotek_bpjs.tgl_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.no_kartu,"+
+                "bridging_resep_apotek_bpjs.kdjenis,bridging_resep_apotek_bpjs.id_user_sep,bridging_resep_apotek_bpjs.no_resep,bridging_resep_apotek_bpjs.tgl_resep,bridging_resep_apotek_bpjs.tgl_pelayanan,"+
+                "bridging_resep_apotek_bpjs.iterasi,bridging_resep_apotek_bpjs.kdppkrujukan,bridging_resep_apotek_bpjs.byTagRsp,bridging_resep_apotek_bpjs.byVerRsp from bridging_resep_apotek_bpjs "+
+                "inner join bridging_sep on bridging_sep.no_sep=bridging_resep_apotek_bpjs.no_sep "
+            );
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -550,16 +553,6 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
                         rs.getString("no_apotek"),rs.getString("no_sep"),rs.getString("no_resep"),rs.getString("no_kartu"),rs.getString("nama_pasien"),
                         rs.getString("jenis_obat"),(rs.getString("jenis_obat").equals("1") ? "Obat PRB" : (rs.getString("jenis_obat").equals("2") ? "Obat Kronis Belum Stabil" : "Obat Kemoterapi")),rs.getString("tgl_pelayanan"),"","","","","","","","",""
                     });
-                    
-//                    tampil obat
-                    ps2 = koneksi.prepareStatement("select bridging_apotek_bpjs_obat.kd_obat,bridging_apotek_bpjs_obat.nm_obat,bridging_apotek_bpjs_obat.jumlah,bridging_apotek_bpjs_obat.signa1,bridging_apotek_bpjs_obat.signa2,bridging_apotek_bpjs_obat.racikan "+
-                            "from bridging_apotek_bpjs_obat where bridging_apotek_bpjs_obat.no_sjp='"+rs.getString("no_apotek")+"'");
-                    rs2 = ps2.executeQuery();
-                    while(rs2.next()){
-                        tabMode.addRow(new Object[]{
-                        rs.getString("no_apotek"),rs.getString("no_sep"),rs.getString("no_resep"),"","","","","",rs2.getString("kd_obat"),rs2.getString("nm_obat"),rs2.getString("jumlah"),rs2.getString("signa1"),rs2.getString("signa2"),(rs2.getString("racikan").equals("1") ? "ya" : "tidak")
-                        });
-                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

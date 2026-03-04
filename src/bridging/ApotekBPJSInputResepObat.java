@@ -600,7 +600,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         TglResep.setBounds(84, 70, 135, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2026" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2026" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -713,7 +713,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         NoResep.setBounds(300, 70, 138, 23);
 
         Iterasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Dengan Iterasi" }));
+        Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Iterasi 1x", "2. Iterasi 2x" }));
         Iterasi.setName("Iterasi"); // NOI18N
         FormInput.add(Iterasi);
         Iterasi.setBounds(386, 130, 135, 23);
@@ -1006,9 +1006,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         sukses=true;
         if(JADIKANPIUTANGAPOTEKBPJS.equals("yes")){
             if(nmgudang.getText().trim().equals("")){
-                Valid.textKosong(BtnGudang,"Lokasi Depo");                                      
+                Valid.textKosong(BtnGudang,"Lokasi Depo");  
+                sukses=false;
             }
-            sukses=false;
         }
         
         if(sukses==true){
@@ -1083,7 +1083,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             "\"REFASALSJP\":\""+NoSEP.getText()+"\","+ 
                                             "\"POLIRSP\": \""+KdPoli.getText()+"\","+ 
                                             "\"KDJNSOBAT\":\""+JnsObat.getSelectedItem().toString().substring(0, 1)+"\","+ 
-                                            "\"NORESEP\":\""+NoResep.getText()+"\", "+ 
+                                            "\"NORESEP\":\""+NoResep.getText().substring(NoResep.getText().length()-5)+"\", "+ 
                                             "\"IDUSERSJP\":\""+akses.getkode()+"\","+ 
                                             "\"TGLRSP\":\""+TglResep.getText()+"\","+ 
                                             "\"TGLPELRSP\":\""+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"\","+ 
@@ -1097,7 +1097,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         if (nameNode.path("code").asText().equals("200")) {
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc));
                             System.out.println("Response JSON : "+response);
-                            if(Sequel.menyimpantf2("bridging_resep_apotek_bpjs", "?,?,?,?,?,?,?,?,?,?,?","Data Apotek Online", 12,new String[]{
+                            if(Sequel.menyimpantf2("bridging_resep_apotek_bpjs", "?,?,?,?,?,?,?,?,?,?,?,?","Data Apotek Online", 12,new String[]{
                                 NoSEP.getText(),response.path("noApotik").asText(),TglSEP.getText(),JnsObat.getSelectedItem().toString(),akses.getkode(),NoResep.getText(),TglResep.getText(),
                                 Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),Iterasi.getSelectedItem().toString(),
                                 response.path("faskesAsal").asText(),response.path("byTagRsp").asText(), response.path("byVerRsp").asText()
@@ -1109,7 +1109,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         try {
                                             requestJson = "{"+ 
                                                              "\"NOSJP\":\""+response.path("noApotik").asText()+"\","+
-                                                             "\"NORESEP\":\""+NoResep.getText()+"\","+ 
+                                                             "\"NORESEP\":\""+NoResep.getText().substring(NoResep.getText().length()-5)+"\","+ 
                                                              "\"KDOBT\": \""+tbObat.getValueAt(i,1).toString()+"\","+ 
                                                              "\"NMOBAT\": \""+tbObat.getValueAt(i,2).toString()+"\","+ 
                                                              "\"SIGNA1OBT\":"+tbObat.getValueAt(i,3).toString()+","+ 
@@ -1150,7 +1150,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         try {
                                             requestJson = "{"+
                                                             "\"NOSJP\":\""+response.path("noApotik").asText()+"\","+
-                                                            "\"NORESEP\":\""+NoResep.getText()+"\","+
+                                                            "\"NORESEP\":\""+NoResep.getText().substring(NoResep.getText().length()-5)+"\","+
                                                             "\"JNSROBT\":\"No."+tbDetailObatRacikan.getValueAt(i,0).toString()+"\","+
                                                             "\"KDOBT\":\""+tbDetailObatRacikan.getValueAt(i,2).toString()+"\","+
                                                             "\"NMOBAT\":\""+tbDetailObatRacikan.getValueAt(i,3).toString()+"\","+
@@ -1159,7 +1159,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                             "\"PERMINTAAN\":"+tbDetailObatRacikan.getValueAt(i,1).toString()+","+
                                                             "\"JMLOBT\":"+tbDetailObatRacikan.getValueAt(i,1).toString()+","+
                                                             "\"JHO\":"+tbDetailObatRacikan.getValueAt(i,6).toString()+","+
-                                                            "\"CatKhsObt\":\"RACIKAN Ke "+NoResep.getText()+"\""+
+                                                            "\"CatKhsObt\":\"RACIKAN Ke "+tbDetailObatRacikan.getValueAt(i,0).toString()+"\""+
                                                           "}";
                                             System.out.println("Obat Racikan : "+requestJson);
                                             requestEntity = new HttpEntity(requestJson, headers);
@@ -1368,14 +1368,14 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if (tbObat.getSelectedRow()!= -1) {
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbObat.getValueAt(tbObat.getSelectedRow(), 3)+" ("+tbObat.getValueAt(tbObat.getSelectedRow(), 1)+") ?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbObat.getValueAt(tbObat.getSelectedRow(),2)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 tabModeobat.removeRow(tbObat.getSelectedRow());
             }
         }
         
         if (tbDetailObatRacikan.getSelectedRow()!= -1) {
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat RACIKAN "+tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(), 3)+" ("+tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(), 1)+") ?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(), 3)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 tabModeDetailObatRacikan.removeRow(tbDetailObatRacikan.getSelectedRow());
             }
