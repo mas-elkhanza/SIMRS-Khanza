@@ -368,7 +368,7 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbKamar.getSelectedRow()!= -1){
-            reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah yakin data No.SEP Apotek : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+",\nNo.Resep : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+",\nKode Obat : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+",\nTipe Obat : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+" mau dihapus?\nData hanya dihapus di sisi BPJS, data yang disimpan lokal tidak ikut terhapus..!!\nGunakan fitur ini untuk perbaikan data Apotek Online BPJS..!!!", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah yakin data No.SEP Apotek : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+",\nNo.Resep : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+",Kode Obat : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+",\nTipe Obat : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+" mau dihapus?\nData hanya dihapus di sisi BPJS, data yang disimpan lokal tidak ikut terhapus..!!\nGunakan fitur ini untuk perbaikan data Apotek Online BPJS..!!!", "Konfirmasi", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {
                     bodyWithDeleteRequest();
