@@ -341,6 +341,9 @@
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="tbResep" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbResepMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

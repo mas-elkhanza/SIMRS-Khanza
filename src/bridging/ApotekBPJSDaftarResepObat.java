@@ -24,6 +24,7 @@ import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -52,6 +53,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import keuangan.Jurnal;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.scheme.Scheme;
@@ -74,16 +76,19 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0, y=0,reply=0;
     private ApiApotekBPJS api=new ApiApotekBPJS();
-    private String URL="",link="",utc="",requestJson="";
+    private String URL="",link="",utc="",requestJson="",JADIKANPIUTANGAPOTEKBPJS,nopiutang="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
+    private boolean sukses=true;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
@@ -262,6 +267,13 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            JADIKANPIUTANGAPOTEKBPJS = koneksiDB.JADIKANPIUTANGAPOTEKBPJS();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            JADIKANPIUTANGAPOTEKBPJS = "no";
+        }
     }
     
     
@@ -484,6 +496,11 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
 
         tbResep.setAutoCreateRowSorter(true);
         tbResep.setName("tbResep"); // NOI18N
+        tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbResepMouseClicked(evt);
+            }
+        });
         scrollPane1.setViewportView(tbResep);
 
         jPanel2.add(scrollPane1, java.awt.BorderLayout.CENTER);
@@ -979,65 +996,112 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if (tbResep.getSelectedRow() != -1) {
-            if (!tbResep.getValueAt(tbResep.getSelectedRow(), 8).toString().equals("")) {
-                String kode_apotek_bpjs2 = Sequel.cariIsi("select kode_brng_apotek_bpjs from maping_obat_apotek_bpjs where kode_brng='" + tbResep.getValueAt(tbResep.getSelectedRow(), 8).toString() + "'");
-                try {
-                    bodyWithDeleteRequestPerobat(tbResep.getValueAt(tbResep.getSelectedRow(), 0).toString(), tbResep.getValueAt(tbResep.getSelectedRow(), 2).toString(), kode_apotek_bpjs2, "N", tbResep.getValueAt(tbResep.getSelectedRow(), 8).toString());
-                } catch (Exception ex) {
-                    Logger.getLogger(ApotekBPJSDaftarResepObat.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah yakin No.Apotek " + tbResep.getValueAt(tbResep.getSelectedRow(), 0).toString() + " dan semua obatnya mau dihapus..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    try {
-                        ps = koneksi.prepareStatement("SELECT maping_obat_apotek_bpjs.kode_brng_apotek_bpjs, bridging_apotek_bpjs_obat.kd_obat, bridging_apotek_bpjs_obat.racikan FROM bridging_apotek_bpjs_obat INNER JOIN maping_obat_apotek_bpjs ON "
-                                + "bridging_apotek_bpjs_obat.kd_obat=maping_obat_apotek_bpjs.kode_brng WHERE bridging_apotek_bpjs_obat.no_sjp='" + tbResep.getValueAt(tbResep.getSelectedRow(), 0).toString() + "' AND bridging_apotek_bpjs_obat.racikan='0' ");
-                        rs = ps.executeQuery();
-                        while (rs.next()) {
-                            bodyWithDeleteRequest(rs.getString("kode_brng_apotek_bpjs"), "N", rs.getString("kd_obat"));
+        if(TabData.getSelectedIndex()==0){
+            if(tbResep.getSelectedRow()!= -1){
+                if(ChkAccor.isSelected()==true){
+                    reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah yakin data No.SEP Apotek : "+tbResep.getValueAt(tbResep.getSelectedRow(),1).toString()+",\nNo.SEP Asal : "+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+", No.Resep : "+tbResep.getValueAt(tbResep.getSelectedRow(),9).toString()+"\nmau dihapus beserta seluruh obatnya...?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        sukses=true;
+                        for(i=0;i<tbDetailResep.getRowCount();i++){ 
+                            try {
+                                HapusDetailResep(
+                                    tbResep.getValueAt(tbResep.getSelectedRow(),1).toString(),tbResep.getValueAt(tbResep.getSelectedRow(),9).toString().substring(tbResep.getValueAt(tbResep.getSelectedRow(),9).toString().length()-5),tbDetailResep.getValueAt(i,1).toString(),tbDetailResep.getValueAt(i,0).toString(),i
+                                );
+                            }catch (Exception ex) {
+                                System.out.println("Notifikasi Bridging : "+ex);
+                            }
                         }
-
-                        if (Sequel.cariIsi("select no_sjp from bridging_apotek_bpjs_obat where no_sjp=? AND bridging_apotek_bpjs_obat.racikan='0' ", tbResep.getValueAt(tbResep.getSelectedRow(), 0).toString()).isEmpty()) {
-                            Sequel.meghapus("bridging_apotek_bpjs_obat", "no_sjp", "racikan", tbResep.getValueAt(tbResep.getSelectedRow(), 0).toString(), "1");
-                            bodyWithDeleteRequestResep();
+                        
+                        if(sukses==true){
+                            try {
+                                nopiutang=tbResep.getValueAt(tbResep.getSelectedRow(),1).toString();
+                                HapusResep();
+                            }catch (Exception ex) {
+                                System.out.println("Notifikasi Bridging : "+ex);
+                            }
                         }
+                        
+                        if(sukses==true){
+                            if(JADIKANPIUTANGAPOTEKBPJS.equals("yes")){
+                                try {
+                                    ps=koneksi.prepareStatement(
+                                            "select piutang.nota_piutang,piutang.kd_bangsal,piutang.sisapiutang from piutang where piutang.nota_piutang=?");
+                                    try {
+                                       ps.setString(1,nopiutang);
+                                       rs=ps.executeQuery();
+                                       if(rs.next()){
+                                           Sequel.AutoComitFalse();
+                                           ps2=koneksi.prepareStatement(
+                                                "select detailpiutang.kode_brng,detailpiutang.jumlah,detailpiutang.no_batch,detailpiutang.no_faktur from detailpiutang where detailpiutang.nota_piutang=? ");
+                                           try {
+                                               ps2.setString(1,rs.getString(1));
+                                               rs2=ps2.executeQuery();
+                                               while(rs2.next()){
+                                                   Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang",akses.getkode(),rs.getString("kd_bangsal"),"Hapus","","",rs.getString("nota_piutang"));
+                                                   Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jumlah") +"','',''","stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"' and no_batch='' and no_faktur=''");
+                                               }
+                                           } catch (Exception e) {
+                                               sukses=false;
+                                               System.out.println("Notif : "+e);
+                                           } finally{
+                                               if(rs2!=null){
+                                                   rs2.close();
+                                               }
+                                               if(ps2!=null){
+                                                   ps2.close();
+                                               }
+                                           }
 
-                    } catch (Exception ex) {
-                        System.out.println("Notifikasi Bridging : " + ex);
+                                           if(sukses==true){
+                                               Sequel.queryu("delete from tampjurnal");
+                                               if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun.Piutang_Obat from set_akun")+"','PIUTANG PASIEN','0','"+rs.getString("sisapiutang")+"'","Rekening")==false){
+                                                  sukses=false;
+                                               }    
+                                               if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun.Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+rs.getString("sisapiutang")+"','0'","Rekening")==false){
+                                                  sukses=false;
+                                               } 
+                                               if(sukses==true){
+                                                  sukses=jur.simpanJurnal(rs.getString("nota_piutang"),"U","BATAL PIUTANG OBAT DI "+Sequel.CariBangsal(rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode());
+                                               }
+                                           }
+
+                                           if(sukses==true){
+                                               Sequel.queryu("delete from piutang where nota_piutang='"+nopiutang+"'");
+                                               Sequel.Commit();
+                                           }else{
+                                               sukses=false;
+                                               JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi piutang gagal dibatalkan...!!");
+                                               Sequel.RollBack();
+                                           }
+
+                                           Sequel.AutoComitTrue();
+                                       } 
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs!=null){
+                                            rs.close();
+                                        }
+                                        if(ps!=null){
+                                            ps.close();
+                                        }
+                                    }
+                                 } catch (Exception ex) {
+                                    System.out.println(ex);
+                                 }
+                            }
+                        }
                     }
+                }else if(ChkAccor.isSelected()==false){
+                    JOptionPane.showMessageDialog(null,"Silahkan tampilkan data detail resep obat apotek online BPJS...!!!");
                 }
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih data resep obat apotek online BPJS...!!!");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Silahkan pilih dulu data yang mau dihapus..!!");
+        }else if(TabData.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data resep obat apotek online BPJS...!!!");
+            TabData.setSelectedIndex(0);
         }
-//        if(tbKamar.getSelectedRow()!= -1){
-//             if (tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString().equals("")) {
-//                    
-//                } else {
-//                }
-//            reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah yakin No.Apotek "+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+" dan semua obatnya mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-//                if (reply == JOptionPane.YES_OPTION) {
-//                    try {
-//                    ps = koneksi.prepareStatement("SELECT maping_obat_apotek_bpjs.kode_brng_apotek_bpjs, bridging_apotek_bpjs_obat.kd_obat, bridging_apotek_bpjs_obat.racikan FROM bridging_apotek_bpjs_obat INNER JOIN maping_obat_apotek_bpjs ON "+
-//                        "bridging_apotek_bpjs_obat.kd_obat=maping_obat_apotek_bpjs.kode_brng WHERE bridging_apotek_bpjs_obat.no_sep='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' AND bridging_apotek_bpjs_obat.racikan='0' ");
-//                    rs = ps.executeQuery();
-//                    while (rs.next()) {
-//                        bodyWithDeleteRequest(rs.getString("kode_brng_apotek_bpjs"),"N",rs.getString("kd_obat"));    
-//                    }
-//                    
-//                    if (Sequel.cariIsi("select no_sep from bridging_apotek_bpjs_obat where no_sep=? AND bridging_apotek_bpjs_obat.racikan='0' ",tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()).isEmpty()) {
-//                         Sequel.meghapus("bridging_apotek_bpjs_obat", "no_sep", "racikan",tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString(),"1");
-//                        bodyWithDeleteRequestResep();
-//                    }
-//                   
-//                }catch (Exception ex) {
-//                    System.out.println("Notifikasi Bridging : "+ex);
-//                }
-//            }
-//        }else{
-//            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
-//        }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1176,6 +1240,10 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
             runBackground(() ->tampil2());
         }
     }//GEN-LAST:event_TabDataMouseClicked
+
+    private void tbResepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResepMouseClicked
+        ChkAccorActionPerformed(null);
+    }//GEN-LAST:event_tbResepMouseClicked
 
     /**
     * @param args the command line arguments
@@ -1389,7 +1457,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }
 
     @Test
-    public void bodyWithDeleteRequest(String Kode_obat, String tipe_obat, String kode_brng) throws Exception {
+    public void HapusDetailResep(String nosepapotek,String noresep,String kodeobat,String tipeobat,int baris) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {
@@ -1418,31 +1486,33 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIAPOTEKBPJS());
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
-            headers.add("X-Timestamp", utc);
-            headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", koneksiDB.USERKEYAPIAPOTEKBPJS());
+            headers.add("x-cons-id",koneksiDB.CONSIDAPIAPOTEKBPJS());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("x-timestamp",utc);
+	    headers.add("x-signature",api.getHmac(utc));
+	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             URL = link+"/pelayanan/obat/hapus";
-            System.out.println("URL : "+URL);
-            requestJson ="{ "+
-                            "\"nosepapotek\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+"\","+
-                            "\"noresep\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),2).toString()+"\","+
-                            "\"kodeobat\":\""+Kode_obat+"\","+
-                            "\"tipeobat\":\""+tipe_obat+"\"}  ";      
-            System.out.println("respone : "+requestJson);
+            requestJson ="{\"nosepapotek\":\""+nosepapotek+"\",\"noresep\":\""+noresep+"\",\"kodeobat\":\""+kodeobat+"\",\"tipeobat\":\""+tipeobat+"\"}";
+            System.out.println(URL);
+            System.out.println("JSON Dikirim : "+requestJson);
             requestEntity = new HttpEntity(requestJson,headers);
             root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("code").asText().equals("200")){
-                Sequel.meghapus("bridging_apotek_bpjs_obat", "no_sjp", "kd_obat",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),kode_brng);
-                JOptionPane.showMessageDialog(null,"Obat "+Kode_obat+" "+Sequel.cariIsi("select nama_brng_apotek_bpjs from maping_obat_apotek_bpjs where kode_brng_apotek_bpjs=?",Kode_obat)+" Berhasil diHapus");
-            }else{
+            if(!nameNode.path("code").asText().equals("200")){
+                sukses=false;
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("404")){
+                    if(tipeobat.equals("N")){
+                        Sequel.queryu2("delete from bridging_resep_apotek_bpjs_nonracikan where no_sep_apotek=? and kode_brng_apotek_bpjs=?",2,new String[]{nosepapotek,kodeobat});
+                    }else{
+                        Sequel.queryu2("delete from bridging_resep_apotek_bpjs_racikan where no_sep_apotek=? and kode_brng_apotek_bpjs=?",2,new String[]{nosepapotek,kodeobat});
+                    }
+                }
             }
         } catch (Exception e) {   
+            sukses=false;
             System.out.println("Notif : "+e);
             if(e.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
@@ -1451,7 +1521,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }
     
     @Test
-    public void bodyWithDeleteRequestPerobat(String no_apotek, String no_resep, String Kode_obat, String tipe_obat, String kode_brng) throws Exception {
+    public void HapusResep() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {
@@ -1480,91 +1550,30 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIAPOTEKBPJS());
+            headers.add("x-cons-id", koneksiDB.CONSIDAPIAPOTEKBPJS());
             utc = String.valueOf(api.GetUTCdatetimeAsString());
-            headers.add("X-Timestamp", utc);
-            headers.add("X-Signature", api.getHmac(utc));
+            headers.add("x-timestamp", utc);
+            headers.add("x-signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIAPOTEKBPJS());
-            URL = link+"/pelayanan/obat/hapus";
-            System.out.println("URL : "+URL);
-            requestJson ="{ "+
-                            "\"nosepapotek\":\""+no_apotek+"\","+
-                            "\"noresep\":\""+no_resep+"\","+
-                            "\"kodeobat\":\""+Kode_obat+"\","+
-                            "\"tipeobat\":\""+tipe_obat+"\"}  ";      
-            System.out.println("respone : "+requestJson);
-            requestEntity = new HttpEntity(requestJson,headers);
-            root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
-            nameNode = root.path("metaData");
-            System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("code").asText().equals("200")){
-                Sequel.meghapus("bridging_apotek_bpjs_obat", "no_sjp", "kd_obat",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),tbResep.getValueAt(tbResep.getSelectedRow(),8).toString());
-                JOptionPane.showMessageDialog(null,"Obat "+Kode_obat+" "+Sequel.cariIsi("select nama_brng_apotek_bpjs from maping_obat_apotek_bpjs where kode_brng_apotek_bpjs=?",Kode_obat)+" Berhasil diHapus");
-            }else{
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-            }
-        } catch (Exception e) {   
-            System.out.println("Notif : "+e);
-            if(e.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
-            }
-        }
-    }
-    
-    @Test
-    public void bodyWithDeleteRequestResep() throws Exception {
-        RestTemplate restTemplate = new RestTemplate();
-        SSLContext sslContext = SSLContext.getInstance("SSL");
-        javax.net.ssl.TrustManager[] trustManagers= {
-            new X509TrustManager() {
-                public X509Certificate[] getAcceptedIssuers() {return null;}
-                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
-                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
-            }
-        };
-        sslContext.init(null,trustManagers , new SecureRandom());
-        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        Scheme scheme=new Scheme("https",443,sslFactory);
-    
-        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
-            @Override
-            protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
-                if (HttpMethod.DELETE == httpMethod) {
-                    return new BPJSDataSEP.HttpEntityEnclosingDeleteRequest(uri);
-                }
-                return super.createHttpUriRequest(httpMethod, uri);
-            }
-        };
-        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
-        restTemplate.setRequestFactory(factory);
-       
-        try {
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIAPOTEKBPJS());
-            utc=String.valueOf(api.GetUTCdatetimeAsString());
-	    headers.add("X-Timestamp",utc);
-	    headers.add("X-Signature",api.getHmac(utc));
-            headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             URL = link+"/hapusresep";
-            requestJson ="{ "+
-                            "\"nosjp\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+"\","+
-                            "\"refasalsjp\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),1).toString()+"\","+
-                            "\"noresep\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),2).toString()+"\"}  ";            
+            requestJson ="{\"nosjp\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),1).toString()+"\",\"refasalsjp\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+"\",\"noresep\":\""+tbResep.getValueAt(tbResep.getSelectedRow(),9).toString().substring(tbResep.getValueAt(tbResep.getSelectedRow(),9).toString().length()-5)+"\"}";            
+            System.out.println(URL);
+            System.out.println("JSON Dikirim : "+requestJson);
             requestEntity = new HttpEntity(requestJson,headers);
             root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("code").asText().equals("200")){
-                Sequel.meghapus("bridging_apotek_bpjs", "no_apotek", tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                JOptionPane.showMessageDialog(null,"Resep "+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+" Berhasil diHapus");
-                runBackground(() ->tampil());
-            }else{
+            if(!nameNode.path("code").asText().equals("200")){
+                sukses=false;
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+            }else{
+                Sequel.meghapus("bridging_resep_apotek_bpjs","no_sep_apotek",tbResep.getValueAt(tbResep.getSelectedRow(),1).toString());
+                Valid.tabelKosong(tabModeDetail);
+                tabMode.removeRow(tbResep.getSelectedRow());
             }
         } catch (Exception e) {   
+            sukses=false;
             System.out.println("Notif : "+e);
             if(e.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
