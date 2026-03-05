@@ -25,7 +25,11 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URI;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -45,6 +49,9 @@ import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.scheme.Scheme;
@@ -62,7 +69,7 @@ import org.springframework.web.client.RestTemplate;
  * @author dosen
  */
 public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabModeDetail;
+    private final DefaultTableModel tabMode,tabModeDetail,tabModeRekap;
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0, y=0,reply=0;
@@ -165,6 +172,67 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         }
         tbDetailResep.setDefaultRenderer(Object.class, new WarnaTable());
         
+        tabModeRekap=new DefaultTableModel(null,new Object[]{
+                "No.SEP Asal","No.SEP Apotek","Tanggal SEP","No.Rawat","No.RM","Nama Pasien","No.Kartu","Jenis","ID User SEP","No.Resep","Tgl.Resep",
+                "Tgl.Pelayanan","Iterasi","PPK Rujukan","No.Racik","Kode Obat","Nama Obat","Signa 1","Signa 2","Jml.Obat","Permintaan","Jml.Harian"
+            }){
+                @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbRekapResep.setModel(tabModeRekap);
+
+        tbRekapResep.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbRekapResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 22; i++) {
+            TableColumn column = tbRekapResep.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(125);
+            }else if(i==1){
+                column.setPreferredWidth(125);
+            }else if(i==2){
+                column.setPreferredWidth(117);
+            }else if(i==3){
+                column.setPreferredWidth(100);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setPreferredWidth(150);
+            }else if(i==6){
+                column.setPreferredWidth(85);
+            }else if(i==7){
+                column.setPreferredWidth(130);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(117);
+            }else if(i==11){
+                column.setPreferredWidth(117);
+            }else if(i==12){
+                column.setPreferredWidth(85);
+            }else if(i==13){
+                column.setPreferredWidth(70);
+            }else if(i==14){
+                column.setPreferredWidth(50);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(45);
+            }else if(i==18){
+                column.setPreferredWidth(45);
+            }else if(i==19){
+                column.setPreferredWidth(52);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setPreferredWidth(60);
+            }
+        }
+        tbRekapResep.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
         ChkAccor.setSelected(false);
@@ -176,6 +244,24 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
     
     
@@ -189,6 +275,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         panelGlass6 = new widget.panelisi();
         jLabel17 = new widget.Label();
@@ -213,7 +300,10 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         scrollPaneDetail = new widget.ScrollPane();
         tbDetailResep = new widget.Table();
         scrollPane2 = new widget.ScrollPane();
-        tbRekapPenugasan = new widget.Table();
+        tbRekapResep = new widget.Table();
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -449,7 +539,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
-        tbRekapPenugasan.setModel(new javax.swing.table.DefaultTableModel(
+        tbRekapResep.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -460,9 +550,9 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
 
             }
         ));
-        tbRekapPenugasan.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
-        tbRekapPenugasan.setName("tbRekapPenugasan"); // NOI18N
-        scrollPane2.setViewportView(tbRekapPenugasan);
+        tbRekapResep.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
+        tbRekapResep.setName("tbRekapResep"); // NOI18N
+        scrollPane2.setViewportView(tbRekapResep);
 
         TabData.addTab("Rekap Resep Obat", scrollPane2);
 
@@ -484,52 +574,391 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
+        if(TabData.getSelectedIndex()==0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            for(int i=0;i<tabMode.getRowCount();i++){  
-                Sequel.menyimpan("temporary","'"+i+"','"+
-                                tabMode.getValueAt(i,0).toString()+"','"+
-                                tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','"+
-                                tabMode.getValueAt(i,3).toString()+"','"+
-                                tabMode.getValueAt(i,4).toString()+"','"+
-                                tabMode.getValueAt(i,5).toString()+"','"+
-                                tabMode.getValueAt(i,6).toString()+"','"+
-                                tabMode.getValueAt(i,7).toString()+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','"+
-                                tabMode.getValueAt(i,9).toString()+"','"+
-                                tabMode.getValueAt(i,10).toString()+"','"+
-                                tabMode.getValueAt(i,11).toString()+"','"+
-                                tabMode.getValueAt(i,12).toString()+"','"+
-                                tabMode.getValueAt(i,14).toString()+"','"+
-                                tabMode.getValueAt(i,15).toString()+"','"+
-                                tabMode.getValueAt(i,16).toString()+"','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Daftar Pelayanan Obat Apotek BPJS"); 
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+                try{
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                    );
+                    bg.close();
+
+                    File f;            
+                    BufferedWriter bw;
+                    StringBuilder htmlContent;
+
+                    String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                    switch (pilihan) {
+                        case "Laporan 1 (HTML)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Asal</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Apotek</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Kartu</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID User SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Pelayanan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Iterasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PPK Rujukan</b></td>").
+                                            append("</tr>");
+                                for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                    htmlContent.append("<tr class='isi'>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,0).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,1).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,2).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,3).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,4).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,5).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,6).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,7).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,8).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,9).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,10).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,11).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,12).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,13).toString()).append("</td>").
+                                                append("</tr>");
+                                }
+                                LoadHTML.setText(
+                                    "<html>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                       htmlContent.toString()+
+                                      "</table>"+
+                                    "</html>"
+                                );
+
+                                f = new File("DataResepApolBPJS.html");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>DATA RESEP APOTEK ONLINE BPJS<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>")
+                                );
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 2 (WPS)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Asal</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Apotek</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Kartu</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID User SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Pelayanan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Iterasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PPK Rujukan</b></td>").
+                                            append("</tr>");
+                                for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                    htmlContent.append("<tr class='isi'>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,0).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,1).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,2).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,3).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,4).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,5).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,6).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,7).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,8).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,9).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,10).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,11).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,12).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbResep.getValueAt(i,13).toString()).append("</td>").
+                                                append("</tr>");
+                                }
+                                LoadHTML.setText(
+                                    "<html>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                       htmlContent.toString()+
+                                      "</table>"+
+                                    "</html>"
+                                );
+
+                                f = new File("DataResepApolBPJS.wps");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>DATA RESEP APOTEK ONLINE BPJS<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>")
+                                );
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 3 (CSV)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append(                             
+                                    "\"No.SEP Asal\";\"No.SEP Apotek\";\"Tanggal SEP\";\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"No.Kartu\";\"Jenis\";\"ID User SEP\";\"No.Resep\";\"Tgl.Resep\";\"Tgl.Pelayanan\";\"Iterasi\";\"PPK Rujukan\"\n"
+                                ); 
+                                for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                    htmlContent.append("\"").append(tbResep.getValueAt(i,0).toString()).append("\";\"").append(tbResep.getValueAt(i,1).toString()).append("\";\"").append(tbResep.getValueAt(i,2).toString()).append("\";\"").append(tbResep.getValueAt(i,3).toString()).append("\";\"").append(tbResep.getValueAt(i,4).toString()).append("\";\"").append(tbResep.getValueAt(i,5).toString()).append("\";\"").append(tbResep.getValueAt(i,6).toString()).append("\";\"").append(tbResep.getValueAt(i,7).toString()).append("\";\"").append(tbResep.getValueAt(i,8).toString()).append("\";\"").append(tbResep.getValueAt(i,9).toString()).append("\";\"").append(tbResep.getValueAt(i,10).toString()).append("\";\"").append(tbResep.getValueAt(i,11).toString()).append("\";\"").append(tbResep.getValueAt(i,12).toString()).append("\";\"").append(tbResep.getValueAt(i,13).toString()).append("\"\n");
+                                }
+                                f = new File("DataResepApolBPJS.csv");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(htmlContent.toString());
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break; 
+                    }   
+                }catch(Exception e){
+                    System.out.println("Notifikasi : "+e);
+                }
             }
-            
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptApotekBPJSDaftarPelayananKlaim.jasper","report","[ Daftar Pelayanan Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
-        }        
+        }else if(TabData.getSelectedIndex()==1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabModeRekap.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabModeRekap.getRowCount()!=0){
+                try{
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                    );
+                    bg.close();
+
+                    File f;            
+                    BufferedWriter bw;
+                    StringBuilder htmlContent;
+
+                    String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                    switch (pilihan) {
+                        case "Laporan 1 (HTML)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Asal</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Apotek</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Kartu</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID User SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Pelayanan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Iterasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PPK Rujukan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Racik</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Signa 1</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Signa 2</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permintaan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Harian</b></td>").
+                                            append("</tr>");
+                                for (int i = 0; i < tabModeRekap.getRowCount(); i++) {
+                                    htmlContent.append("<tr class='isi'>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,0).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,1).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,2).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,3).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,4).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,5).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,6).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,7).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,8).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,9).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,10).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,11).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,12).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,13).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,14).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,15).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,16).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,17).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,18).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,19).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,20).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,21).toString()).append("</td>").
+                                                append("</tr>");
+                                }
+                                LoadHTML.setText(
+                                    "<html>"+
+                                      "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                       htmlContent.toString()+
+                                      "</table>"+
+                                    "</html>"
+                                );
+
+                                f = new File("DataRekapResepApolBPJS.html");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>DATA REKAP RESEP APOTEK ONLINE BPJS<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>")
+                                );
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 2 (WPS)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Asal</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP Apotek</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Kartu</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID User SEP</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Resep</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Pelayanan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Iterasi</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PPK Rujukan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Racik</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Signa 1</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Signa 2</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Obat</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permintaan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Harian</b></td>").
+                                            append("</tr>");
+                                for (int i = 0; i < tabModeRekap.getRowCount(); i++) {
+                                    htmlContent.append("<tr class='isi'>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,0).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,1).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,2).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,3).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,4).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,5).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,6).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,7).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,8).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,9).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,10).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,11).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,12).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,13).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,14).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,15).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,16).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,17).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,18).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,19).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,20).toString()).append("</td>").
+                                                    append("<td valign='top'>").append(tbRekapResep.getValueAt(i,21).toString()).append("</td>").
+                                                append("</tr>");
+                                }
+                                LoadHTML.setText(
+                                    "<html>"+
+                                      "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                       htmlContent.toString()+
+                                      "</table>"+
+                                    "</html>"
+                                );
+
+                                f = new File("DataRekapResepApolBPJS.wps");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>DATA REKAP RESEP APOTEK ONLINE BPJS<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>")
+                                );
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 3 (CSV)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append(                             
+                                    "\"No.SEP Asal\";\"No.SEP Apotek\";\"Tanggal SEP\";\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"No.Kartu\";\"Jenis\";\"ID User SEP\";\"No.Resep\";\"Tgl.Resep\";\"Tgl.Pelayanan\";\"Iterasi\";\"PPK Rujukan\";\"No.Racik\";\"Kode Obat\";\"Nama Obat\";\"Signa 1\";\"Signa 2\";\"Jml.Obat\";\"Permintaan\";\"Jml.Harian\"\n"
+                                ); 
+                                for (int i = 0; i < tabModeRekap.getRowCount(); i++) {
+                                    htmlContent.append("\"").append(tbRekapResep.getValueAt(i,0).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,1).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,2).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,3).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,4).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,5).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,6).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,7).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,8).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,9).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,10).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,11).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,12).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,13).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,14).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,15).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,16).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,17).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,18).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,19).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,20).toString()).append("\";\"").append(tbRekapResep.getValueAt(i,21).toString()).append("\"\n");
+                                }
+                                f = new File("DataRekapResepApolBPJS.csv");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(htmlContent.toString());
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break; 
+                    }   
+                }catch(Exception e){
+                    System.out.println("Notifikasi : "+e);
+                }
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }       
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            runBackground(() ->tampil());
+            TabDataMouseClicked(null);
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            runBackground(() ->tampil());
+            TabDataMouseClicked(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -538,12 +967,12 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil());
+        TabDataMouseClicked(null);
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnCariActionPerformed(null);
+            TabDataMouseClicked(null);
         }else{
             Valid.pindah(evt,TCari,BtnPrint);
         }
@@ -629,19 +1058,19 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabDataMouseClicked(null);
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabDataMouseClicked(null);
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                        TabDataMouseClicked(null);
                     }
                 }
             });
@@ -650,7 +1079,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        runBackground(() ->tampil());
+        TabDataMouseClicked(null);
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -741,11 +1170,11 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
-        /*if(TabData.getSelectedIndex()==0){
+        if(TabData.getSelectedIndex()==0){
             runBackground(() ->tampil());
         }else if(TabData.getSelectedIndex()==1){
             runBackground(() ->tampil2());
-        }*/
+        }
     }//GEN-LAST:event_TabDataMouseClicked
 
     /**
@@ -774,6 +1203,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabData;
@@ -788,7 +1218,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPaneDetail;
     private widget.Table tbDetailResep;
-    private widget.Table tbRekapPenugasan;
+    private widget.Table tbRekapResep;
     private widget.Table tbResep;
     // End of variables declaration//GEN-END:variables
 
@@ -837,7 +1267,110 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
-    }    
+    }  
+    
+    private void tampil2() {
+        Valid.tabelKosong(tabModeRekap);
+        try{
+            ps=koneksi.prepareStatement(
+                "select bridging_resep_apotek_bpjs.no_sep,bridging_resep_apotek_bpjs.no_sep_apotek,bridging_resep_apotek_bpjs.tgl_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,"+
+                "bridging_sep.no_kartu,bridging_resep_apotek_bpjs.kdjenis,bridging_resep_apotek_bpjs.id_user_sep,bridging_resep_apotek_bpjs.no_resep,bridging_resep_apotek_bpjs.tgl_resep,"+
+                "bridging_resep_apotek_bpjs.tgl_pelayanan,bridging_resep_apotek_bpjs.iterasi,bridging_resep_apotek_bpjs.kdppkrujukan,bridging_resep_apotek_bpjs_racikan.nomor_racik,"+
+                "bridging_resep_apotek_bpjs_racikan.kode_brng_apotek_bpjs,maping_obat_apotek_bpjs.nama_brng_apotek_bpjs,bridging_resep_apotek_bpjs_racikan.signa1,"+
+                "bridging_resep_apotek_bpjs_racikan.signa2,bridging_resep_apotek_bpjs_racikan.jml_obat,bridging_resep_apotek_bpjs_racikan.permintaan,bridging_resep_apotek_bpjs_racikan.jho "+
+                "from bridging_resep_apotek_bpjs inner join bridging_sep on bridging_sep.no_sep=bridging_resep_apotek_bpjs.no_sep "+
+                "inner join bridging_resep_apotek_bpjs_racikan on bridging_resep_apotek_bpjs.no_sep_apotek=bridging_resep_apotek_bpjs_racikan.no_sep_apotek "+
+                "inner join maping_obat_apotek_bpjs on maping_obat_apotek_bpjs.kode_brng_apotek_bpjs=bridging_resep_apotek_bpjs_racikan.kode_brng_apotek_bpjs "+
+                "where bridging_resep_apotek_bpjs.tgl_resep between ? and ? "+(TCari.getText().trim().equals("")?"":"and (bridging_resep_apotek_bpjs.no_sep like ? or "+
+                "bridging_resep_apotek_bpjs.no_sep_apotek like ? or bridging_sep.no_rawat like ? or bridging_sep.nomr like ? or bridging_resep_apotek_bpjs.kdjenis like ? or "+
+                "bridging_resep_apotek_bpjs.no_resep like ? or bridging_resep_apotek_bpjs.id_user_sep like ? or bridging_resep_apotek_bpjs_racikan.kode_brng_apotek_bpjs like ? or "+
+                "maping_obat_apotek_bpjs.nama_brng_apotek_bpjs like ?)")
+            );
+            try {
+                ps.setString(1,Valid.SetTglJam(DTPCari1.getSelectedItem()+" 00:00:01"));
+                ps.setString(2,Valid.SetTglJam(DTPCari2.getSelectedItem()+" 23:59:59"));
+                if (!TCari.getText().trim().equals("")) {
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeRekap.addRow(new String[]{
+                        rs.getString("no_sep"),rs.getString("no_sep_apotek"),rs.getString("tgl_sep"),rs.getString("bridging_sep.no_rawat"),rs.getString("bridging_sep.nomr"),rs.getString("nama_pasien"),
+                        rs.getString("bridging_sep.no_kartu"),rs.getString("kdjenis"),rs.getString("id_user_sep"),rs.getString("no_resep"),rs.getString("tgl_resep"),rs.getString("tgl_pelayanan"),
+                        rs.getString("iterasi"),rs.getString("kdppkrujukan"),rs.getString("nomor_racik"),rs.getString("kode_brng_apotek_bpjs"),rs.getString("nama_brng_apotek_bpjs"),rs.getString("signa1"),
+                        rs.getString("signa2"),rs.getString("jml_obat"),rs.getString("permintaan"),rs.getString("jho")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                "select bridging_resep_apotek_bpjs.no_sep,bridging_resep_apotek_bpjs.no_sep_apotek,bridging_resep_apotek_bpjs.tgl_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,"+
+                "bridging_sep.no_kartu,bridging_resep_apotek_bpjs.kdjenis,bridging_resep_apotek_bpjs.id_user_sep,bridging_resep_apotek_bpjs.no_resep,bridging_resep_apotek_bpjs.tgl_resep,"+
+                "bridging_resep_apotek_bpjs.tgl_pelayanan,bridging_resep_apotek_bpjs.iterasi,bridging_resep_apotek_bpjs.kdppkrujukan,bridging_resep_apotek_bpjs_nonracikan.kode_brng_apotek_bpjs,"+
+                "maping_obat_apotek_bpjs.nama_brng_apotek_bpjs,bridging_resep_apotek_bpjs_nonracikan.signa1,bridging_resep_apotek_bpjs_nonracikan.signa2,bridging_resep_apotek_bpjs_nonracikan.jml_obat,"+
+                "bridging_resep_apotek_bpjs_nonracikan.jho from bridging_resep_apotek_bpjs inner join bridging_sep on bridging_sep.no_sep=bridging_resep_apotek_bpjs.no_sep "+
+                "inner join bridging_resep_apotek_bpjs_nonracikan on bridging_resep_apotek_bpjs.no_sep_apotek=bridging_resep_apotek_bpjs_nonracikan.no_sep_apotek "+
+                "inner join maping_obat_apotek_bpjs on maping_obat_apotek_bpjs.kode_brng_apotek_bpjs=bridging_resep_apotek_bpjs_nonracikan.kode_brng_apotek_bpjs "+
+                "where bridging_resep_apotek_bpjs.tgl_resep between ? and ? "+(TCari.getText().trim().equals("")?"":"and (bridging_resep_apotek_bpjs.no_sep like ? or "+
+                "bridging_resep_apotek_bpjs.no_sep_apotek like ? or bridging_sep.no_rawat like ? or bridging_sep.nomr like ? or bridging_resep_apotek_bpjs.kdjenis like ? or "+
+                "bridging_resep_apotek_bpjs.no_resep like ? or bridging_resep_apotek_bpjs.id_user_sep like ? or bridging_resep_apotek_bpjs_nonracikan.kode_brng_apotek_bpjs like ? or "+
+                "maping_obat_apotek_bpjs.nama_brng_apotek_bpjs like ?)")
+            );
+            try {
+                ps.setString(1,Valid.SetTglJam(DTPCari1.getSelectedItem()+" 00:00:01"));
+                ps.setString(2,Valid.SetTglJam(DTPCari2.getSelectedItem()+" 23:59:59"));
+                if (!TCari.getText().trim().equals("")) {
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeRekap.addRow(new String[]{
+                        rs.getString("no_sep"),rs.getString("no_sep_apotek"),rs.getString("tgl_sep"),rs.getString("bridging_sep.no_rawat"),rs.getString("bridging_sep.nomr"),rs.getString("nama_pasien"),
+                        rs.getString("bridging_sep.no_kartu"),rs.getString("kdjenis"),rs.getString("id_user_sep"),rs.getString("no_resep"),rs.getString("tgl_resep"),rs.getString("tgl_pelayanan"),
+                        rs.getString("iterasi"),rs.getString("kdppkrujukan"),"N",rs.getString("kode_brng_apotek_bpjs"),rs.getString("nama_brng_apotek_bpjs"),rs.getString("signa1"),rs.getString("signa2"),
+                        rs.getString("jml_obat"),rs.getString("jml_obat"),rs.getString("jho")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabModeRekap.getRowCount());
+    }  
 
     public JTable getTable(){
         return tbResep;
