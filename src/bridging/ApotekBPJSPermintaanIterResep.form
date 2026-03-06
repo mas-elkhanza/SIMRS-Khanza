@@ -500,6 +500,7 @@
                     <StringItem index="23" value="23"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="8"/>
                 <Property name="name" type="java.lang.String" value="cmbJam" noResource="true"/>
               </Properties>
               <Events>

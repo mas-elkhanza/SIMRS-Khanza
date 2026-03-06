@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,22 +51,19 @@ public final class ApotekBPJSPermintaanIterResep extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement psobat,psstok,ps2;
-    private ResultSet rsobat,rsstok,rs2;
-    private double sisacari=0,y=0,kenaikan=0,ttl=0,ppnobat=0;
-    private int i=0,row2,r;
+    private PreparedStatement psobat;
+    private ResultSet rsobat;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
-    private HttpHeaders headers;
-    private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode nameNode;
     private JsonNode response;
-    private String[] arrSplit;
+    private FileReader myObj;
     private boolean sukses=true;
     private DlgCariDokter dokter;
+    private String iterasi;
+    private int i;
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -462,6 +460,7 @@ public final class ApotekBPJSPermintaanIterResep extends javax.swing.JDialog {
         DTPBeri.setBounds(75, 42, 90, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        cmbJam.setSelectedIndex(8);
         cmbJam.setName("cmbJam"); // NOI18N
         cmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -714,13 +713,57 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         return BtnSimpan;
     }
     
-    public void setNoRm(String norwt,String norm,String nama,String tanggal,String iterasi) {  
+    public void setNoRm(String norwt,String norm,String nama,Date tanggal,String kodedokter,String iterasi) {  
+        TNoRw.setText(norwt);
         TPasien.setText(norm+" "+nama);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(tanggal);
+        cal.add(Calendar.DATE, 30);
+        DTPBeri.setDate(cal.getTime());
+        emptTeksobat();
+        this.iterasi=iterasi;
+        KdDokter.setText(Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",kodedokter));
+        NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
+        
         try {
             Valid.tabelKosong(tabModeobat);
-            Valid.tabelKosong(tabModeObatRacikan);
-            Valid.tabelKosong(tabModeDetailObatRacikan);
+            myObj = new FileReader("./cache/resepnonracikaniter.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("resepnonracikaniter");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    tabModeobat.addRow(new Object[]{
+                        list.path("Jml").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("AturanPakai").asText()
+                    });
+                }
+            }
+            myObj.close();
             
+            Valid.tabelKosong(tabModeObatRacikan);
+            myObj = new FileReader("./cache/resepracikaniter.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("resepracikaniter");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    tabModeObatRacikan.addRow(new Object[]{
+                        list.path("No").asText(),list.path("NamaRacikan").asText(),list.path("KodeRacik").asText(),list.path("MetodeRacik").asText(),list.path("JmlRacik").asText(),list.path("AturanPakai").asText(),list.path("Keterangan").asText()
+                    });
+                }
+            }
+            myObj.close();
+            
+            Valid.tabelKosong(tabModeDetailObatRacikan);
+            myObj = new FileReader("./cache/resepdetailracikaniter.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("resepdetailracikaniter");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    tabModeDetailObatRacikan.addRow(new Object[]{
+                        list.path("No").asText(),list.path("Jml").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText()
+                    });
+                }
+            }
+            myObj.close();
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         } 
@@ -728,14 +771,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     public void emptTeksobat() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"'",
-                DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);        
-        } 
-    }
-    
-    private void emptTeksobat2() {
-        if(ChkRM.isSelected()==true){
-            Valid.autoNomer7(NoResep.getText().substring(NoResep.getText().length()-4),DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);  
+            Valid.autoNomer3(
+                "select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"'",
+                DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep
+            );        
         } 
     }
     

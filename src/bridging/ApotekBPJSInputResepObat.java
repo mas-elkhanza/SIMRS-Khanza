@@ -80,6 +80,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
     private boolean sukses=true;
     private ApiApotekBPJS api = new ApiApotekBPJS();
     private ApotekBPJSDaftarResepObat rekapdaftarobat;
+    private ApotekBPJSPermintaanIterResep resepiter;
     private File file;
     private FileWriter fileWriter;
     
@@ -1320,9 +1321,67 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
                             fileWriter.close();
                             iyembuilder=null;
+                            
+                            file=new File("./cache/resepracikaniter.iyem");
+                            file.createNewFile();
+                            fileWriter = new FileWriter(file);
+                            iyembuilder = new StringBuilder();
+                            for(i=0;i<tbObatRacikan.getRowCount();i++){
+                                iyembuilder.append("{\"No\":\"").append(tbObatRacikan.getValueAt(i,0).toString()).append("\",\"NamaRacikan\":\"").append(tbObatRacikan.getValueAt(i,1).toString()).append("\",\"KodeRacik\":\"").append(tbObatRacikan.getValueAt(i,2).toString()).append("\",\"MetodeRacik\":\"").append(tbObatRacikan.getValueAt(i,3).toString()).append("\",\"JmlRacik\":\"").append(tbObatRacikan.getValueAt(i,4).toString()).append("\",\"AturanPakai\":\"").append(tbObatRacikan.getValueAt(i,5).toString()).append("\",\"Keterangan\":\"").append(tbObatRacikan.getValueAt(i,6).toString()).append("\"},");
+                            }
+
+                            if (iyembuilder.length() > 0) {
+                                iyembuilder.setLength(iyembuilder.length() - 1);
+                                fileWriter.write("{\"resepracikaniter\":["+iyembuilder+"]}");
+                                fileWriter.flush();
+                            }
+
+                            fileWriter.close();
+                            iyembuilder=null;
+                            
+                            file=new File("./cache/resepdetailracikaniter.iyem");
+                            file.createNewFile();
+                            fileWriter = new FileWriter(file);
+                            iyembuilder = new StringBuilder();
+                            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
+                                iyembuilder.append("{\"No\":\"").append(tbDetailObatRacikan.getValueAt(i,0).toString()).append("\",\"Jml\":\"").append(tbDetailObatRacikan.getValueAt(i,1).toString()).append("\",\"KodeBarang\":\"").append(tbDetailObatRacikan.getValueAt(i,11).toString()).append("\",\"NamaBarang\":\"").append(tbDetailObatRacikan.getValueAt(i,3).toString()).append("\"},");
+                            }
+
+                            if (iyembuilder.length() > 0) {
+                                iyembuilder.setLength(iyembuilder.length() - 1);
+                                fileWriter.write("{\"resepdetailracikaniter\":["+iyembuilder+"]}");
+                                fileWriter.flush();
+                            }
+
+                            fileWriter.close();
+                            iyembuilder=null;
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }
+                        
+                        if (resepiter == null || !resepiter.isDisplayable()) {
+                            resepiter=new ApotekBPJSPermintaanIterResep(null,false);
+                            resepiter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            resepiter.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    resepiter=null;
+                                }
+                            }); 
+
+                            resepiter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            resepiter.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (resepiter == null) return;
+                        if (!resepiter.isVisible()) {
+                            resepiter.setNoRm(TNoRW.getText(),TNoRM.getText(),NmPasien.getText(),DTPTgl.getDate(),KdDPJP.getText(),Iterasi.getSelectedItem().toString());
+                        }
+                        
+                        if (resepiter.isVisible()) {
+                            resepiter.toFront();
+                            return;
+                        }
+                        resepiter.setVisible(true);
                     }
                     dispose();
                 }
