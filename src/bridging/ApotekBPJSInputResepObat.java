@@ -20,6 +20,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import inventory.riwayatobat;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +32,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -1231,6 +1234,86 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
                 Sequel.AutoComitTrue();
                 if(sukses==true){
+                    if(JADIKANPIUTANGAPOTEKBPJS.equals("yes")){
+                        reply = JOptionPane.showConfirmDialog(rootPane,"Apakah mau cetak etiket obat...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        if (reply == JOptionPane.YES_OPTION) {
+                            Map<String, Object> param = new HashMap<>();  
+                            param.put("namars",akses.getnamars());
+                            param.put("alamatrs",akses.getalamatrs());
+                            param.put("kotars",akses.getkabupatenrs());
+                            param.put("propinsirs",akses.getpropinsirs());
+                            param.put("kontakrs",akses.getkontakrs());
+                            param.put("emailrs",akses.getemailrs());   
+                            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+                            try {
+                                String pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3"},"Cetak Aturan Pakai Model 1");
+                                switch (pilihanetiket) {
+                                    case "Cetak Aturan Pakai Model 1": 
+                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                        if(Sequel.cariInteger(
+                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
+                                            Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
+                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
+                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
+                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
+                                        }            
+                                        this.setCursor(Cursor.getDefaultCursor());
+                                        break;
+                                    case "Cetak Aturan Pakai Model 2": 
+                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                        if(Sequel.cariInteger(
+                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
+                                            Valid.MyReportqry("rptItemResepPiutang2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
+                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
+                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                                "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
+                                        }               
+                                        this.setCursor(Cursor.getDefaultCursor());
+                                        break;
+                                    case "Cetak Aturan Pakai Model 3": 
+                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                        if(Sequel.cariInteger(
+                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
+                                            Valid.MyReportqry("rptItemResepPiutang3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
+                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
+                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
+                                        }              
+                                        this.setCursor(Cursor.getDefaultCursor());
+                                        break;
+                                    default:
+                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                        if(Sequel.cariInteger(
+                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
+                                            Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
+                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
+                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
+                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
+                                        }            
+                                        this.setCursor(Cursor.getDefaultCursor());
+                                        break;
+                                }
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
                     dispose();
                 }
             } 
