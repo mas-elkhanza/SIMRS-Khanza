@@ -1304,6 +1304,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                     
                     if(Iterasi.getSelectedIndex()>0){
+                        JOptionPane.showMessageDialog(null,"Silahkan melanjutkan untuk menyimpan permintaan resep iterasi..!!");
                         try {
                             file=new File("./cache/resepnonracikaniter.iyem");
                             file.createNewFile();
@@ -1374,7 +1375,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                         if (resepiter == null) return;
                         if (!resepiter.isVisible()) {
-                            resepiter.setNoRm(TNoRW.getText(),TNoRM.getText(),NmPasien.getText(),DTPTgl.getDate(),KdDPJP.getText(),Iterasi.getSelectedItem().toString());
+                            resepiter.setNoRm(TNoRW.getText(),TNoRM.getText(),NmPasien.getText(),DTPTgl.getDate(),KdDPJP.getText(),Iterasi.getSelectedItem().toString(),NoResep.getText());
                         }
                         
                         if (resepiter.isVisible()) {
