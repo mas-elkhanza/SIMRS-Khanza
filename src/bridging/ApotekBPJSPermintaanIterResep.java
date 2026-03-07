@@ -831,6 +831,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.noresepawal=resepawal;
         KdDokter.setText(Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",kodedokter));
         NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
+        if(KdDokter.getText().trim().equals("")){
+            KdDokter.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt));
+            NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
+        }
         
         try {
             Valid.tabelKosong(tabModeobat);
