@@ -1563,17 +1563,16 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
                 sukses=false;
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }else{
-                Sequel.meghapus("bridging_resep_apotek_bpjs","no_sep_apotek",tbResep.getValueAt(tbResep.getSelectedRow(),1).toString());
                 if(!tbResep.getValueAt(tbResep.getSelectedRow(),12).toString().equals("0. Tanpa Iterasi")){
                     ps=koneksi.prepareStatement(
                         "select permintaan_resep_iterasi_bpjs.no_resep from permintaan_resep_iterasi_bpjs where permintaan_resep_iterasi_bpjs.no_resep_awal=?"
                     );
                     try {
-                       ps.setString(1,tbResep.getValueAt(tbResep.getSelectedRow(),9).toString());
-                       rs=ps.executeQuery();
-                       while(rs.next()){
-                           Sequel.meghapustf("resep_obat","no_resep",rs.getString("no_resep"));
-                       } 
+                        ps.setString(1,tbResep.getValueAt(tbResep.getSelectedRow(),9).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            Sequel.meghapus("resep_obat","no_resep",rs.getString("no_resep"));
+                        } 
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{
@@ -1585,6 +1584,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
                         }
                     }
                 }
+                Sequel.meghapus("bridging_resep_apotek_bpjs","no_sep_apotek",tbResep.getValueAt(tbResep.getSelectedRow(),1).toString());
                 Valid.tabelKosong(tabModeDetail);
                 tabMode.removeRow(tbResep.getSelectedRow());
             }

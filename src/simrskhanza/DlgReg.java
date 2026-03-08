@@ -16739,17 +16739,16 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
                             rs=ps.executeQuery();
                             i=0;
-                            while(rs.next()){
-                                Object[] row = new Object[]{
+                            while(rs.next()){  
+                                i++;
+                                publish(new Object[]{
                                     false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                                     rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                                     rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(17),
                                     rs.getString(12),rs.getString(13),rs.getString(14),Valid.SetAngka(rs.getDouble(15)),
                                     rs.getString(16),rs.getString("no_tlp"),rs.getString("stts"),rs.getString("status_poli"),
                                     rs.getString("kd_poli"),rs.getString("kd_pj"),rs.getString("status_bayar")
-                                };  
-                                i++;
-                                publish(row);
+                                });
                             }   
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16822,7 +16821,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             rs=ps.executeQuery();
                             i=0;
                             while(rs.next()){
-                                Object[] row = new Object[]{
+                                i++;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
                                     rs.getString("jam_reg"),rs.getString("kd_dokter"),
                                     rs.getString("nm_dokter"),rs.getString("no_rkm_medis"),
@@ -16832,9 +16832,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                     rs.getString("almt_pj"),rs.getString("hubunganpj"),
                                     rs.getString("stts_daftar"),rs.getString("no_tlp"),
                                     rs.getString("stts"),rs.getString("kd_poli"),rs.getString("kd_pj")
-                                };
-                                i++;
-                                publish(row);
+                                });
                             }                    
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);

@@ -16000,15 +16000,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             rskasir=pskasir.executeQuery();
                             i=0;
                             while(rskasir.next()){
-                                Object[] row = new Object[]{
+                                i++;
+                                publish(new Object[]{
                                     rskasir.getString(5),rskasir.getString(6),rskasir.getString(7),rskasir.getString(8)+" ("+rskasir.getString("umur")+")",
                                     rskasir.getString(9),rskasir.getString(10),rskasir.getString(11),rskasir.getString(12),Valid.SetAngka(rskasir.getDouble(13)),
                                     rskasir.getString("png_jawab"),rskasir.getString(14),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
                                     rskasir.getString("jam_reg"),rskasir.getString(1),rskasir.getString("status_bayar"),rskasir.getString("status_poli"),
                                     rskasir.getString("kd_pj"),rskasir.getString("kd_poli"),rskasir.getString("no_tlp")
-                                };
-                                i++;
-                                publish(row);
+                                });
                             }               
                         } catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16087,15 +16086,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             rskasir=pskasir.executeQuery();
                             i=0;
                             while(rskasir.next()){
-                                Object[] row = new Object[]{
+                                i++;
+                                publish(new Object[]{
                                     rskasir.getString("kd_dokter"),rskasir.getString("nm_dokter"),
                                     rskasir.getString("no_rkm_medis"),rskasir.getString("nm_pasien")+" ("+rskasir.getString("umur")+")",
                                     rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
                                     rskasir.getString("png_jawab"),rskasir.getString("stts"),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
                                     rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj"),rskasir.getString("no_tlp")
-                                };
-                                i++;
-                                publish(row);
+                                });
                             }                
                         } catch(Exception e){
                             System.out.println("Notifikasi : "+e);

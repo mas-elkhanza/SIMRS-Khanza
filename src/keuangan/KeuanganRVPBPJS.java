@@ -3058,15 +3058,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3101,15 +3100,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3144,15 +3142,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
