@@ -622,7 +622,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptBuktiAntrianIterasiObat.jasper","report","::[ Bukti Antrian Iterasi Obat ]::",
-                           "select resep_obat.tgl_peresepan,resep_obat.no_resep,pasien.no_tlp,"+
+                           "select reg_periksa.no_rawat,resep_obat.tgl_peresepan,resep_obat.no_resep,pasien.no_tlp,"+
                            "dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur as umur,reg_periksa.almt_pj,"+
                            "penjab.png_jawab,permintaan_resep_iterasi_bpjs.status_iter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+

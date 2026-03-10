@@ -23,45 +23,22 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
-import inventory.riwayatobat;
 import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.event.KeyEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.net.URI;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import keuangan.Jurnal;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -94,7 +71,7 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.SEP Asal","No.Rawat","No.RM","Nama Pasien","No.Kartu","No.Resep Awal","No.Resep Iter","Status Iterasi","Dokter Peresep","Tgl.Resep","Tgl & Jam Penyerahan"
+                "No.SEP Asal","No.Rawat","No.RM","Nama Pasien","No.Kartu","No.Resep Awal","Tgl.Resep Awal","No.Resep Iter","Status Iterasi","Dokter Peresep","Tgl.Iterasi","Tgl & Jam Penyerahan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -104,12 +81,18 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(125);
             }else if(i==1){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(80);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(100);
             }
         }
         tbResep.setDefaultRenderer(Object.class, new WarnaTable());
@@ -224,9 +207,9 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
         panelGlass6.setPreferredSize(new java.awt.Dimension(100, 43));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel17.setText("Resep :");
+        jLabel17.setText("Resep Awal :");
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(45, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(72, 23));
         panelGlass6.add(jLabel17);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
@@ -607,14 +590,13 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select bridging_resep_apotek_bpjs.no_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.no_kartu,permintaan_resep_iterasi_bpjs.no_resep_awal,"+
-                "permintaan_resep_iterasi_bpjs.no_resep,permintaan_resep_iterasi_bpjs.status_iter,bridging_sep.nmdpdjp,resep_obat.tgl_peresepan,resep_obat.tgl_penyerahan,resep_obat.jam_penyerahan "+
-                "from bridging_resep_apotek_bpjs inner join bridging_sep on bridging_sep.no_sep=bridging_resep_apotek_bpjs.no_sep "+
-                "inner join permintaan_resep_iterasi_bpjs on permintaan_resep_iterasi_bpjs.no_resep_awal=bridging_resep_apotek_bpjs.no_resep "+
-                "inner join resep_obat on resep_obat.no_resep=permintaan_resep_iterasi_bpjs.no_resep "+
-                "where resep_obat.tgl_peresepan between ? and ? "+(TCari.getText().trim().equals("")?"":"and (bridging_resep_apotek_bpjs.no_sep like ? or bridging_sep.no_rawat like ? or "+
-                "bridging_sep.nama_pasien like ? or bridging_sep.nomr like ? or permintaan_resep_iterasi_bpjs.no_resep_awal like ? or permintaan_resep_iterasi_bpjs.no_resep like ? or "+
-                "permintaan_resep_iterasi_bpjs.status_iter like ? or dokter.nm_dokter like ?) ")+"order by resep_obat.tgl_peresepan"
+                "select bridging_resep_apotek_bpjs.no_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.no_kartu,permintaan_resep_iterasi_bpjs.no_resep_awal,bridging_resep_apotek_bpjs.tgl_resep as tgl_resep_awal,"+
+                "permintaan_resep_iterasi_bpjs.no_resep,permintaan_resep_iterasi_bpjs.status_iter,bridging_sep.nmdpdjp,resep_obat.tgl_peresepan,if(resep_obat.tgl_penyerahan='0000-00-00','',resep_obat.tgl_penyerahan) as tgl_penyerahan,"+
+                "if(resep_obat.jam_penyerahan='00:00:00','',resep_obat.jam_penyerahan) as jam_penyerahan from bridging_resep_apotek_bpjs inner join bridging_sep on bridging_sep.no_sep=bridging_resep_apotek_bpjs.no_sep "+
+                "inner join permintaan_resep_iterasi_bpjs on permintaan_resep_iterasi_bpjs.no_resep_awal=bridging_resep_apotek_bpjs.no_resep inner join resep_obat on resep_obat.no_resep=permintaan_resep_iterasi_bpjs.no_resep "+
+                "where bridging_resep_apotek_bpjs.tgl_resep between ? and ? "+(TCari.getText().trim().equals("")?"":"and (bridging_resep_apotek_bpjs.no_sep like ? or bridging_sep.no_rawat like ? or bridging_sep.nama_pasien like ? or "+
+                "bridging_sep.nomr like ? or permintaan_resep_iterasi_bpjs.no_resep_awal like ? or permintaan_resep_iterasi_bpjs.no_resep like ? or permintaan_resep_iterasi_bpjs.status_iter like ? or dokter.nm_dokter like ? or "+
+                "resep_obat.tgl_peresepan like ?) ")+"order by resep_obat.tgl_peresepan"
             );
             try {
                 ps.setString(1,Valid.SetTglJam(DTPCari1.getSelectedItem()+" 00:00:01"));
@@ -628,11 +610,12 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
                     ps.setString(8,"%"+TCari.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
                     ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_sep"),rs.getString("no_rawat"),rs.getString("nomr"),rs.getString("nama_pasien"),rs.getString("no_kartu"),rs.getString("no_resep_awal"),
+                        rs.getString("no_sep"),rs.getString("no_rawat"),rs.getString("nomr"),rs.getString("nama_pasien"),rs.getString("no_kartu"),rs.getString("no_resep_awal"),rs.getString("tgl_resep_awal"),
                         rs.getString("no_resep"),rs.getString("status_iter"),rs.getString("nmdpdjp"),rs.getString("tgl_peresepan"),rs.getString("tgl_penyerahan")+" "+rs.getString("jam_penyerahan")
                     });
                 }
