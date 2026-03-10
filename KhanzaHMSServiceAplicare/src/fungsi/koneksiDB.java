@@ -291,6 +291,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String USERKEYAPIAPLICARE(){
+        try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
+            prop.loadFromXML(fis);
+            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIAPLICARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String URLAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

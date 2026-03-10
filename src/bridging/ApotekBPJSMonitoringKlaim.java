@@ -49,7 +49,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiApotekBPJS api=new ApiApotekBPJS();
-    private String URL="",link="",utc="";
+    private String URL="",link="",utc="",requestJson="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -83,15 +83,15 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(125);
             }else if(i==1){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(125);
             }else if(i==2){
                 column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==4){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
@@ -468,12 +468,14 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
             URL = link+"/monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
-            System.out.println(URL);
+            System.out.println("URL : "+URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                requestJson=api.Decrypt(root.path("response").asText(),utc);
+                System.out.println("Respon JSON : "+requestJson);
+                response = mapper.readTree(requestJson);
                 LCountPengajuan.setText(Valid.SetAngka(response.path("totalbiayapengajuan").asDouble()));
                 LCountDisetujui.setText(Valid.SetAngka(response.path("totalbiayasetuju").asDouble()));
                 LCount.setText(response.path("jumlahdata").asText());
@@ -481,10 +483,10 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
                     if(TCari.getText().trim().equals("")){
                         for(JsonNode list:response.path("listsep")){
                             tabMode.addRow(new Object[]{
-                                list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
-                                list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
+                                list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokapst").asText(),
+                                list.path("nmpst").asText(),list.path("noresep").asText(),list.path("nmjnsobat").asText(),
                                 list.path("tglpelayanan").asText(),Valid.SetAngka(list.path("biayapengajuan").asDouble()),
-                                Valid.SetAngka(list.path("biayasetuju").asDouble())
+                                Valid.SetAngka(list.path("biayasetujui").asDouble())
                             });
                         }
                     }else{
@@ -493,10 +495,10 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
                                     list.path("nokartu").asText().contains(TCari.getText())||list.path("namapeserta").asText().contains(TCari.getText())||
                                     list.path("tglpelayanan").asText().contains(TCari.getText())){
                                 tabMode.addRow(new Object[]{
-                                    list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
-                                    list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
+                                    list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokapst").asText(),
+                                    list.path("nmpst").asText(),list.path("noresep").asText(),list.path("nmjnsobat").asText(),
                                     list.path("tglpelayanan").asText(),Valid.SetAngka(list.path("biayapengajuan").asDouble()),
-                                    Valid.SetAngka(list.path("biayasetuju").asDouble())
+                                    Valid.SetAngka(list.path("biayasetujui").asDouble())
                                 });
                             }
                         }

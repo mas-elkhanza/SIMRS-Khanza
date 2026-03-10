@@ -276,9 +276,11 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     }//GEN-LAST:event_PoliKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        runBackground(() ->tampil(Poli.getText()));
-        this.setCursor(Cursor.getDefaultCursor());
+        if(Poli.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan masukkan pencarian terlebih dahulu..!!!");
+        }else{
+            runBackground(() ->tampil(Poli.getText()));
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
