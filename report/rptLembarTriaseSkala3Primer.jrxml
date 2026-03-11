@@ -401,7 +401,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="49" width="359" height="15" forecolor="#FFFFFF" backcolor="#FFC94A" uuid="fe7460ba-e62a-46ad-9e57-ebe1bccfd702"/>
+				<reportElement mode="Opaque" x="0" y="49" width="359" height="15" forecolor="#FFFFFF" backcolor="#118B50" uuid="fe7460ba-e62a-46ad-9e57-ebe1bccfd702"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -614,12 +614,12 @@
 	<columnHeader>
 		<band height="15" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#FCCD2A" uuid="12c5ba2f-f441-4a20-86f1-3141cf1e0bc2"/>
+				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#118B50" uuid="12c5ba2f-f441-4a20-86f1-3141cf1e0bc2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[EMERGENSI]]></text>
+				<text><![CDATA[Urgensi]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="175" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="d1c45d95-f11e-47d2-9c20-36812068933a"/>
@@ -673,7 +673,7 @@
 		<band height="15" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Opaque" x="181" y="0" width="374" height="15" forecolor="#FFFFFF" backcolor="#FCCD2A" uuid="25a7dd55-fd3f-4ec8-99b3-176e972a00f4">
+				<reportElement mode="Opaque" x="181" y="0" width="374" height="15" forecolor="#FFFFFF" backcolor="#118B50" uuid="25a7dd55-fd3f-4ec8-99b3-176e972a00f4">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -683,7 +683,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="176" y="0" width="5" height="15" forecolor="#000000" backcolor="#FFC94A" uuid="355d70da-f55d-45da-bf58-c67a454d8ba0">
+				<reportElement mode="Opaque" x="176" y="0" width="5" height="15" forecolor="#000000" backcolor="#118B50" uuid="355d70da-f55d-45da-bf58-c67a454d8ba0">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -743,12 +743,12 @@
 		<band height="128" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#FFC94A" uuid="a5a32d90-8204-4271-8866-b37f73c686a4"/>
+				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#118B50" uuid="a5a32d90-8204-4271-8866-b37f73c686a4"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[  $P{plan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$P{plan}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="8" y="0" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="2f2d0dec-81b5-4603-a77f-93855b26d9dc"/>
