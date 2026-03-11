@@ -64,7 +64,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private String bangsal="",aktifkanparsial="no",kamar="",alarm="",DEPOAKTIFOBAT="",rincianobat="",
             formalarm="",nol_detik,detik,NoResep="",TglPeresepan="",JamPeresepan="",finger="",
             NoRawat="",NoRM="",Pasien="",DokterPeresep="",Status="",KodeDokter="",Ruang="",KodeRuang="";
-    private int jmlparsial=0,nilai_detik,resepbaru=0,i=0;
+    private int jmlparsial=0,nilai_detik,resepbaru=0,i=0,baris=0;
     private BackgroundMusic music;
     private boolean aktif=false,semua,ceksukses=false;
     
@@ -2113,16 +2113,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else if(NoRawat.equals("")){
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau dihapus..!!");
                     }else{
-                        if(Status.equals("Sudah Terlayani")){
-                            JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                        }else {
+                        if(akses.getkode().equals("Admin Utama")){
                             if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
                                 TeksKosong();
                                 if(tbResepRalan.getSelectedRow()!= -1){
                                     tabMode.removeRow(tbResepRalan.getSelectedRow());
                                 }
-                            }   
-                        }                    
+                            }
+                        }else{
+                            if(Status.equals("Sudah Terlayani")){
+                                JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
+                            }else {
+                                if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
+                                    TeksKosong();
+                                    if(tbResepRalan.getSelectedRow()!= -1){
+                                        tabMode.removeRow(tbResepRalan.getSelectedRow());
+                                    }
+                                }   
+                            } 
+                        }                   
                     }
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -2138,16 +2147,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else if(NoRawat.equals("")){
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau dihapus..!!");
                     }else{
-                        if(Status.equals("Sudah Terlayani")){
-                            JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                        }else {
+                        if(akses.getkode().equals("Admin Utama")){
                             if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
                                 TeksKosong();
                                 if(tbResepRanap.getSelectedRow()!= -1){
                                     tabMode3.removeRow(tbResepRanap.getSelectedRow());
                                 }
+                            }
+                        }else{
+                            if(Status.equals("Sudah Terlayani")){
+                                JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
+                            }else {
+                                if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
+                                    TeksKosong();
+                                    if(tbResepRanap.getSelectedRow()!= -1){
+                                        tabMode3.removeRow(tbResepRanap.getSelectedRow());
+                                    }
+                                } 
                             } 
-                        }                    
+                        }                   
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
@@ -2161,16 +2179,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else if(NoRawat.equals("")){
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data permintaan stok yang mau dihapus..!!");
                     }else{
-                        if(Status.equals("Sudah Terlayani")){
-                            JOptionPane.showMessageDialog(rootPane,"permintaan stok sudah tervalidasi ..!!");
-                        }else {
+                        if(akses.getkode().equals("Admin Utama")){
                             if(Sequel.meghapustf("permintaan_stok_obat_pasien","no_permintaan",NoResep)==true){
                                 TeksKosong();
                                 if(tbPermintaanStok.getSelectedRow()!= -1){
                                     tabMode5.removeRow(tbPermintaanStok.getSelectedRow());
                                 }
-                            }
-                        }                    
+                            } 
+                        }else{
+                            if(Status.equals("Sudah Terlayani")){
+                                JOptionPane.showMessageDialog(rootPane,"permintaan stok sudah tervalidasi ..!!");
+                            }else {
+                                if(Sequel.meghapustf("permintaan_stok_obat_pasien","no_permintaan",NoResep)==true){
+                                    TeksKosong();
+                                    if(tbPermintaanStok.getSelectedRow()!= -1){
+                                        tabMode5.removeRow(tbPermintaanStok.getSelectedRow());
+                                    }
+                                }
+                            } 
+                        }                   
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==3){
@@ -2184,16 +2211,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else if(NoRawat.equals("")){
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data permintaan stok yang mau dihapus..!!");
                     }else{
-                        if(Status.equals("Sudah Terlayani")){
-                            JOptionPane.showMessageDialog(rootPane,"permintaan resep pulang sudah tervalidasi ..!!");
-                        }else {
+                        if(akses.getkode().equals("Admin Utama")){
                             if(Sequel.meghapustf("permintaan_resep_pulang","no_permintaan",NoResep)==true){
                                 TeksKosong();
                                 if(tbPermintaanResepPulang.getSelectedRow()!= -1){
                                     tabMode7.removeRow(tbPermintaanResepPulang.getSelectedRow());
                                 }
                             }
-                        }                    
+                        }else{
+                            if(Status.equals("Sudah Terlayani")){
+                                JOptionPane.showMessageDialog(rootPane,"permintaan resep pulang sudah tervalidasi ..!!");
+                            }else {
+                                if(Sequel.meghapustf("permintaan_resep_pulang","no_permintaan",NoResep)==true){
+                                    TeksKosong();
+                                    if(tbPermintaanResepPulang.getSelectedRow()!= -1){
+                                        tabMode7.removeRow(tbPermintaanResepPulang.getSelectedRow());
+                                    }
+                                }
+                            } 
+                        }                   
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==5){
@@ -3165,7 +3201,66 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
-            JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat jalan kebutuhan klaim obat Apotek Online BPJS...!!!!");     
+            if(TabRawatInap.getSelectedIndex()==0){
+                if(tabMode3.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                    TCari.requestFocus();
+                }else if(NoRawat.equals("")){
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+                }else{
+                    if(Status.equals("Sudah Terlayani")){
+                        try {
+                            ps3=koneksi.prepareStatement("select bridging_sep.no_sep,bridging_sep.no_kartu,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,bridging_sep.kddpjp,bridging_sep.nmdpdjp,bridging_sep.tglsep from bridging_sep where bridging_sep.no_rawat=?");
+                            try {
+                                ps3.setString(1,NoRawat);
+                                rs3=ps3.executeQuery();
+                                if(rs3.next()){
+                                    if (apol == null || !apol.isDisplayable()) {
+                                        apol=new ApotekBPJSInputResepObat(null,false);
+                                        apol.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                        apol.addWindowListener(new WindowAdapter() {
+                                            @Override
+                                            public void windowClosed(WindowEvent e) {
+                                                apol=null;
+                                            }
+                                        }); 
+
+                                        apol.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                        apol.setLocationRelativeTo(internalFrame1);
+                                    }
+                                    if (apol == null) return;
+                                    if (!apol.isVisible()) {
+                                        apol.setNoRm(NoRawat,NoRM,Pasien,TglPeresepan,JamPeresepan,NoResep,rs3.getString("no_sep"),rs3.getString("no_kartu"),rs3.getString("kdpolitujuan"),rs3.getString("nmpolitujuan"),rs3.getString("kddpjp"),rs3.getString("nmdpdjp"),rs3.getString("tglsep"));
+                                    }
+                                    if (apol.isVisible()) {
+                                        apol.toFront();
+                                        return;
+                                    }
+                                    apol.setVisible(true);
+                                }else{
+                                    JOptionPane.showMessageDialog(null,"Maaf, data SEP tidak ditemukan...!!!!");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }   
+                                if(ps3!=null){
+                                    ps3.close();
+                                }   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang sudah divalidasi..!!");
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,"Maaf, hanya untuk rawat inap kebutuhan klaim obat Apotek Online BPJS...!!!!");
+                TCari.requestFocus();
+            }    
         }
     }//GEN-LAST:event_BtnObat23HariBPJSActionPerformed
 
@@ -3856,26 +3951,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_poli"),rs.getString("kd_poli"),rs.getString("png_jawab"),
                                         rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
-                                    };  
-                                    i++;
-                                    publish(row);
+                                    });
                                 }  
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_poli"),rs.getString("kd_poli"),rs.getString("png_jawab"),
                                             rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
-                                        };
-                                        i++;
-                                        publish(row);
+                                        });
                                     }                    
                                 }  
                             }   
@@ -3929,6 +4022,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             KodeDokter=tbResepRalan.getValueAt(tbResepRalan.getSelectedRow(),8).toString();
             Ruang=tbResepRalan.getValueAt(tbResepRalan.getSelectedRow(),9).toString();
             KodeRuang=tbResepRalan.getValueAt(tbResepRalan.getSelectedRow(),10).toString();
+            baris=tbResepRalan.getSelectedRow();
         }
     }
     
@@ -3945,6 +4039,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             KodeDokter=tbResepRanap.getValueAt(tbResepRanap.getSelectedRow(),8).toString();
             Ruang=tbResepRanap.getValueAt(tbResepRanap.getSelectedRow(),9).toString();
             KodeRuang=tbResepRanap.getValueAt(tbResepRanap.getSelectedRow(),10).toString();
+            baris=tbResepRanap.getSelectedRow();
         }
     }
 
@@ -3961,6 +4056,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             KodeDokter=tbPermintaanStok.getValueAt(tbPermintaanStok.getSelectedRow(),8).toString();
             Ruang=tbPermintaanStok.getValueAt(tbPermintaanStok.getSelectedRow(),9).toString();
             KodeRuang=tbPermintaanStok.getValueAt(tbPermintaanStok.getSelectedRow(),10).toString();
+            baris=tbPermintaanStok.getSelectedRow();
         }
     }
     
@@ -3977,6 +4073,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             KodeDokter=tbPermintaanResepPulang.getValueAt(tbPermintaanResepPulang.getSelectedRow(),8).toString();
             Ruang=tbPermintaanResepPulang.getValueAt(tbPermintaanResepPulang.getSelectedRow(),9).toString();
             KodeRuang=tbPermintaanResepPulang.getValueAt(tbPermintaanResepPulang.getSelectedRow(),10).toString();
+            baris=tbPermintaanResepPulang.getSelectedRow();
         }
     }
     
@@ -4057,16 +4154,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row;
-                                    row = new Object[]{
+                                    publish(new Object[]{
                                         rs.getString("no_resep"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
                                         rs.getString("nm_poli"),rs.getString("status"),
                                         rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien")+" ("+rs.getString("png_jawab")+")",
                                         rs.getString("nm_dokter")
-                                    };
-                                    publish(row);
-                                    row = new Object[]{"","","Jumlah","Kode Obat","Nama Obat","Aturan Pakai"};
-                                    publish(row);
+                                    });
+                                    publish(new Object[]{"","","Jumlah","Kode Obat","Nama Obat","Aturan Pakai"});
                                     ps2=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,resep_dokter.jml,"+
                                         "databarang.kode_sat,resep_dokter.aturan_pakai from resep_dokter inner join databarang on "+
                                         "resep_dokter.kode_brng=databarang.kode_brng where resep_dokter.no_resep=? order by databarang.kode_brng");
@@ -4074,10 +4168,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps2.setString(1,rs.getString("no_resep"));
                                         rs2=ps2.executeQuery();
                                         while(rs2.next()){
-                                            row = new Object[]{
+                                            publish(new Object[]{
                                                 "","",rs2.getString("jml")+" "+rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("aturan_pakai")
-                                            };
-                                            publish(row);
+                                            });
                                         }
                                     } catch (Exception e) {
                                         System.out.println("Notifikasi 2 : "+e);
@@ -4100,10 +4193,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps2.setString(1,rs.getString("no_resep"));
                                         rs2=ps2.executeQuery();
                                         while(rs2.next()){
-                                            row = new Object[]{
+                                            publish(new Object[]{
                                                 "","",rs2.getString("jml_dr")+" "+rs2.getString("metode"),"No.Racik : "+rs2.getString("no_racik"),rs2.getString("nama_racik"),rs2.getString("aturan_pakai")
-                                            };
-                                            publish(row);
+                                            });
                                             ps3=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,resep_dokter_racikan_detail.jml,"+
                                                 "databarang.kode_sat from resep_dokter_racikan_detail inner join databarang on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
                                                 "where resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.kode_brng");
@@ -4112,10 +4204,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 ps3.setString(2,rs2.getString("no_racik"));
                                                 rs3=ps3.executeQuery();
                                                 while(rs3.next()){
-                                                    row = new Object[]{
+                                                    publish(new Object[]{
                                                         "","","   "+rs3.getString("jml")+" "+rs3.getString("kode_sat"),"   "+rs3.getString("kode_brng"),"   "+rs3.getString("nama_brng"),""
-                                                    };
-                                                    publish(row);
+                                                    });
                                                 }
                                             } catch (Exception e) {
                                                 System.out.println("Notifikasi 3 : "+e);
@@ -4142,17 +4233,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 }
                             }else{
                                 while(rs.next()){
-                                    Object[] row;
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        row = new Object[]{
+                                        publish(new Object[]{
                                             rs.getString("no_resep"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
                                             rs.getString("nm_poli"),rs.getString("status"),
                                             rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien")+" ("+rs.getString("png_jawab")+")",
                                             rs.getString("nm_dokter")
-                                        };
-                                        publish(row);
-                                        row = new Object[]{"","","Jumlah","Kode Obat","Nama Obat","Aturan Pakai"};
-                                        publish(row);
+                                        });
+                                        publish(new Object[]{"","","Jumlah","Kode Obat","Nama Obat","Aturan Pakai"});
                                         ps2=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,resep_dokter.jml,"+
                                             "databarang.kode_sat,resep_dokter.aturan_pakai from resep_dokter inner join databarang on "+
                                             "resep_dokter.kode_brng=databarang.kode_brng where resep_dokter.no_resep=? order by databarang.kode_brng");
@@ -4160,10 +4248,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             ps2.setString(1,rs.getString("no_resep"));
                                             rs2=ps2.executeQuery();
                                             while(rs2.next()){
-                                                row = new Object[]{
+                                                publish(new Object[]{
                                                     "","",rs2.getString("jml")+" "+rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("aturan_pakai")
-                                                };
-                                                publish(row);
+                                                });
                                             }
                                         } catch (Exception e) {
                                             System.out.println("Notifikasi 2 : "+e);
@@ -4186,10 +4273,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             ps2.setString(1,rs.getString("no_resep"));
                                             rs2=ps2.executeQuery();
                                             while(rs2.next()){
-                                                row = new Object[]{
+                                                publish(new Object[]{
                                                     "","",rs2.getString("jml_dr")+" "+rs2.getString("metode"),"No.Racik : "+rs2.getString("no_racik"),rs2.getString("nama_racik"),rs2.getString("aturan_pakai")
-                                                };
-                                                publish(row);
+                                                });
                                                 ps3=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,resep_dokter_racikan_detail.jml,"+
                                                     "databarang.kode_sat from resep_dokter_racikan_detail inner join databarang on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
                                                     "where resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.kode_brng");
@@ -4198,10 +4284,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     ps3.setString(2,rs2.getString("no_racik"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        row = new Object[]{
+                                                        publish(new Object[]{
                                                             "","","   "+rs3.getString("jml")+" "+rs3.getString("kode_sat"),"   "+rs3.getString("kode_brng"),"   "+rs3.getString("nama_brng"),""
-                                                        };
-                                                        publish(row);
+                                                        });
                                                     }
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi 3 : "+e);
@@ -4268,6 +4353,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 @Override
                 public void windowClosed(WindowEvent e) {
                     TeksKosong();
+                    if(obatralan.sukses==true){
+                        tbResepRalan.setValueAt("Sudah Terlayani",baris, 7);
+                    }
                     obatralan=null;
                 }
             }); 
@@ -4301,6 +4389,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         KodeDokter="";
         Ruang="";
         KodeRuang="";
+        baris=0;
     }
     
     private void panggilform2() {
@@ -4522,26 +4611,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
-                                    }; 
-                                    i++;
-                                    publish(row);
+                                    });
                                 }
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
-                                        }; 
-                                        i++;
-                                        publish(row);
+                                        });
                                     }                  
                                 } 
                             }               
@@ -4615,26 +4702,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs=ps.executeQuery();
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
-                                    };   
-                                    i++;
-                                    publish(row);
+                                    });
                                 } 
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
-                                        };  
-                                        i++;
-                                        publish(row);
+                                        });
                                     }                  
                                 }
                             }   
@@ -5188,25 +5273,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs=ps.executeQuery();
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
-                                while(rs.next()){
-                                    Object[] row = new Object[]{
+                                while(rs.next()){ 
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                    };  
-                                    i++;
-                                    publish(row);
+                                    });
                                 } 
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                        }; 
-                                        i++;
-                                        publish(row);
+                                        });
                                     }                  
                                 }
                             }               
@@ -5276,24 +5359,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs=ps.executeQuery();
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                    }; 
-                                    i++;
-                                    publish(row);
+                                    });
                                 } 
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                        };  
-                                        i++;
-                                        publish(row);  
+                                        });  
                                     }                  
                                 }
                             }      
@@ -5793,24 +5874,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                    }; 
-                                    i++;
-                                    publish(row);
+                                    });
                                 }
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                        }; 
-                                        i++;
-                                        publish(row);  
+                                        });  
                                     }                  
                                 } 
                             }               
@@ -5880,24 +5959,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs=ps.executeQuery();
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
-                                    Object[] row = new Object[]{
+                                    i++;
+                                    publish(new Object[]{
                                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                    }; 
-                                    i++;
-                                    publish(row);           
+                                    });           
                                 }
                             }else{
                                 while(rs.next()){
                                     if(rs.getString("status").equals(cmbStatus.getSelectedItem().toString())){
-                                        Object[] row = new Object[]{
+                                        i++;
+                                        publish(new Object[]{
                                             rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
-                                        }; 
-                                        i++;
-                                        publish(row);   
+                                        });   
                                     }                  
                                 } 
                             }

@@ -1,0 +1,97 @@
+<html>
+  <head><link href="file2.css" rel="stylesheet" type="text/css" /><table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'><tr class='isi2'><td valign='top' align='center'><font size='4' face='Tahoma'>RS SIMRS KHANZA</font><br>GUWOSARI, Pajangan, Bantul<br>Hp: 08562675039, 085296559963, E-mail : khanzasoftmedia@gmail.com<br><br><font size='2' face='Tahoma'>DATA RESEP APOTEK ONLINE BPJS<br><br></font></td></tr></table>
+    
+  </head>
+  <body>
+    <table width="100%" border="0" align="center" cellpadding="1px" cellspacing="0" class="tbl_form">
+      <tr class="isi">
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.SEP Asal</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.SEP Apotek</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tanggal SEP</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Rawat</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.RM</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Pasien</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Kartu</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Jenis</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>ID User SEP</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Resep</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tgl.Resep</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tgl.Pelayanan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Iterasi</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>PPK Rujukan</b>
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          0190R0200326V000006
+        </td>
+        <td valign="top">
+          0190A02703260000005
+        </td>
+        <td valign="top">
+          2026-03-04 13:01:19.0
+        </td>
+        <td valign="top">
+          2026/03/03/000001
+        </td>
+        <td valign="top">
+          000006
+        </td>
+        <td valign="top">
+          BA** * KH***** HO*****
+        </td>
+        <td valign="top">
+          0002081647866
+        </td>
+        <td valign="top">
+          2. Obat Kronis Belum Stabil
+        </td>
+        <td valign="top">
+          Admin Utama
+        </td>
+        <td valign="top">
+          202603040001
+        </td>
+        <td valign="top">
+          2026-03-04 22:20:47.0
+        </td>
+        <td valign="top">
+          2026-03-04 22:22:03.0
+        </td>
+        <td valign="top">
+          0. Tanpa Iterasi
+        </td>
+        <td valign="top">
+          0190A027
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

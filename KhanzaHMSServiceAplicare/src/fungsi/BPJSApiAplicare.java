@@ -43,9 +43,9 @@ public class BPJSApiAplicare {
             System.out.println("Notifikasi : "+ex);
         }
     }
-    public String getHmac() {        
-        GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
-        salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
+    
+    public String getHmac(String utc) {               
+        salt = Consid +"&"+utc;
 	generateHmacSHA256Signature = null;
 	try {
 	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,Key);

@@ -90,7 +90,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private JsonNode response;
     private ApiPcare api=new ApiPcare();
     private String[] arrSplit;
-    private boolean sukses=true;
+    public boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
     private FileReader myObj;

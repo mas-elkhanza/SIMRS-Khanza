@@ -40,10 +40,13 @@ import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.ApotekBPJSCekReferensiSettingPPK;
 import bridging.ApotekBPJSCekReferensiSpesialistik;
 import bridging.ApotekBPJSDaftarPelayananObat;
+import bridging.ApotekBPJSDaftarPermintaanResepIterasi;
+import bridging.ApotekBPJSDaftarResepObat;
 import bridging.ApotekBPJSKunjunganSEP;
 import bridging.ApotekBPJSMapingObat;
 import bridging.ApotekBPJSMonitoringKlaim;
 import bridging.ApotekBPJSRekapPesertaPRB;
+import bridging.ApotekBPJSResepObat;
 import bridging.ApotekBPJSRiwayatPelayananObat;
 import bridging.BPJSAntreanPerTanggal;
 import bridging.BPJSCekDataIndukKecelakaan;
@@ -1774,13 +1777,13 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4 = new widget.InternalFrame();
         lblStts = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        lblUser = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         lblTgl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         LblIP = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        lblUser = new javax.swing.JLabel();
         PanelUtama = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
         PanelWall = new usu.widget.glass.PanelGlass();
@@ -1867,7 +1870,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
-        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 110)));
+        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 175, 100)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
         panelGlass1.setWarna(new java.awt.Color(255, 255, 210));
@@ -2053,7 +2056,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/02/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/03/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7377,6 +7380,24 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator1);
 
+        lblUser.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        lblUser.setForeground(new java.awt.Color(50, 50, 50));
+        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUser.setText("Log Out");
+        lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblUser.setName("lblUser"); // NOI18N
+        lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
+        internalFrame4.add(lblUser);
+
+        jSeparator2.setBackground(new java.awt.Color(0, 158, 96));
+        jSeparator2.setForeground(new java.awt.Color(0, 158, 96));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        jSeparator2.setOpaque(true);
+        jSeparator2.setPreferredSize(new java.awt.Dimension(1, 21));
+        internalFrame4.add(jSeparator2);
+
         lblTgl.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         lblTgl.setForeground(new java.awt.Color(50, 50, 50));
         lblTgl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -7417,30 +7438,12 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(50, 50, 50));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
-        jLabel7.setText(" Didesain & dibuat oleh Khanza.Soft Media | 20260225");
+        jLabel7.setText(" Didesain & dibuat oleh Khanza.Soft Media");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel7.setIconTextGap(3);
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(287, 23));
         internalFrame4.add(jLabel7);
-
-        jSeparator2.setBackground(new java.awt.Color(0, 158, 96));
-        jSeparator2.setForeground(new java.awt.Color(0, 158, 96));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        jSeparator2.setOpaque(true);
-        jSeparator2.setPreferredSize(new java.awt.Dimension(1, 21));
-        internalFrame4.add(jSeparator2);
-
-        lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(50, 50, 50));
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUser.setText("Log Out");
-        lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblUser.setName("lblUser"); // NOI18N
-        lblUser.setPreferredSize(new java.awt.Dimension(220, 23));
-        internalFrame4.add(lblUser);
 
         getContentPane().add(internalFrame4, java.awt.BorderLayout.PAGE_END);
 
@@ -8398,8 +8401,7 @@ public class frmUtama extends javax.swing.JFrame {
                     BtnLog.setText("Log Out");
                     MnLogin.setText("Log Out");
                     lblStts.setText("Admin : ");
-                    //CUSTOM RS ISLAM LMJ - Selasa, 24 Februari 2026
-                    lblUser.setText(Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",akses.getkode()));
+                    lblUser.setText(akses.getkode());
                     MnGantiPassword.setEnabled(true);
                     MnPengajuanCutiPegawai.setEnabled(true);
                     BtnToolReg.setEnabled(akses.getregistrasi());
@@ -23271,6 +23273,39 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSResepObatApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSResepObat form=new ApotekBPJSResepObat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnObatApolApotekBPJSActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSDaftarResepObat form=new ApotekBPJSDaftarResepObat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPermintaanResepIterasiApotekBPJSActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSDaftarPermintaanResepIterasi form=new ApotekBPJSDaftarPermintaanResepIterasi(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23986,7 +24021,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
             btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnSuratSerahTerimaBarangAnggotaTubuh,btnPCRAICRAJenisAktivitasProyek,
             btnPCRAICRALokasiKelompokRisiko,btnPCRAICRAKelasRisikoPencegahan,btnPCRAICRATindakanPengendalian,btnPCRAICRAIdentifikasiRisikoInfeksi,btnPCRAICRAIdentifikasiRisikoKeselamatan,
-            btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas;
+            btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas,btnBPJSResepObatApotek,btnObatApolApotekBPJS,btnPermintaanResepIterasiApotekBPJS;
     
     public void isWall(){
         try{            
@@ -26981,6 +27016,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_rekap_peserta_prb_apotek()==true){
                 Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_daftar_resep_apotek()==true){
+                Panelmenu.add(btnBPJSResepObatApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_obat_23hari_apotek()==true){
+                Panelmenu.add(btnObatApolApotekBPJS);
+                jmlmenu++;
+            }
+            
+            if(akses.getdaftar_permintaan_resep_iterasi_bpjs()==true){
+                Panelmenu.add(btnPermintaanResepIterasiApotekBPJS);
                 jmlmenu++;
             }
             
@@ -32855,6 +32905,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_rekap_peserta_prb_apotek()==true){
             Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_daftar_resep_apotek()==true){
+            Panelmenu.add(btnBPJSResepObatApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_obat_23hari_apotek()==true){
+            Panelmenu.add(btnObatApolApotekBPJS);
+            jmlmenu++;
+        }
+        
+        if(akses.getdaftar_permintaan_resep_iterasi_bpjs()==true){
+            Panelmenu.add(btnPermintaanResepIterasiApotekBPJS);
             jmlmenu++;
         }
         
@@ -39864,6 +39929,27 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBPJSRekapPesertaPRBObatApotek);
                 jmlmenu++;
             } 
+        }
+        
+        if(akses.getbpjs_daftar_resep_apotek()==true){
+            if(btnBPJSResepObatApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSResepObatApotek);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getbpjs_obat_23hari_apotek()==true){
+            if(btnObatApolApotekBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnObatApolApotekBPJS);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getdaftar_permintaan_resep_iterasi_bpjs()==true){
+            if(btnPermintaanResepIterasiApotekBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanResepIterasiApotekBPJS);
+                jmlmenu++;
+            }
         }
         
         if(akses.getriwayat_perawatan_icare_bpjs()==true){
@@ -49827,5 +49913,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRAIdentifikasiRisikoUtilitas.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRAIdentifikasiRisikoUtilitas.addActionListener(this::btnPCRAICRAIdentifikasiRisikoUtilitasActionPerformed);
         
+        btnBPJSResepObatApotek = new widget.ButtonBig();
+        btnBPJSResepObatApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSResepObatApotek.setText("Resep Obat Apotek BPJS");
+        btnBPJSResepObatApotek.setIconTextGap(0);
+        btnBPJSResepObatApotek.setName("btnBPJSResepObatApotek"); 
+        btnBPJSResepObatApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSResepObatApotek.addActionListener(this::btnBPJSResepObatApotekActionPerformed);
+        
+        btnObatApolApotekBPJS = new widget.ButtonBig();
+        btnObatApolApotekBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnObatApolApotekBPJS.setText("Obat ApOL Apotek BPJS");
+        btnObatApolApotekBPJS.setIconTextGap(0);
+        btnObatApolApotekBPJS.setName("btnObatApolApotekBPJS"); 
+        btnObatApolApotekBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatApolApotekBPJS.addActionListener(this::btnObatApolApotekBPJSActionPerformed);
+        
+        btnPermintaanResepIterasiApotekBPJS = new widget.ButtonBig();
+        btnPermintaanResepIterasiApotekBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnPermintaanResepIterasiApotekBPJS.setText("Permintaan Resep Iterasi Apotek BPJS");
+        btnPermintaanResepIterasiApotekBPJS.setIconTextGap(0);
+        btnPermintaanResepIterasiApotekBPJS.setName("btnPermintaanResepIterasiApotekBPJS"); 
+        btnPermintaanResepIterasiApotekBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanResepIterasiApotekBPJS.addActionListener(this::btnPermintaanResepIterasiApotekBPJSActionPerformed);
     }
 }

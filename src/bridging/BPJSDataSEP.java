@@ -3451,6 +3451,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             Kelas.setSelectedIndex(2);
                         }
                         NoTelp.setText(cekViaBPJSKartu.mrnoTelepon);
+                        if(NoTelp.getText().equals("")||NoTelp.getText().equals("null")){
+                            NoTelp.setText(Sequel.cariIsi("select pasien.no_tlp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
+                        }
                         prb=cekViaBPJSKartu.informasiprolanisPRB.replaceAll("null","");
                         NoRujukan.requestFocus();                                               
                     }else{

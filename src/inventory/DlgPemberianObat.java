@@ -847,6 +847,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                             JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                             TCari.requestFocus();
+                            hapusdata=false;
                         }else{
                             if(akses.getkode().equals("Admin Utama")){
                                 hapus();
