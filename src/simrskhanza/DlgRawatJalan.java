@@ -233,7 +233,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",
             Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",Utang_KSO_Tindakan_Ralan="",
             Beban_Jasa_Sarana_Tindakan_Ralan="",Utang_Jasa_Sarana_Tindakan_Ralan="",HPP_BHP_Tindakan_Ralan="",Persediaan_BHP_Tindakan_Ralan="",
-            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="";
+            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="",KodeBPJS=Sequel.cariIsi("select password_asuransi.kd_pj from password_asuransi"),
+            pilihiterasi="";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
@@ -5071,7 +5072,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     "set_akun_ralan.Utang_Jasa_Menejemen_Tindakan_Ralan,set_akun_ralan.HPP_BHP_Tindakan_Ralan,set_akun_ralan.Persediaan_BHP_Tindakan_Ralan from set_akun_ralan");
             try {
                 rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
+                if(rsrekening.next()){
                     Suspen_Piutang_Tindakan_Ralan=rsrekening.getString("Suspen_Piutang_Tindakan_Ralan");
                     Tindakan_Ralan=rsrekening.getString("Tindakan_Ralan");
                     Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
@@ -10430,6 +10431,39 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnResepIterasiBPJSActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{   
+            if((Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0)&&(bypassranap==false)){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{ 
+                    if(kd_pj.equals(KodeBPJS)){
+                        String pilihaniterasi = (String)JOptionPane.showInputDialog(null,"Silahkan pilih iterasi..!!","Pilihan Resep Iterasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Iterasi 1x","Iterasi 2x","Batal"},"Iterasi 1x");
+                        switch (pilihaniterasi) {
+                            case "Iterasi 1x": 
+                                pilihiterasi="1. Iterasi 1x";
+                                inputResep();
+                                break;
+                            case "Iterasi 2x": 
+                                pilihiterasi="2. Iterasi 2x";
+                                inputResep();
+                                break;
+                            default:
+                                break;
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane,"Cara/Jenis Bayar pasien bukan BPJS ..!!");
+                    }
+                }                   
+            }            
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10790,7 +10824,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanObservasiHemodialisa,BtnSkriningKesehatanGigiMulutDewasa,BtnSkriningRisikoKankerServiks,BtnCatatanCairanHemodialisa,BtnSkriningKesehatanGigiMulutLansia,BtnSkriningIndraPendengaran,
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi,
-                          BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan;   
+                          BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS;   
     private javax.swing.JPopupMenu PopupSOAP;
     private javax.swing.JMenuItem MnSOAPDokter,MnSOAPPetugas;
     
@@ -11099,12 +11133,20 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnHapus.setEnabled(akses.gettindakan_ralan());
         BtnEdit.setEnabled(akses.gettindakan_ralan());
         BtnPrint.setEnabled(akses.gettindakan_ralan());
-        BtnTambahTindakan.setEnabled(akses.gettarif_ralan());    
+        BtnTambahTindakan.setEnabled(akses.gettarif_ralan());   
+        BtnTemplatePemeriksaan.setEnabled(akses.gettemplate_pemeriksaan()); 
         BtnResepObat.setVisible(akses.getresep_dokter());
         BtnCopyResep.setVisible(akses.getresep_dokter());
-        BtnTemplatePemeriksaan.setEnabled(akses.gettemplate_pemeriksaan());
         if(akses.getresep_dokter()==true){
             tinggi=tinggi+48;
+        }
+        if(koneksiDB.AKTIFKANRESEPITERDOKTER().equals("yes")){
+            if(kd_pj.equals(KodeBPJS)){
+                BtnResepIterasiBPJS.setVisible(akses.getresep_dokter());
+                if(akses.getresep_dokter()==true){
+                    tinggi=tinggi+24;
+                }
+            }   
         }
         BtnObatBhp.setVisible(akses.getberi_obat());  
         BtnInputObat.setVisible(akses.getberi_obat()); 
@@ -12982,6 +13024,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ralan");
         resep.isCek();
         resep.tampilobat();
+        if(!pilihiterasi.equals("")){
+            resep.pilihIterasi(pilihiterasi);
+        }
         resep.setVisible(true);
     }
 
@@ -13891,6 +13936,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningGiziKehamilan.setRoundRect(false);
         BtnSkriningGiziKehamilan.addActionListener(this::BtnSkriningGiziKehamilanActionPerformed);
         
+        BtnResepIterasiBPJS = new widget.Button();
+        BtnResepIterasiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnResepIterasiBPJS.setText("Iterasi Resep BPJS");
+        BtnResepIterasiBPJS.setFocusPainted(false);
+        BtnResepIterasiBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnResepIterasiBPJS.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnResepIterasiBPJS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnResepIterasiBPJS.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnResepIterasiBPJS.setName("BtnResepIterasiBPJS");
+        BtnResepIterasiBPJS.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnResepIterasiBPJS.setRoundRect(false);
+        BtnResepIterasiBPJS.addActionListener(this::BtnResepIterasiBPJSActionPerformed);
+        
         PopupSOAP = new javax.swing.JPopupMenu();
         PopupSOAP.setName("PopupSOAP");
         tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
@@ -13928,6 +13986,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         FormMenu.add(BtnRiwayat);
         FormMenu.add(BtnResepObat);
+        FormMenu.add(BtnResepIterasiBPJS);
         FormMenu.add(BtnCopyResep);
         FormMenu.add(BtnResepLuar);
         FormMenu.add(BtnInputObat);

@@ -54,10 +54,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         super(parent, modal);
         initComponents();
         this.setLocation(10,10);
-        
-
-        Object[] row={"Kode Area","Nama Lokasi & Kelompok Risiko Area"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{"Kode Area","Nama Lokasi & Kelompok Risiko Area"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 

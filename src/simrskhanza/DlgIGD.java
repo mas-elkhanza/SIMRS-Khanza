@@ -6340,10 +6340,10 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                     if (dlgrwjl == null) return;
                     if (!dlgrwjl.isVisible()) {
-                        dlgrwjl.isCek();
                         dlgrwjl.SetPoli("IGDK");
                         dlgrwjl.SetPj(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),19).toString());
                         dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());  
+                        dlgrwjl.isCek();
                     }
 
                     if (dlgrwjl.isVisible()) {

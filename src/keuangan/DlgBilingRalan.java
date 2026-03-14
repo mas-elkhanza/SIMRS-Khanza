@@ -2737,12 +2737,12 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             akses.setform("DlgBilingRalan");
             DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
-            dlgrwjl2.isCek();
             dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgrwjl2.setLocationRelativeTo(internalFrame1);
             dlgrwjl2.SetPoli("-");
             dlgrwjl2.SetPj(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
             dlgrwjl2.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate());    
+            dlgrwjl2.isCek();
             dlgrwjl2.setVisible(true);
         }
 }//GEN-LAST:event_MnRawatJalanActionPerformed

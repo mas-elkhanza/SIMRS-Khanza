@@ -70,7 +70,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariDokter dokter;
-    private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
+    private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
             kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),RESEPRAJALKEPLAN="no";
     private File file;
     private FileWriter fileWriter;
@@ -1099,6 +1099,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
                 Sequel.AutoComitTrue();
                 if(sukses==true){
+                    if(!pilihiterasi.equals("")){
+                        Sequel.menyimpan2("antrianiterasi","?,?",2,new String[]{NoResep.getText(),pilihiterasi});
+                    }
+                    
                     if(RESEPRAJALKEPLAN.equals("yes")&&status.equals("ralan")&&(ubah==false)){
                         try {
                             ps2=koneksi.prepareStatement(
@@ -1191,10 +1195,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             System.out.println("Notif : "+e);
                         }
                     }
+                    
                     for(i=0;i<tbResep.getRowCount();i++){
                         tbResep.setValueAt("",i,1);
                         tbResep.setValueAt("",i,2);
                     }
+                    
                     Valid.tabelKosong(tabModeResepRacikan);
                     Valid.tabelKosong(tabModeDetailResepRacikan);
                     dispose();
@@ -4258,6 +4264,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
         }               
+    }
+    
+    public void pilihIterasi(String pilihaniterasi) {
+        pilihiterasi=pilihaniterasi;
     }
     
     private void runBackground(Runnable task) {

@@ -1706,7 +1706,30 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 nmgudang.setText(Sequel.CariBangsal(kdgudang.getText()));
             }
         }
-            
+           
+        try {
+            psstok=koneksi.prepareStatement(
+                "select antrianiterasi.status from antrianiterasi where antrianiterasi.no_resep=?"
+            );
+            try{
+                psstok.setString(1,resep);
+                rsstok=psstok.executeQuery();
+                if(rsstok.next()){
+                    Iterasi.setSelectedItem(rsstok.getString("status"));
+                }  
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rsstok != null){
+                    rsstok.close();
+                }
+                if(psstok != null){
+                    psstok.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
         
         try {
             Valid.tabelKosong(tabModeobat);

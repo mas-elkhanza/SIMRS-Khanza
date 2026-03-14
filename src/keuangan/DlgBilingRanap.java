@@ -3053,12 +3053,12 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             TNoRw.requestFocus();
         }else{
             DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
-            dlgrwjl.isCek();
             dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgrwjl.setLocationRelativeTo(internalFrame1);
             dlgrwjl.SetPoli("-");
             dlgrwjl.SetPj(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
             dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());  
+            dlgrwjl.isCek();
             dlgrwjl.setVisible(true);
         }
 }//GEN-LAST:event_MnRawatJalanActionPerformed
@@ -4191,13 +4191,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 TCari.requestFocus();
             }else{
                 DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
-                dlgrwjl.isCek();
                 dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgrwjl.setLocationRelativeTo(internalFrame1);
                 dlgrwjl.SetPoli("-");
                 dlgrwjl.SetPj(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
-
                 dlgrwjl.setNoRm(norawatbayi,DTPTgl.getDate(),new Date());
+                dlgrwjl.isCek();
                 dlgrwjl.setVisible(true);
             }                
         }

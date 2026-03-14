@@ -1014,12 +1014,12 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
             Valid.textKosong(NoRawat,"Pasien");
         }else{
             DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
-            dlgrwjl2.isCek();
             dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgrwjl2.setLocationRelativeTo(internalFrame1);
             dlgrwjl2.SetPoli(kd_poli);
             dlgrwjl2.SetPj(kd_pj);
-            dlgrwjl2.setNoRm(NoRawat.getText(),new Date(),new Date());    
+            dlgrwjl2.setNoRm(NoRawat.getText(),new Date(),new Date()); 
+            dlgrwjl2.isCek();   
             dlgrwjl2.setVisible(true);
         }
     }//GEN-LAST:event_BtnCariActionPerformed

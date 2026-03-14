@@ -551,6 +551,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String AKTIFKANRESEPITERDOKTER(){
+        try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
+            prop.loadFromXML(fis);
+            var=prop.getProperty("AKTIFKANRESEPITERDOKTER");
+        }catch(Exception e){
+            var="no"; 
+        }
+        return var;
+    }
+    
     public static String URLAPIPCARE(){
         try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);

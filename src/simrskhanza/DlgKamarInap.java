@@ -9341,7 +9341,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     rs2=psanak.executeQuery();
                                     if(rs2.next()){
                                         DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
-                                        dlgrwjl.isCek();
                                         dlgrwjl.bypassranap=true;
                                         dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                         dlgrwjl.setLocationRelativeTo(internalFrame1);
@@ -9354,6 +9353,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         }else if(R3.isSelected()==true){
                                             dlgrwjl.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate());
                                         }
+                                        dlgrwjl.isCek();
                                         dlgrwjl.setVisible(true);
                                     }else{
                                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -9376,7 +9376,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }                
                 }else{
                     DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
-                    dlgrwjl.isCek();
                     dlgrwjl.bypassranap=true;
                     dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgrwjl.setLocationRelativeTo(internalFrame1);
@@ -9389,6 +9388,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }else if(R3.isSelected()==true){
                         dlgrwjl.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate());
                     }
+                    dlgrwjl.isCek();
                     dlgrwjl.setVisible(true);
                 }
             }

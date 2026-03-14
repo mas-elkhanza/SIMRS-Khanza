@@ -8404,10 +8404,10 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                     if (dlgrwjl == null) return;
                     if (!dlgrwjl.isVisible()) {
-                        dlgrwjl.isCek();
                         dlgrwjl.SetPoli(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),21).toString());
                         dlgrwjl.SetPj(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),22).toString());
                         dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());   
+                        dlgrwjl.isCek();
                     }
 
                     if (dlgrwjl.isVisible()) {
@@ -10578,7 +10578,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     }
                     if (dlgrwjl == null) return;
                     if (!dlgrwjl.isVisible()) {
-                        dlgrwjl.isCek();
                         dlgrwjl.SetPoli(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),18).toString());
                         dlgrwjl.SetPj(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),19).toString());
                         dlgrwjl.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString(),
@@ -10586,6 +10585,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),4).toString(),
                             tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),5).toString()
                         );  
+                        dlgrwjl.isCek();
                     }
 
                     if (dlgrwjl.isVisible()) {

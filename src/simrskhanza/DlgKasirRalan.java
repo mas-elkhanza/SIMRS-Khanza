@@ -7733,10 +7733,10 @@ private void MnDataRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     if (formrawatjalan == null) return;
                     if (!formrawatjalan.isVisible()) {
                         formrawatjalan.emptTeks();
-                        formrawatjalan.isCek();
                         formrawatjalan.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString());
                         formrawatjalan.SetPj(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
-                        formrawatjalan.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());  
+                        formrawatjalan.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
+                        formrawatjalan.isCek(); 
                     }  
                     if (formrawatjalan.isVisible()) {
                         formrawatjalan.toFront();
@@ -9346,7 +9346,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     if (formrawatjalan == null) return;
                     if (!formrawatjalan.isVisible()) {
                         formrawatjalan.emptTeks();
-                        formrawatjalan.isCek();
                         formrawatjalan.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
                         formrawatjalan.SetPj(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),14).toString());
                         formrawatjalan.setNoRm(
@@ -9354,7 +9353,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             DTPCari1.getDate(),DTPCari2.getDate(),
                             tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),
                             tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
-                        );   
+                        ); 
+                        formrawatjalan.isCek();  
                     }  
                     if (formrawatjalan.isVisible()) {
                         formrawatjalan.toFront();

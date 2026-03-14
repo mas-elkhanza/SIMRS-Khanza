@@ -972,13 +972,13 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
             if(tbObat.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
-                dlgrwjl.isCek();
                 dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgrwjl.setLocationRelativeTo(internalFrame1); 
                 dlgrwjl.SetPj(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
                 dlgrwjl.SetPoli(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
                 dlgrwjl.emptTeks();
                 dlgrwjl.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),DTPCari1.getDate(),DTPCari2.getDate());   
+                dlgrwjl.isCek();
                 dlgrwjl.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
