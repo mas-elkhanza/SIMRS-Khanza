@@ -1161,6 +1161,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     }//GEN-LAST:event_Kd2KeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        sukses=false;
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
