@@ -19,6 +19,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.akunobatralan;
 import fungsi.akuntindakanralan;
 import inventory.riwayatobat;
 import java.awt.Cursor;
@@ -59,7 +60,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
     private String kd_pj="",kd_poli="",kd_dokter="",poli_ralan="Yes", cara_bayar_ralan="Yes",norm="";    
     private double[] jumlah,harga,stok,eb,tsl,beli;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,nobatch,nofaktur;
-    private String bangsal="",Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="";
+    private String bangsal="",hppfarmasi="";
     private double embalase=0,tuslah=0,kenaikan=0,stokbarang=0,j=0;
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
@@ -730,18 +731,18 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");    
                     if(ttljual>0){
-                        if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Obat_Ralan+"','Suspen Piutang Obat Ralan','"+ttljual+"','0'","Rekening")==false){
+                        if(Sequel.menyimpantf("tampjurnal","'"+akunobatralan.getSuspen_Piutang_Obat_Ralan()+"','Suspen Piutang Obat Ralan','"+ttljual+"','0'","Rekening")==false){
                             sukses=false;
                         }    
-                        if(Sequel.menyimpantf("tampjurnal","'"+Obat_Ralan+"','Pendapatan Obat Rawat Jalan','0','"+ttljual+"'","Rekening")==false){
+                        if(Sequel.menyimpantf("tampjurnal","'"+akunobatralan.getObat_Ralan()+"','Pendapatan Obat Rawat Jalan','0','"+ttljual+"'","Rekening")==false){
                             sukses=false;
                         }                              
                     }
                     if(ttlhpp>0){
-                        if(Sequel.menyimpantf("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','HPP Persediaan Obat Rawat Jalan','"+ttlhpp+"','0'","Rekening")==false){
+                        if(Sequel.menyimpantf("tampjurnal","'"+akunobatralan.getHPP_Obat_Rawat_Jalan()+"','HPP Persediaan Obat Rawat Jalan','"+ttlhpp+"','0'","Rekening")==false){
                             sukses=false;
                         }    
-                        if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening")==false){
+                        if(Sequel.menyimpantf("tampjurnal","'"+akunobatralan.getPersediaan_Obat_Rawat_Jalan()+"','Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening")==false){
                             sukses=false;
                         }                              
                     }
@@ -925,6 +926,10 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
             runBackground(() ->akuntindakanralan.SetAkunTindakanRalan());
+        }
+        
+        if(akunobatralan.getSuspen_Piutang_Obat_Ralan().equals("")){
+            runBackground(() ->akunobatralan.SetAkunObatRalan());
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
