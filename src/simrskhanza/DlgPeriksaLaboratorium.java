@@ -2771,6 +2771,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             System.out.println(e);
         }
         isPsien();
+        runBackground(() ->tampilkanOrder(order));
+    }
+    
+    public void tampilkanOrder(String order){
         tampiltarif(order);
         tampil(order);
     }

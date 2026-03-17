@@ -8073,7 +8073,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     periksarad.setLocationRelativeTo(internalFrame1);
                                     periksarad.emptTeks();
                                     periksarad.setNoRm(rs2.getString("no_rawat2"),"Ranap");
-                                    periksarad.tampil();
                                     periksarad.isCek();
                                     periksarad.setVisible(true);
                                 }else{
@@ -8100,7 +8099,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     periksarad.setLocationRelativeTo(internalFrame1);
                     periksarad.emptTeks();
                     periksarad.setNoRm(norawat.getText(),"Ranap");
-                    periksarad.tampil();
                     periksarad.isCek();
                     periksarad.setVisible(true);
                 }

@@ -91,7 +91,6 @@ public final class akuntindakanlaborat {
         }
     }
     
-    //public static String getSuspen_Piutang_Radiologi_Ranap(){return akuntindakanlaborat.;}
     public static String getSuspen_Piutang_Laborat_Ranap(){return akuntindakanlaborat.Suspen_Piutang_Laborat_Ranap;}
     public static String getLaborat_Ranap(){return akuntindakanlaborat.Laborat_Ranap;}
     public static String getBeban_Jasa_Medik_Dokter_Laborat_Ranap(){return akuntindakanlaborat.Beban_Jasa_Medik_Dokter_Laborat_Ranap;}

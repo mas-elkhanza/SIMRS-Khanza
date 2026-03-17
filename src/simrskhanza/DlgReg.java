@@ -9110,7 +9110,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     dlgro.emptTeks();
                     dlgro.isCek();
                     dlgro.setNoRm(TNoRw.getText(),"Ralan");  
-                    dlgro.tampil();
                     dlgro.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }    
@@ -10663,7 +10662,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),4).toString(),
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),5).toString()
                     );
-                    dlgro.tampil();
                     dlgro.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }

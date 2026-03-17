@@ -3458,7 +3458,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 periksalab.setLocationRelativeTo(internalFrame1);
                 periksalab.emptTeks();
                 periksalab.setNoRm(TNoRw.getText(),"Ralan");  
-                periksalab.tampil();
                 periksalab.isCek();
                 periksalab.setAlwaysOnTop(false);
                 periksalab.setVisible(true);                            
