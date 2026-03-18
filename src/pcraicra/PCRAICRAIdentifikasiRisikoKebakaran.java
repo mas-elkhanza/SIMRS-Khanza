@@ -56,7 +56,7 @@ public final class PCRAICRAIdentifikasiRisikoKebakaran extends javax.swing.JDial
         this.setLocation(10,10);
         
 
-        Object[] row={"Kode","Risiko Keselamatan"};
+        Object[] row={"Kode","Risiko Kebakaran"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

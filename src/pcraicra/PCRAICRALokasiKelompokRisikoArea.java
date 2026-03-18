@@ -58,21 +58,21 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
-        tbJabatan.setModel(tabMode);
+        tbKelompokRisikoArea.setModel(tabMode);
         //runBackground(() ->tampil());
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
-        tbJabatan.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbJabatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbKelompokRisikoArea.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbKelompokRisikoArea.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 2; i++) {
-            TableColumn column = tbJabatan.getColumnModel().getColumn(i);
+            TableColumn column = tbKelompokRisikoArea.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(85);
             }else if(i==1){
                 column.setPreferredWidth(430);
             }
         }
-        tbJabatan.setDefaultRenderer(Object.class, new WarnaTable());
+        tbKelompokRisikoArea.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeArea.setDocument(new batasInput((byte)4).getKata(KodeArea));
         NamaLokasiArea.setDocument(new batasInput((byte)40).getKata(NamaLokasiArea));
@@ -90,7 +90,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
 
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbJabatan = new widget.Table();
+        tbKelompokRisikoArea = new widget.Table();
         panelGlass7 = new widget.panelisi();
         jLabel3 = new widget.Label();
         KodeArea = new widget.TextBox();
@@ -127,20 +127,20 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJabatan.setAutoCreateRowSorter(true);
-        tbJabatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbJabatan.setName("tbJabatan"); // NOI18N
-        tbJabatan.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbKelompokRisikoArea.setAutoCreateRowSorter(true);
+        tbKelompokRisikoArea.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKelompokRisikoArea.setName("tbKelompokRisikoArea"); // NOI18N
+        tbKelompokRisikoArea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbJabatanMouseClicked(evt);
+                tbKelompokRisikoAreaMouseClicked(evt);
             }
         });
-        tbJabatan.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbKelompokRisikoArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbJabatanKeyPressed(evt);
+                tbKelompokRisikoAreaKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbJabatan);
+        Scroll.setViewportView(tbKelompokRisikoArea);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -398,9 +398,9 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbJabatan.getSelectedRow()!= -1){
-            if(Sequel.meghapustf("pcra_icra_lokasi_kelompok_risiko_area","kode_area",tbJabatan.getValueAt(tbJabatan.getSelectedRow(),0).toString())==true){
-                tabMode.removeRow(tbJabatan.getSelectedRow());
+        if(tbKelompokRisikoArea.getSelectedRow()!= -1){
+            if(Sequel.meghapustf("pcra_icra_lokasi_kelompok_risiko_area","kode_area",tbKelompokRisikoArea.getValueAt(tbKelompokRisikoArea.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbKelompokRisikoArea.getSelectedRow());
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }
@@ -423,12 +423,12 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         }else if(NamaLokasiArea.getText().trim().equals("")){
             Valid.textKosong(NamaLokasiArea,"nama lokasi & kelompok");
         }else{
-            if(tbJabatan.getSelectedRow()>-1){
+            if(tbKelompokRisikoArea.getSelectedRow()>-1){
                 if(Sequel.mengedittf("pcra_icra_lokasi_kelompok_risiko_area","kode_area=?","kode_area=?,nama_area=?",3,new String[]{
-                        KodeArea.getText(),NamaLokasiArea.getText(),tbJabatan.getValueAt(tbJabatan.getSelectedRow(), 0).toString()
+                        KodeArea.getText(),NamaLokasiArea.getText(),tbKelompokRisikoArea.getValueAt(tbKelompokRisikoArea.getSelectedRow(), 0).toString()
                     })==true){
-                    tabMode.setValueAt(KodeArea.getText(),tbJabatan.getSelectedRow(),0);
-                    tabMode.setValueAt(NamaLokasiArea.getText(),tbJabatan.getSelectedRow(),1);
+                    tabMode.setValueAt(KodeArea.getText(),tbKelompokRisikoArea.getSelectedRow(),0);
+                    tabMode.setValueAt(NamaLokasiArea.getText(),tbKelompokRisikoArea.getSelectedRow(),1);
                     emptTeks();
                 }
             }else{
@@ -494,16 +494,16 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void tbJabatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbJabatanMouseClicked
+    private void tbKelompokRisikoAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKelompokRisikoAreaMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
         }
-}//GEN-LAST:event_tbJabatanMouseClicked
+}//GEN-LAST:event_tbKelompokRisikoAreaMouseClicked
 
-    private void tbJabatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJabatanKeyPressed
+    private void tbKelompokRisikoAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKelompokRisikoAreaKeyPressed
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
@@ -512,7 +512,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
                 }
             }
         }
-}//GEN-LAST:event_tbJabatanKeyPressed
+}//GEN-LAST:event_tbKelompokRisikoAreaKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         runBackground(() ->tampil());
@@ -578,7 +578,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private widget.Table tbJabatan;
+    private widget.Table tbKelompokRisikoArea;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -616,9 +616,9 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
     }
 
     private void getData() {
-        if(tbJabatan.getSelectedRow()!= -1){
-            KodeArea.setText(tbJabatan.getValueAt(tbJabatan.getSelectedRow(),0).toString());
-            NamaLokasiArea.setText(tbJabatan.getValueAt(tbJabatan.getSelectedRow(),1).toString());
+        if(tbKelompokRisikoArea.getSelectedRow()!= -1){
+            KodeArea.setText(tbKelompokRisikoArea.getValueAt(tbKelompokRisikoArea.getSelectedRow(),0).toString());
+            NamaLokasiArea.setText(tbKelompokRisikoArea.getValueAt(tbKelompokRisikoArea.getSelectedRow(),1).toString());
         }
     }
 

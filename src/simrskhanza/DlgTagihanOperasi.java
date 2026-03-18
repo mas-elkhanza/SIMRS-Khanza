@@ -40,7 +40,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
     private volatile boolean ceksukses = false;
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,psobat,psset_tarif;
+    private PreparedStatement pstindakan,psobat,psset_tarif;
     private ResultSet rsobat,rstindakan,rsset_tarif;
     private DlgCariPetugas petugas;
     private DlgCariDokter dokter;
@@ -3686,64 +3686,77 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         
         try{
-            pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+            if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("No")){
+                pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
                    "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
                    "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
                    "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
                    "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
                    "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
                    "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
-                   "from paket_operasi "+
-                   "where status='1' and (kd_pj=? or kd_pj='-') and (kode_paket like ? or nm_perawatan like ?) order by nm_perawatan ");
-            pstindakan2=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+                   "from paket_operasi where status='1' and (kd_pj=? or kd_pj='-') "+
+                   (TCariPaket.getText().trim().equals("")?"":"and (kode_paket like ? or nm_perawatan like ?) ")+"order by nm_perawatan ");
+            }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("No")){
+                pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
                    "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
                    "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
                    "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
                    "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
                    "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
                    "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
-                   "from paket_operasi "+
-                   "where status='1' and (kode_paket like ? or nm_perawatan like ?) order by nm_perawatan ");
-            pstindakan3=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+                   "from paket_operasi where status='1' "+
+                   (TCariPaket.getText().trim().equals("")?"":"and (kode_paket like ? or nm_perawatan like ?) ")+"order by nm_perawatan ");
+            }else if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("Yes")){
+                pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
                    "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
                    "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
                    "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
                    "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
                    "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
                    "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
-                   "from paket_operasi "+
-                   "where status='1' and (kd_pj=? or kd_pj='-') and (kelas=? or kelas='-') and (kode_paket like ? or nm_perawatan like ?) order by nm_perawatan ");
-            pstindakan4=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+                   "from paket_operasi where status='1' and (kd_pj=? or kd_pj='-') and (kelas=? or kelas='-') "+
+                   (TCariPaket.getText().trim().equals("")?"":"and (kode_paket like ? or nm_perawatan like ?) ")+"order by nm_perawatan ");
+            }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("Yes")){
+                pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
                    "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
                    "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
                    "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
                    "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
                    "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
                    "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
-                   "from paket_operasi "+
-                   "where status='1' and (kelas=? or kelas='-') and (kode_paket like ? or nm_perawatan like ?) order by nm_perawatan ");
+                   "from paket_operasi where status='1' and (kelas=? or kelas='-') "+
+                   (TCariPaket.getText().trim().equals("")?"":"and (kode_paket like ? or nm_perawatan like ?) ")+"order by nm_perawatan ");
+            }
             
             try {
                 if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("No")){
                     pstindakan.setString(1,kd_pj.trim());
-                    pstindakan.setString(2,"%"+TCariPaket.getText()+"%");
-                    pstindakan.setString(3,"%"+TCariPaket.getText()+"%");
+                    if(!TCariPaket.getText().trim().equals("")){
+                        pstindakan.setString(2,"%"+TCariPaket.getText()+"%");
+                        pstindakan.setString(3,"%"+TCariPaket.getText()+"%");
+                    }
                     rstindakan=pstindakan.executeQuery();
                 }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("No")){
-                    pstindakan2.setString(1,"%"+TCariPaket.getText()+"%");
-                    pstindakan2.setString(2,"%"+TCariPaket.getText()+"%");
-                    rstindakan=pstindakan2.executeQuery();
+                    if(!TCariPaket.getText().trim().equals("")){
+                        pstindakan.setString(1,"%"+TCariPaket.getText()+"%");
+                        pstindakan.setString(2,"%"+TCariPaket.getText()+"%");
+                    }
+                    rstindakan=pstindakan.executeQuery();
                 }else if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("Yes")){
-                    pstindakan3.setString(1,kd_pj.trim());
-                    pstindakan3.setString(2,kelas.trim());
-                    pstindakan3.setString(3,"%"+TCariPaket.getText()+"%");
-                    pstindakan3.setString(4,"%"+TCariPaket.getText()+"%");
-                    rstindakan=pstindakan3.executeQuery();
+                    pstindakan.setString(1,kd_pj.trim());
+                    pstindakan.setString(2,kelas.trim());
+                    if(!TCariPaket.getText().trim().equals("")){
+                        pstindakan.setString(3,"%"+TCariPaket.getText()+"%");
+                        pstindakan.setString(4,"%"+TCariPaket.getText()+"%");
+                    }
+                    rstindakan=pstindakan.executeQuery();
                 }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("Yes")){
-                    pstindakan4.setString(1,kelas.trim());
-                    pstindakan4.setString(2,"%"+TCariPaket.getText()+"%");
-                    pstindakan4.setString(3,"%"+TCariPaket.getText()+"%");
-                    rstindakan=pstindakan4.executeQuery();
+                    pstindakan.setString(1,kelas.trim());
+                    if(!TCariPaket.getText().trim().equals("")){
+                        pstindakan.setString(2,"%"+TCariPaket.getText()+"%");
+                        pstindakan.setString(3,"%"+TCariPaket.getText()+"%");
+                    }
+                    rstindakan=pstindakan.executeQuery();
                 }
                 
                 while(rstindakan.next()){
@@ -3788,15 +3801,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 if(pstindakan!=null){
                     pstindakan.close();
-                }
-                if(pstindakan2!=null){
-                    pstindakan2.close();
-                }
-                if(pstindakan3!=null){
-                    pstindakan3.close();
-                }
-                if(pstindakan4!=null){
-                    pstindakan4.close();
                 }
             }                  
         }catch(SQLException e){
