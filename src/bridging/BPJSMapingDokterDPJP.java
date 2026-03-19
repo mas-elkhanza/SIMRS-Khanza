@@ -136,7 +136,7 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mapping Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mapping Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -476,10 +476,7 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
             if(Sequel.menyimpantf("maping_dokter_dpjpvclaim","?,?,?","Mapping Dokter",3,new String[]{
                 kdpoli.getText(),KdPoliPCare.getText(),NmPoliPCare.getText()
             })==true){
-                tabMode.addRow(new Object[]{
-                    kdpoli.getText(),TPoli.getText(),KdPoliPCare.getText(),NmPoliPCare.getText()
-                });
-                LCount.setText(""+tabMode.getRowCount());
+                runBackground(() ->tampil());
                 emptTeks();
             }                
         }
@@ -502,10 +499,9 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,kdpoli,"maping_dokter_dpjpvclaim","kd_dokter")==true){
-            tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
-            emptTeks();
-        }
+        Valid.hapusTable(tabMode,kdpoli,"maping_dokter_dpjpvclaim","kd_dokter");
+        runBackground(() ->tampil());
+        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -526,11 +522,8 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
                 if(Sequel.mengedittf("maping_dokter_dpjpvclaim","kd_dokter=?","kd_dokter=?,kd_dokter_bpjs=?,nm_dokter_bpjs=?",4,new String[]{
                         kdpoli.getText(),KdPoliPCare.getText(),NmPoliPCare.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                     })==true){
-                    tabMode.setValueAt(kdpoli.getText(),tbJnsPerawatan.getSelectedRow(), 0);
-                    tabMode.setValueAt(TPoli.getText(),tbJnsPerawatan.getSelectedRow(), 1);
-                    tabMode.setValueAt(KdPoliPCare.getText(),tbJnsPerawatan.getSelectedRow(), 2);
-                    tabMode.setValueAt(NmPoliPCare.getText(),tbJnsPerawatan.getSelectedRow(), 3);
                     emptTeks();
+                    runBackground(() ->tampil());
                 }
             }                
         }
@@ -757,20 +750,15 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
-               "select maping_dokter_dpjpvclaim.kd_dokter,dokter.nm_dokter,maping_dokter_dpjpvclaim.kd_dokter_bpjs,maping_dokter_dpjpvclaim.nm_dokter_bpjs "+
-               "from maping_dokter_dpjpvclaim inner join dokter on maping_dokter_dpjpvclaim.kd_dokter=dokter.kd_dokter "+(TCari.getText().trim().equals("")?"":
-               "where maping_dokter_dpjpvclaim.kd_dokter like ? or dokter.nm_dokter like ? or maping_dokter_dpjpvclaim.kd_dokter_bpjs like ? or maping_dokter_dpjpvclaim.nm_dokter_bpjs like ? ")+
-               "order by dokter.nm_dokter"
-            );
+           ps=koneksi.prepareStatement(
+                   "select maping_dokter_dpjpvclaim.kd_dokter,dokter.nm_dokter,maping_dokter_dpjpvclaim.kd_dokter_bpjs,maping_dokter_dpjpvclaim.nm_dokter_bpjs "+
+                   "from maping_dokter_dpjpvclaim inner join dokter on maping_dokter_dpjpvclaim.kd_dokter=dokter.kd_dokter where "+
+                   "maping_dokter_dpjpvclaim.kd_dokter like ? or dokter.nm_dokter like ? or maping_dokter_dpjpvclaim.kd_dokter_bpjs like ? or maping_dokter_dpjpvclaim.nm_dokter_bpjs like ? order by dokter.nm_dokter");
             try {
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                }
-                    
+                ps.setString(1,"%"+TCari.getText()+"%");
+                ps.setString(2,"%"+TCari.getText()+"%");
+                ps.setString(3,"%"+TCari.getText()+"%");
+                ps.setString(4,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

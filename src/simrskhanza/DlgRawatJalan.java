@@ -22,7 +22,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import fungsi.akuntindakanralan;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
 import inventory.DlgPeresepanDokter;
@@ -36,7 +35,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -54,7 +52,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -217,6 +214,10 @@ import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMUjiFungsiKFR;
+import surat.SuratBebasNarkoba;
+import surat.SuratButaWarna;
+import surat.SuratKeteranganSehat;
+import surat.SuratSakit;
 
 /**
  *
@@ -229,12 +230,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan,psset_tarif;
-    private ResultSet rs,rstindakan,rsset_tarif;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan,psset_tarif,psrekening;
+    private ResultSet rs,rstindakan,rsset_tarif,rsrekening;
     private int i=0,jmlparsial=0,jml=0,index=0,tinggi=0;
     private String aktifkanparsial="no",kode_poli="",kd_pj="",poli_ralan="No",cara_bayar_ralan="No",TANGGALMUNDUR="yes",
-            KodeBPJS=Sequel.cariIsi("select password_asuransi.kd_pj from password_asuransi"),
-            pilihiterasi="";
+            Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",Utang_KSO_Tindakan_Ralan="",
+            Beban_Jasa_Sarana_Tindakan_Ralan="",Utang_Jasa_Sarana_Tindakan_Ralan="",HPP_BHP_Tindakan_Ralan="",Persediaan_BHP_Tindakan_Ralan="",
+            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
@@ -244,7 +247,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private DlgPeresepanDokter resepobat;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -1134,6 +1136,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        
+        //TAMBAH TOMBOL SURAT
+        btnCariData = new widget.Button();
+        cmbJnsSurat = new widget.ComboBox();
+        btnSurat = new widget.Button();
+        lblJnsSurat = new widget.Label();
 
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -1489,6 +1497,51 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass8.setName("panelGlass8"); 
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        
+        //TAMBAH TOMBOL
+        btnCariData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        btnCariData.setToolTipText("Cari Data");
+        btnCariData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCariData.setName("btnCariData"); // NOI18N
+        btnCariData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariDataActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(btnCariData);
+        btnCariData.setBounds(920, 10, 28, 23);
+        
+        lblJnsSurat.setText("Dokumen :");
+        lblJnsSurat.setName("lblJnsSurat"); // NOI18N
+        lblJnsSurat.setPreferredSize(new java.awt.Dimension(62, 28));
+        FormInput.add(lblJnsSurat);
+        lblJnsSurat.setBounds(936, 10, 70, 23);
+        
+        btnSurat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/icons8-write-16.png"))); // NOI18N
+        btnSurat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //btnSurat.setLabel("");
+        btnSurat.setToolTipText("Buat Surat");
+        btnSurat.setName("btnSurat"); // NOI18N
+        btnSurat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnSurat);
+        btnSurat.setBounds(1140, 10, 23, 23);
+
+        cmbJnsSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Surat Kontrol", "SKK", "Buta Warna","Bebas Narkoba","SKS" }));
+        cmbJnsSurat.setName("cmbJnsSurat"); // NOI18N
+        cmbJnsSurat.setPreferredSize(new java.awt.Dimension(150, 23));
+        cmbJnsSurat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //cmbJnsSuratActionPerformed(evt);
+            }
+        });
+        FormInput.add(cmbJnsSurat);
+        cmbJnsSurat.setBounds(1010, 10, 120, 23);
+        
+        //TAMBAH TOMBOL
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); 
         BtnSimpan.setMnemonic('S');
@@ -5063,8 +5116,44 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     }//GEN-LAST:event_TNoRwKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
-            runBackground(() ->akuntindakanralan.SetAkunTindakanRalan());
+        try {
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ralan.Suspen_Piutang_Tindakan_Ralan,set_akun_ralan.Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Beban_KSO_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_KSO_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Sarana_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Sarana_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Menejemen_Tindakan_Ralan,set_akun_ralan.HPP_BHP_Tindakan_Ralan,set_akun_ralan.Persediaan_BHP_Tindakan_Ralan from set_akun_ralan");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Tindakan_Ralan=rsrekening.getString("Suspen_Piutang_Tindakan_Ralan");
+                    Tindakan_Ralan=rsrekening.getString("Tindakan_Ralan");
+                    Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");
+                    Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ralan");
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ralan");
+                    Beban_KSO_Tindakan_Ralan=rsrekening.getString("Beban_KSO_Tindakan_Ralan");
+                    Utang_KSO_Tindakan_Ralan=rsrekening.getString("Utang_KSO_Tindakan_Ralan");
+                    Beban_Jasa_Sarana_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Sarana_Tindakan_Ralan");
+                    Utang_Jasa_Sarana_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Sarana_Tindakan_Ralan");
+                    Beban_Jasa_Menejemen_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Menejemen_Tindakan_Ralan");
+                    Utang_Jasa_Menejemen_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Menejemen_Tindakan_Ralan");
+                    HPP_BHP_Tindakan_Ralan=rsrekening.getString("HPP_BHP_Tindakan_Ralan");
+                    Persediaan_BHP_Tindakan_Ralan=rsrekening.getString("Persediaan_BHP_Tindakan_Ralan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println(e);
         }
         
         try {
@@ -5207,6 +5296,150 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         cmbKesadaran.setSelectedIndex(0);
         TNoRw.requestFocus();
 }//GEN-LAST:event_BtnBatalActionPerformed
+    //TAMBAH TOMBOL
+    private void btnCariDataActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ", TNoRM, TNoRw.getText());
+        TCariPasien.setText(TNoRM.getText());
+        //Menampilkan Keperawatan Ralan 
+        if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan_bayi where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Bayi 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_gigi where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Gigi 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_kebidanan where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Kebidanan 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan where no_rawat='" + TNoRw.getText() + "' ") <= 0) {
+            JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!!!");
+        }
+    }
+    private void btnSuratActionPerformed(java.awt.event.ActionEvent evt) {
+        // Guard clauses: validasi cepat lalu keluar
+        if (TabRawat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, silakan pilih dulu data registrasi pada tabel...!!!");
+            TNoRw.requestFocus();
+            return;
+        }
+        if (TNoRw.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, silakan pilih dulu dengan mengklik data pada tabel...!!!");
+            TCari.requestFocus();
+            return;
+        }
+
+        // Pastikan ada tab yang terpilih
+        if (TabRawat.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Tidak ada tab yang terpilih.");
+            return;
+        }
+
+        // Ambil pilihan jenis surat, null-safe
+        final String jenisSurat = String.valueOf(cmbJnsSurat.getSelectedItem()).trim();
+
+        // Set cursor tunggu, dan pastikan kembali normal di finally
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            switch (jenisSurat) {
+                case "SKS": { // Surat Sakit
+                    SuratSakit dlg = new SuratSakit(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "SKK": { // Surat Keterangan Sehat
+                    SuratKeteranganSehat dlg = new SuratKeteranganSehat(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Buta Warna": { // Surat Keterangan Sehat
+                    SuratButaWarna resume = new SuratButaWarna(null, false);
+                    resume.isCek();
+                    resume.emptTeks();
+                    resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    resume.setLocationRelativeTo(internalFrame1);
+                    resume.setNoRm(TNoRw.getText(), TNoRM.getText(), TPasien.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    resume.tampil();
+                    resume.setVisible(true);
+                    break;
+                }
+                case "Bebas Narkoba": {
+                    SuratBebasNarkoba dlg = new SuratBebasNarkoba(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(), KdDok.getText(),TDokter.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Surat Kontrol": {
+                    SuratKontrol form=new SuratKontrol(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.emptTeks();
+                    form.setNoRm(TNoRM.getText(), TPasien.getText(), kode_poli, Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kode_poli), KdDok.getText(), TDokter.getText());
+                    form.setVisible(true);
+                    break;
+                }
+
+                default: {
+                    JOptionPane.showMessageDialog(null,
+                            "Jenis Dokumen tidak ditemukan: " + jenisSurat);
+                    break;
+                }
+            }
+        } catch (Exception ex) {
+            // Log sesuai kebutuhan aplikasi Anda
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + ex.getMessage());
+        } finally {
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    //TAMBAH 
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -5279,50 +5512,50 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     if(sukses==true){
                         Sequel.queryu("delete from tampjurnal");
                         if(ttlpendapatan>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }   
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                             
                         }
                         if(ttljmdokter>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Utang Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlkso>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                               
                         }
                         if(ttlmenejemen>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                                
                         }
                         if(ttljasasarana>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlbhp>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                            
                         }
@@ -5410,50 +5643,50 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     if(sukses==true){
                         Sequel.queryu("delete from tampjurnal");
                         if(ttlpendapatan>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }   
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                             
                         }
                         if(ttljmperawat>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Beban Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Beban Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }     
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Utang Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Utang Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlkso>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                               
                         }
                         if(ttlmenejemen>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                                
                         }
                         if(ttljasasarana>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlbhp>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                            
                         }
@@ -5545,58 +5778,58 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     if(sukses==true){
                         Sequel.queryu("delete from tampjurnal");
                         if(ttlpendapatan>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }   
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                             
                         }
                         if(ttljmdokter>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Utang Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttljmperawat>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Beban Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Beban Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }     
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Utang Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Utang Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlkso>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                               
                         }
                         if(ttlmenejemen>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                                
                         }
                         if(ttljasasarana>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                              
                         }
                         if(ttlbhp>0){
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }    
-                            if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                            if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                                 sukses=false;
                             }                            
                         }
@@ -10396,39 +10629,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
-    private void BtnResepIterasiBPJSActionPerformed(java.awt.event.ActionEvent evt) {
-        if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            TCari.requestFocus();
-        }else{   
-            if((Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0)&&(bypassranap==false)){
-                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
-            }else {
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                }else{ 
-                    if(kd_pj.equals(KodeBPJS)){
-                        String pilihaniterasi = (String)JOptionPane.showInputDialog(null,"Silahkan pilih iterasi..!!","Pilihan Resep Iterasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Iterasi 1x","Iterasi 2x","Batal"},"Iterasi 1x");
-                        switch (pilihaniterasi) {
-                            case "Iterasi 1x": 
-                                pilihiterasi="1. Iterasi 1x";
-                                inputResep();
-                                break;
-                            case "Iterasi 2x": 
-                                pilihiterasi="2. Iterasi 2x";
-                                inputResep();
-                                break;
-                            default:
-                                break;
-                        }
-                    }else{
-                        JOptionPane.showMessageDialog(rootPane,"Cara/Jenis Bayar pasien bukan BPJS ..!!");
-                    }
-                }                   
-            }            
-        }
-    }
-    
     /**
     * @param args the command line arguments
     */
@@ -10444,7 +10644,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             dialog.setVisible(true);
         });
     }
-
+    
+    //TAMBAH TOMBOL
+    private widget.Button btnCariData;
+    private widget.Label lblJnsSurat;
+    private widget.Button btnSurat;
+    private widget.ComboBox cmbJnsSurat;
+    
+    //TAMBAH
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button Btn5Soap;
     private widget.Button BtnAll;
@@ -10789,7 +10996,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanObservasiHemodialisa,BtnSkriningKesehatanGigiMulutDewasa,BtnSkriningRisikoKankerServiks,BtnCatatanCairanHemodialisa,BtnSkriningKesehatanGigiMulutLansia,BtnSkriningIndraPendengaran,
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi,
-                          BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS;   
+                          BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan;   
     private javax.swing.JPopupMenu PopupSOAP;
     private javax.swing.JMenuItem MnSOAPDokter,MnSOAPPetugas;
     
@@ -11098,20 +11305,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnHapus.setEnabled(akses.gettindakan_ralan());
         BtnEdit.setEnabled(akses.gettindakan_ralan());
         BtnPrint.setEnabled(akses.gettindakan_ralan());
-        BtnTambahTindakan.setEnabled(akses.gettarif_ralan());   
-        BtnTemplatePemeriksaan.setEnabled(akses.gettemplate_pemeriksaan()); 
+        BtnTambahTindakan.setEnabled(akses.gettarif_ralan());    
         BtnResepObat.setVisible(akses.getresep_dokter());
         BtnCopyResep.setVisible(akses.getresep_dokter());
+        BtnTemplatePemeriksaan.setEnabled(akses.gettemplate_pemeriksaan());
         if(akses.getresep_dokter()==true){
             tinggi=tinggi+48;
-        }
-        if(koneksiDB.AKTIFKANRESEPITERDOKTER().equals("yes")){
-            if(kd_pj.equals(KodeBPJS)){
-                BtnResepIterasiBPJS.setVisible(akses.getresep_dokter());
-                if(akses.getresep_dokter()==true){
-                    tinggi=tinggi+24;
-                }
-            }   
         }
         BtnObatBhp.setVisible(akses.getberi_obat());  
         BtnInputObat.setVisible(akses.getberi_obat()); 
@@ -12679,50 +12878,50 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(sukses==true){
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttlpendapatan>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                             
                 }
                 if(ttljmdokter>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Beban Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Utang Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                               
                 }
                 if(ttlkso>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttljasasarana>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }     
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttlbhp>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }      
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                           
                 }
                 if(ttlmenejemen>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                            
                 }
@@ -12777,50 +12976,50 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(sukses==true){
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttlpendapatan>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                             
                 }
                 if(ttljmperawat>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Beban Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Beban Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Utang Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Utang Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                             
                 }
                 if(ttlkso>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttljasasarana>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }     
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttlbhp>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }      
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                           
                 }
                 if(ttlmenejemen>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                            
                 }
@@ -12877,58 +13076,58 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(sukses==true){
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttlpendapatan>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getTindakan_Ralan()+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanralan.getTindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Inap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                             
                 }
                 if(ttljmdokter>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Beban Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"','Utang Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Dokter_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                               
                 }
                 if(ttljmperawat>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Beban Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Beban Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0'","debet=debet+'"+(ttljmperawat)+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"','Utang Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Medik_Paramedis_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Utang Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"'","kredit=kredit+'"+(ttljmperawat)+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                             
                 }
                 if(ttlkso>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getBeban_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanralan.getUtang_KSO_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttljasasarana>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }     
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Sarana_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttlbhp>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getHPP_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }      
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanralan.getPersediaan_BHP_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                           
                 }
                 if(ttlmenejemen>0){
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getBeban_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }       
-                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanralan.getUtang_Jasa_Menejemen_Tindakan_Ralan()+"'")==false){
+                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'")==false){
                         sukses=false;
                     }                            
                 }
@@ -12983,34 +13182,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     private void inputResep() {
-        if (resepobat == null || !resepobat.isDisplayable()) {
-            resepobat=new DlgPeresepanDokter(null,false);
-            resepobat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            resepobat.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    resepobat=null;
-                }
-            }); 
-
-            resepobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resepobat.setLocationRelativeTo(internalFrame1);
-        }
-        if (resepobat == null) return;
-        if (!resepobat.isVisible()) {
-            resepobat.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ralan");
-            resepobat.isCek();
-            resepobat.tampilobat();
-            if(!pilihiterasi.equals("")){
-                resepobat.pilihIterasi(pilihiterasi);
-            }
-        }
-
-        if (resepobat.isVisible()) {
-            resepobat.toFront();
-            return;
-        }
-        resepobat.setVisible(true); 
+        DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
+        resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        resep.setLocationRelativeTo(internalFrame1);
+        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ralan");
+        resep.isCek();
+        resep.tampilobat();
+        resep.setVisible(true);
     }
 
     private void inputKamar() {
@@ -13919,19 +14097,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningGiziKehamilan.setRoundRect(false);
         BtnSkriningGiziKehamilan.addActionListener(this::BtnSkriningGiziKehamilanActionPerformed);
         
-        BtnResepIterasiBPJS = new widget.Button();
-        BtnResepIterasiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
-        BtnResepIterasiBPJS.setText("Iterasi Resep BPJS");
-        BtnResepIterasiBPJS.setFocusPainted(false);
-        BtnResepIterasiBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); 
-        BtnResepIterasiBPJS.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnResepIterasiBPJS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnResepIterasiBPJS.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnResepIterasiBPJS.setName("BtnResepIterasiBPJS");
-        BtnResepIterasiBPJS.setPreferredSize(new java.awt.Dimension(190, 23));
-        BtnResepIterasiBPJS.setRoundRect(false);
-        BtnResepIterasiBPJS.addActionListener(this::BtnResepIterasiBPJSActionPerformed);
-        
         PopupSOAP = new javax.swing.JPopupMenu();
         PopupSOAP.setName("PopupSOAP");
         tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
@@ -13969,7 +14134,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         FormMenu.add(BtnRiwayat);
         FormMenu.add(BtnResepObat);
-        FormMenu.add(BtnResepIterasiBPJS);
         FormMenu.add(BtnCopyResep);
         FormMenu.add(BtnResepLuar);
         FormMenu.add(BtnInputObat);

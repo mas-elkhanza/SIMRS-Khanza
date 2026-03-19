@@ -718,14 +718,12 @@ public class MasterRencanaKeperawatanIGD extends javax.swing.JDialog {
                     "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah,"+
                     "master_rencana_keperawatan_igd.kode_rencana,master_rencana_keperawatan_igd.rencana_keperawatan from master_rencana_keperawatan_igd "+
                     "inner join master_masalah_keperawatan_igd on master_masalah_keperawatan_igd.kode_masalah=master_rencana_keperawatan_igd.kode_masalah "+
-                    (TCari.getText().trim().equals("")?"":"where master_rencana_keperawatan_igd.kode_rencana like ? or master_rencana_keperawatan_igd.rencana_keperawatan like ? or "+
-                    "master_masalah_keperawatan_igd.nama_masalah like ? ")+"order by master_rencana_keperawatan_igd.kode_rencana");
+                    "where master_rencana_keperawatan_igd.kode_rencana like ? or master_rencana_keperawatan_igd.rencana_keperawatan like ? or "+
+                    "master_masalah_keperawatan_igd.nama_masalah like ? order by master_rencana_keperawatan_igd.kode_rencana");
             try {
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText().trim()+"%");
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                }   
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});

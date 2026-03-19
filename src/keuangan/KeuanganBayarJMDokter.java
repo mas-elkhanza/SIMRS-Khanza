@@ -910,7 +910,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         } catch (Exception e) {
         }
-        
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
+                runBackground(() ->tampilAkunBayar2());
+            }else{
+                runBackground(() ->tampilAkunBayar());
+            }
+        } catch (Exception e) {
+        }
         try {
             ps=koneksi.prepareStatement(
                 "select set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Laborat_Ralan,"+
@@ -957,15 +964,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }  
         } catch (Exception e) {
             System.out.println(e);
-        }
-        
-        try {
-            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
-                runBackground(() ->tampilAkunBayar2());
-            }else{
-                runBackground(() ->tampilAkunBayar());
-            }
-        } catch (Exception e) {
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

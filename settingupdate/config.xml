@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>UPDATER</comment>
+ <entry key="URLSERVERUPDATE">http://192.168.0.100/dataupdate/update.zip</entry> <!--link Update -->
+    <!-- Update SIMRS-->
+</properties>

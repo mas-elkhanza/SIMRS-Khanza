@@ -27,7 +27,7 @@ public class WarnaTable5 extends JTextArea implements TableCellRenderer {
         this.setSelectedTextColor(new Color(255,0,0));
         this.setForeground(new Color(50,50,50));
         this.setMargin(new Insets(2, 3, 2, 2));
-        this.setFont(new java.awt.Font("Tahoma", 0, 11));
+        this.setFont(new java.awt.Font("Segoe UI", 0, 11));
         return this;
     }
 

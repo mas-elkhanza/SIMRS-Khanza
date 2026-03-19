@@ -817,7 +817,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnDocument.setBackground(new java.awt.Color(255, 255, 254));
-        MnDocument.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnDocument.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnDocument.setForeground(new java.awt.Color(50, 50, 50));
         MnDocument.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDocument.setText("Cetak Document");
@@ -833,7 +833,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.add(MnDocument);
 
         ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan.setText("Pengajuan SEP Backdate");
@@ -849,7 +849,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.add(ppPengajuan);
 
         ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan1.setText("Aproval SEP Backdate");
@@ -865,7 +865,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.add(ppPengajuan1);
 
         ppPengajuan2.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan2.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan2.setText("Pengajuan SEP Finger");
@@ -881,7 +881,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.add(ppPengajuan2);
 
         ppPengajuan3.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan3.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan3.setText("Aproval SEP Finger");
@@ -897,7 +897,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jPopupMenu1.add(ppPengajuan3);
 
         ppStatusFinger.setBackground(new java.awt.Color(255, 255, 254));
-        ppStatusFinger.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppStatusFinger.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppStatusFinger.setForeground(new java.awt.Color(50, 50, 50));
         ppStatusFinger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStatusFinger.setText("Status Finger");
@@ -990,7 +990,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan RS Berdasarkan Nomor Kartu ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan RS Berdasarkan Nomor Kartu ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1171,7 +1171,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
         FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
         FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 485));
@@ -1617,7 +1617,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         ChkRM.setBorder(null);
         ChkRM.setSelected(true);
-        ChkRM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkRM.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         ChkRM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkRM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkRM.setName("ChkRM"); // NOI18N
@@ -2087,7 +2087,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         FormInput.add(FormKelengkapanPasien);
 
-        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
         FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 337));

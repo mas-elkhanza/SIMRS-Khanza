@@ -20,24 +20,20 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import inventory.riwayatobat;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +44,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import simrskhanza.DlgCariBangsal;
+import widget.Button;
 
 /**
  *
@@ -79,10 +76,6 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
     private String[] arrSplit;
     private boolean sukses=true;
     private ApiApotekBPJS api = new ApiApotekBPJS();
-    private ApotekBPJSDaftarResepObat rekapdaftarobat;
-    private ApotekBPJSPermintaanIterResep resepiter;
-    private File file;
-    private FileWriter fileWriter;
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -397,7 +390,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Kd2 = new widget.TextBox();
         TNoRM = new widget.TextBox();
+        Tanggal = new widget.TextBox();
         KdPj = new widget.TextBox();
         kdgudang = new widget.TextBox();
         NmPasien = new widget.TextBox();
@@ -455,8 +450,19 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         Scroll2 = new widget.ScrollPane();
         tbDetailObatRacikan = new widget.Table();
 
+        Kd2.setHighlighter(null);
+        Kd2.setName("Kd2"); // NOI18N
+        Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kd2KeyPressed(evt);
+            }
+        });
+
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
+
+        Tanggal.setHighlighter(null);
+        Tanggal.setName("Tanggal"); // NOI18N
 
         KdPj.setHighlighter(null);
         KdPj.setName("KdPj"); // NOI18N
@@ -477,7 +483,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat Apotek BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat Apotek BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -493,7 +499,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
-        LTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTotal.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         LTotal.setName("LTotal"); // NOI18N
         LTotal.setPreferredSize(new java.awt.Dimension(121, 23));
         panelisi3.add(LTotal);
@@ -505,7 +511,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LPpn.setText("0");
-        LPpn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LPpn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         LPpn.setName("LPpn"); // NOI18N
         LPpn.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi3.add(LPpn);
@@ -517,7 +523,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         LTotalTagihan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotalTagihan.setText("0");
-        LTotalTagihan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTotalTagihan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         LTotalTagihan.setName("LTotalTagihan"); // NOI18N
         LTotalTagihan.setPreferredSize(new java.awt.Dimension(200, 23));
         panelisi3.add(LTotalTagihan);
@@ -642,7 +648,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
 
         ChkJln.setBorder(null);
         ChkJln.setSelected(true);
-        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkJln.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkJln.setName("ChkJln"); // NOI18N
@@ -706,7 +712,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         FormInput.add(NoResep);
         NoResep.setBounds(300, 70, 138, 23);
 
-        Iterasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Iterasi.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         Iterasi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0. Tanpa Iterasi", "1. Iterasi 1x", "2. Iterasi 2x" }));
         Iterasi.setName("Iterasi"); // NOI18N
         FormInput.add(Iterasi);
@@ -717,7 +723,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         FormInput.add(jLabel16);
         jLabel16.setBounds(330, 130, 52, 23);
 
-        JnsObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        JnsObat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         JnsObat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Obat PRB", "2. Obat Kronis Belum Stabil", "3. Obat Kemoterapi" }));
         JnsObat.setSelectedIndex(1);
         JnsObat.setName("JnsObat"); // NOI18N
@@ -809,7 +815,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -975,6 +981,10 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
+    private void Kd2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kd2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kd2KeyPressed
+
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -1128,7 +1138,6 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         }  
                                     }
                                 }
-                                Sequel.meghapus2("antrianiterasi","no_resep",NoResep.getText());
                             }else{
                                 sukses=false;
                                 JOptionPane.showMessageDialog(rootPane,"Gagal menyimpan data resep apotek BPJS ke server lokal..!!!!!");
@@ -1221,170 +1230,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();
-                
                 if(sukses==true){
-                    if(JADIKANPIUTANGAPOTEKBPJS.equals("yes")){
-                        reply = JOptionPane.showConfirmDialog(rootPane,"Apakah mau cetak etiket obat...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                        if (reply == JOptionPane.YES_OPTION) {
-                            Map<String, Object> param = new HashMap<>();  
-                            param.put("namars",akses.getnamars());
-                            param.put("alamatrs",akses.getalamatrs());
-                            param.put("kotars",akses.getkabupatenrs());
-                            param.put("propinsirs",akses.getpropinsirs());
-                            param.put("kontakrs",akses.getkontakrs());
-                            param.put("emailrs",akses.getemailrs());   
-                            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                            try {
-                                String pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3"},"Cetak Aturan Pakai Model 1");
-                                switch (pilihanetiket) {
-                                    case "Cetak Aturan Pakai Model 1": 
-                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                        if(Sequel.cariInteger(
-                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
-                                            Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
-                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
-                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
-                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
-                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
-                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
-                                        }            
-                                        this.setCursor(Cursor.getDefaultCursor());
-                                        break;
-                                    case "Cetak Aturan Pakai Model 2": 
-                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                        if(Sequel.cariInteger(
-                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
-                                            Valid.MyReportqry("rptItemResepPiutang2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
-                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
-                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
-                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
-                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                                "inner join jenis on databarang.kdjns=jenis.kdjns "+
-                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
-                                        }               
-                                        this.setCursor(Cursor.getDefaultCursor());
-                                        break;
-                                    case "Cetak Aturan Pakai Model 3": 
-                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                        if(Sequel.cariInteger(
-                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
-                                            Valid.MyReportqry("rptItemResepPiutang3.jasper","report","::[ Aturan Pakai Obat ]::",
-                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
-                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
-                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
-                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
-                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
-                                        }              
-                                        this.setCursor(Cursor.getDefaultCursor());
-                                        break;
-                                    default:
-                                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                        if(Sequel.cariInteger(
-                                                "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",nopiutang)>0){
-                                            Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
-                                                "select piutang.nota_piutang,piutang.tgl_piutang, "+
-                                                "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
-                                                "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
-                                                "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                                "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
-                                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                                "where piutang.nota_piutang='"+nopiutang+"' and detailpiutang.aturan_pakai<>''",param);
-                                        }            
-                                        this.setCursor(Cursor.getDefaultCursor());
-                                        break;
-                                }
-                            } catch (Exception e) {
-                            }
-                        }
-                    }
-                    
-                    if(Iterasi.getSelectedIndex()>0){
-                        JOptionPane.showMessageDialog(null,"Silahkan melanjutkan untuk menyimpan permintaan resep iterasi..!!");
-                        try {
-                            file=new File("./cache/resepnonracikaniter.iyem");
-                            file.createNewFile();
-                            fileWriter = new FileWriter(file);
-                            StringBuilder iyembuilder = new StringBuilder();
-                            for(i=0;i<tbObat.getRowCount();i++){
-                                iyembuilder.append("{\"Jml\":\"").append(tbObat.getValueAt(i,0).toString()).append("\",\"KodeBarang\":\"").append(tbObat.getValueAt(i,11).toString()).append("\",\"NamaBarang\":\"").append(tbObat.getValueAt(i,2).toString()).append("\",\"AturanPakai\":\"").append(tbObat.getValueAt(i,3).toString()).append("x").append(tbObat.getValueAt(i,4).toString()).append("\"},");
-                            }
-
-                            if (iyembuilder.length() > 0) {
-                                iyembuilder.setLength(iyembuilder.length() - 1);
-                                fileWriter.write("{\"resepnonracikaniter\":["+iyembuilder+"]}");
-                                fileWriter.flush();
-                            }
-
-                            fileWriter.close();
-                            iyembuilder=null;
-                            
-                            file=new File("./cache/resepracikaniter.iyem");
-                            file.createNewFile();
-                            fileWriter = new FileWriter(file);
-                            iyembuilder = new StringBuilder();
-                            for(i=0;i<tbObatRacikan.getRowCount();i++){
-                                iyembuilder.append("{\"No\":\"").append(tbObatRacikan.getValueAt(i,0).toString()).append("\",\"NamaRacikan\":\"").append(tbObatRacikan.getValueAt(i,1).toString()).append("\",\"KodeRacik\":\"").append(tbObatRacikan.getValueAt(i,2).toString()).append("\",\"MetodeRacik\":\"").append(tbObatRacikan.getValueAt(i,3).toString()).append("\",\"JmlRacik\":\"").append(tbObatRacikan.getValueAt(i,4).toString()).append("\",\"AturanPakai\":\"").append(tbObatRacikan.getValueAt(i,5).toString()).append("\",\"Keterangan\":\"").append(tbObatRacikan.getValueAt(i,6).toString()).append("\"},");
-                            }
-
-                            if (iyembuilder.length() > 0) {
-                                iyembuilder.setLength(iyembuilder.length() - 1);
-                                fileWriter.write("{\"resepracikaniter\":["+iyembuilder+"]}");
-                                fileWriter.flush();
-                            }
-
-                            fileWriter.close();
-                            iyembuilder=null;
-                            
-                            file=new File("./cache/resepdetailracikaniter.iyem");
-                            file.createNewFile();
-                            fileWriter = new FileWriter(file);
-                            iyembuilder = new StringBuilder();
-                            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
-                                iyembuilder.append("{\"No\":\"").append(tbDetailObatRacikan.getValueAt(i,0).toString()).append("\",\"Jml\":\"").append(tbDetailObatRacikan.getValueAt(i,1).toString()).append("\",\"KodeBarang\":\"").append(tbDetailObatRacikan.getValueAt(i,11).toString()).append("\",\"NamaBarang\":\"").append(tbDetailObatRacikan.getValueAt(i,3).toString()).append("\"},");
-                            }
-
-                            if (iyembuilder.length() > 0) {
-                                iyembuilder.setLength(iyembuilder.length() - 1);
-                                fileWriter.write("{\"resepdetailracikaniter\":["+iyembuilder+"]}");
-                                fileWriter.flush();
-                            }
-
-                            fileWriter.close();
-                            iyembuilder=null;
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi : "+e);
-                        }
-                        
-                        if (resepiter == null || !resepiter.isDisplayable()) {
-                            resepiter=new ApotekBPJSPermintaanIterResep(null,false);
-                            resepiter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                            resepiter.addWindowListener(new WindowAdapter() {
-                                @Override
-                                public void windowClosed(WindowEvent e) {
-                                    resepiter=null;
-                                }
-                            }); 
-
-                            resepiter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            resepiter.setLocationRelativeTo(internalFrame1);
-                        }
-                        if (resepiter == null) return;
-                        if (!resepiter.isVisible()) {
-                            resepiter.setNoRm(TNoRW.getText(),TNoRM.getText(),NmPasien.getText(),DTPTgl.getDate(),KdDPJP.getText(),Iterasi.getSelectedItem().toString(),NoResep.getText());
-                        }
-                        
-                        if (resepiter.isVisible()) {
-                            resepiter.toFront();
-                            return;
-                        }
-                        resepiter.setVisible(true);
-                    }
                     dispose();
                 }
             } 
@@ -1507,43 +1353,26 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_tbDetailObatRacikanMouseClicked
 
     private void CariDataObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CariDataObatActionPerformed
-        if (rekapdaftarobat == null || !rekapdaftarobat.isDisplayable()) {
-            rekapdaftarobat=new ApotekBPJSDaftarResepObat(null,false);
-            rekapdaftarobat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            rekapdaftarobat.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    rekapdaftarobat=null;
-                }
-            }); 
-
-            rekapdaftarobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            rekapdaftarobat.setLocationRelativeTo(internalFrame1);
-        }
-        if (rekapdaftarobat == null) return;
-        if (rekapdaftarobat.isVisible()) {
-            rekapdaftarobat.toFront();
-            return;
-        }
-        rekapdaftarobat.setVisible(true);
+        ApotekBPJSDaftarResepObat daftar=new ApotekBPJSDaftarResepObat(null,true);
+        daftar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        daftar.setLocationRelativeTo(internalFrame1);
+        daftar.setVisible(true);
     }//GEN-LAST:event_CariDataObatActionPerformed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if(tbObat.getSelectedRow()!=-1){
-                int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbObat.getValueAt(tbObat.getSelectedRow(),2)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    tabModeobat.removeRow(tbObat.getSelectedRow());
-                }
+        if (tbObat.getSelectedRow()!= -1) {
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbObat.getValueAt(tbObat.getSelectedRow(),2)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                tabModeobat.removeRow(tbObat.getSelectedRow());
             }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tbDetailObatRacikan.getSelectedRow()!=-1){
-                int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(), 3)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    tabModeDetailObatRacikan.removeRow(tbDetailObatRacikan.getSelectedRow());
-                }
+        }
+        
+        if (tbDetailObatRacikan.getSelectedRow()!= -1) {
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Yakin mau dihapus obat "+tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(), 3)+"...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                tabModeDetailObatRacikan.removeRow(tbDetailObatRacikan.getSelectedRow());
             }
-        }   
+        }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1628,6 +1457,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.PanelBiasa FormInput;
     private javax.swing.JComboBox<String> Iterasi;
     private javax.swing.JComboBox<String> JnsObat;
+    private widget.TextBox Kd2;
     private widget.TextBox KdDPJP;
     private widget.TextBox KdPj;
     private widget.TextBox KdPoli;
@@ -1651,6 +1481,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox TNoRW;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
+    private widget.TextBox Tanggal;
     private widget.TextBox TglResep;
     private widget.TextBox TglSEP;
     private widget.ComboBox cmbDtk;
@@ -1676,6 +1507,22 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbObat;
     private widget.Table tbObatRacikan;
     // End of variables declaration//GEN-END:variables
+    
+    public void emptTeksobat() {
+        Kd2.setText(""); 
+    }
+
+    public JTextField getTextField(){
+        return Kd2;
+    }
+
+    public JTable getTable(){
+        return tbObat;
+    }
+    
+    public Button getButton(){
+        return BtnSimpan;
+    }
     
     public void setNoRm(String norwt,String norm,String nama,String tanggal,String jam,String resep,String no_sep,String no_kartu,String kdpolitujuan,String nmpolitujuan,String kddpjp,String nmdpdjp,String tglsep) {  
         TNoRW.setText(norwt);
@@ -1707,30 +1554,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 nmgudang.setText(Sequel.CariBangsal(kdgudang.getText()));
             }
         }
-           
-        try {
-            psstok=koneksi.prepareStatement(
-                "select antrianiterasi.status from antrianiterasi where antrianiterasi.no_resep=?"
-            );
-            try{
-                psstok.setString(1,resep);
-                rsstok=psstok.executeQuery();
-                if(rsstok.next()){
-                    Iterasi.setSelectedItem(rsstok.getString("status"));
-                }  
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
-            }finally{
-                if(rsstok != null){
-                    rsstok.close();
-                }
-                if(psstok != null){
-                    psstok.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        }
+            
         
         try {
             Valid.tabelKosong(tabModeobat);

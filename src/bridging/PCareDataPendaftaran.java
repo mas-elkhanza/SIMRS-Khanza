@@ -688,7 +688,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang.setText("Label & Barcode");
-        MnGelang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnGelang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang.setName("MnGelang"); // NOI18N
@@ -696,7 +696,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.setRequestFocusEnabled(false);
 
         MnGelang1.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang1.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang1.setText("Gelang Pasien 1");
@@ -712,7 +712,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang1);
 
         MnGelang2.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang2.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang2.setText("Gelang Pasien 2");
@@ -728,7 +728,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang2);
 
         MnGelang3.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang3.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang3.setText("Gelang Pasien 3");
@@ -744,7 +744,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang3);
 
         MnGelang4.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang4.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang4.setText("Gelang Pasien 4");
@@ -760,7 +760,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang4);
 
         MnGelang5.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang5.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang5.setText("Gelang Pasien 5");
@@ -776,7 +776,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang5);
 
         MnGelang6.setBackground(new java.awt.Color(255, 255, 254));
-        MnGelang6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnGelang6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnGelang6.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang6.setText("Gelang Pasien 6");
@@ -792,7 +792,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnGelang6);
 
         MnLabelTracker.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelTracker.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLabelTracker.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnLabelTracker.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker.setText("Label Tracker 1");
@@ -808,7 +808,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnLabelTracker);
 
         MnLabelTracker1.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelTracker1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLabelTracker1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnLabelTracker1.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker1.setText("Label Tracker 2");
@@ -824,7 +824,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnLabelTracker1);
 
         MnLabelTracker2.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelTracker2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLabelTracker2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnLabelTracker2.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker2.setText("Label Tracker 3");
@@ -840,7 +840,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnLabelTracker2);
 
         MnLabelTracker3.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelTracker3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLabelTracker3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnLabelTracker3.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker3.setText("Label Tracker 4");
@@ -856,7 +856,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnLabelTracker3);
 
         MnBarcode1.setBackground(new java.awt.Color(255, 255, 254));
-        MnBarcode1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBarcode1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnBarcode1.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcode1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcode1.setText("Barcode Perawatan 1");
@@ -872,7 +872,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnBarcode1);
 
         MnBarcode2.setBackground(new java.awt.Color(255, 255, 254));
-        MnBarcode2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBarcode2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnBarcode2.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcode2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcode2.setText("Barcode Perawatan 2");
@@ -888,7 +888,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.add(MnBarcode2);
 
         MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 254));
-        MnBarcodeRM9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBarcodeRM9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnBarcodeRM9.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcodeRM9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM9.setMnemonic('L');
@@ -906,7 +906,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(MnGelang);
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 254));
-        MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPemberianObat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnPemberianObat.setForeground(new java.awt.Color(50, 50, 50));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat.setText("Pemberian Obat");
@@ -922,7 +922,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(MnPemberianObat);
 
         MnPemberianObat1.setBackground(new java.awt.Color(255, 255, 254));
-        MnPemberianObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPemberianObat1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnPemberianObat1.setForeground(new java.awt.Color(50, 50, 50));
         MnPemberianObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat1.setText("Data Pemberian Obat");
@@ -938,7 +938,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(MnPemberianObat1);
 
         MnTIndakan.setBackground(new java.awt.Color(255, 255, 254));
-        MnTIndakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTIndakan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnTIndakan.setForeground(new java.awt.Color(50, 50, 50));
         MnTIndakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnTIndakan.setText("Pemberian Tindakan");
@@ -954,7 +954,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(MnTIndakan);
 
         MnTIndakan1.setBackground(new java.awt.Color(255, 255, 254));
-        MnTIndakan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTIndakan1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnTIndakan1.setForeground(new java.awt.Color(50, 50, 50));
         MnTIndakan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnTIndakan1.setText("Data Pemberian Tindakan");
@@ -970,7 +970,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(MnTIndakan1);
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
-        ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRiwayat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
@@ -986,7 +986,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(ppRiwayat);
 
         ppBuktiKunjungan.setBackground(new java.awt.Color(255, 255, 254));
-        ppBuktiKunjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBuktiKunjungan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppBuktiKunjungan.setForeground(new java.awt.Color(50, 50, 50));
         ppBuktiKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBuktiKunjungan.setText("Bukti Kunjungan");
@@ -1002,7 +1002,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.add(ppBuktiKunjungan);
 
         ppKirimTindakanObat.setBackground(new java.awt.Color(255, 255, 254));
-        ppKirimTindakanObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppKirimTindakanObat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppKirimTindakanObat.setForeground(new java.awt.Color(50, 50, 50));
         ppKirimTindakanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppKirimTindakanObat.setText("Kirimkan Mapping Tindakan & Obat");
@@ -1028,7 +1028,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu2.setName("jPopupMenu2"); // NOI18N
 
         ppFilterTerkirim.setBackground(new java.awt.Color(255, 255, 254));
-        ppFilterTerkirim.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppFilterTerkirim.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppFilterTerkirim.setForeground(new java.awt.Color(50, 50, 50));
         ppFilterTerkirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppFilterTerkirim.setText("Filter Data Terkirim");
@@ -1044,7 +1044,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu2.add(ppFilterTerkirim);
 
         ppFilterGagal.setBackground(new java.awt.Color(255, 255, 254));
-        ppFilterGagal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppFilterGagal.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppFilterGagal.setForeground(new java.awt.Color(50, 50, 50));
         ppFilterGagal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppFilterGagal.setText("Filter Data Gagal Kirim");
@@ -1060,7 +1060,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu2.add(ppFilterGagal);
 
         ppSinkronGagal.setBackground(new java.awt.Color(255, 255, 254));
-        ppSinkronGagal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSinkronGagal.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSinkronGagal.setForeground(new java.awt.Color(50, 50, 50));
         ppSinkronGagal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSinkronGagal.setText("Sinkronisasi Gagal Kirim");
@@ -1076,7 +1076,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu2.add(ppSinkronGagal);
 
         ppJadikanKunjungan.setBackground(new java.awt.Color(255, 255, 254));
-        ppJadikanKunjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppJadikanKunjungan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppJadikanKunjungan.setForeground(new java.awt.Color(50, 50, 50));
         ppJadikanKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppJadikanKunjungan.setText("Jadikan Kunjungan PCare");
@@ -1094,7 +1094,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu3.setName("jPopupMenu3"); // NOI18N
 
         ppRujukanPCare.setBackground(new java.awt.Color(255, 255, 254));
-        ppRujukanPCare.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRujukanPCare.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppRujukanPCare.setForeground(new java.awt.Color(50, 50, 50));
         ppRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRujukanPCare.setText("Cetak Rujukan Spesialis PCare");
@@ -1133,14 +1133,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

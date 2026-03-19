@@ -12,6 +12,7 @@
 
 package inventory;
 
+import fungsi.WarnaTabelSatusehat;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -176,7 +177,7 @@ public class DlgBarang extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());   
+        tbObat.setDefaultRenderer(Object.class, new WarnaTabelSatusehat(koneksi));   
         
         Kd.setDocument(new batasInput((byte) 15).getKata(Kd));
         Nm.setDocument(new batasInput((byte) 80).getKata(Nm));

@@ -57,8 +57,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,pssoap;
+    private ResultSet rs,rssoap;
     private int i=0;    
     private DlgCariDokter dokter;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -286,6 +286,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         BtnDokter4 = new widget.Button();
         BtnDokter5 = new widget.Button();
         BtnDokter6 = new widget.Button();
+        btnCariData = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -544,7 +545,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -558,7 +559,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1166,6 +1167,18 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         });
         FormInput.add(BtnDokter6);
         BtnDokter6.setBounds(212, 153, 28, 23);
+
+        btnCariData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        btnCariData.setText("Cari");
+        btnCariData.setName("btnCariData"); // NOI18N
+        btnCariData.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnCariData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariDataActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnCariData);
+        btnCariData.setBounds(810, 10, 80, 30);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2037,6 +2050,62 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnCariDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDataActionPerformed
+        if (TNoRw.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "No Rawat masih kosong...!!!");
+        } else {
+            Keluhan.setText(
+                    Sequel.cariIsi(
+                            "SELECT IFNULL(GROUP_CONCAT("
+                            + "CONCAT_WS(' ',pemeriksaan_ralan.tgl_perawatan,"
+                            + "pemeriksaan_ralan.jam_rawat,'-',pemeriksaan_ralan.keluhan) "
+                            + "ORDER BY pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat "
+                            + "SEPARATOR '\\n'),'') "
+                            + "FROM pemeriksaan_ralan "
+                            + "WHERE pemeriksaan_ralan.no_rawat=?",
+                            TNoRw.getText()
+                    )
+            );
+        
+            HasilLaborat.setText(
+                    Sequel.cariIsi(
+                            "SELECT IFNULL(GROUP_CONCAT(jns_perawatan_lab.nm_perawatan,' - ',"
+                            + "template_laboratorium.Pemeriksaan,' : ',detail_periksa_lab.nilai "
+                            + "ORDER BY template_laboratorium.Pemeriksaan SEPARATOR '\\n'),'') "
+                            + "FROM detail_periksa_lab "
+                            + "INNER JOIN template_laboratorium "
+                            + "ON detail_periksa_lab.id_template=template_laboratorium.id_template "
+                            + "INNER JOIN jns_perawatan_lab "
+                            + "ON detail_periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "
+                            + "WHERE detail_periksa_lab.no_rawat=?",
+                            TNoRw.getText()
+                    )
+            );
+            Obat2an.setText(
+                    Sequel.cariIsi(
+                            "SELECT IFNULL(GROUP_CONCAT("
+                            + "CONCAT_WS(' ',detail_pemberian_obat.tgl_perawatan,"
+                            + "detail_pemberian_obat.jam,'-',databarang.nama_brng,"
+                            + "detail_pemberian_obat.jml,databarang.kode_sat) "
+                            + "ORDER BY detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam "
+                            + "SEPARATOR '\\n'),'') "
+                            + "FROM detail_pemberian_obat "
+                            + "INNER JOIN databarang "
+                            + "ON detail_pemberian_obat.kode_brng=databarang.kode_brng "
+                            + "WHERE detail_pemberian_obat.no_rawat=?",
+                            TNoRw.getText()
+                    )
+            );
+           
+            
+        }
+
+        // ================= fallback SOAP =================
+        if (Sequel.cariInteger("select count(no_rawat) from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()) > 0) {
+            DataSOAP();
+        }
+    }//GEN-LAST:event_btnCariDataActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2111,6 +2180,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.TextBox Tanggal;
+    private widget.Button btnCariData;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -2536,5 +2606,40 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     public void dispose() {
         executor.shutdownNow();
         super.dispose();
+    }
+    private void DataSOAP() {
+        try {
+            pssoap = koneksi.prepareStatement(
+                    "select pemeriksaan_ralan.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.spo2,"
+                    + "pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.lingkar_perut,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip "
+                    + "from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? and nip=?");
+            try {
+                pssoap.setString(1, TNoRw.getText());
+                pssoap.setString(2, KdDokter.getText());
+                rssoap = pssoap.executeQuery();
+                if (!rssoap.isBeforeFirst()) { // Jika tidak ada baris hasil
+                    JOptionPane.showMessageDialog(null, "Tidak Ada Data SOAP Dokter", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    while (rssoap.next()) {
+                        Keluhan.setText(rssoap.getString("keluhan"));
+                        JalannyaPenyakit.setText("Tensi:" + " " + rssoap.getString("tensi") + "," + " Nadi:" + " " + rssoap.getString("nadi") + "," + " Respirasi:" + " " + rssoap.getString("respirasi") + "," + " Suhu:" + "  " + rssoap.getString("suhu_tubuh") + "\n" + rssoap.getString("pemeriksaan"));
+                        Obat2an.setText(rssoap.getString("rtl"));
+                        DiagnosaUtama.setText(rssoap.getString("penilaian"));
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : " + e);
+            } finally {
+                if (rssoap != null) {
+                    rssoap.close();
+                }
+                if (pssoap != null) {
+                    pssoap.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+
     }
 }

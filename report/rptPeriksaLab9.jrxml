@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="522" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20" uuid="e5988259-46a3-48cf-8246-17dd441bdad7">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -602,9 +602,9 @@
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="128">
+		<band height="153">
 			<staticText>
-				<reportElement mode="Transparent" x="3" y="40" width="138" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="51fc6db9-e916-4f67-aa6a-2aa8f7fa0e97"/>
+				<reportElement mode="Transparent" x="3" y="60" width="138" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="51fc6db9-e916-4f67-aa6a-2aa8f7fa0e97"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -612,7 +612,7 @@
 				<text><![CDATA[Pemeriksa,]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="3" y="110" width="138" height="15" uuid="84ab6396-bc66-465b-8fe0-1ae317342d17"/>
+				<reportElement x="3" y="133" width="138" height="15" uuid="84ab6396-bc66-465b-8fe0-1ae317342d17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -664,7 +664,7 @@
 				<text><![CDATA[Kesan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="293" y="52" width="221" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="700525a2-1257-4ff9-a1aa-238d258fa2eb"/>
+				<reportElement mode="Transparent" x="293" y="60" width="221" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="700525a2-1257-4ff9-a1aa-238d258fa2eb"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -700,21 +700,29 @@
 				</graphicElement>
 			</line>
 			<componentElement>
-				<reportElement x="299" y="69" width="210" height="57" isRemoveLineWhenBlank="true" uuid="60494034-794f-4b76-af73-935218fe96e1">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<reportElement x="330" y="79" width="137" height="50" isRemoveLineWhenBlank="true" uuid="60494034-794f-4b76-af73-935218fe96e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
-				<reportElement x="3" y="57" width="139" height="52" isRemoveLineWhenBlank="true" uuid="acc7ca59-4c3f-4b45-b130-fa70f9b47ee5">
+				<reportElement x="3" y="79" width="138" height="51" isRemoveLineWhenBlank="true" uuid="acc7ca59-4c3f-4b45-b130-fa70f9b47ee5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger2}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement x="335" y="133" width="136" height="15" uuid="d19f1346-fe40-46fa-aade-48d011e7b231"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{penjab}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

@@ -10,7 +10,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import fungsi.akuntindakanradiologi;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -19,16 +18,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
@@ -42,6 +52,7 @@ import kepegawaian.DlgCariDokter;
 import laporan.DlgBerkasRawat;
 import rekammedis.MasterCariTemplateHasilRadiologi;
 import rekammedis.RMRiwayatPerawatan;
+import wa.GoWAService;
 
 public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeDicom;
@@ -58,12 +69,19 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private PreparedStatement ps,ps2,ps3,ps4,ps5;
-    private ResultSet rs,rs2,rs3,rs5;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening;
+    private ResultSet rs,rs2,rs3,rs5,rsrekening;
     private String kamar,namakamar,pemeriksaan="",pilihan="",status="",finger="",statushasil="";
     private double ttl=0,item=0;
     private double ttljmdokter=0,ttljmpetugas=0,ttlkso=0,ttlpendapatan=0,ttlbhp=0,ttljasasarana=0,ttljmperujuk=0,ttlmenejemen=0;;
-    private String kdpetugas="",kdpenjab="";
+    private String kdpetugas="",kdpenjab="",Suspen_Piutang_Radiologi_Ranap="",Radiologi_Ranap="",Beban_Jasa_Medik_Dokter_Radiologi_Ranap="",Utang_Jasa_Medik_Dokter_Radiologi_Ranap="",
+            Beban_Jasa_Medik_Petugas_Radiologi_Ranap="",Utang_Jasa_Medik_Petugas_Radiologi_Ranap="",Beban_Kso_Radiologi_Ranap="",Utang_Kso_Radiologi_Ranap="",
+            HPP_Persediaan_Radiologi_Rawat_Inap="",Persediaan_BHP_Radiologi_Rawat_Inap="",Beban_Jasa_Sarana_Radiologi_Ranap="",Utang_Jasa_Sarana_Radiologi_Ranap="",
+            Beban_Jasa_Perujuk_Radiologi_Ranap="",Utang_Jasa_Perujuk_Radiologi_Ranap="",Beban_Jasa_Menejemen_Radiologi_Ranap="",Utang_Jasa_Menejemen_Radiologi_Ranap="",
+            Suspen_Piutang_Radiologi_Ralan="",Radiologi_Ralan="",Beban_Jasa_Medik_Dokter_Radiologi_Ralan="",Utang_Jasa_Medik_Dokter_Radiologi_Ralan="",
+            Beban_Jasa_Medik_Petugas_Radiologi_Ralan="",Utang_Jasa_Medik_Petugas_Radiologi_Ralan="",Beban_Kso_Radiologi_Ralan="",Utang_Kso_Radiologi_Ralan="",
+            HPP_Persediaan_Radiologi_Rawat_Jalan="",Persediaan_BHP_Radiologi_Rawat_Jalan="",Beban_Jasa_Sarana_Radiologi_Ralan="",Utang_Jasa_Sarana_Radiologi_Ralan="",
+            Beban_Jasa_Perujuk_Radiologi_Ralan="",Utang_Jasa_Perujuk_Radiologi_Ralan="",Beban_Jasa_Menejemen_Radiologi_Ralan="",Utang_Jasa_Menejemen_Radiologi_Ralan="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -233,6 +251,8 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         FormPass2 = new widget.PanelBiasa();
         btnAmbilPhoto = new widget.Button();
         BtnRefreshPhoto = new widget.Button();
+        BtnKirimGOWa = new widget.Button();
+        BtnKirimGOWAPT = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
         FormHasilRadiologi = new widget.PanelBiasa();
@@ -872,6 +892,32 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         });
         FormPass2.add(BtnRefreshPhoto);
 
+        BtnKirimGOWa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/16whatsapp.png"))); // NOI18N
+        BtnKirimGOWa.setMnemonic('K');
+        BtnKirimGOWa.setText("Kirim WA");
+        BtnKirimGOWa.setToolTipText("Alt+K");
+        BtnKirimGOWa.setName("BtnKirimGOWa"); // NOI18N
+        BtnKirimGOWa.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKirimGOWa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimGOWaActionPerformed(evt);
+            }
+        });
+        FormPass2.add(BtnKirimGOWa);
+
+        BtnKirimGOWAPT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/16whatsapp.png"))); // NOI18N
+        BtnKirimGOWAPT.setMnemonic('K');
+        BtnKirimGOWAPT.setText("Kirim PT");
+        BtnKirimGOWAPT.setToolTipText("Alt+K");
+        BtnKirimGOWAPT.setName("BtnKirimGOWAPT"); // NOI18N
+        BtnKirimGOWAPT.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKirimGOWAPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimGOWAPTActionPerformed(evt);
+            }
+        });
+        FormPass2.add(BtnKirimGOWAPT);
+
         FormPhoto.add(FormPass2, java.awt.BorderLayout.PAGE_END);
 
         Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -1384,66 +1430,66 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             if(status.equals("Ranap")){
                                 Sequel.queryu("delete from tampjurnal");    
                                 if(ttlpendapatan>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ranap()+"','Suspen Piutang Radiologi Ranap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Radiologi_Ranap+"','Suspen Piutang Radiologi Ranap','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }     
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getRadiologi_Ranap()+"','Pendapatan Radiologi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanradiologi.getRadiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Radiologi_Ranap+"','Pendapatan Radiologi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                              
                                 }
                                 if(ttljmdokter>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Medik_Dokter_Radiologi_Ranap()+"','Beban Jasa Medik Dokter Radiologi Ranap','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Medik_Dokter_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"','Beban Jasa Medik Dokter Radiologi Ranap','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }    
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Medik_Dokter_Radiologi_Ranap()+"','Utang Jasa Medik Dokter Radiologi Ranap','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Medik_Dokter_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"','Utang Jasa Medik Dokter Radiologi Ranap','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                           
                                 }
                                 if(ttljmpetugas>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Medik_Petugas_Radiologi_Ranap()+"','Beban Jasa Medik Petugas Radiologi Ranap','0','"+ttljmpetugas+"'","kredit=kredit+'"+(ttljmpetugas)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Medik_Petugas_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Petugas_Radiologi_Ranap+"','Beban Jasa Medik Petugas Radiologi Ranap','0','"+ttljmpetugas+"'","kredit=kredit+'"+(ttljmpetugas)+"'","kd_rek='"+Beban_Jasa_Medik_Petugas_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }    
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Medik_Petugas_Radiologi_Ranap()+"','Utang Jasa Medik Petugas Radiologi Ranap','"+ttljmpetugas+"','0'","debet=debet+'"+(ttljmpetugas)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Medik_Petugas_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Petugas_Radiologi_Ranap+"','Utang Jasa Medik Petugas Radiologi Ranap','"+ttljmpetugas+"','0'","debet=debet+'"+(ttljmpetugas)+"'","kd_rek='"+Utang_Jasa_Medik_Petugas_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                             
                                 }
                                 if(ttlbhp>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getHPP_Persediaan_Radiologi_Rawat_Inap()+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanradiologi.getHPP_Persediaan_Radiologi_Rawat_Inap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+HPP_Persediaan_Radiologi_Rawat_Inap+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+HPP_Persediaan_Radiologi_Rawat_Inap+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getPersediaan_BHP_Radiologi_Rawat_Inap()+"','Persediaan BHP Radiologi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanradiologi.getPersediaan_BHP_Radiologi_Rawat_Inap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Radiologi_Rawat_Inap+"','Persediaan BHP Radiologi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Radiologi_Rawat_Inap+"'")==false){
                                         sukses=false;
                                     }                                
                                 }
                                 if(ttlkso>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Kso_Radiologi_Ranap()+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Kso_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Kso_Radiologi_Ranap+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Beban_Kso_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Kso_Radiologi_Ranap()+"','Persediaan BHP Radiologi Rawat Inap','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Kso_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Kso_Radiologi_Ranap+"','Persediaan BHP Radiologi Rawat Inap','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Utang_Kso_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                                
                                 }
                                 if(ttljasasarana>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Sarana_Radiologi_Ranap()+"','Beban Jasa Sarana Radiologi Ranap','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Sarana_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Radiologi_Ranap+"','Beban Jasa Sarana Radiologi Ranap','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Sarana_Radiologi_Ranap()+"','Utang Jasa Sarana Radiologi Ranap','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Sarana_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Radiologi_Ranap+"','Utang Jasa Sarana Radiologi Ranap','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                              
                                 }
                                 if(ttljmperujuk>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Perujuk_Radiologi_Ranap()+"','Beban Jasa Perujuk Radiologi Ranap','0','"+ttljmperujuk+"'","kredit=kredit+'"+(ttljmperujuk)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Perujuk_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Perujuk_Radiologi_Ranap+"','Beban Jasa Perujuk Radiologi Ranap','0','"+ttljmperujuk+"'","kredit=kredit+'"+(ttljmperujuk)+"'","kd_rek='"+Beban_Jasa_Perujuk_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Perujuk_Radiologi_Ranap()+"','Utang Jasa Perujuk Radiologi Ranap','"+ttljmperujuk+"','0'","debet=debet+'"+(ttljmperujuk)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Perujuk_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Perujuk_Radiologi_Ranap+"','Utang Jasa Perujuk Radiologi Ranap','"+ttljmperujuk+"','0'","debet=debet+'"+(ttljmperujuk)+"'","kd_rek='"+Utang_Jasa_Perujuk_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                               
                                 }
                                 if(ttlmenejemen>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Menejemen_Radiologi_Ranap()+"','Beban Jasa Menejemen Radiologi Ranap','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Menejemen_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Radiologi_Ranap+"','Beban Jasa Menejemen Radiologi Ranap','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }     
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Menejemen_Radiologi_Ranap()+"','Utang Jasa Menejemen Radiologi Ranap','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Menejemen_Radiologi_Ranap()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Radiologi_Ranap+"','Utang Jasa Menejemen Radiologi Ranap','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Radiologi_Ranap+"'")==false){
                                         sukses=false;
                                     }                               
                                 }
@@ -1453,66 +1499,66 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }else if(status.equals("Ralan")){
                                 Sequel.queryu("delete from tampjurnal");    
                                 if(ttlpendapatan>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ralan()+"','Suspen Piutang Radiologi Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Suspen_Piutang_Radiologi_Ralan+"','Suspen Piutang Radiologi Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+(ttlpendapatan)+"'","kd_rek='"+Suspen_Piutang_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }     
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getRadiologi_Ralan()+"','Pendapatan Radiologi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+akuntindakanradiologi.getRadiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Radiologi_Ralan+"','Pendapatan Radiologi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+(ttlpendapatan)+"'","kd_rek='"+Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                              
                                 }
                                 if(ttljmdokter>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Medik_Dokter_Radiologi_Ralan()+"','Beban Jasa Medik Dokter Radiologi Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Medik_Dokter_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"','Beban Jasa Medik Dokter Radiologi Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+(ttljmdokter)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }    
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Medik_Dokter_Radiologi_Ralan()+"','Utang Jasa Medik Dokter Radiologi Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Medik_Dokter_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"','Utang Jasa Medik Dokter Radiologi Ralan','"+ttljmdokter+"','0'","debet=debet+'"+(ttljmdokter)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                           
                                 }
                                 if(ttljmpetugas>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Medik_Petugas_Radiologi_Ralan()+"','Beban Jasa Medik Petugas Radiologi Ralan','0','"+ttljmpetugas+"'","kredit=kredit+'"+(ttljmpetugas)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Medik_Petugas_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Medik_Petugas_Radiologi_Ralan+"','Beban Jasa Medik Petugas Radiologi Ralan','0','"+ttljmpetugas+"'","kredit=kredit+'"+(ttljmpetugas)+"'","kd_rek='"+Beban_Jasa_Medik_Petugas_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }    
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Medik_Petugas_Radiologi_Ralan()+"','Utang Jasa Medik Petugas Radiologi Ralan','"+ttljmpetugas+"','0'","debet=debet+'"+(ttljmpetugas)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Medik_Petugas_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Medik_Petugas_Radiologi_Ralan+"','Utang Jasa Medik Petugas Radiologi Ralan','"+ttljmpetugas+"','0'","debet=debet+'"+(ttljmpetugas)+"'","kd_rek='"+Utang_Jasa_Medik_Petugas_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                             
                                 }
                                 if(ttlbhp>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getHPP_Persediaan_Radiologi_Rawat_Jalan()+"','HPP Persediaan Radiologi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanradiologi.getHPP_Persediaan_Radiologi_Rawat_Jalan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+HPP_Persediaan_Radiologi_Rawat_Jalan+"','HPP Persediaan Radiologi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+(ttlbhp)+"'","kd_rek='"+HPP_Persediaan_Radiologi_Rawat_Jalan+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getPersediaan_BHP_Radiologi_Rawat_Jalan()+"','Persediaan BHP Radiologi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+akuntindakanradiologi.getPersediaan_BHP_Radiologi_Rawat_Jalan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Persediaan_BHP_Radiologi_Rawat_Jalan+"','Persediaan BHP Radiologi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+(ttlbhp)+"'","kd_rek='"+Persediaan_BHP_Radiologi_Rawat_Jalan+"'")==false){
                                         sukses=false;
                                     }                                
                                 }
                                 if(ttlkso>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Kso_Radiologi_Ralan()+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Kso_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Kso_Radiologi_Ralan+"','HPP Persediaan Radiologi Rawat Inap','0','"+ttlkso+"'","kredit=kredit+'"+(ttlkso)+"'","kd_rek='"+Beban_Kso_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Kso_Radiologi_Ralan()+"','Persediaan BHP Radiologi Rawat Inap','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Kso_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Kso_Radiologi_Ralan+"','Persediaan BHP Radiologi Rawat Inap','"+ttlkso+"','0'","debet=debet+'"+(ttlkso)+"'","kd_rek='"+Utang_Kso_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                                
                                 }
                                 if(ttljasasarana>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Sarana_Radiologi_Ralan()+"','Beban Jasa Sarana Radiologi Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Sarana_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Sarana_Radiologi_Ralan+"','Beban Jasa Sarana Radiologi Ralan','0','"+ttljasasarana+"'","kredit=kredit+'"+(ttljasasarana)+"'","kd_rek='"+Beban_Jasa_Sarana_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Sarana_Radiologi_Ralan()+"','Utang Jasa Sarana Radiologi Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Sarana_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Sarana_Radiologi_Ralan+"','Utang Jasa Sarana Radiologi Ralan','"+ttljasasarana+"','0'","debet=debet+'"+(ttljasasarana)+"'","kd_rek='"+Utang_Jasa_Sarana_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                              
                                 }
                                 if(ttljmperujuk>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Perujuk_Radiologi_Ralan()+"','Beban Jasa Perujuk Radiologi Ralan','0','"+ttljmperujuk+"'","kredit=kredit+'"+(ttljmperujuk)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Perujuk_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Perujuk_Radiologi_Ralan+"','Beban Jasa Perujuk Radiologi Ralan','0','"+ttljmperujuk+"'","kredit=kredit+'"+(ttljmperujuk)+"'","kd_rek='"+Beban_Jasa_Perujuk_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }   
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Perujuk_Radiologi_Ralan()+"','Utang Jasa Perujuk Radiologi Ralan','"+ttljmperujuk+"','0'","debet=debet+'"+(ttljmperujuk)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Perujuk_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Perujuk_Radiologi_Ralan+"','Utang Jasa Perujuk Radiologi Ralan','"+ttljmperujuk+"','0'","debet=debet+'"+(ttljmperujuk)+"'","kd_rek='"+Utang_Jasa_Perujuk_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                               
                                 }
                                 if(ttlmenejemen>0){
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getBeban_Jasa_Menejemen_Radiologi_Ralan()+"','Beban Jasa Menejemen Radiologi Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanradiologi.getBeban_Jasa_Menejemen_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Beban_Jasa_Menejemen_Radiologi_Ralan+"','Beban Jasa Menejemen Radiologi Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }     
-                                    if(Sequel.menyimpantf("tampjurnal","'"+akuntindakanradiologi.getUtang_Jasa_Menejemen_Radiologi_Ralan()+"','Utang Jasa Menejemen Radiologi Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+akuntindakanradiologi.getUtang_Jasa_Menejemen_Radiologi_Ralan()+"'")==false){
+                                    if(Sequel.menyimpantf("tampjurnal","'"+Utang_Jasa_Menejemen_Radiologi_Ralan+"','Utang Jasa Menejemen Radiologi Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Radiologi_Ralan+"'")==false){
                                         sukses=false;
                                     }                               
                                 }
@@ -2144,9 +2190,85 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_ppBelumKeluarBacaanBtnPrintActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ralan().equals("")||akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ranap().equals("")){
-            runBackground(() ->akuntindakanradiologi.SetAkunTindakanRadiologi());
-        }
+        try {
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ranap.Suspen_Piutang_Radiologi_Ranap,set_akun_ranap.Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Petugas_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Petugas_Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Kso_Radiologi_Ranap,set_akun_ranap.Utang_Kso_Radiologi_Ranap,set_akun_ranap.HPP_Persediaan_Radiologi_Rawat_Inap,"+
+                    "set_akun_ranap.Persediaan_BHP_Radiologi_Rawat_Inap,set_akun_ranap.Beban_Jasa_Sarana_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Menejemen_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Menejemen_Radiologi_Ranap from set_akun_ranap");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Radiologi_Ranap=rsrekening.getString("Suspen_Piutang_Radiologi_Ranap");
+                    Radiologi_Ranap=rsrekening.getString("Radiologi_Ranap");
+                    Beban_Jasa_Medik_Dokter_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ranap");
+                    Utang_Jasa_Medik_Dokter_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ranap");
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ranap");
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ranap");
+                    Beban_Kso_Radiologi_Ranap=rsrekening.getString("Beban_Kso_Radiologi_Ranap");
+                    Utang_Kso_Radiologi_Ranap=rsrekening.getString("Utang_Kso_Radiologi_Ranap");
+                    HPP_Persediaan_Radiologi_Rawat_Inap=rsrekening.getString("HPP_Persediaan_Radiologi_Rawat_Inap");
+                    Persediaan_BHP_Radiologi_Rawat_Inap=rsrekening.getString("Persediaan_BHP_Radiologi_Rawat_Inap");
+                    Beban_Jasa_Sarana_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Sarana_Radiologi_Ranap");
+                    Utang_Jasa_Sarana_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Sarana_Radiologi_Ranap");
+                    Beban_Jasa_Perujuk_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Perujuk_Radiologi_Ranap");
+                    Utang_Jasa_Perujuk_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Perujuk_Radiologi_Ranap");
+                    Beban_Jasa_Menejemen_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Menejemen_Radiologi_Ranap");
+                    Utang_Jasa_Menejemen_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Menejemen_Radiologi_Ranap");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
+            
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ralan.Suspen_Piutang_Radiologi_Ralan,set_akun_ralan.Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Radiologi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Medik_Dokter_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Petugas_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Kso_Radiologi_Ralan,set_akun_ralan.Utang_Kso_Radiologi_Ralan,set_akun_ralan.HPP_Persediaan_Radiologi_Rawat_Jalan,"+
+                    "set_akun_ralan.Persediaan_BHP_Radiologi_Rawat_Jalan,set_akun_ralan.Beban_Jasa_Sarana_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Perujuk_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Perujuk_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Radiologi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Menejemen_Radiologi_Ralan from set_akun_ralan");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Radiologi_Ralan=rsrekening.getString("Suspen_Piutang_Radiologi_Ralan");
+                    Radiologi_Ralan=rsrekening.getString("Radiologi_Ralan");
+                    Beban_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ralan");
+                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan");
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ralan");
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ralan");
+                    Beban_Kso_Radiologi_Ralan=rsrekening.getString("Beban_Kso_Radiologi_Ralan");
+                    Utang_Kso_Radiologi_Ralan=rsrekening.getString("Utang_Kso_Radiologi_Ralan");
+                    HPP_Persediaan_Radiologi_Rawat_Jalan=rsrekening.getString("HPP_Persediaan_Radiologi_Rawat_Jalan");
+                    Persediaan_BHP_Radiologi_Rawat_Jalan=rsrekening.getString("Persediaan_BHP_Radiologi_Rawat_Jalan");
+                    Beban_Jasa_Sarana_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Sarana_Radiologi_Ralan");
+                    Utang_Jasa_Sarana_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Sarana_Radiologi_Ralan");
+                    Beban_Jasa_Perujuk_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Perujuk_Radiologi_Ralan");
+                    Utang_Jasa_Perujuk_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Perujuk_Radiologi_Ralan");
+                    Beban_Jasa_Menejemen_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Menejemen_Radiologi_Ralan");
+                    Utang_Jasa_Menejemen_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Menejemen_Radiologi_Ralan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println(e);
+        }   
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -2175,6 +2297,423 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         } 
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnKirimGOWaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimGOWaActionPerformed
+        if (tbDokter.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data terlebih dahulu...!!!!");
+            return;
+        }
+
+        String noRawat = NoRawatDicari.getText();
+        String tgl = TglDicari.getText();
+        String jam = JamDicari.getText();
+
+        String noRM = Sequel.cariIsi(
+            "select no_rkm_medis from reg_periksa where no_rawat=?",
+            noRawat
+        );
+
+        String noHp = Sequel.cariIsi(
+            "select no_tlp from pasien where no_rkm_medis=?",
+            noRM
+        );
+
+        String namaPasien = Sequel.cariIsi(
+            "select nm_pasien from pasien where no_rkm_medis=?",
+            noRM
+        );
+
+        JTextField fieldNoHp = new JTextField(noHp, 20);
+        JCheckBox checkUpdate = new JCheckBox("Update No. Telp di Data Pasien");
+
+        JPanel panel = new JPanel(new java.awt.GridLayout(0, 1));
+        panel.add(new JLabel("Nomor WhatsApp Pasien:"));
+        panel.add(fieldNoHp);
+        panel.add(checkUpdate);
+
+        int result = JOptionPane.showConfirmDialog(
+            null,
+            panel,
+            "Konfirmasi Pengiriman WhatsApp",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.PLAIN_MESSAGE
+        );
+
+        if (result != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        noHp = fieldNoHp.getText().trim();
+
+        if (noHp.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nomor HP tidak boleh kosong!");
+            return;
+        }
+
+        if (checkUpdate.isSelected()) {
+            Sequel.mengedit("pasien",
+                "no_rkm_medis='" + noRM + "'",
+                "no_tlp='" + noHp + "'");
+            tampil();
+        }
+
+        String caption
+        = "*HASIL PEMERIKSAAN RADIOLOGI*\n\n"
+        + "🏥 " + akses.getnamars() + "\n\n"
+        + "Nama Pasien : " + namaPasien + "\n"
+        + "Tanggal Periksa : " + tgl + "\n\n"
+        + "Berikut hasil gambar radiologi Anda.";
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            File tmpFolder = new File("tmpWA");
+            if (!tmpFolder.exists()) {
+                tmpFolder.mkdirs();
+            }
+
+            ps = koneksi.prepareStatement(
+                "select lokasi_gambar from gambar_radiologi "
+                + "where no_rawat=? and tgl_periksa=? and jam=? "
+                + "order by lokasi_gambar"
+            );
+
+            ps.setString(1, noRawat);
+            ps.setString(2, tgl);
+            ps.setString(3, jam);
+
+            rs = ps.executeQuery();
+
+            // ===============================
+            // DOWNLOAD GAMBAR KE TMP
+            // ===============================
+            int downloadCount = 0;
+
+            while (rs.next()) {
+
+                String lokasi = rs.getString("lokasi_gambar");
+
+                String urlGambar
+                = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":"
+                + koneksiDB.PORTWEB() + "/"
+                + koneksiDB.HYBRIDWEB() + "/radiologi/"
+                + lokasi;
+
+                File fileTmp = new File(
+                    tmpFolder,
+                    new File(lokasi).getName()
+                );
+
+                try (InputStream in = new URL(urlGambar).openStream()) {
+                    Files.copy(
+                        in,
+                        fileTmp.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING
+                    );
+                }
+
+                if (fileTmp.exists()) {
+                    downloadCount++;
+                }
+            }
+
+            File[] files = tmpFolder.listFiles();
+
+            if (files == null || files.length == 0) {
+                JOptionPane.showMessageDialog(null,
+                    "Tidak ada gambar radiologi yang ditemukan.");
+                return;
+            }
+
+            int terkirim = 0;
+            boolean firstImage = true;
+
+            for (File img : files) {
+                String pesanKirim = "";
+
+                if (firstImage) {
+                    pesanKirim = caption;
+                    firstImage = false;
+                }
+
+                boolean sukses = GoWAService.kirimGambar(noHp, img, pesanKirim);
+                if (sukses) {
+                    terkirim++;
+                    img.delete(); // hapus file setelah terkirim
+                }
+
+                Thread.sleep(1200);
+            }
+
+            JOptionPane.showMessageDialog(
+                null,
+                "Berhasil mengirim " + terkirim + " gambar radiologi ke : "+ noHp
+            );
+
+        } catch (Exception e) {
+
+            System.out.println("Error Kirim WA : " + e);
+
+            JOptionPane.showMessageDialog(
+                null,
+                "Terjadi kesalahan : " + e.getMessage()
+            );
+
+        } finally {
+
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (Exception e) {
+            }
+
+        }
+    }//GEN-LAST:event_BtnKirimGOWaActionPerformed
+
+    private void BtnKirimGOWAPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimGOWAPTActionPerformed
+        if (tbDokter.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data terlebih dahulu...!!!!");
+            return;
+        }
+
+        String noRawatDipilih = NoRawatDicari.getText();
+
+        String kdPj = Sequel.cariIsi(
+                "SELECT kd_pj FROM reg_periksa WHERE no_rawat=?",
+                noRawatDipilih
+        );
+
+        if (kdPj.equals("")) {
+            JOptionPane.showMessageDialog(null, "Penjamin / perusahaan tidak ditemukan...!");
+            return;
+        }
+
+        String namaPerusahaan = Sequel.cariIsi(
+                "SELECT IFNULL(png_jawab,'') FROM penjab WHERE kd_pj=?",
+                kdPj
+        );
+
+        String noHpPerusahaan = Sequel.cariIsi(
+                "SELECT IFNULL(no_telp,'') FROM penjab WHERE kd_pj=?",
+                kdPj
+        );
+
+        JTextField fieldNoHp = new JTextField(noHpPerusahaan, 20);
+        JCheckBox checkUpdate = new JCheckBox("Update No. Telp di Data Penjamin/Perusahaan");
+
+        JPanel panel = new JPanel(new java.awt.GridLayout(0, 1));
+        panel.add(new JLabel("Perusahaan/Penjamin : " + namaPerusahaan));
+        panel.add(new JLabel("Nomor WhatsApp Perusahaan:"));
+        panel.add(fieldNoHp);
+        panel.add(checkUpdate);
+
+        int result = JOptionPane.showConfirmDialog(
+                null,
+                panel,
+                "Konfirmasi Pengiriman WhatsApp Perusahaan",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE
+        );
+
+        if (result != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        noHpPerusahaan = fieldNoHp.getText().trim();
+
+        if (noHpPerusahaan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nomor HP perusahaan tidak boleh kosong!");
+            return;
+        }
+
+        // optional normalisasi nomor
+        if (noHpPerusahaan.startsWith("0")) {
+            noHpPerusahaan = "62" + noHpPerusahaan.substring(1);
+        }
+
+        if (checkUpdate.isSelected()) {
+            Sequel.mengedit(
+                    "penjab",
+                    "kd_pj='" + kdPj + "'",
+                    "no_telp='" + noHpPerusahaan + "'"
+            );
+        }
+
+        PreparedStatement psGroup = null;
+        PreparedStatement psGambar = null;
+        ResultSet rsGroup = null;
+        ResultSet rsGambar = null;
+
+        int totalPasien = 0;
+        int totalGambarTerkirim = 0;
+
+        try {
+            File rootTmp = new File("tmpWA_perusahaan/" + kdPj);
+            if (!rootTmp.exists()) {
+                rootTmp.mkdirs();
+            }
+
+            // Ambil semua grup radiologi milik perusahaan yang sama
+            psGroup = koneksi.prepareStatement(
+                    "SELECT gr.no_rawat, gr.tgl_periksa, gr.jam, rp.no_rkm_medis, ps.nm_pasien "
+                    + "FROM gambar_radiologi gr "
+                    + "INNER JOIN reg_periksa rp ON gr.no_rawat=rp.no_rawat "
+                    + "INNER JOIN pasien ps ON rp.no_rkm_medis=ps.no_rkm_medis "
+                    + "WHERE rp.kd_pj=? "
+                    + "GROUP BY gr.no_rawat, gr.tgl_periksa, gr.jam, rp.no_rkm_medis, ps.nm_pasien "
+                    + "ORDER BY gr.tgl_periksa, gr.jam, gr.no_rawat"
+            );
+            psGroup.setString(1, kdPj);
+            rsGroup = psGroup.executeQuery();
+
+            while (rsGroup.next()) {
+                String noRawat = rsGroup.getString("no_rawat");
+                String tgl = rsGroup.getString("tgl_periksa");
+                String jam = rsGroup.getString("jam");
+                String noRM = rsGroup.getString("no_rkm_medis");
+                String namaPasien = rsGroup.getString("nm_pasien");
+
+                File tmpFolder = new File(rootTmp, noRawat.replace("/", "_") + "_" + tgl + "_" + jam.replace(":", "-"));
+                if (!tmpFolder.exists()) {
+                    tmpFolder.mkdirs();
+                }
+
+                psGambar = koneksi.prepareStatement(
+                        "SELECT lokasi_gambar FROM gambar_radiologi "
+                        + "WHERE no_rawat=? AND tgl_periksa=? AND jam=? "
+                        + "ORDER BY lokasi_gambar"
+                );
+                psGambar.setString(1, noRawat);
+                psGambar.setString(2, tgl);
+                psGambar.setString(3, jam);
+                rsGambar = psGambar.executeQuery();
+
+                int downloadCount = 0;
+
+                while (rsGambar.next()) {
+                    String lokasi = rsGambar.getString("lokasi_gambar");
+
+                    String urlGambar
+                            = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":"
+                            + koneksiDB.PORTWEB() + "/"
+                            + koneksiDB.HYBRIDWEB() + "/radiologi/"
+                            + lokasi;
+
+                    File fileTmp = new File(tmpFolder, new File(lokasi).getName());
+
+                    try (InputStream in = new URL(urlGambar).openStream()) {
+                        Files.copy(
+                                in,
+                                fileTmp.toPath(),
+                                StandardCopyOption.REPLACE_EXISTING
+                        );
+                    } catch (Exception ex) {
+                        System.out.println("Gagal download gambar : " + lokasi + " -> " + ex);
+                    }
+
+                    if (fileTmp.exists()) {
+                        downloadCount++;
+                    }
+                }
+
+                if (rsGambar != null) {
+                    rsGambar.close();
+                    rsGambar = null;
+                }
+                if (psGambar != null) {
+                    psGambar.close();
+                    psGambar = null;
+                }
+
+                File[] files = tmpFolder.listFiles();
+
+                if (files == null || files.length == 0) {
+                    continue;
+                }
+
+                Arrays.sort(files, Comparator.comparing(File::getName));
+
+                String caption
+                        = "*HASIL PEMERIKSAAN RADIOLOGI*\n\n"
+                        + "🏥 " + akses.getnamars() + "\n\n"
+                        + "Perusahaan/Penjamin : " + namaPerusahaan + "\n"
+                        + "Nama Pasien : " + namaPasien + "\n"
+                        + "No. RM : " + noRM + "\n"
+                        + "No. Rawat : " + noRawat + "\n"
+                        + "Tanggal Periksa : " + tgl + " " + jam + "\n\n"
+                        + "Berikut hasil gambar radiologi pasien.";
+
+                boolean firstImage = true;
+                int terkirimPerPasien = 0;
+
+                for (File img : files) {
+                    String pesanKirim = "";
+
+                    if (firstImage) {
+                        pesanKirim = caption;
+                        firstImage = false;
+                    }
+
+                    boolean sukses = GoWAService.kirimGambar(noHpPerusahaan, img, pesanKirim);
+                    if (sukses) {
+                        terkirimPerPasien++;
+                        totalGambarTerkirim++;
+                        img.delete();
+                    }
+
+                    Thread.sleep(1200);
+                }
+
+                if (terkirimPerPasien > 0) {
+                    totalPasien++;
+                }
+
+                File[] sisa = tmpFolder.listFiles();
+                if (sisa == null || sisa.length == 0) {
+                    tmpFolder.delete();
+                }
+            }
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selesai mengirim ke perusahaan : " + namaPerusahaan
+                    + "\nNomor WA : " + noHpPerusahaan
+                    + "\nTotal pasien : " + totalPasien
+                    + "\nTotal gambar terkirim : " + totalGambarTerkirim
+            );
+
+        } catch (Exception e) {
+            System.out.println("Error Kirim WA Perusahaan : " + e);
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Terjadi kesalahan : " + e.getMessage()
+            );
+
+        } finally {
+            try {
+                if (rsGambar != null) {
+                    rsGambar.close();
+                }
+                if (psGambar != null) {
+                    psGambar.close();
+                }
+                if (rsGroup != null) {
+                    rsGroup.close();
+                }
+                if (psGroup != null) {
+                    psGroup.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_BtnKirimGOWAPTActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2198,6 +2737,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnCloseIn4;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKirimGOWAPT;
+    private widget.Button BtnKirimGOWa;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint1;
     private widget.Button BtnRefreshPhoto;

@@ -19,6 +19,7 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -58,8 +59,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0,jml=0,index=0;
     private DlgCariPetugas petugas;
-    private MasterMasalahKeperawatanIGD masalahkeperawatan;
-    private MasterRencanaKeperawatanIGD rencanakeperawatan;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private boolean[] pilih; 
@@ -385,9 +384,9 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         tbRencanaDetail.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KeluhanUtama.setDocument(new batasInput((int)150).getKata(KeluhanUtama));
-        RPD.setDocument(new batasInput((int)100).getKata(RPD));
-        RPO.setDocument(new batasInput((int)100).getKata(RPO));
+        KeluhanUtama.setDocument(new batasInput((int)350).getKata(KeluhanUtama));
+        RPD.setDocument(new batasInput((int)350).getKata(RPD));
+        RPO.setDocument(new batasInput((int)350).getKata(RPO));
         Gravida.setDocument(new batasInput((byte)20).getKata(Gravida));
         Para.setDocument(new batasInput((byte)20).getKata(Para));
         Abortus.setDocument(new batasInput((byte)20).getKata(Abortus));
@@ -1418,7 +1417,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         KetDokter.setBounds(774, 850, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024 05:41:57" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026 17:42:29" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2386,7 +2385,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2400,7 +2399,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3653,29 +3652,13 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_tbMasalahKeperawatanKeyReleased
 
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
-        if (masalahkeperawatan == null || !masalahkeperawatan.isDisplayable()) {
-            masalahkeperawatan=new MasterMasalahKeperawatanIGD(null,false);
-            masalahkeperawatan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            masalahkeperawatan.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    masalahkeperawatan=null;
-                }
-            });
-
-            masalahkeperawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            masalahkeperawatan.setLocationRelativeTo(internalFrame1);
-        }
-        if (masalahkeperawatan == null) return;
-        if (!masalahkeperawatan.isVisible()) {
-            masalahkeperawatan.isCek();    
-        }
-        
-        if (masalahkeperawatan.isVisible()) {
-            masalahkeperawatan.toFront();
-            return;
-        }
-        masalahkeperawatan.setVisible(true); 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanIGD form=new MasterMasalahKeperawatanIGD(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahMasalahActionPerformed
 
     private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
@@ -3757,29 +3740,13 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnAllRencanaKeyPressed
 
     private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
-        if (rencanakeperawatan == null || !rencanakeperawatan.isDisplayable()) {
-            rencanakeperawatan=new MasterRencanaKeperawatanIGD(null,false);
-            rencanakeperawatan.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            rencanakeperawatan.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    rencanakeperawatan=null;
-                }
-            });
-
-            rencanakeperawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            rencanakeperawatan.setLocationRelativeTo(internalFrame1);
-        }
-        if (rencanakeperawatan == null) return;
-        if (!rencanakeperawatan.isVisible()) {
-            rencanakeperawatan.isCek();    
-        }
-        
-        if (rencanakeperawatan.isVisible()) {
-            rencanakeperawatan.toFront();
-            return;
-        }
-        rencanakeperawatan.setVisible(true); 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatanIGD form=new MasterRencanaKeperawatanIGD(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahRencanaActionPerformed
 
     /**

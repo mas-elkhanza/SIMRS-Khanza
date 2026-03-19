@@ -179,7 +179,7 @@
 				<text><![CDATA[Signa 2]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="810" y="83" width="22" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ec5a91b3-c6a2-4235-b988-ddb7e5973949"/>
+				<reportElement mode="Opaque" x="810" y="83" width="20" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ec5a91b3-c6a2-4235-b988-ddb7e5973949"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -187,7 +187,7 @@
 				<text><![CDATA[Hari]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="832" y="83" width="43" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ce0db86a-4d33-4e7d-b707-d913749f7049"/>
+				<reportElement mode="Opaque" x="830" y="83" width="45" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ce0db86a-4d33-4e7d-b707-d913749f7049"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -211,7 +211,7 @@
 				<text><![CDATA[Harga]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="181" y="83" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0e695a52-92c7-4bd3-96ab-2e2687d13b7b"/>
+				<reportElement mode="Opaque" x="160" y="83" width="61" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0e695a52-92c7-4bd3-96ab-2e2687d13b7b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -235,15 +235,15 @@
 				<text><![CDATA[Nama Peserta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="414" y="83" width="21" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="445b1eec-e371-45bd-a350-c55d54b2812d"/>
+				<reportElement mode="Opaque" x="414" y="83" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="445b1eec-e371-45bd-a350-c55d54b2812d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kode]]></text>
+				<text><![CDATA[Kode Jenis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="435" y="83" width="81" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="cc68de27-070d-4e4a-a4e8-5daaef0be43f"/>
+				<reportElement mode="Opaque" x="454" y="83" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="cc68de27-070d-4e4a-a4e8-5daaef0be43f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -251,23 +251,23 @@
 				<text><![CDATA[Nama Jenis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="516" y="83" width="47" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ec6dd420-e977-42da-9a25-f901f8034089"/>
+				<reportElement mode="Opaque" x="514" y="83" width="55" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ec6dd420-e977-42da-9a25-f901f8034089"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Tgl.Layanan]]></text>
+				<text><![CDATA[Tgl.Pelayanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="563" y="83" width="51" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="899ed62b-28f6-423c-aaf9-e14ff94cb5d5"/>
+				<reportElement mode="Opaque" x="569" y="83" width="45" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="899ed62b-28f6-423c-aaf9-e14ff94cb5d5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kode]]></text>
+				<text><![CDATA[Kode Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="91" y="83" width="90" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0c0e1fa7-43b2-4539-a7ce-4044fe390fdd"/>
+				<reportElement mode="Opaque" x="80" y="83" width="80" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0c0e1fa7-43b2-4539-a7ce-4044fe390fdd"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -325,7 +325,7 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="83" width="91" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="c055c364-7427-4dc5-9cb9-8915f8359854"/>
+				<reportElement mode="Opaque" x="0" y="83" width="80" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="c055c364-7427-4dc5-9cb9-8915f8359854"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -349,7 +349,7 @@
 	<detail>
 		<band height="14">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="91" height="14" uuid="7c85f61b-56e7-403e-be4e-e816388fbf36">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="80" height="14" uuid="7c85f61b-56e7-403e-be4e-e816388fbf36">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -360,7 +360,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="91" y="0" width="90" height="14" uuid="2a5253cf-7a40-4aa0-9102-f8bd2eea1ef9">
+				<reportElement stretchType="RelativeToBandHeight" x="80" y="0" width="80" height="14" uuid="2a5253cf-7a40-4aa0-9102-f8bd2eea1ef9">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -371,7 +371,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="563" y="0" width="51" height="14" uuid="6b20f513-7e99-4a47-b392-fd80a12d54f2">
+				<reportElement stretchType="RelativeToBandHeight" x="569" y="0" width="45" height="14" uuid="6b20f513-7e99-4a47-b392-fd80a12d54f2">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -382,7 +382,7 @@
 				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="181" y="0" width="40" height="14" uuid="711e8b4a-3473-411f-8ca5-a665760c38e8">
+				<reportElement stretchType="RelativeToBandHeight" x="160" y="0" width="61" height="14" uuid="711e8b4a-3473-411f-8ca5-a665760c38e8">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -415,7 +415,7 @@
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="414" y="0" width="21" height="14" uuid="4e1d1aab-7c51-4169-b524-e7b8f7e884dc">
+				<reportElement stretchType="RelativeToBandHeight" x="414" y="0" width="40" height="14" uuid="4e1d1aab-7c51-4169-b524-e7b8f7e884dc">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -426,7 +426,7 @@
 				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="435" y="0" width="81" height="14" uuid="fff4e6b7-4263-4f19-9d22-2c860527e045">
+				<reportElement stretchType="RelativeToBandHeight" x="454" y="0" width="60" height="14" uuid="fff4e6b7-4263-4f19-9d22-2c860527e045">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -437,7 +437,7 @@
 				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="516" y="0" width="47" height="14" uuid="ba670413-c441-4585-a2b7-26e650dec79e">
+				<reportElement stretchType="RelativeToBandHeight" x="514" y="0" width="55" height="14" uuid="ba670413-c441-4585-a2b7-26e650dec79e">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -503,7 +503,7 @@
 				<textFieldExpression><![CDATA[$F{temp14}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="832" y="0" width="43" height="14" uuid="75a0ef1c-f303-445f-9899-217ed082dec0">
+				<reportElement stretchType="RelativeToBandHeight" x="830" y="0" width="45" height="14" uuid="75a0ef1c-f303-445f-9899-217ed082dec0">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>

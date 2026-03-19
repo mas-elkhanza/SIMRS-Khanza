@@ -168,14 +168,14 @@ public class DapurInputStok extends javax.swing.JDialog {
         label11 = new widget.Label();
         Tgl = new widget.Tanggal();
 
-        Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Kd2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
 
         Popup.setName("Popup"); // NOI18N
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
-        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
@@ -191,7 +191,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         Popup.add(ppBersihkan);
 
         ppBelumOpname.setBackground(new java.awt.Color(255, 255, 254));
-        ppBelumOpname.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBelumOpname.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppBelumOpname.setForeground(new java.awt.Color(50, 50, 50));
         ppBelumOpname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBelumOpname.setText("Tampilkan Belum Diopname");
@@ -207,7 +207,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         Popup.add(ppBelumOpname);
 
         ppSudahOpname.setBackground(new java.awt.Color(255, 255, 254));
-        ppSudahOpname.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSudahOpname.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSudahOpname.setForeground(new java.awt.Color(50, 50, 50));
         ppSudahOpname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSudahOpname.setText("Tampilkan Sudah Diopname");
@@ -226,14 +226,14 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.setForeground(new java.awt.Color(50, 50, 50));
         MnUrut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut.setText("Urutkan Data Berdasar");
-        MnUrut.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUrut.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnUrut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut.setName("MnUrut"); // NOI18N
         MnUrut.setPreferredSize(new java.awt.Dimension(200, 26));
 
         MnKodeBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
-        MnKodeBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKodeBarangDesc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnKodeBarangDesc.setForeground(new java.awt.Color(50, 50, 50));
         MnKodeBarangDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKodeBarangDesc.setText("Kode Barang Descending");
@@ -249,7 +249,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnKodeBarangDesc);
 
         MnKodeBarangAsc.setBackground(new java.awt.Color(255, 255, 254));
-        MnKodeBarangAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKodeBarangAsc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnKodeBarangAsc.setForeground(new java.awt.Color(50, 50, 50));
         MnKodeBarangAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKodeBarangAsc.setText("Kode Barang Ascending");
@@ -265,7 +265,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnKodeBarangAsc);
 
         MnNamaBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
-        MnNamaBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnNamaBarangDesc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnNamaBarangDesc.setForeground(new java.awt.Color(50, 50, 50));
         MnNamaBarangDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnNamaBarangDesc.setText("Nama Barang Descending");
@@ -281,7 +281,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnNamaBarangDesc);
 
         MnNamaBarangAsc.setBackground(new java.awt.Color(255, 255, 254));
-        MnNamaBarangAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnNamaBarangAsc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnNamaBarangAsc.setForeground(new java.awt.Color(50, 50, 50));
         MnNamaBarangAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnNamaBarangAsc.setText("Nama Barang Ascending");
@@ -297,7 +297,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnNamaBarangAsc);
 
         MnKategoriAsc.setBackground(new java.awt.Color(255, 255, 254));
-        MnKategoriAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKategoriAsc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnKategoriAsc.setForeground(new java.awt.Color(50, 50, 50));
         MnKategoriAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKategoriAsc.setText("Kategori Ascending");
@@ -313,7 +313,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnKategoriAsc);
 
         MnKategoriDesc.setBackground(new java.awt.Color(255, 255, 254));
-        MnKategoriDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKategoriDesc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnKategoriDesc.setForeground(new java.awt.Color(50, 50, 50));
         MnKategoriDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKategoriDesc.setText("Kategori Descending");
@@ -329,7 +329,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnKategoriDesc);
 
         MnSatuanDesc.setBackground(new java.awt.Color(255, 255, 254));
-        MnSatuanDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSatuanDesc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnSatuanDesc.setForeground(new java.awt.Color(50, 50, 50));
         MnSatuanDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSatuanDesc.setText("Satuan Descending");
@@ -345,7 +345,7 @@ public class DapurInputStok extends javax.swing.JDialog {
         MnUrut.add(MnSatuanDesc);
 
         MnSatuanAsc.setBackground(new java.awt.Color(255, 255, 254));
-        MnSatuanAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSatuanAsc.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnSatuanAsc.setForeground(new java.awt.Color(50, 50, 50));
         MnSatuanAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSatuanAsc.setText("Satuan Ascending");
@@ -371,7 +371,7 @@ public class DapurInputStok extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Barang Dapur Kering & Basah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Barang Dapur Kering & Basah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

@@ -655,7 +655,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppSEP.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SEP Model 1");
@@ -671,7 +671,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP);
 
         ppSEP1.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP1.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP1.setText("Print SEP Model 2");
@@ -687,7 +687,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP1);
 
         ppSEP2.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP2.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP2.setText("Print SEP Model 3");
@@ -703,7 +703,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP2);
 
         ppSEP3.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP3.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP3.setText("Print SEP Model 4");
@@ -719,7 +719,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP3);
 
         ppSEP4.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP4.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP4.setText("Print SEP Model 1 PDF");
@@ -735,7 +735,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP4);
 
         ppSEP5.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP5.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP5.setText("Print SEP Model 2 PDF");
@@ -751,7 +751,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP5);
 
         ppSEP6.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP6.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP6.setText("Print SEP Model 3 PDF");
@@ -767,7 +767,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP6);
 
         ppSEP7.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP7.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP7.setText("Print SEP Model 4 PDF");
@@ -783,7 +783,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSEP7);
 
         ppPulang.setBackground(new java.awt.Color(255, 255, 254));
-        ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPulang.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPulang.setForeground(new java.awt.Color(50, 50, 50));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
@@ -799,7 +799,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppPulang);
 
         ppDetailSEPPeserta.setBackground(new java.awt.Color(255, 255, 254));
-        ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDetailSEPPeserta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppDetailSEPPeserta.setForeground(new java.awt.Color(50, 50, 50));
         ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDetailSEPPeserta.setText("Detail SEP Peserta");
@@ -815,7 +815,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppDetailSEPPeserta);
 
         ppRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        ppRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRujukan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppRujukan.setForeground(new java.awt.Color(50, 50, 50));
         ppRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRujukan.setText("Buat Rujukan Keluar");
@@ -831,7 +831,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppRujukan);
 
         ppDaftarRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        ppDaftarRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDaftarRujukan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppDaftarRujukan.setForeground(new java.awt.Color(50, 50, 50));
         ppDaftarRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDaftarRujukan.setText("Daftar Rujukan Keluar");
@@ -847,7 +847,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppDaftarRujukan);
 
         MnRujukanKhusus.setBackground(new java.awt.Color(255, 255, 254));
-        MnRujukanKhusus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRujukanKhusus.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         MnRujukanKhusus.setForeground(java.awt.Color.darkGray);
         MnRujukanKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRujukanKhusus.setText("Rujukan Khusus");
@@ -861,7 +861,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(MnRujukanKhusus);
 
         ppSuratKontrol.setBackground(new java.awt.Color(255, 255, 254));
-        ppSuratKontrol.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSuratKontrol.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSuratKontrol.setForeground(new java.awt.Color(50, 50, 50));
         ppSuratKontrol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSuratKontrol.setText("Rencana Kontrol");
@@ -877,7 +877,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSuratKontrol);
 
         ppSuratPRI.setBackground(new java.awt.Color(255, 255, 254));
-        ppSuratPRI.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSuratPRI.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSuratPRI.setForeground(new java.awt.Color(50, 50, 50));
         ppSuratPRI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSuratPRI.setText("Perintah Rawat Inap");
@@ -893,7 +893,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSuratPRI);
 
         ppProgramPRB.setBackground(new java.awt.Color(255, 255, 254));
-        ppProgramPRB.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppProgramPRB.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppProgramPRB.setForeground(new java.awt.Color(50, 50, 50));
         ppProgramPRB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppProgramPRB.setText("Program PRB BPJS");
@@ -909,7 +909,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppProgramPRB);
 
         ppSuplesiJasaRaharja.setBackground(new java.awt.Color(255, 255, 254));
-        ppSuplesiJasaRaharja.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSuplesiJasaRaharja.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSuplesiJasaRaharja.setForeground(new java.awt.Color(50, 50, 50));
         ppSuplesiJasaRaharja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSuplesiJasaRaharja.setText("Suplesi Jasa Raharja");
@@ -925,7 +925,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSuplesiJasaRaharja);
 
         ppDataIndukKecelakaan.setBackground(new java.awt.Color(255, 255, 254));
-        ppDataIndukKecelakaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataIndukKecelakaan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppDataIndukKecelakaan.setForeground(new java.awt.Color(50, 50, 50));
         ppDataIndukKecelakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDataIndukKecelakaan.setText("Data Induk Kecelakaan");
@@ -941,7 +941,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppDataIndukKecelakaan);
 
         ppDataSEPInternal.setBackground(new java.awt.Color(255, 255, 254));
-        ppDataSEPInternal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataSEPInternal.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppDataSEPInternal.setForeground(new java.awt.Color(50, 50, 50));
         ppDataSEPInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDataSEPInternal.setText("Data SEP Internal");
@@ -957,7 +957,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppDataSEPInternal);
 
         ppRiwayatPerawatan.setBackground(new java.awt.Color(255, 255, 254));
-        ppRiwayatPerawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRiwayatPerawatan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppRiwayatPerawatan.setForeground(new java.awt.Color(50, 50, 50));
         ppRiwayatPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayatPerawatan.setText("Riwayat Perawatan");
@@ -973,7 +973,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppRiwayatPerawatan);
 
         ppSepRujukSama.setBackground(new java.awt.Color(255, 255, 254));
-        ppSepRujukSama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSepRujukSama.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSepRujukSama.setForeground(new java.awt.Color(50, 50, 50));
         ppSepRujukSama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSepRujukSama.setText("Tampilkan Tanggal SEP & Tanggal Rujuk Sama");
@@ -989,7 +989,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSepRujukSama);
 
         ppSepRujukBeda.setBackground(new java.awt.Color(255, 255, 254));
-        ppSepRujukBeda.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSepRujukBeda.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSepRujukBeda.setForeground(new java.awt.Color(50, 50, 50));
         ppSepRujukBeda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSepRujukBeda.setText("Tampilkan Tanggal SEP & Tanggal Rujuk Beda");
@@ -1005,7 +1005,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppSepRujukBeda);
 
         ppCekSEPApotekBPJS.setBackground(new java.awt.Color(255, 255, 254));
-        ppCekSEPApotekBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCekSEPApotekBPJS.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppCekSEPApotekBPJS.setForeground(new java.awt.Color(50, 50, 50));
         ppCekSEPApotekBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCekSEPApotekBPJS.setText("Pencarian SEP Apotek BPJS");
@@ -1021,7 +1021,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppCekSEPApotekBPJS);
 
         ppTampilSEPRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
-        ppTampilSEPRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilSEPRawatJalan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppTampilSEPRawatJalan.setForeground(new java.awt.Color(50, 50, 50));
         ppTampilSEPRawatJalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilSEPRawatJalan.setText("Tampilkan SEP Rawat Jalan");
@@ -1037,7 +1037,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup.add(ppTampilSEPRawatJalan);
 
         ppTampilSEPRawatInap.setBackground(new java.awt.Color(255, 255, 254));
-        ppTampilSEPRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilSEPRawatInap.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppTampilSEPRawatInap.setForeground(new java.awt.Color(50, 50, 50));
         ppTampilSEPRawatInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilSEPRawatInap.setText("Tampilkan SEP Rawat Inap");
@@ -1057,7 +1057,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowUpdatePulang.setUndecorated(true);
         WindowUpdatePulang.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -1170,7 +1170,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowRujukan.setUndecorated(true);
         WindowRujukan.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Buat Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Buat Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(null);
 
@@ -1402,7 +1402,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.setName("Popup1"); // NOI18N
 
         ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan.setText("Pengajuan SEP Backdate");
@@ -1418,7 +1418,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.add(ppPengajuan);
 
         ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan1.setText("Aproval SEP Backdate");
@@ -1434,7 +1434,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.add(ppPengajuan1);
 
         ppPengajuan2.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan2.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan2.setText("Aproval SEP Finger");
@@ -1450,7 +1450,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.add(ppPengajuan2);
 
         ppPengajuan3.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuan3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPengajuan3.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan3.setText("Pengajuan SEP Finger");
@@ -1466,7 +1466,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.add(ppPengajuan3);
 
         ppAmbilSep.setBackground(new java.awt.Color(255, 255, 254));
-        ppAmbilSep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppAmbilSep.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppAmbilSep.setForeground(new java.awt.Color(50, 50, 50));
         ppAmbilSep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppAmbilSep.setText("Ambil SEP di VClaim");
@@ -1482,7 +1482,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Popup1.add(ppAmbilSep);
 
         ppStatusFinger.setBackground(new java.awt.Color(255, 255, 254));
-        ppStatusFinger.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppStatusFinger.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppStatusFinger.setForeground(new java.awt.Color(50, 50, 50));
         ppStatusFinger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStatusFinger.setText("Status Finger");
@@ -1502,7 +1502,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowCariSEP.setUndecorated(true);
         WindowCariSEP.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ambil SEP di VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ambil SEP di VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(null);
 
@@ -1584,14 +1584,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

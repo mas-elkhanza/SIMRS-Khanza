@@ -29,7 +29,7 @@ public class WarnaTable4 extends JTextArea implements TableCellRenderer {
         this.setSelectionColor(new Color(255,255,255));
         this.setSelectedTextColor(new Color(255,0,0));
         this.setForeground(new Color(50,50,50));
-        this.setFont(new java.awt.Font("Tahoma", 0, 11));
+        this.setFont(new java.awt.Font("Segoe UI", 0, 11));
         return this;
     }
 

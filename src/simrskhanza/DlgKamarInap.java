@@ -8073,6 +8073,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     periksarad.setLocationRelativeTo(internalFrame1);
                                     periksarad.emptTeks();
                                     periksarad.setNoRm(rs2.getString("no_rawat2"),"Ranap");
+                                    periksarad.tampil();
                                     periksarad.isCek();
                                     periksarad.setVisible(true);
                                 }else{
@@ -8099,6 +8100,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     periksarad.setLocationRelativeTo(internalFrame1);
                     periksarad.emptTeks();
                     periksarad.setNoRm(norawat.getText(),"Ranap");
+                    periksarad.tampil();
                     periksarad.isCek();
                     periksarad.setVisible(true);
                 }
@@ -9339,6 +9341,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     rs2=psanak.executeQuery();
                                     if(rs2.next()){
                                         DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
+                                        dlgrwjl.isCek();
                                         dlgrwjl.bypassranap=true;
                                         dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                         dlgrwjl.setLocationRelativeTo(internalFrame1);
@@ -9351,7 +9354,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         }else if(R3.isSelected()==true){
                                             dlgrwjl.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate());
                                         }
-                                        dlgrwjl.isCek();
                                         dlgrwjl.setVisible(true);
                                     }else{
                                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -9374,6 +9376,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }                
                 }else{
                     DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
+                    dlgrwjl.isCek();
                     dlgrwjl.bypassranap=true;
                     dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgrwjl.setLocationRelativeTo(internalFrame1);
@@ -9386,7 +9389,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }else if(R3.isSelected()==true){
                         dlgrwjl.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate());
                     }
-                    dlgrwjl.isCek();
                     dlgrwjl.setVisible(true);
                 }
             }
@@ -19115,16 +19117,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         try {
                             rs=ps.executeQuery();
                             i=0;
-                            while(rs.next()){  
-                                i++;
-                                publish(new Object[]{
+                            while(rs.next()){
+                                Object[] row = new Object[]{
                                     rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umur")+")",
                                     rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
                                     rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
                                     rs.getString("diagnosa_akhir"),rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
                                     rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")),rs.getString("stts_pulang"),
                                     rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar"),rs.getString("agama")
-                                });
+                                };  
+                                i++;
+                                publish(row);
                                 psanak=koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
@@ -19134,15 +19137,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     psanak.setString(1,rs.getString(1));
                                     rs2=psanak.executeQuery();
                                     if(rs2.next()){
-                                        i++;
-                                        publish(new Object[]{
+                                        Object[] row2 = new Object[]{
                                             "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
                                             rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
                                             rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",
                                             "",rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
                                             rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(persenbayi/100)),rs.getString("stts_pulang"),
                                             rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
-                                        });
+                                        };
+                                        i++;
+                                        publish(row2);
                                     }
                                 }catch(Exception ex){
                                     System.out.println("Notifikasi : "+ex);

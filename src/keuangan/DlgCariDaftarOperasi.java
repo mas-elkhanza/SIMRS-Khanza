@@ -411,7 +411,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
 
     private void tampil() {  
         try{
-            Valid.tabelKosong(tabMode);
             file=new File("./cache/paketoperasi.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);

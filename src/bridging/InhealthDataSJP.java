@@ -298,7 +298,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppSEP.setBackground(new java.awt.Color(255, 255, 254));
-        ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSEP.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppSEP.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SJP");
@@ -315,7 +315,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Popup.add(ppSEP);
 
         ppPulang.setBackground(new java.awt.Color(255, 255, 254));
-        ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPulang.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppPulang.setForeground(new java.awt.Color(50, 50, 50));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
@@ -332,7 +332,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Popup.add(ppPulang);
 
         ppMapping.setBackground(new java.awt.Color(255, 255, 254));
-        ppMapping.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppMapping.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         ppMapping.setForeground(new java.awt.Color(50, 50, 50));
         ppMapping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppMapping.setText("Mapping Transaksi SJP");
@@ -353,7 +353,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         WindowUpdatePulang.setUndecorated(true);
         WindowUpdatePulang.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -411,8 +411,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

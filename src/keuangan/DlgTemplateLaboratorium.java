@@ -347,7 +347,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ps=koneksi.prepareStatement(
                     "select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
                     "template_laboratorium.nilai_rujukan_pa,template_laboratorium.bagian_rs,template_laboratorium.bhp,template_laboratorium.bagian_perujuk,template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,template_laboratorium.kso,template_laboratorium.menejemen,"+
-                    "template_laboratorium.biaya_item,template_laboratorium.urut from template_laboratorium where template_laboratorium.kd_jenis_prw=? order template_laboratorium.by urut");
+                    "template_laboratorium.biaya_item,template_laboratorium.urut from template_laboratorium where template_laboratorium.kd_jenis_prw=? order by template_laboratorium.urut");
             try {
                 ps.setString(1,KdPeriksa.getText());
                 rs=ps.executeQuery();

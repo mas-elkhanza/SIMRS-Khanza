@@ -59,10 +59,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3;
+    private PreparedStatement ps,ps2,ps3,pssoap;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private ResultSet rs,rs2,rs3;
+    private ResultSet rs,rs2,rs3,rssoap;
     private int i=0,jml=0,index=0,jmlskala1=0,jmlskala2=0,jmlskala3=0,jmlskala4=0,jmlskala5=0;
     private boolean[] pilih; 
     private String[] kode,pengkajian;
@@ -539,6 +539,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         btnKasus = new widget.Button();
         KeteranganKedatangan = new widget.TextBox();
         jLabel8 = new widget.Label();
+        btnCariData = new widget.Button();
         internalFrame4 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbTriase = new widget.Table();
@@ -688,11 +689,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
         PrimerSaturasi.setFocusTraversalPolicyProvider(true);
         PrimerSaturasi.setName("PrimerSaturasi"); // NOI18N
-        PrimerSaturasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PrimerSaturasiKeyPressed(evt);
-            }
-        });
         internalFrame7.add(PrimerSaturasi);
         PrimerSaturasi.setBounds(97, 70, 55, 23);
 
@@ -820,7 +816,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:45" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026 18:01:09" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1247,7 +1243,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:46" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026 18:01:10" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1541,7 +1537,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:47" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026 18:01:11" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1658,6 +1654,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         FormInput.add(jLabel8);
         jLabel8.setBounds(430, 70, 86, 23);
 
+        btnCariData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        btnCariData.setText("Cari");
+        btnCariData.setName("btnCariData"); // NOI18N
+        btnCariData.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnCariData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariDataActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnCariData);
+        btnCariData.setBounds(730, 10, 80, 30);
+
         FormTriase.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
         ScrollTriase.setViewportView(FormTriase);
@@ -1700,7 +1708,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1714,7 +1722,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3437,10 +3445,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         Valid.pindah(evt,PrimerKeluhanUtama,PrimerNyeri);
     }//GEN-LAST:event_PrimerSuhuKeyPressed
 
-    private void PrimerSaturasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerSaturasiKeyPressed
-        Valid.pindah(evt,PrimerNadi,PrimerRespirasi);
-    }//GEN-LAST:event_PrimerSaturasiKeyPressed
-
     private void PrimerNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerNyeriKeyPressed
         Valid.pindah(evt,PrimerSuhu,PrimerTensi);
     }//GEN-LAST:event_PrimerNyeriKeyPressed
@@ -4517,6 +4521,31 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
+    private void btnCariDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDataActionPerformed
+        if (TNoRw.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "No Rawat masih kosong...!!!");
+        } else {
+            if (Sequel.cariInteger("SELECT COUNT(no_rawat) FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()) > 0) {
+                PrimerKeluhanUtama.setText(Sequel.cariIsi("SELECT IFNULL(keluhan_utama,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                PrimerSuhu.setText(Sequel.cariIsi("SELECT IFNULL(suhu,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                //PrimerNyeri.setText(Sequel.cariIsi("SELECT IFNULL(skala_nyeri,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                PrimerTensi.setText(Sequel.cariIsi("SELECT IFNULL(td,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                PrimerNadi.setText(Sequel.cariIsi("SELECT IFNULL(nadi,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                PrimerSaturasi.setText(Sequel.cariIsi("SELECT IFNULL(spo,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+                PrimerRespirasi.setText(Sequel.cariIsi("SELECT IFNULL(rr,'') FROM penilaian_medis_igd WHERE no_rawat=?", TNoRw.getText()));
+
+            } else {
+                PrimerKeluhanUtama.setText(Sequel.cariIsi("SELECT IFNULL(keluhan,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+                PrimerSuhu.setText(Sequel.cariIsi("SELECT IFNULL(suhu_tubuh,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+                PrimerTensi.setText(Sequel.cariIsi("SELECT IFNULL(tensi,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+                PrimerNadi.setText(Sequel.cariIsi("SELECT IFNULL(nadi,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+                PrimerSaturasi.setText(Sequel.cariIsi("SELECT IFNULL(spo2,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+                PrimerRespirasi.setText(Sequel.cariIsi("SELECT IFNULL(respirasi,'') FROM pemeriksaan_ralan WHERE no_rawat=?", TNoRw.getText()));
+            }
+            DataSOAP();
+        }
+    }//GEN-LAST:event_btnCariDataActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4619,6 +4648,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabTriase;
     private widget.Tanggal TanggalKunjungan;
     private widget.ComboBox Transportasi;
+    private widget.Button btnCariData;
     private widget.Button btnKasus;
     private widget.Button btnPrimerPetugas;
     private widget.Button btnSekunderPetugas;
@@ -5976,5 +6006,38 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private void LoadSkalaPrimer() {
         tampilskala1();
         tampilskala2();
+    }
+    private void DataSOAP() {
+        try {
+            pssoap = koneksi.prepareStatement(
+                    "select penilaian_medis_igd.no_rawat,penilaian_medis_igd.tanggal,penilaian_medis_igd.suhu,penilaian_medis_igd.nadi,penilaian_medis_igd.rr,penilaian_medis_igd.tb,penilaian_medis_igd.bb,penilaian_medis_igd.spo,"
+                    + "penilaian_medis_igd.gcs,penilaian_medis_igd.kesadaran,penilaian_medis_igd.keluhan_utama,penilaian_medis_igd.ket_fisik,penilaian_medis_igd.tata "
+                    + "from penilaian_medis_igd where penilaian_medis_igd.no_rawat=? and nip=?");
+            try {
+                pssoap.setString(1, TNoRw.getText());
+                pssoap.setString(2, PrimerKodePetugas.getText());
+                rssoap = pssoap.executeQuery();
+                if (!rssoap.isBeforeFirst()) { // Jika tidak ada baris hasil
+                    JOptionPane.showMessageDialog(null, "Tidak Ada Data SOAP Dokter", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    while (rssoap.next()) {
+                        PrimerKeluhanUtama.setText(rssoap.getString("PrimerKeluhanUtama"));
+                        
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : " + e);
+            } finally {
+                if (rssoap != null) {
+                    rssoap.close();
+                }
+                if (pssoap != null) {
+                    pssoap.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+
     }
 }

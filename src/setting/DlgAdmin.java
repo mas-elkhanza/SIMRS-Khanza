@@ -18,8 +18,10 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import informasi.FormPengumumanLogin;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -105,6 +107,7 @@ public class DlgAdmin extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnKeluar = new widget.Button();
+        BtnPengumuman = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -118,7 +121,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Admin ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Admin ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -276,6 +279,25 @@ public class DlgAdmin extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnKeluar);
 
+        BtnPengumuman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/speaker.png"))); // NOI18N
+        BtnPengumuman.setMnemonic('K');
+        BtnPengumuman.setText("Info Update");
+        BtnPengumuman.setToolTipText("Alt+K");
+        BtnPengumuman.setIconTextGap(3);
+        BtnPengumuman.setName("BtnPengumuman"); // NOI18N
+        BtnPengumuman.setPreferredSize(new java.awt.Dimension(130, 30));
+        BtnPengumuman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPengumumanActionPerformed(evt);
+            }
+        });
+        BtnPengumuman.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPengumumanKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(BtnPengumuman);
+
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -409,6 +431,21 @@ public class DlgAdmin extends javax.swing.JDialog {
         runBackground(() ->tampil());
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnPengumumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPengumumanActionPerformed
+        try {
+            FormPengumumanLogin form = new FormPengumumanLogin((Frame) null, false);
+            form.setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            JOptionPane.showMessageDialog(null, "Gagal membuka Form Pengumuman Login!");
+        }
+    }//GEN-LAST:event_BtnPengumumanActionPerformed
+
+    private void BtnPengumumanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPengumumanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPengumumanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -430,6 +467,7 @@ public class DlgAdmin extends javax.swing.JDialog {
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPengumuman;
     private widget.Button BtnSimpan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TKd;
