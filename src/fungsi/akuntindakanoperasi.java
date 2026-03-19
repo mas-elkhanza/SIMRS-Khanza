@@ -17,13 +17,13 @@ public final class akuntindakanoperasi {
     
     public static void SetAkunTindakanOperasi() {
         try (
-                PreparedStatement ps = koneksi.prepareStatement(
-                    "select set_akun_ralan.Suspen_Piutang_Operasi_Ralan,set_akun_ralan.Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Operasi_Ralan,"+
-                    "set_akun_ralan.Utang_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Operasi_Ralan,"+
-                    "set_akun_ralan.Utang_Jasa_Medik_Paramedis_Operasi_Ralan,set_akun_ralan.HPP_Obat_Operasi_Ralan,"+
-                    "set_akun_ralan.Persediaan_Obat_Kamar_Operasi_Ralan from set_akun_ralan"
-                );
-                ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = koneksi.prepareStatement(
+                "select set_akun_ralan.Suspen_Piutang_Operasi_Ralan,set_akun_ralan.Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Operasi_Ralan,"+
+                "set_akun_ralan.Utang_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Operasi_Ralan,"+
+                "set_akun_ralan.Utang_Jasa_Medik_Paramedis_Operasi_Ralan,set_akun_ralan.HPP_Obat_Operasi_Ralan,"+
+                "set_akun_ralan.Persediaan_Obat_Kamar_Operasi_Ralan from set_akun_ralan"
+            );
+            ResultSet rs = ps.executeQuery();
             ){
             if(rs.next()){
                 Suspen_Piutang_Operasi_Ralan=rs.getString("Suspen_Piutang_Operasi_Ralan");
@@ -40,12 +40,12 @@ public final class akuntindakanoperasi {
         }
         
         try (
-                PreparedStatement ps = koneksi.prepareStatement(
-                    "select set_akun_ranap.Suspen_Piutang_Operasi_Ranap,set_akun_ranap.Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Operasi_Ranap,"+
-                    "set_akun_ranap.Utang_Jasa_Medik_Dokter_Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Paramedis_Operasi_Ranap,"+
-                    "set_akun_ranap.Utang_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.HPP_Obat_Operasi_Ranap from set_akun_ranap"
-                );
-                ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = koneksi.prepareStatement(
+                "select set_akun_ranap.Suspen_Piutang_Operasi_Ranap,set_akun_ranap.Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Operasi_Ranap,"+
+                "set_akun_ranap.Utang_Jasa_Medik_Dokter_Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Paramedis_Operasi_Ranap,"+
+                "set_akun_ranap.Utang_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.HPP_Obat_Operasi_Ranap from set_akun_ranap"
+            );
+            ResultSet rs = ps.executeQuery();
             ){
             if(rs.next()){
                 Suspen_Piutang_Operasi_Ranap=rs.getString("Suspen_Piutang_Operasi_Ranap");

@@ -13,10 +13,10 @@ public class akunobatranap {
     private static String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     public static void SetAkunObatRanap() {
         try (
-                PreparedStatement ps = koneksi.prepareStatement(
-                    "select set_akun_ranap.Suspen_Piutang_Obat_Ranap,set_akun_ranap.Obat_Ranap,set_akun_ranap.HPP_Obat_Rawat_Inap,set_akun_ranap.Persediaan_Obat_Rawat_Inap from set_akun_ranap"
-                );
-                ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = koneksi.prepareStatement(
+                "select set_akun_ranap.Suspen_Piutang_Obat_Ranap,set_akun_ranap.Obat_Ranap,set_akun_ranap.HPP_Obat_Rawat_Inap,set_akun_ranap.Persediaan_Obat_Rawat_Inap from set_akun_ranap"
+            );
+            ResultSet rs = ps.executeQuery();
             ){
             if(rs.next()){
                 Suspen_Piutang_Obat_Ranap=rs.getString("Suspen_Piutang_Obat_Ranap");

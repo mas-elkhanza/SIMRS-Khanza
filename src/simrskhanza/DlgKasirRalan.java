@@ -427,9 +427,18 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgKasirRalan")){
-                    tampilkasir();
-                }                    
+                if(billing.sukses==true){
+                    if(tabModekasir.getRowCount()!=0){
+                        if(tbKasirRalan.getSelectedRow()!= -1){
+                            if(cmbStatusBayar.getSelectedItem().toString().equals("Belum Bayar")){
+                                tabModekasir.removeRow(tbKasirRalan.getSelectedRow());
+                                LCount.setText(""+tabModekasir.getRowCount());
+                            }else{
+                                tbKasirRalan.setValueAt("Sudah Bayar", tbKasirRalan.getSelectedRow(), 15);
+                            }
+                        }
+                    }
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
