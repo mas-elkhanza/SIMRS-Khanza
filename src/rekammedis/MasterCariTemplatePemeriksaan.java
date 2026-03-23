@@ -1337,7 +1337,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
-            runBackground(() ->akuntindakanralan.SetAkunTindakanRalan());
+            akuntindakanralan.SetAkunTindakanRalan();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

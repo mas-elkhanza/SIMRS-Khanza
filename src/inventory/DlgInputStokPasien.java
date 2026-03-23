@@ -1042,7 +1042,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(akunobatranap.getSuspen_Piutang_Obat_Ranap().equals("")){
-            runBackground(() ->akunobatranap.SetAkunObatRanap());
+            akunobatranap.SetAkunObatRanap();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

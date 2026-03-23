@@ -1116,9 +1116,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_ChkJlnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        runBackground(() ->tampil());
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
-            runBackground(() ->akuntindakanralan.SetAkunTindakanRalan());
+            akuntindakanralan.SetAkunTindakanRalan();
         }
         try {
             psset_tarif=koneksi.prepareStatement("select * from set_tarif");
@@ -1144,6 +1143,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         } 
+        
+        runBackground(() ->tampil());
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCariTindakan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

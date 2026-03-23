@@ -935,7 +935,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ralan().equals("")||akuntindakanradiologi.getSuspen_Piutang_Radiologi_Ranap().equals("")){
-            runBackground(() ->akuntindakanradiologi.SetAkunTindakanRadiologi());
+            akuntindakanradiologi.SetAkunTindakanRadiologi();
         }
         
         try {

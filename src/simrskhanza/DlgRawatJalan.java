@@ -5064,7 +5064,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
-            runBackground(() ->akuntindakanralan.SetAkunTindakanRalan());
+            akuntindakanralan.SetAkunTindakanRalan();
         }
         
         try {

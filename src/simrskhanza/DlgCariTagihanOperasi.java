@@ -2039,7 +2039,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(akuntindakanoperasi.getSuspen_Piutang_Operasi_Ralan().equals("")||akuntindakanoperasi.getSuspen_Piutang_Operasi_Ranap().equals("")){
-            runBackground(() ->akuntindakanoperasi.SetAkunTindakanOperasi());
+            akuntindakanoperasi.SetAkunTindakanOperasi();
         }
         runBackground(() -> tampil());
         if(koneksiDB.CARICEPAT().equals("aktif")){

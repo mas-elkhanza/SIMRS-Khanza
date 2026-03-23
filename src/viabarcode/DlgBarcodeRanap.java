@@ -21,6 +21,8 @@ import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akunobatranap;
 import fungsi.akuntindakanranap;
+import fungsi.embalasetuslah;
+import fungsi.lokasidepoutama;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -60,7 +62,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
     private double[] jumlah,harga,stok,eb,tsl,beli,kso,menejemen;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,nobatch,nofaktur;
     private String kelas="";
-    private double embalase=0,tuslah=0,kenaikan=0,j=0,stokbarang=0;
+    private double kenaikan=0,j=0,stokbarang=0;
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
     private String aktifkanbatch="no",norm="";
@@ -836,11 +838,11 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                         TCariObat.requestFocus();
                     }else if(i==9){
                         if(tbObat.getValueAt(tbObat.getSelectedRow(),i).toString().equals("0")) {
-                            tbObat.setValueAt(embalase,tbObat.getSelectedRow(),i);
+                            tbObat.setValueAt(embalasetuslah.getEmbalase(),tbObat.getSelectedRow(),i);
                         }
                     }else if(i==10){
                         if(tbObat.getValueAt(tbObat.getSelectedRow(),i).toString().equals("0")) {
-                            tbObat.setValueAt(tuslah,tbObat.getSelectedRow(),i);
+                            tbObat.setValueAt(embalasetuslah.getTuslah(),tbObat.getSelectedRow(),i);
                         }
                         TCariObat.setText("");
                         TCariObat.requestFocus();
@@ -875,16 +877,20 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         TCariObat.setText("");
         TCariTindakan.setText("");
         Valid.tabelKosong(TabModeTindakan);
-        Valid.tabelKosong(tabModeObat);        
-        embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
-        tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
+        Valid.tabelKosong(tabModeObat);       
+        
+        if(embalasetuslah.getEmbalase() == null){
+            embalasetuslah.SetEmbalaseTuslah();
+        }
+        
         NoRawat.requestFocus();
+        
         if(akunobatranap.getSuspen_Piutang_Obat_Ranap().equals("")){
-            runBackground(() ->akunobatranap.SetAkunObatRanap());
+            akunobatranap.SetAkunObatRanap();
         }
         
         if(akuntindakanranap.getSuspen_Piutang_Tindakan_Ranap().equals("")){
-            runBackground(() ->akuntindakanranap.SetAkunTindakanRanap());
+            akuntindakanranap.SetAkunTindakanRanap();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1198,10 +1204,13 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         this.kd_dokter=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt);
         lokasistok=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",Sequel.cariIsi("select kamar.kd_bangsal from kamar where kamar.kd_kamar=?",this.kd_bangsal));
         if(lokasistok.equals("")){
-            if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+            if(lokasidepoutama.getDepoDefault().equals("")){
+                lokasidepoutama.SetLokasiDepoUtama();
+            }
+            if(lokasidepoutama.getAsalStok().equals("Gunakan Stok Bangsal")){
                 lokasistok=this.kd_bangsal;
             }else{
-                lokasistok=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi");
+                lokasistok=lokasidepoutama.getDepoDefault();
             }
         }
             
