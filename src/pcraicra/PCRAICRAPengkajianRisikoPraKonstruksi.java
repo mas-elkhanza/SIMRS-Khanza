@@ -553,6 +553,15 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         BtnCariTindakanPengendalian = new widget.Button();
         BtnAllTindakanPengendalian = new widget.Button();
         BtnTambahTindakanPengendalian = new widget.Button();
+        jLabel51 = new widget.Label();
+        scrollPane2 = new widget.ScrollPane();
+        KeluhanUtama1 = new widget.TextArea();
+        jLabel52 = new widget.Label();
+        scrollPane3 = new widget.ScrollPane();
+        KeluhanUtama2 = new widget.TextArea();
+        jLabel31 = new widget.Label();
+        scrollPane8 = new widget.ScrollPane();
+        RPS1 = new widget.TextArea();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -849,7 +858,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(Anamnesis);
-        Anamnesis.setBounds(764, 740, 90, 23);
+        Anamnesis.setBounds(764, 830, 90, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -866,13 +875,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         scrollPane1.setViewportView(KeluhanUtama);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(40, 220, 390, 113);
+        scrollPane1.setBounds(40, 220, 390, 143);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Adakah penyebab risiko lainnya yang mungkin terjadi ?");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(40, 640, 310, 23);
+        jLabel30.setBounds(40, 730, 310, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -884,7 +893,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         jLabel38.setText("Apakah dibutuhkan ICRA ?");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(600, 740, 160, 23);
+        jLabel38.setBounds(600, 830, 160, 23);
 
         Hubungan.setName("Hubungan"); // NOI18N
         Hubungan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -894,7 +903,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(Hubungan);
-        Hubungan.setBounds(680, 1070, 80, 23);
+        Hubungan.setBounds(690, 1190, 80, 23);
 
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
@@ -911,7 +920,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         scrollPane7.setViewportView(RPS);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(40, 660, 814, 53);
+        scrollPane7.setBounds(40, 750, 814, 53);
 
         label11.setText("Kapan dimulai ?");
         label11.setName("label11"); // NOI18N
@@ -1020,13 +1029,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnDokter1);
-        BtnDokter1.setBounds(470, 1070, 28, 23);
+        BtnDokter1.setBounds(480, 1190, 28, 23);
 
         NmDokter1.setEditable(false);
         NmDokter1.setName("NmDokter1"); // NOI18N
         NmDokter1.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter1);
-        NmDokter1.setBounds(280, 1070, 180, 23);
+        NmDokter1.setBounds(290, 1190, 180, 23);
 
         KdDokter1.setEditable(false);
         KdDokter1.setName("KdDokter1"); // NOI18N
@@ -1037,13 +1046,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(KdDokter1);
-        KdDokter1.setBounds(220, 1070, 65, 23);
+        KdDokter1.setBounds(230, 1190, 65, 23);
 
         label15.setText("Kelas Risiko/Pencegahan :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label15);
-        label15.setBounds(60, 1070, 150, 23);
+        label15.setBounds(70, 1190, 150, 23);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel41.setText("Seperti apa aktivitas proyek yang akan dilakukan ? silahkan pilih salah satu");
@@ -1085,13 +1094,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll6.setViewportView(tbKelompokRisikoArea);
 
         FormInput.add(Scroll6);
-        Scroll6.setBounds(464, 220, 390, 83);
+        Scroll6.setBounds(464, 220, 390, 113);
 
         label13.setText("Key Word :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label13);
-        label13.setBounds(472, 310, 60, 23);
+        label13.setBounds(472, 340, 60, 23);
 
         TCariKelompokRisikoArea.setToolTipText("Alt+C");
         TCariKelompokRisikoArea.setName("TCariKelompokRisikoArea"); // NOI18N
@@ -1102,7 +1111,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariKelompokRisikoArea);
-        TCariKelompokRisikoArea.setBounds(536, 310, 215, 23);
+        TCariKelompokRisikoArea.setBounds(536, 340, 215, 23);
 
         BtnCariKelompokRisiko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariKelompokRisiko.setMnemonic('1');
@@ -1120,7 +1129,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariKelompokRisiko);
-        BtnCariKelompokRisiko.setBounds(755, 310, 28, 23);
+        BtnCariKelompokRisiko.setBounds(755, 340, 28, 23);
 
         BtnAllKelomokRisiko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllKelomokRisiko.setMnemonic('2');
@@ -1138,7 +1147,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllKelomokRisiko);
-        BtnAllKelomokRisiko.setBounds(787, 310, 28, 23);
+        BtnAllKelomokRisiko.setBounds(787, 340, 28, 23);
 
         BtnTambahMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahMasalah.setMnemonic('3');
@@ -1151,27 +1160,27 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahMasalah);
-        BtnTambahMasalah.setBounds(819, 310, 28, 23);
+        BtnTambahMasalah.setBounds(819, 340, 28, 23);
 
         label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label17.setText("III. IDENTIFIKASI RISIKO");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label17);
-        label17.setBounds(15, 340, 310, 23);
+        label17.setBounds(15, 370, 310, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 340, 880, 1);
+        jSeparator3.setBounds(0, 370, 880, 1);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel44.setText("Apa saja penyebab risiko infeksi yang mungkin terjadi ?");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(464, 360, 390, 23);
+        jLabel44.setBounds(464, 390, 390, 23);
 
         Scroll7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll7.setName("Scroll7"); // NOI18N
@@ -1181,13 +1190,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll7.setViewportView(tbIdentifikasiRisikoInfeksi);
 
         FormInput.add(Scroll7);
-        Scroll7.setBounds(464, 380, 390, 83);
+        Scroll7.setBounds(464, 410, 390, 113);
 
         label18.setText("Key Word :");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label18);
-        label18.setBounds(472, 470, 60, 23);
+        label18.setBounds(472, 530, 60, 23);
 
         TCariRisikoInfeksi.setToolTipText("Alt+C");
         TCariRisikoInfeksi.setName("TCariRisikoInfeksi"); // NOI18N
@@ -1198,7 +1207,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariRisikoInfeksi);
-        TCariRisikoInfeksi.setBounds(536, 470, 215, 23);
+        TCariRisikoInfeksi.setBounds(536, 530, 215, 23);
 
         BtnCariRisikoInfeksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariRisikoInfeksi.setMnemonic('1');
@@ -1216,7 +1225,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariRisikoInfeksi);
-        BtnCariRisikoInfeksi.setBounds(755, 470, 28, 23);
+        BtnCariRisikoInfeksi.setBounds(755, 530, 28, 23);
 
         BtnAllRisikoInfeksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllRisikoInfeksi.setMnemonic('2');
@@ -1234,7 +1243,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllRisikoInfeksi);
-        BtnAllRisikoInfeksi.setBounds(787, 470, 28, 23);
+        BtnAllRisikoInfeksi.setBounds(787, 530, 28, 23);
 
         BtnTambahRisikoInfeksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahRisikoInfeksi.setMnemonic('3');
@@ -1247,13 +1256,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahRisikoInfeksi);
-        BtnTambahRisikoInfeksi.setBounds(819, 470, 28, 23);
+        BtnTambahRisikoInfeksi.setBounds(819, 530, 28, 23);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel45.setText("Apa saja penyebab risiko kebakaran yang mungkin terjadi ?");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(40, 360, 390, 23);
+        jLabel45.setBounds(40, 390, 390, 23);
 
         Scroll8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll8.setName("Scroll8"); // NOI18N
@@ -1263,13 +1272,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll8.setViewportView(tbIdentifikasiRisikoKebakaran);
 
         FormInput.add(Scroll8);
-        Scroll8.setBounds(40, 380, 390, 83);
+        Scroll8.setBounds(40, 410, 390, 113);
 
         label19.setText("Key Word :");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label19);
-        label19.setBounds(48, 470, 60, 23);
+        label19.setBounds(48, 530, 60, 23);
 
         TCariRisikoKebakaran.setToolTipText("Alt+C");
         TCariRisikoKebakaran.setName("TCariRisikoKebakaran"); // NOI18N
@@ -1280,7 +1289,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariRisikoKebakaran);
-        TCariRisikoKebakaran.setBounds(112, 470, 215, 23);
+        TCariRisikoKebakaran.setBounds(112, 530, 215, 23);
 
         BtnCariRisikoKebakarab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariRisikoKebakarab.setMnemonic('1');
@@ -1298,7 +1307,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariRisikoKebakarab);
-        BtnCariRisikoKebakarab.setBounds(331, 470, 28, 23);
+        BtnCariRisikoKebakarab.setBounds(331, 530, 28, 23);
 
         BtnAllRisikoKebakaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllRisikoKebakaran.setMnemonic('2');
@@ -1316,7 +1325,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllRisikoKebakaran);
-        BtnAllRisikoKebakaran.setBounds(363, 470, 28, 23);
+        BtnAllRisikoKebakaran.setBounds(363, 530, 28, 23);
 
         BtnTambahRisikoKebakaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahRisikoKebakaran.setMnemonic('3');
@@ -1329,13 +1338,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahRisikoKebakaran);
-        BtnTambahRisikoKebakaran.setBounds(395, 470, 28, 23);
+        BtnTambahRisikoKebakaran.setBounds(395, 530, 28, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("Apa saja penyebab risiko keselamatan yang mungkin terjadi ?");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(40, 500, 390, 23);
+        jLabel46.setBounds(40, 560, 390, 23);
 
         Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll9.setName("Scroll9"); // NOI18N
@@ -1345,7 +1354,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll9.setViewportView(tbIdentifikasiRisikoKeselamatan);
 
         FormInput.add(Scroll9);
-        Scroll9.setBounds(40, 520, 390, 83);
+        Scroll9.setBounds(40, 580, 390, 113);
 
         BtnTambahRisikoKeselamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahRisikoKeselamatan.setMnemonic('3');
@@ -1358,7 +1367,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahRisikoKeselamatan);
-        BtnTambahRisikoKeselamatan.setBounds(395, 610, 28, 23);
+        BtnTambahRisikoKeselamatan.setBounds(395, 700, 28, 23);
 
         BtnAllRisikoKeselamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllRisikoKeselamatan.setMnemonic('2');
@@ -1376,7 +1385,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllRisikoKeselamatan);
-        BtnAllRisikoKeselamatan.setBounds(363, 610, 28, 23);
+        BtnAllRisikoKeselamatan.setBounds(363, 700, 28, 23);
 
         BtnCariRisikoKeselamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariRisikoKeselamatan.setMnemonic('1');
@@ -1394,7 +1403,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariRisikoKeselamatan);
-        BtnCariRisikoKeselamatan.setBounds(331, 610, 28, 23);
+        BtnCariRisikoKeselamatan.setBounds(331, 700, 28, 23);
 
         TCariRisikoKeselamatan.setToolTipText("Alt+C");
         TCariRisikoKeselamatan.setName("TCariRisikoKeselamatan"); // NOI18N
@@ -1405,19 +1414,19 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariRisikoKeselamatan);
-        TCariRisikoKeselamatan.setBounds(112, 610, 215, 23);
+        TCariRisikoKeselamatan.setBounds(112, 700, 215, 23);
 
         label20.setText("Key Word :");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label20);
-        label20.setBounds(48, 610, 60, 23);
+        label20.setBounds(48, 700, 60, 23);
 
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel47.setText("Apa saja penyebab risiko utilitas yang mungkin terjadi ?");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(464, 500, 390, 23);
+        jLabel47.setBounds(464, 560, 390, 23);
 
         Scroll10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll10.setName("Scroll10"); // NOI18N
@@ -1427,7 +1436,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll10.setViewportView(tbIdentifikasiRisikoUtilitas);
 
         FormInput.add(Scroll10);
-        Scroll10.setBounds(464, 520, 390, 83);
+        Scroll10.setBounds(464, 580, 390, 113);
 
         BtnTambahRisikoUtilitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahRisikoUtilitas.setMnemonic('3');
@@ -1440,7 +1449,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahRisikoUtilitas);
-        BtnTambahRisikoUtilitas.setBounds(819, 610, 28, 23);
+        BtnTambahRisikoUtilitas.setBounds(819, 700, 28, 23);
 
         BtnAllRisikoUtilitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllRisikoUtilitas.setMnemonic('2');
@@ -1458,7 +1467,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllRisikoUtilitas);
-        BtnAllRisikoUtilitas.setBounds(787, 610, 28, 23);
+        BtnAllRisikoUtilitas.setBounds(787, 700, 28, 23);
 
         BtnCariRisikoUtilitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariRisikoUtilitas.setMnemonic('1');
@@ -1476,7 +1485,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariRisikoUtilitas);
-        BtnCariRisikoUtilitas.setBounds(755, 610, 28, 23);
+        BtnCariRisikoUtilitas.setBounds(755, 700, 28, 23);
 
         TCariRisikoUtilitas.setToolTipText("Alt+C");
         TCariRisikoUtilitas.setName("TCariRisikoUtilitas"); // NOI18N
@@ -1487,27 +1496,27 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariRisikoUtilitas);
-        TCariRisikoUtilitas.setBounds(536, 610, 215, 23);
+        TCariRisikoUtilitas.setBounds(536, 700, 215, 23);
 
         label21.setText("Key Word :");
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label21);
-        label21.setBounds(472, 610, 60, 23);
+        label21.setBounds(472, 700, 60, 23);
 
         label22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label22.setText("IV. KELAS RISIKO / KELAS PENCEGAHAN");
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label22);
-        label22.setBounds(15, 720, 310, 23);
+        label22.setBounds(15, 810, 310, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 720, 880, 1);
+        jSeparator4.setBounds(0, 810, 880, 1);
 
         KdDokter2.setEditable(false);
         KdDokter2.setName("KdDokter2"); // NOI18N
@@ -1518,13 +1527,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(KdDokter2);
-        KdDokter2.setBounds(310, 740, 58, 23);
+        KdDokter2.setBounds(310, 830, 58, 23);
 
         NmDokter2.setEditable(false);
         NmDokter2.setName("NmDokter2"); // NOI18N
         NmDokter2.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter2);
-        NmDokter2.setBounds(370, 740, 200, 23);
+        NmDokter2.setBounds(370, 830, 200, 23);
 
         BtnDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter2.setMnemonic('2');
@@ -1542,38 +1551,38 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnDokter2);
-        BtnDokter2.setBounds(570, 740, 28, 23);
+        BtnDokter2.setBounds(570, 830, 28, 23);
 
         jLabel48.setText("?");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(0, 740, 306, 23);
+        jLabel48.setBounds(0, 830, 306, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel49.setText("Proyek yang akan dilakukan masuk ke kelas risiko apa");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(40, 740, 270, 23);
+        jLabel49.setBounds(40, 830, 270, 23);
 
         label23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label23.setText("V. TINDAKAN PENGENDALIAN & REKOMENDASI");
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label23);
-        label23.setBounds(15, 770, 310, 23);
+        label23.setBounds(15, 860, 310, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 770, 880, 1);
+        jSeparator5.setBounds(0, 860, 880, 1);
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel50.setText("Tindakan pengendalian apa saja yang bisa dilakukan ?");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(40, 790, 390, 23);
+        jLabel50.setBounds(40, 880, 390, 23);
 
         Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll11.setName("Scroll11"); // NOI18N
@@ -1583,13 +1592,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         Scroll11.setViewportView(tbTindakanPengendalian);
 
         FormInput.add(Scroll11);
-        Scroll11.setBounds(40, 810, 390, 83);
+        Scroll11.setBounds(40, 900, 390, 113);
 
         label24.setText("Key Word :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label24);
-        label24.setBounds(48, 900, 60, 23);
+        label24.setBounds(48, 1020, 60, 23);
 
         TCariTindakanPengendalian.setToolTipText("Alt+C");
         TCariTindakanPengendalian.setName("TCariTindakanPengendalian"); // NOI18N
@@ -1600,7 +1609,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TCariTindakanPengendalian);
-        TCariTindakanPengendalian.setBounds(112, 900, 215, 23);
+        TCariTindakanPengendalian.setBounds(112, 1020, 215, 23);
 
         BtnCariTindakanPengendalian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariTindakanPengendalian.setMnemonic('1');
@@ -1618,7 +1627,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnCariTindakanPengendalian);
-        BtnCariTindakanPengendalian.setBounds(331, 900, 28, 23);
+        BtnCariTindakanPengendalian.setBounds(331, 1020, 28, 23);
 
         BtnAllTindakanPengendalian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllTindakanPengendalian.setMnemonic('2');
@@ -1636,7 +1645,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnAllTindakanPengendalian);
-        BtnAllTindakanPengendalian.setBounds(363, 900, 28, 23);
+        BtnAllTindakanPengendalian.setBounds(363, 1020, 28, 23);
 
         BtnTambahTindakanPengendalian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahTindakanPengendalian.setMnemonic('3');
@@ -1649,7 +1658,76 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnTambahTindakanPengendalian);
-        BtnTambahTindakanPengendalian.setBounds(395, 900, 28, 23);
+        BtnTambahTindakanPengendalian.setBounds(395, 1020, 28, 23);
+
+        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel51.setText("Apa saja rekomendasi setelah pengerjaan proyek?");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(464, 965, 370, 23);
+
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane2.setName("scrollPane2"); // NOI18N
+
+        KeluhanUtama1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        KeluhanUtama1.setColumns(20);
+        KeluhanUtama1.setRows(10);
+        KeluhanUtama1.setName("KeluhanUtama1"); // NOI18N
+        KeluhanUtama1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeluhanUtama1KeyPressed(evt);
+            }
+        });
+        scrollPane2.setViewportView(KeluhanUtama1);
+
+        FormInput.add(scrollPane2);
+        scrollPane2.setBounds(464, 985, 390, 58);
+
+        jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel52.setText("Apa saja rekomendasi selama pengerjaan proyek?");
+        jLabel52.setName("jLabel52"); // NOI18N
+        FormInput.add(jLabel52);
+        jLabel52.setBounds(464, 880, 370, 23);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        KeluhanUtama2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        KeluhanUtama2.setColumns(20);
+        KeluhanUtama2.setRows(10);
+        KeluhanUtama2.setName("KeluhanUtama2"); // NOI18N
+        KeluhanUtama2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeluhanUtama2KeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(KeluhanUtama2);
+
+        FormInput.add(scrollPane3);
+        scrollPane3.setBounds(464, 900, 390, 58);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Apakah ada hal-hal yang perlu dimonitor secara khusus ?");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(40, 1050, 310, 23);
+
+        scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane8.setName("scrollPane8"); // NOI18N
+
+        RPS1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RPS1.setColumns(20);
+        RPS1.setRows(5);
+        RPS1.setName("RPS1"); // NOI18N
+        RPS1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RPS1KeyPressed(evt);
+            }
+        });
+        scrollPane8.setViewportView(RPS1);
+
+        FormInput.add(scrollPane8);
+        scrollPane8.setBounds(40, 1070, 814, 53);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2613,6 +2691,18 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         tindakanpengendalian.setVisible(true); 
     }//GEN-LAST:event_BtnTambahTindakanPengendalianActionPerformed
 
+    private void KeluhanUtama1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtama1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeluhanUtama1KeyPressed
+
+    private void KeluhanUtama2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtama2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeluhanUtama2KeyPressed
+
+    private void RPS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPS1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RPS1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2669,6 +2759,8 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextBox KdDokter1;
     private widget.TextBox KdDokter2;
     private widget.TextArea KeluhanUtama;
+    private widget.TextArea KeluhanUtama1;
+    private widget.TextArea KeluhanUtama2;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnPenilaianMedis;
@@ -2676,6 +2768,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextBox NmDokter1;
     private widget.TextBox NmDokter2;
     private widget.TextArea RPS;
+    private widget.TextArea RPS1;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll11;
@@ -2710,6 +2803,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Label jLabel34;
     private widget.Label jLabel36;
     private widget.Label jLabel37;
@@ -2726,6 +2820,8 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Label jLabel48;
     private widget.Label jLabel49;
     private widget.Label jLabel50;
+    private widget.Label jLabel51;
+    private widget.Label jLabel52;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -2753,7 +2849,10 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane1;
+    private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane7;
+    private widget.ScrollPane scrollPane8;
     private widget.Table tbIdentifikasiRisikoInfeksi;
     private widget.Table tbIdentifikasiRisikoKebakaran;
     private widget.Table tbIdentifikasiRisikoKeselamatan;

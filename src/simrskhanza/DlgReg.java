@@ -285,7 +285,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  DlgPasien pasien=new DlgPasien(null,false);
+    private DlgPasien pasien=new DlgPasien(null,false);
     private DlgKabupaten kab;
     private DlgKecamatan kec;
     private DlgKelurahan kel;

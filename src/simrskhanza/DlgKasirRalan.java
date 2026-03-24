@@ -278,7 +278,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select set_jam_minimal.kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",
             namadokter="",namapoli="",order="reg_periksa.no_rawat desc",validasicatatan="No",tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",
             variabel="",terbitsep="";
-    public DlgBilingRalan billing=new DlgBilingRalan(null,false);
+    private DlgBilingRalan billing;
     private int i=0,pilihan=0,sudah=0,jmlparsial=0;
     private boolean semua;
     private boolean sukses=false,ceksukses=false;
@@ -419,36 +419,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         CrPoli.setDocument(new batasInput((byte)100).getKata(CrPoli));
         TotalObat.setDocument(new batasInput((byte)20).getOnlyAngka(TotalObat));
         CrPtg.setDocument(new batasInput((byte)100).getKata(CrPtg)); 
-        
-        billing.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(billing.sukses==true){
-                    if(tabModekasir.getRowCount()!=0){
-                        if(tbKasirRalan.getSelectedRow()!= -1){
-                            if(cmbStatusBayar.getSelectedItem().toString().equals("Belum Bayar")){
-                                tabModekasir.removeRow(tbKasirRalan.getSelectedRow());
-                                LCount.setText(""+tabModekasir.getRowCount());
-                            }else{
-                                tbKasirRalan.setValueAt("Sudah Bayar", tbKasirRalan.getSelectedRow(), 15);
-                            }
-                        }
-                    }
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
         
         DlgCatatan.setSize(595,34); 
         
@@ -7618,7 +7588,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else {
                 try {
                     sudah=Sequel.cariInteger("select count(billing.no_rawat) from billing where billing.no_rawat=?",TNoRw.getText());
-                    pscaripiutang=koneksi.prepareStatement("select tgl_piutang from piutang_pasien where no_rkm_medis=? and status='Belum Lunas' order by tgl_piutang asc limit 1");
+                    pscaripiutang=koneksi.prepareStatement("select piutang_pasien.tgl_piutang from piutang_pasien where piutang_pasien.no_rkm_medis=? and piutang_pasien.status='Belum Lunas' order by piutang_pasien.tgl_piutang asc limit 1");
                     try{                                                
                         pscaripiutang.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString());
                         rskasir=pscaripiutang.executeQuery();
@@ -7637,27 +7607,85 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     otomatisRalan();
                                 }
                                   
-                                akses.setform("DlgKasirRalan");
-                                billing.TNoRw.setText(TNoRw.getText());  
-                                billing.isCek();
-                                billing.isRawat(); 
-                                if(sudah>0){
-                                    billing.setPiutang();
+                                if (billing == null || !billing.isDisplayable()) {
+                                    billing=new DlgBilingRalan(null,false);
+                                    billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                    billing.addWindowListener(new WindowAdapter() {
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {
+                                            if(billing.sukses==true){
+                                                if(tabModekasir.getRowCount()!=0){
+                                                    if(tbKasirRalan.getSelectedRow()!= -1){
+                                                        if(cmbStatusBayar.getSelectedItem().toString().equals("Belum Bayar")){
+                                                            tabModekasir.removeRow(tbKasirRalan.getSelectedRow());
+                                                            LCount.setText(""+tabModekasir.getRowCount());
+                                                        }else{
+                                                            tbKasirRalan.setValueAt("Sudah Bayar", tbKasirRalan.getSelectedRow(), 15);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            billing=null;
+                                        }
+                                    });
+
+                                    billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    billing.setLocationRelativeTo(internalFrame1);
                                 }
-                                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                billing.setLocationRelativeTo(internalFrame1);
+                                if (billing == null) return;
+                                if (!billing.isVisible()) {
+                                    billing.TNoRw.setText(TNoRw.getText());  
+                                    billing.isCek();
+                                    billing.isRawat(); 
+                                    if(sudah>0){
+                                        billing.setPiutang();
+                                    }
+                                }  
+                                if (billing.isVisible()) {
+                                    billing.toFront();
+                                    return;
+                                }    
                                 billing.setVisible(true);
                             }
                         }else{
                             if(akses.getbilling_ralan()==true){
                                 otomatisRalan();
                             }
-                            akses.setform("DlgKasirRalan");
-                            billing.TNoRw.setText(TNoRw.getText());  
-                            billing.isCek();
-                            billing.isRawat(); 
-                            billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            billing.setLocationRelativeTo(internalFrame1);
+                            if (billing == null || !billing.isDisplayable()) {
+                                billing=new DlgBilingRalan(null,false);
+                                billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                billing.addWindowListener(new WindowAdapter() {
+                                    @Override
+                                    public void windowClosed(WindowEvent e) {
+                                        if(billing.sukses==true){
+                                            if(tabModekasir.getRowCount()!=0){
+                                                if(tbKasirRalan.getSelectedRow()!= -1){
+                                                    if(cmbStatusBayar.getSelectedItem().toString().equals("Belum Bayar")){
+                                                        tabModekasir.removeRow(tbKasirRalan.getSelectedRow());
+                                                        LCount.setText(""+tabModekasir.getRowCount());
+                                                    }else{
+                                                        tbKasirRalan.setValueAt("Sudah Bayar", tbKasirRalan.getSelectedRow(), 15);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        billing=null;
+                                    }
+                                });
+
+                                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                billing.setLocationRelativeTo(internalFrame1);
+                            }
+                            if (billing == null) return;
+                            if (!billing.isVisible()) {
+                                billing.TNoRw.setText(TNoRw.getText());  
+                                billing.isCek();
+                                billing.isRawat(); 
+                            }  
+                            if (billing.isVisible()) {
+                                billing.toFront();
+                                return;
+                            }    
                             billing.setVisible(true);
                         }
                     }catch(Exception ex){
@@ -9606,27 +9634,62 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                         otomatisRalan2();
                                     }
 
-                                    billing.TNoRw.setText(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());  
-                                    billing.isCek();
-                                    billing.isRawat(); 
-                                    if(sudah>0){
-                                        billing.setPiutang();
+                                    if (billing == null || !billing.isDisplayable()) {
+                                        billing=new DlgBilingRalan(null,false);
+                                        billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                        billing.addWindowListener(new WindowAdapter() {
+                                            @Override
+                                            public void windowClosed(WindowEvent e) {
+                                                billing=null;
+                                            }
+                                        });
+
+                                        billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                        billing.setLocationRelativeTo(internalFrame1);
                                     }
-                                    billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    billing.setLocationRelativeTo(internalFrame1);
-                                    tampilkasir2();
+                                    if (billing == null) return;
+                                    if (!billing.isVisible()) {
+                                        billing.TNoRw.setText(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());  
+                                        billing.isCek();
+                                        billing.isRawat(); 
+                                        if(sudah>0){
+                                            billing.setPiutang();
+                                        }
+                                    }  
+                                    if (billing.isVisible()) {
+                                        billing.toFront();
+                                        return;
+                                    }    
                                     billing.setVisible(true);
                                 }
                             }else{
                                 if(akses.getbilling_ralan()==true){
                                     otomatisRalan2();
                                 }
-                                billing.TNoRw.setText(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());  
-                                billing.isCek();
-                                billing.isRawat(); 
-                                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                billing.setLocationRelativeTo(internalFrame1);
-                                tampilkasir2();
+                                
+                                if (billing == null || !billing.isDisplayable()) {
+                                    billing=new DlgBilingRalan(null,false);
+                                    billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                    billing.addWindowListener(new WindowAdapter() {
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {
+                                            billing=null;
+                                        }
+                                    });
+
+                                    billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    billing.setLocationRelativeTo(internalFrame1);
+                                }
+                                if (billing == null) return;
+                                if (!billing.isVisible()) {
+                                    billing.TNoRw.setText(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());  
+                                    billing.isCek();
+                                    billing.isRawat(); 
+                                }  
+                                if (billing.isVisible()) {
+                                    billing.toFront();
+                                    return;
+                                }    
                                 billing.setVisible(true);
                             }
                         }catch(Exception ex){

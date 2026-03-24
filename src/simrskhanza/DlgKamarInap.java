@@ -218,7 +218,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private DlgRawatInap formrawatinap;
-    public  DlgBilingRanap billing=new DlgBilingRanap( null,false);
+    private DlgBilingRanap billing;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-MM-yyyy");
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -6700,11 +6700,29 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         akses.setkdbangsal(bangsal);
                                     }
 
-                                    billing.TNoRw.setText(norawat.getText());                   
-                                    billing.isCek();  
-                                    billing.isRawat();          
-                                    billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    billing.setLocationRelativeTo(internalFrame1);
+                                    if (billing == null || !billing.isDisplayable()) {
+                                        billing=new DlgBilingRanap(null,false);
+                                        billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                        billing.addWindowListener(new WindowAdapter() {
+                                            @Override
+                                            public void windowClosed(WindowEvent e) {
+                                                billing=null;
+                                            }
+                                        });
+
+                                        billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                        billing.setLocationRelativeTo(internalFrame1);
+                                    }
+                                    if (billing == null) return;
+                                    if (!billing.isVisible()) {
+                                        billing.TNoRw.setText(norawat.getText());                   
+                                        billing.isCek();  
+                                        billing.isRawat(); 
+                                    }  
+                                    if (billing.isVisible()) {
+                                        billing.toFront();
+                                        return;
+                                    }    
                                     billing.setVisible(true);
                                 }
                             }else{
@@ -6722,11 +6740,29 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     akses.setkdbangsal(bangsal);
                                 }
 
-                                billing.TNoRw.setText(norawat.getText());  
-                                billing.isCek();
-                                billing.isRawat(); 
-                                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                billing.setLocationRelativeTo(internalFrame1);
+                                if (billing == null || !billing.isDisplayable()) {
+                                    billing=new DlgBilingRanap(null,false);
+                                    billing.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                                    billing.addWindowListener(new WindowAdapter() {
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {
+                                            billing=null;
+                                        }
+                                    });
+
+                                    billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    billing.setLocationRelativeTo(internalFrame1);
+                                }
+                                if (billing == null) return;
+                                if (!billing.isVisible()) {
+                                    billing.TNoRw.setText(norawat.getText());  
+                                    billing.isCek();
+                                    billing.isRawat(); 
+                                }  
+                                if (billing.isVisible()) {
+                                    billing.toFront();
+                                    return;
+                                }    
                                 billing.setVisible(true);
                             }
                         } catch (Exception e) {
