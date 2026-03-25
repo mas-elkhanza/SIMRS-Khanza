@@ -18,6 +18,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.akunobatralan;
+import fungsi.akunobatranap;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -63,16 +65,14 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private riwayatobat Trackobat=new riwayatobat();
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
-    private PreparedStatement ps,psrekening;
+    private PreparedStatement ps;
     private DlgCariObat2 ObatRanap;
     private DlgCariObat ObatRalan;
     private DlgCariObat3 ObatUDD;
     private DlgCariObatPenyakit ObatPenyakit;
-    private ResultSet rs,rsrekening;
+    private ResultSet rs;
     private double ttljual,ttlhpp,jumlahtotal=0;
-    private String aktifkanbatch="no",aktifkanparsial="no",kodedokter="",namadokter="",statusberi="",
-            Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
-            Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="";
+    private String aktifkanbatch="no",aktifkanparsial="no",kodedokter="",namadokter="",statusberi="";
     private Jurnal jur=new Jurnal();
     private final Properties prop = new Properties();
     private int jmlparsial=0;
@@ -1237,52 +1237,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {
-            psrekening=koneksi.prepareStatement(
-                    "select set_akun_ralan.Suspen_Piutang_Obat_Ralan,set_akun_ralan.Obat_Ralan,"+
-                    "set_akun_ralan.HPP_Obat_Rawat_Jalan,set_akun_ralan.Persediaan_Obat_Rawat_Jalan from set_akun_ralan");
-            try {
-                rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
-                    Suspen_Piutang_Obat_Ralan=rsrekening.getString("Suspen_Piutang_Obat_Ralan");
-                    Obat_Ralan=rsrekening.getString("Obat_Ralan");
-                    HPP_Obat_Rawat_Jalan=rsrekening.getString("HPP_Obat_Rawat_Jalan");
-                    Persediaan_Obat_Rawat_Jalan=rsrekening.getString("Persediaan_Obat_Rawat_Jalan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif Rekening : "+e);
-            } finally{
-                if(rsrekening!=null){
-                    rsrekening.close();
-                }
-                if(psrekening!=null){
-                    psrekening.close();
-                }
-            }
-            
-            psrekening=koneksi.prepareStatement(
-                    "select set_akun_ranap.Suspen_Piutang_Obat_Ranap,set_akun_ranap.Obat_Ranap,"+
-                    "set_akun_ranap.HPP_Obat_Rawat_Inap,set_akun_ranap.Persediaan_Obat_Rawat_Inap from set_akun_ranap");
-            try {
-                rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
-                    Suspen_Piutang_Obat_Ranap=rsrekening.getString("Suspen_Piutang_Obat_Ranap");
-                    Obat_Ranap=rsrekening.getString("Obat_Ranap");
-                    HPP_Obat_Rawat_Inap=rsrekening.getString("HPP_Obat_Rawat_Inap");
-                    Persediaan_Obat_Rawat_Inap=rsrekening.getString("Persediaan_Obat_Rawat_Inap");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif Rekening : "+e);
-            } finally{
-                if(rsrekening!=null){
-                    rsrekening.close();
-                }
-                if(psrekening!=null){
-                    psrekening.close();
-                }
-            }            
-        } catch (Exception e) {
-            System.out.println(e);
+        if(akunobatralan.getSuspen_Piutang_Obat_Ralan().equals("")){
+            akunobatralan.SetAkunObatRalan();
+        }
+        
+        if(akunobatranap.getSuspen_Piutang_Obat_Ranap().equals("")){
+            akunobatranap.SetAkunObatRanap();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1788,18 +1748,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(statusberi.equals("Ranap")){
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttljual>0){
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatranap.getSuspen_Piutang_Obat_Ranap()+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatranap.getObat_Ranap()+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttlhpp>0){
-                    if(Sequel.menyimpantf2("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatranap.getHPP_Obat_Rawat_Inap()+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatranap.getPersediaan_Obat_Rawat_Inap()+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening")==false){
                         sukses=false;
                     }                              
                 }
@@ -1809,18 +1769,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }else if(statusberi.equals("Ralan")){
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttljual>0){
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Suspen_Piutang_Obat_Ralan+"','Suspen Piutang Obat Ralan','0','"+ttljual+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatralan.getSuspen_Piutang_Obat_Ralan()+"','Suspen Piutang Obat Ralan','0','"+ttljual+"'","Rekening")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Obat_Ralan+"','Pendapatan Obat Rawat Jalan','"+ttljual+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatralan.getObat_Ralan()+"','Pendapatan Obat Rawat Jalan','"+ttljual+"','0'","Rekening")==false){
                         sukses=false;
                     }                              
                 }
                 if(ttlhpp>0){
-                    if(Sequel.menyimpantf2("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','HPP Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatralan.getHPP_Obat_Rawat_Jalan()+"','HPP Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Persediaan Obat Rawat Jalan','"+ttlhpp+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+akunobatralan.getPersediaan_Obat_Rawat_Jalan()+"','Persediaan Obat Rawat Jalan','"+ttlhpp+"','0'","Rekening")==false){
                         sukses=false;
                     }                              
                 }

@@ -5,6 +5,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.lokasidepoutama;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
@@ -1271,8 +1272,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     public void isCek(){
         TCari.requestFocus();
         autoNomor();
-        Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi",kdgudang);
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        if(lokasidepoutama.getDepoDefault().equals("")){
+            lokasidepoutama.SetLokasiDepoUtama();
+        }
+        kdgudang.setText(lokasidepoutama.getDepoDefault());
+        nmgudang.setText(Sequel.CariBangsal(kdgudang.getText()));
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);

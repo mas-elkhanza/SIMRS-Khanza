@@ -5,6 +5,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.lokasidepoutama;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1352,8 +1353,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
      public void isCek(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(returpiutang.no_retur_piutang,3),signed)),0) from returpiutang where returpiutang.tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
                 "RP"+TglRetur.getSelectedItem().toString().substring(6,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
-        Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi",kdgudang);
-        nmgudang.setText(Sequel.CariBangsal(kdgudang.getText())); 
+        if(lokasidepoutama.getDepoDefault().equals("")){
+            lokasidepoutama.SetLokasiDepoUtama();
+        }
+        kdgudang.setText(lokasidepoutama.getDepoDefault());
+        nmgudang.setText(Sequel.CariBangsal(kdgudang.getText()));
         if(akses.getjml2()>=1){
             Kdptg.setEditable(false);
             BtnPtg.setEnabled(false);

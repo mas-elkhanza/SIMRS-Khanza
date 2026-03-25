@@ -604,10 +604,12 @@ public class MasterMasalahKeperawatanIGD extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_igd where master_masalah_keperawatan_igd.kode_masalah like ? or master_masalah_keperawatan_igd.nama_masalah like ? order by master_masalah_keperawatan_igd.kode_masalah");
+            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_igd "+(TCari.getText().trim().equals("")?"":"where master_masalah_keperawatan_igd.kode_masalah like ? or master_masalah_keperawatan_igd.nama_masalah like ? ")+"order by master_masalah_keperawatan_igd.kode_masalah");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});

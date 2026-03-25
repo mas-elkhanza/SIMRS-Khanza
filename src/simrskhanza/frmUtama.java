@@ -1202,9 +1202,6 @@ public class frmUtama extends javax.swing.JFrame {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private final DlgKasirRalan kasirralan=new DlgKasirRalan(this,false);
-    private final DlgReg reg=new DlgReg(this,false);
-    private final DlgKamarInap kamarinap=new DlgKamarInap(null,false);
     private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
     private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
     private static frmUtama myInstance;
@@ -1262,7 +1259,7 @@ public class frmUtama extends javax.swing.JFrame {
     }
     
     public static frmUtama getInstance() {
-        if (myInstance == null)
+        if (myInstance == null) 
             myInstance = new frmUtama();
 
         return myInstance;
@@ -2057,7 +2054,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/03/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/03/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8299,6 +8296,7 @@ public class frmUtama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        isTutup();
         DlgHome.dispose();
         System.exit(0);
     }//GEN-LAST:event_formWindowClosed
@@ -8488,6 +8486,7 @@ public class frmUtama extends javax.swing.JFrame {
     private void BtnToolKamnapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolKamnapActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKamarInap kamarinap=new DlgKamarInap(null,false);
         kamarinap.isCek();
         kamarinap.emptTeks();  
         kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -8530,6 +8529,7 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 private void BtnToolKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolKasirActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
+        DlgKasirRalan kasirralan=new DlgKasirRalan(this,false);
         kasirralan.isCek();      
         kasirralan.setCariKosong();  
         kasirralan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -8542,6 +8542,7 @@ private void BtnToolKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 private void BtnToolRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolRegActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
+        DlgReg reg=new DlgReg(this,false);
         reg.emptTeks();    
         reg.isCek();
         reg.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -8683,11 +8684,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        reg.pasien.emptTeks();
-        reg.pasien.isCek();
-        reg.pasien.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        reg.pasien.setLocationRelativeTo(PanelUtama);
-        reg.pasien.setVisible(true);
+        DlgPasien pasien=new DlgPasien(null,false);
+        pasien.emptTeks();
+        pasien.isCek();
+        pasien.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pasien.setLocationRelativeTo(PanelUtama);
+        pasien.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPasienActionPerformed
@@ -8695,6 +8697,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgReg reg=new DlgReg(this,false);
         reg.emptTeks();
         reg.isCek();
         reg.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -8708,12 +8711,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRawatJalan form=new DlgRawatJalan(null,false);
-        form.isCek();
         form.SetPj("-");
         form.SetPoli("-");
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
+        form.isCek();
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRalanActionPerformed
@@ -8721,6 +8724,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarInapActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKamarInap kamarinap=new DlgKamarInap(null,false);
         kamarinap.isCek();
         kamarinap.emptTeks();
         kamarinap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
