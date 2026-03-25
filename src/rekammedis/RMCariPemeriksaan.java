@@ -339,7 +339,16 @@ public final class RMCariPemeriksaan extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.pemeriksaan "+
+                    "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,"+
+                    "concat(if(pemeriksaan_ralan.suhu_tubuh='','',concat('Suhu ', pemeriksaan_ralan.suhu_tubuh)),"+
+                    "if(pemeriksaan_ralan.tensi='','',concat(', TD ', pemeriksaan_ralan.tensi)),"+
+                    "if(pemeriksaan_ralan.nadi='','',concat(', Nadi ', pemeriksaan_ralan.nadi)),"+
+                    "if(pemeriksaan_ralan.respirasi='','',concat(', RR ', pemeriksaan_ralan.respirasi)),"+
+                    "if(pemeriksaan_ralan.tinggi='','',concat(', TB ', pemeriksaan_ralan.tinggi)),"+
+                    "if(pemeriksaan_ralan.berat='','',concat(', BB ', pemeriksaan_ralan.berat)),"+
+                    "if(pemeriksaan_ralan.spo2='','',concat(', SpO2 ', pemeriksaan_ralan.spo2)),"+
+                    "if(pemeriksaan_ralan.gcs='','',concat(', GCS ', pemeriksaan_ralan.gcs)),"+
+                    "' [', pemeriksaan_ralan.pemeriksaan,']') as pemeriksaan "+
                     "from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? and "+
                     "(pemeriksaan_ralan.tgl_perawatan like ? or pemeriksaan_ralan.pemeriksaan like ?) "+
                     "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
@@ -369,7 +378,17 @@ public final class RMCariPemeriksaan extends javax.swing.JDialog {
         
         try{
             ps=koneksi.prepareStatement(
-                    "select pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.pemeriksaan "+
+                    "select pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat, "+
+                    "concat(if(pemeriksaan_ranap.pemeriksaan='','',concat('[', pemeriksaan_ranap.pemeriksaan,'] ')),"+
+                    "if(pemeriksaan_ranap.suhu_tubuh='','',concat('Suhu ', pemeriksaan_ranap.suhu_tubuh)),"+
+                    "if(pemeriksaan_ranap.tensi='','',concat(', TD ', pemeriksaan_ranap.tensi)),"+
+                    "if(pemeriksaan_ranap.nadi='','',concat(', Nadi ', pemeriksaan_ranap.nadi)),"+
+                    "if(pemeriksaan_ranap.respirasi='','',concat(', RR ', pemeriksaan_ranap.respirasi)),"+
+                    "if(pemeriksaan_ranap.tinggi='','',concat(', TB ', pemeriksaan_ranap.tinggi)),"+
+                    "if(pemeriksaan_ranap.berat='','',concat(', BB ', pemeriksaan_ranap.berat)),"+
+                    "if(pemeriksaan_ranap.spo2='','',concat(', SpO2 ', pemeriksaan_ranap.spo2)),"+
+                    "if(pemeriksaan_ranap.gcs='','',concat(', GCS ', pemeriksaan_ranap.gcs)),"+
+                    "if(pemeriksaan_ranap.kesadaran='','',concat(', Kesadaran (', pemeriksaan_ranap.kesadaran,')'))) as pemeriksaan "+
                     "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat=? and "+
                     "(pemeriksaan_ranap.tgl_perawatan like ? or pemeriksaan_ranap.pemeriksaan like ?) "+
                     "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");

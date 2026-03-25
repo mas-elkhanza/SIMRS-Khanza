@@ -109,9 +109,13 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));            
         TCari.setDocument(new batasInput((int)100).getKata(TCari));           
-        TMasalah.setDocument(new batasInput((int)500).getKata(TMasalah));           
-        TTinjut.setDocument(new batasInput((int)500).getKata(TTinjut));           
-        TEvaluasi.setDocument(new batasInput((int)500).getKata(TEvaluasi));    
+        TMasalah.setDocument(new batasInput((int)500).getKata(TMasalah));
+        //CUSTOM RS ISLAM LUMAJANG - Senin, 23 Februari 2026
+        //TTINJAT DARI 500 KE 800
+        //TAVALUASI DARI 500 KE 800
+        //DATABASE mpp_evaluasi_catatan
+        TTinjut.setDocument(new batasInput((int)800).getKata(TTinjut));           
+        TEvaluasi.setDocument(new batasInput((int)800).getKata(TEvaluasi));    
         
         ChkInput.setSelected(false);
         isForm();

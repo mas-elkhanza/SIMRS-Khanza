@@ -179,7 +179,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Data Resume Medis Pasien Rawat Jalan ]::">
+            <TitledBorder title="::[ Discharge Summary Pasien Rawat Jalan ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -195,6 +195,9 @@
         </Property>
         <Property name="name" type="java.lang.String" value="internalFrame1" noResource="true"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="::[ Discharge Summary Pasien Rawat Jalan ]::"/>
+      </AccessibilityProperties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Center"/>
@@ -438,7 +441,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-02-2026"/>
+                        <StringItem index="0" value="26-02-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -466,7 +469,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-02-2026"/>
+                        <StringItem index="0" value="26-02-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -622,7 +625,7 @@
                   <SubComponents>
                     <Component class="widget.Label" name="jLabel4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Keluhan Utama Riwayat Penyakit Yang Positif :"/>
+                        <Property name="text" type="java.lang.String" value="Anamnesa :"/>
                         <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -836,7 +839,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Jalannya Penyakit Selama Perawatan :"/>
+                        <Property name="text" type="java.lang.String" value="Pemeriksaan Fisik :"/>
                         <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1385,9 +1388,10 @@
                     <Component class="widget.ComboBox" name="Kondisi">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Hidup"/>
-                            <StringItem index="1" value="Meninggal"/>
+                          <StringArray count="3">
+                            <StringItem index="0" value="Kontrol Ulang"/>
+                            <StringItem index="1" value="Rujuk Poli Spesialis"/>
+                            <StringItem index="2" value="MRS"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Kondisi" noResource="true"/>
@@ -1429,7 +1433,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="180" y="96" width="28" height="23"/>
+                          <AbsoluteConstraints x="210" y="90" width="28" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1513,7 +1517,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="212" y="96" width="28" height="23"/>
+                          <AbsoluteConstraints x="210" y="150" width="28" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1534,7 +1538,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="212" y="153" width="28" height="23"/>
+                          <AbsoluteConstraints x="180" y="150" width="28" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
