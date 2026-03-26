@@ -21,9 +21,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/pcraicra/PCRAICRAPengkajianRisikoPraKonstruksi.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPeresepanDokter.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/pcraicra/PCRAICRAIdentifikasiRisikoKeselamatan.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/koneksiDB.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariObat.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/pcraicra/PCRAICRATindakanPengendalian.java</file>
         </group>
     </open-files>
 </project-private>
