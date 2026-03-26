@@ -29,12 +29,13 @@ public class BackgroundMusic {
     // play the MP3 file to the sound card
     public void play() {
         try {
-            FileInputStream fis = new FileInputStream(filename);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            player = new Player(bis);
-        } catch (Exception e) {
-            System.out.println("Problem playing file " + filename);
-            System.out.println(e);
+            try (FileInputStream fis = new FileInputStream(filename)) {
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                player = new Player(bis);
+                } catch (Exception e) {
+                System.out.println("Problem playing file " + filename);
+                System.out.println(e);
+            }
         }
     }
 
