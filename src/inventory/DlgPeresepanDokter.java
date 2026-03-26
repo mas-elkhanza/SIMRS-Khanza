@@ -963,6 +963,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                     getCekStok();
                     i=tbResep.getSelectedColumn();
                     if(i==2){
+                        pesanaktif=false;
                         if (aturanpakai == null || !aturanpakai.isDisplayable()) {
                             aturanpakai=new DlgCariAturanPakai(null,false);
                             aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -1378,6 +1379,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 i=tbObatResepRacikan.getSelectedColumn();
                 if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                     if(i==5){
+                        pesanaktif=false;
                         if (aturanpakai == null || !aturanpakai.isDisplayable()) {
                             aturanpakai=new DlgCariAturanPakai(null,false);
                             aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -4231,7 +4233,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
         if(status.equals("ralan")){
             if(NOTIFMAKSIMALNOMINALRESEPRAJAL.equals("yes")){
-                if((tbResep.getSelectedColumn()!=2)||(tbResep.getSelectedColumn()!=3)){
+                if((tbResep.getSelectedColumn()!=2)){
                     if(pesanaktif==true){
                         if(ttl>MAKSIMALNOMINALRESEPRAJAL){
                             JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
