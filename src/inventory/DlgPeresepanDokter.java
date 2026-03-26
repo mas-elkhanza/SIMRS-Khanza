@@ -20,6 +20,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.kodebpjs;
+import fungsi.ppnralan;
 import fungsi.lokasidepoutama;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -72,7 +74,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariDokter dokter;
-    private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
+    private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
             kamar="",norawatibu="",kelas,RESEPRAJALKEPLAN="no",NOTIFMAKSIMALNOMINALRESEPRAJAL="no";
     private File file;
     private FileWriter fileWriter;
@@ -274,7 +276,9 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         jam();
         
-        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
+        if(kodebpjs.getKodeBPJS().equals("")){
+            kodebpjs.SetKodeBPJS();
+        }
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -936,7 +940,6 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private void tbResepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResepMouseClicked
         if(tbResep.getRowCount()!=0){
             try {
-                pesanaktif=true;
                 getCekStok();
             } catch (java.lang.NullPointerException e) {
             }
@@ -1566,6 +1569,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(ubah==false){
             emptTeksobat();
         } 
+        
+        if(ppnralan.getTampilPPNRalan().equals("")){
+            ppnralan.SetPPNRalan();
+        }
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -4231,13 +4239,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }
         
-        if(status.equals("ralan")){
-            if(NOTIFMAKSIMALNOMINALRESEPRAJAL.equals("yes")){
-                if((tbResep.getSelectedColumn()!=2)){
-                    if(pesanaktif==true){
-                        if(ttl>MAKSIMALNOMINALRESEPRAJAL){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
-                            pesanaktif=false;
+        if(kodebpjs.getKodeBPJS().equals(KdPj.getText())){    
+            if(status.equals("ralan")){
+                if(NOTIFMAKSIMALNOMINALRESEPRAJAL.equals("yes")){
+                    if((tbResep.getSelectedColumn()!=2)){
+                        if(pesanaktif==true){
+                            if(ttl>MAKSIMALNOMINALRESEPRAJAL){
+                                JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
+                                pesanaktif=false;
+                            }
                         }
                     }
                 }
@@ -4246,7 +4256,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
-        if(tampilkan_ppnobat_ralan.equals("Yes")){
+        if(ppnralan.getTampilPPNRalan().equals("Yes")){
             ppnobat=Math.round(ttl*0.11);
             ttl=ttl+ppnobat;
             LPpn.setText(Valid.SetAngka(ppnobat));

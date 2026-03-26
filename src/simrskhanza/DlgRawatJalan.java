@@ -23,6 +23,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akuntindakanralan;
+import fungsi.kodebpjs;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
 import inventory.DlgPeresepanDokter;
@@ -232,9 +233,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan,psset_tarif;
     private ResultSet rs,rstindakan,rsset_tarif;
     private int i=0,jmlparsial=0,jml=0,index=0,tinggi=0;
-    private String aktifkanparsial="no",kode_poli="",kd_pj="",poli_ralan="No",cara_bayar_ralan="No",TANGGALMUNDUR="yes",
-            KodeBPJS=Sequel.cariIsi("select password_asuransi.kd_pj from password_asuransi"),
-            pilihiterasi="";
+    private String aktifkanparsial="no",kode_poli="",kd_pj="",poli_ralan="No",cara_bayar_ralan="No",TANGGALMUNDUR="yes",pilihiterasi="";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
@@ -1111,6 +1110,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         ChkAccor.setSelected(true);
         isMenu(); 
         jam();
+        
+        if(kodebpjs.getKodeBPJS().equals("")){
+            kodebpjs.SetKodeBPJS();
+        }
         
         try {
             aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
@@ -10407,7 +10410,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                 }else{ 
-                    if(kd_pj.equals(KodeBPJS)){
+                    if(kd_pj.equals(kodebpjs.getKodeBPJS())){
                         String pilihaniterasi = (String)JOptionPane.showInputDialog(null,"Silahkan pilih iterasi..!!","Pilihan Resep Iterasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Iterasi 1x","Iterasi 2x","Batal"},"Iterasi 1x");
                         switch (pilihaniterasi) {
                             case "Iterasi 1x": 
@@ -11106,7 +11109,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tinggi=tinggi+48;
         }
         if(koneksiDB.AKTIFKANRESEPITERDOKTER().equals("yes")){
-            if(kd_pj.equals(KodeBPJS)){
+            if(kd_pj.equals(kodebpjs.getKodeBPJS())){
                 BtnResepIterasiBPJS.setVisible(akses.getresep_dokter());
                 if(akses.getresep_dokter()==true){
                     tinggi=tinggi+24;
