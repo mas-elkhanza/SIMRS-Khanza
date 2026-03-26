@@ -276,10 +276,6 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         jam();
         
-        if(kodebpjs.getKodeBPJS().equals("")){
-            kodebpjs.SetKodeBPJS();
-        }
-        
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
             STOKKOSONGRESEP = koneksiDB.STOKKOSONGRESEP();
@@ -1570,9 +1566,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             emptTeksobat();
         } 
         
-        if(ppnralan.getTampilPPNRalan().equals("")){
-            ppnralan.SetPPNRalan();
-        }
+        runBackground(() ->LoadPengaturan());
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -4300,6 +4294,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void pilihIterasi(String pilihaniterasi) {
         pilihiterasi=pilihaniterasi;
+    }
+    
+    private void LoadPengaturan(){
+        if(kodebpjs.getKodeBPJS().equals("")){
+            kodebpjs.SetKodeBPJS();
+        }
+        
+        if(ppnralan.getTampilPPNRalan().equals("")){
+            ppnralan.SetPPNRalan();
+        }
     }
     
     private void runBackground(Runnable task) {
