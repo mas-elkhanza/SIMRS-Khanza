@@ -62,11 +62,12 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private DlgCariAturanPakai aturanpakai;
     private PreparedStatement psresep,pscarikapasitas,psresepasuransi,ps2;
     private ResultSet rsobat,carikapasitas,rs2;
     private double y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0,MAKSIMALNOMINALRESEPRAJAL=0;
     private int i=0,z=0,row2=0,r=0;
-    private boolean ubah=false,copy=false,sukses=true;
+    private boolean ubah=false,copy=false,sukses=true,pesanaktif=true;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
@@ -935,6 +936,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private void tbResepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResepMouseClicked
         if(tbResep.getRowCount()!=0){
             try {
+                pesanaktif=true;
                 getCekStok();
             } catch (java.lang.NullPointerException e) {
             }
@@ -957,44 +959,38 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                         TCari.requestFocus();
                     }                
                 }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+                    pesanaktif=true;
                     getCekStok();
                     i=tbResep.getSelectedColumn();
                     if(i==2){
-                        akses.setform("DlgCariObat");
-                        DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
-                        aturanpakai.addWindowListener(new WindowListener() {
-                            @Override
-                            public void windowOpened(WindowEvent e) {}
-                            @Override
-                            public void windowClosing(WindowEvent e) {}
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                if(aturanpakai.getTable().getSelectedRow()!= -1){  
-                                    if(TabRawat.getSelectedIndex()==0){
+                        if (aturanpakai == null || !aturanpakai.isDisplayable()) {
+                            aturanpakai=new DlgCariAturanPakai(null,false);
+                            aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            aturanpakai.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    if(aturanpakai.getTable().getSelectedRow()!= -1){  
                                         tbResep.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbResep.getSelectedRow(),2);
                                         tbResep.requestFocus();
-                                    }else if(TabRawat.getSelectedIndex()==1){
-                                        tbObatResepRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatResepRacikan.getSelectedRow(),5);
-                                        tbObatResepRacikan.requestFocus();
-                                    }   
+                                    }
+                                    aturanpakai=null;
                                 }
-                            }
-                            @Override
-                            public void windowIconified(WindowEvent e) {}
-                            @Override
-                            public void windowDeiconified(WindowEvent e) {}
-                            @Override
-                            public void windowActivated(WindowEvent e) {}
-                            @Override
-                            public void windowDeactivated(WindowEvent e) {}
-                        });
-                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                            });
+
+                            aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            aturanpakai.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (aturanpakai == null) return;
+                        if (aturanpakai.isVisible()) {
+                            aturanpakai.toFront();
+                            return;
+                        }    
                         aturanpakai.setVisible(true);
                     }else if(i==2){
                         hitungResep();
                     }
                 }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                    pesanaktif=true;
                     getCekStok();
                     i=tbResep.getSelectedColumn();
                     if((i==2)||(i==3)){
@@ -1382,36 +1378,28 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 i=tbObatResepRacikan.getSelectedColumn();
                 if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                     if(i==5){
-                        akses.setform("DlgCariObat");
-                        DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
-                        aturanpakai.addWindowListener(new WindowListener() {
-                            @Override
-                            public void windowOpened(WindowEvent e) {}
-                            @Override
-                            public void windowClosing(WindowEvent e) {}
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                if(aturanpakai.getTable().getSelectedRow()!= -1){  
-                                    if(TabRawat.getSelectedIndex()==0){
-                                        tbResep.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbResep.getSelectedRow(),2);
-                                        tbResep.requestFocus();
-                                    }else if(TabRawat.getSelectedIndex()==1){
+                        if (aturanpakai == null || !aturanpakai.isDisplayable()) {
+                            aturanpakai=new DlgCariAturanPakai(null,false);
+                            aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            aturanpakai.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    if(aturanpakai.getTable().getSelectedRow()!= -1){  
                                         tbObatResepRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatResepRacikan.getSelectedRow(),5);
                                         tbObatResepRacikan.requestFocus();
-                                    }   
+                                    }
+                                    aturanpakai=null;
                                 }
-                            }
-                            @Override
-                            public void windowIconified(WindowEvent e) {}
-                            @Override
-                            public void windowDeiconified(WindowEvent e) {}
-                            @Override
-                            public void windowActivated(WindowEvent e) {}
-                            @Override
-                            public void windowDeactivated(WindowEvent e) {}
-                        });
-                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                            });
+
+                            aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            aturanpakai.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (aturanpakai == null) return;
+                        if (aturanpakai.isVisible()) {
+                            aturanpakai.toFront();
+                            return;
+                        }    
                         aturanpakai.setVisible(true);
                     }else if(i==3){
                         if(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),1).equals("")){
@@ -1498,6 +1486,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                     i=tbDetailResepObatRacikan.getSelectedColumn();
                     if((i==11)||(i==9)||(i==13)||(i==14)){
+                        pesanaktif=true;
                         try {
                             if(!tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString().equals(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())){
                                 if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())==0){
@@ -1513,6 +1502,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         }      
                         getCekStokRacikan();
                     }else if(i==12){
+                        pesanaktif=true;
                         if(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString().contains("%")){
                             getDatadetailresepracikan2();
                         }else{
@@ -4241,8 +4231,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
         if(status.equals("ralan")){
             if(NOTIFMAKSIMALNOMINALRESEPRAJAL.equals("yes")){
-                if(ttl>MAKSIMALNOMINALRESEPRAJAL){
-                    JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
+                if((tbResep.getSelectedColumn()!=2)||(tbResep.getSelectedColumn()!=3)){
+                    if(pesanaktif==true){
+                        if(ttl>MAKSIMALNOMINALRESEPRAJAL){
+                            JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
+                            pesanaktif=false;
+                        }
+                    }
                 }
             }
         }
