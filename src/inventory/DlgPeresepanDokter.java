@@ -4297,12 +4297,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     private void LoadPengaturan(){
-        if(kodebpjs.getKodeBPJS().equals("")){
-            kodebpjs.SetKodeBPJS();
-        }
-        
         if(ppnralan.getTampilPPNRalan().equals("")){
             ppnralan.SetPPNRalan();
+        }
+        
+        if(kodebpjs.getKodeBPJS().equals("")){
+            kodebpjs.SetKodeBPJS();
         }
     }
     

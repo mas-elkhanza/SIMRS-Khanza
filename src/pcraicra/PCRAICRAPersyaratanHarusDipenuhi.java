@@ -56,7 +56,7 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
         this.setLocation(10,10);
         
 
-        Object[] row={"Kode","Persyaratan Harus Dipenuhi"};
+        Object[] row={"Kode","Persyaratan Yang Harus Dipenuhi"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

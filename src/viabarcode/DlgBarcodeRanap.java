@@ -23,6 +23,7 @@ import fungsi.akunobatranap;
 import fungsi.akuntindakanranap;
 import fungsi.embalasetuslah;
 import fungsi.lokasidepoutama;
+import fungsi.tarifranap;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -58,7 +59,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat;
-    private String kd_pj="",kd_bangsal="",ruang_ranap="Yes", cara_bayar_ranap="Yes",kd_dokter,lokasistok="";   
+    private String kd_pj="",kd_bangsal="",kd_dokter,lokasistok="";   
     private double[] jumlah,harga,stok,eb,tsl,beli,kso,menejemen;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,nobatch,nofaktur;
     private String kelas="";
@@ -1122,7 +1123,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     " jns_perawatan_inap.status='1' and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             try {
-                if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")){
+                if(tarifranap.getRuangRanap().equals("Yes")&&tarifranap.getCaraBayarRanap().equals("Yes")){
                     pscari.setString(1,kd_pj.trim());
                     pscari.setString(2,kd_bangsal.trim());
                     pscari.setString(3,"%"+TCariTindakan.getText().trim()+"%");
@@ -1133,7 +1134,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     pscari.setString(8,kd_bangsal.trim());
                     pscari.setString(9,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pscari.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")){
+                }else if(tarifranap.getRuangRanap().equals("No")&&tarifranap.getCaraBayarRanap().equals("Yes")){
                     pscari2.setString(1,kd_pj.trim());
                     pscari2.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pscari2.setString(3,kd_pj.trim());
@@ -1141,7 +1142,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     pscari2.setString(5,kd_pj.trim());
                     pscari2.setString(6,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pscari2.executeQuery();
-                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")){
+                }else if(tarifranap.getRuangRanap().equals("Yes")&&tarifranap.getCaraBayarRanap().equals("No")){
                     pscari3.setString(1,kd_bangsal.trim());
                     pscari3.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pscari3.setString(3,kd_bangsal.trim());
@@ -1149,7 +1150,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     pscari3.setString(5,kd_bangsal.trim());
                     pscari3.setString(6,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pscari3.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")){
+                }else if(tarifranap.getRuangRanap().equals("No")&&tarifranap.getCaraBayarRanap().equals("No")){
                     pscari4.setString(1,"%"+TCariTindakan.getText().trim()+"%");
                     pscari4.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pscari4.setString(3,"%"+TCariTindakan.getText().trim()+"%");
@@ -1216,29 +1217,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             
         TCariTindakan.requestFocus();
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ranap where kd_pj='"+this.kd_pj+"' and kelas='"+this.kelas+"'");
-        try {
-            pstarif=koneksi.prepareStatement("select * from set_tarif");
-            try {
-                rstarif=pstarif.executeQuery();
-                if(rstarif.next()){
-                    ruang_ranap=rstarif.getString("ruang_ranap");
-                    cara_bayar_ranap=rstarif.getString("cara_bayar_ranap");
-                }else{
-                    ruang_ranap="Yes";
-                    cara_bayar_ranap="Yes";
-                }  
-            } catch (Exception e) {
-                System.out.println("Notif Cek Tarif : "+e);
-            } finally{
-                if(rstarif!=null){
-                    rstarif.close();
-                }
-                if(pstarif!=null){
-                    pstarif.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+        if(tarifranap.getCaraBayarRanap().equals("")){
+           tarifranap.SetTarifRanap();
         }
     }
     

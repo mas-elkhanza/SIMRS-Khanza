@@ -23,6 +23,7 @@ import fungsi.akunobatralan;
 import fungsi.akuntindakanralan;
 import fungsi.embalasetuslah;
 import fungsi.lokasidepoutama;
+import fungsi.tarifralan;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -51,15 +52,15 @@ import simrskhanza.DlgRawatJalan;
 public final class DlgBarcodeRalan extends javax.swing.JDialog {
     private final DefaultTableModel TabModeTindakan,tabModeObat;
     private int jml=0,i=0,index=0,z=0;
-    private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,psobat,psset_tarif,pscarikapasitas;
-    private ResultSet rstindakan,rsset_tarif,rsobat,carikapasitas;
+    private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,psobat,pscarikapasitas;
+    private ResultSet rstindakan,rsobat,carikapasitas;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
-    private String kd_pj="",kd_poli="",kd_dokter="",poli_ralan="Yes", cara_bayar_ralan="Yes",norm="";    
+    private String kd_pj="",kd_poli="",kd_dokter="",norm="";    
     private double[] jumlah,harga,stok,eb,tsl,beli;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,nobatch,nofaktur;
     private String bangsal="",hppfarmasi="";
@@ -214,6 +215,10 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        if(tarifralan.getCaraBayarRalan().equals("")){
+            tarifralan.SetTarifRalan();
         }
         
         try {
@@ -1136,7 +1141,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     " jns_perawatan.status='1' and jns_perawatan.nm_perawatan like ? or "+
                     " jns_perawatan.status='1' and kategori_perawatan.nm_kategori like ? order by jns_perawatan.nm_perawatan "); 
             try {
-                if(poli_ralan.equals("Yes")&&cara_bayar_ralan.equals("Yes")){
+                if(tarifralan.getPoliRalan().equals("Yes")&&tarifralan.getCaraBayarRalan().equals("Yes")){
                     pstindakan.setString(1,kd_pj.trim());
                     pstindakan.setString(2,kd_poli.trim());
                     pstindakan.setString(3,"%"+TCariTindakan.getText().trim()+"%");
@@ -1147,7 +1152,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     pstindakan.setString(8,kd_poli.trim());
                     pstindakan.setString(9,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pstindakan.executeQuery();
-                }else if(poli_ralan.equals("No")&&cara_bayar_ralan.equals("Yes")){
+                }else if(tarifralan.getPoliRalan().equals("No")&&tarifralan.getCaraBayarRalan().equals("Yes")){
                     pstindakan2.setString(1,kd_pj.trim());
                     pstindakan2.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pstindakan2.setString(3,kd_pj.trim());
@@ -1155,7 +1160,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     pstindakan2.setString(5,kd_pj.trim());
                     pstindakan2.setString(6,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pstindakan2.executeQuery();
-                }else if(poli_ralan.equals("Yes")&&cara_bayar_ralan.equals("No")){
+                }else if(tarifralan.getPoliRalan().equals("Yes")&&tarifralan.getCaraBayarRalan().equals("No")){
                     pstindakan3.setString(1,kd_poli.trim());
                     pstindakan3.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pstindakan3.setString(3,kd_poli.trim());
@@ -1163,7 +1168,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     pstindakan3.setString(5,kd_poli.trim());
                     pstindakan3.setString(6,"%"+TCariTindakan.getText().trim()+"%");
                     rstindakan=pstindakan3.executeQuery();
-                }else if(poli_ralan.equals("No")&&cara_bayar_ralan.equals("No")){
+                }else if(tarifralan.getPoliRalan().equals("No")&&tarifralan.getCaraBayarRalan().equals("No")){
                     pstindakan4.setString(1,"%"+TCariTindakan.getText().trim()+"%");
                     pstindakan4.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pstindakan4.setString(3,"%"+TCariTindakan.getText().trim()+"%");
@@ -1216,30 +1221,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         this.norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",norwt);
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",this.kd_pj);
         TCariTindakan.requestFocus();
-        try {
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
-            try {
-                rsset_tarif=psset_tarif.executeQuery();
-                if(rsset_tarif.next()){
-                    poli_ralan=rsset_tarif.getString("poli_ralan");
-                    cara_bayar_ralan=rsset_tarif.getString("cara_bayar_ralan");
-                }else{
-                    poli_ralan="Yes";
-                    cara_bayar_ralan="Yes";
-                }  
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rsset_tarif!=null){
-                    rsset_tarif.close();
-                }
-                if(psset_tarif!=null){
-                    psset_tarif.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        } 
+        
         bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",norwt));
         if(bangsal.equals("")){
             if(lokasidepoutama.getDepoDefault().equals("")){

@@ -4263,16 +4263,16 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     private void LoadPengaturan(){
+        if(ppnralan.getTampilPPNRalan().equals("")){
+            ppnralan.SetPPNRalan();
+        }
+        
         if(akunobatralan.getSuspen_Piutang_Obat_Ralan().equals("")){
             akunobatralan.SetAkunObatRalan();
         }
         
         if(embalasetuslah.getEmbalase() == null){
             embalasetuslah.SetEmbalaseTuslah();
-        }
-        
-        if(ppnralan.getTampilPPNRalan().equals("")){
-            ppnralan.SetPPNRalan();
         }
     }
     

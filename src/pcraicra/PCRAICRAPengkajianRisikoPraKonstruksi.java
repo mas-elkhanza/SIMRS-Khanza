@@ -51,7 +51,7 @@ import kepegawaian.DlgCariDokter;
  */
 public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeKelompokRisikoArea,tabModeIdentifikasiRisikoKebakaran,tabModeIdentifikasiRisikoInfeksi,
-            tabModeIdentifikasiRisikoKeselamatan,tabModeIdentifikasiRisikoUtilitas,tabModeTindakanPengendalian;
+            tabModeIdentifikasiRisikoKeselamatan,tabModeIdentifikasiRisikoUtilitas,tabModeTindakanPengendalian,tabModePersyaratanDipenuhi;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -77,6 +77,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private PCRAICRAIdentifikasiRisikoKeselamatan identifikasirisikokeselamatan;
     private PCRAICRAIdentifikasiRisikoUtilitas identifikasirisikoutilitas;
     private PCRAICRATindakanPengendalian tindakanpengendalian;
+    private PCRAICRAPersyaratanHarusDipenuhi persyaratandipenuhi;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -388,6 +389,40 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         }
         tbTindakanPengendalian.setDefaultRenderer(Object.class, new WarnaTable());
         
+        tabModePersyaratanDipenuhi=new DefaultTableModel(null,new Object[]{"P","Kode","Persyaratan Yang Harus Dipenuhi"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+
+        tbPersyaratanDipenuhi.setModel(tabModePersyaratanDipenuhi);
+        tbPersyaratanDipenuhi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPersyaratanDipenuhi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 3; i++) {
+            TableColumn column = tbPersyaratanDipenuhi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==2){
+                column.setPreferredWidth(750);
+            }
+        }
+        tbPersyaratanDipenuhi.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         Hubungan.setDocument(new batasInput((int)30).getKata(Hubungan));
         KeluhanUtama.setDocument(new batasInput((int)2000).getKata(KeluhanUtama));
@@ -399,6 +434,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         TCariRisikoKeselamatan.setDocument(new batasInput((int)100).getKata(TCariRisikoKeselamatan));
         TCariRisikoUtilitas.setDocument(new batasInput((int)100).getKata(TCariRisikoUtilitas));
         TCariTindakanPengendalian.setDocument(new batasInput((int)100).getKata(TCariTindakanPengendalian));
+        TCariPersyaratanDipenuhi.setDocument(new batasInput((int)100).getKata(TCariPersyaratanDipenuhi));
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
@@ -562,6 +598,33 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         jLabel31 = new widget.Label();
         scrollPane8 = new widget.ScrollPane();
         RPS1 = new widget.TextArea();
+        label25 = new widget.Label();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel53 = new widget.Label();
+        Scroll12 = new widget.ScrollPane();
+        tbPersyaratanDipenuhi = new widget.Table();
+        BtnTambahPersyaratanDipenuhi = new widget.Button();
+        BtnAllPersyaratanDipenuhi = new widget.Button();
+        BtnCariPersyaratanDipenuhi = new widget.Button();
+        TCariPersyaratanDipenuhi = new widget.TextBox();
+        label26 = new widget.Label();
+        label27 = new widget.Label();
+        jSeparator7 = new javax.swing.JSeparator();
+        scrollPane9 = new widget.ScrollPane();
+        RPS2 = new widget.TextArea();
+        label28 = new widget.Label();
+        jSeparator8 = new javax.swing.JSeparator();
+        label29 = new widget.Label();
+        KdDokter3 = new widget.TextBox();
+        NmDokter3 = new widget.TextBox();
+        BtnDokter3 = new widget.Button();
+        label30 = new widget.Label();
+        NmDokter4 = new widget.TextBox();
+        BtnDokter4 = new widget.Button();
+        Hubungan1 = new widget.TextBox();
+        BtnDokter5 = new widget.Button();
+        NmDokter5 = new widget.TextBox();
+        label31 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -759,7 +822,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1303));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 1603));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -903,7 +966,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(Hubungan);
-        Hubungan.setBounds(690, 1190, 80, 23);
+        Hubungan.setBounds(640, 1440, 80, 23);
 
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
@@ -929,7 +992,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label11.setBounds(468, 40, 90, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2026" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -975,7 +1038,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label12.setBounds(650, 40, 110, 23);
 
         TglAsuhan1.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2026" }));
+        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
         TglAsuhan1.setDisplayFormat("dd-MM-yyyy");
         TglAsuhan1.setName("TglAsuhan1"); // NOI18N
         TglAsuhan1.setOpaque(false);
@@ -1029,13 +1092,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(BtnDokter1);
-        BtnDokter1.setBounds(480, 1190, 28, 23);
+        BtnDokter1.setBounds(430, 1440, 28, 23);
 
         NmDokter1.setEditable(false);
         NmDokter1.setName("NmDokter1"); // NOI18N
         NmDokter1.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter1);
-        NmDokter1.setBounds(290, 1190, 180, 23);
+        NmDokter1.setBounds(240, 1440, 180, 23);
 
         KdDokter1.setEditable(false);
         KdDokter1.setName("KdDokter1"); // NOI18N
@@ -1046,13 +1109,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(KdDokter1);
-        KdDokter1.setBounds(230, 1190, 65, 23);
+        KdDokter1.setBounds(180, 1440, 65, 23);
 
-        label15.setText("Kelas Risiko/Pencegahan :");
+        label15.setText("Tim K3/Yang Mewakili :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label15);
-        label15.setBounds(70, 1190, 150, 23);
+        label15.setBounds(20, 1440, 150, 23);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel41.setText("Seperti apa aktivitas proyek yang akan dilakukan ? silahkan pilih salah satu");
@@ -1729,6 +1792,258 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         FormInput.add(scrollPane8);
         scrollPane8.setBounds(40, 1070, 814, 53);
 
+        label25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label25.setText("VI. PERSYARATAN YANG HARUS DIPENUHI SEBELUM PEKERJAAN DIMULAI");
+        label25.setName("label25"); // NOI18N
+        label25.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label25);
+        label25.setBounds(15, 1130, 460, 23);
+
+        jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        FormInput.add(jSeparator6);
+        jSeparator6.setBounds(0, 1130, 880, 1);
+
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel53.setText("Persyaratan apa saja yang harus dipenuhi sebelum pekerjaan dapat dimulai ?");
+        jLabel53.setName("jLabel53"); // NOI18N
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(40, 1150, 390, 23);
+
+        Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
+        Scroll12.setName("Scroll12"); // NOI18N
+        Scroll12.setOpaque(true);
+
+        tbPersyaratanDipenuhi.setName("tbPersyaratanDipenuhi"); // NOI18N
+        Scroll12.setViewportView(tbPersyaratanDipenuhi);
+
+        FormInput.add(Scroll12);
+        Scroll12.setBounds(40, 1170, 814, 133);
+
+        BtnTambahPersyaratanDipenuhi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnTambahPersyaratanDipenuhi.setMnemonic('3');
+        BtnTambahPersyaratanDipenuhi.setToolTipText("Alt+3");
+        BtnTambahPersyaratanDipenuhi.setName("BtnTambahPersyaratanDipenuhi"); // NOI18N
+        BtnTambahPersyaratanDipenuhi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTambahPersyaratanDipenuhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTambahPersyaratanDipenuhiActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnTambahPersyaratanDipenuhi);
+        BtnTambahPersyaratanDipenuhi.setBounds(819, 1310, 28, 23);
+
+        BtnAllPersyaratanDipenuhi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllPersyaratanDipenuhi.setMnemonic('2');
+        BtnAllPersyaratanDipenuhi.setToolTipText("2Alt+2");
+        BtnAllPersyaratanDipenuhi.setName("BtnAllPersyaratanDipenuhi"); // NOI18N
+        BtnAllPersyaratanDipenuhi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllPersyaratanDipenuhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllPersyaratanDipenuhiActionPerformed(evt);
+            }
+        });
+        BtnAllPersyaratanDipenuhi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllPersyaratanDipenuhiKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnAllPersyaratanDipenuhi);
+        BtnAllPersyaratanDipenuhi.setBounds(787, 1310, 28, 23);
+
+        BtnCariPersyaratanDipenuhi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariPersyaratanDipenuhi.setMnemonic('1');
+        BtnCariPersyaratanDipenuhi.setToolTipText("Alt+1");
+        BtnCariPersyaratanDipenuhi.setName("BtnCariPersyaratanDipenuhi"); // NOI18N
+        BtnCariPersyaratanDipenuhi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariPersyaratanDipenuhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariPersyaratanDipenuhiActionPerformed(evt);
+            }
+        });
+        BtnCariPersyaratanDipenuhi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariPersyaratanDipenuhiKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnCariPersyaratanDipenuhi);
+        BtnCariPersyaratanDipenuhi.setBounds(755, 1310, 28, 23);
+
+        TCariPersyaratanDipenuhi.setToolTipText("Alt+C");
+        TCariPersyaratanDipenuhi.setName("TCariPersyaratanDipenuhi"); // NOI18N
+        TCariPersyaratanDipenuhi.setPreferredSize(new java.awt.Dimension(140, 23));
+        TCariPersyaratanDipenuhi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariPersyaratanDipenuhiKeyPressed(evt);
+            }
+        });
+        FormInput.add(TCariPersyaratanDipenuhi);
+        TCariPersyaratanDipenuhi.setBounds(112, 1310, 639, 23);
+
+        label26.setText("Key Word :");
+        label26.setName("label26"); // NOI18N
+        label26.setPreferredSize(new java.awt.Dimension(60, 23));
+        FormInput.add(label26);
+        label26.setBounds(48, 1310, 60, 23);
+
+        label27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label27.setText("VII. CATATAN TIM PPI/K3RS/LAINNYA");
+        label27.setName("label27"); // NOI18N
+        label27.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label27);
+        label27.setBounds(15, 1340, 460, 23);
+
+        jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator7.setName("jSeparator7"); // NOI18N
+        FormInput.add(jSeparator7);
+        jSeparator7.setBounds(0, 1340, 880, 1);
+
+        scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane9.setName("scrollPane9"); // NOI18N
+
+        RPS2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RPS2.setColumns(20);
+        RPS2.setRows(5);
+        RPS2.setName("RPS2"); // NOI18N
+        RPS2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RPS2KeyPressed(evt);
+            }
+        });
+        scrollPane9.setViewportView(RPS2);
+
+        FormInput.add(scrollPane9);
+        scrollPane9.setBounds(40, 1360, 814, 53);
+
+        label28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label28.setText("VIII. PERSETUJUAN & PENGESAHAN");
+        label28.setName("label28"); // NOI18N
+        label28.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label28);
+        label28.setBounds(15, 1420, 460, 23);
+
+        jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator8.setName("jSeparator8"); // NOI18N
+        FormInput.add(jSeparator8);
+        jSeparator8.setBounds(0, 1420, 880, 1);
+
+        label29.setText("Penanggung Jawab Proyek :");
+        label29.setName("label29"); // NOI18N
+        label29.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label29);
+        label29.setBounds(20, 1470, 150, 23);
+
+        KdDokter3.setEditable(false);
+        KdDokter3.setName("KdDokter3"); // NOI18N
+        KdDokter3.setPreferredSize(new java.awt.Dimension(80, 23));
+        KdDokter3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdDokter3KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdDokter3);
+        KdDokter3.setBounds(180, 1470, 65, 23);
+
+        NmDokter3.setEditable(false);
+        NmDokter3.setName("NmDokter3"); // NOI18N
+        NmDokter3.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmDokter3);
+        NmDokter3.setBounds(240, 1470, 180, 23);
+
+        BtnDokter3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter3.setMnemonic('2');
+        BtnDokter3.setToolTipText("Alt+2");
+        BtnDokter3.setName("BtnDokter3"); // NOI18N
+        BtnDokter3.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter3ActionPerformed(evt);
+            }
+        });
+        BtnDokter3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnDokter3KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnDokter3);
+        BtnDokter3.setBounds(430, 1470, 28, 23);
+
+        label30.setText("Manajer :");
+        label30.setName("label30"); // NOI18N
+        label30.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label30);
+        label30.setBounds(500, 1440, 150, 23);
+
+        NmDokter4.setEditable(false);
+        NmDokter4.setName("NmDokter4"); // NOI18N
+        NmDokter4.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmDokter4);
+        NmDokter4.setBounds(720, 1440, 180, 23);
+
+        BtnDokter4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter4.setMnemonic('2');
+        BtnDokter4.setToolTipText("Alt+2");
+        BtnDokter4.setName("BtnDokter4"); // NOI18N
+        BtnDokter4.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter4ActionPerformed(evt);
+            }
+        });
+        BtnDokter4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnDokter4KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnDokter4);
+        BtnDokter4.setBounds(910, 1440, 28, 23);
+
+        Hubungan1.setName("Hubungan1"); // NOI18N
+        Hubungan1.setPreferredSize(new java.awt.Dimension(207, 23));
+        Hubungan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hubungan1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Hubungan1);
+        Hubungan1.setBounds(640, 1470, 80, 23);
+
+        BtnDokter5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter5.setMnemonic('2');
+        BtnDokter5.setToolTipText("Alt+2");
+        BtnDokter5.setName("BtnDokter5"); // NOI18N
+        BtnDokter5.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter5ActionPerformed(evt);
+            }
+        });
+        BtnDokter5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnDokter5KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnDokter5);
+        BtnDokter5.setBounds(910, 1470, 28, 23);
+
+        NmDokter5.setEditable(false);
+        NmDokter5.setName("NmDokter5"); // NOI18N
+        NmDokter5.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmDokter5);
+        NmDokter5.setBounds(720, 1470, 180, 23);
+
+        label31.setText("Direktur :");
+        label31.setName("label31"); // NOI18N
+        label31.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label31);
+        label31.setBounds(500, 1470, 150, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1770,7 +2085,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1784,7 +2099,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2226,6 +2541,12 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             tampilTindakanPengendalian();
         }
         
+        if(Valid.daysOld("./cache/pcrapersyaratandipenuhi.iyem")<30){
+            tampilPersyaratanDipenuhi2();
+        }else{
+            tampilPersyaratanDipenuhi();
+        }
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -2349,6 +2670,48 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariRisikoUtilitas.getText().length()>2){
                         runBackground(() ->tampilIdentifikasiRisikoUtilitas2());
+                    }
+                }
+            });
+            
+            TCariTindakanPengendalian.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariTindakanPengendalian.getText().length()>2){
+                        runBackground(() ->tampilTindakanPengendalian2());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariTindakanPengendalian.getText().length()>2){
+                        runBackground(() ->tampilTindakanPengendalian2());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariTindakanPengendalian.getText().length()>2){
+                        runBackground(() ->tampilTindakanPengendalian2());
+                    }
+                }
+            });
+            
+            TCariPersyaratanDipenuhi.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariPersyaratanDipenuhi.getText().length()>2){
+                        runBackground(() ->tampilPersyaratanDipenuhi2());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariPersyaratanDipenuhi.getText().length()>2){
+                        runBackground(() ->tampilPersyaratanDipenuhi2());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariPersyaratanDipenuhi.getText().length()>2){
+                        runBackground(() ->tampilPersyaratanDipenuhi2());
                     }
                 }
             });
@@ -2703,6 +3066,91 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         // TODO add your handling code here:
     }//GEN-LAST:event_RPS1KeyPressed
 
+    private void BtnTambahPersyaratanDipenuhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahPersyaratanDipenuhiActionPerformed
+        if (persyaratandipenuhi == null || !persyaratandipenuhi.isDisplayable()) {
+            persyaratandipenuhi=new PCRAICRAPersyaratanHarusDipenuhi(null,false);
+            persyaratandipenuhi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            persyaratandipenuhi.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    persyaratandipenuhi=null;
+                }
+            });
+
+            persyaratandipenuhi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            persyaratandipenuhi.setLocationRelativeTo(internalFrame1);
+        }
+        if (persyaratandipenuhi == null) return;
+        if (persyaratandipenuhi.isVisible()) {
+            persyaratandipenuhi.toFront();
+            return;
+        }
+        persyaratandipenuhi.setVisible(true); 
+    }//GEN-LAST:event_BtnTambahPersyaratanDipenuhiActionPerformed
+
+    private void BtnAllPersyaratanDipenuhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPersyaratanDipenuhiActionPerformed
+        TCariPersyaratanDipenuhi.setText("");
+        runBackground(() ->tampilPersyaratanDipenuhi());
+    }//GEN-LAST:event_BtnAllPersyaratanDipenuhiActionPerformed
+
+    private void BtnAllPersyaratanDipenuhiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllPersyaratanDipenuhiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAllPersyaratanDipenuhiKeyPressed
+
+    private void BtnCariPersyaratanDipenuhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPersyaratanDipenuhiActionPerformed
+        runBackground(() ->tampilPersyaratanDipenuhi2());
+    }//GEN-LAST:event_BtnCariPersyaratanDipenuhiActionPerformed
+
+    private void BtnCariPersyaratanDipenuhiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariPersyaratanDipenuhiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariPersyaratanDipenuhiKeyPressed
+
+    private void TCariPersyaratanDipenuhiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPersyaratanDipenuhiKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            runBackground(() ->tampilPersyaratanDipenuhi2());
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            //Rencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            //KetDokter.requestFocus();
+        }
+    }//GEN-LAST:event_TCariPersyaratanDipenuhiKeyPressed
+
+    private void RPS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPS2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RPS2KeyPressed
+
+    private void KdDokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokter3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdDokter3KeyPressed
+
+    private void BtnDokter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter3ActionPerformed
+
+    private void BtnDokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokter3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter3KeyPressed
+
+    private void BtnDokter4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter4ActionPerformed
+
+    private void BtnDokter4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokter4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter4KeyPressed
+
+    private void Hubungan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hubungan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hubungan1KeyPressed
+
+    private void BtnDokter5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter5ActionPerformed
+
+    private void BtnDokter5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokter5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDokter5KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2723,6 +3171,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.ComboBox Anamnesis;
     private widget.Button BtnAll;
     private widget.Button BtnAllKelomokRisiko;
+    private widget.Button BtnAllPersyaratanDipenuhi;
     private widget.Button BtnAllRisikoInfeksi;
     private widget.Button BtnAllRisikoKebakaran;
     private widget.Button BtnAllRisikoKeselamatan;
@@ -2731,6 +3180,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnCariKelompokRisiko;
+    private widget.Button BtnCariPersyaratanDipenuhi;
     private widget.Button BtnCariRisikoInfeksi;
     private widget.Button BtnCariRisikoKebakarab;
     private widget.Button BtnCariRisikoKeselamatan;
@@ -2739,12 +3189,16 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Button BtnDokter;
     private widget.Button BtnDokter1;
     private widget.Button BtnDokter2;
+    private widget.Button BtnDokter3;
+    private widget.Button BtnDokter4;
+    private widget.Button BtnDokter5;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambahMasalah;
+    private widget.Button BtnTambahPersyaratanDipenuhi;
     private widget.Button BtnTambahRisikoInfeksi;
     private widget.Button BtnTambahRisikoKebakaran;
     private widget.Button BtnTambahRisikoKeselamatan;
@@ -2754,10 +3208,12 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Hubungan;
+    private widget.TextBox Hubungan1;
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.TextBox KdDokter1;
     private widget.TextBox KdDokter2;
+    private widget.TextBox KdDokter3;
     private widget.TextArea KeluhanUtama;
     private widget.TextArea KeluhanUtama1;
     private widget.TextArea KeluhanUtama2;
@@ -2767,17 +3223,23 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextBox NmDokter;
     private widget.TextBox NmDokter1;
     private widget.TextBox NmDokter2;
+    private widget.TextBox NmDokter3;
+    private widget.TextBox NmDokter4;
+    private widget.TextBox NmDokter5;
     private widget.TextArea RPS;
     private widget.TextArea RPS1;
+    private widget.TextArea RPS2;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll11;
+    private widget.ScrollPane Scroll12;
     private widget.ScrollPane Scroll6;
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
     private widget.TextBox TCari;
     private widget.TextBox TCariKelompokRisikoArea;
+    private widget.TextBox TCariPersyaratanDipenuhi;
     private widget.TextBox TCariRisikoInfeksi;
     private widget.TextBox TCariRisikoKebakaran;
     private widget.TextBox TCariRisikoKeselamatan;
@@ -2822,6 +3284,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Label jLabel50;
     private widget.Label jLabel51;
     private widget.Label jLabel52;
+    private widget.Label jLabel53;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -2831,6 +3294,9 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label13;
@@ -2845,6 +3311,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Label label22;
     private widget.Label label23;
     private widget.Label label24;
+    private widget.Label label25;
+    private widget.Label label26;
+    private widget.Label label27;
+    private widget.Label label28;
+    private widget.Label label29;
+    private widget.Label label30;
+    private widget.Label label31;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -2853,12 +3326,14 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane7;
     private widget.ScrollPane scrollPane8;
+    private widget.ScrollPane scrollPane9;
     private widget.Table tbIdentifikasiRisikoInfeksi;
     private widget.Table tbIdentifikasiRisikoKebakaran;
     private widget.Table tbIdentifikasiRisikoKeselamatan;
     private widget.Table tbIdentifikasiRisikoUtilitas;
     private widget.Table tbKelompokRisikoArea;
     private widget.Table tbObat;
+    private widget.Table tbPersyaratanDipenuhi;
     private widget.Table tbTindakanPengendalian;
     // End of variables declaration//GEN-END:variables
 
@@ -3557,6 +4032,97 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
                 for(JsonNode list:response){
                     if(list.path("Kode").asText().toLowerCase().contains(TCariTindakanPengendalian.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCariTindakanPengendalian.getText().toLowerCase())){
                         tabModeTindakanPengendalian.addRow(new Object[]{
+                            false,list.path("Kode").asText(),list.path("Nama").asText()
+                        });                    
+                    }
+                }
+            }
+            myObj.close();
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilPersyaratanDipenuhi() {
+        try{
+            Valid.tabelKosong(tabModePersyaratanDipenuhi);
+            file=new File("./cache/pcrapersyaratandipenuhi.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            StringBuilder iyembuilder = new StringBuilder();
+            ps=koneksi.prepareStatement("select pcra_icra_persyaratan_harus_dipenuhi.kode_persyaratan,pcra_icra_persyaratan_harus_dipenuhi.nama_persyaratan from pcra_icra_persyaratan_harus_dipenuhi");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePersyaratanDipenuhi.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"Nama\":\"").append(rs.getString(2)).append("\"},");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"pcrapersyaratandipenuhi\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
+            fileWriter.close();
+            iyembuilder=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilPersyaratanDipenuhi2() {
+        try{
+            jml=0;
+            for(i=0;i<tbPersyaratanDipenuhi.getRowCount();i++){
+                if(tbPersyaratanDipenuhi.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=new boolean[jml]; 
+            kode=new String[jml];
+            nama=new String[jml];
+
+            index=0;        
+            for(i=0;i<tbPersyaratanDipenuhi.getRowCount();i++){
+                if(tbPersyaratanDipenuhi.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbPersyaratanDipenuhi.getValueAt(i,1).toString();
+                    nama[index]=tbPersyaratanDipenuhi.getValueAt(i,2).toString();
+                    index++;
+                }
+            } 
+
+            Valid.tabelKosong(tabModePersyaratanDipenuhi);
+
+            for(i=0;i<jml;i++){
+                tabModePersyaratanDipenuhi.addRow(new Object[] {
+                    pilih[i],kode[i],nama[i]
+                });
+            }
+            
+            pilih=null;
+            kode=null;
+            nama=null;
+            
+            myObj = new FileReader("./cache/pcrapersyaratandipenuhi.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("pcrapersyaratandipenuhi");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("Kode").asText().toLowerCase().contains(TCariPersyaratanDipenuhi.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCariPersyaratanDipenuhi.getText().toLowerCase())){
+                        tabModePersyaratanDipenuhi.addRow(new Object[]{
                             false,list.path("Kode").asText(),list.path("Nama").asText()
                         });                    
                     }
