@@ -131,12 +131,22 @@ public class InventoryCariSuplier extends javax.swing.JDialog {
         ));
         tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
+        tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDokterMouseClicked(evt);
+            }
+        });
+        tbDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDokterKeyPressed(evt);
+            }
+        });
         scrollPane1.setViewportView(tbDokter);
 
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
+        panelisi3.setPreferredSize(new java.awt.Dimension(740, 43));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         label9.setText("Key Word :");
@@ -320,6 +330,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
+
+    private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
+        if(tabMode.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                dispose();
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_tbDokterKeyPressed
+
+    private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
+        if(tabMode.getRowCount()!=0){
+            if(evt.getClickCount()==2){
+                dispose();
+            }
+        } 
+    }//GEN-LAST:event_tbDokterMouseClicked
 
     /**
     * @param args the command line arguments

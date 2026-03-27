@@ -197,7 +197,7 @@ public class DlgCariKfa extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 0), 3), "::[ Data Cari KFA ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Data Cari KFA ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -384,9 +384,6 @@ public class DlgCariKfa extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbObatKeyPressed(evt);
             }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tbObatKeyReleased(evt);
-            }
         });
         scrollPane1.setViewportView(tbObat);
 
@@ -441,10 +438,6 @@ public class DlgCariKfa extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
-
-    private void tbObatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyReleased
-
-    }//GEN-LAST:event_tbObatKeyReleased
 
     private void TCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCari2KeyPressed
         tampil();

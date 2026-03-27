@@ -952,6 +952,14 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                     dispose();
                 }
             }
+            //TAMBAH ED
+            tampilInfoObatDipilih();
+
+//            if (evt.getClickCount() == 2) {
+//                if (akses.getform().equals("DlgPemberianObat")) {
+//                    dispose();
+//                }
+//            }
         }
 }//GEN-LAST:event_tbObatMouseClicked
 
@@ -4504,5 +4512,67 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void dispose() {
         executor.shutdownNow();
         super.dispose();
+    }
+    //TAMPIL NOTIF ED
+    private void tampilInfoObatDipilih() {
+        try {
+            int row = tbObat.getSelectedRow();
+            if (row == -1) {
+                return;
+            }
+
+            String kode = tbObat.getValueAt(row, 2).toString();
+
+            String stok = Sequel.cariIsi(
+                    "SELECT IFNULL(SUM(stok),0) FROM gudangbarang WHERE kode_brng=?",
+                    kode
+            );
+
+            String stokMinimal = Sequel.cariIsi(
+                    "SELECT IFNULL(stokminimal,0) FROM databarang WHERE kode_brng=?",
+                    kode
+            );
+
+            String kadaluarsa = Sequel.cariIsi(
+                    "SELECT MIN(tgl_kadaluarsa) FROM data_batch WHERE kode_brng=?",
+                    kode
+            );
+
+            double stk = Double.parseDouble(stok);
+            double stkMin = Double.parseDouble(stokMinimal);
+
+            boolean warning = false;
+            String pesan = "⚠️ PERINGATAN OBAT\n\n";
+            pesan += "Kode : " + kode + "\n";
+            pesan += "Stok : " + stok + "\n";
+            pesan += "Stok Minimal : " + stokMinimal + "\n";
+            pesan += "ED Terdekat : " + kadaluarsa + "\n\n";
+
+            // 🔴 CEK STOK
+            if (stk <= stkMin) {
+                pesan += "🔴 Stok mendekati habis!\n";
+                warning = true;
+            }
+
+            // 🟡 CEK ED
+            if (kadaluarsa != null && !kadaluarsa.equals("")) {
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date tgl = sdf.parse(kadaluarsa);
+                long selisih = (tgl.getTime() - System.currentTimeMillis()) / (1000 * 60 * 60 * 24);
+
+                if (selisih <= 30) {
+                    pesan += "🟡 ED mendekati (" + selisih + " hari)\n";
+                    warning = true;
+                }
+            }
+
+            // ✅ HANYA MUNCUL JIKA ADA WARNING
+            if (warning) {
+                JOptionPane.showMessageDialog(null, pesan, "Peringatan Obat", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Notif obat error: " + e);
+        }
     }
 }

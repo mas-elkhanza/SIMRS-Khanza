@@ -5052,7 +5052,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                         break;
             }
             if(kdigd.equals("")){
-                Sequel.menyimpan2("poliklinik","?,?,?,?,?",5,new String[]{"IGDK","Unit IGD","0","0","1"});
+                Sequel.menyimpan2("poliklinik","?,?,?,?,?",5,new String[]{"UGD","Unit IGD","0","0","1"});
             }
                 
             status="Baru";
@@ -5061,7 +5061,7 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                    KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
+                    KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
                     TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                 ceksukses=true;               
             }else{
@@ -5069,7 +5069,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                 isNumber();
                 if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                         new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                        KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
+                        KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
                         TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                     ceksukses=true;           
                 }else{
@@ -5077,7 +5077,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                     isNumber();
                     if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                             new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                            KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
+                            KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
                             TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                         ceksukses=true;              
                     }else{
@@ -5085,7 +5085,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                         isNumber();
                         if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                                 new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                                KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
+                                KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
                                 TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                             ceksukses=true;                
                         }else{
@@ -5093,7 +5093,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                             isNumber();
                             if(Sequel.menyimpantf("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                                    KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
+                                    KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"","Belum",
                                     TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                                 ceksukses=true;               
                             }else{
@@ -5273,7 +5273,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                         if(Sequel.queryu2tf("update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"+
                                 "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",16,new String[]{
                                 TNoRw.getText(),TNoReg.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                                KdDokter.getText(),TNoRM.getText(),"IGDK",TPngJwb.getText(),TAlmt.getText(),""+biaya,THbngn.getText(),
+                                KdDokter.getText(),TNoRM.getText(),"UGD",TPngJwb.getText(),TAlmt.getText(),""+biaya,THbngn.getText(),
                                 TStatus.getText(),kdpnj.getText(),umur,sttsumur,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString()
                             })==true){
                             tabMode.setValueAt(TNoReg.getText(),tbPetugas.getSelectedRow(),1);
@@ -6341,7 +6341,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     if (dlgrwjl == null) return;
                     if (!dlgrwjl.isVisible()) {
                         dlgrwjl.isCek();
-                        dlgrwjl.SetPoli("IGDK");
+                        dlgrwjl.SetPoli("UGD");
                         dlgrwjl.SetPj(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),19).toString());
                         dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());  
                     }
@@ -7537,7 +7537,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
-            dlgki.setNoRm(TNoRw.getText(),DTPReg.getDate(),"2. Ralan","IGDK","Unit IGD/UGD");
+            dlgki.setNoRm(TNoRw.getText(),DTPReg.getDate(),"2. Ralan","UGD","Unit IGD/UGD");
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -8232,7 +8232,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
-            dlgki.setNoRm(TNoRw.getText(),DTPReg.getDate(),"1 RJTP RAWAT JALAN TINGKAT PERTAMA","IGDK","Unit IGD/UGD");
+            dlgki.setNoRm(TNoRw.getText(),DTPReg.getDate(),"1 RJTP RAWAT JALAN TINGKAT PERTAMA","UGD","Unit IGD/UGD");
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -13151,7 +13151,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 parsialralan.setLocationRelativeTo(internalFrame1);
                 //parsialralan.emptTeks();
                 parsialralan.isCek();
-                parsialralan.setNoRm(TNoRw.getText(),KdDokter.getText(),TDokter.getText(),"IGDK");
+                parsialralan.setNoRm(TNoRw.getText(),KdDokter.getText(),TDokter.getText(),"UGD");
                 parsialralan.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Cara bayar "+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),17).toString()+" tidak diijinkan menggunakan Billing Parsial...!!!");
