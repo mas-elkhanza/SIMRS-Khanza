@@ -86,6 +86,8 @@ import bridging.ICareRiwayatPerawatan;
 import bridging.ICareRiwayatPerawatanFKTP;
 import bridging.INACBGPerawatanCorona;
 import bridging.PilihanBridgingAsuransi;
+import fungsi.closingkasir;
+import fungsi.catatanpasien;
 import inventory.DlgCopyResep;
 import java.awt.event.KeyAdapter;
 import java.awt.event.WindowAdapter;
@@ -302,7 +304,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private boolean ceksukses=false;
     private String nosisrute="",aktifkanparsial="no",BASENOREG="",TANGGALMUNDUR="yes",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",terbitsep="",
-            validasiregistrasi="No",validasicatatan="No",norawatdipilih="",normdipilih="";
+            norawatdipilih="",normdipilih="";
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private char ESC = 27;
     // ganti kertas
@@ -671,22 +673,12 @@ public final class DlgReg extends javax.swing.JDialog {
             System.out.println("Notif Tansparant : "+e);
         }
         
-        try {
-            validasiregistrasi=Sequel.cariIsi("select set_validasi_registrasi.wajib_closing_kasir from set_validasi_registrasi");
-            if(validasiregistrasi==null){
-                validasiregistrasi="No";
-            }
-        } catch (Exception e) {
-            validasiregistrasi="No";
+        if(closingkasir.getWajibClosingKasir().equals("")){
+            closingkasir.SetClosingKasir();
         }
         
-        try {
-            validasicatatan=Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan");
-            if(validasicatatan==null){
-                validasicatatan="No";
-            }
-        } catch (Exception e) {
-            validasicatatan="No";
+        if(catatanpasien.getTampilkanCatatan().equals("")){
+            catatanpasien.SetCatatanPasien();
         }
         
         ChkInput.setSelected(false);
@@ -7027,7 +7019,7 @@ public final class DlgReg extends javax.swing.JDialog {
                 if(norawatdipilih.equals("")){
                     i=tbPetugas.getSelectedColumn();
                     if(i==8){
-                        if(validasicatatan.equals("Yes")){
+                        if(catatanpasien.getTampilkanCatatan().equals("Yes")){
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             LabelCatatan.setText(Sequel.cariIsi("select catatan_pasien.catatan from catatan_pasien where catatan_pasien.no_rkm_medis=?",TNoRM.getText()));
                             if(!LabelCatatan.getText().equals("")){
@@ -10467,7 +10459,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(evt.getClickCount()==1){
                 i=tbPetugas2.getSelectedColumn();
                 if(i==7){
-                    if(validasicatatan.equals("Yes")){
+                    if(catatanpasien.getTampilkanCatatan().equals("Yes")){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         LabelCatatan.setText(Sequel.cariIsi("select catatan_pasien.catatan from catatan_pasien where catatan_pasien.no_rkm_medis=?",tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),6).toString()));
                         if(!LabelCatatan.getText().equals("")){
@@ -16999,11 +16991,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     }
 
     private void isPas(){
-        if(validasiregistrasi.equals("Yes")){
+        if(closingkasir.getWajibClosingKasir().equals("Yes")){
             if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where reg_periksa.no_rkm_medis=? and reg_periksa.status_bayar='Belum Bayar' and reg_periksa.stts<>'Batal'",TNoRM.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
             }else{
-                if(validasicatatan.equals("Yes")){
+                if(catatanpasien.getTampilkanCatatan().equals("Yes")){
                     if(Sequel.cariInteger("select count(catatan_pasien.no_rkm_medis) from catatan_pasien where catatan_pasien.no_rkm_medis=?",TNoRM.getText())>0){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgCatatan catatan=new DlgCatatan(null,false);
@@ -17017,7 +17009,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 isCekPasien();
             }
         }else{
-            if(validasicatatan.equals("Yes")){
+            if(catatanpasien.getTampilkanCatatan().equals("Yes")){
                 if(Sequel.cariInteger("select count(catatan_pasien.no_rkm_medis) from catatan_pasien where catatan_pasien.no_rkm_medis=?",TNoRM.getText())>0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgCatatan catatan=new DlgCatatan(null,false);

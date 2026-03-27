@@ -39,7 +39,9 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.akseskamarinapralan;
 import fungsi.akuntindakanralan;
+import fungsi.catatanpasien;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
 import inventory.DlgPenjualan;
@@ -275,9 +277,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private DlgRawatJalan formrawatjalan;
     private DlgPeresepanDokter resepobat;
     private DlgCariPerawatanRalan dlgrwjl;
-    private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select set_jam_minimal.kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",
-            namadokter="",namapoli="",order="reg_periksa.no_rawat desc",validasicatatan="No",tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",
-            variabel="",terbitsep="";
+    private String aktifkanparsial="no",caripenjab="",filter="no",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
+            tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",variabel="",terbitsep="";
     private DlgBilingRalan billing;
     private int i=0,pilihan=0,sudah=0,jmlparsial=0;
     private boolean semua;
@@ -446,13 +447,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             System.out.println("Notif Load XML : "+ex);
         }
         
-        try {
-            validasicatatan=Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan");
-            if(validasicatatan==null){
-                validasicatatan="No";
-            }
-        } catch (Exception e) {
-            validasicatatan="No";
+        if(catatanpasien.getTampilkanCatatan().equals("")){
+            catatanpasien.SetCatatanPasien();
         }
     }
     
@@ -6603,7 +6599,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 if(norawatdipilih.equals("")){
                     i=tbKasirRalan.getSelectedColumn();
                     if(i==3){
-                        if(validasicatatan.equals("Yes")){
+                        if(catatanpasien.getTampilkanCatatan().equals("Yes")){
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             LabelCatatan.setText(Sequel.cariIsi("select catatan_pasien.catatan from catatan_pasien where catatan_pasien.no_rkm_medis=?",TNoRMCari.getText()));
                             if(!LabelCatatan.getText().equals("")){
@@ -16448,7 +16444,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             MnKamarInap.setEnabled(true);
             MnKamarInap1.setEnabled(true); 
         }else{
-            if(kamar_inap_kasir_ralan.equals("Yes")){
+            if(akseskamarinapralan.getHakAksesDiRawatJalan().equals("")){
+                akseskamarinapralan.SetKamarInap();
+            }
+            if(akseskamarinapralan.getHakAksesDiRawatJalan().equals("Yes")){
                 MnKamarInap.setEnabled(akses.getkamar_inap());
                 MnKamarInap1.setEnabled(akses.getkamar_inap());
             }else{
