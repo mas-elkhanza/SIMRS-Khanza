@@ -372,7 +372,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select diet.kd_diet, diet.nama_diet from diet order by diet.nama_diet");
+            ps=koneksi.prepareStatement("select diet.kd_diet, diet.nama_diet from diet");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
