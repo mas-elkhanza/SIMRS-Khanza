@@ -423,7 +423,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         }
         tbPersyaratanDipenuhi.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
+        NoProyek.setDocument(new batasInput((byte)17).getKata(NoProyek));
         Hubungan.setDocument(new batasInput((int)30).getKata(Hubungan));
         KeluhanUtama.setDocument(new batasInput((int)2000).getKata(KeluhanUtama));
         RPS.setDocument(new batasInput((int)2000).getKata(RPS));
@@ -488,8 +488,8 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
-        TNoRw = new widget.TextBox();
-        TPasien = new widget.TextBox();
+        NoProyek = new widget.TextBox();
+        NamaProyek = new widget.TextBox();
         TNoRM = new widget.TextBox();
         label14 = new widget.Label();
         KdDokter = new widget.TextBox();
@@ -514,7 +514,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         jLabel34 = new widget.Label();
         jLabel12 = new widget.Label();
         jLabel13 = new widget.Label();
-        TNoRw1 = new widget.TextBox();
+        LokasiProyek = new widget.TextBox();
         label12 = new widget.Label();
         TglAsuhan1 = new widget.Tanggal();
         jLabel14 = new widget.Label();
@@ -829,20 +829,20 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         FormInput.setPreferredSize(new java.awt.Dimension(870, 1533));
         FormInput.setLayout(null);
 
-        TNoRw.setHighlighter(null);
-        TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoProyek.setHighlighter(null);
+        NoProyek.setName("NoProyek"); // NOI18N
+        NoProyek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRwKeyPressed(evt);
+                NoProyekKeyPressed(evt);
             }
         });
-        FormInput.add(TNoRw);
-        TNoRw.setBounds(74, 10, 131, 23);
+        FormInput.add(NoProyek);
+        NoProyek.setBounds(74, 10, 131, 23);
 
-        TPasien.setHighlighter(null);
-        TPasien.setName("TPasien"); // NOI18N
-        FormInput.add(TPasien);
-        TPasien.setBounds(404, 10, 450, 23);
+        NamaProyek.setHighlighter(null);
+        NamaProyek.setName("NamaProyek"); // NOI18N
+        FormInput.add(NamaProyek);
+        NamaProyek.setBounds(404, 10, 450, 23);
 
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
@@ -1026,15 +1026,15 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         FormInput.add(jLabel13);
         jLabel13.setBounds(15, 10, 70, 23);
 
-        TNoRw1.setHighlighter(null);
-        TNoRw1.setName("TNoRw1"); // NOI18N
-        TNoRw1.addKeyListener(new java.awt.event.KeyAdapter() {
+        LokasiProyek.setHighlighter(null);
+        LokasiProyek.setName("LokasiProyek"); // NOI18N
+        LokasiProyek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRw1KeyPressed(evt);
+                LokasiProyekKeyPressed(evt);
             }
         });
-        FormInput.add(TNoRw1);
-        TNoRw1.setBounds(110, 40, 353, 23);
+        FormInput.add(LokasiProyek);
+        LokasiProyek.setBounds(110, 40, 353, 23);
 
         label12.setText("Perkiraan selesai ?");
         label12.setName("label12"); // NOI18N
@@ -2194,13 +2194,13 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
+    private void NoProyekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoProyekKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
         }else{            
             Valid.pindah(evt,TCari,BtnDokter);
         }
-}//GEN-LAST:event_TNoRwKeyPressed
+}//GEN-LAST:event_NoProyekKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         
@@ -2445,7 +2445,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             TCari.setText("");
             runBackground(() ->tampil());
         }else{
-            Valid.pindah(evt, BtnCari, TPasien);
+            Valid.pindah(evt, BtnCari, NamaProyek);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -2753,9 +2753,9 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void TNoRw1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRw1KeyPressed
+    private void LokasiProyekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiProyekKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRw1KeyPressed
+    }//GEN-LAST:event_LokasiProyekKeyPressed
 
     private void TglAsuhan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhan1KeyPressed
         // TODO add your handling code here:
@@ -3259,13 +3259,16 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextArea KeluhanUtama2;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
+    private widget.TextBox LokasiProyek;
     private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.TextBox NamaProyek;
     private widget.TextBox NmDokter;
     private widget.TextBox NmDokter1;
     private widget.TextBox NmDokter2;
     private widget.TextBox NmDokter3;
     private widget.TextBox NmDokter4;
     private widget.TextBox NmDokter5;
+    private widget.TextBox NoProyek;
     private widget.TextArea RPS;
     private widget.TextArea RPS1;
     private widget.TextArea RPS2;
@@ -3286,9 +3289,6 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextBox TCariRisikoUtilitas;
     private widget.TextBox TCariTindakanPengendalian;
     private widget.TextBox TNoRM;
-    private widget.TextBox TNoRw;
-    private widget.TextBox TNoRw1;
-    private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox TanggalRegistrasi;
     private widget.Tanggal TglAsuhan;
@@ -3460,9 +3460,9 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            NoProyek.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            NamaProyek.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
             Anamnesis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
@@ -3481,12 +3481,12 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRw.getText());
+                ps.setString(1,NoProyek.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
                     TNoRM.setText(rs.getString("no_rkm_medis"));
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
-                    TPasien.setText(rs.getString("nm_pasien"));
+                    NamaProyek.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
@@ -3507,7 +3507,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }
  
     public void setNoRm(String norwt,Date tgl2) {
-        TNoRw.setText(norwt);
+        NoProyek.setText(norwt);
         TCari.setText(norwt);
         DTPCari2.setDate(tgl2);    
         isRawat(); 

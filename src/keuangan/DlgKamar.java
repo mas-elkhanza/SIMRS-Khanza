@@ -17,6 +17,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.pengaturankamarinap;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -53,7 +54,7 @@ public final class DlgKamar extends javax.swing.JDialog {
     private int i=0;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private String asalform="",ubah_status_kamar=Sequel.cariIsi("select set_jam_minimal.ubah_status_kamar from set_jam_minimal");
+    private String asalform="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -116,7 +117,11 @@ public final class DlgKamar extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
          
         panelCari.setVisible(false);
-        posisi();       
+        posisi();    
+        
+        if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("")){
+            pengaturankamarinap.SetKamarInap();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -1211,7 +1216,7 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
             BtnEdit.setEnabled(true);
         }else{
             if(akses.getkamar()==false){
-                if(ubah_status_kamar.equals("No")){
+                if(pengaturankamarinap.getUbahStatusKamar().equals("No")){
                     BtnEdit.setEnabled(false);
                 }else{
                     BtnEdit.setEnabled(true);

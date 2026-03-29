@@ -12,7 +12,7 @@ public class akunbillingranap {
     private static final Connection koneksi=koneksiDB.condb();
     private static String Tindakan_Ranap="",Laborat_Ranap="",Radiologi_Ranap="",Obat_Ranap="",Registrasi_Ranap="",Persediaan_Obat_Rawat_Inap="",
             Tambahan_Ranap="",Potongan_Ranap="",Retur_Obat_Ranap="",Resep_Pulang_Ranap="",Kamar_Inap="",Operasi_Ranap="",Harian_Ranap="",
-            Uang_Muka_Ranap="",Sisa_Uang_Muka_Ranap="",HPP_Obat_Rawat_Inap="",Service_Ranap="",Obat_Langsung_Ranap="";
+            Uang_Muka_Ranap="",Sisa_Uang_Muka_Ranap="",HPP_Obat_Rawat_Inap="",Service_Ranap="",Obat_Langsung_Ranap="",PPNKeluaran="";
     public static void SetAkunBillingRanap() {
         try (
             PreparedStatement ps = koneksi.prepareStatement(
@@ -60,6 +60,21 @@ public class akunbillingranap {
         } catch (Exception e) {
             System.out.println("Notif Rekening : "+e);
         }
+        
+        try (
+            PreparedStatement ps = koneksi.prepareStatement(
+                "select set_akun.PPN_Keluaran from set_akun"
+            );
+            ResultSet rs = ps.executeQuery();
+            ){
+            if(rs.next()){
+                PPNKeluaran=rs.getString(1);
+            }else{
+                PPNKeluaran="";
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Pengaturan Akun PPN Keluaran Ralan : "+e);
+        }
     }
     
     public static String getTindakan_Ranap(){return akunbillingranap.Tindakan_Ranap;}
@@ -80,4 +95,5 @@ public class akunbillingranap {
     public static String getHPP_Obat_Rawat_Inap(){return akunbillingranap.HPP_Obat_Rawat_Inap;}
     public static String getService_Ranap(){return akunbillingranap.Service_Ranap;}
     public static String getObat_Langsung_Ranap(){return akunbillingranap.Obat_Langsung_Ranap;}
+    public static String getPPNKeluaran(){return akunbillingranap.PPNKeluaran;}
 }

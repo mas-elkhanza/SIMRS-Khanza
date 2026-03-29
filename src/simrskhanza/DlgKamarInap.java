@@ -38,6 +38,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.lokasidepoutama;
+import fungsi.pengaturankamarinap;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
 import inventory.DlgInputStokPasien;
@@ -224,13 +225,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
     private String now=dateFormat.format(date),kmr="",key="",tglmasuk,jammasuk,kd_pj,KUNCIDOKTERRANAP="",
-            hariawal="",aktifkan_hapus_data_salah="",terbitsep="",namadokter="";
+            terbitsep="",namadokter="";
     private PreparedStatement ps,pssetjam,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur;
     private ResultSet rs,rs2,rssetjam;
     private int i,row=0;
     private boolean ceksukses=false;
-    private double lama=0,persenbayi=0,hargakamar=0;
-    private String gabungkan="",norawatgabung="",kamaryangdigabung="",dokterranap="",bangsal="",diagnosa_akhir="",namakamar="",umur="0",sttsumur="Th",order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
+    private double hargakamar=0;
+    private String gabungkan="",norawatgabung="",kamaryangdigabung="",dokterranap="",bangsal="",namakamar="",umur="0",sttsumur="Th",order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -381,6 +382,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
             KUNCIDOKTERRANAP=koneksiDB.KUNCIDOKTERRANAP();
         } catch (Exception e) {
             KUNCIDOKTERRANAP="no";
+        }
+        
+        if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("")){
+            pengaturankamarinap.SetKamarInap();
         }
     }
 
@@ -5478,10 +5483,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                              tglmasuk=TIn.getText();
                              jammasuk=JamMasuk.getText();
                          }
-                         if(hariawal.equals("Yes")){
-                             Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
+                         if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
+                             Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
                          }else{
-                             Sequel.cariIsi("select if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')) as lama",TJmlHari);             
+                             Sequel.cariIsi("select if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')) as lama",TJmlHari);             
                          }                             
                     }
                 }  
@@ -5585,10 +5590,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 cmbDtk.setSelectedItem(now.substring(17,19));  
                 tglmasuk=TIn.getText();
                 jammasuk=JamMasuk.getText();
-                if(hariawal.equals("Yes")){
-                    Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
+                if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
+                    Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
                 }else{
-                    Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))) as lama",TJmlHari);             
+                    Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))) as lama",TJmlHari);             
                 }
                 
                 norawat.requestFocus();   
@@ -5966,12 +5971,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                  tglmasuk=TIn.getText();
                  jammasuk=JamMasuk.getText();
              }
-             if(hariawal.equals("Yes")){
-                 Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
+             if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
+                 Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
              }else{
-                 Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))) as lama",TJmlHari);             
+                 Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))) as lama",TJmlHari);             
              }             
-             //Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
+             //Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
          }
     }//GEN-LAST:event_CmbTahunItemStateChanged
 
@@ -7162,7 +7167,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             norawat.requestFocus();   
             WindowPindahKamar.setLocationRelativeTo(internalFrame1);
             WindowPindahKamar.setVisible(true);
-            lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal");
             i=2;
             isKmr();
             isjml();
@@ -7216,10 +7220,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                              tglmasuk=TIn.getText();
                              jammasuk=JamMasuk.getText();
                          }
-                         if(hariawal.equals("Yes")){
-                             Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
+                         if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
+                             Sequel.cariIsi("select (if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"'))+1) as lama",TJmlHari);             
                          }else{
-                             Sequel.cariIsi("select if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+lama+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')) as lama",TJmlHari);             
+                             Sequel.cariIsi("select if(to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')=0,if(time_to_sec('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-time_to_sec('"+tglmasuk+" "+jammasuk+"')>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"')-to_days('"+tglmasuk+" "+jammasuk+"')) as lama",TJmlHari);             
                          }                             
                     }
                 }  
@@ -7308,7 +7312,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         i=1;
                         kdkamar.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString());
                         isKmr();
-                        if(hariawal.equals("Yes")){
+                        if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
                             Sequel.cariIsi("select (if(to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
@@ -7319,7 +7323,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
                                 ":"+cmbDtkpindah.getSelectedItem()+"')-time_to_sec('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
                                 " "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),12).toString()+"')>(3600*"+
-                                lama+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
+                                pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+":"+cmbDtkpindah.getSelectedItem()+
                                 "')-to_days('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
@@ -7335,7 +7339,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
                                 ":"+cmbDtkpindah.getSelectedItem()+"')-time_to_sec('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
                                 " "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),12).toString()+"')>(3600*"+
-                                lama+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
+                                pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+":"+cmbDtkpindah.getSelectedItem()+
                                 "')-to_days('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
@@ -7362,7 +7366,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         i=1;
                         kdkamar.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString());
                         isKmr();
-                        if(hariawal.equals("Yes")){
+                        if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
                             Sequel.cariIsi("select (if(to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
@@ -7373,7 +7377,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
                                 ":"+cmbDtkpindah.getSelectedItem()+"')-time_to_sec('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
                                 " "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),12).toString()+"')>(3600*"+
-                                lama+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
+                                pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+":"+cmbDtkpindah.getSelectedItem()+
                                 "')-to_days('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
@@ -7389,7 +7393,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+
                                 ":"+cmbDtkpindah.getSelectedItem()+"')-time_to_sec('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
                                 " "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),12).toString()+"')>(3600*"+
-                                lama+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
+                                pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days('"+CmbTahunpindah.getSelectedItem()+
                                 "-"+CmbBlnpindah.getSelectedItem()+"-"+CmbTglpindah.getSelectedItem()+
                                 " "+cmbJampindah.getSelectedItem()+":"+cmbMntpindah.getSelectedItem()+":"+cmbDtkpindah.getSelectedItem()+
                                 "')-to_days('"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()+
@@ -7988,33 +7992,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         if(WindowInputKamar.isVisible()==false){
             tampil(); 
         } 
-        try {
-            pssetjam=koneksi.prepareStatement("select * from set_jam_minimal");
-            try {
-                rssetjam=pssetjam.executeQuery();
-                while(rssetjam.next()){
-                    lama=rssetjam.getDouble("lamajam");
-                    persenbayi=rssetjam.getDouble("bayi");
-                    diagnosa_akhir=rssetjam.getString("diagnosaakhir");
-                    hariawal=rssetjam.getString("hariawal");
-                    aktifkan_hapus_data_salah=rssetjam.getString("aktifkan_hapus_data_salah");
-                }
-            } catch (Exception e) {
-                System.out.println("Set Kamar Inap : "+e);
-            } finally{
-                if(rssetjam!=null){
-                    rssetjam.close();
-                }
-                if(pssetjam!=null){
-                    pssetjam.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Set Kamar Inap : "+e);
-        } 
         
         try {
-            if(diagnosa_akhir.equals("Yes")){
+            if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("Yes")){
                 diagnosaakhir.setEditable(true); 
             }else{
                 diagnosaakhir.setEditable(false); 
@@ -19247,9 +19227,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         publish(new Object[]{
                                             "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
                                             rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
-                                            rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",
+                                            rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(pengaturankamarinap.getPersenHargaKamarBayi()/100)),"",
                                             "",rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
-                                            rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(persenbayi/100)),rs.getString("stts_pulang"),
+                                            rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(pengaturankamarinap.getPersenHargaKamarBayi()/100)),rs.getString("stts_pulang"),
                                             rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
                                         });
                                     }
@@ -19765,7 +19745,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
         }else{
-            if(aktifkan_hapus_data_salah.equals("Yes")){
+            if(pengaturankamarinap.getAktifkanHapusDataSalah().equals("Yes")){
                 MnHapusDataSalah.setEnabled(true);
             }else{
                 MnHapusDataSalah.setEnabled(false);
@@ -19783,18 +19763,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         if((R1.isSelected()==true)&&(akses.getstatus()==false)){
             for(i=0;i<tbKamIn.getRowCount();i++){
                 if(tbKamIn.getValueAt(i,13).toString().equals("")){        
-                    if(hariawal.equals("Yes")){
+                    if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
                         Sequel.mengedit(" kamar_inap "," no_rawat='"+tbKamIn.getValueAt(i,0).toString()+"' and "+
                             " kd_kamar='"+Sequel.cariIsi("select kd_kamar from kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where concat(kamar.kd_kamar,' ',bangsal.nm_bangsal)=? ",tbKamIn.getValueAt(i,7).toString())+"' "+
                             " and tgl_masuk='"+tbKamIn.getValueAt(i,11).toString()+"' and jam_masuk='"+tbKamIn.getValueAt(i,12).toString()+"'",
-                            " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+lama+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1,"+
-                            " ttl_biaya=(if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+lama+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1)*trf_kamar");                
+                            " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1,"+
+                            " ttl_biaya=(if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1)*trf_kamar");                
                     }else{
                         Sequel.mengedit(" kamar_inap "," no_rawat='"+tbKamIn.getValueAt(i,0).toString()+"' and "+
                             " kd_kamar='"+Sequel.cariIsi("select kd_kamar from kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where concat(kamar.kd_kamar,' ',bangsal.nm_bangsal)=? ",tbKamIn.getValueAt(i,7).toString())+"' "+
                             " and tgl_masuk='"+tbKamIn.getValueAt(i,11).toString()+"' and jam_masuk='"+tbKamIn.getValueAt(i,12).toString()+"'",
-                            " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+lama+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))),"+
-                            " ttl_biaya=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+lama+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))*trf_kamar");
+                            " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))),"+
+                            " ttl_biaya=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"+pengaturankamarinap.getJamMinimalKamar()+"),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))*trf_kamar");
                     }         
                 }
             }

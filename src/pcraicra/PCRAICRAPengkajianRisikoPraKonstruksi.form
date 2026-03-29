@@ -332,15 +332,15 @@
                         <Property name="useNullLayout" type="boolean" value="true"/>
                       </Layout>
                       <SubComponents>
-                        <Component class="widget.TextBox" name="TNoRw">
+                        <Component class="widget.TextBox" name="NoProyek">
                           <Properties>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="TNoRw" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="NoProyek" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNoRwKeyPressed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoProyekKeyPressed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -348,12 +348,12 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.TextBox" name="TPasien">
+                        <Component class="widget.TextBox" name="NamaProyek">
                           <Properties>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="TPasien" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="NamaProyek" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -724,15 +724,15 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.TextBox" name="TNoRw1">
+                        <Component class="widget.TextBox" name="LokasiProyek">
                           <Properties>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="TNoRw1" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="LokasiProyek" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNoRw1KeyPressed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LokasiProyekKeyPressed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

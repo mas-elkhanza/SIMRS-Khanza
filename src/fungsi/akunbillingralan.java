@@ -10,7 +10,8 @@ import java.sql.ResultSet;
  */
 public class akunbillingralan {
     private static final Connection koneksi=koneksiDB.condb();
-    private static String Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",Obat_Langsung_Ralan="",Operasi_Ralan="";
+    private static String Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",
+            Obat_Langsung_Ralan="",Operasi_Ralan="",PPNKeluaran="";
     public static void SetAkunBillingRalan() {
         try (
             PreparedStatement ps = koneksi.prepareStatement(
@@ -35,6 +36,21 @@ public class akunbillingralan {
         } catch (Exception e) {
             System.out.println("Notif Rekening : "+e);
         }
+        
+        try (
+            PreparedStatement ps = koneksi.prepareStatement(
+                "select set_akun.PPN_Keluaran from set_akun"
+            );
+            ResultSet rs = ps.executeQuery();
+            ){
+            if(rs.next()){
+                PPNKeluaran=rs.getString(1);
+            }else{
+                PPNKeluaran="";
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Pengaturan Akun PPN Keluaran Ralan : "+e);
+        }
     }
     
     public static String getTindakan_Ralan(){return akunbillingralan.Tindakan_Ralan;}
@@ -46,4 +62,5 @@ public class akunbillingralan {
     public static String getPotongan_Ralan(){return akunbillingralan.Potongan_Ralan;}
     public static String getObat_Langsung_Ralan(){return akunbillingralan.Obat_Langsung_Ralan;}
     public static String getOperasi_Ralan(){return akunbillingralan.Operasi_Ralan;}
+    public static String getPPNKeluaran(){return akunbillingralan.PPNKeluaran;}
 }

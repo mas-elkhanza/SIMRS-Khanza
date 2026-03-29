@@ -23,6 +23,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.pengaturankamarinap;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
@@ -101,7 +102,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",jammulai="",
             umur="",umurdaftar="0",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",datajam="",jamselesai="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",prb="",peserta="",respon="200",
+            kabupatenpj="",requestJson,URL="",nosep="",user="",prb="",peserta="",respon="200",
             status="Baru",propinsi="",propinsipj="",utc="",DIAGNOSARUJUKANMASUKAPIBPJS="no",hari="",jeniskunjungan="",
             tampilkantni=Sequel.cariIsi("select set_tni_polri.tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
@@ -373,7 +374,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             System.out.println(e);
         }
         
-        hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
+        if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("")){
+            pengaturankamarinap.SetKamarInap();
+        }
         
         try {
             DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
@@ -7398,7 +7401,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     
                     jmlhari=0;
                     biaya=0;
-                    if(hariawal.equals("Yes")){
+                    if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
                         jmlhari=1;
                         biaya=Double.parseDouble(TBiaya.getText());
                     }

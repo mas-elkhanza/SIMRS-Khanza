@@ -23,6 +23,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.pengaturankamarinap;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
@@ -96,7 +97,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",status="Baru",propinsi="",propinsipj="",
+            kabupatenpj="",requestJson,URL="",nosep="",user="",status="Baru",propinsi="",propinsipj="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
     private ResultSet rs,rs2;
@@ -257,7 +258,11 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println(e);
         }
-        hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
+        
+        if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("")){
+            pengaturankamarinap.SetKamarInap();
+        }
+        
         pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
         tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
         bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
@@ -5227,7 +5232,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     
                     jmlhari=0;
                     biaya=0;
-                    if(hariawal.equals("Yes")){
+                    if(pengaturankamarinap.getHitungHariAwal().equals("Yes")){
                         jmlhari=1;
                         biaya=Double.parseDouble(TBiaya.getText());
                     }
