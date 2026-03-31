@@ -450,6 +450,10 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             }else{
                 System.out.println("Notifikasi : "+e);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
         LCount.setText(""+tabMode.getRowCount());
     }

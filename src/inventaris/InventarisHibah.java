@@ -616,6 +616,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                }finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 } 
                 
                 if(Sequel.menyimpantf2("inventaris_hibah","?,?,?,?,?,?","No.Hibah",6,new String[]{
@@ -957,6 +961,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 myObj.close();
             } catch (Exception e) {
                 sukses=false;
+            }finally {
+                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                response = null;
+                root = null;
             }     
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

@@ -459,6 +459,10 @@ public final class LabKeslingCariMasterSampelBakuMutu extends javax.swing.JDialo
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

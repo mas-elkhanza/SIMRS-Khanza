@@ -1364,6 +1364,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             iyembuilder=null;
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
+                        } finally {
+                            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
                         }
                         
                         if (resepiter == null || !resepiter.isDisplayable()) {

@@ -668,6 +668,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                }finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 } 
                 
                 akunaset="";
@@ -685,6 +689,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                }finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 } 
 
                 if(Sequel.menyimpantf2("inventaris_pembelian","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
@@ -1207,6 +1215,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 myObj.close();
             } catch (Exception e) {
                 sukses=false;
+            } finally {
+                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                response = null;
+                root = null;
             }     
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

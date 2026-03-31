@@ -393,6 +393,8 @@ public final class PCRAICRACariKelasRisikoPencegahan extends javax.swing.JDialog
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }  
         LCount.setText(""+tabMode.getRowCount());
     }
@@ -411,8 +413,9 @@ public final class PCRAICRACariKelasRisikoPencegahan extends javax.swing.JDialog
                         }); 
                     }
                 }else{
+                    String cari=TCari.getText().toLowerCase();
                     for(JsonNode list:response){
-                        if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        if(list.path("Kode").asText().toLowerCase().contains(cari)||list.path("Nama").asText().toLowerCase().contains(cari)){
                             tabMode.addRow(new Object[]{
                                 list.path("Kode").asText(),list.path("Nama").asText()
                             });                    
@@ -427,6 +430,10 @@ public final class PCRAICRACariKelasRisikoPencegahan extends javax.swing.JDialog
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
         LCount.setText(""+tabMode.getRowCount());
     }
