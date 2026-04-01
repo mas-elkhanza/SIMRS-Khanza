@@ -1344,6 +1344,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }else{
                 System.out.println("Notifikasi Akun Bayar : "+e);
             }
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
          
         try{      
@@ -1384,6 +1386,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }else{
                 System.out.println("Notifikasi Akun Aset : "+e);
             }
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
  

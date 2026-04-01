@@ -1486,6 +1486,8 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
             }else{
                 System.out.println("Notifikasi Akun Aset : "+e);
             }
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
  

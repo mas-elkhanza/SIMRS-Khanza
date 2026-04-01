@@ -633,7 +633,9 @@ public final class InventarisCariBarangCSSD extends javax.swing.JDialog {
             LCount.setText(tabMode.getRowCount()+"");
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        }        
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
+        }       
     }
     
     private void tampil2() {

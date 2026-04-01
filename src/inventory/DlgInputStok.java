@@ -1361,6 +1361,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1414,6 +1416,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch1BulanActionPerformed
@@ -1467,6 +1471,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1520,6 +1526,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch3BulanActionPerformed
@@ -1573,6 +1581,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1626,6 +1636,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch6BulanActionPerformed
@@ -1679,6 +1691,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1732,6 +1746,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch9BulanActionPerformed
@@ -1785,6 +1801,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1838,6 +1856,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch12BulanActionPerformed
@@ -1891,6 +1911,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }else{
             try{  
@@ -1944,6 +1966,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 iyembuilder=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
+            }finally {
+                if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
             }
         }
     }//GEN-LAST:event_ppBatch24BulanActionPerformed
@@ -2073,15 +2097,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }      
             
             if (iyembuilder.length() > 0) {
-                    iyembuilder.setLength(iyembuilder.length() - 1);
-                    fileWriter.write("{\"stokopname\":["+iyembuilder+"]}");
-                    fileWriter.flush();
-                }
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"stokopname\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
 
-                fileWriter.close();
-                iyembuilder=null;
+            fileWriter.close();
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     

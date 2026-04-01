@@ -1061,6 +1061,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }else{
                 System.out.println("Notifikasi Akun Aset : "+e);
             }
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
  

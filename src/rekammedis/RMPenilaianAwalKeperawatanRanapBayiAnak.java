@@ -8950,6 +8950,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -9043,6 +9045,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     

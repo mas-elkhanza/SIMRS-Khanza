@@ -1286,6 +1286,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         iyembuilder=null;
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
+                    } finally {
+                        if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
                     }
                     LabKeslingHasilPengujianSampel form=new LabKeslingHasilPengujianSampel(null,false);
                     form.addWindowListener(new WindowListener() {
@@ -1337,6 +1339,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             iyembuilder=null;
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
+                        } finally {
+                            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
                         }
                         LabKeslingHasilPengujianSampel form=new LabKeslingHasilPengujianSampel(null,false);
                         form.addWindowListener(new WindowListener() {

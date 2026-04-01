@@ -443,6 +443,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
             hari=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
         LCount.setText(""+tabMode.getRowCount());
     }

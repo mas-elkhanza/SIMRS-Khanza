@@ -1098,6 +1098,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
