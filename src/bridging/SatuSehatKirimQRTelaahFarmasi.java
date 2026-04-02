@@ -576,6 +576,9 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                             "\"reference\": \"Patient/"+idpasien+"\"," +
                                             "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
                                         "}," +
+                                        "\"source\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"" +
+                                        "}," +
                                         "\"encounter\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}," +
@@ -781,6 +784,9 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"," +
                                             "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
+                                        "\"source\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
                                         "\"encounter\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
