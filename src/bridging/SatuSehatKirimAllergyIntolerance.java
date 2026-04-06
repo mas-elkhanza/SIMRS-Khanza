@@ -554,8 +554,8 @@ public final class SatuSehatKirimAllergyIntolerance extends javax.swing.JDialog 
                     response = root.path("alergi");
                     if(response.isArray()){
                         for(JsonNode list:response){
-                            if(list.path("keyword").asText().equalsIgnoreCase(dicari)){
-                                category=list.path("category").asText();;
+                            if(dicari.contains(list.path("keyword").asText())){
+                                category=list.path("category").asText();
                                 coding_system=list.path("coding_system").asText();
                                 coding_code=list.path("coding_code").asText();
                                 coding_display=list.path("coding_display").asText();
@@ -596,9 +596,6 @@ public final class SatuSehatKirimAllergyIntolerance extends javax.swing.JDialog 
                                                     "\"display\": \"Confirmed\"" +
                                                 "}" +
                                             "]" +
-                                        "}," +
-                                        "\"code\": {" +
-                                            "\"text\": \""+tbObat.getValueAt(i,7).toString().replaceAll("(\r\n|\r|\n|\n\r)","").replaceAll("\t", "")+"\"" +
                                         "}," +
                                         "\"category\": [" +
                                             "\""+category+"\"" +
@@ -682,8 +679,8 @@ public final class SatuSehatKirimAllergyIntolerance extends javax.swing.JDialog 
                     response = root.path("alergi");
                     if(response.isArray()){
                         for(JsonNode list:response){
-                            if(list.path("keyword").asText().equalsIgnoreCase(dicari)){
-                                category=list.path("category").asText();;
+                            if(dicari.contains(list.path("keyword").asText())){
+                                category=list.path("category").asText();
                                 coding_system=list.path("coding_system").asText();
                                 coding_code=list.path("coding_code").asText();
                                 coding_display=list.path("coding_display").asText();
@@ -725,9 +722,6 @@ public final class SatuSehatKirimAllergyIntolerance extends javax.swing.JDialog 
                                                     "\"display\": \"Confirmed\"" +
                                                 "}" +
                                             "]" +
-                                        "}," +
-                                        "\"code\": {" +
-                                            "\"text\": \""+tbObat.getValueAt(i,7).toString().replaceAll("(\r\n|\r|\n|\n\r)","").replaceAll("\t", "")+"\"" +
                                         "}," +
                                         "\"category\": [" +
                                             "\""+category+"\"" +
