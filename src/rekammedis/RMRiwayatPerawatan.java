@@ -15979,7 +15979,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     rs2=koneksi.prepareStatement(
                             "select catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                             "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                            "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join petugas on catatan_observasi_ventilator.nip=petugas.nip "+
+                            "catatan_observasi_ventilator.keterangan,catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join petugas on catatan_observasi_ventilator.nip=petugas.nip "+
                             "where catatan_observasi_ventilator.no_rawat='"+norawat+"' order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat").executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
@@ -15992,8 +15992,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "<tr align='center'>").append(
                                     "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>").append(
                                     "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>").append(
-                                    "<td valign='top' width='58%' bgcolor='#FFFAF8' colspan='6'>Monitoring</td>").append(
-                                    "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>").append(
+                                    "<td valign='top' width='50%' bgcolor='#FFFAF8' colspan='6'>Monitoring</td>").append(
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Keterangan</td>").append(
+                                    "<td valign='middle' width='16%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>").append(
                                  "</tr>").append(
                                  "<tr align='center'>").append(
                                     "<td valign='top' bgcolor='#FFFAF8'>Mode</td>").append(
@@ -16016,6 +16017,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center'>").append(rs2.getString("rr")).append("</td>").append(
                                     "<td valign='top' align='center'>").append(rs2.getString("reefps")).append("</td>").append(
                                     "<td valign='top' align='center'>").append(rs2.getString("ee")).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("keterangan")).append("</td>").append(
                                     "<td valign='top'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
                                  "</tr>");                                        
                             w++;

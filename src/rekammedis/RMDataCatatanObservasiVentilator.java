@@ -66,7 +66,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Mode",
-            "VT","Pakar","RR","REF/PS","EE","NIP","Nama Petugas"
+            "VT","Pakar","RR","REF/PS","EE","Keterangan","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -76,7 +76,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -107,8 +107,10 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }else if(i==13){
                 column.setPreferredWidth(55);
             }else if(i==14){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==15){
+                column.setPreferredWidth(90);
+            }else if(i==16){
                 column.setPreferredWidth(160);
             }
         }
@@ -122,6 +124,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         REEFPS.setDocument(new batasInput((byte)5).getKata(REEFPS));
         EE.setDocument(new batasInput((byte)5).getKata(EE));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Keterangan.setDocument(new batasInput((int)200).getKata(Keterangan));
         
         ChkInput.setSelected(false);
         isForm();
@@ -201,6 +204,8 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         jLabel29 = new widget.Label();
         EE = new widget.TextBox();
         Mode = new widget.ComboBox();
+        jLabel13 = new widget.Label();
+        Keterangan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -403,7 +408,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -417,7 +422,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -478,7 +483,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 124));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 154));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -513,7 +518,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -642,17 +647,17 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }
         });
         FormInput.add(Pakar);
-        Pakar.setBounds(370, 70, 131, 23);
+        Pakar.setBounds(399, 70, 140, 23);
 
         jLabel20.setText("Pakar :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(326, 70, 40, 23);
+        jLabel20.setBounds(355, 70, 40, 23);
 
         jLabel22.setText("REEF/PS :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(591, 70, 70, 23);
+        jLabel22.setBounds(655, 70, 70, 23);
 
         REEFPS.setFocusTraversalPolicyProvider(true);
         REEFPS.setName("REEFPS"); // NOI18N
@@ -662,7 +667,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }
         });
         FormInput.add(REEFPS);
-        REEFPS.setBounds(665, 70, 40, 23);
+        REEFPS.setBounds(729, 70, 60, 23);
 
         jLabel23.setText("VT :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -677,7 +682,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }
         });
         FormInput.add(VT);
-        VT.setBounds(268, 70, 40, 23);
+        VT.setBounds(268, 70, 60, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -687,17 +692,17 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }
         });
         FormInput.add(RR);
-        RR.setBounds(550, 70, 40, 23);
+        RR.setBounds(591, 70, 60, 23);
 
         jLabel28.setText("RR :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(506, 70, 40, 23);
+        jLabel28.setBounds(547, 70, 40, 23);
 
         jLabel29.setText("EE :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(705, 70, 40, 23);
+        jLabel29.setBounds(0, 100, 70, 23);
 
         EE.setFocusTraversalPolicyProvider(true);
         EE.setName("EE"); // NOI18N
@@ -707,7 +712,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }
         });
         FormInput.add(EE);
-        EE.setBounds(749, 70, 40, 23);
+        EE.setBounds(74, 100, 60, 23);
 
         Mode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CPAP", "Nasal IMV", "IMV", "SIMV", "A/C Atau SIPPV", "PSV", "Volume Guarantee", "HFO", "HFO + IMV" }));
         Mode.setName("Mode"); // NOI18N
@@ -718,6 +723,21 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         });
         FormInput.add(Mode);
         Mode.setBounds(74, 70, 148, 23);
+
+        jLabel13.setText("Keterangan :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(141, 100, 90, 23);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(235, 100, 554, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -784,7 +804,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,EE,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -893,7 +913,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_ventilator.keterangan,catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
                     "catatan_observasi_ventilator.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
@@ -902,7 +922,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_ventilator.keterangan,catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
                     "catatan_observasi_ventilator.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
@@ -1064,7 +1084,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,dokter.nm_dokter,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_ventilator.keterangan,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
@@ -1088,11 +1108,11 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     }//GEN-LAST:event_RRKeyPressed
 
     private void EEKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EEKeyPressed
-        Valid.pindah(evt,REEFPS,BtnSimpan);
+        Valid.pindah(evt,REEFPS,Keterangan);
     }//GEN-LAST:event_EEKeyPressed
 
     private void ModeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModeKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KdPetugas,VT);
     }//GEN-LAST:event_ModeKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1119,6 +1139,10 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             });
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,EE,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1155,6 +1179,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnCatatanObservasiVentilator;
@@ -1177,6 +1202,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1205,7 +1231,8 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_ventilator.keterangan,catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator "+
+                    "inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
                     "catatan_observasi_ventilator.tgl_perawatan between ? and ? order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat");
@@ -1214,7 +1241,8 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_ventilator.keterangan,catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator "+
+                    "inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
                     "catatan_observasi_ventilator.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_ventilator.nip like ? or petugas.nama like ?) "+
@@ -1241,8 +1269,8 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("mode"),rs.getString("vt"),
-                        rs.getString("pakar"),rs.getString("rr"),rs.getString("reefps"),rs.getString("ee"),rs.getString("nip"),
-                        rs.getString("nama")
+                        rs.getString("pakar"),rs.getString("rr"),rs.getString("reefps"),rs.getString("ee"),rs.getString("keterangan"),
+                        rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1268,6 +1296,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         RR.setText("");
         REEFPS.setText("");
         EE.setText("");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
         Mode.requestFocus();
     } 
@@ -1289,6 +1318,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             REEFPS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             EE.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1338,7 +1368,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,124));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,154));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1431,10 +1461,10 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("catatan_observasi_ventilator","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,mode=?,vt=?,pakar=?,rr=?,reefps=?,ee=?,nip=?",13,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("catatan_observasi_ventilator","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,mode=?,vt=?,pakar=?,rr=?,reefps=?,ee=?,keterangan=?,nip=?",14,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),
+            REEFPS.getText(),EE.getText(),Keterangan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1450,8 +1480,9 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),11);
             tbObat.setValueAt(REEFPS.getText(),tbObat.getSelectedRow(),12);
             tbObat.setValueAt(EE.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),16);
             emptTeks();
         }
     }
@@ -1469,14 +1500,16 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("catatan_observasi_ventilator","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+        if(Sequel.menyimpantf("catatan_observasi_ventilator","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),KdPetugas.getText()
+            Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),Keterangan.getText(),
+            KdPetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),KdPetugas.getText(),NmPetugas.getText()
+                Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),Keterangan.getText(),
+                KdPetugas.getText(),NmPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
