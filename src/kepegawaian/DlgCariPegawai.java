@@ -505,6 +505,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("Nama").asText();
+                        break;
                     }
                 }
             }

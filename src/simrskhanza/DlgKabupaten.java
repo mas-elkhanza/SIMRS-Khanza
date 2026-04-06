@@ -627,6 +627,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("NamaKab").asText().toLowerCase().equals(nama)){
                         iyem=list.path("KodeKab").asText();
+                        break;
                     }
                 }
             }

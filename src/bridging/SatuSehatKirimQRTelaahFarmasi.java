@@ -736,7 +736,7 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                             response = root.path("id");
                             if(!response.asText().equals("")){
                                 if(Sequel.menyimpantf2("satu_sehat_questionresponse_telaah_farmasi","?,?","No.Resep",2,new String[]{
-                                    tbObat.getValueAt(i,11).toString(),response.asText()
+                                    tbObat.getValueAt(i,10).toString(),response.asText()
                                 })==true){
                                     tbObat.setValueAt(response.asText(),i,11);
                                     tbObat.setValueAt(false,i,0);

@@ -1092,9 +1092,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/akunbayar.iyem")<8){
-                runBackground(() ->tampilAkunBayar2());
+                tampilAkunBayar2();
             }else{
-                runBackground(() ->tampilAkunBayar());
+                tampilAkunBayar();
             }
         } catch (Exception e) {
         }
@@ -1503,6 +1503,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                for(JsonNode list:response){
                    if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
                         Persenppn.setText(list.path("PPN").asText());
+                        break;
                    }
                }
             }

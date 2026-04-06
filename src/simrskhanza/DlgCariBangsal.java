@@ -490,6 +490,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("KodeKamar").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaKamar").asText();
+                        break;
                     }
                 }
             }

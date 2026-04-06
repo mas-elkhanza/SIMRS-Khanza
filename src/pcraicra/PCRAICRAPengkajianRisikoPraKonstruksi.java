@@ -843,11 +843,21 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 
         NamaProyek.setHighlighter(null);
         NamaProyek.setName("NamaProyek"); // NOI18N
+        NamaProyek.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaProyekKeyPressed(evt);
+            }
+        });
         FormInput.add(NamaProyek);
         NamaProyek.setBounds(404, 10, 450, 23);
 
         DeskripsiPekerjaan.setHighlighter(null);
         DeskripsiPekerjaan.setName("DeskripsiPekerjaan"); // NOI18N
+        DeskripsiPekerjaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DeskripsiPekerjaanKeyPressed(evt);
+            }
+        });
         FormInput.add(DeskripsiPekerjaan);
         DeskripsiPekerjaan.setBounds(280, 70, 574, 23);
 
@@ -901,11 +911,21 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 
         YangBertanggungJawab.setHighlighter(null);
         YangBertanggungJawab.setName("YangBertanggungJawab"); // NOI18N
+        YangBertanggungJawab.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                YangBertanggungJawabKeyPressed(evt);
+            }
+        });
         FormInput.add(YangBertanggungJawab);
         YangBertanggungJawab.setBounds(177, 100, 245, 23);
 
         KontraktorPelaksana.setHighlighter(null);
         KontraktorPelaksana.setName("KontraktorPelaksana"); // NOI18N
+        KontraktorPelaksana.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KontraktorPelaksanaKeyPressed(evt);
+            }
+        });
         FormInput.add(KontraktorPelaksana);
         KontraktorPelaksana.setBounds(609, 100, 245, 23);
 
@@ -999,7 +1019,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label11.setBounds(468, 40, 90, 23);
 
         TanggalMulai.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalMulai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
+        TanggalMulai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         TanggalMulai.setDisplayFormat("dd-MM-yyyy");
         TanggalMulai.setName("TanggalMulai"); // NOI18N
         TanggalMulai.setOpaque(false);
@@ -1045,7 +1065,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label12.setBounds(650, 40, 110, 23);
 
         PerkiraanSelesai.setForeground(new java.awt.Color(50, 70, 50));
-        PerkiraanSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
+        PerkiraanSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         PerkiraanSelesai.setDisplayFormat("dd-MM-yyyy");
         PerkiraanSelesai.setName("PerkiraanSelesai"); // NOI18N
         PerkiraanSelesai.setOpaque(false);
@@ -2053,7 +2073,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label31.setBounds(448, 1470, 70, 23);
 
         TanggalPengkajian.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPengkajian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2026 08:40:07" }));
+        TanggalPengkajian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026 05:03:45" }));
         TanggalPengkajian.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPengkajian.setName("TanggalPengkajian"); // NOI18N
         TanggalPengkajian.setOpaque(false);
@@ -2122,7 +2142,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2136,7 +2156,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2200,7 +2220,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
         }else{            
-            Valid.pindah(evt,TCari,BtnAktivitas);
+            Valid.pindah(evt,TCari,NamaProyek);
         }
 }//GEN-LAST:event_NoProyekKeyPressed
 
@@ -2481,7 +2501,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void KodeAktivitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeAktivitasKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnAktivitasActionPerformed(null);
+        }else{            
+            Valid.pindah(evt,KontraktorPelaksana,DeskripsiLokasiProyek);
+        }
     }//GEN-LAST:event_KodeAktivitasKeyPressed
 
     private void BtnAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAktivitasActionPerformed
@@ -2495,7 +2519,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
                         KodeAktivitas.setText(aktivitasproyek.getTable().getValueAt(aktivitasproyek.getTable().getSelectedRow(),0).toString());
                         NamaAktivitas.setText(aktivitasproyek.getTable().getValueAt(aktivitasproyek.getTable().getSelectedRow(),1).toString());
                     }  
-                    aktivitasproyek.requestFocus();
+                    DeskripsiLokasiProyek.requestFocus();
                     aktivitasproyek=null;
                 }
             });
@@ -2523,7 +2547,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_DibutuhkanICRAKeyPressed
 
     private void DeskripsiLokasiProyekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DeskripsiLokasiProyekKeyPressed
-        //Valid.pindah2(evt,Hubungan,RPS);
+        Valid.pindah2(evt,KodeAktivitas,TCariKelompokRisikoArea);
     }//GEN-LAST:event_DeskripsiLokasiProyekKeyPressed
 
     private void PenyebabRisikoLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyebabRisikoLainnyaKeyPressed
@@ -2531,7 +2555,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_PenyebabRisikoLainnyaKeyPressed
 
     private void TanggalMulaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalMulaiKeyPressed
-        //Valid.pindah(evt,Konsul,Anamnesis);
+        Valid.pindah(evt,LokasiProyek,PerkiraanSelesai);
     }//GEN-LAST:event_TanggalMulaiKeyPressed
 
     private void KodeManajerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeManajerKeyPressed
@@ -2782,11 +2806,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_formWindowOpened
 
     private void LokasiProyekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiProyekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NamaProyek,TanggalMulai);
     }//GEN-LAST:event_LokasiProyekKeyPressed
 
     private void PerkiraanSelesaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerkiraanSelesaiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanggalMulai,DeskripsiPekerjaan);
     }//GEN-LAST:event_PerkiraanSelesaiKeyPressed
 
     private void BtnTimK3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTimK3ActionPerformed
@@ -3243,6 +3267,22 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private void TanggalPengkajianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPengkajianKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TanggalPengkajianKeyPressed
+
+    private void NamaProyekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaProyekKeyPressed
+        Valid.pindah(evt,NoProyek,LokasiProyek);
+    }//GEN-LAST:event_NamaProyekKeyPressed
+
+    private void DeskripsiPekerjaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DeskripsiPekerjaanKeyPressed
+        Valid.pindah(evt,PerkiraanSelesai,YangBertanggungJawab);
+    }//GEN-LAST:event_DeskripsiPekerjaanKeyPressed
+
+    private void YangBertanggungJawabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YangBertanggungJawabKeyPressed
+        Valid.pindah(evt,DeskripsiPekerjaan,KontraktorPelaksana);
+    }//GEN-LAST:event_YangBertanggungJawabKeyPressed
+
+    private void KontraktorPelaksanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraktorPelaksanaKeyPressed
+        Valid.pindah(evt,YangBertanggungJawab,KodeAktivitas);
+    }//GEN-LAST:event_KontraktorPelaksanaKeyPressed
 
     /**
     * @param args the command line arguments

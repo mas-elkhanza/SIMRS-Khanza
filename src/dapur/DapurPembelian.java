@@ -682,8 +682,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
                                 });
                                 if(tbDokter.getValueAt(i,4).toString().equals("true")&&(akses.getdapur_barang()==true)){
+                                    Double hargadiskon=Valid.SetAngka(tbDokter.getValueAt(i,9).toString())/Valid.SetAngka(tbDokter.getValueAt(i,0).toString());
                                     Sequel.mengedit("dapurbarang","kode_brng=?","harga=?",2,new String[]{
-                                        (Double.parseDouble(tbDokter.getValueAt(i,5).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(i,5).toString())))+"",tbDokter.getValueAt(i,1).toString()
+                                        (hargadiskon+((Double.parseDouble(tppn.getText())/100)*hargadiskon))+"",tbDokter.getValueAt(i,1).toString()
                                     }); 
                                 }
                             }else{

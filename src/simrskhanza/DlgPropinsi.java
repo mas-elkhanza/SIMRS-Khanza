@@ -622,6 +622,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("NamaProp").asText().toLowerCase().equals(nama)){
                         iyem=list.path("KodeProp").asText();
+                        break;
                     }
                 }
             }

@@ -499,6 +499,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaPetugas").asText();
+                        break;
                     }
                 }
             }

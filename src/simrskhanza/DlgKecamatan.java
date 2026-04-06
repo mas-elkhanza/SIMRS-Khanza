@@ -626,6 +626,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
                 for(JsonNode list:response){
                     if(list.path("NamaKec").asText().toLowerCase().equals(nama)){
                         iyem=list.path("KodeKec").asText();
+                        break;
                     }
                 }
             }
