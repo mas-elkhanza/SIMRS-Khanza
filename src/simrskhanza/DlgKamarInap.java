@@ -226,8 +226,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private Date date = new Date();
     private String now=dateFormat.format(date),kmr="",key="",tglmasuk,jammasuk,kd_pj,KUNCIDOKTERRANAP="",
             terbitsep="",namadokter="";
-    private PreparedStatement ps,pssetjam,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur;
-    private ResultSet rs,rs2,rssetjam;
+    private PreparedStatement ps,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur;
+    private ResultSet rs,rs2;
     private int i,row=0;
     private boolean ceksukses=false;
     private double hargakamar=0;
@@ -7989,10 +7989,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(WindowInputKamar.isVisible()==false){
-            tampil(); 
-        } 
-        
         try {
             if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("Yes")){
                 diagnosaakhir.setEditable(true); 
