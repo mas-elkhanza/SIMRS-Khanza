@@ -6100,7 +6100,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
 
-                                if(pengaturanbillingranap.getCentangDokterRanap().equals("Yes")){
+                                if(pengaturanbillingranap.getRincianDokterRanap().equals("Yes")){
                                     detailbhp=detailbhp+rsranapdrpr.getDouble("totalbhp");
                                     detailjs=detailjs+rsranapdrpr.getDouble("totalmaterial")+rsranapdrpr.getDouble("totaltarif_tindakanpr");
                                     tabModeRwJlDr.addRow(new Object[]{true,"",rsranapdrpr.getString("nm_perawatan"),":",
