@@ -1669,7 +1669,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void emptTeks() {
         Kd2.setText("");
         BesarBayar.setText("0");
-        setData(NoFaktur.getText());
+        //setData(NoFaktur.getText());
         NoBukti.setText("");
         Keterangan.setText("");
         NoRekening.setText("");

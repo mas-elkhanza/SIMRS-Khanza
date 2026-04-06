@@ -1686,7 +1686,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     public void emptTeks() {
         Kd2.setText("");
         BesarBayar.setText("0");
-        setData(NoFaktur.getText());
+        //setData(NoFaktur.getText());
         NoBukti.setText("");
         keterangan.setText("");
         TglBayar.setDate(new Date());
