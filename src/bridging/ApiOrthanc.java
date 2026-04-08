@@ -211,6 +211,31 @@ public class ApiOrthanc {
         return root;
     }
     
+    public boolean UbahAccession(String studyId, String accessionBaru){
+        System.out.println("Modify AccessionNumber Study : " + studyId);
+        try{
+            headers = new HttpHeaders();
+            headers.add("Authorization", "Basic " + authEncrypt);
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            requestJson = "{" +
+                                "\"Replace\": {" +
+                                    "\"AccessionNumber\": \""+accessionBaru+"\"" +
+                                "}," +
+                                "\"KeepSource\": false"+
+                            "}";
+            System.out.println("Request JSON : " + requestJson);
+            requestEntity = new HttpEntity(requestJson, headers);
+            System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/studies/"+studyId+"/modify");
+            String response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/studies/"+studyId+"/modify",HttpMethod.POST,requestEntity, String.class).getBody();
+            System.out.println("Response : " + response);
+            return true;
+        }catch(Exception e){
+            System.out.println("Notifikasi : " + e);
+            JOptionPane.showMessageDialog(null,"Gagal mengubah Accession Number di Orthanc..!!");
+            return false;
+        }
+    }
+    
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers= {

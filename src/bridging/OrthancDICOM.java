@@ -12,12 +12,16 @@
 package bridging;
 
 
+import fungsi.batasInput;
 import fungsi.validasi;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -45,6 +49,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -53,18 +58,20 @@ import javax.swing.SwingUtilities;
 public class OrthancDICOM extends javax.swing.JDialog {
     private final JFXPanel jfxPanel = new JFXPanel();
     private WebEngine engine;
-    private String urlpanggil="",norawat="",series="";
+    private String urlpanggil="",namafile="",series="",study="",norawat="";
     private final JPanel panel = new JPanel(new BorderLayout());
     private final JLabel lblStatus = new JLabel();
-
     private final JTextField txtURL = new JTextField();
     private final JProgressBar progressBar = new JProgressBar();
     private final ApiOrthanc orthanc=new ApiOrthanc();
     private final validasi Valid=new validasi();
+    private OrthancDataACSN dataacsn;
+    
     public OrthancDICOM(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initComponents2();
+        AccessionNumber.setDocument(new batasInput((byte)16).getKata(AccessionNumber));
     }
     
     private void initComponents2() {           
@@ -213,7 +220,15 @@ public class OrthancDICOM extends javax.swing.JDialog {
         BtnJpg = new widget.Button();
         BtnBmp = new widget.Button();
         BtnDcm = new widget.Button();
+        BtnACSN = new widget.Button();
         BtnKeluar = new widget.Button();
+        WindowGantiACSN = new javax.swing.JDialog();
+        internalFrame5 = new widget.InternalFrame();
+        BtnCloseIn4 = new widget.Button();
+        BtnSimpan4 = new widget.Button();
+        jLabel14 = new widget.Label();
+        AccessionNumber = new widget.TextBox();
+        BtnCariACSN = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
 
         PanelMenu.setName("PanelMenu"); // NOI18N
@@ -272,6 +287,19 @@ public class OrthancDICOM extends javax.swing.JDialog {
         });
         PanelMenu.add(BtnDcm);
 
+        BtnACSN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        BtnACSN.setMnemonic('D');
+        BtnACSN.setText("Update ACSN");
+        BtnACSN.setToolTipText("Alt+D");
+        BtnACSN.setName("BtnACSN"); // NOI18N
+        BtnACSN.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnACSN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnACSNActionPerformed(evt);
+            }
+        });
+        PanelMenu.add(BtnACSN);
+
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -289,6 +317,70 @@ public class OrthancDICOM extends javax.swing.JDialog {
             }
         });
         PanelMenu.add(BtnKeluar);
+
+        WindowGantiACSN.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowGantiACSN.setName("WindowGantiACSN"); // NOI18N
+        WindowGantiACSN.setUndecorated(true);
+        WindowGantiACSN.setResizable(false);
+
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ganti Accession Number ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setName("internalFrame5"); // NOI18N
+        internalFrame5.setLayout(null);
+
+        BtnCloseIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn4.setMnemonic('U');
+        BtnCloseIn4.setText("Tutup");
+        BtnCloseIn4.setToolTipText("Alt+U");
+        BtnCloseIn4.setName("BtnCloseIn4"); // NOI18N
+        BtnCloseIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn4ActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnCloseIn4);
+        BtnCloseIn4.setBounds(370, 20, 100, 30);
+
+        BtnSimpan4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan4.setMnemonic('S');
+        BtnSimpan4.setText("Simpan");
+        BtnSimpan4.setToolTipText("Alt+S");
+        BtnSimpan4.setName("BtnSimpan4"); // NOI18N
+        BtnSimpan4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan4ActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnSimpan4);
+        BtnSimpan4.setBounds(265, 20, 100, 30);
+
+        jLabel14.setText("ACSN :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        internalFrame5.add(jLabel14);
+        jLabel14.setBounds(0, 22, 50, 23);
+
+        AccessionNumber.setHighlighter(null);
+        AccessionNumber.setName("AccessionNumber"); // NOI18N
+        AccessionNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AccessionNumberKeyPressed(evt);
+            }
+        });
+        internalFrame5.add(AccessionNumber);
+        AccessionNumber.setBounds(54, 22, 170, 23);
+
+        BtnCariACSN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCariACSN.setMnemonic('7');
+        BtnCariACSN.setToolTipText("ALt+7");
+        BtnCariACSN.setName("BtnCariACSN"); // NOI18N
+        BtnCariACSN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariACSNActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnCariACSN);
+        BtnCariACSN.setBounds(226, 22, 28, 23);
+
+        WindowGantiACSN.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ About Program ]::");
@@ -336,20 +428,88 @@ public class OrthancDICOM extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPngActionPerformed
-        orthanc.AmbilPng(norawat,series);
+        orthanc.AmbilPng(namafile,series);
     }//GEN-LAST:event_BtnPngActionPerformed
 
     private void BtnDcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDcmActionPerformed
-        orthanc.AmbilDcm(norawat,series);
+        orthanc.AmbilDcm(namafile,series);
     }//GEN-LAST:event_BtnDcmActionPerformed
 
     private void BtnJpgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJpgActionPerformed
-        orthanc.AmbilJpg(norawat,series);
+        orthanc.AmbilJpg(namafile,series);
     }//GEN-LAST:event_BtnJpgActionPerformed
 
     private void BtnBmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBmpActionPerformed
-        orthanc.AmbilBmp(norawat,series);
+        orthanc.AmbilBmp(namafile,series);
     }//GEN-LAST:event_BtnBmpActionPerformed
+
+    private void BtnACSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnACSNActionPerformed
+        WindowGantiACSN.setSize(482,62);
+        WindowGantiACSN.setLocationRelativeTo(internalFrame1);
+        WindowGantiACSN.setAlwaysOnTop(false);
+        WindowGantiACSN.setVisible(true);
+    }//GEN-LAST:event_BtnACSNActionPerformed
+
+    private void BtnCloseIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn4ActionPerformed
+        WindowGantiACSN.dispose();
+    }//GEN-LAST:event_BtnCloseIn4ActionPerformed
+
+    private void BtnSimpan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan4ActionPerformed
+        if(AccessionNumber.getText().trim().equals("")){
+            Valid.textKosong(AccessionNumber,"Accession Number");
+        }else{
+            if(orthanc.UbahAccession(study,AccessionNumber.getText())==true){
+                JOptionPane.showMessageDialog(null,"Update accession number selesai..!!");
+            }
+        }
+    }//GEN-LAST:event_BtnSimpan4ActionPerformed
+
+    private void AccessionNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AccessionNumberKeyPressed
+        Valid.pindah(evt, BtnCloseIn4, BtnCariACSN);
+    }//GEN-LAST:event_AccessionNumberKeyPressed
+
+    private void BtnCariACSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariACSNActionPerformed
+        if (dataacsn == null || !dataacsn.isDisplayable()) {
+            dataacsn=new OrthancDataACSN(null,false);
+            dataacsn.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            dataacsn.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(dataacsn.getTable().getSelectedRow()!= -1){
+                        AccessionNumber.setText(dataacsn.getTable().getValueAt(dataacsn.getTable().getSelectedRow(),0).toString());
+                    }  
+                    AccessionNumber.requestFocus();
+                    dataacsn=null;
+                }
+            });
+            
+            dataacsn.getTable().addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {}
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        dataacsn.dispose();
+                    }
+                }
+                @Override
+                public void keyReleased(KeyEvent e) {}
+            });
+                    
+            dataacsn.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dataacsn.setLocationRelativeTo(internalFrame1);
+        }
+        if (dataacsn == null) return;
+        if (!dataacsn.isVisible()) {
+            dataacsn.setNoRawat(norawat);
+            dataacsn.tampil("");
+        }
+        if (dataacsn.isVisible()) {
+            dataacsn.toFront();
+            return;
+        }    
+        dataacsn.setVisible(true);
+    }//GEN-LAST:event_BtnCariACSNActionPerformed
 
     /**
     * @param args the command line arguments
@@ -368,18 +528,28 @@ public class OrthancDICOM extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox AccessionNumber;
+    private widget.Button BtnACSN;
     private widget.Button BtnBmp;
+    private widget.Button BtnCariACSN;
+    private widget.Button BtnCloseIn4;
     private widget.Button BtnDcm;
     private widget.Button BtnJpg;
     private widget.Button BtnKeluar;
     private widget.Button BtnPng;
+    private widget.Button BtnSimpan4;
     private widget.panelisi PanelMenu;
+    private javax.swing.JDialog WindowGantiACSN;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel14;
     // End of variables declaration//GEN-END:variables
 
-    public void setJudul(String Judul,String NoRawat,String Series){
-        norawat=NoRawat;
+    public void setJudul(String Judul,String NamaFile,String Series,String Study,String NoRawat){
+        study=Study;
+        namafile=NamaFile;
         series=Series;
+        norawat=NoRawat;
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), Judul, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); 
     }
 }
