@@ -236,6 +236,27 @@ public class ApiOrthanc {
         }
     }
     
+    public boolean kirimKeModality(String studyId){
+        System.out.println("Kirim Study ke Modality : " + studyId);
+        try{
+            headers = new HttpHeaders();
+            headers.add("Authorization", "Basic " + authEncrypt);
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            requestJson = "[\"" + studyId + "\"]";
+            requestEntity = new HttpEntity(requestJson, headers);
+            System.out.println("URL : " + koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/modalities/DICOMROUTER/store");
+            System.out.println("Request JSON : " + requestJson);
+            String response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/modalities/DICOMROUTER/store",HttpMethod.POST,requestEntity,String.class).getBody();
+            System.out.println("Response : " + response);
+            JOptionPane.showMessageDialog(null,"Proses kirim ke Modality selesai..!!");
+            return true;
+        }catch(Exception e){
+            System.out.println("Notifikasi : " + e);
+            JOptionPane.showMessageDialog(null,"Gagal kirim ke Modality..!!");
+            return false;
+        }
+    }
+    
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers= {
