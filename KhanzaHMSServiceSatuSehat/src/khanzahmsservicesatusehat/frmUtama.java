@@ -8679,7 +8679,6 @@ public class frmUtama extends javax.swing.JFrame {
     
     private void kirimdicomrouter() {
         ApiOrthanc orthanc=new ApiOrthanc();
-        JsonNode root;
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rkm_medis from periksa_radiologi inner join reg_periksa on reg_periksa.no_rawat=periksa_radiologi.no_rawat where periksa_radiologi.tgl_periksa between ? and ? "
@@ -8691,9 +8690,7 @@ public class frmUtama extends javax.swing.JFrame {
                 while(rs.next()){
                     root=orthanc.AmbilSeries(rs.getString(1),Tanggal1.getText().replaceAll("-",""),Tanggal2.getText().replaceAll("-",""));
                     for(JsonNode list:root){
-                         for(JsonNode sublist:list.path("Series")){
-                              orthanc.kirimKeModality(list.path("ID").asText());
-                         }        
+                         orthanc.kirimKeModality(list.path("ID").asText());       
                     }
                 }
             } catch (Exception ex) {
@@ -8705,8 +8702,8 @@ public class frmUtama extends javax.swing.JFrame {
                 if(ps!=null){
                     ps.close();
                 }
+                root = null;
             }
-            
         }catch(Exception ez){
             System.out.println("Notifikasi : "+ez);
         }
