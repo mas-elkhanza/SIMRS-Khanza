@@ -7,6 +7,7 @@ package khanzahmsservicesatusehat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.ApiOrthanc;
 import fungsi.ApiSatuSehat;
 import fungsi.SatuSehatCekNIK;
 import fungsi.koneksiDB;
@@ -240,6 +241,7 @@ public class frmUtama extends javax.swing.JFrame {
                     careplan();
                     qrtelaahresep();
                     alergi();
+                    kirimdicomrouter();
                 }
             }
         };
@@ -7521,7 +7523,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
                                                     "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"\"" +
                                                 "}" +
@@ -7664,7 +7666,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
                                                     "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"\"" +
                                                 "}" +
@@ -7809,7 +7811,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
                                                     "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
                                                 "}" +
@@ -7954,7 +7956,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
                                                     "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
                                                 "}" +
@@ -8670,6 +8672,41 @@ public class frmUtama extends javax.swing.JFrame {
                     ps.close();
                 }
             }
+        }catch(Exception ez){
+            System.out.println("Notifikasi : "+ez);
+        }
+    }
+    
+    private void kirimdicomrouter() {
+        ApiOrthanc orthanc=new ApiOrthanc();
+        JsonNode root;
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rkm_medis from periksa_radiologi inner join reg_periksa on reg_periksa.no_rawat=periksa_radiologi.no_rawat where periksa_radiologi.tgl_periksa between ? and ? "
+            );
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    root=orthanc.AmbilSeries(rs.getString(1),Tanggal1.getText().replaceAll("-",""),Tanggal2.getText().replaceAll("-",""));
+                    for(JsonNode list:root){
+                         for(JsonNode sublist:list.path("Series")){
+                              orthanc.kirimKeModality(list.path("ID").asText());
+                         }        
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Notif : "+ex);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
         }catch(Exception ez){
             System.out.println("Notifikasi : "+ez);
         }

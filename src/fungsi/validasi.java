@@ -51,6 +51,7 @@ import widget.ComboBox;
 import widget.Tanggal;
 import widget.TextArea;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 import widget.TextBox;
 /**
  *
@@ -1515,6 +1516,13 @@ public final class validasi {
         file=new File(path);
         if (file.lastModified() < 1) return 0;
         return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified());
+    }
+    
+    public long minutesOld(String path) {
+        file = new File(path);
+        if (file.lastModified() < 1) return 0;
+        long diffMillis = Calendar.getInstance().getTimeInMillis() - file.lastModified();
+        return TimeUnit.MILLISECONDS.toMinutes(diffMillis);
     }
 
     /**
