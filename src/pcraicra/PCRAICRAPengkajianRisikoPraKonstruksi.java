@@ -2242,7 +2242,17 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 }//GEN-LAST:event_NoProyekKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        if(NoProyek.getText().trim().equals("")){
+            Valid.textKosong(NoProyek,"No.Proyek");
+        }else if(NamaProyek.getText().trim().equals("")){
+            Valid.textKosong(NamaProyek,"Proyek Yang Akan Dikerjakan");
+        }else if(LokasiProyek.getText().trim().equals("")){
+            Valid.textKosong(LokasiProyek,"Lokasi Proyek");
+        }else if(DeskripsiPekerjaan.getText().trim().equals("")){
+            Valid.textKosong(DeskripsiPekerjaan,"Deskripsi Pekerjaan");
+        }else{
+            
+        }
     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
