@@ -2951,7 +2951,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_BtnAllRisikoInfeksiActionPerformed
 
     private void BtnAllRisikoInfeksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRisikoInfeksiKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllKelomokRisikoActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariRisikoInfeksi, TCariRisikoInfeksi);
+        }
     }//GEN-LAST:event_BtnAllRisikoInfeksiKeyPressed
 
     private void BtnTambahRisikoInfeksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRisikoInfeksiActionPerformed
@@ -3000,7 +3004,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_BtnAllRisikoKebakaranActionPerformed
 
     private void BtnAllRisikoKebakaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRisikoKebakaranKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllKelomokRisikoActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariRisikoKebakarab, TCariRisikoKebakaran);
+        }
     }//GEN-LAST:event_BtnAllRisikoKebakaranKeyPressed
 
     private void BtnTambahRisikoKebakaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRisikoKebakaranActionPerformed
@@ -3053,7 +3061,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_BtnAllRisikoKeselamatanActionPerformed
 
     private void BtnAllRisikoKeselamatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRisikoKeselamatanKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllKelomokRisikoActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariRisikoKeselamatan, TCariRisikoKeselamatan);
+        }
     }//GEN-LAST:event_BtnAllRisikoKeselamatanKeyPressed
 
     private void BtnCariRisikoKeselamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRisikoKeselamatanActionPerformed
@@ -3102,7 +3114,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_BtnAllRisikoUtilitasActionPerformed
 
     private void BtnAllRisikoUtilitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRisikoUtilitasKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllKelomokRisikoActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariRisikoUtilitas, TCariRisikoUtilitas);
+        }
     }//GEN-LAST:event_BtnAllRisikoUtilitasKeyPressed
 
     private void BtnCariRisikoUtilitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRisikoUtilitasActionPerformed
@@ -3189,7 +3205,11 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     }//GEN-LAST:event_BtnAllTindakanPengendalianActionPerformed
 
     private void BtnAllTindakanPengendalianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllTindakanPengendalianKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllKelomokRisikoActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariTindakanPengendalian, TCariTindakanPengendalian);
+        }
     }//GEN-LAST:event_BtnAllTindakanPengendalianKeyPressed
 
     private void BtnTambahTindakanPengendalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahTindakanPengendalianActionPerformed

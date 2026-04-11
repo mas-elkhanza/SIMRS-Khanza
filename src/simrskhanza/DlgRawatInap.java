@@ -23,6 +23,8 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akuntindakanranap;
+import fungsi.copypastesoapranap;
+import fungsi.copypastesoapranap;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
 import inventory.DlgCopyResep;
@@ -8871,6 +8873,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void MnCopySOAPActionPerformed(java.awt.event.ActionEvent evt) {
+        copypastesoapranap.SetCatatanPasien(TKeluhan.getText(),TPemeriksaan.getText(),TPenilaian.getText(),TindakLanjut.getText(),TInstruksi.getText(),TEvaluasi.getText());
+    }
+    
+    private void MnPasteSOAPActionPerformed(java.awt.event.ActionEvent evt) {
+        TKeluhan.setText(copypastesoapranap.getDataSubjek());
+        TPemeriksaan.setText(copypastesoapranap.getDataObjek());
+        TPenilaian.setText(copypastesoapranap.getDataAsesmen());
+        TindakLanjut.setText(copypastesoapranap.getDataPlan());
+        TInstruksi.setText(copypastesoapranap.getDataImplementasi());
+        TEvaluasi.setText(copypastesoapranap.getDataEvaluasi());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -9206,6 +9221,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
                           BtnSkriningGiziKehamilan;
+    private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
+    private javax.swing.JMenuItem MnCopySOAP,MnPasteSOAP;
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -11028,9 +11045,50 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningGiziKehamilan.setRoundRect(false);
         BtnSkriningGiziKehamilan.addActionListener(this::BtnSkriningGiziKehamilanActionPerformed);
         
+        MnCopySOAP = new javax.swing.JMenuItem();
+        MnCopySOAP.setBackground(new java.awt.Color(255, 255, 254));
+        MnCopySOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCopySOAP.setForeground(new java.awt.Color(50, 50, 50));
+        MnCopySOAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCopySOAP.setText("Copy SOAPIE");
+        MnCopySOAP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCopySOAP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCopySOAP.setName("MnCopySOAP");
+        MnCopySOAP.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCopySOAP.addActionListener(this::MnCopySOAPActionPerformed);
+        
+        MnPasteSOAP = new javax.swing.JMenuItem();
+        MnPasteSOAP.setBackground(new java.awt.Color(255, 255, 254));
+        MnPasteSOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPasteSOAP.setForeground(new java.awt.Color(50, 50, 50));
+        MnPasteSOAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPasteSOAP.setText("Paste SOAPIE");
+        MnPasteSOAP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPasteSOAP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPasteSOAP.setName("MnPasteSOAP");
+        MnPasteSOAP.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnPasteSOAP.addActionListener(this::MnPasteSOAPActionPerformed);
+        
         TanggalRegistrasi = new widget.TextBox();
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi");
+        
+        PopupSOAP = new javax.swing.JPopupMenu();
+        PopupSOAP.setName("PopupSOAP");
+        tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
+        
+        PopupPemeriksaan = new javax.swing.JPopupMenu();
+        PopupPemeriksaan.setName("PopupPemeriksaan");
+        
+        TKeluhan.setComponentPopupMenu(PopupPemeriksaan);
+        TPemeriksaan.setComponentPopupMenu(PopupPemeriksaan);
+        TPenilaian.setComponentPopupMenu(PopupPemeriksaan);
+        TindakLanjut.setComponentPopupMenu(PopupPemeriksaan);
+        TInstruksi.setComponentPopupMenu(PopupPemeriksaan);
+        TEvaluasi.setComponentPopupMenu(PopupPemeriksaan);
+        
+        PopupSOAP.add(MnCopySOAP);
+        PopupPemeriksaan.add(MnPasteSOAP);
         
         FormMenu.add(BtnRiwayat);
         FormMenu.add(BtnResepObat);
