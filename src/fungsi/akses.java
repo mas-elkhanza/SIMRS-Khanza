@@ -259,7 +259,7 @@ public final class akses {
             pcra_icra_lokasi_kelompok_risiko_area=false,pcra_icra_kelas_risiko_pencegahan=false,pcra_icra_tindakan_pengendalian=false,pcra_icra_identifkasi_risiko_infeksi=false,
             pcra_icra_identifkasi_risiko_keselamatan=false,pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,
             daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,
-            satu_sehat_kirim_allergy_intolerance=false;
+            satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1471,6 +1471,7 @@ public final class akses {
                         akses.pcra_icra_persyaratan_harus_dipenuhi=true;
                         akses.satu_sehat_kirim_questionresponse_telaah_farmasi=true;
                         akses.satu_sehat_kirim_allergy_intolerance=true;
+                        akses.konsultasi_perawat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2666,6 +2667,7 @@ public final class akses {
                         akses.pcra_icra_persyaratan_harus_dipenuhi=rs2.getBoolean("pcra_icra_persyaratan_harus_dipenuhi");
                         akses.satu_sehat_kirim_questionresponse_telaah_farmasi=rs2.getBoolean("satu_sehat_kirim_questionresponse_telaah_farmasi");
                         akses.satu_sehat_kirim_allergy_intolerance=rs2.getBoolean("satu_sehat_kirim_allergy_intolerance");
+                        akses.konsultasi_perawat=rs2.getBoolean("konsultasi_perawat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3884,6 +3886,7 @@ public final class akses {
         akses.pcra_icra_persyaratan_harus_dipenuhi=false;
         akses.satu_sehat_kirim_questionresponse_telaah_farmasi=false;
         akses.satu_sehat_kirim_allergy_intolerance=false;
+        akses.konsultasi_perawat=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5116,4 +5119,5 @@ public final class akses {
     public static boolean getpcra_icra_persyaratan_harus_dipenuhi(){return akses.pcra_icra_persyaratan_harus_dipenuhi;}
     public static boolean getsatu_sehat_kirim_questionresponse_telaah_farmasi(){return akses.satu_sehat_kirim_questionresponse_telaah_farmasi;}
     public static boolean getsatu_sehat_kirim_allergy_intolerance(){return akses.satu_sehat_kirim_allergy_intolerance;}
+    public static boolean getkonsultasi_perawat(){return akses.konsultasi_perawat;}
 }   

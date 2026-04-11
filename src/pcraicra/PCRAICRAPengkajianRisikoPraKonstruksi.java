@@ -428,10 +428,6 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         }
         tbPersyaratanDipenuhi.setDefaultRenderer(Object.class, new WarnaTable());
         
-        NoProyek.setDocument(new batasInput((byte)17).getKata(NoProyek));
-        KodeManajer.setDocument(new batasInput((int)30).getKata(KodeManajer));
-        DeskripsiLokasiProyek.setDocument(new batasInput((int)2000).getKata(DeskripsiLokasiProyek));
-        PenyebabRisikoLainnya.setDocument(new batasInput((int)2000).getKata(PenyebabRisikoLainnya));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         TCariKelompokRisikoArea.setDocument(new batasInput((int)100).getKata(TCariKelompokRisikoArea));
         TCariRisikoKebakaran.setDocument(new batasInput((int)100).getKata(TCariRisikoKebakaran));
@@ -440,6 +436,19 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         TCariRisikoUtilitas.setDocument(new batasInput((int)100).getKata(TCariRisikoUtilitas));
         TCariTindakanPengendalian.setDocument(new batasInput((int)100).getKata(TCariTindakanPengendalian));
         TCariPersyaratanDipenuhi.setDocument(new batasInput((int)100).getKata(TCariPersyaratanDipenuhi));
+        NoProyek.setDocument(new batasInput((int)20).getKata(NoProyek));
+        NamaProyek.setDocument(new batasInput((int)150).getKata(NamaProyek));
+        LokasiProyek.setDocument(new batasInput((int)150).getKata(LokasiProyek));
+        DeskripsiPekerjaan.setDocument(new batasInput((int)250).getKata(DeskripsiPekerjaan));
+        YangBertanggungJawab.setDocument(new batasInput((int)70).getKata(YangBertanggungJawab));
+        KontraktorPelaksana.setDocument(new batasInput((int)70).getKata(KontraktorPelaksana));
+        DeskripsiLokasiProyek.setDocument(new batasInput((int)1000).getKata(DeskripsiLokasiProyek));
+        PenyebabRisikoLainnya.setDocument(new batasInput((int)500).getKata(PenyebabRisikoLainnya));
+        RekomendasiSelamaPengerjaan.setDocument(new batasInput((int)300).getKata(RekomendasiSelamaPengerjaan));
+        RekomendasiSetelahPengerjaan.setDocument(new batasInput((int)400).getKata(RekomendasiSetelahPengerjaan));
+        MonotoringHalKhusus.setDocument(new batasInput((int)500).getKata(MonotoringHalKhusus));
+        CatatanProyek.setDocument(new batasInput((int)500).getKata(CatatanProyek));
+        NomorPengkajian.setDocument(new batasInput((int)20).getKata(NomorPengkajian));
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
@@ -2241,7 +2250,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,KetFisik,BtnBatal);
+            Valid.pindah(evt,NomorPengkajian,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -3746,6 +3755,10 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         TanggalPengkajian.setDate(new Date());
         NomorPengkajian.setText("");
         NoProyek.requestFocus();
+        Valid.autoNomer3(
+            "select ifnull(MAX(CONVERT(RIGHT(pcra_icra_pengkajian_risiko_prakonstruksi.no_pcra,3),signed)),0) from pcra_icra_pengkajian_risiko_prakonstruksi where date_format(pcra_icra_pengkajian_risiko_prakonstruksi.tanggal_pengkajian,'%Y-%m-%d')='"+Valid.SetTgl(TanggalPengkajian.getSelectedItem()+"")+"' ",
+            "PCRA"+TanggalPengkajian.getSelectedItem().toString().substring(6,10)+TanggalPengkajian.getSelectedItem().toString().substring(3,5)+TanggalPengkajian.getSelectedItem().toString().substring(0,2),3,NomorPengkajian
+        ); 
     } 
 
     private void getData() {
