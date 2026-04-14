@@ -582,49 +582,49 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'"+r+"','"+
-                                tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,4).toString()+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,5).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,6).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,7).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,8).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,9).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,10).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,11).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,12).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,13).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,14).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,15).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,16).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,17).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,18).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,19).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,20).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,21).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,22).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,23).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,24).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,25).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,26).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,27).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,28).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,29).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,30).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,31).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,32).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
-            }
-            
-            Map<String, Object> param = new HashMap<>();   
+            if(ceksukses==false){
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                int row=tabMode.getRowCount();
+                for(int r=0;r<row;r++){  
+                    Sequel.menyimpan("temporary","'"+r+"','"+
+                                    tabMode.getValueAt(r,0).toString()+"','"+
+                                    tabMode.getValueAt(r,1).toString()+"','"+
+                                    tabMode.getValueAt(r,4).toString()+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,5).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,6).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,7).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,8).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,9).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,10).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,11).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,12).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,13).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,14).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,15).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,16).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,17).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,18).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,19).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,20).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,21).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,22).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,23).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,24).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,25).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,26).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,27).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,28).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,29).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,30).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,31).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,32).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
+                                    Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
+                }
+
+                Map<String, Object> param = new HashMap<>();   
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -669,7 +669,10 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                 }else if(!lokasi.equals("")){
                     param.put("bangsal",lokasi);  
                     Valid.MyReportqry("rptObatPerTanggal2.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
-                }                                 
+                }  
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }   
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

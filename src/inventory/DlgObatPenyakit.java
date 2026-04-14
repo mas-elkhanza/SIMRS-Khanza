@@ -651,14 +651,12 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if((! TCari.getText().trim().equals(""))&&(KtgCari.getText().equals(""))&&(PenyakitCari.getText().equals(""))){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();    
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -688,9 +686,9 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
                          sql+"and jenis.nama like '%"+TCari.getText().trim()+"%' or "+
                          sql+"and referensi like '%"+TCari.getText().trim()+"%' "+
                          "order by obat_penyakit.kd_penyakit ",param);
-
-                
-            
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

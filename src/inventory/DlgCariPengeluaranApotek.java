@@ -877,100 +877,104 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                int row=tabMode.getRowCount();
-                for(i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'"+i+"','"+
-                                    tabMode.getValueAt(i,0).toString()+"','"+
-                                    tabMode.getValueAt(i,1).toString()+"','"+
-                                    tabMode.getValueAt(i,2).toString()+"','"+
-                                    tabMode.getValueAt(i,3).toString()+"','"+
-                                    tabMode.getValueAt(i,4).toString()+"','"+
-                                    tabMode.getValueAt(i,5).toString()+"','"+
-                                    tabMode.getValueAt(i,6).toString()+"','"+
-                                    tabMode.getValueAt(i,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
-                }
-                i++;
-                Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
-                i++;
-                Sequel.menyimpan("temporary","'"+i+"','Total','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
+        if(ceksukses==false){
+            if(TabRawat.getSelectedIndex()==0){
+                if(tabMode.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabMode.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    int row=tabMode.getRowCount();
+                    for(i=0;i<row;i++){  
+                        Sequel.menyimpan("temporary","'"+i+"','"+
+                                        tabMode.getValueAt(i,0).toString()+"','"+
+                                        tabMode.getValueAt(i,1).toString()+"','"+
+                                        tabMode.getValueAt(i,2).toString()+"','"+
+                                        tabMode.getValueAt(i,3).toString()+"','"+
+                                        tabMode.getValueAt(i,4).toString()+"','"+
+                                        tabMode.getValueAt(i,5).toString()+"','"+
+                                        tabMode.getValueAt(i,6).toString()+"','"+
+                                        tabMode.getValueAt(i,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
+                    }
+                    i++;
+                    Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
+                    i++;
+                    Sequel.menyimpan("temporary","'"+i+"','Total','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Stok Keluar"); 
 
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptStokKeluarMedis.jasper","report","::[ Data Stok Keluar Obat, Alkes & BHP ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-                
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tabMode2.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                TCari.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                tanggal=" pengeluaran_obat_bhp.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
-                nokeluar="";bang="";ptg="";jen="";bar="";
-                if(!NoNota.getText().equals("")){
-                    nokeluar=" and pengeluaran_obat_bhp.no_keluar='"+NoNota.getText()+"' ";
-                }        
-                if(!nmgudang.getText().equals("")){
-                    bang=" and bangsal.nm_bangsal='"+nmgudang.getText()+"' ";
-                }
-                if(!nmptg.getText().equals("")){
-                    ptg=" and petugas.nama='"+nmptg.getText()+"' ";
-                }
-                if(!nmjenis.getText().equals("")){
-                    jen=" and jenis.nama='"+nmjenis.getText()+"' ";
-                }
-                if(!nmbar.getText().equals("")){
-                    bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                    Map<String, Object> param = new HashMap<>();    
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptStokKeluarMedis.jasper","report","::[ Data Stok Keluar Obat, Alkes & BHP ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    this.setCursor(Cursor.getDefaultCursor());
                 }
 
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptStokKeluarMedis2.jasper","report","::[ Data Stok Keluar Obat, Alkes & BHP ]::",
-                    "select pengeluaran_obat_bhp.no_keluar, pengeluaran_obat_bhp.tanggal,pengeluaran_obat_bhp.nip,petugas.nama, "+
-                    "pengeluaran_obat_bhp.kd_bangsal,bangsal.nm_bangsal,pengeluaran_obat_bhp.keterangan,detail_pengeluaran_obat_bhp.kode_brng,"+
-                    "databarang.nama_brng,detail_pengeluaran_obat_bhp.no_faktur,jenis.nama as namajenis,detail_pengeluaran_obat_bhp.harga_beli,"+
-                    "detail_pengeluaran_obat_bhp.jumlah, detail_pengeluaran_obat_bhp.kode_sat,detail_pengeluaran_obat_bhp.no_batch,"+
-                    " detail_pengeluaran_obat_bhp.total "+
-                    " from pengeluaran_obat_bhp inner join petugas inner join bangsal inner join jenis  "+
-                    " inner join detail_pengeluaran_obat_bhp inner join databarang "+
-                    " on detail_pengeluaran_obat_bhp.kode_brng=databarang.kode_brng "+
-                    " and pengeluaran_obat_bhp.kd_bangsal=bangsal.kd_bangsal "+
-                    " and pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar "+
-                    " and pengeluaran_obat_bhp.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.no_keluar like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.kd_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.keterangan like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.no_batch like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
-                    " order by pengeluaran_obat_bhp.tanggal,pengeluaran_obat_bhp.no_keluar ",param);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        } 
+            }else if(TabRawat.getSelectedIndex()==1){
+                if(tabMode2.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabMode2.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    tanggal=" pengeluaran_obat_bhp.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
+                    nokeluar="";bang="";ptg="";jen="";bar="";
+                    if(!NoNota.getText().equals("")){
+                        nokeluar=" and pengeluaran_obat_bhp.no_keluar='"+NoNota.getText()+"' ";
+                    }        
+                    if(!nmgudang.getText().equals("")){
+                        bang=" and bangsal.nm_bangsal='"+nmgudang.getText()+"' ";
+                    }
+                    if(!nmptg.getText().equals("")){
+                        ptg=" and petugas.nama='"+nmptg.getText()+"' ";
+                    }
+                    if(!nmjenis.getText().equals("")){
+                        jen=" and jenis.nama='"+nmjenis.getText()+"' ";
+                    }
+                    if(!nmbar.getText().equals("")){
+                        bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                    }
+
+                    Map<String, Object> param = new HashMap<>();    
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptStokKeluarMedis2.jasper","report","::[ Data Stok Keluar Obat, Alkes & BHP ]::",
+                        "select pengeluaran_obat_bhp.no_keluar, pengeluaran_obat_bhp.tanggal,pengeluaran_obat_bhp.nip,petugas.nama, "+
+                        "pengeluaran_obat_bhp.kd_bangsal,bangsal.nm_bangsal,pengeluaran_obat_bhp.keterangan,detail_pengeluaran_obat_bhp.kode_brng,"+
+                        "databarang.nama_brng,detail_pengeluaran_obat_bhp.no_faktur,jenis.nama as namajenis,detail_pengeluaran_obat_bhp.harga_beli,"+
+                        "detail_pengeluaran_obat_bhp.jumlah, detail_pengeluaran_obat_bhp.kode_sat,detail_pengeluaran_obat_bhp.no_batch,"+
+                        " detail_pengeluaran_obat_bhp.total "+
+                        " from pengeluaran_obat_bhp inner join petugas inner join bangsal inner join jenis  "+
+                        " inner join detail_pengeluaran_obat_bhp inner join databarang "+
+                        " on detail_pengeluaran_obat_bhp.kode_brng=databarang.kode_brng "+
+                        " and pengeluaran_obat_bhp.kd_bangsal=bangsal.kd_bangsal "+
+                        " and pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar "+
+                        " and pengeluaran_obat_bhp.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
+                        " where "+tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.no_keluar like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.kd_bangsal like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.nip like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.keterangan like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.no_batch like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.kode_brng like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                        tanggal+nokeluar+bang+ptg+jen+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
+                        " order by pengeluaran_obat_bhp.tanggal,pengeluaran_obat_bhp.no_keluar ",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            } 
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+        }
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

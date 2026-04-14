@@ -1114,83 +1114,87 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        switch (TabRawat.getSelectedIndex()) {
-            case 0:
-                if(tabMode.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                    TCari.requestFocus();
-                }else if(tabMode.getRowCount()!=0){
-                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                    int row=tabMode.getRowCount();
-                    for(i=0;i<row;i++){  
-                        Sequel.menyimpan("temporary","'"+i+"','"+
-                                        tabMode.getValueAt(i,0).toString()+"','"+
-                                        tabMode.getValueAt(i,1).toString()+"','"+
-                                        tabMode.getValueAt(i,2).toString()+"','"+
-                                        tabMode.getValueAt(i,3).toString()+"','"+
-                                        tabMode.getValueAt(i,4).toString()+"','"+
-                                        tabMode.getValueAt(i,5).toString()+"','"+
-                                        tabMode.getValueAt(i,6).toString()+"','"+
-                                        tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+        if(ceksukses==false){
+            switch (TabRawat.getSelectedIndex()) {
+                case 0:
+                    if(tabMode.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                        TCari.requestFocus();
+                    }else if(tabMode.getRowCount()!=0){
+                        Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                        int row=tabMode.getRowCount();
+                        for(i=0;i<row;i++){  
+                            Sequel.menyimpan("temporary","'"+i+"','"+
+                                            tabMode.getValueAt(i,0).toString()+"','"+
+                                            tabMode.getValueAt(i,1).toString()+"','"+
+                                            tabMode.getValueAt(i,2).toString()+"','"+
+                                            tabMode.getValueAt(i,3).toString()+"','"+
+                                            tabMode.getValueAt(i,4).toString()+"','"+
+                                            tabMode.getValueAt(i,5).toString()+"','"+
+                                            tabMode.getValueAt(i,6).toString()+"','"+
+                                            tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
+                        }
+                        i++;
+                        Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
+                        i++;
+                        Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
+
+                        Map<String, Object> param = new HashMap<>();    
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                        Valid.MyReportqry("rptPemesanan.jasper","report","::[ Transaksi Penerimaan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    }  
+                    break;
+                case 1:
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    try {
+                        File g = new File("filepenerimaan.css");            
+                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                        bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
+                            ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                        );
+                        bg.close();
+
+                        File f = new File("LaporanPenerimaan.html");            
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
+                                "<link href=\"filepenerimaan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>Data Penerimaan Obat<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                        );
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
                     }
-                    i++;
-                    Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
-                    i++;
-                    Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
-
-                    Map<String, Object> param = new HashMap<>();    
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                    Valid.MyReportqry("rptPemesanan.jasper","report","::[ Transaksi Penerimaan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                }  
-                break;
-            case 1:
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                try {
-                    File g = new File("filepenerimaan.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                        ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
-                    );
-                    bg.close();
-
-                    File f = new File("LaporanPenerimaan.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
-                            "<link href=\"filepenerimaan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>Data Penerimaan Obat<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
-                this.setCursor(Cursor.getDefaultCursor());
-                break;
-            default:
-                break;
+                    this.setCursor(Cursor.getDefaultCursor());
+                    break;
+                default:
+                    break;
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

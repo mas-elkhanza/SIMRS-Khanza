@@ -1069,50 +1069,53 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             BtnKeluar.requestFocus();
         }else {   
-            Map<String, Object> param = new HashMap<>();    
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));      
-            if(TCari.getText().trim().equals("")&&nmjns.getText().trim().equals("")&&nmkategori.getText().trim().equals("")&&nmgolongan.getText().trim().equals("")){
-                sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
-                    "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+
-                    "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
-                    "mutasibarang.tanggal,mutasibarang.keterangan,mutasibarang.no_batch,mutasibarang.no_faktur "+
-                    "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
-                    "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
-                    "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
-                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
-                    "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
-                    " mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by mutasibarang.tanggal";
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));      
+                if(TCari.getText().trim().equals("")&&nmjns.getText().trim().equals("")&&nmkategori.getText().trim().equals("")&&nmgolongan.getText().trim().equals("")){
+                    sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
+                        "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+
+                        "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
+                        "mutasibarang.tanggal,mutasibarang.keterangan,mutasibarang.no_batch,mutasibarang.no_faktur "+
+                        "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
+                        "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
+                        "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                        "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                        " mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by mutasibarang.tanggal";
+                }else{
+                    sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
+                        "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+
+                        "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
+                        "mutasibarang.tanggal,mutasibarang.keterangan,mutasibarang.no_batch,mutasibarang.no_faktur "+
+                        "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
+                        "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
+                        "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                        "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                        "mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
+                        (nmjns.getText().trim().equals("")?"":"and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' ")+
+                        (nmkategori.getText().trim().equals("")?"":"and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' ")+
+                        (nmgolongan.getText().trim().equals("")?"":"and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' ")+
+                        (TCari.getText().trim().equals("")?"":"and (mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or bangsaldari.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                        "mutasibarang.kd_bangsalke like '%"+TCari.getText().trim()+"%' or bangsalke.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+ 
+                        "mutasibarang.kode_brng like '%"+TCari.getText().trim()+"%' or databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
+                        "mutasibarang.no_batch like '%"+TCari.getText().trim()+"%' or mutasibarang.no_faktur like '%"+TCari.getText().trim()+"%' or "+ 
+                        "mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or mutasibarang.keterangan like '%"+TCari.getText().trim()+"%') ");
+                }
+
+                Valid.MyReportqry("rptMutasiObat.jasper","report","::[ Transaksi Mutasi Obat/Alkes/BHP ]::", sql,param);
             }else{
-                sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
-                    "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+
-                    "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
-                    "mutasibarang.tanggal,mutasibarang.keterangan,mutasibarang.no_batch,mutasibarang.no_faktur "+
-                    "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
-                    "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
-                    "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
-                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
-                    "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
-                    "mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    (nmjns.getText().trim().equals("")?"":"and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' ")+
-                    (nmkategori.getText().trim().equals("")?"":"and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' ")+
-                    (nmgolongan.getText().trim().equals("")?"":"and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' ")+
-                    (TCari.getText().trim().equals("")?"":"and (mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or bangsaldari.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                    "mutasibarang.kd_bangsalke like '%"+TCari.getText().trim()+"%' or bangsalke.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+ 
-                    "mutasibarang.kode_brng like '%"+TCari.getText().trim()+"%' or databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
-                    "mutasibarang.no_batch like '%"+TCari.getText().trim()+"%' or mutasibarang.no_faktur like '%"+TCari.getText().trim()+"%' or "+ 
-                    "mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or mutasibarang.keterangan like '%"+TCari.getText().trim()+"%') ");
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
             }
-                
-            Valid.MyReportqry("rptMutasiObat.jasper","report","::[ Transaksi Mutasi Obat/Alkes/BHP ]::", sql,param);
-          
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCetakActionPerformed

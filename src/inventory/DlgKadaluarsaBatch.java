@@ -280,27 +280,31 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptKadaluarsaBatch.jasper","report","::[ Kadaluarsa Batch ]::",
-               "select data_batch.no_batch,data_batch.kode_brng,databarang.nama_brng,"+
-               "kodesatuan.satuan,data_batch.tgl_beli,data_batch.tgl_kadaluarsa,"+
-               "data_batch.asal,data_batch.no_faktur,data_batch.h_beli,data_batch.jumlahbeli,"+
-               "data_batch.sisa from data_batch inner join databarang inner join kodesatuan "+
-               "on data_batch.kode_brng=databarang.kode_brng and "+
-               "kodesatuan.kode_sat=databarang.kode_sat where "+
-               "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.no_batch like '%"+TCari.getText().trim()+"%' or "+
-               "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-               "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-               "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.asal like '%"+TCari.getText().trim()+"%' or "+
-               "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.no_faktur like '%"+TCari.getText().trim()+"%' "+
-               "order by data_batch.tgl_kadaluarsa",param);
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>(); 
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                Valid.MyReportqry("rptKadaluarsaBatch.jasper","report","::[ Kadaluarsa Batch ]::",
+                   "select data_batch.no_batch,data_batch.kode_brng,databarang.nama_brng,"+
+                   "kodesatuan.satuan,data_batch.tgl_beli,data_batch.tgl_kadaluarsa,"+
+                   "data_batch.asal,data_batch.no_faktur,data_batch.h_beli,data_batch.jumlahbeli,"+
+                   "data_batch.sisa from data_batch inner join databarang inner join kodesatuan "+
+                   "on data_batch.kode_brng=databarang.kode_brng and "+
+                   "kodesatuan.kode_sat=databarang.kode_sat where "+
+                   "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.no_batch like '%"+TCari.getText().trim()+"%' or "+
+                   "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                   "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                   "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.asal like '%"+TCari.getText().trim()+"%' or "+
+                   "data_batch.tgl_kadaluarsa between '"+Valid.SetTgl(tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(tanggal2.getSelectedItem()+"")+"' and data_batch.no_faktur like '%"+TCari.getText().trim()+"%' "+
+                   "order by data_batch.tgl_kadaluarsa",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

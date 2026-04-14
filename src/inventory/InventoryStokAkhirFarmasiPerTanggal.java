@@ -289,316 +289,320 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnPrint.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            try {            
-                File g = new File("file2.css");            
-                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
-                );
-                bg.close();
+            if(ceksukses==false){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                try {            
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                    );
+                    bg.close();
 
-                File f;            
-                BufferedWriter bw; 
+                    File f;            
+                    BufferedWriter bw; 
 
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
-                switch (pilihan) {
-                    case "Laporan 1 (HTML)":
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='190px'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")</td>"+
-                                "</tr>"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                    switch (pilihan) {
+                        case "Laporan 1 (HTML)":
+                                htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,24)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,25)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,26)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,27)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,28)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,29)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,30)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,31)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,32)+"</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Kode Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='190px'>Nama Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")</td>"+
                                     "</tr>"
                                 ); 
-                            }            
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,24)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,25)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,26)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,27)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,28)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,29)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,30)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,31)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,32)+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }            
 
-                            f = new File("StokAkhirFarmasi.html");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write("<html>"+
-                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
-                                        "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                "<tr class='isi2'>"+
-                                                    "<td valign='top' align='center'>"+
-                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>STOK AKHIR FARMASI TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+        
-                                                    "</td>"+
-                                               "</tr>"+
-                                            "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                htmlContent.toString()+
-                                            "</table>"+
-                                        "</body>"+                   
-                                     "</html>"
-                            );
+                                f = new File("StokAkhirFarmasi.html");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write("<html>"+
+                                            "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                            "<body>"+
+                                                "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    "<tr class='isi2'>"+
+                                                        "<td valign='top' align='center'>"+
+                                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                            "<font size='2' face='Tahoma'>STOK AKHIR FARMASI TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+        
+                                                        "</td>"+
+                                                   "</tr>"+
+                                                "</table>"+
+                                                "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    htmlContent.toString()+
+                                                "</table>"+
+                                            "</body>"+                   
+                                         "</html>"
+                                );
 
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break;
-                    case "Laporan 2 (WPS)":
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='190px'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")</td>"+
-                                "</tr>"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 2 (WPS)":
+                                htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,24)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,25)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,26)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,27)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,28)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,29)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,30)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,31)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,32)+"</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Kode Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='190px'>Nama Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")</td>"+
                                     "</tr>"
                                 ); 
-                            }              
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,24)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,25)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,26)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,27)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,28)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,29)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,30)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,31)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,32)+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }              
 
-                            f = new File("StokAkhirFarmasi.wps");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write("<html>"+
-                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
-                                        "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                "<tr class='isi2'>"+
-                                                    "<td valign='top' align='center'>"+
-                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>STOK AKHIR FARMASI TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+        
-                                                    "</td>"+
-                                               "</tr>"+
-                                            "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                htmlContent.toString()+
-                                            "</table>"+
-                                        "</body>"+                   
-                                     "</html>"
-                            );
+                                f = new File("StokAkhirFarmasi.wps");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write("<html>"+
+                                            "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                            "<body>"+
+                                                "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    "<tr class='isi2'>"+
+                                                        "<td valign='top' align='center'>"+
+                                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                            "<font size='2' face='Tahoma'>STOK AKHIR FARMASI TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+        
+                                                        "</td>"+
+                                                   "</tr>"+
+                                                "</table>"+
+                                                "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    htmlContent.toString()+
+                                                "</table>"+
+                                            "</body>"+                   
+                                         "</html>"
+                                );
 
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break;
-                    case "Laporan 3 (CSV)":
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(         
-                                    "\"Kode Barang\";\"Nama Barang\";"+
-                                    "\"1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")\";"+
-                                    "\"2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")\";"+
-                                    "\"3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")\";"+
-                                    "\"4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")\";"+
-                                    "\"5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")\";"+
-                                    "\"6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")\";"+
-                                    "\"7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")\";"+
-                                    "\"8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")\";"+
-                                    "\"9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")\";"+
-                                    "\"10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")\";"+
-                                    "\"11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")\";"+
-                                    "\"12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")\";"+
-                                    "\"13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")\";"+
-                                    "\"14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")\";"+
-                                    "\"15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")\";"+
-                                    "\"16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")\";"+
-                                    "\"17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")\";"+
-                                    "\"18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")\";"+
-                                    "\"19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")\";"+
-                                    "\"20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")\";"+
-                                    "\"21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")\";"+
-                                    "\"22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")\";"+
-                                    "\"23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")\";"+
-                                    "\"24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")\";"+
-                                    "\"25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")\";"+
-                                    "\"26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")\";"+
-                                    "\"27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")\";"+
-                                    "\"28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")\";"+
-                                    "\"29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")\";"+
-                                    "\"30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")\";"+
-                                    "\"31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")\"\n"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
-                                htmlContent.append(      
-                                    "\""+tabMode.getValueAt(i,0)+"\";"+
-                                    "\""+tabMode.getValueAt(i,1)+"\";"+
-                                    "\""+tabMode.getValueAt(i,2)+"\";"+
-                                    "\""+tabMode.getValueAt(i,3)+"\";"+
-                                    "\""+tabMode.getValueAt(i,4)+"\";"+
-                                    "\""+tabMode.getValueAt(i,5)+"\";"+
-                                    "\""+tabMode.getValueAt(i,6)+"\";"+
-                                    "\""+tabMode.getValueAt(i,7)+"\";"+
-                                    "\""+tabMode.getValueAt(i,8)+"\";"+
-                                    "\""+tabMode.getValueAt(i,9)+"\";"+
-                                    "\""+tabMode.getValueAt(i,10)+"\";"+
-                                    "\""+tabMode.getValueAt(i,11)+"\";"+
-                                    "\""+tabMode.getValueAt(i,12)+"\";"+
-                                    "\""+tabMode.getValueAt(i,13)+"\";"+
-                                    "\""+tabMode.getValueAt(i,14)+"\";"+
-                                    "\""+tabMode.getValueAt(i,15)+"\";"+
-                                    "\""+tabMode.getValueAt(i,16)+"\";"+
-                                    "\""+tabMode.getValueAt(i,17)+"\";"+
-                                    "\""+tabMode.getValueAt(i,18)+"\";"+
-                                    "\""+tabMode.getValueAt(i,19)+"\";"+
-                                    "\""+tabMode.getValueAt(i,20)+"\";"+
-                                    "\""+tabMode.getValueAt(i,21)+"\";"+
-                                    "\""+tabMode.getValueAt(i,22)+"\";"+
-                                    "\""+tabMode.getValueAt(i,23)+"\";"+
-                                    "\""+tabMode.getValueAt(i,24)+"\";"+
-                                    "\""+tabMode.getValueAt(i,25)+"\";"+
-                                    "\""+tabMode.getValueAt(i,26)+"\";"+
-                                    "\""+tabMode.getValueAt(i,27)+"\";"+
-                                    "\""+tabMode.getValueAt(i,28)+"\";"+
-                                    "\""+tabMode.getValueAt(i,29)+"\";"+
-                                    "\""+tabMode.getValueAt(i,30)+"\";"+
-                                    "\""+tabMode.getValueAt(i,31)+"\";"+
-                                    "\""+tabMode.getValueAt(i,32)+"\"\n"
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 3 (CSV)":
+                                htmlContent = new StringBuilder();
+                                htmlContent.append(         
+                                        "\"Kode Barang\";\"Nama Barang\";"+
+                                        "\"1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")\";"+
+                                        "\"2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")\";"+
+                                        "\"3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")\";"+
+                                        "\"4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")\";"+
+                                        "\"5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")\";"+
+                                        "\"6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")\";"+
+                                        "\"7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")\";"+
+                                        "\"8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")\";"+
+                                        "\"9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")\";"+
+                                        "\"10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")\";"+
+                                        "\"11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")\";"+
+                                        "\"12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")\";"+
+                                        "\"13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")\";"+
+                                        "\"14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")\";"+
+                                        "\"15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")\";"+
+                                        "\"16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")\";"+
+                                        "\"17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")\";"+
+                                        "\"18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")\";"+
+                                        "\"19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")\";"+
+                                        "\"20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")\";"+
+                                        "\"21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")\";"+
+                                        "\"22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")\";"+
+                                        "\"23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")\";"+
+                                        "\"24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")\";"+
+                                        "\"25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")\";"+
+                                        "\"26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")\";"+
+                                        "\"27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")\";"+
+                                        "\"28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")\";"+
+                                        "\"29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")\";"+
+                                        "\"30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")\";"+
+                                        "\"31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")\"\n"
                                 ); 
-                            }            
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(      
+                                        "\""+tabMode.getValueAt(i,0)+"\";"+
+                                        "\""+tabMode.getValueAt(i,1)+"\";"+
+                                        "\""+tabMode.getValueAt(i,2)+"\";"+
+                                        "\""+tabMode.getValueAt(i,3)+"\";"+
+                                        "\""+tabMode.getValueAt(i,4)+"\";"+
+                                        "\""+tabMode.getValueAt(i,5)+"\";"+
+                                        "\""+tabMode.getValueAt(i,6)+"\";"+
+                                        "\""+tabMode.getValueAt(i,7)+"\";"+
+                                        "\""+tabMode.getValueAt(i,8)+"\";"+
+                                        "\""+tabMode.getValueAt(i,9)+"\";"+
+                                        "\""+tabMode.getValueAt(i,10)+"\";"+
+                                        "\""+tabMode.getValueAt(i,11)+"\";"+
+                                        "\""+tabMode.getValueAt(i,12)+"\";"+
+                                        "\""+tabMode.getValueAt(i,13)+"\";"+
+                                        "\""+tabMode.getValueAt(i,14)+"\";"+
+                                        "\""+tabMode.getValueAt(i,15)+"\";"+
+                                        "\""+tabMode.getValueAt(i,16)+"\";"+
+                                        "\""+tabMode.getValueAt(i,17)+"\";"+
+                                        "\""+tabMode.getValueAt(i,18)+"\";"+
+                                        "\""+tabMode.getValueAt(i,19)+"\";"+
+                                        "\""+tabMode.getValueAt(i,20)+"\";"+
+                                        "\""+tabMode.getValueAt(i,21)+"\";"+
+                                        "\""+tabMode.getValueAt(i,22)+"\";"+
+                                        "\""+tabMode.getValueAt(i,23)+"\";"+
+                                        "\""+tabMode.getValueAt(i,24)+"\";"+
+                                        "\""+tabMode.getValueAt(i,25)+"\";"+
+                                        "\""+tabMode.getValueAt(i,26)+"\";"+
+                                        "\""+tabMode.getValueAt(i,27)+"\";"+
+                                        "\""+tabMode.getValueAt(i,28)+"\";"+
+                                        "\""+tabMode.getValueAt(i,29)+"\";"+
+                                        "\""+tabMode.getValueAt(i,30)+"\";"+
+                                        "\""+tabMode.getValueAt(i,31)+"\";"+
+                                        "\""+tabMode.getValueAt(i,32)+"\"\n"
+                                    ); 
+                                }            
 
-                            f = new File("StokAkhirFarmasi.csv");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write(htmlContent.toString());
+                                f = new File("StokAkhirFarmasi.csv");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(htmlContent.toString());
 
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break; 
-                }                 
-            } catch (Exception e) {
-            }     
-            this.setCursor(Cursor.getDefaultCursor());
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break; 
+                    }                 
+                } catch (Exception e) {
+                }     
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
     }//GEN-LAST:event_BtnPrintActionPerformed
 

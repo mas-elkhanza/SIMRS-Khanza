@@ -13,8 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -27,6 +31,8 @@ public class DlgRBiayaHarianIPSRS extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private double jumlah;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -52,14 +58,7 @@ public class DlgRBiayaHarianIPSRS extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
-        
-        try {
-            ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,sum(ipsrspembelian.total) from ipsrspembelian  "+
-                    "where ipsrspembelian.tgl_beli between ? and ? group by ipsrspembelian.tgl_beli order by ipsrspembelian.tgl_beli");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }     
+        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());  
     }
     
 
@@ -226,16 +225,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'"+r+"','"+
-                                tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
-            }
-            
-            Map<String, Object> param = new HashMap<>();
+            if(ceksukses==false){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                int row=tabMode.getRowCount();
+                for(int r=0;r<row;r++){  
+                    Sequel.menyimpan("temporary","'"+r+"','"+
+                                    tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
+                }
+
+                Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -243,8 +243,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptRBiayaIPSRS.jasper","report","[ Rekap Biaya Pengadaan Stok Keluar Barang Non Medis, Radiologi, Ipsrs ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            this.setCursor(Cursor.getDefaultCursor());
+                Valid.MyReportqry("rptRBiayaIPSRS.jasper","report","[ Rekap Biaya Pengadaan Stok Keluar Barang Non Medis, Radiologi, Ipsrs ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }   
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -267,7 +270,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+        runBackground(() ->prosesCari());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -280,7 +283,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         TglBeli1.requestFocus();
-        prosesCari();
+        runBackground(() ->prosesCari());
     }//GEN-LAST:event_formWindowOpened
 
     private void TglBeli1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBeli1KeyPressed
@@ -326,14 +329,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);   
-            ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            rs=ps.executeQuery();
-            jumlah=0;
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),Valid.SetAngka(rs.getDouble(2))});
-                jumlah=jumlah+rs.getDouble(2);
+            ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,sum(ipsrspembelian.total) from ipsrspembelian  "+
+                    "where ipsrspembelian.tgl_beli between ? and ? group by ipsrspembelian.tgl_beli order by ipsrspembelian.tgl_beli");
+            try {
+                ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                rs=ps.executeQuery();
+                jumlah=0;
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{rs.getString(1),Valid.SetAngka(rs.getDouble(2))});
+                    jumlah=jumlah+rs.getDouble(2);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
+                
             if(jumlah>0){
                 tabMode.addRow(new Object[]{"Total :",Valid.SetAngka(jumlah)});
             }            
@@ -343,5 +360,36 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }               
     }
     
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
+    }
     
 }

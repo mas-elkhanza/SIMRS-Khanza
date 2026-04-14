@@ -668,12 +668,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();    
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -681,29 +681,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptRekapPenerimaanNonMedis.jasper","report","::[ Rekap Penerimaan Barang Non Medis ]::",
-                "select ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur,ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier, "+
-                "ipsrspemesanan.nip,petugas.nama,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_tempo,ipsrspemesanan.status,ipsrspemesanan.total2,ipsrspemesanan.ppn,"+
-                "ipsrspemesanan.meterai,ipsrspemesanan.tagihan,ipsrspemesanan.no_order,ipsrsdetailpesan.kode_brng,ipsrsbarang.nama_brng, "+
-                "ipsrsdetailpesan.kode_sat,kodesatuan.satuan,ipsrsdetailpesan.jumlah,ipsrsdetailpesan.harga, "+
-                "ipsrsdetailpesan.subtotal,ipsrsdetailpesan.dis,ipsrsdetailpesan.besardis,ipsrsdetailpesan.total "+
-                "from ipsrspemesanan inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
-                "inner join petugas on ipsrspemesanan.nip=petugas.nip "+
-                "inner join ipsrsdetailpesan on ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur "+
-                "inner join ipsrsbarang on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng "+
-                "inner join kodesatuan on ipsrsdetailpesan.kode_sat=kodesatuan.kode_sat "+
-                "where ipsrspemesanan.tgl_pesan between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+
-                (NoFaktur.getText().trim().equals("")?"":"and ipsrspemesanan.no_faktur='"+NoFaktur.getText()+"' ")+
-                (nmsup.getText().trim().equals("")?"":"and ipsrspemesanan.kode_suplier='"+kdsup.getText()+"' ")+
-                (nmptg.getText().trim().equals("")?"":"and ipsrspemesanan.nip='"+kdptg.getText()+"' ")+
-                (nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis='"+kdjenis.getText()+"' ")+
-                (nmbar.getText().trim().equals("")?"":"and ipsrsdetailpesan.kode_brng='"+kdbar.getText()+"' ")+
-                (TCari.getText().trim().equals("")?"":"and (ipsrspemesanan.no_faktur like '%"+TCari.getText().trim()+"%' or "+
-                "ipsrspemesanan.kode_suplier like '%"+TCari.getText().trim()+"%' or ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                "ipsrspemesanan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                "ipsrsdetailpesan.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                "ipsrsdetailpesan.kode_sat like '%"+TCari.getText().trim()+"%' or ipsrspemesanan.no_order like '%"+TCari.getText().trim()+"%') ")+
-                "order by ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur",param);
+                Valid.MyReportqry("rptRekapPenerimaanNonMedis.jasper","report","::[ Rekap Penerimaan Barang Non Medis ]::",
+                    "select ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur,ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier, "+
+                    "ipsrspemesanan.nip,petugas.nama,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_tempo,ipsrspemesanan.status,ipsrspemesanan.total2,ipsrspemesanan.ppn,"+
+                    "ipsrspemesanan.meterai,ipsrspemesanan.tagihan,ipsrspemesanan.no_order,ipsrsdetailpesan.kode_brng,ipsrsbarang.nama_brng, "+
+                    "ipsrsdetailpesan.kode_sat,kodesatuan.satuan,ipsrsdetailpesan.jumlah,ipsrsdetailpesan.harga, "+
+                    "ipsrsdetailpesan.subtotal,ipsrsdetailpesan.dis,ipsrsdetailpesan.besardis,ipsrsdetailpesan.total "+
+                    "from ipsrspemesanan inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
+                    "inner join petugas on ipsrspemesanan.nip=petugas.nip "+
+                    "inner join ipsrsdetailpesan on ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur "+
+                    "inner join ipsrsbarang on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng "+
+                    "inner join kodesatuan on ipsrsdetailpesan.kode_sat=kodesatuan.kode_sat "+
+                    "where ipsrspemesanan.tgl_pesan between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+
+                    (NoFaktur.getText().trim().equals("")?"":"and ipsrspemesanan.no_faktur='"+NoFaktur.getText()+"' ")+
+                    (nmsup.getText().trim().equals("")?"":"and ipsrspemesanan.kode_suplier='"+kdsup.getText()+"' ")+
+                    (nmptg.getText().trim().equals("")?"":"and ipsrspemesanan.nip='"+kdptg.getText()+"' ")+
+                    (nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis='"+kdjenis.getText()+"' ")+
+                    (nmbar.getText().trim().equals("")?"":"and ipsrsdetailpesan.kode_brng='"+kdbar.getText()+"' ")+
+                    (TCari.getText().trim().equals("")?"":"and (ipsrspemesanan.no_faktur like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrspemesanan.kode_suplier like '%"+TCari.getText().trim()+"%' or ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrspemesanan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrsdetailpesan.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrsdetailpesan.kode_sat like '%"+TCari.getText().trim()+"%' or ipsrspemesanan.no_order like '%"+TCari.getText().trim()+"%') ")+
+                    "order by ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

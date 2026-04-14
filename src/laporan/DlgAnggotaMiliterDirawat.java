@@ -436,32 +436,35 @@ public final class DlgAnggotaMiliterDirawat extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Map<String, Object> param = new HashMap<>();         
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            for(int r=0;r<tabMode.getRowCount();r++){ 
-                if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode.getValueAt(r,0).toString()+"','"+
-                                    tabMode.getValueAt(r,1).toString()+"','"+
-                                    tabMode.getValueAt(r,2).toString()+"','"+
-                                    tabMode.getValueAt(r,3).toString()+"','"+
-                                    tabMode.getValueAt(r,4).toString()+"','"+
-                                    tabMode.getValueAt(r,5).toString()+"','"+
-                                    tabMode.getValueAt(r,6).toString()+"','"+
-                                    tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Anggota Militer");
-                }                    
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();         
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                for(int r=0;r<tabMode.getRowCount();r++){ 
+                    if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode.getValueAt(r,0).toString()+"','"+
+                                        tabMode.getValueAt(r,1).toString()+"','"+
+                                        tabMode.getValueAt(r,2).toString()+"','"+
+                                        tabMode.getValueAt(r,3).toString()+"','"+
+                                        tabMode.getValueAt(r,4).toString()+"','"+
+                                        tabMode.getValueAt(r,5).toString()+"','"+
+                                        tabMode.getValueAt(r,6).toString()+"','"+
+                                        tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Anggota Militer");
+                    }                    
+                }
+
+                Valid.MyReportqry("rptAnggotaMiliterDirawat.jasper","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
             }
-               
-            Valid.MyReportqry("rptAnggotaMiliterDirawat.jasper","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

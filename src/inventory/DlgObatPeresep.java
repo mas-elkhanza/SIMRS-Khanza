@@ -372,69 +372,73 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            for(i=0;i<tabMode.getRowCount();i++){  
-                No="";
-                try {
-                    No=tabMode.getValueAt(i,0).toString();
-                } catch (Exception e) {
+            if(ceksukses==false){
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                for(i=0;i<tabMode.getRowCount();i++){  
                     No="";
-                }
-                
-                Kode="";
-                try {
-                    Kode=tabMode.getValueAt(i,1).toString();
-                } catch (Exception e) {
+                    try {
+                        No=tabMode.getValueAt(i,0).toString();
+                    } catch (Exception e) {
+                        No="";
+                    }
+
                     Kode="";
-                }
-                
-                Nama="";
-                try {
-                    Nama=tabMode.getValueAt(i,2).toString();
-                } catch (Exception e) {
+                    try {
+                        Kode=tabMode.getValueAt(i,1).toString();
+                    } catch (Exception e) {
+                        Kode="";
+                    }
+
                     Nama="";
-                }
-                
-                Jml="";
-                try {
-                    Jml=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,3).toString()));
-                } catch (Exception e) {
+                    try {
+                        Nama=tabMode.getValueAt(i,2).toString();
+                    } catch (Exception e) {
+                        Nama="";
+                    }
+
                     Jml="";
-                }
-                
-                Satuan="";
-                try {
-                    Satuan=tabMode.getValueAt(i,4).toString();
-                } catch (Exception e) {
+                    try {
+                        Jml=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,3).toString()));
+                    } catch (Exception e) {
+                        Jml="";
+                    }
+
                     Satuan="";
-                }
-                
-                Harga="";
-                try {
-                    Harga=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,5).toString()));
-                } catch (Exception e) {
+                    try {
+                        Satuan=tabMode.getValueAt(i,4).toString();
+                    } catch (Exception e) {
+                        Satuan="";
+                    }
+
                     Harga="";
-                }
-                
-                Subtotal="";
-                try {
-                    Subtotal=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
-                } catch (Exception e) {
+                    try {
+                        Harga=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,5).toString()));
+                    } catch (Exception e) {
+                        Harga="";
+                    }
+
                     Subtotal="";
+                    try {
+                        Subtotal=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
+                    } catch (Exception e) {
+                        Subtotal="";
+                    }
+
+                    Sequel.menyimpan("temporary","'"+i+"','"+No+"','"+Kode+"','"+Nama+"','"+Jml+"','"+Satuan+"','"+Harga+"','"+Subtotal+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
                 }
-                
-                Sequel.menyimpan("temporary","'"+i+"','"+No+"','"+Kode+"','"+Nama+"','"+Jml+"','"+Satuan+"','"+Harga+"','"+Subtotal+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
+
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                Valid.MyReportqry("rptObatPerResep.jasper","report","[ Rekap Obat Per Resep ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
             }
-                        
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptObatPerResep.jasper","report","[ Rekap Obat Per Resep ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

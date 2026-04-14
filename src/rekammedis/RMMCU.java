@@ -3317,6 +3317,10 @@ public final class RMMCU extends javax.swing.JDialog {
             Valid.textKosong(Anjuran,"Anjuran");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KlasifikasiIMT.getText().trim().equals("")){
+            Valid.textKosong(KlasifikasiIMT,"Klasifikasi BMI");
+        }else if(RisikoLP.getText().trim().equals("")){
+            Valid.textKosong(RisikoLP,"Risiko Berdasar LP");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -3386,6 +3390,10 @@ public final class RMMCU extends javax.swing.JDialog {
             Valid.textKosong(Anjuran,"Anjuran");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KlasifikasiIMT.getText().trim().equals("")){
+            Valid.textKosong(KlasifikasiIMT,"Klasifikasi BMI");
+        }else if(RisikoLP.getText().trim().equals("")){
+            Valid.textKosong(RisikoLP,"Risiko Berdasar LP");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){

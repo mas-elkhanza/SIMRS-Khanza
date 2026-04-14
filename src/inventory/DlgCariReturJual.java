@@ -609,27 +609,28 @@ public class DlgCariReturJual extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'"+i+"','"+
-                                tabMode.getValueAt(i,0).toString()+"','"+
-                                tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','"+
-                                tabMode.getValueAt(i,3).toString()+"','"+
-                                tabMode.getValueAt(i,4).toString()+"','"+
-                                tabMode.getValueAt(i,5).toString()+"','"+
-                                tabMode.getValueAt(i,6).toString()+"','"+
-                                tabMode.getValueAt(i,7).toString()+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','"+
-                                tabMode.getValueAt(i,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
-            }
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','',' ','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
-            
-            Map<String, Object> param = new HashMap<>();  
+            if(ceksukses==false){
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                int row=tabMode.getRowCount();
+                for(int i=0;i<row;i++){  
+                    Sequel.menyimpan("temporary","'"+i+"','"+
+                                    tabMode.getValueAt(i,0).toString()+"','"+
+                                    tabMode.getValueAt(i,1).toString()+"','"+
+                                    tabMode.getValueAt(i,2).toString()+"','"+
+                                    tabMode.getValueAt(i,3).toString()+"','"+
+                                    tabMode.getValueAt(i,4).toString()+"','"+
+                                    tabMode.getValueAt(i,5).toString()+"','"+
+                                    tabMode.getValueAt(i,6).toString()+"','"+
+                                    tabMode.getValueAt(i,7).toString()+"','"+
+                                    tabMode.getValueAt(i,8).toString()+"','"+
+                                    tabMode.getValueAt(i,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
+                }
+                i++;
+                Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
+                i++;
+                Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','',' ','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Retur Jual"); 
+
+                Map<String, Object> param = new HashMap<>();  
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -637,7 +638,10 @@ public class DlgCariReturJual extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            Valid.MyReportqry("rptReturJual.jasper","report","::[ Transaksi Retur Jual ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                Valid.MyReportqry("rptReturJual.jasper","report","::[ Transaksi Retur Jual ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

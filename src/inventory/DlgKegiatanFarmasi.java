@@ -341,65 +341,69 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();         
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
-            param.put("tanggal",Tgl2.getDate());   
-            if(TabRawat.getSelectedIndex()==0){
-                            
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabMode.getRowCount();r++){ 
-                    if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode.getValueAt(r,0).toString()+"','"+
-                                    tabMode.getValueAt(r,1).toString()+"','"+
-                                    tabMode.getValueAt(r,2).toString()+"','"+
-                                    tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                    }                    
-                }
-                
-                Valid.MyReportqry("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            }else if(TabRawat.getSelectedIndex()==1){
-                            
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabMode2.getRowCount();r++){ 
-                    if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode2.getValueAt(r,0).toString()+"','"+
-                                    tabMode2.getValueAt(r,1).toString()+"','"+
-                                    tabMode2.getValueAt(r,2).toString()+"','"+
-                                    tabMode2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                    }                    
-                }
-                
-                Valid.MyReportqry("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            }else if(TabRawat.getSelectedIndex()==2){
-                            
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                for(int r=0;r<tabMode3.getRowCount();r++){ 
-                    if(!tbBangsal3.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode3.getValueAt(r,0).toString()+"','"+
-                                    tabMode3.getValueAt(r,1).toString()+"','"+
-                                    tabMode3.getValueAt(r,2).toString()+"','"+
-                                    tabMode3.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                    }                    
-                }
-                
-                Valid.MyReportqry("rptKegiatanFarmasi3.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            }                 
+        if(ceksukses==false){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+                Map<String, Object> param = new HashMap<>();         
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
+                param.put("tanggal",Tgl2.getDate());   
+                if(TabRawat.getSelectedIndex()==0){
+
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabMode.getRowCount();r++){ 
+                        if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
+                            Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode.getValueAt(r,0).toString()+"','"+
+                                        tabMode.getValueAt(r,1).toString()+"','"+
+                                        tabMode.getValueAt(r,2).toString()+"','"+
+                                        tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        }                    
+                    }
+
+                    Valid.MyReportqry("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                }else if(TabRawat.getSelectedIndex()==1){
+
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabMode2.getRowCount();r++){ 
+                        if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
+                            Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode2.getValueAt(r,0).toString()+"','"+
+                                        tabMode2.getValueAt(r,1).toString()+"','"+
+                                        tabMode2.getValueAt(r,2).toString()+"','"+
+                                        tabMode2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        }                    
+                    }
+
+                    Valid.MyReportqry("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                }else if(TabRawat.getSelectedIndex()==2){
+
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    for(int r=0;r<tabMode3.getRowCount();r++){ 
+                        if(!tbBangsal3.getValueAt(r,0).toString().contains(">>")){
+                            Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode3.getValueAt(r,0).toString()+"','"+
+                                        tabMode3.getValueAt(r,1).toString()+"','"+
+                                        tabMode3.getValueAt(r,2).toString()+"','"+
+                                        tabMode3.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        }                    
+                    }
+
+                    Valid.MyReportqry("rptKegiatanFarmasi3.jasper","report","::[ Laporan Kegiatan Farmasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                }                 
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

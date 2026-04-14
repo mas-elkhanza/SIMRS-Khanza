@@ -924,194 +924,198 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            try {            
-                File g = new File("file2.css");            
-                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
-                );
-                bg.close();
+        if(ceksukses==false){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                try {            
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                    );
+                    bg.close();
 
-                File f;            
-                BufferedWriter bw; 
+                    File f;            
+                    BufferedWriter bw; 
 
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)","Laporan 4 (Jasper)"},"Laporan 1 (HTML)");
-                switch (pilihan) {
-                    case "Laporan 1 (HTML)":
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
-                                "</tr>"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)","Laporan 4 (Jasper)"},"Laporan 1 (HTML)");
+                    switch (pilihan) {
+                        case "Laporan 1 (HTML)":
+                                htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,4)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
                                     "</tr>"
                                 ); 
-                            }            
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                            "<td valign='top' align='right'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                            "<td valign='top' align='right'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }            
 
-                            f = new File("RingkasanBeriObat.html");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write("<html>"+
-                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
-                                        "<body>"+
-                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                "<tr class='isi2'>"+
-                                                    "<td valign='top' align='center'>"+
-                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>RINGKASAN PEMBERIAN OBAT/ALKES/BHP PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                                    "</td>"+
-                                               "</tr>"+
-                                            "</table>"+
-                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                htmlContent.toString()+
-                                            "</table>"+
-                                        "</body>"+                   
-                                     "</html>"
-                            );
-                            htmlContent=null;
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break;
-                    case "Laporan 2 (WPS)":
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
-                                "</tr>"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
+                                f = new File("RingkasanBeriObat.html");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write("<html>"+
+                                            "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                            "<body>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    "<tr class='isi2'>"+
+                                                        "<td valign='top' align='center'>"+
+                                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                            "<font size='2' face='Tahoma'>RINGKASAN PEMBERIAN OBAT/ALKES/BHP PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                        "</td>"+
+                                                   "</tr>"+
+                                                "</table>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    htmlContent.toString()+
+                                                "</table>"+
+                                            "</body>"+                   
+                                         "</html>"
+                                );
+                                htmlContent=null;
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 2 (WPS)":
+                                htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
-                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,4)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
                                     "</tr>"
                                 ); 
-                            }            
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                            "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                            "<td valign='top' align='right'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                            "<td valign='top' align='right'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }            
 
-                            f = new File("RingkasanBeriObat.wps");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write("<html>"+
-                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
-                                        "<body>"+
-                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                "<tr class='isi2'>"+
-                                                    "<td valign='top' align='center'>"+
-                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>RINGKASAN PEMBERIAN OBAT/ALKES/BHP PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                                    "</td>"+
-                                               "</tr>"+
-                                            "</table>"+
-                                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                htmlContent.toString()+
-                                            "</table>"+
-                                        "</body>"+                   
-                                     "</html>"
-                            );
-                            htmlContent=null;
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break;
-                    case "Laporan 3 (CSV)":
-                            //"Kode Barang","Nama Barang","Satuan","Jenis","Jumlah","Total","Kode Sat"
-                            htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "\"Kode Barang\";\"Nama Barang\";\"Satuan\";\"Jenis\";\"Jumlah\";\"Total\"\n"
-                            ); 
-                            for(i=0;i<tabMode.getRowCount();i++){  
+                                f = new File("RingkasanBeriObat.wps");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write("<html>"+
+                                            "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                            "<body>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    "<tr class='isi2'>"+
+                                                        "<td valign='top' align='center'>"+
+                                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                            "<font size='2' face='Tahoma'>RINGKASAN PEMBERIAN OBAT/ALKES/BHP PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                        "</td>"+
+                                                   "</tr>"+
+                                                "</table>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    htmlContent.toString()+
+                                                "</table>"+
+                                            "</body>"+                   
+                                         "</html>"
+                                );
+                                htmlContent=null;
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break;
+                        case "Laporan 3 (CSV)":
+                                //"Kode Barang","Nama Barang","Satuan","Jenis","Jumlah","Total","Kode Sat"
+                                htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\"\n"
+                                    "\"Kode Barang\";\"Nama Barang\";\"Satuan\";\"Jenis\";\"Jumlah\";\"Total\"\n"
                                 ); 
-                            }            
+                                for(i=0;i<tabMode.getRowCount();i++){  
+                                    htmlContent.append(                             
+                                        "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\"\n"
+                                    ); 
+                                }            
 
-                            f = new File("RingkasanBeriObat.csv");            
-                            bw = new BufferedWriter(new FileWriter(f));            
-                            bw.write(htmlContent.toString());
-                            htmlContent=null;
-                            bw.close();                         
-                            Desktop.getDesktop().browse(f.toURI());
-                        break; 
-                    case "Laporan 4 (Jasper)":
-                            Map<String, Object> param = new HashMap<>();                 
-                            param.put("namars",akses.getnamars());
-                            param.put("alamatrs",akses.getalamatrs());
-                            param.put("kotars",akses.getkabupatenrs());
-                            param.put("propinsirs",akses.getpropinsirs());
-                            param.put("kontakrs",akses.getkontakrs());
-                            param.put("emailrs",akses.getemailrs());  
-                            param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));  
-                            param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));  
-                            param.put("parameter","%"+TCari.getText().trim()+"%");   
-                            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                            tanggal=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
-                            status="";carabayar="";depo="";jenis="";bar="";
+                                f = new File("RingkasanBeriObat.csv");            
+                                bw = new BufferedWriter(new FileWriter(f));            
+                                bw.write(htmlContent.toString());
+                                htmlContent=null;
+                                bw.close();                         
+                                Desktop.getDesktop().browse(f.toURI());
+                            break; 
+                        case "Laporan 4 (Jasper)":
+                                Map<String, Object> param = new HashMap<>();                 
+                                param.put("namars",akses.getnamars());
+                                param.put("alamatrs",akses.getalamatrs());
+                                param.put("kotars",akses.getkabupatenrs());
+                                param.put("propinsirs",akses.getpropinsirs());
+                                param.put("kontakrs",akses.getkontakrs());
+                                param.put("emailrs",akses.getemailrs());  
+                                param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));  
+                                param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));  
+                                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                                tanggal=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
+                                status="";carabayar="";depo="";jenis="";bar="";
 
-                            if(!nmpenjab.getText().equals("")){
-                                carabayar=" and penjab.png_jawab='"+nmpenjab.getText()+"' ";
-                            }
-                            if(!Status.getSelectedItem().toString().equals("Semua")){
-                                status=" and detail_pemberian_obat.status='"+Status.getSelectedItem()+"' ";
-                            }
-                            if(!nmdepo.getText().equals("")){
-                                depo=" and bangsal.nm_bangsal='"+nmdepo.getText()+"' ";
-                            }
-                            if(!nmjenis.getText().equals("")){
-                                jenis=" and jenis.nama='"+nmjenis.getText()+"' ";
-                            }
-                            if(!nmbar.getText().equals("")){
-                                bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
-                            }
-                            Valid.MyReportqry("rptRingkasanBeriObat.jasper","report","::[ Laporan Ringkasan Pemberian Obat/Alkes/BHP Medis ]::",
-                                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng, databarang.kode_sat,"+
-                                    " kodesatuan.satuan,jenis.nama as namajenis,sum(detail_pemberian_obat.jml) as jumlah,sum(detail_pemberian_obat.total) as total "+
-                                    " from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                                    " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                                    " inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                                    " inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                                    " inner join jenis on databarang.kdjns=jenis.kdjns "+
-                                    " inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                    " where "+tanggal+carabayar+depo+jenis+bar+status+" and "+
-                                    "(detail_pemberian_obat.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                                    "kodesatuan.satuan like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
-                                    " group by detail_pemberian_obat.kode_brng "+order,param); 
-                        break; 
-                }                 
-            } catch (Exception e) {
-            }     
-            this.setCursor(Cursor.getDefaultCursor());
+                                if(!nmpenjab.getText().equals("")){
+                                    carabayar=" and penjab.png_jawab='"+nmpenjab.getText()+"' ";
+                                }
+                                if(!Status.getSelectedItem().toString().equals("Semua")){
+                                    status=" and detail_pemberian_obat.status='"+Status.getSelectedItem()+"' ";
+                                }
+                                if(!nmdepo.getText().equals("")){
+                                    depo=" and bangsal.nm_bangsal='"+nmdepo.getText()+"' ";
+                                }
+                                if(!nmjenis.getText().equals("")){
+                                    jenis=" and jenis.nama='"+nmjenis.getText()+"' ";
+                                }
+                                if(!nmbar.getText().equals("")){
+                                    bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                                }
+                                Valid.MyReportqry("rptRingkasanBeriObat.jasper","report","::[ Laporan Ringkasan Pemberian Obat/Alkes/BHP Medis ]::",
+                                        "select detail_pemberian_obat.kode_brng,databarang.nama_brng, databarang.kode_sat,"+
+                                        " kodesatuan.satuan,jenis.nama as namajenis,sum(detail_pemberian_obat.jml) as jumlah,sum(detail_pemberian_obat.total) as total "+
+                                        " from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                                        " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                        " inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                                        " inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
+                                        " inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                        " inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                        " where "+tanggal+carabayar+depo+jenis+bar+status+" and "+
+                                        "(detail_pemberian_obat.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                                        "kodesatuan.satuan like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
+                                        " group by detail_pemberian_obat.kode_brng "+order,param); 
+                            break; 
+                    }                 
+                } catch (Exception e) {
+                }     
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
     }//GEN-LAST:event_BtnPrintActionPerformed
 

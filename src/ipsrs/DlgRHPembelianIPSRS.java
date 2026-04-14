@@ -633,33 +633,37 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();    
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptRekapPengadaanNonMedis.jasper","report","::[ Rekap Pengadaan Barang Non Medis ]::",
-                "select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur,ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
-                "ipsrspembelian.nip,petugas.nama,ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng,"+
-                "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,ipsrsdetailbeli.jumlah,ipsrsdetailbeli.harga,"+
-                "ipsrsdetailbeli.subtotal,ipsrsdetailbeli.dis,ipsrsdetailbeli.besardis,ipsrsdetailbeli.total "+
-                "from ipsrspembelian inner join ipsrssuplier on ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
-                "inner join petugas on ipsrspembelian.nip=petugas.nip "+
-                "inner join ipsrsdetailbeli on ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
-                "inner join ipsrsbarang on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                "inner join kodesatuan on ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+
-                "where ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+
-                (NoFaktur.getText().trim().equals("")?"":"and ipsrspembelian.no_faktur='"+NoFaktur.getText()+"' ")+
-                (nmsup.getText().trim().equals("")?"":"and ipsrspembelian.kode_suplier='"+kdsup.getText()+"' ")+
-                (nmptg.getText().trim().equals("")?"":"and ipsrspembelian.nip='"+kdptg.getText()+"' ")+
-                (nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis='"+kdjenis.getText()+"' ")+
-                (nmbar.getText().trim().equals("")?"":"and ipsrsdetailbeli.kode_brng='"+kdbar.getText()+"' ")+
-                (TCari.getText().trim().equals("")?"":"and (ipsrspembelian.no_faktur like '%"+TCari.getText()+"%' or ipsrspembelian.kode_suplier like '%"+TCari.getText()+"%' or "+
-                "ipsrssuplier.nama_suplier like '%"+TCari.getText()+"%' or ipsrspembelian.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsdetailbeli.kode_brng like '%"+TCari.getText()+"%' or "+
-                "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailbeli.kode_sat like '%"+TCari.getText()+"%') ")+"order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur",param);
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                Valid.MyReportqry("rptRekapPengadaanNonMedis.jasper","report","::[ Rekap Pengadaan Barang Non Medis ]::",
+                    "select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur,ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
+                    "ipsrspembelian.nip,petugas.nama,ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng,"+
+                    "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,ipsrsdetailbeli.jumlah,ipsrsdetailbeli.harga,"+
+                    "ipsrsdetailbeli.subtotal,ipsrsdetailbeli.dis,ipsrsdetailbeli.besardis,ipsrsdetailbeli.total "+
+                    "from ipsrspembelian inner join ipsrssuplier on ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
+                    "inner join petugas on ipsrspembelian.nip=petugas.nip "+
+                    "inner join ipsrsdetailbeli on ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
+                    "inner join ipsrsbarang on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
+                    "inner join kodesatuan on ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+
+                    "where ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+
+                    (NoFaktur.getText().trim().equals("")?"":"and ipsrspembelian.no_faktur='"+NoFaktur.getText()+"' ")+
+                    (nmsup.getText().trim().equals("")?"":"and ipsrspembelian.kode_suplier='"+kdsup.getText()+"' ")+
+                    (nmptg.getText().trim().equals("")?"":"and ipsrspembelian.nip='"+kdptg.getText()+"' ")+
+                    (nmjenis.getText().trim().equals("")?"":"and ipsrsbarang.jenis='"+kdjenis.getText()+"' ")+
+                    (nmbar.getText().trim().equals("")?"":"and ipsrsdetailbeli.kode_brng='"+kdbar.getText()+"' ")+
+                    (TCari.getText().trim().equals("")?"":"and (ipsrspembelian.no_faktur like '%"+TCari.getText()+"%' or ipsrspembelian.kode_suplier like '%"+TCari.getText()+"%' or "+
+                    "ipsrssuplier.nama_suplier like '%"+TCari.getText()+"%' or ipsrspembelian.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsdetailbeli.kode_brng like '%"+TCari.getText()+"%' or "+
+                    "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailbeli.kode_sat like '%"+TCari.getText()+"%') ")+"order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

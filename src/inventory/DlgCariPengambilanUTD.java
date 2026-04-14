@@ -478,7 +478,8 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             BtnKeluar.requestFocus();
         }else {   
-            Map<String, Object> param = new HashMap<>();    
+            if(ceksukses==false){
+                Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -486,17 +487,19 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));                       
-            Valid.MyReportqry("rptPengambilanUTD.jasper","report","::[ Transaksi Pengambilan BHP Medis UTD ]::", 
-                    "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
-                    "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
-                    "utd_pengambilan_medis.keterangan,databarang.kode_sat from utd_pengambilan_medis inner join databarang inner join bangsal "+
-                    "on utd_pengambilan_medis.kode_brng=databarang.kode_brng and utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
-                    "where utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.kd_bangsal_dr like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.keterangan like '%"+TCari.getText().trim()+"%' order by utd_pengambilan_medis.tanggal",param);
-          
+                Valid.MyReportqry("rptPengambilanUTD.jasper","report","::[ Transaksi Pengambilan BHP Medis UTD ]::", 
+                        "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
+                        "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
+                        "utd_pengambilan_medis.keterangan,databarang.kode_sat from utd_pengambilan_medis inner join databarang inner join bangsal "+
+                        "on utd_pengambilan_medis.kode_brng=databarang.kode_brng and utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
+                        "where utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.kd_bangsal_dr like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_pengambilan_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_pengambilan_medis.keterangan like '%"+TCari.getText().trim()+"%' order by utd_pengambilan_medis.tanggal",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCetakActionPerformed

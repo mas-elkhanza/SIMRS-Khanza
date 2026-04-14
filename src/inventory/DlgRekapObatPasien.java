@@ -570,29 +570,63 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(TabRawat1.getSelectedIndex()==0){
-           this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                int row=tabMode.getRowCount();
-                for(int r=0;r<row;r++){  
-                    Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
-                }
+        if(ceksukses==false){
+            if(TabRawat1.getSelectedIndex()==0){
+               this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(tabMode.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    //TCari.requestFocus();
+                }else if(tabMode.getRowCount()!=0){
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    int row=tabMode.getRowCount();
+                    for(int r=0;r<row;r++){  
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                                        tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
+                    }
 
-                Map<String, Object> param = new HashMap<>();
+                    Map<String, Object> param = new HashMap<>();
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptRekapObatPasien.jasper","report","[ Rekap Penggunaan Obat Per Pasien ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                }
+                this.setCursor(Cursor.getDefaultCursor());
+            }else if(TabRawat1.getSelectedIndex()==1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(tabMode2.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    //TCari.requestFocus();
+                }else if(tabMode2.getRowCount()!=0){
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    int row=tabMode2.getRowCount();
+                    for(int r=0;r<row;r++){  
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode2.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                                        tabMode2.getValueAt(r,9).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
+                    }
+
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
@@ -600,44 +634,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapObatPasien.jasper","report","[ Rekap Penggunaan Obat Per Pasien ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            }
-            this.setCursor(Cursor.getDefaultCursor());
-        }else if(TabRawat1.getSelectedIndex()==1){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode2.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                int row=tabMode2.getRowCount();
-                for(int r=0;r<row;r++){  
-                    Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode2.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                    tabMode2.getValueAt(r,9).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
+                    Valid.MyReportqry("rptRekapObatPasien.jasper","report","[ Rekap Penggunaan Obat Per Pasien ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }
-
-                Map<String, Object> param = new HashMap<>();
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptRekapObatPasien.jasper","report","[ Rekap Penggunaan Obat Per Pasien ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                this.setCursor(Cursor.getDefaultCursor());
             }
-            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-            
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

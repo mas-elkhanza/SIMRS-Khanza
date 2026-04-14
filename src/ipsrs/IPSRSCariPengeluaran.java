@@ -738,71 +738,74 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                int row=tabMode.getRowCount();
-                for(i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'"+i+"','"+
-                                    tabMode.getValueAt(i,0).toString()+"','"+
-                                    tabMode.getValueAt(i,1).toString()+"','"+
-                                    tabMode.getValueAt(i,2).toString()+"','"+
-                                    tabMode.getValueAt(i,3).toString()+"','"+
-                                    tabMode.getValueAt(i,4).toString()+"','"+
-                                    tabMode.getValueAt(i,5).toString()+"','"+
-                                    tabMode.getValueAt(i,6).toString()+"','"+
-                                    tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pengeluaran"); 
+        if(ceksukses==false){
+            if(TabRawat.getSelectedIndex()==0){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(tabMode.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabMode.getRowCount()!=0){
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                    int row=tabMode.getRowCount();
+                    for(i=0;i<row;i++){  
+                        Sequel.menyimpan("temporary","'"+i+"','"+
+                                        tabMode.getValueAt(i,0).toString()+"','"+
+                                        tabMode.getValueAt(i,1).toString()+"','"+
+                                        tabMode.getValueAt(i,2).toString()+"','"+
+                                        tabMode.getValueAt(i,3).toString()+"','"+
+                                        tabMode.getValueAt(i,4).toString()+"','"+
+                                        tabMode.getValueAt(i,5).toString()+"','"+
+                                        tabMode.getValueAt(i,6).toString()+"','"+
+                                        tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pengeluaran"); 
+                    }
+                    i++;
+                    Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pembelian"); 
+                    i++;
+                    Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pembelian"); 
+
+                    Map<String, Object> param = new HashMap<>();    
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptPengeluaranIpsrs.jasper","report","::[ Transaksi Pengeluaran Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }
-                i++;
-                Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pembelian"); 
-                i++;
-                Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pembelian"); 
-                
-                Map<String, Object> param = new HashMap<>();    
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptPengeluaranIpsrs.jasper","report","::[ Transaksi Pengeluaran Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else if(TabRawat.getSelectedIndex()==1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(tabMode2.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabMode2.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();    
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptPengeluaranIpsrs2.jasper","report","::[ Transaksi Pengeluaran Barang ]::",
+                        "select ipsrspengeluaran.no_keluar,ipsrspengeluaran.tanggal,ipsrspengeluaran.nip,"+
+                        "ipsrspengeluaran.keterangan,petugas.nama,ipsrsdetailpengeluaran.kode_brng,"+
+                        "ipsrsbarang.nama_brng,kodesatuan.satuan,ipsrsdetailpengeluaran.jumlah,"+
+                        "ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total from ipsrspengeluaran "+
+                        "inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
+                        "inner join petugas on ipsrspengeluaran.nip=petugas.nip "+
+                        "inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
+                        "inner join kodesatuan on ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
+                        "where ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
+                        "(ipsrspengeluaran.no_keluar like '%"+TCari.getText()+"%' or ipsrspengeluaran.keterangan like '%"+TCari.getText()+"%' or ipsrspengeluaran.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsbarang.jenis like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_brng like '%"+TCari.getText()+"%' or "+
+                        "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ",param);
+                }
+                this.setCursor(Cursor.getDefaultCursor());
             }
-            this.setCursor(Cursor.getDefaultCursor());
-        }else if(TabRawat.getSelectedIndex()==1){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode2.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                TCari.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();    
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptPengeluaranIpsrs2.jasper","report","::[ Transaksi Pengeluaran Barang ]::",
-                    "select ipsrspengeluaran.no_keluar,ipsrspengeluaran.tanggal,ipsrspengeluaran.nip,"+
-                    "ipsrspengeluaran.keterangan,petugas.nama,ipsrsdetailpengeluaran.kode_brng,"+
-                    "ipsrsbarang.nama_brng,kodesatuan.satuan,ipsrsdetailpengeluaran.jumlah,"+
-                    "ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total from ipsrspengeluaran "+
-                    "inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                    "inner join petugas on ipsrspengeluaran.nip=petugas.nip "+
-                    "inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
-                    "inner join kodesatuan on ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
-                    "where ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
-                    "(ipsrspengeluaran.no_keluar like '%"+TCari.getText()+"%' or ipsrspengeluaran.keterangan like '%"+TCari.getText()+"%' or ipsrspengeluaran.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsbarang.jenis like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_brng like '%"+TCari.getText()+"%' or "+
-                    "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ",param);
-            }
-            this.setCursor(Cursor.getDefaultCursor());
-        }
-            
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+        }   
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
