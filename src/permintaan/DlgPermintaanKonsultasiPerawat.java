@@ -79,7 +79,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 19; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,6 +99,30 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }else if(i==8){
                 column.setPreferredWidth(115);
+            }else if(i==9){
+                column.setPreferredWidth(90);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(90);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(200);
+            }else if(i==14){
+                column.setPreferredWidth(200);
+            }else if(i==15){
+                column.setPreferredWidth(200);
+            }else if(i==16){
+                column.setPreferredWidth(200);
+            }else if(i==17){
+                column.setPreferredWidth(115);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(200);
+            }else if(i==20){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -106,6 +130,13 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         NoRw.setDocument(new batasInput((byte)17).getKata(NoRw));
         NoPermintaan.setDocument(new batasInput((byte)20).getKata(NoPermintaan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Situation.setDocument(new batasInput((int)500).getKata(Situation));
+        Background.setDocument(new batasInput((int)500).getKata(Background));
+        Assessment.setDocument(new batasInput((int)500).getKata(Assessment));
+        Recommendation.setDocument(new batasInput((int)500).getKata(Recommendation));
+        Respon.setDocument(new batasInput((int)80).getKata(Respon));
+        Instruksi.setDocument(new batasInput((int)500).getKata(Instruksi));
+        Rencana.setDocument(new batasInput((int)500).getKata(Rencana));
         
         WindowInput.setSize(735,245);
         WindowInput.setLocationRelativeTo(null);  
@@ -1160,16 +1191,18 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Konsultasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permintaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Dikonsuli</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Perawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Dikonsuli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Konsultasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Situation</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Background</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Assessment</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Recommendation</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Jawaban</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Dikonsuli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jawaban Konsultasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Respon</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Instruksi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rencana</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1194,6 +1227,8 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1219,7 +1254,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataKonsultasiMedik.html");            
+                File f = new File("DataKonsultasiPerawat.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1229,7 +1264,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA KONSULTASI MEDIK<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA KONSULTASI PERAWAT<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1406,21 +1441,20 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());  
-                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-                    param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())); 
-                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-                    param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),12).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()));
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+                    param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),9).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())); 
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+                    param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),11).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()));
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                    Valid.MyReportqry("rptDokumentasiKonsultasiMedik.jasper","report","::[ Dokumentasi Konsultasi Medik ]::",
+                    Valid.MyReportqry("rptDokumentasiKonsultasiPerawat.jasper","report","::[ Dokumentasi Konsultasi Perawat ]::",
                         "select konsultasi_perawat.no_permintaan,konsultasi_perawat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_perawat.tanggal as tanggalkonsultasi,konsultasi_perawat.jenis_permintaan,pasien.tgl_lahir,"+
-                        "konsultasi_perawat.nip,petugas.nm_dokter as petugas,konsultasi_perawat.kd_dokter_dikonsuli,dokter.nm_dokter as dokter,"+
-                        "konsultasi_perawat.diagnosa_kerja as diagnosakerjakonsul,konsultasi_perawat.uraian_konsultasi,jawaban_konsultasi_perawat.tanggal as tanggaljawaban,"+
-                        "jawaban_konsultasi_perawat.diagnosa_kerja as diagnosakerjajawaban,jawaban_konsultasi_perawat.uraian_jawaban "+
+                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_perawat.tanggal as tanggalkonsultasi,konsultasi_perawat.nip,petugas.nama,"+
+                        "konsultasi_perawat.kd_dokter_dikonsuli,dokter.nm_dokter,konsultasi_perawat.situation,konsultasi_perawat.background,konsultasi_perawat.assessment,"+
+                        "konsultasi_perawat.recomendation,jawaban_konsultasi_perawat.tanggal as tanggaljawaban,jawaban_konsultasi_perawat.respon,"+
+                        "jawaban_konsultasi_perawat.instruksi,jawaban_konsultasi_perawat.rencana,pasien.tgl_lahir "+
                         "from konsultasi_perawat inner join reg_periksa on konsultasi_perawat.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                        "inner join dokter as petugas on konsultasi_perawat.nip=petugas.nip "+
-                        "inner join dokter as dokter on konsultasi_perawat.kd_dokter_dikonsuli=dokter.nip "+
+                        "inner join petugas on konsultasi_perawat.nip=petugas.nip inner join dokter on konsultasi_perawat.kd_dokter_dikonsuli=dokter.kd_dokter "+
                         "inner join jawaban_konsultasi_perawat on jawaban_konsultasi_perawat.no_permintaan=konsultasi_perawat.no_permintaan "+
                         "where konsultasi_perawat.no_permintaan='"+NoPermintaan.getText()+"' ",param);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -1937,7 +1971,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnSimpan.setEnabled(akses.getkonsultasi_perawat());
         BtnHapus.setEnabled(akses.getkonsultasi_perawat());
         BtnPrint.setEnabled(akses.getkonsultasi_perawat());
-        //BtnJawabanDikonsuli.setEnabled(akses.getjawaban_konsultasi_perawat());
+        BtnJawabanDikonsuli.setEnabled(akses.getjawaban_konsultasi_perawat());
         BtnRiwayatPasien.setEnabled(akses.getresume_pasien());
         BtnEdit.setEnabled(akses.getkonsultasi_perawat());   
         if(akses.getjml2()>=1){
