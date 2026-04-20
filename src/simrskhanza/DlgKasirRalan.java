@@ -9095,6 +9095,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
             LCount.setText(""+tabModekasir.getRowCount());
             cacherawatjalan.clearDataPasien();
+        }else{
+            tampilkasir();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -17187,7 +17189,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
         
         ArrayList<Object[]> temp = new ArrayList<>();
-
         for (int i = 0; i < tabModekasir.getRowCount(); i++) {
             Object[] baris = new Object[tabModekasir.getColumnCount()];
             for (int j = 0; j < tabModekasir.getColumnCount(); j++) {

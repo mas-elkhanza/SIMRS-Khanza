@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class cacherawatjalan {
     private static Date TanggalAwal=null,TanggalAkhir=null;
-    private static String KeyWord="",Dokter="",Poli="",Penjab="",StatusBayar="",StatusPelayanan="";
+    private static String KeyWord=null,Dokter=null,Poli=null,Penjab=null,StatusBayar=null,StatusPelayanan=null;
     private static ArrayList<Object[]> DataPasien = new ArrayList<>();
     
     public static void SetTanggalAwal(Date tanggal) {TanggalAwal=tanggal;}
