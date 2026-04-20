@@ -29,7 +29,7 @@ public class koneksiDB {
     private static final AtomicBoolean initialized=new AtomicBoolean(false);
     private static final Object LOCK=new Object();
     private static volatile long lastCheck =0;
-    private static final long CHECK_INTERVAL =30000;
+    private static final long CHECK_INTERVAL =40000;
     
     private koneksiDB(){}
     
@@ -60,6 +60,14 @@ public class koneksiDB {
                     }
                 }
             }
+            
+            if (connection == null || connection.isClosed()) {
+                synchronized (LOCK) {
+                    if (connection == null || connection.isClosed()) {
+                        reconnect();
+                    }
+                }
+            }
         }
         catch (Exception e) {
             Logger.getLogger(koneksiDB.class.getName()).log(Level.SEVERE, null, e);
@@ -71,7 +79,7 @@ public class koneksiDB {
         try (FileInputStream fis =new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);
         }
-        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=10000&socketTimeout=60000&maintainTimeStats=false&autoReconnect=true");
+        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=100000&socketTimeout=600000&maintainTimeStats=false&autoReconnect=true");
         dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
         dataSource.setCachePreparedStatements(true);

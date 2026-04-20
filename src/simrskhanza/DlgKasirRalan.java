@@ -41,6 +41,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akseskamarinapralan;
 import fungsi.akuntindakanralan;
+import fungsi.cacherawatjalan;
 import fungsi.catatanpasien;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
@@ -58,6 +59,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -277,7 +279,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private DlgRawatJalan formrawatjalan;
     private DlgPeresepanDokter resepobat;
     private DlgCariPerawatanRalan dlgrwjl;
-    private String aktifkanparsial="no",caripenjab="",filter="no",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
+    private String aktifkanparsial="no",caripenjab="",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
             tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",variabel="",terbitsep="";
     private DlgBilingRalan billing;
     private int i=0,pilihan=0,sudah=0,jmlparsial=0;
@@ -6547,7 +6549,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TCari.setText("");
         caripenjab="";
         tampildiagnosa="";
-        filter="no";
         terbitsep="";
         TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -8285,7 +8286,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
 
     private void MnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenjabActionPerformed
-        filter="no";
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -9057,6 +9057,46 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             akuntindakanralan.SetAkunTindakanRalan();
         }
         
+        if(cacherawatjalan.getTanggalAwal()!=null){
+            DTPCari1.setDate(cacherawatjalan.getTanggalAwal());
+        }
+        
+        if(cacherawatjalan.getTanggalAkhir()!=null){
+            DTPCari2.setDate(cacherawatjalan.getTanggalAkhir());
+        }
+        
+        if(cacherawatjalan.getKeyWord()!=null){
+            TCari.setText(cacherawatjalan.getKeyWord());
+        }
+        
+        if(cacherawatjalan.getDokter()!=null){
+            CrPtg.setText(cacherawatjalan.getDokter());
+        }
+        
+        if(cacherawatjalan.getPoli()!=null){
+            CrPoli.setText(cacherawatjalan.getPoli());
+        }
+        
+        if(cacherawatjalan.getPenjab()!=null){
+            caripenjab=cacherawatjalan.getPenjab();
+        }
+        
+        if(cacherawatjalan.getStatusBayar()!=null){
+            cmbStatusBayar.setSelectedItem(cacherawatjalan.getStatusBayar());
+        }
+        
+        if(cacherawatjalan.getStatusPelayanan()!=null){
+            cmbStatus.setSelectedItem(cacherawatjalan.getStatusPelayanan());
+        }
+        
+        if(!cacherawatjalan.getDataPasien().isEmpty()){
+            for(Object[] baris : cacherawatjalan.getDataPasien()){
+                tabModekasir.addRow(baris);
+            }
+            LCount.setText(""+tabModekasir.getRowCount());
+            cacherawatjalan.clearDataPasien();
+        }
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -9080,6 +9120,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             });
         } 
     }
+    
     private void tbKasirRalan2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKasirRalan2MouseClicked
         if(tabModekasir2.getRowCount()!=0){
             try {
@@ -17132,6 +17173,33 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbKasirRalan.requestFocus();
         } 
+    }
+    
+    @Override
+    public void dispose() {
+        cacherawatjalan.SetTanggalAwal(DTPCari1.getDate());
+        cacherawatjalan.SetTanggalAkhir(DTPCari2.getDate());
+        cacherawatjalan.SetKeyWord(TCari.getText());
+        cacherawatjalan.SetDokter(CrPtg.getText());
+        cacherawatjalan.SetPoli(CrPoli.getText());
+        cacherawatjalan.SetPenjab(caripenjab);
+        cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
+        
+        ArrayList<Object[]> temp = new ArrayList<>();
+
+        for (int i = 0; i < tabModekasir.getRowCount(); i++) {
+            Object[] baris = new Object[tabModekasir.getColumnCount()];
+            for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
+                baris[j] = tabModekasir.getValueAt(i, j);
+            }
+            temp.add(baris);
+        }
+
+        cacherawatjalan.clearDataPasien();
+        cacherawatjalan.SetDataPasien(temp);
+        
+        super.dispose();
     }
     
     private void initKasirRalan() {
