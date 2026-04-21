@@ -26,7 +26,7 @@ public class cacheregistrasi {
     public static void SetPoli(String data) {Poli=data;}
     public static String getPoli(){return cacheregistrasi.Poli;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = data;}
+    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
     public static ArrayList<Object[]> getDataPasien(){return cacheregistrasi.DataPasien;}
     public static void clearDataPasien(){DataPasien.clear();}
 }

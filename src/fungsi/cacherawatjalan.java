@@ -35,7 +35,7 @@ public class cacherawatjalan {
     public static void SetStatusPelayanan(String data) {StatusPelayanan=data;}
     public static String getStatusPelayanan(){return cacherawatjalan.StatusPelayanan;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = data;}
+    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
     public static ArrayList<Object[]> getDataPasien(){return cacherawatjalan.DataPasien;}
     public static void clearDataPasien(){DataPasien.clear();}
 }

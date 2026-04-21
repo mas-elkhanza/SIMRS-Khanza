@@ -94,7 +94,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             "No.Pengkajian","No.Proyek","Nama Proyek","Lokasi Proyek","Mulai","Selesai","Deskripsi Pekerjaan","Penangung Jawab Proyek(Pelaksana)",
             "Pelaksana/Kontraktor","Kode Aktivitas","Jenis Aktivitas Proyek","Deskripsi Lokasi Proyek","Kelompok Area Yang Terdampak","Identifikasi Risiko Kebakaran",
             "Identifikasi Risiko Infeksi","Identifikasi Risiko Keselamatan","Identifikasi Risiko Utilitas","Penyebab Risiko Lainnya","Kode Risiko",
-            "Kelas Risiko/Pencegahan","Kebutuhan ICRA","Tindakan Pengendalian Yang Bisa Dilakukan","Rekomendasi Selama Pengerjaan","Rekomendasi Setelah Pengerjaan",
+            "Kelas Risiko/Pencegahan","ICRA","Tindakan Pengendalian Yang Bisa Dilakukan","Rekomendasi Selama Pengerjaan","Rekomendasi Setelah Pengerjaan",
             "Hal-hal Yang Perlu Dimonitor Secara Khusus","Persyaratan Yang Harus Dipenuhi Sebelum Pengerjaan","Catatan Tim PPI/K3/Lainnya","NIP Tim K3","Nama Tim K3",
             "NIP P.J. Proyek","P.J. Proyek","NIP Manajer","Nama Manajer","NIP Direktur","Nama Direktur","Tanggal Pengkajian"
         }){
@@ -140,6 +140,16 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }else if(i==15){
                 column.setPreferredWidth(250);
             }else if(i==16){
+                column.setPreferredWidth(250);
+            }else if(i==17){
+                column.setPreferredWidth(250);
+            }else if(i==18){
+                column.setPreferredWidth(67);
+            }else if(i==19){
+                column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(50);
+            }else if(i==21){
                 column.setPreferredWidth(250);
             }
         }

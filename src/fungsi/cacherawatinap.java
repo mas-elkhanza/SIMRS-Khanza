@@ -42,7 +42,7 @@ public class cacherawatinap {
     public static void SetKamar(String data) {Kamar=data;}
     public static String getKamar(){return cacherawatinap.Kamar;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = data;}
+    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
     public static ArrayList<Object[]> getDataPasien(){return cacherawatinap.DataPasien;}
     public static void clearDataPasien(){DataPasien.clear();}
 }

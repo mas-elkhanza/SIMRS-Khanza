@@ -20,7 +20,7 @@ public class cacheigd {
     public static void SetKeyWord(String data) {KeyWord=data;}
     public static String getKeyWord(){return cacheigd.KeyWord;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = data;}
+    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
     public static ArrayList<Object[]> getDataPasien(){return cacheigd.DataPasien;}
     public static void clearDataPasien(){DataPasien.clear();}
 }
