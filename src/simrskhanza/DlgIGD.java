@@ -48,6 +48,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.cacheigd;
 import fungsi.catatanpasien;
 import fungsi.closingkasir;
 import inventory.DlgCopyResep;
@@ -71,6 +72,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -6993,6 +6995,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             System.out.println("Notif : "+e);
         }
         
+        if(cacheigd.getTanggalAwal()!=null){
+            DTPCari1.setDate(cacheigd.getTanggalAwal());
+        }
+        
+        if(cacheigd.getTanggalAkhir()!=null){
+            DTPCari2.setDate(cacheigd.getTanggalAkhir());
+        }
+        
+        if(cacheigd.getKeyWord()!=null){
+            TCari.setText(cacheigd.getKeyWord());
+        }
+        
+        if(!cacheigd.getDataPasien().isEmpty()){
+            for(Object[] baris : cacheigd.getDataPasien()){
+                tabMode.addRow(baris);
+            }
+            LCount.setText(""+tabMode.getRowCount());
+            cacheigd.clearDataPasien();
+        }else{
+            tampil();
+        }
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -13247,6 +13271,27 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
+    }
+    
+    @Override
+    public void dispose() {
+        cacheigd.SetTanggalAwal(DTPCari1.getDate());
+        cacheigd.SetTanggalAkhir(DTPCari2.getDate());
+        cacheigd.SetKeyWord(TCari.getText());
+        
+        ArrayList<Object[]> temp = new ArrayList<>();
+        for (int i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            temp.add(baris);
+        }
+
+        cacheigd.clearDataPasien();
+        cacheigd.SetDataPasien(temp);
+        
+        super.dispose();
     }
     
     private void initIGD() {
