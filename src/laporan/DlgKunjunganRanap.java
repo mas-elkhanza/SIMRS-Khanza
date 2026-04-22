@@ -655,91 +655,95 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        Map<String, Object> param = new HashMap<>();         
-        param.put("namars",akses.getnamars());
-        param.put("alamatrs",akses.getalamatrs());
-        param.put("kotars",akses.getkabupatenrs());
-        param.put("propinsirs",akses.getpropinsirs());
-        param.put("kontakrs",akses.getkontakrs());
-        param.put("emailrs",akses.getemailrs());   
-        param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
-        param.put("lama",lama);   
-        param.put("baru",baru);   
-        param.put("total",(lama+baru));   
-        param.put("laki",laki);   
-        param.put("perempuan",per);   
-        param.put("tanggal",Tgl2.getDate());  
-        if(TabRawat.getSelectedIndex()==0){
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                if(ceksukses==false){
-                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                    for(int r=0;r<tabMode.getRowCount();r++){ 
-                        if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                            try {
-                                Sequel.menyimpan("temporary","'"+r+"','"+
-                                            tabMode.getValueAt(r,0).toString()+"','"+
-                                            tabMode.getValueAt(r,1).toString()+"','"+
-                                            tabMode.getValueAt(r,2).toString()+"','"+
-                                            tabMode.getValueAt(r,3).toString()+"','"+
-                                            tabMode.getValueAt(r,4).toString()+"','"+
-                                            tabMode.getValueAt(r,5).toString()+"','"+
-                                            tabMode.getValueAt(r,6).toString()+"','"+
-                                            tabMode.getValueAt(r,7).toString()+"','"+
-                                            tabMode.getValueAt(r,8).toString()+"','"+
-                                            tabMode.getValueAt(r,9).toString()+"','"+
-                                            tabMode.getValueAt(r,10).toString()+"','"+
-                                            tabMode.getValueAt(r,11).toString()+"','"+
-                                            tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                            } catch (Exception e) {
-                            }   
-                        }                    
-                    }
+        if(ceksukses==false){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();         
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
+            param.put("lama",lama);   
+            param.put("baru",baru);   
+            param.put("total",(lama+baru));   
+            param.put("laki",laki);   
+            param.put("perempuan",per);   
+            param.put("tanggal",Tgl2.getDate());  
+            if(TabRawat.getSelectedIndex()==0){
+                if(tabMode.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    //TCari.requestFocus();
+                }else if(tabMode.getRowCount()!=0){
+                    if(ceksukses==false){
+                        Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                        for(int r=0;r<tabMode.getRowCount();r++){ 
+                            if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
+                                try {
+                                    Sequel.menyimpan("temporary","'"+r+"','"+
+                                                tabMode.getValueAt(r,0).toString()+"','"+
+                                                tabMode.getValueAt(r,1).toString()+"','"+
+                                                tabMode.getValueAt(r,2).toString()+"','"+
+                                                tabMode.getValueAt(r,3).toString()+"','"+
+                                                tabMode.getValueAt(r,4).toString()+"','"+
+                                                tabMode.getValueAt(r,5).toString()+"','"+
+                                                tabMode.getValueAt(r,6).toString()+"','"+
+                                                tabMode.getValueAt(r,7).toString()+"','"+
+                                                tabMode.getValueAt(r,8).toString()+"','"+
+                                                tabMode.getValueAt(r,9).toString()+"','"+
+                                                tabMode.getValueAt(r,10).toString()+"','"+
+                                                tabMode.getValueAt(r,11).toString()+"','"+
+                                                tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                } catch (Exception e) {
+                                }   
+                            }                    
+                        }
 
-                    Valid.MyReportqry("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
-                }
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tabMode2.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){
-                if(ceksukses==false){
-                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-                    for(int r=0;r<tabMode2.getRowCount();r++){ 
-                        if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
-                            try{
-                                Sequel.menyimpan("temporary","'"+r+"','"+
-                                            tabMode2.getValueAt(r,0).toString()+"','"+
-                                            tabMode2.getValueAt(r,1).toString()+"','"+
-                                            tabMode2.getValueAt(r,2).toString()+"','"+
-                                            tabMode2.getValueAt(r,3).toString()+"','"+
-                                            tabMode2.getValueAt(r,4).toString()+"','"+
-                                            tabMode2.getValueAt(r,5).toString()+"','"+
-                                            tabMode2.getValueAt(r,6).toString()+"','"+
-                                            tabMode2.getValueAt(r,7).toString()+"','"+
-                                            tabMode2.getValueAt(r,8).toString()+"','"+
-                                            tabMode2.getValueAt(r,9).toString()+"','"+
-                                            tabMode2.getValueAt(r,10).toString()+"','"+
-                                            tabMode2.getValueAt(r,11).toString()+"','"+
-                                            tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                            } catch (Exception e) {
-                            }  
-                        }                    
+                        Valid.MyReportqry("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
                     }
-
-                    Valid.MyReportqry("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
                 }
-            }            
-        }        
-        this.setCursor(Cursor.getDefaultCursor());
+            }else if(TabRawat.getSelectedIndex()==1){
+                if(tabMode2.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    //TCari.requestFocus();
+                }else if(tabMode2.getRowCount()!=0){
+                    if(ceksukses==false){
+                        Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                        for(int r=0;r<tabMode2.getRowCount();r++){ 
+                            if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
+                                try{
+                                    Sequel.menyimpan("temporary","'"+r+"','"+
+                                                tabMode2.getValueAt(r,0).toString()+"','"+
+                                                tabMode2.getValueAt(r,1).toString()+"','"+
+                                                tabMode2.getValueAt(r,2).toString()+"','"+
+                                                tabMode2.getValueAt(r,3).toString()+"','"+
+                                                tabMode2.getValueAt(r,4).toString()+"','"+
+                                                tabMode2.getValueAt(r,5).toString()+"','"+
+                                                tabMode2.getValueAt(r,6).toString()+"','"+
+                                                tabMode2.getValueAt(r,7).toString()+"','"+
+                                                tabMode2.getValueAt(r,8).toString()+"','"+
+                                                tabMode2.getValueAt(r,9).toString()+"','"+
+                                                tabMode2.getValueAt(r,10).toString()+"','"+
+                                                tabMode2.getValueAt(r,11).toString()+"','"+
+                                                tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                } catch (Exception e) {
+                                }  
+                            }                    
+                        }
+
+                        Valid.MyReportqry("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+                    }
+                }            
+            }        
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+        }
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

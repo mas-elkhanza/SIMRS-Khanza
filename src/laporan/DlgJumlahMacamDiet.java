@@ -229,47 +229,47 @@ public class DlgJumlahMacamDiet extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("delete from temporary_gizi");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary_gizi","'0','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','"+
-                                tabMode.getValueAt(r,4).toString()+"','"+
-                                tabMode.getValueAt(r,5).toString()+"','"+
-                                tabMode.getValueAt(r,6).toString()+"','"+
-                                tabMode.getValueAt(r,7).toString()+"','"+
-                                tabMode.getValueAt(r,8).toString()+"','"+
-                                tabMode.getValueAt(r,9).toString()+"','"+
-                                tabMode.getValueAt(r,10).toString()+"','"+
-                                tabMode.getValueAt(r,11).toString()+"','"+
-                                tabMode.getValueAt(r,12).toString()+"','"+
-                                tabMode.getValueAt(r,13).toString()+"','"+
-                                tabMode.getValueAt(r,14).toString()+"','"+
-                                tabMode.getValueAt(r,15).toString()+"','"+
-                                tabMode.getValueAt(r,16).toString()+"','"+
-                                tabMode.getValueAt(r,17).toString()+"','"+
-                                tabMode.getValueAt(r,18).toString()+"','"+
-                                tabMode.getValueAt(r,19).toString()+"','"+
-                                tabMode.getValueAt(r,20).toString()+"','"+
-                                tabMode.getValueAt(r,21).toString()+"','"+
-                                tabMode.getValueAt(r,22).toString()+"','"+
-                                tabMode.getValueAt(r,23).toString()+"','"+
-                                tabMode.getValueAt(r,24).toString()+"','"+
-                                tabMode.getValueAt(r,25).toString()+"','"+
-                                tabMode.getValueAt(r,26).toString()+"','"+
-                                tabMode.getValueAt(r,27).toString()+"','"+
-                                tabMode.getValueAt(r,28).toString()+"','"+
-                                tabMode.getValueAt(r,29).toString()+"','"+
-                                tabMode.getValueAt(r,30).toString()+"','"+
-                                tabMode.getValueAt(r,31).toString()+"','"+
-                                tabMode.getValueAt(r,32).toString()+"','"+
-                                tabMode.getValueAt(r,33).toString()+"','','','',''","Rekap Gizi"); 
-            }
-            
-            Map<String, Object> param = new HashMap<>();   
+            if(ceksukses==false){
+                Sequel.queryu("delete from temporary_gizi");
+                int row=tabMode.getRowCount();
+                for(int r=0;r<row;r++){  
+                    Sequel.menyimpan("temporary_gizi","'0','"+
+                                    tabMode.getValueAt(r,1).toString()+"','"+
+                                    tabMode.getValueAt(r,2).toString()+"','"+
+                                    tabMode.getValueAt(r,3).toString()+"','"+
+                                    tabMode.getValueAt(r,4).toString()+"','"+
+                                    tabMode.getValueAt(r,5).toString()+"','"+
+                                    tabMode.getValueAt(r,6).toString()+"','"+
+                                    tabMode.getValueAt(r,7).toString()+"','"+
+                                    tabMode.getValueAt(r,8).toString()+"','"+
+                                    tabMode.getValueAt(r,9).toString()+"','"+
+                                    tabMode.getValueAt(r,10).toString()+"','"+
+                                    tabMode.getValueAt(r,11).toString()+"','"+
+                                    tabMode.getValueAt(r,12).toString()+"','"+
+                                    tabMode.getValueAt(r,13).toString()+"','"+
+                                    tabMode.getValueAt(r,14).toString()+"','"+
+                                    tabMode.getValueAt(r,15).toString()+"','"+
+                                    tabMode.getValueAt(r,16).toString()+"','"+
+                                    tabMode.getValueAt(r,17).toString()+"','"+
+                                    tabMode.getValueAt(r,18).toString()+"','"+
+                                    tabMode.getValueAt(r,19).toString()+"','"+
+                                    tabMode.getValueAt(r,20).toString()+"','"+
+                                    tabMode.getValueAt(r,21).toString()+"','"+
+                                    tabMode.getValueAt(r,22).toString()+"','"+
+                                    tabMode.getValueAt(r,23).toString()+"','"+
+                                    tabMode.getValueAt(r,24).toString()+"','"+
+                                    tabMode.getValueAt(r,25).toString()+"','"+
+                                    tabMode.getValueAt(r,26).toString()+"','"+
+                                    tabMode.getValueAt(r,27).toString()+"','"+
+                                    tabMode.getValueAt(r,28).toString()+"','"+
+                                    tabMode.getValueAt(r,29).toString()+"','"+
+                                    tabMode.getValueAt(r,30).toString()+"','"+
+                                    tabMode.getValueAt(r,31).toString()+"','"+
+                                    tabMode.getValueAt(r,32).toString()+"','"+
+                                    tabMode.getValueAt(r,33).toString()+"','','','',''","Rekap Gizi"); 
+                }
+
+                Map<String, Object> param = new HashMap<>();   
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -312,7 +312,10 @@ public class DlgJumlahMacamDiet extends javax.swing.JDialog {
                 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Valid.MyReport("rptRekapGizi2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
-                this.setCursor(Cursor.getDefaultCursor());                       
+                this.setCursor(Cursor.getDefaultCursor());    
+            }else{
+                JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
+            }                       
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
