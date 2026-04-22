@@ -17186,8 +17186,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         cacherawatjalan.SetPenjab(caripenjab);
         cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
         cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
-        
         cacherawatjalan.clearDataPasien();
+        
         for (int i = 0; i < tabModekasir.getRowCount(); i++) {
             Object[] baris = new Object[tabModekasir.getColumnCount()];
             for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
@@ -17195,6 +17195,15 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
             cacherawatjalan.setDataPasien(baris);
         }
+        
+        tabModekasir.setRowCount(0);
+        TCari.setText("");
+        CrPtg.setText("");
+        CrPoli.setText("");
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        cmbStatusBayar.setSelectedIndex(0);
+        cmbStatus.setSelectedIndex(0);
         
         super.dispose();
     }

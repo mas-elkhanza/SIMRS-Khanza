@@ -19898,13 +19898,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cacherawatinap.SetKamar(BangsalCari.getText());
         
         cacherawatinap.clearDataPasien();
-        for (int i = 0; i < tabMode.getRowCount(); i++) {
+        for (i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
             cacherawatinap.setDataPasien(baris);
         }
+        
+        tabMode.setRowCount(0);
+        TCari.setText("");
+        BangsalCari.setText("");
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        DTPCari3.setDate(new Date());
+        DTPCari4.setDate(new Date());
+        cmbStatusBayar.setSelectedIndex(0);
+        R1.setSelected(true);
+        R2.setSelected(false);
+        R3.setSelected(false);
         
         super.dispose();
     }

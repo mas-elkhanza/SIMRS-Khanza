@@ -1205,7 +1205,7 @@
 					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pjanak}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dokteranak}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="91" y="454" width="5" height="10" uuid="abbd84bb-a3bf-4627-ac52-0c10c918ff4c">

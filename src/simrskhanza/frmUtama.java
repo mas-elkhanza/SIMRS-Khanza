@@ -8326,7 +8326,6 @@ public class frmUtama extends javax.swing.JFrame {
 
     private void BtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLogActionPerformed
         FlayMenu.setVisible(false);
-        
         switch (BtnLog.getText().trim()) {
             case "Log Out":
                 BtnToolReg.setEnabled(false);
@@ -8355,10 +8354,6 @@ public class frmUtama extends javax.swing.JFrame {
                 BtnMenu.setEnabled(false);
                 akses.setLogOut();
                 isTutup();
-                cacheigd.reset();
-                cacherawatjalan.reset();
-                cacherawatinap.reset();
-                cacheregistrasi.reset();
                 break;
             case "Log In":
                 isTutup();
@@ -8374,7 +8369,11 @@ public class frmUtama extends javax.swing.JFrame {
         }else if(edPwd.getText().trim().equals("")){
             Valid.textKosong(edPwd,"Password");
         }else {
-            try {                               
+            try {   
+                cacheigd.reset();
+                cacherawatjalan.reset();
+                cacherawatinap.reset();
+                cacheregistrasi.reset();
                 akses.setData(edAdmin.getText(),edPwd.getText());        
                 if(akses.getjml1()>=1){    
                     BtnMenu.setEnabled(true);

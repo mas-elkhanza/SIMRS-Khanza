@@ -17776,15 +17776,22 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         cacheregistrasi.SetKeyWord(TCari.getText());
         cacheregistrasi.SetDokter(CrDokter.getText());
         cacheregistrasi.SetPoli(CrPoli.getText());
-        
         cacheregistrasi.clearDataPasien();
-        for (int i = 0; i < tabMode.getRowCount(); i++) {
+        
+        for (i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
             cacheregistrasi.setDataPasien(baris);
         }
+        
+        tabMode.setRowCount(0);
+        TCari.setText("");
+        CrDokter.setText("");
+        CrPoli.setText("");
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
         
         super.dispose();
     }

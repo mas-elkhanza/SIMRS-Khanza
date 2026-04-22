@@ -12,22 +12,22 @@ public class cacheregistrasi {
     private static final ArrayList<Object[]> DataPasien = new ArrayList<>();
     
     public static void SetTanggalAwal(Date tanggal) {TanggalAwal=tanggal;}
-    public static Date getTanggalAwal(){return cacheregistrasi.TanggalAwal;}
+    public static Date getTanggalAwal(){return TanggalAwal;}
     
     public static void SetTanggalAkhir(Date tanggal) {TanggalAkhir=tanggal;}
-    public static Date getTanggalAkhir(){return cacheregistrasi.TanggalAkhir;}
+    public static Date getTanggalAkhir(){return TanggalAkhir;}
     
     public static void SetKeyWord(String data) {KeyWord=data;}
-    public static String getKeyWord(){return cacheregistrasi.KeyWord;}
+    public static String getKeyWord(){return KeyWord;}
     
     public static void SetDokter(String data) {Dokter=data;}
-    public static String getDokter(){return cacheregistrasi.Dokter;}
+    public static String getDokter(){return Dokter;}
     
     public static void SetPoli(String data) {Poli=data;}
-    public static String getPoli(){return cacheregistrasi.Poli;}
+    public static String getPoli(){return Poli;}
     
     public static void setDataPasien(Object[] baris) { DataPasien.add(baris); }
-    public static ArrayList<Object[]> getDataPasien() { return cacheregistrasi.DataPasien; }
+    public static ArrayList<Object[]> getDataPasien() { return DataPasien; }
     public static void clearDataPasien() { DataPasien.clear(); }
     public static void reset() {
         TanggalAwal = null;
