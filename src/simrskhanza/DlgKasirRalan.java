@@ -59,7 +59,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9090,10 +9089,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
         
         if(!cacherawatjalan.getDataPasien().isEmpty()){
-            for(Object[] baris : cacherawatjalan.getDataPasien()){
+            for (Object[] baris : cacherawatjalan.getDataPasien()) {
                 tabModekasir.addRow(baris);
             }
-            LCount.setText(""+tabModekasir.getRowCount());
+            LCount.setText("" + tabModekasir.getRowCount());
             cacherawatjalan.clearDataPasien();
         }else{
             tampilkasir();
@@ -17188,17 +17187,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
         cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
         
-        ArrayList<Object[]> temp = new ArrayList<>();
+        cacherawatjalan.clearDataPasien();
         for (int i = 0; i < tabModekasir.getRowCount(); i++) {
             Object[] baris = new Object[tabModekasir.getColumnCount()];
             for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
                 baris[j] = tabModekasir.getValueAt(i, j);
             }
-            temp.add(baris);
+            cacherawatjalan.setDataPasien(baris);
         }
-
-        cacherawatjalan.clearDataPasien();
-        cacherawatjalan.SetDataPasien(temp);
         
         super.dispose();
     }

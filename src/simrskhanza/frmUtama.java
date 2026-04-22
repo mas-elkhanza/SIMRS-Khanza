@@ -664,6 +664,10 @@ import dapur.DapurSirkulasiBarang2;
 import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
 import dapur.DapurVerifikasiPenerimaan;
+import fungsi.cacheigd;
+import fungsi.cacherawatinap;
+import fungsi.cacherawatjalan;
+import fungsi.cacheregistrasi;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
 import inventaris.InventarisSirkulasiCSSD;
@@ -8351,6 +8355,10 @@ public class frmUtama extends javax.swing.JFrame {
                 BtnMenu.setEnabled(false);
                 akses.setLogOut();
                 isTutup();
+                cacheigd.reset();
+                cacherawatjalan.reset();
+                cacherawatinap.reset();
+                cacheregistrasi.reset();
                 break;
             case "Log In":
                 isTutup();

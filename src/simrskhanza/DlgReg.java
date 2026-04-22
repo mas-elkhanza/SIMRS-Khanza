@@ -92,7 +92,6 @@ import fungsi.catatanpasien;
 import inventory.DlgCopyResep;
 import java.awt.event.KeyAdapter;
 import java.awt.event.WindowAdapter;
-import java.util.ArrayList;
 import javax.swing.SwingWorker;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
@@ -9082,10 +9081,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
         
         if(!cacheregistrasi.getDataPasien().isEmpty()){
-            for(Object[] baris : cacheregistrasi.getDataPasien()){
+            for (Object[] baris : cacheregistrasi.getDataPasien()) {
                 tabMode.addRow(baris);
             }
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
             cacheregistrasi.clearDataPasien();
         }else{
             tampil();
@@ -17778,17 +17777,14 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         cacheregistrasi.SetDokter(CrDokter.getText());
         cacheregistrasi.SetPoli(CrPoli.getText());
         
-        ArrayList<Object[]> temp = new ArrayList<>();
+        cacheregistrasi.clearDataPasien();
         for (int i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
-            temp.add(baris);
+            cacheregistrasi.setDataPasien(baris);
         }
-
-        cacheregistrasi.clearDataPasien();
-        cacheregistrasi.SetDataPasien(temp);
         
         super.dispose();
     }

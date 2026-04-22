@@ -9,7 +9,7 @@ import java.util.Date;
 public class cacheregistrasi {
     private static Date TanggalAwal=null,TanggalAkhir=null;
     private static String KeyWord=null,Dokter=null,Poli=null;
-    private static ArrayList<Object[]> DataPasien = new ArrayList<>();
+    private static final ArrayList<Object[]> DataPasien = new ArrayList<>();
     
     public static void SetTanggalAwal(Date tanggal) {TanggalAwal=tanggal;}
     public static Date getTanggalAwal(){return cacheregistrasi.TanggalAwal;}
@@ -26,7 +26,15 @@ public class cacheregistrasi {
     public static void SetPoli(String data) {Poli=data;}
     public static String getPoli(){return cacheregistrasi.Poli;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
-    public static ArrayList<Object[]> getDataPasien(){return cacheregistrasi.DataPasien;}
-    public static void clearDataPasien(){DataPasien.clear();}
+    public static void setDataPasien(Object[] baris) { DataPasien.add(baris); }
+    public static ArrayList<Object[]> getDataPasien() { return cacheregistrasi.DataPasien; }
+    public static void clearDataPasien() { DataPasien.clear(); }
+    public static void reset() {
+        TanggalAwal = null;
+        TanggalAkhir = null;
+        KeyWord = null;
+        Dokter = null;
+        Poli = null;
+        DataPasien.clear();
+    }
 }

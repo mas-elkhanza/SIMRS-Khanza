@@ -64,7 +64,6 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -8035,10 +8034,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setSelected(cacherawatinap.getPilihanTanggalPulang());
         
         if(!cacherawatinap.getDataPasien().isEmpty()){
-            for(Object[] baris : cacherawatinap.getDataPasien()){
+            for (Object[] baris : cacherawatinap.getDataPasien()) {
                 tabMode.addRow(baris);
             }
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
             cacherawatinap.clearDataPasien();
         }else{
             tampil();
@@ -19898,16 +19897,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
         cacherawatinap.SetKamar(BangsalCari.getText());
         
-        ArrayList<Object[]> temp = new ArrayList<>();
+        cacherawatinap.clearDataPasien();
         for (int i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
-            temp.add(baris);
+            cacherawatinap.setDataPasien(baris);
         }
-        cacherawatinap.clearDataPasien();
-        cacherawatinap.SetDataPasien(temp);
         
         super.dispose();
     }

@@ -10,7 +10,7 @@ public class cacherawatinap {
     private static boolean PilihanBelumPulang=true,PilihanTanggalMasuk=false,PilihanTanggalPulang=false;
     private static Date TanggalMasuk1=null,TanggalMasuk2=null,TanggalPulang1=null,TanggalPulang2=null;
     private static String KeyWord=null,StatusBayar=null,Kamar=null;
-    private static ArrayList<Object[]> DataPasien = new ArrayList<>();
+    private static final ArrayList<Object[]> DataPasien = new ArrayList<>();
     
     public static void SetPilihanBelumPulang(boolean status) {PilihanBelumPulang=status;}
     public static boolean getPilihanBelumPulang(){return cacherawatinap.PilihanBelumPulang;}
@@ -42,7 +42,17 @@ public class cacherawatinap {
     public static void SetKamar(String data) {Kamar=data;}
     public static String getKamar(){return cacherawatinap.Kamar;}
     
-    public static void SetDataPasien(ArrayList<Object[]> data) {DataPasien = new ArrayList<>(data);}
-    public static ArrayList<Object[]> getDataPasien(){return cacherawatinap.DataPasien;}
-    public static void clearDataPasien(){DataPasien.clear();}
+    public static void setDataPasien(Object[] baris) { DataPasien.add(baris); }
+    public static ArrayList<Object[]> getDataPasien() { return cacherawatinap.DataPasien; }
+    public static void clearDataPasien() { DataPasien.clear(); }
+    public static void reset() {
+        TanggalMasuk1=null;
+        TanggalMasuk2=null;
+        TanggalPulang1=null;
+        TanggalPulang2=null;
+        KeyWord=null;
+        StatusBayar=null;
+        Kamar=null;
+        DataPasien.clear();
+    }
 }

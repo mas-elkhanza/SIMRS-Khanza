@@ -72,7 +72,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -7008,10 +7007,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
         
         if(!cacheigd.getDataPasien().isEmpty()){
-            for(Object[] baris : cacheigd.getDataPasien()){
+            for (Object[] baris : cacheigd.getDataPasien()) {
                 tabMode.addRow(baris);
             }
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
             cacheigd.clearDataPasien();
         }else{
             tampil();
@@ -13279,17 +13278,14 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         cacheigd.SetTanggalAkhir(DTPCari2.getDate());
         cacheigd.SetKeyWord(TCari.getText());
         
-        ArrayList<Object[]> temp = new ArrayList<>();
+        cacheigd.clearDataPasien();
         for (int i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
-            temp.add(baris);
+            cacheigd.setDataPasien(baris);
         }
-
-        cacheigd.clearDataPasien();
-        cacheigd.SetDataPasien(temp);
         
         super.dispose();
     }
