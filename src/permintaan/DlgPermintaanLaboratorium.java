@@ -1567,11 +1567,24 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_PenjabKeyPressed
 
     private void tbTarifPKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTarifPKMouseClicked
-        if(tabMode2.getRowCount()!=0){
+        if (tabMode2.getRowCount() > 0) {
             try {
+
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Valid.tabelKosong(tabMode);
-                runBackground(() -> tampil());
-            } catch (java.lang.NullPointerException e) {
+
+                runBackground(() -> {
+                    tampil();
+
+                    javax.swing.SwingUtilities.invokeLater(() -> {
+                        ppSemuaActionPerformed(null);
+                        setCursor(Cursor.getDefaultCursor());
+                    });
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                this.setCursor(Cursor.getDefaultCursor());
             }
         }
     }//GEN-LAST:event_tbTarifPKMouseClicked
