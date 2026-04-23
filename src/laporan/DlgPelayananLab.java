@@ -3,12 +3,11 @@
  * and open the template in the editor.
  */
 
-/*
+ /*
  * DlgLhtBiaya.java
  *
  * Created on 12 Jul 10, 16:21:34
  */
-
 package laporan;
 
 import fungsi.WarnaTable;
@@ -20,94 +19,136 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+import jxl.Sheet;
+import org.apache.poi.hssf.record.formula.functions.Cell;
+import org.apache.poi.hssf.record.formula.functions.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
  * @author perpustakaan
  */
 public final class DlgPelayananLab extends javax.swing.JDialog {
+
     private final DefaultTableModel tabMode;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private Connection koneksi = koneksiDB.condb();
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private volatile boolean ceksukses = false;
-    private int i=0,limabelas=0,tigapuluh=0,satujam=0,lebihsatujam=0,lebihduajam=0,
-            limabelas2=0,tigapuluh2=0,satujam2=0,lebihsatujam2=0,lebihduajam2=0,
-            limabelas3=0,tigapuluh3=0,satujam3=0,lebihsatujam3=0,lebihduajam3=0;
-    private double lamajam=0,lamajam2=0,lamajam3=0;
-    /** Creates new form DlgLhtBiaya
+    private int i = 0, limabelas = 0, tigapuluh = 0, satujam = 0, lebihsatujam = 0, lebihduajam = 0,
+            limabelas2 = 0, tigapuluh2 = 0, satujam2 = 0, lebihsatujam2 = 0, lebihduajam2 = 0,
+            limabelas3 = 0, tigapuluh3 = 0, satujam3 = 0, lebihsatujam3 = 0, lebihduajam3 = 0;
+    private double lamajam = 0, lamajam2 = 0, lamajam3 = 0;
+
+    /**
+     * Creates new form DlgLhtBiaya
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public DlgPelayananLab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(885,674);
+        this.setLocation(8, 1);
+        setSize(885, 674);
 
-        tabMode=new DefaultTableModel(null,new Object[]{
-            "No.","No.RM","Nama Pasien","Dokter Perujuk","No.Order","Jam Permintaan","Jam Sampel",
-            "Jam Hasil","Permintaan-Sampel(m)","Sampel-Hasil(m)","Permintaan-Hasil(m)"
-            }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode = new DefaultTableModel(null, new Object[]{
+            "No.", "No.RM", "Nama Pasien", "Dokter Perujuk", "No.Order", "Jam Permintaan", "Jam Sampel",
+            "Jam Hasil", "Permintaan-Sampel(m)", "Sampel-Hasil(m)", "Permintaan-Hasil(m)", "Jenis Pemeriksaan"
+        }) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
         tbBangsal.setModel(tabMode);
         //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
-        tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBangsal.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(35);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(70);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(185);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(185);
-            }else if(i==4){
+            } else if (i == 4) {
+//                column.setPreferredWidth(110);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 5) {
                 column.setPreferredWidth(110);
-            }else if(i==5){
+            } else if (i == 6) {
                 column.setPreferredWidth(110);
-            }else if(i==6){
+            } else if (i == 7) {
                 column.setPreferredWidth(110);
-            }else if(i==7){
+            } else if (i == 8) {
                 column.setPreferredWidth(110);
-            }else if(i==8){
+            } else if (i == 9) {
                 column.setPreferredWidth(110);
-            }else if(i==9){
+            } else if (i == 10) {
                 column.setPreferredWidth(110);
-            }else if(i==10){
-                column.setPreferredWidth(110);
+            } else if (i == 11) {
+                column.setPreferredWidth(180);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-    }    
+        TKd.setDocument(new batasInput((byte) 20).getKata(TKd));
+        TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
 
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -136,11 +177,6 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Laboratorium Patologi Klinis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -244,10 +280,9 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
         BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.setPreferredSize(new java.awt.Dimension(40, 30));
         BtnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPrintActionPerformed(evt);
@@ -262,10 +297,9 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(40, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -287,44 +321,44 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            
-            Map<String, Object> param = new HashMap<>();         
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("tanggal",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());
+        } else if (tabMode.getRowCount() != 0) {
+
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("tanggal", Tgl1.getSelectedItem() + " s.d. " + Tgl2.getSelectedItem());
             Sequel.queryu("delete from temporary_lama_pelayanan_radiologi");
-            for(int r=0;r<tabMode.getRowCount();r++){ 
-                Sequel.menyimpan("temporary_lama_pelayanan_radiologi","'0','"+
-                    tabMode.getValueAt(r,0).toString()+"','"+
-                    tabMode.getValueAt(r,1).toString()+"','"+
-                    tabMode.getValueAt(r,2).toString()+"','"+
-                    tabMode.getValueAt(r,3).toString()+"','"+
-                    tabMode.getValueAt(r,4).toString()+"','"+
-                    tabMode.getValueAt(r,5).toString()+"','"+
-                    tabMode.getValueAt(r,6).toString()+"','"+
-                    tabMode.getValueAt(r,7).toString()+"','"+
-                    tabMode.getValueAt(r,8).toString()+"','"+
-                    tabMode.getValueAt(r,9).toString()+"','"+
-                    tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+            for (int r = 0; r < tabMode.getRowCount(); r++) {
+                Sequel.menyimpan("temporary_lama_pelayanan_radiologi", "'0','"
+                        + tabMode.getValueAt(r, 0).toString() + "','"
+                        + tabMode.getValueAt(r, 1).toString() + "','"
+                        + tabMode.getValueAt(r, 2).toString() + "','"
+                        + tabMode.getValueAt(r, 3).toString() + "','"
+                        + tabMode.getValueAt(r, 4).toString() + "','"
+                        + tabMode.getValueAt(r, 5).toString() + "','"
+                        + tabMode.getValueAt(r, 6).toString() + "','"
+                        + tabMode.getValueAt(r, 7).toString() + "','"
+                        + tabMode.getValueAt(r, 8).toString() + "','"
+                        + tabMode.getValueAt(r, 9).toString() + "','"
+                        + tabMode.getValueAt(r, 10).toString() + "','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Rekap Nota Pembayaran");
             }
-               
-            Valid.MyReport("rptPelayananLab.jasper","report","::[ Laporan Lama Pelayanan Laboratorium ]::",param);
+
+            Valid.MyReport("rptPelayananLab.jasper", "report", "::[ Laporan Lama Pelayanan Laboratorium ]::", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
-        }else{
+        } else {
             //Valid.pindah(evt, BtnHapus, BtnAll);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
@@ -334,13 +368,15 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             dispose();
-        }else{Valid.pindah(evt,BtnKeluar,TKd);}
+        } else {
+            Valid.pindah(evt, BtnKeluar, TKd);
+        }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
-        if(tabMode.getRowCount()!=0){
+        if (tabMode.getRowCount() != 0) {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
@@ -349,8 +385,8 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 }//GEN-LAST:event_tbBangsalMouseClicked
 
     private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+        if (tabMode.getRowCount() != 0) {
+            if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_UP) || (evt.getKeyCode() == KeyEvent.VK_DOWN)) {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
@@ -360,70 +396,45 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
 }//GEN-LAST:event_tbBangsalKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-       runBackground(() ->tampil());
+    tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            runBackground(() ->tampil());
-            this.setCursor(Cursor.getDefaultCursor());
-        }else{
-            Valid.pindah(evt, TKd, BtnPrint);
-        }
+    if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        tampil();
+        this.setCursor(Cursor.getDefaultCursor());
+    } else {
+        Valid.pindah(evt, TKd, BtnPrint);
+    }
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BtnCariActionPerformed(null);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             BtnKeluar.requestFocus();
         }
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-           TCari.setText("");
-           runBackground(() ->tampil());
+        TCari.setText("");
+        tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnAllActionPerformed(null);
-        }else{
-            
+        } else {
+
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        }  
-    }//GEN-LAST:event_formWindowOpened
-
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             DlgPelayananLab dialog = new DlgPelayananLab(new javax.swing.JFrame(), true);
@@ -456,154 +467,238 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){        
-        try{   
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Valid.tabelKosong(tabMode);   
-            limabelas=0;tigapuluh=0;satujam=0;lebihsatujam=0;lebihduajam=0;
-            limabelas2=0;tigapuluh2=0;satujam2=0;lebihsatujam2=0;lebihduajam2=0;
-            limabelas3=0;tigapuluh3=0;satujam3=0;lebihsatujam3=0;lebihduajam3=0;
-            ps=koneksi.prepareStatement(
-                "select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,permintaan_lab.noorder," +
-                "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan,permintaan_lab.tgl_sampel,"+
-                "permintaan_lab.jam_sampel,permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil," +
-                "round((TIME_TO_SEC(concat(permintaan_lab.tgl_sampel,' ',permintaan_lab.jam_sampel))-TIME_TO_SEC(concat(permintaan_lab.tgl_permintaan,' ',permintaan_lab.jam_permintaan)))/60,2) as permintaansampel, " +
-                "round((TIME_TO_SEC(concat(permintaan_lab.tgl_hasil,' ',permintaan_lab.jam_hasil))-TIME_TO_SEC(concat(permintaan_lab.tgl_sampel,' ',permintaan_lab.jam_sampel)))/60,2) as sampelhasil, " +
-                "round((TIME_TO_SEC(concat(permintaan_lab.tgl_hasil,' ',permintaan_lab.jam_hasil))-TIME_TO_SEC(concat(permintaan_lab.tgl_permintaan,' ',permintaan_lab.jam_permintaan)))/60,2) as permintaanhasil " +
-                "from reg_periksa inner join dokter inner join pasien inner join permintaan_lab on reg_periksa.kd_dokter=dokter.kd_dokter " +
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=permintaan_lab.no_rawat where "+
-                "permintaan_lab.tgl_sampel<>'0000-00-00' and permintaan_lab.tgl_hasil<>'0000-00-00' and permintaan_lab.tgl_permintaan between ? and ? and "+
-                "(permintaan_lab.noorder like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?)  "+
-                "order by permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan");
+    public void tampil() {
+        try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Valid.tabelKosong(tabMode);
+
+            limabelas = 0;
+            tigapuluh = 0;
+            satujam = 0;
+            lebihsatujam = 0;
+            lebihduajam = 0;
+            limabelas2 = 0;
+            tigapuluh2 = 0;
+            satujam2 = 0;
+            lebihsatujam2 = 0;
+            lebihduajam2 = 0;
+            limabelas3 = 0;
+            tigapuluh3 = 0;
+            satujam3 = 0;
+            lebihsatujam3 = 0;
+            lebihduajam3 = 0;
+
+            ps = koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis, pasien.nm_pasien, dokter.nm_dokter, permintaan_lab.noorder, "
+                    + "permintaan_lab.tgl_permintaan, permintaan_lab.jam_permintaan, permintaan_lab.tgl_sampel, "
+                    + "permintaan_lab.jam_sampel, permintaan_lab.tgl_hasil, permintaan_lab.jam_hasil, "
+                    + "round((TIME_TO_SEC(concat(permintaan_lab.tgl_sampel,' ',permintaan_lab.jam_sampel)) - "
+                    + "TIME_TO_SEC(concat(permintaan_lab.tgl_permintaan,' ',permintaan_lab.jam_permintaan))) / 60,2) as permintaansampel, "
+                    + "round((TIME_TO_SEC(concat(permintaan_lab.tgl_hasil,' ',permintaan_lab.jam_hasil)) - "
+                    + "TIME_TO_SEC(concat(permintaan_lab.tgl_sampel,' ',permintaan_lab.jam_sampel))) / 60,2) as sampelhasil, "
+                    + "round((TIME_TO_SEC(concat(permintaan_lab.tgl_hasil,' ',permintaan_lab.jam_hasil)) - "
+                    + "TIME_TO_SEC(concat(permintaan_lab.tgl_permintaan,' ',permintaan_lab.jam_permintaan))) / 60,2) as permintaanhasil, "
+                    + "permintaan_detail_permintaan_lab.kd_jenis_prw, "
+                    + "jns_perawatan_lab.nm_perawatan "
+                    + "from reg_periksa "
+                    + "inner join dokter on reg_periksa.kd_dokter = dokter.kd_dokter "
+                    + "inner join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
+                    + "inner join permintaan_lab on reg_periksa.no_rawat = permintaan_lab.no_rawat "
+                    + "inner join permintaan_detail_permintaan_lab on permintaan_lab.noorder = permintaan_detail_permintaan_lab.noorder "
+                    + "inner join jns_perawatan_lab on permintaan_detail_permintaan_lab.kd_jenis_prw = jns_perawatan_lab.kd_jenis_prw "
+                    + "where permintaan_lab.tgl_sampel <> '0000-00-00' "
+                    + "and permintaan_lab.tgl_hasil <> '0000-00-00' "
+                    + "and permintaan_lab.tgl_permintaan between ? and ? "
+                    + "and (permintaan_lab.noorder like ? or dokter.nm_dokter like ? "
+                    + "or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?) "
+                    + // 🔥 INI YANG MENGHILANGKAN DOBEL
+                    "group by permintaan_lab.noorder, permintaan_detail_permintaan_lab.kd_jenis_prw "
+                    + "order by permintaan_lab.noorder, permintaan_lab.tgl_permintaan, permintaan_lab.jam_permintaan"
+            );
+
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                i=1;lamajam=0;lamajam2=0;lamajam3=0;
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        i,rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),
-                        rs.getString("noorder"),rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan"),
-                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("tgl_hasil")+" "+rs.getString("jam_hasil"),
-                        rs.getString("permintaansampel"),rs.getString("sampelhasil"),rs.getString("permintaanhasil")
-                    });
-                    i++;
-                    lamajam=lamajam+rs.getDouble("permintaansampel");
-                    if(rs.getDouble("permintaansampel")<=15){
-                        limabelas++;
-                    }else if((rs.getDouble("permintaansampel")>15)&&(rs.getDouble("permintaansampel")<=30)){
-                        tigapuluh++;
-                    }else if((rs.getDouble("permintaansampel")>30)&&(rs.getDouble("permintaansampel")<=60)){
-                        satujam++;
-                    }else if((rs.getDouble("permintaansampel")>60)&&(rs.getDouble("permintaansampel")<=120)){
-                        lebihsatujam++;
-                    }else if(rs.getDouble("permintaansampel")>120){
-                        lebihduajam++;
+                ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                ps.setString(3, "%" + TCari.getText().trim() + "%");
+                ps.setString(4, "%" + TCari.getText().trim() + "%");
+                ps.setString(5, "%" + TCari.getText().trim() + "%");
+                ps.setString(6, "%" + TCari.getText().trim() + "%");
+                rs = ps.executeQuery();
+
+                i = 1;
+                lamajam = 0;
+                lamajam2 = 0;
+                lamajam3 = 0;
+                String lastOrder = "";
+
+                while (rs.next()) {
+
+                    String currentOrder = rs.getString("noorder");
+
+                    // HEADER ORDER (muncul 1x saja)
+                    if (!currentOrder.equals(lastOrder)) {
+
+                        tabMode.addRow(new Object[]{
+                            i,
+                            rs.getString("no_rkm_medis"),
+                            rs.getString("nm_pasien"),
+                            rs.getString("nm_dokter"),
+                            currentOrder,
+                            rs.getString("tgl_permintaan") + " " + rs.getString("jam_permintaan"),
+                            rs.getString("tgl_sampel") + " " + rs.getString("jam_sampel"),
+                            rs.getString("tgl_hasil") + " " + rs.getString("jam_hasil"),
+                            rs.getString("permintaansampel"),
+                            rs.getString("sampelhasil"),
+                            rs.getString("permintaanhasil"),
+                            "" // kolom nm_perawatan kosong di header
+                        });
+
+                        // Hitung statistik hanya 1x per order
+                        double p1 = rs.getDouble("permintaansampel");
+                        double p2 = rs.getDouble("sampelhasil");
+                        double p3 = rs.getDouble("permintaanhasil");
+
+                        lamajam += p1;
+                        lamajam2 += p2;
+                        lamajam3 += p3;
+
+                        // klasifikasi waktu
+                        if (p1 <= 15) {
+                            limabelas++;
+                        } else if (p1 <= 30) {
+                            tigapuluh++;
+                        } else if (p1 <= 60) {
+                            satujam++;
+                        } else if (p1 <= 120) {
+                            lebihsatujam++;
+                        } else {
+                            lebihduajam++;
+                        }
+
+                        if (p2 <= 15) {
+                            limabelas2++;
+                        } else if (p2 <= 30) {
+                            tigapuluh2++;
+                        } else if (p2 <= 60) {
+                            satujam2++;
+                        } else if (p2 <= 120) {
+                            lebihsatujam2++;
+                        } else {
+                            lebihduajam2++;
+                        }
+
+                        if (p3 <= 15) {
+                            limabelas3++;
+                        } else if (p3 <= 30) {
+                            tigapuluh3++;
+                        } else if (p3 <= 60) {
+                            satujam3++;
+                        } else if (p3 <= 120) {
+                            lebihsatujam3++;
+                        } else {
+                            lebihduajam3++;
+                        }
+
+                        i++;
+                        lastOrder = currentOrder;
                     }
-                    
-                    lamajam2=lamajam2+rs.getDouble("sampelhasil");
-                    if(rs.getDouble("sampelhasil")<=15){
-                        limabelas2++;
-                    }else if((rs.getDouble("sampelhasil")>15)&&(rs.getDouble("sampelhasil")<=30)){
-                        tigapuluh2++;
-                    }else if((rs.getDouble("sampelhasil")>30)&&(rs.getDouble("sampelhasil")<=60)){
-                        satujam2++;
-                    }else if((rs.getDouble("sampelhasil")>60)&&(rs.getDouble("sampelhasil")<=120)){
-                        lebihsatujam2++;
-                    }else if(rs.getDouble("sampelhasil")>120){
-                        lebihduajam2++;
-                    }
-                    
-                    lamajam3=lamajam3+rs.getDouble("permintaanhasil");
-                    if(rs.getDouble("permintaanhasil")<=15){
-                        limabelas3++;
-                    }else if((rs.getDouble("permintaanhasil")>15)&&(rs.getDouble("permintaanhasil")<=30)){
-                        tigapuluh3++;
-                    }else if((rs.getDouble("permintaanhasil")>30)&&(rs.getDouble("permintaanhasil")<=60)){
-                        satujam3++;
-                    }else if((rs.getDouble("permintaanhasil")>60)&&(rs.getDouble("permintaanhasil")<=120)){
-                        lebihsatujam3++;
-                    }else if(rs.getDouble("permintaanhasil")>120){
-                        lebihduajam3++;
-                    }
-                    
-                }    
-                if(lamajam>0){
+
+                    // DETAIL PEMERIKSAAN (di bawah header)
                     tabMode.addRow(new Object[]{
-                        "","","Rata-rata (Menit)",": ","","","","",""+Valid.SetAngka6(lamajam/(i-1)),""+Valid.SetAngka6(lamajam2/(i-1)),""+Valid.SetAngka6(lamajam3/(i-1))
+                        "", "", "", "", "", "", "", "", "", "", "",
+                        "   - " + rs.getString("nm_perawatan")
                     });
+                }
+
+                // RATA-RATA & STATISTIK
+                if (lamajam > 0) {
+                    int totalOrder = i - 1;
+
                     tabMode.addRow(new Object[]{
-                        "","","0 - 15 Menit",": ","","","","",""+limabelas,""+limabelas2,""+limabelas3
+                        "", "", "Rata-rata (Menit)", ": ", "", "", "", "",
+                        Valid.SetAngka6(lamajam / totalOrder),
+                        Valid.SetAngka6(lamajam2 / totalOrder),
+                        Valid.SetAngka6(lamajam3 / totalOrder),
+                        ""
                     });
-                    tabMode.addRow(new Object[]{
-                        "","",">15 - <=30 Menit",": ","","","","",""+tigapuluh,""+tigapuluh2,""+tigapuluh3
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">30 - <=60 Menit",": ","","","","",""+satujam,""+satujam2,""+satujam3
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">60 - <=120 Menit",": ","","","","",""+lebihsatujam,""+lebihsatujam2,""+lebihsatujam3
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">120 Menit",": ","","","","",""+lebihduajam,""+lebihduajam2,""+lebihduajam3
-                    });
-                }                    
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
+
+                    tabMode.addRow(new Object[]{"", "", "0 - 15 Menit", ": ", "", "", "", "", limabelas, limabelas2, limabelas3, ""});
+                    tabMode.addRow(new Object[]{"", "", ">15 - <=30 Menit", ": ", "", "", "", "", tigapuluh, tigapuluh2, tigapuluh3, ""});
+                    tabMode.addRow(new Object[]{"", "", ">30 - <=60 Menit", ": ", "", "", "", "", satujam, satujam2, satujam3, ""});
+                    tabMode.addRow(new Object[]{"", "", ">60 - <=120 Menit", ": ", "", "", "", "", lebihsatujam, lebihsatujam2, lebihsatujam3, ""});
+                    tabMode.addRow(new Object[]{"", "", ">120 Menit", ": ", "", "", "", "", lebihduajam, lebihduajam2, lebihduajam3, ""});
+                }
+
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
+
             this.setCursor(Cursor.getDefaultCursor());
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
         }
     }
 
     private void getData() {
-        int row=tbBangsal.getSelectedRow();
-        if(row!= -1){
-            TKd.setText(tabMode.getValueAt(row,0).toString());
+        int row = tbBangsal.getSelectedRow();
+        if (row != -1) {
+            TKd.setText(tabMode.getValueAt(row, 0).toString());
         }
     }
 
-    private void runBackground(Runnable task) {
-        if (ceksukses) return;
-        if (executor.isShutdown() || executor.isTerminated()) return;
-        if (!isDisplayable()) return;
+    public void exportToExcel(JTable table) {
+         try {
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle("Simpan File CSV");
+            fc.setSelectedFile(new File("Laporan_Lab.csv"));
 
-        ceksukses = true;
-        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 
-        try {
-            executor.submit(() -> {
-                try {
-                    task.run();
-                } finally {
-                    ceksukses = false;
-                    SwingUtilities.invokeLater(() -> {
-                        if (isDisplayable()) {
-                            setCursor(Cursor.getDefaultCursor());
-                        }
-                    });
+                File file = fc.getSelectedFile();
+                FileWriter fw = new FileWriter(file, false);
+
+                // HEADER
+                for (int i = 0; i < table.getColumnCount(); i++) {
+                    fw.write(table.getColumnName(i));
+                    if (i < table.getColumnCount() - 1) {
+                        fw.write(";");
+                    }
                 }
-            });
-        } catch (RejectedExecutionException ex) {
-            ceksukses = false;
+                fw.write("\n");
+
+                // DATA
+                for (int r = 0; r < table.getRowCount(); r++) {
+                    for (int c = 0; c < table.getColumnCount(); c++) {
+
+                        Object val = table.getValueAt(r, c);
+                        String data = val == null ? "" : val.toString();
+
+                        // 🔥 Kolom No RM (misal kolom 1)
+                        if (c == 1) {
+                            data = "=\"" + data + "\"";
+                        }
+
+                        fw.write(data);
+
+                        if (c < table.getColumnCount() - 1) {
+                            fw.write(";");
+                        }
+                    }
+                    fw.write("\n");
+                }
+
+                fw.close();
+                JOptionPane.showMessageDialog(null, "Export CSV berhasil ✅");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error : " + e);
         }
-    }
-    
-    @Override
-    public void dispose() {
-        executor.shutdownNow();
-        super.dispose();
     }
 }

@@ -19,6 +19,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,6 +47,7 @@ import kepegawaian.DlgCariDokter;
 import laporan.DlgBerkasRawat;
 import rekammedis.MasterCariTemplateHasilRadiologi;
 import rekammedis.RMRiwayatPerawatan;
+import wa.GoWAService;
 
 public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeDicom;
@@ -233,6 +239,8 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         FormPass2 = new widget.PanelBiasa();
         btnAmbilPhoto = new widget.Button();
         BtnRefreshPhoto = new widget.Button();
+        BtnKirimGOWa = new widget.Button();
+        BtnKirimGOWAPT = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
         FormHasilRadiologi = new widget.PanelBiasa();
@@ -872,6 +880,32 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
             }
         });
         FormPass2.add(BtnRefreshPhoto);
+
+        BtnKirimGOWa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/16whatsapp.png"))); // NOI18N
+        BtnKirimGOWa.setMnemonic('K');
+        BtnKirimGOWa.setText("Kirim WA");
+        BtnKirimGOWa.setToolTipText("Alt+K");
+        BtnKirimGOWa.setName("BtnKirimGOWa"); // NOI18N
+        BtnKirimGOWa.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKirimGOWa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimGOWaActionPerformed(evt);
+            }
+        });
+        FormPass2.add(BtnKirimGOWa);
+
+        BtnKirimGOWAPT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/16whatsapp.png"))); // NOI18N
+        BtnKirimGOWAPT.setMnemonic('K');
+        BtnKirimGOWAPT.setText("Kirim PT");
+        BtnKirimGOWAPT.setToolTipText("Alt+K");
+        BtnKirimGOWAPT.setName("BtnKirimGOWAPT"); // NOI18N
+        BtnKirimGOWAPT.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKirimGOWAPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimGOWAPTActionPerformed(evt);
+            }
+        });
+        FormPass2.add(BtnKirimGOWAPT);
 
         FormPhoto.add(FormPass2, java.awt.BorderLayout.PAGE_END);
 
@@ -2205,6 +2239,245 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }//GEN-LAST:event_btnDicomRouterActionPerformed
 
+    private void BtnKirimGOWaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimGOWaActionPerformed
+        if (tbDokter.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data terlebih dahulu...!!!!");
+            return;
+        }
+
+        String noRawat = NoRawatDicari.getText();
+        String tgl = TglDicari.getText();
+        String jam = JamDicari.getText();
+
+        String noRM = Sequel.cariIsi(
+                "select no_rkm_medis from reg_periksa where no_rawat=?",
+                noRawat
+        );
+
+        String namaPasien = Sequel.cariIsi(
+                "select nm_pasien from pasien where no_rkm_medis=?",
+                noRM
+        );
+
+        String caption
+                = "*HASIL PEMERIKSAAN RADIOLOGI*\n\n"
+                + "🏥 " + akses.getnamars() + "\n\n"
+                + "Nama Pasien : " + namaPasien + "\n"
+                + "Tanggal Periksa : " + tgl + "\n\n"
+                + "Berikut hasil gambar radiologi Anda.";
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            File tmpFolder = new File("tmpWA");
+            if (!tmpFolder.exists()) {
+                tmpFolder.mkdirs();
+            }
+
+            ps = koneksi.prepareStatement(
+                    "select lokasi_gambar from gambar_radiologi "
+                    + "where no_rawat=? and tgl_periksa=? and jam=? "
+                    + "order by lokasi_gambar"
+            );
+
+            ps.setString(1, noRawat);
+            ps.setString(2, tgl);
+            ps.setString(3, jam);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String lokasi = rs.getString("lokasi_gambar");
+
+                String url
+                        = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":"
+                        + koneksiDB.PORTWEB() + "/"
+                        + koneksiDB.HYBRIDWEB() + "/radiologi/"
+                        + lokasi;
+
+                File fileTmp = new File(tmpFolder, new File(lokasi).getName());
+
+                try (InputStream in = new URL(url).openStream()) {
+                    Files.copy(in, fileTmp.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+            }
+
+            File[] files = tmpFolder.listFiles();
+            if (files == null || files.length == 0) {
+                JOptionPane.showMessageDialog(null, "Tidak ada gambar radiologi.");
+                return;
+            }
+
+            int terkirim = 0;
+            boolean first = true;
+
+            // 🔥 PENTING: trigger GoWAService sekali
+            String noHpFinal = null;
+
+            for (File img : files) {
+
+                String pesan = first ? caption : "";
+                first = false;
+
+                if (noHpFinal == null) {
+                    // trigger dialog SEKALI
+                    boolean sukses = GoWAService.kirimGambar("", img, pesan);
+                    if (!sukses) {
+                        return;
+                    }
+
+                    noHpFinal = "OK"; // penanda saja
+                    terkirim++;
+                } else {
+                    if (GoWAService.kirimGambar("", img, pesan)) {
+                        terkirim++;
+                    }
+                }
+
+                img.delete();
+                Thread.sleep(1200);
+            }
+
+            JOptionPane.showMessageDialog(null,
+                    "Berhasil kirim " + terkirim + " gambar");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error : " + e.getMessage());
+        }
+    }//GEN-LAST:event_BtnKirimGOWaActionPerformed
+
+    private void BtnKirimGOWAPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimGOWAPTActionPerformed
+        if (tbDokter.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Pilih data dulu!");
+            return;
+        }
+
+        String noRawatDipilih = NoRawatDicari.getText();
+
+        String kdPj = Sequel.cariIsi(
+                "SELECT kd_pj FROM reg_periksa WHERE no_rawat=?",
+                noRawatDipilih
+        );
+
+        if (kdPj.equals("")) {
+            JOptionPane.showMessageDialog(null, "Penjamin tidak ditemukan!");
+            return;
+        }
+
+        String namaPerusahaan = Sequel.cariIsi(
+                "SELECT IFNULL(png_jawab,'') FROM penjab WHERE kd_pj=?",
+                kdPj
+        );
+
+        PreparedStatement psGroup = null;
+        ResultSet rsGroup = null;
+
+        int totalPasien = 0;
+        int totalGambar = 0;
+
+        try {
+
+            psGroup = koneksi.prepareStatement(
+                    "SELECT gr.no_rawat, gr.tgl_periksa, gr.jam, rp.no_rkm_medis, ps.nm_pasien "
+                    + "FROM gambar_radiologi gr "
+                    + "INNER JOIN reg_periksa rp ON gr.no_rawat=rp.no_rawat "
+                    + "INNER JOIN pasien ps ON rp.no_rkm_medis=ps.no_rkm_medis "
+                    + "WHERE rp.kd_pj=? "
+                    + "GROUP BY gr.no_rawat, gr.tgl_periksa, gr.jam, rp.no_rkm_medis, ps.nm_pasien"
+            );
+
+            psGroup.setString(1, kdPj);
+            rsGroup = psGroup.executeQuery();
+
+            String noHpFinal = null;
+
+            while (rsGroup.next()) {
+
+                String noRawat = rsGroup.getString("no_rawat");
+                String tgl = rsGroup.getString("tgl_periksa");
+                String jam = rsGroup.getString("jam");
+                String noRM = rsGroup.getString("no_rkm_medis");
+                String namaPasien = rsGroup.getString("nm_pasien");
+
+                File tmpFolder = new File("tmpWA_perusahaan/" + noRawat.replace("/", "_"));
+                tmpFolder.mkdirs();
+
+                PreparedStatement psGambar = koneksi.prepareStatement(
+                        "SELECT lokasi_gambar FROM gambar_radiologi "
+                        + "WHERE no_rawat=? AND tgl_periksa=? AND jam=?"
+                );
+
+                psGambar.setString(1, noRawat);
+                psGambar.setString(2, tgl);
+                psGambar.setString(3, jam);
+
+                ResultSet rsGambar = psGambar.executeQuery();
+
+                while (rsGambar.next()) {
+
+                    String lokasi = rsGambar.getString("lokasi_gambar");
+
+                    String url
+                            = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":"
+                            + koneksiDB.PORTWEB() + "/"
+                            + koneksiDB.HYBRIDWEB() + "/radiologi/" + lokasi;
+
+                    File fileTmp = new File(tmpFolder, new File(lokasi).getName());
+
+                    try (InputStream in = new URL(url).openStream()) {
+                        Files.copy(in, fileTmp.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    }
+                }
+
+                File[] files = tmpFolder.listFiles();
+                if (files == null) {
+                    continue;
+                }
+
+                String caption
+                        = "*HASIL RADIOLOGI*\n"
+                        + "Perusahaan : " + namaPerusahaan + "\n"
+                        + "Pasien : " + namaPasien;
+
+                boolean first = true;
+
+                for (File img : files) {
+
+                    String pesan = first ? caption : "";
+                    first = false;
+
+                    if (noHpFinal == null) {
+                        boolean sukses = GoWAService.kirimGambar("", img, pesan);
+                        if (!sukses) {
+                            return;
+                        }
+
+                        noHpFinal = "OK";
+                        totalGambar++;
+                    } else {
+                        if (GoWAService.kirimGambar("", img, pesan)) {
+                            totalGambar++;
+                        }
+                    }
+
+                    img.delete();
+                    Thread.sleep(1200);
+                }
+
+                totalPasien++;
+            }
+
+            JOptionPane.showMessageDialog(null,
+                    "Selesai kirim ke perusahaan\nTotal pasien: " + totalPasien
+                    + "\nTotal gambar: " + totalGambar);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error : " + e.getMessage());
+        }
+    }//GEN-LAST:event_BtnKirimGOWAPTActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2228,6 +2501,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnCloseIn4;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKirimGOWAPT;
+    private widget.Button BtnKirimGOWa;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint1;
     private widget.Button BtnRefreshPhoto;

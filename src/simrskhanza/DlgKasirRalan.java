@@ -59,7 +59,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9090,11 +9089,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
         
         if(!cacherawatjalan.getDataPasien().isEmpty()){
-            for(Object[] baris : cacherawatjalan.getDataPasien()){
+            for (Object[] baris : cacherawatjalan.getDataPasien()) {
                 tabModekasir.addRow(baris);
             }
-            LCount.setText(""+tabModekasir.getRowCount());
+            LCount.setText("" + tabModekasir.getRowCount());
             cacherawatjalan.clearDataPasien();
+        }else{
+            tampilkasir();
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -17185,19 +17186,24 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         cacherawatjalan.SetPenjab(caripenjab);
         cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
         cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
+        cacherawatjalan.clearDataPasien();
         
-        ArrayList<Object[]> temp = new ArrayList<>();
-
         for (int i = 0; i < tabModekasir.getRowCount(); i++) {
             Object[] baris = new Object[tabModekasir.getColumnCount()];
             for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
                 baris[j] = tabModekasir.getValueAt(i, j);
             }
-            temp.add(baris);
+            cacherawatjalan.setDataPasien(baris);
         }
-
-        cacherawatjalan.clearDataPasien();
-        cacherawatjalan.SetDataPasien(temp);
+        
+        tabModekasir.setRowCount(0);
+        TCari.setText("");
+        CrPtg.setText("");
+        CrPoli.setText("");
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        cmbStatusBayar.setSelectedIndex(0);
+        cmbStatus.setSelectedIndex(0);
         
         super.dispose();
     }

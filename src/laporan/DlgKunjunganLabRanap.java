@@ -544,77 +544,81 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            
-            Map<String, Object> param = new HashMap<>();         
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
-            if(nmdokter.getText().equals("")){
-                param.put("perujuk","Semua Perujuk/Pengirim"); 
-            }else{
-                param.put("perujuk",nmdokter.getText()); 
-            }
-            if(nmkamar.getText().equals("")){
-                param.put("unit","Semua Unit/Poli"); 
-            }else{
-                param.put("unit",nmkamar.getText()); 
-            }
-            if(nmpenjab.getText().equals("")){
-                param.put("carabayar","Semua Cara Bayar"); 
-            }else{
-                param.put("carabayar",nmpenjab.getText()); 
-            }
-            if(nmkabupaten.getText().equals("")){
-                param.put("kab","Semua Kabupaten"); 
-            }else{
-                param.put("kab",nmkabupaten.getText()); 
-            }
-            if(nmkecamatan.getText().equals("")){
-                param.put("kec","Semua Kecamatan"); 
-            }else{
-                param.put("kec",nmkecamatan.getText()); 
-            }
-            if(nmkelurahan.getText().equals("")){
-                param.put("kel","Semua Kelurahan"); 
-            }else{
-                param.put("kel",nmkelurahan.getText()); 
-            }
-             
-            param.put("tanggal",Tgl2.getDate());   
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            for(int r=0;r<tabMode.getRowCount();r++){ 
-                try {
-                    Sequel.menyimpan("temporary","'"+r+"','"+
-                        tabMode.getValueAt(r,0).toString()+"','"+
-                        tabMode.getValueAt(r,1).toString()+"','"+
-                        tabMode.getValueAt(r,2).toString()+"','"+
-                        tabMode.getValueAt(r,3).toString()+"','"+
-                        tabMode.getValueAt(r,4).toString()+"','"+
-                        tabMode.getValueAt(r,5).toString()+"','"+
-                        tabMode.getValueAt(r,6).toString()+"','"+
-                        tabMode.getValueAt(r,7).toString()+"','"+
-                        tabMode.getValueAt(r,8).toString()+"','"+
-                        tabMode.getValueAt(r,9).toString()+"','"+
-                        tabMode.getValueAt(r,10).toString()+"','"+
-                        tabMode.getValueAt(r,11).toString()+"','"+
-                        tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
-                    );
-                } catch (Exception e) {
+        if(ceksukses==false){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+
+                Map<String, Object> param = new HashMap<>();         
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
+                if(nmdokter.getText().equals("")){
+                    param.put("perujuk","Semua Perujuk/Pengirim"); 
+                }else{
+                    param.put("perujuk",nmdokter.getText()); 
                 }
+                if(nmkamar.getText().equals("")){
+                    param.put("unit","Semua Unit/Poli"); 
+                }else{
+                    param.put("unit",nmkamar.getText()); 
+                }
+                if(nmpenjab.getText().equals("")){
+                    param.put("carabayar","Semua Cara Bayar"); 
+                }else{
+                    param.put("carabayar",nmpenjab.getText()); 
+                }
+                if(nmkabupaten.getText().equals("")){
+                    param.put("kab","Semua Kabupaten"); 
+                }else{
+                    param.put("kab",nmkabupaten.getText()); 
+                }
+                if(nmkecamatan.getText().equals("")){
+                    param.put("kec","Semua Kecamatan"); 
+                }else{
+                    param.put("kec",nmkecamatan.getText()); 
+                }
+                if(nmkelurahan.getText().equals("")){
+                    param.put("kel","Semua Kelurahan"); 
+                }else{
+                    param.put("kel",nmkelurahan.getText()); 
+                }
+
+                param.put("tanggal",Tgl2.getDate());   
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                for(int r=0;r<tabMode.getRowCount();r++){ 
+                    try {
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                            tabMode.getValueAt(r,0).toString()+"','"+
+                            tabMode.getValueAt(r,1).toString()+"','"+
+                            tabMode.getValueAt(r,2).toString()+"','"+
+                            tabMode.getValueAt(r,3).toString()+"','"+
+                            tabMode.getValueAt(r,4).toString()+"','"+
+                            tabMode.getValueAt(r,5).toString()+"','"+
+                            tabMode.getValueAt(r,6).toString()+"','"+
+                            tabMode.getValueAt(r,7).toString()+"','"+
+                            tabMode.getValueAt(r,8).toString()+"','"+
+                            tabMode.getValueAt(r,9).toString()+"','"+
+                            tabMode.getValueAt(r,10).toString()+"','"+
+                            tabMode.getValueAt(r,11).toString()+"','"+
+                            tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
+                        );
+                    } catch (Exception e) {
+                    }
+                }
+
+                Valid.MyReportqry("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
-               
-            Valid.MyReportqry("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

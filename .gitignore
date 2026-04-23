@@ -1,5 +1,5 @@
-/build/
-/dist/
-/settings/
-/reports/
-/webapp/
+build/
+dist/
+settings/
+reports/
+webapps/

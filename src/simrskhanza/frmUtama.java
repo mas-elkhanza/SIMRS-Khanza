@@ -664,6 +664,10 @@ import dapur.DapurSirkulasiBarang2;
 import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
 import dapur.DapurVerifikasiPenerimaan;
+import fungsi.cacheigd;
+import fungsi.cacherawatinap;
+import fungsi.cacherawatjalan;
+import fungsi.cacheregistrasi;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
 import inventaris.InventarisSirkulasiCSSD;
@@ -1778,8 +1782,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolLab = new widget.ButtonBig();
         btnToolRad = new widget.ButtonBig();
         BtnToolJualObat = new widget.ButtonBig();
-        btnToolMCU = new widget.ButtonBig();
         jSeparator9 = new javax.swing.JSeparator();
+        btnToolMCU = new widget.ButtonBig();
         BtnToolKamnap = new widget.ButtonBig();
         BtnToolKasir = new widget.ButtonBig();
         jSeparator7 = new javax.swing.JSeparator();
@@ -1876,14 +1880,14 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(51, 153, 255));
-        internalFrame2.setWarnaBawah(new java.awt.Color(51, 153, 255));
+        internalFrame2.setWarnaAtas(new java.awt.Color(102, 204, 255));
+        internalFrame2.setWarnaBawah(new java.awt.Color(245, 255, 245));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(51, 153, 255));
+        internalFrame3.setWarnaAtas(new java.awt.Color(102, 204, 255));
         internalFrame3.setWarnaBawah(new java.awt.Color(245, 255, 245));
         internalFrame3.setLayout(null);
 
@@ -2085,7 +2089,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/04/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/04/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7293,9 +7297,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
+        jSeparator9.setBackground(new java.awt.Color(0, 158, 96));
+        jSeparator9.setForeground(new java.awt.Color(0, 158, 96));
+        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
+        jSeparator9.setName("jSeparator9"); // NOI18N
+        jSeparator9.setOpaque(true);
+        jSeparator9.setPreferredSize(new java.awt.Dimension(1, 36));
+        internalFrame1.add(jSeparator9);
+
         btnToolMCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/MCU24.png"))); // NOI18N
+        btnToolMCU.setMnemonic('A');
         btnToolMCU.setText("MCU/FU");
-        btnToolMCU.setToolTipText("");
+        btnToolMCU.setToolTipText("Alt+A");
         btnToolMCU.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnToolMCU.setIconTextGap(2);
         btnToolMCU.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -7308,15 +7322,6 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame1.add(btnToolMCU);
-
-        jSeparator9.setBackground(new java.awt.Color(0, 158, 96));
-        jSeparator9.setForeground(new java.awt.Color(0, 158, 96));
-        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 158, 96)));
-        jSeparator9.setName("jSeparator9"); // NOI18N
-        jSeparator9.setOpaque(true);
-        jSeparator9.setPreferredSize(new java.awt.Dimension(1, 36));
-        internalFrame1.add(jSeparator9);
 
         BtnToolKamnap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/home24.png"))); // NOI18N
         BtnToolKamnap.setMnemonic('K');
@@ -8456,7 +8461,6 @@ public class frmUtama extends javax.swing.JFrame {
 
     private void BtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLogActionPerformed
         FlayMenu.setVisible(false);
-        
         switch (BtnLog.getText().trim()) {
             case "Log Out":
                 BtnToolReg.setEnabled(false);
@@ -8500,7 +8504,11 @@ public class frmUtama extends javax.swing.JFrame {
         }else if(edPwd.getText().trim().equals("")){
             Valid.textKosong(edPwd,"Password");
         }else {
-            try {                               
+            try {   
+                cacheigd.reset();
+                cacherawatjalan.reset();
+                cacherawatinap.reset();
+                cacheregistrasi.reset();
                 akses.setData(edAdmin.getText(),edPwd.getText());        
                 if(akses.getjml1()>=1){    
                     BtnMenu.setEnabled(true);
@@ -14388,6 +14396,33 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnLaboratoriumMBActionPerformed
 
+    private void btnMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMCUActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgMCU mcu = new DlgMCU(this, false);
+        mcu.emptTeks();
+        mcu.isCek();
+        mcu.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        mcu.setLocationRelativeTo(PanelUtama);
+        mcu.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMCUActionPerformed
+
+    private void btnToolMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToolMCUActionPerformed
+        isTutup();
+        FlayMenu.removeAll();
+        FlayMenu.add(btnMCU);
+        FlayMenu.add(btnBookingMCUPerusahaan);
+        if ((akses.getpenilaian_mcu() == true) || (akses.getbooking_mcu_perusahaan() == true)) {
+            btnMCU.setEnabled(true);
+        } else {
+            btnMCU.setEnabled(akses.getpenilaian_mcu());
+        }
+        btnBookingMCUPerusahaan.setEnabled(akses.getbooking_mcu_perusahaan());
+        FlayMenu.setVisible(true);
+    }//GEN-LAST:event_btnToolMCUActionPerformed
+
     private void MnLoginBtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLoginBtnLogActionPerformed
         FlayMenu.setVisible(false);
 
@@ -14397,6 +14432,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             BtnToolKamnap.setEnabled(false);
             BtnToolKasir.setEnabled(false);
             btnToolIGD.setEnabled(false);
+            btnToolMCU.setEnabled(false);
             MnGantiPassword.setEnabled(false);
             MnPengajuanCutiPegawai.setEnabled(false);
             akses.setpenjualan_obatfalse();
@@ -14425,26 +14461,26 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             DlgLogin.setVisible(true);
             edAdmin.requestFocus();
             break;
+
         }
     }//GEN-LAST:event_MnLoginBtnLogActionPerformed
 
     private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnGantiPasswordBtnLogActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
-        WindowInputPassword barcode=new WindowInputPassword(this,true);
-        barcode.SetUserPass(lblUser.getText(),edPwd.getText());
+        WindowInputPassword barcode = new WindowInputPassword(this, true);
+        barcode.SetUserPass(lblUser.getText(), edPwd.getText());
         barcode.setLocationRelativeTo(PanelUtama);
         barcode.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
-
     }//GEN-LAST:event_MnGantiPasswordBtnLogActionPerformed
 
     private void MenuKeluarBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuKeluarBtnCloseActionPerformed
         isTutup();
         DlgHome.dispose();
-        int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau keluar dari program ini ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
-        if(jawab==JOptionPane.YES_OPTION){
+        int jawab = JOptionPane.showConfirmDialog(null, "Yakin anda mau keluar dari program ini ????", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (jawab == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_MenuKeluarBtnCloseActionPerformed
@@ -14459,7 +14495,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
         isTutup();
-        DlgBelum belum=new DlgBelum(this,false);
+        DlgBelum belum = new DlgBelum(this, false);
         belum.tampil();
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
@@ -14471,7 +14507,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
         isTutup();
-        DlgPulang pulang=new DlgPulang(this,false);
+        DlgPulang pulang = new DlgPulang(this, false);
         pulang.tampil();
         pulang.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         pulang.setLocationRelativeTo(PanelUtama);
@@ -14483,7 +14519,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
         isTutup();
-        DlgBulanan2 rekapbulanan2=new DlgBulanan2(this,false);
+        DlgBulanan2 rekapbulanan2 = new DlgBulanan2(this, false);
         rekapbulanan2.tampil();
         rekapbulanan2.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         rekapbulanan2.setLocationRelativeTo(PanelUtama);
@@ -14495,7 +14531,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
         isTutup();
-        DlgKehadiran hadir=new DlgKehadiran(this,false);
+        DlgKehadiran hadir = new DlgKehadiran(this, false);
         hadir.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         hadir.setLocationRelativeTo(PanelUtama);
         hadir.setVisible(true);
@@ -14505,7 +14541,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
     private void MnPengajuanCutiPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPengajuanCutiPegawaiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
-        PengajuanCutiPegawai hadir=new PengajuanCutiPegawai(this,false);
+        PengajuanCutiPegawai hadir = new PengajuanCutiPegawai(this, false);
         hadir.isCek();
         hadir.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         hadir.setLocationRelativeTo(PanelUtama);
@@ -14517,7 +14553,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiKamarInap informasikamar=new InformasiKamarInap(this,true);
+        InformasiKamarInap informasikamar = new InformasiKamarInap(this, true);
         informasikamar.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         informasikamar.setLocationRelativeTo(PanelUtama);
         informasikamar.setVisible(true);
@@ -14527,7 +14563,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
     private void MnRekapBulanan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapBulanan3ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgHome.dispose();
-        InformasiTelusurKunjunganPasien belum=new InformasiTelusurKunjunganPasien(this,false);
+        InformasiTelusurKunjunganPasien belum = new InformasiTelusurKunjunganPasien(this, false);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14538,8 +14574,8 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiAnalisaKamin analisakamin=new InformasiAnalisaKamin(this,true);
-        analisakamin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        InformasiAnalisaKamin analisakamin = new InformasiAnalisaKamin(this, true);
+        analisakamin.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         analisakamin.setLocationRelativeTo(PanelUtama);
         analisakamin.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -14549,7 +14585,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiStokDarah belum=new InformasiStokDarah(this,true);
+        InformasiStokDarah belum = new InformasiStokDarah(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14560,7 +14596,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiKamar belum=new InformasiKamar(this,true);
+        InformasiKamar belum = new InformasiKamar(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14571,7 +14607,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiTarifLab belum=new InformasiTarifLab(this,true);
+        InformasiTarifLab belum = new InformasiTarifLab(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14582,7 +14618,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiTarifRadiologi belum=new InformasiTarifRadiologi(this,true);
+        InformasiTarifRadiologi belum = new InformasiTarifRadiologi(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14593,7 +14629,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiTarifOperasi belum=new InformasiTarifOperasi(this,true);
+        InformasiTarifOperasi belum = new InformasiTarifOperasi(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14604,7 +14640,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiTarifRalan belum=new InformasiTarifRalan(this,true);
+        InformasiTarifRalan belum = new InformasiTarifRalan(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14615,7 +14651,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiTarifRanap belum=new InformasiTarifRanap(this,true);
+        InformasiTarifRanap belum = new InformasiTarifRanap(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14626,7 +14662,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
         DlgHome.dispose();
-        InformasiJadwal belum=new InformasiJadwal(this,true);
+        InformasiJadwal belum = new InformasiJadwal(this, true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -14687,7 +14723,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar anjunganmandiri.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnAnjunganActionPerformed
 
@@ -14697,7 +14733,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar KhanzaCetakAntrianLoket.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnRekapHadir9ActionPerformed
 
@@ -14707,7 +14743,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar antrianloket.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnRekapHadir3ActionPerformed
 
@@ -14717,7 +14753,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar KhanzaAntrianLoket2.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnRekapHadir10ActionPerformed
 
@@ -14727,7 +14763,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar antrianpoli.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnRekapHadir4ActionPerformed
 
@@ -14743,7 +14779,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
             Runtime.getRuntime().exec("java -jar antrianapotek.jar");
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            System.out.print("Notifikasi : "+e);
+            System.out.print("Notifikasi : " + e);
         }
     }//GEN-LAST:event_MnRekapHadir5ActionPerformed
 
@@ -14797,7 +14833,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         isTutup();
-        DlgAbout About=new DlgAbout(this,false);
+        DlgAbout About = new DlgAbout(this, false);
         About.setSize(PanelWall.getWidth(), PanelWall.getHeight());
         About.setLocationRelativeTo(PanelWall);
         About.setVisible(true);
@@ -14892,33 +14928,6 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         Valid.panggilUrl("penyerahanresep/?act=Kamera");
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_PenyerahanResepActionPerformed
-
-    private void btnToolMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToolMCUActionPerformed
-        isTutup();
-        FlayMenu.removeAll();
-        FlayMenu.add(btnMCU);
-        FlayMenu.add(btnBookingMCUPerusahaan);
-        if ((akses.getpenilaian_mcu() == true) || (akses.getbooking_mcu_perusahaan() == true)) {
-            btnMCU.setEnabled(true);
-        } else {
-            btnMCU.setEnabled(akses.getpenilaian_mcu());
-        }
-        btnBookingMCUPerusahaan.setEnabled(akses.getbooking_mcu_perusahaan());
-        FlayMenu.setVisible(true);
-    }//GEN-LAST:event_btnToolMCUActionPerformed
-
-    private void btnMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMCUActionPerformed
-        isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgMCU mcu = new DlgMCU(this, false);
-        mcu.emptTeks();
-        mcu.isCek();
-        mcu.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
-        mcu.setLocationRelativeTo(PanelUtama);
-        mcu.setVisible(true);
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnMCUActionPerformed
 
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
@@ -23618,7 +23627,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         isTutup();
         PCRAICRAPengkajianRisikoPraKonstruksi form=new PCRAICRAPengkajianRisikoPraKonstruksi(this,false);
-        form.emptTeks();
+        form.setTampil();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
