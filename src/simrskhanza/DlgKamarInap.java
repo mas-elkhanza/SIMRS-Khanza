@@ -4977,6 +4977,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -7990,6 +7993,28 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }      
     }//GEN-LAST:event_formWindowActivated
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacherawatinap.SetPilihanBelumPulang(R1.isSelected());
+        cacherawatinap.SetPilihanTanggalMasuk(R2.isSelected());
+        cacherawatinap.SetPilihanTanggalPulang(R3.isSelected());
+        cacherawatinap.SetTanggalMasuk1(DTPCari1.getDate());
+        cacherawatinap.SetTanggalMasuk2(DTPCari2.getDate());
+        cacherawatinap.SetTanggalPulang1(DTPCari3.getDate());
+        cacherawatinap.SetTanggalPulang2(DTPCari4.getDate());
+        cacherawatinap.SetKeyWord(TCari.getText());
+        cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cacherawatinap.SetKamar(BangsalCari.getText());
+        
+        cacherawatinap.clearDataPasien();
+        for (i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacherawatinap.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("Yes")){
@@ -19884,42 +19909,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
       TCari.setText("");
     }
 
-    @Override
-    public void dispose() {
-        cacherawatinap.SetPilihanBelumPulang(R1.isSelected());
-        cacherawatinap.SetPilihanTanggalMasuk(R2.isSelected());
-        cacherawatinap.SetPilihanTanggalPulang(R3.isSelected());
-        cacherawatinap.SetTanggalMasuk1(DTPCari1.getDate());
-        cacherawatinap.SetTanggalMasuk2(DTPCari2.getDate());
-        cacherawatinap.SetTanggalPulang1(DTPCari3.getDate());
-        cacherawatinap.SetTanggalPulang2(DTPCari4.getDate());
-        cacherawatinap.SetKeyWord(TCari.getText());
-        cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
-        cacherawatinap.SetKamar(BangsalCari.getText());
-        
-        cacherawatinap.clearDataPasien();
-        for (i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacherawatinap.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        BangsalCari.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        DTPCari3.setDate(new Date());
-        DTPCari4.setDate(new Date());
-        cmbStatusBayar.setSelectedIndex(0);
-        R1.setSelected(true);
-        R2.setSelected(false);
-        R3.setSelected(false);
-        
-        super.dispose();
-    }
     private void panggilobat(String norawat) {
         if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",norawat)>0){
             DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);

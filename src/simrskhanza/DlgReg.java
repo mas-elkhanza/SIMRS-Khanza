@@ -5981,6 +5981,9 @@ public final class DlgReg extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -9059,6 +9062,23 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{Valid.pindah(evt,BtnPrint3,Kabupaten2);}
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacheregistrasi.SetTanggalAwal(DTPCari1.getDate());
+        cacheregistrasi.SetTanggalAkhir(DTPCari2.getDate());
+        cacheregistrasi.SetKeyWord(TCari.getText());
+        cacheregistrasi.SetDokter(CrDokter.getText());
+        cacheregistrasi.SetPoli(CrPoli.getText());
+        cacheregistrasi.clearDataPasien();
+        
+        for (i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacheregistrasi.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cacheregistrasi.getTanggalAwal()!=null){
             DTPCari1.setDate(cacheregistrasi.getTanggalAwal());
@@ -17767,33 +17787,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             tabMode.setValueAt(kdpnj.getText(),tbPetugas.getSelectedRow(),22);
             emptTeks();
         }
-    }
-    
-    @Override
-    public void dispose() {
-        cacheregistrasi.SetTanggalAwal(DTPCari1.getDate());
-        cacheregistrasi.SetTanggalAkhir(DTPCari2.getDate());
-        cacheregistrasi.SetKeyWord(TCari.getText());
-        cacheregistrasi.SetDokter(CrDokter.getText());
-        cacheregistrasi.SetPoli(CrPoli.getText());
-        cacheregistrasi.clearDataPasien();
-        
-        for (i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacheregistrasi.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        CrDokter.setText("");
-        CrPoli.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        
-        super.dispose();
     }
     
     private void initRegistrasi() {

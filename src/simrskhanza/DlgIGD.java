@@ -4367,6 +4367,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -6970,6 +6973,21 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{Valid.pindah(evt,BtnPrint3,Kabupaten2);}
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacheigd.SetTanggalAwal(DTPCari1.getDate());
+        cacheigd.SetTanggalAkhir(DTPCari2.getDate());
+        cacheigd.SetKeyWord(TCari.getText());
+        cacheigd.clearDataPasien();
+        
+        for (int i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacheigd.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             ps3=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama,poliklinik.kd_poli from poliklinik where poliklinik.kd_poli='IGDK'");
@@ -13270,29 +13288,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
-    }
-    
-    @Override
-    public void dispose() {
-        cacheigd.SetTanggalAwal(DTPCari1.getDate());
-        cacheigd.SetTanggalAkhir(DTPCari2.getDate());
-        cacheigd.SetKeyWord(TCari.getText());
-        cacheigd.clearDataPasien();
-        
-        for (int i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacheigd.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        
-        super.dispose();
     }
     
     private void initIGD() {

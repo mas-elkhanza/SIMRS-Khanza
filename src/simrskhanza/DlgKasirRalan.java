@@ -426,12 +426,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         
         try {
             try {
-                namapoli=koneksiDB.POLIAKTIFKASIRRALAN();
-            } catch (Exception e) {
-                namapoli="";
-            }
-            
-            try {
                 aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
             } catch (Exception e) {
                 aktifkanparsial="no";
@@ -6176,6 +6170,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -9051,6 +9048,26 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
+        cacherawatjalan.SetTanggalAwal(DTPCari1.getDate());
+        cacherawatjalan.SetTanggalAkhir(DTPCari2.getDate());
+        cacherawatjalan.SetKeyWord(TCari.getText());
+        cacherawatjalan.SetDokter(CrPtg.getText());
+        cacherawatjalan.SetPoli(CrPoli.getText());
+        cacherawatjalan.SetPenjab(caripenjab);
+        cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
+        cacherawatjalan.clearDataPasien();
+        
+        for (i = 0; i < tabModekasir.getRowCount(); i++) {
+            Object[] baris = new Object[tabModekasir.getColumnCount()];
+            for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
+                baris[j] = tabModekasir.getValueAt(i, j);
+            }
+            cacherawatjalan.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
             akuntindakanralan.SetAkunTindakanRalan();
@@ -16557,6 +16574,12 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
         
+        try {
+            namapoli=koneksiDB.POLIAKTIFKASIRRALAN();
+        } catch (Exception e) {
+            namapoli="";
+        }
+        
         if(!namapoli.equals("")){
             if(akses.getkode().equals("Admin Utama")){
                 CrPoli.setText("");
@@ -17174,38 +17197,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbKasirRalan.requestFocus();
         } 
-    }
-    
-    @Override
-    public void dispose() {
-        cacherawatjalan.SetTanggalAwal(DTPCari1.getDate());
-        cacherawatjalan.SetTanggalAkhir(DTPCari2.getDate());
-        cacherawatjalan.SetKeyWord(TCari.getText());
-        cacherawatjalan.SetDokter(CrPtg.getText());
-        cacherawatjalan.SetPoli(CrPoli.getText());
-        cacherawatjalan.SetPenjab(caripenjab);
-        cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
-        cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
-        cacherawatjalan.clearDataPasien();
-        
-        for (int i = 0; i < tabModekasir.getRowCount(); i++) {
-            Object[] baris = new Object[tabModekasir.getColumnCount()];
-            for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
-                baris[j] = tabModekasir.getValueAt(i, j);
-            }
-            cacherawatjalan.setDataPasien(baris);
-        }
-        
-        tabModekasir.setRowCount(0);
-        TCari.setText("");
-        CrPtg.setText("");
-        CrPoli.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        cmbStatusBayar.setSelectedIndex(0);
-        cmbStatus.setSelectedIndex(0);
-        
-        super.dispose();
     }
     
     private void initKasirRalan() {
