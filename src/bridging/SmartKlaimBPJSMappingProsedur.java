@@ -531,7 +531,7 @@ public final class SmartKlaimBPJSMappingProsedur extends javax.swing.JDialog {
         }else if(Display.getText().trim().equals("")){
             Valid.textKosong(Display,"Display");
         }else{
-            if(Sequel.menyimpantf("mapping_prosedur_smart_klaim_bpjs","?,?,?,?","Mapping Prosedur Smartklaim",4,new String[]{
+            if(Sequel.menyimpantf("mapping_prosedur_smart_klaim_bpjs","?,?,?,?","Mapping",4,new String[]{
                 KodeSnomed.getText(),Display.getText(),SnomedSystem.getText(),KodeProsedur.getText()
             })==true){
                 tabMode.addRow(new Object[]{
@@ -633,7 +633,7 @@ public final class SmartKlaimBPJSMappingProsedur extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingPemeriksaanLaboratSatuSehat.jasper","report","::[ Mapping Pemeriksaan Laboratorium Satu Sehat Kemenkes ]::",param);            
+                Valid.MyReport("rptMapingProsedurSmartKlaim.jasper","report","::[ Mapping Prosedur Smart Klaim BPJS ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -805,7 +805,7 @@ public final class SmartKlaimBPJSMappingProsedur extends javax.swing.JDialog {
                    "mapping_prosedur_smart_klaim_bpjs.icd9,icd9.deskripsi_panjang from mapping_prosedur_smart_klaim_bpjs inner join icd9 "+
                    "on mapping_prosedur_smart_klaim_bpjs.icd9=icd9.kode "+(TCari.getText().equals("")?"":"where mapping_prosedur_smart_klaim_bpjs.kode_snomed like ? "+
                    "or mapping_prosedur_smart_klaim_bpjs.display like ? or mapping_prosedur_smart_klaim_bpjs.icd9 like ? or icd9.deskripsi_panjang like ? ")+
-                   "order by mapping_prosedur_smart_klaim_bpjs.code");
+                   "order by mapping_prosedur_smart_klaim_bpjs.kode_snomed");
             try {
                 if(!TCari.getText().equals("")){
                     ps.setString(1,"%"+TCari.getText()+"%");
