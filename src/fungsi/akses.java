@@ -259,7 +259,7 @@ public final class akses {
             pcra_icra_lokasi_kelompok_risiko_area=false,pcra_icra_kelas_risiko_pencegahan=false,pcra_icra_tindakan_pengendalian=false,pcra_icra_identifkasi_risiko_infeksi=false,
             pcra_icra_identifkasi_risiko_keselamatan=false,pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,
             daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,
-            satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false;
+            satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1473,6 +1473,8 @@ public final class akses {
                         akses.satu_sehat_kirim_allergy_intolerance=true;
                         akses.konsultasi_perawat=true;
                         akses.jawaban_konsultasi_perawat=true;
+                        akses.bridging_smart_klaim_bpjs=true;
+                        akses.mapping_prosedur_smart_klaim_bpjs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2670,6 +2672,8 @@ public final class akses {
                         akses.satu_sehat_kirim_allergy_intolerance=rs2.getBoolean("satu_sehat_kirim_allergy_intolerance");
                         akses.konsultasi_perawat=rs2.getBoolean("konsultasi_perawat");
                         akses.jawaban_konsultasi_perawat=rs2.getBoolean("jawaban_konsultasi_perawat");
+                        akses.bridging_smart_klaim_bpjs=rs2.getBoolean("bridging_smart_klaim_bpjs");
+                        akses.mapping_prosedur_smart_klaim_bpjs=rs2.getBoolean("mapping_prosedur_smart_klaim_bpjs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3890,6 +3894,8 @@ public final class akses {
         akses.satu_sehat_kirim_allergy_intolerance=false;
         akses.konsultasi_perawat=false;
         akses.jawaban_konsultasi_perawat=false;
+        akses.bridging_smart_klaim_bpjs=false;
+        akses.mapping_prosedur_smart_klaim_bpjs=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5124,4 +5130,6 @@ public final class akses {
     public static boolean getsatu_sehat_kirim_allergy_intolerance(){return akses.satu_sehat_kirim_allergy_intolerance;}
     public static boolean getkonsultasi_perawat(){return akses.konsultasi_perawat;}
     public static boolean getjawaban_konsultasi_perawat(){return akses.jawaban_konsultasi_perawat;}
+    public static boolean getbridging_smart_klaim_bpjs(){return akses.bridging_smart_klaim_bpjs;}
+    public static boolean getmapping_prosedur_smart_klaim_bpjs(){return akses.mapping_prosedur_smart_klaim_bpjs;}
 }   
