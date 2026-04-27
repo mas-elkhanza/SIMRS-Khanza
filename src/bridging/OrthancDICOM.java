@@ -344,7 +344,7 @@ public class OrthancDICOM extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDcmActionPerformed
 
     private void BtnJpgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJpgActionPerformed
-        orthanc.AmbilJpg(norawat,series);
+        //orthanc.AmbilJpg(norawat,series);
     }//GEN-LAST:event_BtnJpgActionPerformed
 
     private void BtnBmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBmpActionPerformed

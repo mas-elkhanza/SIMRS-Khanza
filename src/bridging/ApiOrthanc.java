@@ -14,6 +14,8 @@ import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
@@ -41,6 +43,7 @@ import org.springframework.web.client.RestTemplate;
  * @author windiartonugroho
  */
 public class ApiOrthanc {
+
     private HttpHeaders headers;
     private JsonNode root;
     private HttpEntity requestEntity;
@@ -74,14 +77,14 @@ public class ApiOrthanc {
             headers = new HttpHeaders();
             System.out.println("Auth : " + authEncrypt);
             headers.add("Authorization", "Basic " + authEncrypt);
-            requestJson = "{" +
-                    "\"Level\": \"Study\"," +
-                    "\"Expand\": true," +
-                    "\"Query\": {" +
-                    "\"StudyDate\": \"" + Tanggal1 + "-" + Tanggal2 + "\"," +
-                    "\"PatientID\": \"" + Norm + "\"" +
-                    "}" +
-                    "}";
+            requestJson = "{"
+                    + "\"Level\": \"Study\","
+                    + "\"Expand\": true,"
+                    + "\"Query\": {"
+                    + "\"StudyDate\": \"" + Tanggal1 + "-" + Tanggal2 + "\","
+                    + "\"PatientID\": \"" + Norm + "\""
+                    + "}"
+                    + "}";
             System.out.println("Request JSON : " + requestJson);
             requestEntity = new HttpEntity(requestJson, headers);
             System.out.println("URL : " + koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/tools/find");
@@ -136,8 +139,8 @@ public class ApiOrthanc {
         }
         return root;
     }
-
-    public JsonNode AmbilJpg(String NoRawat, String Series) {
+    
+    public JsonNode AmbilJpg(String NoRawat, String Series, String norawatslash, String tanggalPeriksa, String jamPeriksa) {
         System.out.println("Percobaan Mengambil Gambar JPG : " + NoRawat + ", Series : " + Series);
         try {
             headers = new HttpHeaders();
@@ -164,13 +167,29 @@ public class ApiOrthanc {
                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC() + ":"
                         + koneksiDB.PORTORTHANC() + "/instances/" + list.asText() + "/preview", HttpMethod.GET, entity,
                         byte[].class);
-                Files.write(Paths.get("./gambarradiologi/" + NoRawat + i + ".jpg"), response.getBody());
+                String uniqueName = NoRawat + "_" + System.currentTimeMillis() + "_" + i + ".jpg";
+                Files.write(Paths.get("./gambarradiologi/" + uniqueName), response.getBody());
+                uploadImageRadiologi(uniqueName, "pages/upload");
+
+                System.out.println("Menyimpan ke DB:");
+                System.out.println("  no_rawat     : " + norawatslash);
+                System.out.println("  tgl_periksa  : " + tanggalPeriksa);
+                System.out.println("  jam          : " + jamPeriksa);
+                System.out.println("  lokasi_gambar: " + "pages/upload/" + uniqueName);
+
+                Sequel.menyimpantf("gambar_radiologi", "?,?,?,?", "No.Rawat", 4,
+                        new String[]{
+                            norawatslash,
+                            tanggalPeriksa,
+                            jamPeriksa,
+                            "pages/upload/" + uniqueName
+                        });
                 i++;
             }
-            JOptionPane.showMessageDialog(null,
-                    "Pengambilan Gambar JPG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+            JOptionPane.showMessageDialog(null, "Penyimpanan Gambar JPG dari Orthanc berhasil");
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+            System.out.println("Error detail: " + e.getMessage());
             JOptionPane.showMessageDialog(null,
                     "Gagal mengambil Gambar JPG dari Orthanc, silahkan hubungi administrator ..!!");
         }
@@ -259,17 +278,17 @@ public class ApiOrthanc {
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers = {
-                new X509TrustManager() {
-                    public X509Certificate[] getAcceptedIssuers() {
-                        return null;
-                    }
-
-                    public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-                    }
-
-                    public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-                    }
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
                 }
+
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+                }
+
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+                }
+            }
         };
         sslContext.init(null, trustManagers, new SecureRandom());
         sslFactory = new SSLSocketFactory(sslContext, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
@@ -309,8 +328,8 @@ public class ApiOrthanc {
                 Files.write(Paths.get("./gambarradiologi/" + NoRawat + i + ".png"), response.getBody());
                 // Menambahkan fitur simpan gambar radiologi dari orthanc
                 uploadImageUsg(NoRawat + i + ".png", "pages/upload");
-                Sequel.menyimpantf("hasil_pemeriksaan_usg_gambar", "?,?", "No.Rawat", 2, new String[] {
-                        norawatslash, "pages/upload/" + NoRawat + i + ".png"
+                Sequel.menyimpantf("hasil_pemeriksaan_usg_gambar", "?,?", "No.Rawat", 2, new String[]{
+                    norawatslash, "pages/upload/" + NoRawat + i + ".png"
                 });
                 i++;
             }
@@ -351,11 +370,12 @@ public class ApiOrthanc {
                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC() + ":"
                         + koneksiDB.PORTORTHANC() + "/instances/" + list.asText() + "/preview", HttpMethod.GET, entity,
                         byte[].class);
-                Files.write(Paths.get("./gambarradiologi/" + NoRawat + i + ".jpg"), response.getBody());
+                String uniqueName = NoRawat + "_" + System.currentTimeMillis() + "_" + i + ".jpg";
+                Files.write(Paths.get("./gambarradiologi/" + uniqueName), response.getBody());
 
-                uploadImageUsg(NoRawat + i + ".jpg", "pages/upload");
-                Sequel.menyimpantf("hasil_pemeriksaan_usg_gambar", "?,?", "No.Rawat", 2, new String[] {
-                        norawatslash, "pages/upload/" + NoRawat + i + ".jpg"
+                uploadImageUsg(uniqueName, "pages/upload");
+                Sequel.menyimpantf("hasil_pemeriksaan_usg_gambar", "?,?", "No.Rawat", 2, new String[]{
+                    norawatslash, "pages/upload/" + uniqueName
                 });
                 i++;
             }
@@ -418,8 +438,8 @@ public class ApiOrthanc {
                 Files.write(Paths.get("./gambarradiologi/" + NoRawat + i + ".jpg"), response.getBody());
 
                 uploadImageUsg2(NoRawat + i + ".jpg", "pages/upload");
-                Sequel.menyimpantf("hasil_pemeriksaan_usg_gynecologi_gambar", "?,?", "No.Rawat", 2, new String[] {
-                        norawatslash, "pages/upload/" + NoRawat + i + ".jpg"
+                Sequel.menyimpantf("hasil_pemeriksaan_usg_gynecologi_gambar", "?,?", "No.Rawat", 2, new String[]{
+                    norawatslash, "pages/upload/" + NoRawat + i + ".jpg"
                 });
                 i++;
             }
@@ -451,18 +471,39 @@ public class ApiOrthanc {
         }
     }
 
+    void uploadImageRadiologi(String FileName, String docpath) {
+        try {
+            File file = new File("gambarradiologi/" + FileName);
+            byte[] data = FileUtils.readFileToByteArray(file);
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // Samakan URL dengan uploadImageUsg, hanya beda folder (radiologi bukan hasilpemeriksaanusg)
+            HttpPost postRequest = new HttpPost("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/"
+                    + koneksiDB.HYBRIDWEB() + "/radiologi/upload.php?doc=" + docpath + "/");
+            //                                                                                            ↑ tambah slash di sini
+            ByteArrayBody fileData = new ByteArrayBody(data, FileName);
+            MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+            reqEntity.addPart("file", fileData);
+            postRequest.setEntity(reqEntity);
+            httpClient.execute(postRequest);
+            deleteFile();
+        } catch (Exception e) {
+            System.out.println("Upload Radiologi error: " + e);
+        }
+    }
+
     public String UbahAccession(String studyId, String accessionBaru) {
         System.out.println("Inject AccessionNumber: " + accessionBaru + " ke Study: " + studyId);
         try {
             headers = new HttpHeaders();
             headers.add("Authorization", "Basic " + authEncrypt);
             headers.setContentType(MediaType.APPLICATION_JSON);
-            requestJson = "{" +
-                    "\"Replace\": {" +
-                    "\"AccessionNumber\": \"" + accessionBaru + "\"" +
-                    "}," +
-                    "\"KeepSource\": false" +
-                    "}";
+            requestJson = "{"
+                    + "\"Replace\": {"
+                    + "\"AccessionNumber\": \"" + accessionBaru + "\""
+                    + "},"
+                    + "\"KeepSource\": false"
+                    + "}";
             System.out.println("Request JSON : " + requestJson);
             requestEntity = new HttpEntity(requestJson, headers);
             System.out.println("URL : " + koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/studies/" + studyId
@@ -493,6 +534,27 @@ public class ApiOrthanc {
                     HttpMethod.POST, requestEntity, String.class);
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+        }
+    }
+
+    public boolean kirimKeModality(String studyId) {
+        System.out.println("Kirim Study ke Modality : " + studyId);
+        try {
+            headers = new HttpHeaders();
+            headers.add("Authorization", "Basic " + authEncrypt);
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            requestJson = "[\"" + studyId + "\"]";
+            requestEntity = new HttpEntity(requestJson, headers);
+            System.out.println("URL : " + koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/modalities/DCMROUTER/store");
+            System.out.println("Request JSON : " + requestJson);
+            String response = getRest().exchange(koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/modalities/DCMROUTER/store", HttpMethod.POST, requestEntity, String.class).getBody();
+            System.out.println("Response : " + response);
+            JOptionPane.showMessageDialog(null, "Proses kirim ke Modality selesai..!!");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+            JOptionPane.showMessageDialog(null, "Gagal kirim ke Modality..!!");
+            return false;
         }
     }
 
@@ -535,34 +597,56 @@ public class ApiOrthanc {
             String encodedString = Base64.encodeBase64String(fileContent);
 
             // 3. Persiapkan JSON untuk Orthanc /tools/create-dicom
+            // Gunakan prefix 1.2.826.0.1.3680043.2 (disediakan untuk UID privat)
+            String cleanAccession = accession.replaceAll("[^0-9]", "");
+            if (cleanAccession.isEmpty()) {
+                cleanAccession = "0";
+            }
+
+            String studyUID = "1.2.826.0.1.3680043.2." + cleanAccession;
+            String seriesUID = studyUID + ".1";
+            String sopUID = seriesUID + "." + instanceNum;
+
             headers = new HttpHeaders();
             headers.add("Authorization", "Basic " + authEncrypt);
             headers.setContentType(MediaType.APPLICATION_JSON);
 
-            requestJson = "{" +
-                    "\"Tags\": {" +
-                    "\"PatientID\": \"" + noRm + "\"," +
-                    "\"PatientName\": \"" + nmPasien + "\"," +
-                    "\"PatientBirthDate\": \"" + tglLahir.replaceAll("-", "") + "\"," +
-                    "\"PatientSex\": \"" + (jk.equals("L") ? "M" : "F") + "\"," +
-                    "\"AccessionNumber\": \"" + accession + "\"," +
-                    "\"StudyDate\": \"" + tglPasien.replaceAll("-", "") + "\"," +
-                    "\"StudyDescription\": \"" + studyDesc + "\"," +
-                    "\"Modality\": \"" + modality + "\"," +
-                    "\"SeriesDescription\": \"" + seriesDesc + "\"," +
-                    "\"SeriesNumber\": \"1\"," +
-                    "\"InstanceNumber\": \"" + instanceNum + "\"," +
-                    "\"Manufacturer\": \"SIMRS Khanza\"," +
-                    "\"InstitutionName\": \"" + akses.getnamars() + "\"" +
-                    "}," +
-                    "\"Content\": \"data:image/jpeg;base64," + encodedString + "\"" +
-                    "}";
+            Map<String, Object> dicomData = new HashMap<>();
+            Map<String, Object> tags = new HashMap<>(); // Gunakan Object agar bisa kirim Integer
+            tags.put("PatientID", noRm);
+            tags.put("PatientName", nmPasien);
+            tags.put("PatientBirthDate", tglLahir.replaceAll("-", ""));
+            tags.put("PatientSex", jk.equals("L") ? "M" : "F");
+            tags.put("AccessionNumber", accession);
+            tags.put("StudyInstanceUID", studyUID);
+            tags.put("SeriesInstanceUID", seriesUID);
+            // tags.put("0008,0018", sopUID);    // SOPInstanceUID (Orthanc handles this automatically)
+            tags.put("StudyDate", tglPasien.replaceAll("-", ""));
+            tags.put("StudyDescription", studyDesc);
+            tags.put("Modality", modality);
+            tags.put("SeriesDescription", seriesDesc);
+            tags.put("SeriesNumber", "1");
+            tags.put("InstanceNumber", instanceNum);
+            tags.put("Manufacturer", "SIMRS Khanza");
+            tags.put("InstitutionName", akses.getnamars());
+
+            dicomData.put("Tags", tags);
+            dicomData.put("Content", "data:image/jpeg;base64," + encodedString);
+            dicomData.put("Force", true);
+
+            requestJson = mapper.writeValueAsString(dicomData);
+            System.out.println("JSON Request: " + requestJson);
 
             requestEntity = new HttpEntity(requestJson, headers);
-            String response = getRest().exchange(
-                    koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/tools/create-dicom",
-                    HttpMethod.POST, requestEntity, String.class).getBody();
-
+            String response = "";
+            try {
+                response = getRest().exchange(
+                        koneksiDB.URLORTHANC() + ":" + koneksiDB.PORTORTHANC() + "/tools/create-dicom",
+                        HttpMethod.POST, requestEntity, String.class).getBody();
+            } catch (org.springframework.web.client.HttpClientErrorException e) {
+                System.out.println("Detail Error Orthanc (400/404/401): " + e.getResponseBodyAsString());
+                throw e;
+            }
             System.out.println("Response Upload Orthanc: " + response);
 
             // 4. Hapus file temporary
@@ -587,5 +671,4 @@ public class ApiOrthanc {
             }
         }
     }
-
 }

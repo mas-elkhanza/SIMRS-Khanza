@@ -307,6 +307,38 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnKeluarKeyPressed"/>
                   </Events>
                 </Component>
+                <Component class="widget.Button" name="BtnCekImagingStudy">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/Search-16x16.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Cari Imaging Study"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="name" type="java.lang.String" value="BtnCekImagingStudy" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCekImagingStudyActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="widget.Button" name="BtnValidasi">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/accept.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Validasi"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="name" type="java.lang.String" value="BtnValidasi" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnValidasiActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="widget.panelisi" name="panelGlass9">
@@ -340,7 +372,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-02-2026"/>
+                        <StringItem index="0" value="27-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -365,7 +397,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-02-2026"/>
+                        <StringItem index="0" value="27-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

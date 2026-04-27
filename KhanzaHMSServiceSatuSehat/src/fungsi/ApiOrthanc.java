@@ -79,7 +79,6 @@ public class ApiOrthanc {
             root = mapper.readTree(requestJson);
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-            JOptionPane.showMessageDialog(null,"Gagal mengambil data dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
@@ -248,11 +247,9 @@ public class ApiOrthanc {
             System.out.println("Request JSON : " + requestJson);
             String response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/modalities/DICOMROUTER/store",HttpMethod.POST,requestEntity,String.class).getBody();
             System.out.println("Response : " + response);
-            JOptionPane.showMessageDialog(null,"Proses kirim ke Modality selesai..!!");
             return true;
         }catch(Exception e){
             System.out.println("Notifikasi : " + e);
-            JOptionPane.showMessageDialog(null,"Gagal kirim ke Modality..!!");
             return false;
         }
     }

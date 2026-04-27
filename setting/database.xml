@@ -116,7 +116,7 @@
     <entry key="URLAPIINHEALTH">http://development.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
-    <entry key="AKTIFKANBATCHOBAT">no</entry>
+    <entry key="AKTIFKANBATCHOBAT">yes</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="DEPOAKTIFOBAT"></entry>
     <entry key="VALIDASIULANGBERIOBAT">no</entry>
@@ -172,8 +172,8 @@
     <entry key="PORTSLIMS">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USERSLIMS">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PASSLIMS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLORTHANC">http://172.22.10.166</entry>
-    <entry key="PORTORTHANC">4xOkFa6gxM9Bc/dkpEtJ+A==</entry>
+    <entry key="URLORTHANC">http://172.22.10.158</entry>
+    <entry key="PORTORTHANC">gie5pRePkRsFe+dOh84P4A==</entry>
     <entry key="USERORTHANC">V9bi0P2HgAq8Nn8lUyS6/A==</entry>
     <entry key="PASSORTHANC">2kGLOwgzggE+quhFa9954A==</entry>
     <entry key="SFTPMANDIRIPATHPEMBAYARANPIHAKKETIGA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -207,6 +207,7 @@
     <entry key="DATABASELISYPM">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
     <entry key="PORTLISYPM">E0ORmBXhoVXo8Hx2rC3QBQ==</entry>
     <entry key="USERLISYPM">3fsjwvKJn8IpzysMeNu3bA==</entry>
+    <entry key="PASLISYPM">YJclwRpDyd6OLNGeJZrJew==</entry>
     <!-- SETTING WEB SERVER WA -->
     <entry key="WAGATEWAY">maskofa</entry>  <!--fonnte,maskofa-->
     <entry key="HOSTWA">QMZFHsu9i5rhhRksJHMGBg==</entry>
@@ -227,7 +228,7 @@
     <entry key="PASSAPIORTHANC">2kGLOwgzggE+quhFa9954A==</entry>
     <entry key="URLAPISNOWSTORM">URLAPISNOWSTORM</entry>
     <!-- DokterTeknoRIS MWL API Configuration -->
-    <entry key="MWLAPIURL">http://172.22.10.166:5001</entry>
+    <entry key="MWLAPIURL">http://172.22.10.158:5001</entry>
     <entry key="MWLAPIUSERNAME">AqOU3p5RZEIAk8HazTrV+Q==</entry>
     <entry key="MWLAPIPASSWORD">vOHu993Hus1U6dGgdINSqQ==</entry>
 </properties>
