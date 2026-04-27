@@ -169,18 +169,35 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
+        WindowFHIR = new javax.swing.JDialog();
+        internalFrame6 = new widget.InternalFrame();
+        panelGlass6 = new widget.panelisi();
+        BtnSimpan = new widget.Button();
+        BtnCloseIn5 = new widget.Button();
+        Scroll3 = new widget.ScrollPane();
+        Laporan = new widget.TextArea();
+        ScrollMenu = new widget.ScrollPane();
+        FormMenu = new widget.PanelBiasa();
+        chkPatient = new widget.CekBox();
+        chkOrganization = new widget.CekBox();
+        chkPractioner = new widget.CekBox();
+        chkEncounter = new widget.CekBox();
+        chkMedicationRequest = new widget.CekBox();
+        chkCondition = new widget.CekBox();
+        chkProcedure = new widget.CekBox();
+        chkDevice = new widget.CekBox();
+        chkDiagnosticReport = new widget.CekBox();
+        chkComposition = new widget.CekBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
+        jLabel39 = new widget.Label();
+        Permintaan = new widget.ComboBox();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
-        BtnAll = new widget.Button();
         BtnKirim = new widget.Button();
         BtnUpdate = new widget.Button();
         BtnPrint = new widget.Button();
@@ -193,43 +210,164 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
-        ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPilihSemua.setForeground(new java.awt.Color(50, 50, 50));
-        ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppPilihSemua.setText("Pilih Semua");
-        ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPilihSemua.setName("ppPilihSemua"); // NOI18N
-        ppPilihSemua.setPreferredSize(new java.awt.Dimension(150, 26));
-        ppPilihSemua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppPilihSemuaActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppPilihSemua);
-
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
-        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
-        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppBersihkan.setText("Hilangkan Pilihan");
-        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setName("ppBersihkan"); // NOI18N
-        ppBersihkan.setPreferredSize(new java.awt.Dimension(150, 26));
-        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppBersihkanActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppBersihkan);
+        BtnAll = new widget.Button();
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        WindowFHIR.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowFHIR.setName("WindowFHIR"); // NOI18N
+        WindowFHIR.setUndecorated(true);
+        WindowFHIR.setResizable(false);
+        WindowFHIR.getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
+
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kirim Data FHIR ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setName("internalFrame6"); // NOI18N
+        internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelGlass6.setName("panelGlass6"); // NOI18N
+        panelGlass6.setPreferredSize(new java.awt.Dimension(55, 55));
+        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan.setMnemonic('U');
+        BtnSimpan.setText("Simpan");
+        BtnSimpan.setToolTipText("Alt+U");
+        BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanActionPerformed(evt);
+            }
+        });
+        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpanKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(BtnSimpan);
+
+        BtnCloseIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn5.setMnemonic('U');
+        BtnCloseIn5.setText("Tutup");
+        BtnCloseIn5.setToolTipText("Alt+U");
+        BtnCloseIn5.setName("BtnCloseIn5"); // NOI18N
+        BtnCloseIn5.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCloseIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn5ActionPerformed(evt);
+            }
+        });
+        panelGlass6.add(BtnCloseIn5);
+
+        internalFrame6.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "JSON FHIR :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll3.setName("Scroll3"); // NOI18N
+
+        Laporan.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Laporan.setColumns(20);
+        Laporan.setRows(5);
+        Laporan.setName("Laporan"); // NOI18N
+        Scroll3.setViewportView(Laporan);
+
+        internalFrame6.add(Scroll3, java.awt.BorderLayout.CENTER);
+
+        ScrollMenu.setBorder(null);
+        ScrollMenu.setName("ScrollMenu"); // NOI18N
+        ScrollMenu.setOpaque(true);
+        ScrollMenu.setPreferredSize(new java.awt.Dimension(130, 100));
+
+        FormMenu.setBackground(new java.awt.Color(255, 255, 255));
+        FormMenu.setName("FormMenu"); // NOI18N
+        FormMenu.setPreferredSize(new java.awt.Dimension(130, 240));
+        FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+
+        chkPatient.setSelected(true);
+        chkPatient.setText("Patient");
+        chkPatient.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPatient.setName("chkPatient"); // NOI18N
+        chkPatient.setOpaque(false);
+        chkPatient.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkPatient);
+
+        chkOrganization.setSelected(true);
+        chkOrganization.setText("Organization");
+        chkOrganization.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkOrganization.setName("chkOrganization"); // NOI18N
+        chkOrganization.setOpaque(false);
+        chkOrganization.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkOrganization);
+
+        chkPractioner.setSelected(true);
+        chkPractioner.setText("Practitioner");
+        chkPractioner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPractioner.setName("chkPractioner"); // NOI18N
+        chkPractioner.setOpaque(false);
+        chkPractioner.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkPractioner);
+
+        chkEncounter.setSelected(true);
+        chkEncounter.setText("Encounter");
+        chkEncounter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkEncounter.setName("chkEncounter"); // NOI18N
+        chkEncounter.setOpaque(false);
+        chkEncounter.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkEncounter);
+
+        chkMedicationRequest.setSelected(true);
+        chkMedicationRequest.setText("MedicationRequest");
+        chkMedicationRequest.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkMedicationRequest.setName("chkMedicationRequest"); // NOI18N
+        chkMedicationRequest.setOpaque(false);
+        chkMedicationRequest.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkMedicationRequest);
+
+        chkCondition.setSelected(true);
+        chkCondition.setText("Condition");
+        chkCondition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCondition.setName("chkCondition"); // NOI18N
+        chkCondition.setOpaque(false);
+        chkCondition.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkCondition);
+
+        chkProcedure.setSelected(true);
+        chkProcedure.setText("Procedure");
+        chkProcedure.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkProcedure.setName("chkProcedure"); // NOI18N
+        chkProcedure.setOpaque(false);
+        chkProcedure.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkProcedure);
+
+        chkDevice.setSelected(true);
+        chkDevice.setText("Device");
+        chkDevice.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkDevice.setName("chkDevice"); // NOI18N
+        chkDevice.setOpaque(false);
+        chkDevice.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkDevice);
+
+        chkDiagnosticReport.setSelected(true);
+        chkDiagnosticReport.setText("DiagnosticReport");
+        chkDiagnosticReport.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkDiagnosticReport.setName("chkDiagnosticReport"); // NOI18N
+        chkDiagnosticReport.setOpaque(false);
+        chkDiagnosticReport.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkDiagnosticReport);
+
+        chkComposition.setSelected(true);
+        chkComposition.setText("Composition");
+        chkComposition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkComposition.setName("chkComposition"); // NOI18N
+        chkComposition.setOpaque(false);
+        chkComposition.setPreferredSize(new java.awt.Dimension(125, 22));
+        FormMenu.add(chkComposition);
+
+        ScrollMenu.setViewportView(FormMenu);
+
+        internalFrame6.add(ScrollMenu, java.awt.BorderLayout.WEST);
+
+        WindowFHIR.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -247,11 +385,9 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         Scroll.setViewportView(tbObat);
 
@@ -266,6 +402,16 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel39.setText("Status Kirim :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        jLabel39.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelGlass8.add(jLabel39);
+
+        Permintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah", "Belum" }));
+        Permintaan.setName("Permintaan"); // NOI18N
+        Permintaan.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelGlass8.add(Permintaan);
+
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(53, 23));
@@ -274,26 +420,8 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(60, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass8.add(LCount);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
 
         BtnKirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/34.png"))); // NOI18N
         BtnKirim.setMnemonic('K');
@@ -308,9 +436,9 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnKirim);
 
-        BtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edit_f2.png"))); // NOI18N
+        BtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2276087_document_extension_format_jpg_paper_icon.png"))); // NOI18N
         BtnUpdate.setMnemonic('U');
-        BtnUpdate.setText("Update");
+        BtnUpdate.setText("Riwayat");
         BtnUpdate.setToolTipText("Alt+U");
         BtnUpdate.setName("BtnUpdate"); // NOI18N
         BtnUpdate.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -358,16 +486,16 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel15.setText("Tgl.SEP :");
+        jLabel15.setText("Tanggal SEP :");
         jLabel15.setName("jLabel15"); // NOI18N
-        jLabel15.setPreferredSize(new java.awt.Dimension(52, 23));
+        jLabel15.setPreferredSize(new java.awt.Dimension(75, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -376,11 +504,11 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
         jLabel16.setText("Key Word :");
@@ -389,7 +517,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         panelGlass9.add(jLabel16);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(240, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(255, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -413,6 +541,23 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
             }
         });
         panelGlass9.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -617,18 +762,6 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnKirimActionPerformed
 
-    private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
-        for(i=0;i<tbObat.getRowCount();i++){
-            tbObat.setValueAt(true,i,0);
-        }
-    }//GEN-LAST:event_ppPilihSemuaActionPerformed
-
-    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
-        for(i=0;i<tbObat.getRowCount();i++){
-            tbObat.setValueAt(false,i,0);
-        }
-    }//GEN-LAST:event_ppBersihkanActionPerformed
-
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
         for(i=0;i<tbObat.getRowCount();i++){
             if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,9).toString().equals(""))&&(!tbObat.getValueAt(i,12).toString().equals(""))){
@@ -734,6 +867,22 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        if(!Laporan.getText().equals("")){
+            
+        }
+    }//GEN-LAST:event_BtnSimpanActionPerformed
+
+    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnSimpanActionPerformed(null);
+        }
+    }//GEN-LAST:event_BtnSimpanKeyPressed
+
+    private void BtnCloseIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn5ActionPerformed
+        WindowFHIR.dispose();
+    }//GEN-LAST:event_BtnCloseIn5ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -753,27 +902,45 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseIn5;
     private widget.Button BtnKeluar;
     private widget.Button BtnKirim;
     private widget.Button BtnPrint;
+    private widget.Button BtnSimpan;
     private widget.Button BtnUpdate;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.PanelBiasa FormMenu;
     private widget.Label LCount;
+    private widget.TextArea Laporan;
     private widget.editorpane LoadHTML;
+    private widget.ComboBox Permintaan;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll3;
+    private widget.ScrollPane ScrollMenu;
     private widget.TextBox TCari;
+    private javax.swing.JDialog WindowFHIR;
+    private widget.CekBox chkComposition;
+    private widget.CekBox chkCondition;
+    private widget.CekBox chkDevice;
+    private widget.CekBox chkDiagnosticReport;
+    private widget.CekBox chkEncounter;
+    private widget.CekBox chkMedicationRequest;
+    private widget.CekBox chkOrganization;
+    private widget.CekBox chkPatient;
+    private widget.CekBox chkPractioner;
+    private widget.CekBox chkProcedure;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame6;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.Label jLabel39;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.panelisi panelGlass6;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     

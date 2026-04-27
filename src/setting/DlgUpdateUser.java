@@ -4101,8 +4101,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[L]Kirim Allergy Intolerance Satu Sehat",satu_sehat_kirim_allergy_intolerance});
         }
         
-        if("[L]Bridging Smart Klaim BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[L]Bridging Smart Klaim BPJS",bridging_smart_klaim_bpjs});
+        if("[L]Kirim FHIR Smart Klaim BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Kirim FHIR Smart Klaim BPJS",bridging_smart_klaim_bpjs});
         }
         
         if("[L]Mapping Prosedur Smart Klaim BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -8884,7 +8884,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_allergy_intolerance='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Bridging Smart Klaim BPJS".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Kirim FHIR Smart Klaim BPJS".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bridging_smart_klaim_bpjs='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

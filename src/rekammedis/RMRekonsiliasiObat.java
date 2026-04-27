@@ -513,7 +513,7 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(197, 40, 69, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
