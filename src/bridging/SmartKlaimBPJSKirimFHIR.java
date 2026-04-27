@@ -51,7 +51,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     private ResultSet rs;   
     private int i=0;
     private String link="",json="",idpasien="";
-    private ApiSatuSehat api=new ApiSatuSehat();
+    private ApiBPJSSmartClaim api=new ApiBPJSSmartClaim();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -73,25 +73,9 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Stts Rawat","Stts Lanjut",
-                "Tanggal Pulang","ID Encounter","ICD 10","Nama Penyakit","ID Condition"
+                "No.SEP","No.Rawat","No.RM","Nama Pasien","Alamat","No.KTP","No.BPJS","Tgl.Lahir","J.K.","No.Telp","Tgl.SEP","Jenis","Tgl.Kirim"
             }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
-             Class[] types = new Class[] {
-                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-             }
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
 
@@ -102,31 +86,31 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         for (i = 0; i < 13; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(125);
             }else if(i==1){
-                column.setPreferredWidth(110);
-            }else if(i==2){
                 column.setPreferredWidth(105);
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(70);
-            }else if(i==4){
+            }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(200);
             }else if(i==5){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(105);
             }else if(i==6){
-                column.setPreferredWidth(63);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(63);
+                column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(25);
             }else if(i==9){
-                column.setPreferredWidth(215);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(65);
             }else if(i==11){
-                column.setPreferredWidth(225);
+                column.setPreferredWidth(50);
             }else if(i==12){
-                column.setPreferredWidth(215);
+                column.setPreferredWidth(65);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -134,7 +118,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
         try {
-            link=koneksiDB.URLFHIRSATUSEHAT();
+            link=koneksiDB.URLAPISMARTCLAIM();
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }  
@@ -195,11 +179,11 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
         jLabel39 = new widget.Label();
-        Permintaan = new widget.ComboBox();
+        CmbStatus = new widget.ComboBox();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         BtnKirim = new widget.Button();
-        BtnUpdate = new widget.Button();
+        BtnRiwayat = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
@@ -407,10 +391,10 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jLabel39.setPreferredSize(new java.awt.Dimension(75, 23));
         panelGlass8.add(jLabel39);
 
-        Permintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah", "Belum" }));
-        Permintaan.setName("Permintaan"); // NOI18N
-        Permintaan.setPreferredSize(new java.awt.Dimension(85, 23));
-        panelGlass8.add(Permintaan);
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah", "Belum" }));
+        CmbStatus.setName("CmbStatus"); // NOI18N
+        CmbStatus.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelGlass8.add(CmbStatus);
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -436,18 +420,18 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnKirim);
 
-        BtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2276087_document_extension_format_jpg_paper_icon.png"))); // NOI18N
-        BtnUpdate.setMnemonic('U');
-        BtnUpdate.setText("Riwayat");
-        BtnUpdate.setToolTipText("Alt+U");
-        BtnUpdate.setName("BtnUpdate"); // NOI18N
-        BtnUpdate.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnUpdate.addActionListener(new java.awt.event.ActionListener() {
+        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2276087_document_extension_format_jpg_paper_icon.png"))); // NOI18N
+        BtnRiwayat.setMnemonic('U');
+        BtnRiwayat.setText("Riwayat");
+        BtnRiwayat.setToolTipText("Alt+U");
+        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
+        BtnRiwayat.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnUpdateActionPerformed(evt);
+                BtnRiwayatActionPerformed(evt);
             }
         });
-        panelGlass8.add(BtnUpdate);
+        panelGlass8.add(BtnRiwayat);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -689,144 +673,12 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
-        for(i=0;i<tbObat.getRowCount();i++){
-            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,9).toString().equals(""))&&tbObat.getValueAt(i,12).toString().equals("")){
-                try {
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
-                    try{
-                        headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                        json = "{" +
-                                    "\"resourceType\": \"Condition\"," +
-                                    "\"clinicalStatus\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"," +
-                                                "\"code\": \"active\"," +
-                                                "\"display\": \"Active\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"category\": [" +
-                                        "{" +
-                                            "\"coding\": [" +
-                                                "{" +
-                                                    "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\"," +
-                                                    "\"code\": \"encounter-diagnosis\"," +
-                                                    "\"display\": \"Encounter Diagnosis\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
-                                    "\"code\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://hl7.org/fhir/sid/icd-10\"," +
-                                                "\"code\": \""+tbObat.getValueAt(i,10).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"," +
-                                        "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
-                                    "}," +
-                                    "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbObat.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Diagnosa "+tbObat.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbObat.getValueAt(i,1).toString()+" sampai "+tbObat.getValueAt(i,8).toString()+"\"" +
-                                    "}" +
-                                "}";
-                        System.out.println("URL : "+link+"/Condition");
-                        System.out.println("Request JSON : "+json);
-                        requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Condition", HttpMethod.POST, requestEntity, String.class).getBody();
-                        System.out.println("Result JSON : "+json);
-                        root = mapper.readTree(json);
-                        response = root.path("id");
-                        if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_condition","?,?,?,?","Diagnosa",4,new String[]{
-                                tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,10).toString(),tbObat.getValueAt(i,7).toString(),response.asText()
-                            })==true){
-                                tbObat.setValueAt(response.asText(),i,12);
-                                tbObat.setValueAt(false,i,0);
-                            }
-                        }
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Bridging : "+e);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
-            }
-        }
+        
     }//GEN-LAST:event_BtnKirimActionPerformed
 
-    private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
-        for(i=0;i<tbObat.getRowCount();i++){
-            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,9).toString().equals(""))&&(!tbObat.getValueAt(i,12).toString().equals(""))){
-                try {
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
-                    try{
-                        headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                        json = "{" +
-                                    "\"resourceType\": \"Condition\"," +
-                                    "\"id\": \""+tbObat.getValueAt(i,12).toString()+"\"," +
-                                    "\"clinicalStatus\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"," +
-                                                "\"code\": \"active\"," +
-                                                "\"display\": \"Active\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"category\": [" +
-                                        "{" +
-                                            "\"coding\": [" +
-                                                "{" +
-                                                    "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\"," +
-                                                    "\"code\": \"encounter-diagnosis\"," +
-                                                    "\"display\": \"Encounter Diagnosis\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
-                                    "\"code\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://hl7.org/fhir/sid/icd-10\"," +
-                                                "\"code\": \""+tbObat.getValueAt(i,10).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"," +
-                                        "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
-                                    "}," +
-                                    "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbObat.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Diagnosa "+tbObat.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbObat.getValueAt(i,1).toString()+" sampai "+tbObat.getValueAt(i,8).toString()+"\"" +
-                                    "}" +
-                                "}";
-                        System.out.println("URL : "+link+"/Condition/"+tbObat.getValueAt(i,12).toString());
-                        System.out.println("Request JSON : "+json);
-                        requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Condition/"+tbObat.getValueAt(i,12).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
-                        System.out.println("Result JSON : "+json);
-                        tbObat.setValueAt(false,i,0);
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Bridging : "+e);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
-            }
-        }
-    }//GEN-LAST:event_BtnUpdateActionPerformed
+    private void BtnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatActionPerformed
+        
+    }//GEN-LAST:event_BtnRiwayatActionPerformed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
@@ -906,15 +758,15 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnKirim;
     private widget.Button BtnPrint;
+    private widget.Button BtnRiwayat;
     private widget.Button BtnSimpan;
-    private widget.Button BtnUpdate;
+    private widget.ComboBox CmbStatus;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormMenu;
     private widget.Label LCount;
     private widget.TextArea Laporan;
     private widget.editorpane LoadHTML;
-    private widget.ComboBox Permintaan;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane ScrollMenu;
@@ -944,61 +796,56 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
-    private void tampil() {
+    private void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) as pulang,satu_sehat_encounter.id_encounter, "+
-                   "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,ifnull(satu_sehat_condition.id_condition,'') as id_condition "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join diagnosa_pasien on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
-                   "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit left join satu_sehat_condition on satu_sehat_condition.no_rawat=diagnosa_pasien.no_rawat "+
-                   "and satu_sehat_condition.kd_penyakit=diagnosa_pasien.kd_penyakit and satu_sehat_condition.status=diagnosa_pasien.status "+
-                   "where reg_periksa.tgl_registrasi between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or diagnosa_pasien.kd_penyakit like ? or penyakit.nm_penyakit like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)"));
+                    "select bridging_sep.no_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.no_ktp,"+
+                    "bridging_sep.no_kartu,bridging_sep.tanggal_lahir,bridging_sep.jkel,bridging_sep.notelep,bridging_sep.tglsep,if(bridging_sep.jnspelayanan='1','1. Ranap','2. Ralan') as jnspelayanan,"+
+                    "ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'') as tanggalkirim from bridging_sep inner join pasien on pasien.no_rkm_medis=bridging_sep.nomr inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                    "left join bridging_smart_klaim_bpjs on bridging_smart_klaim_bpjs.no_sep=bridging_sep.no_sep where bridging_sep.tglsep between ? and ? "+
+                    (CmbStatus.getSelectedIndex()>0?(CmbStatus.getSelectedIndex()==1?"and ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'')<>'' ":"and ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'')='' "):"")+
+                    (TCari.getText().trim().equals("")?"":"and (bridging_sep.no_sep like ? or bridging_sep.no_rawat like ? or bridging_sep.nomr like ? or bridging_sep.nama_pasien like ? or bridging_sep.no_kartu like ? or "+
+                    "pasien.no_ktp like ?) ")+"order by bridging_sep.tglsep"
+            );
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!TCari.getText().equals("")){
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),rs.getString("status_lanjut"),rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("kd_penyakit"),
-                        rs.getString("nm_penyakit"),rs.getString("id_condition")
+                        rs.getString("no_sep"),rs.getString("no_rawat"),rs.getString("nomr"),rs.getString("nama_pasien"),rs.getString("alamat")+", "+rs.getString("nm_kel")+", "+rs.getString("nm_kec")+", "+rs.getString("nm_kab")+", "+rs.getString("nm_prop"),
+                        rs.getString("no_ktp"),rs.getString("no_kartu"),rs.getString("tanggal_lahir"),rs.getString("jkel"),rs.getString("notelep"),rs.getString("tglsep"),rs.getString("jnspelayanan"),rs.getString("tanggalkirim")
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
+                System.out.println("Notifikasi : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
-                }
+                }   
                 if(ps!=null){
                     ps.close();
-                }
-            }
+                }   
+            } 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText(""+tabMode.getRowCount()); 
     }
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_condition());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_condition());
+        BtnRiwayat.setEnabled(akses.getsatu_sehat_kirim_condition());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_condition());
     }
     
