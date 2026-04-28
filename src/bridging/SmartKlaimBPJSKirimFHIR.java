@@ -6,6 +6,7 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -19,16 +20,26 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
+import java.util.UUID;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -37,6 +48,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import rekammedis.RMRiwayatPerawatan;
 
 /**
  *
@@ -50,17 +62,18 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;   
     private int i=0;
-    private String link="",json="",idpasien="";
+    private String link="",requestJson="",json="",idpasien="",utc="";
     private ApiBPJSSmartClaim api=new ApiBPJSSmartClaim();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode response;
-    private SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();    
+    private JsonNode response;    
+    private JsonNode nameNode;
     private StringBuilder htmlContent; 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private RMRiwayatPerawatan resume;
     
     /** Creates new form DlgKamar
      * @param parent
@@ -160,7 +173,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         BtnSimpan = new widget.Button();
         BtnCloseIn5 = new widget.Button();
         Scroll3 = new widget.ScrollPane();
-        Laporan = new widget.TextArea();
+        JSONFHIR = new widget.TextArea();
         ScrollMenu = new widget.ScrollPane();
         FormMenu = new widget.PanelBiasa();
         chkPatient = new widget.CekBox();
@@ -173,6 +186,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         chkDevice = new widget.CekBox();
         chkDiagnosticReport = new widget.CekBox();
         chkComposition = new widget.CekBox();
+        DTPTanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -249,11 +263,11 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "JSON FHIR :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll3.setName("Scroll3"); // NOI18N
 
-        Laporan.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        Laporan.setColumns(20);
-        Laporan.setRows(5);
-        Laporan.setName("Laporan"); // NOI18N
-        Scroll3.setViewportView(Laporan);
+        JSONFHIR.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        JSONFHIR.setColumns(20);
+        JSONFHIR.setRows(5);
+        JSONFHIR.setName("JSONFHIR"); // NOI18N
+        Scroll3.setViewportView(JSONFHIR);
 
         internalFrame6.add(Scroll3, java.awt.BorderLayout.CENTER);
 
@@ -352,6 +366,12 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         internalFrame6.add(ScrollMenu, java.awt.BorderLayout.WEST);
 
         WindowFHIR.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
+
+        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPTanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
+        DTPTanggal.setName("DTPTanggal"); // NOI18N
+        DTPTanggal.setOpaque(false);
+        DTPTanggal.setPreferredSize(new java.awt.Dimension(90, 23));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -553,6 +573,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        WindowFHIR.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -568,23 +589,25 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.SEP</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ICD 10</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Penyakit</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Condition</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.BPJS</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.SEP</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Kirim</b></td>"+
                 "</tr>"
             );
             for (i = 0; i < tabMode.getRowCount(); i++) {
                 htmlContent.append(
                     "<tr class='isi'>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
                         "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
                         "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
                         "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
@@ -623,7 +646,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
             );
             bg.close();
 
-            File f = new File("DataSatuSehatCondition.html");            
+            File f = new File("DataSmartKlaimBPJS.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -633,7 +656,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT CONDITION<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN FHIR SMART KLAIM BPJS<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -673,11 +696,166 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
-        
+        if(tabMode.getRowCount()!=0){
+            if(tbObat.getSelectedRow()!= -1){
+                DTPTanggal.setDate(new Date());
+                StringBuilder iyembuilder = new StringBuilder();
+                if(chkPatient.isSelected()==true){
+                    iyembuilder.append("{").
+                                    append("\"resource\": {").
+                                        append("\"resourceType\": \"Patient\",").
+                                        append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
+                                        append("\"identifier\": [").
+                                            append("{").
+                                                append("\"use\": \"usual\",").
+                                                append("\"type\": {").
+                                                    append("\"coding\": [").
+                                                        append("{").
+                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                            append("\"code\": \"MR\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("},").
+                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()).append("\",").
+                                                append("\"assigner\": {").
+                                                    append("\"display\": \"").append(akses.getnamars()).append("\"").
+                                                append("}").
+                                            append("},").
+                                            append("{").
+                                                append("\"use\": \"official\",").
+                                                append("\"type\": {").
+                                                    append("\"coding\": [").
+                                                        append("{").
+                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                            append("\"code\": \"MB\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("},").
+                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()).append("\",").
+                                                append("\"assigner\": {").
+                                                    append("\"display\": \"BPJS KESEHATAN\"").
+                                                append("}").
+                                            append("},").
+                                            append("{").
+                                                append("\"use\": \"official\",").
+                                                append("\"type\": {").
+                                                    append("\"coding\": [").
+                                                        append("{").
+                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                            append("\"code\": \"NNIDN\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("},").
+                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()).append("\",").
+                                                append("\"assigner\": {").
+                                                    append("\"display\": \"KEMENDAGRI\"").
+                                                append("}").
+                                            append("}").
+                                        append("],").
+                                        append("\"active\": true,").
+                                        append("\"name\": [").
+                                            append("{").
+                                                append("\"use\": \"official\",").
+                                                append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
+                                            append("}").
+                                        append("],").
+                                        append("\"telecom\": [").
+                                            append("{").
+                                                append("\"system\": \"phone\",").
+                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()).append("\",").
+                                                append("\"use\": \"mobile\"").
+                                            append("}").
+                                        append("],").
+                                        append("\"gender\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().replaceAll("L","male").replaceAll("P","female")).append("\",").
+                                        append("\"birthDate\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()).append("\",").
+                                        append("\"address\": [").
+                                            append("{").
+                                                append("\"line\": [").
+                                                    append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\"").
+                                                append("],").
+                                                append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\",").
+                                                append("\"use\": \"home\",").
+                                                append("\"type\": \"both\"").
+                                            append("}").
+                                        append("],").
+                                        append("\"managingOrganization\": {").
+                                            append("\"reference\": \"Organization/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\",").
+                                            append("\"display\": \"").append(akses.getnamars()).append("\"").
+                                        append("}").
+                                    append("}").
+                                append("},");
+                }
+                if (iyembuilder.length() > 0) {
+                    iyembuilder.setLength(iyembuilder.length() - 1);
+                }
+                
+                String stringJSON = "{" +
+                                        "\"resourceType\": \"Bundle\"," +
+                                        "\"id\": \""+akses.getkodeppkbpjs()+"-"+akses.getkodeppkkemenkes()+"-"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString().substring(0,1)+"-"+jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())+"\"," +
+                                        "\"meta\": {" +
+                                            "\"lastUpdated\": \""+Valid.SetTgl(DTPTanggal.getSelectedItem()+"")+" "+DTPTanggal.getSelectedItem().toString().substring(11,19)+"\"" +
+                                        "}," +
+                                        "\"identifier\": {" +
+                                            "\"system\": \"sep\"," +
+                                            "\"value\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"" +
+                                        "}," +
+                                        "\"type\": \"document\"," +
+                                        "\"entry\": [" +
+                                            iyembuilder.toString()+
+                                        "]" +
+                                    "}";
+                try {
+                    mapper = new ObjectMapper();
+                    mapper.enable(SerializationFeature.INDENT_OUTPUT);
+                    Object datajson = mapper.readValue(stringJSON, Object.class);
+                    String prettyJson = mapper.writeValueAsString(datajson);
+                    JSONFHIR.setText(prettyJson);
+                } catch (Exception e) {
+                    JSONFHIR.setText(stringJSON);
+                }
+                
+                WindowFHIR.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                WindowFHIR.setLocationRelativeTo(internalFrame1);
+                WindowFHIR.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
+        }
     }//GEN-LAST:event_BtnKirimActionPerformed
 
     private void BtnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatActionPerformed
-        
+        if(tabMode.getRowCount()!=0){
+            if(tbObat.getSelectedRow()!= -1){
+                if (resume == null || !resume.isDisplayable()) {
+                    resume=new RMRiwayatPerawatan(null,false);
+                    resume.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    resume.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            resume=null;
+                        }
+                    });
+                    resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    resume.setLocationRelativeTo(internalFrame1);
+                }
+                if (resume == null) return;
+                if (!resume.isVisible()) {
+                    resume.setNoRawat(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                    resume.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                }  
+                if (resume.isVisible()) {
+                    resume.toFront();
+                    return;
+                }    
+                resume.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
+        }
     }//GEN-LAST:event_BtnRiwayatActionPerformed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
@@ -720,8 +898,48 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(!Laporan.getText().equals("")){
-            
+        if(!JSONFHIR.getText().equals("")){
+            try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.TEXT_PLAIN);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPISMARTCLAIM());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                requestJson ="{" +
+                                "\"request\": {" +
+                                    "\"noSep\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
+                                    "\"jnsPelayanan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)+"\"," +
+                                    "\"bulan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(5,7).replaceAll("0","")+"\"," +
+                                    "\"tahun\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(0,4)+"\"," +
+                                    "\"dataMR\": \""+api.encryptSmartClaimData(JSONFHIR.getText(),akses.getkodeppkbpjs())+"\"" +
+                                "}" +
+                            "}";
+                System.out.println("JSON : "+requestJson);
+                System.out.println("URL : "+link+"/eclaim/rekammedis/insert");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(link+"/eclaim/rekammedis/insert", HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    if(Sequel.menyimpantf("bridging_smart_klaim_bpjs","?,?","No.SEP",2,new String[]{
+                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(DTPTanggal.getSelectedItem()+"")
+                        })==true){
+                        tbObat.setValueAt(Valid.SetTgl(DTPTanggal.getSelectedItem()+""),tbObat.getSelectedRow(),12);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }   
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"JSON FHIR masih kosong ...!!");
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -763,9 +981,10 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     private widget.ComboBox CmbStatus;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.Tanggal DTPTanggal;
     private widget.PanelBiasa FormMenu;
+    private widget.TextArea JSONFHIR;
     private widget.Label LCount;
-    private widget.TextArea Laporan;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll3;
@@ -851,6 +1070,33 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
     
     public JTable getTable(){
         return tbObat;
+    }
+    
+    private String jadikanUUID(String uuidString) {
+        String finalUUID;
+        try {
+            UUID uuid = UUID.fromString(uuidString);
+            finalUUID = uuid.toString();
+        } catch (IllegalArgumentException e) {
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] hash = digest.digest(uuidString.getBytes(StandardCharsets.UTF_8));
+                long mostSigBits = 0;
+                long leastSigBits = 0;
+                for (int i = 0; i < 8; i++) {
+                    mostSigBits = (mostSigBits << 8) | (hash[i] & 0xff);
+                }
+                for (int i = 8; i < 16; i++) {
+                    leastSigBits = (leastSigBits << 8) | (hash[i] & 0xff);
+                }
+
+                UUID staticUUID = new UUID(mostSigBits, leastSigBits);
+                finalUUID=staticUUID.toString();
+            } catch (NoSuchAlgorithmException ex) {
+                throw new RuntimeException("SHA-256 algorithm not found", ex);
+            }
+        }
+        return finalUUID;
     }
     
     private void runBackground(Runnable task) {

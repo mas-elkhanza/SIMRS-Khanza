@@ -801,7 +801,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo,kode_ppk,kode_ppkinhealth,kode_ppkkemenkes from setting");
+            ps=koneksi.prepareStatement("select setting.nama_instansi, setting.alamat_instansi, setting.kabupaten, setting.propinsi, setting.aktifkan, setting.wallpaper,setting.kontak,setting.email,setting.logo,setting.kode_ppk,setting.kode_ppkinhealth,setting.kode_ppkkemenkes from setting");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){

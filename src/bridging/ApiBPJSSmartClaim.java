@@ -189,12 +189,6 @@ public class ApiBPJSSmartClaim {
         return new RestTemplate(factory);
     }
 
-    public String encryptSmartClaimData(String jsonData, String kodefaskes) throws IOException {
-        String compressed = compressSmartClaim(jsonData);
-        String encrypted = EncryptCompressedData(kodefaskes, compressed);
-        return encrypted;
-    }
-
     public byte[] compressSmartClaimRaw(String str) throws IOException {
         if (str == null || str.length() == 0) {
             return new byte[0];
@@ -208,7 +202,7 @@ public class ApiBPJSSmartClaim {
         return out.toByteArray();
     }
     
-    public String EncryptCompressedDataV2(String kodefaskes, byte[] compressedBytes) {
+    public String EncryptCompressedData(String kodefaskes, byte[] compressedBytes) {
         String encryptMethod = "AES/CBC/PKCS5Padding";
         String encryptKey = Consid + Key + kodefaskes;
         try {
@@ -232,9 +226,9 @@ public class ApiBPJSSmartClaim {
         }
     }
     
-    public String encryptSmartClaimDataV2(String jsonData, String kodefaskes) throws IOException {
+    public String encryptSmartClaimData(String jsonData, String kodefaskes) throws IOException {
         byte[] compressedBytes = compressSmartClaimRaw(jsonData);
-        String encrypted = EncryptCompressedDataV2(kodefaskes, compressedBytes);
+        String encrypted = EncryptCompressedData(kodefaskes, compressedBytes);
         return encrypted;
     }
 }

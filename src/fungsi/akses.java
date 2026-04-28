@@ -18,7 +18,7 @@ public final class akses {
     private static final Connection koneksi=koneksiDB.condb();
     private static PreparedStatement ps,ps2;
     private static ResultSet rs,rs2;
-    private static String kode="",kdbangsal="",alamatip="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser="",kode_ppk=""; 
+    private static String kode="",kdbangsal="",alamatip="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser="",kode_ppk="",kode_ppk_kemenkes=""; 
     private static int jml1=0,jml2=0,lebar=0,tinggi=0;
     private static boolean aktif=false,admin=false,user=false,vakum=false,aplikasi=false,penyakit=false,obat_penyakit=false,dokter=false,jadwal_praktek=false,petugas=false,pasien=false,registrasi=false,
             tindakan_ralan=false,kamar_inap=false,tindakan_ranap=false,operasi=false,rujukan_keluar=false,rujukan_masuk=false,beri_obat=false,
@@ -260,7 +260,7 @@ public final class akses {
             pcra_icra_identifkasi_risiko_keselamatan=false,pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,
             daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,
             satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,
-            mapping_penyakit_smart_klaim_bpjs=false;
+            mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1477,6 +1477,7 @@ public final class akses {
                         akses.bridging_smart_klaim_bpjs=true;
                         akses.mapping_prosedur_smart_klaim_bpjs=true;
                         akses.mapping_penyakit_smart_klaim_bpjs=true;
+                        akses.permintaan_binrohtal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2677,6 +2678,7 @@ public final class akses {
                         akses.bridging_smart_klaim_bpjs=rs2.getBoolean("bridging_smart_klaim_bpjs");
                         akses.mapping_prosedur_smart_klaim_bpjs=rs2.getBoolean("mapping_prosedur_smart_klaim_bpjs");
                         akses.mapping_penyakit_smart_klaim_bpjs=rs2.getBoolean("mapping_penyakit_smart_klaim_bpjs");
+                        akses.permintaan_binrohtal=rs2.getBoolean("permintaan_binrohtal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3899,6 +3901,7 @@ public final class akses {
         akses.bridging_smart_klaim_bpjs=false;
         akses.mapping_prosedur_smart_klaim_bpjs=false;
         akses.mapping_penyakit_smart_klaim_bpjs=false;
+        akses.permintaan_binrohtal=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4055,6 +4058,7 @@ public final class akses {
     public static void setkontakrs(String kontakrs){akses.kontakrs=kontakrs;}
     public static void setemailrs(String emailrs){akses.emailrs=emailrs;}
     public static void setkodeppkbpjs(String kode_ppk){akses.kode_ppk=kode_ppk;}
+    public static void setkodeppkkemenkes(String kode_ppk){akses.kode_ppk_kemenkes=kode_ppk;}
     public static String getnamars(){return akses.namars;}
     public static String getalamatrs(){return akses.alamatrs;}
     public static String getkabupatenrs(){return akses.kabupatenrs;}
@@ -4062,6 +4066,7 @@ public final class akses {
     public static String getkontakrs(){return akses.kontakrs;}
     public static String getemailrs(){return akses.emailrs;}
     public static String getkodeppkbpjs(){return akses.kode_ppk;}
+    public static String getkodeppkkemenkes(){return akses.kode_ppk_kemenkes;}
     public static boolean getkunjungan_ralan(){return akses.kunjungan_ralan;}
     public static boolean getrl32(){return akses.rl32;}
     public static boolean getrl33(){return akses.rl33;}
@@ -5136,4 +5141,5 @@ public final class akses {
     public static boolean getbridging_smart_klaim_bpjs(){return akses.bridging_smart_klaim_bpjs;}
     public static boolean getmapping_prosedur_smart_klaim_bpjs(){return akses.mapping_prosedur_smart_klaim_bpjs;}
     public static boolean getmapping_penyakit_smart_klaim_bpjs(){return akses.mapping_penyakit_smart_klaim_bpjs;}
+    public static boolean getpermintaan_binrohtal(){return akses.permintaan_binrohtal;}
 }   
