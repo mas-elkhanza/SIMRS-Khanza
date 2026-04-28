@@ -77,14 +77,13 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         };
         tbObat.setModel(tabMode);
 
-        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(100);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -98,23 +97,23 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==9){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(150);
             }else if(i==10){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(120);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==12){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(200);
             }else if(i==13){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(150);
             }else if(i==14){
                 column.setPreferredWidth(90);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(140);
             }else if(i==16){
                 column.setPreferredWidth(150);
             }else if(i==17){
@@ -134,10 +133,10 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         NoSurat.setDocument(new batasInput((byte)20).getKata(NoSurat));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         ResponLainnya.setDocument(new batasInput((byte)50).getKata(ResponLainnya));
-        Agama.setDocument(new batasInput((byte)15).getKata(Agama));
-        PelayananLainnya.setDocument(new batasInput((byte)30).getKata(PelayananLainnya));
-        ResponLainnya.setDocument(new batasInput((byte)30).getKata(ResponLainnya));
-        Keterangan.setDocument(new batasInput((byte)30).getKata(Keterangan));   
+        Agama.setDocument(new batasInput((byte)12).getKata(Agama));
+        PelayananLainnya.setDocument(new batasInput((byte)50).getKata(PelayananLainnya));
+        ResponLainnya.setDocument(new batasInput((byte)50).getKata(ResponLainnya));
+        Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));   
         
         ChkInput.setSelected(false);
         isForm();
@@ -1070,13 +1069,13 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Ruang</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jns.Permintaan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Agama</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jns.Pelayanan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Pelayanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Pelayanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Pelayanan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Respon</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Respon</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Respon</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pegawai</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Penanggung Jawab</b></td>"+
                     "</tr>"
@@ -1109,7 +1108,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='3200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1130,17 +1129,17 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataPersetujuanPenundaanPelayanan.html");            
+                File f = new File("DataPersetujuanBimbinganRohani.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PERMINTAAN DOKTER PENANGGUNG JAWAB PELAYANAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PERSETUJUAN BIMBINGAN ROHANI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1229,7 +1228,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }//GEN-LAST:event_tbObatKeyReleased
 
     private void BtnPegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPegawaiKeyPressed
-        Valid.pindah(evt,Tanggal,BtnDokter);
+        Valid.pindah(evt,Tanggal,NoSurat);
     }//GEN-LAST:event_BtnPegawaiKeyPressed
 
     private void BtnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPegawaiActionPerformed
@@ -1323,9 +1322,8 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                 Sequel.queryu("delete from antripermintaanbinrohtal");
                 Sequel.queryu("insert into antripermintaanbinrohtal values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
                 Sequel.queryu("delete from bukti_permintaan_binrohtal where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
-                JOptionPane.showMessageDialog(null,"Silahkan Buka Webapps Ambil Bukti Pernyataan...!!!!");
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Persetujaun terlebih dahulu..!!");
             }
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
@@ -1370,7 +1368,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        Valid.pindah(evt,BtnPegawai,BtnRuang);
+        Valid.pindah(evt,NoSurat,BtnRuang);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void btnCetakLembarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakLembarActionPerformed
@@ -1466,7 +1464,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbJnsPelayananKeyPressed
 
     private void PelayananLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PelayananLainnyaKeyPressed
-        Valid.pindah(evt,cmbJnsPelayanan,cmbJnsPermintaan);
+        Valid.pindah(evt,cmbJnsPelayanan,cmbRespon);
     }//GEN-LAST:event_PelayananLainnyaKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1775,12 +1773,9 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }
   
     private void ganti() {
-        if(Sequel.mengedittf("permintaan_binrohtal","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,kd_bangsal=?,jns_permintaan=?,agama=?,jns_pelayanan=?,ket_pelayanan=?,respon=?,ket_respon=?,keterangan=?,nip=?,kd_dokter=?",13,new String[]{
-            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-            kdkamar.getText(),cmbJnsPermintaan.getSelectedItem().toString(),Agama.getText(),
-            cmbJnsPelayanan.getSelectedItem().toString(),PelayananLainnya.getText(),
-            cmbRespon.getSelectedItem().toString(),ResponLainnya.getText(),Keterangan.getText(),
-            NIK.getText(),KodeDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("permintaan_binrohtal","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,kd_bangsal=?,jns_permintaan=?,agama=?,jns_pelayanan=?,ket_pelayanan=?,respon=?,ket_respon=?,keterangan=?,nip=?,kd_dokter=?",14,new String[]{
+            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),kdkamar.getText(),cmbJnsPermintaan.getSelectedItem().toString(),Agama.getText(),
+            cmbJnsPelayanan.getSelectedItem().toString(),PelayananLainnya.getText(),cmbRespon.getSelectedItem().toString(),ResponLainnya.getText(),Keterangan.getText(),NIK.getText(),KodeDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
@@ -1820,8 +1815,8 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }
     
     private void autonomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0) from permintaan_binrohtal where date_format(tanggal,'%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PB"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_surat,4),signed)),0) from permintaan_binrohtal where date_format(tanggal,'%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "PB"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoSurat); 
     }
     
     private void isPhoto(){

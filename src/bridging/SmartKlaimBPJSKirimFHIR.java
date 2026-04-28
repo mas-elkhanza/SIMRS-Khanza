@@ -260,10 +260,9 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
 
         internalFrame6.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "JSON FHIR :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), "JSON FHIR :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll3.setName("Scroll3"); // NOI18N
 
-        JSONFHIR.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         JSONFHIR.setColumns(20);
         JSONFHIR.setRows(5);
         JSONFHIR.setName("JSONFHIR"); // NOI18N
@@ -367,7 +366,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
 
         WindowFHIR.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
-        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026 14:43:06" }));
         DTPTanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTanggal.setName("DTPTanggal"); // NOI18N
         DTPTanggal.setOpaque(false);
@@ -793,7 +792,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                         "\"resourceType\": \"Bundle\"," +
                                         "\"id\": \""+akses.getkodeppkbpjs()+"-"+akses.getkodeppkkemenkes()+"-"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString().substring(0,1)+"-"+jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())+"\"," +
                                         "\"meta\": {" +
-                                            "\"lastUpdated\": \""+Valid.SetTgl(DTPTanggal.getSelectedItem()+"")+" "+DTPTanggal.getSelectedItem().toString().substring(11,19)+"\"" +
+                                            "\"lastUpdated\": \""+Valid.SetTgl(DTPTanggal.getSelectedItem()+"")+"T"+DTPTanggal.getSelectedItem().toString().substring(11,19)+".000+07:00\"" +
                                         "}," +
                                         "\"identifier\": {" +
                                             "\"system\": \"sep\"," +
