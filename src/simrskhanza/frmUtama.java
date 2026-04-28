@@ -50131,7 +50131,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSuratPermintaanBinrohtal = new widget.ButtonBig();
         btnSuratPermintaanBinrohtal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mental-health_18376031-2.png"))); 
-        btnSuratPermintaanBinrohtal.setText("Permintaan Bimbingan Rohani & Mental");
+        btnSuratPermintaanBinrohtal.setText("Persetujuan Bimbingan Rohani & Mental");
         btnSuratPermintaanBinrohtal.setIconTextGap(0);
         btnSuratPermintaanBinrohtal.setName("btnSuratPermintaanBinrohtal");
         btnSuratPermintaanBinrohtal.setPreferredSize(new java.awt.Dimension(200, 90));

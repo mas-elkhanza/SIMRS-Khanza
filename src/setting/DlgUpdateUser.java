@@ -5745,8 +5745,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[P]Serah Terima Anggota Tubuh/Barang",serah_terima_anggota_tubuh_barang});
         }
         
-        if("[P]Permintaan Bimbingan Rohani & Mental".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[P]Permintaan Bimbingan Rohani & Mental",permintaan_binrohtal});
+        if("[P]Persetujuan Bimbingan Rohani & Mental".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[P]Persetujuan Bimbingan Rohani & Mental",permintaan_binrohtal});
         }
         
         if("[Q]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -10536,7 +10536,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","serah_terima_anggota_tubuh_barang='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[P]Permintaan Bimbingan Rohani & Mental".equals(tbUser.getValueAt(i,1).toString())){
+            if("[P]Persetujuan Bimbingan Rohani & Mental".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","permintaan_binrohtal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 

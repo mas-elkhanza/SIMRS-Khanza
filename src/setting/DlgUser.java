@@ -285,7 +285,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[R]Jenis Aktivitas Proyek PCRA","[R]Lokasi & Kelompok Risiko Area PCRA","[R]Kelas Risiko/Kelas Pencegahan PCRA","[R]Tindakan Pengendalian PCRA","[R]Identifikasi Risiko Infeksi PCRA",
                 "[R]Identifikasi Risiko Keselamatan PCRA","[R]Identifikasi Risiko Kebakaran PCRA","[R]Identifikasi Risiko Utilitas PCRA","[L]Daftar Resep Apotek BPJS","[L]Permintaan Resep Iterasi Apotek BPJS",
                 "[R]Pengkajian Risiko Pra Konstruksi/PCRA","[R]Persyaratan Harus Dipenuhi PCRA","[L]Kirim Q.R. Telaah Farmasi Satu Sehat","[L]Kirim Allergy Intolerance Satu Sehat","[M]Konsultasi Perawat",
-                "[M]Jawaban Konsultasi Perawat","[L]Kirim FHIR Smart Klaim BPJS","[L]Mapping Prosedur Smart Klaim BPJS","[L]Mapping Penyakit Smart Klaim BPJS","[P]Permintaan Bimbingan Rohani & Mental"
+                "[M]Jawaban Konsultasi Perawat","[L]Kirim FHIR Smart Klaim BPJS","[L]Mapping Prosedur Smart Klaim BPJS","[L]Mapping Penyakit Smart Klaim BPJS","[P]Persetujuan Bimbingan Rohani & Mental"
         };
         
         tabMode=new DefaultTableModel(null,row){
