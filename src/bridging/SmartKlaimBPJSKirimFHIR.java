@@ -86,7 +86,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.SEP","No.Rawat","No.RM","Nama Pasien","Alamat","No.KTP","No.BPJS","Tgl.Lahir","J.K.","No.Telp","Tgl.SEP","Jenis","Tgl.Kirim","Kode Dokter","Nama Dokter","Kode Poli","Nama Poli"
+                "No.SEP","No.Rawat","No.RM","Nama Pasien","Alamat","No.KTP","No.BPJS","Tgl.Lahir","J.K.","No.Telp","Tgl.SEP","Jenis","Tgl.Kirim","Kode Dokter","Nama Dokter","Kode Poli","Nama Poli","Tgl.Pulang"
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -96,7 +96,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 17; i++) {
+        for (i = 0; i < 18; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(125);
@@ -132,11 +132,14 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==16){
                 column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(65);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        JSONFHIR.setDocument(new batasInput((int)1000000).getKata(JSONFHIR));
         
         try {
             link=koneksiDB.URLAPISMARTCLAIM();
@@ -376,7 +379,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
 
         WindowFHIR.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
-        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026 14:43:06" }));
+        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2026 18:43:58" }));
         DTPTanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTanggal.setName("DTPTanggal"); // NOI18N
         DTPTanggal.setOpaque(false);
@@ -504,7 +507,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(51, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -517,7 +520,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -625,6 +628,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Poli</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Poli</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Pulang</b></td>"+
                 "</tr>"
             );
             for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -647,6 +651,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                         "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
                         "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
                         "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                     "</tr>");
             }
             LoadHTML.setText(
@@ -724,267 +729,350 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
         if(tabMode.getRowCount()!=0){
-            if(tbObat.getSelectedRow()!= -1){
-                DTPTanggal.setDate(new Date());
-                StringBuilder iyembuilder = new StringBuilder();
-                if(chkPatient.isSelected()==true){
-                    iyembuilder.append("{").
-                                    append("\"resource\": {").
-                                        append("\"resourceType\": \"Patient\",").
-                                        append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
-                                        append("\"identifier\": [").
-                                            append("{").
-                                                append("\"use\": \"usual\",").
-                                                append("\"type\": {").
-                                                    append("\"coding\": [").
-                                                        append("{").
-                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
-                                                            append("\"code\": \"MR\"").
-                                                        append("}").
-                                                    append("]").
+            try{
+                if(tbObat.getSelectedRow()!= -1){
+                    DTPTanggal.setDate(new Date());
+                    StringBuilder iyembuilder = new StringBuilder();
+                    if(chkPatient.isSelected()==true){
+                        iyembuilder.append("{").
+                                        append("\"resource\": {").
+                                            append("\"resourceType\": \"Patient\",").
+                                            append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
+                                            append("\"identifier\": [").
+                                                append("{").
+                                                    append("\"use\": \"usual\",").
+                                                    append("\"type\": {").
+                                                        append("\"coding\": [").
+                                                            append("{").
+                                                                append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                                append("\"code\": \"MR\"").
+                                                            append("}").
+                                                        append("]").
+                                                    append("},").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()).append("\",").
+                                                    append("\"assigner\": {").
+                                                        append("\"display\": \"").append(akses.getnamars()).append("\"").
+                                                    append("}").
                                                 append("},").
-                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()).append("\",").
-                                                append("\"assigner\": {").
-                                                    append("\"display\": \"").append(akses.getnamars()).append("\"").
-                                                append("}").
-                                            append("},").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"type\": {").
-                                                    append("\"coding\": [").
-                                                        append("{").
-                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
-                                                            append("\"code\": \"MB\"").
-                                                        append("}").
-                                                    append("]").
+                                                append("{").
+                                                    append("\"use\": \"official\",").
+                                                    append("\"type\": {").
+                                                        append("\"coding\": [").
+                                                            append("{").
+                                                                append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                                append("\"code\": \"MB\"").
+                                                            append("}").
+                                                        append("]").
+                                                    append("},").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()).append("\",").
+                                                    append("\"assigner\": {").
+                                                        append("\"display\": \"BPJS KESEHATAN\"").
+                                                    append("}").
                                                 append("},").
-                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()).append("\",").
-                                                append("\"assigner\": {").
-                                                    append("\"display\": \"BPJS KESEHATAN\"").
+                                                append("{").
+                                                    append("\"use\": \"official\",").
+                                                    append("\"type\": {").
+                                                        append("\"coding\": [").
+                                                            append("{").
+                                                                append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                                append("\"code\": \"NNIDN\"").
+                                                            append("}").
+                                                        append("]").
+                                                    append("},").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()).append("\",").
+                                                    append("\"assigner\": {").
+                                                        append("\"display\": \"KEMENDAGRI\"").
+                                                    append("}").
                                                 append("}").
-                                            append("},").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"type\": {").
-                                                    append("\"coding\": [").
-                                                        append("{").
-                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
-                                                            append("\"code\": \"NNIDN\"").
-                                                        append("}").
-                                                    append("]").
-                                                append("},").
-                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()).append("\",").
-                                                append("\"assigner\": {").
-                                                    append("\"display\": \"KEMENDAGRI\"").
+                                            append("],").
+                                            append("\"active\": true,").
+                                            append("\"name\": [").
+                                                append("{").
+                                                    append("\"use\": \"official\",").
+                                                    append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
                                                 append("}").
+                                            append("],").
+                                            append("\"telecom\": [").
+                                                append("{").
+                                                    append("\"system\": \"phone\",").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()).append("\",").
+                                                    append("\"use\": \"mobile\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"gender\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().replaceAll("L","male").replaceAll("P","female")).append("\",").
+                                            append("\"birthDate\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()).append("\",").
+                                            append("\"address\": [").
+                                                append("{").
+                                                    append("\"line\": [").
+                                                        append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\"").
+                                                    append("],").
+                                                    append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\",").
+                                                    append("\"use\": \"home\",").
+                                                    append("\"type\": \"both\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"managingOrganization\": {").
+                                                append("\"reference\": \"Organization/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\",").
+                                                append("\"display\": \"").append(akses.getnamars()).append("\"").
                                             append("}").
-                                        append("],").
-                                        append("\"active\": true,").
-                                        append("\"name\": [").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"telecom\": [").
-                                            append("{").
-                                                append("\"system\": \"phone\",").
-                                                append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()).append("\",").
-                                                append("\"use\": \"mobile\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"gender\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().replaceAll("L","male").replaceAll("P","female")).append("\",").
-                                        append("\"birthDate\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()).append("\",").
-                                        append("\"address\": [").
-                                            append("{").
-                                                append("\"line\": [").
-                                                    append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\"").
-                                                append("],").
-                                                append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\",").
-                                                append("\"use\": \"home\",").
-                                                append("\"type\": \"both\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"managingOrganization\": {").
-                                            append("\"reference\": \"Organization/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\",").
-                                            append("\"display\": \"").append(akses.getnamars()).append("\"").
                                         append("}").
-                                    append("}").
-                                append("},");
-                }
-                
-                if(chkOrganization.isSelected()==true){
-                    iyembuilder.append("{").
-                                    append("\"resource\": {").
-                                        append("\"resourceType\": \"Organization\",").
-                                        append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\",").
-                                        append("\"identifier\": [").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"system\": \"urn:oid:bpjs\",").
-                                                append("\"value\": \"").append(akses.getkodeppkbpjs()).append("\"").
-                                            append("},").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"system\": \"urn:oid:kemkes\",").
-                                                append("\"value\": \"").append(akses.getkodeppkkemenkes()).append("\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"type\": [").
-                                            append("{").
-                                                append("\"coding\": [").
-                                                    append("{").
-                                                        append("\"system\": \"http://hl7.org/fhir/organization-type\",").
-                                                        append("\"code\": \"prov\",").
-                                                        append("\"display\": \"Healthcare Provider\"").
-                                                    append("}").
-                                                append("],").
-                                                append("\"text\": \"").append(akses.getnamars()).append("\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"name\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()).append("\",").
-                                        append("\"alias\": [").
-                                            append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()).append("\"").
-                                        append("],").
-                                        append("\"telecom\": [").
-                                            append("{").
-                                                append("\"system\": \"phone\",").
-                                                append("\"value\": \"").append(akses.getkontakrs()).append("\",").
-                                                append("\"use\": \"work\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"address\": [").
-                                            append("{").
-                                                append("\"use\": \"work\",").
-                                                append("\"type\": \"physical\",").
-                                                append("\"text\": \"").append(akses.getalamatrs()).append("\",").
-                                                append("\"line\": [").
-                                                    append("\"").append(akses.getalamatrs()).append("\"").
-                                                append("],").
-                                                append("\"city\": \"").append(akses.getkabupatenrs()).append("\",").
-                                                append("\"state\": \"").append(akses.getpropinsirs()).append("\",").
-                                                append("\"country\": \"IDN\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"contact\": [").
-                                            append("{").
-                                                append("\"purpose\": {").
-                                                    append("\"coding\": [").
-                                                        append("{").
-                                                            append("\"system\": \"http://terminology.hl7.org/CodeSystem/contactentity-type\",").
-                                                            append("\"code\": \"PATINF\",").
-                                                            append("\"display\": \"Patient Information\"").
-                                                        append("}").
-                                                    append("]").
+                                    append("},");
+                    }
+
+                    if(chkOrganization.isSelected()==true){
+                        iyembuilder.append("{").
+                                        append("\"resource\": {").
+                                            append("\"resourceType\": \"Organization\",").
+                                            append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\",").
+                                            append("\"identifier\": [").
+                                                append("{").
+                                                    append("\"use\": \"official\",").
+                                                    append("\"system\": \"urn:oid:bpjs\",").
+                                                    append("\"value\": \"").append(akses.getkodeppkbpjs()).append("\"").
                                                 append("},").
-                                                append("\"telecom\": [").
-                                                    append("{").
-                                                        append("\"system\": \"phone\",").
-                                                        append("\"value\": \"").append(akses.getkontakrs()).append("\"").
-                                                    append("}").
-                                                append("]").
-                                            append("}").
-                                        append("]").
-                                    append("}").
-                                append("},");
-                }
-                
-                if(chkPractioner.isSelected()==true){
-                    iyembuilder.append("{").
-                                    append("\"resource\": {").
-                                        append("\"resourceType\": \"Practitioner\",").
-                                        append("\"id\": \"1301R005-2-1-62c83b2d-cc5d-4b0c-ac28-ba2883eac3af\",").
-                                        append("\"identifier\": [").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"system\": \"urn:oid:nomor_sip\",").
-                                                append("\"value\": \"503.446/1784/I/IP.DU/436.7.2/2019\"").
-                                            append("},").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"type\": {").
+                                                append("{").
+                                                    append("\"use\": \"official\",").
+                                                    append("\"system\": \"urn:oid:kemkes\",").
+                                                    append("\"value\": \"").append(akses.getkodeppkkemenkes()).append("\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"type\": [").
+                                                append("{").
                                                     append("\"coding\": [").
                                                         append("{").
-                                                            append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
-                                                            append("\"code\": \"NNIDN\"").
+                                                            append("\"system\": \"http://hl7.org/fhir/organization-type\",").
+                                                            append("\"code\": \"prov\",").
+                                                            append("\"display\": \"Healthcare Provider\"").
                                                         append("}").
                                                     append("],").
-                                                    append("\"text\": \"NIK\"").
-                                                append("},").
-                                                append("\"value\": \"3578101203830007\",").
-                                                append("\"assigner\": {").
-                                                    append("\"display\": \"KEMDAGRI\"").
+                                                    append("\"text\": \"").append(akses.getnamars()).append("\"").
                                                 append("}").
-                                            append("}").
-                                        append("],").
-                                        append("\"name\": [").
-                                            append("{").
-                                                append("\"use\": \"official\",").
-                                                append("\"text\": \"dr. Rochib Umar Zani\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"telecom\": [").
-                                            append("{").
-                                                append("\"system\": \"phone\",").
-                                                append("\"value\": \"021000000\",").
-                                                append("\"use\": \"work\"").
-                                            append("}").
-                                        append("],").
-                                        append("\"gender\": \"male\",").
-                                        append("\"birthDate\": null,").
-                                        append("\"address\": [").
-                                            append("{").
-                                            append("\"use\": \"home\",").
-                                            append("\"type\": \"physical\",").
-                                            append("\"text\": \"-\",").
-                                            append("\"line\": [").
-                                            append("    \"-\"").
                                             append("],").
-                                            append("\"city\": \"\",").
-                                            append("\"district\": \"\",").
-                                            append("\"state\": \"\",").
-                                            append("\"postalCode\": \"\",").
-                                            append("\"country\": \"IDN\"").
-                                            append("}").
-                                        append("]").
-                                append("}").
-                                append("},");
+                                            append("\"name\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()).append("\",").
+                                            append("\"alias\": [").
+                                                append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()).append("\"").
+                                            append("],").
+                                            append("\"telecom\": [").
+                                                append("{").
+                                                    append("\"system\": \"phone\",").
+                                                    append("\"value\": \"").append(akses.getkontakrs()).append("\",").
+                                                    append("\"use\": \"work\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"address\": [").
+                                                append("{").
+                                                    append("\"use\": \"work\",").
+                                                    append("\"type\": \"physical\",").
+                                                    append("\"text\": \"").append(akses.getalamatrs()).append("\",").
+                                                    append("\"line\": [").
+                                                        append("\"").append(akses.getalamatrs()).append("\"").
+                                                    append("],").
+                                                    append("\"city\": \"").append(akses.getkabupatenrs()).append("\",").
+                                                    append("\"state\": \"").append(akses.getpropinsirs()).append("\",").
+                                                    append("\"country\": \"IDN\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"contact\": [").
+                                                append("{").
+                                                    append("\"purpose\": {").
+                                                        append("\"coding\": [").
+                                                            append("{").
+                                                                append("\"system\": \"http://terminology.hl7.org/CodeSystem/contactentity-type\",").
+                                                                append("\"code\": \"PATINF\",").
+                                                                append("\"display\": \"Patient Information\"").
+                                                            append("}").
+                                                        append("]").
+                                                    append("},").
+                                                    append("\"telecom\": [").
+                                                        append("{").
+                                                            append("\"system\": \"phone\",").
+                                                            append("\"value\": \"").append(akses.getkontakrs()).append("\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("}").
+                                            append("]").
+                                        append("}").
+                                    append("},");
+                    }
+
+                    if(chkPractioner.isSelected()==true){
+                        ps=koneksi.prepareStatement(
+                            "SELECT dokter.no_ijn_praktek,pegawai.no_ktp,dokter.no_telp,dokter.jk,dokter.tgl_lahir,pegawai.alamat,pegawai.kota "+
+                            "FROM reg_periksa INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter inner JOIN pegawai ON dokter.kd_dokter=pegawai.nik "+
+                            "WHERE reg_periksa.no_rawat=?"
+                        );
+                        try {
+                            ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                iyembuilder.append("{").
+                                                append("\"resource\": {").
+                                                    append("\"resourceType\": \"Practitioner\",").
+                                                    append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())).append("\",").
+                                                    append("\"identifier\": [").
+                                                        append("{").
+                                                            append("\"use\": \"official\",").
+                                                            append("\"system\": \"urn:oid:nomor_sip\",").
+                                                            append("\"value\": \"").append(rs.getString("no_ijn_praktek")).append("\"").
+                                                        append("},").
+                                                        append("{").
+                                                            append("\"use\": \"official\",").
+                                                            append("\"type\": {").
+                                                                append("\"coding\": [").
+                                                                    append("{").
+                                                                        append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
+                                                                        append("\"code\": \"NNIDN\"").
+                                                                    append("}").
+                                                                append("],").
+                                                                append("\"text\": \"NIK\"").
+                                                            append("},").
+                                                            append("\"value\": \"").append(rs.getString("no_ktp")).append("\",").
+                                                            append("\"assigner\": {").
+                                                                append("\"display\": \"KEMDAGRI\"").
+                                                            append("}").
+                                                        append("}").
+                                                    append("],").
+                                                    append("\"name\": [").
+                                                        append("{").
+                                                            append("\"use\": \"official\",").
+                                                            append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()).append("\"").
+                                                        append("}").
+                                                    append("],").
+                                                    append("\"telecom\": [").
+                                                        append("{").
+                                                            append("\"system\": \"phone\",").
+                                                            append("\"value\": \"").append(rs.getString("no_telp")).append("\",").
+                                                            append("\"use\": \"work\"").
+                                                        append("}").
+                                                    append("],").
+                                                    append("\"gender\": \"").append(rs.getString("jk").replaceAll("L","male").replaceAll("P","female")).append("\",").
+                                                    append("\"birthDate\": \"").append(rs.getString("tgl_lahir")).append("\",").
+                                                    append("\"address\": [").
+                                                        append("{").
+                                                            append("\"use\": \"home\",").
+                                                            append("\"type\": \"physical\",").
+                                                            append("\"text\": \"").append(rs.getString("alamat")).append("\",").
+                                                            append("\"line\": [").
+                                                                append("\"").append(rs.getString("alamat")).append("\"").
+                                                            append("],").
+                                                            append("\"city\": \"").append(rs.getString("kota")).append("\",").
+                                                            append("\"district\": \"").append(rs.getString("kota")).append("\",").
+                                                            append("\"state\": \"").append(akses.getpropinsirs()).append("\",").
+                                                            append("\"postalCode\": \"\",").
+                                                            append("\"country\": \"IDN\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("}").
+                                            append("},");
+                            }
+                        } catch (Exception e) {
+                             System.out.println("Notif Praktisi : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                    }
+                    
+                    if(chkEncounter.isSelected()==true){
+                        iyembuilder.append("{").
+                                        append("\"resource\": {").
+                                            append("\"resourceType\": \"Encounter\",").
+                                            append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())).append("\",").
+                                            append("\"status\": \"finished\",").
+                                            append("\"class\": {").
+                                                append("\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",").
+                                                append("\"code\": \"").append((tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().equals("2. Ralan")?"AMB":"IMP")).append("\",").
+                                                append("\"display\": \"").append((tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().equals("2. Ralan")?"ambulatory":"inpatient encounter")).append("\"").
+                                            append("},").
+                                            append("\"subject\": {").
+                                                append("\"reference\": \"Patient/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
+                                                append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
+                                            append("},").
+                                            append("\"participant\": [").
+                                                append("{").
+                                                    append("\"type\": [").
+                                                        append("{").
+                                                            append("\"coding\": [").
+                                                                append("{").
+                                                                    append("\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\",").
+                                                                    append("\"code\": \"ATND\",").
+                                                                    append("\"display\": \"attender\"").
+                                                                append("}").
+                                                            append("]").
+                                                        append("}").
+                                                    append("],").
+                                                    append("\"individual\": {").
+                                                        append("\"reference\": \"Practitioner/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())).append("\",").
+                                                        append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()).append("\"").
+                                                    append("}").
+                                                append("}").
+                                            append("],").
+                                            append("\"period\": {").
+                                                append("\"start\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()).append("\",").
+                                                append("\"end\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()).append("\"").
+                                            append("},").
+                                            append("\"location\": [").
+                                                append("{").
+                                                    append("\"location\": {").
+                                                        append("\"reference\": \"Location/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())).append("\",").
+                                                        append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()).append("\"").
+                                                    append("}").
+                                                append("}").
+                                            append("],").
+                                            append("\"serviceProvider\": {").
+                                                append("\"reference\": \"Organization/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\"").
+                                            append("},").
+                                            append("\"identifier\": [").
+                                                append("{").
+                                                    append("\"system\": \"http://api.bpjs-kesehatan.go.id:8080/Vclaim-rest/SEP/\",").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()).append("\"").
+                                                append("}").
+                                            append("]").
+                                        append("}").
+                                    append("},");
+                    }
+
+                    if (iyembuilder.length() > 0) {
+                        iyembuilder.setLength(iyembuilder.length() - 1);
+                    }
+
+                    String stringJSON = "{" +
+                                            "\"resourceType\": \"Bundle\"," +
+                                            "\"id\": \""+akses.getkodeppkbpjs()+"-"+akses.getkodeppkkemenkes()+"-"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString().substring(0,1)+"-"+jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())+"\"," +
+                                            "\"meta\": {" +
+                                                "\"lastUpdated\": \""+Valid.SetTgl(DTPTanggal.getSelectedItem()+"")+"T"+DTPTanggal.getSelectedItem().toString().substring(11,19)+".000+07:00\"" +
+                                            "}," +
+                                            "\"identifier\": {" +
+                                                "\"system\": \"sep\"," +
+                                                "\"value\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"" +
+                                            "}," +
+                                            "\"type\": \"document\"," +
+                                            "\"entry\": [" +
+                                                iyembuilder.toString()+
+                                            "]" +
+                                        "}";
+                    try {
+                        mapper = new ObjectMapper();
+                        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+                        Object datajson = mapper.readValue(stringJSON, Object.class);
+                        String prettyJson = mapper.writeValueAsString(datajson);
+                        JSONFHIR.setText(prettyJson);
+                    } catch (Exception e) {
+                        JSONFHIR.setText(stringJSON);
+                    }
+
+                    WindowFHIR.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    WindowFHIR.setLocationRelativeTo(internalFrame1);
+                    WindowFHIR.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
                 }
-                
-                if (iyembuilder.length() > 0) {
-                    iyembuilder.setLength(iyembuilder.length() - 1);
-                }
-                
-                String stringJSON = "{" +
-                                        "\"resourceType\": \"Bundle\"," +
-                                        "\"id\": \""+akses.getkodeppkbpjs()+"-"+akses.getkodeppkkemenkes()+"-"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString().substring(0,1)+"-"+jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())+"\"," +
-                                        "\"meta\": {" +
-                                            "\"lastUpdated\": \""+Valid.SetTgl(DTPTanggal.getSelectedItem()+"")+"T"+DTPTanggal.getSelectedItem().toString().substring(11,19)+".000+07:00\"" +
-                                        "}," +
-                                        "\"identifier\": {" +
-                                            "\"system\": \"sep\"," +
-                                            "\"value\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"" +
-                                        "}," +
-                                        "\"type\": \"document\"," +
-                                        "\"entry\": [" +
-                                            iyembuilder.toString()+
-                                        "]" +
-                                    "}";
-                try {
-                    mapper = new ObjectMapper();
-                    mapper.enable(SerializationFeature.INDENT_OUTPUT);
-                    Object datajson = mapper.readValue(stringJSON, Object.class);
-                    String prettyJson = mapper.writeValueAsString(datajson);
-                    JSONFHIR.setText(prettyJson);
-                } catch (Exception e) {
-                    JSONFHIR.setText(stringJSON);
-                }
-                
-                WindowFHIR.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                WindowFHIR.setLocationRelativeTo(internalFrame1);
-                WindowFHIR.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data..!!");
@@ -1193,8 +1281,8 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select bridging_sep.no_sep,bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.no_ktp,bridging_sep.no_kartu,"+
                     "bridging_sep.tanggal_lahir,bridging_sep.jkel,bridging_sep.notelep,bridging_sep.tglsep,if(bridging_sep.jnspelayanan='1','1. Ranap','2. Ralan') as jnspelayanan,ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'') as tanggalkirim,"+
-                    "bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,bridging_sep.kddpjp,bridging_sep.nmdpdjp from bridging_sep inner join pasien on pasien.no_rkm_medis=bridging_sep.nomr inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                    "bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,bridging_sep.kddpjp,bridging_sep.nmdpdjp,DATE_FORMAT(bridging_sep.tglpulang, '%Y-%m-%d') as tglpulang from bridging_sep inner join pasien on pasien.no_rkm_medis=bridging_sep.nomr "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
                     "left join bridging_smart_klaim_bpjs on bridging_smart_klaim_bpjs.no_sep=bridging_sep.no_sep where bridging_sep.tglsep between ? and ? "+
                     (CmbStatus.getSelectedIndex()>0?(CmbStatus.getSelectedIndex()==1?"and ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'')<>'' ":"and ifnull(bridging_smart_klaim_bpjs.tanggal_kirim,'')='' "):"")+
                     (CmbJenis.getSelectedIndex()>0?(CmbJenis.getSelectedIndex()==1?"and bridging_sep.jnspelayanan='1' ":"and bridging_sep.jnspelayanan='2' "):"")+(TCari.getText().trim().equals("")?"":
@@ -1216,8 +1304,8 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_sep"),rs.getString("no_rawat"),rs.getString("nomr"),rs.getString("nama_pasien"),rs.getString("alamat")+", "+rs.getString("nm_kel")+", "+rs.getString("nm_kec")+", "+rs.getString("nm_kab")+", "+rs.getString("nm_prop"),
-                        rs.getString("no_ktp"),rs.getString("no_kartu"),rs.getString("tanggal_lahir"),rs.getString("jkel"),rs.getString("notelep"),rs.getString("tglsep"),rs.getString("jnspelayanan"),rs.getString("tanggalkirim"),rs.getString("kdpolitujuan"),
-                        rs.getString("nmpolitujuan"),rs.getString("kddpjp"),rs.getString("nmdpdjp")
+                        rs.getString("no_ktp"),rs.getString("no_kartu"),rs.getString("tanggal_lahir"),rs.getString("jkel"),rs.getString("notelep"),rs.getString("tglsep"),rs.getString("jnspelayanan"),rs.getString("tanggalkirim"),rs.getString("kddpjp"),rs.getString("nmdpdjp"),
+                        rs.getString("kdpolitujuan"),rs.getString("nmpolitujuan"),rs.getString("tglpulang")
                     });
                 }
             } catch (Exception e) {
