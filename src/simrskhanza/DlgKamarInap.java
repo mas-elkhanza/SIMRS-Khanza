@@ -209,6 +209,7 @@ import kepegawaian.DlgCariDokter;
 import keuangan.DlgDeposit;
 import permintaan.DlgPermintaanKonsultasiPerawat;
 import rekammedis.RMDataSkriningGiziKehamilan;
+import surat.SuratPermintaanBinrohtal;
 import surat.SuratSerahTerimaBarangAnggotaTubuh;
 
 /**
@@ -4977,6 +4978,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -7990,6 +7994,28 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }      
     }//GEN-LAST:event_formWindowActivated
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacherawatinap.SetPilihanBelumPulang(R1.isSelected());
+        cacherawatinap.SetPilihanTanggalMasuk(R2.isSelected());
+        cacherawatinap.SetPilihanTanggalPulang(R3.isSelected());
+        cacherawatinap.SetTanggalMasuk1(DTPCari1.getDate());
+        cacherawatinap.SetTanggalMasuk2(DTPCari2.getDate());
+        cacherawatinap.SetTanggalPulang1(DTPCari3.getDate());
+        cacherawatinap.SetTanggalPulang2(DTPCari4.getDate());
+        cacherawatinap.SetKeyWord(TCari.getText());
+        cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cacherawatinap.SetKamar(BangsalCari.getText());
+        
+        cacherawatinap.clearDataPasien();
+        for (i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacherawatinap.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(pengaturankamarinap.getAktifkanDiagnosaAkhir().equals("Yes")){
@@ -18855,6 +18881,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } 
     }
     
+    private void MnPersetujuanBimbinganRohaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanUmumActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratPermintaanBinrohtal form=new SuratPermintaanBinrohtal(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19251,7 +19296,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                   MnDataOperasi,MnPenilaianAwalKeperawatanRanapBayiAnak,MnCatatanObservasiRestrainNonFarmakologi,MnCatatanObservasiVentilator,MnCatatanAnastesiSedasi,MnChecklistPemberianFibrinolitik,MnPenilaianPsikologKlinis,MnPenilaianAwalMedisNeonatus,
                                   MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi,MnCatatanObservasiHemodialisa,MnCatatanCairanHemodialisa,MnCatatanPengkajianPaskaOperasi,MnCatatanObservasiBayi,
                                   MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnPersetujuanPemeriksaanHIV,MnSuratPernyataanMemilihDPJP,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaKeluarNICU,MnPenilaianAwalMedisPsikiatri,
-                                  MnCheckListKriteriaMasukPICU,MnCheckListKriteriaKeluarPICU,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnPenilaianAwalMedisJantung,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat;
+                                  MnCheckListKriteriaMasukPICU,MnCheckListKriteriaKeluarPICU,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnPenilaianAwalMedisJantung,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,
+                                  MnPersetujuanBimbinganRohani;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnCatatanObservasi,MnEdukasi,MnSuratPersetujuan,MnHasilPemeriksaanAlat;
     
     private void tampil() {
@@ -19834,6 +19880,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPersetujuanPemeriksaanHIV.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
         MnSuratPernyataanMemilihDPJP.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
         MnSerahTerimaBarangAnggotaTubuh.setEnabled(akses.getserah_terima_anggota_tubuh_barang());
+        MnPersetujuanBimbinganRohani.setEnabled(akses.getpermintaan_binrohtal());
         MnCheckListKriteriaMasukNICU.setEnabled(akses.getkriteria_masuk_nicu()); 
         MnCheckListKriteriaMasukPICU.setEnabled(akses.getkriteria_masuk_picu()); 
         MnCheckListKriteriaKeluarNICU.setEnabled(akses.getkriteria_keluar_nicu()); 
@@ -19884,42 +19931,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
       TCari.setText("");
     }
 
-    @Override
-    public void dispose() {
-        cacherawatinap.SetPilihanBelumPulang(R1.isSelected());
-        cacherawatinap.SetPilihanTanggalMasuk(R2.isSelected());
-        cacherawatinap.SetPilihanTanggalPulang(R3.isSelected());
-        cacherawatinap.SetTanggalMasuk1(DTPCari1.getDate());
-        cacherawatinap.SetTanggalMasuk2(DTPCari2.getDate());
-        cacherawatinap.SetTanggalPulang1(DTPCari3.getDate());
-        cacherawatinap.SetTanggalPulang2(DTPCari4.getDate());
-        cacherawatinap.SetKeyWord(TCari.getText());
-        cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
-        cacherawatinap.SetKamar(BangsalCari.getText());
-        
-        cacherawatinap.clearDataPasien();
-        for (i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacherawatinap.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        BangsalCari.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        DTPCari3.setDate(new Date());
-        DTPCari4.setDate(new Date());
-        cmbStatusBayar.setSelectedIndex(0);
-        R1.setSelected(true);
-        R2.setSelected(false);
-        R3.setSelected(false);
-        
-        super.dispose();
-    }
     private void panggilobat(String norawat) {
         if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",norawat)>0){
             DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
@@ -20545,6 +20556,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnSerahTerimaBarangAnggotaTubuh.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSerahTerimaBarangAnggotaTubuh.addActionListener(this::MnSerahTerimaBarangAnggotaTubuhActionPerformed);
         
+        MnPersetujuanBimbinganRohani = new javax.swing.JMenuItem();
+        MnPersetujuanBimbinganRohani.setBackground(new java.awt.Color(255, 255, 254));
+        MnPersetujuanBimbinganRohani.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPersetujuanBimbinganRohani.setForeground(new java.awt.Color(50, 50, 50));
+        MnPersetujuanBimbinganRohani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPersetujuanBimbinganRohani.setText("Persetujuan Bimbingan Rohani & Mental");
+        MnPersetujuanBimbinganRohani.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPersetujuanBimbinganRohani.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPersetujuanBimbinganRohani.setName("MnPersetujuanBimbinganRohani");
+        MnPersetujuanBimbinganRohani.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPersetujuanBimbinganRohani.addActionListener(this::MnPersetujuanBimbinganRohaniActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -20759,5 +20782,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnSuratPernyataanMemilihDPJP);
         MnSuratPersetujuan.add(MnSerahTerimaBarangAnggotaTubuh);
+        MnSuratPersetujuan.add(MnPersetujuanBimbinganRohani);
     }
 }

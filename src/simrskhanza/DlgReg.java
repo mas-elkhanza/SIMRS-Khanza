@@ -280,6 +280,7 @@ import javax.swing.WindowConstants;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgPermintaanKonsultasiPerawat;
 import rekammedis.RMDataSkriningGiziKehamilan;
+import surat.SuratPermintaanBinrohtal;
 import surat.SuratSerahTerimaBarangAnggotaTubuh;
 /**
  *
@@ -5988,6 +5989,9 @@ public final class DlgReg extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -9104,6 +9108,23 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{Valid.pindah(evt,BtnPrint3,Kabupaten2);}
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacheregistrasi.SetTanggalAwal(DTPCari1.getDate());
+        cacheregistrasi.SetTanggalAkhir(DTPCari2.getDate());
+        cacheregistrasi.SetKeyWord(TCari.getText());
+        cacheregistrasi.SetDokter(CrDokter.getText());
+        cacheregistrasi.SetPoli(CrPoli.getText());
+        cacheregistrasi.clearDataPasien();
+        
+        for (i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacheregistrasi.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cacheregistrasi.getTanggalAwal()!=null){
             DTPCari1.setDate(cacheregistrasi.getTanggalAwal());
@@ -16380,6 +16401,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     }
 
     
+    private void MnPersetujuanBimbinganRohaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanUmumActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratPermintaanBinrohtal form=new SuratPermintaanBinrohtal(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16823,7 +16866,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
             MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
             MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,
-            MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat;
+            MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
     private void tampil() {
@@ -17410,6 +17453,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPersetujuanPemeriksaanHIV.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
         MnPernyataanMemilihDPJP.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
         MnSerahTerimaBarangAnggotaTubuh.setEnabled(akses.getserah_terima_anggota_tubuh_barang());
+        MnPersetujuanBimbinganRohani.setEnabled(akses.getpermintaan_binrohtal());
         MnDokumentasiTindakanESWL.setEnabled(akses.gethasil_tindakan_eswl());
         MnCheckListKriteriaMasukICU.setEnabled(akses.getchecklist_kriteria_masuk_icu());
         MnPenilaianRisikoJatuhNeonatus.setEnabled(akses.getpenilaian_risiko_jatuh_neonatus());
@@ -17831,33 +17875,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             tabMode.setValueAt(kdpnj.getText(),tbPetugas.getSelectedRow(),22);
             emptTeks();
         }
-    }
-    
-    @Override
-    public void dispose() {
-        cacheregistrasi.SetTanggalAwal(DTPCari1.getDate());
-        cacheregistrasi.SetTanggalAkhir(DTPCari2.getDate());
-        cacheregistrasi.SetKeyWord(TCari.getText());
-        cacheregistrasi.SetDokter(CrDokter.getText());
-        cacheregistrasi.SetPoli(CrPoli.getText());
-        cacheregistrasi.clearDataPasien();
-        
-        for (i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacheregistrasi.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        CrDokter.setText("");
-        CrPoli.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        
-        super.dispose();
     }
     
     private void initRegistrasi() {
@@ -18785,6 +18802,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSerahTerimaBarangAnggotaTubuh.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSerahTerimaBarangAnggotaTubuh.addActionListener(this::MnSerahTerimaBarangAnggotaTubuhActionPerformed);
         
+        MnPersetujuanBimbinganRohani = new javax.swing.JMenuItem();
+        MnPersetujuanBimbinganRohani.setBackground(new java.awt.Color(255, 255, 254));
+        MnPersetujuanBimbinganRohani.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPersetujuanBimbinganRohani.setForeground(new java.awt.Color(50, 50, 50));
+        MnPersetujuanBimbinganRohani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPersetujuanBimbinganRohani.setText("Persetujuan Bimbingan Rohani & Mental");
+        MnPersetujuanBimbinganRohani.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPersetujuanBimbinganRohani.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPersetujuanBimbinganRohani.setName("MnPersetujuanBimbinganRohani");
+        MnPersetujuanBimbinganRohani.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPersetujuanBimbinganRohani.addActionListener(this::MnPersetujuanBimbinganRohaniActionPerformed);
+        
         MnCheckListKriteriaMasukNICU = new javax.swing.JMenuItem();
         MnCheckListKriteriaMasukNICU.setBackground(new java.awt.Color(255, 255, 254));
         MnCheckListKriteriaMasukNICU.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -19137,6 +19166,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnPernyataanMemilihDPJP);
         MnSuratPersetujuan.add(MnSerahTerimaBarangAnggotaTubuh);
+        MnSuratPersetujuan.add(MnPersetujuanBimbinganRohani);
         
         MnGizi.add(ppSkriningNutrisiDewasa);
         MnGizi.add(ppSkriningNutrisiLansia);

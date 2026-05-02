@@ -232,6 +232,7 @@ import javax.swing.WindowConstants;
 import permintaan.DlgPermintaanKonsultasiMedik;
 import permintaan.DlgPermintaanKonsultasiPerawat;
 import rekammedis.RMDataSkriningGiziKehamilan;
+import surat.SuratPermintaanBinrohtal;
 import surat.SuratSerahTerimaBarangAnggotaTubuh;
 
 /**
@@ -4367,6 +4368,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -6970,6 +6974,21 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{Valid.pindah(evt,BtnPrint3,Kabupaten2);}
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) { 
+        cacheigd.SetTanggalAwal(DTPCari1.getDate());
+        cacheigd.SetTanggalAkhir(DTPCari2.getDate());
+        cacheigd.SetKeyWord(TCari.getText());
+        cacheigd.clearDataPasien();
+        
+        for (int i = 0; i < tabMode.getRowCount(); i++) {
+            Object[] baris = new Object[tabMode.getColumnCount()];
+            for (int j = 0; j < tabMode.getColumnCount(); j++) {
+                baris[j] = tabMode.getValueAt(i, j);
+            }
+            cacheigd.setDataPasien(baris);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             ps3=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama,poliklinik.kd_poli from poliklinik where poliklinik.kd_poli='UGD'");
@@ -12266,6 +12285,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnPersetujuanBimbinganRohaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanUmumActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratPermintaanBinrohtal form=new SuratPermintaanBinrohtal(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @data args the command line arguments
     */
@@ -12600,7 +12641,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                   MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,
                                   MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,
                                   MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiMedik,
-                                  MnPermintaanKonsultasiPerawat;
+                                  MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani;
     private javax.swing.JMenu MnRMSkrining,MnEdukasi,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
     private void tampil() {
@@ -13077,6 +13118,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPersetujuanPemeriksaanHIV.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
         MnPernyataanMemilihDPJP.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
         MnSerahTerimaBarangAnggotaTubuh.setEnabled(akses.getserah_terima_anggota_tubuh_barang());
+        MnPersetujuanBimbinganRohani.setEnabled(akses.getpermintaan_binrohtal());
         MnCheckListKriteriaMasukNICU.setEnabled(akses.getkriteria_masuk_nicu());   
         MnCheckListKriteriaMasukPICU.setEnabled(akses.getkriteria_masuk_picu());   
         MnSkriningCURB65.setEnabled(akses.getskrining_curb65());
@@ -13270,29 +13312,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
-    }
-    
-    @Override
-    public void dispose() {
-        cacheigd.SetTanggalAwal(DTPCari1.getDate());
-        cacheigd.SetTanggalAkhir(DTPCari2.getDate());
-        cacheigd.SetKeyWord(TCari.getText());
-        cacheigd.clearDataPasien();
-        
-        for (int i = 0; i < tabMode.getRowCount(); i++) {
-            Object[] baris = new Object[tabMode.getColumnCount()];
-            for (int j = 0; j < tabMode.getColumnCount(); j++) {
-                baris[j] = tabMode.getValueAt(i, j);
-            }
-            cacheigd.setDataPasien(baris);
-        }
-        
-        tabMode.setRowCount(0);
-        TCari.setText("");
-        DTPCari1.setDate(new Date());
-        DTPCari2.setDate(new Date());
-        
-        super.dispose();
     }
     
     private void initIGD() {
@@ -13920,6 +13939,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSerahTerimaBarangAnggotaTubuh.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSerahTerimaBarangAnggotaTubuh.addActionListener(this::MnSerahTerimaBarangAnggotaTubuhActionPerformed);
         
+        MnPersetujuanBimbinganRohani = new javax.swing.JMenuItem();
+        MnPersetujuanBimbinganRohani.setBackground(new java.awt.Color(255, 255, 254));
+        MnPersetujuanBimbinganRohani.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPersetujuanBimbinganRohani.setForeground(new java.awt.Color(50, 50, 50));
+        MnPersetujuanBimbinganRohani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPersetujuanBimbinganRohani.setText("Persetujuan Bimbingan Rohani & Mental");
+        MnPersetujuanBimbinganRohani.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPersetujuanBimbinganRohani.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPersetujuanBimbinganRohani.setName("MnPersetujuanBimbinganRohani");
+        MnPersetujuanBimbinganRohani.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPersetujuanBimbinganRohani.addActionListener(this::MnPersetujuanBimbinganRohaniActionPerformed);
+        
         MnSkriningInstrumenACRS = new javax.swing.JMenuItem();
         MnSkriningInstrumenACRS.setBackground(new java.awt.Color(255, 255, 254));
         MnSkriningInstrumenACRS.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -14284,6 +14315,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnPernyataanMemilihDPJP);
         MnSuratPersetujuan.add(MnSerahTerimaBarangAnggotaTubuh);
+        MnSuratPersetujuan.add(MnPersetujuanBimbinganRohani);
+        
         MnRMHCU.add(MnCheckListKriteriaMasukNICU);
         MnRMHCU.add(MnCheckListKriteriaMasukPICU);
     }
