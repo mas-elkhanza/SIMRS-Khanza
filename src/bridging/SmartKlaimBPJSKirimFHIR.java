@@ -1035,6 +1035,141 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                         append("}").
                                     append("},");
                     }
+                    
+                    if(chkMedicationRequest.isSelected()==true){
+                        /*String[] arrSplit;
+                        String signa1="1",signa2="1";
+                        ps=koneksi.prepareStatement(
+                            "select satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,"+
+                            "satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,"+
+                            "satu_sehat_mapping_obat.denominator_code,satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
+                            "resep_dokter.aturan_pakai,resep_dokter.no_resep from resep_obat inner join resep_dokter on resep_dokter.no_resep=resep_obat.no_resep "+
+                            "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter.kode_brng "+
+                            "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                            "where resep_obat.no_rawat=?"
+                        );
+                        try {
+                            ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            while(rs.next()){
+                                arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
+                                signa1="1";
+                                try {
+                                    if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                        signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                    }
+                                } catch (Exception e) {
+                                    signa1="1";
+                                }
+                                signa2="1";
+                                try {
+                                    if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                        signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                    }
+                                } catch (Exception e) {
+                                    signa2="1";
+                                } 
+                                iyembuilder.append("{").
+                                                append("\"resource\": {").
+                                                    append("\"resourceType\": \"MedicationRequest\",").
+                                                    append("\"identifier\": [").
+                                                        append("{").
+                                                            append("\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\",").
+                                                            append("\"use\": \"official\",").
+                                                            append("\"value\": \""+rs.getString("no_resep")+"\"").
+                                                        append("},").
+                                                        append("{").
+                                                            append("\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\",").
+                                                            append("\"use\": \"official\",").
+                                                            append("\"value\": \""+rs.getString("kode_brng")+"\"").
+                                                        append("}").
+                                                    append("],").
+                                                    append("\"status\": \"completed\",").
+                                                    append("\"intent\": \"order\",").
+                                                    append("\"category\": [").
+                                                    append("{").
+                                                    append("\"coding\": [").
+                                                    append("{").
+                                                    append("\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\",").
+                                                    append("\"code\": \"outpatient\",").
+                                                    append("\"display\": \"Outpatient\"").
+                                                    append("}").
+                                                    append("]").
+                                                    append("}").
+                                                    append("],").
+                                                    append("\"medicationReference\": {").
+                                                    append("\"reference\": \"Medication/"+rs.getString("id_medication")+"\",").
+                                                    append("\"display\": \""+rs.getString("obat_display")+"\"").
+                                                    append("},").
+                                                    append("\"subject\": {").
+                                                    append("\"reference\": \"Patient/"+idpasien+"\",").
+                                                    append("\"display\": \""+rs.getString("nm_pasien")+"\"").
+                                                    append("},").
+                                                    append("\"encounter\": {").
+                                                    append("\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"").
+                                                    append("},").
+                                                    append("\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\",").
+                                                    append("\"requester\": {").
+                                                    append("\"reference\": \"Practitioner/"+idpraktisi+"\",").
+                                                    append("\"display\": \""+rs.getString("nama")+"\"").
+                                                    append("},").
+                                                    append("\"dosageInstruction\": [").
+                                                    append("{").
+                                                    append("\"sequence\": 1,").
+                                                    append("\"patientInstruction\": \""+rs.getString("aturan_pakai")+"\",").
+                                                    append("\"timing\": {").
+                                                    append("\"repeat\": {").
+                                                    append("\"frequency\": "+signa2+",").
+                                                    append("\"period\": 1,").
+                                                    append("\"periodUnit\": \"d\"").
+                                                    append("}").
+                                                    append("},").
+                                                    append("\"route\": {").
+                                                    append("\"coding\": [").
+                                                    append("{").
+                                                    append("\"system\": \""+rs.getString("route_system")+"\",").
+                                                    append("\"code\": \""+rs.getString("route_code")+"\",").
+                                                    append("\"display\": \""+rs.getString("route_display")+"\"").
+                                                    append("}").
+                                                    append("]").
+                                                    append("},").
+                                                    append("\"doseAndRate\": [").
+                                                    append("{").
+                                                    append("\"doseQuantity\": {").
+                                                    append("\"value\": "+signa1+",").
+                                                    append("\"unit\": \""+rs.getString("denominator_code")+"\",").
+                                                    append("\"system\": \""+rs.getString("denominator_system")+"\",").
+                                                    append("\"code\": \""+rs.getString("denominator_code")+"\"").
+                                                    append("}").
+                                                    append("}").
+                                                    append("]").
+                                                    append("}").
+                                                    append("],").
+                                                    append("\"dispenseRequest\": {").
+                                                    append("\"quantity\": {").
+                                                    append("\"value\": "+rs.getString("jml")+",").
+                                                    append("\"unit\": \""+rs.getString("denominator_code")+"\",").
+                                                    append("\"system\": \""+rs.getString("denominator_system")+"\",").
+                                                    append("\"code\": \""+rs.getString("denominator_code")+"\"").
+                                                    append("},").
+                                                    append("\"performer\": {").
+                                                    append("\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"").
+                                                    append("}").
+                                                    append("}").
+                                                append("}").
+                                            append("},");
+                            }
+                        } catch (Exception e) {
+                             System.out.println("Notif Praktisi : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }*/
+                    }
 
                     if (iyembuilder.length() > 0) {
                         iyembuilder.setLength(iyembuilder.length() - 1);

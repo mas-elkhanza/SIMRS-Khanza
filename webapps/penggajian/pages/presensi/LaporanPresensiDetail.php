@@ -19,7 +19,7 @@
             $bulan    = $bulan;
         }
         $id           = validTeks($_GET['id']);
-        $_sqlc        = "SELECT pegawai.nik,pegawai.nama FROM pegawai pegawai.where id='$id'";
+        $_sqlc        = "SELECT pegawai.nik,pegawai.nama FROM pegawai where pegawai.id='$id'";
         $hasilc       = bukaquery($_sqlc);
         $barisc       = mysqli_fetch_row($hasilc);
         $_sql         = "SELECT presensi.tgl,presensi.id,presensi.jns,presensi.lembur from presensi where presensi.id='$id' and presensi.tgl like '%".$tahun."-".$bulan."%' ORDER BY presensi.tgl ASC ";

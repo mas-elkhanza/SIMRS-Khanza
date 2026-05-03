@@ -366,7 +366,7 @@
                     <td width="2%" valign="top">9.</td><td width="98%">Saya menyatakan bahwa say telah menerima infiormasi tentang adanya tatacara mengajukan keluhan terhadap pelayanan kesehatan terhadap diri say dan say setuju untuk mengikuti tata cara mengajukan keluhan tersebut sesuai dengan prosedur yang ada di <?=$namars?>.</td>
                 </tr>
                 <tr class="text-dark">
-                    <td width="2%" valign="top">10.</td><td width="98%">Melalui dokumen ini saya sampaikan bahwa saya atau keluarga saya memiliki nilai kepercayaan dalam pengobatan atau perawatan yang antara lain adalah <input name="nilai_kepercayaan" type="text" id="TxtIsi1" size="40" maxlength="50" pattern="[a-zA-Z0-9, ./@_-]{1,50}" title=" a-zA-Z0-9, ./@_- (Maksimal 50 karakter)" autocomplete="off"></td>
+                    <td width="2%" valign="top">10.</td><td width="98%">Melalui dokumen ini saya sampaikan bahwa saya atau keluarga saya memiliki nilai kepercayaan dalam pengobatan atau perawatan yang antara lain adalah <input name="nilai_kepercayaan" type="text" id="TxtIsi1" size="40" maxlength="50" pattern="[a-zA-Z0-9, ./@_-]{1,50}" title=" a-zA-Z0-9, ./@_- (Maksimal 50 karakter)" autocomplete="off"><span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span></td>
                 </tr>
                 <tr class="text-dark">
                     <td width="2%" valign="top">11.</td><td width="98%">Melalui dokumen ini saya menegaskan kembali bahwa saya mempercayakan kepada semua tenaga kesehatan yang ada di <?=$namars?> untuk memberikan perawatan diagnostik dan terapi kepada saya sebagai pasien rawat inap, rawat jalan, maupun gawat darurat termasuk pemeriksaan penunjang yang dibutuhkan untuk pengobatan dan tindakan.</td>
@@ -433,11 +433,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div id="my_camera"></div>
-                    <input type="hidden" name="image" class="image-tag" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                    <input type="hidden" name="image" class="image-tag" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
                 </div>
                 <div class="col-md-6">
                     <div id="results"><h7 class="text-success"><center>Gambar akan diambil jika anda sudah mengeklik ya</center></h7></div>
-                    <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
+                    <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                 </div>
                 <div class="col-md-12 text-center">
                     <br>

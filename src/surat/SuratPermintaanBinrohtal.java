@@ -237,7 +237,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         jLabel12 = new widget.Label();
         cmbJnsPelayanan = new widget.ComboBox();
         PelayananLainnya = new widget.TextBox();
-        jSeparator3 = new javax.swing.JSeparator();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -438,11 +437,11 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
 
         jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(57, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -456,7 +455,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -511,7 +510,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 225));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 215));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -553,7 +552,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         jLabel8.setText("Respon :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 170, 65, 23);
+        jLabel8.setBounds(0, 160, 65, 23);
 
         ResponLainnya.setName("ResponLainnya"); // NOI18N
         ResponLainnya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -562,7 +561,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(ResponLainnya);
-        ResponLainnya.setBounds(212, 170, 210, 23);
+        ResponLainnya.setBounds(212, 160, 210, 23);
 
         cmbRespon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang", "Cemas Berkurang", "Kooperatif", "Menolak", "Lainnya" }));
         cmbRespon.setName("cmbRespon"); // NOI18N
@@ -572,7 +571,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbRespon);
-        cmbRespon.setBounds(69, 170, 140, 23);
+        cmbRespon.setBounds(69, 160, 140, 23);
 
         jLabel17.setText("Tgl.Lahir :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -624,7 +623,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 65, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2026 14:48:08" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026 11:01:26" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -663,12 +662,12 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(530, 170, 203, 23);
+        Keterangan.setBounds(530, 160, 203, 23);
 
         jLabel20.setText("Keterangan :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(456, 170, 70, 23);
+        jLabel20.setBounds(456, 160, 70, 23);
 
         jLabel22.setText("Dokter D.P.J.P :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -707,13 +706,13 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         kdkamar.setName("kdkamar"); // NOI18N
         kdkamar.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(kdkamar);
-        kdkamar.setBounds(69, 110, 70, 23);
+        kdkamar.setBounds(69, 100, 70, 23);
 
         nmkamar.setEditable(false);
         nmkamar.setName("nmkamar"); // NOI18N
         nmkamar.setPreferredSize(new java.awt.Dimension(215, 23));
         FormInput.add(nmkamar);
-        nmkamar.setBounds(141, 110, 220, 23);
+        nmkamar.setBounds(141, 100, 220, 23);
 
         BtnRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnRuang.setMnemonic('3');
@@ -731,17 +730,17 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnRuang);
-        BtnRuang.setBounds(363, 110, 28, 23);
+        BtnRuang.setBounds(363, 100, 28, 23);
 
         jLabel5.setText("Ruang :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(0, 110, 65, 23);
+        jLabel5.setBounds(0, 100, 65, 23);
 
         jLabel9.setText("Jenis Permintaan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(419, 110, 130, 23);
+        jLabel9.setBounds(419, 100, 130, 23);
 
         cmbJnsPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pasien Meminta Sendiri", "Keluarga Meminta", "Rekomendasi Petugas" }));
         cmbJnsPermintaan.setName("cmbJnsPermintaan"); // NOI18N
@@ -751,12 +750,12 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbJnsPermintaan);
-        cmbJnsPermintaan.setBounds(553, 110, 180, 23);
+        cmbJnsPermintaan.setBounds(553, 100, 180, 23);
 
         jLabel23.setText("Agama :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(0, 140, 65, 23);
+        jLabel23.setBounds(0, 130, 65, 23);
 
         Agama.setName("Agama"); // NOI18N
         Agama.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -765,12 +764,12 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Agama);
-        Agama.setBounds(69, 140, 140, 23);
+        Agama.setBounds(69, 130, 140, 23);
 
         jLabel12.setText("Pelayanan :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(226, 140, 70, 23);
+        jLabel12.setBounds(226, 130, 70, 23);
 
         cmbJnsPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Konseling Rohani", "Doa / Pendampingan Spiritual", "Ibadah Khusus", "Pendampingan Menjelang Tindakan Medis", "Pendampingan Pasien Kritis / Akhir Hayat", "Lainnya" }));
         cmbJnsPelayanan.setName("cmbJnsPelayanan"); // NOI18N
@@ -780,7 +779,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbJnsPelayanan);
-        cmbJnsPelayanan.setBounds(300, 140, 260, 23);
+        cmbJnsPelayanan.setBounds(300, 130, 260, 23);
 
         PelayananLainnya.setName("PelayananLainnya"); // NOI18N
         PelayananLainnya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -789,14 +788,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             }
         });
         FormInput.add(PelayananLainnya);
-        PelayananLainnya.setBounds(563, 140, 170, 23);
-
-        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator3.setName("jSeparator3"); // NOI18N
-        FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 100, 735, 1);
+        PelayananLainnya.setBounds(563, 130, 170, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1575,7 +1567,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator3;
     private widget.TextBox kdkamar;
     private widget.TextBox nmkamar;
     private widget.panelisi panelGlass8;
@@ -1747,7 +1738,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,225));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,215));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

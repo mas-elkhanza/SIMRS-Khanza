@@ -131,6 +131,21 @@
                           </tr>";
                     $i++;
                 }
+                
+                if($i==0){
+                    $resepnonracikan=bukaquery("select databarang.nama_brng,detailpiutang.aturan_pakai,detailpiutang.jml,kodesatuan.satuan
+                            from detailpiutang inner join bridging_resep_apotek_bpjs on bridging_resep_apotek_bpjs.no_sep_apotek=detailpiutang.nota_piutang  
+                            where bridging_resep_apotek_bpjs.no_resep='$noresep'");
+                    while($barisresepnonracikan = mysqli_fetch_array($resepnonracikan)) {
+                        echo "<tr class='text-dark'>
+                                <td align='center'>$i</td>
+                                <td align='center'>$barisresepnonracikan[nama_brng]</td>
+                                <td align='center'>$barisresepnonracikan[jml] $barisresepnonracikan[satuan]</td>
+                                <td align='center'>$barisresepnonracikan[aturan_pakai]</td>
+                              </tr>";
+                        $i++;
+                    }
+                }
             ?>
         </table>
         <br>

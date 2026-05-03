@@ -128,7 +128,7 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Rencana Pemulangan Pasien No.Rawat <?=$norawat;?></center></h5>
+        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>RENCANA PEMULANGAN PASIEN NO.RAWAT <?=$norawat;?></center></h5>
         <br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="norawat" value="<?=$norawat;?>">
