@@ -139,7 +139,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
-        BesarBayar.setDocument(new batasInput((byte)15).getKata(BesarBayar));
+        BesarBayar.setDocument(new batasInput((byte)15).getOnlyAngka(BesarBayar));
         NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
