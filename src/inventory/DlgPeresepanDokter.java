@@ -1557,7 +1557,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void DTPBeriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPBeriItemStateChanged
         if(this.isActive()==true){
-            emptTeksobat();
+            try {
+                emptTeksobat();
+            }catch (Exception e) {}
         }
     }//GEN-LAST:event_DTPBeriItemStateChanged
 
