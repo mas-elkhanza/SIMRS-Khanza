@@ -226,7 +226,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             pcra_icra_lokasi_kelompok_risiko_area=false,pcra_icra_kelas_risiko_pencegahan=false,pcra_icra_tindakan_pengendalian=false,pcra_icra_identifkasi_risiko_infeksi=false,pcra_icra_identifkasi_risiko_keselamatan=false,
             pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,
             pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,
-            bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false;
+            bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,
+            surat_permohonan_privasi=false;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
@@ -903,6 +904,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         pcra_icra_identifkasi_risiko_kebakaran=false;pcra_icra_identifkasi_risiko_utilitas=false;bpjs_daftar_resep_apotek=false;daftar_permintaan_resep_iterasi_bpjs=false;pcra_icra_pengkajian_risiko_prakonstruksi=false;
         pcra_icra_persyaratan_harus_dipenuhi=false;satu_sehat_kirim_questionresponse_telaah_farmasi=false;satu_sehat_kirim_allergy_intolerance=false;konsultasi_perawat=false;jawaban_konsultasi_perawat=false;
         bridging_smart_klaim_bpjs=false;mapping_prosedur_smart_klaim_bpjs=false;mapping_penyakit_smart_klaim_bpjs=false;permintaan_binrohtal=false;surat_permintaan_perlindungan_dari_kekerasan=false;
+        surat_permohonan_privasi=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1168,7 +1170,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.pcra_icra_identifkasi_risiko_kebakaran,user.pcra_icra_identifkasi_risiko_utilitas,user.bpjs_daftar_resep_apotek,user.daftar_permintaan_resep_iterasi_bpjs,"+
                 "user.pcra_icra_pengkajian_risiko_prakonstruksi,user.pcra_icra_persyaratan_harus_dipenuhi,user.satu_sehat_kirim_questionresponse_telaah_farmasi,"+
                 "user.satu_sehat_kirim_allergy_intolerance,user.konsultasi_perawat,user.jawaban_konsultasi_perawat,user.bridging_smart_klaim_bpjs,user.mapping_prosedur_smart_klaim_bpjs,"+
-                "user.mapping_penyakit_smart_klaim_bpjs,user.permintaan_binrohtal,user.surat_permintaan_perlindungan_dari_kekerasan from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.mapping_penyakit_smart_klaim_bpjs,user.permintaan_binrohtal,user.surat_permintaan_perlindungan_dari_kekerasan,user.surat_permohonan_privasi from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1306,7 +1308,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     bpjs_potensi_prb=rs.getBoolean("bpjs_potensi_prb");bpjs_riwayat_pelayanan_obat=rs.getBoolean("bpjs_riwayat_pelayanan_obat");skrining_gizi_kehamilan=rs.getBoolean("skrining_gizi_kehamilan");bpjs_rekap_peserta_prb_apotek=rs.getBoolean("bpjs_rekap_peserta_prb_apotek");serah_terima_anggota_tubuh_barang=rs.getBoolean("serah_terima_anggota_tubuh_barang");pcra_icra_jenis_aktivitas_proyek=rs.getBoolean("pcra_icra_jenis_aktivitas_proyek");pcra_icra_lokasi_kelompok_risiko_area=rs.getBoolean("pcra_icra_lokasi_kelompok_risiko_area");pcra_icra_kelas_risiko_pencegahan=rs.getBoolean("pcra_icra_kelas_risiko_pencegahan");
                     pcra_icra_tindakan_pengendalian=rs.getBoolean("pcra_icra_tindakan_pengendalian");pcra_icra_identifkasi_risiko_infeksi=rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi");pcra_icra_identifkasi_risiko_keselamatan=rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan");pcra_icra_identifkasi_risiko_kebakaran=rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran");pcra_icra_identifkasi_risiko_utilitas=rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas");bpjs_daftar_resep_apotek=rs.getBoolean("bpjs_daftar_resep_apotek");daftar_permintaan_resep_iterasi_bpjs=rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs");
                     pcra_icra_pengkajian_risiko_prakonstruksi=rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi");pcra_icra_persyaratan_harus_dipenuhi=rs.getBoolean("pcra_icra_persyaratan_harus_dipenuhi");satu_sehat_kirim_questionresponse_telaah_farmasi=rs.getBoolean("satu_sehat_kirim_questionresponse_telaah_farmasi");satu_sehat_kirim_allergy_intolerance=rs.getBoolean("satu_sehat_kirim_allergy_intolerance");konsultasi_perawat=rs.getBoolean("konsultasi_perawat");jawaban_konsultasi_perawat=rs.getBoolean("jawaban_konsultasi_perawat");bridging_smart_klaim_bpjs=rs.getBoolean("bridging_smart_klaim_bpjs");
-                    mapping_prosedur_smart_klaim_bpjs=rs.getBoolean("mapping_prosedur_smart_klaim_bpjs");mapping_penyakit_smart_klaim_bpjs=rs.getBoolean("mapping_penyakit_smart_klaim_bpjs");permintaan_binrohtal=rs.getBoolean("permintaan_binrohtal");surat_permintaan_perlindungan_dari_kekerasan=rs.getBoolean("surat_permintaan_perlindungan_dari_kekerasan");
+                    mapping_prosedur_smart_klaim_bpjs=rs.getBoolean("mapping_prosedur_smart_klaim_bpjs");mapping_penyakit_smart_klaim_bpjs=rs.getBoolean("mapping_penyakit_smart_klaim_bpjs");permintaan_binrohtal=rs.getBoolean("permintaan_binrohtal");surat_permintaan_perlindungan_dari_kekerasan=rs.getBoolean("surat_permintaan_perlindungan_dari_kekerasan");surat_permohonan_privasi=rs.getBoolean("surat_permohonan_privasi");
                     setTampil();setTampil2();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -5751,6 +5753,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[P]Surat Permintaan Perlindungan Diri Dari Kekerasan".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[P]Surat Permintaan Perlindungan Diri Dari Kekerasan",surat_permintaan_perlindungan_dari_kekerasan});
+        }
+        
+        if("[P]Surat Permohonan Privasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[P]Surat Permohonan Privasi",surat_permohonan_privasi});
         }
         
         if("[Q]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -10546,6 +10552,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[P]Surat Permintaan Perlindungan Diri Dari Kekerasan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_permintaan_perlindungan_dari_kekerasan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[P]Surat Permohonan Privasi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_permohonan_privasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[Q]Ruang Perpustakaan".equals(tbUser.getValueAt(i,1).toString())){
