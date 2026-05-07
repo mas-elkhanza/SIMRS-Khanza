@@ -1272,8 +1272,25 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
                 param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanprivacy/"+lokasifile);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),17).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
-                Valid.MyReportqry("rptSuratPermintaanPrivacy.jasper","report","::[ Formulir Permintaan Privasi Pasien ]::",
-                    buildPrivacyLetterQuery(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()),param);
+                Valid.MyReportqry("rptSuratPermintaanPrivasi.jasper","report","::[ Formulir Permintaan Privasi Pasien ]::",
+                    "select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,"+
+                    "surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.kategori_privasi as pengobatan_kepada,"+
+                    "pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                    "surat_permohonan_privasi.alasan,surat_permohonan_privasi.alasan as nilai_kepercayaan,"+
+                    "surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.alamatpj as alamat_pj,"+
+                    "surat_permohonan_privasi.nama_pj,surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,"+
+                    "surat_permohonan_privasi.jkpj,surat_permohonan_privasi.bertindak_atas,surat_permohonan_privasi.no_telp,"+
+                    "surat_permohonan_privasi.nip,petugas.nama,penjab.png_jawab "+
+                    "from surat_permohonan_privasi inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on surat_permohonan_privasi.nip=petugas.nip "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                    "where surat_permohonan_privasi.no_surat='",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1441,7 +1458,7 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 }else{
@@ -1624,30 +1641,6 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
         }
     }
     
-    private String buildPrivacyLetterQuery(String noSurat) {
-        String safeNoSurat = noSurat.replace("'","''");
-        StringBuilder sql = new StringBuilder();
-        sql.append("select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,");
-        sql.append("reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,");
-        sql.append("surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.kategori_privasi as pengobatan_kepada,");
-        sql.append("pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,");
-        sql.append("surat_permohonan_privasi.alasan,surat_permohonan_privasi.alasan as nilai_kepercayaan,");
-        sql.append("surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.alamatpj as alamat_pj,");
-        sql.append("surat_permohonan_privasi.nama_pj,surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,");
-        sql.append("surat_permohonan_privasi.jkpj,surat_permohonan_privasi.bertindak_atas,surat_permohonan_privasi.no_telp,");
-        sql.append("surat_permohonan_privasi.nip,petugas.nama,penjab.png_jawab ");
-        sql.append("from surat_permohonan_privasi inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat ");
-        sql.append("inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ");
-        sql.append("inner join petugas on surat_permohonan_privasi.nip=petugas.nip ");
-        sql.append("inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel ");
-        sql.append("inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec ");
-        sql.append("inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab ");
-        sql.append("inner join propinsi on pasien.kd_prop=propinsi.kd_prop ");
-        sql.append("inner join penjab on reg_periksa.kd_pj=penjab.kd_pj ");
-        sql.append("where surat_permohonan_privasi.no_surat='").append(safeNoSurat).append("'");
-        return sql.toString();
-    }
-
     private void hapus() {
         if(Sequel.queryu2tf("delete from surat_permohonan_privasi where no_surat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()

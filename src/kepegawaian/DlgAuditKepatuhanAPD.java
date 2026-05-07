@@ -1059,7 +1059,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_kepatuhan_apd.nik,pegawai.nama,pegawai.jbtn,audit_kepatuhan_apd.tindakan,audit_kepatuhan_apd.tanggal,audit_kepatuhan_apd.topi,"+
                     "audit_kepatuhan_apd.masker,audit_kepatuhan_apd.kacamata,audit_kepatuhan_apd.sarungtangan,audit_kepatuhan_apd.apron,audit_kepatuhan_apd.sepatu "+
@@ -1073,7 +1073,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

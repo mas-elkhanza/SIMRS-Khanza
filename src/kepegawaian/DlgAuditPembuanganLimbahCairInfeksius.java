@@ -1039,7 +1039,7 @@ public final class DlgAuditPembuanganLimbahCairInfeksius extends javax.swing.JDi
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_pembuangan_limbah_cair_infeksius.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah_cair_infeksius.tanggal,audit_pembuangan_limbah_cair_infeksius.audit1,"+
                     "audit_pembuangan_limbah_cair_infeksius.audit2,audit_pembuangan_limbah_cair_infeksius.audit3,"+
@@ -1059,7 +1059,7 @@ public final class DlgAuditPembuanganLimbahCairInfeksius extends javax.swing.JDi
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

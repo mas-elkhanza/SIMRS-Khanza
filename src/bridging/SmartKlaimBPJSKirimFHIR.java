@@ -1293,7 +1293,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
             if(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString().equals("")){
                 try {
                     headers = new HttpHeaders();
-                    headers.setContentType(MediaType.TEXT_PLAIN);
+                    headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
                     headers.add("X-Cons-ID",koneksiDB.CONSIDAPISMARTCLAIM());
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-Timestamp",utc);

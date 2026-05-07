@@ -1474,7 +1474,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,monitoring_reaksi_tranfusi.tgl_perawatan,monitoring_reaksi_tranfusi.jam_rawat,monitoring_reaksi_tranfusi.produk_darah,"+
@@ -1498,7 +1498,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 }else{

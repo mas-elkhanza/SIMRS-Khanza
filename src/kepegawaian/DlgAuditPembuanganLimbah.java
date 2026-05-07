@@ -1081,7 +1081,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_pembuangan_limbah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah.tanggal,audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,"+
                     "audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,"+
@@ -1103,7 +1103,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

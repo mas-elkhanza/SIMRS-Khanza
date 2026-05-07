@@ -1023,7 +1023,7 @@ public final class DlgAuditPenangananDarah extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_penanganan_darah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_penanganan_darah.tanggal,audit_penanganan_darah.menggunakan_apd_waktu_membuang_darah,"+
                     "audit_penanganan_darah.komponen_darah_tidak_ada_dilantai,audit_penanganan_darah.membuang_darah_pada_tempat_ditentukan,"+
@@ -1043,7 +1043,7 @@ public final class DlgAuditPenangananDarah extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

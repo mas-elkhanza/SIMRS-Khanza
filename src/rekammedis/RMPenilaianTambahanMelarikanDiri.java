@@ -2358,7 +2358,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_beresiko_melarikan_diri.tanggal,"+
                     "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
@@ -2416,7 +2416,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

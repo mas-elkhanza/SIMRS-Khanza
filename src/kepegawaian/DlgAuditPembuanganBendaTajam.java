@@ -1023,7 +1023,7 @@ public final class DlgAuditPembuanganBendaTajam extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_pembuangan_benda_tajam.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_benda_tajam.tanggal,audit_pembuangan_benda_tajam.setiap_injeksi_needle_langsung_dimasukkan_safety_box,"+
                     "audit_pembuangan_benda_tajam.setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box,audit_pembuangan_benda_tajam.setiap_benda_tajam_jarum_dimasukkan_safety_box,"+
@@ -1043,7 +1043,7 @@ public final class DlgAuditPembuanganBendaTajam extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

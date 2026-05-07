@@ -999,7 +999,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_cuci_tangan_medis.nik,pegawai.nama,audit_cuci_tangan_medis.tanggal,audit_cuci_tangan_medis.sebelum_menyentuh_pasien,"+
                     "audit_cuci_tangan_medis.sebelum_tehnik_aseptik,audit_cuci_tangan_medis.setelah_terpapar_cairan_tubuh_pasien,"+
@@ -1016,7 +1016,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

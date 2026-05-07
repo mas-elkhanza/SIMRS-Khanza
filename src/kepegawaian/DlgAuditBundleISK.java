@@ -1076,7 +1076,7 @@ public final class DlgAuditBundleISK extends javax.swing.JDialog {
     private void tampil() {
       Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_bundle_isk.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_bundle_isk.tanggal,audit_bundle_isk.pemasangan_sesuai_indikasi,"+
                     "audit_bundle_isk.hand_hygiene,audit_bundle_isk.menggunakan_apd_yang_tepat,audit_bundle_isk.pemasangan_menggunakan_alat_steril,audit_bundle_isk.segera_dilepas_setelah_tidak_diperlukan,"+
@@ -1094,7 +1094,7 @@ public final class DlgAuditBundleISK extends javax.swing.JDialog {
              }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{
