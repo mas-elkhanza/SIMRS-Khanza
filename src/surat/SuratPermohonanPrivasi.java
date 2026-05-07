@@ -1235,9 +1235,9 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripermintaanprivacy");
-                Sequel.queryu("insert into antripermintaanprivacy values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from surat_permohonan_privasi_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from antripermintaanprivasi");
+                Sequel.queryu("insert into antripermintaanprivasi values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from surat_permohonan_privasi_pembuat_permohonan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Permintaan terlebih dahulu..!!");
             }
@@ -1269,7 +1269,7 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanprivacy/"+lokasifile);
+                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permohonanprivasi/"+lokasifile);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),17).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
                 Valid.MyReportqry("rptSuratPermintaanPrivasi.jasper","report","::[ Formulir Permintaan Privasi Pasien ]::",
@@ -1290,7 +1290,7 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                     "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "where surat_permohonan_privasi.no_surat='",param);
+                    "where surat_permohonan_privasi.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1671,7 +1671,7 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select surat_permohonan_privasi_pernyataan.photo from surat_permohonan_privasi_pernyataan where surat_permohonan_privasi_pernyataan.no_surat=?");
+                ps=koneksi.prepareStatement("select surat_permohonan_privasi_pembuat_permohonan.photo from surat_permohonan_privasi_pembuat_permohonan where surat_permohonan_privasi_pembuat_permohonan.no_surat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1681,7 +1681,7 @@ public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanprivacy/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permohonanprivasi/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";
