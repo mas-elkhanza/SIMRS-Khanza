@@ -149,9 +149,17 @@
                     if (!empty($dep_id)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" jam_jaga "," '0','$dep_id','$shift','$jam_masuk:$menit_masuk:00',
-                                        '$jam_pulang:$menit_pulang:00'", " Jam Jaga " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=ListJam&action=TAMBAH'>";
+                                try {
+                                    Tambah(" jam_jaga "," '0','$dep_id','$shift','$jam_masuk:$menit_masuk:00',
+                                        '$jam_pulang:$menit_pulang:00' "," Jam Jaga ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=ListJam&action=TAMBAH'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data jam jaga sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else if (empty($dep_id)){
@@ -203,7 +211,11 @@
                 }
                 
                 if ($action=="HAPUS") {
-                    Hapus("  jam_jaga "," no_id ='".$no_id."' ","?act=ListJam&action=TAMBAH");
+                    try {
+                        Hapus("  jam_jaga "," no_id ='".$no_id."' ","?act=ListJam&action=TAMBAH");
+                    } catch(mysqli_sql_exception $e) {
+                        echo "<b style='color:red'>Gagal menghapus</b>";
+                    }
                 }
 
                 echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

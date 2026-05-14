@@ -42,12 +42,24 @@
                     if (!empty($nama)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" bidang "," '$nama' ", " Bidang " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputBidang&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" bidang "," '$nama' "," Bidang ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputBidang&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data bidang sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" bidang "," nama='$nama' WHERE nama='".validTeks($_GET['nama'])."' ", "bidang");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListBidang'></head><body></body></html>";
+                                try {
+                                    Ubah(" bidang "," nama='$nama' WHERE nama='".validTeks($_GET['nama'])."' ","bidang");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListBidang'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else if (empty($nama)){

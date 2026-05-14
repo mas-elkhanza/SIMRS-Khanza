@@ -1,4 +1,3 @@
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
@@ -20,29 +19,29 @@
                 $baris = mysqli_fetch_row($hasil);
 
                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
-                    $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                $hasilnext        	= bukaquery($_sqlnext);
+                $barisnext        	= mysqli_fetch_row($hasilnext);
+                $next               = $barisnext[0];
 
-                    $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
-                    $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
-                    
-                    if(empty($prev)){
-                        $prev=$next;
-                    }
-                    
-                    if(empty($next)){
-                        $next=$prev;
-                    }
+                $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+                $hasilprev        	= bukaquery($_sqlprev);
+                $barisprev        	= mysqli_fetch_row($hasilprev);
+                $prev               = $barisprev[0];
 
-                    echo "<div align='center' class='link'>
-                          <a href=?act=InputPasien&action=TAMBAH&id=$prev><<--</a>
-                          <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
-                          <a href=?act=InputPasien&action=TAMBAH&id=$next>-->></a>
-                          </div>";
+                if(empty($prev)){
+                    $prev=$next;
+                }
+
+                if(empty($next)){
+                    $next=$prev;
+                }
+
+                echo "<div align='center' class='link'>
+                      <a href=?act=InputPasien&action=TAMBAH&id=$prev><<--</a>
+                      <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
+                      <a href=?act=HomeAdmin>| Menu Utama |</a>
+                      <a href=?act=InputPasien&action=TAMBAH&id=$next>-->></a>
+                      </div>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -69,8 +68,16 @@
                     if ((!empty($id))&&(!empty($jml))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah("jumpasien "," '$tahun','$bulan','$id','$jml'", " Jumlah Pasien " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputPasien&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah("jumpasien "," '$tahun','$bulan','$id','$jml' "," Jumlah Pasien ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputPasien&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data jumlah pasien sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else if ((empty($id))||(empty($jml))){
@@ -82,7 +89,7 @@
             <?php
                 $_sql = "SELECT `thn`, `bln`, `id`, `jml`
                         from  jumpasien  where id='$id'
-			and thn='$tahun' and bln='$bulan' ";
+		and thn='$tahun' and bln='$bulan' ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -113,9 +120,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus("  jumpasien "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."'","?act=InputPasien&action=TAMBAH&id=$id");
+                try {
+                    Hapus("  jumpasien "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."'","?act=InputPasien&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
-
         ?>
     </div>
 

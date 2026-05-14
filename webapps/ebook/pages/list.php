@@ -181,9 +181,17 @@
                             if(strtolower(substr($berkas,-4))==".pdf"){
                                 if($_FILES['berkas']['type'] == 'application/pdf'){
                                     if(@mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
-                                        if(Tambah(" perpustakaan_ebook "," '$kode_ebook', '$judul_ebook', '$jml_halaman', '$kode_penerbit', '$kode_pengarang', '$thn_terbit', '$id_kategori', '$id_jenis', '$berkas'", " Koleksi Ebook " )){
-                                            move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                        try {
+                                            if(Tambah(" perpustakaan_ebook "," '$kode_ebook', '$judul_ebook', '$jml_halaman', '$kode_penerbit', '$kode_pengarang', '$thn_terbit', '$id_kategori', '$id_jenis', '$berkas' "," Koleksi Ebook ")){
+                                                move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                            }
                                             echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                                        } catch(mysqli_sql_exception $e) {
+                                            if($e->getCode()==1062){
+                                                echo "<b style='color:red'>Kode ebook sudah ada..!!!</b>";
+                                            }else{
+                                                echo "<b style='color:red'>Gagal menyimpan</b>";
+                                            }
                                         }
                                     }else{
                                         echo "Berkas harus pdf";
@@ -204,9 +212,13 @@
                             if(strtolower(substr($berkas,-4))==".pdf"){
                                 if($_FILES['berkas']['type'] == 'application/pdf'){
                                     if(@mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
-                                        if(Ubah(" perpustakaan_ebook ","kode_ebook='$kode_ebook',judul_ebook='$judul_ebook',jml_halaman='$jml_halaman',kode_penerbit='$kode_penerbit',kode_pengarang='$kode_pengarang',thn_terbit='$thn_terbit',id_kategori='$id_kategori',id_jenis='$id_jenis' $ph where kode_ebook='$kode_ebook2'", " Koleksi Ebook " )){
-                                            move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                        try {
+                                            if(Ubah(" perpustakaan_ebook ","kode_ebook='$kode_ebook',judul_ebook='$judul_ebook',jml_halaman='$jml_halaman',kode_penerbit='$kode_penerbit',kode_pengarang='$kode_pengarang',thn_terbit='$thn_terbit',id_kategori='$id_kategori',id_jenis='$id_jenis' $ph where kode_ebook='$kode_ebook2'"," Koleksi Ebook ")){
+                                                move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                            }
                                             echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                                        } catch(mysqli_sql_exception $e) {
+                                            echo "<b style='color:red'>Gagal mengubah</b>";
                                         }
                                     }else{
                                         echo "Berkas harus pdf";
@@ -296,8 +308,12 @@
     </div>
     <?php
         if ($action=="HAPUS") {
-            unlink($_GET['berkas']);
-            Hapus(" perpustakaan_ebook ","  kode_ebook='".validTeks4($_GET['kode_ebook'],10)."'","?act=List&action=TAMBAH");
+            try {
+                unlink($_GET['berkas']);
+                Hapus(" perpustakaan_ebook ","  kode_ebook='".validTeks4($_GET['kode_ebook'],10)."'","?act=List&action=TAMBAH");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         
         echo("<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -307,4 +323,3 @@
              </table>");
     ?>
 </div>
-

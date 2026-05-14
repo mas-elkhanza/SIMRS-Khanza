@@ -62,12 +62,24 @@
                     if ((isset($kode_evaluasi))&&(isset($nama_evaluasi))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" evaluasi_kinerja "," '$kode_evaluasi','$nama_evaluasi','$indek' ", " evaluasi kinerja" );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputEvaluasiKinerja&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" evaluasi_kinerja "," '$kode_evaluasi','$nama_evaluasi','$indek' "," evaluasi kinerja");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputEvaluasiKinerja&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode evaluasi sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" evaluasi_kinerja "," nama_evaluasi='$nama_evaluasi',indek='$indek' WHERE kode_evaluasi='$kode_evaluasi' ", " evaluasi kinerja");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListEvaluasiKinerja'></head><body></body></html>";
+                                try {
+                                    Ubah(" evaluasi_kinerja "," nama_evaluasi='$nama_evaluasi',indek='$indek' WHERE kode_evaluasi='$kode_evaluasi' "," evaluasi kinerja");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListEvaluasiKinerja'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -78,4 +90,3 @@
         </form>
     </div>
 </div>
-

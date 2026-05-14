@@ -65,12 +65,24 @@
                     if ((isset($pendapatan_resume))&&(isset($persen_rs))&&(isset($persen_kry))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_resume ","'$tahun','$bulan','$pendapatan_resume','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' ", " Pendapatan Resume" );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResume&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" set_resume ","'$tahun','$bulan','$pendapatan_resume','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' "," Pendapatan Resume");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResume&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data resume sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" set_resume ","pendapatan_resume='$pendapatan_resume',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Resume");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResume'></head><body></body></html>";
+                                try {
+                                    Ubah(" set_resume ","pendapatan_resume='$pendapatan_resume',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  "," Pendapatan Resume");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResume'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

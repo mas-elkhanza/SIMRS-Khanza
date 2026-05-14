@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
@@ -46,8 +45,16 @@
                     if (isset($pendidikan)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_jgtambah  ","'$tnj','$pendidikan'", " Set tambah jaga " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetTambahJaga&action=TAMBAH&pendidikan='$pendidikan'>";
+                                try {
+                                    Tambah(" set_jgtambah  ","'$tnj','$pendidikan' "," Set tambah jaga ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetTambahJaga&action=TAMBAH&pendidikan='$pendidikan'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else {
@@ -60,35 +67,36 @@
                 $_sql = "SELECT tnj,pendidikan from set_jgtambah  ORDER BY tnj ASC";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
-
-                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                            <tr class='head'>
-                                <td width='10%'><div align='center'>Proses</div></td>
-                                <td width='30%'><div align='center'>Besar Tunjangan</div></td>
-                                <td width='60%'><div align='center'>Pendidikan</div></td>
-                            </tr>";
-                    while($baris = mysqli_fetch_array($hasil)) {
-                      echo "<tr class='isi'>
-                                <td>
-                                   <center>";?>
-                                    <a href="?act=InputSetTambahJaga&action=HAPUS&pendidikan=<?php print $baris[1] ?>" >[hapus]</a>
-                            <?php
-                            echo "</center>
-                                </td>
-                                <td>".formatDuit($baris[0])."</td>
-                                <td>$baris[1]</td>
-                           </tr>";
-                    }
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                        <tr class='head'>
+                            <td width='10%'><div align='center'>Proses</div></td>
+                            <td width='30%'><div align='center'>Besar Tunjangan</div></td>
+                            <td width='60%'><div align='center'>Pendidikan</div></td>
+                        </tr>";
+                while($baris = mysqli_fetch_array($hasil)) {
+                  echo "<tr class='isi'>
+                            <td>
+                               <center>";?>
+                                <a href="?act=InputSetTambahJaga&action=HAPUS&pendidikan=<?php print $baris[1] ?>" >[hapus]</a>
+                        <?php
+                        echo "</center>
+                            </td>
+                            <td>".formatDuit($baris[0])."</td>
+                            <td>$baris[1]</td>
+                       </tr>";
+                }
                 echo "</table>";
-
-        ?>
-        </div>
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" set_jgtambah  "," pendidikan ='".$pendidikan."' ","?act=InputSetTambahJaga&action=TAMBAH&tnj=".$tnj);
+                try {
+                    Hapus(" set_jgtambah  "," pendidikan ='".$pendidikan."' ","?act=InputSetTambahJaga&action=TAMBAH&tnj=".$tnj);
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
     </div>
-
 </div>

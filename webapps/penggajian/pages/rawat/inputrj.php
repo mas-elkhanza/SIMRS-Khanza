@@ -113,12 +113,24 @@
                     if ((isset($id))&&(isset($tgl))&&(isset($tnd))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" rawatjalan  "," '$tgl','$id','$tnd','$ttljm','-','-','-','$jmlh'", " detail tindakan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputRj&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" rawatjalan  "," '$tgl','$id','$tnd','$ttljm','-','-','-','$jmlh' "," detail tindakan ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputRj&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data tindakan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" rawatjalan ","jmlh='$jmlh',jm='$ttljm' WHERE id ='".valid($_GET['id'])."' and tgl ='".valid($_GET['tgl'])."' and tnd ='".valid($_GET['tnd'])."' ", " rawat jalan ");
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputRj&action=TAMBAH&id=$id'>";
+                                try {
+                                    Ubah(" rawatjalan ","jmlh='$jmlh',jm='$ttljm' WHERE id ='".valid($_GET['id'])."' and tgl ='".valid($_GET['tgl'])."' and tnd ='".valid($_GET['tnd'])."' "," rawat jalan ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputRj&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -171,7 +183,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" rawatjalan "," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."' and tnd ='".validTeks($_GET['tnd'])."'","?act=InputRj&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" rawatjalan "," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."' and tnd ='".validTeks($_GET['tnd'])."'","?act=InputRj&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

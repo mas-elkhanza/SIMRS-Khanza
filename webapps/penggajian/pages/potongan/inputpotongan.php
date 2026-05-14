@@ -231,42 +231,53 @@
                            (isset($telpri))&&(isset($pajak))&&(isset($pribadi))&&(isset($lain))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" potongan ","'$tahun','$bulan','$id','$bpjs','$jamsostek','$dansos','$simwajib','$angkop','$angla','$telpri','$pajak','$pribadi','$lain','$ktg' ", " Potongan " );
-                                if($angkop>0){
-                                    if(strlen($bulan)==1){
-                                        $bulan="0".($bulan+1);
-                                    }else{
-                                        $bulan=$bulan+1;
+                                try {
+                                    Tambah(" potongan ","'$tahun','$bulan','$id','$bpjs','$jamsostek','$dansos','$simwajib','$angkop','$angla','$telpri','$pajak','$pribadi','$lain','$ktg' "," Potongan ");
+                                    if($angkop>0){
+                                        if(strlen($bulan)==1){
+                                            $bulan="0".($bulan+1);
+                                        }else{
+                                            $bulan=$bulan+1;
+                                        }
+                                        InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
+                                        if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
+                                            EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                        }else{
+                                            EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                        }
                                     }
-
-                                    InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
-                                    if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
-                                        EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data potongan sudah ada..!!!</b>";
                                     }else{
-                                        EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                        echo "<b style='color:red'>Gagal menyimpan: ".$e->getMessage()."</b>";
                                     }
-                                }			    
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" potongan "," bpjs='$bpjs',simwajib='$simwajib',jamsostek='$jamsostek',dansos='$dansos',
+                                try {
+                                    Ubah(" potongan "," bpjs='$bpjs',simwajib='$simwajib',jamsostek='$jamsostek',dansos='$dansos',
                                         simwajib='$simwajib',angkop='$angkop',angla='$angla',telpri='$telpri',pajak='$pajak',
-                                        pribadi='$pribadi',lain='$lain',ktg='$ktg' WHERE id='$id' and tahun='$tahun' and bulan='$bulan' ", " Potongan ");
-                                if($angkop>0){
-                                    if(strlen($bulan)==1){
-                                        $bulan="0".($bulan+1);
-                                    }else{
-                                        $bulan=$bulan+1;
+                                        pribadi='$pribadi',lain='$lain',ktg='$ktg' WHERE id='$id' and tahun='$tahun' and bulan='$bulan' "," Potongan ");
+                                    if($angkop>0){
+                                        if(strlen($bulan)==1){
+                                            $bulan="0".($bulan+1);
+                                        }else{
+                                            $bulan=$bulan+1;
+                                        }
+                                        HapusAll(" angsuran_koperasi where id ='$id' and tanggal_angsur like '%$tahun-$bulan%' ");
+                                        InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
+                                        if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
+                                            EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                        }else{
+                                            EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                        }
                                     }
-                                    HapusAll(" angsuran_koperasi where id ='$id' and tanggal_angsur like '%$tahun-$bulan%' ");							    
-                                    InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
-                                    if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
-                                        EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-                                    }else{
-                                        EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-                                    }
-                                }			    
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah: ".$e->getMessage()."</b>";
+                                }
                                 break;
                         }
                     }else{

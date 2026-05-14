@@ -71,13 +71,24 @@
                     if (isset($tingkat)&&isset($indek)&&isset($gapok1)&&isset($kenaikan)&&isset($maksimal)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pendidikan "," '$tingkat','$indek','$gapok1','$kenaikan','$maksimal' ", " Pendidikan " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPendidikan&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" pendidikan "," '$tingkat','$indek','$gapok1','$kenaikan','$maksimal' "," Pendidikan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPendidikan&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Tingkat pendidikan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" pendidikan "," tingkat='$tingkat',indek='$indek',gapok1='$gapok1',kenaikan='$kenaikan',
-                                        maksimal='$maksimal' WHERE tingkat='$tingkatx' ", "Pendidikan");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPendidikan'></head><body></body></html>";
+                                try {
+                                    Ubah(" pendidikan "," tingkat='$tingkat',indek='$indek',gapok1='$gapok1',kenaikan='$kenaikan',maksimal='$maksimal' WHERE tingkat='$tingkatx' ","Pendidikan");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPendidikan'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -88,4 +99,3 @@
         </form>
     </div>
 </div>
-

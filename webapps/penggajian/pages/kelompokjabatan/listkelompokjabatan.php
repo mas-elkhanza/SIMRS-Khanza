@@ -42,7 +42,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-			    <td>
+		    <td>
                                   <center>
                                     <a href=?act=InputKelompokJabatan&action=UBAH&kode_kelompok=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                     <a href="?act=ListKelompokJabatan&action=HAPUS&kode_kelompok=<?php print $baris[0] ?>" >[hapus]</a>
@@ -68,7 +68,11 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" kelompok_jabatan "," kode_kelompok ='".validTeks($_GET['kode_kelompok'])."' ","?act=ListKelompokJabatan");
+            try {
+                Hapus(" kelompok_jabatan "," kode_kelompok ='".validTeks($_GET['kode_kelompok'])."' ","?act=ListKelompokJabatan");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>

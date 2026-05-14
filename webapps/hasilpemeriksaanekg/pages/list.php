@@ -31,7 +31,7 @@
                 <tr class="head">
                     <td width="31%" >File Gambar EKG</td><td width="">:</td>
                     <td width="67%">
-                        <input name="gambar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $gambar;?>" size="50" maxlength="500" accept="image/jpeg,image/jpg"/>
+                        <input name="gambar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="" size="50" maxlength="500" accept="image/jpeg,image/jpg"/>
                         <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>        
@@ -47,10 +47,18 @@
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
                             if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if((!empty($no_rawat))&&(!empty($gambar))) {
-                                    if(Tambah(" hasil_pemeriksaan_ekg_gambar "," '$no_rawat','$gambar'", " Gambar EKG " )){
-                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    try {
+                                        if(Tambah(" hasil_pemeriksaan_ekg_gambar "," '$no_rawat','$gambar' "," Gambar EKG ")){
+                                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data gambar sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat'>";                              
                                 }else if ((empty($no_rawat))||(empty($gambar))){
                                     echo 'Semua field harus isi..!!!';
                                 }
@@ -105,8 +113,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['gambar']);
-                Hapus(" hasil_pemeriksaan_ekg_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
+                try {
+                    unlink($_GET['gambar']);
+                    Hapus(" hasil_pemeriksaan_ekg_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
         

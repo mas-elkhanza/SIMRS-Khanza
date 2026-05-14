@@ -792,6 +792,14 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                                     append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
                                                 append("}").
                                             append("],").
+                                            append("\"maritalStatus\": {").
+                                                append("\"coding\": [").
+                                                    append("{").
+                                                        append("\"system\": \"http://hl7.org/fhir/v3/MaritalStatus\",").
+                                                        append("\"code\": \"UNK\"").
+                                                    append("}").
+                                                append("]").
+                                            append("},").
                                             append("\"telecom\": [").
                                                 append("{").
                                                     append("\"system\": \"phone\",").
@@ -806,6 +814,10 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                                     append("\"line\": [").
                                                         append("\"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\"").
                                                     append("],").
+                                                    append("\"city\": \"ID\",").
+                                                    append("\"district\": \"ID\",").
+                                                    append("\"state\": \"ID\",").
+                                                    append("\"postalCode\": \"12345\",").
                                                     append("\"text\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()).append("\",").
                                                     append("\"use\": \"home\",").
                                                     append("\"type\": \"both\"").
@@ -923,8 +935,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                                                         append("\"system\": \"http://hl7.org/fhir/v2/0203\",").
                                                                         append("\"code\": \"NNIDN\"").
                                                                     append("}").
-                                                                append("],").
-                                                                append("\"text\": \"NIK\"").
+                                                                append("]").
                                                             append("},").
                                                             append("\"value\": \"").append(rs.getString("no_ktp")).append("\",").
                                                             append("\"assigner\": {").
@@ -982,16 +993,53 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                         append("\"resource\": {").
                                             append("\"resourceType\": \"Encounter\",").
                                             append("\"id\": \"").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())).append("\",").
-                                            append("\"status\": \"finished\",").
+                                            append("\"identifier\": [").
+                                                append("{").
+                                                    append("\"system\": \"http://api.bpjs-kesehatan.go.id:8080/Vclaim-rest/SEP/\",").
+                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()).append("\"").
+                                                append("}").
+                                            append("],").
+                                            append("\"subject\": {").
+                                                append("\"reference\": \"Patient/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
+                                                append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
+                                            append("},").
                                             append("\"class\": {").
                                                 append("\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",").
                                                 append("\"code\": \"").append((tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().equals("2. Ralan")?"AMB":"IMP")).append("\",").
                                                 append("\"display\": \"").append((tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().equals("2. Ralan")?"ambulatory":"inpatient encounter")).append("\"").
                                             append("},").
-                                            append("\"subject\": {").
-                                                append("\"reference\": \"Patient/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())).append("\",").
-                                                append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()).append("\"").
-                                            append("},").
+                                            append("\"incomingReferral\": [").
+                                                append("                    {").
+                                                append("                        \"identifier\": [").
+                                                append("                            {").
+                                                append("                                \"system\": \"nomor_rujukan_bpjs\",").
+                                                append("                                \"value\": \"0196B0200226P000001\"").
+                                                append("                            }").
+                                                append("                        ]").
+                                                append("                    }").
+                                                append("                ],").
+                                                append("                \"reason\": [").
+                                                append("                    {").
+                                                append("                        \"coding\": [").
+                                                append("                            {").
+                                                append("                                \"code\": \"59621000\",").
+                                                append("                                \"display\": \"Essential hypertension\",").
+                                                append("                                \"system\": \"http://snomed.info/sct\"").
+                                                append("                            }").
+                                                append("                        ],").
+                                                append("                        \"text\": \"Essential hypertension\"").
+                                                append("                    },").
+                                                append("                    {").
+                                                append("                        \"coding\": [").
+                                                append("                            {").
+                                                append("                                \"system\": \"http://snomed.info/sct\",").
+                                                append("                                \"code\": \"602001\",").
+                                                append("                                \"display\": \"Epidemic Australian polyarthritis\"").
+                                                append("                            }").
+                                                append("                        ],").
+                                                append("                        \"text\": \"Epidemic Australian polyarthritis\"").
+                                                append("                    }").
+                                                append("                ],").
                                             append("\"participant\": [").
                                                 append("{").
                                                     append("\"type\": [").
@@ -1015,6 +1063,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                                 append("\"start\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()).append("\",").
                                                 append("\"end\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()).append("\"").
                                             append("},").
+                                            append("\"status\": \"finished\",").
                                             append("\"location\": [").
                                                 append("{").
                                                     append("\"location\": {").
@@ -1025,13 +1074,7 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                             append("],").
                                             append("\"serviceProvider\": {").
                                                 append("\"reference\": \"Organization/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(akses.getkodeppkbpjs()+akses.getnamars())).append("\"").
-                                            append("},").
-                                            append("\"identifier\": [").
-                                                append("{").
-                                                    append("\"system\": \"http://api.bpjs-kesehatan.go.id:8080/Vclaim-rest/SEP/\",").
-                                                    append("\"value\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()).append("\"").
-                                                append("}").
-                                            append("]").
+                                            append("}").
                                         append("}").
                                     append("},");
                     }

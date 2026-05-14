@@ -40,7 +40,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-				<td>
+			<td>
                                  <center>";?>
                                         <a href="?act=ListBidang&action=HAPUS&nama=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
@@ -62,7 +62,11 @@
          
         $hapus = isset($_GET['action'])?$_GET['action']:NULL;
         if ($hapus=="HAPUS") {
-            Hapus(" bidang "," nama ='".validTeks($_GET['nama'])."' ","?act=ListBidang");
+            try {
+                Hapus(" bidang "," nama ='".validTeks($_GET['nama'])."' ","?act=ListBidang");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>
@@ -75,6 +79,5 @@
                  </table>");
         }
     ?>
-	</div>
 </div>
-
+</div>

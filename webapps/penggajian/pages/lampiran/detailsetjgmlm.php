@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
@@ -28,8 +27,16 @@
                     if (isset($tnj)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_jgmlm ","'$tnj'", " Set Jaga Malam " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetJagaMalam&action=TAMBAH&tnj='$tnj'>";
+                                try {
+                                    Tambah(" set_jgmlm ","'$tnj' "," Set Jaga Malam ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetJagaMalam&action=TAMBAH&tnj='$tnj'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data tunjangan jaga malam sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -42,7 +49,6 @@
                 $_sql = "SELECT tnj from set_jgmlm ORDER BY tnj ASC";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
-
                     echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -65,9 +71,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" set_jgmlm "," tnj ='".$tnj."' ","?act=InputSetJagaMalam&action=TAMBAH&tnj=".$tnj);
+                try {
+                    Hapus(" set_jgmlm "," tnj ='".$tnj."' ","?act=InputSetJagaMalam&action=TAMBAH&tnj=".$tnj);
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
     </div>
-
 </div>

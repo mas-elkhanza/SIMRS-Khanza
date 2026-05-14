@@ -1,12 +1,9 @@
-
-
 <?php
    $_sql      = "SELECT * FROM set_tahun";
    $hasil     = bukaquery($_sql);
    $baris     = mysqli_fetch_row($hasil);
    $tahun     = empty($baris[0])?date("Y"):$baris[0];
    $bulan     = empty($baris[1])?date("m"):$baris[1];
-
 ?>
 <div id="post">
     <div class="entry">
@@ -16,7 +13,7 @@
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
                 $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-				$_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
+		$_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil =bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);   
 
@@ -96,8 +93,16 @@
                     if ((isset($id))&&(isset($dankes))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" ambil_dankes "," '$id','$tahun-$BlnAmbil-$TglAmbil','$ktg','$dankes'", " Ambil Dankes " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=SisaDankes&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" ambil_dankes "," '$id','$tahun-$BlnAmbil-$TglAmbil','$ktg','$dankes' "," Ambil Dankes ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=SisaDankes&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data ambil dankes sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -142,17 +147,20 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" ambil_dankes "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=SisaDankes&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" ambil_dankes "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=SisaDankes&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
-        if(mysqli_num_rows($hasil)!=0) {
+            if(mysqli_num_rows($hasil)!=0) {
                 $hasil1=bukaquery("SELECT id,tanggal,ktg,dankes from ambil_dankes  where id='$id' and tanggal like '%$tahun%' ORDER BY dankes ASC ");
                 $jumladiv=mysqli_num_rows($hasil1);
                 $i=$jumladiv/19;
                 $i=ceil($i);
                 echo("Data : $jumlah ");
-        }
+            }
         ?>
     </div>
-
 </div>

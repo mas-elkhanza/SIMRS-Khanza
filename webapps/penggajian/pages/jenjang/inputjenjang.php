@@ -68,12 +68,24 @@
                     if ((isset($kode))&&(isset($nama))&&(isset($tnj))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" jnj_jabatan "," '$kode','$nama','$tnj','$indek' ", " Tunjangan Jabatan " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputJenjang&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" jnj_jabatan "," '$kode','$nama','$tnj','$indek' "," Tunjangan Jabatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputJenjang&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode jenjang sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" jnj_jabatan "," nama='$nama',tnj='$tnj',indek='$indek' WHERE kode='$kode' ", " Tunjangan Jabatan ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListJenjang'></head><body></body></html>";
+                                try {
+                                    Ubah(" jnj_jabatan "," nama='$nama',tnj='$tnj',indek='$indek' WHERE kode='$kode' "," Tunjangan Jabatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListJenjang'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

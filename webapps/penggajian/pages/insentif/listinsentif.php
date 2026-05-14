@@ -35,7 +35,7 @@
                         echo "<tr class='isi'>
                                 <td>
                                  <center>
-				    <a href=?act=InputInsentif&action=UBAH>[edit]</a>";?>
+			    <a href=?act=InputInsentif&action=UBAH>[edit]</a>";?>
                                     <a href="?act=ListInsentif&action=HAPUSINSENTIF&pendapatan=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -89,17 +89,17 @@
                         <td width='12%'><div align='center'>Proses</div></td>
                         <td width='20%'><div align='center'>Kode Index</div></td>
                         <td width='30%'><div align='center'>Porsi Insentif</div></td>
-			<td width='38%'><div align='center'>Total Insentif</div></td>
+		<td width='38%'><div align='center'>Total Insentif</div></td>
                     </tr>";
 		    $insentifindex = 0;
                     while($baris = mysqli_fetch_array($hasil)) {
                         $insentifindex = ($baris[1]/100)*$total_insentif;
-			$ttl = $ttl+$insentifindex;
-			$prosen = $prosen+$baris[1];
+		$ttl = $ttl+$insentifindex;
+		$prosen = $prosen+$baris[1];
                         echo "<tr class='isi'>
                                 <td>
                                     <center>
-				        <a href=?act=InputIndex&action=UBAH&dep_id=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
+			        <a href=?act=InputIndex&action=UBAH&dep_id=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListInsentif&action=HAPUSINDEX&dep_id=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "  </center>
@@ -117,7 +117,7 @@
                         <td width='12%'><div align='center'>Proses</div></td>
                         <td width='20%'><div align='center'>Kode Index</div></td>
                         <td width='30%'><div align='center'>Porsi Insentif</div></td>
-			<td width='38%'><div align='center'>Total Insentif</div></td>
+		<td width='38%'><div align='center'>Total Insentif</div></td>
                     </tr>
                   </table>";
         }
@@ -127,10 +127,18 @@
     <?php
         $aksi = isset($_GET['action']);
         if ($aksi=="HAPUSINSENTIF") {
-            Hapus(" set_insentif  "," pendapatan ='".validTeks($_GET['pendapatan'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListInsentif");
+            try {
+                Hapus(" set_insentif  "," pendapatan ='".validTeks($_GET['pendapatan'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListInsentif");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         if ($aksi=="HAPUSINDEX") {
-            Hapus(" indexins "," dep_id ='".validTeks($_GET['dep_id'])."'","?act=ListInsentif");
+            try {
+                Hapus(" indexins "," dep_id ='".validTeks($_GET['dep_id'])."'","?act=ListInsentif");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

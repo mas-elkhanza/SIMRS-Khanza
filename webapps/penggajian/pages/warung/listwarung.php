@@ -103,10 +103,18 @@
     <?php
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUSAKTE") {
-            Hapus(" set_warung  "," pendapatan_warung ='".validangka($_GET['pendapatan_warung'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListWarung");
+            try {
+                Hapus(" set_warung  "," pendapatan_warung ='".validangka($_GET['pendapatan_warung'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListWarung");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         if ($aksi=="HAPUSPENERIMA") {
-            Hapus(" pembagian_warung "," id ='". validTeks($_GET['id'])."'","?act=ListWarung");
+            try {
+                Hapus(" pembagian_warung "," id ='". validTeks($_GET['id'])."'","?act=ListWarung");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                 <tr class='head'>

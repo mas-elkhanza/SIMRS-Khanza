@@ -54,12 +54,24 @@
                     if ((isset($kode_pencapaian))&&(isset($nama_pencapaian))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pencapaian_kinerja "," '$kode_pencapaian','$nama_pencapaian','$indek' ", " pencapaian index " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPencapaianKinerja&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" pencapaian_kinerja "," '$kode_pencapaian','$nama_pencapaian','$indek' "," pencapaian index ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPencapaianKinerja&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode pencapaian sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" pencapaian_kinerja "," nama_pencapaian='$nama_pencapaian',indek='$indek' WHERE kode_pencapaian='$kode_pencapaian' ", " pencapaian index ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPencapaianKinerja'></head><body></body></html>";
+                                try {
+                                    Ubah(" pencapaian_kinerja "," nama_pencapaian='$nama_pencapaian',indek='$indek' WHERE kode_pencapaian='$kode_pencapaian' "," pencapaian index ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPencapaianKinerja'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -70,4 +82,3 @@
         </form>
     </div>
 </div>
-

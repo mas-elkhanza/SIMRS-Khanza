@@ -66,7 +66,11 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" bank "," namabank ='".validTeks($_GET['namabank'])."' ","?act=ListBank");
+            try{
+                Hapus(" bank "," namabank ='".validTeks($_GET['namabank'])."' ","?act=ListBank");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>

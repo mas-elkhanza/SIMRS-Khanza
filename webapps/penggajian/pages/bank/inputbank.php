@@ -41,8 +41,16 @@
                     if (!empty($namabank)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" bank "," '$namabank'", " Bank " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputBank&action=TAMBAH'></head><body></body></html>";
+                                try{
+                                    Tambah(" bank "," '$namabank'", " Bank " );
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputBank&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else if (empty($namabank)){

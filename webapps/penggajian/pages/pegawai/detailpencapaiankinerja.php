@@ -1,4 +1,3 @@
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
@@ -18,7 +17,7 @@
                 $kode_pencapaian    = validTeks(isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL);
                 $keterangan         = validTeks(isset($_GET['keterangan'])?$_GET['keterangan']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-		        $_sql               = "SELECT nik,nama FROM pegawai where id='$id'";
+		$_sql               = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil              = bukaquery($_sql);
                 $baris              = mysqli_fetch_row($hasil);
 
@@ -99,8 +98,16 @@
                     if ((isset($id))&&(isset($kode_pencapaian))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pencapaian_kinerja_pegawai "," '$id','$kode_pencapaian','$tahun','$bulan','$keterangan'", " Pencapaian Kinerja " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPencapaianKinerja&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" pencapaian_kinerja_pegawai "," '$id','$kode_pencapaian','$tahun','$bulan','$keterangan' "," Pencapaian Kinerja ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPencapaianKinerja&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data pencapaian kinerja sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -160,7 +167,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" pencapaian_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."'","?act=DetailPencapaianKinerja&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" pencapaian_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."'","?act=DetailPencapaianKinerja&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

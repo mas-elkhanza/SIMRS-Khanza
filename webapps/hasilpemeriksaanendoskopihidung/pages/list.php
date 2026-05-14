@@ -47,10 +47,18 @@
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
                             if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($gambar))) {
-                                    if(Tambah(" hasil_endoskopi_hidung_gambar "," '$no_rawat','$gambar'", " Gambar Endoskopi " )){
-                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    try {
+                                        if(Tambah(" hasil_endoskopi_hidung_gambar "," '$no_rawat','$gambar' "," Gambar Endoskopi ")){
+                                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data gambar sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat'>";                              
                                 }else if ((empty($no_rawat))||(empty($gambar))){
                                     echo 'Semua field harus isi..!!!';
                                 }
@@ -105,8 +113,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['gambar']);
-                Hapus(" hasil_endoskopi_hidung_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
+                try {
+                    unlink($_GET['gambar']);
+                    Hapus(" hasil_endoskopi_hidung_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
         

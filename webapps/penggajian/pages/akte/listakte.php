@@ -101,7 +101,7 @@
                         <td width='25%'><div align='center'>Porsi Bagian</div></td>
 			<td width='25%'><div align='center'>Bagian Karyawan</div></td>
                     </tr>";
-					$bagiankry=0;
+		    $bagiankry=0;
                     while($baris = mysqli_fetch_array($hasil)) {
                         $bagiankry=($baris[2]/100)*$total_akte;
                         $ttl=$ttl+$bagiankry;
@@ -136,10 +136,18 @@
     <?php
        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
        if ($aksi=="HAPUSAKTE") {
-            Hapus(" set_akte  "," tahun='$tahun' and bulan='$bulan' ","?act=ListAkte");
+            try{
+                Hapus(" set_akte  "," tahun='$tahun' and bulan='$bulan' ","?act=ListAkte");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
        }
        if ($aksi=="HAPUSPENERIMA") {
-            Hapus(" pembagian_akte "," id ='".validTeks($_GET['id'])."'","?act=ListAkte");
+            try{
+                Hapus(" pembagian_akte "," id ='".validTeks($_GET['id'])."'","?act=ListAkte");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
        }
        if(mysqli_num_rows($hasil)!=0) {
            echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

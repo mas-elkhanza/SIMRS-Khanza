@@ -59,12 +59,24 @@
                     if ((isset($nama))&&(isset($jm))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" master_tindakan ","'0','$nama','$jm','$jns'", " Master Tindakan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailTindakan&action=TAMBAH&nama='$nama'>";
+                                try {
+                                    Tambah(" master_tindakan ","'0','$nama','$jm','$jns' "," Master Tindakan ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailTindakan&action=TAMBAH&nama='$nama'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data tindakan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
-			    case "UBAH":
-                                Ubah(" master_tindakan ","nama='$nama',jm='$jm',jns='$jns' WHERE id='$id'  ", " Master Tindakan  ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailTindakan&action=TAMBAH&nama=$nama&jns=$jns'></head><body></body></html>";
+                            case "UBAH":
+                                try {
+                                    Ubah(" master_tindakan ","nama='$nama',jm='$jm',jns='$jns' WHERE id='$id'  "," Master Tindakan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailTindakan&action=TAMBAH&nama=$nama&jns=$jns'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -114,7 +126,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" master_tindakan "," id ='".validTeks($_GET['id'])."' ","?act=DetailTindakan&action=TAMBAH&nama=$nama");
+                try {
+                    Hapus(" master_tindakan "," id ='".validTeks($_GET['id'])."' ","?act=DetailTindakan&action=TAMBAH&nama=$nama");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

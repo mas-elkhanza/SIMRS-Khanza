@@ -61,12 +61,24 @@
                     if ((isset($kode_emergency))&&(isset($nama_emergency))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" emergency_index "," '$kode_emergency','$nama_emergency','$indek' ", " emergency index " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputEmergencyIndex&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" emergency_index "," '$kode_emergency','$nama_emergency','$indek' "," emergency index ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputEmergencyIndex&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode emergency sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" emergency_index "," nama_emergency='$nama_emergency',indek='$indek' WHERE kode_emergency='$kode_emergency' ", " emergency index ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListEmergencyIndex'></head><body></body></html>";
+                                try {
+                                    Ubah(" emergency_index "," nama_emergency='$nama_emergency',indek='$indek' WHERE kode_emergency='$kode_emergency' "," emergency index ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListEmergencyIndex'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -77,4 +89,3 @@
         </form>
     </div>
 </div>
-

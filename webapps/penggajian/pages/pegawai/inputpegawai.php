@@ -125,13 +125,11 @@
                     <td width="25%" >Jenis Kelamin</td><td width="">:</td>
                     <td width="75%">
                         <select name="jk" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
-                            <!-- <option id='TxtIsi2' value=' '>- Jenis Kelamin -</option> -->
                             <?php
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi3' value=$jk>$jk</option>";
                                 }
                             ?>
-
                             <option id='TxtIsi3' value='Pria'>Pria</option>
                             <option id='TxtIsi3' value='Wanita'>Wanita</option>
                         </select>
@@ -148,11 +146,9 @@
                     <td width="25%" >Jenjang Jabatan</td><td width="">:</td>
                     <td width="75%">
                         <select name="jnj_jabatan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT kode,nama FROM jnj_jabatan  ORDER BY kode";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT kode,nama FROM jnj_jabatan where kode='$jnj_jabatan' ORDER BY kode";
                                     $hasil2=bukaquery($_sql2);
@@ -160,7 +156,6 @@
                                         echo "<option id='TxtIsi5' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi5' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -173,11 +168,9 @@
                     <td width="25%" >Kelompok Jabatan</td><td width="">:</td>
                     <td width="75%">
                         <select name="kode_kelompok" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT kode_kelompok,nama_kelompok FROM kelompok_jabatan ORDER BY nama_kelompok";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT kode_kelompok,nama_kelompok FROM kelompok_jabatan where kode_kelompok='$kode_kelompok'";
                                     $hasil2=bukaquery($_sql2);
@@ -185,7 +178,6 @@
                                         echo "<option id='TxtIsi6' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi6' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -198,11 +190,9 @@
                     <td width="25%" >Departemen</td><td width="">:</td>
                     <td width="75%">
                         <select name="departemen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" id="TxtIsi7">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT dep_id,nama FROM departemen  ORDER BY dep_id";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT dep_id,nama FROM departemen where dep_id='$departemen' ORDER BY dep_id";
                                     $hasil2=bukaquery($_sql2);
@@ -210,7 +200,6 @@
                                         echo "<option id='TxtIsi7' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi7' value='$baris[0]'>$baris[0]  $baris[1]</option>";
                                 }
@@ -223,11 +212,9 @@
                     <td width="25%" >Bagian</td><td width="">:</td>
                     <td width="75%">
                         <select name="bidang" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" id="TxtIsi8">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT nama FROM bidang  ORDER BY nama";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT nama FROM bidang where nama='$bidang' ORDER BY nama";
                                     $hasil2=bukaquery($_sql2);
@@ -235,7 +222,6 @@
                                         echo "<option id='TxtIsi8' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi8' value='$baris[0]'>$baris[0]</option>";
                                 }
@@ -248,11 +234,9 @@
                     <td width="25%" >Resiko Kerja</td><td width="">:</td>
                     <td width="75%">
                         <select name="kode_resiko" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" id="TxtIsi9">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT kode_resiko,nama_resiko FROM resiko_kerja ORDER BY nama_resiko";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT kode_resiko,nama_resiko FROM resiko_kerja where kode_resiko='$kode_resiko'";
                                     $hasil2=bukaquery($_sql2);
@@ -260,7 +244,6 @@
                                         echo "<option id='TxtIsi9' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi9' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -273,11 +256,9 @@
                     <td width="25%" >Tingkat Emergency</td><td width="">:</td>
                     <td width="75%">
                         <select name="kode_emergency" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi10'));" id="TxtIsi10">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT kode_emergency,nama_emergency FROM emergency_index ORDER BY nama_emergency";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT kode_emergency,nama_emergency FROM emergency_index where kode_emergency='$kode_emergency'";
                                     $hasil2=bukaquery($_sql2);
@@ -285,7 +266,6 @@
                                         echo "<option id='TxtIsi10' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi10' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -298,11 +278,9 @@
                     <td width="25%" >Status WP</td><td width="">:</td>
                     <td width="75%">
                         <select name="stts_wp" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi11'));" id="TxtIsi11">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT stts,ktg FROM stts_wp  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT stts,ktg FROM stts_wp where stts='$stts_wp' ORDER BY stts";
                                     $hasil2=bukaquery($_sql2);
@@ -310,7 +288,6 @@
                                         echo "<option id='TxtIsi11' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi11' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -323,11 +300,9 @@
                     <td width="25%" >Status</td><td width="">:</td>
                     <td width="75%">
                         <select name="stts_kerja" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" id="TxtIsi12">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT stts,ktg FROM stts_kerja  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT stts,ktg FROM stts_kerja where stts='$stts_kerja' ORDER BY stts";
                                     $hasil2=bukaquery($_sql2);
@@ -335,7 +310,6 @@
                                         echo "<option id='TxtIsi12' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi12' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
@@ -354,11 +328,9 @@
                     <td width="25%" >Pendidikan</td><td width="">:</td>
                     <td width="75%">
                         <select name="pendidikan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi14'));" id="TxtIsi14">
-                            <!--<option id='TxtIsi15' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT tingkat FROM pendidikan  ORDER BY tingkat";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT tingkat FROM pendidikan where tingkat='$pendidikan' ORDER BY tingkat";
                                     $hasil2=bukaquery($_sql2);
@@ -366,7 +338,6 @@
                                         echo "<option id='TxtIsi14' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi14' value='$baris[0]'>$baris[0]</option>";
                                 }
@@ -405,7 +376,6 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi16' value=$Thnlahir>$Thnlahir</option>";
                                 }
-
                                 loadThn4();
                              ?>
                         </select>
@@ -458,7 +428,6 @@
                     <td width="25%" >Kode Ms Kerja <?php echo isset($ms_kerja)?$ms_kerja:NULL;?></td><td width="">:</td>
                     <td width="75%">
                         <select name="ms_kerja" class="text3" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" id="TxtIsi20">
-                            <!-- <option id='TxtIsi2' value=' '>- Jenis Kelamin -</option> -->
                             <?php
                                 if($action == "UBAH"){
                              ?>
@@ -477,11 +446,9 @@
                     <td width="25%" >Kode Index</td><td width="">:</td>
                     <td width="75%">
                         <select name="indexins" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi21'));" id="TxtIsi21">
-                            <!--<option id='TxtIsi15' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT dep_id,persen FROM indexins  ORDER BY dep_id";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT dep_id,persen FROM indexins where dep_id='$indexins' ORDER BY dep_id";
                                     $hasil2=bukaquery($_sql2);
@@ -489,7 +456,6 @@
                                         echo "<option id='TxtIsi21' value='$baris2[0]'>$baris2[0] $baris2[1]%</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi21' value='$baris[0]'>$baris[0] $baris[1]%</option>";
                                 }
@@ -502,11 +468,9 @@
                     <td width="25%" >Bank</td><td width="">:</td>
                     <td width="75%">
                         <select name="bpd" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi22'));" id="TxtIsi22">
-                            <!-- <option id='TxtIsi2' value=' '>- Jenis Kelamin -</option> -->
                             <?php
                                 $_sql = "SELECT namabank FROM bank  ORDER BY namabank";
                                 $hasil=bukaquery($_sql);
-
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT namabank FROM bank where namabank='$bpd' ORDER BY namabank";
                                     $hasil2=bukaquery($_sql2);
@@ -514,7 +478,6 @@
                                         echo "<option id='TxtIsi22' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
-
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi22' value='$baris[0]'>$baris[0]</option>";
                                 }
@@ -533,13 +496,11 @@
                     <td width="25%" >Status Aktif</td><td width="">:</td>
                     <td width="75%">
                         <select name="stts_aktif" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi24'));" id="TxtIsi24">
-                            <!-- <option id='TxtIsi2' value=' '>- Jenis Kelamin -</option> -->
                             <?php
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi24' value=$stts_aktif>$stts_aktif</option>";
                                 }
                             ?>
-
                             <option id='TxtIsi24' value='AKTIF'>AKTIF</option>
                             <option id='TxtIsi24' value='CUTI'>CUTI</option>
                             <option id='TxtIsi24' value='KELUAR'>KELUAR</option>
@@ -648,36 +609,48 @@
                                      (!empty($kode_resiko))&&(!empty($kode_emergency))) {
                                     switch($action) {
                                         case "TAMBAH":
-                                            if(Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
+                                            try {
+                                                if(Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
                                                    '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
                                                    '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
-                                                   '$mulai_kontrak','0','0','$photo','$no_ktp'", " pegawai " )){
-                                                move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
+                                                   '$mulai_kontrak','0','0','$photo','$no_ktp' "," pegawai ")){
+                                                    move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
+                                                }
+                                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
+                                            } catch(mysqli_sql_exception $e) {
+                                                if($e->getCode()==1062){
+                                                    echo "<b style='color:red'>Data pegawai sudah ada..!!!</b>";
+                                                }else{
+                                                    echo "<b style='color:red'>Gagal menyimpan</b>";
+                                                }
                                             }
-                                            echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
                                             break;
                                         case "UBAH":
-                                            if($photo=="pages/pegawai/photo/"){
-                                                $ph="";
-                                            }else if($photo<>"pages/pegawai/photo/"){
-                                                $ph=",photo='$photo'";
-                                            }
+                                            try {
+                                                if($photo=="pages/pegawai/photo/"){
+                                                    $ph="";
+                                                }else if($photo<>"pages/pegawai/photo/"){
+                                                    $ph=",photo='$photo'";
+                                                }
 
-                                            Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
+                                                Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
                                                     tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',almt_tgl='$alamat' where kd_dokter='$nik2'");
-                                            Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
+                                                Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
                                                     tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat' where nip='$nik2' ");
-                                            if(Ubah(" pegawai "," nik='$nik',nama='$nama',jk='$jk',jbtn='$jbtn',jnj_jabatan='$jnj_jabatan',departemen='$departemen',
+                                                if(Ubah(" pegawai "," nik='$nik',nama='$nama',jk='$jk',jbtn='$jbtn',jnj_jabatan='$jnj_jabatan',departemen='$departemen',
                                                    bidang='$bidang',stts_wp='$stts_wp',stts_kerja='$stts_kerja',npwp='$npwp',pendidikan='$pendidikan',
                                                    tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat',kota='$kota',mulai_kontrak='$mulai_kontrak',
                                                    mulai_kerja='$mulai_kerja',ms_kerja='$ms_kerja',indexins='$indexins',bpd='$bpd',rekening='$rekening',
                                                    stts_aktif='$stts_aktif',no_ktp='$no_ktp',wajibmasuk='$wajibmasuk',kode_kelompok='$kode_kelompok',
-                                                   kode_resiko='$kode_resiko',kode_emergency='$kode_emergency' ".$ph." WHERE id='$id' ", " pegawai ")){
-                                                if($photo<>"pages/pegawai/photo/"){
-                                                    move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
+                                                   kode_resiko='$kode_resiko',kode_emergency='$kode_emergency' ".$ph." WHERE id='$id' "," pegawai ")){
+                                                    if($photo<>"pages/pegawai/photo/"){
+                                                        move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
+                                                    }
                                                 }
+                                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=UBAH&id=$id'></head><body></body></html>";
+                                            } catch(mysqli_sql_exception $e) {
+                                                echo "<b style='color:red'>Gagal mengubah</b>";
                                             }
-                                            echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=UBAH&id=$id'></head><body></body></html>";
                                             break;
                                     }
                                 }else if (empty($nik)||empty($jnj_jabatan)||empty($departemen)||empty($bidang)||empty($stts_wp)||empty($stts_kerja)||

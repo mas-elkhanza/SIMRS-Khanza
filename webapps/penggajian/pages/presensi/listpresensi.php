@@ -18,10 +18,8 @@
     <div class="entry">
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-            $action  = isset($_GET['action'])?$_GET['action']:NULL;
             $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
             $keyword = validTeks($keyword);
-            echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
         <table width="100%" align="center">
             <tr class="head">

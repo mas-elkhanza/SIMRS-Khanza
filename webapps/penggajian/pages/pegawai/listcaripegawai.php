@@ -246,19 +246,23 @@
             }
             $aksi=isset($_GET['action'])?$_GET['action']:NULL;
             if ($aksi=="HAPUS") {
-                Hapus(" pegawai "," id ='".validTeks($_GET['id'])."' ","?act=ListCariPegawai");
+                try {
+                    Hapus(" pegawai "," id ='".validTeks($_GET['id'])."' ","?act=ListCariPegawai");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
         </div>
     </form>
-       <?php
-            if($jumlah>0) {
-                echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head'>
-                            <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawai.php?status=$status&keyword=$keyword> Laporan </a> | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawaiExcel.php?status=$status&keyword=$keyword>Excel</a> |</div></td>
-                        </tr>
-                      </table>");
-             }
-       ?>
+    <?php
+        if($jumlah>0) {
+            echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawai.php?status=$status&keyword=$keyword> Laporan </a> | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawaiExcel.php?status=$status&keyword=$keyword>Excel</a> |</div></td>
+                    </tr>
+                  </table>");
+         }
+    ?>
     </div>
 </div>

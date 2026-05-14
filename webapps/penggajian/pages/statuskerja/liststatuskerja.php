@@ -65,7 +65,11 @@
 
             $aksi=isset($_GET['action'])?$_GET['action']:NULL;
             if ($aksi=="HAPUS") {
-                Hapus(" stts_kerja "," stts ='".validTeks(str_replace("_"," ",$_GET['stts']))."' ","?act=ListSttskerja");
+                try {
+                    Hapus(" stts_kerja "," stts ='".validTeks(str_replace("_"," ",$_GET['stts']))."' ","?act=ListSttskerja");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
         </div>

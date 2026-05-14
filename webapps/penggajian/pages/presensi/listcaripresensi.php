@@ -17,10 +17,6 @@
     </div> 
     <div class="entry">
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-        <?php
-            $action  = $_GET['action'];
-            echo "<input type=hidden name=action value=$action>";
-        ?>
         <table width="100%" align="center">
             <tr class="head">
                 <td width="25%" >Keyword</td><td width="">:</td>

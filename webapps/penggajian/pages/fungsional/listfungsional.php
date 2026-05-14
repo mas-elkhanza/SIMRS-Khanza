@@ -3,7 +3,6 @@
         exit(header("Location:../index.php"));
     }
 ?>
-
 <div class="t">
 <div class="b">
 <div class="l">
@@ -13,10 +12,8 @@
 <div class="tl">
 <div class="tr">
 <div class="y">
-
 <div id="post">
     <div class="entry">   
-
     <div align="center" class="link">
         <a href=?act=InputFungsional&action=TAMBAH>| Input Data |</a>
         <a href=?act=ListFungsional>| List Data |</a>
@@ -60,7 +57,11 @@
         }
         
         if ($action=="HAPUS") {
-            Hapus(" fungsional "," kode ='".validTeks($_GET['kode'])."' ","?act=ListFungsional");
+            try {
+                Hapus(" fungsional "," kode ='".validTeks($_GET['kode'])."' ","?act=ListFungsional");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>

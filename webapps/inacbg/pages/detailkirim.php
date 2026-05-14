@@ -540,6 +540,10 @@
                 if($rehabilitasi==""){
                     $rehabilitasi="0";
                 }
+                $pelayanan_darah=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.nm_perawatan like '%tranfusi darah%'"));
+                if($pelayanan_darah==""){
+                    $pelayanan_darah="0";
+                }
             ?>
             <tr class="head">
                 <td width="41%" >Biaya Prosedur Non Bedah</td><td width="">:</td>
@@ -592,7 +596,7 @@
             <tr class="head">
                 <td width="41%" >Biaya Pelayanan Darah</td><td width="">:</td>
                 <td width="57%">
-                    <input name="pelayanan_darah" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
+                    <input name="pelayanan_darah" class="text" type="text" class="inputbox" value="<?php echo $pelayanan_darah;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">

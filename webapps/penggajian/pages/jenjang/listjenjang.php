@@ -72,7 +72,11 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" jnj_jabatan "," kode ='".validTeks($_GET['kode'])."' ","?act=ListJenjang");
+            try {
+                Hapus(" jnj_jabatan "," kode ='".validTeks($_GET['kode'])."' ","?act=ListJenjang");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>

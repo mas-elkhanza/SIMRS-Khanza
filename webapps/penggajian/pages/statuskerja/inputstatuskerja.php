@@ -66,12 +66,24 @@
                     if ((isset($stts))&&(isset($ktg))&&(isset($indek))&&(isset($hakcuti))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" stts_kerja "," '$stts','$ktg','$indek','$hakcuti' ", " status kerja " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputSttskerja&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" stts_kerja "," '$stts','$ktg','$indek','$hakcuti' "," status kerja ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputSttskerja&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Status kerja sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" stts_kerja "," ktg='$ktg',indek='$indek',hakcuti='$hakcuti' WHERE stts='$stts' ", " status kerja ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListSttskerja'></head><body></body></html>";
+                                try {
+                                    Ubah(" stts_kerja "," ktg='$ktg',indek='$indek',hakcuti='$hakcuti' WHERE stts='$stts' "," status kerja ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListSttskerja'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

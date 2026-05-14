@@ -40,6 +40,9 @@
                 @$status_lanjut  = $baris["status_lanjut"];
                 @$png_jawab    = $baris["png_jawab"];
 
+                $dokumen       = "";
+                $urlDetail     = "?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e");
+
                 echo "<input type=hidden name=no_rawat  value=$no_rawat>
                       <input type=hidden name=action value=$action>";
             ?>
@@ -93,10 +96,17 @@
                                 if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
                                     switch($action) {
                                         case "TAMBAH":
-                                            if(Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " )){
-                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                            try {
+                                                if(Tambah3(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen' "," Berkas Digital Perawatan ")){
+                                                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                                }
+                                                echo "<meta http-equiv='refresh' content='1;URL=$urlDetail'>";
+                                            } catch(mysqli_sql_exception $e) {
+                                                if($e->getCode()==1062)
+                                                    echo "<b style='color:red'>Data berkas digital sudah ada..!!!</b>";
+                                                else
+                                                    echo "<b style='color:red'>Gagal menyimpan</b>";
                                             }
-                                            echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
                                             break;
                                     }
                                 }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){

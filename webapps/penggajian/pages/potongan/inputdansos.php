@@ -28,8 +28,16 @@
                     if (isset($dana)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" dansos "," '$dana '", " Set/Pengaturan dana sosial " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputDansos&action=TAMBAH&dana='$dana'>";
+                                try {
+                                    Tambah(" dansos "," '$dana ' "," Set/Pengaturan dana sosial ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputDansos&action=TAMBAH&dana='$dana'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data dana sosial sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -70,7 +78,11 @@
                 }
                 
                 if ($action=="HAPUS") {
-                    Hapus(" dansos "," dana ='".$dana."' ","?act=InputDansos&action=TAMBAH&dana=$dana");
+                    try {
+                        Hapus(" dansos "," dana ='".$dana."' ","?act=InputDansos&action=TAMBAH&dana=$dana");
+                    } catch(mysqli_sql_exception $e) {
+                        echo "<b style='color:red'>Gagal menghapus</b>";
+                    }
                 }
             ?>
             </div>

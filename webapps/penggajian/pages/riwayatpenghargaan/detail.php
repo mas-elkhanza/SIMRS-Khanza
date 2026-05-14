@@ -113,10 +113,18 @@
                             if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-5))==".jpeg")){
                                 if(($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
                                     if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
-                                        if(Tambah(" riwayat_penghargaan "," '$id','$jenis','$nama_penghargaan','$tanggal','$instansi','$pejabat_pemberi','$dokumen'", " Riwayat Penghargaan " )){
-                                            move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                        try {
+                                            if(Tambah(" riwayat_penghargaan "," '$id','$jenis','$nama_penghargaan','$tanggal','$instansi','$pejabat_pemberi','$dokumen' "," Riwayat Penghargaan ")){
+                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                            }
+                                            echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPenghargaan&action=TAMBAH&id=$id'>";
+                                        } catch(mysqli_sql_exception $e) {
+                                            if($e->getCode()==1062){
+                                                echo "<b style='color:red'>Data riwayat penghargaan sudah ada..!!!</b>";
+                                            }else{
+                                                echo "<b style='color:red'>Gagal menyimpan</b>";
+                                            }
                                         }
-                                        echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPenghargaan&action=TAMBAH&id=$id'>";
                                     }else{
                                         echo "Berkas harus JPEG/JPG";
                                     } 
@@ -190,8 +198,12 @@
     </form>
     <?php
         if ($action=="HAPUS") {
-            unlink($_GET['berkas']);
-            Hapus(" riwayat_penghargaan "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."' and nama_penghargaan ='".validTeks($_GET['nama_penghargaan'])."'","?act=InputRiwayatPenghargaan&action=TAMBAH&id=$id");
+            try {
+                unlink($_GET['berkas']);
+                Hapus(" riwayat_penghargaan "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."' and nama_penghargaan ='".validTeks($_GET['nama_penghargaan'])."'","?act=InputRiwayatPenghargaan&action=TAMBAH&id=$id");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
 </div>

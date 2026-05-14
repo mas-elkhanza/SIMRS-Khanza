@@ -3,7 +3,6 @@
         exit(header("Location:../index.php"));
     }
 ?>
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputFungsional&action=TAMBAH>| Input Data |</a>
@@ -52,12 +51,24 @@
                     if ((!empty($TxtKode))&&(!empty($TxtNama))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" fungsional "," '$TxtKode','$TxtNama' ", " Jabatan Fungsional " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputFungsional&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" fungsional "," '$TxtKode','$TxtNama' "," Jabatan Fungsional ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputFungsional&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode jabatan fungsional sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" fungsional "," nama='$TxtNama' WHERE kode='".$_GET['kode']."' ", "jabatan fungsional");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListFungsional'></head><body></body></html>";
+                                try {
+                                    Ubah(" fungsional "," nama='$TxtNama' WHERE kode='".$_GET['kode']."' ","jabatan fungsional");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListFungsional'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else if ((empty($TxtKode))||(empty($TxtNama))){

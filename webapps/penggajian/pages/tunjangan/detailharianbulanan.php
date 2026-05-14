@@ -56,8 +56,16 @@
                     if ((isset($tnj))&&(isset($tnj2))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" harian_kurangi_bulanan ","'$tnj','$tnj2'", " Data Tnj.Harian - Tnj.Bulanan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailHarianBulanan&action=TAMBAH'>";
+                                try {
+                                    Tambah(" harian_kurangi_bulanan ","'$tnj','$tnj2' "," Data Tnj.Harian - Tnj.Bulanan ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailHarianBulanan&action=TAMBAH'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -105,7 +113,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus("harian_kurangi_bulanan"," harian='".$tnj."' and bulanan='".$tnj2."' ","?act=DetailHarianBulanan&action=TAMBAH");
+                try {
+                    Hapus("harian_kurangi_bulanan"," harian='".$tnj."' and bulanan='".$tnj2."' ","?act=DetailHarianBulanan&action=TAMBAH");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

@@ -111,8 +111,16 @@
                     if ((isset($id))&&(isset($banyak_angsur))&&(isset($pinjaman))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" peminjaman_koperasi "," '$id','$tgl_pinjam','$pinjaman','$banyak_angsur','$pokok','$jasa','$status'", " peminjaman " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPinjam&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" peminjaman_koperasi "," '$id','$tgl_pinjam','$pinjaman','$banyak_angsur','$pokok','$jasa','$status' "," peminjaman ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPinjam&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data peminjaman sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -176,14 +184,18 @@
             </div>
         </form>
         <?php
-            if ($action=="HAPUS") {	
-                $_sql  = "select angsuran_koperasi.id,angsuran_koperasi.tanggal_pinjam,angsuran_koperasi.tanggal_angsur,angsuran_koperasi.pokok,angsuran_koperasi.jasa from angsuran_koperasi where angsuran_koperasi.id='".validTeks($_GET['id'])."' and angsuran_koperasi.tanggal_pinjam='".validTeks($_GET['tanggal'])."'";
-                $hasil = bukaquery($_sql);
-                while($baris = mysqli_fetch_array($hasil)) {
-                    EditData(" potongan "," angkop='0' WHERE id='".$baris["id"]."' and tahun=year('".$baris["tanggal_angsur"]."') and bulan=(MONTH('".$baris["tanggal_angsur"]."')-1) ");
+            if ($action=="HAPUS") {
+                try {
+                    $_sql  = "select angsuran_koperasi.id,angsuran_koperasi.tanggal_pinjam,angsuran_koperasi.tanggal_angsur,angsuran_koperasi.pokok,angsuran_koperasi.jasa from angsuran_koperasi where angsuran_koperasi.id='".validTeks($_GET['id'])."' and angsuran_koperasi.tanggal_pinjam='".validTeks($_GET['tanggal'])."'";
+                    $hasil = bukaquery($_sql);
+                    while($baris = mysqli_fetch_array($hasil)) {
+                        EditData(" potongan "," angkop='0' WHERE id='".$baris["id"]."' and tahun=year('".$baris["tanggal_angsur"]."') and bulan=(MONTH('".$baris["tanggal_angsur"]."')-1) ");
+                    }
+                    HapusAll(" angsuran_koperasi where id ='".validTeks($_GET['id'])."' and tanggal_pinjam ='".validTeks($_GET['tanggal'])."'");
+                    Hapus(" peminjaman_koperasi "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=DetailPinjam&action=TAMBAH&id=".validTeks($_GET['id']));
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
                 }
-                HapusAll(" angsuran_koperasi where id ='".validTeks($_GET['id'])."' and tanggal_pinjam ='".validTeks($_GET['tanggal'])."'");
-                Hapus(" peminjaman_koperasi "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=DetailPinjam&action=TAMBAH&id=".validTeks($_GET['id']));
             }
 
             if(mysqli_num_rows($hasil)!=0) {

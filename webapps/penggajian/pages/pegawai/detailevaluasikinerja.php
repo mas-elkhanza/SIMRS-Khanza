@@ -1,4 +1,3 @@
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
@@ -101,8 +100,16 @@
                     if ((isset($id))&&(isset($kode_evaluasi))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" evaluasi_kinerja_pegawai "," '$id','$kode_evaluasi','$tahun','$bulan','$keterangan'", " Evaluasi Kinerja " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailEvaluasiKinerja&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" evaluasi_kinerja_pegawai "," '$id','$kode_evaluasi','$tahun','$bulan','$keterangan' "," Evaluasi Kinerja ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailEvaluasiKinerja&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data evaluasi kinerja sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -161,9 +168,12 @@
         </div>
         </form>
         <?php
-
             if ($action=="HAPUS") {
-                Hapus(" evaluasi_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_evaluasi ='".validTeks($_GET['kode_evaluasi'])."'","?act=DetailEvaluasiKinerja&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" evaluasi_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_evaluasi ='".validTeks($_GET['kode_evaluasi'])."'","?act=DetailEvaluasiKinerja&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

@@ -1,4 +1,3 @@
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
@@ -24,7 +23,7 @@
                 $tgl                =$tahun."-".$bulan."-01";
                 $jml                = validangka(isset($_GET['jml'])?$_GET['jml']:"0");
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=tgl value=$tgl><input type=hidden name=action value=$action>";
-		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
+	        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);
 
@@ -80,8 +79,16 @@
                     if ((isset($id))&&(isset($jml))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" jgmlm "," '$tgl','$id','$jml'", " Jaga Malam " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputJagaMalam&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" jgmlm "," '$tgl','$id','$jml' "," Jaga Malam ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputJagaMalam&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data jaga malam sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else {
@@ -91,9 +98,7 @@
             ?>
             <div style="width: 100%; height: 65%; overflow: auto;">
             <?php
-                $_sql = "SELECT tgl,id,jml
-                        from jgmlm  where id='$id'
-			and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ";
+                $_sql = "SELECT tgl,id,jml from jgmlm  where id='$id' and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -121,16 +126,18 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" jgmlm "," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."'","?act=InputJagaMalam&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" jgmlm "," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."'","?act=InputJagaMalam&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
-
-                echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+            echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah </div></td>                        
                     </tr>     
-                 </table>");                
-        
+                 </table>");   
         ?>
     </div>
 

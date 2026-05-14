@@ -101,8 +101,16 @@
                     if ((isset($id))&&(isset($kode_pencapaian))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pencapaian_kinerja_pegawai "," '$id','$kode_pencapaian','$tahun','$bulan','$keterangan'", " Evaluasi Pencapaian " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPencapaian&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" pencapaian_kinerja_pegawai "," '$id','$kode_pencapaian','$tahun','$bulan','$keterangan' "," Evaluasi Pencapaian ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPencapaian&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data pencapaian kinerja sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -159,7 +167,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" pencapaian_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".validTeks($_GET['tahun'])."' and bulan ='".validTeks($_GET['bulan'])."' and kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."'","?act=InputRiwayatPencapaian&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" pencapaian_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".validTeks($_GET['tahun'])."' and bulan ='".validTeks($_GET['bulan'])."' and kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."'","?act=InputRiwayatPencapaian&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

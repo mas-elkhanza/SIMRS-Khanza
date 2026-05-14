@@ -42,12 +42,24 @@
                     if ((isset($stts))&&(isset($biaya))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" bpjs "," '$stts','$biaya'", " Status Keanggotaan BPJS " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'>";
+                                try {
+                                    Tambah(" bpjs "," '$stts','$biaya' "," Status Keanggotaan BPJS ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Status keanggotaan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
 			    case "UBAH":
-                                Ubah(" bpjs ","biaya='$biaya' WHERE stts='$stts'  ", " Status Keanggotaan BPJS   ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'></head><body></body></html>";
+                                try {
+                                    Ubah(" bpjs ","biaya='$biaya' WHERE stts='$stts'  "," Status Keanggotaan BPJS ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -71,7 +83,7 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-				      <a href=?act=DetailBpjs&action=UBAH&stts=".str_replace(" ","_",$baris[0])."&biaya=".$baris[1].">[edit]</a>";?>
+			      <a href=?act=DetailBpjs&action=UBAH&stts=".str_replace(" ","_",$baris[0])."&biaya=".$baris[1].">[edit]</a>";?>
                                       <a href="?act=DetailBpjs&action=HAPUS&stts=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -95,7 +107,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" bpjs "," stts ='".$stts."' ","?act=DetailBpjs&action=TAMBAH&stts=$stts");
+                try {
+                    Hapus(" bpjs "," stts ='".$stts."' ","?act=DetailBpjs&action=TAMBAH&stts=$stts");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
             if($jumlah!=0) {

@@ -69,13 +69,25 @@
                     if ((isset($pendapatan_warung))&&(isset($persen_rs))&&(isset($persen_kry))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_warung ","'$tahun','$bulan','$pendapatan_warung','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' ", " Pendapatan Warung" );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputWarung&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" set_warung ","'$tahun','$bulan','$pendapatan_warung','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' "," Pendapatan Warung");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputWarung&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data warung sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" set_warung ","pendapatan_warung='$pendapatan_warung',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
-                                     bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Warung");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListWarung'></head><body></body></html>";
+                                try {
+                                    Ubah(" set_warung ","pendapatan_warung='$pendapatan_warung',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
+                                     bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  "," Pendapatan Warung");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListWarung'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

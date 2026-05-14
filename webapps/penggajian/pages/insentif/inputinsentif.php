@@ -61,12 +61,24 @@
                     if ((isset($pendapatan))&&(isset($persen))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_insentif ","'$tahun','$bulan','$pendapatan','$persen','$total_insentif' ", " Pendapatan " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputInsentif&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" set_insentif ","'$tahun','$bulan','$pendapatan','$persen','$total_insentif' "," Pendapatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputInsentif&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data insentif sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" set_insentif ","pendapatan='$pendapatan',persen='$persen',total_insentif='$total_insentif' WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListInsentif'></head><body></body></html>";
+                                try {
+                                    Ubah(" set_insentif ","pendapatan='$pendapatan',persen='$persen',total_insentif='$total_insentif' WHERE tahun='$tahun' and bulan='$bulan'  "," Pendapatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListInsentif'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -77,4 +89,3 @@
         </form>
     </div>
 </div>
-

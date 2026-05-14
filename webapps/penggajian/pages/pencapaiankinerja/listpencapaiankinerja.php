@@ -1,5 +1,5 @@
 <div id="post">
-	<div class="entry"> 
+<div class="entry"> 
     <div align="center" class="link">
         <a href=?act=InputPencapaianKinerja&action=TAMBAH>| Input Data |</a>
         <a href=?act=ListPencapaianKinerja>| List Data |</a>
@@ -38,7 +38,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-				<td>
+			<td>
                                   <center>
                                         <a href=?act=InputPencapaianKinerja&action=UBAH&kode_pencapaian=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListPencapaianKinerja&action=HAPUS&kode_pencapaian=<?php print $baris[0] ?>" >[hapus]</a>
@@ -64,7 +64,11 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" pencapaian_kinerja "," kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."' ","?act=ListPencapaianKinerja");
+            try {
+                Hapus(" pencapaian_kinerja "," kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."' ","?act=ListPencapaianKinerja");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>
@@ -75,5 +79,5 @@
                 </tr>     
              </table>");
     ?>
-    </div>
+</div>
 </div>

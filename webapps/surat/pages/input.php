@@ -277,10 +277,18 @@
                                 if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
                                     switch($action) {
                                         case "TAMBAH":
-                                            if(Tambah(" surat_masuk "," '$no_urut','$no_surat','$asal','$tujuan','$tgl_surat','$perihal','$tgl_terima','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " )){
-                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                            try {
+                                                if(Tambah(" surat_masuk "," '$no_urut','$no_surat','$asal','$tujuan','$tgl_surat','$perihal','$tgl_terima','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen' "," Surat Masuk ")){
+                                                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                                }
+                                                echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
+                                            } catch(mysqli_sql_exception $e) {
+                                                if($e->getCode()==1062){
+                                                    echo "<b style='color:red'>Nomor surat sudah ada..!!!</b>";
+                                                }else{
+                                                    echo "<b style='color:red'>Gagal menyimpan</b>";
+                                                }
                                             }
-                                            echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
                                             break;
                                     }
                                 }else{

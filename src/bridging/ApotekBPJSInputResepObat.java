@@ -1133,7 +1133,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         }  
                                     }
                                 }
-                                Sequel.meghapus2("antrianiterasi","no_resep",NoResep.getText());
+                                Sequel.meghapus3("antrianiterasi","no_resep",NoResep.getText());
                             }else{
                                 sukses=false;
                                 JOptionPane.showMessageDialog(rootPane,"Gagal menyimpan data resep apotek BPJS ke server lokal..!!!!!");

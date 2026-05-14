@@ -64,10 +64,18 @@
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
                             if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($kd_jenis_prw))&&(!empty($gambar))) {
-                                    if(Tambah(" detail_periksa_labpa_gambar "," '$no_rawat','$kd_jenis_prw','$tanggal','$jam','$gambar'", " Gambar Lab PA " )){
-                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    try {
+                                        if(Tambah(" detail_periksa_labpa_gambar "," '$no_rawat','$kd_jenis_prw','$tanggal','$jam','$gambar' "," Gambar Lab PA ")){
+                                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data gambar sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw'>";                              
                                 }else if ((empty($no_rawat))||(empty($gambar))||(empty($kd_jenis_prw))){
                                     echo 'Semua field harus isi..!!!';
                                 }
@@ -113,8 +121,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['gambar']);
-                Hapus(" detail_periksa_labpa_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."' and tgl_periksa ='".validTeks4($_GET['tanggal'],14)."' and jam ='".validTeks4($_GET['jam'],14)."' and photo ='".validTeks($_GET['gambar'])."' and kd_jenis_prw ='".validTeks4($_GET['kd_jenis_prw'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw");
+                try {
+                    unlink($_GET['gambar']);
+                    Hapus(" detail_periksa_labpa_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."' and tgl_periksa ='".validTeks4($_GET['tanggal'],14)."' and jam ='".validTeks4($_GET['jam'],14)."' and photo ='".validTeks($_GET['gambar'])."' and kd_jenis_prw ='".validTeks4($_GET['kd_jenis_prw'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         
         ?>

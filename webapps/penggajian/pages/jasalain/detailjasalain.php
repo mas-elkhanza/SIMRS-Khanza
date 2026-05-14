@@ -84,8 +84,16 @@
                     if ((isset($id))&&(isset($bsr_jasa))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" jasa_lain "," '$thn','$bln','$id','$bsr_jasa','$ktg'", " Tambahan Jaga " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputJasLa&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" jasa_lain "," '$thn','$bln','$id','$bsr_jasa','$ktg' "," Tambahan Jaga ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputJasLa&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data jasa lain sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -133,7 +141,11 @@
             }
             
             if ($action=="HAPUS") {
-                Hapus(" jasa_lain "," id ='". validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."' and bsr_jasa ='".validTeks($_GET['bsr_jasa'])."'","?act=InputJasLa&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" jasa_lain "," id ='". validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."' and bsr_jasa ='".validTeks($_GET['bsr_jasa'])."'","?act=InputJasLa&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

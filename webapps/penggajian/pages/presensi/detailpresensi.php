@@ -98,8 +98,16 @@
                     if ((isset($id))&&(isset($tgl))&&(isset($jns))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" presensi "," '$tgl','$id','$jns','$lembur'", " lembur " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPresensi&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" presensi "," '$tgl','$id','$jns','$lembur' "," lembur ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPresensi&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data lembur sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -157,7 +165,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" presensi"," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."'","?act=DetailPresensi&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" presensi"," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."'","?act=DetailPresensi&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                 <tr class='head'>

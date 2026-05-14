@@ -59,12 +59,24 @@
                     if ((isset($kode_kelompok))&&(isset($nama_kelompok))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" kelompok_jabatan "," '$kode_kelompok','$nama_kelompok','$indek' ", " kelompok jabatan " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputKelompokJabatan&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" kelompok_jabatan "," '$kode_kelompok','$nama_kelompok','$indek' "," kelompok jabatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputKelompokJabatan&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode kelompok jabatan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" kelompok_jabatan "," nama_kelompok='$nama_kelompok',indek='$indek' WHERE kode_kelompok='$kode_kelompok' ", " kelompok jabatan ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListKelompokJabatan'></head><body></body></html>";
+                                try {
+                                    Ubah(" kelompok_jabatan "," nama_kelompok='$nama_kelompok',indek='$indek' WHERE kode_kelompok='$kode_kelompok' "," kelompok jabatan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListKelompokJabatan'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{
@@ -75,4 +87,3 @@
         </form>
     </div>
 </div>
-

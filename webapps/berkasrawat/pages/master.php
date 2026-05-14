@@ -18,6 +18,8 @@
                 }
                 
                 $kode = validTeks4($kode,10);
+
+                $urlDetail = "?act=MasterBerkas&action=TAMBAH";
                 
                 echo "<input type=hidden name=kode  value=$kode><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
@@ -51,8 +53,15 @@
                     if ((!empty($kode))&&(!empty($nama))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" master_berkas_digital "," '$kode','$nama'", " Master Berkas Digital " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=MasterBerkas&action=TAMBAH'>";
+                                try {
+                                    Tambah3(" master_berkas_digital "," '$kode','$nama' "," Master Berkas Digital ");
+                                    echo "<meta http-equiv='refresh' content='1;URL=$urlDetail'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062)
+                                        echo "<b style='color:red'>Kode berkas digital sudah ada..!!!</b>";
+                                    else
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                }
                                 break;
                         }
                     }else if ((empty($kode))||(empty($nama))){
@@ -101,7 +110,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" master_berkas_digital "," kode ='$kode' ","?act=MasterBerkas&action=TAMBAH");
+                try {
+                    Hapus(" master_berkas_digital "," kode ='$kode' ",$urlDetail);
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

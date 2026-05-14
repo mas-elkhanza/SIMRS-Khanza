@@ -64,8 +64,16 @@
                     if ((isset($id))&&(isset($id_tnj))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pnm_tnj_bulanan ","'$id','$id_tnj'", " Detail tunjangan bulanan diterima " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPenerimaTunjanganBulanan&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" pnm_tnj_bulanan ","'$id','$id_tnj' "," Detail tunjangan bulanan diterima ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPenerimaTunjanganBulanan&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data tunjangan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -111,7 +119,11 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" pnm_tnj_bulanan "," id ='".$id."' and id_tnj='".$id_tnj."'  ","?act=DetailPenerimaTunjanganBulanan&action=TAMBAH&id=".$id);
+                try {
+                    Hapus(" pnm_tnj_bulanan "," id ='".$id."' and id_tnj='".$id_tnj."'  ","?act=DetailPenerimaTunjanganBulanan&action=TAMBAH&id=".$id);
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

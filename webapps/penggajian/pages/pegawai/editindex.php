@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div class="entry">
         <form name="frm_unit" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -18,16 +16,16 @@
                     $nik       = $baris[1];
                     $nama      = $baris[2];
                     if(empty($baris[3])){
-			            $indek = '-';
-		            }else{
-			            $indek = $baris[3];
-		            }
+                        $indek = '-';
+                    }else{
+                        $indek = $baris[3];
+                    }
 
                     if(empty($baris[4])){
-			            $pengurang = '-';
-		            }else{
-			            $pengurang = $baris[4];
-		            }
+                        $pengurang = '-';
+                    }else{
+                        $pengurang = $baris[4];
+                    }
 
                     if(empty($baris[5])){
                         $cuti_diambil = '-';
@@ -38,34 +36,35 @@
                     if(empty($baris[6])){
                         $dankes='-';
                     }else{
-                        $dankes             = $baris[6];
+                        $dankes  = $baris[6];
                     }
                 }
+                
                 echo"<input type=hidden name=id value=$id><input type=hidden name=action value=$action>";
 
-                    $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
-                    $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysqli_fetch_row($hasilnext);
-                    @$next              = $barisnext[0];
+                $_sqlnext         = "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+                $hasilnext        = bukaquery($_sqlnext);
+                $barisnext        = mysqli_fetch_row($hasilnext);
+                @$next            = $barisnext[0];
 
-                    $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
-                    $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysqli_fetch_row($hasilprev);
-                    @$prev              = $barisprev[0];
+                $_sqlprev         = "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+                $hasilprev        = bukaquery($_sqlprev);
+                $barisprev        = mysqli_fetch_row($hasilprev);
+                @$prev            = $barisprev[0];
 
-                    if(empty($next)){
-                        $next=$prev;
-                    }
+                if(empty($next)){
+                    $next=$prev;
+                }
 
-                    if(empty($prev)){
-                        $prev=$next;
-                    }
+                if(empty($prev)){
+                    $prev=$next;
+                }
 
-                    echo "<div align='center' class='link'>
-                          <a href=?act=EditIndexPegawai&action=UBAH&id=$prev><<--</a>
-                          <a href=?act=ListIndexPegawai>| Index Pegawai |</a>
-                          <a href=?act=EditIndexPegawai&action=UBAH&id=$next>-->></a>
-                          </div>";
+                echo "<div align='center' class='link'>
+                      <a href=?act=EditIndexPegawai&action=UBAH&id=$prev><<--</a>
+                      <a href=?act=ListIndexPegawai>| Index Pegawai |</a>
+                      <a href=?act=EditIndexPegawai&action=UBAH&id=$next>-->></a>
+                      </div>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -103,7 +102,6 @@
                 </tr>
             </table>
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
-
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
@@ -120,8 +118,12 @@
                     if ((isset($pengurang))&&(isset($indek))) {
                         switch($action) {
                             case "UBAH":
-                                Ubah(" pegawai "," pengurang='$pengurang',indek='$indek',cuti_diambil='$cuti_diambil',dankes='$dankes' WHERE id='".validTeks($_GET['id'])."' ", " Index Pegawai ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=EditIndexPegawai&action=UBAH&id=$id'></head><body></body></html>";
+                                try {
+                                    Ubah(" pegawai "," pengurang='$pengurang',indek='$indek',cuti_diambil='$cuti_diambil',dankes='$dankes' WHERE id='".validTeks($_GET['id'])."' "," Index Pegawai ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=EditIndexPegawai&action=UBAH&id=$id'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

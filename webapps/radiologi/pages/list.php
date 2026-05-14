@@ -56,10 +56,18 @@
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
                             if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($gambar))) {
-                                    if(Tambah(" gambar_radiologi "," '$no_rawat','$tanggal','$jam','$gambar'", " Gambar Radiologi " )){
-                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    try {
+                                        if(Tambah(" gambar_radiologi "," '$no_rawat','$tanggal','$jam','$gambar' "," Gambar Radiologi ")){
+                                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data gambar sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam'>";                              
                                 }else if ((empty($no_rawat))||(empty($gambar))){
                                     echo 'Semua field harus isi..!!!';
                                 }
@@ -115,8 +123,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['gambar']);
-                Hapus(" gambar_radiologi "," no_rawat ='".validTeks($_GET['no_rawat'])."' and tgl_periksa ='".validTeks($_GET['tanggal'])."' and jam ='".validTeks($_GET['jam'])."' and lokasi_gambar ='".validTeks($_GET['gambar'])."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam");
+                try {
+                    unlink($_GET['gambar']);
+                    Hapus(" gambar_radiologi "," no_rawat ='".validTeks($_GET['no_rawat'])."' and tgl_periksa ='".validTeks($_GET['tanggal'])."' and jam ='".validTeks($_GET['jam'])."' and lokasi_gambar ='".validTeks($_GET['gambar'])."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
         

@@ -121,12 +121,24 @@
                     if ((!empty($id))&&(!empty($koperasi))&&(!empty($jamsostek))&&(!empty($bpjs))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" keanggotaan "," '$id','$koperasi','$jamsostek','$bpjs' ", " Keanggotaan " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
+                                try {
+                                    Tambah(" keanggotaan "," '$id','$koperasi','$jamsostek','$bpjs' "," Keanggotaan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data keanggotaan sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" keanggotaan "," koperasi='$koperasi',jamsostek='$jamsostek',bpjs='$bpjs' WHERE id='".validTeks($_GET['id'])."' ", " Keanggotaan ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
+                                try {
+                                    Ubah(" keanggotaan "," koperasi='$koperasi',jamsostek='$jamsostek',bpjs='$bpjs' WHERE id='".validTeks($_GET['id'])."' "," Keanggotaan ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else if ((empty($id))||(empty($koperasi))||(empty($jamsostek))||(empty($bpjs))){

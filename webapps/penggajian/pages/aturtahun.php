@@ -66,8 +66,16 @@
                         $action      =isset($_GET['action']) ? $_GET['action']:"TAMBAH" ;
                         switch($action) {
                             case "TAMBAH":
-                                    Tambah(" set_tahun "," '$tahun','$bulan','$jumHari','$sum','$selisihhari'", " Seting Tahun & Bulan gaji " );
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun'>";
+                                    try {
+                                        Tambah(" set_tahun "," '$tahun','$bulan','$jumHari','$sum','$selisihhari' "," Seting Tahun & Bulan gaji ");
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data tahun/bulan sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
+                                    }
                                     break;                                
                         }
                     }else {
@@ -155,8 +163,16 @@
                         $action      =isset($_GET['action']) ? $_GET['action']:"TAMBAH" ;
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_hari_libur  "," '$tgl','$ktg'", " hari libur nasional " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun'>";
+                                try {
+                                    Tambah(" set_hari_libur  "," '$tgl','$ktg' "," hari libur nasional ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data hari libur sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -220,10 +236,18 @@
         <?php
             $hapus=isset($_GET['action'])? $_GET['action']:NULL;                
             if ($hapus=="HAPUS") {
+                try {
                     Hapus(" set_tahun "," tahun ='".$tahun."' and bulan ='".$bulan."' ","?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
             if ($hapus=="HAPUS2") {
+                try {
                     Hapus(" set_hari_libur "," tanggal ='".validTeks($_GET['tanggal3'])."' ","?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
     </div>

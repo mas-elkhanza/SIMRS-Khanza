@@ -40,10 +40,18 @@
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
                             if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_inventaris))&&(!empty($gambar))) {
-                                    if(Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " )){
-                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    try {
+                                        if(Tambah(" inventaris_gambar "," '$no_inventaris','$gambar' "," Gambar Inventaris ")){
+                                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";
+                                    } catch(mysqli_sql_exception $e) {
+                                        if($e->getCode()==1062){
+                                            echo "<b style='color:red'>Data gambar sudah ada..!!!</b>";
+                                        }else{
+                                            echo "<b style='color:red'>Gagal menyimpan</b>";
+                                        }
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
                                 }else if ((empty($no_inventaris))||(empty($gambar))){
                                     echo 'Semua field harus isi..!!!';
                                 }
@@ -88,8 +96,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['gambar']);
-                Hapus(" inventaris_gambar "," no_inventaris ='".validTeks4($_GET['no_inventaris'],30)."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
+                try {
+                    unlink($_GET['gambar']);
+                    Hapus(" inventaris_gambar "," no_inventaris ='".validTeks4($_GET['no_inventaris'],30)."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         
         ?>

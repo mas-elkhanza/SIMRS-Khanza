@@ -69,7 +69,11 @@
 
             $hapus=isset($_GET['action'])?$_GET['action']:NULL;
             if ($hapus) {
-                Hapus(" pendidikan "," tingkat ='".validTeks($_GET['tingkat'])."' ","?act=ListPendidikan");
+                try {
+                    Hapus(" pendidikan "," tingkat ='".validTeks($_GET['tingkat'])."' ","?act=ListPendidikan");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
         </div>
@@ -82,4 +86,3 @@
         ?>
     </div>
 </div>
-

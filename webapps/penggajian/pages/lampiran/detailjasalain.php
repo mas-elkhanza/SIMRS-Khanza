@@ -1,11 +1,9 @@
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
    $tahun        = empty($baristahun[0])?date("Y"):$baristahun[0];
    $bulan        = empty($baristahun[1])?date("m"):$baristahun[1];
-
 ?>
 <div id="post">
     <div class="entry">
@@ -19,41 +17,41 @@
                 $bsr_jasa           =validangka(isset($_GET['bsr_jasa'])?$_GET['bsr_jasa']:NULL);
                 $ktg                =validTeks(isset($_GET['ktg'])?$_GET['ktg']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
-                $hasil=bukaquery($_sql);
+		$_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
+                $hasil = bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);
 
-                $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
-                    $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                $_sqlnext           = "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+                $hasilnext          = bukaquery($_sqlnext);
+                $barisnext          = mysqli_fetch_row($hasilnext);
+                $next               = $barisnext[0];
 
-                    $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
-                    $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
-                    
-                    if(empty($prev)){
-                        $prev=$next;
-                    }
-                    
-                    if(empty($next)){
-                        $next=$prev;
-                    }
+                $_sqlprev           = "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+                $hasilprev          = bukaquery($_sqlprev);
+                $barisprev          = mysqli_fetch_row($hasilprev);
+                $prev               = $barisprev[0];
 
-                    echo "<div align='center' class='link'>
-                          <a href=?act=InputJasaLain&action=TAMBAH&id=$prev><<--</a>
-                          <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
-                          <a href=?act=InputJasaLain&action=TAMBAH&id=$next>-->></a>
-                          </div>";
+                if(empty($prev)){
+                    $prev=$next;
+                }
+
+                if(empty($next)){
+                    $next=$prev;
+                }
+
+                echo "<div align='center' class='link'>
+                      <a href=?act=InputJasaLain&action=TAMBAH&id=$prev><<--</a>
+                      <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
+                      <a href=?act=HomeAdmin>| Menu Utama |</a>
+                      <a href=?act=InputJasaLain&action=TAMBAH&id=$next>-->></a>
+                      </div>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[0];?></td>
                 </tr>
-				<tr class="head">
+		<tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[1];?></td>
                 </tr>
@@ -82,8 +80,16 @@
                     if ((!empty($id))&&(!empty($bsr_jasa))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" jasa_lain "," '$thn','$bln','$id','$bsr_jasa','$ktg'", " Tambahan Jaga " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputJasaLain&action=TAMBAH&id=$id'>";
+                                try {
+                                    Tambah(" jasa_lain "," '$thn','$bln','$id','$bsr_jasa','$ktg' "," Tambahan Jaga ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=InputJasaLain&action=TAMBAH&id=$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data jasa lain sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else if ((empty($id))||(empty($bsr_jasa))){
@@ -95,7 +101,7 @@
             <?php
                 $_sql = "SELECT thn, bln, id, bsr_jasa, ktg
                         from jasa_lain  where id='$id'
-			and thn='".$tahun."' and bln='".$bulan."' ORDER BY bsr_jasa ASC ";
+		and thn='".$tahun."' and bln='".$bulan."' ORDER BY bsr_jasa ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -128,15 +134,18 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" jasa_lain "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."'
-                       and bln ='".validTeks($_GET['bln'])."' and bsr_jasa ='".validTeks($_GET['bsr_jasa'])."'","?act=InputJasaLain&action=TAMBAH&id=$id");
+                try {
+                    Hapus(" jasa_lain "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."' and bsr_jasa ='".validTeks($_GET['bsr_jasa'])."'","?act=InputJasaLain&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
-                echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td><div align='left'>Data : $jumlah</div></td>                        
-                    </tr>     
-                 </table>");
+            echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                <tr class='head'>
+                    <td><div align='left'>Data : $jumlah</div></td>                        
+                </tr>     
+             </table>");
         ?>
     </div>
 

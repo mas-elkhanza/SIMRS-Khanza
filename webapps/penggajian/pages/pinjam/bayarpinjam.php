@@ -169,14 +169,18 @@
     </div>
     <?php
         if ($action=="HAPUS") {
-            HapusAll(" angsuran_koperasi where id ='".validTeks($_GET["id"])."' and tanggal_angsur='".validTeks($_GET["tanggal_angsur"])."' ");	
-            EditData(" potongan "," angkop='0' WHERE id='".validTeks($_GET["id"])."' and tahun=year('".validTeks($_GET["tanggal_angsur"])."') and bulan=(MONTH('".validTeks($_GET["tanggal_angsur"])."')-1) ");	
-            if(validangka($_GET["pinjaman"])<=getOne("select sum(pokok) from angsuran_koperasi where id ='".validTeks($_GET["id"])."' and tanggal_pinjam='".validTeks($_GET["tanggal_pinjam"])."'  group by id")){
-                Ubah(" peminjaman_koperasi "," status='Lunas' WHERE id ='".validTeks($_GET["id"])."' and tanggal='".validTeks($_GET["tanggal_pinjam"])."' ", " Potongan ");
-            }else{
-                Ubah(" peminjaman_koperasi "," status='Belum Lunas' WHERE id ='".validTeks($_GET["id"])."' and tanggal='".validTeks($_GET["tanggal_pinjam"])."' ", " Potongan ");
+            try {
+                HapusAll(" angsuran_koperasi where id ='".validTeks($_GET["id"])."' and tanggal_angsur='".validTeks($_GET["tanggal_angsur"])."' ");	
+                EditData(" potongan "," angkop='0' WHERE id='".validTeks($_GET["id"])."' and tahun=year('".validTeks($_GET["tanggal_angsur"])."') and bulan=(MONTH('".validTeks($_GET["tanggal_angsur"])."')-1) ");	
+                if(validangka($_GET["pinjaman"])<=getOne("select sum(pokok) from angsuran_koperasi where id ='".validTeks($_GET["id"])."' and tanggal_pinjam='".validTeks($_GET["tanggal_pinjam"])."'  group by id")){
+                    Ubah(" peminjaman_koperasi "," status='Lunas' WHERE id ='".validTeks($_GET["id"])."' and tanggal='".validTeks($_GET["tanggal_pinjam"])."' "," Potongan ");
+                }else{
+                    Ubah(" peminjaman_koperasi "," status='Belum Lunas' WHERE id ='".validTeks($_GET["id"])."' and tanggal='".validTeks($_GET["tanggal_pinjam"])."' "," Potongan ");
+                }
+                echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=".validTeks($_GET["id"])."&tanggal=".validTeks($_GET["tanggal_pinjam"])."'></head><body></body></html>";
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
             }
-            echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=".validTeks($_GET["id"])."&tanggal=".validTeks($_GET["tanggal_pinjam"])."'></head><body></body></html>";
         }
 
         echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

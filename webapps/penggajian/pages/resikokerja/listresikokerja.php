@@ -68,7 +68,11 @@
             
             $aksi=isset($_GET['action'])?$_GET['action']:NULL;
             if ($aksi=="HAPUS") {
-                Hapus(" resiko_kerja "," kode_resiko ='".validTeks4($_GET['kode_resiko'],3)."' ","?act=ListResikoKerja");
+                try {
+                    Hapus(" resiko_kerja "," kode_resiko ='".validTeks4($_GET['kode_resiko'],3)."' ","?act=ListResikoKerja");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
         ?>
         </div>

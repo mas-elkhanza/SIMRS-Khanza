@@ -71,13 +71,25 @@
                     if (isset($pendapatan_tuslah)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_tuslah ","'$tahun','$bulan','$pendapatan_tuslah','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry'", " Pendapatan Tuslah" );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputTuslah&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" set_tuslah ","'$tahun','$bulan','$pendapatan_tuslah','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' "," Pendapatan Tuslah");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputTuslah&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data tuslah sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" set_tuslah ","pendapatan_tuslah='$pendapatan_tuslah',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
-                                    bagian_kry='$bagian_kry'  WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Tuslah");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListTuslah'></head><body></body></html>";
+                                try {
+                                    Ubah(" set_tuslah ","pendapatan_tuslah='$pendapatan_tuslah',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
+                                    bagian_kry='$bagian_kry'  WHERE tahun='$tahun' and bulan='$bulan'  "," Pendapatan Tuslah");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListTuslah'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

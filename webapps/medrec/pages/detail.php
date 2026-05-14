@@ -121,10 +121,18 @@
                                 if ((!empty($id))&&(!empty($dokumen))) {
                                     switch($action) {
                                         case "TAMBAH":
-                                            if(Tambah(" retensi_pasien "," '$id','$terakhir_daftar','$tgl_retensi','$dokumen'", " Riwayat Retensi " )){
-                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                            try {
+                                                if(Tambah(" retensi_pasien "," '$id','$terakhir_daftar','$tgl_retensi','$dokumen' "," Riwayat Retensi ")){
+                                                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                                }
+                                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&id=$id'>";
+                                            } catch(mysqli_sql_exception $e) {
+                                                if($e->getCode()==1062){
+                                                    echo "<b style='color:red'>Data retensi sudah ada..!!!</b>";
+                                                }else{
+                                                    echo "<b style='color:red'>Gagal menyimpan</b>";
+                                                }
                                             }
-                                            echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&id=$id'>";
                                             break;
                                     }
                                 }else if ((empty($id))||(empty($dokumen))){
@@ -185,8 +193,12 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                unlink($_GET['lokasi_pdf']);
-                Hapus(" retensi_pasien "," no_rkm_medis ='".validTeks($_GET['id'])."' and tgl_retensi ='".validTeks($_GET['tgl_retensi'])."' ","?act=Detail&action=TAMBAH&id=$id");
+                try {
+                    unlink($_GET['lokasi_pdf']);
+                    Hapus(" retensi_pasien "," no_rkm_medis ='".validTeks($_GET['id'])."' and tgl_retensi ='".validTeks($_GET['tgl_retensi'])."' ","?act=Detail&action=TAMBAH&id=$id");
+                } catch(mysqli_sql_exception $e) {
+                    echo "<b style='color:red'>Gagal menghapus</b>";
+                }
             }
 
         

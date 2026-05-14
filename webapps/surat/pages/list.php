@@ -120,13 +120,16 @@
                       </table>";        
         }        
         
-        if ($action=="HAPUS") {                
-            unlink($_GET['file_url']);
-            Hapus(" surat_masuk "," no_urut ='".validTeks($_GET['no_urut'])."' ","?act=List&tgl1=".validTeks($_GET['tgl1'])."&tgl2=".validTeks($_GET['tgl2'])."&ruang=".validTeks($_GET['ruang'])."&sttssurat=".validTeks($_GET['sttssurat'])."&sttsbalas=".validTeks($_GET['sttsbalas'])."&keyword=".validTeks($_GET['keyword']));
+        if ($action=="HAPUS") {
+            try {
+                unlink($_GET['file_url']);
+                Hapus(" surat_masuk "," no_urut ='".validTeks($_GET['no_urut'])."' ","?act=List&tgl1=".validTeks($_GET['tgl1'])."&tgl2=".validTeks($_GET['tgl2'])."&ruang=".validTeks($_GET['ruang'])."&sttssurat=".validTeks($_GET['sttssurat'])."&sttsbalas=".validTeks($_GET['sttsbalas'])."&keyword=".validTeks($_GET['keyword']));
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>
 	</form>
     </div>
 </div>
-

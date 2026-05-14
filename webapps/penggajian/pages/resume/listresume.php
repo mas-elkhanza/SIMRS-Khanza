@@ -125,10 +125,18 @@
     <?php
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUSAKTE") {
-            Hapus(" set_resume  "," pendapatan_resume ='".validTeks($_GET['pendapatan_resume'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListResume");
+            try {
+                Hapus(" set_resume  "," pendapatan_resume ='".validTeks($_GET['pendapatan_resume'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListResume");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         if ($aksi=="HAPUSPENERIMA") {
-            Hapus(" pembagian_resume "," id ='".validTeks($_GET['id'])."'","?act=ListResume");
+            try {
+                Hapus(" pembagian_resume "," id ='".validTeks($_GET['id'])."'","?act=ListResume");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
         echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                 <tr class='head'>

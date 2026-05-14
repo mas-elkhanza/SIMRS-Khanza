@@ -69,12 +69,24 @@
                     if ((isset($id))&&(isset($persen))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pembagian_resume ","'$id','$persen' ", " Porsi Resume " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPenerimaResume&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" pembagian_resume ","'$id','$persen' "," Porsi Resume ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPenerimaResume&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data resume sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" pembagian_resume ","persen='$persen' WHERE id='$id'  ", " Porsi Resume  ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResume'></head><body></body></html>";
+                                try {
+                                    Ubah(" pembagian_resume ","persen='$persen' WHERE id='$id'  "," Porsi Resume ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResume'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

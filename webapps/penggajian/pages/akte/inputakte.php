@@ -67,13 +67,25 @@
                         @$bagian_kry         = ($persen_kry/100)*$pendapatan_akte;
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" set_akte ","'$tahun','$bulan','$pendapatan_akte','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' ", " Pendapatan Akte" );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputAkte&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" set_akte ","'$tahun','$bulan','$pendapatan_akte','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' "," Pendapatan Akte");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputAkte&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data akte sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" set_akte ","pendapatan_akte='$pendapatan_akte',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
-                                                bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Akte");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListAkte'></head><body></body></html>";
+                                try {
+                                    Ubah(" set_akte ","pendapatan_akte='$pendapatan_akte',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
+                                                bagian_kry='$bagian_kry' WHERE tahun='$tahun' and bulan='$bulan'  "," Pendapatan Akte");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListAkte'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

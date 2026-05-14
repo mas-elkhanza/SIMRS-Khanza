@@ -59,12 +59,24 @@
                     if ((isset($kode_resiko))&&(isset($nama_resiko))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" resiko_kerja "," '$kode_resiko','$nama_resiko','$indek' ", " resiko kerja " );
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResikoKerja&action=TAMBAH'></head><body></body></html>";
+                                try {
+                                    Tambah(" resiko_kerja "," '$kode_resiko','$nama_resiko','$indek' "," resiko kerja ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResikoKerja&action=TAMBAH'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Kode resiko sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                             case "UBAH":
-                                Ubah(" resiko_kerja "," nama_resiko='$nama_resiko',indek='$indek' WHERE kode_resiko='$kode_resiko' ", " resiko kerja ");
-                                echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResikoKerja'></head><body></body></html>";
+                                try {
+                                    Ubah(" resiko_kerja "," nama_resiko='$nama_resiko',indek='$indek' WHERE kode_resiko='$kode_resiko' "," resiko kerja ");
+                                    echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResikoKerja'></head><body></body></html>";
+                                } catch(mysqli_sql_exception $e) {
+                                    echo "<b style='color:red'>Gagal mengubah</b>";
+                                }
                                 break;
                         }
                     }else{

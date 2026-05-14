@@ -56,8 +56,16 @@
                     if (isset($id)) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" kasift "," '$id','$jmlks','$bsr'", " Daftar Kasift " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=ListKS&action=TAMBAH&id='$id'>";
+                                try {
+                                    Tambah(" kasift "," '$id','$jmlks','$bsr' "," Daftar Kasift ");
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=ListKS&action=TAMBAH&id='$id'>";
+                                } catch(mysqli_sql_exception $e) {
+                                    if($e->getCode()==1062){
+                                        echo "<b style='color:red'>Data kasift sudah ada..!!!</b>";
+                                    }else{
+                                        echo "<b style='color:red'>Gagal menyimpan</b>";
+                                    }
+                                }
                                 break;
                         }
                     }else{
@@ -124,7 +132,11 @@
         </form>
             <?php
                 if ($action=="HAPUS") {
-                    Hapus(" kasift"," id ='".$id."' ","?act=ListKS&action=TAMBAH&id=$id");
+                    try {
+                        Hapus(" kasift"," id ='".$id."' ","?act=ListKS&action=TAMBAH&id=$id");
+                    } catch(mysqli_sql_exception $e) {
+                        echo "<b style='color:red'>Gagal menghapus</b>";
+                    }
                 }
 
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

@@ -43,7 +43,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-				<td>
+			<td>
                                   <center>
                                         <a href=?act=InputEmergencyIndex&action=UBAH&kode_emergency=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListEmergencyIndex&action=HAPUS&kode_emergency=<?php print $baris[0] ?>" >[hapus]</a>
@@ -70,7 +70,11 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" emergency_index "," kode_emergency ='".validTeks4($_GET['kode_emergency'],3)."' ","?act=ListEmergencyIndex");
+            try {
+                Hapus(" emergency_index "," kode_emergency ='".validTeks4($_GET['kode_emergency'],3)."' ","?act=ListEmergencyIndex");
+            } catch(mysqli_sql_exception $e) {
+                echo "<b style='color:red'>Gagal menghapus</b>";
+            }
         }
     ?>
     </div>
