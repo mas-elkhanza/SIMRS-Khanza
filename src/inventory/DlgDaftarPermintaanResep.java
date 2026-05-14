@@ -3224,7 +3224,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         try {
-                            ps3=koneksi.prepareStatement("select bridging_sep.no_sep,bridging_sep.no_kartu,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,bridging_sep.kddpjp,bridging_sep.nmdpdjp,bridging_sep.tglsep from bridging_sep where bridging_sep.no_rawat=?");
+                            ps3=koneksi.prepareStatement("select bridging_sep.no_sep,bridging_sep.no_kartu,bridging_sep.kddpjp,bridging_sep.nmdpdjp,bridging_sep.tglsep from bridging_sep where bridging_sep.no_rawat=?");
                             try {
                                 ps3.setString(1,NoRawat);
                                 rs3=ps3.executeQuery();
@@ -3244,7 +3244,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }
                                     if (apol == null) return;
                                     if (!apol.isVisible()) {
-                                        apol.setNoRm(NoRawat,NoRM,Pasien,TglPeresepan,JamPeresepan,NoResep,rs3.getString("no_sep"),rs3.getString("no_kartu"),rs3.getString("kdpolitujuan"),rs3.getString("nmpolitujuan"),rs3.getString("kddpjp"),rs3.getString("nmdpdjp"),rs3.getString("tglsep"));
+                                        apol.setNoRm(NoRawat,NoRM,Pasien,TglPeresepan,JamPeresepan,NoResep,rs3.getString("no_sep"),rs3.getString("no_kartu"),KodeRuang,Ruang,rs3.getString("kddpjp"),rs3.getString("nmdpdjp"),rs3.getString("tglsep"));
                                     }
                                     if (apol.isVisible()) {
                                         apol.toFront();

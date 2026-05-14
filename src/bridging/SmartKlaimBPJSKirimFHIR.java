@@ -1009,54 +1009,25 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                                                 append("\"display\": \"").append((tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().equals("2. Ralan")?"ambulatory":"inpatient encounter")).append("\"").
                                             append("},").
                                             append("\"incomingReferral\": [").
-                                                append("                    {").
-                                                append("                        \"identifier\": [").
-                                                append("                            {").
-                                                append("                                \"system\": \"nomor_rujukan_bpjs\",").
-                                                append("                                \"value\": \"0196B0200226P000001\"").
-                                                append("                            }").
-                                                append("                        ]").
-                                                append("                    }").
-                                                append("                ],").
-                                                append("                \"reason\": [").
-                                                append("                    {").
-                                                append("                        \"coding\": [").
-                                                append("                            {").
-                                                append("                                \"code\": \"59621000\",").
-                                                append("                                \"display\": \"Essential hypertension\",").
-                                                append("                                \"system\": \"http://snomed.info/sct\"").
-                                                append("                            }").
-                                                append("                        ],").
-                                                append("                        \"text\": \"Essential hypertension\"").
-                                                append("                    },").
-                                                append("                    {").
-                                                append("                        \"coding\": [").
-                                                append("                            {").
-                                                append("                                \"system\": \"http://snomed.info/sct\",").
-                                                append("                                \"code\": \"602001\",").
-                                                append("                                \"display\": \"Epidemic Australian polyarthritis\"").
-                                                append("                            }").
-                                                append("                        ],").
-                                                append("                        \"text\": \"Epidemic Australian polyarthritis\"").
-                                                append("                    }").
-                                                append("                ],").
-                                            append("\"participant\": [").
                                                 append("{").
-                                                    append("\"type\": [").
+                                                    append("\"identifier\": [").
                                                         append("{").
-                                                            append("\"coding\": [").
-                                                                append("{").
-                                                                    append("\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\",").
-                                                                    append("\"code\": \"ATND\",").
-                                                                    append("\"display\": \"attender\"").
-                                                                append("}").
-                                                            append("]").
+                                                            append("\"system\": \"nomor_rujukan_bpjs\",").
+                                                            append("\"value\": \"0196B0200226P000001\"").
+                                                        append("}").
+                                                    append("]").
+                                                append("}").
+                                            append("],").
+                                            append("\"reason\": [").
+                                                append("{").
+                                                    append("\"coding\": [").
+                                                        append("{").
+                                                            append("\"code\": \"59621000\",").
+                                                            append("\"display\": \"Essential hypertension\",").
+                                                            append("\"system\": \"http://snomed.info/sct\"").
                                                         append("}").
                                                     append("],").
-                                                    append("\"individual\": {").
-                                                        append("\"reference\": \"Practitioner/").append(akses.getkodeppkbpjs()).append("-").append(akses.getkodeppkkemenkes()).append("-").append(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)).append("-").append(jadikanUUID(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())).append("\",").
-                                                        append("\"display\": \"").append(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()).append("\"").
-                                                    append("}").
+                                                    append("\"text\": \"Essential hypertension\"").
                                                 append("}").
                                             append("],").
                                             append("\"period\": {").
