@@ -1308,43 +1308,45 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(!JSONFHIR.getText().equals("")){
-            try {
-                headers = new HttpHeaders();
-                headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
-                headers.add("X-Cons-ID",koneksiDB.CONSIDAPISMARTCLAIM());
-                utc=String.valueOf(api.GetUTCdatetimeAsString());
-                headers.add("X-Timestamp",utc);
-                headers.add("X-Signature",api.getHmac(utc));
-                headers.add("user_key",koneksiDB.USERKEYAPISMARTCLAIM());
-                requestJson ="{" +
-                                "\"request\": {" +
-                                    "\"noSep\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
-                                    "\"jnsPelayanan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)+"\"," +
-                                    "\"bulan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(5,7).replaceAll("0","")+"\"," +
-                                    "\"tahun\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(0,4)+"\"," +
-                                    "\"dataMR\": \""+api.encryptSmartClaimData(JSONFHIR.getText(),akses.getkodeppkbpjs())+"\"" +
-                                "}" +
-                            "}";
-                System.out.println("JSON : "+requestJson);
-                System.out.println("URL : "+link+"/eclaim/rekammedis/insert");
-                requestEntity = new HttpEntity(requestJson,headers);
-                root = mapper.readTree(api.getRest().exchange(link+"/eclaim/rekammedis/insert", HttpMethod.POST, requestEntity, String.class).getBody());
-                nameNode = root.path("metaData");
-                System.out.println("code : "+nameNode.path("code").asText());
-                System.out.println("message : "+nameNode.path("message").asText());
-                if(nameNode.path("code").asText().equals("200")){
-                    if(Sequel.menyimpantf("bridging_smart_klaim_bpjs","?,?","No.SEP",2,new String[]{
-                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(DTPTanggal.getSelectedItem()+"")
-                        })==true){
-                        tbObat.setValueAt(Valid.SetTgl(DTPTanggal.getSelectedItem()+""),tbObat.getSelectedRow(),12);
+            if(tbObat.getSelectedRow()!= -1){
+                try {
+                    headers = new HttpHeaders();
+                    headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
+                    headers.add("X-Cons-ID",koneksiDB.CONSIDAPISMARTCLAIM());
+                    utc=String.valueOf(api.GetUTCdatetimeAsString());
+                    headers.add("X-Timestamp",utc);
+                    headers.add("X-Signature",api.getHmac(utc));
+                    headers.add("user_key",koneksiDB.USERKEYAPISMARTCLAIM());
+                    requestJson ="{" +
+                                    "\"request\": {" +
+                                        "\"noSep\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
+                                        "\"jnsPelayanan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(0,1)+"\"," +
+                                        "\"bulan\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(5,7).replaceAll("0","")+"\"," +
+                                        "\"tahun\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().substring(0,4)+"\"," +
+                                        "\"dataMR\": \""+api.encryptSmartClaimData(JSONFHIR.getText(),akses.getkodeppkbpjs())+"\"" +
+                                    "}" +
+                                "}";
+                    System.out.println("JSON : "+requestJson);
+                    System.out.println("URL : "+link+"/eclaim/rekammedis/insert");
+                    requestEntity = new HttpEntity(requestJson,headers);
+                    root = mapper.readTree(api.getRest().exchange(link+"/eclaim/rekammedis/insert", HttpMethod.POST, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
+                    System.out.println("code : "+nameNode.path("code").asText());
+                    System.out.println("message : "+nameNode.path("message").asText());
+                    if(nameNode.path("code").asText().equals("200")){
+                        if(Sequel.menyimpantf("bridging_smart_klaim_bpjs","?,?","No.SEP",2,new String[]{
+                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(DTPTanggal.getSelectedItem()+"")
+                            })==true){
+                            tbObat.setValueAt(Valid.SetTgl(DTPTanggal.getSelectedItem()+""),tbObat.getSelectedRow(),12);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                    }   
+                }catch (Exception ex) {
+                    System.out.println("Notifikasi Bridging : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                }   
-            }catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
                 }
             }
         }else{
