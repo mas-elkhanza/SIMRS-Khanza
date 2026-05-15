@@ -39,7 +39,7 @@ import javax.swing.table.TableColumn;
 public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private final DefaultTableModel tabModeBayarPesanObat,tabModeBayarPesanNonMedis,tabModeBayarPesanAset,tabModeBayarPesanDapur,tabModeBayarJM,
                                     tabModePengeluaranHarian,tabModeBebanHutang,tabModePengadaanObat,tabModePengadaanNonMedis,tabModePengadaanInventaris,
-                                    tabModePengadaanDapur,tabModeBayarPesanToko,tabModePengadaanToko;
+                                    tabModePengadaanDapur,tabModeBayarPesanToko,tabModePengadaanToko,tabModePengembalianDeposit;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -48,7 +48,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private double bayarobat=0,bayarnonmedis=0,bayaraset=0,bayardapur=0,bayarjm=0,pengeluaranharian=0,bayarbebanhutang=0,pengadaanobat=0,pengadaannonmedis=0,
-                   pengadaaninventaris=0,pengadaandapur,bayartoko=0,pengadaantoko=0;
+                   pengadaaninventaris=0,pengadaandapur,bayartoko=0,pengadaantoko=0,pengembaliandeposit=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -537,6 +537,41 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             }
         }
         tbPengadaanToko.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModePengembalianDeposit=new DefaultTableModel(null,new Object[]{"Tanggal","No.Rawat","No.RM","Nama Pasien","Petugas","Akun Bayar","Pengembalian"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPengembalianDeposit.setModel(tabModePengembalianDeposit);
+        tbPengembalianDeposit.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPengembalianDeposit.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 7; i++) {
+            TableColumn column = tbPengembalianDeposit.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(125);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(80);
+            }else if(i==3){
+                column.setPreferredWidth(200);
+            }else if(i==4){
+                column.setPreferredWidth(170);
+            }else if(i==5){
+                column.setPreferredWidth(150);
+            }else if(i==6){
+                column.setPreferredWidth(120);
+            }
+        }
+        tbPengembalianDeposit.setDefaultRenderer(Object.class, new WarnaTable());
     }    
     
      
@@ -589,6 +624,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarPesanToko = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         LCountPengadaanToko = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        LCountPengembalianDeposit = new javax.swing.JLabel();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbBayarPesanObat = new widget.Table();
@@ -616,6 +653,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         tbBayarPesanToko = new widget.Table();
         Scroll15 = new widget.ScrollPane();
         tbPengadaanToko = new widget.Table();
+        Scroll16 = new widget.ScrollPane();
+        tbPengembalianDeposit = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -640,7 +679,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         panelGlass8.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -654,7 +693,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         panelGlass8.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -970,6 +1009,24 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         panelGlass9.add(LCountPengadaanToko);
         LCountPengadaanToko.setBounds(129, 100, 110, 23);
 
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel26.setText("Kembali Deposit :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        jLabel26.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass9.add(jLabel26);
+        jLabel26.setBounds(227, 100, 110, 23);
+
+        LCountPengembalianDeposit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCountPengembalianDeposit.setForeground(new java.awt.Color(50, 50, 50));
+        LCountPengembalianDeposit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountPengembalianDeposit.setText("0");
+        LCountPengembalianDeposit.setName("LCountPengembalianDeposit"); // NOI18N
+        LCountPengembalianDeposit.setPreferredSize(new java.awt.Dimension(180, 23));
+        panelGlass9.add(LCountPengembalianDeposit);
+        LCountPengembalianDeposit.setBounds(341, 100, 110, 23);
+
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -1096,6 +1153,15 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         Scroll15.setViewportView(tbPengadaanToko);
 
         TabRawat.addTab("Pengadaan Toko", Scroll15);
+
+        Scroll16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll16.setName("Scroll16"); // NOI18N
+        Scroll16.setOpaque(true);
+
+        tbPengembalianDeposit.setName("tbPengembalianDeposit"); // NOI18N
+        Scroll16.setViewportView(tbPengembalianDeposit);
+
+        TabRawat.addTab("Pengembalian Deposit", Scroll16);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1363,6 +1429,27 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
                 "inner join rekening on rekening.kd_rek=tokopembelian.kd_rek "+
                 "where tokopembelian.tgl_beli between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by tokopembelian.tgl_beli",param);
         }
+        
+        if(tabModePengembalianDeposit.getRowCount()!=0){
+            Sequel.queryu("delete from temporary_payment");
+            for(int r=0;r<tabModePengembalianDeposit.getRowCount();r++){  
+                Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",7,new String[]{
+                    tabModePengembalianDeposit.getValueAt(r,0).toString(),tabModePengembalianDeposit.getValueAt(r,1).toString(),tabModePengembalianDeposit.getValueAt(r,2).toString(),tabModePengembalianDeposit.getValueAt(r,3).toString(),
+                    tabModePengembalianDeposit.getValueAt(r,4).toString(),tabModePengembalianDeposit.getValueAt(r,5).toString(),Valid.SetAngka(Double.parseDouble(tabModePengembalianDeposit.getValueAt(r,6).toString()))                  
+                });
+            }
+            
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
+            param.put("total",Valid.SetAngka(pengembaliandeposit));  
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReport("rptPengeluaranPengembalianDepositPasien.jasper","report","::[ Pengembalian Deposit Pasien ]::",param);
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -1400,6 +1487,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private javax.swing.JLabel LCountPengadaanObat;
     private javax.swing.JLabel LCountPengadaanToko;
     private javax.swing.JLabel LCountPengeluaranHarian;
+    private javax.swing.JLabel LCountPengembalianDeposit;
     private javax.swing.JLabel LCountPesanObat;
     private javax.swing.JLabel LCountTotal;
     private widget.ScrollPane Scroll;
@@ -1409,6 +1497,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.ScrollPane Scroll13;
     private widget.ScrollPane Scroll14;
     private widget.ScrollPane Scroll15;
+    private widget.ScrollPane Scroll16;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -1433,6 +1522,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1449,6 +1539,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.Table tbPengadaanObat;
     private widget.Table tbPengadaanToko;
     private widget.Table tbPengeluaranHarian;
+    private widget.Table tbPengembalianDeposit;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){
@@ -1851,7 +1942,37 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             }
             LCountPengadaanToko.setText(Valid.SetAngka(pengadaantoko));
             
-            LCountTotal.setText(Valid.SetAngka(bayarobat+bayarnonmedis+bayaraset+bayardapur+bayarjm+pengeluaranharian+bayarbebanhutang+pengadaanobat+pengadaannonmedis+pengadaaninventaris+pengadaandapur+bayartoko+pengadaantoko));
+            Valid.tabelKosong(tabModePengembalianDeposit);
+            pengembaliandeposit=0;
+            String akunpengembalian=Sequel.cariIsi("select rekening.nm_rek from rekening inner join set_akun_ranap2 on rekening.kd_rek=set_akun_ranap2.Sisa_Uang_Muka_Ranap");
+            ps=koneksi.prepareStatement(
+                    "select pengembalian_deposit.tanggal,pengembalian_deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pengembalian_deposit.besar_pengembalian,pengembalian_deposit.petugas "+
+                    "from pengembalian_deposit inner join reg_periksa on reg_periksa.no_rawat=pengembalian_deposit.no_rawat inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                    "where pengembalian_deposit.tanggal between ? and ? order by pengembalian_deposit.tanggal");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePengembalianDeposit.addRow(new Object[]{
+                        rs.getString("tanggal"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas")),
+                        akunpengembalian,rs.getDouble("besar_pengembalian")
+                    });
+                    pengembaliandeposit=pengembaliandeposit+rs.getDouble("besar_pengembalian");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Pengembalian Deposit : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCountPengembalianDeposit.setText(Valid.SetAngka(pengembaliandeposit));
+            
+            LCountTotal.setText(Valid.SetAngka(bayarobat+bayarnonmedis+bayaraset+bayardapur+bayarjm+pengeluaranharian+bayarbebanhutang+pengadaanobat+pengadaannonmedis+pengadaaninventaris+pengadaandapur+bayartoko+pengadaantoko+pengembaliandeposit));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
