@@ -273,7 +273,7 @@
 Pendaftaran dibuka 1 hari sebelum tanggal kontrol]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="84" y="263" width="146" height="12" uuid="9a26df3b-d135-41c6-bfce-69d5ae540e07"/>
+				<reportElement x="54" y="263" width="176" height="12" uuid="9a26df3b-d135-41c6-bfce-69d5ae540e07"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Cambria" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -281,7 +281,7 @@ Pendaftaran dibuka 1 hari sebelum tanggal kontrol]]></text>
 				<textFieldExpression><![CDATA[$P{kotars} + ", " +$P{tanggal_surat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="93" y="275" width="128" height="12" uuid="155cf285-becc-407c-9469-cea25b8f3b05"/>
+				<reportElement x="63" y="275" width="158" height="12" uuid="155cf285-becc-407c-9469-cea25b8f3b05"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Cambria" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -289,7 +289,7 @@ Pendaftaran dibuka 1 hari sebelum tanggal kontrol]]></text>
 				<text><![CDATA[Dokter yang Merawat,]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="58" y="344" width="199" height="12" uuid="fcb81fcc-229e-4ba3-889e-79876290a048"/>
+				<reportElement x="28" y="344" width="229" height="12" uuid="fcb81fcc-229e-4ba3-889e-79876290a048"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Cambria" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -323,7 +323,7 @@ Pendaftaran dibuka 1 hari sebelum tanggal kontrol]]></text>
 				</graphicElement>
 			</line>
 			<componentElement>
-				<reportElement x="129" y="287" width="57" height="57" isRemoveLineWhenBlank="true" uuid="90cc79d6-50ba-4c11-ba1c-ce50ce469f87"/>
+				<reportElement x="110" y="287" width="56" height="56" isRemoveLineWhenBlank="true" uuid="90cc79d6-50ba-4c11-ba1c-ce50ce469f87"/>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
@@ -465,7 +465,7 @@ Pendaftaran dibuka 1 hari sebelum tanggal kontrol]]></text>
 				<textFieldExpression><![CDATA[$F{temp17}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="58" y="355" width="199" height="24" uuid="9110c60d-2c23-4ceb-828b-f74a093a8b7f"/>
+				<reportElement x="28" y="355" width="229" height="24" uuid="9110c60d-2c23-4ceb-828b-f74a093a8b7f"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Cambria" size="8"/>
 				</textElement>

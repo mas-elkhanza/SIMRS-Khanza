@@ -66,7 +66,33 @@ public class ServiceWADelphi {
         ps.executeUpdate();
         ps.close();
     }
+    
+    //KIRIM SEKARANG
+    public void kirimTextNow(String nomor, String pesan, String source) throws Exception {
 
+        Connection koneksi = koneksiDBWa.condb();
+
+        String sql = "INSERT INTO wa_outbox "
+                + "(NOWA,PESAN,TANGGAL_JAM,STATUS,SOURCE,SENDER,SUCCESS,RESPONSE,REQUEST,FILE,TYPE) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+        PreparedStatement ps = koneksi.prepareStatement(sql);
+
+        ps.setString(1, formatNomor(nomor));
+        ps.setString(2, pesan);
+        ps.setString(3, new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
+        ps.setString(4, "ANTRIAN");
+        ps.setString(5, source);
+        ps.setString(6, "NODEJS");
+        ps.setString(7, null);
+        ps.setString(8, null);
+        ps.setString(9, null);
+        ps.setString(10, null);
+        ps.setString(11, "TEXT");
+
+        ps.executeUpdate();
+        ps.close();
+    }
 
     // =============================
     // KIRIM FILE
