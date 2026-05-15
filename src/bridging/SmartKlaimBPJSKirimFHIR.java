@@ -1344,9 +1344,15 @@ public final class SmartKlaimBPJSKirimFHIR extends javax.swing.JDialog {
                     }   
                 }catch (Exception ex) {
                     System.out.println("Notifikasi Bridging : "+ex);
-                    if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                    String pesanError;
+                    if (ex.toString().contains("UnknownHostException")) {
+                        pesanError = "Koneksi ke server BPJS terputus...!";
+                    } else if (ex.getCause() != null) {
+                        pesanError = "Error: " + ex.getCause().getMessage();
+                    } else {
+                        pesanError = "Error: " + ex.getMessage();
                     }
+                    JOptionPane.showMessageDialog(null, pesanError);
                 }
             }
         }else{

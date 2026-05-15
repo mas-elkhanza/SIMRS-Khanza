@@ -260,7 +260,7 @@ public final class akses {
             pcra_icra_identifkasi_risiko_keselamatan=false,pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,
             daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,
             satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,
-            mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,surat_permohonan_privasi=false;
+            mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,surat_permohonan_privasi=false,surat_permintaan_second_opinion=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1480,6 +1480,7 @@ public final class akses {
                         akses.permintaan_binrohtal=true;
                         akses.surat_permintaan_perlindungan_dari_kekerasan=true;
                         akses.surat_permohonan_privasi=true;
+                        akses.surat_permintaan_second_opinion=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2683,6 +2684,7 @@ public final class akses {
                         akses.permintaan_binrohtal=rs2.getBoolean("permintaan_binrohtal");
                         akses.surat_permintaan_perlindungan_dari_kekerasan=rs2.getBoolean("surat_permintaan_perlindungan_dari_kekerasan");
                         akses.surat_permohonan_privasi=rs2.getBoolean("surat_permohonan_privasi");
+                        akses.surat_permintaan_second_opinion=rs2.getBoolean("surat_permintaan_second_opinion");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3908,6 +3910,7 @@ public final class akses {
         akses.permintaan_binrohtal=false;
         akses.surat_permintaan_perlindungan_dari_kekerasan=false;
         akses.surat_permohonan_privasi=false;
+        akses.surat_permintaan_second_opinion=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5150,4 +5153,5 @@ public final class akses {
     public static boolean getpermintaan_binrohtal(){return akses.permintaan_binrohtal;}
     public static boolean getsurat_permintaan_perlindungan_dari_kekerasan(){return akses.surat_permintaan_perlindungan_dari_kekerasan;}
     public static boolean getsurat_permohonan_privasi(){return akses.surat_permohonan_privasi;}
+    public static boolean getsurat_permintaan_second_opinion(){return akses.surat_permintaan_second_opinion;}
 }   
