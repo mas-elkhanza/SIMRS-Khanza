@@ -50244,7 +50244,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratPermohonanPrivasi.addActionListener(this::btnSuratPermohonanPrivasiActionPerformed);
         
         btnSuratPermintaanSecondOpinion = new widget.ButtonBig();
-        btnSuratPermintaanSecondOpinion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/forum_15181620.png"))); 
+        btnSuratPermintaanSecondOpinion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/conversation_3601377.png"))); 
         btnSuratPermintaanSecondOpinion.setText("Surat Permintaan Second Opinion");
         btnSuratPermintaanSecondOpinion.setIconTextGap(0);
         btnSuratPermintaanSecondOpinion.setName("btnSuratPermintaanSecondOpinion");

@@ -7,7 +7,7 @@
     $norawat       = "";
     $_sql          = "select * from antripernyataanmemilihdpjp" ;  
     $hasil         = bukaquery2($_sql);
-    while ($data = mysqli_fetch_array ($hasil)){
+    while ($data = mysqli_fetch_array($hasil)){
         $nopernyataan = $data['no_pernyataan'];
         $norawat      = $data['no_rawat'];
     }
@@ -28,7 +28,7 @@
                inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab
                where reg_periksa.no_rawat='".$norawat."'" ;  
     $hasil2 = bukaquery2($_sql2);
-    while ($data2  = mysqli_fetch_array ($hasil2)){
+    while ($data2 = mysqli_fetch_array ($hasil2)){
         $no_rkm_medis = $data2['no_rkm_medis'];
         $nm_pasien    = $data2['nm_pasien'];
         $jk           = $data2['jk'];
