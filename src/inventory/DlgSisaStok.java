@@ -657,21 +657,34 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
             }
             
-            ps= koneksi.prepareStatement(
-                    "select kode_brng,nama_brng,kode_sat,"+hppfarmasi+" as dasar from databarang "+
+            ps = koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang."+hppfarmasi+" as dasar from databarang "+
                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
                     "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
                     "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode where "+
-                    "jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (kode_brng like ? or nama_brng like ?)")+
-                    " order by kode_brng");
+                    "databarang.status='1' "+(nmjns.getText().trim().equals("")?"":"and jenis.nama=? ")+
+                    (nmkategori.getText().trim().equals("")?"":"and kategori_barang.nama=? ")+
+                    (nmgolongan.getText().trim().equals("")?"":"and golongan_barang.nama=? ")+
+                    (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ?)")+
+                    " order by databarang.kode_brng");
             try {
-                ps.setString(1,"%"+nmjns.getText().trim()+"%");
-                ps.setString(2,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
+                i=1;
+                if(!nmjns.getText().trim().equals("")){
+                    ps.setString(i,nmjns.getText().trim());
+                    i++;
+                }
+                if(!nmkategori.getText().trim().equals("")){
+                    ps.setString(i,nmkategori.getText().trim());
+                    i++;
+                }    
+                if(!nmgolongan.getText().trim().equals("")){
+                    ps.setString(i,nmgolongan.getText().trim());
+                    i++;
+                }    
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
+                    i++;
+                    ps.setString(i,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
