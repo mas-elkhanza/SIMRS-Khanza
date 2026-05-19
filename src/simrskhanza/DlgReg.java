@@ -279,6 +279,7 @@ import java.util.List;
 import javax.swing.WindowConstants;
 import permintaan.DlgPermintaanKonsultasiPerawat;
 import rekammedis.RMDataSkriningGiziKehamilan;
+import surat.SuratKeteranganBerobat;
 import surat.SuratPermintaanBinrohtal;
 import surat.SuratPermintaanPerlindunganDariKekerasan;
 import surat.SuratPermintaanSecondOpinion;
@@ -16430,6 +16431,26 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnCetakSuratKeteranganBerobatActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNoRw.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                SuratKeteranganBerobat resume=new SuratKeteranganBerobat(null,false);
+                resume.isCek();
+                resume.emptTeks();
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setVisible(true);
+                resume.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TPoli.getText(),KdDokter.getText(),TDokter.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),DTPCari1.getDate(),DTPCari2.getDate());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16871,7 +16892,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
             MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
             MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,
-            MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion;
+            MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
     private void tampil() {
@@ -17538,6 +17559,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnLayananKedokteranFisikRehabilitasi.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
         MnCheckListKesiapanAnestesi.setEnabled(akses.getchecklist_kesiapan_anestesi());
         MnCetakSuratKeteranganLayakTerbang.setEnabled(akses.getsurat_keterangan_layak_terbang());
+        MnCetakSuratKeteranganBerobat.setEnabled(akses.getsurat_keterangan_berobat());
         
         if(TANGGALMUNDUR.equals("no")){
             if(!akses.getkode().equals("Admin Utama")){
@@ -18774,6 +18796,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCetakSuratKeteranganLayakTerbang.setPreferredSize(new java.awt.Dimension(260, 26));
         MnCetakSuratKeteranganLayakTerbang.addActionListener(this::MnCetakSuratKeteranganLayakTerbangActionPerformed);
         
+        MnCetakSuratKeteranganBerobat = new javax.swing.JMenuItem();
+        MnCetakSuratKeteranganBerobat.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratKeteranganBerobat.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCetakSuratKeteranganBerobat.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratKeteranganBerobat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCetakSuratKeteranganBerobat.setText("Surat Keterangan Berobat");
+        MnCetakSuratKeteranganBerobat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCetakSuratKeteranganBerobat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCetakSuratKeteranganBerobat.setName("MnCetakSuratKeteranganBerobat");
+        MnCetakSuratKeteranganBerobat.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnCetakSuratKeteranganBerobat.addActionListener(this::MnCetakSuratKeteranganBerobatActionPerformed);
+        
         MnPersetujuanPemeriksaanHIV = new javax.swing.JMenuItem();
         MnPersetujuanPemeriksaanHIV.setBackground(new java.awt.Color(255, 255, 254));
         MnPersetujuanPemeriksaanHIV.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -19198,6 +19232,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         jPopupMenu2.add(MnDataKonsultasiMedik);
         
         MnSuratSurat.add(MnCetakSuratKeteranganLayakTerbang);
+        MnSuratSurat.add(MnCetakSuratKeteranganBerobat);
         MnSuratSurat.add(jMenu8);
         MnSuratSurat.add(MnSuratPersetujuan);
         MnSuratPersetujuan.add(MnPersetujuanUmum);

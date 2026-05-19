@@ -3,10 +3,6 @@
  * and open the template in the editor.
  */
 
-/*
- * kontribusi dari dokter Salim Mulyana
- */
-
 package surat;
 
 import fungsi.WarnaTable;
@@ -34,11 +30,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-
-/**
- * 
- * @author salimmulyana
- */
 public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
