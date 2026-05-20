@@ -153,7 +153,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
         MnCetakSuratKeterangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratKeterangan.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakSuratKeterangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakSuratKeterangan.setText("Cetak Surat Keterangan Layak Terbang");
+        MnCetakSuratKeterangan.setText("Cetak Surat Keterangan Berobat");
         MnCetakSuratKeterangan.setName("MnCetakSuratKeterangan"); // NOI18N
         MnCetakSuratKeterangan.setPreferredSize(new java.awt.Dimension(260, 18));
         MnCetakSuratKeterangan.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +452,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
         jLabel3.setText("No. Surat :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(406, 40, 70, 23);
+        jLabel3.setBounds(416, 40, 70, 23);
 
         NoSurat.setHighlighter(null);
         NoSurat.setName("NoSurat"); // NOI18N
@@ -462,7 +462,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoSurat);
-        NoSurat.setBounds(480, 40, 141, 23);
+        NoSurat.setBounds(490, 40, 131, 23);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -504,19 +504,20 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
         jLabel13.setText("Tanggal :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(242, 40, 55, 23);
+        jLabel13.setBounds(262, 40, 55, 23);
 
         TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2026" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         FormInput.add(TanggalSurat);
-        TanggalSurat.setBounds(301, 40, 90, 23);
+        TanggalSurat.setBounds(321, 40, 90, 23);
 
         jLabel9.setText("Unit/Poli :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 40, 70, 23);
 
+        Poli.setEditable(false);
         Poli.setHighlighter(null);
         Poli.setName("Poli"); // NOI18N
         Poli.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -525,7 +526,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
             }
         });
         FormInput.add(Poli);
-        Poli.setBounds(74, 40, 141, 23);
+        Poli.setBounds(74, 40, 175, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -690,18 +691,20 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             tgl=" surat_keterangan_berobat.tanggal_surat between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSuratLayakTerbang.jasper","report","::[ Data Surat Keterangan Layak Terbang ]::",
+                Valid.MyReportqry("rptDataSuratBerobat.jasper","report","::[ Data Surat Keterangan Berobat ]::",
                      "select surat_keterangan_berobat.no_surat,surat_keterangan_berobat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_keterangan_berobat.tanggal_surat,surat_keterangan_berobat.nm_poli,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
+                     "surat_keterangan_berobat.tanggal_surat,poliklinik.nm_poli,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_keterangan_berobat inner join reg_periksa on surat_keterangan_berobat.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
+                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                      "where "+tgl+"order by surat_keterangan_berobat.no_surat",param);
             }else{
-                Valid.MyReportqry("rptDataSuratLayakTerbang.jasper","report","::[ Data Surat Keterangan Layak Terbang ]::",
+                Valid.MyReportqry("rptDataSuratBerobat.jasper","report","::[ Data Surat Keterangan Berobat ]::",
                      "select surat_keterangan_berobat.no_surat,surat_keterangan_berobat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_keterangan_berobat.tanggal_surat,surat_keterangan_berobat.nm_poli,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
+                     "surat_keterangan_berobat.tanggal_surat,poliklinik.nm_poli,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_keterangan_berobat inner join reg_periksa on surat_keterangan_berobat.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
+                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                      "where "+tgl+"and (no_surat like '%"+TCari.getText().trim()+"%' or surat_keterangan_berobat.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                      "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or  pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                      "surat_keterangan_berobat.tanggal_surat like '%"+TCari.getText().trim()+"%') "+                    
@@ -799,15 +802,15 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),6).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()));  
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptSuratLayakTerbang.jasper","report","::[ Surat Keterangan Layak Terbang ]::",
-                        "select surat_keterangan_berobat.no_surat,surat_keterangan_berobat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                        "pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.jk,pasien.pekerjaan,reg_periksa.umurdaftar,"+
-                        "reg_periksa.sttsumur,surat_keterangan_berobat.tanggal_surat,surat_keterangan_berobat.nm_poli,reg_periksa.kd_dokter,"+
+                Valid.MyReportqry("rptSuratBerobat.jasper","report","::[ Surat Keterangan Berobat]::",
+                        "select surat_keterangan_berobat.no_surat,surat_keterangan_berobat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y') as tgl_registrasi,"+
+                        "reg_periksa.jam_reg,pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.jk,pasien.pekerjaan,reg_periksa.umurdaftar,"+
+                        "reg_periksa.sttsumur,date_format(surat_keterangan_berobat.tanggal_surat,'%d-%m-%Y') as tanggal_surat,poliklinik.nm_poli,reg_periksa.kd_dokter,"+
                         "dokter.nm_dokter from surat_keterangan_berobat inner join reg_periksa on surat_keterangan_berobat.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                         "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                        "where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
                 this.setCursor(Cursor.getDefaultCursor());  
        }
     }//GEN-LAST:event_MnCetakSuratKeteranganActionPerformed
@@ -987,6 +990,10 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Poli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            TanggalJamPeriksa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            KodeDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            NamaDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             Valid.SetTgl(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
         }
     }

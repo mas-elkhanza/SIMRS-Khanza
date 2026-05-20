@@ -25,7 +25,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cetak Surat Keterangan Layak Terbang"/>
+            <Property name="text" type="java.lang.String" value="Cetak Surat Keterangan Berobat"/>
             <Property name="name" type="java.lang.String" value="MnCetakSuratKeterangan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 18]"/>
@@ -500,7 +500,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="406" y="40" width="70" height="23"/>
+                      <AbsoluteConstraints x="416" y="40" width="70" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -516,7 +516,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="480" y="40" width="141" height="23"/>
+                      <AbsoluteConstraints x="490" y="40" width="131" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -588,7 +588,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="242" y="40" width="55" height="23"/>
+                      <AbsoluteConstraints x="262" y="40" width="55" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -604,7 +604,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="301" y="40" width="90" height="23"/>
+                      <AbsoluteConstraints x="321" y="40" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -621,6 +621,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="Poli">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="null"/>
                     </Property>
@@ -631,7 +632,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="74" y="40" width="141" height="23"/>
+                      <AbsoluteConstraints x="74" y="40" width="175" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
