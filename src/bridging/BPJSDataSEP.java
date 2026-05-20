@@ -3430,7 +3430,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }else{
                 cekViaBPJSKartu.tampil(no_peserta);
                 if(cekViaBPJSKartu.informasi.equals("OK")){
-                    if(cekViaBPJSKartu.statusPesertaketerangan.equals("AKTIF")){
+                    if(cekViaBPJSKartu.statusPesertaketerangan.startsWith("AKTIF")){
                         TPasien.setText(cekViaBPJSKartu.nama);
                         TglLahir.setText(cekViaBPJSKartu.tglLahir);
                         NIK.setText(cekViaBPJSKartu.nik);

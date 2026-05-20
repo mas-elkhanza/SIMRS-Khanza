@@ -3467,7 +3467,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     if(nameNode.path("message").asText().equals("OK")){
                         response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                        if(response.path("ketAktif").asText().equals("AKTIF")){
+                        if(response.path("ketAktif").asText().startsWith("AKTIF")){
                             TPasien.setText(response.path("nama").asText());
                             TglLahir.setText(response.path("tglLahir").asText());
                             JK.setText(response.path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
@@ -4438,7 +4438,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         nameNode = root.path("metaData");
                         if(nameNode.path("message").asText().equals("OK")){
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                            if(response.path("ketAktif").asText().equals("AKTIF")){
+                            if(response.path("ketAktif").asText().startsWith("AKTIF")){
                                 TPasien.setText(response.path("nama").asText());
                                 TglLahir.setText(response.path("tglLahir").asText());
                                 JK.setText(response.path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
