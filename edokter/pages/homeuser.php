@@ -73,12 +73,36 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li <?=$halaman=="Admin"?"class='active'":""?>>
+                    <li <?=$halaman=="Pasien"?"class='active'":""?>>
                         <a href="index.php?act=Pasien">
                             <i class="material-icons">assignment_ind</i>
-                            <span>Daftar Pasien/Pegawai</span>
+                            <span>Daftar Pasien</span>
                         </a>
                     </li>
+                    <?php
+                        $kdDokter           = validTeks4(encrypt_decrypt($_SESSION["ses_dokter"], "d"), 20);
+                        $activeMenuDokter   = ($halaman == "KonsultasiDokter") ? "class='active'" : "";
+                        $urlKonsultasi      = encrypt_decrypt("index.php?act=KonsultasiDokter", "e");
+                        $activeMenuPerawat  = ($halaman == "KonsultasiPerawat") ? "class='active'" : "";
+
+                        if (getOne("SELECT count(konsultasi_medik.no_permintaan) FROM konsultasi_medik WHERE NOT EXISTS (SELECT 1 FROM jawaban_konsultasi_medik WHERE jawaban_konsultasi_medik.no_permintaan = konsultasi_medik.no_permintaan) AND konsultasi_medik.kd_dokter_dikonsuli='".$kdDokter."'")>0){
+                            echo "<li $activeMenuDokter>
+                                    <a href=\"index.php?act=KonsultasiDokter\">
+                                        <i class=\"material-icons\">medical_services</i>
+                                        <span>Konsultasi Dokter</span>
+                                    </a>
+                                  </li>";
+                        }
+                        
+                        if (getOne("SELECT count(konsultasi_perawat.no_permintaan) FROM konsultasi_perawat WHERE NOT EXISTS (SELECT 1 FROM jawaban_konsultasi_perawat WHERE jawaban_konsultasi_perawat.no_permintaan = konsultasi_perawat.no_permintaan) AND konsultasi_perawat.kd_dokter_dikonsuli='".$kdDokter."'")>0){
+                            echo "<li $activeMenuPerawat>
+                                    <a href=\"index.php?act=KonsultasiPerawat\">
+                                        <i class=\"material-icons\">medical_services</i>
+                                        <span>Konsultasi Perawat</span>
+                                    </a>
+                                  </li>";
+                        }
+                    ?>
                 </ul>
             </div>
             <!-- #Menu -->
