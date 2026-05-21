@@ -65,7 +65,7 @@
             if(!empty($lokasigambar)){
                 $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$lokasigambar));
                 echo "<tr>
-                        <td valign='top' align='center' width='100%'><img alt='Gambar Radiologi' src='$src' width='500px' height='500px'/></td>
+                        <td valign='top' align='center' width='100%'><img alt='Gambar Radiologi' src='$src' style='max-width:100%; height:auto;'/></td>
                       </tr>";
             }
             echo "                  </table>
