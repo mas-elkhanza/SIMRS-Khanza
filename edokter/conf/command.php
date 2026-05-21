@@ -32,7 +32,10 @@
     function formProtek() {
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiAdmin()) {
-            $form = array ('HomeUser','Pasien','KonsultasiDokter','KonsultasiPerawat','BalasKonsultasiDokter','BalasKonsultasiPerawat');
+            $form = array (
+                'HomeUser','Pasien','KonsultasiDokter','KonsultasiPerawat','BalasKonsultasiDokter','BalasKonsultasiPerawat',
+                'HasilRadiologi','BacaanRadiologi'            
+            );
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -53,6 +56,8 @@
             case "KonsultasiPerawat"        : include_once("pages/listkonsultasiperawat.php"); break;
             case "BalasKonsultasiDokter"    : include_once("pages/listbalaskonsultasidokter.php"); break;
             case "BalasKonsultasiPerawat"   : include_once("pages/listbalaskonsultasiperawat.php"); break;
+            case "HasilRadiologi"           : include_once("pages/listhasilradiologi.php"); break;
+            case "BacaanRadiologi"          : include_once("pages/listbacaanradiologi.php"); break;
             default                         : include_once("pages/listhome.php");
         }   
     }

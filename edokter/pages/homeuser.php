@@ -79,30 +79,7 @@
                             <span>Daftar Pasien</span>
                         </a>
                     </li>
-                    <?php
-                        $kdDokter           = validTeks4(encrypt_decrypt($_SESSION["ses_dokter"], "d"), 20);
-                        $activeMenuDokter   = ($halaman == "KonsultasiDokter") ? "class='active'" : "";
-                        $urlKonsultasi      = encrypt_decrypt("index.php?act=KonsultasiDokter", "e");
-                        $activeMenuPerawat  = ($halaman == "KonsultasiPerawat") ? "class='active'" : "";
-
-                        if (getOne("SELECT count(konsultasi_medik.no_permintaan) FROM konsultasi_medik WHERE NOT EXISTS (SELECT 1 FROM jawaban_konsultasi_medik WHERE jawaban_konsultasi_medik.no_permintaan = konsultasi_medik.no_permintaan) AND konsultasi_medik.kd_dokter_dikonsuli='".$kdDokter."'")>0){
-                            echo "<li $activeMenuDokter>
-                                    <a href=\"index.php?act=KonsultasiDokter\">
-                                        <i class=\"material-icons\">medical_services</i>
-                                        <span>Konsultasi Dokter</span>
-                                    </a>
-                                  </li>";
-                        }
-                        
-                        if (getOne("SELECT count(konsultasi_perawat.no_permintaan) FROM konsultasi_perawat WHERE NOT EXISTS (SELECT 1 FROM jawaban_konsultasi_perawat WHERE jawaban_konsultasi_perawat.no_permintaan = konsultasi_perawat.no_permintaan) AND konsultasi_perawat.kd_dokter_dikonsuli='".$kdDokter."'")>0){
-                            echo "<li $activeMenuPerawat>
-                                    <a href=\"index.php?act=KonsultasiPerawat\">
-                                        <i class=\"material-icons\">medical_services</i>
-                                        <span>Konsultasi Perawat</span>
-                                    </a>
-                                  </li>";
-                        }
-                    ?>
+                    <div id="datakonsul"></div>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -150,6 +127,20 @@
     <script src="js/pages/index.js"></script>
     <script src="js/demo.js"></script>
     <script src="conf/validator.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+        function loadKonsul(){
+            fetch('pages/listdatakonsul.php')
+                .then(function(response){ return response.text(); })
+                .then(function(html){ 
+                    document.getElementById('datakonsul').innerHTML = html; 
+                });
+        }
+
+        window.onload = function(){
+            loadKonsul();
+            setInterval(loadKonsul, 600000);
+        }
+    </script>
 </body>
 </html>
 
