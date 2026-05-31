@@ -627,7 +627,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek5);
-        BtnSeek5.setBounds(782, 10, 28, 23);
+        BtnSeek5.setBounds(802, 10, 28, 23);
 
         BtnSeek6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek6.setMnemonic('3');
@@ -640,7 +640,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek6);
-        BtnSeek6.setBounds(782, 40, 28, 23);
+        BtnSeek6.setBounds(802, 40, 28, 23);
 
         BtnSeek7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek7.setMnemonic('3');
@@ -653,7 +653,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek7);
-        BtnSeek7.setBounds(782, 70, 28, 23);
+        BtnSeek7.setBounds(802, 70, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
