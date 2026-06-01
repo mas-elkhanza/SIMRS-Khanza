@@ -69,7 +69,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Pernyataan","No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pembuat Pernyataan","Alamat Pembuat Pernyataan",
+            "No.Penolakan","No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pembuat Pernyataan","Alamat Pembuat Pernyataan",
             "Tgl.Lahir","J.K.P.P.","Hubungan","Saksi I Keluarga","Kode Dokter","Nama Dokter","Nip","Saksi II Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -737,13 +737,8 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         FormInput.add(jLabel11);
         jLabel11.setBounds(740, 10, 30, 23);
 
-        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Istri", "Suami", "Kerabat", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
+        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Istri", "Suami", "Kerabat", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
         HubunganDenganPasien.setName("HubunganDenganPasien"); // NOI18N
-        HubunganDenganPasien.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                HubunganDenganPasienItemStateChanged(evt);
-            }
-        });
         HubunganDenganPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HubunganDenganPasienKeyPressed(evt);
@@ -946,12 +941,11 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         }else if(SaksiKeluarga.getText().trim().equals("")){
             Valid.textKosong(SaksiKeluarga,"Saksi I Keluarga");
         }else{
-            if(Sequel.menyimpantf("surat_pernyataan_memilih_dpjp","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+            if(Sequel.menyimpantf("surat_penolakan_resusitasi","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                     NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),KdDokter.getText(),KdPerawat.getText(),PembuatPernyataan.getText(), 
                     AlamatPembuatPernyataan.getText(),Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(0,1), 
                     HubunganDenganPasien.getSelectedItem().toString(),SaksiKeluarga.getText()
                 })==true){
-                Sequel.menyimpan2("dpjp_ranap","?,?","Dokter",2,new String[]{TNoRw.getText(),KdDokter.getText()});
                 tabMode.addRow(new Object[]{
                     NoPenyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(0,1),
                     Valid.SetTgl(TglPernyataan.getSelectedItem()+""),PembuatPernyataan.getText(),AlamatPembuatPernyataan.getText(),
@@ -1089,7 +1083,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pernyataan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Penolakan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
@@ -1136,7 +1130,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                                 "</html>"
                             );
                             
-                            f = new File("DataSuratPernyataanMemilihDPJP.html");            
+                            f = new File("DataSuratPenolakanResusitasi.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1146,7 +1140,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SURAT PENYATAAN MEMILIH DPJP<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SURAT PENOLAKAN RESUSITASI<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1157,7 +1151,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                     case "Laporan 2 (WPS)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pernyataan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Penolakan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
@@ -1204,7 +1198,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                                 "</html>"
                             );
                             
-                            f = new File("DataSuratPernyataanMemilihDPJP.wps");            
+                            f = new File("DataSuratPenolakanResusitasi.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1214,7 +1208,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SURAT PENYATAAN MEMILIH DPJP<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SURAT PENOLAKAN RESUSITASI<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1225,13 +1219,13 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Pernyataan\";\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Tanggal\";\"Pembuat Pernyataan\";\"Alamat Pembuat Pernyataan\";\"Tgl.Lahir\";\"J.K.P.P.\";\"Hubungan\";\"Saksi I Keluarga\";\"Kode Dokter\";\"Nama Dokter\";\"Nip\";\"Saksi II Petugas\"\n"
+                                "\"No.Penolakan\";\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Tanggal\";\"Pembuat Pernyataan\";\"Alamat Pembuat Pernyataan\";\"Tgl.Lahir\";\"J.K.P.P.\";\"Hubungan\";\"Saksi I Keluarga\";\"Kode Dokter\";\"Nama Dokter\";\"Nip\";\"Saksi II Petugas\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append("\"").append(tbObat.getValueAt(i,0).toString()).append("\";\"").append(tbObat.getValueAt(i,1).toString()).append("\";\"").append(tbObat.getValueAt(i,2).toString()).append("\";\"").append(tbObat.getValueAt(i,3).toString()).append("\";\"").append(tbObat.getValueAt(i,4).toString()).append("\";\"").append(tbObat.getValueAt(i,5).toString()).append("\";\"").append(tbObat.getValueAt(i,6).toString()).append("\";\"").append(tbObat.getValueAt(i,7).toString()).append("\";\"").append(tbObat.getValueAt(i,8).toString()).append("\";\"").append(tbObat.getValueAt(i,9).toString()).append("\";\"").
                                                          append(tbObat.getValueAt(i,10).toString()).append("\";\"").append(tbObat.getValueAt(i,11).toString()).append("\";\"").append(tbObat.getValueAt(i,12).toString()).append("\";\"").append(tbObat.getValueAt(i,13).toString()).append("\";\"").append(tbObat.getValueAt(i,14).toString()).append("\";\"").append(tbObat.getValueAt(i,15).toString()).append("\";\"").append(tbObat.getValueAt(i,16).toString()).append("\"\n");
                             }
-                            f = new File("DataSuratPernyataanMemilihDPJP.csv");            
+                            f = new File("DataSuratPenolakanResusitasi.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -1423,54 +1417,13 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         Valid.pindah(evt,BtnPerawat,BtnSimpan);
     }//GEN-LAST:event_SaksiKeluargaKeyPressed
 
-    private void HubunganDenganPasienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HubunganDenganPasienItemStateChanged
-        if(HubunganDenganPasien.getSelectedIndex()==0){
-            try {
-                ps=koneksi.prepareStatement("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
-                            "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,pasien.tgl_lahir "+
-                            "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                            "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
-                            "where pasien.no_rkm_medis=?");
-                try {            
-                    ps.setString(1,TNoRM.getText());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        PembuatPernyataan.setText(TPasien.getText());
-                        AlamatPembuatPernyataan.setText(rs.getString("asal"));
-                        TanggalLahir.setDate(rs.getDate("tgl_lahir"));
-                        JKPembuatPernyataan.setSelectedItem(Jk.getText());
-                    }
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                }finally{
-                    if(rs != null ){
-                        rs.close();
-                    }
-
-                    if(ps != null ){
-                        ps.close();
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }else{
-            PembuatPernyataan.setText("");
-            AlamatPembuatPernyataan.setText("");
-            TanggalLahir.setDate(new Date());
-            JKPembuatPernyataan.setSelectedIndex(0);
-        }
-    }//GEN-LAST:event_HubunganDenganPasienItemStateChanged
-
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
             isPhoto();
             panggilPhoto();
         }else{
             ChkAccor.setSelected(false);
-            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pernyataan..!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Penolakan..!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
@@ -1480,11 +1433,11 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("insert into antripernyataanmemilihdpjp values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from bukti_surat_pernyataan_memilih_dpjp where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
-                Sequel.queryu("delete from bukti_surat_pernyataan_memilih_dpjp_saksikeluarga where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("insert into antripenolakanresusitasi values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from bukti_surat_penolakan_resusitasi where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from bukti_surat_penolakan_resusitasi_saksikeluarga where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Penolakan terlebih dahulu..!!");
             }   
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
@@ -1493,7 +1446,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()>-1){
             panggilPhoto();
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Penolakan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
@@ -1516,11 +1469,11 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                 finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
                 param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),15).toString():finger2)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
-                Valid.MyReportqry("rptSuratPernyataanMemilihDPJP.jasper","report","::[ Surat Pernyataan Memilih DPJP Rawat Inap ]::",
-                    "select surat_pernyataan_memilih_dpjp.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,surat_pernyataan_memilih_dpjp.tanggal,surat_pernyataan_memilih_dpjp.pembuat_pernyataan,surat_pernyataan_memilih_dpjp.alamat_pembuat_pernyataan,pasien.umur,pasien.no_tlp,"+
-                    "surat_pernyataan_memilih_dpjp.tgl_lahir_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.jk_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.hubungan_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.saksi_keluarga,surat_pernyataan_memilih_dpjp.kd_dokter,dokter.nm_dokter,surat_pernyataan_memilih_dpjp.nip,petugas.nama from surat_pernyataan_memilih_dpjp inner join reg_periksa on surat_pernyataan_memilih_dpjp.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis inner join dokter on dokter.kd_dokter=surat_pernyataan_memilih_dpjp.kd_dokter inner join petugas on petugas.nip=surat_pernyataan_memilih_dpjp.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_pernyataan_memilih_dpjp.no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReportqry("rptSuratPenolakanResusitasi.jasper","report","::[ Surat Pernyataan Memilih DPJP Rawat Inap ]::",
+                    "select surat_penolakan_resusitasi.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,surat_penolakan_resusitasi.tanggal,surat_penolakan_resusitasi.pembuat_pernyataan,surat_penolakan_resusitasi.alamat_pembuat_pernyataan,pasien.umur,pasien.no_tlp,"+
+                    "surat_penolakan_resusitasi.tgl_lahir_pembuat_pernyataan,surat_penolakan_resusitasi.jk_pembuat_pernyataan,surat_penolakan_resusitasi.hubungan_pembuat_pernyataan,surat_penolakan_resusitasi.saksi_keluarga,surat_penolakan_resusitasi.kd_dokter,dokter.nm_dokter,surat_penolakan_resusitasi.nip,petugas.nama from surat_penolakan_resusitasi inner join reg_periksa on surat_penolakan_resusitasi.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis inner join dokter on dokter.kd_dokter=surat_penolakan_resusitasi.kd_dokter inner join petugas on petugas.nip=surat_penolakan_resusitasi.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                    "where surat_penolakan_resusitasi.no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1671,27 +1624,27 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select surat_pernyataan_memilih_dpjp.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
-                        "surat_pernyataan_memilih_dpjp.tanggal,surat_pernyataan_memilih_dpjp.pembuat_pernyataan,surat_pernyataan_memilih_dpjp.alamat_pembuat_pernyataan,"+
-                        "surat_pernyataan_memilih_dpjp.tgl_lahir_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.jk_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.hubungan_pembuat_pernyataan,"+
-                        "surat_pernyataan_memilih_dpjp.saksi_keluarga,surat_pernyataan_memilih_dpjp.kd_dokter,dokter.nm_dokter,surat_pernyataan_memilih_dpjp.nip,petugas.nama "+
-                        "from surat_pernyataan_memilih_dpjp inner join reg_periksa on surat_pernyataan_memilih_dpjp.no_rawat=reg_periksa.no_rawat "+
+                        "select surat_penolakan_resusitasi.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                        "surat_penolakan_resusitasi.tanggal,surat_penolakan_resusitasi.pembuat_pernyataan,surat_penolakan_resusitasi.alamat_pembuat_pernyataan,"+
+                        "surat_penolakan_resusitasi.tgl_lahir_pembuat_pernyataan,surat_penolakan_resusitasi.jk_pembuat_pernyataan,surat_penolakan_resusitasi.hubungan_pembuat_pernyataan,"+
+                        "surat_penolakan_resusitasi.saksi_keluarga,surat_penolakan_resusitasi.kd_dokter,dokter.nm_dokter,surat_penolakan_resusitasi.nip,petugas.nama "+
+                        "from surat_penolakan_resusitasi inner join reg_periksa on surat_penolakan_resusitasi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                        "inner join dokter on dokter.kd_dokter=surat_pernyataan_memilih_dpjp.kd_dokter "+
-                        "inner join petugas on petugas.nip=surat_pernyataan_memilih_dpjp.nip where "+
-                        "surat_pernyataan_memilih_dpjp.tanggal between ? and ? order by surat_pernyataan_memilih_dpjp.tanggal");
+                        "inner join dokter on dokter.kd_dokter=surat_penolakan_resusitasi.kd_dokter "+
+                        "inner join petugas on petugas.nip=surat_penolakan_resusitasi.nip where "+
+                        "surat_penolakan_resusitasi.tanggal between ? and ? order by surat_penolakan_resusitasi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select surat_pernyataan_memilih_dpjp.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
-                        "surat_pernyataan_memilih_dpjp.tanggal,surat_pernyataan_memilih_dpjp.pembuat_pernyataan,surat_pernyataan_memilih_dpjp.alamat_pembuat_pernyataan,"+
-                        "surat_pernyataan_memilih_dpjp.tgl_lahir_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.jk_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.hubungan_pembuat_pernyataan,"+
-                        "surat_pernyataan_memilih_dpjp.saksi_keluarga,surat_pernyataan_memilih_dpjp.kd_dokter,dokter.nm_dokter,surat_pernyataan_memilih_dpjp.nip,petugas.nama "+
-                        "from surat_pernyataan_memilih_dpjp inner join reg_periksa on surat_pernyataan_memilih_dpjp.no_rawat=reg_periksa.no_rawat "+
+                        "select surat_penolakan_resusitasi.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                        "surat_penolakan_resusitasi.tanggal,surat_penolakan_resusitasi.pembuat_pernyataan,surat_penolakan_resusitasi.alamat_pembuat_pernyataan,"+
+                        "surat_penolakan_resusitasi.tgl_lahir_pembuat_pernyataan,surat_penolakan_resusitasi.jk_pembuat_pernyataan,surat_penolakan_resusitasi.hubungan_pembuat_pernyataan,"+
+                        "surat_penolakan_resusitasi.saksi_keluarga,surat_penolakan_resusitasi.kd_dokter,dokter.nm_dokter,surat_penolakan_resusitasi.nip,petugas.nama "+
+                        "from surat_penolakan_resusitasi inner join reg_periksa on surat_penolakan_resusitasi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                        "inner join dokter on dokter.kd_dokter=surat_pernyataan_memilih_dpjp.kd_dokter "+
-                        "inner join petugas on petugas.nip=surat_pernyataan_memilih_dpjp.nip where "+
-                        "surat_pernyataan_memilih_dpjp.tanggal between ? and ? and (surat_pernyataan_memilih_dpjp.no_pernyataan like ? or reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "surat_pernyataan_memilih_dpjp.kd_dokter like ? or dokter.nm_dokter like ?) order by surat_pernyataan_memilih_dpjp.tanggal");
+                        "inner join dokter on dokter.kd_dokter=surat_penolakan_resusitasi.kd_dokter "+
+                        "inner join petugas on petugas.nip=surat_penolakan_resusitasi.nip where "+
+                        "surat_penolakan_resusitasi.tanggal between ? and ? and (surat_penolakan_resusitasi.no_pernyataan like ? or reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "surat_penolakan_resusitasi.kd_dokter like ? or dokter.nm_dokter like ?) order by surat_penolakan_resusitasi.tanggal");
             }
                 
             try {
@@ -1742,8 +1695,8 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         TanggalLahir.setDate(new Date());
         JKPembuatPernyataan.setSelectedIndex(0);
         SaksiKeluarga.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_pernyataan_memilih_dpjp.no_pernyataan,3),signed)),0) from surat_pernyataan_memilih_dpjp where surat_pernyataan_memilih_dpjp.tanggal='"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+"' ",
-                "DPJP"+TglPernyataan.getSelectedItem().toString().substring(6,10)+TglPernyataan.getSelectedItem().toString().substring(3,5)+TglPernyataan.getSelectedItem().toString().substring(0,2),3,NoPenyataan);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_penolakan_resusitasi.no_pernyataan,3),signed)),0) from surat_penolakan_resusitasi where surat_penolakan_resusitasi.tanggal='"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+"' ",
+                "DNR"+TglPernyataan.getSelectedItem().toString().substring(6,10)+TglPernyataan.getSelectedItem().toString().substring(3,5)+TglPernyataan.getSelectedItem().toString().substring(0,2),3,NoPenyataan);
         NoPenyataan.requestFocus();
     } 
 
@@ -1775,11 +1728,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi, "+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun "+
-                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                    "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
@@ -1790,10 +1739,6 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
-                    PembuatPernyataan.setText(rs.getString("nm_pasien"));
-                    AlamatPembuatPernyataan.setText(rs.getString("asal"));
-                    TanggalLahir.setDate(rs.getDate("tgl_lahir"));
-                    JKPembuatPernyataan.setSelectedItem(rs.getString("jk"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1821,10 +1766,10 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
-        BtnHapus.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
-        BtnEdit.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
-        BtnEdit.setEnabled(akses.getsurat_pernyataan_memilih_dpjp());
+        BtnSimpan.setEnabled(akses.getsurat_penolakan_resusitasi());
+        BtnHapus.setEnabled(akses.getsurat_penolakan_resusitasi());
+        BtnEdit.setEnabled(akses.getsurat_penolakan_resusitasi());
+        BtnEdit.setEnabled(akses.getsurat_penolakan_resusitasi());
         if(akses.getjml2()>=1){
             KdPerawat.setEditable(false);
             BtnPerawat.setEnabled(false);
@@ -1838,10 +1783,9 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from surat_pernyataan_memilih_dpjp where no_pernyataan=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from surat_penolakan_resusitasi where no_pernyataan=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            Sequel.queryu2("delete from dpjp_ranap where no_rawat=? and kd_dokter=?",2,new String[]{TNoRw.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()});
             tabMode.removeRow(tbObat.getSelectedRow());
             LCount.setText(""+tabMode.getRowCount());
         }else{
@@ -1850,14 +1794,12 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("surat_pernyataan_memilih_dpjp","no_pernyataan=?","no_pernyataan=?,no_rawat=?,tanggal=?,kd_dokter=?,nip=?,pembuat_pernyataan=?,alamat_pembuat_pernyataan=?,"+
+        if(Sequel.mengedittf("surat_penolakan_resusitasi","no_pernyataan=?","no_pernyataan=?,no_rawat=?,tanggal=?,kd_dokter=?,nip=?,pembuat_pernyataan=?,alamat_pembuat_pernyataan=?,"+
             "tgl_lahir_pembuat_pernyataan=?,jk_pembuat_pernyataan=?,hubungan_pembuat_pernyataan=?,saksi_keluarga=?",12,new String[]{
             NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),KdDokter.getText(),KdPerawat.getText(),PembuatPernyataan.getText(), 
                     AlamatPembuatPernyataan.getText(),Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(0,1), 
                     HubunganDenganPasien.getSelectedItem().toString(),SaksiKeluarga.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            Sequel.queryu2("delete from dpjp_ranap where no_rawat=? and kd_dokter=?",2,new String[]{TNoRw.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()});
-            Sequel.menyimpan2("dpjp_ranap","?,?","Dokter",2,new String[]{TNoRw.getText(),KdDokter.getText()});
             tbObat.setValueAt(NoPenyataan.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
@@ -1911,7 +1853,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select bukti_surat_pernyataan_memilih_dpjp.photo from bukti_surat_pernyataan_memilih_dpjp where bukti_surat_pernyataan_memilih_dpjp.no_pernyataan=?");
+                ps=koneksi.prepareStatement("select bukti_surat_penolakan_resusitasi.photo from bukti_surat_penolakan_resusitasi where bukti_surat_penolakan_resusitasi.no_pernyataan=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1941,7 +1883,7 @@ public final class SuratPenolakanResusitasi extends javax.swing.JDialog {
 
             lokasifile2="";
             try {
-                ps=koneksi.prepareStatement("select bukti_surat_pernyataan_memilih_dpjp_saksikeluarga.photo from bukti_surat_pernyataan_memilih_dpjp_saksikeluarga where bukti_surat_pernyataan_memilih_dpjp_saksikeluarga.no_pernyataan=?");
+                ps=koneksi.prepareStatement("select bukti_surat_penolakan_resusitasi_saksikeluarga.photo from bukti_surat_penolakan_resusitasi_saksikeluarga where bukti_surat_penolakan_resusitasi_saksikeluarga.no_pernyataan=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
