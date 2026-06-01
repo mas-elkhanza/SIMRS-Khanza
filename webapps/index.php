@@ -182,6 +182,12 @@
                                       </a>
                                     </td>
                                     <td width='25%' align='center'>
+                                      <a target=_blank href=penolakanresusitasi/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/services_6007742.png'/><br>
+                                         Penolakan Resusitasi                                      
+                                      </a>
+                                    </td>
+                                    <td width='25%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               
