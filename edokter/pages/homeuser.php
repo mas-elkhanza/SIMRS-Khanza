@@ -73,12 +73,13 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li <?=$halaman=="Admin"?"class='active'":""?>>
+                    <li <?=$halaman=="Pasien"?"class='active'":""?>>
                         <a href="index.php?act=Pasien">
                             <i class="material-icons">assignment_ind</i>
-                            <span>Daftar Pasien/Pegawai</span>
+                            <span>Daftar Pasien</span>
                         </a>
                     </li>
+                    <div id="datakonsul"></div>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -126,6 +127,20 @@
     <script src="js/pages/index.js"></script>
     <script src="js/demo.js"></script>
     <script src="conf/validator.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+        function loadKonsul(){
+            fetch('pages/listdatakonsul.php')
+                .then(function(response){ return response.text(); })
+                .then(function(html){ 
+                    document.getElementById('datakonsul').innerHTML = html; 
+                });
+        }
+
+        window.onload = function(){
+            loadKonsul();
+            setInterval(loadKonsul, 600000);
+        }
+    </script>
 </body>
 </html>
 

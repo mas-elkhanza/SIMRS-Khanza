@@ -1083,7 +1083,7 @@ public final class DlgAuditBundleVAP extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_bundle_vap.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_bundle_vap.tanggal,audit_bundle_vap.posisi_kepala,"+
                     "audit_bundle_vap.pengkajian_setiap_hari,audit_bundle_vap.hand_hygiene,audit_bundle_vap.oral_hygiene,audit_bundle_vap.suction_manajemen_sekresi,"+
@@ -1101,7 +1101,7 @@ public final class DlgAuditBundleVAP extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

@@ -1143,7 +1143,7 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_bundle_plabsi.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_bundle_plabsi.tanggal,audit_bundle_plabsi.sebelum_melakukan_hand_hygiene,"+
                     "audit_bundle_plabsi.menggunakan_apd_lengkap,audit_bundle_plabsi.lokasi_pemasangan_sesuai,audit_bundle_plabsi.alat_yang_digunakan_steril,audit_bundle_plabsi.pembersihan_kulit,"+
@@ -1161,7 +1161,7 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

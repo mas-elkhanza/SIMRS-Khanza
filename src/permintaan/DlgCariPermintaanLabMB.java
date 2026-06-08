@@ -2570,38 +2570,47 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "if(permintaan_labmb.jam_permintaan='00:00:00','',permintaan_labmb.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                     "if(permintaan_labmb.tgl_sampel='0000-00-00','',permintaan_labmb.tgl_sampel) as tgl_sampel,if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel,"+
                     "if(permintaan_labmb.tgl_hasil='0000-00-00','',permintaan_labmb.tgl_hasil) as tgl_hasil,if(permintaan_labmb.jam_hasil='00:00:00','',permintaan_labmb.jam_hasil) as jam_hasil,"+
-                    "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
+                    "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,concat(ifnull(ki_last.kd_kamar,''),' ',ifnull(bangsal.nm_bangsal,'Ranap Gabung')) as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
                     "from permintaan_labmb inner join reg_periksa on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter "+
-                    "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                    "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "left join (select kamar_inap.no_rawat,kamar_inap.kd_kamar from kamar_inap "+
+                    "inner join (select no_rawat,max(concat(tgl_masuk,' ',jam_masuk)) as max_masuk from kamar_inap group by no_rawat) latest "+
+                    "on kamar_inap.no_rawat=latest.no_rawat and concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk)=latest.max_masuk) ki_last "+
+                    "on reg_periksa.no_rawat=ki_last.no_rawat "+
+                    "left join kamar on ki_last.kd_kamar=kamar.kd_kamar "+
                     "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                     "where permintaan_labmb.status='ranap' and permintaan_labmb.tgl_permintaan between ? and ? "+
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or permintaan_labmb.diagnosa_klinis like ? or penjab.png_jawab like ? )")+
-                    "group by permintaan_labmb.noorder order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc,kamar_inap.jam_masuk desc");
+                    "group by permintaan_labmb.noorder order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc"
+                );
             }else{
                 ps=koneksi.prepareStatement(
                     "select permintaan_labmb.noorder,permintaan_labmb.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_labmb.tgl_permintaan,"+
                     "if(permintaan_labmb.jam_permintaan='00:00:00','',permintaan_labmb.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                     "if(permintaan_labmb.tgl_sampel='0000-00-00','',permintaan_labmb.tgl_sampel) as tgl_sampel,if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel,"+
                     "if(permintaan_labmb.tgl_hasil='0000-00-00','',permintaan_labmb.tgl_hasil) as tgl_hasil,if(permintaan_labmb.jam_hasil='00:00:00','',permintaan_labmb.jam_hasil) as jam_hasil,"+
-                    "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
+                    "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,concat(ifnull(ki_last.kd_kamar,''),' ',ifnull(bangsal.nm_bangsal,'Ranap Gabung')) as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
                     "from permintaan_labmb inner join reg_periksa on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter "+
-                    "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                    "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "left join (select kamar_inap.no_rawat,kamar_inap.kd_kamar from kamar_inap "+
+                    "inner join (select no_rawat,max(concat(tgl_masuk,' ',jam_masuk)) as max_masuk from kamar_inap where stts_pulang='-' group by no_rawat) latest "+
+                    "on kamar_inap.no_rawat=latest.no_rawat and concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk)=latest.max_masuk "+
+                    "where kamar_inap.stts_pulang='-') ki_last "+
+                    "on reg_periksa.no_rawat=ki_last.no_rawat "+
+                    "left join kamar on ki_last.kd_kamar=kamar.kd_kamar "+
                     "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "where permintaan_labmb.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_labmb.tgl_permintaan between ? and ? "+
+                    "where permintaan_labmb.status='ranap' and permintaan_labmb.tgl_permintaan between ? and ? "+
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or permintaan_labmb.diagnosa_klinis like ? or penjab.png_jawab like ? )")+
-                    "group by permintaan_labmb.noorder order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc,kamar_inap.jam_masuk desc");
+                    "group by permintaan_labmb.noorder order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc"
+                );
             }
                 
             try {
@@ -2706,26 +2715,30 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         "template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
                         "template_laboratorium.nilai_rujukan_pa,permintaan_labmb.tgl_permintaan,penjab.png_jawab,"+
                         "if(permintaan_labmb.jam_permintaan='00:00:00','',permintaan_labmb.jam_permintaan) as jam_permintaan,permintaan_labmb.tgl_sampel,"+
-                        "if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel, permintaan_labmb.tgl_hasil,"+
+                        "if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel,permintaan_labmb.tgl_hasil,"+
                         "if(permintaan_labmb.jam_hasil='00:00:00','',permintaan_labmb.jam_hasil) as jam_hasil,"+
-                        "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
+                        "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,concat(ifnull(ki_last.kd_kamar,''),' ',ifnull(bangsal.nm_bangsal,'Ranap Gabung')) as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
                         "from permintaan_labmb inner join reg_periksa on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join permintaan_pemeriksaan_labmb on permintaan_labmb.noorder=permintaan_pemeriksaan_labmb.noorder "+
-                        "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                        "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "left join (select kamar_inap.no_rawat,kamar_inap.kd_kamar from kamar_inap "+
+                        "inner join (select no_rawat,max(concat(tgl_masuk,' ',jam_masuk)) as max_masuk from kamar_inap group by no_rawat) latest "+
+                        "on kamar_inap.no_rawat=latest.no_rawat and concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk)=latest.max_masuk) ki_last "+
+                        "on reg_periksa.no_rawat=ki_last.no_rawat "+
+                        "left join kamar on ki_last.kd_kamar=kamar.kd_kamar "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                         "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw "+
-                        "inner join permintaan_detail_permintaan_labmb on permintaan_labmb.noorder=permintaan_detail_permintaan_labmb.noorder and permintaan_detail_permintaan_labmb.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw  "+
+                        "inner join permintaan_detail_permintaan_labmb on permintaan_labmb.noorder=permintaan_detail_permintaan_labmb.noorder and permintaan_detail_permintaan_labmb.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw "+
                         "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
-                        "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter  "+
+                        "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "where permintaan_labmb.status='ranap' and permintaan_labmb.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                         "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or template_laboratorium.Pemeriksaan like ? or "+
                         "permintaan_labmb.diagnosa_klinis like ? or penjab.png_jawab like ?)")+
-                        "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc,kamar_inap.jam_masuk desc");
+                        "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc"
+                );
             }else{
                 ps=koneksi.prepareStatement(
                         "select distinct permintaan_labmb.noorder,permintaan_labmb.no_rawat,reg_periksa.no_rkm_medis,"+
@@ -2734,26 +2747,31 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         "template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
                         "template_laboratorium.nilai_rujukan_pa,permintaan_labmb.tgl_permintaan,penjab.png_jawab,"+
                         "if(permintaan_labmb.jam_permintaan='00:00:00','',permintaan_labmb.jam_permintaan) as jam_permintaan,permintaan_labmb.tgl_sampel,"+
-                        "if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel, permintaan_labmb.tgl_hasil,"+
+                        "if(permintaan_labmb.jam_sampel='00:00:00','',permintaan_labmb.jam_sampel) as jam_sampel,permintaan_labmb.tgl_hasil,"+
                         "if(permintaan_labmb.jam_hasil='00:00:00','',permintaan_labmb.jam_hasil) as jam_hasil,"+
-                        "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
+                        "permintaan_labmb.dokter_perujuk,dokter.nm_dokter,concat(ifnull(ki_last.kd_kamar,''),' ',ifnull(bangsal.nm_bangsal,'Ranap Gabung')) as nm_bangsal,permintaan_labmb.informasi_tambahan,permintaan_labmb.diagnosa_klinis "+
                         "from permintaan_labmb inner join reg_periksa on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join permintaan_pemeriksaan_labmb on permintaan_labmb.noorder=permintaan_pemeriksaan_labmb.noorder "+
-                        "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                        "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "left join (select kamar_inap.no_rawat,kamar_inap.kd_kamar from kamar_inap "+
+                        "inner join (select no_rawat,max(concat(tgl_masuk,' ',jam_masuk)) as max_masuk from kamar_inap where stts_pulang='-' group by no_rawat) latest "+
+                        "on kamar_inap.no_rawat=latest.no_rawat and concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk)=latest.max_masuk "+
+                        "where kamar_inap.stts_pulang='-') ki_last "+
+                        "on reg_periksa.no_rawat=ki_last.no_rawat "+
+                        "left join kamar on ki_last.kd_kamar=kamar.kd_kamar "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                         "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw "+
-                        "inner join permintaan_detail_permintaan_labmb on permintaan_labmb.noorder=permintaan_detail_permintaan_labmb.noorder and permintaan_detail_permintaan_labmb.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw  "+
+                        "inner join permintaan_detail_permintaan_labmb on permintaan_labmb.noorder=permintaan_detail_permintaan_labmb.noorder and permintaan_detail_permintaan_labmb.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw "+
                         "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
-                        "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter  "+
+                        "inner join dokter on permintaan_labmb.dokter_perujuk=dokter.kd_dokter "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                        "where permintaan_labmb.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_labmb.tgl_permintaan between ? and ? "+
+                        "where permintaan_labmb.status='ranap' and permintaan_labmb.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                         "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or template_laboratorium.Pemeriksaan like ? or "+
                         "permintaan_labmb.diagnosa_klinis like ? or penjab.png_jawab like ?)")+
-                        "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc,kamar_inap.jam_masuk desc");
+                        "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc"
+                );
             }
                 
             try {

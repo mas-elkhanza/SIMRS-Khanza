@@ -997,7 +997,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_bundle_iadp.nik,pegawai.nama,audit_bundle_iadp.tanggal,audit_bundle_iadp.handhygiene,"+
                     "audit_bundle_iadp.apd,audit_bundle_iadp.skin_antiseptik,audit_bundle_iadp.lokasi_iv,audit_bundle_iadp.perawatan_rutin "+
@@ -1013,7 +1013,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

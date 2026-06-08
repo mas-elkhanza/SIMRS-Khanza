@@ -1038,7 +1038,7 @@ public final class DlgAuditFasilitasAPD extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_fasilitas_apd.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_fasilitas_apd.tanggal,audit_fasilitas_apd.audit1,"+
                     "audit_fasilitas_apd.audit2,audit_fasilitas_apd.audit3,"+
@@ -1058,7 +1058,7 @@ public final class DlgAuditFasilitasAPD extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

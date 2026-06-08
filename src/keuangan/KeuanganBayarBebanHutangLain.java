@@ -822,7 +822,7 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         }else{         
             if(Sequel.cariInteger("select count(beban_hutang_lain.no_hutang) from beban_hutang_lain where beban_hutang_lain.no_hutang=? and beban_hutang_lain.kode_pemberi_hutang=?",NoHutang.getText(),KdPemberiHutang.getText())>0){
                 sisahutang=(Sequel.cariIsiAngka("SELECT beban_hutang_lain.sisahutang FROM beban_hutang_lain where beban_hutang_lain.no_hutang=?",NoHutang.getText())-Double.parseDouble(Cicilan.getText()));
-                if(sisahutang>0){
+                if(sisahutang>=0){
                     koderekening="";
                     try {
                         myObj = new FileReader("./cache/akunbayarhutang.iyem");

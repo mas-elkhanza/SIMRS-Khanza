@@ -1507,14 +1507,27 @@
                     <Component class="widget.ComboBox" name="Kategori">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="7">
+                          <StringArray count="20">
                             <StringItem index="0" value="-"/>
-                            <StringItem index="1" value="Khusus"/>
-                            <StringItem index="2" value="Besar"/>
-                            <StringItem index="3" value="Sedang"/>
-                            <StringItem index="4" value="Kecil"/>
-                            <StringItem index="5" value="Elektive"/>
-                            <StringItem index="6" value="Emergency"/>
+                            <StringItem index="1" value="Ringan"/>
+                            <StringItem index="2" value="Ringan Cito"/>
+                            <StringItem index="3" value="Ringan Khusus"/>
+                            <StringItem index="4" value="Ringan Khusus Cito"/>
+                            <StringItem index="5" value="Ringan Khusus Cito Ganda"/>
+                            <StringItem index="6" value="Sedang"/>
+                            <StringItem index="7" value="Sedang Cito"/>
+                            <StringItem index="8" value="Sedang Khusus"/>
+                            <StringItem index="9" value="Sedang Khusus Cito"/>
+                            <StringItem index="10" value="Sedang Khusus Cito Ganda"/>
+                            <StringItem index="11" value="Besar"/>
+                            <StringItem index="12" value="Besar Cito"/>
+                            <StringItem index="13" value="Besar Khusus"/>
+                            <StringItem index="14" value="Besar Khusus Cito"/>
+                            <StringItem index="15" value="Besar Khusus Cito Ganda"/>
+                            <StringItem index="16" value="Khusus"/>
+                            <StringItem index="17" value="Kecil"/>
+                            <StringItem index="18" value="Elektive"/>
+                            <StringItem index="19" value="Emergency"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Kategori" noResource="true"/>

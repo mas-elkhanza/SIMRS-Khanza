@@ -1090,15 +1090,6 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampilAkunBayar();
         try {
-            if(Valid.daysOld("./cache/penerimaanobat.iyem")<8){
-                runBackground(() ->tampil2());
-            }else{
-                runBackground(() ->LoadData());
-            }
-        } catch (Exception e) {
-        }
-        
-        try {
             ps=koneksi.prepareStatement("select set_harga_obat.setharga,set_harga_obat.hargadasar,set_harga_obat.ppn from set_harga_obat");
             try {
                 rs=ps.executeQuery();
@@ -1119,6 +1110,15 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }
         } catch (Exception e) {
             System.out.println("Notif : "+e);
+        }
+        
+        try {
+            if(Valid.daysOld("./cache/penerimaanobat.iyem")<8){
+                runBackground(() ->tampil2());
+            }else{
+                runBackground(() ->LoadData());
+            }
+        } catch (Exception e) {
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

@@ -964,7 +964,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select audit_bundle_ido.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_bundle_ido.tanggal,audit_bundle_ido.pencukuran_rambut,"+
                     "audit_bundle_ido.antibiotik,audit_bundle_ido.temperature,"+
@@ -982,7 +982,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{

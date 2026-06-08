@@ -35,6 +35,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
@@ -1230,6 +1231,20 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DocumentListener keseimbangan = new DocumentListener() {
+            @Override public void insertUpdate(DocumentEvent e)  { hitungKeseimbangan(); }
+            @Override public void removeUpdate(DocumentEvent e)  { hitungKeseimbangan(); }
+            @Override public void changedUpdate(DocumentEvent e) { hitungKeseimbangan(); }
+        };
+
+        Infus.getDocument().addDocumentListener(keseimbangan);
+        Tranfusi.getDocument().addDocumentListener(keseimbangan);
+        Minum.getDocument().addDocumentListener(keseimbangan);
+        Urine.getDocument().addDocumentListener(keseimbangan);
+        Drain.getDocument().addDocumentListener(keseimbangan);
+        NGT.getDocument().addDocumentListener(keseimbangan);
+        IWL.getDocument().addDocumentListener(keseimbangan);
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -1644,6 +1659,26 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         }
     }
     
+    private void hitungKeseimbangan() {
+        try {
+            double infus = Infus.getText().isEmpty()?0:Double.parseDouble(Infus.getText());
+            double tranfusi =Tranfusi.getText().isEmpty()?0:Double.parseDouble(Tranfusi.getText());
+            double minum = Minum.getText().isEmpty()?0:Double.parseDouble(Minum.getText());
+            double urine = Urine.getText().isEmpty()?0:Double.parseDouble(Urine.getText());
+            double drain = Drain.getText().isEmpty()?0:Double.parseDouble(Drain.getText());
+            double ngt = NGT.getText().isEmpty()?0:Double.parseDouble(NGT.getText());
+            double iwl = IWL.getText().isEmpty()?0:Double.parseDouble(IWL.getText());
+
+            double totalInput = infus + tranfusi + minum;
+            double totalOutput = urine + drain + ngt + iwl;
+            double hasil = totalInput - totalOutput;
+
+            Keseimbangan.setText(String.valueOf(hasil));
+        } catch (NumberFormatException e) {
+            Keseimbangan.setText("0");
+        }
+    }
+
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;
@@ -1675,5 +1710,4 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         executor.shutdownNow();
         super.dispose();
     }
-    
 }
