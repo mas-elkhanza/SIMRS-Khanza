@@ -1,4 +1,3 @@
-//modifikasi dari source Mas Ikhsan, RS Karina Medika Purwakarta
 package rekammedis;
 
 import fungsi.WarnaTable;
