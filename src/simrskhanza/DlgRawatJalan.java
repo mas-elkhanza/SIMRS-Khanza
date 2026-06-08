@@ -779,6 +779,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -838,6 +841,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -897,6 +903,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);

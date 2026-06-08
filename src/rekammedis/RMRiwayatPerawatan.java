@@ -28557,6 +28557,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     private void menampilkanAsuhanMedisMCU(String norawat) {
+        if(gunakanRingkasanMcuBaru()){
+            menampilkanRingkasanMcuBaru(norawat);
+            return;
+        }
         try {
             if(chkAsuhanMedisMCU.isSelected()==true){
                 try {
@@ -28939,7 +28943,62 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             System.out.println("Notif Asuhan Medis MCU : "+e);
         }
     }
-    
+
+    private boolean gunakanRingkasanMcuBaru() {
+        return true;
+    }
+
+    private void menampilkanRingkasanMcuBaru(String norawat) {
+        try {
+            if(chkAsuhanMedisMCU.isSelected()==true){
+                rs2=koneksi.prepareStatement(
+                        "select penilaian_mcu.tanggal,penilaian_mcu.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,"+
+                        "penilaian_mcu.mcu_group,penilaian_mcu.posisi_kerja,penilaian_mcu.job_title,penilaian_mcu.activities,"+
+                        "penilaian_mcu.td,penilaian_mcu.nadi,penilaian_mcu.rr,penilaian_mcu.tb,penilaian_mcu.bb,penilaian_mcu.bmi,penilaian_mcu.kasifikasi_bmi,"+
+                        "penilaian_mcu.dass_21,penilaian_mcu.phy_exam,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,"+
+                        "penilaian_mcu.conc_spirometry,penilaian_mcu.conc_audiometry,penilaian_mcu.kesimpulan1,penilaian_mcu.note1 "+
+                        "from penilaian_mcu left join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter "+
+                        "left join petugas on penilaian_mcu.kd_petugas=petugas.nip where penilaian_mcu.no_rawat='"+norawat+"'").executeQuery();
+                if(rs2.next()){
+                    htmlContent.append(
+                        "<tr class='isi'><td valign='top' width='2%'></td>"+
+                        "<td valign='top' width='18%'>Pengkajian Awal Medis Medical Check Up</td>"+
+                        "<td valign='top' width='1%' align='center'>:</td>"+
+                        "<td valign='top' width='79%'><table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                    );
+                    do{
+                        htmlContent.append("<tr><td valign='top'>Tanggal : ").append(rs2.getString("tanggal"))
+                            .append(", Dokter : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter"))
+                            .append(", Petugas : ").append(rs2.getString("nm_petugas")).append("</td></tr>")
+                            .append("<tr><td valign='top'>MCU Grup : ").append(rs2.getString("mcu_group"))
+                            .append(", Posisi : ").append(rs2.getString("posisi_kerja"))
+                            .append(", Job Title : ").append(rs2.getString("job_title"))
+                            .append(", Activities : ").append(rs2.getString("activities")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Vital Sign : TD ").append(rs2.getString("td"))
+                            .append(" mmHg, Nadi ").append(rs2.getString("nadi")).append(" x/menit, RR ").append(rs2.getString("rr"))
+                            .append(" x/menit, TB ").append(rs2.getString("tb")).append(" cm, BB ").append(rs2.getString("bb"))
+                            .append(" kg, BMI ").append(rs2.getString("bmi")).append(" (").append(rs2.getString("kasifikasi_bmi")).append(")</td></tr>")
+                            .append("<tr><td valign='top'>Medical History : ").append(rs2.getString("dass_21")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Physical Examination : ").append(rs2.getString("phy_exam")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Laboratorium : ").append(rs2.getString("laborat")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Radiologi : ").append(rs2.getString("radiologi")).append("</td></tr>")
+                            .append("<tr><td valign='top'>EKG : ").append(rs2.getString("ekg")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Spirometry : ").append(rs2.getString("conc_spirometry"))
+                            .append(", Audiometry : ").append(rs2.getString("conc_audiometry")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Kesimpulan : ").append(rs2.getString("kesimpulan1")).append("</td></tr>")
+                            .append("<tr><td valign='top'>Saran : ").append(rs2.getString("note1")).append("</td></tr>");
+                    }while(rs2.next());
+                    htmlContent.append("</table></td></tr>");
+                }
+                if(rs2!=null){
+                    rs2.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Asuhan Medis MCU Baru : "+e);
+        }
+    }
+
     private void menampilkanAsuhanKeperawatanRanapBayi(String norawat) {
         try {
             if(chkAsuhanKeperawatanRanapBayi.isSelected()==true){

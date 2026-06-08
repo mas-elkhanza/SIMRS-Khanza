@@ -1061,6 +1061,7 @@ public final class DlgMCU extends javax.swing.JDialog {
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnMcu = new widget.Button();
         panelGlass8 = new widget.panelisi();
         jLabel14 = new widget.Label();
         CrDokter = new widget.TextBox();
@@ -6177,7 +6178,7 @@ public final class DlgMCU extends javax.swing.JDialog {
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(376, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(240, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -6201,6 +6202,24 @@ public final class DlgMCU extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnCari);
+
+        BtnMcu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/MCU16.png"))); // NOI18N
+        BtnMcu.setMnemonic('M');
+        BtnMcu.setText("Periksa Mcu");
+        BtnMcu.setToolTipText("Alt+M");
+        BtnMcu.setName("BtnMcu"); // NOI18N
+        BtnMcu.setPreferredSize(new java.awt.Dimension(115, 23));
+        BtnMcu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnMcuActionPerformed(evt);
+            }
+        });
+        BtnMcu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnMcuKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(BtnMcu);
 
         jPanel2.add(panelGlass7, java.awt.BorderLayout.CENTER);
 
@@ -6688,7 +6707,7 @@ public final class DlgMCU extends javax.swing.JDialog {
         });
         Scroll1.setViewportView(tbPetugas2);
 
-        TabRawat.addTab("Rujukan Internal Poli", Scroll1);
+        //TabRawat.addTab("Rujukan Internal Poli", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -7008,9 +7027,21 @@ public final class DlgMCU extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnCariActionPerformed(null);
         }else{
-            Valid.pindah(evt, TCari, BtnAll);
+            Valid.pindah(evt, TCari, BtnMcu);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
+
+    private void BtnMcuActionPerformed(java.awt.event.ActionEvent evt) {
+        bukaPenilaianMcu();
+    }
+
+    private void BtnMcuKeyPressed(java.awt.event.KeyEvent evt) {
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnMcuActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, BtnAll);
+        }
+    }
 
     private void TBiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBiayaKeyPressed
         Valid.pindah(evt,kdpoli,BtnSimpan);
@@ -12593,26 +12624,52 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     }//GEN-LAST:event_ppDataIndukKecelakaanBtnPrintActionPerformed
 
     private void MnPenilaianMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMCUActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
-            TNoRM.requestFocus();
-        }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
-            tbPetugas.requestFocus();
-        }else{
-            if(tbPetugas.getSelectedRow()!= -1){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                RMMCU form=new RMMCU(null,false);
-                form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
-                form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }
+        bukaPenilaianMcu();
     }//GEN-LAST:event_MnPenilaianMCUActionPerformed
+
+    private void bukaPenilaianMcu() {
+        String noRawat = "";
+        if(TabRawat.getSelectedIndex()==0){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+                TNoRM.requestFocus();
+                return;
+            }else if(tbPetugas.getSelectedRow()== -1){
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+                tbPetugas.requestFocus();
+                return;
+            }
+            getData();
+            noRawat = tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString();
+        }else if(TabRawat.getSelectedIndex()==1){
+            if(tabMode2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+                tbPetugas2.requestFocus();
+                return;
+            }else if(tbPetugas2.getSelectedRow()== -1){
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+                tbPetugas2.requestFocus();
+                return;
+            }
+            noRawat = tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString();
+        }
+        if(noRawat.trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, No.Rawat tidak ditemukan...!!!");
+            return;
+        }
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            RMMCU form=new RMMCU(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(noRawat,DTPCari2.getDate());
+        } finally {
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
 
     private void MnUjiFungsiKFRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUjiFungsiKFRActionPerformed
         if(tabMode.getRowCount()==0){
@@ -16262,6 +16319,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnMcu;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;

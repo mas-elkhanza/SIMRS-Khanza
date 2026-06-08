@@ -543,7 +543,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -566,7 +566,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -587,7 +587,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(85, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -610,7 +610,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -694,7 +694,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         TPasien.setBounds(185, 10, 190, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026 11:15:46" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026 13:29:07" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -849,7 +849,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel14.setBounds(0, 160, 92, 23);
 
         TanggalPeriksa.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2026 11:15:46" }));
+        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2026 13:29:08" }));
         TanggalPeriksa.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPeriksa.setName("TanggalPeriksa"); // NOI18N
         TanggalPeriksa.setOpaque(false);
@@ -1606,7 +1606,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if (tbObat.getSelectedRow() != -1) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Map<String, Object> param = new HashMap<>();
-                param.put("sipdokter",Sequel.cariIsi("select dokter.no_ijn_praktek from dokter inner join skdp_bpjs on dokter.kd_dokter = skdp_bpjs.kd_dokter where skdp_bpjs.no_rkm_medis=?",TNoRM.getText()));
+                param.put("sipdokter", Sequel.cariIsi("select dokter.no_ijn_praktek from dokter inner join skdp_bpjs on dokter.kd_dokter = skdp_bpjs.kd_dokter where skdp_bpjs.no_rkm_medis=?", TNoRM.getText()));
                 param.put("namars", akses.getnamars());
                 param.put("alamatrs", akses.getalamatrs());
                 param.put("kotars", akses.getkabupatenrs());
@@ -1990,7 +1990,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             });
         }
     }
-    
+
     private void BtnCariDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariDataActionPerformed
         if (isKosong(TNoRM.getText()) || isKosong(TPasien.getText())) {
             Valid.textKosong(TNoRM, "pasien");
@@ -2421,7 +2421,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Valid.SetTgl(TanggalPeriksa.getSelectedItem().toString())
             );
 
-            LocalDateTime kirim = tglKontrol.atTime(7, 0);
+            LocalDateTime kirim = tglKontrol.atTime(11, 0);
 
             String datajam = kirim.format(
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -2435,21 +2435,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 return;
             }
 
+            String namaPasien = TPasien.getText();
+            String namaPoli = NmPoli.getText();
+            String namaDokter = NmDokter.getText();
+
+            String hariTanggal = formatHariTanggalIndonesia(tglKontrol);
+            String jamPraktek = ambilJamPraktekDokter();
+
+            if (jamPraktek == null || jamPraktek.trim().equals("")) {
+                jamPraktek = "-";
+            }
+
             String pesan
-                    = "*REMINDER KONTROL POLI*\n"
-                    + "-----------------------\n"
-                    + "*Nama Pasien* : " + TPasien.getText() + "\n"
-                    + "*No. RM* : " + TNoRM.getText() + "\n"
-                    + "*Dokter Tujuan* : " + NmDokter.getText() + "\n"
-                    + "*Poli Tujuan* : " + NmPoli.getText() + "\n"
-                    + "*Tanggal Kontrol* : "
-                    + TanggalPeriksa.getSelectedItem().toString().substring(0, 10) + "\n"
-                    + "-----------------------\n\n"
-                    + "Cek Pendaftaran di https://rspelitakasih.id/epasien \n"
-                    + "_Harap melakukan konfirmasi pendaftaran ke poliklinik._\n"
-                    + "_Pesan ini merupakan notifikasi otomatis dari sistem._\n\n"
-                    + "Terima kasih.\n"
-                    + "*" + akses.getnamars() + "*";
+                    = "Selamat pagi/siang Bapak/Ibu " + namaPasien + ". "
+                    + "Mengingatkan kembali jadwal kontrol Anda di RS Pelita Kasih pada hari "
+                    + hariTanggal + " di Poliklinik " + namaPoli
+                    + " dengan dr. " + namaDokter + ". "
+                    + "Jam praktek dimulai pukul " + jamPraktek + ".\n\n"
+                    + "Mohon konfirmasi kehadiran Anda dengan membalas pesan ini:\n"
+                    + "Ketik 1 jika HADIR\n"
+                    + "Ketik 2 jika BATAL / RESCHEDULE (Atur Jadwal Ulang)\n\n"
+                    + "Harap datang 30 menit sebelum jam praktek, Terima kasih.";
 
             ServiceWADelphi wa = new ServiceWADelphi();
             wa.kirimText(nohp, pesan, datajam, "KONTROL");
@@ -2462,7 +2468,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             notifError("Gagal kirim reminder WA:\n" + e.getMessage());
         }
     }
-    
+
     private void kirimReminderSekarang() {
         try {
             if (!ServiceWADelphi.isNotifAktif()) {
@@ -2478,22 +2484,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 notifInfo("Nomor HP pasien kosong, tidak bisa kirim WA.");
                 return;
             }
+            LocalDate tglKontrol = LocalDate.parse(
+                    Valid.SetTgl(TanggalPeriksa.getSelectedItem().toString())
+            );
+            String namaPasien = TPasien.getText();
+            String namaPoli = NmPoli.getText();
+            String namaDokter = NmDokter.getText();
+
+            String hariTanggal = formatHariTanggalIndonesia(tglKontrol);
+            String jamPraktek = ambilJamPraktekDokter();
+
+            if (jamPraktek == null || jamPraktek.trim().equals("")) {
+                jamPraktek = "-";
+            }
 
             String pesan
-                    = "*REMINDER KONTROL POLI*\n"
-                    + "-----------------------\n"
-                    + "*Nama Pasien* : " + TPasien.getText() + "\n"
-                    + "*No. RM* : " + TNoRM.getText() + "\n"
-                    + "*Dokter Tujuan* : " + NmDokter.getText() + "\n"
-                    + "*Poli Tujuan* : " + NmPoli.getText() + "\n"
-                    + "*Tanggal Kontrol* : "
-                    + TanggalPeriksa.getSelectedItem().toString().substring(0, 10) + "\n"
-                    + "-----------------------\n\n"
-                    + "Cek Pendaftaran di https://rspelitakasih.id/epasien \n"
-                    + "_Harap melakukan konfirmasi pendaftaran ke poliklinik._\n"
-                    + "_Pesan ini merupakan notifikasi otomatis dari sistem._\n\n"
-                    + "Terima kasih.\n"
-                    + "*" + akses.getnamars() + "*";
+                    = "Selamat pagi/siang Bapak/Ibu " + namaPasien + ". "
+                    + "Mengingatkan kembali jadwal kontrol Anda di RS Pelita Kasih pada hari "
+                    + hariTanggal + " di Poliklinik " + namaPoli
+                    + " dengan dr. " + namaDokter + ". "
+                    + "Jam praktek dimulai pukul " + jamPraktek + ".\n\n"
+                    + "Mohon konfirmasi kehadiran Anda dengan membalas pesan ini:\n"
+                    + "Ketik 1 jika HADIR\n"
+                    + "Ketik 2 jika BATAL / RESCHEDULE (Atur Jadwal Ulang)\n\n"
+                    + "Harap datang 30 menit sebelum jam praktek, Terima kasih.";
 
             ServiceWADelphi wa = new ServiceWADelphi();
             wa.kirimTextNow(nohp, pesan, "KONTROL");
@@ -2505,6 +2519,80 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             System.out.println("Gagal kirim WA : " + e);
             notifError("Gagal kirim WA:\n" + e.getMessage());
         }
+    }
+
+    private String ambilJamPraktekDokter() {
+        String jamPraktek = "";
+
+        try {
+            LocalDate tanggalKontrol = LocalDate.parse(
+                    Valid.SetTgl(TanggalPeriksa.getSelectedItem().toString())
+            );
+
+            String hariKerja = tanggalKontrol.getDayOfWeek()
+                    .getDisplayName(java.time.format.TextStyle.FULL, new java.util.Locale("id", "ID"));
+
+            hariKerja = kapitalAwal(hariKerja);
+
+            ps = koneksi.prepareStatement(
+                    "select concat(jam_mulai,' - ',jam_selesai) from jadwal "
+                    + "where kd_dokter=? and hari_kerja=? limit 1"
+            );
+
+            ps.setString(1, KdDokter.getText());
+            ps.setString(2, hariKerja);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                jamPraktek = rs.getString(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Gagal mengambil jadwal dokter : " + e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Gagal menutup koneksi jadwal dokter : " + e);
+            }
+        }
+
+        return jamPraktek;
+    }
+
+    private String formatHariTanggalIndonesia(LocalDate tanggal) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
+                "EEEE, dd MMMM yyyy",
+                new java.util.Locale("id", "ID")
+        );
+
+        return kapitalAwal(tanggal.format(formatter));
+    }
+
+    private String kapitalAwal(String teks) {
+        if (teks == null || teks.trim().equals("")) {
+            return "";
+        }
+
+        String[] kata = teks.toLowerCase().split(" ");
+        StringBuilder hasil = new StringBuilder();
+
+        for (String item : kata) {
+            if (item.length() > 0) {
+                hasil.append(item.substring(0, 1).toUpperCase())
+                        .append(item.substring(1))
+                        .append(" ");
+            }
+        }
+
+        return hasil.toString().trim();
     }
 
     private String ambilDiagnosaTerakhirPasien() {
@@ -2578,7 +2666,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private boolean isKosong(String teks) {
         return teks == null || teks.trim().equals("");
     }
-    
+
     private void notifInfo(String pesan) {
         SwingUtilities.invokeLater(() -> {
             JOptionPane.showMessageDialog(this, pesan);
