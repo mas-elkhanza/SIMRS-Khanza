@@ -221,6 +221,12 @@ import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMUjiFungsiKFR;
+import surat.SuratBebasNarkoba;
+import surat.SuratButaWarna;
+import surat.SuratKeteranganBerobat;
+import surat.SuratKeteranganLayakTerbang;
+import surat.SuratKeteranganSehat;
+import surat.SuratSakit;
 
 /**
  *
@@ -775,6 +781,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -834,6 +843,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -893,6 +905,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -1144,6 +1159,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        //TAMBAH TOMBOL SURAT
+        btnCariData = new widget.Button();
+        cmbJnsSurat = new widget.ComboBox();
+        btnSurat = new widget.Button();
+        lblJnsSurat = new widget.Label();
 
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -1499,6 +1520,51 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass8.setName("panelGlass8"); 
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        //TAMBAH TOMBOL
+        btnCariData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        btnCariData.setToolTipText("Cari Data");
+        btnCariData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCariData.setName("btnCariData"); // NOI18N
+        btnCariData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariDataActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(btnCariData);
+        btnCariData.setBounds(920, 10, 28, 23);
+        
+        lblJnsSurat.setText("Dokumen :");
+        lblJnsSurat.setName("lblJnsSurat"); // NOI18N
+        lblJnsSurat.setPreferredSize(new java.awt.Dimension(62, 28));
+        FormInput.add(lblJnsSurat);
+        lblJnsSurat.setBounds(936, 10, 70, 23);
+        
+        btnSurat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/icons8-write-16.png"))); // NOI18N
+        btnSurat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //btnSurat.setLabel("");
+        btnSurat.setToolTipText("Buat Surat");
+        btnSurat.setName("btnSurat"); // NOI18N
+        btnSurat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnSurat);
+        btnSurat.setBounds(1140, 10, 23, 23);
+
+        cmbJnsSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Surat Kontrol", "SKK", "Buta Warna","Bebas Narkoba","SKS", "Suket Layak Terbang", "Suket Berobat" }));
+        cmbJnsSurat.setName("cmbJnsSurat"); // NOI18N
+        cmbJnsSurat.setPreferredSize(new java.awt.Dimension(150, 23));
+        cmbJnsSurat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //cmbJnsSuratActionPerformed(evt);
+            }
+        });
+        FormInput.add(cmbJnsSurat);
+        cmbJnsSurat.setBounds(1010, 10, 120, 23);
+        
+        //TAMBAH TOMBOL
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); 
         BtnSimpan.setMnemonic('S');
@@ -5192,6 +5258,179 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         cmbKesadaran.setSelectedIndex(0);
         TNoRw.requestFocus();
 }//GEN-LAST:event_BtnBatalActionPerformed
+    //TAMBAH TOMBOL
+    private void btnCariDataActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ", TNoRM, TNoRw.getText());
+        TCariPasien.setText(TNoRM.getText());
+        //Menampilkan Keperawatan Ralan 
+        if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_ralan where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan_bayi where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Bayi 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_gigi where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Gigi 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_gigi where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_kebidanan where no_rawat='" + TNoRw.getText() + "' ") > 0) {
+            //Menampilkan Keperawatan Ralan Kebidanan 
+            TSuhu.setText(Sequel.cariIsi("select suhu from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TTensi.setText(Sequel.cariIsi("select td from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TBerat.setText(Sequel.cariIsi("select bb from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TTinggi.setText(Sequel.cariIsi("select tb from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TNadi.setText(Sequel.cariIsi("select nadi from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TRespirasi.setText(Sequel.cariIsi("select rr from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TGCS.setText(Sequel.cariIsi("select gcs from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+            TKeluhan.setText(Sequel.cariIsi("select keluhan_utama from penilaian_awal_keperawatan_kebidanan where no_rawat=?", TNoRw.getText()));
+        } else if (Sequel.cariInteger("select count(no_rawat) from penilaian_awal_keperawatan_ralan where no_rawat='" + TNoRw.getText() + "' ") <= 0) {
+            JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!!!");
+        }
+    }
+    private void btnSuratActionPerformed(java.awt.event.ActionEvent evt) {
+        // Guard clauses: validasi cepat lalu keluar
+        if (TabRawat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, silakan pilih dulu data registrasi pada tabel...!!!");
+            TNoRw.requestFocus();
+            return;
+        }
+        if (TNoRw.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, silakan pilih dulu dengan mengklik data pada tabel...!!!");
+            TCari.requestFocus();
+            return;
+        }
+
+        // Pastikan ada tab yang terpilih
+        if (TabRawat.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Tidak ada tab yang terpilih.");
+            return;
+        }
+
+        // Ambil pilihan jenis surat, null-safe
+        final String jenisSurat = String.valueOf(cmbJnsSurat.getSelectedItem()).trim();
+
+        // Set cursor tunggu, dan pastikan kembali normal di finally
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            switch (jenisSurat) {
+                case "SKS": { // Surat Sakit
+                    SuratSakit dlg = new SuratSakit(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "SKK": { // Surat Keterangan Sehat
+                    SuratKeteranganSehat dlg = new SuratKeteranganSehat(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Buta Warna": { // Surat Keterangan Sehat
+                    SuratButaWarna resume = new SuratButaWarna(null, false);
+                    resume.isCek();
+                    resume.emptTeks();
+                    resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    resume.setLocationRelativeTo(internalFrame1);
+                    resume.setNoRm(TNoRw.getText(), TNoRM.getText(), TPasien.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    resume.tampil();
+                    resume.setVisible(true);
+                    break;
+                }
+                case "Bebas Narkoba": {
+                    SuratBebasNarkoba dlg = new SuratBebasNarkoba(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(), KdDok.getText(),TDokter.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                    dlg.tampil();
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Suket Layak Terbang": {
+                    SuratKeteranganLayakTerbang dlg = new SuratKeteranganLayakTerbang(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(TNoRw.getText(), TNoRM.getText(), TPasien.getText(), DTPCari1.getDate(), DTPCari2.getDate());
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Suket Berobat": {
+                    SuratKeteranganBerobat dlg = new SuratKeteranganBerobat(null, false);
+                    dlg.isCek();
+                    dlg.emptTeks();
+                    dlg.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dlg.setLocationRelativeTo(internalFrame1);
+                    dlg.setNoRm(
+                            TNoRw.getText(),
+                            TNoRM.getText(),
+                            TPasien.getText(),
+                            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kode_poli),
+                            KdDok.getText(),
+                            TDokter.getText(),
+                            Sequel.cariIsi("select concat(tgl_registrasi,' ',jam_reg) from reg_periksa where no_rawat=?", TNoRw.getText()),
+                            DTPCari1.getDate(),
+                            DTPCari2.getDate());
+                    dlg.setVisible(true);
+                    break;
+                }
+                case "Surat Kontrol": {
+                    SuratKontrol form=new SuratKontrol(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.emptTeks();
+                    form.setNoRm(TNoRM.getText(), TPasien.getText(), kode_poli, Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kode_poli), KdDok.getText(), TDokter.getText());
+                    form.setVisible(true);
+                    break;
+                }
+
+                default: {
+                    JOptionPane.showMessageDialog(null,
+                            "Jenis Dokumen tidak ditemukan: " + jenisSurat);
+                    break;
+                }
+            }
+        } catch (Exception ex) {
+            // Log sesuai kebutuhan aplikasi Anda
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + ex.getMessage());
+        } finally {
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+        }
+    //TAMBAH 
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -10460,7 +10699,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             dialog.setVisible(true);
         });
     }
+    
+    //TAMBAH TOMBOL
+    private widget.Button btnCariData;
+    private widget.Label lblJnsSurat;
+    private widget.Button btnSurat;
+    private widget.ComboBox cmbJnsSurat;
 
+    //TAMBAH
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button Btn5Soap;
     private widget.Button BtnAll;

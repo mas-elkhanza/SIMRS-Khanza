@@ -1,0 +1,9 @@
+build/
+dist/
+settings/
+reports/
+webapps/
+tmpPDF/
+tmpWA/
+tmpWA_perusahaan/
+gambarradiologi/

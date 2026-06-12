@@ -277,6 +277,7 @@ import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
 import java.util.List;
 import javax.swing.WindowConstants;
+import permintaan.DlgBookingPeriksa;
 import permintaan.DlgPermintaanKonsultasiPerawat;
 import rekammedis.RMDataSkriningGiziKehamilan;
 import surat.SuratKeteranganBerobat;
@@ -703,6 +704,12 @@ public final class DlgReg extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        //TAMBAH TOMBOL
+        btn_riwayat = new widget.Button();
+        btn_CetakRM = new widget.Button();
+        CekBookingOnline = new widget.Button();
+        BookingRegistrasi = new widget.Button();
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDataRM = new javax.swing.JMenu();
@@ -6255,6 +6262,44 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(BtnSeek4);
+        //TAMBAH TOMBOL
+        btn_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/clock2.png"))); // NOI18N
+        btn_riwayat.setText("");
+        btn_riwayat.setToolTipText("Lihat Riwayat");
+        btn_riwayat.setName("btn_riwayat"); // NOI18N
+        btn_riwayat.setPreferredSize(new java.awt.Dimension(28, 22));
+        btn_riwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_riwayatActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(btn_riwayat);
+                
+        btn_CetakRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/printer.png"))); // NOI18N
+        btn_CetakRM.setText("");
+        btn_CetakRM.setToolTipText("Cetak RM");
+        btn_CetakRM.setName("btn_CetakRM"); // NOI18N
+        btn_CetakRM.setPreferredSize(new java.awt.Dimension(28, 23));
+        btn_CetakRM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CetakRMActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(btn_CetakRM);
+                
+        CekBookingOnline.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/web-link.png"))); // NOI18N
+        CekBookingOnline.setText("");
+        CekBookingOnline.setToolTipText("Cek Booking Online");
+        CekBookingOnline.setName("CekBookingOnline"); // NOI18N
+        CekBookingOnline.setPreferredSize(new java.awt.Dimension(28, 23));
+        CekBookingOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CekBookingOnlineActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(CekBookingOnline);
+
+        //TAMBAH TOMBOL
 
         jPanel2.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -16343,6 +16388,23 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }                
         }
     }
+    //tambah tombol
+    private void btn_riwayatActionPerformed(java.awt.event.ActionEvent evt) {
+        ppRiwayatBtnPrintActionPerformed(null);
+    }
+
+    private void btn_CetakRMActionPerformed(java.awt.event.ActionEvent evt) {
+        MnLembarRalanActionPerformed(evt);
+    }
+
+    private void CekBookingOnlineActionPerformed(java.awt.event.ActionEvent evt) {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBookingPeriksa aplikasi = new DlgBookingPeriksa();
+        aplikasi.isCek();
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     
     private void MnPersetujuanBimbinganRohaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanUmumActionPerformed
         if(tabMode.getRowCount()==0){
@@ -16906,6 +16968,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppSuratPRI;
     private widget.Table tbPetugas;
     private widget.Table tbPetugas2;
+    //tambah tombol
+    private widget.Button btn_riwayat,btn_CetakRM,CekBookingOnline,BookingRegistrasi; 
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianRisikoJatuhDewasa,MnPenilaianRisikoJatuhAnak,MnPenilaianRisikoJatuhLansia,MnPenilaianRisikoJatuhNeonatus,MnPenilaianRisikoJatuhGeriatri,MnPenilaianRisikoJatuhPsikiatri,MnPenilaianLanjutanSkriningFungsional,
             MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,
