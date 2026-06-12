@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -22,10 +23,23 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GoWAService {
 
@@ -33,8 +47,184 @@ public class GoWAService {
 
     private static final int CONNECT_TIMEOUT = 30000;
     private static final int READ_TIMEOUT = 180000;
+    private static final String QUEUE_LOCK_NAME = "simrs_gowa_queue_worker";
+    private static final AtomicBoolean QUEUE_WORKER_STARTED = new AtomicBoolean(false);
+    private static final ScheduledExecutorService QUEUE_EXECUTOR
+            = Executors.newSingleThreadScheduledExecutor(runnable -> {
+                Thread thread = new Thread(runnable, "GoWA-Queue-Worker");
+                thread.setDaemon(true);
+                return thread;
+            });
 
     private static String noHPTerakhir = "";
+
+    public static void main(String[] args) throws Exception {
+        startQueueWorker();
+        System.out.println("GoWA queue worker berjalan dalam mode standalone.");
+        new CountDownLatch(1).await();
+    }
+
+    public static void startQueueWorker() {
+        if (QUEUE_WORKER_STARTED.compareAndSet(false, true)) {
+            QUEUE_EXECUTOR.scheduleWithFixedDelay(
+                    GoWAService::processQueueSafely,
+                    5,
+                    15,
+                    TimeUnit.SECONDS
+            );
+            System.out.println("GoWA queue worker aktif.");
+        }
+    }
+
+    public static void processQueueNow() {
+        startQueueWorker();
+        QUEUE_EXECUTOR.execute(GoWAService::processQueueSafely);
+    }
+
+    public static boolean isNotifAktif() {
+        try {
+            Properties prop = new Properties();
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            return prop.getProperty("NOTIFWAKONTROL", "no").equalsIgnoreCase("yes");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static void kirimText(String nomor, String pesan, String tanggalJam, String source)
+            throws Exception {
+        enqueueText(nomor, pesan, tanggalJam, source);
+        startQueueWorker();
+    }
+
+    public static void kirimTextNow(String nomor, String pesan, String source) throws Exception {
+        String sekarang = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        enqueueText(nomor, pesan, sekarang, source);
+        processQueueNow();
+    }
+
+    private static void enqueueText(String nomor, String pesan, String tanggalJam, String source)
+            throws Exception {
+        String sql = "INSERT INTO wa_outbox "
+                + "(NOWA,PESAN,TANGGAL_JAM,STATUS,SOURCE,SENDER,SUCCESS,RESPONSE,REQUEST,FILE,TYPE) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+        try (Connection connection = koneksiDBWa.newConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, normalizePhone(nomor) + "@c.us");
+            ps.setString(2, pesan);
+            ps.setString(3, tanggalJam);
+            ps.setString(4, "ANTRIAN");
+            ps.setString(5, source);
+            ps.setString(6, "GOWA");
+            ps.setString(7, null);
+            ps.setString(8, null);
+            ps.setString(9, null);
+            ps.setString(10, null);
+            ps.setString(11, "TEXT");
+            ps.executeUpdate();
+        }
+    }
+
+    private static void processQueueSafely() {
+        if (!isNotifAktif()) {
+            return;
+        }
+
+        try (Connection connection = koneksiDBWa.newConnection()) {
+            if (!acquireQueueLock(connection)) {
+                return;
+            }
+
+            try {
+                processDueMessages(connection);
+            } finally {
+                releaseQueueLock(connection);
+            }
+        } catch (Exception e) {
+            System.out.println("GoWA queue worker gagal: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean acquireQueueLock(Connection connection) throws Exception {
+        try (PreparedStatement ps = connection.prepareStatement("SELECT GET_LOCK(?, 0)")) {
+            ps.setString(1, QUEUE_LOCK_NAME);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() && rs.getInt(1) == 1;
+            }
+        }
+    }
+
+    private static void releaseQueueLock(Connection connection) {
+        try (PreparedStatement ps = connection.prepareStatement("SELECT RELEASE_LOCK(?)")) {
+            ps.setString(1, QUEUE_LOCK_NAME);
+            ps.executeQuery();
+        } catch (Exception e) {
+            System.out.println("Gagal melepas lock GoWA worker: " + e.getMessage());
+        }
+    }
+
+    private static void processDueMessages(Connection connection) throws Exception {
+        List<QueueMessage> messages = new ArrayList<>();
+        String sql = "SELECT NOMOR,NOWA,PESAN FROM wa_outbox "
+                + "WHERE STATUS='ANTRIAN' AND TYPE='TEXT' AND SOURCE='KONTROL' "
+                + "AND TANGGAL_JAM<=NOW() ORDER BY TANGGAL_JAM LIMIT 20";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                messages.add(new QueueMessage(
+                        rs.getLong("NOMOR"),
+                        rs.getString("NOWA"),
+                        rs.getString("PESAN")
+                ));
+            }
+        }
+
+        for (QueueMessage message : messages) {
+            if (!claimQueueMessage(connection, message.nomorAntrian)) {
+                continue;
+            }
+
+            boolean sukses = kirimText(message.nomor, message.pesan);
+            finishQueueMessage(connection, message.nomorAntrian, sukses);
+        }
+    }
+
+    private static boolean claimQueueMessage(Connection connection, long nomorAntrian) throws Exception {
+        String sql = "UPDATE wa_outbox SET STATUS='PROSES',SENDER='GOWA',"
+                + "REQUEST=CONCAT('Diproses GoWA ',NOW()) "
+                + "WHERE NOMOR=? AND STATUS='ANTRIAN' AND TYPE='TEXT'";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setLong(1, nomorAntrian);
+            return ps.executeUpdate() == 1;
+        }
+    }
+
+    private static void finishQueueMessage(Connection connection, long nomorAntrian, boolean sukses)
+            throws Exception {
+        String sql;
+
+        if (sukses) {
+            sql = "UPDATE wa_outbox SET STATUS='TERKIRIM',SUCCESS='1',"
+                    + "RESPONSE='Berhasil dikirim melalui GoWA',SENT_DATETIME=NOW() "
+                    + "WHERE NOMOR=? AND STATUS='PROSES' AND TYPE='TEXT'";
+        } else {
+            sql = "UPDATE wa_outbox SET STATUS='ANTRIAN',SUCCESS='0',"
+                    + "RESPONSE='Gagal dikirim melalui GoWA; dijadwalkan ulang',"
+                    + "TANGGAL_JAM=DATE_ADD(NOW(),INTERVAL 5 MINUTE) "
+                    + "WHERE NOMOR=? AND STATUS='PROSES' AND TYPE='TEXT'";
+        }
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setLong(1, nomorAntrian);
+            ps.executeUpdate();
+        }
+    }
 
     private static String deviceId() {
         try {
@@ -385,6 +575,59 @@ public class GoWAService {
     }
 
     // =====================================================
+    // KIRIM TEXT KE GOWA
+    // =====================================================
+    public static boolean kirimText(String noHP, String pesan) {
+        HttpURLConnection conn = null;
+
+        try {
+            if (!isConfigReady() || noHP == null || noHP.trim().isEmpty()) {
+                return false;
+            }
+
+            String baseUrl = koneksiDBWa.GOWA_BASE_URL();
+
+            if (baseUrl.endsWith("/")) {
+                baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
+            }
+
+            URL url = new URL(baseUrl + "/send/message?device_id=" + deviceId());
+            String payload = "{\"phone\":\"" + normalizePhone(noHP)
+                    + "@s.whatsapp.net\",\"message\":\"" + escapeJson(pesan) + "\"}";
+
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(CONNECT_TIMEOUT);
+            conn.setReadTimeout(READ_TIMEOUT);
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestProperty("Authorization", basicAuth());
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setRequestProperty("Accept", "application/json, text/plain, */*");
+
+            try (OutputStream output = conn.getOutputStream()) {
+                output.write(payload.getBytes(StandardCharsets.UTF_8));
+            }
+
+            int code = conn.getResponseCode();
+            String response = readResponse(conn, code);
+
+            System.out.println("GOWA TEXT RESPONSE CODE : " + code);
+            System.out.println("GOWA TEXT RESPONSE BODY : " + response);
+
+            return code >= 200 && code < 300;
+        } catch (Exception e) {
+            System.out.println("GOWA TEXT ERROR: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+    }
+
+    // =====================================================
     // KIRIM FILE KE GOWA
     // =====================================================
     private static boolean kirimFile(File file, String noHP, String caption) {
@@ -504,7 +747,7 @@ public class GoWAService {
     // =====================================================
     // UTIL
     // =====================================================
-    private static String normalizePhone(String raw) {
+    static String normalizePhone(String raw) {
         if (raw == null) {
             return "";
         }
@@ -532,12 +775,7 @@ public class GoWAService {
 
     private static boolean isReady(String noHP) {
         try {
-            if (koneksiDBWa.GOWA_BASE_URL() == null
-                    || koneksiDBWa.GOWA_BASE_URL().trim().isEmpty()
-                    || koneksiDBWa.GOWA_USERNAME() == null
-                    || koneksiDBWa.GOWA_USERNAME().trim().isEmpty()
-                    || koneksiDBWa.GOWA_PASSWORD() == null
-                    || koneksiDBWa.GOWA_PASSWORD().trim().isEmpty()) {
+            if (!isConfigReady()) {
 
                 System.out.println("CONFIG GOWA BELUM LENGKAP");
                 JOptionPane.showMessageDialog(null, "Config GoWA belum lengkap.");
@@ -556,6 +794,59 @@ public class GoWAService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private static boolean isConfigReady() {
+        return koneksiDBWa.GOWA_BASE_URL() != null
+                && !koneksiDBWa.GOWA_BASE_URL().trim().isEmpty()
+                && koneksiDBWa.GOWA_USERNAME() != null
+                && !koneksiDBWa.GOWA_USERNAME().trim().isEmpty()
+                && koneksiDBWa.GOWA_PASSWORD() != null
+                && !koneksiDBWa.GOWA_PASSWORD().trim().isEmpty();
+    }
+
+    private static String escapeJson(String text) {
+        if (text == null) {
+            return "";
+        }
+
+        StringBuilder escaped = new StringBuilder();
+
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+
+            switch (c) {
+                case '"':
+                    escaped.append("\\\"");
+                    break;
+                case '\\':
+                    escaped.append("\\\\");
+                    break;
+                case '\b':
+                    escaped.append("\\b");
+                    break;
+                case '\f':
+                    escaped.append("\\f");
+                    break;
+                case '\n':
+                    escaped.append("\\n");
+                    break;
+                case '\r':
+                    escaped.append("\\r");
+                    break;
+                case '\t':
+                    escaped.append("\\t");
+                    break;
+                default:
+                    if (c < 0x20) {
+                        escaped.append(String.format("\\u%04x", (int) c));
+                    } else {
+                        escaped.append(c);
+                    }
+            }
+        }
+
+        return escaped.toString();
     }
 
     private static File getReportFile(String namaFile) {
@@ -696,6 +987,19 @@ public class GoWAService {
             if (f.getName().startsWith("protected_")) {
                 f.delete();
             }
+        }
+    }
+
+    private static final class QueueMessage {
+
+        private final long nomorAntrian;
+        private final String nomor;
+        private final String pesan;
+
+        private QueueMessage(long nomorAntrian, String nomor, String pesan) {
+            this.nomorAntrian = nomorAntrian;
+            this.nomor = nomor;
+            this.pesan = pesan;
         }
     }
 }

@@ -34,7 +34,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import wa.GoWAService;
-import wa.ServiceWAHA;
 
 /**
  *

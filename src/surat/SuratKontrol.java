@@ -39,10 +39,8 @@ import kepegawaian.DlgCariDokter2;
 import laporan.DlgCariPenyakit;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgCariPoli2;
-import wa.DlgWahaKirim;
 import wa.GoWAService;
 import wa.ServiceWADelphi;
-import wa.ServiceWAHA;
 
 /**
  *
@@ -1950,14 +1948,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         + "Berikut kami kirimkan *Surat Kontrol* Anda dari *" + akses.getnamars() + "*.\n\n"
                         + "🔐 Password PDF: tanggal lahir pasien, format: ddMMyyyy\n\n"
                         + "⚠️ Pesan ini merupakan notifikasi otomatis dari sistem.\n"
-                        + "Nomor ini tidak dapat menerima atau membalas pesan.\n\n"
+                        + "Mohon konfirmasi kehadiran Anda ke WA: *+62 813-4641-6008*\n\n"
                         + "Terima kasih.\n"
                         + akses.getnamars() + "\n";
             } else {
                 pesan = "Yth. *" + TPasien.getText() + "*\n\n"
                         + "Berikut kami kirimkan *Surat Kontrol* Anda dari *" + akses.getnamars() + "*.\n\n"
                         + "⚠️ Pesan ini merupakan notifikasi otomatis dari sistem.\n"
-                        + "Nomor ini tidak dapat menerima atau membalas pesan.\n\n"
+                        + "Mohon konfirmasi kehadiran Anda ke WA: *+62 813-4641-6008*\n\n"
                         + "Terima kasih.\n"
                         + akses.getnamars() + "\n";
             }
@@ -2421,7 +2419,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Valid.SetTgl(TanggalPeriksa.getSelectedItem().toString())
             );
 
-            LocalDateTime kirim = tglKontrol.atTime(11, 0);
+            LocalDateTime kirim = tglKontrol.minusDays(1).atTime(11, 10);
 
             String datajam = kirim.format(
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -2447,15 +2445,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
 
             String pesan
-                    = "Selamat pagi/siang Bapak/Ibu " + namaPasien + ". "
-                    + "Mengingatkan kembali jadwal kontrol Anda di RS Pelita Kasih pada hari "
-                    + hariTanggal + " di Poliklinik " + namaPoli
-                    + " dengan dr. " + namaDokter + ". "
-                    + "Jam praktek dimulai pukul " + jamPraktek + ".\n\n"
-                    + "Mohon konfirmasi kehadiran Anda dengan membalas pesan ini:\n"
-                    + "Ketik 1 jika HADIR\n"
-                    + "Ketik 2 jika BATAL / RESCHEDULE (Atur Jadwal Ulang)\n\n"
-                    + "Harap datang 30 menit sebelum jam praktek, Terima kasih.";
+                    = "Selamat pagi *" + namaPasien + "*.\n\n"
+                    + "Mengingatkan kembali jadwal kontrol Anda di *RS Pelita Kasih* pada:\n\n"
+                    + "*Hari/Tanggal* : " + hariTanggal + "\n"
+                    + "*Poliklinik* : " + namaPoli + "\n"
+                    + "*Dokter* : " + namaDokter + "\n"
+                    + "*Jam Praktek* : " + jamPraktek + "\n\n"
+                    + "Mohon konfirmasi kehadiran Anda ke WA: *+62 813-4641-6008*\n\n"
+                    + "Ketik *1* jika *HADIR*\n"
+                    + "Ketik *2* jika *BATAL / RESCHEDULE* _(Atur Jadwal Ulang)_\n\n"
+                    + "Harap datang *30 menit sebelum jam praktek*.\n"
+                    + "Terima kasih.";
 
             ServiceWADelphi wa = new ServiceWADelphi();
             wa.kirimText(nohp, pesan, datajam, "KONTROL");
@@ -2471,7 +2471,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kirimReminderSekarang() {
         try {
-            if (!ServiceWADelphi.isNotifAktif()) {
+            if (!GoWAService.isNotifAktif()) {
                 System.out.println("Notifikasi WA dimatikan di database.xml");
                 notifInfo("Notifikasi WA dimatikan di database.xml");
                 return;
@@ -2499,21 +2499,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
 
             String pesan
-                    = "Selamat pagi/siang Bapak/Ibu " + namaPasien + ". "
-                    + "Mengingatkan kembali jadwal kontrol Anda di RS Pelita Kasih pada hari "
-                    + hariTanggal + " di Poliklinik " + namaPoli
-                    + " dengan dr. " + namaDokter + ". "
-                    + "Jam praktek dimulai pukul " + jamPraktek + ".\n\n"
-                    + "Mohon konfirmasi kehadiran Anda dengan membalas pesan ini:\n"
-                    + "Ketik 1 jika HADIR\n"
-                    + "Ketik 2 jika BATAL / RESCHEDULE (Atur Jadwal Ulang)\n\n"
-                    + "Harap datang 30 menit sebelum jam praktek, Terima kasih.";
+                    = "Selamat pagi *" + namaPasien + "*.\n\n"
+                    + "Mengingatkan kembali jadwal kontrol Anda di *RS Pelita Kasih* pada:\n\n"
+                    + "*Hari/Tanggal* : " + hariTanggal + "\n"
+                    + "*Poliklinik* : " + namaPoli + "\n"
+                    + "*Dokter* : " + namaDokter + "\n"
+                    + "*Jam Praktek* : " + jamPraktek + "\n\n"
+                    + "Mohon konfirmasi kehadiran Anda ke WA: *+62 813-4641-6008*\n\n"
+                    + "Ketik *1* jika *HADIR*\n"
+                    + "Ketik *2* jika *BATAL / RESCHEDULE* _(Atur Jadwal Ulang)_\n\n"
+                    + "Harap datang *30 menit sebelum jam praktek*.\n"
+                    + "Terima kasih.";
 
-            ServiceWADelphi wa = new ServiceWADelphi();
-            wa.kirimTextNow(nohp, pesan, "KONTROL");
+            boolean sukses = GoWAService.kirimText(nohp, pesan);
 
-            System.out.println("Reminder WA dikirim sekarang / masuk antrian WA");
-            notifInfo("Pesan terkirim ke nomor tujuan:\n" + nohp);
+            if (sukses) {
+                System.out.println("Reminder WA berhasil dikirim langsung melalui GoWA");
+                notifInfo("Pesan terkirim ke nomor tujuan:\n" + nohp);
+            } else {
+                System.out.println("Reminder WA gagal dikirim langsung melalui GoWA");
+                notifError("Gagal mengirim pesan ke nomor tujuan:\n" + nohp);
+            }
 
         } catch (Exception e) {
             System.out.println("Gagal kirim WA : " + e);

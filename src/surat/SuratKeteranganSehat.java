@@ -36,7 +36,6 @@ import AESsecurity.EnkripsiAES;
 import java.io.File;
 import java.sql.SQLException;
 import wa.GoWAService;
-import wa.ServiceWAHA;
 
 
 /**

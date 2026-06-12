@@ -1031,7 +1031,7 @@ left join petugas on penilaian_mcu.kd_petugas = petugas.nip]]>
 			</textField>
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="33" y="-1" width="95" height="95" uuid="04fee30c-6054-47f9-a0e9-3ba4c5098d5e"/>
-				<imageExpression><![CDATA["C:/Users/Admin/Pictures/logors.jpg"]]></imageExpression>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="313" y="82" width="239" height="17" uuid="e980911c-886d-433f-b7de-be500833448e">
@@ -1240,12 +1240,9 @@ left join petugas on penilaian_mcu.kd_petugas = petugas.nip]]>
 				</reportElement>
 			</rectangle>
 			<rectangle>
-				<reportElement mode="Transparent" x="0" y="366" width="278" height="62" forecolor="#000000" backcolor="#DEDEDE" uuid="bc025daf-ef72-4d8a-ac89-66348f2e03ab">
+				<reportElement mode="Transparent" x="0" y="366" width="555" height="62" forecolor="#000000" backcolor="#DEDEDE" uuid="bc025daf-ef72-4d8a-ac89-66348f2e03ab">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-			</rectangle>
-			<rectangle>
-				<reportElement mode="Transparent" x="278" y="366" width="277" height="62" forecolor="#000000" backcolor="#DEDEDE" uuid="dac11ee9-2289-4d18-9183-e01e84bed56b"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="141" y="350" width="276" height="17" uuid="3ab88b55-2a48-4de6-b09e-0be307df3fb5">
@@ -1495,15 +1492,6 @@ left join petugas on penilaian_mcu.kd_petugas = petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{conc_spirometry}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="289" y="366" width="259" height="62" uuid="6f0a062a-17bf-43c4-a80e-c6a780252470">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{conc_lab}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="287" y="294" width="259" height="56" uuid="f02dc455-bc78-477b-93c7-85c0cd1cd910">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1523,7 +1511,7 @@ left join petugas on penilaian_mcu.kd_petugas = petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{kesimpulan1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="5" y="367" width="268" height="62" uuid="a13479b1-162a-461a-b4b6-47d76271588d">
+				<reportElement x="5" y="366" width="546" height="62" uuid="a13479b1-162a-461a-b4b6-47d76271588d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -8697,7 +8685,7 @@ I am willing that if required, work related medical information may be released 
 		<band height="802">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="140" y="447" width="415" height="34" uuid="312b7061-0778-446d-b5c2-bd6ce60062c1">
+				<reportElement x="140" y="447" width="415" height="53" uuid="312b7061-0778-446d-b5c2-bd6ce60062c1">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -8707,7 +8695,7 @@ I am willing that if required, work related medical information may be released 
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -9095,7 +9083,7 @@ I am willing that if required, work related medical information may be released 
 				<textFieldExpression><![CDATA["FIT with Restrictions"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Opaque" x="0" y="430" width="140" height="51" backcolor="#DDDDDD" uuid="fa4854a8-467f-4b93-a49d-fccc727e9c91">
+				<reportElement mode="Opaque" x="0" y="430" width="140" height="70" backcolor="#DDDDDD" uuid="fa4854a8-467f-4b93-a49d-fccc727e9c91">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -9241,7 +9229,7 @@ I am willing that if required, work related medical information may be released 
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="147" y="447" width="408" height="34" uuid="79dbafcb-84bc-40b9-91d8-37f292c8ce1b"/>
+				<reportElement mode="Transparent" x="147" y="447" width="408" height="53" uuid="79dbafcb-84bc-40b9-91d8-37f292c8ce1b"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>

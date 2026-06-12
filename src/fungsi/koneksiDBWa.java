@@ -25,14 +25,26 @@ public class koneksiDBWa {
     private static String var="";
     
     public koneksiDBWa(){} 
+    public static Connection newConnection() throws Exception {
+        Properties setting = new Properties();
+        MysqlDataSource source = new MysqlDataSource();
+
+        setting.loadFromXML(new FileInputStream("setting/database.xml"));
+        source.setURL("jdbc:mysql://"
+                + EnkripsiAES.decrypt(setting.getProperty("HOSTWA")) + ":"
+                + EnkripsiAES.decrypt(setting.getProperty("PORTWA")) + "/"
+                + EnkripsiAES.decrypt(setting.getProperty("DATABASEWA"))
+                + "?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+        source.setUser(EnkripsiAES.decrypt(setting.getProperty("USERWA")));
+        source.setPassword(EnkripsiAES.decrypt(setting.getProperty("PASWA")));
+
+        return source.getConnection();
+    }
+
     public static Connection condb(){ 
         if(connection == null){
             try{
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTWA"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTWA"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEWA"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
-                dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERWA")));
-                dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASWA")));
-                connection=dataSource.getConnection();       
+                connection=newConnection();
                 System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging Gateway WA...!!!");
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server bridging Gateway WA terputus : "+e);

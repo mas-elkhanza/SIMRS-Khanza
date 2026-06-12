@@ -32,7 +32,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import wa.GoWAService;
-import wa.ServiceWAHA;
 
 
 /**

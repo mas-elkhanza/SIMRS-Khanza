@@ -30,8 +30,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import AESsecurity.EnkripsiAES;
 import wa.GoWAService;
-import wa.ServiceWAHA;
-
 /**
  *
  * @author salimmulyana

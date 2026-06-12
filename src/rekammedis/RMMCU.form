@@ -496,7 +496,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="08-06-2026 15:05:36"/>
+                                <StringItem index="0" value="09-06-2026 10:24:22"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -691,7 +691,7 @@
                         <Component class="widget.Label" name="jLabel103">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="O. SARAN"/>
+                            <Property name="text" type="java.lang.String" value="O. SARAN (WAJIB)"/>
                             <Property name="name" type="java.lang.String" value="jLabel103" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1037,7 +1037,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="120" y="140" width="260" height="23"/>
+                              <AbsoluteConstraints x="120" y="140" width="220" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5028,7 +5028,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="730" y="50" width="28" height="23"/>
+                              <AbsoluteConstraints x="720" y="50" width="28" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5063,7 +5063,7 @@
                         <Component class="widget.Label" name="jLabel104">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="Conclusion"/>
+                            <Property name="text" type="java.lang.String" value="Conclusion 1 (WAJIB)"/>
                             <Property name="name" type="java.lang.String" value="jLabel104" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -5137,6 +5137,7 @@
                           <SubComponents>
                             <Component class="widget.TextArea" name="ConcLab">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -5355,7 +5356,7 @@
                         <Component class="widget.Label" name="jLabel170">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="Conclution :"/>
+                            <Property name="text" type="java.lang.String" value="Conclution = Conclution 1"/>
                             <Property name="name" type="java.lang.String" value="jLabel170" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -5383,6 +5384,7 @@
                           <SubComponents>
                             <Component class="widget.TextArea" name="Kesimpulan1">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -5417,6 +5419,7 @@
                           <SubComponents>
                             <Component class="widget.TextArea" name="Note1">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -5435,7 +5438,7 @@
                         <Component class="widget.Label" name="jLabel171">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="Recommendation :"/>
+                            <Property name="text" type="java.lang.String" value="Recommendation = SARAN"/>
                             <Property name="name" type="java.lang.String" value="jLabel171" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -6400,6 +6403,27 @@
                             </Constraint>
                           </Constraints>
                         </Component>
+                        <Component class="widget.Button" name="BtnPT">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/picture/190.png"/>
+                            </Property>
+                            <Property name="mnemonic" type="int" value="50"/>
+                            <Property name="toolTipText" type="java.lang.String" value="Alt+2"/>
+                            <Property name="name" type="java.lang.String" value="BtnPT" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[28, 23]"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnPTActionPerformed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="350" y="140" width="28" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -6492,7 +6516,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="08-06-2026"/>
+                            <StringItem index="0" value="09-06-2026"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -6520,7 +6544,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="08-06-2026"/>
+                            <StringItem index="0" value="09-06-2026"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
