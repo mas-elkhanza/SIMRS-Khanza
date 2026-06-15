@@ -48,8 +48,8 @@
                             </div>
                             <div class="body">
                                 <p>
-                                    <a href="<?="http://".host()."/epasien/wearable.shortcut";?>" download="wearable.shortcut" class="btn btn-primary waves-effect">
-                                        <i class="material-icons">watch</i> UNDUH SHORTCUT
+                                    <a href="<?="http://".host()."/epasien/downloadwearable.php";?>" class="btn btn-primary waves-effect">
+                                         <i class="material-icons">watch</i> UNDUH SHORTCUT
                                     </a>
                                 </p>
                                 <ol>
