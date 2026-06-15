@@ -506,6 +506,12 @@
                             <span>Kartu Pasien</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="KoneksiWearable"?"class='active'":""?>>
+                        <a href="index.php?act=KoneksiWearable&hal=KoneksiWearable">
+                            <i class="material-icons">watch</i>
+                            <span>Koneksi Wearable</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

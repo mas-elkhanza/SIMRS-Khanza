@@ -125,7 +125,7 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         NoHutang.setDocument(new batasInput((byte)17).getKata(NoHutang));
         Cicilan.setDocument(new batasInput((byte)15).getOnlyAngka(Cicilan));
         Sisa.setDocument(new batasInput((byte)15).getOnlyAngka(Sisa));
-        NoBukti.setDocument(new batasInput((byte)30).getOnlyAngka(NoBukti));
+        NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         KdPemberiHutang.setDocument(new batasInput((byte)5).getKata(KdPemberiHutang));
         NoRekening.setDocument(new batasInput((byte)20).getKata(NoRekening));

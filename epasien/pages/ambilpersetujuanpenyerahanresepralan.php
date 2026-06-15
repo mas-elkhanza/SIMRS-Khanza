@@ -159,9 +159,33 @@
 
             if(file_put_contents($file, $image_base64)){
                 if(file_exists("../webapps/penyerahanresep/pages/upload/".$noresep.".jpeg")){
-                    if(Tambah3("bukti_penyerahan_resep_obat","'".$noresep."','pages/upload/$fileName'")){
-                        Ubah2("resep_obat","tgl_penyerahan=current_date(),jam_penyerahan=current_time() where no_resep='$noresep'");
-                        JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
+                    try{
+                        if(Tambah3("bukti_penyerahan_resep_obat","'".$noresep."','pages/upload/$fileName'")){
+                            Ubah2("resep_obat","tgl_penyerahan=current_date(),jam_penyerahan=current_time() where no_resep='$noresep'");
+                            JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
+                        }    
+                    } catch(mysqli_sql_exception $e) {
+                        if($e->getCode()==1062){
+                            echo "<div class='row clearfix'>
+                                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                       <div class='card'>
+                                           <div class='body'>
+                                               <center>Data bukti pelayanan sudah ada</center>
+                                           </div>
+                                       </div>
+                                    </div>
+                                  </div>";
+                        }else{
+                            echo "<div class='row clearfix'>
+                                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                       <div class='card'>
+                                           <div class='body'>
+                                               <center>Gagal menyimpan</center>
+                                           </div>
+                                       </div>
+                                    </div>
+                                  </div>";
+                        }
                     }
                 }else{
                     echo "<div class='row clearfix'>

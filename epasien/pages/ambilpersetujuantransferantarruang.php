@@ -107,8 +107,32 @@
 
                 if(file_put_contents($file, $image_base64)){
                     if(file_exists("../webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal))).".jpeg")){
-                        if(Tambah3("bukti_persetujuan_transfer_pasien_antar_ruang","'".$norawat."','".$tanggal."','pages/upload/$fileName'")){
-                            JSRedirect("index.php?act=PersetujuanTransferAntarRuang&hal=Persetujuan");
+                        try{
+                            if(Tambah3("bukti_persetujuan_transfer_pasien_antar_ruang","'".$norawat."','".$tanggal."','pages/upload/$fileName'")){
+                                JSRedirect("index.php?act=PersetujuanTransferAntarRuang&hal=Persetujuan");
+                            }
+                        } catch(mysqli_sql_exception $e) {
+                            if($e->getCode()==1062){
+                                echo "<div class='row clearfix'>
+                                        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                           <div class='card'>
+                                               <div class='body'>
+                                                   <center>Data bukti pelayanan sudah ada</center>
+                                               </div>
+                                           </div>
+                                        </div>
+                                      </div>";
+                            }else{
+                                echo "<div class='row clearfix'>
+                                        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                           <div class='card'>
+                                               <div class='body'>
+                                                   <center>Gagal menyimpan</center>
+                                               </div>
+                                           </div>
+                                        </div>
+                                      </div>";
+                            }
                         }
                     }
                 }else{

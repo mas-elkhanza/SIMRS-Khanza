@@ -143,8 +143,32 @@
 
                     if(file_put_contents($file, $image_base64)){
                         if(file_exists("../webapps/pernyataanmemilihdpjp/pages/upload/".$nopernyataan."PP.jpeg")){
-                            if(Tambah3("bukti_surat_pernyataan_memilih_dpjp","'".$nopernyataan."','pages/upload/$fileName'")){
-                                JSRedirect("index.php?act=AmbilPernyataanMemilihDPJP&iyem=".encrypt_decrypt("{\"nopernyataan\":\"".$nopernyataan."\",\"photo\":\"pages/upload/$fileName\",\"photo2\":\"\"}","e")."");
+                            try{
+                                if(Tambah3("bukti_surat_pernyataan_memilih_dpjp","'".$nopernyataan."','pages/upload/$fileName'")){
+                                    JSRedirect("index.php?act=AmbilPernyataanMemilihDPJP&iyem=".encrypt_decrypt("{\"nopernyataan\":\"".$nopernyataan."\",\"photo\":\"pages/upload/$fileName\",\"photo2\":\"\"}","e")."");
+                                }
+                            } catch(mysqli_sql_exception $e) {
+                                if($e->getCode()==1062){
+                                    echo "<div class='row clearfix'>
+                                            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                               <div class='card'>
+                                                   <div class='body'>
+                                                       <center>Data bukti pelayanan sudah ada</center>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                          </div>";
+                                }else{
+                                    echo "<div class='row clearfix'>
+                                            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                               <div class='card'>
+                                                   <div class='body'>
+                                                       <center>Gagal menyimpan</center>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                          </div>";
+                                }
                             }
                         }else{
                             echo "<div class='row clearfix'>
@@ -236,8 +260,32 @@
 
                     if(file_put_contents($file, $image_base64)){
                         if(file_exists("../webapps/pernyataanmemilihdpjp/pages/upload/".$nopernyataan."SK.jpeg")){
-                            if(Tambah3("bukti_surat_pernyataan_memilih_dpjp_saksikeluarga","'".$nopernyataan."','pages/upload/$fileName'")){
-                                JSRedirect("index.php?act=PernyataanMemilihDPJP&hal=Persetujuan");
+                            try{
+                                if(Tambah3("bukti_surat_pernyataan_memilih_dpjp_saksikeluarga","'".$nopernyataan."','pages/upload/$fileName'")){
+                                    JSRedirect("index.php?act=PernyataanMemilihDPJP&hal=Persetujuan");
+                                }
+                            } catch(mysqli_sql_exception $e) {
+                                if($e->getCode()==1062){
+                                    echo "<div class='row clearfix'>
+                                            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                               <div class='card'>
+                                                   <div class='body'>
+                                                       <center>Data bukti pelayanan sudah ada</center>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                          </div>";
+                                }else{
+                                    echo "<div class='row clearfix'>
+                                            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                               <div class='card'>
+                                                   <div class='body'>
+                                                       <center>Gagal menyimpan</center>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                          </div>";
+                                }
                             }
                         }else{
                             echo "<div class='row clearfix'>

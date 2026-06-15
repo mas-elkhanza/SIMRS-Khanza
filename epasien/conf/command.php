@@ -59,7 +59,7 @@
                 'HasilPersetujuanRestrain','HasilPersetujuanPernyataanPulangAPS','HasilPersetujuanPenolakanTindakan','HasilBuktiPelaksanaanEdukasi',
                 'HasilBuktiPelayananRehabilitasi','BuktiPelayananProgramKFR','AmbilBuktiPelayananProgramKFR','HasilBuktiPelayananProgramKFR','AntrianSlitLamp',
                 'AntrianOCT','PersetujuanPemeriksaanHIV','AmbilPersetujuanPemeriksaanHIV','HasilPersetujuanPemeriksaanHIV','AmbilPernyataanMemilihDPJP',
-                'PernyataanMemilihDPJP','HasilPernyataanMemilihDPJP'
+                'PernyataanMemilihDPJP','HasilPernyataanMemilihDPJP','KoneksiWearable'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -160,6 +160,7 @@
                 case "BuktiPelayananRehabilitasi"              : include_once("pages/listriwayatbuktipelayananrehabilitasi.php"); break;
                 case "BuktiPelayananProgramKFR"                : include_once("pages/listriwayatbuktipelayananprogramkfr.php"); break;
                 case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
+                case "KoneksiWearable"                         : include_once("pages/listwearable.php"); break;
                 case "TampilPermintaanLab"                     : include_once("pages/listtampilpermintaanlab.php"); break;
                 case "TampilHasilLab"                          : include_once("pages/listtampilhasillab.php"); break;
                 case "UpdatePassword"                          : include_once("pages/updatepassword.php"); break;
