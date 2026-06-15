@@ -3,9 +3,9 @@
         exit(header("Location:../index.php"));
     }
     
-    $db_hostname            = "192.168.1.29";
+    $db_hostname            = "localhost";
     $db_username            = "root";
-    $db_password            = "okegas";
+    $db_password            = "";
     $db_name                = "sik";
     define('URUTNOREG', 'dokter + poli'); // dokter / poli / dokter + poli
     $month          = date('Y-m');

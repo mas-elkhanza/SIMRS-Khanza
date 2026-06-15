@@ -2,7 +2,15 @@
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
         exit(header("Location:../index.php"));
     }
-    
+
+    if(isset($_GET['iyem'])){
+        $json = json_decode(encrypt_decrypt($_GET['iyem'],"d"),true);
+        if(isset($json["tanggalhapus"]) && isset($json["itemhapus"])){
+            $normhapus = cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"));
+            Hapus2("pasien_wearable","no_rkm_medis='$normhapus' and tanggal='".validTeks4($json["tanggalhapus"],20)."' and item='".validTeks4($json["itemhapus"],40)."'");
+        }
+    }
+
     $PNG_TEMP_DIR           = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
     $PNG_WEB_DIR            = 'temp/';
     include "plugins/phpqrcode/qrlib.php"; 
@@ -20,11 +28,11 @@
         <div class="card">
             <div class="body">
                 <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                    <li role="presentation" class="active"><a href="#panduan" data-toggle="tab">PANDUAN</a></li>
-                    <li role="presentation"><a href="#riwayat" data-toggle="tab">RIWAYAT DATA</a></li>
+                    <li role="presentation" <?=(isset($_GET['iyem'])?"":"class='active'")?>><a href="#panduan" data-toggle="tab">PANDUAN</a></li>
+                    <li role="presentation" <?=(isset($_GET['iyem'])?"class='active'":"")?>><a href="#riwayat" data-toggle="tab">RIWAYAT DATA</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="panduan">
+                    <div role="tabpanel" <?=(isset($_GET['iyem'])?"class='tab-pane fade'":"class='tab-pane fade in active'")?> id="panduan">
                         <br/>
                         <div class="alert alert-info">
                             <small><b>Untuk pengguna iPhone (Apple Health).</b> Data dikirim dari aplikasi Health melalui Shortcut.</small>
@@ -89,15 +97,15 @@
                                     <li>Field <code>tanggal</code> <b>wajib</b> dengan format <code>yyyy-mm-dd H:i:s</code>. Variabel lain opsional, kirim hanya yang tersedia.</li>
                                 </ol>
                                 <p><b>Contoh isi Body (JSON):</b></p>
-                                    <pre style="text-align:left;">
-                                    {
-                                        "tanggal": "2026-06-13 06:30:00",
-                                        "heartRate": 72,
-                                        "oxygenSaturation": 98,
-                                        "stepCount": 8543,
-                                        "bodyMass": 68.5
-                                    }
-                                    </pre>
+<pre style="text-align:left;">
+{
+    "tanggal": "2026-06-13 06:30:00",
+    "heartRate": 72,
+    "oxygenSaturation": 98,
+    "stepCount": 8543,
+    "bodyMass": 68.5
+}
+</pre>
                                 <p><small><b>Catatan:</b> nilai SpO2 (oxygenSaturation) kirim dalam persen (contoh 98), bukan pecahan 0&ndash;1.</small></p>
                             </div>
                         </div>
@@ -176,7 +184,7 @@
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="riwayat">
+                    <div role="tabpanel" <?=(isset($_GET['iyem'])?"class='tab-pane fade in active'":"class='tab-pane fade'")?> id="riwayat">
                         <br/>
                         <div class="alert alert-info">
                             <small>Kolom Keterangan hanyalah indikasi dari perangkat pribadi, bukan diagnosis medis. Nilai dari smartwatch atau wearable tidak setara dengan alat medis. Bila ada keterangan yang menyarankan ke faskes, tetap konsultasikan ke tenaga kesehatan dan jangan panik atas satu kali pembacaan.</small>
@@ -185,11 +193,12 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th width="15%"><center>Tanggal</center></th>
-                                        <th width="25%"><center>Variabel</center></th>
-                                        <th width="10%"><center>Nilai</center></th>
-                                        <th width="10%"><center>Satuan</center></th>
-                                        <th width="40%"><center>Keterangan</center></th>
+                                        <th width="14%"><center>Tanggal</center></th>
+                                        <th width="22%"><center>Variabel</center></th>
+                                        <th width="9%"><center>Nilai</center></th>
+                                        <th width="9%"><center>Satuan</center></th>
+                                        <th width="39%"><center>Keterangan</center></th>
+                                        <th width="7%"><center>Hapus</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -197,6 +206,9 @@
                                     $queryriwayat = bukaquery("select pasien_wearable.tanggal,pasien_wearable.item,pasien_wearable.nilai,pasien_wearable.satuan,pasien_wearable.status from pasien_wearable where pasien_wearable.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' order by pasien_wearable.tanggal desc");
                                     while($rsqueryriwayat = mysqli_fetch_array($queryriwayat)) {
                                         $keterangan = $rsqueryriwayat["status"];
+                                        if($keterangan===null){
+                                            $keterangan = "";
+                                        }
                                         if(strpos($keterangan,"faskes")!==false || strpos($keterangan,"konsultasikan")!==false || strpos($keterangan,"Konsultasikan")!==false){
                                             $keterangan = "<span class='col-red'><b>".$keterangan."</b></span>";
                                         }else if($keterangan==""){
@@ -208,6 +220,7 @@
                                                 <td align='center' valign='middle'>".$rsqueryriwayat["nilai"]."</td>
                                                 <td align='center' valign='middle'>".$rsqueryriwayat["satuan"]."</td>
                                                 <td align='left' valign='middle'>".$keterangan."</td>
+                                                <td align='center' valign='middle'><a href='index.php?act=KoneksiWearable&iyem=".encrypt_decrypt("{\"tanggalhapus\":\"".$rsqueryriwayat["tanggal"]."\",\"itemhapus\":\"".$rsqueryriwayat["item"]."\"}","e")."' onclick='return confirm(\"Yakin menghapus data ini?\")' class='btn btn-warning waves-effect'>Hapus</a></td>
                                               </tr>";
                                     }
                                 ?>
