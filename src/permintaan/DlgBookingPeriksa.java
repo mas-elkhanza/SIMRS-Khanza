@@ -1252,9 +1252,8 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         aktif=true;
-        runBackground(() ->tampil());
         try {
-            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            ps=koneksi.prepareStatement("select set_alamat_pasien.kelurahan,set_alamat_pasien.kecamatan,set_alamat_pasien.kabupaten,set_alamat_pasien.propinsi from set_alamat_pasien");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1274,10 +1273,16 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 }
             }
             
-            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            ps=koneksi.prepareStatement(
+                "select set_kelengkapan_data_pasien.kelurahan,set_kelengkapan_data_pasien.p_kelurahan,"+
+                "set_kelengkapan_data_pasien.kecamatan,set_kelengkapan_data_pasien.p_kecamatan,"+
+                "set_kelengkapan_data_pasien.kabupaten,set_kelengkapan_data_pasien.p_kabupaten,"+
+                "set_kelengkapan_data_pasien.propinsi,set_kelengkapan_data_pasien.p_propinsi "+
+                "from set_kelengkapan_data_pasien"
+            );
             try {
                 rs=ps.executeQuery();
-                while(rs.next()){
+                if(rs.next()){
                     kelurahan=rs.getString("kelurahan");
                     p_kelurahan=rs.getInt("p_kelurahan");
                     kecamatan=rs.getString("kecamatan");
@@ -1298,10 +1303,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 }
             }
             
-            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
+            ps=koneksi.prepareStatement("select set_urut_no_rkm_medis.urutan,set_urut_no_rkm_medis.tahun,set_urut_no_rkm_medis.bulan,set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
             try {
                 rs=ps.executeQuery();
-                while(rs.next()){
+                if(rs.next()){
                     pengurutan=rs.getString("urutan");
                     tahun=rs.getString("tahun");
                     bulan=rs.getString("bulan");
@@ -1321,6 +1326,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             System.out.println("Notifikasi : "+e);
         } 
         
+        runBackground(() ->tampil());
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
