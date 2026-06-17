@@ -12,6 +12,8 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import laporan.DlgCariPenyakit;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -24,6 +26,9 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,6 +62,12 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
     private int i=0;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private File file;
+    private FileWriter fileWriter;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -972,6 +983,8 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         emptTeks();
+        ChkInput.setSelected(true);
+        isForm(); 
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1160,7 +1173,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_TCariPerujukKeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        runBackground(() ->tampil2());
+        runBackground(() ->tampil5());
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
@@ -1190,7 +1203,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void btnCariRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariRujukActionPerformed
         akses.setform("DlgRujukMasuk");
-        runBackground(() ->tampil2());
+        runBackground(() ->tampil5());
         TCariPerujuk.requestFocus();
         WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
         WindowPerujuk.setLocationRelativeTo(internalFrame1);
@@ -1938,15 +1951,16 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private void tampil2() {        
         Valid.tabelKosong(tabMode2);
         try{
-            psperujuk=koneksi.prepareStatement("select rujuk_masuk.perujuk,rujuk_masuk.alamat from rujuk_masuk "+(TCariPerujuk.getText().trim().equals("")?"":"where rujuk_masuk.perujuk like ? or rujuk_masuk.alamat like ? ")+"group by rujuk_masuk.perujuk order by rujuk_masuk.perujuk");
+            file=new File("./cache/perujuk.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            StringBuilder iyembuilder = new StringBuilder();
+            psperujuk=koneksi.prepareStatement("select rujuk_masuk.perujuk,rujuk_masuk.alamat from rujuk_masuk group by rujuk_masuk.perujuk order by rujuk_masuk.perujuk");
             try {
-                if(!TCariPerujuk.getText().trim().equals("")){
-                    psperujuk.setString(1,"%"+TCariPerujuk.getText()+"%");
-                    psperujuk.setString(2,"%"+TCariPerujuk.getText()+"%");
-                }
                 rs=psperujuk.executeQuery();
                 while(rs.next()){                              
                     tabMode2.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+                    iyembuilder.append("{\"Perujuk\":\"").append(rs.getString(1)).append("\",\"Alamat\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1958,15 +1972,64 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     psperujuk.close();
                 }
             }
-        }catch(Exception e){
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"perujuk\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
+            fileWriter.close();
+            iyembuilder=null;
+        } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
         LCount1.setText(""+tabMode2.getRowCount());
     }
     
     public void tampil4() { 
-        runBackground(() ->tampil2());
+        runBackground(() ->tampil5());
     }
+    
+    private void tampil5() {
+        try {
+            myObj = new FileReader("./cache/perujuk.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode2);
+            response = root.path("perujuk");
+            if(response.isArray()){
+                if(TCariPerujuk.getText().trim().equals("")){
+                    for(JsonNode list:response){
+                        tabMode2.addRow(new Object[]{
+                            list.path("Perujuk").asText(),list.path("Alamat").asText()
+                        });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("Perujuk").asText().toLowerCase().contains(TCariPerujuk.getText().toLowerCase())||list.path("Alamat").asText().toLowerCase().contains(TCariPerujuk.getText().toLowerCase())){
+                            tabMode2.addRow(new Object[]{
+                                list.path("Perujuk").asText(),list.path("Alamat").asText()
+                            });
+                        }
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampil2();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
+        }
+        LCount1.setText(""+tabMode2.getRowCount());
+    } 
     
     private void getData2() {
         if(tbPerujuk.getSelectedRow()!= -1){
