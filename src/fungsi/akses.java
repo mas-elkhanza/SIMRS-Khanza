@@ -261,7 +261,7 @@ public final class akses {
             daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,
             satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,
             mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,surat_permohonan_privasi=false,surat_permintaan_second_opinion=false,
-            surat_keterangan_berobat=false,surat_penolakan_resusitasi=false;
+            surat_keterangan_berobat=false,surat_penolakan_resusitasi=false,catatan_observasi_ruang_ok=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1484,6 +1484,7 @@ public final class akses {
                         akses.surat_permintaan_second_opinion=true;
                         akses.surat_keterangan_berobat=true;
                         akses.surat_penolakan_resusitasi=true;
+                        akses.catatan_observasi_ruang_ok=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2690,6 +2691,7 @@ public final class akses {
                         akses.surat_permintaan_second_opinion=rs2.getBoolean("surat_permintaan_second_opinion");
                         akses.surat_keterangan_berobat=rs2.getBoolean("surat_keterangan_berobat");
                         akses.surat_penolakan_resusitasi=rs2.getBoolean("surat_penolakan_resusitasi");
+                        akses.catatan_observasi_ruang_ok=rs2.getBoolean("catatan_observasi_ruang_ok");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3918,6 +3920,7 @@ public final class akses {
         akses.surat_permintaan_second_opinion=false;
         akses.surat_keterangan_berobat=false;
         akses.surat_penolakan_resusitasi=false;
+        akses.catatan_observasi_ruang_ok=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5163,4 +5166,5 @@ public final class akses {
     public static boolean getsurat_permintaan_second_opinion(){return akses.surat_permintaan_second_opinion;}
     public static boolean getsurat_keterangan_berobat(){return akses.surat_keterangan_berobat;}
     public static boolean getsurat_penolakan_resusitasi(){return akses.surat_penolakan_resusitasi;}
+    public static boolean getcatatan_observasi_ruang_ok(){return akses.catatan_observasi_ruang_ok;}
 }   
