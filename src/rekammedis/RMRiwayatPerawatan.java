@@ -4752,6 +4752,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSkorStewardPascaAnestesi(rs.getString("no_rawat"));
                     menampilkanSkorBromagePascaAnestesi(rs.getString("no_rawat"));
                     menampilkanCatatanPengkajianPaskaOperasi(rs.getString("no_rawat"));
+                    menampilkanCatatanObservasiRuangOperasi(rs.getString("no_rawat"));
                     menampilkanChecklistKriteriaMasukHCU(rs.getString("no_rawat"));
                     menampilkanChecklistKriteriaKeluarHCU(rs.getString("no_rawat"));
                     menampilkanChecklistKriteriaMasukICU(rs.getString("no_rawat"));
