@@ -227,7 +227,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             pcra_icra_identifkasi_risiko_kebakaran=false,pcra_icra_identifkasi_risiko_utilitas=false,bpjs_daftar_resep_apotek=false,daftar_permintaan_resep_iterasi_bpjs=false,pcra_icra_pengkajian_risiko_prakonstruksi=false,
             pcra_icra_persyaratan_harus_dipenuhi=false,satu_sehat_kirim_questionresponse_telaah_farmasi=false,satu_sehat_kirim_allergy_intolerance=false,konsultasi_perawat=false,jawaban_konsultasi_perawat=false,
             bridging_smart_klaim_bpjs=false,mapping_prosedur_smart_klaim_bpjs=false,mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,
-            surat_permohonan_privasi=false,surat_permintaan_second_opinion=false,surat_keterangan_berobat=false,surat_penolakan_resusitasi=false,catatan_observasi_ruang_ok=false;
+            surat_permohonan_privasi=false,surat_permintaan_second_opinion=false,surat_keterangan_berobat=false,surat_penolakan_resusitasi=false,catatan_observasi_ruang_ok=false,hasil_pemeriksaan_usg_abdomen=false;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
@@ -904,7 +904,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         pcra_icra_identifkasi_risiko_kebakaran=false;pcra_icra_identifkasi_risiko_utilitas=false;bpjs_daftar_resep_apotek=false;daftar_permintaan_resep_iterasi_bpjs=false;pcra_icra_pengkajian_risiko_prakonstruksi=false;
         pcra_icra_persyaratan_harus_dipenuhi=false;satu_sehat_kirim_questionresponse_telaah_farmasi=false;satu_sehat_kirim_allergy_intolerance=false;konsultasi_perawat=false;jawaban_konsultasi_perawat=false;
         bridging_smart_klaim_bpjs=false;mapping_prosedur_smart_klaim_bpjs=false;mapping_penyakit_smart_klaim_bpjs=false;permintaan_binrohtal=false;surat_permintaan_perlindungan_dari_kekerasan=false;
-        surat_permohonan_privasi=false;surat_permintaan_second_opinion=false;surat_keterangan_berobat=false;surat_penolakan_resusitasi=false;catatan_observasi_ruang_ok=false;
+        surat_permohonan_privasi=false;surat_permintaan_second_opinion=false;surat_keterangan_berobat=false;surat_penolakan_resusitasi=false;catatan_observasi_ruang_ok=false;hasil_pemeriksaan_usg_abdomen=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1171,7 +1171,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.pcra_icra_pengkajian_risiko_prakonstruksi,user.pcra_icra_persyaratan_harus_dipenuhi,user.satu_sehat_kirim_questionresponse_telaah_farmasi,"+
                 "user.satu_sehat_kirim_allergy_intolerance,user.konsultasi_perawat,user.jawaban_konsultasi_perawat,user.bridging_smart_klaim_bpjs,user.mapping_prosedur_smart_klaim_bpjs,"+
                 "user.mapping_penyakit_smart_klaim_bpjs,user.permintaan_binrohtal,user.surat_permintaan_perlindungan_dari_kekerasan,user.surat_permohonan_privasi,"+
-                "user.surat_permintaan_second_opinion,user.surat_keterangan_berobat,user.surat_penolakan_resusitasi,user.catatan_observasi_ruang_ok from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.surat_permintaan_second_opinion,user.surat_keterangan_berobat,user.surat_penolakan_resusitasi,user.catatan_observasi_ruang_ok,user.hasil_pemeriksaan_usg_abdomen from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1310,7 +1310,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     pcra_icra_tindakan_pengendalian=rs.getBoolean("pcra_icra_tindakan_pengendalian");pcra_icra_identifkasi_risiko_infeksi=rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi");pcra_icra_identifkasi_risiko_keselamatan=rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan");pcra_icra_identifkasi_risiko_kebakaran=rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran");pcra_icra_identifkasi_risiko_utilitas=rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas");bpjs_daftar_resep_apotek=rs.getBoolean("bpjs_daftar_resep_apotek");daftar_permintaan_resep_iterasi_bpjs=rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs");
                     pcra_icra_pengkajian_risiko_prakonstruksi=rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi");pcra_icra_persyaratan_harus_dipenuhi=rs.getBoolean("pcra_icra_persyaratan_harus_dipenuhi");satu_sehat_kirim_questionresponse_telaah_farmasi=rs.getBoolean("satu_sehat_kirim_questionresponse_telaah_farmasi");satu_sehat_kirim_allergy_intolerance=rs.getBoolean("satu_sehat_kirim_allergy_intolerance");konsultasi_perawat=rs.getBoolean("konsultasi_perawat");jawaban_konsultasi_perawat=rs.getBoolean("jawaban_konsultasi_perawat");bridging_smart_klaim_bpjs=rs.getBoolean("bridging_smart_klaim_bpjs");
                     mapping_prosedur_smart_klaim_bpjs=rs.getBoolean("mapping_prosedur_smart_klaim_bpjs");mapping_penyakit_smart_klaim_bpjs=rs.getBoolean("mapping_penyakit_smart_klaim_bpjs");permintaan_binrohtal=rs.getBoolean("permintaan_binrohtal");surat_permintaan_perlindungan_dari_kekerasan=rs.getBoolean("surat_permintaan_perlindungan_dari_kekerasan");surat_permohonan_privasi=rs.getBoolean("surat_permohonan_privasi");surat_permintaan_second_opinion=rs.getBoolean("surat_permintaan_second_opinion");surat_keterangan_berobat=rs.getBoolean("surat_keterangan_berobat");surat_penolakan_resusitasi=rs.getBoolean("surat_penolakan_resusitasi");
-                    catatan_observasi_ruang_ok=rs.getBoolean("catatan_observasi_ruang_ok");
+                    catatan_observasi_ruang_ok=rs.getBoolean("catatan_observasi_ruang_ok");hasil_pemeriksaan_usg_abdomen=rs.getBoolean("hasil_pemeriksaan_usg_abdomen");
                     setTampil();setTampil2();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -5103,6 +5103,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Catatan Observasi Ruang Operasi".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Catatan Observasi Ruang Operasi",catatan_observasi_ruang_ok});
+        }
+        
+        if("[M]Hasil USG Abdomen".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Hasil USG Abdomen",hasil_pemeriksaan_usg_abdomen});
         }
                 
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -9914,6 +9918,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Catatan Observasi Ruang Operasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ruang_ok='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Hasil USG Abdomen".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hasil_pemeriksaan_usg_abdomen='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

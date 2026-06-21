@@ -263,41 +263,45 @@ public final class DlgRl32 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            
-            Map<String, Object> param = new HashMap<>();         
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
-            param.put("tanggal",Tgl2.getDate());  
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            for(int r=0;r<tabMode.getRowCount();r++){ 
-                if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode.getValueAt(r,0).toString()+"','"+
-                                    tabMode.getValueAt(r,1).toString()+"','"+
-                                    tabMode.getValueAt(r,2).toString()+"','"+
-                                    tabMode.getValueAt(r,3).toString()+"','"+
-                                    tabMode.getValueAt(r,4).toString()+"','"+
-                                    tabMode.getValueAt(r,5).toString()+"','"+
-                                    tabMode.getValueAt(r,6).toString()+"','"+
-                                    tabMode.getValueAt(r,7).toString()+"','"+
-                                    tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
-                }                    
+        if(ceksukses==false){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+
+                Map<String, Object> param = new HashMap<>();         
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
+                param.put("tanggal",Tgl2.getDate());  
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                for(int r=0;r<tabMode.getRowCount();r++){ 
+                    if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
+                        Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode.getValueAt(r,0).toString()+"','"+
+                                        tabMode.getValueAt(r,1).toString()+"','"+
+                                        tabMode.getValueAt(r,2).toString()+"','"+
+                                        tabMode.getValueAt(r,3).toString()+"','"+
+                                        tabMode.getValueAt(r,4).toString()+"','"+
+                                        tabMode.getValueAt(r,5).toString()+"','"+
+                                        tabMode.getValueAt(r,6).toString()+"','"+
+                                        tabMode.getValueAt(r,7).toString()+"','"+
+                                        tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                    }                    
+                }
+
+                Valid.MyReportqry("rptRl32.jasper","report","::[ Formulir RL 3.2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
-               
-            Valid.MyReportqry("rptRl32.jasper","report","::[ Formulir RL 3.2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed

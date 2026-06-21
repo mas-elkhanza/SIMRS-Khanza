@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -208,40 +209,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        try {
+        if(ceksukses==false){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {
 
-            File g = new File("file2.css");
-            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
-            );
-            bg.close();
+                File g = new File("file2.css");
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                );
+                bg.close();
 
-            File f = new File("RekapPermintaanDiet.html");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                "<table width='"+(30+(kolom*180))+"px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                "<tr class='isi2'>"+
-                "<td valign='top' align='center'>"+
-                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                "<font size='2' face='Tahoma'>REKAP PERMINTAAN DIET PER CARA BAYAR & PER KELAS<br> TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+
-                "</td>"+
-                "</tr>"+
-                "</table>")
-        );
-        bw.close();
-        Desktop.getDesktop().browse(f.toURI());
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
+                File f = new File("RekapPermintaanDiet.html");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    "<table width='"+(30+(kolom*180))+"px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                    "<tr class='isi2'>"+
+                    "<td valign='top' align='center'>"+
+                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                    "<font size='2' face='Tahoma'>REKAP PERMINTAAN DIET PER CARA BAYAR & PER KELAS<br> TAHUN "+ThnCari.getSelectedItem()+" BULAN "+BlnCari.getSelectedItem()+"<br><br></font>"+
+                    "</td>"+
+                    "</tr>"+
+                    "</table>")
+                );
+                bw.close();
+                Desktop.getDesktop().browse(f.toURI());
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            }
+
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Masih proses menampilkan data, harap tunggu terlebih dahulu...!");
         }
-
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
