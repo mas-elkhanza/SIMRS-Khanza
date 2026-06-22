@@ -1260,13 +1260,18 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Colon</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gaster</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hepar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gall Blader</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pancreas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Dextra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Sinistra</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
                     htmlContent.append(
                         "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
@@ -1280,6 +1285,11 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1454,11 +1464,13 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGGynecologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGAbdomen.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_abdomen.tanggal,"+
                 "hasil_pemeriksaan_usg_abdomen.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_abdomen.diagnosa_klinis,hasil_pemeriksaan_usg_abdomen.kiriman_dari,"+
                 "hasil_pemeriksaan_usg_abdomen.esofagus,hasil_pemeriksaan_usg_abdomen.colon,hasil_pemeriksaan_usg_abdomen.gaster,"+
-                "hasil_pemeriksaan_usg_abdomen.hepar,hasil_pemeriksaan_usg_abdomen.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "hasil_pemeriksaan_usg_abdomen.hepar,hasil_pemeriksaan_usg_abdomen.gall_blader,hasil_pemeriksaan_usg_abdomen.lien,"+
+                "hasil_pemeriksaan_usg_abdomen.pancreas,hasil_pemeriksaan_usg_abdomen.ginjal_dextra,hasil_pemeriksaan_usg_abdomen.ginjal_sinistra,"+
+                "hasil_pemeriksaan_usg_abdomen.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join hasil_pemeriksaan_usg_abdomen on reg_periksa.no_rawat=hasil_pemeriksaan_usg_abdomen.no_rawat "+
                 "inner join dokter on hasil_pemeriksaan_usg_abdomen.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_abdomen.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1473,7 +1485,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
     }//GEN-LAST:event_DiagnosaKlinisKeyPressed
 
     private void HeparKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HeparKeyPressed
-        Valid.pindah2(evt,Colon,Kesimpulan);
+        Valid.pindah2(evt,Colon,GallBlader);
     }//GEN-LAST:event_HeparKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -1493,7 +1505,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanusggynecologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanusgabdomen/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor()); 
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Rawat terlebih dahulu..!!");
@@ -1550,7 +1562,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
     }//GEN-LAST:event_GasterKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah2(evt,Hepar,BtnSimpan);
+        Valid.pindah2(evt,GinjalSinistra,BtnSimpan);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1590,8 +1602,8 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                 orthanc.AmbilJpg2(tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
                 try {
                     CloseableHttpClient httpClient = HttpClients.createDefault();
-                    HttpPost post = new HttpPost("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/pages/upload/service.php");
-                    System.out.println("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/pages/upload/service.php");
+                    HttpPost post = new HttpPost("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgabdomen/pages/upload/service.php");
+                    System.out.println("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgabdomen/pages/upload/service.php");
                     post.setHeader("Content-Type", "application/json");
                     post.addHeader("username", koneksiDB.USERHYBRIDWEB());
                     post.addHeader("password", koneksiDB.PASHYBRIDWEB());
@@ -1623,23 +1635,23 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
     }//GEN-LAST:event_btnUploudActionPerformed
 
     private void GallBladerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GallBladerKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Hepar,Lien);
     }//GEN-LAST:event_GallBladerKeyPressed
 
     private void LienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LienKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,GallBlader,Pancreas);
     }//GEN-LAST:event_LienKeyPressed
 
     private void PancreasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PancreasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Lien,GinjalDextra);
     }//GEN-LAST:event_PancreasKeyPressed
 
     private void GinjalDextraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GinjalDextraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Pancreas,GinjalSinistra);
     }//GEN-LAST:event_GinjalDextraKeyPressed
 
     private void GinjalSinistraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GinjalSinistraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,GinjalDextra,Kesimpulan);
     }//GEN-LAST:event_GinjalSinistraKeyPressed
 
     /**
@@ -1989,7 +2001,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgabdomen/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgabdomen/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
