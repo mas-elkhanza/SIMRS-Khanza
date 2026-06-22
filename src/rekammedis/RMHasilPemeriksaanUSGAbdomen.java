@@ -1294,7 +1294,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2300px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1319,7 +1319,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2300px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1554,7 +1554,7 @@ public final class RMHasilPemeriksaanUSGAbdomen extends javax.swing.JDialog {
     }//GEN-LAST:event_EsofagusKeyPressed
 
     private void ColonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColonKeyPressed
-        Valid.pindah2(evt,Esofagus,Colon);
+        Valid.pindah2(evt,Esofagus,Gaster);
     }//GEN-LAST:event_ColonKeyPressed
 
     private void GasterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasterKeyPressed

@@ -61,7 +61,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Photo Pasien : "+Norm);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestJson = "{"+
                               "\"Level\": \"Study\","+
@@ -88,7 +88,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Gambar PNG : "+NoRawat+", Series : "+Series);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestEntity = new HttpEntity(headers);
             System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
@@ -120,7 +120,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Gambar JPG : "+NoRawat+", Series : "+Series);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestEntity = new HttpEntity(headers);
             System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
@@ -152,7 +152,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Gambar JPG : "+Series+", Series : "+Series);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestEntity = new HttpEntity(headers);
             System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
@@ -180,7 +180,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Gambar BMP : "+NoRawat+", Series : "+Series);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestEntity = new HttpEntity(headers);
             System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
@@ -212,7 +212,7 @@ public class ApiOrthanc {
         System.out.println("Percobaan Mengambil Gambar DCM : "+NoRawat+", Series : "+Series);
         try{
             headers = new HttpHeaders();
-            System.out.println("Auth : "+authEncrypt);
+            //System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
             requestEntity = new HttpEntity(headers);
             System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);

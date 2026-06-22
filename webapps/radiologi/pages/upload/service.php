@@ -90,7 +90,7 @@
                     } else if(strpos($decode['jam'],"'")||strpos($decode['jam'],"\\")){
                         $response = array(
                             'metadata' => array(
-                                'message' => 'Jam Praktek tidak ditemukan',
+                                'message' => 'Jam salah',
                                 'code' => 201
                             )
                         );
