@@ -25,8 +25,8 @@
                                 <div class='table-responsive'>
                                     <table class='table table-hover dataTable'>
                                         <tr>
-                                           <td width='30%'>Dokter DPJP</td>
-                                           <td width='70%'> : ".$rsqueryresume["nm_dokter"]."</td>
+                                           <td width='25%'>Dokter DPJP</td>
+                                           <td width='75%'> : ".$rsqueryresume["nm_dokter"]."</td>
                                         </tr>
                                         <tr>
                                            <td>Kondisi Pulang</td>
@@ -104,31 +104,31 @@
                                                 <div class='table-responsive'>
                                                     <table width='100%'  class='table table-hover dataTable'>
                                                        <tr align='left'>
-                                                           <td width='20%'>Diagnosa Utama</td><td width='70%'>:&nbsp;".$rsqueryresume["diagnosa_utama"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_utama"]."</td>
+                                                           <td width='25%'>Diagnosa Utama</td><td width='75%'>:&nbsp;".$rsqueryresume["diagnosa_utama"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_utama"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Diagnosa Sekunder 1</td><td width='70%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder"]."</td>
+                                                           <td width='25%'>Diagnosa Sekunder 1</td><td width='75%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Diagnosa Sekunder 2</td><td width='70%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder2"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder2"]."</td>
+                                                           <td width='25%'>Diagnosa Sekunder 2</td><td width='75%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder2"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder2"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Diagnosa Sekunder 3</td><td width='70%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder3"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder3"]."</td>
+                                                           <td width='25%'>Diagnosa Sekunder 3</td><td width='75%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder3"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder3"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Diagnosa Sekunder 4</td><td width='70%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder4"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder4"]."</td>
+                                                           <td width='25%'>Diagnosa Sekunder 4</td><td width='75%'>:&nbsp;".$rsqueryresume["diagnosa_sekunder4"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_diagnosa_sekunder4"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Prosedur Utama</td><td width='70%'>:&nbsp;".$rsqueryresume["prosedur_utama"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_utama"]."</td>
+                                                           <td width='25%'>Prosedur Utama</td><td width='75%'>:&nbsp;".$rsqueryresume["prosedur_utama"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_utama"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Prosedur Sekunder 1</td><td width='70%'>:&nbsp;".$rsqueryresume["prosedur_sekunder"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder"]."</td>
+                                                           <td width='25%'>Prosedur Sekunder 1</td><td width='75%'>:&nbsp;".$rsqueryresume["prosedur_sekunder"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Prosedur Sekunder 2</td><td width='70%'>:&nbsp;".$rsqueryresume["prosedur_sekunder2"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder2"]."</td>
+                                                           <td width='25%'>Prosedur Sekunder 2</td><td width='75%'>:&nbsp;".$rsqueryresume["prosedur_sekunder2"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder2"]."</td>
                                                        </tr>
                                                        <tr align='left'>
-                                                           <td width='20%'>Prosedur Sekunder 3</td><td width='70%'>:&nbsp;".$rsqueryresume["prosedur_sekunder3"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder3"]."</td>
+                                                           <td width='25%'>Prosedur Sekunder 3</td><td width='75%'>:&nbsp;".$rsqueryresume["prosedur_sekunder3"]."</td><td width='10%'>&nbsp;".$rsqueryresume["kd_prosedur_sekunder3"]."</td>
                                                        </tr>
                                                    </table>
                                                 </div>

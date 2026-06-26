@@ -63,7 +63,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>";
             $lokasigambar=getOne("SELECT lokasi_gambar FROM gambar_radiologi WHERE no_rawat='$norawat' AND tgl_periksa='$tglperiksa' AND jam='$jam'");
             if(!empty($lokasigambar)){
-                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$lokasigambar));
+                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/radiologi/".$lokasigambar));
                 echo "<tr>
                         <td valign='top' align='center' width='100%'><img alt='Gambar Radiologi' src='$src' style='max-width:100%; height:auto;'/></td>
                       </tr>";

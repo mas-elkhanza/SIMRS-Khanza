@@ -52,7 +52,7 @@
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nama Pasien</td>
-                                            <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                            <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nomor Rekam Medis</td>

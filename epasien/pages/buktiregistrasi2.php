@@ -24,8 +24,8 @@
                                 <div class='table-responsive'>
                                     <table class='table table-hover dataTable'>
                                         <tr>
-                                           <td width='30%'>Tanggal</td>
-                                           <td width='70%'> : ".$rsqueryregistrasi["tgl_registrasi"]." ".$rsqueryregistrasi["jam_reg"]."</td>
+                                           <td width='25%'>Tanggal</td>
+                                           <td width='75%'> : ".$rsqueryregistrasi["tgl_registrasi"]." ".$rsqueryregistrasi["jam_reg"]."</td>
                                         </tr>
                                         <tr>
                                            <td>No. Rawat</td>

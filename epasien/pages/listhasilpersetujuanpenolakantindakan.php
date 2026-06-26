@@ -24,8 +24,8 @@
             "where persetujuan_penolakan_tindakan.no_pernyataan='$nopersetujuan'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src  = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuantindakan/".$photo));
-            @$src2 = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuantindakan/".$photo2));
+            @$src  = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/persetujuantindakan/".$photo));
+            @$src2 = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/persetujuantindakan/".$photo2));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
@@ -41,7 +41,7 @@
                                 </h7>
                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                     <tr>
-                                        <td width='30%'>Nama</td>
+                                        <td width='25%'>Nama</td>
                                         <td width='75%'>: ".$rsquerypersetujuan["penerima_informasi"]."</td>
                                     </tr>
                                     <tr>
@@ -63,57 +63,57 @@
                                 </h7>
                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                     <tr>
-                                        <td width='30%'>Tindakan Kedokteran</td>
+                                        <td width='25%'>Tindakan Kedokteran</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["tindakan"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["tindakan_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Diagnosa</td>
+                                        <td width='25%'>Diagnosa</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["diagnosa"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["diagnosa_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Indikasi Tindakan</td>
+                                        <td width='25%'>Indikasi Tindakan</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["indikasi_tindakan"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["indikasi_tindakan_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Tata Cara</td>
+                                        <td width='25%'>Tata Cara</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["tata_cara"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["tata_cara_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr> 
                                     <tr>
-                                        <td width='30%'>Tujuan</td>
+                                        <td width='25%'>Tujuan</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["tujuan"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["tujuan_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Risiko</td>
+                                        <td width='25%'>Risiko</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["risiko"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["risiko_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Komplikasi</td>
+                                        <td width='25%'>Komplikasi</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["komplikasi"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["komplikasi_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Prognosis</td>
+                                        <td width='25%'>Prognosis</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["prognosis"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["prognosis_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Alternatif & Resikonya</td>
+                                        <td width='25%'>Alternatif & Resikonya</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["alternatif_dan_risikonya"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["alternatif_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Lain-lain</td>
+                                        <td width='25%'>Lain-lain</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["lain_lain"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["lain_lain_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
                                     <tr>
-                                        <td width='30%'>Biaya</td>
+                                        <td width='25%'>Biaya</td>
                                         <td width='60%'>: ".$rsquerypersetujuan["biaya"]."</td>
                                         <td width='10%'><input type='checkbox' disabled ".($rsquerypersetujuan["biaya_konfirmasi"]=="true"?"checked":"")."></td>
                                     </tr>
@@ -124,8 +124,8 @@
                                 </h7>
                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                     <tr>
-                                        <td width='30%'>Nama Pasien</td>
-                                        <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                        <td width='25%'>Nama Pasien</td>
+                                        <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nomor Rekam Medis</td>

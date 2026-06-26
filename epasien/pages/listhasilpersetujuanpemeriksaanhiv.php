@@ -14,7 +14,7 @@
             "inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab where surat_persetujuan_pemeriksaan_hiv.no_surat='".$nopersetujuan."'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuanpemeriksaanhiv/".$photo));
+            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/persetujuanpemeriksaanhiv/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>

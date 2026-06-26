@@ -40,13 +40,13 @@
                                                 <b>A. Tarif Ruang Perawatan</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
-                                                        <td width='30%'>Kelas 3</td><td width='20%'>Rp. 200.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 600.000</td>
+                                                        <td width='25%'>Kelas 3</td><td width='25%'>Rp. 200.000</td><td width='25%'>VIP</td><td width='25%'>Rp. 600.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='30%'>Kelas 2</td><td width='20%'>Rp. 300.000</td><td width='30%'>VVIP</td><td width='20%'>Rp. 800.000</td>
+                                                        <td width='25%'>Kelas 2</td><td width='25%'>Rp. 300.000</td><td width='25%'>VVIP</td><td width='25%'>Rp. 800.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='30%'>Kelas 1</td><td width='20%'>Rp. 400.000</td><td width='30%'>Isolasi</td><td width='20%'>Rp. 500.000</td>
+                                                        <td width='25%'>Kelas 1</td><td width='25%'>Rp. 400.000</td><td width='25%'>Isolasi</td><td width='25%'>Rp. 500.000</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -70,13 +70,13 @@
                                                 <b>C. Angsuran Awal</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
-                                                        <td width='30%'>Kelas 3</td><td width='20%'>Rp. 600.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 1.800.000</td>
+                                                        <td width='25%'>Kelas 3</td><td width='25%'>Rp. 600.000</td><td width='25%'>VIP</td><td width='25%'>Rp. 1.800.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='30%'>Kelas 2</td><td width='20%'>Rp. 900.000</td><td width='30%'>VVIP</td><td width='20%'>Rp. 2.400.000</td>
+                                                        <td width='25%'>Kelas 2</td><td width='25%'>Rp. 900.000</td><td width='25%'>VVIP</td><td width='25%'>Rp. 2.400.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='30%'>Kelas 1</td><td width='20%'>Rp. 1.200.000</td><td width='30%'>Isolasi</td><td width='20%'>Rp. 1.500.000</td>
+                                                        <td width='25%'>Kelas 1</td><td width='25%'>Rp. 1.200.000</td><td width='25%'>Isolasi</td><td width='25%'>Rp. 1.500.000</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -332,7 +332,7 @@
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nama</td>
-                                            <td width='70%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
+                                            <td width='75%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Umur</td>
@@ -358,7 +358,7 @@
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nama Pasien</td>
-                                            <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                            <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nomor Rekam Medis</td>

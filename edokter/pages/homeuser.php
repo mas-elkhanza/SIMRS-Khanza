@@ -128,8 +128,8 @@
     <script src="js/demo.js"></script>
     <script src="conf/validator.js" type="text/javascript"></script>
     <script type="text/javascript"> 
-        function loadKonsul(){
-            fetch('pages/listdatakonsul.php')
+        function loadKonsul(withBell){
+            fetch('pages/listdatakonsul.php?bell=' + (withBell ? '1' : '0'))
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('datakonsul').innerHTML = html; 
@@ -137,8 +137,8 @@
         }
 
         window.onload = function(){
-            loadKonsul();
-            setInterval(loadKonsul, 600000);
+            loadKonsul(false);
+            setInterval(function(){ loadKonsul(true); }, 600000);
         }
     </script>
 </body>

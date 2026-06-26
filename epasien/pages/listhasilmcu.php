@@ -47,7 +47,7 @@
                                               <tr>
                                                   <td width='33%'>Tanggal : ".$rsquerydatamcu["tanggal"]."</td>
                                                   <td width='36%'>Dokter : ".$rsquerydatamcu["nm_dokter"]."</td>
-                                                  <td width='30%'>Anamnesis : ".$rsquerydatamcu["informasi"]."</td>
+                                                  <td width='25%'>Anamnesis : ".$rsquerydatamcu["informasi"]."</td>
                                               </tr>
                                            </table>
                                         </td>
@@ -158,10 +158,10 @@
                                                                 4. Telinga
                                                                 <table width='100%' align='right'>
                                                                    <tr>
-                                                                       <td width='20%'>Lubang : ".$rsquerydatamcu["lubang_telinga"]."</td>
-                                                                       <td width='20%'>Daun : ".$rsquerydatamcu["daun_telinga"]."</td>
-                                                                       <td width='30%'>Proc. Mastoideus : ".$rsquerydatamcu["proc_mastoideus"]."</td>
-                                                                       <td width='30%'>Selaput Pendengara : ".$rsquerydatamcu["selaput_pendengaran"]."</td>
+                                                                       <td width='25%'>Lubang : ".$rsquerydatamcu["lubang_telinga"]."</td>
+                                                                       <td width='25%'>Daun : ".$rsquerydatamcu["daun_telinga"]."</td>
+                                                                       <td width='25%'>Proc. Mastoideus : ".$rsquerydatamcu["proc_mastoideus"]."</td>
+                                                                       <td width='25%'>Selaput Pendengara : ".$rsquerydatamcu["selaput_pendengaran"]."</td>
                                                                    </tr>
                                                                 </table>
                                                             </td>
@@ -288,8 +288,8 @@
                                                      Kulit :
                                                      <table width='100%' align='right'>
                                                         <tr>
-                                                            <td width='30%'>Kondisi Kulit : ".$rsquerydatamcu["kondisi_kulit"]."</td>
-                                                            <td width='70%'>Penyakit Kulit : ".$rsquerydatamcu["penyakit_kulit"]."</td>
+                                                            <td width='25%'>Kondisi Kulit : ".$rsquerydatamcu["kondisi_kulit"]."</td>
+                                                            <td width='75%'>Penyakit Kulit : ".$rsquerydatamcu["penyakit_kulit"]."</td>
                                                         </tr>
                                                      </table>
                                                   </td>
@@ -797,7 +797,7 @@
                                     </tr>";
                 $w=1;
                 while($rsquerygambarradiologi= mysqli_fetch_array($querygambarradiologi)){
-                    $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
+                    $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
                     echo "          <tr>
                                         <td valign='top' align='center'>".$w."</td>
                                         <td valign='top'>".$rsquerygambarradiologi["tgl_periksa"]." ".$rsquerygambarradiologi["jam"]."</td>

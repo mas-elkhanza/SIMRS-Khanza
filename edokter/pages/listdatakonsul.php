@@ -43,7 +43,7 @@
         $datakonsul++;
     }
     
-    if($datakonsul>0){
+    if($datakonsul>0 && isset($_GET['bell']) && $_GET['bell']=='1'){
         echo "<audio autoplay='true' src='pages/bell.wav'></audio>";
     }
 ?>

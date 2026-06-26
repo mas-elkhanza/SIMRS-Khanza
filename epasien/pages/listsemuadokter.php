@@ -21,7 +21,7 @@
                             $datadokter=$datadokter.
                                     "<div class='col-md-4 col-sm-6'>
                                         <div class='team-thumb wow fadeInUp' data-wow-delay='0.2s'>
-                                             <img alt='Photo' src='http://".host()."/webapps/penggajian/$rsquerysemuadokter[4]' class='img-responsive' />
+                                             <img alt='Photo' src='http://".$_SERVER['HTTP_HOST']."/webapps/penggajian/$rsquerysemuadokter[4]' class='img-responsive' />
                                               <div class='team-info'>
                                                    <h3>$rsquerysemuadokter[1]</h3>
                                                    <p>$rsquerysemuadokter[2]</p>

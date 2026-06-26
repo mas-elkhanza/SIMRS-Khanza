@@ -14,7 +14,7 @@
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
             $photo = getOne("select bukti_persetujuan_transfer_pasien_antar_ruang.photo from bukti_persetujuan_transfer_pasien_antar_ruang where bukti_persetujuan_transfer_pasien_antar_ruang.no_rawat='".$norawat."' and bukti_persetujuan_transfer_pasien_antar_ruang.tanggal_masuk='".$tanggal."'");
-            @$src   = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuantransferruang/".$photo));
+            @$src   = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/persetujuantransferruang/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
@@ -43,7 +43,7 @@
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nama Pasien</td>
-                                        <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                        <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nomor Rekam Medis</td>

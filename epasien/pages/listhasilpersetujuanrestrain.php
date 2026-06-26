@@ -15,7 +15,7 @@
             "pengkajian_restrain.sudah_dijelaskan_keluarga,pengkajian_restrain.keluarga_yang_menyetujui from pengkajian_restrain where pengkajian_restrain.no_rawat='$norawat'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pengkajianrestrain/".$photo));
+            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/pengkajianrestrain/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
@@ -84,12 +84,12 @@
                                             Penilaian & Order Dokter :
                                             <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                 <tr>
-                                                    <td width='20%'>Restrain Non Farmakologi</td>
-                                                    <td width='80%'>: ".$rsquerypersetujuan["restrain_non_farmakologi"].($rsquerypersetujuan["restrain_non_farmakologi_keterangan"]==""?"":", ".$rsquerypersetujuan["restrain_non_farmakologi_keterangan"])."</td>
+                                                    <td width='25%'>Restrain Non Farmakologi</td>
+                                                    <td width='75%'>: ".$rsquerypersetujuan["restrain_non_farmakologi"].($rsquerypersetujuan["restrain_non_farmakologi_keterangan"]==""?"":", ".$rsquerypersetujuan["restrain_non_farmakologi_keterangan"])."</td>
                                                 </tr>
                                                 <tr>
-                                                    <td width='20%'>Restrain Farmakologi</td>
-                                                    <td width='80%'>: ".$rsquerypersetujuan["restrain_farmakologi"]."</td>
+                                                    <td width='25%'>Restrain Farmakologi</td>
+                                                    <td width='75%'>: ".$rsquerypersetujuan["restrain_farmakologi"]."</td>
                                                 </tr>
                                             </table>
                                         </td>

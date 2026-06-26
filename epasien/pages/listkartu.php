@@ -21,44 +21,44 @@
                         <div class='table-responsive'>
                             <table class='table dataTable'>
                                 <tr>
-                                   <td width='30%'>Nama Pasien</td>
-                                   <td width='70%'> : ".$_SESSION["nm_pasien"]."</td>
+                                   <td width='25%'>Nama Pasien</td>
+                                   <td width='75%'> : ".$_SESSION["nm_pasien"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>Tempat Lahir</td>
-                                   <td width='70%'> : ".$_SESSION["tmp_lahir"]."</td>
+                                   <td width='25%'>Tempat Lahir</td>
+                                   <td width='75%'> : ".$_SESSION["tmp_lahir"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>Tanggal Lahir</td>
-                                   <td width='70%'> : ".$_SESSION["tgl_lahir"]."</td>
+                                   <td width='25%'>Tanggal Lahir</td>
+                                   <td width='75%'> : ".$_SESSION["tgl_lahir"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>Jenis Kelamin</td>
-                                   <td width='70%'> : ".($_SESSION["jk"]=="L"?"Laki-Laki":"Perempuan")."</td>
+                                   <td width='25%'>Jenis Kelamin</td>
+                                   <td width='75%'> : ".($_SESSION["jk"]=="L"?"Laki-Laki":"Perempuan")."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>Email</td>
-                                   <td width='70%'> : ".$_SESSION["email"]."</td>
+                                   <td width='25%'>Email</td>
+                                   <td width='75%'> : ".$_SESSION["email"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>No. HP/Telp</td>
-                                   <td width='70%'> : ".$_SESSION["no_tlp"]."</td>
+                                   <td width='25%'>No. HP/Telp</td>
+                                   <td width='75%'> : ".$_SESSION["no_tlp"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>No. KTP</td>
-                                   <td width='70%'> : ".$_SESSION["no_ktp"]."</td>
+                                   <td width='25%'>No. KTP</td>
+                                   <td width='75%'> : ".$_SESSION["no_ktp"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>No. Asuransi/JKN</td>
-                                   <td width='70%'> : ".$_SESSION["no_peserta"]."</td>
+                                   <td width='25%'>No. Asuransi/JKN</td>
+                                   <td width='75%'> : ".$_SESSION["no_peserta"]."</td>
                                 </tr>
                                 <tr>
-                                   <td width='30%'>No. RM</td>
-                                   <td width='70%'> : ".encrypt_decrypt($_SESSION["ses_pasien"],"d")."</td>
+                                   <td width='25%'>No. RM</td>
+                                   <td width='75%'> : ".encrypt_decrypt($_SESSION["ses_pasien"],"d")."</td>
                                 </tr>
                                 <tr>
                                    <td width='30%' align='right'><img src=".$_SESSION["photo"]." width='150' height='150' alt='Photo' /></td>
-                                   <td width='70%'><img src='pages/".$PNG_WEB_DIR.basename($filename)."' width='150' height='150' alt='QR Code' /></td>
+                                   <td width='75%'><img src='pages/".$PNG_WEB_DIR.basename($filename)."' width='150' height='150' alt='QR Code' /></td>
                                 </tr>
                            </table>
                         </div>

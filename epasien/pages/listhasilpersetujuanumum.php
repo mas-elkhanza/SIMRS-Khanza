@@ -15,7 +15,7 @@
             "inner join reg_periksa on surat_persetujuan_umum.no_rawat=reg_periksa.no_rawat where surat_persetujuan_umum.no_surat='".$nopersetujuan."'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuanumum/".$photo));
+            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/persetujuanumum/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
@@ -32,13 +32,13 @@
                                             <b>A. Tarif Ruang Perawatan</b><br/>
                                             <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                 <tr>
-                                                    <td width='30%'>Kelas 3</td><td width='20%'>Rp. 200.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 600.000</td>
+                                                    <td width='25%'>Kelas 3</td><td width='25%'>Rp. 200.000</td><td width='25%'>VIP</td><td width='25%'>Rp. 600.000</td>
                                                 </tr>
                                                 <tr>
-                                                    <td width='30%'>Kelas 2</td><td width='20%'>Rp. 300.000</td><td width='30%'>VVIP</td><td width='20%'>Rp. 800.000</td>
+                                                    <td width='25%'>Kelas 2</td><td width='25%'>Rp. 300.000</td><td width='25%'>VVIP</td><td width='25%'>Rp. 800.000</td>
                                                 </tr>
                                                 <tr>
-                                                    <td width='30%'>Kelas 1</td><td width='20%'>Rp. 400.000</td><td width='30%'>Isolasi</td><td width='20%'>Rp. 500.000</td>
+                                                    <td width='25%'>Kelas 1</td><td width='25%'>Rp. 400.000</td><td width='25%'>Isolasi</td><td width='25%'>Rp. 500.000</td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -62,13 +62,13 @@
                                             <b>C. Angsuran Awal</b><br/>
                                             <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                 <tr>
-                                                    <td width='30%'>Kelas 3</td><td width='20%'>Rp. 600.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 1.800.000</td>
+                                                    <td width='25%'>Kelas 3</td><td width='25%'>Rp. 600.000</td><td width='25%'>VIP</td><td width='25%'>Rp. 1.800.000</td>
                                                 </tr>
                                                 <tr>
-                                                    <td width='30%'>Kelas 2</td><td width='20%'>Rp. 900.000</td><td width='30%'>VVIP</td><td width='20%'>Rp. 2.400.000</td>
+                                                    <td width='25%'>Kelas 2</td><td width='25%'>Rp. 900.000</td><td width='25%'>VVIP</td><td width='25%'>Rp. 2.400.000</td>
                                                 </tr>
                                                 <tr>
-                                                    <td width='30%'>Kelas 1</td><td width='20%'>Rp. 1.200.000</td><td width='30%'>Isolasi</td><td width='20%'>Rp. 1.500.000</td>
+                                                    <td width='25%'>Kelas 1</td><td width='25%'>Rp. 1.200.000</td><td width='25%'>Isolasi</td><td width='25%'>Rp. 1.500.000</td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -324,7 +324,7 @@
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nama</td>
-                                        <td width='70%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
+                                        <td width='75%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
                                     </tr>
                                     <tr>
                                         <td width='25%'>Umur</td>
@@ -350,7 +350,7 @@
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nama Pasien</td>
-                                        <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                        <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nomor Rekam Medis</td>

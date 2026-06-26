@@ -35,7 +35,7 @@
                                         <td align='center' valign='middle'>".$rsqueryperpustakaan["nama_penerbit"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperpustakaan["nama_pengarang"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperpustakaan["thn_terbit"]."</td>
-                                        <td align='center' valign='middle'><a target=_blank href='http://".host()."/webapps/ebook/".$rsqueryperpustakaan["berkas"]."' class='btn btn-warning waves-effect'>Baca</a></td>
+                                        <td align='center' valign='middle'><a target=_blank href='http://".$_SERVER['HTTP_HOST']."/webapps/ebook/".$rsqueryperpustakaan["berkas"]."' class='btn btn-warning waves-effect'>Baca</a></td>
                                      </tr>";
                            }
                         ?>

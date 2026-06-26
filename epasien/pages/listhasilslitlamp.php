@@ -39,7 +39,7 @@
                 "select hasil_pemeriksaan_slit_lamp_gambar.photo from hasil_pemeriksaan_slit_lamp_gambar where hasil_pemeriksaan_slit_lamp_gambar.no_rawat='".$norawat."'"
             );
             if($rsquerygambarslitlamp= mysqli_fetch_array($querygambarslitlamp)){
-                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/hasilpemeriksaanslitlamp/".$rsquerygambarslitlamp["photo"]));
+                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/hasilpemeriksaanslitlamp/".$rsquerygambarslitlamp["photo"]));
                 echo "              <tr>
                                         <td valign='middle' colspan='3'><img alt='Gambar Slit Lamp' src='$src' width='100%' height='500px'/></td>
                                     </tr>";

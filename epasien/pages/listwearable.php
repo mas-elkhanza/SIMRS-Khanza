@@ -43,7 +43,7 @@
                                     <td><b>Token</b></td><td>: <?=encrypt_decrypt("{\"norm\":\"".encrypt_decrypt($_SESSION["ses_pasien"],"d")."\",\"password\":\"".getOne2("select AES_DECRYPT(personal_pasien.password,'windi') from personal_pasien where personal_pasien.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'")."\"}","e");?></td>
                                 </tr>
                                 <tr>
-                                    <td><b>URL</b></td><td>: <?="http://".host()."/epasien/service.php";?></td>
+                                    <td><b>URL</b></td><td>: <?="http://".$_SERVER['HTTP_HOST']."/epasien/service.php";?></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><small>Salin <b>kedua</b> baris di atas. Saat memasang Shortcut, Anda perlu memasukkan <b>Token</b> dan <b>URL</b> ini.</small></td>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="body">
                                 <p>
-                                    <a href="<?="http://".host()."/epasien/downloadwearable.php";?>" class="btn btn-primary waves-effect">
+                                    <a href="<?="http://".$_SERVER['HTTP_HOST']."/epasien/downloadwearable.php";?>" class="btn btn-primary waves-effect">
                                          <i class="material-icons">watch</i> UNDUH SHORTCUT
                                     </a>
                                 </p>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="body">
                                 <ol>
-                                    <li>Method <b>POST</b>, URL arahkan ke: <code><?="http://".host()."/epasien/service.php";?></code></li>
+                                    <li>Method <b>POST</b>, URL arahkan ke: <code><?="http://".$_SERVER['HTTP_HOST']."/epasien/service.php";?></code></li>
                                     <li>Tambah <b>Header</b> dengan key <code>token</code> berisi Token di atas.</li>
                                     <li>Request Body pilih <b>JSON</b>, isi dengan field <code>tanggal</code> dan variabel kesehatan.</li>
                                     <li>Field <code>tanggal</code> <b>wajib</b> dengan format <code>yyyy-mm-dd H:i:s</code>. Variabel lain opsional, kirim hanya yang tersedia.</li>
@@ -203,7 +203,7 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                    $queryriwayat = bukaquery("select pasien_wearable.tanggal,pasien_wearable.item,pasien_wearable.nilai,pasien_wearable.satuan,pasien_wearable.status from pasien_wearable where pasien_wearable.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' order by pasien_wearable.tanggal desc");
+                                    $queryriwayat = bukaquery("select pasien_wearable.tanggal,pasien_wearable.item,pasien_wearable.nilai,pasien_wearable.satuan,pasien_wearable.status from pasien_wearable where pasien_wearable.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' order by pasien_wearable.tanggal desc limit 1000");
                                     while($rsqueryriwayat = mysqli_fetch_array($queryriwayat)) {
                                         $keterangan = $rsqueryriwayat["status"];
                                         if($keterangan===null){

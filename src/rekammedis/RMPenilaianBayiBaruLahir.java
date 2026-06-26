@@ -42,6 +42,8 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPasien;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -525,6 +527,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel114 = new widget.Label();
         Keadaan = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnPenilaianMedis = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -776,7 +780,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-06-2026" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -941,6 +945,22 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianMedis.setText("Laporan Pengkajian Bayi Baru Lahir");
+        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianMedisActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnPenilaianMedis);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1211,7 +1231,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         label11.setBounds(668, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 20:16:34" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-06-2026 07:29:47" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2690,11 +2710,13 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2720,7 +2742,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-06-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2734,7 +2756,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-06-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3799,6 +3821,54 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+        if(tbObat.getSelectedRow()>-1){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
+
+            Valid.MyReportqry("rptCetakPenilaianBayiBaruLahir.jasper","report","::[ Cetak Penilaian Bayi Baru Lahir ]::",
+                "select penilaian_bayi_baru_lahir.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,date_format(pasien.tgl_lahir,'%d-%m-%Y') as tgl_lahir,pasien.jk,"+
+                "penilaian_bayi_baru_lahir.no_rkm_medis_ibu,ifnull(ibu.nm_pasien,'-') as nama_ibu,ifnull(date_format(ibu.tgl_lahir,'%d-%m-%Y'),'-') as tgl_lahir_ibu,ifnull(ibu.no_ktp,'-') as nik_ibu,ifnull(ibu.stts_nikah,'-') as perkawinan_ibu,"+
+                "penilaian_bayi_baru_lahir.kd_dokter,ifnull(dokter.nm_dokter,'-') as nm_dokter,date_format(penilaian_bayi_baru_lahir.tanggal,'%d-%m-%Y %H:%i:%s') as tanggal,"+
+                "penilaian_bayi_baru_lahir.penyakit_diderita_ibu,penilaian_bayi_baru_lahir.keterangan_penyakit_diderita_ibu,penilaian_bayi_baru_lahir.obat_dikonsumsi_selama_kehamilan,"+
+                "penilaian_bayi_baru_lahir.perawatan_antenatal,penilaian_bayi_baru_lahir.keterangan_perawatan_antenatal,penilaian_bayi_baru_lahir.terdaftar_ekohort,penilaian_bayi_baru_lahir.keterangan_terdaftar_ekohort,"+
+                "penilaian_bayi_baru_lahir.penyulit_kehamilan,penilaian_bayi_baru_lahir.keterangan_penyulit_kehamilan,penilaian_bayi_baru_lahir.alergi,penilaian_bayi_baru_lahir.keterangan_lainnya_riwayat_maternal,"+
+                "penilaian_bayi_baru_lahir.umur_kehamilan,penilaian_bayi_baru_lahir.kehamilan,penilaian_bayi_baru_lahir.keterangan_kehamilan,penilaian_bayi_baru_lahir.urutan_kehamilan,"+
+                "penilaian_bayi_baru_lahir.jam_ketuban_pecah,penilaian_bayi_baru_lahir.menit_ketuban_pecah,penilaian_bayi_baru_lahir.jumlah_air_ketuban,penilaian_bayi_baru_lahir.warna_air_ketuban,"+
+                "penilaian_bayi_baru_lahir.bau_air_ketuban,penilaian_bayi_baru_lahir.letak_bayi,penilaian_bayi_baru_lahir.macam_persalinan,penilaian_bayi_baru_lahir.keterangan_macam_persalinan,"+
+                "penilaian_bayi_baru_lahir.indikasi_persalinan_operatif,penilaian_bayi_baru_lahir.keterangan_indikasi_persalinan_operatif,penilaian_bayi_baru_lahir.lama_gawat_janin,"+
+                "penilaian_bayi_baru_lahir.obat_selama_persalinan,penilaian_bayi_baru_lahir.berat_placenta,penilaian_bayi_baru_lahir.kelainan_placenta,penilaian_bayi_baru_lahir.keterangan_lainnya_riwayat_persalinan,"+
+                "penilaian_bayi_baru_lahir.f1,penilaian_bayi_baru_lahir.u1,penilaian_bayi_baru_lahir.t1,penilaian_bayi_baru_lahir.r1,penilaian_bayi_baru_lahir.w1,penilaian_bayi_baru_lahir.n1,"+
+                "penilaian_bayi_baru_lahir.f5,penilaian_bayi_baru_lahir.u5,penilaian_bayi_baru_lahir.t5,penilaian_bayi_baru_lahir.r5,penilaian_bayi_baru_lahir.w5,penilaian_bayi_baru_lahir.n5,"+
+                "penilaian_bayi_baru_lahir.f10,penilaian_bayi_baru_lahir.u10,penilaian_bayi_baru_lahir.t10,penilaian_bayi_baru_lahir.r10,penilaian_bayi_baru_lahir.w10,penilaian_bayi_baru_lahir.n10,"+
+                "penilaian_bayi_baru_lahir.bblahir,penilaian_bayi_baru_lahir.panjang_badan,penilaian_bayi_baru_lahir.lingkar_kepala,penilaian_bayi_baru_lahir.lingkar_dada,"+
+                "penilaian_bayi_baru_lahir.resusitasi_saat_lahir,penilaian_bayi_baru_lahir.keterangan_resusitasi_saat_lahir,penilaian_bayi_baru_lahir.obat_diberikan_saat_lahir,penilaian_bayi_baru_lahir.keterangan_lainnya_keadaan_bayi,"+
+                "penilaian_bayi_baru_lahir.kondisi_umum,penilaian_bayi_baru_lahir.keterangan_kondisi_umum,penilaian_bayi_baru_lahir.kulit,penilaian_bayi_baru_lahir.keterangan_kulit,"+
+                "penilaian_bayi_baru_lahir.kepala,penilaian_bayi_baru_lahir.keterangan_kepala,penilaian_bayi_baru_lahir.leher,penilaian_bayi_baru_lahir.keterangan_leher,"+
+                "penilaian_bayi_baru_lahir.mata,penilaian_bayi_baru_lahir.keterangan_mata,penilaian_bayi_baru_lahir.hidung,penilaian_bayi_baru_lahir.keterangan_hidung,"+
+                "penilaian_bayi_baru_lahir.telinga,penilaian_bayi_baru_lahir.keterangan_telinga,penilaian_bayi_baru_lahir.dada as pemeriksaan_dada,penilaian_bayi_baru_lahir.keterangan_dada,"+
+                "penilaian_bayi_baru_lahir.paru,penilaian_bayi_baru_lahir.keterangan_paru,penilaian_bayi_baru_lahir.jantung,penilaian_bayi_baru_lahir.keterangan_jantung,"+
+                "penilaian_bayi_baru_lahir.perut,penilaian_bayi_baru_lahir.keterangan_perut,penilaian_bayi_baru_lahir.tali_pusat,penilaian_bayi_baru_lahir.keterangan_tali_pusat,"+
+                "penilaian_bayi_baru_lahir.alat_kelamin,penilaian_bayi_baru_lahir.keterangan_alat_kelamin,penilaian_bayi_baru_lahir.ruas_tulang_belakang,penilaian_bayi_baru_lahir.keterangan_ruas_tulang_belakang,"+
+                "penilaian_bayi_baru_lahir.extrimitas,penilaian_bayi_baru_lahir.keterangan_extrimitas,penilaian_bayi_baru_lahir.anus,penilaian_bayi_baru_lahir.keterangan_anus,"+
+                "penilaian_bayi_baru_lahir.refleks,penilaian_bayi_baru_lahir.keterangan_refleks,penilaian_bayi_baru_lahir.denyut_femoral,penilaian_bayi_baru_lahir.keterangan_denyut_femoral,"+
+                "penilaian_bayi_baru_lahir.pemeriksaan_fisik_lainnya,penilaian_bayi_baru_lahir.pemeriksaan_penunjang,penilaian_bayi_baru_lahir.diagnosa,penilaian_bayi_baru_lahir.tatalaksana "+
+                "from penilaian_bayi_baru_lahir inner join reg_periksa on penilaian_bayi_baru_lahir.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "left join pasien ibu on penilaian_bayi_baru_lahir.no_rkm_medis_ibu=ibu.no_rkm_medis "+
+                "left join dokter on penilaian_bayi_baru_lahir.kd_dokter=dokter.kd_dokter "+
+                "where penilaian_bayi_baru_lahir.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+        }
+    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3899,6 +3969,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox MacamPersalinan;
     private widget.ComboBox Mata;
     private widget.TextBox MenitKetubanPecah;
+    private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox2 N1;
     private widget.TextBox2 N10;
     private widget.TextBox2 N5;
@@ -4054,6 +4125,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel96;
     private widget.Label jLabel97;
     private widget.Label jLabel99;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;

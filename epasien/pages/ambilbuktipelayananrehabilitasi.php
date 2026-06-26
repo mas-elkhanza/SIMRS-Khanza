@@ -34,7 +34,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='25%'>Nama Pasien</td>
-                                            <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                            <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nomor Rekam Medis</td>
@@ -56,7 +56,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='25%'>Anamnesa</td>
-                                            <td width='70%'>: ".$rsquerypersetujuan["anamnesa"]."</td>
+                                            <td width='75%'>: ".$rsquerypersetujuan["anamnesa"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Pemeriksaan Fisik</td>

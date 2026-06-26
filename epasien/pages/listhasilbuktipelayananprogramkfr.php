@@ -12,7 +12,7 @@
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
             $photo = getOne("select bukti_layanan_program_kfr.photo from bukti_layanan_program_kfr where bukti_layanan_program_kfr.no_rawat='".$norawat."'");
-            @$src   = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/layananprogramkfr/".$photo));
+            @$src   = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/webapps/layananprogramkfr/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
@@ -26,7 +26,7 @@
                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                     <tr>
                                         <td width='25%'>Nama Pasien</td>
-                                        <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                        <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                     </tr>
                                     <tr>
                                         <td width='25%'>Nomor Rekam Medis</td>

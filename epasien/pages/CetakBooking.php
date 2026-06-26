@@ -19,7 +19,7 @@
                             <td width='95%' align='center'>
                                <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
                                     <tr>
-                                        <td width='20%'>
+                                        <td width='25%'>
                                             <img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
                                         </td>
                                         <td width='60%'>
@@ -31,7 +31,7 @@
                                                 </font> 
                                             </center>
                                         </td>
-                                        <td width='20%'>
+                                        <td width='25%'>
                                             &nbsp;
                                         </td>
                                     </tr>
