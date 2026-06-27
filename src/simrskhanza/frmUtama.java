@@ -955,6 +955,7 @@ import rekammedis.RMDataCatatanObservasiRestrainNonFarmakologi;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataCatatanObservasiVentilator;
 import rekammedis.RMDataFollowUpDBD;
+import rekammedis.RMDataIntervensiNyeriFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
@@ -23523,6 +23524,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnIntervensiNyeriFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataIntervensiNyeriFarmakologi aplikasi=new RMDataIntervensiNyeriFarmakologi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24241,7 +24255,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas,btnBPJSResepObatApotek,btnObatApolApotekBPJS,btnPermintaanResepIterasiApotekBPJS,btnPCRAICRAPengkajianRisikoPraKonstruksi,
             btnPCRAICRAPersyaratanHarusDipenuhi,btnKirimQRTelaahFarmasiSatuSehat,btnKirimAllergiSatuSehat,btnKonsultasiPerawat,btnMappingProsedurSmartKlaimBPJS,btnMappingPenyakitSmartKlaimBPJS,btnKirimFHIRSmartKlaimBPJS,
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
-            btnHasilUSGAbdomen;
+            btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi;
     
     public void isWall(){
         try{            
@@ -28779,6 +28793,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_ulang_nyeri()==true){
                 Panelmenu.add(btnPenilaianUlangNyeri);
+                jmlmenu++;
+            }
+            
+            if(akses.getintervensi_nyeri_farmakologi()==true){
+                Panelmenu.add(btnIntervensiNyeriFarmakologi);
                 jmlmenu++;
             }
             
@@ -34747,6 +34766,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_ulang_nyeri()==true){
             Panelmenu.add(btnPenilaianUlangNyeri);
+            jmlmenu++;
+        }
+        
+        if(akses.getintervensi_nyeri_farmakologi()==true){
+            Panelmenu.add(btnIntervensiNyeriFarmakologi);
             jmlmenu++;
         }
 
@@ -42465,6 +42489,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPenilaianUlangNyeri);
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.getintervensi_nyeri_farmakologi()==true){
+            if(btnIntervensiNyeriFarmakologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnIntervensiNyeriFarmakologi);
+                jmlmenu++;
+            }
         }
         
         if(akses.getpenilaian_risiko_dekubitus()==true){
@@ -50557,5 +50588,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilUSGAbdomen.setName("btnHasilUSGAbdomen"); 
         btnHasilUSGAbdomen.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilUSGAbdomen.addActionListener(this::btnHasilUSGAbdomenActionPerformed);
+        
+        btnIntervensiNyeriFarmakologi = new widget.ButtonBig();
+        btnIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vitamin_17348719.png")));
+        btnIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farmakologi");
+        btnIntervensiNyeriFarmakologi.setIconTextGap(0);
+        btnIntervensiNyeriFarmakologi.setName("btnIntervensiNyeriFarmakologi"); 
+        btnIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnIntervensiNyeriFarmakologi.addActionListener(this::btnIntervensiNyeriFarmakologiActionPerformed);
     }
 }

@@ -96,9 +96,9 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(200);
             }else if(i==9){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(200);
             }else if(i==10){
                 column.setPreferredWidth(100);
             }else if(i==11){
@@ -137,7 +137,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanCekGDS = new javax.swing.JMenuItem();
+        MnFormulirIntervensiNyeriFarmakologi = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -191,19 +191,19 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanCekGDS.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanCekGDS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanCekGDS.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanCekGDS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanCekGDS.setText("Formulir Catatan Cek GDS");
-        MnCatatanCekGDS.setName("MnCatatanCekGDS"); // NOI18N
-        MnCatatanCekGDS.setPreferredSize(new java.awt.Dimension(230, 26));
-        MnCatatanCekGDS.addActionListener(new java.awt.event.ActionListener() {
+        MnFormulirIntervensiNyeriFarmakologi.setBackground(new java.awt.Color(255, 255, 254));
+        MnFormulirIntervensiNyeriFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFormulirIntervensiNyeriFarmakologi.setForeground(new java.awt.Color(50, 50, 50));
+        MnFormulirIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnFormulirIntervensiNyeriFarmakologi.setText("Formulir Intervensi Nyeri Farmakologi");
+        MnFormulirIntervensiNyeriFarmakologi.setName("MnFormulirIntervensiNyeriFarmakologi"); // NOI18N
+        MnFormulirIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnFormulirIntervensiNyeriFarmakologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanCekGDSActionPerformed(evt);
+                MnFormulirIntervensiNyeriFarmakologiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanCekGDS);
+        jPopupMenu1.add(MnFormulirIntervensiNyeriFarmakologi);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -223,7 +223,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Intervensi Nyeri Nonfarmakologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Intervensi Nyeri Farmakologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -837,7 +837,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek Obat ]::",
+                Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
                     "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
@@ -846,7 +846,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
                     "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where "+
                     "intervensi_nyeri_farmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek Obat ]::",
+                Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
                     "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
@@ -994,7 +994,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
         Valid.pindah(evt,Detik,Obat);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanCekGDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanCekGDSActionPerformed
+    private void MnFormulirIntervensiNyeriFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1004,7 +1004,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanCekGDS.jasper","report","::[ Formulir Catatan Cek Obat ]::",
+            Valid.MyReportqry("rptFormulirIntervensiNyeriFarmakologi.jasper","report","::[ Formulir Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
                     "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
@@ -1012,7 +1012,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanCekGDSActionPerformed
+    }//GEN-LAST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
 
     private void ObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatKeyPressed
         Valid.pindah(evt,btnPetugas,DosisEfek);
@@ -1088,7 +1088,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanCekGDS;
+    private javax.swing.JMenuItem MnFormulirIntervensiNyeriFarmakologi;
     private widget.TextBox NmPetugas;
     private widget.TextBox Obat;
     private javax.swing.JPanel PanelInput;
