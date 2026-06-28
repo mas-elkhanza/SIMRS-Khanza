@@ -197,7 +197,7 @@ public final class RMDataIntervensiNyeriFarmakologi extends javax.swing.JDialog 
         MnFormulirIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulirIntervensiNyeriFarmakologi.setText("Formulir Intervensi Nyeri Farmakologi");
         MnFormulirIntervensiNyeriFarmakologi.setName("MnFormulirIntervensiNyeriFarmakologi"); // NOI18N
-        MnFormulirIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnFormulirIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(235, 26));
         MnFormulirIntervensiNyeriFarmakologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnFormulirIntervensiNyeriFarmakologiActionPerformed(evt);

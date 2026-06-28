@@ -363,6 +363,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanCairanHemodialisa = new widget.CekBox();
         chkCatatanCekGDS = new widget.CekBox();
         chkPenilaianUlangNyeri = new widget.CekBox();
+        chkIntervensiNyeriFarmakologi = new widget.CekBox();
         chkCatatanKeperawatanRalan = new widget.CekBox();
         chkCatatanKeperawatanRanap = new widget.CekBox();
         chkChecklistPemberianFibrinolitik = new widget.CekBox();
@@ -654,7 +655,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2026 23:17:45" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2026 09:37:01" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -963,7 +964,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4660));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4680));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1554,6 +1555,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPenilaianUlangNyeri.setOpaque(false);
         chkPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPenilaianUlangNyeri);
+
+        chkIntervensiNyeriFarmakologi.setSelected(true);
+        chkIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farmakologi");
+        chkIntervensiNyeriFarmakologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkIntervensiNyeriFarmakologi.setName("chkIntervensiNyeriFarmakologi"); // NOI18N
+        chkIntervensiNyeriFarmakologi.setOpaque(false);
+        chkIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkIntervensiNyeriFarmakologi);
 
         chkCatatanKeperawatanRalan.setSelected(true);
         chkCatatanKeperawatanRalan.setText("Catatan Keperawatan Ralan");
@@ -3241,6 +3250,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkKonsultasiPerawat.setSelected(true);
             chkCatatanObservasiRuangOperasi.setSelected(true);
             chkHasilPemeriksaanUSGAbdomen.setSelected(true);
+            chkIntervensiNyeriFarmakologi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3443,6 +3453,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkKonsultasiPerawat.setSelected(false);
             chkCatatanObservasiRuangOperasi.setSelected(false);
             chkHasilPemeriksaanUSGAbdomen.setSelected(false);
+            chkIntervensiNyeriFarmakologi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4166,6 +4177,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkHasilPemeriksaanUSGNeonatus;
     private widget.CekBox chkHasilPemeriksaanUSGUrologi;
     private widget.CekBox chkHemodialisa;
+    private widget.CekBox chkIntervensiNyeriFarmakologi;
     private widget.CekBox chkKonselingFarmasi;
     private widget.CekBox chkKonsultasiMedik;
     private widget.CekBox chkKonsultasiPerawat;
@@ -12296,6 +12308,61 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi Pengkajian Ulang Nyeri : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //Intervensi Ulang Nyeri
+            if(chkIntervensiNyeriFarmakologi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
+                        "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
+                        "from intervensi_nyeri_farmakologi inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip "+
+                        "where intervensi_nyeri_farmakologi.no_rawat='"+norawat+"' order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append( 
+                            "<td valign='top' width='2%'></td>").append(        
+                            "<td valign='top' width='18%'>Intervensi Nyeri Farmakologi</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                 "<tr align='center'>").append(
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>").append(
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>").append(
+                                    "<td valign='top' width='58%' bgcolor='#FFFAF8' colspan='3'>Intervensi</td>").append(
+                                    "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>").append(
+                                 "</tr>").append(
+                                 "<tr align='center'>").append(
+                                    "<td valign='top' width='25%' bgcolor='#FFFAF8'>Obat</td>").append(
+                                    "<td valign='top' width='24%' bgcolor='#FFFAF8'>Dosis & Efek</td>").append(
+                                    "<td valign='top' width='9%' bgcolor='#FFFAF8'>Rute</td>").append(
+                                 "</tr>"
+                        );
+                        w=1;
+                        do{
+                            htmlContent.append(
+                                 "<tr>").append(
+                                    "<td valign='top' align='center'>").append(w).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("tgl_perawatan")).append(" ").append(rs2.getString("jam_rawat")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("nama_obat")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("dosis_efek")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("rute")).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                 "</tr>");                                        
+                            w++;
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi Intervensi Nyeri Farmakologi : "+e);
                 } finally{
                     if(rs2!=null){
                         rs2.close();
