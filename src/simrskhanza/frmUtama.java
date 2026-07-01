@@ -50629,7 +50629,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnIntervensiNyeriFarmakologi.addActionListener(this::btnIntervensiNyeriFarmakologiActionPerformed);
         
         btnIntervensiNyeriNonFarmakologi = new widget.ButtonBig();
-        btnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/headset_1101751.png")));
+        btnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/music_9881578.png")));
         btnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farmakologi");
         btnIntervensiNyeriNonFarmakologi.setIconTextGap(0);
         btnIntervensiNyeriNonFarmakologi.setName("btnIntervensiNyeriNonFarmakologi"); 

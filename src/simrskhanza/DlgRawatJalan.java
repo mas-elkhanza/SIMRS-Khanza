@@ -14086,7 +14086,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnIntervensiNyeriFarmakologi = new widget.Button();
         BtnIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
-        BtnIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farma");
+        BtnIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farmakologi");
         BtnIntervensiNyeriFarmakologi.setFocusPainted(false);
         BtnIntervensiNyeriFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnIntervensiNyeriFarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -14099,7 +14099,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnIntervensiNyeriNonFarmakologi = new widget.Button();
         BtnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
-        BtnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farmakologi");
+        BtnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farma");
         BtnIntervensiNyeriNonFarmakologi.setFocusPainted(false);
         BtnIntervensiNyeriNonFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnIntervensiNyeriNonFarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));

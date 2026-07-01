@@ -95,7 +95,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else if(i==10){
