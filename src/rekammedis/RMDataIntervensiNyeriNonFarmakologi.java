@@ -66,8 +66,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Inter","Jam Inter","Obat",
-            "Dosis & Efek","Rute","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Inter","Jam Inter","Intervensi","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -77,7 +76,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -98,12 +97,8 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             }else if(i==8){
                 column.setPreferredWidth(200);
             }else if(i==9){
-                column.setPreferredWidth(200);
-            }else if(i==10){
-                column.setPreferredWidth(100);
-            }else if(i==11){
                 column.setPreferredWidth(90);
-            }else if(i==12){
+            }else if(i==10){
                 column.setPreferredWidth(160);
             }
         }
@@ -111,9 +106,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        Obat.setDocument(new batasInput((int)100).getKata(Obat));
-        DosisEfek.setDocument(new batasInput((int)100).getKata(DosisEfek));
-        Rute.setDocument(new batasInput((byte)30).getKata(Rute));
+        Intervensi.setDocument(new batasInput((int)200).getKata(Intervensi));
         
         ChkInput.setSelected(false);
         isForm();
@@ -182,11 +175,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        Obat = new widget.TextBox();
-        Rute = new widget.TextBox();
-        jLabel20 = new widget.Label();
-        jLabel23 = new widget.Label();
-        DosisEfek = new widget.TextBox();
+        Intervensi = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -223,7 +212,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Intervensi Nyeri Farmakologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Intervensi Nyeri Non Farmakologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -389,7 +378,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-06-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -403,7 +392,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-06-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -499,7 +488,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-06-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -610,50 +599,20 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("Obat :");
+        jLabel12.setText("Intervensi :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 70, 70, 23);
 
-        Obat.setFocusTraversalPolicyProvider(true);
-        Obat.setName("Obat"); // NOI18N
-        Obat.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi.setFocusTraversalPolicyProvider(true);
+        Intervensi.setName("Intervensi"); // NOI18N
+        Intervensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ObatKeyPressed(evt);
+                IntervensiKeyPressed(evt);
             }
         });
-        FormInput.add(Obat);
-        Obat.setBounds(74, 70, 210, 23);
-
-        Rute.setFocusTraversalPolicyProvider(true);
-        Rute.setName("Rute"); // NOI18N
-        Rute.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RuteKeyPressed(evt);
-            }
-        });
-        FormInput.add(Rute);
-        Rute.setBounds(670, 70, 119, 23);
-
-        jLabel20.setText("Rute :");
-        jLabel20.setName("jLabel20"); // NOI18N
-        FormInput.add(jLabel20);
-        jLabel20.setBounds(616, 70, 50, 23);
-
-        jLabel23.setText("Dosis & Efek :");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(296, 70, 90, 23);
-
-        DosisEfek.setFocusTraversalPolicyProvider(true);
-        DosisEfek.setName("DosisEfek"); // NOI18N
-        DosisEfek.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DosisEfekKeyPressed(evt);
-            }
-        });
-        FormInput.add(DosisEfek);
-        DosisEfek.setBounds(390, 70, 210, 23);
+        FormInput.add(Intervensi);
+        Intervensi.setBounds(74, 70, 715, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -702,12 +661,8 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(Obat.getText().trim().equals("")){
-            Valid.textKosong(Obat,"Obat");
-        }else if(DosisEfek.getText().trim().equals("")){
-            Valid.textKosong(DosisEfek,"Dosis & Efek");
-        }else if(Rute.getText().trim().equals("")){
-            Valid.textKosong(Rute,"Rute");
+        }else if(Intervensi.getText().trim().equals("")){
+            Valid.textKosong(Intervensi,"Intervensi");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -726,7 +681,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Rute,BtnBatal);
+            Valid.pindah(evt,Intervensi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -773,12 +728,8 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(Obat.getText().trim().equals("")){
-            Valid.textKosong(Obat,"Obat");
-        }else if(DosisEfek.getText().trim().equals("")){
-            Valid.textKosong(DosisEfek,"Dosis & Efek");
-        }else if(Rute.getText().trim().equals("")){
-            Valid.textKosong(Rute,"Rute");
+        }else if(Intervensi.getText().trim().equals("")){
+            Valid.textKosong(Intervensi,"Intervensi");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -839,24 +790,24 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
-                    "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_farmakologi inner join reg_periksa on intervensi_nyeri_farmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
+                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where "+
-                    "intervensi_nyeri_farmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat",param);
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
+                    "intervensi_nyeri_nonfarmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat",param);
             }else{
                 Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
-                    "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_farmakologi inner join reg_periksa on intervensi_nyeri_farmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
+                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where "+
-                    "intervensi_nyeri_farmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
+                    "intervensi_nyeri_nonfarmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or intervensi_nyeri_farmakologi.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat ",param);
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or intervensi_nyeri_nonfarmakologi.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -952,7 +903,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Obat.requestFocus();
+            Intervensi.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -991,7 +942,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,Obat);
+        Valid.pindah(evt,Detik,Intervensi);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnFormulirIntervensiNyeriFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
@@ -1006,25 +957,17 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptFormulirIntervensiNyeriFarmakologi.jasper","report","::[ Formulir Intervensi Nyeri Farmakologi ]::",
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
-                    "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_farmakologi inner join reg_periksa on intervensi_nyeri_farmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
+                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat",param);
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat",param);
         }
     }//GEN-LAST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
 
-    private void ObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatKeyPressed
-        Valid.pindah(evt,btnPetugas,DosisEfek);
-    }//GEN-LAST:event_ObatKeyPressed
-
-    private void RuteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuteKeyPressed
-        Valid.pindah(evt,DosisEfek,BtnSimpan);
-    }//GEN-LAST:event_RuteKeyPressed
-
-    private void DosisEfekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DosisEfekKeyPressed
-        Valid.pindah(evt,Obat,Rute);
-    }//GEN-LAST:event_DosisEfekKeyPressed
+    private void IntervensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervensiKeyPressed
+        Valid.pindah(evt,btnPetugas,BtnSimpan);
+    }//GEN-LAST:event_IntervensiKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1081,8 +1024,8 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
-    private widget.TextBox DosisEfek;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox Intervensi;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
@@ -1090,9 +1033,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnFormulirIntervensiNyeriFarmakologi;
     private widget.TextBox NmPetugas;
-    private widget.TextBox Obat;
     private javax.swing.JPanel PanelInput;
-    private widget.TextBox Rute;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1108,9 +1049,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
-    private widget.Label jLabel20;
     private widget.Label jLabel21;
-    private widget.Label jLabel23;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1128,23 +1067,23 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
-                    "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_farmakologi inner join reg_periksa on intervensi_nyeri_farmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,"+
+                    "intervensi_nyeri_nonfarmakologi.intervensi,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where "+
-                    "intervensi_nyeri_farmakologi.tgl_perawatan between ? and ? order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat");
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
+                    "intervensi_nyeri_nonfarmakologi.tgl_perawatan between ? and ? order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat,intervensi_nyeri_farmakologi.nama_obat,"+
-                    "intervensi_nyeri_farmakologi.dosis_efek,intervensi_nyeri_farmakologi.rute,intervensi_nyeri_farmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_farmakologi inner join reg_periksa on intervensi_nyeri_farmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,"+
+                    "intervensi_nyeri_nonfarmakologi.intervensi,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_farmakologi.nip=petugas.nip where "+
-                    "intervensi_nyeri_farmakologi.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? "+
-                    "or pasien.nm_pasien like ? or intervensi_nyeri_farmakologi.nip like ? or petugas.nama like ?) "+
-                    "order by intervensi_nyeri_farmakologi.tgl_perawatan,intervensi_nyeri_farmakologi.jam_rawat ");
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
+                    "intervensi_nyeri_nonfarmakologi.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? "+
+                    "or pasien.nm_pasien like ? or intervensi_nyeri_nonfarmakologi.nip like ? or petugas.nama like ?) "+
+                    "order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat ");
             }
                 
             try {
@@ -1166,8 +1105,8 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("nama_obat"),rs.getString("dosis_efek"),
-                        rs.getString("rute"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("intervensi"),
+                        rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1187,11 +1126,9 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     }
     
     public void emptTeks() {
-        Obat.setText("");
-        DosisEfek.setText("");
-        Rute.setText("");
+        Intervensi.setText("");
         Tanggal.setDate(new Date());
-        Obat.requestFocus();
+        Intervensi.requestFocus();
     } 
 
     private void getData() {
@@ -1205,9 +1142,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            Obat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            DosisEfek.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Rute.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Intervensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1268,10 +1203,10 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getintervensi_nyeri_farmakologi());
-        BtnHapus.setEnabled(akses.getintervensi_nyeri_farmakologi());
-        BtnEdit.setEnabled(akses.getintervensi_nyeri_farmakologi());
-        BtnPrint.setEnabled(akses.getintervensi_nyeri_farmakologi()); 
+        BtnSimpan.setEnabled(akses.getintervensi_nyeri_nonfarmakologi());
+        BtnHapus.setEnabled(akses.getintervensi_nyeri_nonfarmakologi());
+        BtnEdit.setEnabled(akses.getintervensi_nyeri_nonfarmakologi());
+        BtnPrint.setEnabled(akses.getintervensi_nyeri_nonfarmakologi()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1348,10 +1283,9 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("intervensi_nyeri_farmakologi","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,nama_obat=?,dosis_efek=?,rute=?,nip=?",10,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Obat.getText(),DosisEfek.getText(),Rute.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("intervensi_nyeri_nonfarmakologi","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,intervensi=?,nip=?",8,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Intervensi.getText(),KdPetugas.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1361,17 +1295,15 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(Obat.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(DosisEfek.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Rute.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Intervensi.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),10);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from intervensi_nyeri_farmakologi where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
+        if(Sequel.queryu2tf("delete from intervensi_nyeri_nonfarmakologi where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1383,14 +1315,13 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("intervensi_nyeri_farmakologi","?,?,?,?,?,?,?","Data",7,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Obat.getText(),DosisEfek.getText(),Rute.getText(),KdPetugas.getText()
+        if(Sequel.menyimpantf("intervensi_nyeri_nonfarmakologi","?,?,?,?,?","Data",5,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Intervensi.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Obat.getText(),DosisEfek.getText(),Rute.getText(),KdPetugas.getText(),NmPetugas.getText()
+                Intervensi.getText(),KdPetugas.getText(),NmPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

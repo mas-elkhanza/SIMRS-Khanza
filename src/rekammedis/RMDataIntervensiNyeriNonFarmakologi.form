@@ -93,7 +93,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Intervensi Nyeri Farmakologi ]::">
+            <TitledBorder title="::[ Intervensi Nyeri Non Farmakologi ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -351,7 +351,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="29-06-2026"/>
+                        <StringItem index="0" value="30-06-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -379,7 +379,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="29-06-2026"/>
+                        <StringItem index="0" value="30-06-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -538,7 +538,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="29-06-2026"/>
+                        <StringItem index="0" value="30-06-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -878,7 +878,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Obat :"/>
+                    <Property name="text" type="java.lang.String" value="Intervensi :"/>
                     <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -887,67 +887,17 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="Obat">
+                <Component class="widget.TextBox" name="Intervensi">
                   <Properties>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                    <Property name="name" type="java.lang.String" value="Obat" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Intervensi" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ObatKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IntervensiKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="74" y="70" width="210" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="Rute">
-                  <Properties>
-                    <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                    <Property name="name" type="java.lang.String" value="Rute" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RuteKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="670" y="70" width="119" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Label" name="jLabel20">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Rute :"/>
-                    <Property name="name" type="java.lang.String" value="jLabel20" noResource="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="616" y="70" width="50" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Label" name="jLabel23">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Dosis &amp; Efek :"/>
-                    <Property name="name" type="java.lang.String" value="jLabel23" noResource="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="296" y="70" width="90" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="DosisEfek">
-                  <Properties>
-                    <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                    <Property name="name" type="java.lang.String" value="DosisEfek" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DosisEfekKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="390" y="70" width="210" height="23"/>
+                      <AbsoluteConstraints x="74" y="70" width="715" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

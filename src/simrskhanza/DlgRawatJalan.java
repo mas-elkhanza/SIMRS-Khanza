@@ -98,6 +98,7 @@ import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiInduksiPersalinan;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
+import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataSkriningGiziKehamilan;
@@ -10501,6 +10502,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnIntervensiNyeriNonFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataIntervensiNyeriNonFarmakologi form=new RMDataIntervensiNyeriNonFarmakologi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10862,7 +10880,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi,
                           BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,
-                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi;   
+                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi;   
     private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
     private javax.swing.JMenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
     
@@ -11579,6 +11597,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnIntervensiNyeriFarmakologi.setVisible(akses.getintervensi_nyeri_farmakologi()); 
         if(akses.getintervensi_nyeri_farmakologi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnIntervensiNyeriNonFarmakologi.setVisible(akses.getintervensi_nyeri_nonfarmakologi()); 
+        if(akses.getintervensi_nyeri_nonfarmakologi()==true){
             tinggi=tinggi+24;
         }
         BtnAwalTerapiWicara.setVisible(akses.getpenilaian_terapi_wicara()); 
@@ -14064,7 +14086,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnIntervensiNyeriFarmakologi = new widget.Button();
         BtnIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
-        BtnIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farmakologi");
+        BtnIntervensiNyeriFarmakologi.setText("Intervensi Nyeri Farma");
         BtnIntervensiNyeriFarmakologi.setFocusPainted(false);
         BtnIntervensiNyeriFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnIntervensiNyeriFarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -14074,6 +14096,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnIntervensiNyeriFarmakologi.setRoundRect(false);
         BtnIntervensiNyeriFarmakologi.addActionListener(this::BtnIntervensiNyeriFarmakologiActionPerformed);
+        
+        BtnIntervensiNyeriNonFarmakologi = new widget.Button();
+        BtnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farmakologi");
+        BtnIntervensiNyeriNonFarmakologi.setFocusPainted(false);
+        BtnIntervensiNyeriNonFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnIntervensiNyeriNonFarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnIntervensiNyeriNonFarmakologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnIntervensiNyeriNonFarmakologi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnIntervensiNyeriNonFarmakologi.setName("BtnIntervensiNyeriNonFarmakologi");
+        BtnIntervensiNyeriNonFarmakologi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnIntervensiNyeriNonFarmakologi.setRoundRect(false);
+        BtnIntervensiNyeriNonFarmakologi.addActionListener(this::BtnIntervensiNyeriNonFarmakologiActionPerformed);
         
         BtnResepIterasiBPJS = new widget.Button();
         BtnResepIterasiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
@@ -14222,6 +14257,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnChecklistPemberianFibrinolitik);
         FormMenu.add(BtnPenilaianUlangNyeri);
         FormMenu.add(BtnIntervensiNyeriFarmakologi);
+        FormMenu.add(BtnIntervensiNyeriNonFarmakologi);
         FormMenu.add(BtnPemantauanPEWSAnak);
         FormMenu.add(BtnPemantauanPEWSDewasa);
         FormMenu.add(BtnPemantauanMEOWS);
