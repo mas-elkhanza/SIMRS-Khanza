@@ -876,7 +876,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 if(Valid.daysOld("./cache/suratpemesananipsrs.iyem")<8){
                     runBackground(() ->tampil2());
                 }else{
-                    runBackground(() ->tampil());
+                    runBackground(() ->LoadData());
                 }
             } catch (Exception e) {
             }
@@ -1334,12 +1334,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        runBackground(() ->tampil());
-        LSubtotal.setText("0");
-        LPotongan.setText("0");
-        LTotal2.setText("0");
-        LPpn.setText("0");
-        LTagiha.setText("0");
+        runBackground(() ->LoadData());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1425,19 +1420,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void tampil() {
         try{
-            Valid.tabelKosong(tabMode);
             file=new File("./cache/suratpemesananipsrs.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsbarang.kode_sat, "+
                 " ipsrsbarang.harga from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
                 " where ipsrsbarang.status='1' order by ipsrsbarang.nama_brng");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{"",rs.getString(3),rs.getString(1),rs.getString(2),rs.getDouble(4),0,0,0,0});
                     iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"Harga\":\"").append(rs.getString(4)).append("\"},");
                 }        
             } catch (Exception e) {
@@ -1550,6 +1542,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             response = null;
             root = null;
         }
+    }
+    
+    private void LoadData(){
+        tampil();
+        tampil2();
     }
     
     private void getData(){        
