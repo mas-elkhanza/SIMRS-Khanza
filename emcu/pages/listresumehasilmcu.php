@@ -2,7 +2,7 @@
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
         exit(header("Location:../index.php"));
     }
-    
+
     $sekarang    = date("Y-m-d");
     $thnsekarang = substr($sekarang,0,4);
     $blnsekarang = substr($sekarang,5,2);
@@ -22,7 +22,7 @@
         $blncarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],3,2):$blnsekarang);
         $tglcarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],0,2):$tglsekarang);
     }
-    
+
     if(isset($_GET['iyem'])){
         $json = json_decode(encrypt_decrypt($_GET['iyem'],"d"),true);
         if (isset($json["tgl_cari_mcu"])) {
@@ -30,12 +30,67 @@
             $blncarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],3,2):$blnsekarang);
             $tglcarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],0,2):$tglsekarang);
         }
-
         if (isset($json["tgl_cari_mcu2"])) {
             $thncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],6,4):$thnsekarang);
             $blncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],3,2):$blnsekarang);
             $tglcarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],0,2):$tglsekarang);
         }
+    }
+
+    function pasangkanKesimpulanAnjuranMCU($kesimpulan_raw, $anjuran_raw){
+        $kesimpulan_list      = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', (string)$kesimpulan_raw)), function($v){ return $v !== ""; }));
+        $anjuran_list         = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', (string)$anjuran_raw)), function($v){ return $v !== ""; }));
+        $hasil_kesimpulan     = array();
+        $hasil_anjuran        = array();
+        $anjuran_terpakai     = array();
+        $master_anjuran_cache = array();
+
+        if(!empty($kesimpulan_list)){
+            foreach($kesimpulan_list as $idx => $kesimpulan_item){
+                if(!array_key_exists($kesimpulan_item, $master_anjuran_cache)){
+                    $kesimpulan_item_aman = validTeks($kesimpulan_item);
+                    $querymasterkesimpulananjuran = bukaquery(
+                        "select anjuran from master_kesimpulan_anjuran_mcu where kesimpulan='".$kesimpulan_item_aman."'"
+                    );
+                    $opsi_anjuran = array();
+                    while($rsquerymasterkesimpulananjuran = mysqli_fetch_array($querymasterkesimpulananjuran)){
+                        $opsi_anjuran[] = trim($rsquerymasterkesimpulananjuran["anjuran"]);
+                    }
+                    $master_anjuran_cache[$kesimpulan_item] = $opsi_anjuran;
+                }
+                $opsi_anjuran = $master_anjuran_cache[$kesimpulan_item];
+
+                $anjuran_teks = null;
+                if(isset($anjuran_list[$idx]) && !in_array($idx, $anjuran_terpakai) && in_array($anjuran_list[$idx], $opsi_anjuran)){
+                    $anjuran_teks       = $anjuran_list[$idx];
+                    $anjuran_terpakai[] = $idx;
+                }
+
+                if($anjuran_teks === null){
+                    foreach($anjuran_list as $a_idx => $a_val){
+                        if(in_array($a_idx, $anjuran_terpakai)){
+                            continue;
+                        }
+                        if(in_array($a_val, $opsi_anjuran)){
+                            $anjuran_teks       = $a_val;
+                            $anjuran_terpakai[] = $a_idx;
+                            break;
+                        }
+                    }
+                }
+
+                if($anjuran_teks === null || $anjuran_teks === ""){
+                    $anjuran_teks = "-";
+                }
+
+                $hasil_kesimpulan[] = $kesimpulan_item;
+                $hasil_anjuran[]    = $anjuran_teks;
+            }
+        }else{
+            $hasil_kesimpulan[] = "-";
+            $hasil_anjuran[]    = "-";
+        }
+        return array("kesimpulan" => $hasil_kesimpulan, "anjuran" => $hasil_anjuran);
     }
 ?>
 <link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
@@ -56,7 +111,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <label for="tgl_cari_mcu2">Sampai Dengan</label>
                             <div class="form-group">
@@ -88,13 +142,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
+                        <?php
                             $querypasiencari = bukaquery(
                                "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,pasien.no_ktp,pasien.tgl_lahir,pasien.nip,penilaian_mcu.tanggal,penilaian_mcu.td,penilaian_mcu.bb,penilaian_mcu.tb,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ".
                                "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat inner join booking_mcu_perusahaan_berhasil_registrasi on reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat inner join booking_mcu_perusahaan on booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu ".
                                "where booking_mcu_perusahaan.kode_perusahaan='$perusahaan' and booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' and '$thncarimcu2-$blncarimcu2-$tglcarimcu2'"
                             );
                             while($rsquerypasiencari = mysqli_fetch_array($querypasiencari)) {
+                                $pasangan_kesimpulan_anjuran = pasangkanKesimpulanAnjuranMCU($rsquerypasiencari["kesimpulan"], $rsquerypasiencari["anjuran"]);
+                                $baris_kesimpulan_saran      = "";
+                                foreach($pasangan_kesimpulan_anjuran["kesimpulan"] as $i => $teks_kesimpulan){
+                                    $teks_saran = $pasangan_kesimpulan_anjuran["anjuran"][$i];
+                                    $baris_kesimpulan_saran .= "<tr>
+                                                                    <td width='50%' valign='top'>".htmlspecialchars($teks_kesimpulan)."</td>
+                                                                    <td width='50%' valign='top'>".htmlspecialchars($teks_saran)."</td>
+                                                                </tr>";
+                                }
+                                
+                                $tabel_kesimpulan_saran = "<table width='100%' class='table table-bordered' style='margin-bottom:0'>".$baris_kesimpulan_saran."</table>";
+
                                 echo "<tr>
                                          <td align='center' valign='middle'>".$rsquerypasiencari["no_rkm_medis"]."</td>
                                          <td align='left' valign='middle'>".$rsquerypasiencari["nm_pasien"]."</td>
@@ -107,18 +173,16 @@
                                          <td align='center' valign='middle'>".$rsquerypasiencari["td"]."</td>
                                          <td align='center' valign='middle'>".$rsquerypasiencari["bb"]."</td>
                                          <td align='center' valign='middle'>".$rsquerypasiencari["tb"]."</td>
-                                         <td align='left' valign='middle'>".$rsquerypasiencari["kesimpulan"]."</td>
-                                         <td align='left' valign='middle'>".$rsquerypasiencari["anjuran"]."</td>
+                                         <td align='left' valign='middle' colspan='2' style='padding:0'>".$tabel_kesimpulan_saran."</td>
                                       </tr>";
                             }
                         ?>
                         </tbody>
                     </table>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <script src="plugins/jquery/jquery.min.js" type="text/javascript"></script>
 <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>

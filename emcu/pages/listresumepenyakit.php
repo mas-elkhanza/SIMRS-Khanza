@@ -186,7 +186,7 @@
                     <div class="text-center">Grafik Penyakit Hasil Medical Checkup</div>
                 </div>
                 <div class="body">
-                    <div id="pie_chart_penyakit" class="flot-chart" style="height: 400px;"></div>
+                    <div id="bar_chart_penyakit" class="flot-chart" style="height: 400px;"></div>
                 </div>
             </div>
         </div>
@@ -197,32 +197,48 @@
 <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="plugins/flot-charts/jquery.flot.js"></script>
 <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
-<script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+<script src="plugins/flot-charts/jquery.flot.categories.js"></script>
 
 <script>
 $(function() {
     var dataPenyakit = <?= json_encode($dataPenyakit) ?>;
     if (dataPenyakit.length > 0) {
-        $.plot("#pie_chart_penyakit", dataPenyakit, {
-            series: {
-                pie: {
-                    show: true,
-                    radius: 1,
-                    label: {
-                        show: true,
-                        radius: 0.75,
-                        formatter: function(label, series) {
-                            return '<div style="font-size:12px;text-align:center;padding:2px;color:white;">'
-                                + label + '<br/>' + Math.round(series.percent) + '%</div>';
-                        },
-                        background: { opacity: 0.6 }
-                    }
-                }
-            },
-            legend: { show: true }
+        var barData = dataPenyakit.map(function(item) {
+            return [item.label, item.data];
+        });
+
+        $.plot("#bar_chart_penyakit", [ 
+            { data: barData, color: "#007bff", bars: { show: true, barWidth: 0.5, align: "center" } } 
+        ], {
+            xaxis: { mode: "categories", tickLength: 0, font: { size: 11, color: "#333" } },
+            yaxis: { min: 0, tickDecimals: 0 },
+            grid: { hoverable: true, clickable: true, borderWidth: 0.3 },
+            legend: { show: false }
+        });
+
+        // Tooltip sederhana saat hover
+        $("<div id='tooltip'></div>").css({
+            position: "absolute",
+            display: "none",
+            border: "1px solid #ccc",
+            padding: "4px",
+            "background-color": "#fff",
+            opacity: 0.9,
+            "border-radius": "4px",
+            "font-size": "12px"
+        }).appendTo("body");
+
+        $("#bar_chart_penyakit").bind("plothover", function (event, pos, item) {
+            if (item) {
+                $("#tooltip").html(item.datapoint[0] + "<br><b>" + item.datapoint[1] + " kasus</b>")
+                    .css({ top: item.pageY+5, left: item.pageX+5 })
+                    .fadeIn(200);
+            } else {
+                $("#tooltip").hide();
+            }
         });
     } else {
-        $("#pie_chart_bmi").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+        $("#bar_chart_penyakit").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
 });
 </script>

@@ -69,7 +69,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBMI[] = [
-                                    'label' => $row['kasifikasi_bmi'],
+                                    'label' => $row['kasifikasi_bmi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -95,7 +95,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPinggang[] = [
-                                    'label' => $row['risiko_lingkar_pinggang'],
+                                    'label' => $row['risiko_lingkar_pinggang']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -121,7 +121,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSubmandibula[] = [
-                                    'label' => $row['submandibula'],
+                                    'label' => $row['submandibula']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -147,7 +147,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataAxilla[] = [
-                                    'label' => $row['axilla'],
+                                    'label' => $row['axilla']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -173,7 +173,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSupraklavikula[] = [
-                                    'label' => $row['supraklavikula'],
+                                    'label' => $row['supraklavikula']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -199,7 +199,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLeher[] = [
-                                    'label' => $row['leher'],
+                                    'label' => $row['leher']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -225,7 +225,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataInguinal[] = [
-                                    'label' => $row['inguinal'],
+                                    'label' => $row['inguinal']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -251,7 +251,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataOedema[] = [
-                                    'label' => $row['oedema'],
+                                    'label' => $row['oedema']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -277,7 +277,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSinusFrontalis[] = [
-                                    'label' => $row['sinus_frontalis'],
+                                    'label' => $row['sinus_frontalis']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -303,7 +303,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSinusMaxilaris[] = [
-                                    'label' => $row['sinus_maxilaris'],
+                                    'label' => $row['sinus_maxilaris']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -329,7 +329,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPalpebra[] = [
-                                    'label' => $row['palpebra'],
+                                    'label' => $row['palpebra']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -355,7 +355,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSklera[] = [
-                                    'label' => $row['sklera'],
+                                    'label' => $row['sklera']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -381,7 +381,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataCornea[] = [
-                                    'label' => $row['cornea'],
+                                    'label' => $row['cornea']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -407,7 +407,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataButaWarna[] = [
-                                    'label' => $row['buta_warna'],
+                                    'label' => $row['buta_warna']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -433,7 +433,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataKonjungtiva[] = [
-                                    'label' => $row['konjungtiva'],
+                                    'label' => $row['konjungtiva']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -459,7 +459,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLensa[] = [
-                                    'label' => $row['lensa'],
+                                    'label' => $row['lensa']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -485,7 +485,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPupil[] = [
-                                    'label' => $row['pupil'],
+                                    'label' => $row['pupil']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -511,7 +511,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataMenggunakanKacamata[] = [
-                                    'label' => $row['menggunakan_kacamata'],
+                                    'label' => $row['menggunakan_kacamata']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -537,7 +537,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLuasLapangPandang[] = [
-                                    'label' => $row['luas_lapang_pandang'],
+                                    'label' => $row['luas_lapang_pandang']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -563,7 +563,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLubangTelinga[] = [
-                                    'label' => $row['lubang_telinga'],
+                                    'label' => $row['lubang_telinga']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -589,7 +589,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataDaunTelinga[] = [
-                                    'label' => $row['daun_telinga'],
+                                    'label' => $row['daun_telinga']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -615,7 +615,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSelaputPendengaran[] = [
-                                    'label' => $row['selaput_pendengaran'],
+                                    'label' => $row['selaput_pendengaran']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -641,7 +641,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataProcMastoideus[] = [
-                                    'label' => $row['proc_mastoideus'],
+                                    'label' => $row['proc_mastoideus']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -667,7 +667,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSeptumNasi[] = [
-                                    'label' => $row['septum_nasi'],
+                                    'label' => $row['septum_nasi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -693,7 +693,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLubangHidung[] = [
-                                    'label' => $row['lubang_hidung'],
+                                    'label' => $row['lubang_hidung']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -719,7 +719,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataSinusHidung[] = [
-                                    'label' => $row['sinus'],
+                                    'label' => $row['sinus']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -745,7 +745,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBibir[] = [
-                                    'label' => $row['bibir'],
+                                    'label' => $row['bibir']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -771,7 +771,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataGusi[] = [
-                                    'label' => $row['gusi'],
+                                    'label' => $row['gusi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -797,7 +797,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataGigi[] = [
-                                    'label' => $row['gigi'],
+                                    'label' => $row['gigi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -823,7 +823,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataCaries[] = [
-                                    'label' => $row['caries'],
+                                    'label' => $row['caries']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -849,7 +849,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLidah[] = [
-                                    'label' => $row['lidah'],
+                                    'label' => $row['lidah']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -875,7 +875,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataFaring[] = [
-                                    'label' => $row['faring'],
+                                    'label' => $row['faring']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -901,7 +901,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataTonsil[] = [
-                                    'label' => $row['tonsil'],
+                                    'label' => $row['tonsil']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -927,7 +927,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataKelenjarLimfe[] = [
-                                    'label' => $row['kelenjar_limfe'],
+                                    'label' => $row['kelenjar_limfe']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -953,7 +953,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataKelenjarGondok[] = [
-                                    'label' => $row['kelenjar_gondok'],
+                                    'label' => $row['kelenjar_gondok']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -979,7 +979,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataGerakanDada[] = [
-                                    'label' => $row['gerakan_dada'],
+                                    'label' => $row['gerakan_dada']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1005,7 +1005,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataVocalFemitus[] = [
-                                    'label' => $row['vocal_femitus'],
+                                    'label' => $row['vocal_femitus']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1031,7 +1031,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPerkusiDada[] = [
-                                    'label' => $row['perkusi_dada'],
+                                    'label' => $row['perkusi_dada']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1057,7 +1057,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBunyiNapas[] = [
-                                    'label' => $row['bunyi_napas'],
+                                    'label' => $row['bunyi_napas']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1083,7 +1083,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBunyiTambahan[] = [
-                                    'label' => $row['bunyi_tambahan'],
+                                    'label' => $row['bunyi_tambahan']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1109,7 +1109,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataIctusCordis[] = [
-                                    'label' => $row['ictus_cordis'],
+                                    'label' => $row['ictus_cordis']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1135,7 +1135,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBunyiJantung[] = [
-                                    'label' => $row['bunyi_jantung'],
+                                    'label' => $row['bunyi_jantung']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1161,7 +1161,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataBatasJantung[] = [
-                                    'label' => $row['batas'],
+                                    'label' => $row['batas']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1187,7 +1187,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataMamae[] = [
-                                    'label' => $row['mamae'],
+                                    'label' => $row['mamae']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1213,7 +1213,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataInspeksi[] = [
-                                    'label' => $row['inspeksi'],
+                                    'label' => $row['inspeksi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1239,7 +1239,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPalpasi[] = [
-                                    'label' => $row['palpasi'],
+                                    'label' => $row['palpasi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1265,7 +1265,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataHepar[] = [
-                                    'label' => $row['hepar'],
+                                    'label' => $row['hepar']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1291,7 +1291,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataPerkusiAbdomen[] = [
-                                    'label' => $row['perkusi_abdomen'],
+                                    'label' => $row['perkusi_abdomen']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1317,7 +1317,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataAuskultasi[] = [
-                                    'label' => $row['auskultasi'],
+                                    'label' => $row['auskultasi']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1343,7 +1343,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataLimpa[] = [
-                                    'label' => $row['limpa'],
+                                    'label' => $row['limpa']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1369,7 +1369,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataCostovertebral[] = [
-                                    'label' => $row['costovertebral'],
+                                    'label' => $row['costovertebral']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1395,7 +1395,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataScoliosis[] = [
-                                    'label' => $row['scoliosis'],
+                                    'label' => $row['scoliosis']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1421,7 +1421,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataKondisiKulit[] = [
-                                    'label' => $row['kondisi_kulit'],
+                                    'label' => $row['kondisi_kulit']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1447,7 +1447,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataEkstrimitasAtas[] = [
-                                    'label' => $row['ekstrimitas_atas'],
+                                    'label' => $row['ekstrimitas_atas']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1473,7 +1473,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataEkstrimitasBawah[] = [
-                                    'label' => $row['ekstrimitas_bawah'],
+                                    'label' => $row['ekstrimitas_bawah']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1499,7 +1499,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataAreaGenitalia[] = [
-                                    'label' => $row['area_genitalia'],
+                                    'label' => $row['area_genitalia']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }
@@ -1525,7 +1525,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 $dataAnusPerianal[] = [
-                                    'label' => $row['anus_perianal'],
+                                    'label' => $row['anus_perianal']." (".$row['jumlah'].")",
                                     'data'  => (int)$row['jumlah']
                                 ];
                             }

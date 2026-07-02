@@ -130,7 +130,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnFormulirIntervensiNyeriFarmakologi = new javax.swing.JMenuItem();
+        MnFormulirIntervensiNyeriNonFarmakologi = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -180,19 +180,19 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnFormulirIntervensiNyeriFarmakologi.setBackground(new java.awt.Color(255, 255, 254));
-        MnFormulirIntervensiNyeriFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnFormulirIntervensiNyeriFarmakologi.setForeground(new java.awt.Color(50, 50, 50));
-        MnFormulirIntervensiNyeriFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnFormulirIntervensiNyeriFarmakologi.setText("Formulir Intervensi Nyeri Farmakologi");
-        MnFormulirIntervensiNyeriFarmakologi.setName("MnFormulirIntervensiNyeriFarmakologi"); // NOI18N
-        MnFormulirIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(235, 26));
-        MnFormulirIntervensiNyeriFarmakologi.addActionListener(new java.awt.event.ActionListener() {
+        MnFormulirIntervensiNyeriNonFarmakologi.setBackground(new java.awt.Color(255, 255, 254));
+        MnFormulirIntervensiNyeriNonFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFormulirIntervensiNyeriNonFarmakologi.setForeground(new java.awt.Color(50, 50, 50));
+        MnFormulirIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnFormulirIntervensiNyeriNonFarmakologi.setText("Formulir Intervensi Nyeri Non Farmakologi");
+        MnFormulirIntervensiNyeriNonFarmakologi.setName("MnFormulirIntervensiNyeriNonFarmakologi"); // NOI18N
+        MnFormulirIntervensiNyeriNonFarmakologi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnFormulirIntervensiNyeriNonFarmakologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnFormulirIntervensiNyeriFarmakologiActionPerformed(evt);
+                MnFormulirIntervensiNyeriNonFarmakologiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnFormulirIntervensiNyeriFarmakologi);
+        jPopupMenu1.add(MnFormulirIntervensiNyeriNonFarmakologi);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -788,19 +788,19 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
+                Valid.MyReportqry("rptDataIntervensiNyeriNonFarmakologi.jasper","report","::[ Data Intervensi Nyeri Non Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
-                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,"+
+                    "intervensi_nyeri_nonfarmakologi.intervensi,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
                     "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
+                    "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip  where "+
                     "intervensi_nyeri_nonfarmakologi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataIntervensiNyeriFarmakologi.jasper","report","::[ Data Intervensi Nyeri Farmakologi ]::",
+                Valid.MyReportqry("rptDataIntervensiNyeriNonFarmakologi.jasper","report","::[ Data Intervensi Nyeri Non Farmakologi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
-                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
+                    "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,"+
+                    "intervensi_nyeri_nonfarmakologi.intervensi,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
                     "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where "+
@@ -945,7 +945,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
         Valid.pindah(evt,Detik,Intervensi);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnFormulirIntervensiNyeriFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
+    private void MnFormulirIntervensiNyeriNonFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFormulirIntervensiNyeriNonFarmakologiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -955,15 +955,14 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirIntervensiNyeriFarmakologi.jasper","report","::[ Formulir Intervensi Nyeri Farmakologi ]::",
+            Valid.MyReportqry("rptFormulirIntervensiNyeriNonFarmakologi.jasper","report","::[ Formulir Intervensi Nyeri Non Farmakologi ]::",
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat,intervensi_nyeri_nonfarmakologi.intervensi,"+
-                    "intervensi_nyeri_nonfarmakologi.dosis_efek,intervensi_nyeri_nonfarmakologi.rute,intervensi_nyeri_nonfarmakologi.nip,petugas.nama "+
-                    "from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
+                    "intervensi_nyeri_nonfarmakologi.nip,petugas.nama from intervensi_nyeri_nonfarmakologi inner join reg_periksa on intervensi_nyeri_nonfarmakologi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on intervensi_nyeri_nonfarmakologi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by intervensi_nyeri_nonfarmakologi.tgl_perawatan,intervensi_nyeri_nonfarmakologi.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnFormulirIntervensiNyeriFarmakologiActionPerformed
+    }//GEN-LAST:event_MnFormulirIntervensiNyeriNonFarmakologiActionPerformed
 
     private void IntervensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervensiKeyPressed
         Valid.pindah(evt,btnPetugas,BtnSimpan);
@@ -1031,7 +1030,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnFormulirIntervensiNyeriFarmakologi;
+    private javax.swing.JMenuItem MnFormulirIntervensiNyeriNonFarmakologi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
