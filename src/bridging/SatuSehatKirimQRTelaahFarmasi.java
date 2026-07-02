@@ -610,7 +610,7 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                             "}," +
                                             "{" +
                                                 "\"linkId\": \"telaah-resep\"," +
-                                                "\"text\": \"Telaah Resep\"," +
+                                                "\"text\": \"Pengkajian Resep\"," +
                                                 "\"item\": [" +
                                                     "{" +
                                                         "\"linkId\": \"tr-1-tepat-identifikasi-pasien\"," +
@@ -696,7 +696,7 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                             "}," +
                                             "{" +
                                                 "\"linkId\": \"telaah-obat\"," +
-                                                "\"text\": \"Telaah Obat\"," +
+                                                "\"text\": \"Pengkajian Obat\"," +
                                                 "\"item\": [" +
                                                     "{" +
                                                         "\"linkId\": \"to-1-tepat-pasien\"," +
@@ -819,7 +819,7 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                             "}," +
                                             "{" +
                                                 "\"linkId\": \"telaah-resep\"," +
-                                                "\"text\": \"Telaah Resep\"," +
+                                                "\"text\": \"Pengkajian Resep\"," +
                                                 "\"item\": [" +
                                                     "{" +
                                                         "\"linkId\": \"tr-1-tepat-identifikasi-pasien\"," +
@@ -905,7 +905,7 @@ public final class SatuSehatKirimQRTelaahFarmasi extends javax.swing.JDialog {
                                             "}," +
                                             "{" +
                                                 "\"linkId\": \"telaah-obat\"," +
-                                                "\"text\": \"Telaah Obat\"," +
+                                                "\"text\": \"Pengkajian Obat\"," +
                                                 "\"item\": [" +
                                                     "{" +
                                                         "\"linkId\": \"to-1-tepat-pasien\"," +

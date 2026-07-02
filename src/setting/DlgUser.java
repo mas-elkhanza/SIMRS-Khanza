@@ -202,7 +202,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Perbaikan Inventaris Per Tahun","[O]Perbaikan Inventaris Per Pelaksana & Status","[M]Pengkajian MCU","[K]Peminjam Piutang","[K]Piutang Peminjaman Uang",
                 "[K]Asuransi/Askes/Jenis Bayar","[C]Audit Kepatuhan APD","[L]Task ID Mobile JKN","[K]Bayar Piutang Peminjaman Uang","[I]Pembayaran Per Akun Bayar 4",
                 "[D]Stok Akhir Farmasi Per Tanggal","[M]Riwayat Kamar Pasien","[M]Uji Fungsi/Prosedur KFR","[M]Hapus Berkas Digital Perawatan","[K]Kategori Pengeluaran Harian",
-                "[K]Kategori Pemasukan Lain-lain","[I]Pembayaran Per Akun Bayar 5","[U]Ruang Operasi","[D]Telaah Resep & Obat","[I]Jasa Tindakan Pasien","[D]Permintaan Resep Pulang",
+                "[K]Kategori Pemasukan Lain-lain","[I]Pembayaran Per Akun Bayar 5","[U]Ruang Operasi","[D]Pengkajian Resep & Obat","[I]Jasa Tindakan Pasien","[D]Permintaan Resep Pulang",
                 "[I]Rekap JM Dokter","[J]Status Data RM","[A]Ubah Petugas Lab PK","[A]Ubah Petugas Lab PA","[A]Ubah Petugas Radiologi","[A]Gabung Nomor Rawat","[M]Gabungkan Data RM",
                 "[D]Ringkasan Biaya Obat Pasien Per Tanggal","[M]Master Masalah Keperawatan IGD","[M]Pengkajian Awal Keperawatan IGD","[L]Referensi DPHO Apotek BPJS",
                 "[L]Referensi Poli Apotek BPJS","[K]Bayar JM Dokter","[L]Referensi Faskes Apotek BPJS","[L]Referensi Spesialistik Apotek BPJS","[K]Pembayaran BRIVA",

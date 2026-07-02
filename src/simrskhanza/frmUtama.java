@@ -47428,7 +47428,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnTelaahResep = new widget.ButtonBig();
         btnTelaahResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5868989_coronavirus_drug_medic_medical_medicine_icon.png"))); 
-        btnTelaahResep.setText("Telaah Resep & Obat");
+        btnTelaahResep.setText("Pengkajian Resep & Obat");
         btnTelaahResep.setIconTextGap(0);
         btnTelaahResep.setName("btnTelaahResep");
         btnTelaahResep.setPreferredSize(new java.awt.Dimension(200, 90));

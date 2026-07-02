@@ -309,7 +309,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Telaah Resep & Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengkajian Resep & Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -756,7 +756,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         FormInput.add(KetResepTepatDosis);
         KetResepTepatDosis.setBounds(129, 240, 140, 23);
 
-        jLabel28.setText("Telaah Obat :");
+        jLabel28.setText("Pengkajian Obat :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(528, 100, 80, 23);
@@ -930,7 +930,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(295, 270, 140, 23);
 
-        jLabel36.setText("Telaah Resep :");
+        jLabel36.setText("Pengkajian Resep :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 70, 94, 23);
@@ -1052,7 +1052,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 
         FormValidasi1.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabData.addTab("Telaah Resep & Obat", FormValidasi1);
+        TabData.addTab("Pengkajian Resep & Obat", FormValidasi1);
 
         Scroll5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll5.setName("Scroll5"); // NOI18N
@@ -1195,7 +1195,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
 
-                Valid.MyReportqry("rptDataTelaahResep.jasper","report","::[ Data Telaah Resep ]::",
+                Valid.MyReportqry("rptDataTelaahResep.jasper","report","::[ Data Pengkajian Resep ]::",
                     "select telaah_farmasi.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.jk,pasien.tgl_lahir,resep_obat.kd_dokter,dokter.nm_dokter,resep_obat.status,"+
                     "telaah_farmasi.resep_identifikasi_pasien,telaah_farmasi.resep_ket_identifikasi_pasien,telaah_farmasi.resep_tepat_obat,"+

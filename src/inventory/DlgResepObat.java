@@ -1134,7 +1134,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         FormTelaah.add(Scroll5, java.awt.BorderLayout.CENTER);
 
-        TabData.addTab("Telaah Resep & Obat", FormTelaah);
+        TabData.addTab("Pengkajian Resep & Obat", FormTelaah);
 
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
         FormPhoto.setBorder(null);
