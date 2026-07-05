@@ -465,7 +465,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026 11:58:27" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2026 12:31:34" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -1783,7 +1783,15 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void TabRawatJalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatJalanMouseClicked
         TeksKosong();
-        pilihRalan();
+        if(TabRawatJalan.getSelectedIndex()==0){
+            if(tabMode.getRowCount()==0){
+                runBackground(() -> tampil());
+            }
+        }else if(TabRawatJalan.getSelectedIndex()==1){
+            if(tabMode2.getRowCount()==0){
+                runBackground(() -> tampil2());
+            }
+        }
     }//GEN-LAST:event_TabRawatJalanMouseClicked
 
     private void tbLabRalan2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLabRalan2MouseClicked
@@ -2141,11 +2149,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         ruang.setVisible(true);
     }//GEN-LAST:event_BtnSeek6ActionPerformed
 
-    private void TabPilihRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabPilihRawatMouseClicked
-        TeksKosong();
-        pilihTab();
-    }//GEN-LAST:event_TabPilihRawatMouseClicked
-
     private void tbLabRanapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLabRanapMouseClicked
         if(tabMode3.getRowCount()!=0){
             try {
@@ -2176,7 +2179,15 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void TabRawatInapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatInapMouseClicked
         TeksKosong();
-        pilihRanap();
+        if(TabRawatInap.getSelectedIndex()==0){
+            if(tabMode3.getRowCount()==0){
+                runBackground(() -> tampil3());
+            }
+        }else if(TabRawatInap.getSelectedIndex()==1){
+            if(tabMode4.getRowCount()==0){
+                runBackground(() -> tampil4());
+            }
+        }
     }//GEN-LAST:event_TabRawatInapMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -4080,6 +4091,31 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             });
         } 
     }//GEN-LAST:event_formWindowOpened
+
+    private void TabPilihRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabPilihRawatMouseClicked
+        TeksKosong();
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(TabRawatJalan.getSelectedIndex()==0){
+                if(tabMode.getRowCount()==0){
+                    runBackground(() -> tampil());
+                }
+            }else if(TabRawatJalan.getSelectedIndex()==1){
+                if(tabMode2.getRowCount()==0){
+                    runBackground(() -> tampil2());
+                }
+            }
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(TabRawatInap.getSelectedIndex()==0){
+                if(tabMode3.getRowCount()==0){
+                    runBackground(() -> tampil3());
+                }
+            }else if(TabRawatInap.getSelectedIndex()==1){
+                if(tabMode4.getRowCount()==0){
+                    runBackground(() -> tampil4());
+                }
+            }
+        }
+    }//GEN-LAST:event_TabPilihRawatMouseClicked
 
     /**
     * @param args the command line arguments

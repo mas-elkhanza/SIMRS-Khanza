@@ -441,7 +441,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -455,7 +455,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -583,7 +583,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         FormInput.add(LahirPasien);
         LahirPasien.setBounds(648, 10, 85, 23);
 
-        jLabel18.setText("Pegawai :");
+        jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
         jLabel18.setBounds(205, 40, 120, 23);
@@ -623,7 +623,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 65, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026 11:01:26" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026 08:52:55" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
