@@ -50475,7 +50475,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratPenolakanResusitasi.addActionListener(this::btnSuratPenolakanResusitasiActionPerformed);
         
         btnSuratPengajuanCutiPerawatan = new widget.ButtonBig();
-        btnSuratPengajuanCutiPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/opinion_12448248.png"))); 
+        btnSuratPengajuanCutiPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/writing_2593639.png"))); 
         btnSuratPengajuanCutiPerawatan.setText("Surat Pegajuan Cuti Perawatan");
         btnSuratPengajuanCutiPerawatan.setIconTextGap(0);
         btnSuratPengajuanCutiPerawatan.setName("btnSuratPengajuanCutiPerawatan");
