@@ -42,7 +42,7 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
-import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgCariBangsal;
 
 
@@ -54,7 +54,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariPegawai pegawai;
+    private DlgCariPetugas petugas;
     private DlgCariDokter dokter;
     private DlgCariBangsal kamar;
     private StringBuilder htmlContent;
@@ -974,7 +974,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                 if(NIK.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh pegawai yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
             }
         }else{
@@ -1012,7 +1012,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                     if(NIK.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         ganti();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh pegawai yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1224,43 +1224,43 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPegawaiKeyPressed
 
     private void BtnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPegawaiActionPerformed
-        if (pegawai == null || !pegawai.isDisplayable()) {
-            pegawai=new DlgCariPegawai(null,false);
-            pegawai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            pegawai.addWindowListener(new WindowAdapter() {
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(pegawai.getTable().getSelectedRow()!= -1){                   
-                        NIK.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                        NamaPegawai.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        NIK.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NamaPegawai.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                     }  
                     NIK.requestFocus();
-                    pegawai=null;
+                    petugas=null;
                 }
             });
             
-            pegawai.getTable().addKeyListener(new KeyAdapter() {
+            petugas.getTable().addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        pegawai.dispose();
+                        petugas.dispose();
                     }
                 }
             });
 
-            pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            pegawai.setLocationRelativeTo(internalFrame1);
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
         }
-        if (pegawai == null) return;
-        if (!pegawai.isVisible()) {
-            pegawai.emptTeks();
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.emptTeks();
         }
         
-        if (pegawai.isVisible()) {
-            pegawai.toFront();
+        if (petugas.isVisible()) {
+            petugas.toFront();
             return;
         }
-        pegawai.setVisible(true);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnPegawaiActionPerformed
 
     private void cmbResponKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbResponKeyPressed
@@ -1373,8 +1373,8 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",NIK.getText());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaPegawai.getText()+"\nID "+(finger.equals("")?TPasien.getText():finger)+"\n"+Tanggal.getSelectedItem());
+            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",NIK.getText());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+NamaPegawai.getText()+"\nID "+(finger.equals("")?TPasien.getText():finger)+"\n"+Tanggal.getSelectedItem());
             param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanbinrohtal/"+Sequel.cariIsi("select bukti_permintaan_binrohtal.photo from bukti_permintaan_binrohtal where bukti_permintaan_binrohtal.no_surat=?",NoSurat.getText()));
             Valid.MyReportqry("rptSuratPermintaanBinrohtal.jasper","report","::[ Lembar Permintaan Binrohtal ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
@@ -1382,14 +1382,14 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                 "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat_pasien," +
                 "permintaan_binrohtal.no_surat,permintaan_binrohtal.tanggal,permintaan_binrohtal.kd_bangsal,bangsal.nm_bangsal,"+
                 "permintaan_binrohtal.jns_permintaan,permintaan_binrohtal.agama,permintaan_binrohtal.jns_pelayanan,permintaan_binrohtal.ket_pelayanan,"+
-                "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,pegawai.nama,"+
+                "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,petugas.nama,"+
                 "permintaan_binrohtal.kd_dokter,dokter.nm_dokter,antripermintaanbinrohtal.no_rawat as no_rawat_antri,bukti_permintaan_binrohtal.photo as photo_bukti "+
                 "from permintaan_binrohtal "+
                 "inner join reg_periksa on permintaan_binrohtal.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "left join pegawai on permintaan_binrohtal.nip=pegawai.nik "+
-                "left join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
-                "left join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter "+
+                "inner join petugas on permintaan_binrohtal.nip=petugas.nip "+
+                "inner join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
+                "inner join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter "+
                 "left join antripermintaanbinrohtal on antripermintaanbinrohtal.no_surat=permintaan_binrohtal.no_surat "+
                 "left join bukti_permintaan_binrohtal on bukti_permintaan_binrohtal.no_surat=permintaan_binrohtal.no_surat "+
                 "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
@@ -1582,30 +1582,29 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                     "select permintaan_binrohtal.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,permintaan_binrohtal.tanggal,permintaan_binrohtal.kd_bangsal,bangsal.nm_bangsal,"+
                     "permintaan_binrohtal.jns_permintaan,permintaan_binrohtal.agama,permintaan_binrohtal.jns_pelayanan,permintaan_binrohtal.ket_pelayanan,"+
-                    "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,pegawai.nama,"+
+                    "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,petugas.nama,"+
                     "permintaan_binrohtal.kd_dokter,dokter.nm_dokter from permintaan_binrohtal "+
                     "inner join reg_periksa on permintaan_binrohtal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on permintaan_binrohtal.nip=pegawai.nik "+
-                    "left join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
-                    "left join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter where "+
+                    "inner join petugas on permintaan_binrohtal.nip=petugas.nip "+
+                    "inner join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter where "+
                     "permintaan_binrohtal.tanggal between ? and ? order by permintaan_binrohtal.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                     "select permintaan_binrohtal.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,permintaan_binrohtal.tanggal,permintaan_binrohtal.kd_bangsal,bangsal.nm_bangsal,"+
                     "permintaan_binrohtal.jns_permintaan,permintaan_binrohtal.agama,permintaan_binrohtal.jns_pelayanan,permintaan_binrohtal.ket_pelayanan,"+
-                    "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,pegawai.nama,"+
+                    "permintaan_binrohtal.respon,permintaan_binrohtal.ket_respon,permintaan_binrohtal.keterangan,permintaan_binrohtal.nip,petugas.nama,"+
                     "permintaan_binrohtal.kd_dokter,dokter.nm_dokter from permintaan_binrohtal "+
                     "inner join reg_periksa on permintaan_binrohtal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on permintaan_binrohtal.nip=pegawai.nik "+
-                    "left join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
-                    "left join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter where "+
-                    "permintaan_binrohtal.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                    "inner join petugas on permintaan_binrohtal.nip=petugas.nip "+
+                    "inner join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter where "+
+                    "permintaan_binrohtal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "permintaan_binrohtal.keterangan like ? or permintaan_binrohtal.kd_bangsal like ? or bangsal.nm_bangsal like ? or "+
-                    "permintaan_binrohtal.nip like ? or pegawai.nama like ? or permintaan_binrohtal.kd_dokter like ? or dokter.nm_dokter like ?) "+
+                    "permintaan_binrohtal.nip like ? or petugas.nama like ? or permintaan_binrohtal.kd_dokter like ? or dokter.nm_dokter like ?) "+
                     "order by permintaan_binrohtal.tanggal");
             }
                 
@@ -1624,6 +1623,8 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
                 }
                   
                 rs=ps.executeQuery();
@@ -1683,8 +1684,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
             cmbRespon.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             ResponLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NIK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            NamaPegawai.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             KodeDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             NamaDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
