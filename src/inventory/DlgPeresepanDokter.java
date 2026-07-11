@@ -28,6 +28,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
@@ -1556,10 +1557,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_ppStok1ActionPerformed
 
     private void DTPBeriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPBeriItemStateChanged
-        if(this.isActive()==true){
-            try {
-                emptTeksobat();
-            }catch (Exception e) {}
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if(DTPBeri.getSelectedItem()!=null){
+                if(this.isActive()==true){
+                    try {
+                        emptTeksobat();
+                    }catch (Exception e) {}
+                }
+            }
         }
     }//GEN-LAST:event_DTPBeriItemStateChanged
 

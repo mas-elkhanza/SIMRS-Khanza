@@ -472,6 +472,9 @@
                             <li <?=$subhalaman=="PenolakanResusitasi"?"class='active'":""?>>
                                 <a href="index.php?act=PenolakanResusitasi&hal=Persetujuan">Penolakan Resusitasi</a>
                             </li>
+                            <li <?=$subhalaman=="PengajuanCutiPerawatan"?"class='active'":""?>>
+                                <a href="index.php?act=PengajuanCutiPerawatan&hal=Persetujuan">Pengajuan Cuti Perawatan</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>

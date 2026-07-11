@@ -5,17 +5,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "68bd6c822af8e5e7925ef16bf72bed25f96d17c981bfdaf7b7c163368f559249";   
+       $keyRS = "8136a1e5c26f16fb2873573b4c33ca0d9f85fbe54918e1939505315d992cf05e";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "https://inacbg.medifyapp.com/E-Klaim/ws.php";
+        $UrlWS = "http://eklaim.bolmongkab.go.id/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "DP";
         return $kelasRS;
     }
 

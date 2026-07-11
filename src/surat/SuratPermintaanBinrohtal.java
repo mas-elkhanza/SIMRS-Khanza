@@ -441,7 +441,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -455,7 +455,7 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -623,15 +623,10 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 65, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026 08:52:55" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2026 14:11:25" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
-        Tanggal.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TanggalItemStateChanged(evt);
-            }
-        });
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
@@ -1402,12 +1397,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnCetakLembarActionPerformed
 
-    private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            autonomor();
-        }
-    }//GEN-LAST:event_TanggalItemStateChanged
-
     private void BtnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRuangActionPerformed
         if (kamar == null || !kamar.isDisplayable()) {
             kamar=new DlgCariBangsal(null,false);
@@ -1721,7 +1710,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
-        autonomor();
     }
     
     public void setNoRm(String norwt,Date tgl2) {
@@ -1731,7 +1719,6 @@ public final class SuratPermintaanBinrohtal extends javax.swing.JDialog {
         isRawat();
         ChkInput.setSelected(true);
         isForm();
-        autonomor();
     }
     
     private void isForm(){

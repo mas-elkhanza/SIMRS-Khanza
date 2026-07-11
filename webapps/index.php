@@ -188,6 +188,12 @@
                                       </a>
                                     </td>
                                     <td width='25%' align='center'>
+                                      <a target=_blank href=pengajuancutiperawatan/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/writing_2593639.png'/><br>
+                                         Pengajuan Cuti Perawatan                                     
+                                      </a>
+                                    </td>
+                                    <td width='25%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               

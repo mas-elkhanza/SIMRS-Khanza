@@ -61,7 +61,7 @@
                 inner join reg_periksa on permintaan_binrohtal.no_rawat=reg_periksa.no_rawat
                 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis
                 inner join pegawai on permintaan_binrohtal.nip=pegawai.nik
-                left join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter
+                inner join dokter on permintaan_binrohtal.kd_dokter=dokter.kd_dokter
                 inner join bangsal on permintaan_binrohtal.kd_bangsal=bangsal.kd_bangsal
                 where permintaan_binrohtal.no_surat='$nopernyataan'" ;  
     $hasil2 = bukaquery2($_sql2);
@@ -150,7 +150,7 @@
                 </tr>
                 <tr class="text-dark">
                     <td width="25%">Ruang / Bangsal</td>
-                    <td width="75%">: <?=$kd_bangsal;?> <?=empty($nm_bangsal) ? "" : "- ".$nm_bangsal;?></td>
+                    <td width="75%">: <?=$kd_bangsal."- ".$nm_bangsal;?></td>
                 </tr>
                 <tr class="text-dark">
                     <td width="25%">Jenis Permintaan</td>
@@ -179,7 +179,7 @@
             </table>
             <br/>
             <h7 class="text-dark">
-                Pelayanan binrohtal dilaksanakan oleh <b><?=$nama_petugas;?></b> (NIP <?=$nip_petugas;?>) dengan dokter penanggung jawab pasien <b><?=$nm_dokter;?></b>.
+                Pelayanan bimbingan rohani dan mental dilaksanakan oleh <b><?=$nama_petugas;?></b> (NIP <?=$nip_petugas;?>) dengan dokter penanggung jawab pasien <b><?=$nm_dokter;?></b>.
             </h7>
             <br/>
             <br/>

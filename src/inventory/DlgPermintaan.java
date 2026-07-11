@@ -11,6 +11,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -829,9 +830,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        try {
-            autoNomor();
-        } catch (Exception e) {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if(Tanggal.getSelectedItem()!=null){
+                autoNomor();
+            }
         }
     }//GEN-LAST:event_TanggalItemStateChanged
 

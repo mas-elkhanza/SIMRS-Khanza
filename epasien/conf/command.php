@@ -63,7 +63,8 @@
                 'AmbilPernyataanMenerimaBarang','HasilPernyataanMenerimaBarang','PersetujuanBimbinganRohani','AmbilPersetujuanBimbinganRohani',
                 'HasilPersetujuanBimbinganRohani','PermintaanPerlindunganKekerasan','AmbilPermintaanPerlindunganKekerasan','HasilPermintaanPerlindunganKekerasan',
                 'PermohonanPrivasiPasien','AmbilPermohonanPrivasiPasien','HasilPermohonanPrivasiPasien','PermintaanSecondOpinion','AmbilPermintaanSecondOpinion',
-                'HasilPermintaanSecondOpinion','PenolakanResusitasi','AmbilPenolakanResusitasi','HasilPenolakanResusitasi'
+                'HasilPermintaanSecondOpinion','PenolakanResusitasi','AmbilPenolakanResusitasi','HasilPenolakanResusitasi','PengajuanCutiPerawatan',
+                'AmbilPengajuanCutiPerawatan','HasilPengajuanCutiPerawatan'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -167,6 +168,7 @@
                 case "PermohonanPrivasiPasien"                 : include_once("pages/listriwayatpermohonanprivasipasien.php"); break;
                 case "PermintaanSecondOpinion"                 : include_once("pages/listriwayatpermintaansecondopinion.php"); break;
                 case "PenolakanResusitasi"                     : include_once("pages/listriwayatpenolakanresusitasi.php"); break;
+                case "PengajuanCutiPerawatan"                  : include_once("pages/listriwayatpengajuancutiperawatan.php"); break;
                 case "BuktiPelaksanaanEdukasi"                 : include_once("pages/listriwayatbuktipelaksanaanedukasi.php"); break;
                 case "BuktiPelayananRehabilitasi"              : include_once("pages/listriwayatbuktipelayananrehabilitasi.php"); break;
                 case "BuktiPelayananProgramKFR"                : include_once("pages/listriwayatbuktipelayananprogramkfr.php"); break;
@@ -215,6 +217,7 @@
                 case "AmbilPermohonanPrivasiPasien"            : include_once("pages/ambilpermohonanprivasipasien.php"); break;
                 case "AmbilPermintaanSecondOpinion"            : include_once("pages/ambilpermintaansecondopinion.php"); break;
                 case "AmbilPenolakanResusitasi"                : include_once("pages/ambilpenolakanresusitasi.php"); break;
+                case "AmbilPengajuanCutiPerawatan"             : include_once("pages/ambilpengajuancutiperawatan.php"); break;
                 case "HasilPersetujuanUmum"                    : include_once("pages/listhasilpersetujuanumum.php"); break;
                 case "HasilPersetujuanRencanaPemulangan"       : include_once("pages/listhasilpersetujuanrencanapemulangan.php"); break;
                 case "HasilPenyerahanResepRalan"               : include_once("pages/listhasilpersetujuanpenyerahanresepralan.php"); break;
@@ -237,6 +240,7 @@
                 case "HasilPermohonanPrivasiPasien"            : include_once("pages/listhasilpermohonanprivasipasien.php"); break;
                 case "HasilPermintaanSecondOpinion"            : include_once("pages/listhasilpermintaansecondopinion.php"); break;
                 case "HasilPenolakanResusitasi"                : include_once("pages/listhasilpenolakanresusitasi.php"); break;
+                case "HasilPengajuanCutiPerawatan"             : include_once("pages/listhasilpengajuancutiperawatan.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

@@ -62,8 +62,10 @@
 
     if ($no_surat !== "") {
         $hasilPrivasi = bukaquery2(
-            "select no_surat,tanggal,nama_pj,umur_pj,no_ktppj,jkpj,alamatpj,bertindak_atas,no_telp,kategori_privasi,alasan ".
-            "from surat_permohonan_privasi where no_surat='".$no_surat."'"
+            "select surat_permohonan_privasi.no_surat,surat_permohonan_privasi.tanggal,surat_permohonan_privasi.nama_pj,surat_permohonan_privasi.umur_pj,".
+            "surat_permohonan_privasi.no_ktppj,surat_permohonan_privasi.jkpj,surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.bertindak_atas,".
+            "surat_permohonan_privasi.no_telp,surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.alasan from surat_permohonan_privasi ".
+            "where surat_permohonan_privasi.no_surat='".$no_surat."'"
         );
         if ($hasilPrivasi) {
             $dataPrivasi = mysqli_fetch_assoc($hasilPrivasi);

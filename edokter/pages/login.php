@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Selamat Datang di Aplikasi E-Pasien <?=$_SESSION["nama_instansi"];?></title>
+    <title>Selamat Datang di Aplikasi E-Dokter <?=$_SESSION["nama_instansi"];?></title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="css/style3.css" rel="stylesheet" type="text/css">
     <link href="css/style4.css" rel="stylesheet" type="text/css">

@@ -1,8 +1,3 @@
-/*
- * Kontribusi dari Haris, IT RS Bhayangkara Nganjuk
- */
-
-
 package surat;
 
 import fungsi.WarnaTable;
@@ -457,7 +452,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -471,7 +466,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -615,15 +610,10 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 65, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026 14:13:42" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026 06:47:02" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
-        Tanggal.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TanggalItemStateChanged(evt);
-            }
-        });
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
@@ -758,7 +748,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         jLabel38.setBounds(271, 110, 70, 23);
 
         TanggalLahirPembuatPengajuan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalLahirPembuatPengajuan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026" }));
+        TanggalLahirPembuatPengajuan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026" }));
         TanggalLahirPembuatPengajuan.setDisplayFormat("dd-MM-yyyy");
         TanggalLahirPembuatPengajuan.setName("TanggalLahirPembuatPengajuan"); // NOI18N
         TanggalLahirPembuatPengajuan.setOpaque(false);
@@ -837,7 +827,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         jLabel20.setBounds(0, 170, 87, 23);
 
         MulaiCuti.setForeground(new java.awt.Color(50, 70, 50));
-        MulaiCuti.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026 14:53:44" }));
+        MulaiCuti.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026 06:47:02" }));
         MulaiCuti.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         MulaiCuti.setName("MulaiCuti"); // NOI18N
         MulaiCuti.setOpaque(false);
@@ -871,7 +861,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         jLabel23.setBounds(0, 200, 87, 23);
 
         Kembali.setForeground(new java.awt.Color(50, 70, 50));
-        Kembali.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2026 14:54:50" }));
+        Kembali.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2026 06:47:02" }));
         Kembali.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Kembali.setName("Kembali"); // NOI18N
         Kembali.setOpaque(false);
@@ -1411,11 +1401,11 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripermintaanbinrohtal");
-                Sequel.queryu("insert into antripermintaanbinrohtal values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from antripengajuancutiperawatan");
+                Sequel.queryu("insert into antripengajuancutiperawatan values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
                 Sequel.queryu("delete from bukti_surat_pengajuan_cuti_pasien where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Persetujaun terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pengajuan terlebih dahulu..!!");
             }
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
@@ -1473,24 +1463,25 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",NIK.getText());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+NamaPegawai.getText()+"\nID "+(finger.equals("")?TPasien.getText():finger)+"\n"+Tanggal.getSelectedItem());
-            param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanbinrohtal/"+Sequel.cariIsi("select bukti_surat_pengajuan_cuti_pasien.photo from bukti_surat_pengajuan_cuti_pasien where bukti_surat_pengajuan_cuti_pasien.no_surat=?",NoSurat.getText()));
-            Valid.MyReportqry("rptSuratPermintaanBinrohtal.jasper","report","::[ Lembar Permintaan Binrohtal ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
-                "reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",NIK.getText());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaPegawai.getText()+"\nID "+(finger.equals("")?TPasien.getText():finger)+"\n"+Tanggal.getSelectedItem());
+            System.out.println("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pengajuancutiperawatan/"+Sequel.cariIsi("select bukti_surat_pengajuan_cuti_pasien.photo from bukti_surat_pengajuan_cuti_pasien where bukti_surat_pengajuan_cuti_pasien.no_surat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+            param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pengajuancutiperawatan/"+Sequel.cariIsi("select bukti_surat_pengajuan_cuti_pasien.photo from bukti_surat_pengajuan_cuti_pasien where bukti_surat_pengajuan_cuti_pasien.no_surat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+            Valid.MyReportqry("rptSuratPengajuanCutiPerawatan.jasper","report","::[ Lembar Pengajuan Cuti Perawatan Pasien ]::",
+                "select surat_pengajuan_cuti_pasien.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                 "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat_pasien," +
                 "surat_pengajuan_cuti_pasien.no_surat,surat_pengajuan_cuti_pasien.tanggal,surat_pengajuan_cuti_pasien.kd_bangsal,bangsal.nm_bangsal,"+
-                "surat_pengajuan_cuti_pasien.jns_permintaan,surat_pengajuan_cuti_pasien.agama,surat_pengajuan_cuti_pasien.jns_pelayanan,surat_pengajuan_cuti_pasien.ket_pelayanan,"+
-                "surat_pengajuan_cuti_pasien.respon,surat_pengajuan_cuti_pasien.ket_respon,surat_pengajuan_cuti_pasien.alasan_cuti,surat_pengajuan_cuti_pasien.nip,petugas.nama,"+
-                "surat_pengajuan_cuti_pasien.kd_dokter,dokter.nm_dokter,antripermintaanbinrohtal.no_rawat as no_rawat_antri,bukti_surat_pengajuan_cuti_pasien.photo as photo_bukti "+
+                "surat_pengajuan_cuti_pasien.pembuat_pengajuan,surat_pengajuan_cuti_pasien.alamat_pembuat_pengajuan,surat_pengajuan_cuti_pasien.tgl_lahir_pembuat_pengajuan,"+
+                "surat_pengajuan_cuti_pasien.jk_pembuat_pengajuan,surat_pengajuan_cuti_pasien.hubungan_pembuat_pengajuan,surat_pengajuan_cuti_pasien.notelp as telppembuatpengajuan,"+
+                "surat_pengajuan_cuti_pasien.alasan_cuti,surat_pengajuan_cuti_pasien.mulai_cuti,surat_pengajuan_cuti_pasien.alamat_selama_cuti,"+
+                "surat_pengajuan_cuti_pasien.kembali_dari_cuti,surat_pengajuan_cuti_pasien.nip,petugas.nama,pasien.no_tlp,"+
+                "surat_pengajuan_cuti_pasien.kd_dokter,dokter.nm_dokter,bukti_surat_pengajuan_cuti_pasien.photo as photo_bukti "+
                 "from surat_pengajuan_cuti_pasien "+
                 "inner join reg_periksa on surat_pengajuan_cuti_pasien.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "left join petugas on surat_pengajuan_cuti_pasien.nip=petugas.nip "+
-                "left join bangsal on surat_pengajuan_cuti_pasien.kd_bangsal=bangsal.kd_bangsal "+
-                "left join dokter on surat_pengajuan_cuti_pasien.kd_dokter=dokter.kd_dokter "+
-                "left join antripermintaanbinrohtal on antripermintaanbinrohtal.no_surat=surat_pengajuan_cuti_pasien.no_surat "+
+                "inner join petugas on surat_pengajuan_cuti_pasien.nip=petugas.nip "+
+                "inner join bangsal on surat_pengajuan_cuti_pasien.kd_bangsal=bangsal.kd_bangsal "+
+                "inner join dokter on surat_pengajuan_cuti_pasien.kd_dokter=dokter.kd_dokter "+
                 "left join bukti_surat_pengajuan_cuti_pasien on bukti_surat_pengajuan_cuti_pasien.no_surat=surat_pengajuan_cuti_pasien.no_surat "+
                 "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                 "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
@@ -1501,14 +1492,6 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }
     }//GEN-LAST:event_btnCetakLembarActionPerformed
-
-    private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            if(Tanggal.getSelectedItem()!=null){
-                autonomor();
-            }
-        }
-    }//GEN-LAST:event_TanggalItemStateChanged
 
     private void BtnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRuangActionPerformed
         if (kamar == null || !kamar.isDisplayable()) {
@@ -1871,7 +1854,6 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
-        autonomor();
     }
     
     public void setNoRm(String norwt,Date tgl2) {
@@ -1881,7 +1863,6 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
         isRawat();
         ChkInput.setSelected(true);
         isForm();
-        autonomor();
     }
     
     private void isForm(){
@@ -1962,8 +1943,10 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
     }
     
     private void autonomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_pengajuan_cuti_pasien.no_surat,4),signed)),0) from surat_pengajuan_cuti_pasien where date_format(surat_pengajuan_cuti_pasien.tanggal,'%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PCP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoSurat); 
+        Valid.autoNomer3(
+            "select ifnull(MAX(CONVERT(RIGHT(surat_pengajuan_cuti_pasien.no_surat,4),signed)),0) from surat_pengajuan_cuti_pasien where date_format(surat_pengajuan_cuti_pasien.tanggal,'%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+            "PCP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoSurat
+        );  
     }
     
     private void isPhoto(){
@@ -1991,7 +1974,7 @@ public final class SuratPengajuanCutiPerawatan extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanbinrohtal/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pengajuancutiperawatan/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");

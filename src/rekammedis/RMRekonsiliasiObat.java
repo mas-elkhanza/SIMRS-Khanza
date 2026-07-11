@@ -34,6 +34,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.Cursor;
+import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.WindowConstants;
 
@@ -743,9 +744,10 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
     }//GEN-LAST:event_TNoRekonsialiasiKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        try {
-            autoNomor();
-        } catch (Exception e) {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if(Tanggal.getSelectedItem()!=null){
+                autoNomor();
+            }
         }
     }//GEN-LAST:event_TanggalItemStateChanged
 
