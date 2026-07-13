@@ -1,13 +1,14 @@
 <?php 
     if(isset($_SESSION["ses_eksekutif"])){
         $halaman = isset($_GET["act"])?$_GET["act"]:NULL;
+        $subhalaman = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["userlogin"])){
-            $_SESSION["userlogin"]=encrypt_decrypt(getOne2("select AES_DECRYPT(e_eksekutif.usere,'nur') from e_eksekutif"),"e");
+            $_SESSION["userlogin"] = encrypt_decrypt(getOne2("select AES_DECRYPT(e_eksekutif.usere,'nur') from e_eksekutif"),"e");
         }
         if($_SESSION["ses_eksekutif"]!=$_SESSION["userlogin"]){
-            $_SESSION["ses_eksekutif"]=null;
+            $_SESSION["ses_eksekutif"] = null;
             unset($_SESSION["ses_eksekutif"]); 
-            $_SESSION["userlogin"]=null;
+            $_SESSION["userlogin"] = null;
             unset($_SESSION["userlogin"]);
             exit(header("Location:../index.php"));
         }
@@ -80,11 +81,22 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li <?=$halaman=="Pasien"?"class='active'":""?>>
-                        <a href="index.php?act=Pasien">
-                            <i class="material-icons">assignment_ind</i>
+                    <li <?=$halaman=="Pelayanan"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">layers</i>
                             <span>Pelayanan</span>
                         </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="RawatJalan"?"class='active'":""?>>
+                                <a href="index.php?act=RawatJalan&hal=Pelayanan">Rawat Jalan</a>
+                            </li>
+                            <li <?=$subhalaman=="IG"?"class='active'":""?>>
+                                <a href="index.php?act=IGD&hal=Pelayanan">IGD</a>
+                            </li>
+                            <li <?=$subhalaman=="RawatInap"?"class='active'":""?>>
+                                <a href="index.php?act=RawatInap&hal=Pelayanan">Rawat Inap</a>
+                            </li>
+                        </ul>
                     </li>
                     <div id="datakonsul"></div>
                 </ul>
