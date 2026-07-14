@@ -90,8 +90,8 @@
                             <li <?=$subhalaman=="RawatJalan"?"class='active'":""?>>
                                 <a href="index.php?act=RawatJalan&hal=Pelayanan">Rawat Jalan</a>
                             </li>
-                            <li <?=$subhalaman=="IG"?"class='active'":""?>>
-                                <a href="index.php?act=IGD&hal=Pelayanan">IGD</a>
+                            <li <?=$subhalaman=="IGDK"?"class='active'":""?>>
+                                <a href="index.php?act=IGDK&hal=Pelayanan">Gawat Darurat</a>
                             </li>
                             <li <?=$subhalaman=="RawatInap"?"class='active'":""?>>
                                 <a href="index.php?act=RawatInap&hal=Pelayanan">Rawat Inap</a>

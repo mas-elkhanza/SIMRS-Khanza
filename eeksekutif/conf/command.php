@@ -33,7 +33,7 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiAdmin()) {
             $form = array (
-                'HomeUser','RawatJalan'        
+                'HomeUser','RawatJalan','IGDK','RawatInap'        
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -51,6 +51,8 @@
         switch ($aksi) {
             case "HomeUser"                 : include_once("pages/listhome.php"); break;
             case "RawatJalan"               : include_once("pages/listpelayananrawatjalan.php"); break;
+            case "IGDK"                     : include_once("pages/listpelayananigd.php"); break;
+            case "RawatInap"                : include_once("pages/listpelayananrawatinap.php"); break;
             default                         : include_once("pages/listhome.php");
         }   
     }

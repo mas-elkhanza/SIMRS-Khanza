@@ -47,11 +47,11 @@
                     </div>
                     <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data & Grafik</button></center>
                 </form>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Cara Bayar</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Cara Bayar</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -97,11 +97,11 @@
                         <div id="pie_chart_carabayar" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Dokter</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Dokter</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -147,11 +147,11 @@
                         <div id="pie_chart_dokter" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Poli</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Poli</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -197,11 +197,11 @@
                         <div id="pie_chart_poli" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Perujuk</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Perujuk</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -247,11 +247,11 @@
                         <div id="pie_chart_perujuk" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Tanggal</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Tanggal</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -287,7 +287,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="2" style="text-align:right">Total Pendaftaran</th>
+                                        <th colspan="2" style="text-align:right">Total</th>
                                         <th style="text-align:center"><?=$totalTanggal;?></th>
                                     </tr>
                                 </tfoot>
@@ -300,11 +300,11 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Bulan</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Bulan</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -340,7 +340,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="2" style="text-align:right">Total Pendaftaran</th>
+                                        <th colspan="2" style="text-align:right">Total</th>
                                         <th style="text-align:center"><?=$totalBulan;?></th>
                                     </tr>
                                 </tfoot>
@@ -353,11 +353,11 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Per Dokter Poli</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Dokter Poli</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12">
@@ -403,11 +403,11 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Pasien Baru & Lama Per Poli</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Pasien Baru & Lama Per Poli</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12">
@@ -416,7 +416,7 @@
                                 <thead>
                                     <tr>
                                         <th width="5%"><center>No</center></th>
-                                        <th width="70%"><center>Poli & Status</center></th>
+                                        <th width="70%"><center>Poli / Status</center></th>
                                         <th width="25%"><center>Jumlah</center></th>
                                     </tr>
                                 </thead>
@@ -469,11 +469,11 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin:6px 0 0 0;">
             </div>
-            <div class="body">
-                <div class="header bg-white" style="border-bottom:none;box-shadow:none;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">Pendaftaran Pasien Laki & Perempuan Per Poli</div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Pasien Laki & Perempuan Per Poli</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12">
@@ -482,7 +482,7 @@
                                 <thead>
                                     <tr>
                                         <th width="5%"><center>No</center></th>
-                                        <th width="70%"><center>Poli & Jenis Kelamin</center></th>
+                                        <th width="70%"><center>Poli / Jenis Kelamin</center></th>
                                         <th width="25%"><center>Jumlah</center></th>
                                     </tr>
                                 </thead>
@@ -533,6 +533,106 @@
                                 </tfoot>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pelayanan Per Cara Bayar Per Poli</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Cara Bayar & Poli</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no                  = 1;
+                                    $totalCaraBayarPoli  = 0;
+                                    $querycarabayarpoli  = bukaquery("select penjab.kd_pj,penjab.png_jawab,count(reg_periksa.no_rawat) as jumlah from reg_periksa inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where reg_periksa.kd_poli<>'IGDK' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by penjab.kd_pj order by jumlah desc");
+                                    while($rsquerycarabayarpoli = mysqli_fetch_array($querycarabayarpoli)) {
+                                        $totalCaraBayarPoli += $rsquerycarabayarpoli["jumlah"];
+                                        echo "<tr>
+                                                <td align='center'><b>".$no++."</b></td>
+                                                <td align='left'><b>".$rsquerycarabayarpoli["png_jawab"]."</b></td>
+                                                <td align='center'><b>".$rsquerycarabayarpoli["jumlah"]."</b></td>
+                                              </tr>";
+                                        $querypolicarabayar = bukaquery("select poliklinik.nm_poli,count(reg_periksa.no_rawat) as jumlah from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.kd_poli<>'IGDK' and reg_periksa.kd_pj='".$rsquerycarabayarpoli["kd_pj"]."' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by poliklinik.kd_poli order by jumlah desc");
+                                        while($rsquerypolicarabayar = mysqli_fetch_array($querypolicarabayar)) {
+                                            echo "<tr>
+                                                    <td></td>
+                                                    <td align='left'>".$rsquerypolicarabayar["nm_poli"]."</td>
+                                                    <td align='center'>".$rsquerypolicarabayar["jumlah"]."</td>
+                                                  </tr>";
+                                        }
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Jumlah :</th>
+                                        <th style="text-align:center"><?=$totalCaraBayarPoli;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Status Pelayanan Pasien</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Status</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no                    = 1;
+                                    $totalStatusPelayanan  = 0;
+                                    $dataStatusPelayanan   = [];
+                                    $querystatuspelayanan  = bukaquery("select case when reg_periksa.stts='Batal' then 'Batal' when reg_periksa.stts='Dirujuk' then 'Dirujuk' when reg_periksa.stts='Meninggal' then 'Meninggal' when reg_periksa.stts='Pulang Paksa' then 'Pulang Paksa' when reg_periksa.stts in ('Belum','Sudah','Berkas Diterima','Dirawat') then 'Terlayani' end as status_pelayanan,count(reg_periksa.no_rawat) as jumlah from reg_periksa where reg_periksa.kd_poli<>'IGDK' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by status_pelayanan order by field(status_pelayanan,'Batal','Dirujuk','Meninggal','Pulang Paksa','Terlayani')");
+                                    while($rsquerystatuspelayanan = mysqli_fetch_array($querystatuspelayanan)) {
+                                        $totalStatusPelayanan += $rsquerystatuspelayanan["jumlah"];
+                                        $dataStatusPelayanan[] = [
+                                            'label' => $rsquerystatuspelayanan["status_pelayanan"]." (".$rsquerystatuspelayanan["jumlah"].")",
+                                            'data'  => (int)$rsquerystatuspelayanan["jumlah"]
+                                        ];
+                                        echo "<tr>
+                                                <td align='center'>".$no++."</td>
+                                                <td align='left'>".$rsquerystatuspelayanan["status_pelayanan"]."</td>
+                                                <td align='center'>".$rsquerystatuspelayanan["jumlah"]."</td>
+                                              </tr>";
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Jumlah :</th>
+                                        <th style="text-align:center"><?=$totalStatusPelayanan;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="pie_chart_statuspelayanan" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -641,7 +741,7 @@ $(function() {
     var dataTanggal = <?= json_encode($dataTanggal) ?>;
     var tickTanggal = <?= json_encode($tickTanggal) ?>;
     if (dataTanggal.length > 0) {
-        $("#chart_tanggal").css({ width: Math.max(dataTanggal.length * 70, 500) + "px", minWidth: Math.max(dataTanggal.length * 70, 500) + "px" });
+        $("#chart_tanggal").css({ width: Math.max(dataTanggal.length * 90, 500) + "px", minWidth: Math.max(dataTanggal.length * 90, 500) + "px" });
         $.plot("#chart_tanggal", [{
             data: dataTanggal,
             lines: { show: true, fill: false },
@@ -663,7 +763,7 @@ $(function() {
     var dataBulan = <?= json_encode($dataBulan) ?>;
     var tickBulan = <?= json_encode($tickBulan) ?>;
     if (dataBulan.length > 0) {
-        $("#chart_bulan").css({ width: Math.max(dataBulan.length * 45, 500) + "px", minWidth: Math.max(dataBulan.length * 45, 500) + "px" });
+        $("#chart_bulan").css({ width: Math.max(dataBulan.length * 90, 500) + "px", minWidth: Math.max(dataBulan.length * 90, 500) + "px" });
         $.plot("#chart_bulan", [{
             data: dataBulan,
             lines: { show: true, fill: false },
@@ -681,6 +781,29 @@ $(function() {
         });
     } else {
         $("#chart_bulan").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+    var dataStatusPelayanan = <?= json_encode($dataStatusPelayanan) ?>;
+    if (dataStatusPelayanan.length > 0) {
+        $.plot("#pie_chart_statuspelayanan", dataStatusPelayanan, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    label: {
+                        show: true,
+                        radius: 0.75,
+                        formatter: function(label, series) {
+                            return '<div style="font-size:12px;text-align:center;padding:2px;color:white;">'
+                                + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                        },
+                        background: { opacity: 0.6 }
+                    }
+                }
+            },
+            legend: { show: true }
+        });
+    } else {
+        $("#pie_chart_statuspelayanan").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
 });
 </script>
