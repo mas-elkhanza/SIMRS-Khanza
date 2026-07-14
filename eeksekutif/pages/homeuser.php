@@ -1,6 +1,6 @@
 <?php 
     if(isset($_SESSION["ses_eksekutif"])){
-        $halaman = isset($_GET["act"])?$_GET["act"]:NULL;
+        $halaman    = isset($_GET["hal"])?$_GET["hal"]:NULL;
         $subhalaman = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["userlogin"])){
             $_SESSION["userlogin"] = encrypt_decrypt(getOne2("select AES_DECRYPT(e_eksekutif.usere,'nur') from e_eksekutif"),"e");

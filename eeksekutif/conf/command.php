@@ -33,7 +33,7 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiAdmin()) {
             $form = array (
-                'HomeUser','Pasien'        
+                'HomeUser','RawatJalan'        
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -49,11 +49,9 @@
         $aksi=isset($_REQUEST['act'])?$_REQUEST['act']:NULL;
         formProtek();
         switch ($aksi) {
-            case "Pasien"                   : include_once("pages/listpasien.php"); break;
             case "HomeUser"                 : include_once("pages/listhome.php"); break;
-            case "KonsultasiDokter"         : include_once("pages/listkonsultasidokter.php"); break;
+            case "RawatJalan"               : include_once("pages/listpelayananrawatjalan.php"); break;
             default                         : include_once("pages/listhome.php");
         }   
     }
- 
 ?>

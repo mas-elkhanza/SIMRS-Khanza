@@ -249,7 +249,6 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel86 = new widget.Label();
         TandaVital2 = new widget.ComboBox();
         jLabel87 = new widget.Label();
-        jLabel88 = new widget.Label();
         TandaVital3 = new widget.ComboBox();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
@@ -267,6 +266,25 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         Keterangan = new widget.TextBox();
         jLabel10 = new widget.Label();
         Keterangan1 = new widget.TextBox();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel60 = new widget.Label();
+        jLabel88 = new widget.Label();
+        jLabel89 = new widget.Label();
+        TandaVital4 = new widget.ComboBox();
+        jLabel90 = new widget.Label();
+        TandaVital5 = new widget.ComboBox();
+        jLabel93 = new widget.Label();
+        jLabel94 = new widget.Label();
+        TandaVital6 = new widget.ComboBox();
+        jLabel95 = new widget.Label();
+        jLabel96 = new widget.Label();
+        TandaVital7 = new widget.ComboBox();
+        jLabel98 = new widget.Label();
+        TandaVital8 = new widget.ComboBox();
+        jLabel99 = new widget.Label();
+        jLabel100 = new widget.Label();
+        TandaVital9 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -817,7 +835,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel67.setText("COVID-19");
         jLabel67.setName("jLabel67"); // NOI18N
         FormInput.add(jLabel67);
-        jLabel67.setBounds(40, 170, 120, 23);
+        jLabel67.setBounds(40, 170, 70, 23);
 
         Prioritas2_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_1.setSelectedIndex(1);
@@ -838,7 +856,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel70.setText("Pertusis :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
-        jLabel70.setBounds(180, 170, 80, 23);
+        jLabel70.setBounds(221, 170, 80, 23);
 
         Prioritas2_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_2.setSelectedIndex(1);
@@ -849,18 +867,18 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_2);
-        Prioritas2_2.setBounds(260, 170, 90, 23);
+        Prioritas2_2.setBounds(305, 170, 90, 23);
 
         jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel71.setText("Influenza");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(40, 230, 100, 23);
+        jLabel71.setBounds(40, 200, 60, 23);
 
         jLabel72.setText(":");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(0, 230, 122, 23);
+        jLabel72.setBounds(0, 200, 93, 23);
 
         Prioritas2_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_4.setSelectedIndex(1);
@@ -871,12 +889,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_4);
-        Prioritas2_4.setBounds(126, 230, 90, 23);
+        Prioritas2_4.setBounds(97, 200, 90, 23);
 
         jLabel73.setText("Meningitis :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(320, 170, 140, 23);
+        jLabel73.setBounds(440, 170, 70, 23);
 
         Prioritas2_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_5.setSelectedIndex(1);
@@ -887,12 +905,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_5);
-        Prioritas2_5.setBounds(460, 170, 90, 23);
+        Prioritas2_5.setBounds(514, 170, 90, 23);
 
-        jLabel75.setText("Lainnya");
+        jLabel75.setText("Droplet Lainnya :");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(425, 260, 140, 23);
+        jLabel75.setBounds(197, 200, 140, 23);
 
         Prioritas2_8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_8.setSelectedIndex(1);
@@ -903,12 +921,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_8);
-        Prioritas2_8.setBounds(569, 260, 90, 23);
+        Prioritas2_8.setBounds(341, 200, 90, 23);
 
         jLabel76.setText("Difteri :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(610, 170, 90, 23);
+        jLabel76.setBounds(610, 170, 85, 23);
 
         Prioritas2_7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_7.setSelectedIndex(1);
@@ -919,38 +937,38 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_7);
-        Prioritas2_7.setBounds(700, 170, 90, 23);
+        Prioritas2_7.setBounds(699, 170, 90, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 290, 810, 1);
+        jSeparator5.setBounds(0, 230, 810, 1);
 
         jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator6.setName("jSeparator6"); // NOI18N
         FormInput.add(jSeparator6);
-        jSeparator6.setBounds(0, 290, 810, 1);
+        jSeparator6.setBounds(0, 230, 810, 1);
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel55.setText("III. KONTAK");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
-        jLabel55.setBounds(10, 290, 180, 23);
+        jLabel55.setBounds(10, 230, 180, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel78.setText("MDRO (MRSA/VRE/CRE/ESBL)");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(40, 310, 210, 23);
+        jLabel78.setBounds(40, 250, 160, 23);
 
         jLabel79.setText(":");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(0, 310, 240, 23);
+        jLabel79.setBounds(0, 250, 191, 23);
 
         Prioritas3_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas3_1.setSelectedIndex(1);
@@ -961,12 +979,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas3_1);
-        Prioritas3_1.setBounds(244, 310, 90, 23);
+        Prioritas3_1.setBounds(195, 250, 90, 23);
 
-        jLabel80.setText("Skabies");
+        jLabel80.setText("Skabies :");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(595, 310, 100, 23);
+        jLabel80.setBounds(595, 250, 100, 23);
 
         Prioritas3_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas3_2.setSelectedIndex(1);
@@ -977,18 +995,18 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas3_2);
-        Prioritas3_2.setBounds(699, 310, 90, 23);
+        Prioritas3_2.setBounds(699, 250, 90, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("Clostridioides difficile");
+        jLabel81.setText("Clostridioides Difficile");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(40, 340, 120, 23);
+        jLabel81.setBounds(40, 280, 120, 23);
 
         jLabel82.setText(":");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(0, 340, 151, 23);
+        jLabel82.setBounds(0, 280, 155, 23);
 
         Prioritas3_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas3_3.setSelectedIndex(1);
@@ -999,12 +1017,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas3_3);
-        Prioritas3_3.setBounds(155, 340, 90, 23);
+        Prioritas3_3.setBounds(159, 280, 90, 23);
 
-        jLabel83.setText("Luka dengan drainase");
+        jLabel83.setText("Luka Dengan Drainase :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(525, 340, 170, 23);
+        jLabel83.setBounds(300, 250, 170, 23);
 
         Prioritas3_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas3_4.setSelectedIndex(1);
@@ -1015,33 +1033,33 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas3_4);
-        Prioritas3_4.setBounds(699, 340, 90, 23);
+        Prioritas3_4.setBounds(699, 280, 90, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         FormInput.add(jSeparator7);
-        jSeparator7.setBounds(0, 370, 810, 1);
+        jSeparator7.setBounds(0, 310, 810, 1);
 
         jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator8.setName("jSeparator8"); // NOI18N
         FormInput.add(jSeparator8);
-        jSeparator8.setBounds(0, 370, 810, 1);
+        jSeparator8.setBounds(0, 310, 810, 1);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel56.setText("IV. FAKTOR RISIKO");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(10, 370, 350, 23);
+        jLabel56.setBounds(10, 310, 350, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel84.setText("Kontak erat");
+        jLabel84.setText("Kontak Erat");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(40, 390, 160, 23);
+        jLabel84.setBounds(40, 330, 70, 23);
 
         TandaVital1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TandaVital1.setSelectedIndex(1);
@@ -1052,17 +1070,17 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TandaVital1);
-        TandaVital1.setBounds(201, 390, 90, 23);
+        TandaVital1.setBounds(107, 330, 90, 23);
 
         jLabel85.setText(":");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(0, 390, 197, 23);
+        jLabel85.setBounds(0, 330, 103, 23);
 
-        jLabel86.setText("Riwayat daerah wabah");
+        jLabel86.setText("Riwayat Daerah Wabah :");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(375, 390, 320, 23);
+        jLabel86.setBounds(555, 330, 140, 23);
 
         TandaVital2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TandaVital2.setSelectedIndex(1);
@@ -1073,18 +1091,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TandaVital2);
-        TandaVital2.setBounds(699, 390, 90, 23);
+        TandaVital2.setBounds(699, 330, 90, 23);
 
-        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel87.setText("Riwayat MDRO");
+        jLabel87.setText("Riwayat MDRO :");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(40, 420, 100, 23);
-
-        jLabel88.setText(":");
-        jLabel88.setName("jLabel88"); // NOI18N
-        FormInput.add(jLabel88);
-        jLabel88.setBounds(0, 420, 128, 23);
+        jLabel87.setBounds(286, 330, 100, 23);
 
         TandaVital3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TandaVital3.setSelectedIndex(1);
@@ -1095,21 +1107,21 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TandaVital3);
-        TandaVital3.setBounds(132, 420, 90, 23);
+        TandaVital3.setBounds(390, 330, 90, 23);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator9.setName("jSeparator9"); // NOI18N
         FormInput.add(jSeparator9);
-        jSeparator9.setBounds(0, 450, 810, 1);
+        jSeparator9.setBounds(0, 600, 810, 1);
 
         jSeparator10.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator10.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator10.setName("jSeparator10"); // NOI18N
         FormInput.add(jSeparator10);
-        jSeparator10.setBounds(0, 450, 810, 1);
+        jSeparator10.setBounds(0, 600, 810, 1);
 
         Laborat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masuk Di Ruangan Isolasi", "Tetap Di Ruangan Biasa" }));
         Laborat1.setName("Laborat1"); // NOI18N
@@ -1119,29 +1131,29 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Laborat1);
-        Laborat1.setBounds(221, 470, 90, 23);
+        Laborat1.setBounds(221, 620, 90, 23);
 
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel57.setText("V. KEPUTUSAN & KETERANGAN");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(10, 450, 350, 23);
+        jLabel57.setBounds(10, 600, 350, 23);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel91.setText("STATUS :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(40, 470, 190, 23);
+        jLabel91.setBounds(40, 620, 190, 23);
 
         jLabel92.setText(":");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(0, 470, 217, 23);
+        jLabel92.setBounds(0, 620, 217, 23);
 
         jLabel97.setText("Jenis Isolasi :");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
-        jLabel97.setBounds(290, 470, 120, 23);
+        jLabel97.setBounds(290, 620, 120, 23);
 
         Laborat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Standar", "Kontak", "Droplet", "Airborne", "Kontak+Droplet", "Airborne+Kontak", "Protective" }));
         Laborat2.setName("Laborat2"); // NOI18N
@@ -1151,12 +1163,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Laborat2);
-        Laborat2.setBounds(410, 470, 90, 23);
+        Laborat2.setBounds(410, 620, 90, 23);
 
-        jLabel116.setText("Diare infeksius :");
+        jLabel116.setText("Diare Infeksius :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(330, 310, 140, 23);
+        jLabel116.setBounds(283, 280, 140, 23);
 
         Prioritas2_9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_9.setSelectedIndex(1);
@@ -1167,12 +1179,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_9);
-        Prioritas2_9.setBounds(480, 310, 90, 23);
+        Prioritas2_9.setBounds(427, 280, 90, 23);
 
-        jLabel117.setText("Lainnya");
+        jLabel117.setText("Kontak Lainnya :");
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
-        jLabel117.setBounds(290, 340, 140, 23);
+        jLabel117.setBounds(555, 280, 140, 23);
 
         Prioritas2_10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas2_10.setSelectedIndex(1);
@@ -1183,12 +1195,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prioritas2_10);
-        Prioritas2_10.setBounds(440, 340, 90, 23);
+        Prioritas2_10.setBounds(474, 250, 90, 23);
 
         jLabel9.setText("Keterangan/Catatan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(410, 500, 130, 23);
+        jLabel9.setBounds(410, 650, 130, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -1198,12 +1210,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(550, 500, 240, 23);
+        Keterangan.setBounds(550, 650, 240, 23);
 
         jLabel10.setText("Diagnosa Isolasi :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(20, 500, 130, 23);
+        jLabel10.setBounds(20, 650, 130, 23);
 
         Keterangan1.setHighlighter(null);
         Keterangan1.setName("Keterangan1"); // NOI18N
@@ -1213,7 +1225,147 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan1);
-        Keterangan1.setBounds(160, 500, 240, 23);
+        Keterangan1.setBounds(160, 650, 240, 23);
+
+        jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator11.setName("jSeparator11"); // NOI18N
+        FormInput.add(jSeparator11);
+        jSeparator11.setBounds(0, 420, 810, 1);
+
+        jSeparator12.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator12.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator12.setName("jSeparator12"); // NOI18N
+        FormInput.add(jSeparator12);
+        jSeparator12.setBounds(0, 420, 810, 1);
+
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel60.setText("V. KRITERIA ADMINISTRASI & PERSETUJUAN");
+        jLabel60.setName("jLabel60"); // NOI18N
+        FormInput.add(jLabel60);
+        jLabel60.setBounds(10, 420, 350, 23);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("Hasil Pemeriksaan Lab & Rontgen Positif Penyakit Infeksi Menular");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(40, 360, 340, 23);
+
+        jLabel89.setText(":");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(0, 360, 367, 23);
+
+        TandaVital4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital4.setSelectedIndex(1);
+        TandaVital4.setName("TandaVital4"); // NOI18N
+        TandaVital4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital4KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital4);
+        TandaVital4.setBounds(371, 360, 90, 23);
+
+        jLabel90.setText("Gejala Klinis Infeksi Menular :");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(475, 360, 220, 23);
+
+        TandaVital5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital5.setSelectedIndex(1);
+        TandaVital5.setName("TandaVital5"); // NOI18N
+        TandaVital5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital5KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital5);
+        TandaVital5.setBounds(699, 360, 90, 23);
+
+        jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel93.setText("Pasien Imunokompromis Berat Butuh Isolasi Protektif");
+        jLabel93.setName("jLabel93"); // NOI18N
+        FormInput.add(jLabel93);
+        jLabel93.setBounds(40, 390, 270, 23);
+
+        jLabel94.setText(":");
+        jLabel94.setName("jLabel94"); // NOI18N
+        FormInput.add(jLabel94);
+        jLabel94.setBounds(0, 390, 306, 23);
+
+        TandaVital6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital6.setSelectedIndex(1);
+        TandaVital6.setName("TandaVital6"); // NOI18N
+        TandaVital6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital6KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital6);
+        TandaVital6.setBounds(310, 390, 90, 23);
+
+        jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel95.setText("Intruksi Rawat Isolasi Dari DPJP");
+        jLabel95.setName("jLabel95"); // NOI18N
+        FormInput.add(jLabel95);
+        jLabel95.setBounds(40, 440, 180, 23);
+
+        jLabel96.setText(":");
+        jLabel96.setName("jLabel96"); // NOI18N
+        FormInput.add(jLabel96);
+        jLabel96.setBounds(0, 440, 204, 23);
+
+        TandaVital7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital7.setSelectedIndex(1);
+        TandaVital7.setName("TandaVital7"); // NOI18N
+        TandaVital7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital7KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital7);
+        TandaVital7.setBounds(208, 440, 90, 23);
+
+        jLabel98.setText("Informed Consent (Persetujuan Isolasi Oleh Keluarga) :");
+        jLabel98.setName("jLabel98"); // NOI18N
+        FormInput.add(jLabel98);
+        jLabel98.setBounds(345, 440, 350, 23);
+
+        TandaVital8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital8.setSelectedIndex(1);
+        TandaVital8.setName("TandaVital8"); // NOI18N
+        TandaVital8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital8KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital8);
+        TandaVital8.setBounds(699, 440, 90, 23);
+
+        jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel99.setText("Kelengkapan Jaminan (BPJS/Asuransi/Umum)");
+        jLabel99.setName("jLabel99"); // NOI18N
+        FormInput.add(jLabel99);
+        jLabel99.setBounds(40, 470, 230, 23);
+
+        jLabel100.setText(":");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(0, 470, 268, 23);
+
+        TandaVital9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        TandaVital9.setSelectedIndex(1);
+        TandaVital9.setName("TandaVital9"); // NOI18N
+        TandaVital9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TandaVital9KeyPressed(evt);
+            }
+        });
+        FormInput.add(TandaVital9);
+        TandaVital9.setBounds(272, 470, 90, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1781,6 +1933,30 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Keterangan1KeyPressed
 
+    private void TandaVital4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital4KeyPressed
+
+    private void TandaVital5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital5KeyPressed
+
+    private void TandaVital6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital6KeyPressed
+
+    private void TandaVital7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital7KeyPressed
+
+    private void TandaVital8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital8KeyPressed
+
+    private void TandaVital9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVital9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TandaVital9KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1846,12 +2022,19 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.ComboBox TandaVital1;
     private widget.ComboBox TandaVital2;
     private widget.ComboBox TandaVital3;
+    private widget.ComboBox TandaVital4;
+    private widget.ComboBox TandaVital5;
+    private widget.ComboBox TandaVital6;
+    private widget.ComboBox TandaVital7;
+    private widget.ComboBox TandaVital8;
+    private widget.ComboBox TandaVital9;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel100;
     private widget.Label jLabel116;
     private widget.Label jLabel117;
     private widget.Label jLabel16;
@@ -1868,6 +2051,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.Label jLabel58;
     private widget.Label jLabel59;
     private widget.Label jLabel6;
+    private widget.Label jLabel60;
     private widget.Label jLabel61;
     private widget.Label jLabel63;
     private widget.Label jLabel64;
@@ -1894,14 +2078,24 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.Label jLabel86;
     private widget.Label jLabel87;
     private widget.Label jLabel88;
+    private widget.Label jLabel89;
     private widget.Label jLabel9;
+    private widget.Label jLabel90;
     private widget.Label jLabel91;
     private widget.Label jLabel92;
+    private widget.Label jLabel93;
+    private widget.Label jLabel94;
+    private widget.Label jLabel95;
+    private widget.Label jLabel96;
     private widget.Label jLabel97;
+    private widget.Label jLabel98;
+    private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
