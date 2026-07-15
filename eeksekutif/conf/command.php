@@ -33,7 +33,7 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiAdmin()) {
             $form = array (
-                'HomeUser','RawatJalan','IGDK','RawatInap'        
+                'HomeUser','PelayananRawatJalan','PelayananIGDK','PelayananRawatInap','PelayananLaborat' ,'PelayananRadiologi'       
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -50,9 +50,11 @@
         formProtek();
         switch ($aksi) {
             case "HomeUser"                 : include_once("pages/listhome.php"); break;
-            case "RawatJalan"               : include_once("pages/listpelayananrawatjalan.php"); break;
-            case "IGDK"                     : include_once("pages/listpelayananigd.php"); break;
-            case "RawatInap"                : include_once("pages/listpelayananrawatinap.php"); break;
+            case "PelayananRawatJalan"      : include_once("pages/listpelayananrawatjalan.php"); break;
+            case "PelayananIGDK"            : include_once("pages/listpelayananigd.php"); break;
+            case "PelayananRawatInap"       : include_once("pages/listpelayananrawatinap.php"); break;
+            case "PelayananLaborat"         : include_once("pages/listpelayananlab.php"); break;
+            case "PelayananRadiologi"       : include_once("pages/listpelayananradiologi.php"); break;
             default                         : include_once("pages/listhome.php");
         }   
     }

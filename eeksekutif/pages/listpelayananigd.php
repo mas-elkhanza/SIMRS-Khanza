@@ -307,6 +307,218 @@
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pasien Baru Per Tanggal</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Tanggal</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no                = 1;
+                                    $indexTanggalBaru  = 0;
+                                    $totalTanggalBaru  = 0;
+                                    $dataTanggalBaru   = [];
+                                    $tickTanggalBaru   = [];
+                                    $querytanggalbaru = bukaquery("select date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y') as tanggal,count(reg_periksa.no_rawat) as jumlah from reg_periksa where reg_periksa.kd_poli='IGDK' and reg_periksa.stts_daftar='Baru' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by reg_periksa.tgl_registrasi order by reg_periksa.tgl_registrasi asc");
+                                    while($rsquerytanggalbaru = mysqli_fetch_array($querytanggalbaru)) {
+                                        $totalTanggalBaru += $rsquerytanggalbaru["jumlah"];
+                                        $dataTanggalBaru[] = [$indexTanggalBaru, (int)$rsquerytanggalbaru["jumlah"]];
+                                        $tickTanggalBaru[] = [$indexTanggalBaru, $rsquerytanggalbaru["tanggal"]];
+                                        $indexTanggalBaru++;
+                                        echo "<tr>
+                                                <td align='center'>".$no++."</td>
+                                                <td align='left'>".$rsquerytanggalbaru["tanggal"]."</td>
+                                                <td align='center'>".$rsquerytanggalbaru["jumlah"]."</td>
+                                              </tr>";
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total</th>
+                                        <th style="text-align:center"><?=$totalTanggalBaru;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="overflow-x:auto;">
+                            <div id="chart_tanggal_baru" class="flot-chart" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pasien Baru Per Bulan</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Bulan</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no              = 1;
+                                    $indexBulanBaru  = 0;
+                                    $totalBulanBaru  = 0;
+                                    $dataBulanBaru   = [];
+                                    $tickBulanBaru   = [];
+                                    $querybulanbaru = bukaquery("select date_format(reg_periksa.tgl_registrasi,'%m-%Y') as bulan,count(reg_periksa.no_rawat) as jumlah from reg_periksa where reg_periksa.kd_poli='IGDK' and reg_periksa.stts_daftar='Baru' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by date_format(reg_periksa.tgl_registrasi,'%Y-%m') order by date_format(reg_periksa.tgl_registrasi,'%Y-%m') asc");
+                                    while($rsquerybulanbaru = mysqli_fetch_array($querybulanbaru)) {
+                                        $totalBulanBaru += $rsquerybulanbaru["jumlah"];
+                                        $dataBulanBaru[] = [$indexBulanBaru, (int)$rsquerybulanbaru["jumlah"]];
+                                        $tickBulanBaru[] = [$indexBulanBaru, $rsquerybulanbaru["bulan"]];
+                                        $indexBulanBaru++;
+                                        echo "<tr>
+                                                <td align='center'>".$no++."</td>
+                                                <td align='left'>".$rsquerybulanbaru["bulan"]."</td>
+                                                <td align='center'>".$rsquerybulanbaru["jumlah"]."</td>
+                                              </tr>";
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total</th>
+                                        <th style="text-align:center"><?=$totalBulanBaru;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="overflow-x:auto;">
+                            <div id="chart_bulan_baru" class="flot-chart" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pasien Lama Per Tanggal</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Tanggal</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no                = 1;
+                                    $indexTanggalLama  = 0;
+                                    $totalTanggalLama  = 0;
+                                    $dataTanggalLama   = [];
+                                    $tickTanggalLama   = [];
+                                    $querytanggallama = bukaquery("select date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y') as tanggal,count(reg_periksa.no_rawat) as jumlah from reg_periksa where reg_periksa.kd_poli='IGDK' and reg_periksa.stts_daftar='Lama' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by reg_periksa.tgl_registrasi order by reg_periksa.tgl_registrasi asc");
+                                    while($rsquerytanggallama = mysqli_fetch_array($querytanggallama)) {
+                                        $totalTanggalLama += $rsquerytanggallama["jumlah"];
+                                        $dataTanggalLama[] = [$indexTanggalLama, (int)$rsquerytanggallama["jumlah"]];
+                                        $tickTanggalLama[] = [$indexTanggalLama, $rsquerytanggallama["tanggal"]];
+                                        $indexTanggalLama++;
+                                        echo "<tr>
+                                                <td align='center'>".$no++."</td>
+                                                <td align='left'>".$rsquerytanggallama["tanggal"]."</td>
+                                                <td align='center'>".$rsquerytanggallama["jumlah"]."</td>
+                                              </tr>";
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total</th>
+                                        <th style="text-align:center"><?=$totalTanggalLama;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="overflow-x:auto;">
+                            <div id="chart_tanggal_lama" class="flot-chart" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
+                    <div class="text-center" style="font-size:16px;color:#777777;">Pasien Lama Per Bulan</div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><center>No</center></th>
+                                        <th width="70%"><center>Bulan</center></th>
+                                        <th width="25%"><center>Jumlah</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no              = 1;
+                                    $indexBulanLama  = 0;
+                                    $totalBulanLama  = 0;
+                                    $dataBulanLama   = [];
+                                    $tickBulanLama   = [];
+                                    $querybulanlama = bukaquery("select date_format(reg_periksa.tgl_registrasi,'%m-%Y') as bulan,count(reg_periksa.no_rawat) as jumlah from reg_periksa where reg_periksa.kd_poli='IGDK' and reg_periksa.stts_daftar='Lama' and reg_periksa.tgl_registrasi between '$thncaripelayanan-$blncaripelayanan-$tglcaripelayanan' and '$thncaripelayanan2-$blncaripelayanan2-$tglcaripelayanan2' group by date_format(reg_periksa.tgl_registrasi,'%Y-%m') order by date_format(reg_periksa.tgl_registrasi,'%Y-%m') asc");
+                                    while($rsquerybulanlama = mysqli_fetch_array($querybulanlama)) {
+                                        $totalBulanLama += $rsquerybulanlama["jumlah"];
+                                        $dataBulanLama[] = [$indexBulanLama, (int)$rsquerybulanlama["jumlah"]];
+                                        $tickBulanLama[] = [$indexBulanLama, $rsquerybulanlama["bulan"]];
+                                        $indexBulanLama++;
+                                        echo "<tr>
+                                                <td align='center'>".$no++."</td>
+                                                <td align='left'>".$rsquerybulanlama["bulan"]."</td>
+                                                <td align='center'>".$rsquerybulanlama["jumlah"]."</td>
+                                              </tr>";
+                                    }
+                                ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total</th>
+                                        <th style="text-align:center"><?=$totalBulanLama;?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="overflow-x:auto;">
+                            <div id="chart_bulan_lama" class="flot-chart" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin:6px 0 0 0;">
+            </div>
+            <div class="body" style="padding-top:0;">
+                <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
                     <div class="text-center" style="font-size:16px;color:#777777;">Status Pelayanan Pasien</div>
                 </div>
                 <div class="row clearfix">
@@ -476,6 +688,94 @@ $(function() {
         });
     } else {
         $("#chart_bulan").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+    var dataTanggalBaru = <?= json_encode($dataTanggalBaru) ?>;
+    var tickTanggalBaru = <?= json_encode($tickTanggalBaru) ?>;
+    if (dataTanggalBaru.length > 0) {
+        $("#chart_tanggal_baru").css({ width: Math.max(dataTanggalBaru.length * 90, 500) + "px", minWidth: Math.max(dataTanggalBaru.length * 90, 500) + "px" });
+        $.plot("#chart_tanggal_baru", [{
+            data: dataTanggalBaru,
+            lines: { show: true, fill: false },
+            points: { show: true, radius: 4 },
+            color: '#e91e63'
+        }], {
+            xaxis: {
+                ticks: tickTanggalBaru,
+                min: -0.5,
+                max: dataTanggalBaru.length - 0.5,
+                tickLength: 0
+            },
+            yaxis: { min: 0, tickDecimals: 0 },
+            grid: { hoverable: true, borderWidth: 1 }
+        });
+    } else {
+        $("#chart_tanggal_baru").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+    var dataBulanBaru = <?= json_encode($dataBulanBaru) ?>;
+    var tickBulanBaru = <?= json_encode($tickBulanBaru) ?>;
+    if (dataBulanBaru.length > 0) {
+        $("#chart_bulan_baru").css({ width: Math.max(dataBulanBaru.length * 90, 500) + "px", minWidth: Math.max(dataBulanBaru.length * 90, 500) + "px" });
+        $.plot("#chart_bulan_baru", [{
+            data: dataBulanBaru,
+            lines: { show: true, fill: false },
+            points: { show: true, radius: 4 },
+            color: '#3f51b5'
+        }], {
+            xaxis: {
+                ticks: tickBulanBaru,
+                min: -0.5,
+                max: dataBulanBaru.length - 0.5,
+                tickLength: 0
+            },
+            yaxis: { min: 0, tickDecimals: 0 },
+            grid: { hoverable: true, borderWidth: 1 }
+        });
+    } else {
+        $("#chart_bulan_baru").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+    var dataTanggalLama = <?= json_encode($dataTanggalLama) ?>;
+    var tickTanggalLama = <?= json_encode($tickTanggalLama) ?>;
+    if (dataTanggalLama.length > 0) {
+        $("#chart_tanggal_lama").css({ width: Math.max(dataTanggalLama.length * 90, 500) + "px", minWidth: Math.max(dataTanggalLama.length * 90, 500) + "px" });
+        $.plot("#chart_tanggal_lama", [{
+            data: dataTanggalLama,
+            lines: { show: true, fill: false },
+            points: { show: true, radius: 4 },
+            color: '#e91e63'
+        }], {
+            xaxis: {
+                ticks: tickTanggalLama,
+                min: -0.5,
+                max: dataTanggalLama.length - 0.5,
+                tickLength: 0
+            },
+            yaxis: { min: 0, tickDecimals: 0 },
+            grid: { hoverable: true, borderWidth: 1 }
+        });
+    } else {
+        $("#chart_tanggal_lama").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+    var dataBulanLama = <?= json_encode($dataBulanLama) ?>;
+    var tickBulanLama = <?= json_encode($tickBulanLama) ?>;
+    if (dataBulanLama.length > 0) {
+        $("#chart_bulan_lama").css({ width: Math.max(dataBulanLama.length * 90, 500) + "px", minWidth: Math.max(dataBulanLama.length * 90, 500) + "px" });
+        $.plot("#chart_bulan_lama", [{
+            data: dataBulanLama,
+            lines: { show: true, fill: false },
+            points: { show: true, radius: 4 },
+            color: '#3f51b5'
+        }], {
+            xaxis: {
+                ticks: tickBulanLama,
+                min: -0.5,
+                max: dataBulanLama.length - 0.5,
+                tickLength: 0
+            },
+            yaxis: { min: 0, tickDecimals: 0 },
+            grid: { hoverable: true, borderWidth: 1 }
+        });
+    } else {
+        $("#chart_bulan_lama").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
     var dataStatusPelayanan = <?= json_encode($dataStatusPelayanan) ?>;
     if (dataStatusPelayanan.length > 0) {

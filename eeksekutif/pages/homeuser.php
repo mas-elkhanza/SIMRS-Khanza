@@ -87,14 +87,20 @@
                             <span>Pelayanan</span>
                         </a>
                         <ul class="ml-menu">
-                            <li <?=$subhalaman=="RawatJalan"?"class='active'":""?>>
-                                <a href="index.php?act=RawatJalan&hal=Pelayanan">Rawat Jalan</a>
+                            <li <?=$subhalaman=="PelayananRawatJalan"?"class='active'":""?>>
+                                <a href="index.php?act=PelayananRawatJalan&hal=Pelayanan">Rawat Jalan</a>
                             </li>
-                            <li <?=$subhalaman=="IGDK"?"class='active'":""?>>
-                                <a href="index.php?act=IGDK&hal=Pelayanan">Gawat Darurat</a>
+                            <li <?=$subhalaman=="PelayananIGDK"?"class='active'":""?>>
+                                <a href="index.php?act=PelayananIGDK&hal=Pelayanan">Gawat Darurat</a>
                             </li>
-                            <li <?=$subhalaman=="RawatInap"?"class='active'":""?>>
-                                <a href="index.php?act=RawatInap&hal=Pelayanan">Rawat Inap</a>
+                            <li <?=$subhalaman=="PelayananRawatInap"?"class='active'":""?>>
+                                <a href="index.php?act=PelayananRawatInap&hal=Pelayanan">Rawat Inap</a>
+                            </li>
+                            <li <?=$subhalaman=="PelayananLaborat"?"class='active'":""?>>
+                                <a href="index.php?act=PelayananLaborat&hal=Pelayanan">Laboratorium</a>
+                            </li>
+                            <li <?=$subhalaman=="PelayananRadiologi"?"class='active'":""?>>
+                                <a href="index.php?act=PelayananRadiologi&hal=Pelayanan">Radiologi</a>
                             </li>
                         </ul>
                     </li>
