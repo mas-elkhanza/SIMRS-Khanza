@@ -104,7 +104,23 @@
                             </li>
                         </ul>
                     </li>
-                    <div id="datakonsul"></div>
+                    <li <?=$halaman=="Farmasi"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">local_pharmacy</i>
+                            <span>Inventori Farmasi</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SisaStokFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=SisaStokFarmasi&hal=Farmasi">Sisa Stok & Nilai Aset</a>
+                            </li>
+                            <li <?=$subhalaman=="DaruratStok"?"class='active'":""?>>
+                                <a href="index.php?act=DaruratStok&hal=Farmasi">Defecta/Darurat Stok</a>
+                            </li>
+                            <li <?=$subhalaman=="KadaluarsaBatch"?"class='active'":""?>>
+                                <a href="index.php?act=KadaluarsaBatch&hal=Farmasi">Kadaluarsa 3 Bulan Kedepan</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

@@ -344,12 +344,6 @@ public class DlgPenjualan extends javax.swing.JDialog {
             aktifkanbatch = "no";
             ppStok.setVisible(true);
         }
-        
-        if(tampilkan_ppnobat_ralan.equals("Yes")){
-            PersenppnObat.setText("11");
-        }else{
-            PersenppnObat.setText("0");
-        }
     }
     
 
