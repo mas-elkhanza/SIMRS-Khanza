@@ -125,6 +125,18 @@
                             <li <?=$subhalaman=="RingkasanPengadaanFarmasi"?"class='active'":""?>>
                                 <a href="index.php?act=RingkasanPengadaanFarmasi&hal=Farmasi">Ringkasan Pengadaan</a>
                             </li>
+                            <li <?=$subhalaman=="RingkasanPenerimaanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenerimaanFarmasi&hal=Farmasi">Ringkasan Penerimaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHibahFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHibahFarmasi&hal=Farmasi">Ringkasan Hibah</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPenjualanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenjualanFarmasi&hal=Farmasi">Ringkasan Jual Bebas/OCT</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanBeriObatFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanBeriObatFarmasi&hal=Farmasi">Ringkasan Beri Obat, Alkes & BHP</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

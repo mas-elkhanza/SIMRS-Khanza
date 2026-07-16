@@ -3,24 +3,24 @@
     $thnsekarang = substr($sekarang,0,4);
     $blnsekarang = substr($sekarang,5,2);
     $tglsekarang = substr($sekarang,8,2);
-    $thncaribeli  = $thnsekarang;
-    $blncaribeli  = $blnsekarang;
-    $tglcaribeli  = $tglsekarang;
-    $thncaribeli2 = $thnsekarang;
-    $blncaribeli2 = $blnsekarang;
-    $tglcaribeli2 = $tglsekarang;
+    $thncarihibah  = $thnsekarang;
+    $blncarihibah  = $blnsekarang;
+    $tglcarihibah  = $tglsekarang;
+    $thncarihibah2 = $thnsekarang;
+    $blncarihibah2 = $blnsekarang;
+    $tglcarihibah2 = $tglsekarang;
     if(isset($_POST["BtnCari"])){
-        $thncaribeli  = validTeks(trim(isset($_POST['tgl_cari_beli']))?substr($_POST['tgl_cari_beli'],6,4):$thnsekarang);
-        $blncaribeli  = validTeks(trim(isset($_POST['tgl_cari_beli']))?substr($_POST['tgl_cari_beli'],3,2):$blnsekarang);
-        $tglcaribeli  = validTeks(trim(isset($_POST['tgl_cari_beli']))?substr($_POST['tgl_cari_beli'],0,2):$tglsekarang);
-        $thncaribeli2 = validTeks(trim(isset($_POST['tgl_cari_beli2']))?substr($_POST['tgl_cari_beli2'],6,4):$thnsekarang);
-        $blncaribeli2 = validTeks(trim(isset($_POST['tgl_cari_beli2']))?substr($_POST['tgl_cari_beli2'],3,2):$blnsekarang);
-        $tglcaribeli2 = validTeks(trim(isset($_POST['tgl_cari_beli2']))?substr($_POST['tgl_cari_beli2'],0,2):$tglsekarang);
+        $thncarihibah  = validTeks(trim(isset($_POST['tgl_cari_hibah']))?substr($_POST['tgl_cari_hibah'],6,4):$thnsekarang);
+        $blncarihibah  = validTeks(trim(isset($_POST['tgl_cari_hibah']))?substr($_POST['tgl_cari_hibah'],3,2):$blnsekarang);
+        $tglcarihibah  = validTeks(trim(isset($_POST['tgl_cari_hibah']))?substr($_POST['tgl_cari_hibah'],0,2):$tglsekarang);
+        $thncarihibah2 = validTeks(trim(isset($_POST['tgl_cari_hibah2']))?substr($_POST['tgl_cari_hibah2'],6,4):$thnsekarang);
+        $blncarihibah2 = validTeks(trim(isset($_POST['tgl_cari_hibah2']))?substr($_POST['tgl_cari_hibah2'],3,2):$blnsekarang);
+        $tglcarihibah2 = validTeks(trim(isset($_POST['tgl_cari_hibah2']))?substr($_POST['tgl_cari_hibah2'],0,2):$tglsekarang);
     }
 ?>
 <link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <div class="block-header">
-    <h2><center>RINGKASAN PENGADAAN OBAT, ALKES & BHP MEDIS</center></h2>
+    <h2><center>RINGKASAN HIBAH OBAT, ALKES & BHP MEDIS</center></h2>
 </div>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -29,18 +29,18 @@
                 <form id="form_validation" action="" method="POST">
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="tgl_cari_beli">Tanggal Beli</label>
+                            <label for="tgl_cari_hibah">Tanggal Hibah</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_beli" class="datepicker form-control" required autocomplete="off" value="<?=$tglcaribeli."-".$blncaribeli."-".$thncaribeli;?>"/>
+                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_hibah" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarihibah."-".$blncarihibah."-".$thncarihibah;?>"/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="tgl_cari_beli2">Sampai Dengan</label>
+                            <label for="tgl_cari_hibah2">Sampai Dengan</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_beli2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcaribeli2."-".$blncaribeli2."-".$thncaribeli2;?>"/>
+                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_hibah2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarihibah2."-".$blncarihibah2."-".$thncarihibah2;?>"/>
                                 </div>
                             </div>
                         </div>
@@ -66,26 +66,26 @@
                         <tbody>
                         <?php
                             $totalTagihan       = 0;
-                            $queryRingkasanBeli = bukaquery(
-                                "select detailbeli.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,golongan_barang.nama as namagolongan,".
-                                "kategori_barang.nama as namakategori,sum(detailbeli.jumlah2) as jumlah,sum(detailbeli.total) as total from pembelian ".
-                                "inner join detailbeli on pembelian.no_faktur=detailbeli.no_faktur inner join databarang on detailbeli.kode_brng=databarang.kode_brng ".
+                            $queryRingkasanHibah = bukaquery(
+                                "select detailhibah_obat_bhp.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,golongan_barang.nama as namagolongan,".
+                                "kategori_barang.nama as namakategori,sum(detailhibah_obat_bhp.jumlah2) as jumlah,sum(detailhibah_obat_bhp.subtotaldiakui) as total from hibah_obat_bhp ".
+                                "inner join detailhibah_obat_bhp on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah inner join databarang on detailhibah_obat_bhp.kode_brng=databarang.kode_brng ".
                                 "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns ".
                                 "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode ".
-                                "where pembelian.tgl_beli between '$thncaribeli-$blncaribeli-$tglcaribeli' and '$thncaribeli2-$blncaribeli2-$tglcaribeli2' ".
-                                "group by detailbeli.kode_brng order by databarang.nama_brng asc"
+                                "where hibah_obat_bhp.tgl_hibah between '$thncarihibah-$blncarihibah-$tglcarihibah' and '$thncarihibah2-$blncarihibah2-$tglcarihibah2' ".
+                                "group by detailhibah_obat_bhp.kode_brng order by databarang.nama_brng asc"
                             );
-                            while($rsqueryRingkasanBeli = mysqli_fetch_array($queryRingkasanBeli)) {
-                                $totalTagihan += $rsqueryRingkasanBeli["total"];
+                            while($rsqueryRingkasanHibah = mysqli_fetch_array($queryRingkasanHibah)) {
+                                $totalTagihan += $rsqueryRingkasanHibah["total"];
                                 echo "<tr>
-                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanBeli["kode_brng"]."</td>
-                                        <td align='left'>".$rsqueryRingkasanBeli["nama_brng"]."</td>
-                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanBeli["satuan"]."</td>
-                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanBeli["namajenis"]."</td>
-                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanBeli["namagolongan"]."</td>
-                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanBeli["namakategori"]."</td>
-                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanBeli["jumlah"],0,',','.')."</td>
-                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanBeli["total"],0,',','.')."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanHibah["kode_brng"]."</td>
+                                        <td align='left'>".$rsqueryRingkasanHibah["nama_brng"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanHibah["satuan"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanHibah["namajenis"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanHibah["namagolongan"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryRingkasanHibah["namakategori"]."</td>
+                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanHibah["jumlah"],0,',','.')."</td>
+                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanHibah["total"],0,',','.')."</td>
                                       </tr>";
                             }
                         ?>
@@ -118,20 +118,20 @@
                                 <tbody>
                                 <?php
                                     $no                    = 1;
-                                    $dataTerbanyakDibeli   = [];
-                                    $queryterbanyakdibeli  = bukaquery(
-                                        "select databarang.nama_brng,sum(detailbeli.jumlah2) as jumlah from pembelian inner join detailbeli on pembelian.no_faktur=detailbeli.no_faktur inner join databarang on detailbeli.kode_brng=databarang.kode_brng ".
-                                        "where pembelian.tgl_beli between '$thncaribeli-$blncaribeli-$tglcaribeli' and '$thncaribeli2-$blncaribeli2-$tglcaribeli2' group by detailbeli.kode_brng order by jumlah desc limit 10"
+                                    $dataTerbanyakDihibah  = [];
+                                    $queryterbanyakdihibah = bukaquery(
+                                        "select databarang.nama_brng,sum(detailhibah_obat_bhp.jumlah2) as jumlah from hibah_obat_bhp inner join detailhibah_obat_bhp on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah inner join databarang on detailhibah_obat_bhp.kode_brng=databarang.kode_brng ".
+                                        "where hibah_obat_bhp.tgl_hibah between '$thncarihibah-$blncarihibah-$tglcarihibah' and '$thncarihibah2-$blncarihibah2-$tglcarihibah2' group by detailhibah_obat_bhp.kode_brng order by jumlah desc limit 10"
                                     );
-                                    while($rsqueryterbanyakdibeli = mysqli_fetch_array($queryterbanyakdibeli)) {
-                                        $dataTerbanyakDibeli[] = [
-                                            'label' => $rsqueryterbanyakdibeli["nama_brng"]." (".number_format($rsqueryterbanyakdibeli["jumlah"],0,',','.').")",
-                                            'data'  => (float)$rsqueryterbanyakdibeli["jumlah"]
+                                    while($rsqueryterbanyakdihibah = mysqli_fetch_array($queryterbanyakdihibah)) {
+                                        $dataTerbanyakDihibah[] = [
+                                            'label' => $rsqueryterbanyakdihibah["nama_brng"]." (".number_format($rsqueryterbanyakdihibah["jumlah"],0,',','.').")",
+                                            'data'  => (float)$rsqueryterbanyakdihibah["jumlah"]
                                         ];
                                         echo "<tr>
                                                 <td align='center'>".$no++."</td>
-                                                <td align='left'>".$rsqueryterbanyakdibeli["nama_brng"]."</td>
-                                                <td align='right'>".number_format($rsqueryterbanyakdibeli["jumlah"],0,',','.')."</td>
+                                                <td align='left'>".$rsqueryterbanyakdihibah["nama_brng"]."</td>
+                                                <td align='right'>".number_format($rsqueryterbanyakdihibah["jumlah"],0,',','.')."</td>
                                               </tr>";
                                     }
                                 ?>
@@ -140,14 +140,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="pie_chart_terbanyakdibeli" class="flot-chart" style="height: 400px;"></div>
+                        <div id="pie_chart_terbanyakdihibah" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
                 <hr style="margin:6px 0 0 0;">
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Biaya</div>
+                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Nilai Hibah</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -162,21 +162,21 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $no                  = 1;
-                                    $dataBiayaTerbesar   = [];
-                                    $querybiayaterbesar  = bukaquery(
-                                        "select databarang.nama_brng,sum(detailbeli.total) as total from pembelian inner join detailbeli on pembelian.no_faktur=detailbeli.no_faktur inner join databarang on detailbeli.kode_brng=databarang.kode_brng ".
-                                        "where pembelian.tgl_beli between '$thncaribeli-$blncaribeli-$tglcaribeli' and '$thncaribeli2-$blncaribeli2-$tglcaribeli2' group by detailbeli.kode_brng order by total desc limit 10"
+                                    $no                = 1;
+                                    $dataNilaiHibah    = [];
+                                    $querynilaihibah   = bukaquery(
+                                        "select databarang.nama_brng,sum(detailhibah_obat_bhp.subtotaldiakui) as total from hibah_obat_bhp inner join detailhibah_obat_bhp on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah inner join databarang on detailhibah_obat_bhp.kode_brng=databarang.kode_brng ".
+                                        "where hibah_obat_bhp.tgl_hibah between '$thncarihibah-$blncarihibah-$tglcarihibah' and '$thncarihibah2-$blncarihibah2-$tglcarihibah2' group by detailhibah_obat_bhp.kode_brng order by total desc limit 10"
                                     );
-                                    while($rsquerybiayaterbesar = mysqli_fetch_array($querybiayaterbesar)) {
-                                        $dataBiayaTerbesar[] = [
-                                            'label' => $rsquerybiayaterbesar["nama_brng"]." (".number_format($rsquerybiayaterbesar["total"],0,',','.').")",
-                                            'data'  => (float)$rsquerybiayaterbesar["total"]
+                                    while($rsquerynilaihibah = mysqli_fetch_array($querynilaihibah)) {
+                                        $dataNilaiHibah[] = [
+                                            'label' => $rsquerynilaihibah["nama_brng"]." (".number_format($rsquerynilaihibah["total"],0,',','.').")",
+                                            'data'  => (float)$rsquerynilaihibah["total"]
                                         ];
                                         echo "<tr>
                                                 <td align='center'>".$no++."</td>
-                                                <td align='left'>".$rsquerybiayaterbesar["nama_brng"]."</td>
-                                                <td align='right'>".number_format($rsquerybiayaterbesar["total"],0,',','.')."</td>
+                                                <td align='left'>".$rsquerynilaihibah["nama_brng"]."</td>
+                                                <td align='right'>".number_format($rsquerynilaihibah["total"],0,',','.')."</td>
                                               </tr>";
                                     }
                                 ?>
@@ -185,7 +185,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="pie_chart_biayaterbesar" class="flot-chart" style="height: 400px;"></div>
+                        <div id="pie_chart_nilaihibah" class="flot-chart" style="height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -199,9 +199,9 @@
 <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
 <script>
 $(function() {
-    var dataTerbanyakDibeli = <?= json_encode($dataTerbanyakDibeli) ?>;
-    if (dataTerbanyakDibeli.length > 0) {
-        $.plot("#pie_chart_terbanyakdibeli", dataTerbanyakDibeli, {
+    var dataTerbanyakDihibah = <?= json_encode($dataTerbanyakDihibah) ?>;
+    if (dataTerbanyakDihibah.length > 0) {
+        $.plot("#pie_chart_terbanyakdihibah", dataTerbanyakDihibah, {
             series: {
                 pie: {
                     show: true,
@@ -220,11 +220,11 @@ $(function() {
             legend: { show: true }
         });
     } else {
-        $("#pie_chart_terbanyakdibeli").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+        $("#pie_chart_terbanyakdihibah").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
-    var dataBiayaTerbesar = <?= json_encode($dataBiayaTerbesar) ?>;
-    if (dataBiayaTerbesar.length > 0) {
-        $.plot("#pie_chart_biayaterbesar", dataBiayaTerbesar, {
+    var dataNilaiHibah = <?= json_encode($dataNilaiHibah) ?>;
+    if (dataNilaiHibah.length > 0) {
+        $.plot("#pie_chart_nilaihibah", dataNilaiHibah, {
             series: {
                 pie: {
                     show: true,
@@ -243,7 +243,7 @@ $(function() {
             legend: { show: true }
         });
     } else {
-        $("#pie_chart_biayaterbesar").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+        $("#pie_chart_nilaihibah").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
 });
 </script>

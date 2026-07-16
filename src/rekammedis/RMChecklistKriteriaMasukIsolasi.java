@@ -123,7 +123,33 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             }else if(i==16){
                 column.setPreferredWidth(84);
             }else if(i==17){
+                column.setPreferredWidth(151);
+            }else if(i==18){
+                column.setPreferredWidth(116);
+            }else if(i==19){
+                column.setPreferredWidth(45);
+            }else if(i==20){
+                column.setPreferredWidth(116);
+            }else if(i==21){
+                column.setPreferredWidth(80);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(96);
+            }else if(i==24){
+                column.setPreferredWidth(121);
+            }else if(i==25){
+                column.setPreferredWidth(79);
+            }else if(i==26){
+                column.setPreferredWidth(112);
+            }else if(i==27){
+                column.setPreferredWidth(68);
+            }else if(i==28){
                 column.setPreferredWidth(120);
+            }else if(i==29){
+                column.setPreferredWidth(77);
+            }else if(i==30){
+                column.setPreferredWidth(140);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

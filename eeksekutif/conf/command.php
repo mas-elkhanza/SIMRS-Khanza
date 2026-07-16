@@ -34,7 +34,8 @@
         if (!cekSessiAdmin()) {
             $form = array (
                 'HomeUser','PelayananRawatJalan','PelayananIGDK','PelayananRawatInap','PelayananLaborat' ,'PelayananRadiologi',
-                'SisaStokFarmasi','DaruratStok','KadaluarsaBatch','RingkasanPengadaanFarmasi','StokTidakBergerak'
+                'SisaStokFarmasi','DaruratStok','KadaluarsaBatch','RingkasanPengadaanFarmasi','StokTidakBergerak','RingkasanPenerimaanFarmasi',
+                'RingkasanHibahFarmasi'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -60,6 +61,10 @@
             case "DaruratStok"                  : include_once("pages/listdaruratstok.php"); break;
             case "KadaluarsaBatch"              : include_once("pages/listkadaluarsabatch.php"); break;
             case "RingkasanPengadaanFarmasi"    : include_once("pages/listringkasanpengadaanfarmasi.php"); break;
+            case "RingkasanPenerimaanFarmasi"   : include_once("pages/listringkasanpenerimaanfarmasi.php"); break;
+            case "RingkasanHibahFarmasi"        : include_once("pages/listringkasanhibahfarmasi.php"); break;
+            case "RingkasanPenjualanFarmasi"    : include_once("pages/listringkasanpenjualanfarmasi.php"); break;
+            case "RingkasanBeriObatFarmasi"     : include_once("pages/listringkasanberobatfarmasi.php"); break;
             case "StokTidakBergerak"            : include_once("pages/liststoktidakbergerak.php"); break;
             default                             : include_once("pages/listhome.php");
         }   
