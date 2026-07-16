@@ -119,6 +119,12 @@
                             <li <?=$subhalaman=="KadaluarsaBatch"?"class='active'":""?>>
                                 <a href="index.php?act=KadaluarsaBatch&hal=Farmasi">Kadaluarsa 3 Bulan Kedepan</a>
                             </li>
+                            <li <?=$subhalaman=="StokTidakBergerak"?"class='active'":""?>>
+                                <a href="index.php?act=StokTidakBergerak&hal=Farmasi">Barang Tidak Bergerak</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPengadaanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPengadaanFarmasi&hal=Farmasi">Ringkasan Pengadaan</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

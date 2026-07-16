@@ -16,7 +16,7 @@
                                 <th style="min-width:120px;white-space:nowrap;"><center>Kategori</center></th>
                                 <th style="min-width:120px;white-space:nowrap;"><center>Golongan</center></th>
                                 <th style="min-width:80px;white-space:nowrap;"><center>Satuan</center></th>
-                                <th style="min-width:110px;white-space:nowrap;"><center>Harga Satuan</center></th>
+                                <th style="min-width:110px;white-space:nowrap;"><center>Harga Dasar</center></th>
                                 <?php
                                     $bangsalList  = [];
                                     $querybangsal = bukaquery("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal where bangsal.status='1' and bangsal.kd_bangsal<>'-' order by bangsal.kd_bangsal asc");

@@ -70,7 +70,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","TB Paru","Campak","Varisela",
-            "Herpes Zoster","Airborne Lainnya","Covid19","Influenza","Difteri","Pertusis","Mningitis",
+            "Herpes Zoster","Airborne Lainnya","Covid19","Influenza","Difteri","Pertusis","Maningitis",
             "Droplet Lainnya","MDRO (MRSA/VRE/CRE/ESBL)","Clostridioides Difficile","Skabies","Luka Dengan Drainase",
             "Diare Infeksius","Kontak Lainnya","Risiko Kontak Erat","Riwayat Daerah Wabah","Riwayat MDRO",
             "Lab & Rontgen Positif","Gejala Klinis","Imunokompromis Berat","Instruksi DPJP","Ada Persetujuan Isolasi",
@@ -100,6 +100,30 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
+            }else if(i==6){
+                column.setPreferredWidth(45);
+            }else if(i==7){
+                column.setPreferredWidth(48);
+            }else if(i==8){
+                column.setPreferredWidth(48);
+            }else if(i==9){
+                column.setPreferredWidth(76);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(47);
+            }else if(i==12){
+                column.setPreferredWidth(54);
+            }else if(i==13){
+                column.setPreferredWidth(39);
+            }else if(i==14){
+                column.setPreferredWidth(47);
+            }else if(i==15){
+                column.setPreferredWidth(58);
+            }else if(i==16){
+                column.setPreferredWidth(84);
+            }else if(i==17){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

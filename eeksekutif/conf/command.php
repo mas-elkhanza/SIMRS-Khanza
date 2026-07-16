@@ -34,7 +34,7 @@
         if (!cekSessiAdmin()) {
             $form = array (
                 'HomeUser','PelayananRawatJalan','PelayananIGDK','PelayananRawatInap','PelayananLaborat' ,'PelayananRadiologi',
-                'SisaStokFarmasi','DaruratStok','KadaluarsaBatch'
+                'SisaStokFarmasi','DaruratStok','KadaluarsaBatch','RingkasanPengadaanFarmasi','StokTidakBergerak'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -50,16 +50,18 @@
         $aksi=isset($_REQUEST['act'])?$_REQUEST['act']:NULL;
         formProtek();
         switch ($aksi) {
-            case "HomeUser"                 : include_once("pages/listhome.php"); break;
-            case "PelayananRawatJalan"      : include_once("pages/listpelayananrawatjalan.php"); break;
-            case "PelayananIGDK"            : include_once("pages/listpelayananigd.php"); break;
-            case "PelayananRawatInap"       : include_once("pages/listpelayananrawatinap.php"); break;
-            case "PelayananLaborat"         : include_once("pages/listpelayananlab.php"); break;
-            case "PelayananRadiologi"       : include_once("pages/listpelayananradiologi.php"); break;
-            case "SisaStokFarmasi"          : include_once("pages/listsisastokfarmasi.php"); break;
-            case "DaruratStok"              : include_once("pages/listdaruratstok.php"); break;
-            case "KadaluarsaBatch"          : include_once("pages/listkadaluarsabatch.php"); break;
-            default                         : include_once("pages/listhome.php");
+            case "HomeUser"                     : include_once("pages/listhome.php"); break;
+            case "PelayananRawatJalan"          : include_once("pages/listpelayananrawatjalan.php"); break;
+            case "PelayananIGDK"                : include_once("pages/listpelayananigd.php"); break;
+            case "PelayananRawatInap"           : include_once("pages/listpelayananrawatinap.php"); break;
+            case "PelayananLaborat"             : include_once("pages/listpelayananlab.php"); break;
+            case "PelayananRadiologi"           : include_once("pages/listpelayananradiologi.php"); break;
+            case "SisaStokFarmasi"              : include_once("pages/listsisastokfarmasi.php"); break;
+            case "DaruratStok"                  : include_once("pages/listdaruratstok.php"); break;
+            case "KadaluarsaBatch"              : include_once("pages/listkadaluarsabatch.php"); break;
+            case "RingkasanPengadaanFarmasi"    : include_once("pages/listringkasanpengadaanfarmasi.php"); break;
+            case "StokTidakBergerak"            : include_once("pages/liststoktidakbergerak.php"); break;
+            default                             : include_once("pages/listhome.php");
         }   
     }
 ?>
