@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data</button></center>
+                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data & Grafik</button></center>
                 </form>
             </div>
             <div class="body" style="padding-top:0;">
@@ -102,7 +102,7 @@
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Barang Terjual</div>
+                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Jumlah</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -147,7 +147,7 @@
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
-                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Nilai Penjualan</div>
+                    <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Nilai</div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-6">

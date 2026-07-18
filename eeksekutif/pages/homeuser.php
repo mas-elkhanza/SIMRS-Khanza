@@ -137,6 +137,38 @@
                             <li <?=$subhalaman=="RingkasanBeriObatFarmasi"?"class='active'":""?>>
                                 <a href="index.php?act=RingkasanBeriObatFarmasi&hal=Farmasi">Ringkasan Beri Obat, Alkes & BHP</a>
                             </li>
+                            <li <?=$subhalaman=="RingkasanPiutangObatFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPiutangObatFarmasi&hal=Farmasi">Ringkasan Piutang</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanStokKeluarFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanStokKeluarFarmasi&hal=Farmasi">Ringkasan Stok Keluar</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanReturSuplierFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanReturSuplierFarmasi&hal=Farmasi">Ringkasan Retur Ke Suplier</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanReturObatPasien"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanReturObatPasien&hal=Farmasi">Ringkasan Retur Dari Pasien</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanObatPerPoli"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanObatPerPoli&hal=Farmasi">Ringkasan Obat Per Poli</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanObatPerDokter"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanObatPerDokter&hal=Farmasi">Ringkasan Obat Per Dokter</a>
+                            </li>
+                            <li <?=$subhalaman=="NilaiPenerimaanVendorFarmasiPerBulan"?"class='active'":""?>>
+                                <a href="index.php?act=NilaiPenerimaanVendorFarmasiPerBulan&hal=Farmasi">Nilai Penerimaan Vendor Per Bulan</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <?=$halaman=="Kasir"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">layers</i>
+                            <span>Pendapatan Kasir</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="PembayaranPerAkunBayar"?"class='active'":""?>>
+                                <a href="index.php?act=PembayaranPerAkunBayar&hal=Kasir">Pembayaran Per Akun Bayar</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

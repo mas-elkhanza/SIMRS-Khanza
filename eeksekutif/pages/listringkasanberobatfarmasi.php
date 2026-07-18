@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data</button></center>
+                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data & Grafik</button></center>
                 </form>
             </div>
             <div class="body" style="padding-top:0;">
