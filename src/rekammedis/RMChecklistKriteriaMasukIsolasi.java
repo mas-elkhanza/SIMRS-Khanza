@@ -1597,7 +1597,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Infeksi,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -2069,11 +2069,11 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_RisikoRiwayatMDROKeyPressed
 
     private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DiagnosaIsolasi,JenisIsolasi);
     }//GEN-LAST:event_KeputusanKeyPressed
 
     private void JenisIsolasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisIsolasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Keputusan,Keterangan);
     }//GEN-LAST:event_JenisIsolasiKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2110,11 +2110,11 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_KontakLukaDrainaseKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        //Valid.pindah(evt,Keputusan,BtnSimpan);
+        Valid.pindah(evt,JenisIsolasi,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void DiagnosaIsolasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaIsolasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PintuKamarOtomatis,Keputusan);
     }//GEN-LAST:event_DiagnosaIsolasiKeyPressed
 
     private void RisikoHasilLabRadPositifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoHasilLabRadPositifKeyPressed
@@ -2150,11 +2150,11 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_FasilitasCuciTanganKeyPressed
 
     private void TekananUdaraNegatifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TekananUdaraNegatifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FasilitasCuciTangan,PintuKamarOtomatis);
     }//GEN-LAST:event_TekananUdaraNegatifKeyPressed
 
     private void PintuKamarOtomatisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PintuKamarOtomatisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TekananUdaraNegatif,DiagnosaIsolasi);
     }//GEN-LAST:event_PintuKamarOtomatisKeyPressed
 
     /**
