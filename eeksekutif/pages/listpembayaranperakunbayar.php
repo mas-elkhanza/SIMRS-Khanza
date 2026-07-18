@@ -18,16 +18,30 @@
         $tglcaribayar2 = validTeks(trim(isset($_POST['tgl_cari_bayar2']))?substr($_POST['tgl_cari_bayar2'],0,2):$tglsekarang);
     }
     $akunList = [];
-    $queryAkun = bukaquery(
-        "select rekening.kd_rek,rekening.nm_rek from rekening where ".
-        "(rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek)) ".
-        "or (rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)) ".
-        "order by rekening.nm_rek asc"
-    );
-    while($rsakun = mysqli_fetch_array($queryAkun)) {
+    $queryBayar = bukaquery("select akun_bayar.nama_bayar from akun_bayar group by akun_bayar.nama_bayar order by akun_bayar.nama_bayar asc");
+    while($rsbayar = mysqli_fetch_array($queryBayar)) {
         $akunList[] = [
-            'kd_rek'        => $rsakun["kd_rek"],
-            'nm_rek'        => $rsakun["nm_rek"],
+            'label'         => $rsbayar["nama_bayar"],
+            'type'          => 'bayar',
+            'key'           => $rsbayar["nama_bayar"],
+            'total'         => 0,
+            'rawatinap'     => 0,
+            'rawatjalan'    => 0,
+            'apotek'        => 0,
+            'deposit'       => 0,
+            'pemasukanlain' => 0,
+            'labkesling'    => 0
+        ];
+    }
+    $queryRekLain = bukaquery(
+        "select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in ".
+        "(select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek asc"
+    );
+    while($rsreklain = mysqli_fetch_array($queryRekLain)) {
+        $akunList[] = [
+            'label'         => $rsreklain["nm_rek"],
+            'type'          => 'rekening',
+            'key'           => $rsreklain["kd_rek"],
             'total'         => 0,
             'rawatinap'     => 0,
             'rawatjalan'    => 0,
@@ -39,8 +53,8 @@
     }
     $allTotal      = 0;
     $lainLainTotal = 0;
-    $tanggalAkun   = [];
-    $bulanAkun     = [];
+    $tanggalAkun     = [];
+    $bulanAkun       = [];
     $tanggalKategori = [];
     $bulanKategori   = [];
     $kategoriKosong  = ['rawatinap'=>0,'rawatjalan'=>0,'apotek'=>0,'deposit'=>0,'pemasukanlain'=>0,'labkesling'=>0,'lainlain'=>0];
@@ -120,24 +134,28 @@
             }
             foreach($akunList as $idx => $akun) {
                 $bayar = 0;
-                if($norawatinap!="") {
-                    $bayar = (float) getOne("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='".$norawatinap."' and akun_bayar.kd_rek='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["rawatinap"] += $bayar;
-                } elseif($norawatjalan!="") {
-                    $bayar = (float) getOne("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='".$norawatjalan."' and akun_bayar.kd_rek='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["rawatjalan"] += $bayar;
-                } elseif($notajual!="") {
-                    $bayar = (float) getOne("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='".$notajual."' and akun_bayar.kd_rek='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["apotek"] += $bayar;
-                } elseif($nodeposit!="") {
-                    $bayar = (float) getOne("select sum(deposit.besar_deposit) from deposit inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar where deposit.no_deposit='".$nodeposit."' and akun_bayar.kd_rek='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["deposit"] += $bayar;
-                } elseif($nopemasukanlain!="") {
-                    $bayar = (float) getOne("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='".$nopemasukanlain."' and kategori_pemasukan_lain.kd_rek2='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["pemasukanlain"] += $bayar;
-                } elseif($notakesling!="") {
-                    $bayar = (float) getOne("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel inner join akun_bayar on labkesling_detail_pembayaran_pengujian_sampel.nama_bayar=akun_bayar.nama_bayar where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='".$notakesling."' and akun_bayar.kd_rek='".$akun["kd_rek"]."'");
-                    $akunList[$idx]["labkesling"] += $bayar;
+                if($akun["type"]=="bayar") {
+                    if($norawatinap!="") {
+                        $bayar = (float) getOne("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap where detail_nota_inap.no_rawat='".$norawatinap."' and detail_nota_inap.nama_bayar='".$akun["key"]."'");
+                        $akunList[$idx]["rawatinap"] += $bayar;
+                    } elseif($norawatjalan!="") {
+                        $bayar = (float) getOne("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan where detail_nota_jalan.no_rawat='".$norawatjalan."' and detail_nota_jalan.nama_bayar='".$akun["key"]."'");
+                        $akunList[$idx]["rawatjalan"] += $bayar;
+                    } elseif($notajual!="") {
+                        $bayar = (float) getOne("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='".$notajual."' and penjualan.nama_bayar='".$akun["key"]."'");
+                        $akunList[$idx]["apotek"] += $bayar;
+                    } elseif($nodeposit!="") {
+                        $bayar = (float) getOne("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='".$nodeposit."' and deposit.nama_bayar='".$akun["key"]."'");
+                        $akunList[$idx]["deposit"] += $bayar;
+                    } elseif($notakesling!="") {
+                        $bayar = (float) getOne("select sum(labkesling_detail_pembayaran_pengujian_sampel.besar_bayar) from labkesling_detail_pembayaran_pengujian_sampel where labkesling_detail_pembayaran_pengujian_sampel.no_pembayaran='".$notakesling."' and labkesling_detail_pembayaran_pengujian_sampel.nama_bayar='".$akun["key"]."'");
+                        $akunList[$idx]["labkesling"] += $bayar;
+                    }
+                } else {
+                    if($nopemasukanlain!="") {
+                        $bayar = (float) getOne("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='".$nopemasukanlain."' and kategori_pemasukan_lain.kd_rek2='".$akun["key"]."'");
+                        $akunList[$idx]["pemasukanlain"] += $bayar;
+                    }
                 }
                 $akunList[$idx]["total"] += $bayar;
                 $tanggalAkun[$tglBayar][$idx] += $bayar;
@@ -182,7 +200,7 @@
     foreach($akunList as $akun) {
         if($akun["total"]>0) {
             $dataPieAkun[] = [
-                'label' => $akun["nm_rek"]." (".number_format($akun["total"],0,',','.').")",
+                'label' => $akun["label"]." (".number_format($akun["total"],0,',','.').")",
                 'data'  => (float)$akun["total"]
             ];
         }
@@ -251,7 +269,7 @@
                             foreach($akunList as $akun) {
                                 if($akun["total"]>0) {
                                     echo "<tr>
-                                            <td align='left' style='white-space:nowrap;'>".$akun["nm_rek"]."</td>
+                                            <td align='left' style='white-space:nowrap;'>".$akun["label"]."</td>
                                             <td align='right' style='white-space:nowrap;'>".number_format($akun["rawatinap"],0,',','.')."</td>
                                             <td align='right' style='white-space:nowrap;'>".number_format($akun["rawatjalan"],0,',','.')."</td>
                                             <td align='right' style='white-space:nowrap;'>".number_format($akun["apotek"],0,',','.')."</td>
@@ -320,7 +338,7 @@
                                     foreach($akunList as $akun) {
                                         if($akun["total"]>0) {
                                             echo "<tr>
-                                                    <td align='left'>Total ".$akun["nm_rek"]."</td>
+                                                    <td align='left'>Total ".$akun["label"]."</td>
                                                     <td align='right'>".number_format($akun["total"],0,',','.')."</td>
                                                   </tr>";
                                         }
@@ -409,7 +427,7 @@
                                 <th style="min-width:100px;white-space:nowrap;"><center>Tanggal</center></th>
                                 <?php
                                     foreach($akunAktifIdx as $idx) {
-                                        echo "<th style='min-width:120px;white-space:nowrap;'><center>".$akunList[$idx]["nm_rek"]."</center></th>";
+                                        echo "<th style='min-width:120px;white-space:nowrap;'><center>".$akunList[$idx]["label"]."</center></th>";
                                     }
                                 ?>
                                 <th style="min-width:130px;white-space:nowrap;"><center>Total</center></th>
@@ -470,7 +488,7 @@
                                 <th style="min-width:100px;white-space:nowrap;"><center>Bulan</center></th>
                                 <?php
                                     foreach($akunAktifIdx as $idx) {
-                                        echo "<th style='min-width:120px;white-space:nowrap;'><center>".$akunList[$idx]["nm_rek"]."</center></th>";
+                                        echo "<th style='min-width:120px;white-space:nowrap;'><center>".$akunList[$idx]["label"]."</center></th>";
                                     }
                                 ?>
                                 <th style="min-width:130px;white-space:nowrap;"><center>Total</center></th>
@@ -701,7 +719,7 @@ $(function() {
         $("#pie_chart_asalpendapatan").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
     var dataMultiLine = <?= json_encode(array_values($dataMultiLine)) ?>;
-    var namaAkunAktif = <?= json_encode(array_map(function($idx) use ($akunList){ return $akunList[$idx]["nm_rek"]; }, $akunAktifIdx)) ?>;
+    var namaAkunAktif = <?= json_encode(array_map(function($idx) use ($akunList){ return $akunList[$idx]["label"]; }, $akunAktifIdx)) ?>;
     var tickTanggal   = <?= json_encode($tickTanggal) ?>;
     if (dataMultiLine.length > 0 && tickTanggal.length > 0) {
         var seriesTanggal = [];

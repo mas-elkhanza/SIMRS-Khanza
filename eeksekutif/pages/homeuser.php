@@ -169,6 +169,9 @@
                             <li <?=$subhalaman=="PembayaranPerAkunBayar"?"class='active'":""?>>
                                 <a href="index.php?act=PembayaranPerAkunBayar&hal=Kasir">Pembayaran Per Akun Bayar</a>
                             </li>
+                            <li <?=$subhalaman=="PembayaranPerAkunRekeningCOA"?"class='active'":""?>>
+                                <a href="index.php?act=PembayaranPerAkunRekeningCOA&hal=Kasir">Pembayaran Per Akun Rekening/COA</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

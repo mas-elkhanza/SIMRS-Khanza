@@ -2122,31 +2122,31 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_RisikoHasilLabRadPositifKeyPressed
 
     private void RisikoGejalaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoGejalaKlinisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoHasilLabRadPositif,RisikoPasienImunokompromis);
     }//GEN-LAST:event_RisikoGejalaKlinisKeyPressed
 
     private void RisikoPasienImunokompromisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoPasienImunokompromisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoGejalaKlinis,InstruksiDPJP);
     }//GEN-LAST:event_RisikoPasienImunokompromisKeyPressed
 
     private void InstruksiDPJPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstruksiDPJPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoPasienImunokompromis,AdaPersetujuanTindakan);
     }//GEN-LAST:event_InstruksiDPJPKeyPressed
 
     private void AdaPersetujuanTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdaPersetujuanTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,InstruksiDPJP,KelengkapanJaminan);
     }//GEN-LAST:event_AdaPersetujuanTindakanKeyPressed
 
     private void KelengkapanJaminanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanJaminanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AdaPersetujuanTindakan,KetersediaanAPD);
     }//GEN-LAST:event_KelengkapanJaminanKeyPressed
 
     private void KetersediaanAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetersediaanAPDKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelengkapanJaminan,FasilitasCuciTangan);
     }//GEN-LAST:event_KetersediaanAPDKeyPressed
 
     private void FasilitasCuciTanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FasilitasCuciTanganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetersediaanAPD,TekananUdaraNegatif);
     }//GEN-LAST:event_FasilitasCuciTanganKeyPressed
 
     private void TekananUdaraNegatifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TekananUdaraNegatifKeyPressed
