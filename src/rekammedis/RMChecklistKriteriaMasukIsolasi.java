@@ -2017,55 +2017,55 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_AirboneLainnyaKeyPressed
 
     private void DropletCovidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletCovidKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AirboneLainnya,DropletPertusis);
     }//GEN-LAST:event_DropletCovidKeyPressed
 
     private void DropletPertusisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletPertusisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletCovid,DropletMeningitis);
     }//GEN-LAST:event_DropletPertusisKeyPressed
 
     private void DropletInfluenzaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletInfluenzaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletDifteri,DropletLainnya);
     }//GEN-LAST:event_DropletInfluenzaKeyPressed
 
     private void DropletMeningitisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletMeningitisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletPertusis,DropletDifteri);
     }//GEN-LAST:event_DropletMeningitisKeyPressed
 
     private void DropletLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletInfluenza,KontakMDRO);
     }//GEN-LAST:event_DropletLainnyaKeyPressed
 
     private void DropletDifteriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletDifteriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletMeningitis,DropletInfluenza);
     }//GEN-LAST:event_DropletDifteriKeyPressed
 
     private void KontakMDROKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakMDROKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletLainnya,KontakLukaDrainase);
     }//GEN-LAST:event_KontakMDROKeyPressed
 
     private void KontakSkabiesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakSkabiesKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakLukaDrainase,KontakClostridioides);
     }//GEN-LAST:event_KontakSkabiesKeyPressed
 
     private void KontakClostridioidesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakClostridioidesKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakSkabies,KontakDiareInfeksius);
     }//GEN-LAST:event_KontakClostridioidesKeyPressed
 
     private void KontakLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakDiareInfeksius,RisikoKontakErat);
     }//GEN-LAST:event_KontakLainnyaKeyPressed
 
     private void RisikoKontakEratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoKontakEratKeyPressed
-        // TODO add your handling code here:
+       Valid.pindah(evt,KontakLainnya,RisikoRiwayatMDRO);
     }//GEN-LAST:event_RisikoKontakEratKeyPressed
 
     private void RisikoRiwayatDaerahWabahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoRiwayatDaerahWabahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoRiwayatMDRO,RisikoHasilLabRadPositif);
     }//GEN-LAST:event_RisikoRiwayatDaerahWabahKeyPressed
 
     private void RisikoRiwayatMDROKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoRiwayatMDROKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoKontakErat,RisikoRiwayatDaerahWabah);
     }//GEN-LAST:event_RisikoRiwayatMDROKeyPressed
 
     private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
@@ -2102,11 +2102,11 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void KontakDiareInfeksiusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakDiareInfeksiusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakClostridioides,KontakLainnya);
     }//GEN-LAST:event_KontakDiareInfeksiusKeyPressed
 
     private void KontakLukaDrainaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakLukaDrainaseKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakMDRO,KontakSkabies);
     }//GEN-LAST:event_KontakLukaDrainaseKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
@@ -2118,7 +2118,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_DiagnosaIsolasiKeyPressed
 
     private void RisikoHasilLabRadPositifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoHasilLabRadPositifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoRiwayatDaerahWabah,RisikoGejalaKlinis);
     }//GEN-LAST:event_RisikoHasilLabRadPositifKeyPressed
 
     private void RisikoGejalaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoGejalaKlinisKeyPressed
