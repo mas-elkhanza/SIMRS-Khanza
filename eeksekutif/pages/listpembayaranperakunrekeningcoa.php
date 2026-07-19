@@ -1,8 +1,8 @@
 <?php
-    $sekarang    = date("Y-m-d");
-    $thnsekarang = substr($sekarang,0,4);
-    $blnsekarang = substr($sekarang,5,2);
-    $tglsekarang = substr($sekarang,8,2);
+    $sekarang      = date("Y-m-d");
+    $thnsekarang   = substr($sekarang,0,4);
+    $blnsekarang   = substr($sekarang,5,2);
+    $tglsekarang   = substr($sekarang,8,2);
     $thncaribayar  = $thnsekarang;
     $blncaribayar  = $blnsekarang;
     $tglcaribayar  = $tglsekarang;
@@ -17,7 +17,8 @@
         $blncaribayar2 = validTeks(trim(isset($_POST['tgl_cari_bayar2']))?substr($_POST['tgl_cari_bayar2'],3,2):$blnsekarang);
         $tglcaribayar2 = validTeks(trim(isset($_POST['tgl_cari_bayar2']))?substr($_POST['tgl_cari_bayar2'],0,2):$tglsekarang);
     }
-    $akunList = [];
+    
+    $akunList  = [];
     $queryAkun = bukaquery(
         "select rekening.kd_rek,rekening.nm_rek from rekening where ".
         "(rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek)) ".
@@ -37,10 +38,11 @@
             'labkesling'    => 0
         ];
     }
-    $allTotal      = 0;
-    $lainLainTotal = 0;
-    $tanggalAkun   = [];
-    $bulanAkun     = [];
+    
+    $allTotal        = 0;
+    $lainLainTotal   = 0;
+    $tanggalAkun     = [];
+    $bulanAkun       = [];
     $tanggalKategori = [];
     $bulanKategori   = [];
     $kategoriKosong  = ['rawatinap'=>0,'rawatjalan'=>0,'apotek'=>0,'deposit'=>0,'pemasukanlain'=>0,'labkesling'=>0,'lainlain'=>0];
@@ -88,14 +90,17 @@
                 }
             }
         }
+        
         $tglBayar = substr($rstagihan["tgl_bayar"],0,10);
         $blnBayar = substr($rstagihan["tgl_bayar"],0,7);
         if(!isset($tanggalKategori[$tglBayar])) {
             $tanggalKategori[$tglBayar] = $kategoriKosong;
         }
+        
         if(!isset($bulanKategori[$blnBayar])) {
             $bulanKategori[$blnBayar] = $kategoriKosong;
         }
+        
         if(!$tidakditemukan) {
             $allTotal += $rstagihan["jumlah_bayar"];
             $kat = "";
@@ -153,6 +158,7 @@
             $bulanKategori[$blnBayar]["lainlain"] += $rstagihan["jumlah_bayar"];
         }
     }
+    
     ksort($tanggalAkun);
     ksort($bulanAkun);
     ksort($tanggalKategori);
@@ -166,18 +172,21 @@
         'labkesling'    => 'Lab Kesehatan Lingkungan',
         'lainlain'      => 'Transaksi Lain-lain'
     ];
+    
     $kategoriTotal = $kategoriKosong;
     foreach($tanggalKategori as $nilaiPerKategori) {
         foreach($nilaiPerKategori as $kk => $vv) {
             $kategoriTotal[$kk] += $vv;
         }
     }
+    
     $kategoriAktif = [];
     foreach($kategoriLabel as $kk => $lbl) {
         if($kategoriTotal[$kk]>0) {
             $kategoriAktif[] = $kk;
         }
     }
+    
     $dataPieAkun = [];
     foreach($akunList as $akun) {
         if($akun["total"]>0) {
@@ -187,6 +196,7 @@
             ];
         }
     }
+    
     $akunAktifIdx = [];
     foreach($akunList as $idx => $akun) {
         if($akun["total"]>0) {

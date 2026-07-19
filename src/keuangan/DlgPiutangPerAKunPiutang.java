@@ -478,7 +478,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                     htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>").append(rsakunpiutang.getString("nama_bayar")).append("</td>");
                 }
             } catch (Exception e) {
-                System.out.println("Akun Bayar : "+e);
+                System.out.println("Akun Piutang : "+e);
             } finally{
                 if(rsakunpiutang!=null){
                     rsakunpiutang.close();

@@ -170,7 +170,16 @@
                                 <a href="index.php?act=PembayaranPerAkunBayar&hal=Kasir">Pembayaran Per Akun Bayar</a>
                             </li>
                             <li <?=$subhalaman=="PembayaranPerAkunRekeningCOA"?"class='active'":""?>>
-                                <a href="index.php?act=PembayaranPerAkunRekeningCOA&hal=Kasir">Pembayaran Per Akun Rekening/COA</a>
+                                <a href="index.php?act=PembayaranPerAkunRekeningCOA&hal=Kasir">Pembayaran Per Akun Rekening</a>
+                            </li>
+                            <li <?=$subhalaman=="PiutangPerAkunPiutang"?"class='active'":""?>>
+                                <a href="index.php?act=PiutangPerAkunPiutang&hal=Kasir">Piutang Per Akun Piutang</a>
+                            </li>
+                            <li <?=$subhalaman=="PendapatanPerAkunClosing"?"class='active'":""?>>
+                                <a href="index.php?act=PendapatanPerAkunClosing&hal=Kasir">Pendapatan Per Akun Closing</a>
+                            </li>
+                            <li <?=$subhalaman=="PendapatanPerAkunRekening"?"class='active'":""?>>
+                                <a href="index.php?act=PendapatanPerAkunRekening&hal=Kasir">Pendapatan Per Akun Rekening</a>
                             </li>
                         </ul>
                     </li>

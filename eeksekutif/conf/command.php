@@ -37,7 +37,7 @@
                 'SisaStokFarmasi','DaruratStok','KadaluarsaBatch','RingkasanPengadaanFarmasi','StokTidakBergerak','RingkasanPenerimaanFarmasi',
                 'RingkasanHibahFarmasi','RingkasanPiutangObatFarmasi','RingkasanStokKeluarFarmasi','RingkasanReturSuplierFarmasi',
                 'RingkasanReturObatPasien','RingkasanObatPerPoli','RingkasanObatPerDokter','NilaiPenerimaanVendorFarmasiPerBulan',
-                'PembayaranPerAkunRekeningCOA','PembayaranPerAkunBayar'
+                'PembayaranPerAkunRekeningCOA','PembayaranPerAkunBayar','PiutangPerAkunPiutang','PendapatanPerAkunClosing','PendapatanPerAkunRekening'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -77,6 +77,9 @@
             case "NilaiPenerimaanVendorFarmasiPerBulan" : include_once("pages/listnilaipenerimaanvendorfarmasiperbulan.php"); break;
             case "PembayaranPerAkunRekeningCOA"         : include_once("pages/listpembayaranperakunrekeningcoa.php"); break;
             case "PembayaranPerAkunBayar"               : include_once("pages/listpembayaranperakunbayar.php"); break;
+            case "PiutangPerAkunPiutang"                : include_once("pages/listpiutangperakunpiutang.php"); break;
+            case "PendapatanPerAkunClosing"             : include_once("pages/listpendapatanperakunclosing.php"); break;
+            case "PendapatanPerAkunRekening"            : include_once("pages/listpendapatanperakunrekening.php"); break;
             default                                     : include_once("pages/listhome.php");
         }   
     }
