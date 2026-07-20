@@ -221,7 +221,6 @@ public final class SatuSehatReferensiKPTL extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        runBackground(() ->tampil(Keyword.getText()));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             Keyword.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
