@@ -147,6 +147,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         SampelDisplay = new widget.TextBox();
         jLabel5 = new widget.Label();
         SampelRadiologiSystem = new widget.TextBox();
+        BtnSnomed = new widget.Button();
 
         NamaPemeriksaan.setEditable(false);
         NamaPemeriksaan.setHighlighter(null);
@@ -404,13 +405,13 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         jLabel4.setText("Periksa System :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(365, 10, 100, 23);
+        jLabel4.setBounds(395, 10, 100, 23);
 
         KodePemeriksaan.setEditable(false);
         KodePemeriksaan.setHighlighter(null);
         KodePemeriksaan.setName("KodePemeriksaan"); // NOI18N
         FormInput.add(KodePemeriksaan);
-        KodePemeriksaan.setBounds(211, 10, 110, 23);
+        KodePemeriksaan.setBounds(241, 10, 110, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('1');
@@ -427,7 +428,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnBarang);
-        btnBarang.setBounds(323, 10, 28, 23);
+        btnBarang.setBounds(353, 10, 28, 23);
 
         Code.setHighlighter(null);
         Code.setName("Code"); // NOI18N
@@ -467,7 +468,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
             }
         });
         FormInput.add(RadiologiSystem);
-        RadiologiSystem.setBounds(469, 10, 255, 23);
+        RadiologiSystem.setBounds(499, 10, 225, 23);
 
         jLabel11.setText("Sampel Code :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -513,6 +514,23 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         });
         FormInput.add(SampelRadiologiSystem);
         SampelRadiologiSystem.setBounds(409, 70, 315, 23);
+
+        BtnSnomed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSnomed.setMnemonic('1');
+        BtnSnomed.setToolTipText("Alt+1");
+        BtnSnomed.setName("BtnSnomed"); // NOI18N
+        BtnSnomed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSnomedActionPerformed(evt);
+            }
+        });
+        BtnSnomed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSnomedKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnSnomed);
+        BtnSnomed.setBounds(211, 10, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -818,6 +836,53 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnSnomedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSnomedActionPerformed
+        SatuSehatReferensiSnomed referensi=new SatuSehatReferensiSnomed(null,false);
+        referensi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(referensi.getTable().getSelectedRow()!= -1){
+                    Code.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),0).toString());
+                    Display.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),1).toString());
+                    RadiologiSystem.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),2).toString());
+                }
+                btnBarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        referensi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    referensi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        referensi.setLocationRelativeTo(internalFrame1);
+        referensi.setVisible(true);
+    }//GEN-LAST:event_BtnSnomedActionPerformed
+
+    private void BtnSnomedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSnomedKeyPressed
+        Valid.pindah(evt, RadiologiSystem, Display);
+    }//GEN-LAST:event_BtnSnomedKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -843,6 +908,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSnomed;
     private widget.CekBox ChkInput;
     private widget.TextBox Code;
     private widget.TextBox Display;

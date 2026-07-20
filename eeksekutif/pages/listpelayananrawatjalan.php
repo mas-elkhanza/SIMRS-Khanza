@@ -47,7 +47,6 @@
                     </div>
                     <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data & Grafik</button></center>
                 </form>
-                <hr style="margin:6px 0 0 0;">
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">

@@ -40,7 +40,7 @@
                 'PembayaranPerAkunRekeningCOA','PembayaranPerAkunBayar','PiutangPerAkunPiutang','PendapatanPerAkunClosing','PendapatanPerAkunRekening',
                 'SisaStokNonMedis','RingkasanPengadaanNonMedis','RingkasanPenerimaanNonMedis','RingkasanHibahNonMedis','RingkasanStokKeluarNonMedis',
                 'RingkasanReturSuplierNonMedis','NilaiPenerimaanVendorNonMedisPerBulan','SisaStokDapur','RingkasanPengadaanDapur','RingkasanPenerimaanDapur',
-                'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan'
+                'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan','LaporanKeuangan'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -97,6 +97,7 @@
             case "PiutangPerAkunPiutang"                : include_once("pages/listpiutangperakunpiutang.php"); break;
             case "PendapatanPerAkunClosing"             : include_once("pages/listpendapatanperakunclosing.php"); break;
             case "PendapatanPerAkunRekening"            : include_once("pages/listpendapatanperakunrekening.php"); break;
+            case "LaporanKeuangan"                      : include_once("pages/laporankeuangan.php"); break;
             default                                     : include_once("pages/listhome.php");
         }   
     }

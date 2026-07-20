@@ -220,7 +220,7 @@
                     </li>
                     <li <?=$halaman=="Kasir"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">account_balance_wallet</i>
                             <span>Pendapatan Kasir</span>
                         </a>
                         <ul class="ml-menu">
@@ -238,6 +238,17 @@
                             </li>
                             <li <?=$subhalaman=="PendapatanPerAkunRekening"?"class='active'":""?>>
                                 <a href="index.php?act=PendapatanPerAkunRekening&hal=Kasir">Pendapatan Per Akun Rekening</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <?=$halaman=="Keuangan"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">monetization_on</i>
+                            <span>Keuangan & Akuntansi</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="LaporanKeuangan"?"class='active'":""?>>
+                                <a href="index.php?act=LaporanKeuangan&hal=Keuangan">Laporan Keuangan</a>
                             </li>
                         </ul>
                     </li>
