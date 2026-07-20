@@ -1,5 +1,4 @@
 package dapur;
-import dapur.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

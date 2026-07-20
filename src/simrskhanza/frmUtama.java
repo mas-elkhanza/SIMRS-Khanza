@@ -509,6 +509,7 @@ import bridging.SatuSehatMapingLokasi;
 import bridging.SatuSehatMapingObatAlkes;
 import bridging.SatuSehatMapingOrganisasi;
 import bridging.SatuSehatMapingRadiologi;
+import bridging.SatuSehatMapingTindakanRalanKPTL;
 import bridging.SatuSehatMapingVaksin;
 import bridging.SatuSehatReferensiPasien;
 import bridging.SatuSehatReferensiPraktisi;
@@ -23577,6 +23578,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMapingTarifTindakanRalanKPTLSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingTindakanRalanKPTL aplikasi=new SatuSehatMapingTindakanRalanKPTL(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24295,7 +24308,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas,btnBPJSResepObatApotek,btnObatApolApotekBPJS,btnPermintaanResepIterasiApotekBPJS,btnPCRAICRAPengkajianRisikoPraKonstruksi,
             btnPCRAICRAPersyaratanHarusDipenuhi,btnKirimQRTelaahFarmasiSatuSehat,btnKirimAllergiSatuSehat,btnKonsultasiPerawat,btnMappingProsedurSmartKlaimBPJS,btnMappingPenyakitSmartKlaimBPJS,btnKirimFHIRSmartKlaimBPJS,
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
-            btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi;
+            btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat;
     
     public void isWall(){
         try{            
@@ -27776,6 +27789,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_allergy_intolerance()==true){
                 Panelmenu.add(btnKirimAllergiSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_kptl_tindakan_ralan()==true){
+                Panelmenu.add(btnMapingTarifTindakanRalanKPTLSatuSehat);
                 jmlmenu++;
             }
             
@@ -33765,6 +33783,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_allergy_intolerance()==true){
             Panelmenu.add(btnKirimAllergiSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_ralan()==true){
+            Panelmenu.add(btnMapingTarifTindakanRalanKPTLSatuSehat);
             jmlmenu++;
         }
         
@@ -41081,6 +41104,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_allergy_intolerance()==true){
             if(btnKirimAllergiSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimAllergiSatuSehat);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_ralan()==true){
+            if(btnMapingTarifTindakanRalanKPTLSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMapingTarifTindakanRalanKPTLSatuSehat);
                 jmlmenu++;
             } 
         }
@@ -50711,5 +50741,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaMasukIsolasi.setName("btnChecklistKriteriaMasukIsolasi"); 
         btnChecklistKriteriaMasukIsolasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaMasukIsolasi.addActionListener(this::btnChecklistKriteriaMasukIsolasiActionPerformed);
+        
+        btnMapingTarifTindakanRalanKPTLSatuSehat = new widget.ButtonBig();
+        btnMapingTarifTindakanRalanKPTLSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMapingTarifTindakanRalanKPTLSatuSehat.setText("Mapping Tindakan Ralan KPTL Satu Sehat");
+        btnMapingTarifTindakanRalanKPTLSatuSehat.setIconTextGap(0);
+        btnMapingTarifTindakanRalanKPTLSatuSehat.setName("btnMapingTarifTindakanRalanKPTLSatuSehat"); 
+        btnMapingTarifTindakanRalanKPTLSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingTarifTindakanRalanKPTLSatuSehat.addActionListener(this::btnMapingTarifTindakanRalanKPTLSatuSehatActionPerformed);
     }
 }
