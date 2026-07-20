@@ -220,7 +220,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukICU = new javax.swing.JMenuItem();
+        MnKriteriaMasukIsolasi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -370,19 +370,19 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaMasukICU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
-        MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
-        MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaMasukIsolasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaMasukIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaMasukIsolasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaMasukIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaMasukIsolasi.setText("Formulir Checklist Kriteria Masuk Isolasi");
+        MnKriteriaMasukIsolasi.setName("MnKriteriaMasukIsolasi"); // NOI18N
+        MnKriteriaMasukIsolasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKriteriaMasukIsolasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaMasukICUActionPerformed(evt);
+                MnKriteriaMasukIsolasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaMasukICU);
+        jPopupMenu1.add(MnKriteriaMasukIsolasi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -875,12 +875,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel65.setText("TB Paru Aktif/Suspek");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(40, 90, 110, 23);
+        jLabel65.setBounds(40, 90, 120, 23);
 
         jLabel66.setText("Airbone Lainnya :");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(221, 120, 130, 23);
+        jLabel66.setBounds(241, 120, 110, 23);
 
         AirboneLainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         AirboneLainnya.setSelectedIndex(1);
@@ -992,7 +992,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel75.setText("Droplet Lainnya :");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(197, 200, 140, 23);
+        jLabel75.setBounds(237, 200, 100, 23);
 
         DropletLainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         DropletLainnya.setSelectedIndex(1);
@@ -1008,7 +1008,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel76.setText("Difteri :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(610, 170, 85, 23);
+        jLabel76.setBounds(635, 170, 60, 23);
 
         DropletDifteri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         DropletDifteri.setSelectedIndex(1);
@@ -1702,45 +1702,40 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Asam Basa / Elektrolit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Ginjal Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syok Karena Perdarahan Anafilaksis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Besar</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Kesadaran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dehidrasi Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arimia Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes Yang Memerlukan Terapi Insulin Kontinyu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Keganasan Dengan Metastasis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dengan GCS 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi < 40 atau >150 (x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP < 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP > 120 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R > 35 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Na < 110 meq/L Atau > 170 meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ca > 15 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GDS > 800 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K < 2 meq/L Atau 7meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PaO2 < 50 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PH < 7,1 Atau 7,7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Anisokor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obstruksi Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anuria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tamponade Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Coma</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Bakar > 10 % BSA</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB Paru</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Campak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Varisela</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Herpes Zoster</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Airborne Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Covid19</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Influenza</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Difteri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pertusis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Maningitis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Droplet Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MDRO (MRSA/VRE/CRE/ESBL)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Clostridioides Difficile</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skabies</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Dengan Drainase</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diare Infeksius</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kontak Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Kontak Erat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Daerah Wabah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat MDRO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab & Rontgen Positif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Klinis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Imunokompromis Berat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Instruksi DPJP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Persetujuan Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelengkapan Jaminan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ketersediaan APD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fas Cuci Tangan Siap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tekanan Negatif Berfungsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pintu Otomatis Berfungsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Catatan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</b></td>"+
                     "</tr>"
@@ -1791,17 +1786,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='5100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='3900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1822,17 +1812,17 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaMasukICU.html");            
+                File f = new File("DataKriteriaMasukIsolasi.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='5100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='3900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ICU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ISOLASI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1915,7 +1905,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaMasukICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukICUActionPerformed
+    private void MnKriteriaMasukIsolasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukIsolasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1927,31 +1917,26 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),41).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),40).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukICU.jasper","report","::[ Formulir Check List Kriteria Masuk ICU ]::",
+            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukIsolasi.jasper","report","::[ Formulir Check List Kriteria Masuk Isolasi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_isolasi.tanggal,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas1_1,checklist_kriteria_masuk_isolasi.prioritas1_2,checklist_kriteria_masuk_isolasi.prioritas1_3,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas1_4,checklist_kriteria_masuk_isolasi.prioritas1_5,checklist_kriteria_masuk_isolasi.prioritas1_6,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_1,checklist_kriteria_masuk_isolasi.prioritas2_2,checklist_kriteria_masuk_isolasi.prioritas2_3,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_4,checklist_kriteria_masuk_isolasi.prioritas2_5,checklist_kriteria_masuk_isolasi.prioritas2_6,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_7,checklist_kriteria_masuk_isolasi.prioritas2_8,checklist_kriteria_masuk_isolasi.prioritas3_1,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas3_2,checklist_kriteria_masuk_isolasi.prioritas3_3,checklist_kriteria_masuk_isolasi.prioritas3_4,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_2,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_4,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_3,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_5,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_radiologi_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_3,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_5,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_7,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_isolasi.nik,pegawai.nama "+
+                    "checklist_kriteria_masuk_isolasi.airborne_tb,checklist_kriteria_masuk_isolasi.airborne_campak,checklist_kriteria_masuk_isolasi.airborne_varisela,"+
+                    "checklist_kriteria_masuk_isolasi.airborne_zoster_diseminata,checklist_kriteria_masuk_isolasi.airborne_lainnya,checklist_kriteria_masuk_isolasi.droplet_covid19,"+
+                    "checklist_kriteria_masuk_isolasi.droplet_influenza,checklist_kriteria_masuk_isolasi.droplet_difteri,checklist_kriteria_masuk_isolasi.droplet_pertusis,"+
+                    "checklist_kriteria_masuk_isolasi.droplet_meningitis,checklist_kriteria_masuk_isolasi.droplet_lainnya,checklist_kriteria_masuk_isolasi.kontak_mdro,"+
+                    "checklist_kriteria_masuk_isolasi.kontak_clostridium,checklist_kriteria_masuk_isolasi.kontak_scabies,checklist_kriteria_masuk_isolasi.kontak_luka_drainase,"+
+                    "checklist_kriteria_masuk_isolasi.kontak_diare_infeksi,checklist_kriteria_masuk_isolasi.kontak_lainnya,checklist_kriteria_masuk_isolasi.kontak_erat,"+
+                    "checklist_kriteria_masuk_isolasi.riwayat_perjalanan_wabah,checklist_kriteria_masuk_isolasi.riwayat_mdro,checklist_kriteria_masuk_isolasi.hasil_lab_radiologi_positif,"+
+                    "checklist_kriteria_masuk_isolasi.gejala_klinis_menular,checklist_kriteria_masuk_isolasi.pasien_imunokompromis,checklist_kriteria_masuk_isolasi.instruksi_dpjp,"+
+                    "checklist_kriteria_masuk_isolasi.persetujuan_isolasi,checklist_kriteria_masuk_isolasi.kelengkapan_jaminan,checklist_kriteria_masuk_isolasi.ketersediaan_apd,"+
+                    "checklist_kriteria_masuk_isolasi.fasilitas_cuci_tangan,checklist_kriteria_masuk_isolasi.tekanan_negatif_berfungsi,checklist_kriteria_masuk_isolasi.pintu_otomatis_berfungsi,"+
+                    "checklist_kriteria_masuk_isolasi.indikasi_isolasi,checklist_kriteria_masuk_isolasi.jenis_isolasi,checklist_kriteria_masuk_isolasi.diagnosa_isolasi,"+
+                    "checklist_kriteria_masuk_isolasi.keterangan,checklist_kriteria_masuk_isolasi.nik,pegawai.nama "+
                     "from checklist_kriteria_masuk_isolasi inner join reg_periksa on checklist_kriteria_masuk_isolasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_isolasi.nik "+
                     "where checklist_kriteria_masuk_isolasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_isolasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaMasukICUActionPerformed
+    }//GEN-LAST:event_MnKriteriaMasukIsolasiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -2216,7 +2201,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.ComboBox KontakSkabies;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukICU;
+    private javax.swing.JMenuItem MnKriteriaMasukIsolasi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PintuKamarOtomatis;
