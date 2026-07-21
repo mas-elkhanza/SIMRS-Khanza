@@ -247,6 +247,24 @@
                             <span>Keuangan & Akuntansi</span>
                         </a>
                         <ul class="ml-menu">
+                            <li <?=$subhalaman=="RingkasanHutangVendorFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorFarmasi&hal=Keuangan">Ringkasan Hutang Farmasi</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorNonMedis&hal=Keuangan">Ringkasan Hutang Non Medis</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorDapur&hal=Keuangan">Ringkasan Hutang Dapur</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorInventaris"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorInventaris&hal=Keuangan">Ringkasan Hutang Aset/Inventaris</a>
+                            </li>
+                            <li <?=$subhalaman=="RekeningTahun"?"class='active'":""?>>
+                                <a href="index.php?act=RekeningTahun&hal=Keuangan">Rekening Tahun</a>
+                            </li>
+                            <li <?=$subhalaman=="SaldoAkunPerBulan"?"class='active'":""?>>
+                                <a href="index.php?act=SaldoAkunPerBulan&hal=Keuangan">Saldo Akun Per Bulan</a>
+                            </li>
                             <li <?=$subhalaman=="LaporanKeuangan"?"class='active'":""?>>
                                 <a href="index.php?act=LaporanKeuangan&hal=Keuangan">Laporan Keuangan</a>
                             </li>

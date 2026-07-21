@@ -26,41 +26,40 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="parameter" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select satu_sehat_mapping_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,
-                   satu_sehat_mapping_radiologi.display from satu_sehat_mapping_radiologi inner join jns_perawatan_radiologi 
-                   on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw 
-                   where satu_sehat_mapping_radiologi.kd_jenis_prw like $P{parameter} or jns_perawatan_radiologi.nm_perawatan like $P{parameter} or 
-                   satu_sehat_mapping_radiologi.code like $P{parameter} or satu_sehat_mapping_radiologi.display like $P{parameter}
-                    order by satu_sehat_mapping_radiologi.code]]>
+		<![CDATA[select satu_sehat_mapping_tindakanralan_kptl.kd_jenis_prw,jns_perawatan.nm_perawatan,satu_sehat_mapping_tindakanralan_kptl.code,satu_sehat_mapping_tindakanralan_kptl.system,
+                   satu_sehat_mapping_tindakanralan_kptl.display from satu_sehat_mapping_tindakanralan_kptl inner join jns_perawatan on satu_sehat_mapping_tindakanralan_kptl.kd_jenis_prw=jns_perawatan.kd_jenis_prw 
+                   where satu_sehat_mapping_tindakanralan_kptl.kd_jenis_prw like $P{parameter} or jns_perawatan.nm_perawatan like $P{parameter} or 
+                   satu_sehat_mapping_tindakanralan_kptl.code like $P{parameter} or satu_sehat_mapping_tindakanralan_kptl.display like $P{parameter}
+                    order by satu_sehat_mapping_tindakanralan_kptl.code]]>
 	</queryString>
 	<field name="kd_jenis_prw" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kd_jenis_prw"/>
 		<property name="com.jaspersoft.studio.field.label" value="kd_jenis_prw"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_radiologi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_tindakanralan_kptl"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_perawatan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nm_perawatan"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_perawatan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="jns_perawatan_radiologi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jns_perawatan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="code" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="code"/>
 		<property name="com.jaspersoft.studio.field.label" value="code"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_radiologi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_tindakanralan_kptl"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="system" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="system"/>
 		<property name="com.jaspersoft.studio.field.label" value="system"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_radiologi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_tindakanralan_kptl"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="display" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="display"/>
 		<property name="com.jaspersoft.studio.field.label" value="display"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_radiologi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="satu_sehat_mapping_tindakanralan_kptl"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -74,7 +73,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[MAPPING PEMERIKSAAN RADIOLOGI SATU SEHAT]]></text>
+				<text><![CDATA[MAPPING TARIF TINDAKAN RAWAT JALAN KPTL SATU SEHAT]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="0" width="548" height="17" uuid="4cd451ee-f32f-4718-9c13-3631541f73d2"/>

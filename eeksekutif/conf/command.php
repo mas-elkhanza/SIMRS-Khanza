@@ -40,7 +40,9 @@
                 'PembayaranPerAkunRekeningCOA','PembayaranPerAkunBayar','PiutangPerAkunPiutang','PendapatanPerAkunClosing','PendapatanPerAkunRekening',
                 'SisaStokNonMedis','RingkasanPengadaanNonMedis','RingkasanPenerimaanNonMedis','RingkasanHibahNonMedis','RingkasanStokKeluarNonMedis',
                 'RingkasanReturSuplierNonMedis','NilaiPenerimaanVendorNonMedisPerBulan','SisaStokDapur','RingkasanPengadaanDapur','RingkasanPenerimaanDapur',
-                'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan','LaporanKeuangan'
+                'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan','LaporanKeuangan',
+                'RekeningTahun','SaldoAkunPerBulan','RingkasanHutangVendorFarmasi','RingkasanHutangVendorNonMedis','RingkasanHutangVendorDapur',
+                'RingkasanHutangVendorInventaris'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -88,6 +90,10 @@
             case "RingkasanHibahDapur"                  : include_once("pages/listringkasanhibahdapur.php"); break;
             case "RingkasanStokKeluarDapur"             : include_once("pages/listringkasanstokkeluardapur.php"); break;
             case "RingkasanReturSuplierDapur"           : include_once("pages/listringkasanretursuplierdapur.php"); break;
+            case "RingkasanHutangVendorFarmasi"         : include_once("pages/listringkasanhutangvendorfarmasi.php"); break;
+            case "RingkasanHutangVendorNonMedis"        : include_once("pages/listringkasanhutangvendornonmedis.php"); break;
+            case "RingkasanHutangVendorDapur"           : include_once("pages/listringkasanhutangvendordapur.php"); break;
+            case "RingkasanHutangVendorInventaris"      : include_once("pages/listringkasanhutangvendorinventaris.php"); break;
             case "StokTidakBergerak"                    : include_once("pages/liststoktidakbergerak.php"); break;
             case "NilaiPenerimaanVendorFarmasiPerBulan" : include_once("pages/listnilaipenerimaanvendorfarmasiperbulan.php"); break;
             case "NilaiPenerimaanVendorNonMedisPerBulan": include_once("pages/listnilaipenerimaanvendornonmedisperbulan.php"); break;
@@ -98,6 +104,8 @@
             case "PendapatanPerAkunClosing"             : include_once("pages/listpendapatanperakunclosing.php"); break;
             case "PendapatanPerAkunRekening"            : include_once("pages/listpendapatanperakunrekening.php"); break;
             case "LaporanKeuangan"                      : include_once("pages/laporankeuangan.php"); break;
+            case "RekeningTahun"                        : include_once("pages/rekeningtahun.php"); break;
+            case "SaldoAkunPerBulan"                    : include_once("pages/saldoakunperbulan.php"); break;
             default                                     : include_once("pages/listhome.php");
         }   
     }
