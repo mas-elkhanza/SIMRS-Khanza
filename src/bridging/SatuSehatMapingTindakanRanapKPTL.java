@@ -125,14 +125,14 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
         ChkInput = new widget.CekBox();
         FormInput = new widget.PanelBiasa();
         jLabel4 = new widget.Label();
-        KodeTindakan = new widget.TextBox();
         btnBarang = new widget.Button();
-        Code = new widget.TextBox();
         jLabel9 = new widget.Label();
         jLabel10 = new widget.Label();
         Display = new widget.TextBox();
         TindakanSystem = new widget.TextBox();
         btnBarang1 = new widget.Button();
+        KodeTindakan = new widget.TextBox();
+        Code = new widget.TextBox();
 
         NamaTindakan.setEditable(false);
         NamaTindakan.setHighlighter(null);
@@ -390,13 +390,7 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
         jLabel4.setText("System :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(405, 10, 60, 23);
-
-        KodeTindakan.setEditable(false);
-        KodeTindakan.setHighlighter(null);
-        KodeTindakan.setName("KodeTindakan"); // NOI18N
-        FormInput.add(KodeTindakan);
-        KodeTindakan.setBounds(211, 10, 110, 23);
+        jLabel4.setBounds(385, 10, 60, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('1');
@@ -413,17 +407,7 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
             }
         });
         FormInput.add(btnBarang);
-        btnBarang.setBounds(323, 10, 28, 23);
-
-        Code.setHighlighter(null);
-        Code.setName("Code"); // NOI18N
-        Code.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CodeKeyPressed(evt);
-            }
-        });
-        FormInput.add(Code);
-        Code.setBounds(69, 10, 110, 23);
+        btnBarang.setBounds(343, 10, 28, 23);
 
         jLabel9.setText("Tindakan :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -453,7 +437,7 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
             }
         });
         FormInput.add(TindakanSystem);
-        TindakanSystem.setBounds(469, 10, 255, 23);
+        TindakanSystem.setBounds(449, 10, 275, 23);
 
         btnBarang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang1.setMnemonic('1');
@@ -470,7 +454,23 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
             }
         });
         FormInput.add(btnBarang1);
-        btnBarang1.setBounds(181, 10, 28, 23);
+        btnBarang1.setBounds(191, 10, 28, 23);
+
+        KodeTindakan.setEditable(false);
+        KodeTindakan.setHighlighter(null);
+        KodeTindakan.setName("KodeTindakan"); // NOI18N
+        FormInput.add(KodeTindakan);
+        KodeTindakan.setBounds(221, 10, 120, 23);
+
+        Code.setHighlighter(null);
+        Code.setName("Code"); // NOI18N
+        Code.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CodeKeyPressed(evt);
+            }
+        });
+        FormInput.add(Code);
+        Code.setBounds(69, 10, 120, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -713,10 +713,6 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void CodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodeKeyPressed
-        Valid.pindah(evt, TCari, TindakanSystem);
-    }//GEN-LAST:event_CodeKeyPressed
-
     private void TindakanSystemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanSystemKeyPressed
         Valid.pindah(evt, btnBarang, Display);
     }//GEN-LAST:event_TindakanSystemKeyPressed
@@ -796,6 +792,10 @@ public final class SatuSehatMapingTindakanRanapKPTL extends javax.swing.JDialog 
     private void btnBarang1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBarang1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBarang1KeyPressed
+
+    private void CodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodeKeyPressed
+        Valid.pindah(evt, TCari, TindakanSystem);
+    }//GEN-LAST:event_CodeKeyPressed
 
     /**
     * @param args the command line arguments
