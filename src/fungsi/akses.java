@@ -263,7 +263,7 @@ public final class akses {
             mapping_penyakit_smart_klaim_bpjs=false,permintaan_binrohtal=false,surat_permintaan_perlindungan_dari_kekerasan=false,surat_permohonan_privasi=false,surat_permintaan_second_opinion=false,
             surat_keterangan_berobat=false,surat_penolakan_resusitasi=false,catatan_observasi_ruang_ok=false,hasil_pemeriksaan_usg_abdomen=false,intervensi_nyeri_farmakologi=false,
             intervensi_nyeri_nonfarmakologi=false,surat_pengajuan_cuti_pasien=false,checklist_kriteria_masuk_isolasi=false,satu_sehat_mapping_kptl_tindakan_ralan=false,
-            satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false;
+            satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false,satu_sehat_mapping_kptl_tindakan_operasi=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1496,6 +1496,7 @@ public final class akses {
                         akses.satu_sehat_mapping_kptl_tindakan_ranap=true;
                         akses.satu_sehat_mapping_kptl_tindakan_radiologi=true;
                         akses.satu_sehat_mapping_kptl_tindakan_laborat=true;
+                        akses.satu_sehat_mapping_kptl_tindakan_operasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2712,6 +2713,7 @@ public final class akses {
                         akses.satu_sehat_mapping_kptl_tindakan_ranap=rs2.getBoolean("satu_sehat_mapping_kptl_tindakan_ranap");
                         akses.satu_sehat_mapping_kptl_tindakan_radiologi=rs2.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi");
                         akses.satu_sehat_mapping_kptl_tindakan_laborat=rs2.getBoolean("satu_sehat_mapping_kptl_tindakan_laborat");
+                        akses.satu_sehat_mapping_kptl_tindakan_operasi=rs2.getBoolean("satu_sehat_mapping_kptl_tindakan_operasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3950,6 +3952,7 @@ public final class akses {
         akses.satu_sehat_mapping_kptl_tindakan_ranap=false;
         akses.satu_sehat_mapping_kptl_tindakan_radiologi=false;
         akses.satu_sehat_mapping_kptl_tindakan_laborat=false;
+        akses.satu_sehat_mapping_kptl_tindakan_operasi=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5205,4 +5208,5 @@ public final class akses {
     public static boolean getsatu_sehat_mapping_kptl_tindakan_ranap(){return akses.satu_sehat_mapping_kptl_tindakan_ranap;}
     public static boolean getsatu_sehat_mapping_kptl_tindakan_radiologi(){return akses.satu_sehat_mapping_kptl_tindakan_radiologi;}
     public static boolean getsatu_sehat_mapping_kptl_tindakan_laborat(){return akses.satu_sehat_mapping_kptl_tindakan_laborat;}
+    public static boolean getsatu_sehat_mapping_kptl_tindakan_operasi(){return akses.satu_sehat_mapping_kptl_tindakan_operasi;}
 }   
