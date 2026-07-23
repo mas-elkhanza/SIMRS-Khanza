@@ -259,6 +259,15 @@
                             <li <?=$subhalaman=="RingkasanHutangVendorInventaris"?"class='active'":""?>>
                                 <a href="index.php?act=RingkasanHutangVendorInventaris&hal=Keuangan">Ringkasan Hutang Aset/Inventaris</a>
                             </li>
+                            <li <?=$subhalaman=="RingkasanBebanHutangLain"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanBebanHutangLain&hal=Keuangan">Ringkasan Beban Hutang Lain</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPiutangBelumLunas"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPiutangBelumLunas&hal=Keuangan">Ringkasan Piutang Belum Lunas</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPiutangObatBelumLunas"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPiutangObatBelumLunas&hal=Keuangan">Ringkasan Piutang Obat Belum Lunas</a>
+                            </li>
                             <li <?=$subhalaman=="RekeningTahun"?"class='active'":""?>>
                                 <a href="index.php?act=RekeningTahun&hal=Keuangan">Rekening Tahun</a>
                             </li>

@@ -31,7 +31,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgJnsPerawatanRadiologi;
-import keuangan.DlgJnsPerawatanRanap;
 
 /**
  *
@@ -908,10 +907,10 @@ public final class SatuSehatMapingTindakanRadiologiKPTL extends javax.swing.JDia
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi());
+        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi());
+        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi());
+        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi());
     }
     
     public JTable getTable(){

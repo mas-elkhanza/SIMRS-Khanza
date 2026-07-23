@@ -138,7 +138,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Nama Pemeriksaan]]></text>
+				<text><![CDATA[Nama Tindakan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f965d56a-7242-4add-a984-9eee86238d4e"/>
@@ -162,7 +162,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kode Periksa]]></text>
+				<text><![CDATA[Kode Tindakan]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="16" width="550" height="1" uuid="bf64b43f-99d4-4aca-99d3-1a27f1f8a1db"/>

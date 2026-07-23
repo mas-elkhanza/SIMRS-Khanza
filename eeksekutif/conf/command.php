@@ -42,7 +42,7 @@
                 'RingkasanReturSuplierNonMedis','NilaiPenerimaanVendorNonMedisPerBulan','SisaStokDapur','RingkasanPengadaanDapur','RingkasanPenerimaanDapur',
                 'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan','LaporanKeuangan',
                 'RekeningTahun','SaldoAkunPerBulan','RingkasanHutangVendorFarmasi','RingkasanHutangVendorNonMedis','RingkasanHutangVendorDapur',
-                'RingkasanHutangVendorInventaris'
+                'RingkasanHutangVendorInventaris','RingkasanBebanHutangLain','RingkasanPiutangBelumLunas','RingkasanPiutangObatBelumLunas'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -94,6 +94,9 @@
             case "RingkasanHutangVendorNonMedis"        : include_once("pages/listringkasanhutangvendornonmedis.php"); break;
             case "RingkasanHutangVendorDapur"           : include_once("pages/listringkasanhutangvendordapur.php"); break;
             case "RingkasanHutangVendorInventaris"      : include_once("pages/listringkasanhutangvendorinventaris.php"); break;
+            case "RingkasanBebanHutangLain"             : include_once("pages/listringkasanbebanhutanglain.php"); break;
+            case "RingkasanPiutangBelumLunas"           : include_once("pages/listringkasanpiutangbelumlunas.php"); break;
+            case "RingkasanPiutangObatBelumLunas"       : include_once("pages/listringkasanpiutangobatbelumlunas.php"); break;
             case "StokTidakBergerak"                    : include_once("pages/liststoktidakbergerak.php"); break;
             case "NilaiPenerimaanVendorFarmasiPerBulan" : include_once("pages/listnilaipenerimaanvendorfarmasiperbulan.php"); break;
             case "NilaiPenerimaanVendorNonMedisPerBulan": include_once("pages/listnilaipenerimaanvendornonmedisperbulan.php"); break;
