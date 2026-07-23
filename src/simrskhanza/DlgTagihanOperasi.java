@@ -2896,6 +2896,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(jml==0){
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih operasi...!!!!");
             TCari.requestFocus();
+        }else if(tgl.getSelectedItem().toString().equals(tgl2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(rootPane,"Kamu operasi apa bersin..? Cepat sekali...!!");
         }else{            
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
