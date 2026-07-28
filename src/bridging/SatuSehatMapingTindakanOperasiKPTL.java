@@ -84,7 +84,7 @@ public final class SatuSehatMapingTindakanOperasiKPTL extends javax.swing.JDialo
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeTindakan.setDocument(new batasInput((byte)15).getKata(KodeTindakan)); 
-        Code.setDocument(new batasInput((byte)20).getKata(Code)); 
+        Code.setDocument(new batasInput((byte)30).getKata(Code)); 
         TindakanSystem.setDocument(new batasInput((byte)100).getKata(TindakanSystem)); 
         Display.setDocument(new batasInput((byte)80).getKata(Display)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
@@ -871,7 +871,7 @@ public final class SatuSehatMapingTindakanOperasiKPTL extends javax.swing.JDialo
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Ketersediaan : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -908,10 +908,10 @@ public final class SatuSehatMapingTindakanOperasiKPTL extends javax.swing.JDialo
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_ranap());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_operasi());
+        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_operasi());
+        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_operasi());
+        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_kptl_tindakan_operasi());
     }
     
     public JTable getTable(){

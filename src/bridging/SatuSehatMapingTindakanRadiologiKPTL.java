@@ -84,7 +84,7 @@ public final class SatuSehatMapingTindakanRadiologiKPTL extends javax.swing.JDia
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeTindakan.setDocument(new batasInput((byte)15).getKata(KodeTindakan)); 
-        Code.setDocument(new batasInput((byte)20).getKata(Code)); 
+        Code.setDocument(new batasInput((byte)30).getKata(Code)); 
         TindakanSystem.setDocument(new batasInput((byte)100).getKata(TindakanSystem)); 
         Display.setDocument(new batasInput((byte)80).getKata(Display)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
@@ -870,7 +870,7 @@ public final class SatuSehatMapingTindakanRadiologiKPTL extends javax.swing.JDia
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Ketersediaan : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
