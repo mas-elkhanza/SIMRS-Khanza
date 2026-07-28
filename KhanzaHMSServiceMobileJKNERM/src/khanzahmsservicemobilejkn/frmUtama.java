@@ -717,7 +717,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                ps3.setString(1,rs.getString("no_rawat"));
                                                rs3=ps3.executeQuery();
                                                while(rs3.next()){
-                                                   if(rs2.getString("taskid").equals("2")){
+                                                   if(rs3.getString("taskid").equals("2")){
                                                        task2="Sudah";
                                                    }
                                                    

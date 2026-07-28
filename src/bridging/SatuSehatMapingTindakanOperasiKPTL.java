@@ -519,6 +519,7 @@ public final class SatuSehatMapingTindakanOperasiKPTL extends javax.swing.JDialo
             public void keyReleased(KeyEvent e) {}
         });
         pemeriksaan.isCek();
+        pemeriksaan.setTabData();
         pemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pemeriksaan.setLocationRelativeTo(internalFrame1);
         pemeriksaan.setVisible(true);
@@ -640,7 +641,7 @@ public final class SatuSehatMapingTindakanOperasiKPTL extends javax.swing.JDialo
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingTindakanRanapKPTLSatuSehat.jasper","report","::[ Mapping Tindakan Rawat Inap KPTL Satu Sehat Kemenkes ]::",param);            
+                Valid.MyReport("rptMapingTindakanOperasiKPTLSatuSehat.jasper","report","::[ Mapping Tindakan Operasi KPTL Satu Sehat Kemenkes ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
