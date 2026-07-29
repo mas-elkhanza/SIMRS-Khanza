@@ -860,7 +860,7 @@ public class frmUtama extends javax.swing.JFrame {
 
                                                 modulus = modulus % 9;
                                                 datajam = Sequel.cariIsi("select SUBDATE(if(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg)>concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg),concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"')), INTERVAL " + (38 + modulus) + " MINUTE) from reg_periksa where reg_periksa.no_rawat=?", rs.getString("no_rawat"));
-                                                if (!datajam.equals("") && Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid", "?,?,?", "task id", 3, new String[]{rs.getString("no_rawat"), "2", datajam})) {
+                                                if (!datajam.equals("") && Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid", "?,?,?", "task id", 3, new String[]{rs.getString("no_rawat"), "1", datajam})) {
                                                    parsedDate = dateFormat.parse(datajam);
 
                                                    try {
@@ -872,7 +872,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                       headers.add("x-timestamp", utc);
                                                       headers.add("x-signature", api.getHmac(utc));
                                                       headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
-                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("nobooking") + "\",\"taskid\": \"2\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
+                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("nobooking") + "\",\"taskid\": \"1\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
                                                       TeksArea.append("JSON : " + requestJson + "\n");
                                                       requestEntity = new HttpEntity(requestJson, headers);
                                                       URL = link + "/antrean/updatewaktu";
@@ -880,7 +880,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                       root = mapper.readTree((String)api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class, new Object[0]).getBody());
                                                       nameNode = root.path("metadata");
                                                       if (!nameNode.path("code").asText().equals("200")) {
-                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='2' and no_rawat='" + rs.getString("no_rawat") + "'");
+                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='1' and no_rawat='" + rs.getString("no_rawat") + "'");
                                                       }
 
                                                       TeksArea.append("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
