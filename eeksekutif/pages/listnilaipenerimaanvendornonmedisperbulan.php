@@ -6,7 +6,7 @@
     }
 ?>
 <div class="block-header">
-    <h2><center>NILAI PENERIMAAN VENDOR FARMASI PER BULAN</center></h2>
+    <h2><center>NILAI PENERIMAAN VENDOR NON MEDIS PER BULAN</center></h2>
 </div>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -61,17 +61,24 @@
                             $totalBulan      = array_fill(0,12,0);
                             $totalTagihanAll = 0;
                             $dataPerVendor   = [];
-                            $querySuplier = bukaquery("select datasuplier.kode_suplier,datasuplier.nama_suplier from datasuplier order by datasuplier.nama_suplier asc");
+                            $querySuplier = bukaquery("select ipsrssuplier.kode_suplier,ipsrssuplier.nama_suplier from ipsrssuplier order by ipsrssuplier.nama_suplier asc");
+                            $rekapPerBulan = [];
+                            $queryPerBulan = bukaquery(
+                                "select ipsrspemesanan.kode_suplier,left(ipsrspemesanan.tgl_pesan,7) as bulantahun,sum(ipsrsdetailpesan.total) as total ".
+                                "from ipsrspemesanan inner join ipsrsdetailpesan on ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur ".
+                                "inner join ipsrsbarang on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng ".
+                                "where left(ipsrspemesanan.tgl_pesan,4)='".$tahuncari."' ".
+                                "group by ipsrspemesanan.kode_suplier,left(ipsrspemesanan.tgl_pesan,7)"
+                            );
+                            while($rsperbulan = mysqli_fetch_array($queryPerBulan)) {
+                                $rekapPerBulan[$rsperbulan["kode_suplier"]][$rsperbulan["bulantahun"]] = (float) $rsperbulan["total"];
+                            }
                             while($rssuplier = mysqli_fetch_array($querySuplier)) {
                                 $nilaiBulan     = [];
                                 $tagihanSuplier = 0;
                                 for($b=1;$b<=12;$b++) {
                                     $bulanStr = str_pad($b,2,'0',STR_PAD_LEFT);
-                                    $nilai = (float) getOne(
-                                        "select sum(detailpesan.total) from pemesanan inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur ".
-                                        "inner join databarang on detailpesan.kode_brng=databarang.kode_brng where pemesanan.kode_suplier='".$rssuplier["kode_suplier"]."' ".
-                                        "and left(pemesanan.tgl_pesan,7)='".$tahuncari."-".$bulanStr."'"
-                                    );
+                                    $nilai = isset($rekapPerBulan[$rssuplier["kode_suplier"]][$tahuncari."-".$bulanStr]) ? $rekapPerBulan[$rssuplier["kode_suplier"]][$tahuncari."-".$bulanStr] : 0;
                                     $nilaiBulan[]           = $nilai;
                                     $totalBulan[$b-1]      += $nilai;
                                     $tagihanSuplier         += $nilai;
@@ -160,7 +167,6 @@ $(function() {
     } else {
         $("#pie_chart_pervendor").html("<div class='text-center text-muted mt-5'>Kosong</div>");
     }
-
     var dataBulan = <?php
         $pointsBulan = [];
         foreach ($totalBulan as $idx => $val) {

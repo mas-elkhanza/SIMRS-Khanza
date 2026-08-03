@@ -383,7 +383,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
-            htmlContent.append(                             
+            String thn = ThnCari.getSelectedItem().toString();
+            htmlContent.append(
                 "<tr class='isi'>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>Kode Akun</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Akun Rekening</td>").append(
@@ -450,54 +451,85 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kredit</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Saldo Akhir</td>").append(
                 "</tr>"
-            );     
-            ps=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.level='0' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by kd_rek");
+            );
+
+            ps=koneksi.prepareStatement(
+                "select rekening.kd_rek, rekening.nm_rek, "+
+                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                "from rekening left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                "where rekening.level='0' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+            );
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                 }
-                    
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs.getString("kd_rek"));
-                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs.getString("kd_rek"));
-                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs.getString("kd_rek"));
+                    saldoawaljanuari=rs.getDouble("saldo_awal");
+                    debetjanuari=rs.getDouble("debet01");
+                    kreditjanuari=rs.getDouble("kredit01");
                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs.getString("kd_rek"));
-                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs.getString("kd_rek"));
+                    debetfebruari=rs.getDouble("debet02");
+                    kreditfebruari=rs.getDouble("kredit02");
                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs.getString("kd_rek"));
-                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs.getString("kd_rek"));
+                    debetmaret=rs.getDouble("debet03");
+                    kreditmaret=rs.getDouble("kredit03");
                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs.getString("kd_rek"));
-                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs.getString("kd_rek"));
+                    debetapril=rs.getDouble("debet04");
+                    kreditapril=rs.getDouble("kredit04");
                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs.getString("kd_rek"));
-                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs.getString("kd_rek"));
+                    debetmei=rs.getDouble("debet05");
+                    kreditmei=rs.getDouble("kredit05");
                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs.getString("kd_rek"));
-                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs.getString("kd_rek"));
+                    debetjuni=rs.getDouble("debet06");
+                    kreditjuni=rs.getDouble("kredit06");
                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs.getString("kd_rek"));
-                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs.getString("kd_rek"));
+                    debetjuli=rs.getDouble("debet07");
+                    kreditjuli=rs.getDouble("kredit07");
                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs.getString("kd_rek"));
-                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs.getString("kd_rek"));
+                    debetagustus=rs.getDouble("debet08");
+                    kreditagustus=rs.getDouble("kredit08");
                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs.getString("kd_rek"));
-                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs.getString("kd_rek"));
+                    debetseptember=rs.getDouble("debet09");
+                    kreditseptember=rs.getDouble("kredit09");
                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs.getString("kd_rek"));
-                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs.getString("kd_rek"));
+                    debetoktober=rs.getDouble("debet10");
+                    kreditoktober=rs.getDouble("kredit10");
                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs.getString("kd_rek"));
-                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs.getString("kd_rek"));
+                    debetnovember=rs.getDouble("debet11");
+                    kreditnovember=rs.getDouble("kredit11");
                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs.getString("kd_rek"));
-                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs.getString("kd_rek"));
+                    debetdesember=rs.getDouble("debet12");
+                    kreditdesember=rs.getDouble("kredit12");
                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                    htmlContent.append(    
+                    htmlContent.append(
                         "<tr class='isi'>").append(
                             "<td>").append(rs.getString("kd_rek")).append("</td>").append(
                             "<td>").append(rs.getString("nm_rek")).append("</td>").append(
@@ -552,8 +584,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "</tr>"
                     );
                     ps2=koneksi.prepareStatement(
-                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                        "select rekening.kd_rek, rekening.nm_rek, "+
+                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                    );
                     try {
                         ps2.setString(1,rs.getString("kd_rek"));
                         if(!TCari.getText().trim().equals("")){
@@ -562,44 +623,44 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs2.getString("kd_rek"));
-                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs2.getString("kd_rek"));
-                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs2.getString("kd_rek"));
+                            saldoawaljanuari=rs2.getDouble("saldo_awal");
+                            debetjanuari=rs2.getDouble("debet01");
+                            kreditjanuari=rs2.getDouble("kredit01");
                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs2.getString("kd_rek"));
-                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs2.getString("kd_rek"));
+                            debetfebruari=rs2.getDouble("debet02");
+                            kreditfebruari=rs2.getDouble("kredit02");
                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs2.getString("kd_rek"));
-                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs2.getString("kd_rek"));
+                            debetmaret=rs2.getDouble("debet03");
+                            kreditmaret=rs2.getDouble("kredit03");
                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs2.getString("kd_rek"));
-                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs2.getString("kd_rek"));
+                            debetapril=rs2.getDouble("debet04");
+                            kreditapril=rs2.getDouble("kredit04");
                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs2.getString("kd_rek"));
-                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs2.getString("kd_rek"));
+                            debetmei=rs2.getDouble("debet05");
+                            kreditmei=rs2.getDouble("kredit05");
                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs2.getString("kd_rek"));
-                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs2.getString("kd_rek"));
+                            debetjuni=rs2.getDouble("debet06");
+                            kreditjuni=rs2.getDouble("kredit06");
                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs2.getString("kd_rek"));
-                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs2.getString("kd_rek"));
+                            debetjuli=rs2.getDouble("debet07");
+                            kreditjuli=rs2.getDouble("kredit07");
                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs2.getString("kd_rek"));
-                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs2.getString("kd_rek"));
+                            debetagustus=rs2.getDouble("debet08");
+                            kreditagustus=rs2.getDouble("kredit08");
                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs2.getString("kd_rek"));
-                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs2.getString("kd_rek"));
+                            debetseptember=rs2.getDouble("debet09");
+                            kreditseptember=rs2.getDouble("kredit09");
                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs2.getString("kd_rek"));
-                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs2.getString("kd_rek"));
+                            debetoktober=rs2.getDouble("debet10");
+                            kreditoktober=rs2.getDouble("kredit10");
                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs2.getString("kd_rek"));
-                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs2.getString("kd_rek"));
+                            debetnovember=rs2.getDouble("debet11");
+                            kreditnovember=rs2.getDouble("kredit11");
                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs2.getString("kd_rek"));
-                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs2.getString("kd_rek"));
+                            debetdesember=rs2.getDouble("debet12");
+                            kreditdesember=rs2.getDouble("kredit12");
                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                            htmlContent.append(    
+                            htmlContent.append(
                                 "<tr class='isi'>").append(
                                     "<td>&nbsp;").append(rs2.getString("kd_rek")).append("</td>").append(
                                     "<td>&nbsp;").append(rs2.getString("nm_rek")).append("</td>").append(
@@ -654,8 +715,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "</tr>"
                             );
                             ps3=koneksi.prepareStatement(
-                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                            );
                             try {
                                 ps3.setString(1,rs2.getString("kd_rek"));
                                 if(!TCari.getText().trim().equals("")){
@@ -664,44 +754,44 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 }
                                 rs3=ps3.executeQuery();
                                 while(rs3.next()){
-                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs3.getString("kd_rek"));
-                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs3.getString("kd_rek"));
-                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs3.getString("kd_rek"));
+                                    saldoawaljanuari=rs3.getDouble("saldo_awal");
+                                    debetjanuari=rs3.getDouble("debet01");
+                                    kreditjanuari=rs3.getDouble("kredit01");
                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs3.getString("kd_rek"));
-                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs3.getString("kd_rek"));
+                                    debetfebruari=rs3.getDouble("debet02");
+                                    kreditfebruari=rs3.getDouble("kredit02");
                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs3.getString("kd_rek"));
-                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs3.getString("kd_rek"));
+                                    debetmaret=rs3.getDouble("debet03");
+                                    kreditmaret=rs3.getDouble("kredit03");
                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs3.getString("kd_rek"));
-                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs3.getString("kd_rek"));
+                                    debetapril=rs3.getDouble("debet04");
+                                    kreditapril=rs3.getDouble("kredit04");
                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs3.getString("kd_rek"));
-                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs3.getString("kd_rek"));
+                                    debetmei=rs3.getDouble("debet05");
+                                    kreditmei=rs3.getDouble("kredit05");
                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs3.getString("kd_rek"));
-                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs3.getString("kd_rek"));
+                                    debetjuni=rs3.getDouble("debet06");
+                                    kreditjuni=rs3.getDouble("kredit06");
                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs3.getString("kd_rek"));
-                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs3.getString("kd_rek"));
+                                    debetjuli=rs3.getDouble("debet07");
+                                    kreditjuli=rs3.getDouble("kredit07");
                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs3.getString("kd_rek"));
-                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs3.getString("kd_rek"));
+                                    debetagustus=rs3.getDouble("debet08");
+                                    kreditagustus=rs3.getDouble("kredit08");
                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs3.getString("kd_rek"));
-                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs3.getString("kd_rek"));
+                                    debetseptember=rs3.getDouble("debet09");
+                                    kreditseptember=rs3.getDouble("kredit09");
                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs3.getString("kd_rek"));
-                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs3.getString("kd_rek"));
+                                    debetoktober=rs3.getDouble("debet10");
+                                    kreditoktober=rs3.getDouble("kredit10");
                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs3.getString("kd_rek"));
-                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs3.getString("kd_rek"));
+                                    debetnovember=rs3.getDouble("debet11");
+                                    kreditnovember=rs3.getDouble("kredit11");
                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs3.getString("kd_rek"));
-                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs3.getString("kd_rek"));
+                                    debetdesember=rs3.getDouble("debet12");
+                                    kreditdesember=rs3.getDouble("kredit12");
                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                    htmlContent.append(    
+                                    htmlContent.append(
                                         "<tr class='isi'>").append(
                                             "<td>&nbsp;&nbsp;").append(rs3.getString("kd_rek")).append("</td>").append(
                                             "<td>&nbsp;&nbsp;").append(rs3.getString("nm_rek")).append("</td>").append(
@@ -756,8 +846,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                         "</tr>"
                                     );
                                     ps4=koneksi.prepareStatement(
-                                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                        "select rekening.kd_rek, rekening.nm_rek, "+
+                                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                    );
                                     try {
                                         ps4.setString(1,rs3.getString("kd_rek"));
                                         if(!TCari.getText().trim().equals("")){
@@ -766,44 +885,44 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                         }
                                         rs4=ps4.executeQuery();
                                         while(rs4.next()){
-                                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs4.getString("kd_rek"));
-                                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs4.getString("kd_rek"));
-                                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs4.getString("kd_rek"));
+                                            saldoawaljanuari=rs4.getDouble("saldo_awal");
+                                            debetjanuari=rs4.getDouble("debet01");
+                                            kreditjanuari=rs4.getDouble("kredit01");
                                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs4.getString("kd_rek"));
-                                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs4.getString("kd_rek"));
+                                            debetfebruari=rs4.getDouble("debet02");
+                                            kreditfebruari=rs4.getDouble("kredit02");
                                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs4.getString("kd_rek"));
-                                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs4.getString("kd_rek"));
+                                            debetmaret=rs4.getDouble("debet03");
+                                            kreditmaret=rs4.getDouble("kredit03");
                                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs4.getString("kd_rek"));
-                                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs4.getString("kd_rek"));
+                                            debetapril=rs4.getDouble("debet04");
+                                            kreditapril=rs4.getDouble("kredit04");
                                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs4.getString("kd_rek"));
-                                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs4.getString("kd_rek"));
+                                            debetmei=rs4.getDouble("debet05");
+                                            kreditmei=rs4.getDouble("kredit05");
                                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs4.getString("kd_rek"));
-                                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs4.getString("kd_rek"));
+                                            debetjuni=rs4.getDouble("debet06");
+                                            kreditjuni=rs4.getDouble("kredit06");
                                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs4.getString("kd_rek"));
-                                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs4.getString("kd_rek"));
+                                            debetjuli=rs4.getDouble("debet07");
+                                            kreditjuli=rs4.getDouble("kredit07");
                                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs4.getString("kd_rek"));
-                                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs4.getString("kd_rek"));
+                                            debetagustus=rs4.getDouble("debet08");
+                                            kreditagustus=rs4.getDouble("kredit08");
                                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs4.getString("kd_rek"));
-                                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs4.getString("kd_rek"));
+                                            debetseptember=rs4.getDouble("debet09");
+                                            kreditseptember=rs4.getDouble("kredit09");
                                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs4.getString("kd_rek"));
-                                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs4.getString("kd_rek"));
+                                            debetoktober=rs4.getDouble("debet10");
+                                            kreditoktober=rs4.getDouble("kredit10");
                                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs4.getString("kd_rek"));
-                                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs4.getString("kd_rek"));
+                                            debetnovember=rs4.getDouble("debet11");
+                                            kreditnovember=rs4.getDouble("kredit11");
                                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs4.getString("kd_rek"));
-                                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs4.getString("kd_rek"));
+                                            debetdesember=rs4.getDouble("debet12");
+                                            kreditdesember=rs4.getDouble("kredit12");
                                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                            htmlContent.append(    
+                                            htmlContent.append(
                                                 "<tr class='isi'>").append(
                                                     "<td>&nbsp;&nbsp;&nbsp;").append(rs4.getString("kd_rek")).append("</td>").append(
                                                     "<td>&nbsp;&nbsp;&nbsp;").append(rs4.getString("nm_rek")).append("</td>").append(
@@ -858,8 +977,36 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                 "</tr>"
                                             );
                                             ps5=koneksi.prepareStatement(
-                                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek");
                                             try {
                                                 ps5.setString(1,rs4.getString("kd_rek"));
                                                 if(!TCari.getText().trim().equals("")){
@@ -868,44 +1015,44 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                 }
                                                 rs5=ps5.executeQuery();
                                                 while(rs5.next()){
-                                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs5.getString("kd_rek"));
-                                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs5.getString("kd_rek"));
-                                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs5.getString("kd_rek"));
+                                                    saldoawaljanuari=rs5.getDouble("saldo_awal");
+                                                    debetjanuari=rs5.getDouble("debet01");
+                                                    kreditjanuari=rs5.getDouble("kredit01");
                                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs5.getString("kd_rek"));
-                                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs5.getString("kd_rek"));
+                                                    debetfebruari=rs5.getDouble("debet02");
+                                                    kreditfebruari=rs5.getDouble("kredit02");
                                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs5.getString("kd_rek"));
-                                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs5.getString("kd_rek"));
+                                                    debetmaret=rs5.getDouble("debet03");
+                                                    kreditmaret=rs5.getDouble("kredit03");
                                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs5.getString("kd_rek"));
-                                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs5.getString("kd_rek"));
+                                                    debetapril=rs5.getDouble("debet04");
+                                                    kreditapril=rs5.getDouble("kredit04");
                                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs5.getString("kd_rek"));
-                                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs5.getString("kd_rek"));
+                                                    debetmei=rs5.getDouble("debet05");
+                                                    kreditmei=rs5.getDouble("kredit05");
                                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs5.getString("kd_rek"));
-                                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs5.getString("kd_rek"));
+                                                    debetjuni=rs5.getDouble("debet06");
+                                                    kreditjuni=rs5.getDouble("kredit06");
                                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs5.getString("kd_rek"));
-                                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs5.getString("kd_rek"));
+                                                    debetjuli=rs5.getDouble("debet07");
+                                                    kreditjuli=rs5.getDouble("kredit07");
                                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs5.getString("kd_rek"));
-                                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs5.getString("kd_rek"));
+                                                    debetagustus=rs5.getDouble("debet08");
+                                                    kreditagustus=rs5.getDouble("kredit08");
                                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs5.getString("kd_rek"));
-                                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs5.getString("kd_rek"));
+                                                    debetseptember=rs5.getDouble("debet09");
+                                                    kreditseptember=rs5.getDouble("kredit09");
                                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs5.getString("kd_rek"));
-                                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs5.getString("kd_rek"));
+                                                    debetoktober=rs5.getDouble("debet10");
+                                                    kreditoktober=rs5.getDouble("kredit10");
                                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs5.getString("kd_rek"));
-                                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs5.getString("kd_rek"));
+                                                    debetnovember=rs5.getDouble("debet11");
+                                                    kreditnovember=rs5.getDouble("kredit11");
                                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs5.getString("kd_rek"));
-                                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs5.getString("kd_rek"));
+                                                    debetdesember=rs5.getDouble("debet12");
+                                                    kreditdesember=rs5.getDouble("kredit12");
                                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                    htmlContent.append(    
+                                                    htmlContent.append(
                                                         "<tr class='isi'>").append(
                                                             "<td>&nbsp;&nbsp;&nbsp;&nbsp;").append(rs5.getString("kd_rek")).append("</td>").append(
                                                             "<td>&nbsp;&nbsp;&nbsp;&nbsp;").append(rs5.getString("nm_rek")).append("</td>").append(
@@ -960,8 +1107,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                         "</tr>"
                                                     );
                                                     ps6=koneksi.prepareStatement(
-                                                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                        "select rekening.kd_rek, rekening.nm_rek, "+
+                                                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                    );
                                                     try {
                                                         ps6.setString(1,rs5.getString("kd_rek"));
                                                         if(!TCari.getText().trim().equals("")){
@@ -970,44 +1146,44 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                         }
                                                         rs6=ps6.executeQuery();
                                                         while(rs6.next()){
-                                                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs6.getString("kd_rek"));
-                                                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs6.getString("kd_rek"));
-                                                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs6.getString("kd_rek"));
+                                                            saldoawaljanuari=rs6.getDouble("saldo_awal");
+                                                            debetjanuari=rs6.getDouble("debet01");
+                                                            kreditjanuari=rs6.getDouble("kredit01");
                                                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs6.getString("kd_rek"));
-                                                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs6.getString("kd_rek"));
+                                                            debetfebruari=rs6.getDouble("debet02");
+                                                            kreditfebruari=rs6.getDouble("kredit02");
                                                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs6.getString("kd_rek"));
-                                                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs6.getString("kd_rek"));
+                                                            debetmaret=rs6.getDouble("debet03");
+                                                            kreditmaret=rs6.getDouble("kredit03");
                                                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs6.getString("kd_rek"));
-                                                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs6.getString("kd_rek"));
+                                                            debetapril=rs6.getDouble("debet04");
+                                                            kreditapril=rs6.getDouble("kredit04");
                                                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs6.getString("kd_rek"));
-                                                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs6.getString("kd_rek"));
+                                                            debetmei=rs6.getDouble("debet05");
+                                                            kreditmei=rs6.getDouble("kredit05");
                                                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs6.getString("kd_rek"));
-                                                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs6.getString("kd_rek"));
+                                                            debetjuni=rs6.getDouble("debet06");
+                                                            kreditjuni=rs6.getDouble("kredit06");
                                                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs6.getString("kd_rek"));
-                                                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs6.getString("kd_rek"));
+                                                            debetjuli=rs6.getDouble("debet07");
+                                                            kreditjuli=rs6.getDouble("kredit07");
                                                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs6.getString("kd_rek"));
-                                                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs6.getString("kd_rek"));
+                                                            debetagustus=rs6.getDouble("debet08");
+                                                            kreditagustus=rs6.getDouble("kredit08");
                                                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs6.getString("kd_rek"));
-                                                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs6.getString("kd_rek"));
+                                                            debetseptember=rs6.getDouble("debet09");
+                                                            kreditseptember=rs6.getDouble("kredit09");
                                                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs6.getString("kd_rek"));
-                                                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs6.getString("kd_rek"));
+                                                            debetoktober=rs6.getDouble("debet10");
+                                                            kreditoktober=rs6.getDouble("kredit10");
                                                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs6.getString("kd_rek"));
-                                                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs6.getString("kd_rek"));
+                                                            debetnovember=rs6.getDouble("debet11");
+                                                            kreditnovember=rs6.getDouble("kredit11");
                                                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs6.getString("kd_rek"));
-                                                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs6.getString("kd_rek"));
+                                                            debetdesember=rs6.getDouble("debet12");
+                                                            kreditdesember=rs6.getDouble("kredit12");
                                                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                            htmlContent.append(    
+                                                            htmlContent.append(
                                                                 "<tr class='isi'>").append(
                                                                     "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs6.getString("kd_rek")).append("</td>").append(
                                                                     "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs6.getString("nm_rek")).append("</td>").append(
@@ -1062,8 +1238,37 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                 "</tr>"
                                                             );
                                                             ps7=koneksi.prepareStatement(
-                                                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                            );
                                                             try {
                                                                 ps7.setString(1,rs6.getString("kd_rek"));
                                                                 if(!TCari.getText().trim().equals("")){
@@ -1072,47 +1277,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                 }
                                                                 rs7=ps7.executeQuery();
                                                                 while(rs7.next()){
-                                                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs7.getString("kd_rek"));
-                                                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs7.getString("kd_rek"));
-                                                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs7.getString("kd_rek"));
+                                                                    saldoawaljanuari=rs7.getDouble("saldo_awal");
+                                                                    debetjanuari=rs7.getDouble("debet01");
+                                                                    kreditjanuari=rs7.getDouble("kredit01");
                                                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs7.getString("kd_rek"));
-                                                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs7.getString("kd_rek"));
+                                                                    debetfebruari=rs7.getDouble("debet02");
+                                                                    kreditfebruari=rs7.getDouble("kredit02");
                                                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs7.getString("kd_rek"));
-                                                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs7.getString("kd_rek"));
+                                                                    debetmaret=rs7.getDouble("debet03");
+                                                                    kreditmaret=rs7.getDouble("kredit03");
                                                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs7.getString("kd_rek"));
-                                                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs7.getString("kd_rek"));
+                                                                    debetapril=rs7.getDouble("debet04");
+                                                                    kreditapril=rs7.getDouble("kredit04");
                                                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs7.getString("kd_rek"));
-                                                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs7.getString("kd_rek"));
+                                                                    debetmei=rs7.getDouble("debet05");
+                                                                    kreditmei=rs7.getDouble("kredit05");
                                                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs7.getString("kd_rek"));
-                                                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs7.getString("kd_rek"));
+                                                                    debetjuni=rs7.getDouble("debet06");
+                                                                    kreditjuni=rs7.getDouble("kredit06");
                                                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs7.getString("kd_rek"));
-                                                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs7.getString("kd_rek"));
+                                                                    debetjuli=rs7.getDouble("debet07");
+                                                                    kreditjuli=rs7.getDouble("kredit07");
                                                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs7.getString("kd_rek"));
-                                                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs7.getString("kd_rek"));
+                                                                    debetagustus=rs7.getDouble("debet08");
+                                                                    kreditagustus=rs7.getDouble("kredit08");
                                                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs7.getString("kd_rek"));
-                                                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs7.getString("kd_rek"));
+                                                                    debetseptember=rs7.getDouble("debet09");
+                                                                    kreditseptember=rs7.getDouble("kredit09");
                                                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs7.getString("kd_rek"));
-                                                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs7.getString("kd_rek"));
+                                                                    debetoktober=rs7.getDouble("debet10");
+                                                                    kreditoktober=rs7.getDouble("kredit10");
                                                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs7.getString("kd_rek"));
-                                                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs7.getString("kd_rek"));
+                                                                    debetnovember=rs7.getDouble("debet11");
+                                                                    kreditnovember=rs7.getDouble("kredit11");
                                                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs7.getString("kd_rek"));
-                                                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs7.getString("kd_rek"));
+                                                                    debetdesember=rs7.getDouble("debet12");
+                                                                    kreditdesember=rs7.getDouble("kredit12");
                                                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                    htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs7.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs7.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                    htmlContent.append(
+                                                                        "<tr class='isi'>").append(
+                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs7.getString("kd_rek")).append("</td>").append(
+                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs7.getString("nm_rek")).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                        "</tr>"
+                                                                    );
                                                                     ps8=koneksi.prepareStatement(
-                                                                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                        "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                    );
                                                                     try {
                                                                         ps8.setString(1,rs7.getString("kd_rek"));
                                                                         if(!TCari.getText().trim().equals("")){
@@ -1121,47 +1408,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                         }
                                                                         rs8=ps8.executeQuery();
                                                                         while(rs8.next()){
-                                                                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs8.getString("kd_rek"));
-                                                                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs8.getString("kd_rek"));
-                                                                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs8.getString("kd_rek"));
+                                                                            saldoawaljanuari=rs8.getDouble("saldo_awal");
+                                                                            debetjanuari=rs8.getDouble("debet01");
+                                                                            kreditjanuari=rs8.getDouble("kredit01");
                                                                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs8.getString("kd_rek"));
-                                                                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs8.getString("kd_rek"));
+                                                                            debetfebruari=rs8.getDouble("debet02");
+                                                                            kreditfebruari=rs8.getDouble("kredit02");
                                                                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs8.getString("kd_rek"));
-                                                                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs8.getString("kd_rek"));
+                                                                            debetmaret=rs8.getDouble("debet03");
+                                                                            kreditmaret=rs8.getDouble("kredit03");
                                                                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs8.getString("kd_rek"));
-                                                                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs8.getString("kd_rek"));
+                                                                            debetapril=rs8.getDouble("debet04");
+                                                                            kreditapril=rs8.getDouble("kredit04");
                                                                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs8.getString("kd_rek"));
-                                                                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs8.getString("kd_rek"));
+                                                                            debetmei=rs8.getDouble("debet05");
+                                                                            kreditmei=rs8.getDouble("kredit05");
                                                                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs8.getString("kd_rek"));
-                                                                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs8.getString("kd_rek"));
+                                                                            debetjuni=rs8.getDouble("debet06");
+                                                                            kreditjuni=rs8.getDouble("kredit06");
                                                                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs8.getString("kd_rek"));
-                                                                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs8.getString("kd_rek"));
+                                                                            debetjuli=rs8.getDouble("debet07");
+                                                                            kreditjuli=rs8.getDouble("kredit07");
                                                                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs8.getString("kd_rek"));
-                                                                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs8.getString("kd_rek"));
+                                                                            debetagustus=rs8.getDouble("debet08");
+                                                                            kreditagustus=rs8.getDouble("kredit08");
                                                                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs8.getString("kd_rek"));
-                                                                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs8.getString("kd_rek"));
+                                                                            debetseptember=rs8.getDouble("debet09");
+                                                                            kreditseptember=rs8.getDouble("kredit09");
                                                                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs8.getString("kd_rek"));
-                                                                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs8.getString("kd_rek"));
+                                                                            debetoktober=rs8.getDouble("debet10");
+                                                                            kreditoktober=rs8.getDouble("kredit10");
                                                                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs8.getString("kd_rek"));
-                                                                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs8.getString("kd_rek"));
+                                                                            debetnovember=rs8.getDouble("debet11");
+                                                                            kreditnovember=rs8.getDouble("kredit11");
                                                                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs8.getString("kd_rek"));
-                                                                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs8.getString("kd_rek"));
+                                                                            debetdesember=rs8.getDouble("debet12");
+                                                                            kreditdesember=rs8.getDouble("kredit12");
                                                                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                            htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs8.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs8.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                            htmlContent.append(
+                                                                                "<tr class='isi'>").append(
+                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs8.getString("kd_rek")).append("</td>").append(
+                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs8.getString("nm_rek")).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                "</tr>"
+                                                                            );
                                                                             ps9=koneksi.prepareStatement(
-                                                                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                            );
                                                                             try {
                                                                                 ps9.setString(1,rs8.getString("kd_rek"));
                                                                                 if(!TCari.getText().trim().equals("")){
@@ -1170,47 +1539,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                                 }
                                                                                 rs9=ps9.executeQuery();
                                                                                 while(rs9.next()){
-                                                                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs9.getString("kd_rek"));
-                                                                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs9.getString("kd_rek"));
+                                                                                    saldoawaljanuari=rs9.getDouble("saldo_awal");
+                                                                                    debetjanuari=rs9.getDouble("debet01");
+                                                                                    kreditjanuari=rs9.getDouble("kredit01");
                                                                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs9.getString("kd_rek"));
+                                                                                    debetfebruari=rs9.getDouble("debet02");
+                                                                                    kreditfebruari=rs9.getDouble("kredit02");
                                                                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs9.getString("kd_rek"));
+                                                                                    debetmaret=rs9.getDouble("debet03");
+                                                                                    kreditmaret=rs9.getDouble("kredit03");
                                                                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs9.getString("kd_rek"));
+                                                                                    debetapril=rs9.getDouble("debet04");
+                                                                                    kreditapril=rs9.getDouble("kredit04");
                                                                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs9.getString("kd_rek"));
+                                                                                    debetmei=rs9.getDouble("debet05");
+                                                                                    kreditmei=rs9.getDouble("kredit05");
                                                                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs9.getString("kd_rek"));
+                                                                                    debetjuni=rs9.getDouble("debet06");
+                                                                                    kreditjuni=rs9.getDouble("kredit06");
                                                                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs9.getString("kd_rek"));
+                                                                                    debetjuli=rs9.getDouble("debet07");
+                                                                                    kreditjuli=rs9.getDouble("kredit07");
                                                                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs9.getString("kd_rek"));
+                                                                                    debetagustus=rs9.getDouble("debet08");
+                                                                                    kreditagustus=rs9.getDouble("kredit08");
                                                                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs9.getString("kd_rek"));
+                                                                                    debetseptember=rs9.getDouble("debet09");
+                                                                                    kreditseptember=rs9.getDouble("kredit09");
                                                                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs9.getString("kd_rek"));
+                                                                                    debetoktober=rs9.getDouble("debet10");
+                                                                                    kreditoktober=rs9.getDouble("kredit10");
                                                                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs9.getString("kd_rek"));
+                                                                                    debetnovember=rs9.getDouble("debet11");
+                                                                                    kreditnovember=rs9.getDouble("kredit11");
                                                                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs9.getString("kd_rek"));
-                                                                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs9.getString("kd_rek"));
+                                                                                    debetdesember=rs9.getDouble("debet12");
+                                                                                    kreditdesember=rs9.getDouble("kredit12");
                                                                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                                    htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs9.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs9.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                                    htmlContent.append(
+                                                                                        "<tr class='isi'>").append(
+                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs9.getString("kd_rek")).append("</td>").append(
+                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs9.getString("nm_rek")).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                        "</tr>"
+                                                                                    );
                                                                                     ps10=koneksi.prepareStatement(
-                                                                                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                                        "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                                    );
                                                                                     try {
                                                                                         ps10.setString(1,rs9.getString("kd_rek"));
                                                                                         if(!TCari.getText().trim().equals("")){
@@ -1219,47 +1670,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                                         }
                                                                                         rs10=ps10.executeQuery();
                                                                                         while(rs10.next()){
-                                                                                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs10.getString("kd_rek"));
-                                                                                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs10.getString("kd_rek"));
+                                                                                            saldoawaljanuari=rs10.getDouble("saldo_awal");
+                                                                                            debetjanuari=rs10.getDouble("debet01");
+                                                                                            kreditjanuari=rs10.getDouble("kredit01");
                                                                                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs10.getString("kd_rek"));
+                                                                                            debetfebruari=rs10.getDouble("debet02");
+                                                                                            kreditfebruari=rs10.getDouble("kredit02");
                                                                                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs10.getString("kd_rek"));
+                                                                                            debetmaret=rs10.getDouble("debet03");
+                                                                                            kreditmaret=rs10.getDouble("kredit03");
                                                                                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs10.getString("kd_rek"));
+                                                                                            debetapril=rs10.getDouble("debet04");
+                                                                                            kreditapril=rs10.getDouble("kredit04");
                                                                                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs10.getString("kd_rek"));
+                                                                                            debetmei=rs10.getDouble("debet05");
+                                                                                            kreditmei=rs10.getDouble("kredit05");
                                                                                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs10.getString("kd_rek"));
+                                                                                            debetjuni=rs10.getDouble("debet06");
+                                                                                            kreditjuni=rs10.getDouble("kredit06");
                                                                                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs10.getString("kd_rek"));
+                                                                                            debetjuli=rs10.getDouble("debet07");
+                                                                                            kreditjuli=rs10.getDouble("kredit07");
                                                                                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs10.getString("kd_rek"));
+                                                                                            debetagustus=rs10.getDouble("debet08");
+                                                                                            kreditagustus=rs10.getDouble("kredit08");
                                                                                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs10.getString("kd_rek"));
+                                                                                            debetseptember=rs10.getDouble("debet09");
+                                                                                            kreditseptember=rs10.getDouble("kredit09");
                                                                                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs10.getString("kd_rek"));
+                                                                                            debetoktober=rs10.getDouble("debet10");
+                                                                                            kreditoktober=rs10.getDouble("kredit10");
                                                                                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs10.getString("kd_rek"));
+                                                                                            debetnovember=rs10.getDouble("debet11");
+                                                                                            kreditnovember=rs10.getDouble("kredit11");
                                                                                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs10.getString("kd_rek"));
-                                                                                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs10.getString("kd_rek"));
+                                                                                            debetdesember=rs10.getDouble("debet12");
+                                                                                            kreditdesember=rs10.getDouble("kredit12");
                                                                                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                                            htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs10.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs10.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                                            htmlContent.append(
+                                                                                                "<tr class='isi'>").append(
+                                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs10.getString("kd_rek")).append("</td>").append(
+                                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs10.getString("nm_rek")).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                                "</tr>"
+                                                                                            );
                                                                                             ps11=koneksi.prepareStatement(
-                                                                                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                                            );
                                                                                             try {
                                                                                                 ps11.setString(1,rs10.getString("kd_rek"));
                                                                                                 if(!TCari.getText().trim().equals("")){
@@ -1268,47 +1801,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                                                 }
                                                                                                 rs11=ps11.executeQuery();
                                                                                                 while(rs11.next()){
-                                                                                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs11.getString("kd_rek"));
-                                                                                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs11.getString("kd_rek"));
+                                                                                                    saldoawaljanuari=rs11.getDouble("saldo_awal");
+                                                                                                    debetjanuari=rs11.getDouble("debet01");
+                                                                                                    kreditjanuari=rs11.getDouble("kredit01");
                                                                                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetfebruari=rs11.getDouble("debet02");
+                                                                                                    kreditfebruari=rs11.getDouble("kredit02");
                                                                                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetmaret=rs11.getDouble("debet03");
+                                                                                                    kreditmaret=rs11.getDouble("kredit03");
                                                                                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetapril=rs11.getDouble("debet04");
+                                                                                                    kreditapril=rs11.getDouble("kredit04");
                                                                                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetmei=rs11.getDouble("debet05");
+                                                                                                    kreditmei=rs11.getDouble("kredit05");
                                                                                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetjuni=rs11.getDouble("debet06");
+                                                                                                    kreditjuni=rs11.getDouble("kredit06");
                                                                                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetjuli=rs11.getDouble("debet07");
+                                                                                                    kreditjuli=rs11.getDouble("kredit07");
                                                                                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetagustus=rs11.getDouble("debet08");
+                                                                                                    kreditagustus=rs11.getDouble("kredit08");
                                                                                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetseptember=rs11.getDouble("debet09");
+                                                                                                    kreditseptember=rs11.getDouble("kredit09");
                                                                                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetoktober=rs11.getDouble("debet10");
+                                                                                                    kreditoktober=rs11.getDouble("kredit10");
                                                                                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetnovember=rs11.getDouble("debet11");
+                                                                                                    kreditnovember=rs11.getDouble("kredit11");
                                                                                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs11.getString("kd_rek"));
-                                                                                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs11.getString("kd_rek"));
+                                                                                                    debetdesember=rs11.getDouble("debet12");
+                                                                                                    kreditdesember=rs11.getDouble("kredit12");
                                                                                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                                                    htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs11.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs11.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                                                    htmlContent.append(
+                                                                                                        "<tr class='isi'>").append(
+                                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs11.getString("kd_rek")).append("</td>").append(
+                                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs11.getString("nm_rek")).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                                        "</tr>"
+                                                                                                    );
                                                                                                     ps12=koneksi.prepareStatement(
-                                                                                                        "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                                                        "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                                                        "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                                                        "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                                                        "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                                                        "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                                                        "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                                                        "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                                                    );
                                                                                                     try {
                                                                                                         ps12.setString(1,rs11.getString("kd_rek"));
                                                                                                         if(!TCari.getText().trim().equals("")){
@@ -1317,47 +1932,129 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                                                         }
                                                                                                         rs12=ps12.executeQuery();
                                                                                                         while(rs12.next()){
-                                                                                                            saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs12.getString("kd_rek"));
-                                                                                                            debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs12.getString("kd_rek"));
+                                                                                                            saldoawaljanuari=rs12.getDouble("saldo_awal");
+                                                                                                            debetjanuari=rs12.getDouble("debet01");
+                                                                                                            kreditjanuari=rs12.getDouble("kredit01");
                                                                                                             saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                                                            debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetfebruari=rs12.getDouble("debet02");
+                                                                                                            kreditfebruari=rs12.getDouble("kredit02");
                                                                                                             saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                                                            debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetmaret=rs12.getDouble("debet03");
+                                                                                                            kreditmaret=rs12.getDouble("kredit03");
                                                                                                             saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                                                            debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetapril=rs12.getDouble("debet04");
+                                                                                                            kreditapril=rs12.getDouble("kredit04");
                                                                                                             saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                                                            debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetmei=rs12.getDouble("debet05");
+                                                                                                            kreditmei=rs12.getDouble("kredit05");
                                                                                                             saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                                                            debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetjuni=rs12.getDouble("debet06");
+                                                                                                            kreditjuni=rs12.getDouble("kredit06");
                                                                                                             saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                                                            debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetjuli=rs12.getDouble("debet07");
+                                                                                                            kreditjuli=rs12.getDouble("kredit07");
                                                                                                             saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                                                            debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetagustus=rs12.getDouble("debet08");
+                                                                                                            kreditagustus=rs12.getDouble("kredit08");
                                                                                                             saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                                                            debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetseptember=rs12.getDouble("debet09");
+                                                                                                            kreditseptember=rs12.getDouble("kredit09");
                                                                                                             saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                                                            debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetoktober=rs12.getDouble("debet10");
+                                                                                                            kreditoktober=rs12.getDouble("kredit10");
                                                                                                             saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                                                            debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetnovember=rs12.getDouble("debet11");
+                                                                                                            kreditnovember=rs12.getDouble("kredit11");
                                                                                                             saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                                                            debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs12.getString("kd_rek"));
-                                                                                                            kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs12.getString("kd_rek"));
+                                                                                                            debetdesember=rs12.getDouble("debet12");
+                                                                                                            kreditdesember=rs12.getDouble("kredit12");
                                                                                                             saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                                                            htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs12.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs12.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                                                            htmlContent.append(
+                                                                                                                "<tr class='isi'>").append(
+                                                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs12.getString("kd_rek")).append("</td>").append(
+                                                                                                                    "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs12.getString("nm_rek")).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                                                    "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                                                "</tr>"
+                                                                                                            );
                                                                                                             ps13=koneksi.prepareStatement(
-                                                                                                                "select rekening.kd_rek, rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
-                                                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+" order by rekening.kd_rek");
+                                                                                                                "select rekening.kd_rek, rekening.nm_rek, "+
+                                                                                                                "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                                                                                                                "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                                                                                                                "from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                                                                                                                "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                                                                                                                "where subrekening.kd_rek=? and rekening.level='1' "+(TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                                                                                                                "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+                                                                                                            );
                                                                                                             try {
                                                                                                                 ps13.setString(1,rs12.getString("kd_rek"));
                                                                                                                 if(!TCari.getText().trim().equals("")){
@@ -1366,44 +2063,97 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                                                                                 }
                                                                                                                 rs13=ps13.executeQuery();
                                                                                                                 while(rs13.next()){
-                                                                                                                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs13.getString("kd_rek"));
-                                                                                                                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs13.getString("kd_rek"));
+                                                                                                                    saldoawaljanuari=rs13.getDouble("saldo_awal");
+                                                                                                                    debetjanuari=rs13.getDouble("debet01");
+                                                                                                                    kreditjanuari=rs13.getDouble("kredit01");
                                                                                                                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                                                                                                                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetfebruari=rs13.getDouble("debet02");
+                                                                                                                    kreditfebruari=rs13.getDouble("kredit02");
                                                                                                                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                                                                                                                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetmaret=rs13.getDouble("debet03");
+                                                                                                                    kreditmaret=rs13.getDouble("kredit03");
                                                                                                                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                                                                                                                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetapril=rs13.getDouble("debet04");
+                                                                                                                    kreditapril=rs13.getDouble("kredit04");
                                                                                                                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                                                                                                                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetmei=rs13.getDouble("debet05");
+                                                                                                                    kreditmei=rs13.getDouble("kredit05");
                                                                                                                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                                                                                                                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetjuni=rs13.getDouble("debet06");
+                                                                                                                    kreditjuni=rs13.getDouble("kredit06");
                                                                                                                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                                                                                                                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetjuli=rs13.getDouble("debet07");
+                                                                                                                    kreditjuli=rs13.getDouble("kredit07");
                                                                                                                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                                                                                                                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetagustus=rs13.getDouble("debet08");
+                                                                                                                    kreditagustus=rs13.getDouble("kredit08");
                                                                                                                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                                                                                                                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetseptember=rs13.getDouble("debet09");
+                                                                                                                    kreditseptember=rs13.getDouble("kredit09");
                                                                                                                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                                                                                                                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetoktober=rs13.getDouble("debet10");
+                                                                                                                    kreditoktober=rs13.getDouble("kredit10");
                                                                                                                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                                                                                                                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetnovember=rs13.getDouble("debet11");
+                                                                                                                    kreditnovember=rs13.getDouble("kredit11");
                                                                                                                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                                                                                                                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs13.getString("kd_rek"));
-                                                                                                                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs13.getString("kd_rek"));
+                                                                                                                    debetdesember=rs13.getDouble("debet12");
+                                                                                                                    kreditdesember=rs13.getDouble("kredit12");
                                                                                                                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                                                                                                                    htmlContent.append("<tr class='isi'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs13.getString("kd_rek")).append("</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs13.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
+                                                                                                                    htmlContent.append(
+                                                                                                                        "<tr class='isi'>").append(
+                                                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs13.getString("kd_rek")).append("</td>").append(
+                                                                                                                            "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").append(rs13.getString("nm_rek")).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetapril)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetmei)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td>").append(
+                                                                                                                            "<td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td>").append(
+                                                                                                                        "</tr>"
+                                                                                                                    );
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif rs13 : "+e);
@@ -1547,24 +2297,24 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.close();
                 }
             }
+
             LoadHTML.setText(
-                    "<html>"+
-                      "<table width='4500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                       htmlContent.toString()+
-                      "</table>"+
-                    "</html>");
+                "<html>"+
+                "<table width='4500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                htmlContent.toString()+
+                "</table>"+
+                "</html>");
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        } 
+        }
         this.setCursor(Cursor.getDefaultCursor());
-        
     }
     
     private void prosesCari2() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
-            htmlContent.append(                             
+            htmlContent.append(
                 "<tr class='isi'>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>Kode Akun</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Akun Rekening</td>").append(
@@ -1626,59 +2376,87 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Debet</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kredit</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Saldo Akhir</td>").append(
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Saldo Awal</td>").append(
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Debet</td>").append(
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kredit</td>").append(
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Saldo Akhir</td>").append(
                 "</tr>"
-            );     
-            ps=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek from rekening "+(TCari.getText().trim().equals("")?"":"where rekening.kd_rek like ? or rekening.nm_rek like ? ")+" order by rekening.kd_rek");
+            );
+            String thn = ThnCari.getSelectedItem().toString();
+            ps=koneksi.prepareStatement(
+                    "select rekening.kd_rek, rekening.nm_rek, "+
+                    "IFNULL((select rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='"+thn+"' and rekeningtahun.kd_rek=rekening.kd_rek),0) as saldo_awal, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.debet else 0 end),0) as debet01, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-01' then detailjurnal.kredit else 0 end),0) as kredit01, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.debet else 0 end),0) as debet02, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-02' then detailjurnal.kredit else 0 end),0) as kredit02, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.debet else 0 end),0) as debet03, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-03' then detailjurnal.kredit else 0 end),0) as kredit03, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.debet else 0 end),0) as debet04, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-04' then detailjurnal.kredit else 0 end),0) as kredit04, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.debet else 0 end),0) as debet05, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-05' then detailjurnal.kredit else 0 end),0) as kredit05, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.debet else 0 end),0) as debet06, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-06' then detailjurnal.kredit else 0 end),0) as kredit06, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.debet else 0 end),0) as debet07, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-07' then detailjurnal.kredit else 0 end),0) as kredit07, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.debet else 0 end),0) as debet08, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-08' then detailjurnal.kredit else 0 end),0) as kredit08, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.debet else 0 end),0) as debet09, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-09' then detailjurnal.kredit else 0 end),0) as kredit09, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.debet else 0 end),0) as debet10, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-10' then detailjurnal.kredit else 0 end),0) as kredit10, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.debet else 0 end),0) as debet11, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-11' then detailjurnal.kredit else 0 end),0) as kredit11, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.debet else 0 end),0) as debet12, "+
+                    "IFNULL(sum(case when left(jurnal.tgl_jurnal,7)='"+thn+"-12' then detailjurnal.kredit else 0 end),0) as kredit12 "+
+                    "from rekening left join detailjurnal on detailjurnal.kd_rek=rekening.kd_rek "+
+                    "left join jurnal on jurnal.no_jurnal=detailjurnal.no_jurnal and left(jurnal.tgl_jurnal,4)='"+thn+"' "+
+                    (TCari.getText().trim().equals("")?"":"where (rekening.kd_rek like ? or rekening.nm_rek like ?) ")+
+                    "group by rekening.kd_rek, rekening.nm_rek order by rekening.kd_rek"
+            );
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    saldoawaljanuari=Sequel.cariIsiAngka2("select saldo_awal from rekeningtahun where thn=? and kd_rek=?",ThnCari.getSelectedItem().toString(),rs.getString("kd_rek"));
-                    debetjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs.getString("kd_rek"));
-                    kreditjanuari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-01"+"%",rs.getString("kd_rek"));
+                    saldoawaljanuari=rs.getDouble("saldo_awal");
+                    debetjanuari=rs.getDouble("debet01");
+                    kreditjanuari=rs.getDouble("kredit01");
                     saldoakhirjanuari=saldoawaljanuari+(debetjanuari-kreditjanuari);
-                    debetfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs.getString("kd_rek"));
-                    kreditfebruari=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-02"+"%",rs.getString("kd_rek"));
+                    debetfebruari=rs.getDouble("debet02");
+                    kreditfebruari=rs.getDouble("kredit02");
                     saldoakhirfebruari=saldoakhirjanuari+(debetfebruari-kreditfebruari);
-                    debetmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs.getString("kd_rek"));
-                    kreditmaret=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-03"+"%",rs.getString("kd_rek"));
+                    debetmaret=rs.getDouble("debet03");
+                    kreditmaret=rs.getDouble("kredit03");
                     saldoakhirmaret=saldoakhirfebruari+(debetmaret-kreditmaret);
-                    debetapril=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs.getString("kd_rek"));
-                    kreditapril=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-04"+"%",rs.getString("kd_rek"));
+                    debetapril=rs.getDouble("debet04");
+                    kreditapril=rs.getDouble("kredit04");
                     saldoakhirapril=saldoakhirmaret+(debetapril-kreditapril);
-                    debetmei=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs.getString("kd_rek"));
-                    kreditmei=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-05"+"%",rs.getString("kd_rek"));
+                    debetmei=rs.getDouble("debet05");
+                    kreditmei=rs.getDouble("kredit05");
                     saldoakhirmei=saldoakhirapril+(debetmei-kreditmei);
-                    debetjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs.getString("kd_rek"));
-                    kreditjuni=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-06"+"%",rs.getString("kd_rek"));
+                    debetjuni=rs.getDouble("debet06");
+                    kreditjuni=rs.getDouble("kredit06");
                     saldoakhirjuni=saldoakhirmei+(debetjuni-kreditjuni);
-                    debetjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs.getString("kd_rek"));
-                    kreditjuli=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-07"+"%",rs.getString("kd_rek"));
+                    debetjuli=rs.getDouble("debet07");
+                    kreditjuli=rs.getDouble("kredit07");
                     saldoakhirjuli=saldoakhirjuni+(debetjuli-kreditjuli);
-                    debetagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs.getString("kd_rek"));
-                    kreditagustus=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-08"+"%",rs.getString("kd_rek"));
+                    debetagustus=rs.getDouble("debet08");
+                    kreditagustus=rs.getDouble("kredit08");
                     saldoakhiragustus=saldoakhirjuli+(debetagustus-kreditagustus);
-                    debetseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs.getString("kd_rek"));
-                    kreditseptember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-09"+"%",rs.getString("kd_rek"));
+                    debetseptember=rs.getDouble("debet09");
+                    kreditseptember=rs.getDouble("kredit09");
                     saldoakhirseptember=saldoakhiragustus+(debetseptember-kreditseptember);
-                    debetoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs.getString("kd_rek"));
-                    kreditoktober=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-10"+"%",rs.getString("kd_rek"));
+                    debetoktober=rs.getDouble("debet10");
+                    kreditoktober=rs.getDouble("kredit10");
                     saldoakhiroktober=saldoakhirseptember+(debetoktober-kreditoktober);
-                    debetnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs.getString("kd_rek"));
-                    kreditnovember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-11"+"%",rs.getString("kd_rek"));
+                    debetnovember=rs.getDouble("debet11");
+                    kreditnovember=rs.getDouble("kredit11");
                     saldoakhirnovember=saldoakhiroktober+(debetnovember-kreditnovember);
-                    debetdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs.getString("kd_rek"));
-                    kreditdesember=Sequel.cariIsiAngka2("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? and detailjurnal.kd_rek=?","%"+ThnCari.getSelectedItem().toString()+"-12"+"%",rs.getString("kd_rek"));
+                    debetdesember=rs.getDouble("debet12");
+                    kreditdesember=rs.getDouble("kredit12");
                     saldoakhirdesember=saldoakhirnovember+(debetdesember-kreditdesember);
-                    htmlContent.append("<tr class='isi'><td>").append(rs.getString("kd_rek")).append("</td><td>").append(rs.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");                    
+                    htmlContent.append("<tr class='isi'><td>").append(rs.getString("kd_rek")).append("</td><td>").append(rs.getString("nm_rek")).append("</td><td align='right'>").append(Valid.SetAngka(saldoawaljanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjanuari)).append("</td><td align='right'>").append(Valid.SetAngka(debetfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(kreditfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirfebruari)).append("</td><td align='right'>").append(Valid.SetAngka(debetmaret)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmaret)).append("</td><td align='right'>").append(Valid.SetAngka(debetapril)).append("</td><td align='right'>").append(Valid.SetAngka(kreditapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirapril)).append("</td><td align='right'>").append(Valid.SetAngka(debetmei)).append("</td><td align='right'>").append(Valid.SetAngka(kreditmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirmei)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuni)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuni)).append("</td><td align='right'>").append(Valid.SetAngka(debetjuli)).append("</td><td align='right'>").append(Valid.SetAngka(kreditjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirjuli)).append("</td><td align='right'>").append(Valid.SetAngka(debetagustus)).append("</td><td align='right'>").append(Valid.SetAngka(kreditagustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiragustus)).append("</td><td align='right'>").append(Valid.SetAngka(debetseptember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirseptember)).append("</td><td align='right'>").append(Valid.SetAngka(debetoktober)).append("</td><td align='right'>").append(Valid.SetAngka(kreditoktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhiroktober)).append("</td><td align='right'>").append(Valid.SetAngka(debetnovember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirnovember)).append("</td><td align='right'>").append(Valid.SetAngka(debetdesember)).append("</td><td align='right'>").append(Valid.SetAngka(kreditdesember)).append("</td><td align='right'>").append(Valid.SetAngka(saldoakhirdesember)).append("</td></tr>");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1698,9 +2476,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "</html>");
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        } 
+        }
         this.setCursor(Cursor.getDefaultCursor());
-        
     }
     
     public void isCek(){

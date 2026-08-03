@@ -19,19 +19,24 @@
                         </thead>
                         <tbody>
                         <?php
-                            $queryDefecta = bukaquery("select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,databarang.stokminimal,jenis.nama from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' order by databarang.nama_brng asc");
+                            $queryDefecta = bukaquery(
+                                "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,databarang.stokminimal,jenis.nama,IFNULL(stok.stoksaatini,0) as stoksaatini from databarang ".
+                                "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns ".
+                                "left join (".
+                                    "select gudangbarang.kode_brng,sum(gudangbarang.stok) as stoksaatini from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal ".
+                                    "where bangsal.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' group by gudangbarang.kode_brng".
+                                ") as stok on databarang.kode_brng=stok.kode_brng ".
+                                "where databarang.status='1' and IFNULL(stok.stoksaatini,0)<=databarang.stokminimal order by databarang.nama_brng asc"
+                            );
                             while($rsqueryDefecta = mysqli_fetch_array($queryDefecta)) {
-                                $stoksaatini = (float) getOne("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kode_brng='".$rsqueryDefecta["kode_brng"]."'");
-                                if($stoksaatini<=$rsqueryDefecta["stokminimal"]) {
-                                    echo "<tr>
-                                            <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["kode_brng"]."</td>
-                                            <td align='left'>".$rsqueryDefecta["nama_brng"]."</td>
-                                            <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["satuan"]."</td>
-                                            <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["nama"]."</td>
-                                            <td align='right' style='white-space:nowrap;'>".number_format($rsqueryDefecta["stokminimal"],1,',','.')."</td>
-                                            <td align='right' style='white-space:nowrap;'>".number_format($stoksaatini,1,',','.')."</td>
-                                          </tr>";
-                                }
+                                echo "<tr>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["kode_brng"]."</td>
+                                        <td align='left'>".$rsqueryDefecta["nama_brng"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["satuan"]."</td>
+                                        <td align='left' style='white-space:nowrap;'>".$rsqueryDefecta["nama"]."</td>
+                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryDefecta["stokminimal"],1,',','.')."</td>
+                                        <td align='right' style='white-space:nowrap;'>".number_format($rsqueryDefecta["stoksaatini"],1,',','.')."</td>
+                                      </tr>";
                             }
                         ?>
                         </tbody>

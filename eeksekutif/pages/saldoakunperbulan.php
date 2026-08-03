@@ -1,30 +1,27 @@
 <?php
     $namaBulan = ["01"=>"Januari","02"=>"Februari","03"=>"Maret","04"=>"April","05"=>"Mei","06"=>"Juni","07"=>"Juli","08"=>"Agustus","09"=>"September","10"=>"Oktober","11"=>"November","12"=>"Desember"];
 
-    function bacaSaldoBulan($kdRekParent, $isRoot, $indent, $tahuncari, $namaBulan) {
-        if ($isRoot) {
-            $query = "select rekening.kd_rek,rekening.nm_rek from rekening where rekening.level='0' order by rekening.kd_rek asc";
-        } else {
-            $query = "select rekening.kd_rek,rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek='".$kdRekParent."' and rekening.level='1' order by rekening.kd_rek asc";
-        }
-        $html     = '';
-        $queryRek = bukaquery($query);
-        while ($rowRek = mysqli_fetch_array($queryRek)) {
-            $saldoAwal = (float) getOne("select saldo_awal from rekeningtahun where thn='".$tahuncari."' and kd_rek='".$rowRek['kd_rek']."'");
+    function bacaSaldoBulan($kdRekParent, $isRoot, $indent, $tahuncari, $namaBulan, &$daftarRoot, &$daftarAnak, &$petaSaldoAwal, &$petaDebetKredit) {
+        $daftar = $isRoot ? $daftarRoot : (isset($daftarAnak[$kdRekParent]) ? $daftarAnak[$kdRekParent] : []);
+
+        $html = '';
+        foreach ($daftar as $rowRek) {
+            $saldoAwal = isset($petaSaldoAwal[$rowRek['kd_rek']]) ? $petaSaldoAwal[$rowRek['kd_rek']] : 0;
             $indentPad = str_repeat("&nbsp;",$indent*3);
             $html .= "<tr><td style='white-space:nowrap;'>".$indentPad.$rowRek['kd_rek']."</td><td style='white-space:nowrap;'>".$indentPad.$rowRek['nm_rek']."</td>";
             foreach ($namaBulan as $bulanNum => $bulanNama) {
-                $debet      = (float) getOne("select sum(detailjurnal.debet) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like '%".$tahuncari."-".$bulanNum."%' and detailjurnal.kd_rek='".$rowRek['kd_rek']."'");
-                $kredit     = (float) getOne("select sum(detailjurnal.kredit) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like '%".$tahuncari."-".$bulanNum."%' and detailjurnal.kd_rek='".$rowRek['kd_rek']."'");
+                $kunciBulan = $tahuncari."-".$bulanNum;
+                $debet      = isset($petaDebetKredit[$rowRek['kd_rek']][$kunciBulan]['debet']) ? $petaDebetKredit[$rowRek['kd_rek']][$kunciBulan]['debet'] : 0;
+                $kredit     = isset($petaDebetKredit[$rowRek['kd_rek']][$kunciBulan]['kredit']) ? $petaDebetKredit[$rowRek['kd_rek']][$kunciBulan]['kredit'] : 0;
                 $saldoAkhir = $saldoAwal + ($debet - $kredit);
                 $html .= "<td align='right' style='white-space:nowrap;'>".number_format($saldoAwal,0,',','.')."</td>";
                 $html .= "<td align='right' style='white-space:nowrap;'>".number_format($debet,0,',','.')."</td>";
                 $html .= "<td align='right' style='white-space:nowrap;'>".number_format($kredit,0,',','.')."</td>";
                 $html .= "<td align='right' style='white-space:nowrap;'>".number_format($saldoAkhir,0,',','.')."</td>";
-                $saldoAwal  = $saldoAkhir;
+                $saldoAwal = $saldoAkhir;
             }
             $html .= "</tr>";
-            $html .= bacaSaldoBulan($rowRek['kd_rek'], false, $indent+1, $tahuncari, $namaBulan);
+            $html .= bacaSaldoBulan($rowRek['kd_rek'], false, $indent+1, $tahuncari, $namaBulan, $daftarRoot, $daftarAnak, $petaSaldoAwal, $petaDebetKredit);
         }
         return $html;
     }
@@ -35,7 +32,34 @@
         $tahuncari = validTeks(trim(isset($_POST['tahun_cari']))?$_POST['tahun_cari']:$tahunsekarang);
     }
 
-    $isiTabel      = bacaSaldoBulan('', true, 0, $tahuncari, $namaBulan);
+    $petaSaldoAwal  = [];
+    $querySaldoAwal = bukaquery("select rekeningtahun.kd_rek,rekeningtahun.saldo_awal from rekeningtahun where rekeningtahun.thn='".$tahuncari."'");
+    while($rowSaldo = mysqli_fetch_array($querySaldoAwal)) {
+        $petaSaldoAwal[$rowSaldo['kd_rek']] = (float) $rowSaldo['saldo_awal'];
+    }
+
+    $petaDebetKredit  = [];
+    $queryDebetKredit = bukaquery(
+        "select detailjurnal.kd_rek,left(jurnal.tgl_jurnal,7) as bulantahun,sum(detailjurnal.debet) as totaldebet,sum(detailjurnal.kredit) as totalkredit ".
+        "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where left(jurnal.tgl_jurnal,4)='".$tahuncari."' ".
+        "group by detailjurnal.kd_rek,left(jurnal.tgl_jurnal,7)"
+    );
+    while($rowDK = mysqli_fetch_array($queryDebetKredit)) {
+        $petaDebetKredit[$rowDK['kd_rek']][$rowDK['bulantahun']] = ['debet'=>(float)$rowDK['totaldebet'],'kredit'=>(float)$rowDK['totalkredit']];
+    }
+
+    $daftarRoot    = [];
+    $daftarAnak    = [];
+    $queryRekening = bukaquery("select rekening.kd_rek,rekening.nm_rek,rekening.level,subrekening.kd_rek as parent_kd_rek from rekening left join subrekening on rekening.kd_rek=subrekening.kd_rek2 order by rekening.kd_rek asc");
+    while($rowR = mysqli_fetch_array($queryRekening)) {
+        if ($rowR['level']=='0') {
+            $daftarRoot[] = $rowR;
+        } else if ($rowR['level']=='1' && $rowR['parent_kd_rek']!==null) {
+            $daftarAnak[$rowR['parent_kd_rek']][] = $rowR;
+        }
+    }
+
+    $isiTabel = bacaSaldoBulan('', true, 0, $tahuncari, $namaBulan, $daftarRoot, $daftarAnak, $petaSaldoAwal, $petaDebetKredit);
 ?>
 <div class="block-header">
     <h2><center>SALDO AKUN PER BULAN</center></h2>

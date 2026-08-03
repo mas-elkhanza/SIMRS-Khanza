@@ -72,22 +72,32 @@
                             $totalTotal         = 0;
                             $dataBiayaPerPoli   = [];
                             $tablePerPoli       = [];
-                            $queryPoli = bukaquery("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik order by poliklinik.nm_poli asc");
-                            while($rspoli = mysqli_fetch_array($queryPoli)) {
-                                $queryObat = bukaquery(
-                                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
-                                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total ".
-                                    "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng ".
-                                    "where detail_pemberian_obat.status='Ralan' and reg_periksa.tgl_registrasi between '$thncaripoli-$blncaripoli-$tglcaripoli' and '$thncaripoli2-$blncaripoli2-$tglcaripoli2' ".
-                                    "and reg_periksa.kd_poli='".$rspoli["kd_poli"]."' group by detail_pemberian_obat.kode_brng order by databarang.nama_brng asc"
-                                );
+                            $queryObatPoli = bukaquery(
+                                "select reg_periksa.kd_poli,poliklinik.nm_poli,detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
+                                "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat ".
+                                "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli ".
+                                "where detail_pemberian_obat.status='Ralan' and reg_periksa.tgl_registrasi between '$thncaripoli-$blncaripoli-$tglcaripoli' and '$thncaripoli2-$blncaripoli2-$tglcaripoli2' ".
+                                "group by reg_periksa.kd_poli,detail_pemberian_obat.kode_brng order by poliklinik.nm_poli asc,databarang.nama_brng asc"
+                            );
+                            $obatPerPoli = [];
+                            while($rsobat = mysqli_fetch_array($queryObatPoli)) {
+                                $kdPoli = $rsobat["kd_poli"];
+                                if(!isset($obatPerPoli[$kdPoli])) {
+                                    $obatPerPoli[$kdPoli] = [
+                                        'nm_poli' => $rsobat["nm_poli"],
+                                        'obat'    => []
+                                    ];
+                                }
+                                $obatPerPoli[$kdPoli]['obat'][] = $rsobat;
+                            }
+                            foreach($obatPerPoli as $rspoli) {
                                 $a            = 0;
                                 $subBiaya     = 0;
                                 $subEmbalase  = 0;
                                 $subTuslah    = 0;
                                 $subTotal     = 0;
                                 $rowsHtml     = "";
-                                while($rsobat = mysqli_fetch_array($queryObat)) {
+                                foreach($rspoli["obat"] as $rsobat) {
                                     $a++;
                                     if($a==1) {
                                         $rowsHtml .= "<tr>

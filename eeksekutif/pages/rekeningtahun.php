@@ -51,12 +51,21 @@
                         </thead>
                         <tbody>
                         <?php
-                            $queryRekening   = bukaquery("select rekeningtahun.thn,rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance,rekeningtahun.saldo_awal from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek where rekeningtahun.thn='".$tahuncari."' order by rekening.kd_rek asc");
+                            $queryRekening = bukaquery(
+                                "select rekeningtahun.thn,rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance,rekeningtahun.saldo_awal,".
+                                "IFNULL(mutasi.totaldebet,0) as totaldebet,IFNULL(mutasi.totalkredit,0) as totalkredit ".
+                                "from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek ".
+                                "left join (".
+                                    "select detailjurnal.kd_rek,sum(detailjurnal.debet) as totaldebet,sum(detailjurnal.kredit) as totalkredit ".
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal ".
+                                    "where jurnal.tgl_jurnal like '%".$tahuncari."%' ".
+                                    "group by detailjurnal.kd_rek".
+                                ") as mutasi on mutasi.kd_rek=rekening.kd_rek ".
+                                "where rekeningtahun.thn='".$tahuncari."' order by rekening.kd_rek asc"
+                            );
                             while($rowRekening = mysqli_fetch_array($queryRekening)) {
-                                $mutasi      = bukaquery("select sum(detailjurnal.debet) as totaldebet,sum(detailjurnal.kredit) as totalkredit from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where detailjurnal.kd_rek='".$rowRekening['kd_rek']."' and jurnal.tgl_jurnal like '%".$tahuncari."%'");
-                                $rowMutasi   = mysqli_fetch_array($mutasi);
-                                $totalDebet  = (float) $rowMutasi['totaldebet'];
-                                $totalKredit = (float) $rowMutasi['totalkredit'];
+                                $totalDebet  = (float) $rowRekening['totaldebet'];
+                                $totalKredit = (float) $rowRekening['totalkredit'];
                                 if ($rowRekening['balance'] === 'D') {
                                     $md = $totalDebet;
                                     $mk = $totalKredit;

@@ -1,3 +1,22 @@
+<?php
+    $ringkasanDaftar = mysqli_fetch_array(bukaquery(
+        "SELECT COUNT(*) AS total,".
+        "SUM(CASE WHEN status_lanjut='Ralan' THEN 1 ELSE 0 END) AS ralan,".
+        "SUM(CASE WHEN status_lanjut='Ranap' THEN 1 ELSE 0 END) AS ranap,".
+        "SUM(CASE WHEN stts='Belum' THEN 1 ELSE 0 END) AS belumlayani,".
+        "SUM(CASE WHEN stts='Sudah' THEN 1 ELSE 0 END) AS sudahlayani,".
+        "SUM(CASE WHEN stts='Batal' THEN 1 ELSE 0 END) AS batal,".
+        "SUM(CASE WHEN stts='Dirujuk' THEN 1 ELSE 0 END) AS dirujuk,".
+        "SUM(CASE WHEN stts='Pulang Paksa' THEN 1 ELSE 0 END) AS pulangpaksa,".
+        "SUM(CASE WHEN stts_daftar='Lama' THEN 1 ELSE 0 END) AS daftarlama,".
+        "SUM(CASE WHEN stts_daftar='Baru' THEN 1 ELSE 0 END) AS daftarbaru,".
+        "SUM(CASE WHEN status_poli='Lama' THEN 1 ELSE 0 END) AS polilama,".
+        "SUM(CASE WHEN status_poli='Baru' THEN 1 ELSE 0 END) AS polibaru,".
+        "SUM(CASE WHEN status_lanjut='Ralan' AND status_bayar='Sudah Bayar' THEN 1 ELSE 0 END) AS sudahbayar,".
+        "SUM(CASE WHEN status_lanjut='Ralan' AND status_bayar='Belum Bayar' THEN 1 ELSE 0 END) AS belumbayar ".
+        "FROM reg_periksa WHERE tgl_registrasi=current_date()"
+    ));
+?>
 <div class="block-header">
     <h2><center>PENDAFTARAN HARI INI</center></h2>
 </div>
@@ -9,7 +28,7 @@
             </div>
             <div class="content">
                 <div class="text">KUNJUNGAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date()");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['total'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -20,7 +39,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT JALAN & IGD</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['ralan'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -31,7 +50,7 @@
             </div>
             <div class="content">
                 <div class="text">LANJUT RANAP</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['ranap'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -42,7 +61,7 @@
             </div>
             <div class="content">
                 <div class="text">BELUM DILAYANI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Belum'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['belumlayani'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -53,7 +72,7 @@
             </div>
             <div class="content">
                 <div class="text">SUDAH DILAYANI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Sudah'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['sudahlayani'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -64,7 +83,7 @@
             </div>
             <div class="content">
                 <div class="text">BATAL</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Batal'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['batal'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -75,7 +94,7 @@
             </div>
             <div class="content">
                 <div class="text">DIRUJUK</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Dirujuk'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['dirujuk'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -86,7 +105,7 @@
             </div>
             <div class="content">
                 <div class="text">PULANG PAKSA</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Pulang Paksa'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['pulangpaksa'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -97,7 +116,7 @@
             </div>
             <div class="content">
                 <div class="text">DAFTAR LAMA</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts_daftar='Lama'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['daftarlama'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -108,7 +127,7 @@
             </div>
             <div class="content">
                 <div class="text">DAFTAR BARU</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts_daftar='Baru'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['daftarbaru'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -119,7 +138,7 @@
             </div>
             <div class="content">
                 <div class="text">POLI LAMA</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_poli='Lama'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['polilama'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -130,7 +149,7 @@
             </div>
             <div class="content">
                 <div class="text">POLI BARU</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_poli='Baru'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['polibaru'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -141,7 +160,7 @@
             </div>
             <div class="content">
                 <div class="text">SUDAH BAYAR</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut='Ralan' AND reg_periksa.status_bayar='Sudah Bayar'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['sudahbayar'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -152,7 +171,7 @@
             </div>
             <div class="content">
                 <div class="text">BELUM BAYAR</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rawat) FROM reg_periksa WHERE reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut='Ralan' AND reg_periksa.status_bayar='Belum Bayar'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanDaftar['belumbayar'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -228,6 +247,17 @@
         </div>
     </div>
 </div>
+<?php
+    $ringkasanKeluarRanap = mysqli_fetch_array(bukaquery(
+        "SELECT ".
+        "SUM(CASE WHEN stts_pulang='Pindah Kamar' THEN 1 ELSE 0 END) AS pindahkamar,".
+        "SUM(CASE WHEN stts_pulang NOT IN ('Meninggal','Pindah Kamar','+','Rujuk','Pulang Paksa','APS','Atas Permintaan Sendiri') THEN 1 ELSE 0 END) AS pulang,".
+        "SUM(CASE WHEN stts_pulang='Rujuk' THEN 1 ELSE 0 END) AS dirujuk,".
+        "SUM(CASE WHEN stts_pulang IN ('Pulang Paksa','Atas Permintaan Sendiri','APS') THEN 1 ELSE 0 END) AS pulangpaksa,".
+        "SUM(CASE WHEN stts_pulang='Meninggal' THEN 1 ELSE 0 END) AS meninggal ".
+        "FROM kamar_inap WHERE tgl_keluar=current_date()"
+    ));
+?>
 <div class="block-header">
     <h2><center>RAWAT INAP HARI INI</center></h2>
 </div>
@@ -250,7 +280,7 @@
             </div>
             <div class="content">
                 <div class="text">PINDAH KAMAR</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(kamar_inap.no_rawat) FROM kamar_inap WHERE kamar_inap.tgl_keluar = current_date() AND kamar_inap.stts_pulang = 'Pindah Kamar'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanKeluarRanap['pindahkamar'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -261,7 +291,7 @@
             </div>
             <div class="content">
                 <div class="text">PULANG</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(kamar_inap.no_rawat) FROM kamar_inap WHERE kamar_inap.tgl_keluar = current_date() AND kamar_inap.stts_pulang NOT IN ('Meninggal','Pindah Kamar','+','Rujuk','Pulang Paksa','APS','Atas Permintaan Sendiri')");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanKeluarRanap['pulang'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -272,7 +302,7 @@
             </div>
             <div class="content">
                 <div class="text">DIRUJUK</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(kamar_inap.no_rawat) FROM kamar_inap WHERE kamar_inap.tgl_keluar = current_date() AND kamar_inap.stts_pulang = 'Rujuk'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanKeluarRanap['dirujuk'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -283,7 +313,7 @@
             </div>
             <div class="content">
                 <div class="text">PULANG PAKSA</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(kamar_inap.no_rawat) FROM kamar_inap WHERE kamar_inap.tgl_keluar = current_date() AND kamar_inap.stts_pulang IN ('Pulang Paksa','Atas Permintaan Sendiri','APS')");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanKeluarRanap['pulangpaksa'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -294,7 +324,7 @@
             </div>
             <div class="content">
                 <div class="text">MENINGGAL</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(kamar_inap.no_rawat) FROM kamar_inap WHERE kamar_inap.tgl_keluar = current_date() AND kamar_inap.stts_pulang = 'Meninggal'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=(int)$ringkasanKeluarRanap['meninggal'];?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -414,21 +444,35 @@
         </div>
     </div>
 </div>
+<?php
+    $dataKosongBangsal      = [];
+    $dataIsiBangsal         = [];
+    $dataDibersihkanBangsal = [];
+    $dataDibookingBangsal   = [];
+    $dataPerbaikanBangsal   = [];
+    $queryBangsalStatus = bukaquery(
+        "SELECT bangsal.nm_bangsal,".
+        "SUM(CASE WHEN kamar.status='KOSONG' THEN 1 ELSE 0 END) AS kosong,".
+        "SUM(CASE WHEN kamar.status='ISI' THEN 1 ELSE 0 END) AS isi,".
+        "SUM(CASE WHEN kamar.status='DIBERSIHKAN' THEN 1 ELSE 0 END) AS dibersihkan,".
+        "SUM(CASE WHEN kamar.status='DIBOOKING' THEN 1 ELSE 0 END) AS dibooking,".
+        "SUM(CASE WHEN kamar.status='PERBAIKAN' THEN 1 ELSE 0 END) AS perbaikan ".
+        "FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal ".
+        "WHERE kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal"
+    );
+    while ($row = mysqli_fetch_array($queryBangsalStatus)) {
+        if ((int)$row['kosong']>0)      { $dataKosongBangsal[]      = ['label'=>$row['nm_bangsal']." (".$row['kosong'].")",      'data'=>(int)$row['kosong']]; }
+        if ((int)$row['isi']>0)         { $dataIsiBangsal[]         = ['label'=>$row['nm_bangsal']." (".$row['isi'].")",         'data'=>(int)$row['isi']]; }
+        if ((int)$row['dibersihkan']>0) { $dataDibersihkanBangsal[] = ['label'=>$row['nm_bangsal']." (".$row['dibersihkan'].")", 'data'=>(int)$row['dibersihkan']]; }
+        if ((int)$row['dibooking']>0)   { $dataDibookingBangsal[]   = ['label'=>$row['nm_bangsal']." (".$row['dibooking'].")",   'data'=>(int)$row['dibooking']]; }
+        if ((int)$row['perbaikan']>0)   { $dataPerbaikanBangsal[]   = ['label'=>$row['nm_bangsal']." (".$row['perbaikan'].")",   'data'=>(int)$row['perbaikan']]; }
+    }
+?>
 <div class="block-header">
     <h2><center>GRAFIK KETERSEDIAAN KAMAR PER BANGSAL</center></h2>
 </div>
 <div class="row clearfix">
     <div class="col-md-6">
-        <?php
-            $dataKosongBangsal = [];
-            $query = bukaquery("SELECT bangsal.nm_bangsal, COUNT(kamar.kd_kamar) AS jumlah FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal WHERE kamar.status='KOSONG' AND kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataKosongBangsal[] = [
-                    'label' => $row['nm_bangsal']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -441,16 +485,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataIsiBangsal = [];
-            $query = bukaquery("SELECT bangsal.nm_bangsal, COUNT(kamar.kd_kamar) AS jumlah FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal WHERE kamar.status='ISI' AND kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataIsiBangsal[] = [
-                    'label' => $row['nm_bangsal']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -463,16 +497,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataDibersihkanBangsal = [];
-            $query = bukaquery("SELECT bangsal.nm_bangsal, COUNT(kamar.kd_kamar) AS jumlah FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal WHERE kamar.status='DIBERSIHKAN' AND kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataDibersihkanBangsal[] = [
-                    'label' => $row['nm_bangsal']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -485,16 +509,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataDibookingBangsal = [];
-            $query = bukaquery("SELECT bangsal.nm_bangsal, COUNT(kamar.kd_kamar) AS jumlah FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal WHERE kamar.status='DIBOOKING' AND kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataDibookingBangsal[] = [
-                    'label' => $row['nm_bangsal']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -507,16 +521,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataPerbaikanBangsal = [];
-            $query = bukaquery("SELECT bangsal.nm_bangsal, COUNT(kamar.kd_kamar) AS jumlah FROM kamar INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal WHERE kamar.status='PERBAIKAN' AND kamar.statusdata='1' AND bangsal.status='1' GROUP BY bangsal.kd_bangsal");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataPerbaikanBangsal[] = [
-                    'label' => $row['nm_bangsal']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -529,21 +533,34 @@
         </div>
     </div>
 </div>
+<?php
+    $dataKosongKelas      = [];
+    $dataIsiKelas         = [];
+    $dataDibersihkanKelas = [];
+    $dataDibookingKelas   = [];
+    $dataPerbaikanKelas   = [];
+    $queryKelasStatus = bukaquery(
+        "SELECT kamar.kelas,".
+        "SUM(CASE WHEN kamar.status='KOSONG' THEN 1 ELSE 0 END) AS kosong,".
+        "SUM(CASE WHEN kamar.status='ISI' THEN 1 ELSE 0 END) AS isi,".
+        "SUM(CASE WHEN kamar.status='DIBERSIHKAN' THEN 1 ELSE 0 END) AS dibersihkan,".
+        "SUM(CASE WHEN kamar.status='DIBOOKING' THEN 1 ELSE 0 END) AS dibooking,".
+        "SUM(CASE WHEN kamar.status='PERBAIKAN' THEN 1 ELSE 0 END) AS perbaikan ".
+        "FROM kamar WHERE kamar.statusdata='1' GROUP BY kamar.kelas"
+    );
+    while ($row = mysqli_fetch_array($queryKelasStatus)) {
+        if ((int)$row['kosong']>0)      { $dataKosongKelas[]      = ['label'=>$row['kelas']." (".$row['kosong'].")",      'data'=>(int)$row['kosong']]; }
+        if ((int)$row['isi']>0)         { $dataIsiKelas[]         = ['label'=>$row['kelas']." (".$row['isi'].")",         'data'=>(int)$row['isi']]; }
+        if ((int)$row['dibersihkan']>0) { $dataDibersihkanKelas[] = ['label'=>$row['kelas']." (".$row['dibersihkan'].")", 'data'=>(int)$row['dibersihkan']]; }
+        if ((int)$row['dibooking']>0)   { $dataDibookingKelas[]   = ['label'=>$row['kelas']." (".$row['dibooking'].")",   'data'=>(int)$row['dibooking']]; }
+        if ((int)$row['perbaikan']>0)   { $dataPerbaikanKelas[]   = ['label'=>$row['kelas']." (".$row['perbaikan'].")",   'data'=>(int)$row['perbaikan']]; }
+    }
+?>
 <div class="block-header">
     <h2><center>GRAFIK KETERSEDIAAN KAMAR PER KELAS</center></h2>
 </div>
 <div class="row clearfix">
     <div class="col-md-6">
-        <?php
-            $dataKosongKelas = [];
-            $query = bukaquery("SELECT kamar.kelas, COUNT(kamar.kd_kamar) AS jumlah FROM kamar WHERE kamar.status='KOSONG' AND kamar.statusdata='1' GROUP BY kamar.kelas");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataKosongKelas[] = [
-                    'label' => $row['kelas']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -556,16 +573,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataIsiKelas = [];
-            $query = bukaquery("SELECT kamar.kelas, COUNT(kamar.kd_kamar) AS jumlah FROM kamar WHERE kamar.status='ISI' AND kamar.statusdata='1' GROUP BY kamar.kelas");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataIsiKelas[] = [
-                    'label' => $row['kelas']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -578,16 +585,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataDibersihkanKelas = [];
-            $query = bukaquery("SELECT kamar.kelas, COUNT(kamar.kd_kamar) AS jumlah FROM kamar WHERE kamar.status='DIBERSIHKAN' AND kamar.statusdata='1' GROUP BY kamar.kelas");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataDibersihkanKelas[] = [
-                    'label' => $row['kelas']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -600,16 +597,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataDibookingKelas = [];
-            $query = bukaquery("SELECT kamar.kelas, COUNT(kamar.kd_kamar) AS jumlah FROM kamar WHERE kamar.status='DIBOOKING' AND kamar.statusdata='1' GROUP BY kamar.kelas");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataDibookingKelas[] = [
-                    'label' => $row['kelas']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">
@@ -622,16 +609,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <?php
-            $dataPerbaikanKelas = [];
-            $query = bukaquery("SELECT kamar.kelas, COUNT(kamar.kd_kamar) AS jumlah FROM kamar WHERE kamar.status='PERBAIKAN' AND kamar.statusdata='1' GROUP BY kamar.kelas");
-            while ($row = mysqli_fetch_array($query)) {
-                $dataPerbaikanKelas[] = [
-                    'label' => $row['kelas']." (".$row['jumlah'].")",
-                    'data'  => (int)$row['jumlah']
-                ];
-            }
-        ?>
         <div class="container-fluid">
             <div class="card">
                 <div class="header bg-white">

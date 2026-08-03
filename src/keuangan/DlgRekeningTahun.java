@@ -815,68 +815,54 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{       
+        try{
             ps=koneksi.prepareStatement(
-                "select rekeningtahun.thn,rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance,rekeningtahun.saldo_awal from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek where rekeningtahun.thn=? "+
-                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek");
+                "select rekeningtahun.thn,rekening.kd_rek,rekening.nm_rek,rekening.tipe,rekening.balance,rekeningtahun.saldo_awal,"+
+                "IFNULL(mutasi.totaldebet,0),IFNULL(mutasi.totalkredit,0) from rekening inner join rekeningtahun on rekeningtahun.kd_rek=rekening.kd_rek "+
+                "left join (select detailjurnal.kd_rek,sum(detailjurnal.debet) as totaldebet,sum(detailjurnal.kredit) as totalkredit "+
+                "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where jurnal.tgl_jurnal like ? "+
+                "group by detailjurnal.kd_rek) as mutasi on mutasi.kd_rek=rekening.kd_rek where rekeningtahun.thn=? "+
+                (TCari.getText().trim().equals("")?"":"and (rekening.kd_rek like ? or rekening.nm_rek like ? or "+
+                "rekening.tipe like ? or rekening.balance like ?) ")+"order by rekening.kd_rek"
+            );
             try {
-                ps.setString(1,Tahun.getSelectedItem().toString());
+                ps.setString(1,"%"+Tahun.getSelectedItem()+"%");
+                ps.setString(2,Tahun.getSelectedItem().toString());
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
                     ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     md = 0;mk = 0;saldoakhir=0;
-                    ps2=koneksi.prepareStatement(
-                            "select sum(detailjurnal.debet),sum(detailjurnal.kredit) "+
-                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                            "detailjurnal.kd_rek=? and jurnal.tgl_jurnal like ? ");
-                    try {
-                        ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+Tahun.getSelectedItem()+"%");
-                        rs2=ps2.executeQuery();                
-                        if(rs2.next()){
-                            switch (rs.getString("balance")) {
-                                case "D":
-                                    md=rs2.getDouble(1);
-                                    mk=rs2.getDouble(2);
-                                    break;
-                                case "K":
-                                    md=rs2.getDouble(2);
-                                    mk=rs2.getDouble(1);
-                                    break;
-                            }
-
-                            saldoakhir=rs.getDouble(6)+(md-mk);
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
+                    switch (rs.getString("balance")) {
+                        case "D":
+                            md=rs.getDouble(7);
+                            mk=rs.getDouble(8);
+                            break;
+                        case "K":
+                            md=rs.getDouble(8);
+                            mk=rs.getDouble(7);
+                            break;
                     }
-                        
+                    saldoakhir=rs.getDouble(6)+(md-mk);
+
                     if(saldoakhir<0){
                         tabMode.addRow(new Object[]{
                              rs.getString(1).substring(0, 4),rs.getString(2),rs.getString(3),
                              rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
                              df2.format(md),df2.format(mk),"("+df2.format(saldoakhir*(-1))+")"
-                        });      
+                        });
                     }else{
                         tabMode.addRow(new Object[]{
                              rs.getString(1).substring(0, 4),rs.getString(2),rs.getString(3),
                              rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
                              df2.format(md),df2.format(mk),df2.format(saldoakhir)
-                        }); 
+                        });
                     }
-                    
+
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -887,7 +873,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                 if(ps!=null){
                     ps.close();
                 }
-            }                
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

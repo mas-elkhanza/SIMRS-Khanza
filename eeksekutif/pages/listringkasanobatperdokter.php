@@ -47,6 +47,7 @@
                     </div>
                     <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Tampilkan Data & Grafik</button></center>
                 </form>
+                <hr style="margin:6px 0 0 0;">
             </div>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
@@ -75,22 +76,32 @@
                             $totalTotalSemua          = 0;
                             $dataBiayaPerDokterSemua  = [];
                             $tablePerDokterSemua      = [];
-                            $queryDokterSemua = bukaquery("select dokter.kd_dokter,dokter.nm_dokter from dokter order by dokter.nm_dokter asc");
-                            while($rsdokter = mysqli_fetch_array($queryDokterSemua)) {
-                                $queryObat = bukaquery(
-                                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
-                                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total ".
-                                    "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng ".
-                                    "where reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
-                                    "and reg_periksa.kd_dokter='".$rsdokter["kd_dokter"]."' group by detail_pemberian_obat.kode_brng order by databarang.nama_brng asc"
-                                );
+                            $queryObatSemua = bukaquery(
+                                "select reg_periksa.kd_dokter,dokter.nm_dokter,detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
+                                "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat ".
+                                "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
+                                "group by reg_periksa.kd_dokter,detail_pemberian_obat.kode_brng order by dokter.nm_dokter asc,databarang.nama_brng asc"
+                            );
+                            $obatPerDokterSemua = [];
+                            while($rsobat = mysqli_fetch_array($queryObatSemua)) {
+                                $kdDokterSemua = $rsobat["kd_dokter"];
+                                if(!isset($obatPerDokterSemua[$kdDokterSemua])) {
+                                    $obatPerDokterSemua[$kdDokterSemua] = [
+                                        'nm_dokter' => $rsobat["nm_dokter"],
+                                        'obat'      => []
+                                    ];
+                                }
+                                $obatPerDokterSemua[$kdDokterSemua]['obat'][] = $rsobat;
+                            }
+                            
+                            foreach($obatPerDokterSemua as $rsdokter) {
                                 $a            = 0;
                                 $subBiaya     = 0;
                                 $subEmbalase  = 0;
                                 $subTuslah    = 0;
                                 $subTotal     = 0;
                                 $rowsHtml     = "";
-                                while($rsobat = mysqli_fetch_array($queryObat)) {
+                                foreach($rsdokter["obat"] as $rsobat) {
                                     $a++;
                                     if($a==1) {
                                         $rowsHtml .= "<tr>
@@ -120,6 +131,7 @@
                                     $subTuslah   += $rsobat["tuslah"];
                                     $subTotal    += $rsobat["total"];
                                 }
+                                
                                 if($subTotal>0) {
                                     $rowsHtml .= "<tr>
                                                     <td></td>
@@ -228,22 +240,33 @@
                             $totalTotalRalan          = 0;
                             $dataBiayaPerDokterRalan  = [];
                             $tablePerDokterRalan      = [];
-                            $queryDokterRalan = bukaquery("select dokter.kd_dokter,dokter.nm_dokter from dokter order by dokter.nm_dokter asc");
-                            while($rsdokter = mysqli_fetch_array($queryDokterRalan)) {
-                                $queryObat = bukaquery(
-                                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
-                                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total ".
-                                    "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng ".
-                                    "where detail_pemberian_obat.status='Ralan' and reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
-                                    "and reg_periksa.kd_dokter='".$rsdokter["kd_dokter"]."' group by detail_pemberian_obat.kode_brng order by databarang.nama_brng asc"
-                                );
+                            $queryObatRalan = bukaquery(
+                                "select reg_periksa.kd_dokter,dokter.nm_dokter,detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
+                                "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat ".
+                                "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter ".
+                                "where detail_pemberian_obat.status='Ralan' and reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
+                                "group by reg_periksa.kd_dokter,detail_pemberian_obat.kode_brng order by dokter.nm_dokter asc,databarang.nama_brng asc"
+                            );
+                            $obatPerDokterRalan = [];
+                            while($rsobat = mysqli_fetch_array($queryObatRalan)) {
+                                $kdDokterRalan = $rsobat["kd_dokter"];
+                                if(!isset($obatPerDokterRalan[$kdDokterRalan])) {
+                                    $obatPerDokterRalan[$kdDokterRalan] = [
+                                        'nm_dokter' => $rsobat["nm_dokter"],
+                                        'obat'      => []
+                                    ];
+                                }
+                                $obatPerDokterRalan[$kdDokterRalan]['obat'][] = $rsobat;
+                            }
+                            
+                            foreach($obatPerDokterRalan as $rsdokter) {
                                 $a            = 0;
                                 $subBiaya     = 0;
                                 $subEmbalase  = 0;
                                 $subTuslah    = 0;
                                 $subTotal     = 0;
                                 $rowsHtml     = "";
-                                while($rsobat = mysqli_fetch_array($queryObat)) {
+                                foreach($rsdokter["obat"] as $rsobat) {
                                     $a++;
                                     if($a==1) {
                                         $rowsHtml .= "<tr>
@@ -381,22 +404,32 @@
                             $totalTotalRanap          = 0;
                             $dataBiayaPerDokterRanap  = [];
                             $tablePerDokterRanap      = [];
-                            $queryDokterRanap = bukaquery("select dokter.kd_dokter,dokter.nm_dokter from dokter order by dokter.nm_dokter asc");
-                            while($rsdokter = mysqli_fetch_array($queryDokterRanap)) {
-                                $queryObat = bukaquery(
-                                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
-                                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total ".
-                                    "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng ".
-                                    "where detail_pemberian_obat.status='Ranap' and reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
-                                    "and reg_periksa.kd_dokter='".$rsdokter["kd_dokter"]."' group by detail_pemberian_obat.kode_brng order by databarang.nama_brng asc"
-                                );
+                            $queryObatRanap = bukaquery(
+                                "select reg_periksa.kd_dokter,dokter.nm_dokter,detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,".
+                                "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat ".
+                                "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter ".
+                                "where detail_pemberian_obat.status='Ranap' and reg_periksa.tgl_registrasi between '$thncaridokter-$blncaridokter-$tglcaridokter' and '$thncaridokter2-$blncaridokter2-$tglcaridokter2' ".
+                                "group by reg_periksa.kd_dokter,detail_pemberian_obat.kode_brng order by dokter.nm_dokter asc,databarang.nama_brng asc"
+                            );
+                            $obatPerDokterRanap = [];
+                            while($rsobat = mysqli_fetch_array($queryObatRanap)) {
+                                $kdDokterRanap = $rsobat["kd_dokter"];
+                                if(!isset($obatPerDokterRanap[$kdDokterRanap])) {
+                                    $obatPerDokterRanap[$kdDokterRanap] = [
+                                        'nm_dokter' => $rsobat["nm_dokter"],
+                                        'obat'      => []
+                                    ];
+                                }
+                                $obatPerDokterRanap[$kdDokterRanap]['obat'][] = $rsobat;
+                            }
+                            foreach($obatPerDokterRanap as $rsdokter) {
                                 $a            = 0;
                                 $subBiaya     = 0;
                                 $subEmbalase  = 0;
                                 $subTuslah    = 0;
                                 $subTotal     = 0;
                                 $rowsHtml     = "";
-                                while($rsobat = mysqli_fetch_array($queryObat)) {
+                                foreach($rsdokter["obat"] as $rsobat) {
                                     $a++;
                                     if($a==1) {
                                         $rowsHtml .= "<tr>

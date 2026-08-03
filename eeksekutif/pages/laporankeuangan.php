@@ -1,57 +1,83 @@
 <?php
-    function bacaRekening($kdRekParent, $isRoot, $tipe, $balanceFilter, $formula, $indent, $tahuncari, &$totalAccum) {
-        $balanceCond = $balanceFilter !== '' ? " and rekening.balance='".$balanceFilter."'" : '';
-        
-        if ($isRoot) {
-            $query = "select rekening.kd_rek,rekening.nm_rek from rekening where rekening.level='0' and rekening.tipe='".$tipe."'".$balanceCond." order by rekening.kd_rek asc";
-        } else {
-            $query = "select rekening.kd_rek,rekening.nm_rek from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 where subrekening.kd_rek='".$kdRekParent."' and rekening.level='1' and rekening.tipe='".$tipe."'".$balanceCond." order by rekening.kd_rek asc";
-        }
-        
-        $html      = '';
-        $queryRek  = bukaquery($query);
-        while ($rowRek = mysqli_fetch_array($queryRek)) {
-            $saldoAwal = (float) getOne("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='".$rowRek['kd_rek']."' and rekeningtahun.thn between '".$tahuncari."' and '".$tahuncari."'");
-            if ($formula === 'KD') {
-                $debkret = (float) getOne(
-                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where detailjurnal.kd_rek='".$rowRek['kd_rek']."' and jurnal.tgl_jurnal between '".$tahuncari."-01-01' and '".$tahuncari."-12-31'"
-                );
-            } else {
-                $debkret = (float) getOne(
-                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where detailjurnal.kd_rek='".$rowRek['kd_rek']."' and jurnal.tgl_jurnal between '".$tahuncari."-01-01' and '".$tahuncari."-12-31'"
-                );
-            }
-            
-            $saldoAkhir     = $saldoAwal + $debkret;
-            $totalAccum    += $saldoAkhir;
+    function bacaRekening($kdRekParent, $isRoot, $tipe, $balanceFilter, $formula, $indent, &$totalAccum, &$daftarAnak, &$daftarRootByTipe, &$petaSaldoAwal, &$petaDebet, &$petaKredit) {
+        $daftar = $isRoot
+            ? (isset($daftarRootByTipe[$tipe]) ? $daftarRootByTipe[$tipe] : [])
+            : (isset($daftarAnak[$kdRekParent]) ? $daftarAnak[$kdRekParent] : []);
+
+        $html = '';
+        foreach ($daftar as $rowRek) {
+            if ($rowRek['tipe']!=$tipe) continue;
+            if ($balanceFilter!=='' && $rowRek['balance']!=$balanceFilter) continue;
+
+            $saldoAwal = isset($petaSaldoAwal[$rowRek['kd_rek']]) ? $petaSaldoAwal[$rowRek['kd_rek']] : 0;
+            $debet     = isset($petaDebet[$rowRek['kd_rek']]) ? $petaDebet[$rowRek['kd_rek']] : 0;
+            $kredit    = isset($petaKredit[$rowRek['kd_rek']]) ? $petaKredit[$rowRek['kd_rek']] : 0;
+            $debkret   = ($formula === 'KD') ? ($kredit - $debet) : ($debet - $kredit);
+
+            $saldoAkhir  = $saldoAwal + $debkret;
+            $totalAccum += $saldoAkhir;
             $html .= "<tr>
                         <td></td>
                         <td style='padding-left:".($indent*20)."px;'>".$rowRek['kd_rek']." ".$rowRek['nm_rek']."</td>
                         <td align='right' style='white-space:nowrap;'>".number_format($saldoAkhir,0,',','.')."</td>
                       </tr>";
-            $html .= bacaRekening($rowRek['kd_rek'], false, $tipe, $balanceFilter, $formula, $indent+1, $tahuncari, $totalAccum);
+            $html .= bacaRekening($rowRek['kd_rek'], false, $tipe, $balanceFilter, $formula, $indent+1, $totalAccum, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
         }
         return $html;
     }
-
     $tahunsekarang  = date("Y");
     $tahuncari      = $tahunsekarang;
     if(isset($_POST["BtnCari"])){
         $tahuncari = validTeks(trim(isset($_POST['tahun_cari']))?$_POST['tahun_cari']:$tahunsekarang);
     }
 
+    $petaSaldoAwal  = [];
+    $querySaldoAwal = bukaquery(
+        "select rekeningtahun.kd_rek,sum(rekeningtahun.saldo_awal) as saldo from rekeningtahun ".
+        "where rekeningtahun.thn between '".$tahuncari."' and '".$tahuncari."' group by rekeningtahun.kd_rek"
+    );
+    while($rowSaldo = mysqli_fetch_array($querySaldoAwal)) {
+        $petaSaldoAwal[$rowSaldo['kd_rek']] = (float) $rowSaldo['saldo'];
+    }
+
+    $petaDebet          = [];
+    $petaKredit         = [];
+    $queryDebetKredit   = bukaquery(
+        "select detailjurnal.kd_rek,sum(detailjurnal.debet) as totaldebet,sum(detailjurnal.kredit) as totalkredit ".
+        "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal ".
+        "where jurnal.tgl_jurnal between '".$tahuncari."-01-01' and '".$tahuncari."-12-31' group by detailjurnal.kd_rek"
+    );
+    while($rowDK = mysqli_fetch_array($queryDebetKredit)) {
+        $petaDebet[$rowDK['kd_rek']]  = (float) $rowDK['totaldebet'];
+        $petaKredit[$rowDK['kd_rek']] = (float) $rowDK['totalkredit'];
+    }
+
+    $daftarRootByTipe = [];
+    $daftarAnak       = [];
+    $queryRekening    = bukaquery(
+        "select rekening.kd_rek,rekening.nm_rek,rekening.level,rekening.tipe,rekening.balance,subrekening.kd_rek as parent_kd_rek ".
+        "from rekening left join subrekening on rekening.kd_rek=subrekening.kd_rek2 order by rekening.kd_rek asc"
+    );
+    while($rowR = mysqli_fetch_array($queryRekening)) {
+        if ($rowR['level']=='0') {
+            $daftarRootByTipe[$rowR['tipe']][] = $rowR;
+        } else if ($rowR['level']=='1' && $rowR['parent_kd_rek']!==null) {
+            $daftarAnak[$rowR['parent_kd_rek']][] = $rowR;
+        }
+    }
+
     $pendapatan     = 0;
-    $pendapatanHtml = bacaRekening('', true, 'R', 'K', 'KD', 0, $tahuncari, $pendapatan);
+    $pendapatanHtml = bacaRekening('', true, 'R', 'K', 'KD', 0, $pendapatan, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
     $biaya          = 0;
-    $biayaHtml      = bacaRekening('', true, 'R', 'D', 'DK', 0, $tahuncari, $biaya);
+    $biayaHtml      = bacaRekening('', true, 'R', 'D', 'DK', 0, $biaya, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
     $labaBersih     = $pendapatan - $biaya;
     $modal          = 0;
-    $modalHtml      = bacaRekening('', true, 'M', '', 'KD', 0, $tahuncari, $modal);
+    $modalHtml      = bacaRekening('', true, 'M', '', 'KD', 0, $modal, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
     $modalAkhir     = $modal + $labaBersih;
     $aktiva         = 0;
-    $aktivaHtml     = bacaRekening('', true, 'N', 'D', 'DK', 0, $tahuncari, $aktiva);
+    $aktivaHtml     = bacaRekening('', true, 'N', 'D', 'DK', 0, $aktiva, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
     $pasiva         = 0;
-    $pasivaHtml     = bacaRekening('', true, 'N', 'K', 'KD', 0, $tahuncari, $pasiva);
+    $pasivaHtml     = bacaRekening('', true, 'N', 'K', 'KD', 0, $pasiva, $daftarAnak, $daftarRootByTipe, $petaSaldoAwal, $petaDebet, $petaKredit);
     $totalPasiva    = $pasiva + $modalAkhir;
 ?>
 <div class="block-header">
