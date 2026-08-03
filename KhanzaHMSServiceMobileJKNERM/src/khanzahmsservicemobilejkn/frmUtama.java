@@ -872,7 +872,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                       headers.add("x-timestamp", utc);
                                                       headers.add("x-signature", api.getHmac(utc));
                                                       headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
-                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("nobooking") + "\",\"taskid\": \"1\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
+                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("no_rawat") + "\",\"taskid\": \"1\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
                                                       TeksArea.append("JSON : " + requestJson + "\n");
                                                       requestEntity = new HttpEntity(requestJson, headers);
                                                       URL = link + "/antrean/updatewaktu";
@@ -913,7 +913,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                       headers.add("x-timestamp", utc);
                                                       headers.add("x-signature", api.getHmac(utc));
                                                       headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
-                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("nobooking") + "\",\"taskid\": \"2\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
+                                                      requestJson = "{\"kodebooking\": \"" + rs.getString("no_rawat") + "\",\"taskid\": \"2\",\"waktu\": \"" + parsedDate.getTime() + "\"}";
                                                       TeksArea.append("JSON : " + requestJson + "\n");
                                                       requestEntity = new HttpEntity(requestJson, headers);
                                                       URL = link + "/antrean/updatewaktu";
