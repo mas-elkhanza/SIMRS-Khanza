@@ -671,7 +671,7 @@
                     </Component>
                     <Component class="widget.Label" name="label11">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Tanggal :"/>
+                        <Property name="text" type="java.lang.String" value="Mulai :"/>
                         <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[70, 23]"/>
@@ -745,7 +745,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="219" y="40" width="90" height="23"/>
+                          <AbsoluteConstraints x="249" y="40" width="90" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -761,7 +761,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="312" y="40" width="92" height="23"/>
+                          <AbsoluteConstraints x="342" y="40" width="92" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1507,7 +1507,7 @@
                     <Component class="widget.ComboBox" name="Kategori">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="20">
+                          <StringArray count="24">
                             <StringItem index="0" value="-"/>
                             <StringItem index="1" value="Ringan"/>
                             <StringItem index="2" value="Ringan Cito"/>
@@ -1516,18 +1516,22 @@
                             <StringItem index="5" value="Ringan Khusus Cito Ganda"/>
                             <StringItem index="6" value="Sedang"/>
                             <StringItem index="7" value="Sedang Cito"/>
-                            <StringItem index="8" value="Sedang Khusus"/>
-                            <StringItem index="9" value="Sedang Khusus Cito"/>
-                            <StringItem index="10" value="Sedang Khusus Cito Ganda"/>
-                            <StringItem index="11" value="Besar"/>
-                            <StringItem index="12" value="Besar Cito"/>
-                            <StringItem index="13" value="Besar Khusus"/>
-                            <StringItem index="14" value="Besar Khusus Cito"/>
-                            <StringItem index="15" value="Besar Khusus Cito Ganda"/>
-                            <StringItem index="16" value="Khusus"/>
-                            <StringItem index="17" value="Kecil"/>
-                            <StringItem index="18" value="Elektive"/>
-                            <StringItem index="19" value="Emergency"/>
+                            <StringItem index="8" value="Sedang Ganda"/>
+                            <StringItem index="9" value="Sedang Khusus"/>
+                            <StringItem index="10" value="Sedang Khusus Cito"/>
+                            <StringItem index="11" value="Sedang Khusus Cito Ganda"/>
+                            <StringItem index="12" value="Sedang Khusus Ganda"/>
+                            <StringItem index="13" value="Besar"/>
+                            <StringItem index="14" value="Besar Cito"/>
+                            <StringItem index="15" value="Besar Ganda"/>
+                            <StringItem index="16" value="Besar Khusus"/>
+                            <StringItem index="17" value="Besar Khusus Cito"/>
+                            <StringItem index="18" value="Besar Khusus Cito Ganda"/>
+                            <StringItem index="19" value="Besar Khusus Ganda"/>
+                            <StringItem index="20" value="Khusus"/>
+                            <StringItem index="21" value="Kecil"/>
+                            <StringItem index="22" value="Elektive"/>
+                            <StringItem index="23" value="Emergency"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Kategori" noResource="true"/>
@@ -1537,7 +1541,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="84" y="40" width="122" height="23"/>
+                          <AbsoluteConstraints x="84" y="40" width="152" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

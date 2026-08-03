@@ -443,8 +443,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{   
+       Valid.tabelKosong(tabMode);
+       try{
             pilihan="";
             if(R1.isSelected()==true){
                 pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date()";
@@ -457,49 +457,40 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else if(R5.isSelected()==true){
                 pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 12 MONTH) and current_date()";
             }
+            
+            String filterBatch;
+            if(aktifkanbatch.equals("yes")){
+                filterBatch="gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
+            }else{
+                filterBatch="gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+            }
+            
             ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
-                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    "where databarang.status='1' and databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
-                    (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
-                    "order by databarang.nama_brng");
+                "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga,IFNULL(stok.stoksaatini,0) as stoksaatini "+
+                "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns "+
+                "left join ("+
+                    "select gudangbarang.kode_brng,sum(gudangbarang.stok) as stoksaatini from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal "+
+                    "where bangsal.status='1' and "+filterBatch+" group by gudangbarang.kode_brng"+
+                ") as stok on databarang.kode_brng=stok.kode_brng "+
+                "where databarang.status='1' and databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
+                (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
+                "and IFNULL(stok.stoksaatini,0)>0 order by databarang.nama_brng"
+            );
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                 }
-                    
-                rs=ps.executeQuery();            
-                while(rs.next()){ 
-                    if(aktifkanbatch.equals("yes")){
-                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kode_brng=?"); 
-                    }else{
-                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kode_brng=?"); 
-                    }
-                               
-                    try {
-                        psstok.setString(1,rs.getString(1));
-                        rsstok=psstok.executeQuery();
-                        if(rsstok.next()){
-                            stok=rsstok.getDouble(1);
-                        }
-                    } finally{
-                        if(rsstok!=null){
-                            rsstok.close();
-                        }
-                        if(psstok!=null){
-                            psstok.close();
-                        }
-                    }
-                    
-                    if(stok>0){
-                        tabMode.addRow(new Object[]{
-                            rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nama"),
-                            stok,Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(stok*rs.getDouble("harga"))
-                        });
-                    }
-                }                  
+
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    stok=rs.getDouble("stoksaatini");
+                    tabMode.addRow(new Object[]{
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nama"),
+                        stok,Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(stok*rs.getDouble("harga"))
+                    });
+                }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             } finally{
@@ -513,7 +504,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
-        
+
     }
     
     public void isCek(){

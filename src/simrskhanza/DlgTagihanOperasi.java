@@ -108,7 +108,12 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(100);
             }else{
-                column.setPreferredWidth(85);
+                if(koneksiDB.TAMPILTARIFOPERASI().equals("yes")){
+                    column.setPreferredWidth(85);
+                }else{
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                }
             }
         }
         tbtindakan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -736,7 +741,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(BtnOperator1);
         BtnOperator1.setBounds(376, 70, 28, 23);
 
-        label11.setText("Tanggal :");
+        label11.setText("Mulai :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
@@ -776,7 +781,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         jLabel4.setText("Jenis Anasthesi :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(219, 40, 90, 23);
+        jLabel4.setBounds(249, 40, 90, 23);
 
         jenis.setHighlighter(null);
         jenis.setName("jenis"); // NOI18N
@@ -786,7 +791,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(jenis);
-        jenis.setBounds(312, 40, 92, 23);
+        jenis.setBounds(342, 40, 92, 23);
 
         label17.setText("Ast. Operator 1 :");
         label17.setName("label17"); // NOI18N
@@ -1199,7 +1204,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 40, 81, 23);
 
-        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Ringan", "Ringan Cito", "Ringan Khusus", "Ringan Khusus Cito", "Ringan Khusus Cito Ganda", "Sedang", "Sedang Cito", "Sedang Khusus", "Sedang Khusus Cito", "Sedang Khusus Cito Ganda", "Besar", "Besar Cito", "Besar Khusus", "Besar Khusus Cito", "Besar Khusus Cito Ganda", "Khusus", "Kecil", "Elektive", "Emergency" }));
+        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Ringan", "Ringan Cito", "Ringan Khusus", "Ringan Khusus Cito", "Ringan Khusus Cito Ganda", "Sedang", "Sedang Cito", "Sedang Ganda", "Sedang Khusus", "Sedang Khusus Cito", "Sedang Khusus Cito Ganda", "Sedang Khusus Ganda", "Besar", "Besar Cito", "Besar Ganda", "Besar Khusus", "Besar Khusus Cito", "Besar Khusus Cito Ganda", "Besar Khusus Ganda", "Khusus", "Kecil", "Elektive", "Emergency" }));
         Kategori.setName("Kategori"); // NOI18N
         Kategori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1207,7 +1212,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kategori);
-        Kategori.setBounds(84, 40, 122, 23);
+        Kategori.setBounds(84, 40, 152, 23);
 
         btnBidan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBidan2.setMnemonic('2');

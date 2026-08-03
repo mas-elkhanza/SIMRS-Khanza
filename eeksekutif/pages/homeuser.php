@@ -67,6 +67,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
+                            <li><a href="index.php?act=UpdatePassword"><i class="material-icons">person</i>Ubah Password</a></li>
                             <li><a href="pages/logout.php"><i class="material-icons">input</i>Log Out</a></li>
                         </ul>
                     </div>
@@ -215,6 +216,35 @@
                             </li>
                             <li <?=$subhalaman=="NilaiPenerimaanVendorDapurPerBulan"?"class='active'":""?>>
                                 <a href="index.php?act=NilaiPenerimaanVendorDapurPerBulan&hal=LogistikDapur">Nilai Penerimaan Vendor Per Bulan</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <?=$halaman=="KendaliMutuBiaya"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">fact_check</i>
+                            <span>Kendali Mutu & Biaya</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="MutuPelayananPoli"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananPoli&hal=KendaliMutuBiaya">Lama Pelayanan Poli</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananRalan"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananRalan&hal=KendaliMutuBiaya">Lama Pelayanan Rawat Jalan</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananApotek"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananApotek&hal=KendaliMutuBiaya">Lama Pelayanan Apotek</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananLabPA"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananLabPA&hal=KendaliMutuBiaya">Lama Pelayanan Lab PA</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananLabPK"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananLabPK&hal=KendaliMutuBiaya">Lama Pelayanan Lab PK</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananLabMB"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananLabMB&hal=KendaliMutuBiaya">Lama Pelayanan Lab MB</a>
+                            </li>
+                            <li <?=$subhalaman=="MutuPelayananRad"?"class='active'":""?>>
+                                <a href="index.php?act=MutuPelayananRad&hal=KendaliMutuBiaya">Lama Pelayanan Radiologi</a>
                             </li>
                         </ul>
                     </li>

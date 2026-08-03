@@ -835,10 +835,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{   
+        try{
+            nip="";kodeindustri="";kodejenis="";kodebarang="";
+            if(!kdptg.getText().equals("")){
+                nip=" and pemesanan.nip='"+kdptg.getText()+"' ";
+            }
+            if(!KdIF.getText().equals("")){
+                kodeindustri=" and databarang.kode_industri='"+KdIF.getText()+"' ";
+            }
+            if(!kdjenis.getText().equals("")){
+                kodejenis=" and databarang.kdjns='"+kdjenis.getText()+"' ";
+            }
+            if(!kdbar.getText().equals("")){
+                kodebarang=" and databarang.kode_brng='"+kdbar.getText()+"' ";
+            }
+            String thn=ThnCari.getSelectedItem().toString();
             ps=koneksi.prepareStatement(
-                    "select datasuplier.kode_suplier,datasuplier.nama_suplier from datasuplier "+
-                    (TCari.getText().trim().equals("")?"":"where datasuplier.kode_suplier like ? or datasuplier.nama_suplier like ? ")+
+                    "select datasuplier.kode_suplier,datasuplier.nama_suplier,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-01' then detailpesan.total else 0 end),0) as bln01,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-02' then detailpesan.total else 0 end),0) as bln02,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-03' then detailpesan.total else 0 end),0) as bln03,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-04' then detailpesan.total else 0 end),0) as bln04,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-05' then detailpesan.total else 0 end),0) as bln05,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-06' then detailpesan.total else 0 end),0) as bln06,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-07' then detailpesan.total else 0 end),0) as bln07,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-08' then detailpesan.total else 0 end),0) as bln08,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-09' then detailpesan.total else 0 end),0) as bln09,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-10' then detailpesan.total else 0 end),0) as bln10,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-11' then detailpesan.total else 0 end),0) as bln11,"+
+                    "IFNULL(sum(case when left(pemesanan.tgl_pesan,7)='"+thn+"-12' then detailpesan.total else 0 end),0) as bln12 "+
+                    "from datasuplier "+
+                    "left join pemesanan on pemesanan.kode_suplier=datasuplier.kode_suplier and left(pemesanan.tgl_pesan,4)='"+thn+"' "+nip+
+                    "left join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur "+
+                    "left join databarang on databarang.kode_brng=detailpesan.kode_brng "+kodeindustri+kodejenis+kodebarang+
+                    (TCari.getText().trim().equals("")?"":"where (datasuplier.kode_suplier like ? or datasuplier.nama_suplier like ?) ")+
+                    "group by datasuplier.kode_suplier,datasuplier.nama_suplier "+
                     "order by datasuplier.nama_suplier");
             try {
                 if(!TCari.getText().trim().equals("")){
@@ -846,122 +877,49 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
-                nip="";kodeindustri="";kodejenis="";kodebarang="";
-                if(!kdptg.getText().equals("")){
-                    nip=" and pemesanan.nip='"+kdptg.getText()+"' ";
-                }
-                if(!KdIF.getText().equals("")){
-                    kodeindustri=" and databarang.kode_industri='"+KdIF.getText()+"' ";
-                }
-                if(!kdjenis.getText().equals("")){
-                    kodejenis=" and databarang.kdjns='"+kdjenis.getText()+"' ";
-                }
-                if(!kdbar.getText().equals("")){
-                    kodebarang=" and databarang.kode_brng='"+kdbar.getText()+"' ";
-                }
-                
+
                 totaltagihan=0;totaljanuari=0;totalfebruari=0;totalmaret=0;totalapril=0;totalmei=0;totaljuni=0;totaljuli=0;
                 totalagustus=0;totalseptember=0;totaloktober=0;totalnovember=0;totaldesember=0;
                 while(rs.next()){
-                    januari=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-01' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+                    januari=rs.getDouble("bln01");
                     totaljanuari=totaljanuari+januari;
-                    
-                    februari=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-02' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    februari=rs.getDouble("bln02");
                     totalfebruari=totalfebruari+februari;
-                    
-                    maret=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-03' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    maret=rs.getDouble("bln03");
                     totalmaret=totalmaret+maret;
-                    
-                    april=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-04' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    april=rs.getDouble("bln04");
                     totalapril=totalapril+april;
-                    
-                    mei=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-05' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    mei=rs.getDouble("bln05");
                     totalmei=totalmei+mei;
-                    
-                    juni=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-06' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    juni=rs.getDouble("bln06");
                     totaljuni=totaljuni+juni;
-                    
-                    juli=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-07' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    juli=rs.getDouble("bln07");
                     totaljuli=totaljuli+juli;
-                    
-                    agustus=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-08' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    agustus=rs.getDouble("bln08");
                     totalagustus=totalagustus+agustus;
-                    
-                    september=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-09' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    september=rs.getDouble("bln09");
                     totalseptember=totalseptember+september;
-                    
-                    oktober=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-10' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    oktober=rs.getDouble("bln10");
                     totaloktober=totaloktober+oktober;
-                    
-                    november=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-11' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    november=rs.getDouble("bln11");
                     totalnovember=totalnovember+november;
-                    
-                    desember=Sequel.cariIsiAngka("select sum(detailpesan.total) as total from pemesanan "+
-                            "inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
-                            "inner join databarang on detailpesan.kode_brng=databarang.kode_brng "+
-                            "where pemesanan.kode_suplier='"+rs.getString("kode_suplier")+"' and "+
-                            "left(pemesanan.tgl_pesan,7)='"+ThnCari.getSelectedItem().toString()+"-12' "+
-                            nip+kodeindustri+kodejenis+kodebarang);
+
+                    desember=rs.getDouble("bln12");
                     totaldesember=totaldesember+desember;
-                    
+
                     tagihan=januari+februari+maret+april+mei+juni+juli+agustus+september+oktober+november+desember;
                     totaltagihan=totaltagihan+tagihan;
-                    
+
                     tabMode.addRow(new Object[]{
                         rs.getString("kode_suplier"),rs.getString("nama_suplier"),januari,februari,maret,april,mei,juni,juli,agustus,september,oktober,november,desember,tagihan
                     });
@@ -974,11 +932,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
-                
+
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }        
+        }
     }
 
     public void emptTeks() {

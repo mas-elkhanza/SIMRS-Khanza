@@ -384,65 +384,52 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{   
-            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng, "
-                        + " kodesatuan.satuan,databarang.stokminimal, jenis.nama "
-                        + " from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "
-                        + " inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' "
-                        + " and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
+        Valid.tabelKosong(tabMode);
+        try {
+            String filterBatch;
+            if (aktifkanbatch.equals("yes")) {
+                filterBatch = "gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
+            } else {
+                filterBatch = "gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+            }
+
+            ps = koneksi.prepareStatement(
+                "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,databarang.stokminimal,jenis.nama,IFNULL(stok.stoksaatini,0) as stoksaatini "+
+                "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns "+
+                "left join ( "+
+                "  select gudangbarang.kode_brng,sum(gudangbarang.stok) as stoksaatini from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal "+
+                "  where bangsal.status='1' and "+filterBatch+" group by gudangbarang.kode_brng "+
+                ") as stok on databarang.kode_brng=stok.kode_brng "+
+                "where databarang.status='1' and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) "+
+                "and IFNULL(stok.stoksaatini,0)<=databarang.stokminimal order by databarang.nama_brng"
+            );
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();            
-                while(rs.next()){ 
-                    if(aktifkanbatch.equals("yes")){
-                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kode_brng=?"); 
-                    }else{
-                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kode_brng=?"); 
-                    }
-                               
-                    try {
-                        psstok.setString(1,rs.getString(1));
-                        rsstok=psstok.executeQuery();
-                        if(rsstok.next()){
-                            stok=rsstok.getDouble(1);
-                        }
-                    } finally{
-                        if(rsstok!=null){
-                            rsstok.close();
-                        }
-                        if(psstok!=null){
-                            psstok.close();
-                        }
-                    }
-                    if(stok<=rs.getDouble("stokminimal")){
-                        tabMode.addRow(new Object[]{
-                            rs.getString("kode_brng"),rs.getString("nama_brng"),
-                            rs.getString("satuan"),rs.getString("nama"),
-                            rs.getDouble("stokminimal"),stok
-                        });
-                    }
-                }                  
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    tabMode.addRow(new Object[]{
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"), rs.getString("nama"),rs.getDouble("stokminimal"), rs.getDouble("stoksaatini")
+                    });
+                }
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
+                System.out.println("Notifikasi : " + e);
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
-        }catch(SQLException e){
-            System.out.println("Notifikasi : "+e);
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
         }
-        
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(akses.getsirkulasi_obat());
+         BtnPrint.setEnabled(akses.getdarurat_stok());
     }
     
     private void runBackground(Runnable task) {

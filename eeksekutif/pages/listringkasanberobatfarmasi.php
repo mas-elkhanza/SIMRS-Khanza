@@ -66,6 +66,9 @@
                         <tbody>
                         <?php
                             $totalTagihan       = 0;
+                            $totalPerGolongan   = [];
+                            $totalPerJenis      = [];
+                            $totalPerKategori   = [];
                             $queryRingkasanBeri = bukaquery(
                                 "select detail_pemberian_obat.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,golongan_barang.nama as namagolongan,".
                                 "kategori_barang.nama as namakategori,sum(detail_pemberian_obat.jml) as jumlah,sum(detail_pemberian_obat.total) as total from detail_pemberian_obat ".
@@ -87,6 +90,18 @@
                                         <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanBeri["jumlah"],0,',','.')."</td>
                                         <td align='right' style='white-space:nowrap;'>".number_format($rsqueryRingkasanBeri["total"],0,',','.')."</td>
                                       </tr>";
+                                if(!isset($totalPerGolongan[$rsqueryRingkasanBeri["namagolongan"]])) {
+                                    $totalPerGolongan[$rsqueryRingkasanBeri["namagolongan"]] = 0;
+                                }
+                                $totalPerGolongan[$rsqueryRingkasanBeri["namagolongan"]] += $rsqueryRingkasanBeri["total"];
+                                if(!isset($totalPerJenis[$rsqueryRingkasanBeri["namajenis"]])) {
+                                    $totalPerJenis[$rsqueryRingkasanBeri["namajenis"]] = 0;
+                                }
+                                $totalPerJenis[$rsqueryRingkasanBeri["namajenis"]] += $rsqueryRingkasanBeri["total"];
+                                if(!isset($totalPerKategori[$rsqueryRingkasanBeri["namakategori"]])) {
+                                    $totalPerKategori[$rsqueryRingkasanBeri["namakategori"]] = 0;
+                                }
+                                $totalPerKategori[$rsqueryRingkasanBeri["namakategori"]] += $rsqueryRingkasanBeri["total"];
                             }
                         ?>
                         </tbody>
@@ -100,6 +115,62 @@
                 </div>
                 <hr style="margin:6px 0 0 0;">
             </div>
+            <?php
+                arsort($totalPerGolongan);
+                arsort($totalPerJenis);
+                arsort($totalPerKategori);
+                $rekapGrup = [
+                    'kategori' => ['label'=>'Kategori',  'data'=>$totalPerKategori],
+                    'jenis'    => ['label'=>'Jenis',     'data'=>$totalPerJenis],
+                    'golongan' => ['label'=>'Golongan', 'data'=>$totalPerGolongan]
+                ];
+                $dataPieGrupSemua = [];
+                foreach($rekapGrup as $kunciGrup => $grup) {
+                    echo "<div class='body' style='padding-top:0;'>
+                        <div class='header bg-white' style='border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;'>
+                            <div class='text-center' style='font-size:16px;color:#777777;'>Berdasarkan ".$grup["label"]."</div>
+                        </div>
+                        <div class='row clearfix'>
+                            <div class='col-md-6'>
+                                <div class='table-responsive'>
+                                    <table class='table table-bordered table-striped table-hover js-basic-example dataTable'>
+                                        <thead>
+                                            <tr>
+                                                <th width='70%'><center>".$grup["label"]."</center></th>
+                                                <th width='30%'><center>Total</center></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>";
+                    $dataPieGrup = [];
+                    foreach($grup["data"] as $namaGrup => $totalGrup) {
+                        echo "<tr>
+                                <td align='left'>".$namaGrup."</td>
+                                <td align='right'>".number_format($totalGrup,0,',','.')."</td>
+                              </tr>";
+                        $dataPieGrup[] = [
+                            'label' => $namaGrup." (".number_format($totalGrup,0,',','.').")",
+                            'data'  => (float)$totalGrup
+                        ];
+                    }
+                    echo "  </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th style='text-align:left;'>Jumlah Total</th>
+                                                <th style='text-align:right;'>".number_format($totalTagihan,0,',','.')."</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class='col-md-6'>
+                                <div id='pie_chart_".$kunciGrup."' class='flot-chart' style='height:400px;'></div>
+                            </div>
+                        </div>
+                        <hr style='margin:0 0 20px 0;'>
+                    </div>";
+                    $dataPieGrupSemua[$kunciGrup] = $dataPieGrup;
+                }
+            ?>
             <div class="body" style="padding-top:0;">
                 <div class="header bg-white" style="border-bottom:none;box-shadow:none;padding:0 20px;margin-bottom:6px;">
                     <div class="text-center" style="font-size:16px;color:#777777;">10 Besar Jumlah</div>
@@ -199,6 +270,33 @@
 <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
 <script>
 $(function() {
+    var dataPieGrupSemua = <?= json_encode($dataPieGrupSemua) ?>;
+    ['kategori','jenis','golongan'].forEach(function(kunciGrup) {
+        var dataPie = dataPieGrupSemua[kunciGrup];
+        var chartId = '#pie_chart_' + kunciGrup;
+        if (dataPie.length > 0) {
+            $.plot(chartId, dataPie, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 0.75,
+                            formatter: function(label, series) {
+                                return '<div style="font-size:12px;text-align:center;padding:2px;color:white;">'
+                                    + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                            },
+                            background: { opacity: 0.6 }
+                        }
+                    }
+                },
+                legend: { show: true }
+            });
+        } else {
+            $(chartId).html("<div class='text-center text-muted mt-5'>Kosong</div>");
+        }
+    });
     var dataTerbanyakDiberikan = <?= json_encode($dataTerbanyakDiberikan) ?>;
     if (dataTerbanyakDiberikan.length > 0) {
         $.plot("#pie_chart_terbanyakdiberikan", dataTerbanyakDiberikan, {

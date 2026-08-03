@@ -42,7 +42,9 @@
                 'RingkasanReturSuplierNonMedis','NilaiPenerimaanVendorNonMedisPerBulan','SisaStokDapur','RingkasanPengadaanDapur','RingkasanPenerimaanDapur',
                 'RingkasanHibahDapur','RingkasanStokKeluarDapur','RingkasanReturSuplierDapur','NilaiPenerimaanVendorDapurPerBulan','LaporanKeuangan',
                 'RekeningTahun','SaldoAkunPerBulan','RingkasanHutangVendorFarmasi','RingkasanHutangVendorNonMedis','RingkasanHutangVendorDapur',
-                'RingkasanHutangVendorInventaris','RingkasanBebanHutangLain','RingkasanPiutangBelumLunas','RingkasanPiutangObatBelumLunas'
+                'RingkasanHutangVendorInventaris','RingkasanBebanHutangLain','RingkasanPiutangBelumLunas','RingkasanPiutangObatBelumLunas',
+                'UpdatePassword','MutuPelayananPoli','MutuPelayananRalan','MutuPelayananApotek','MutuPelayananLabPA','MutuPelayananLabPK',
+                'MutuPelayananLabMB','MutuPelayananRad'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -109,6 +111,14 @@
             case "LaporanKeuangan"                      : include_once("pages/laporankeuangan.php"); break;
             case "RekeningTahun"                        : include_once("pages/rekeningtahun.php"); break;
             case "SaldoAkunPerBulan"                    : include_once("pages/saldoakunperbulan.php"); break;
+            case "UpdatePassword"                       : include_once("pages/updatepassword.php"); break;
+            case "MutuPelayananPoli"                    : include_once("pages/mutupelayananpoli.php"); break;
+            case "MutuPelayananRalan"                   : include_once("pages/mutupelayananralan.php"); break;
+            case "MutuPelayananApotek"                  : include_once("pages/mutupelayananapotek.php"); break;
+            case "MutuPelayananLabPA"                   : include_once("pages/mutupelayananlabpa.php"); break;
+            case "MutuPelayananLabPK"                   : include_once("pages/mutupelayananlabpk.php"); break;
+            case "MutuPelayananLabMB"                   : include_once("pages/mutupelayananlabmb.php"); break;
+            case "MutuPelayananRad"                     : include_once("pages/mutupelayananradiologi.php"); break;
             default                                     : include_once("pages/listhome.php");
         }   
     }

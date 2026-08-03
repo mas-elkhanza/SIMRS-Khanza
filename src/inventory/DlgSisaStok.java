@@ -610,7 +610,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             i=Sequel.cariInteger("select count(bangsal.nm_bangsal) from bangsal where bangsal.status='1' and bangsal.kd_bangsal<>'-' ");
             posisigudang=new String[i];
             StringBuilder htmlContent = new StringBuilder();
-            htmlContent.append(                             
+            htmlContent.append(
                 "<tr class='isi'>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='70px'>Kode Barang</td>").append(
@@ -620,8 +620,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='").append((i+2)).append("'>Sisa Stok</td>").append(
                 "</tr>"
             );
-            
-            htmlContent.append(                             
+
+            htmlContent.append(
                 "<tr class='isi'>");
             kolom=0;
             ps=koneksi.prepareStatement("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal where bangsal.status='1' and bangsal.kd_bangsal<>'-' ");
@@ -641,32 +641,37 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(ps!=null){
                     ps.close();
                 }
-            }         
+            }
             htmlContent.append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Total</td>").append(
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Nilai Aset</td>").append(
                 "</tr>"
-            );  
-            
+            );
+
             no=1;
             totalaset=0;
-            
-            if(aktifkanbatch.equals("yes")){
-                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
-            }else{
-                qrystok="select sum(gudangbarang.stok) from gudangbarang where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+
+            String filterBatch = aktifkanbatch.equals("yes") ? "gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''" : "gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+            StringBuilder kolomSubStok = new StringBuilder();
+            StringBuilder kolomSelectStok = new StringBuilder();
+            for(i=0;i<kolom;i++){
+                kolomSubStok.append(",IFNULL(sum(case when gudangbarang.kd_bangsal='").append(posisigudang[i]).append("' then gudangbarang.stok else 0 end),0) as kolom").append(i);
+                kolomSelectStok.append(",stok.kolom").append(i).append(" as kolom").append(i);
             }
-            
+
             ps = koneksi.prepareStatement(
-                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang."+hppfarmasi+" as dasar from databarang "+
-                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
-                    "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode where "+
-                    "databarang.status='1' "+(nmjns.getText().trim().equals("")?"":"and jenis.nama=? ")+
-                    (nmkategori.getText().trim().equals("")?"":"and kategori_barang.nama=? ")+
-                    (nmgolongan.getText().trim().equals("")?"":"and golongan_barang.nama=? ")+
-                    (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ?)")+
-                    " order by databarang.kode_brng");
+                "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang."+hppfarmasi+" as dasar"+kolomSelectStok+" from databarang "+
+                "inner join jenis on databarang.kdjns=jenis.kdjns inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
+                "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                "left join (select gudangbarang.kode_brng"+kolomSubStok+" from gudangbarang where "+filterBatch+" group by gudangbarang.kode_brng) as stok on databarang.kode_brng=stok.kode_brng where "+
+                "databarang.status='1' "+(nmjns.getText().trim().equals("")?"":"and jenis.nama=? ")+(nmkategori.getText().trim().equals("")?"":"and kategori_barang.nama=? ")+
+                (nmgolongan.getText().trim().equals("")?"":"and golongan_barang.nama=? ")+(TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ?)")+
+                " order by databarang.kode_brng"
+            );
+            
+            filterBatch = null;
+            kolomSubStok = null;
+            kolomSelectStok = null;
             try {
                 i=1;
                 if(!nmjns.getText().trim().equals("")){
@@ -676,11 +681,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(!nmkategori.getText().trim().equals("")){
                     ps.setString(i,nmkategori.getText().trim());
                     i++;
-                }    
+                }
                 if(!nmgolongan.getText().trim().equals("")){
                     ps.setString(i,nmgolongan.getText().trim());
                     i++;
-                }    
+                }
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(i,"%"+TCari.getText().trim()+"%");
                     i++;
@@ -689,7 +694,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 while(rs.next()){
                     total=0;
-                    htmlContent.append(                             
+                    htmlContent.append(
                         "<tr class='isi'>").append(
                             "<td valign='middle' align='center'>").append(no).append("</td>").append(
                             "<td valign='middle' align='left'>").append(rs.getString("kode_brng")).append("</td>").append(
@@ -697,25 +702,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             "<td valign='middle' align='left'>").append(rs.getString("kode_sat")).append("</td>").append(
                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("dasar"))).append("</td>");
                     for(i=0;i<kolom;i++){
-                        stok=Sequel.cariIsiAngka2(qrystok,rs.getString("kode_brng"),posisigudang[i]);
+                        stok=rs.getDouble("kolom"+i);
                         htmlContent.append("<td valign='middle' align='right'>").append(Valid.SetAngka(stok)).append("</td>");
                         total=total+stok;
                     }
                     totalaset=totalaset+(rs.getDouble("dasar")*total);
-                    htmlContent.append( 
+                    htmlContent.append(
                             "<td valign='middle' align='right'>").append(Valid.SetAngka(total)).append("</td>").append(
                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("dasar")*total)).append("</td>").append(
                         "</tr>"
-                    );     
-                    no++;  
+                    );
+                    no++;
                 }
-                htmlContent.append(                             
+                htmlContent.append(
                     "<tr class='isi'>").append(
                         "<td valign='middle' align='center'></td>").append(
                         "<td valign='middle' align='left' colspan='").append((kolom+5)).append("'>Total Nilai Aset Obat, Alkes & BHP Medis</td>").append(
                         "<td valign='middle' align='right'>").append(Valid.SetAngka(totalaset)).append("</td>").append(
                     "</tr>"
-                ); 
+                );
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -740,13 +745,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            } 
+            }
             htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        } 
+        }
         this.setCursor(Cursor.getDefaultCursor());
-        
+
     }
     
     public void isCek(){
