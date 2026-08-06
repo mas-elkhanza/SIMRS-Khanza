@@ -52,9 +52,11 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;    
     private double pemisahan_limbah_oleh_penghasil_limbah=0,limbah_infeksius_dimasukkan_kantong_kuning=0,limbah_noninfeksius_dimasukkan_kantong_hitam=0,
-                limbah_tigaperempat_diikat=0,limbah_segera_dibawa_kepembuangan_sementara=0,ttlpemisahan_limbah_oleh_penghasil_limbah=0,kotak_sampah_dalam_kondisi_bersih=0,
-                pembersihan_tempat_sampah_dengan_desinfekten=0,pembersihan_penampungan_sementara_dengan_desinfekten=0,ttllimbah_infeksius_dimasukkan_kantong_kuning=0,
-                ttllimbah_noninfeksius_dimasukkan_kantong_hitam=0,ttllimbah_tigaperempat_diikat=0,ttllimbah_segera_dibawa_kepembuangan_sementara=0,
+                limbah_tigaperempat_diikat=0,limbah_segera_dibawa_kepembuangan_sementara=0,kotak_sampah_dalam_kondisi_bersih=0,
+                pembersihan_tempat_sampah_dengan_desinfekten=0,pembersihan_penampungan_sementara_dengan_desinfekten=0,napemisahan_limbah_oleh_penghasil_limbah=0,
+                nalimbah_infeksius_dimasukkan_kantong_kuning=0,nalimbah_noninfeksius_dimasukkan_kantong_hitam=0,nalimbah_tigaperempat_diikat=0,nalimbah_segera_dibawa_kepembuangan_sementara=0,
+                nakotak_sampah_dalam_kondisi_bersih=0,napembersihan_tempat_sampah_dengan_desinfekten=0,napembersihan_penampungan_sementara_dengan_desinfekten=0,ttllimbah_infeksius_dimasukkan_kantong_kuning=0,
+                ttllimbah_noninfeksius_dimasukkan_kantong_hitam=0,ttllimbah_tigaperempat_diikat=0,ttllimbah_segera_dibawa_kepembuangan_sementara=0,ttlpemisahan_limbah_oleh_penghasil_limbah=0,
                 ttlkotak_sampah_dalam_kondisi_bersih=0,ttlpembersihan_tempat_sampah_dengan_desinfekten=0,ttlpembersihan_penampungan_sementara_dengan_desinfekten=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
@@ -535,7 +537,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(14, 40, 355, 23);
 
-        PemisahanLimbahOlehPenghasilLimbah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PemisahanLimbahOlehPenghasilLimbah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PemisahanLimbahOlehPenghasilLimbah.setName("PemisahanLimbahOlehPenghasilLimbah"); // NOI18N
         PemisahanLimbahOlehPenghasilLimbah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -551,7 +553,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(460, 40, 340, 23);
 
-        LimbahInfeksiusDimasukkanKantongKuning.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LimbahInfeksiusDimasukkanKantongKuning.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LimbahInfeksiusDimasukkanKantongKuning.setName("LimbahInfeksiusDimasukkanKantongKuning"); // NOI18N
         LimbahInfeksiusDimasukkanKantongKuning.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -567,7 +569,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(14, 70, 355, 23);
 
-        LimbahNoninfeksiusDimasukkanKantongHitam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LimbahNoninfeksiusDimasukkanKantongHitam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LimbahNoninfeksiusDimasukkanKantongHitam.setName("LimbahNoninfeksiusDimasukkanKantongHitam"); // NOI18N
         LimbahNoninfeksiusDimasukkanKantongHitam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -594,7 +596,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(14, 130, 355, 23);
 
-        LimbahTigaperempatDiikat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LimbahTigaperempatDiikat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LimbahTigaperempatDiikat.setName("LimbahTigaperempatDiikat"); // NOI18N
         LimbahTigaperempatDiikat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -604,7 +606,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(LimbahTigaperempatDiikat);
         LimbahTigaperempatDiikat.setBounds(800, 70, 78, 23);
 
-        LimbahSegeraDibawaKepembuanganSementara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LimbahSegeraDibawaKepembuanganSementara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LimbahSegeraDibawaKepembuanganSementara.setName("LimbahSegeraDibawaKepembuanganSementara"); // NOI18N
         LimbahSegeraDibawaKepembuanganSementara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -632,7 +634,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(460, 100, 340, 23);
 
-        PembersihanTempatSampahDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PembersihanTempatSampahDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PembersihanTempatSampahDenganDesinfekten.setName("PembersihanTempatSampahDenganDesinfekten"); // NOI18N
         PembersihanTempatSampahDenganDesinfekten.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -642,7 +644,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(PembersihanTempatSampahDenganDesinfekten);
         PembersihanTempatSampahDenganDesinfekten.setBounds(370, 130, 78, 23);
 
-        KotakSampahDalamKondisiBersih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KotakSampahDalamKondisiBersih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         KotakSampahDalamKondisiBersih.setName("KotakSampahDalamKondisiBersih"); // NOI18N
         KotakSampahDalamKondisiBersih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -652,7 +654,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(KotakSampahDalamKondisiBersih);
         KotakSampahDalamKondisiBersih.setBounds(800, 100, 78, 23);
 
-        PembersihanPenampunganSementaraDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PembersihanPenampunganSementaraDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PembersihanPenampunganSementaraDenganDesinfekten.setName("PembersihanPenampunganSementaraDenganDesinfekten"); // NOI18N
         PembersihanPenampunganSementaraDenganDesinfekten.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1101,7 +1103,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
                     "where audit_pembuangan_limbah.tanggal between ? and ? "+
                     "and (audit_pembuangan_limbah.id_ruang like ? or ruang_audit_kepatuhan.nama_ruang like ?) order by audit_pembuangan_limbah.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -1112,42 +1114,103 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttlpemisahan_limbah_oleh_penghasil_limbah=0;ttllimbah_infeksius_dimasukkan_kantong_kuning=0;ttllimbah_noninfeksius_dimasukkan_kantong_hitam=0;ttllimbah_tigaperempat_diikat=0;ttllimbah_segera_dibawa_kepembuangan_sementara=0;
                 ttlkotak_sampah_dalam_kondisi_bersih=0;ttlpembersihan_tempat_sampah_dengan_desinfekten=0;ttlpembersihan_penampungan_sementara_dengan_desinfekten=0;ttlpenilaian=0;
+                napemisahan_limbah_oleh_penghasil_limbah=0;nalimbah_infeksius_dimasukkan_kantong_kuning=0;nalimbah_noninfeksius_dimasukkan_kantong_hitam=0;nalimbah_tigaperempat_diikat=0;nalimbah_segera_dibawa_kepembuangan_sementara=0;
+                nakotak_sampah_dalam_kondisi_bersih=0;napembersihan_tempat_sampah_dengan_desinfekten=0;napembersihan_penampungan_sementara_dengan_desinfekten=0;
                 i=1;
                 while(rs.next()){
-                    pemisahan_limbah_oleh_penghasil_limbah=Double.parseDouble(rs.getString("pemisahan_limbah_oleh_penghasil_limbah").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlpemisahan_limbah_oleh_penghasil_limbah=ttlpemisahan_limbah_oleh_penghasil_limbah+pemisahan_limbah_oleh_penghasil_limbah;
-                    limbah_infeksius_dimasukkan_kantong_kuning=Double.parseDouble(rs.getString("limbah_infeksius_dimasukkan_kantong_kuning").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_infeksius_dimasukkan_kantong_kuning=ttllimbah_infeksius_dimasukkan_kantong_kuning+limbah_infeksius_dimasukkan_kantong_kuning;
-                    limbah_noninfeksius_dimasukkan_kantong_hitam=Double.parseDouble(rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_noninfeksius_dimasukkan_kantong_hitam=ttllimbah_noninfeksius_dimasukkan_kantong_hitam+limbah_noninfeksius_dimasukkan_kantong_hitam;
-                    limbah_tigaperempat_diikat=Double.parseDouble(rs.getString("limbah_tigaperempat_diikat").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_tigaperempat_diikat=ttllimbah_tigaperempat_diikat+limbah_tigaperempat_diikat;
-                    limbah_segera_dibawa_kepembuangan_sementara=Double.parseDouble(rs.getString("limbah_segera_dibawa_kepembuangan_sementara").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_segera_dibawa_kepembuangan_sementara=ttllimbah_segera_dibawa_kepembuangan_sementara+limbah_segera_dibawa_kepembuangan_sementara;
-                    kotak_sampah_dalam_kondisi_bersih=Double.parseDouble(rs.getString("kotak_sampah_dalam_kondisi_bersih").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlkotak_sampah_dalam_kondisi_bersih=ttlkotak_sampah_dalam_kondisi_bersih+kotak_sampah_dalam_kondisi_bersih;
-                    pembersihan_tempat_sampah_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_tempat_sampah_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlpembersihan_tempat_sampah_dengan_desinfekten=ttlpembersihan_tempat_sampah_dengan_desinfekten+pembersihan_tempat_sampah_dengan_desinfekten;
-                    pembersihan_penampungan_sementara_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlpembersihan_penampungan_sementara_dengan_desinfekten=ttlpembersihan_penampungan_sementara_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten;
+                    int pembagi=0;
+                    pemisahan_limbah_oleh_penghasil_limbah=0;limbah_infeksius_dimasukkan_kantong_kuning=0;limbah_noninfeksius_dimasukkan_kantong_hitam=0;limbah_tigaperempat_diikat=0;
+                    limbah_segera_dibawa_kepembuangan_sementara=0;kotak_sampah_dalam_kondisi_bersih=0;pembersihan_tempat_sampah_dengan_desinfekten=0;pembersihan_penampungan_sementara_dengan_desinfekten=0;
+
+                    if(!rs.getString("pemisahan_limbah_oleh_penghasil_limbah").equals("NA")){
+                        pemisahan_limbah_oleh_penghasil_limbah=Double.parseDouble(rs.getString("pemisahan_limbah_oleh_penghasil_limbah").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlpemisahan_limbah_oleh_penghasil_limbah=ttlpemisahan_limbah_oleh_penghasil_limbah+pemisahan_limbah_oleh_penghasil_limbah;
+                        pembagi++;
+                    }else{
+                        napemisahan_limbah_oleh_penghasil_limbah++;
+                    }
+
+                    if(!rs.getString("limbah_infeksius_dimasukkan_kantong_kuning").equals("NA")){
+                        limbah_infeksius_dimasukkan_kantong_kuning=Double.parseDouble(rs.getString("limbah_infeksius_dimasukkan_kantong_kuning").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllimbah_infeksius_dimasukkan_kantong_kuning=ttllimbah_infeksius_dimasukkan_kantong_kuning+limbah_infeksius_dimasukkan_kantong_kuning;
+                        pembagi++;
+                    }else{
+                        nalimbah_infeksius_dimasukkan_kantong_kuning++;
+                    }
+
+                    if(!rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam").equals("NA")){
+                        limbah_noninfeksius_dimasukkan_kantong_hitam=Double.parseDouble(rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllimbah_noninfeksius_dimasukkan_kantong_hitam=ttllimbah_noninfeksius_dimasukkan_kantong_hitam+limbah_noninfeksius_dimasukkan_kantong_hitam;
+                        pembagi++;
+                    }else{
+                        nalimbah_noninfeksius_dimasukkan_kantong_hitam++;
+                    }
+
+                    if(!rs.getString("limbah_tigaperempat_diikat").equals("NA")){
+                        limbah_tigaperempat_diikat=Double.parseDouble(rs.getString("limbah_tigaperempat_diikat").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllimbah_tigaperempat_diikat=ttllimbah_tigaperempat_diikat+limbah_tigaperempat_diikat;
+                        pembagi++;
+                    }else{
+                        nalimbah_tigaperempat_diikat++;
+                    }
+
+                    if(!rs.getString("limbah_segera_dibawa_kepembuangan_sementara").equals("NA")){
+                        limbah_segera_dibawa_kepembuangan_sementara=Double.parseDouble(rs.getString("limbah_segera_dibawa_kepembuangan_sementara").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllimbah_segera_dibawa_kepembuangan_sementara=ttllimbah_segera_dibawa_kepembuangan_sementara+limbah_segera_dibawa_kepembuangan_sementara;
+                        pembagi++;
+                    }else{
+                        nalimbah_segera_dibawa_kepembuangan_sementara++;
+                    }
+
+                    if(!rs.getString("kotak_sampah_dalam_kondisi_bersih").equals("NA")){
+                        kotak_sampah_dalam_kondisi_bersih=Double.parseDouble(rs.getString("kotak_sampah_dalam_kondisi_bersih").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlkotak_sampah_dalam_kondisi_bersih=ttlkotak_sampah_dalam_kondisi_bersih+kotak_sampah_dalam_kondisi_bersih;
+                        pembagi++;
+                    }else{
+                        nakotak_sampah_dalam_kondisi_bersih++;
+                    }
+
+                    if(!rs.getString("pembersihan_tempat_sampah_dengan_desinfekten").equals("NA")){
+                        pembersihan_tempat_sampah_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_tempat_sampah_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlpembersihan_tempat_sampah_dengan_desinfekten=ttlpembersihan_tempat_sampah_dengan_desinfekten+pembersihan_tempat_sampah_dengan_desinfekten;
+                        pembagi++;
+                    }else{
+                        napembersihan_tempat_sampah_dengan_desinfekten++;
+                    }
+
+                    if(!rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten").equals("NA")){
+                        pembersihan_penampungan_sementara_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlpembersihan_penampungan_sementara_dengan_desinfekten=ttlpembersihan_penampungan_sementara_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten;
+                        pembagi++;
+                    }else{
+                        napembersihan_penampungan_sementara_dengan_desinfekten++;
+                    }
+
                     ttlpenilaian=ttlpenilaian+(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+
                             limbah_tigaperempat_diikat+limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+
-                            pembersihan_penampungan_sementara_dengan_desinfekten)/8)*100);
+                            pembersihan_penampungan_sementara_dengan_desinfekten)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("pemisahan_limbah_oleh_penghasil_limbah"),rs.getString("limbah_infeksius_dimasukkan_kantong_kuning"),
                         rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam"),rs.getString("limbah_tigaperempat_diikat"),rs.getString("limbah_segera_dibawa_kepembuangan_sementara"),
                         rs.getString("kotak_sampah_dalam_kondisi_bersih"),rs.getString("pembersihan_tempat_sampah_dengan_desinfekten"),rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten"),
                         Math.round(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+limbah_tigaperempat_diikat+
-                        limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten)/8)*100)+" %"
+                        limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
+                    tabMode.addRow(new Object[]{
+                        "","NA",":",""+napemisahan_limbah_oleh_penghasil_limbah,""+nalimbah_infeksius_dimasukkan_kantong_kuning,""+nalimbah_noninfeksius_dimasukkan_kantong_hitam,
+                        ""+nalimbah_tigaperempat_diikat,""+nalimbah_segera_dibawa_kepembuangan_sementara,""+nakotak_sampah_dalam_kondisi_bersih,""+napembersihan_tempat_sampah_dengan_desinfekten,
+                        ""+napembersihan_penampungan_sementara_dengan_desinfekten,""+(napemisahan_limbah_oleh_penghasil_limbah+nalimbah_infeksius_dimasukkan_kantong_kuning+
+                        nalimbah_noninfeksius_dimasukkan_kantong_hitam+nalimbah_tigaperempat_diikat+nalimbah_segera_dibawa_kepembuangan_sementara+nakotak_sampah_dalam_kondisi_bersih+
+                        napembersihan_tempat_sampah_dengan_desinfekten+napembersihan_penampungan_sementara_dengan_desinfekten)
+                    });
                     tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlpemisahan_limbah_oleh_penghasil_limbah,""+ttllimbah_infeksius_dimasukkan_kantong_kuning,""+ttllimbah_noninfeksius_dimasukkan_kantong_hitam,
                         ""+ttllimbah_tigaperempat_diikat,""+ttllimbah_segera_dibawa_kepembuangan_sementara,""+ttlkotak_sampah_dalam_kondisi_bersih,""+ttlpembersihan_tempat_sampah_dengan_desinfekten,
@@ -1156,16 +1219,16 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
                         ttlpembersihan_tempat_sampah_dengan_desinfekten+ttlpembersihan_penampungan_sementara_dengan_desinfekten)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":",""+(i-ttlpemisahan_limbah_oleh_penghasil_limbah),""+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning),""+(i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam),
-                        ""+(i-ttllimbah_tigaperempat_diikat),""+(i-ttllimbah_segera_dibawa_kepembuangan_sementara),""+(i-ttlkotak_sampah_dalam_kondisi_bersih),""+(i-ttlpembersihan_tempat_sampah_dengan_desinfekten),
-                        ""+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten),""+((i-ttlpemisahan_limbah_oleh_penghasil_limbah)+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning)+
-                        (i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam)+(i-ttllimbah_tigaperempat_diikat)+(i-ttllimbah_segera_dibawa_kepembuangan_sementara)+(i-ttlkotak_sampah_dalam_kondisi_bersih)+
-                        (i-ttlpembersihan_tempat_sampah_dengan_desinfekten)+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten))
+                        "","Tidak",":",""+(i-ttlpemisahan_limbah_oleh_penghasil_limbah-napemisahan_limbah_oleh_penghasil_limbah),""+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning-nalimbah_infeksius_dimasukkan_kantong_kuning),""+(i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam-nalimbah_noninfeksius_dimasukkan_kantong_hitam),
+                        ""+(i-ttllimbah_tigaperempat_diikat-nalimbah_tigaperempat_diikat),""+(i-ttllimbah_segera_dibawa_kepembuangan_sementara-nalimbah_segera_dibawa_kepembuangan_sementara),""+(i-ttlkotak_sampah_dalam_kondisi_bersih-nakotak_sampah_dalam_kondisi_bersih),""+(i-ttlpembersihan_tempat_sampah_dengan_desinfekten-napembersihan_tempat_sampah_dengan_desinfekten),
+                        ""+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten-napembersihan_penampungan_sementara_dengan_desinfekten),""+((i-ttlpemisahan_limbah_oleh_penghasil_limbah-napemisahan_limbah_oleh_penghasil_limbah)+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning-nalimbah_infeksius_dimasukkan_kantong_kuning)+
+                        (i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam-nalimbah_noninfeksius_dimasukkan_kantong_hitam)+(i-ttllimbah_tigaperempat_diikat-nalimbah_tigaperempat_diikat)+(i-ttllimbah_segera_dibawa_kepembuangan_sementara-nalimbah_segera_dibawa_kepembuangan_sementara)+(i-ttlkotak_sampah_dalam_kondisi_bersih-nakotak_sampah_dalam_kondisi_bersih)+
+                        (i-ttlpembersihan_tempat_sampah_dengan_desinfekten-napembersihan_tempat_sampah_dengan_desinfekten)+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten-napembersihan_penampungan_sementara_dengan_desinfekten))
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":",Math.round((ttlpemisahan_limbah_oleh_penghasil_limbah/i)*100)+" %",Math.round((ttllimbah_infeksius_dimasukkan_kantong_kuning/i)*100)+" %",Math.round((ttllimbah_noninfeksius_dimasukkan_kantong_hitam/i)*100)+" %",
-                        Math.round((ttllimbah_tigaperempat_diikat/i)*100)+" %",Math.round((ttllimbah_segera_dibawa_kepembuangan_sementara/i)*100)+" %",Math.round((ttlkotak_sampah_dalam_kondisi_bersih/i)*100)+" %",
-                        Math.round((ttlpembersihan_tempat_sampah_dengan_desinfekten/i)*100)+" %",Math.round((ttlpembersihan_penampungan_sementara_dengan_desinfekten/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Rata-rata",":",Math.round((ttlpemisahan_limbah_oleh_penghasil_limbah/(i-napemisahan_limbah_oleh_penghasil_limbah))*100)+" %",Math.round((ttllimbah_infeksius_dimasukkan_kantong_kuning/(i-nalimbah_infeksius_dimasukkan_kantong_kuning))*100)+" %",Math.round((ttllimbah_noninfeksius_dimasukkan_kantong_hitam/(i-nalimbah_noninfeksius_dimasukkan_kantong_hitam))*100)+" %",
+                        Math.round((ttllimbah_tigaperempat_diikat/(i-nalimbah_tigaperempat_diikat))*100)+" %",Math.round((ttllimbah_segera_dibawa_kepembuangan_sementara/(i-nalimbah_segera_dibawa_kepembuangan_sementara))*100)+" %",Math.round((ttlkotak_sampah_dalam_kondisi_bersih/(i-nakotak_sampah_dalam_kondisi_bersih))*100)+" %",
+                        Math.round((ttlpembersihan_tempat_sampah_dengan_desinfekten/(i-napembersihan_tempat_sampah_dengan_desinfekten))*100)+" %",Math.round((ttlpembersihan_penampungan_sementara_dengan_desinfekten/(i-napembersihan_penampungan_sementara_dengan_desinfekten))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {

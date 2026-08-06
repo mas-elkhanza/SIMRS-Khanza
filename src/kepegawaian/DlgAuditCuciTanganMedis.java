@@ -54,7 +54,9 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
     private double sebelum_menyentuh_pasien=0,sebelum_tehnik_aseptik=0,setelah_terpapar_cairan_tubuh_pasien=0,
                 setelah_kontak_dengan_pasien=0,setelah_kontak_dengan_lingkungan_pasien=0,ttlsebelum_menyentuh_pasien=0,
                 ttlsebelum_tehnik_aseptik=0,ttlsetelah_terpapar_cairan_tubuh_pasien=0,ttlsetelah_kontak_dengan_pasien=0,
-                ttlsetelah_kontak_dengan_lingkungan_pasien=0,ttlpenilaian=0;
+                ttlsetelah_kontak_dengan_lingkungan_pasien=0,ttlpenilaian=0,pembagi=0,nasebelum_menyentuh_pasien=0,
+                nasebelum_tehnik_aseptik=0,nasetelah_terpapar_cairan_tubuh_pasien=0,nasetelah_kontak_dengan_pasien=0,
+                nasetelah_kontak_dengan_lingkungan_pasien=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -522,7 +524,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(64, 40, 250, 23);
 
-        SebelumMenyentuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SebelumMenyentuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SebelumMenyentuh.setName("SebelumMenyentuh"); // NOI18N
         SebelumMenyentuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -538,7 +540,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(505, 40, 200, 23);
 
-        SebelumTehnik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SebelumTehnik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SebelumTehnik.setName("SebelumTehnik"); // NOI18N
         SebelumTehnik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -554,7 +556,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(64, 70, 250, 23);
 
-        SetelahTerpapar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SetelahTerpapar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SetelahTerpapar.setName("SetelahTerpapar"); // NOI18N
         SetelahTerpapar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -586,7 +588,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(64, 100, 250, 23);
 
-        SetelahKontak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SetelahKontak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SetelahKontak.setName("SetelahKontak"); // NOI18N
         SetelahKontak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -596,7 +598,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(SetelahKontak);
         SetelahKontak.setBounds(710, 70, 78, 23);
 
-        SetelahLingkungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SetelahLingkungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SetelahLingkungan.setName("SetelahLingkungan"); // NOI18N
         SetelahLingkungan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1014,7 +1016,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                     "from audit_cuci_tangan_medis inner join pegawai on audit_cuci_tangan_medis.nik=pegawai.nik "+
                     "where audit_cuci_tangan_medis.tanggal between ? and ? and (audit_cuci_tangan_medis.nik like ? or pegawai.nama like ?) order by audit_cuci_tangan_medis.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -1025,44 +1027,86 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttlsebelum_menyentuh_pasien=0;ttlsebelum_tehnik_aseptik=0;ttlsetelah_terpapar_cairan_tubuh_pasien=0;ttlsetelah_kontak_dengan_pasien=0;ttlsetelah_kontak_dengan_lingkungan_pasien=0;ttlpenilaian=0;
+                nasebelum_menyentuh_pasien=0;nasebelum_tehnik_aseptik=0;nasetelah_terpapar_cairan_tubuh_pasien=0;nasetelah_kontak_dengan_pasien=0;nasetelah_kontak_dengan_lingkungan_pasien=0;
                 i=1;
                 while(rs.next()){
-                    sebelum_menyentuh_pasien=Double.parseDouble(rs.getString("sebelum_menyentuh_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsebelum_menyentuh_pasien=ttlsebelum_menyentuh_pasien+sebelum_menyentuh_pasien;
-                    sebelum_tehnik_aseptik=Double.parseDouble(rs.getString("sebelum_tehnik_aseptik").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsebelum_tehnik_aseptik=ttlsebelum_tehnik_aseptik+sebelum_tehnik_aseptik;
-                    setelah_terpapar_cairan_tubuh_pasien=Double.parseDouble(rs.getString("setelah_terpapar_cairan_tubuh_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsetelah_terpapar_cairan_tubuh_pasien=ttlsetelah_terpapar_cairan_tubuh_pasien+setelah_terpapar_cairan_tubuh_pasien;
-                    setelah_kontak_dengan_pasien=Double.parseDouble(rs.getString("setelah_kontak_dengan_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsetelah_kontak_dengan_pasien=ttlsetelah_kontak_dengan_pasien+setelah_kontak_dengan_pasien;
-                    setelah_kontak_dengan_lingkungan_pasien=Double.parseDouble(rs.getString("setelah_kontak_dengan_lingkungan_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsetelah_kontak_dengan_lingkungan_pasien=ttlsetelah_kontak_dengan_lingkungan_pasien+setelah_kontak_dengan_lingkungan_pasien;
-                    ttlpenilaian=ttlpenilaian+(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/5)*100);
+                    pembagi=0;
+                    sebelum_menyentuh_pasien=0;sebelum_tehnik_aseptik=0;setelah_terpapar_cairan_tubuh_pasien=0;setelah_kontak_dengan_pasien=0;setelah_kontak_dengan_lingkungan_pasien=0;
+                    if(!rs.getString("sebelum_menyentuh_pasien").equals("NA")){
+                        sebelum_menyentuh_pasien=Double.parseDouble(rs.getString("sebelum_menyentuh_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsebelum_menyentuh_pasien=ttlsebelum_menyentuh_pasien+sebelum_menyentuh_pasien;
+                        pembagi++;
+                    }else{
+                        nasebelum_menyentuh_pasien++;
+                    }
+
+                    if(!rs.getString("sebelum_tehnik_aseptik").equals("NA")){
+                        sebelum_tehnik_aseptik=Double.parseDouble(rs.getString("sebelum_tehnik_aseptik").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsebelum_tehnik_aseptik=ttlsebelum_tehnik_aseptik+sebelum_tehnik_aseptik;
+                        pembagi++;
+                    }else{
+                        nasebelum_tehnik_aseptik++;
+                    }
+
+                    if(!rs.getString("setelah_terpapar_cairan_tubuh_pasien").equals("NA")){
+                        setelah_terpapar_cairan_tubuh_pasien=Double.parseDouble(rs.getString("setelah_terpapar_cairan_tubuh_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsetelah_terpapar_cairan_tubuh_pasien=ttlsetelah_terpapar_cairan_tubuh_pasien+setelah_terpapar_cairan_tubuh_pasien;
+                        pembagi++;
+                    }else{
+                        nasetelah_terpapar_cairan_tubuh_pasien++;
+                    }
+
+                    if(!rs.getString("setelah_kontak_dengan_pasien").equals("NA")){
+                        setelah_kontak_dengan_pasien=Double.parseDouble(rs.getString("setelah_kontak_dengan_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsetelah_kontak_dengan_pasien=ttlsetelah_kontak_dengan_pasien+setelah_kontak_dengan_pasien;
+                        pembagi++;
+                    }else{
+                        nasetelah_kontak_dengan_pasien++;
+                    }
+
+                    if(!rs.getString("setelah_kontak_dengan_lingkungan_pasien").equals("NA")){
+                        setelah_kontak_dengan_lingkungan_pasien=Double.parseDouble(rs.getString("setelah_kontak_dengan_lingkungan_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsetelah_kontak_dengan_lingkungan_pasien=ttlsetelah_kontak_dengan_lingkungan_pasien+setelah_kontak_dengan_lingkungan_pasien;
+                        pembagi++;
+                    }else{
+                        nasetelah_kontak_dengan_lingkungan_pasien++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("sebelum_menyentuh_pasien"),rs.getString("sebelum_tehnik_aseptik"),
                         rs.getString("setelah_terpapar_cairan_tubuh_pasien"),rs.getString("setelah_kontak_dengan_pasien"),rs.getString("setelah_kontak_dengan_lingkungan_pasien"),
-                        Math.round(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/5)*100)+" %"
+                        Math.round(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
+                        "","NA",":",""+nasebelum_menyentuh_pasien,""+nasebelum_tehnik_aseptik,""+nasetelah_terpapar_cairan_tubuh_pasien,
+                        ""+nasetelah_kontak_dengan_pasien,""+nasetelah_kontak_dengan_lingkungan_pasien,""+(nasebelum_menyentuh_pasien+nasebelum_tehnik_aseptik+
+                        nasetelah_terpapar_cairan_tubuh_pasien+nasetelah_kontak_dengan_pasien+nasetelah_kontak_dengan_lingkungan_pasien)
+                    });
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
                         ""+ttlsetelah_kontak_dengan_pasien,""+ttlsetelah_kontak_dengan_lingkungan_pasien,""+(ttlsebelum_menyentuh_pasien+ttlsebelum_tehnik_aseptik+
                         ttlsetelah_terpapar_cairan_tubuh_pasien+ttlsetelah_kontak_dengan_pasien+ttlsetelah_kontak_dengan_lingkungan_pasien)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
-                        ""+(i-ttlsetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien),""+((i-ttlsebelum_menyentuh_pasien)+(i-ttlsebelum_tehnik_aseptik)+
-                        (i-ttlsetelah_terpapar_cairan_tubuh_pasien)+(i-ttlsetelah_kontak_dengan_pasien)+(i-ttlsetelah_kontak_dengan_lingkungan_pasien))
+                        "","Tidak",":",""+(i-ttlsebelum_menyentuh_pasien-nasebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik-nasebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien-nasetelah_terpapar_cairan_tubuh_pasien),
+                        ""+(i-ttlsetelah_kontak_dengan_pasien-nasetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien-nasetelah_kontak_dengan_lingkungan_pasien),""+((i-ttlsebelum_menyentuh_pasien-nasebelum_menyentuh_pasien)+
+                        (i-ttlsebelum_tehnik_aseptik-nasebelum_tehnik_aseptik)+(i-ttlsetelah_terpapar_cairan_tubuh_pasien-nasetelah_terpapar_cairan_tubuh_pasien)+(i-ttlsetelah_kontak_dengan_pasien-nasetelah_kontak_dengan_pasien)+
+                        (i-ttlsetelah_kontak_dengan_lingkungan_pasien-nasetelah_kontak_dengan_lingkungan_pasien))
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
-                        Math.round((ttlsetelah_kontak_dengan_pasien/i)*100)+" %",Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Rata-rata",":",Math.round((ttlsebelum_menyentuh_pasien/(i-nasebelum_menyentuh_pasien))*100)+" %",
+                        Math.round((ttlsebelum_tehnik_aseptik/(i-nasebelum_tehnik_aseptik))*100)+" %",
+                        Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/(i-nasetelah_terpapar_cairan_tubuh_pasien))*100)+" %",
+                        Math.round((ttlsetelah_kontak_dengan_pasien/(i-nasetelah_kontak_dengan_pasien))*100)+" %",
+                        Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/(i-nasetelah_kontak_dengan_lingkungan_pasien))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {
@@ -1078,7 +1122,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
+
         LCount.setText(""+i);
     }
     

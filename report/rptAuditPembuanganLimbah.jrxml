@@ -28,7 +28,7 @@
 audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,
 audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,audit_pembuangan_limbah.limbah_tigaperempat_diikat,
 audit_pembuangan_limbah.limbah_segera_dibawa_kepembuangan_sementara,audit_pembuangan_limbah.kotak_sampah_dalam_kondisi_bersih,
-audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten 
+audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten
 from audit_pembuangan_limbah inner join ruang_audit_kepatuhan on audit_pembuangan_limbah.id_ruang=ruang_audit_kepatuhan.id_ruang]]>
 	</queryString>
 	<field name="id_ruang" class="java.lang.String">
@@ -96,39 +96,42 @@ from audit_pembuangan_limbah inner join ruang_audit_kepatuhan on audit_pembuanga
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_pembuangan_limbah"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))/8)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0:1)+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0:1)+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0:1)+($F{limbah_tigaperempat_diikat}.equals("NA")?0:1)+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0:1)+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0:1)+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0:1)+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0:1))==0 ? null :
+((($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0.0:Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0.0:Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0.0:Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_tigaperempat_diikat}.equals("NA")?0.0:Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0.0:Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0.0:Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0:1)+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0:1)+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0:1)+($F{limbah_tigaperempat_diikat}.equals("NA")?0:1)+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0:1)+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0:1)+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0:1)+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="pemisahan_limbah_oleh_penghasil_limbah" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?null:Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="limbah_infeksius_dimasukkan_kantong_kuning" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?null:Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="limbah_noninfeksius_dimasukkan_kantong_hitam" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?null:Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="limbah_tigaperempat_diikat" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{limbah_tigaperempat_diikat}.equals("NA")?null:Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="limbah_segera_dibawa_kepembuangan_sementara" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?null:Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="kotak_sampah_dalam_kondisi_bersih" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?null:Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="pembersihan_tempat_sampah_dengan_desinfekten" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?null:Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="pembersihan_penampungan_sementara_dengan_desinfekten" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?null:Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -388,14 +391,18 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))/8)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0:1)+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0:1)+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0:1)+($F{limbah_tigaperempat_diikat}.equals("NA")?0:1)+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0:1)+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0:1)+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0:1)+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0.0:Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0.0:Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0.0:Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_tigaperempat_diikat}.equals("NA")?0.0:Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0.0:Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0.0:Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{pemisahan_limbah_oleh_penghasil_limbah}.equals("NA")?0:1)+($F{limbah_infeksius_dimasukkan_kantong_kuning}.equals("NA")?0:1)+($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.equals("NA")?0:1)+($F{limbah_tigaperempat_diikat}.equals("NA")?0:1)+($F{limbah_segera_dibawa_kepembuangan_sementara}.equals("NA")?0:1)+($F{kotak_sampah_dalam_kondisi_bersih}.equals("NA")?0:1)+($F{pembersihan_tempat_sampah_dengan_desinfekten}.equals("NA")?0:1)+($F{pembersihan_penampungan_sementara_dengan_desinfekten}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="640" y="0" width="50" height="10" uuid="7a297b05-45c7-4d2b-97d2-2db7eb863c9b"/>
@@ -487,7 +494,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{pemisahan_limbah_oleh_penghasil_limbah}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{pemisahan_limbah_oleh_penghasil_limbah}==null?"-":Math.round($V{pemisahan_limbah_oleh_penghasil_limbah}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="391" y="0" width="50" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -497,7 +504,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{limbah_infeksius_dimasukkan_kantong_kuning}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{limbah_infeksius_dimasukkan_kantong_kuning}==null?"-":Math.round($V{limbah_infeksius_dimasukkan_kantong_kuning}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="441" y="0" width="50" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -507,7 +514,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{limbah_noninfeksius_dimasukkan_kantong_hitam}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{limbah_noninfeksius_dimasukkan_kantong_hitam}==null?"-":Math.round($V{limbah_noninfeksius_dimasukkan_kantong_hitam}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="491" y="0" width="50" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -517,7 +524,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{limbah_tigaperempat_diikat}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{limbah_tigaperempat_diikat}==null?"-":Math.round($V{limbah_tigaperempat_diikat}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="541" y="0" width="50" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
@@ -527,7 +534,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{limbah_segera_dibawa_kepembuangan_sementara}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{limbah_segera_dibawa_kepembuangan_sementara}==null?"-":Math.round($V{limbah_segera_dibawa_kepembuangan_sementara}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="590" y="0" width="50" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
@@ -537,7 +544,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{kotak_sampah_dalam_kondisi_bersih}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{kotak_sampah_dalam_kondisi_bersih}==null?"-":Math.round($V{kotak_sampah_dalam_kondisi_bersih}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -547,15 +554,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{pemisahan_limbah_oleh_penghasil_limbah}*100)+
-	($V{limbah_infeksius_dimasukkan_kantong_kuning}*100)+
-	($V{limbah_noninfeksius_dimasukkan_kantong_hitam}*100)+
-	($V{limbah_tigaperempat_diikat}*100)+
-	($V{limbah_segera_dibawa_kepembuangan_sementara}*100)+
-	($V{kotak_sampah_dalam_kondisi_bersih}*100)+
-	($V{pembersihan_tempat_sampah_dengan_desinfekten}*100)+
-	($V{pembersihan_penampungan_sementara_dengan_desinfekten}*100)
-)/8)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">
@@ -575,7 +574,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{pembersihan_tempat_sampah_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{pembersihan_tempat_sampah_dengan_desinfekten}==null?"-":Math.round($V{pembersihan_tempat_sampah_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="690" y="0" width="50" height="10" uuid="71c26853-ee02-4284-a500-dff1827129b3">
@@ -585,7 +584,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{pembersihan_penampungan_sementara_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{pembersihan_penampungan_sementara_dengan_desinfekten}==null?"-":Math.round($V{pembersihan_penampungan_sementara_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

@@ -26,7 +26,7 @@
 	<queryString>
 		<![CDATA[select audit_cuci_tangan_medis.nik,pegawai.nama,audit_cuci_tangan_medis.tanggal,audit_cuci_tangan_medis.sebelum_menyentuh_pasien,
 audit_cuci_tangan_medis.sebelum_tehnik_aseptik,audit_cuci_tangan_medis.setelah_terpapar_cairan_tubuh_pasien,
-audit_cuci_tangan_medis.setelah_kontak_dengan_pasien,audit_cuci_tangan_medis.setelah_kontak_dengan_lingkungan_pasien 
+audit_cuci_tangan_medis.setelah_kontak_dengan_pasien,audit_cuci_tangan_medis.setelah_kontak_dengan_lingkungan_pasien
 from audit_cuci_tangan_medis inner join pegawai on audit_cuci_tangan_medis.nik=pegawai.nik]]>
 	</queryString>
 	<field name="nik" class="java.lang.String">
@@ -75,27 +75,30 @@ from audit_cuci_tangan_medis inner join pegawai on audit_cuci_tangan_medis.nik=p
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_cuci_tangan_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))/5)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{sebelum_menyentuh_pasien}.equals("NA")?0:1)+($F{sebelum_tehnik_aseptik}.equals("NA")?0:1)+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0:1))==0 ? null :
+((($F{sebelum_menyentuh_pasien}.equals("NA")?0.0:Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sebelum_tehnik_aseptik}.equals("NA")?0.0:Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_kontak_dengan_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{sebelum_menyentuh_pasien}.equals("NA")?0:1)+($F{sebelum_tehnik_aseptik}.equals("NA")?0:1)+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="sebelummenyentuhpasien" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sebelum_menyentuh_pasien}.equals("NA")?null:Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="sebelumtehnikaseptik" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sebelum_tehnik_aseptik}.equals("NA")?null:Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setelahterpaparcairan" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?null:Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setelahkotakpasien" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setelah_kontak_dengan_pasien}.equals("NA")?null:Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setelahkontaklingkungan" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?null:Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -343,12 +346,15 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((
-Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))/5)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{sebelum_menyentuh_pasien}.equals("NA")?0:1)+($F{sebelum_tehnik_aseptik}.equals("NA")?0:1)+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{sebelum_menyentuh_pasien}.equals("NA")?0.0:Double.parseDouble($F{sebelum_menyentuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sebelum_tehnik_aseptik}.equals("NA")?0.0:Double.parseDouble($F{sebelum_tehnik_aseptik}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_terpapar_cairan_tubuh_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_kontak_dengan_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_kontak_dengan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0.0:Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{sebelum_menyentuh_pasien}.equals("NA")?0:1)+($F{sebelum_tehnik_aseptik}.equals("NA")?0:1)+($F{setelah_terpapar_cairan_tubuh_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_pasien}.equals("NA")?0:1)+($F{setelah_kontak_dengan_lingkungan_pasien}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -424,7 +430,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sebelummenyentuhpasien}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sebelummenyentuhpasien}==null?"-":Math.round($V{sebelummenyentuhpasien}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="421" y="0" width="69" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -434,7 +440,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sebelumtehnikaseptik}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sebelumtehnikaseptik}==null?"-":Math.round($V{sebelumtehnikaseptik}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="490" y="0" width="90" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -444,7 +450,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setelahterpaparcairan}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setelahterpaparcairan}==null?"-":Math.round($V{setelahterpaparcairan}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="580" y="0" width="70" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -454,7 +460,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setelahkotakpasien}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setelahkotakpasien}==null?"-":Math.round($V{setelahkotakpasien}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="650" y="0" width="90" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
@@ -464,7 +470,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setelahkontaklingkungan}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setelahkontaklingkungan}==null?"-":Math.round($V{setelahkontaklingkungan}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -474,12 +480,7 @@ Double.parseDouble($F{setelah_kontak_dengan_lingkungan_pasien}.replaceAll("Ya","
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{sebelummenyentuhpasien}*100)+
-	($V{sebelumtehnikaseptik}*100)+
-	($V{setelahterpaparcairan}*100)+
-	($V{setelahkotakpasien}*100)+
-	($V{setelahkontaklingkungan}*100)
-)/5)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">

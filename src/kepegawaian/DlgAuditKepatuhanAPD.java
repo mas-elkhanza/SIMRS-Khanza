@@ -51,7 +51,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private int i=0;    
-    private double topi=0,masker=0,kacamata=0,sarungtangan=0,apron=0,sepatu=0,ttltopi=0,ttlmasker=0,ttlkacamata=0,ttlsarungtangan=0,ttlapron=0,ttlsepatu=0,ttlpenilaian=0;
+    private double topi=0,masker=0,kacamata=0,sarungtangan=0,apron=0,sepatu=0,natopi=0,namasker=0,nakacamata=0,nasarungtangan=0,naapron=0,nasepatu=0,ttltopi=0,ttlmasker=0,ttlkacamata=0,ttlsarungtangan=0,ttlapron=0,ttlsepatu=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -549,7 +549,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(114, 70, 140, 23);
 
-        Topi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Topi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Topi.setName("Topi"); // NOI18N
         Topi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -565,7 +565,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(114, 100, 140, 23);
 
-        Masker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Masker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Masker.setName("Masker"); // NOI18N
         Masker.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -581,7 +581,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(400, 70, 110, 23);
 
-        KacaMata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KacaMata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         KacaMata.setName("KacaMata"); // NOI18N
         KacaMata.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -619,7 +619,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(650, 100, 60, 23);
 
-        SarungTangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SarungTangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SarungTangan.setName("SarungTangan"); // NOI18N
         SarungTangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -629,7 +629,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(SarungTangan);
         SarungTangan.setBounds(515, 100, 78, 23);
 
-        Apron.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Apron.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Apron.setName("Apron"); // NOI18N
         Apron.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -639,7 +639,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         FormInput.add(Apron);
         Apron.setBounds(711, 70, 78, 23);
 
-        Sepatu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sepatu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Sepatu.setName("Sepatu"); // NOI18N
         Sepatu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1071,7 +1071,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                     "from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nik=pegawai.nik where audit_kepatuhan_apd.tanggal between ? and ? "+
                     "and (audit_kepatuhan_apd.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or audit_kepatuhan_apd.tindakan like ?) order by audit_kepatuhan_apd.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -1084,44 +1084,87 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttltopi=0;ttlmasker=0;ttlkacamata=0;ttlsarungtangan=0;ttlapron=0;ttlsepatu=0;ttlpenilaian=0;
+                natopi=0;namasker=0;nakacamata=0;nasarungtangan=0;naapron=0;nasepatu=0;
                 i=1;
                 while(rs.next()){
-                    topi=Double.parseDouble(rs.getString("topi").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttltopi=ttltopi+topi;
-                    masker=Double.parseDouble(rs.getString("masker").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlmasker=ttlmasker+masker;
-                    kacamata=Double.parseDouble(rs.getString("kacamata").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlkacamata=ttlkacamata+kacamata;
-                    sarungtangan=Double.parseDouble(rs.getString("sarungtangan").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsarungtangan=ttlsarungtangan+sarungtangan;
-                    apron=Double.parseDouble(rs.getString("apron").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlapron=ttlapron+apron;
-                    sepatu=Double.parseDouble(rs.getString("sepatu").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsepatu=ttlsepatu+sepatu;
-                    ttlpenilaian=ttlpenilaian+(((topi+masker+kacamata+sarungtangan+apron+sepatu)/6)*100);
+                    int pembagi=0;
+                    topi=0;masker=0;kacamata=0;sarungtangan=0;apron=0;sepatu=0;
+                    if(!rs.getString("topi").equals("NA")){
+                        topi=Double.parseDouble(rs.getString("topi").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttltopi=ttltopi+topi;
+                        pembagi++;
+                    }else{
+                        natopi++;
+                    }
+
+                    if(!rs.getString("masker").equals("NA")){
+                        masker=Double.parseDouble(rs.getString("masker").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlmasker=ttlmasker+masker;
+                        pembagi++;
+                    }else{
+                        namasker++;
+                    }
+
+                    if(!rs.getString("kacamata").equals("NA")){
+                        kacamata=Double.parseDouble(rs.getString("kacamata").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlkacamata=ttlkacamata+kacamata;
+                        pembagi++;
+                    }else{
+                        nakacamata++;
+                    }
+
+                    if(!rs.getString("sarungtangan").equals("NA")){
+                        sarungtangan=Double.parseDouble(rs.getString("sarungtangan").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsarungtangan=ttlsarungtangan+sarungtangan;
+                        pembagi++;
+                    }else{
+                        nasarungtangan++;
+                    }
+
+                    if(!rs.getString("apron").equals("NA")){
+                        apron=Double.parseDouble(rs.getString("apron").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlapron=ttlapron+apron;
+                        pembagi++;
+                    }else{
+                        naapron++;
+                    }
+
+                    if(!rs.getString("sepatu").equals("NA")){
+                        sepatu=Double.parseDouble(rs.getString("sepatu").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsepatu=ttlsepatu+sepatu;
+                        pembagi++;
+                    }else{
+                        nasepatu++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((topi+masker+kacamata+sarungtangan+apron+sepatu)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("tindakan"),rs.getString("nik"),rs.getString("nama"),rs.getString("jbtn"),rs.getString("topi"),
                         rs.getString("masker"),rs.getString("kacamata"),rs.getString("sarungtangan"),rs.getString("apron"),rs.getString("sepatu"),
-                        Math.round(((topi+masker+kacamata+sarungtangan+apron+sepatu)/6)*100)+" %"
+                        Math.round(((topi+masker+kacamata+sarungtangan+apron+sepatu)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
+                        "","NA",":","","",""+natopi,""+namasker,""+nakacamata,""+nasarungtangan,""+naapron,""+nasepatu,
+                        ""+(natopi+namasker+nakacamata+nasarungtangan+naapron+nasepatu)
+                    });
+                    tabMode.addRow(new Object[]{
                         "","Ya",":","","",""+ttltopi,""+ttlmasker,""+ttlkacamata,""+ttlsarungtangan,""+ttlapron,""+ttlsepatu,
                         ""+(ttltopi+ttlmasker+ttlkacamata+ttlsarungtangan+ttlapron+ttlsepatu)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":","","",""+(i-ttltopi),""+(i-ttlmasker),""+(i-ttlkacamata),""+(i-ttlsarungtangan),""+(i-ttlapron),""+(i-ttlsepatu),
-                        ""+((i-ttltopi)+(i-ttlmasker)+(i-ttlkacamata)+(i-ttlsarungtangan)+(i-ttlapron)+(i-ttlsepatu))
+                        "","Tidak",":","","",""+(i-ttltopi-natopi),""+(i-ttlmasker-namasker),""+(i-ttlkacamata-nakacamata),""+(i-ttlsarungtangan-nasarungtangan),""+(i-ttlapron-naapron),""+(i-ttlsepatu-nasepatu),
+                        ""+((i-ttltopi-natopi)+(i-ttlmasker-namasker)+(i-ttlkacamata-nakacamata)+(i-ttlsarungtangan-nasarungtangan)+(i-ttlapron-naapron)+(i-ttlsepatu-nasepatu))
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":","","",Math.round((ttltopi/i)*100)+" %",Math.round((ttlmasker/i)*100)+" %",Math.round((ttlkacamata/i)*100)+" %",
-                        Math.round((ttlsarungtangan/i)*100)+" %",Math.round((ttlapron/i)*100)+" %",Math.round((ttlsepatu/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Rata-rata",":","","",Math.round((ttltopi/(i-natopi))*100)+" %",Math.round((ttlmasker/(i-namasker))*100)+" %",Math.round((ttlkacamata/(i-nakacamata))*100)+" %",
+                        Math.round((ttlsarungtangan/(i-nasarungtangan))*100)+" %",Math.round((ttlapron/(i-naapron))*100)+" %",Math.round((ttlsepatu/(i-nasepatu))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {

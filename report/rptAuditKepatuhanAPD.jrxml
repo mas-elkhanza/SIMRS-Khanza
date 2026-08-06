@@ -25,7 +25,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select audit_kepatuhan_apd.nik,pegawai.nama,pegawai.jbtn,audit_kepatuhan_apd.tindakan,audit_kepatuhan_apd.tanggal,audit_kepatuhan_apd.topi,
-audit_kepatuhan_apd.masker,audit_kepatuhan_apd.kacamata,audit_kepatuhan_apd.sarungtangan,audit_kepatuhan_apd.apron,audit_kepatuhan_apd.sepatu 
+audit_kepatuhan_apd.masker,audit_kepatuhan_apd.kacamata,audit_kepatuhan_apd.sarungtangan,audit_kepatuhan_apd.apron,audit_kepatuhan_apd.sepatu
 from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nik=pegawai.nik]]>
 	</queryString>
 	<field name="nik" class="java.lang.String">
@@ -92,31 +92,34 @@ from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nik=pegawai.n
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_kepatuhan_apd"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[((($F{topi}.equals("NA")?0:1)+($F{masker}.equals("NA")?0:1)+($F{kacamata}.equals("NA")?0:1)+($F{sarungtangan}.equals("NA")?0:1)+($F{apron}.equals("NA")?0:1)+($F{sepatu}.equals("NA")?0:1))==0) ? null :
+((($F{topi}.equals("NA")?0.0:Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{masker}.equals("NA")?0.0:Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{kacamata}.equals("NA")?0.0:Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sarungtangan}.equals("NA")?0.0:Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{apron}.equals("NA")?0.0:Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sepatu}.equals("NA")?0.0:Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{topi}.equals("NA")?0:1)+($F{masker}.equals("NA")?0:1)+($F{kacamata}.equals("NA")?0:1)+($F{sarungtangan}.equals("NA")?0:1)+($F{apron}.equals("NA")?0:1)+($F{sepatu}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="topi" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{topi}.equals("NA")?null:Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="masker" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{masker}.equals("NA")?null:Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="kacamata" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{kacamata}.equals("NA")?null:Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="sarungtangan" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sarungtangan}.equals("NA")?null:Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="apron" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{apron}.equals("NA")?null:Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="sepatu" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sepatu}.equals("NA")?null:Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -418,12 +421,15 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[((($F{topi}.equals("NA")?0:1)+($F{masker}.equals("NA")?0:1)+($F{kacamata}.equals("NA")?0:1)+($F{sarungtangan}.equals("NA")?0:1)+($F{apron}.equals("NA")?0:1)+($F{sepatu}.equals("NA")?0:1))==0) ? "-" :
+Math.round(((($F{topi}.equals("NA")?0.0:Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{masker}.equals("NA")?0.0:Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{kacamata}.equals("NA")?0.0:Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sarungtangan}.equals("NA")?0.0:Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{apron}.equals("NA")?0.0:Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sepatu}.equals("NA")?0.0:Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{topi}.equals("NA")?0:1)+($F{masker}.equals("NA")?0:1)+($F{kacamata}.equals("NA")?0:1)+($F{sarungtangan}.equals("NA")?0:1)+($F{apron}.equals("NA")?0:1)+($F{sepatu}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -499,7 +505,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{topi}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{topi}==null?"-":Math.round($V{topi}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="550" y="0" width="30" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -509,7 +515,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{masker}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{masker}==null?"-":Math.round($V{masker}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="580" y="0" width="40" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -519,7 +525,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{kacamata}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{kacamata}==null?"-":Math.round($V{kacamata}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="620" y="0" width="60" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -529,7 +535,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sarungtangan}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sarungtangan}==null?"-":Math.round($V{sarungtangan}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="680" y="0" width="30" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
@@ -539,7 +545,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{apron}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{apron}==null?"-":Math.round($V{apron}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="710" y="0" width="30" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
@@ -549,7 +555,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sepatu}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sepatu}==null?"-":Math.round($V{sepatu}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -559,13 +565,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{topi}*100)+
-	($V{masker}*100)+
-	($V{kacamata}*100)+
-	($V{sarungtangan}*100)+
-	($V{apron}*100)+
-	($V{sepatu}*100)
-)/6)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">
