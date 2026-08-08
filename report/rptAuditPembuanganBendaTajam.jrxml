@@ -29,7 +29,7 @@ audit_pembuangan_benda_tajam.setiap_injeksi_needle_langsung_dimasukkan_safety_bo
 audit_pembuangan_benda_tajam.setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box,
 audit_pembuangan_benda_tajam.setiap_benda_tajam_jarum_dimasukkan_safety_box,
 audit_pembuangan_benda_tajam.safety_box_tigaperempat_diganti,audit_pembuangan_benda_tajam.safety_box_keadaan_bersih,
-audit_pembuangan_benda_tajam.saftey_box_tertutup_setelah_digunakan from audit_pembuangan_benda_tajam 
+audit_pembuangan_benda_tajam.saftey_box_tertutup_setelah_digunakan from audit_pembuangan_benda_tajam
 inner join ruang_audit_kepatuhan on audit_pembuangan_benda_tajam.id_ruang=ruang_audit_kepatuhan.id_ruang]]>
 	</queryString>
 	<field name="id_ruang" class="java.lang.String">
@@ -85,31 +85,34 @@ inner join ruang_audit_kepatuhan on audit_pembuangan_benda_tajam.id_ruang=ruang_
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_pembuangan_benda_tajam"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0:1)+($F{safety_box_tigaperempat_diganti}.equals("NA")?0:1)+($F{safety_box_keadaan_bersih}.equals("NA")?0:1)+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0:1))==0 ? null :
+((($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{safety_box_tigaperempat_diganti}.equals("NA")?0.0:Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{safety_box_keadaan_bersih}.equals("NA")?0.0:Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0.0:Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0:1)+($F{safety_box_tigaperempat_diganti}.equals("NA")?0:1)+($F{safety_box_keadaan_bersih}.equals("NA")?0:1)+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="setiap_injeksi_needle_langsung_dimasukkan_safety_box" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?null:Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?null:Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setiap_benda_tajam_jarum_dimasukkan_safety_box" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?null:Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="safety_box_tigaperempat_diganti" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{safety_box_tigaperempat_diganti}.equals("NA")?null:Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="safety_box_keadaan_bersih" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{safety_box_keadaan_bersih}.equals("NA")?null:Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="saftey_box_tertutup_setelah_digunakan" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?null:Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -361,12 +364,16 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0:1)+($F{safety_box_tigaperempat_diganti}.equals("NA")?0:1)+($F{safety_box_keadaan_bersih}.equals("NA")?0:1)+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0.0:Double.parseDouble($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{safety_box_tigaperempat_diganti}.equals("NA")?0.0:Double.parseDouble($F{safety_box_tigaperempat_diganti}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{safety_box_keadaan_bersih}.equals("NA")?0.0:Double.parseDouble($F{safety_box_keadaan_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0.0:Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{setiap_injeksi_needle_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}.equals("NA")?0:1)+($F{setiap_benda_tajam_jarum_dimasukkan_safety_box}.equals("NA")?0:1)+($F{safety_box_tigaperempat_diganti}.equals("NA")?0:1)+($F{safety_box_keadaan_bersih}.equals("NA")?0:1)+($F{saftey_box_tertutup_setelah_digunakan}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -442,7 +449,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setiap_injeksi_needle_langsung_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setiap_injeksi_needle_langsung_dimasukkan_safety_box}==null?"-":Math.round($V{setiap_injeksi_needle_langsung_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="391" y="0" width="70" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -452,7 +459,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}==null?"-":Math.round($V{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="461" y="0" width="69" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -462,7 +469,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setiap_benda_tajam_jarum_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setiap_benda_tajam_jarum_dimasukkan_safety_box}==null?"-":Math.round($V{setiap_benda_tajam_jarum_dimasukkan_safety_box}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="530" y="0" width="70" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -472,7 +479,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{safety_box_tigaperempat_diganti}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{safety_box_tigaperempat_diganti}==null?"-":Math.round($V{safety_box_tigaperempat_diganti}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="600" y="0" width="70" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
@@ -482,7 +489,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{safety_box_keadaan_bersih}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{safety_box_keadaan_bersih}==null?"-":Math.round($V{safety_box_keadaan_bersih}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="670" y="0" width="70" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
@@ -492,7 +499,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{saftey_box_tertutup_setelah_digunakan}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{saftey_box_tertutup_setelah_digunakan}==null?"-":Math.round($V{saftey_box_tertutup_setelah_digunakan}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -502,13 +509,7 @@ Double.parseDouble($F{saftey_box_tertutup_setelah_digunakan}.replaceAll("Ya","1"
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{setiap_injeksi_needle_langsung_dimasukkan_safety_box}*100)+
-	($V{setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box}*100)+
-	($V{setiap_benda_tajam_jarum_dimasukkan_safety_box}*100)+
-	($V{safety_box_tigaperempat_diganti}*100)+
-	($V{safety_box_keadaan_bersih}*100)+
-	($V{saftey_box_tertutup_setelah_digunakan}*100)
-)/6)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">

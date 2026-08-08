@@ -51,10 +51,9 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
     private int i=0;    
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private double handhygiene=0,apd=0,skin_antiseptik=0,
-                lokasi_iv=0,perawatan_rutin=0,ttlhandhygiene=0,
-                ttlapd=0,ttlskin_antiseptik=0,ttllokasi_iv=0,
-                ttlperawatan_rutin=0,ttlpenilaian=0;
+    private double handhygiene=0,apd=0,skin_antiseptik=0,lokasi_iv=0,perawatan_rutin=0,pembagi=0,
+                   nahandhygiene=0,naapd=0,naskin_antiseptik=0,nalokasi_iv=0,naperawatan_rutin=0,
+                   ttlhandhygiene=0,ttlapd=0,ttlskin_antiseptik=0,ttllokasi_iv=0,ttlperawatan_rutin=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -522,7 +521,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(64, 40, 110, 23);
 
-        HandHygiene.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        HandHygiene.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         HandHygiene.setName("HandHygiene"); // NOI18N
         HandHygiene.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -538,7 +537,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(320, 40, 105, 23);
 
-        APD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        APD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         APD.setName("APD"); // NOI18N
         APD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -554,7 +553,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(580, 40, 120, 23);
 
-        SkinAntiSeptik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SkinAntiSeptik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SkinAntiSeptik.setName("SkinAntiSeptik"); // NOI18N
         SkinAntiSeptik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -586,7 +585,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(320, 70, 105, 23);
 
-        LokasiIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LokasiIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LokasiIV.setName("LokasiIV"); // NOI18N
         LokasiIV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -596,7 +595,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(LokasiIV);
         LokasiIV.setBounds(170, 70, 78, 23);
 
-        PerawatanRutin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PerawatanRutin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PerawatanRutin.setName("PerawatanRutin"); // NOI18N
         PerawatanRutin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1011,7 +1010,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
                     "where audit_bundle_iadp.tanggal between ? and ? "+
                     "and (audit_bundle_iadp.nik like ? or pegawai.nama like ?) order by audit_bundle_iadp.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -1022,44 +1021,78 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttlhandhygiene=0;ttlapd=0;ttlskin_antiseptik=0;ttllokasi_iv=0;ttlperawatan_rutin=0;ttlpenilaian=0;
+                nahandhygiene=0;naapd=0;naskin_antiseptik=0;nalokasi_iv=0;naperawatan_rutin=0;
                 i=1;
                 while(rs.next()){
-                    handhygiene=Double.parseDouble(rs.getString("handhygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlhandhygiene=ttlhandhygiene+handhygiene;
-                    apd=Double.parseDouble(rs.getString("apd").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlapd=ttlapd+apd;
-                    skin_antiseptik=Double.parseDouble(rs.getString("skin_antiseptik").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlskin_antiseptik=ttlskin_antiseptik+skin_antiseptik;
-                    lokasi_iv=Double.parseDouble(rs.getString("lokasi_iv").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllokasi_iv=ttllokasi_iv+lokasi_iv;
-                    perawatan_rutin=Double.parseDouble(rs.getString("perawatan_rutin").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlperawatan_rutin=ttlperawatan_rutin+perawatan_rutin;
-                    ttlpenilaian=ttlpenilaian+(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/5)*100);
+                    pembagi=0;
+                    handhygiene=0;apd=0;skin_antiseptik=0;lokasi_iv=0;perawatan_rutin=0;
+
+                    if(!rs.getString("handhygiene").equals("NA")){
+                        handhygiene=Double.parseDouble(rs.getString("handhygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlhandhygiene=ttlhandhygiene+handhygiene;
+                        pembagi++;
+                    }else{
+                        nahandhygiene++;
+                    }
+
+                    if(!rs.getString("apd").equals("NA")){
+                        apd=Double.parseDouble(rs.getString("apd").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlapd=ttlapd+apd;
+                        pembagi++;
+                    }else{
+                        naapd++;
+                    }
+
+                    if(!rs.getString("skin_antiseptik").equals("NA")){
+                        skin_antiseptik=Double.parseDouble(rs.getString("skin_antiseptik").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlskin_antiseptik=ttlskin_antiseptik+skin_antiseptik;
+                        pembagi++;
+                    }else{
+                        naskin_antiseptik++;
+                    }
+
+                    if(!rs.getString("lokasi_iv").equals("NA")){
+                        lokasi_iv=Double.parseDouble(rs.getString("lokasi_iv").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllokasi_iv=ttllokasi_iv+lokasi_iv;
+                        pembagi++;
+                    }else{
+                        nalokasi_iv++;
+                    }
+
+                    if(!rs.getString("perawatan_rutin").equals("NA")){
+                        perawatan_rutin=Double.parseDouble(rs.getString("perawatan_rutin").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlperawatan_rutin=ttlperawatan_rutin+perawatan_rutin;
+                        pembagi++;
+                    }else{
+                        naperawatan_rutin++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("handhygiene"),rs.getString("apd"),
                         rs.getString("skin_antiseptik"),rs.getString("lokasi_iv"),rs.getString("perawatan_rutin"),
-                        Math.round(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/5)*100)+" %"
+                        Math.round(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
-                        "","Ya",":",""+ttlhandhygiene,""+ttlapd,""+ttlskin_antiseptik,
-                        ""+ttllokasi_iv,""+ttlperawatan_rutin,""+(ttlhandhygiene+ttlapd+
-                        ttlskin_antiseptik+ttllokasi_iv+ttlperawatan_rutin)
+                        "","NA",":",""+nahandhygiene,""+naapd,""+naskin_antiseptik,""+nalokasi_iv,""+naperawatan_rutin,""+(nahandhygiene+naapd+naskin_antiseptik+nalokasi_iv+naperawatan_rutin)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":",""+(i-ttlhandhygiene),""+(i-ttlapd),""+(i-ttlskin_antiseptik),
-                        ""+(i-ttllokasi_iv),""+(i-ttlperawatan_rutin),""+((i-ttlhandhygiene)+(i-ttlapd)+
-                        (i-ttlskin_antiseptik)+(i-ttllokasi_iv)+(i-ttlperawatan_rutin))
+                        "","Ya",":",""+ttlhandhygiene,""+ttlapd,""+ttlskin_antiseptik,""+ttllokasi_iv,""+ttlperawatan_rutin,""+(ttlhandhygiene+ttlapd+ttlskin_antiseptik+ttllokasi_iv+ttlperawatan_rutin)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":",Math.round((ttlhandhygiene/i)*100)+" %",Math.round((ttlapd/i)*100)+" %",Math.round((ttlskin_antiseptik/i)*100)+" %",
-                        Math.round((ttllokasi_iv/i)*100)+" %",Math.round((ttlperawatan_rutin/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Tidak",":",""+(i-ttlhandhygiene-nahandhygiene),""+(i-ttlapd-naapd),""+(i-ttlskin_antiseptik-naskin_antiseptik),""+(i-ttllokasi_iv-nalokasi_iv),""+(i-ttlperawatan_rutin-naperawatan_rutin),
+                        ""+((i-ttlhandhygiene-nahandhygiene)+(i-ttlapd-naapd)+(i-ttlskin_antiseptik-naskin_antiseptik)+(i-ttllokasi_iv-nalokasi_iv)+(i-ttlperawatan_rutin-naperawatan_rutin))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Rata-rata",":",Math.round((ttlhandhygiene/(i-nahandhygiene))*100)+" %",Math.round((ttlapd/(i-naapd))*100)+" %",Math.round((ttlskin_antiseptik/(i-naskin_antiseptik))*100)+" %",
+                        Math.round((ttllokasi_iv/(i-nalokasi_iv))*100)+" %",Math.round((ttlperawatan_rutin/(i-naperawatan_rutin))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {
@@ -1075,7 +1108,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
+
         LCount.setText(""+i);
     }
     

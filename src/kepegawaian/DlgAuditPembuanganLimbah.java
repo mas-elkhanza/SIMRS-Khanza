@@ -52,7 +52,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;    
     private double pemisahan_limbah_oleh_penghasil_limbah=0,limbah_infeksius_dimasukkan_kantong_kuning=0,limbah_noninfeksius_dimasukkan_kantong_hitam=0,
-                limbah_tigaperempat_diikat=0,limbah_segera_dibawa_kepembuangan_sementara=0,kotak_sampah_dalam_kondisi_bersih=0,
+                limbah_tigaperempat_diikat=0,limbah_segera_dibawa_kepembuangan_sementara=0,kotak_sampah_dalam_kondisi_bersih=0,pembagi=0,
                 pembersihan_tempat_sampah_dengan_desinfekten=0,pembersihan_penampungan_sementara_dengan_desinfekten=0,napemisahan_limbah_oleh_penghasil_limbah=0,
                 nalimbah_infeksius_dimasukkan_kantong_kuning=0,nalimbah_noninfeksius_dimasukkan_kantong_hitam=0,nalimbah_tigaperempat_diikat=0,nalimbah_segera_dibawa_kepembuangan_sementara=0,
                 nakotak_sampah_dalam_kondisi_bersih=0,napembersihan_tempat_sampah_dengan_desinfekten=0,napembersihan_penampungan_sementara_dengan_desinfekten=0,ttllimbah_infeksius_dimasukkan_kantong_kuning=0,
@@ -1122,7 +1122,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
                 nakotak_sampah_dalam_kondisi_bersih=0;napembersihan_tempat_sampah_dengan_desinfekten=0;napembersihan_penampungan_sementara_dengan_desinfekten=0;
                 i=1;
                 while(rs.next()){
-                    int pembagi=0;
+                    pembagi=0;
                     pemisahan_limbah_oleh_penghasil_limbah=0;limbah_infeksius_dimasukkan_kantong_kuning=0;limbah_noninfeksius_dimasukkan_kantong_hitam=0;limbah_tigaperempat_diikat=0;
                     limbah_segera_dibawa_kepembuangan_sementara=0;kotak_sampah_dalam_kondisi_bersih=0;pembersihan_tempat_sampah_dengan_desinfekten=0;pembersihan_penampungan_sementara_dengan_desinfekten=0;
 

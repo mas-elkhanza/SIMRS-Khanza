@@ -287,7 +287,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="07-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -315,7 +315,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="07-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -430,7 +430,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="07-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -734,9 +734,10 @@
                 <Component class="widget.ComboBox" name="MenggunakanApdWaktuMembuangDarah">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="MenggunakanApdWaktuMembuangDarah" noResource="true"/>
@@ -765,9 +766,10 @@
                 <Component class="widget.ComboBox" name="KomponenDarahTidakAdaDilantai">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="KomponenDarahTidakAdaDilantai" noResource="true"/>
@@ -796,9 +798,10 @@
                 <Component class="widget.ComboBox" name="MembuangDarahPadaTempatDitentukan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="MembuangDarahPadaTempatDitentukan" noResource="true"/>
@@ -826,9 +829,10 @@
                 <Component class="widget.ComboBox" name="PembersihanArealTumbahanDarah">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="PembersihanArealTumbahanDarah" noResource="true"/>
@@ -845,9 +849,10 @@
                 <Component class="widget.ComboBox" name="ApdDibuangdiLimbahInfeksius">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="ApdDibuangdiLimbahInfeksius" noResource="true"/>
@@ -900,9 +905,10 @@
                 <Component class="widget.ComboBox" name="MelakukanKebersihanTanganSetelahProsedur">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="MelakukanKebersihanTanganSetelahProsedur" noResource="true"/>

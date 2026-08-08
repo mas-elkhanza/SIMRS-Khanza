@@ -6,7 +6,6 @@
 package kepegawaian;
 
 import fungsi.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -30,7 +29,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -49,11 +47,9 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private int i=0;    
-    private double audit1=0,audit2=0,audit3=0,
-                audit4=0,audit5=0,ttlaudit1=0,audit6=0,
-                audit7=0,audit8=0,ttlaudit2=0,
-                ttlaudit3=0,ttlaudit4=0,ttlaudit5=0,
-                ttlaudit6=0,ttlaudit7=0,ttlaudit8=0,ttlpenilaian=0;
+    private double audit1=0,audit2=0,audit3=0,audit4=0,audit5=0,audit6=0,audit7=0,audit8=0,pembagi=0,
+                   naaudit1=0,naaudit2=0,naaudit3=0,naaudit4=0,naaudit5=0,naaudit6=0,naaudit7=0,naaudit8=0,
+                   ttlaudit1=0,ttlaudit2=0,ttlaudit3=0,ttlaudit4=0,ttlaudit5=0,ttlaudit6=0,ttlaudit7=0,ttlaudit8=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -230,7 +226,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-02-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -293,7 +289,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(64, 40, 670, 23);
 
-        Audit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit1.setName("Audit1"); // NOI18N
         Audit1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -309,7 +305,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(64, 70, 670, 23);
 
-        Audit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit2.setName("Audit2"); // NOI18N
         Audit2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -325,7 +321,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(64, 100, 670, 23);
 
-        Audit3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit3.setName("Audit3"); // NOI18N
         Audit3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -347,7 +343,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(64, 220, 670, 23);
 
-        Audit4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit4.setName("Audit4"); // NOI18N
         Audit4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -357,7 +353,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(Audit4);
         Audit4.setBounds(855, 130, 78, 23);
 
-        Audit5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit5.setName("Audit5"); // NOI18N
         Audit5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -385,7 +381,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(64, 190, 670, 23);
 
-        Audit7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit7.setName("Audit7"); // NOI18N
         Audit7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -395,7 +391,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(Audit7);
         Audit7.setBounds(855, 220, 78, 23);
 
-        Audit6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit6.setName("Audit6"); // NOI18N
         Audit6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -405,7 +401,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         FormInput.add(Audit6);
         Audit6.setBounds(855, 190, 78, 23);
 
-        Audit8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Audit8.setName("Audit8"); // NOI18N
         Audit8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -436,7 +432,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         panelGlass8.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -450,7 +446,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         panelGlass8.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -869,60 +865,103 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                
+
                 rs=ps.executeQuery();
                 ttlaudit1=0;ttlaudit2=0;ttlaudit3=0;ttlaudit4=0;ttlaudit5=0;
                 ttlaudit6=0;ttlaudit7=0;ttlaudit8=0;ttlpenilaian=0;
+                naaudit1=0;naaudit2=0;naaudit3=0;naaudit4=0;naaudit5=0;naaudit6=0;naaudit7=0;naaudit8=0;
                 i=1;
                 while(rs.next()){
-                    audit1=Double.parseDouble(rs.getString("audit1").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlaudit1=ttlaudit1+audit1;
-                    audit2=Double.parseDouble(rs.getString("audit2").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlaudit2=ttlaudit2+audit2;
-                    audit3=Double.parseDouble(rs.getString("audit3").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlaudit3=ttlaudit3+audit3;
-                    audit4=Double.parseDouble(rs.getString("audit4").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlaudit4=ttlaudit4+audit4;
-                    audit5=Double.parseDouble(rs.getString("audit5").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlaudit5=ttlaudit5+audit5;
-                    audit6=Double.parseDouble(rs.getString("audit6").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlaudit6=ttlaudit6+audit6;
-                    audit7=Double.parseDouble(rs.getString("audit7").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlaudit7=ttlaudit7+audit7;
-                    audit8=Double.parseDouble(rs.getString("audit8").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlaudit8=ttlaudit8+audit8;
-                    ttlpenilaian=ttlpenilaian+(((audit1+audit2+audit3+
-                            audit4+audit5+audit6+audit7+
-                            audit8)/8)*100);
+                    pembagi=0;
+                    audit1=0;audit2=0;audit3=0;audit4=0;audit5=0;audit6=0;audit7=0;audit8=0;
+
+                    if(!rs.getString("audit1").equals("NA")){
+                        audit1=Double.parseDouble(rs.getString("audit1").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit1=ttlaudit1+audit1;
+                        pembagi++;
+                    }else{
+                        naaudit1++;
+                    }
+
+                    if(!rs.getString("audit2").equals("NA")){
+                        audit2=Double.parseDouble(rs.getString("audit2").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit2=ttlaudit2+audit2;
+                        pembagi++;
+                    }else{
+                        naaudit2++;
+                    }
+
+                    if(!rs.getString("audit3").equals("NA")){
+                        audit3=Double.parseDouble(rs.getString("audit3").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit3=ttlaudit3+audit3;
+                        pembagi++;
+                    }else{
+                        naaudit3++;
+                    }
+
+                    if(!rs.getString("audit4").equals("NA")){
+                        audit4=Double.parseDouble(rs.getString("audit4").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit4=ttlaudit4+audit4;
+                        pembagi++;
+                    }else{
+                        naaudit4++;
+                    }
+
+                    if(!rs.getString("audit5").equals("NA")){
+                        audit5=Double.parseDouble(rs.getString("audit5").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit5=ttlaudit5+audit5;
+                        pembagi++;
+                    }else{
+                        naaudit5++;
+                    }
+
+                    if(!rs.getString("audit6").equals("NA")){
+                        audit6=Double.parseDouble(rs.getString("audit6").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit6=ttlaudit6+audit6;
+                        pembagi++;
+                    }else{
+                        naaudit6++;
+                    }
+
+                    if(!rs.getString("audit7").equals("NA")){
+                        audit7=Double.parseDouble(rs.getString("audit7").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit7=ttlaudit7+audit7;
+                        pembagi++;
+                    }else{
+                        naaudit7++;
+                    }
+
+                    if(!rs.getString("audit8").equals("NA")){
+                        audit8=Double.parseDouble(rs.getString("audit8").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlaudit8=ttlaudit8+audit8;
+                        pembagi++;
+                    }else{
+                        naaudit8++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((audit1+audit2+audit3+audit4+audit5+audit6+audit7+audit8)/pembagi)*100);
                     tabMode.addRow(new Object[]{
-                        rs.getString("tanggal"),rs.getString("audit1"),rs.getString("audit2"),
-                        rs.getString("audit3"),rs.getString("audit4"),rs.getString("audit5"),
-                        rs.getString("audit6"),rs.getString("audit7"),rs.getString("audit8"),
-                        Math.round(((audit1+audit2+audit3+audit4+
-                        audit5+audit6+audit7+audit8)/8)*100)+" %"
+                        rs.getString("tanggal"),rs.getString("audit1"),rs.getString("audit2"),rs.getString("audit3"),rs.getString("audit4"),rs.getString("audit5"),rs.getString("audit6"),
+                        rs.getString("audit7"),rs.getString("audit8"),Math.round(((audit1+audit2+audit3+audit4+audit5+audit6+audit7+audit8)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
-                        "Ya",""+ttlaudit1,""+ttlaudit2,""+ttlaudit3,
-                        ""+ttlaudit4,""+ttlaudit5,""+ttlaudit6,""+ttlaudit7,
-                        ""+ttlaudit8,""+(ttlaudit1+ttlaudit2+
-                        ttlaudit3+ttlaudit4+ttlaudit5+ttlaudit6+
-                        ttlaudit7+ttlaudit8)
+                        "NA",""+naaudit1,""+naaudit2,""+naaudit3,""+naaudit4,""+naaudit5,""+naaudit6,""+naaudit7,""+naaudit8,""+(naaudit1+naaudit2+naaudit3+naaudit4+naaudit5+naaudit6+naaudit7+naaudit8)
                     });
                     tabMode.addRow(new Object[]{
-                        "Tidak",""+(i-ttlaudit1),""+(i-ttlaudit2),""+(i-ttlaudit3),
-                        ""+(i-ttlaudit4),""+(i-ttlaudit5),""+(i-ttlaudit6),""+(i-ttlaudit7),
-                        ""+(i-ttlaudit8),""+((i-ttlaudit1)+(i-ttlaudit2)+
-                        (i-ttlaudit3)+(i-ttlaudit4)+(i-ttlaudit5)+(i-ttlaudit6)+
-                        (i-ttlaudit7)+(i-ttlaudit8))
+                        "Ya",""+ttlaudit1,""+ttlaudit2,""+ttlaudit3,""+ttlaudit4,""+ttlaudit5,""+ttlaudit6,""+ttlaudit7,""+ttlaudit8,""+(ttlaudit1+ttlaudit2+ttlaudit3+ttlaudit4+ttlaudit5+ttlaudit6+ttlaudit7+ttlaudit8)
                     });
                     tabMode.addRow(new Object[]{
-                        "Rata-rata",Math.round((ttlaudit1/i)*100)+" %",Math.round((ttlaudit2/i)*100)+" %",Math.round((ttlaudit3/i)*100)+" %",
-                        Math.round((ttlaudit4/i)*100)+" %",Math.round((ttlaudit5/i)*100)+" %",Math.round((ttlaudit6/i)*100)+" %",
-                        Math.round((ttlaudit7/i)*100)+" %",Math.round((ttlaudit8/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "Tidak",""+(i-ttlaudit1-naaudit1),""+(i-ttlaudit2-naaudit2),""+(i-ttlaudit3-naaudit3),""+(i-ttlaudit4-naaudit4),""+(i-ttlaudit5-naaudit5),""+(i-ttlaudit6-naaudit6),""+(i-ttlaudit7-naaudit7),""+(i-ttlaudit8-naaudit8),
+                        ""+((i-ttlaudit1-naaudit1)+(i-ttlaudit2-naaudit2)+(i-ttlaudit3-naaudit3)+(i-ttlaudit4-naaudit4)+(i-ttlaudit5-naaudit5)+(i-ttlaudit6-naaudit6)+(i-ttlaudit7-naaudit7)+(i-ttlaudit8-naaudit8))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "Rata-rata",Math.round((ttlaudit1/(i-naaudit1))*100)+" %",Math.round((ttlaudit2/(i-naaudit2))*100)+" %",Math.round((ttlaudit3/(i-naaudit3))*100)+" %",
+                        Math.round((ttlaudit4/(i-naaudit4))*100)+" %",Math.round((ttlaudit5/(i-naaudit5))*100)+" %",Math.round((ttlaudit6/(i-naaudit6))*100)+" %",
+                        Math.round((ttlaudit7/(i-naaudit7))*100)+" %",Math.round((ttlaudit8/(i-naaudit8))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {

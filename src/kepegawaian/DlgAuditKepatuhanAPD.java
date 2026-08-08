@@ -51,7 +51,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private int i=0;    
-    private double topi=0,masker=0,kacamata=0,sarungtangan=0,apron=0,sepatu=0,natopi=0,namasker=0,nakacamata=0,nasarungtangan=0,naapron=0,nasepatu=0,ttltopi=0,ttlmasker=0,ttlkacamata=0,ttlsarungtangan=0,ttlapron=0,ttlsepatu=0,ttlpenilaian=0;
+    private double topi=0,pembagi=0,masker=0,kacamata=0,sarungtangan=0,apron=0,sepatu=0,natopi=0,namasker=0,nakacamata=0,nasarungtangan=0,naapron=0,nasepatu=0,ttltopi=0,ttlmasker=0,ttlkacamata=0,ttlsarungtangan=0,ttlapron=0,ttlsepatu=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -1090,7 +1090,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                 natopi=0;namasker=0;nakacamata=0;nasarungtangan=0;naapron=0;nasepatu=0;
                 i=1;
                 while(rs.next()){
-                    int pembagi=0;
+                    pembagi=0;
                     topi=0;masker=0;kacamata=0;sarungtangan=0;apron=0;sepatu=0;
                     if(!rs.getString("topi").equals("NA")){
                         topi=Double.parseDouble(rs.getString("topi").replaceAll("Ya","1").replaceAll("Tidak","0"));
