@@ -51,8 +51,9 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
     private int i=0; 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;   
-    private double pencukuran_rambut=0,antibiotik=0,temperature=0,sugar=0,ttlpencukuran_rambut=0,
-                ttlantibiotik=0,ttltemperature=0,ttlsugar=0,ttlpenilaian=0;
+    private double pencukuran_rambut=0,antibiotik=0,temperature=0,sugar=0,pembagi=0,
+                   napencukuran_rambut=0,naantibiotik=0,natemperature=0,nasugar=0,
+                   ttlpencukuran_rambut=0,ttlantibiotik=0,ttltemperature=0,ttlsugar=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -514,7 +515,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(14, 40, 310, 23);
 
-        PencukuranRambut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PencukuranRambut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PencukuranRambut.setName("PencukuranRambut"); // NOI18N
         PencukuranRambut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -530,7 +531,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(564, 40, 210, 23);
 
-        Antibiotik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Antibiotik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Antibiotik.setName("Antibiotik"); // NOI18N
         Antibiotik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -546,7 +547,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(14, 70, 310, 23);
 
-        SuhuPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SuhuPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SuhuPasien.setName("SuhuPasien"); // NOI18N
         SuhuPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -561,7 +562,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
         FormInput.add(NmRuang);
         NmRuang.setBounds(647, 10, 200, 23);
 
-        GulaDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GulaDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         GulaDarah.setName("GulaDarah"); // NOI18N
         GulaDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -980,7 +981,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
                     "where audit_bundle_ido.tanggal between ? and ? "+
                     "and (audit_bundle_ido.id_ruang like ? or ruang_audit_kepatuhan.nama_ruang like ?) order by audit_bundle_ido.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -991,38 +992,69 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttlpencukuran_rambut=0;ttlantibiotik=0;ttltemperature=0;ttlsugar=0;ttlpenilaian=0;
+                napencukuran_rambut=0;naantibiotik=0;natemperature=0;nasugar=0;
                 i=1;
                 while(rs.next()){
-                    pencukuran_rambut=Double.parseDouble(rs.getString("pencukuran_rambut").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlpencukuran_rambut=ttlpencukuran_rambut+pencukuran_rambut;
-                    antibiotik=Double.parseDouble(rs.getString("antibiotik").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlantibiotik=ttlantibiotik+antibiotik;
-                    temperature=Double.parseDouble(rs.getString("temperature").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttltemperature=ttltemperature+temperature;
-                    sugar=Double.parseDouble(rs.getString("sugar").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsugar=ttlsugar+sugar;
-                    ttlpenilaian=ttlpenilaian+(((pencukuran_rambut+antibiotik+temperature+sugar)/4)*100);
+                    pembagi=0;
+                    pencukuran_rambut=0;antibiotik=0;temperature=0;sugar=0;
+
+                    if(!rs.getString("pencukuran_rambut").equals("NA")){
+                        pencukuran_rambut=Double.parseDouble(rs.getString("pencukuran_rambut").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlpencukuran_rambut=ttlpencukuran_rambut+pencukuran_rambut;
+                        pembagi++;
+                    }else{
+                        napencukuran_rambut++;
+                    }
+
+                    if(!rs.getString("antibiotik").equals("NA")){
+                        antibiotik=Double.parseDouble(rs.getString("antibiotik").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlantibiotik=ttlantibiotik+antibiotik;
+                        pembagi++;
+                    }else{
+                        naantibiotik++;
+                    }
+
+                    if(!rs.getString("temperature").equals("NA")){
+                        temperature=Double.parseDouble(rs.getString("temperature").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttltemperature=ttltemperature+temperature;
+                        pembagi++;
+                    }else{
+                        natemperature++;
+                    }
+
+                    if(!rs.getString("sugar").equals("NA")){
+                        sugar=Double.parseDouble(rs.getString("sugar").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsugar=ttlsugar+sugar;
+                        pembagi++;
+                    }else{
+                        nasugar++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((pencukuran_rambut+antibiotik+temperature+sugar)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("pencukuran_rambut"),rs.getString("antibiotik"),
-                        rs.getString("temperature"),rs.getString("sugar"),Math.round(((pencukuran_rambut+antibiotik+temperature+sugar)/4)*100)+" %"
+                        rs.getString("temperature"),rs.getString("sugar"),Math.round(((pencukuran_rambut+antibiotik+temperature+sugar)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
+                        "","NA",":",""+napencukuran_rambut,""+naantibiotik,""+natemperature,""+nasugar,""+(napencukuran_rambut+naantibiotik+natemperature+nasugar)
+                    });
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlpencukuran_rambut,""+ttlantibiotik,""+ttltemperature,""+ttlsugar,""+(ttlpencukuran_rambut+ttlantibiotik+ttltemperature+ttlsugar)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":",""+(i-ttlpencukuran_rambut),""+(i-ttlantibiotik),""+(i-ttltemperature),""+(i-ttlsugar),""+((i-ttlpencukuran_rambut)+
-                        (i-ttlantibiotik)+(i-ttltemperature)+(i-ttlsugar))
+                        "","Tidak",":",""+(i-ttlpencukuran_rambut-napencukuran_rambut),""+(i-ttlantibiotik-naantibiotik),""+(i-ttltemperature-natemperature),""+(i-ttlsugar-nasugar),
+                        ""+((i-ttlpencukuran_rambut-napencukuran_rambut)+(i-ttlantibiotik-naantibiotik)+(i-ttltemperature-natemperature)+(i-ttlsugar-nasugar))
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":",Math.round((ttlpencukuran_rambut/i)*100)+" %",Math.round((ttlantibiotik/i)*100)+" %",Math.round((ttltemperature/i)*100)+" %",
-                        Math.round((ttlsugar/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Rata-rata",":",Math.round((ttlpencukuran_rambut/(i-napencukuran_rambut))*100)+" %",Math.round((ttlantibiotik/(i-naantibiotik))*100)+" %",Math.round((ttltemperature/(i-natemperature))*100)+" %",
+                        Math.round((ttlsugar/(i-nasugar))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {

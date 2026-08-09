@@ -83,31 +83,34 @@ from audit_pembuangan_limbah_cair_infeksius inner join ruang_audit_kepatuhan on 
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_pembuangan_limbah_cair_infeksius"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{audit1}.equals("NA")?0:1)+($F{audit2}.equals("NA")?0:1)+($F{audit3}.equals("NA")?0:1)+($F{audit4}.equals("NA")?0:1)+($F{audit5}.equals("NA")?0:1)+($F{audit6}.equals("NA")?0:1))==0 ? null :
+((($F{audit1}.equals("NA")?0.0:Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit2}.equals("NA")?0.0:Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit3}.equals("NA")?0.0:Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit4}.equals("NA")?0.0:Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit5}.equals("NA")?0.0:Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit6}.equals("NA")?0.0:Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{audit1}.equals("NA")?0:1)+($F{audit2}.equals("NA")?0:1)+($F{audit3}.equals("NA")?0:1)+($F{audit4}.equals("NA")?0:1)+($F{audit5}.equals("NA")?0:1)+($F{audit6}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="audit1" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit1}.equals("NA")?null:Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="audit2" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit2}.equals("NA")?null:Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="audit3" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit3}.equals("NA")?null:Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="audit4" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit4}.equals("NA")?null:Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="audit5" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit5}.equals("NA")?null:Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="audit6" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{audit6}.equals("NA")?null:Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -359,12 +362,16 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{audit1}.equals("NA")?0:1)+($F{audit2}.equals("NA")?0:1)+($F{audit3}.equals("NA")?0:1)+($F{audit4}.equals("NA")?0:1)+($F{audit5}.equals("NA")?0:1)+($F{audit6}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{audit1}.equals("NA")?0.0:Double.parseDouble($F{audit1}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit2}.equals("NA")?0.0:Double.parseDouble($F{audit2}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit3}.equals("NA")?0.0:Double.parseDouble($F{audit3}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit4}.equals("NA")?0.0:Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit5}.equals("NA")?0.0:Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{audit6}.equals("NA")?0.0:Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{audit1}.equals("NA")?0:1)+($F{audit2}.equals("NA")?0:1)+($F{audit3}.equals("NA")?0:1)+($F{audit4}.equals("NA")?0:1)+($F{audit5}.equals("NA")?0:1)+($F{audit6}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -438,7 +445,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit1}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit1}==null?"-":Math.round($V{audit1}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="391" y="0" width="70" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c"/>
@@ -446,7 +453,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit2}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit2}==null?"-":Math.round($V{audit2}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="461" y="0" width="70" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9"/>
@@ -454,7 +461,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit3}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit3}==null?"-":Math.round($V{audit3}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="531" y="0" width="70" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f"/>
@@ -462,7 +469,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit4}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit4}==null?"-":Math.round($V{audit4}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="601" y="0" width="70" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d"/>
@@ -470,7 +477,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit5}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit5}==null?"-":Math.round($V{audit5}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="670" y="0" width="70" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047"/>
@@ -478,7 +485,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{audit6}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{audit6}==null?"-":Math.round($V{audit6}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -488,13 +495,7 @@ Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{audit1}*100)+
-	($V{audit2}*100)+
-	($V{audit3}*100)+
-	($V{audit4}*100)+
-	($V{audit5}*100)+
-	($V{audit6}*100)
-)/6)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">

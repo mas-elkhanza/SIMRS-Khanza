@@ -287,7 +287,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="08-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -315,7 +315,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="08-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -476,7 +476,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="10-02-2026"/>
+                            <StringItem index="0" value="08-08-2026"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -780,9 +780,10 @@
                     <Component class="widget.ComboBox" name="Audit1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit1" noResource="true"/>
@@ -811,9 +812,10 @@
                     <Component class="widget.ComboBox" name="Audit2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit2" noResource="true"/>
@@ -842,9 +844,10 @@
                     <Component class="widget.ComboBox" name="Audit3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit3" noResource="true"/>
@@ -872,9 +875,10 @@
                     <Component class="widget.ComboBox" name="Audit4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit4" noResource="true"/>
@@ -891,9 +895,10 @@
                     <Component class="widget.ComboBox" name="Audit5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit5" noResource="true"/>
@@ -946,9 +951,10 @@
                     <Component class="widget.ComboBox" name="Audit6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value="NA"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="Audit6" noResource="true"/>

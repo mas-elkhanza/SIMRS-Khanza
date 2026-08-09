@@ -287,7 +287,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="09-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -315,7 +315,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="09-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -430,7 +430,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-02-2026"/>
+                        <StringItem index="0" value="09-08-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -687,9 +687,10 @@
                 <Component class="widget.ComboBox" name="PemasanganSesuaiIndikasi">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="PemasanganSesuaiIndikasi" noResource="true"/>
@@ -718,9 +719,10 @@
                 <Component class="widget.ComboBox" name="HandHygiene">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="HandHygiene" noResource="true"/>
@@ -749,9 +751,10 @@
                 <Component class="widget.ComboBox" name="ApdYangTepat">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="ApdYangTepat" noResource="true"/>
@@ -803,9 +806,10 @@
                 <Component class="widget.ComboBox" name="PetunjukProduk">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="PetunjukProduk" noResource="true"/>
@@ -822,9 +826,10 @@
                 <Component class="widget.ComboBox" name="LepasSetelahTidakDiperlukan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="LepasSetelahTidakDiperlukan" noResource="true"/>
@@ -853,9 +858,10 @@
                 <Component class="widget.ComboBox" name="AlatSteril">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="AlatSteril" noResource="true"/>
@@ -884,9 +890,10 @@
                 <Component class="widget.ComboBox" name="UrineBag">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="UrineBag" noResource="true"/>
@@ -915,9 +922,10 @@
                 <Component class="widget.ComboBox" name="FiksasiKateter">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Ya"/>
                         <StringItem index="1" value="Tidak"/>
+                        <StringItem index="2" value="NA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="FiksasiKateter" noResource="true"/>

@@ -31,7 +31,6 @@ public class frmUtama extends javax.swing.JFrame {
     private  Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private String requestJson,utc="";
-    private final String URL = "";
     private final String kodeppk = Sequel.cariIsi("select setting.kode_ppk from setting");
     private final BPJSApiAplicare api=new BPJSApiAplicare();
     private  HttpHeaders headers;
@@ -201,7 +200,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     TeksArea.append("JSON dikirim : "+requestJson+"\n");
                                     requestEntity = new HttpEntity(requestJson,headers);
                                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                    root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
+                                    root = mapper.readTree(api.getRest().exchange(koneksiDB.URLAPIAPLICARE()+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                                     nameNode = root.path("metadata");
                                     TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {

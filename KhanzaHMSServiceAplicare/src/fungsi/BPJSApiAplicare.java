@@ -23,7 +23,6 @@ import org.springframework.web.client.RestTemplate;
 public class BPJSApiAplicare {        
     private static final Properties prop = new Properties();
     private String Key,Consid;
-    private long GetUTCdatetimeAsString;
     private String salt;
     private String generateHmacSHA256Signature;
     private byte[] hmacData;
@@ -36,7 +35,6 @@ public class BPJSApiAplicare {
     private HttpComponentsClientHttpRequestFactory factory;
     public BPJSApiAplicare(){
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
             Key = koneksiDB.SECRETKEYAPIAPLICARE();
             Consid = koneksiDB.CONSIDAPIAPLICARE();
         } catch (Exception ex) {

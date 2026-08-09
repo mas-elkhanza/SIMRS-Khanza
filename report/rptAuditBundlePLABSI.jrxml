@@ -29,7 +29,7 @@ audit_bundle_plabsi.sebelum_melakukan_hand_hygiene,audit_bundle_plabsi.menggunak
 audit_bundle_plabsi.lokasi_pemasangan_sesuai,audit_bundle_plabsi.alat_yang_digunakan_steril,
 audit_bundle_plabsi.pembersihan_kulit,audit_bundle_plabsi.setelah_melakukan_hand_hygiene,
 audit_bundle_plabsi.perawatan_dressing_infus,audit_bundle_plabsi.spoit_yang_digunakan_disposible,
-audit_bundle_plabsi.memberi_tanggal_dan_jam_pemasangan_infus,audit_bundle_plabsi.set_infus_setiap_72jam  
+audit_bundle_plabsi.memberi_tanggal_dan_jam_pemasangan_infus,audit_bundle_plabsi.set_infus_setiap_72jam
 from audit_bundle_plabsi inner join ruang_audit_kepatuhan on audit_bundle_plabsi.id_ruang=ruang_audit_kepatuhan.id_ruang]]>
 	</queryString>
 	<field name="id_ruang" class="java.lang.String">
@@ -109,47 +109,50 @@ from audit_bundle_plabsi inner join ruang_audit_kepatuhan on audit_bundle_plabsi
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_bundle_plabsi"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0")))/10)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{menggunakan_apd_lengkap}.equals("NA")?0:1)+($F{lokasi_pemasangan_sesuai}.equals("NA")?0:1)+($F{alat_yang_digunakan_steril}.equals("NA")?0:1)+($F{pembersihan_kulit}.equals("NA")?0:1)+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{perawatan_dressing_infus}.equals("NA")?0:1)+($F{spoit_yang_digunakan_disposible}.equals("NA")?0:1)+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0:1)+($F{set_infus_setiap_72jam}.equals("NA")?0:1))==0 ? null :
+((($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0.0:Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{menggunakan_apd_lengkap}.equals("NA")?0.0:Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{lokasi_pemasangan_sesuai}.equals("NA")?0.0:Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{alat_yang_digunakan_steril}.equals("NA")?0.0:Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_kulit}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0.0:Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{perawatan_dressing_infus}.equals("NA")?0.0:Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{spoit_yang_digunakan_disposible}.equals("NA")?0.0:Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0.0:Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{set_infus_setiap_72jam}.equals("NA")?0.0:Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{menggunakan_apd_lengkap}.equals("NA")?0:1)+($F{lokasi_pemasangan_sesuai}.equals("NA")?0:1)+($F{alat_yang_digunakan_steril}.equals("NA")?0:1)+($F{pembersihan_kulit}.equals("NA")?0:1)+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{perawatan_dressing_infus}.equals("NA")?0:1)+($F{spoit_yang_digunakan_disposible}.equals("NA")?0:1)+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0:1)+($F{set_infus_setiap_72jam}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="sebelum_melakukan_hand_hygiene" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sebelum_melakukan_hand_hygiene}.equals("NA")?null:Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="menggunakan_apd_lengkap" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{menggunakan_apd_lengkap}.equals("NA")?null:Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="lokasi_pemasangan_sesuai" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{lokasi_pemasangan_sesuai}.equals("NA")?null:Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="alat_yang_digunakan_steril" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{alat_yang_digunakan_steril}.equals("NA")?null:Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="pembersihan_kulit" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{pembersihan_kulit}.equals("NA")?null:Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="setelah_melakukan_hand_hygiene" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{setelah_melakukan_hand_hygiene}.equals("NA")?null:Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="perawatan_dressing_infus" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{perawatan_dressing_infus}.equals("NA")?null:Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="spoit_yang_digunakan_disposible" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{spoit_yang_digunakan_disposible}.equals("NA")?null:Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="memberi_tanggal_dan_jam_pemasangan_infus" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?null:Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="set_infus_setiap_72jam" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{set_infus_setiap_72jam}.equals("NA")?null:Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -425,16 +428,20 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0")))/10)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{menggunakan_apd_lengkap}.equals("NA")?0:1)+($F{lokasi_pemasangan_sesuai}.equals("NA")?0:1)+($F{alat_yang_digunakan_steril}.equals("NA")?0:1)+($F{pembersihan_kulit}.equals("NA")?0:1)+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{perawatan_dressing_infus}.equals("NA")?0:1)+($F{spoit_yang_digunakan_disposible}.equals("NA")?0:1)+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0:1)+($F{set_infus_setiap_72jam}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0.0:Double.parseDouble($F{sebelum_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{menggunakan_apd_lengkap}.equals("NA")?0.0:Double.parseDouble($F{menggunakan_apd_lengkap}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{lokasi_pemasangan_sesuai}.equals("NA")?0.0:Double.parseDouble($F{lokasi_pemasangan_sesuai}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{alat_yang_digunakan_steril}.equals("NA")?0.0:Double.parseDouble($F{alat_yang_digunakan_steril}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{pembersihan_kulit}.equals("NA")?0.0:Double.parseDouble($F{pembersihan_kulit}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0.0:Double.parseDouble($F{setelah_melakukan_hand_hygiene}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{perawatan_dressing_infus}.equals("NA")?0.0:Double.parseDouble($F{perawatan_dressing_infus}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{spoit_yang_digunakan_disposible}.equals("NA")?0.0:Double.parseDouble($F{spoit_yang_digunakan_disposible}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0.0:Double.parseDouble($F{memberi_tanggal_dan_jam_pemasangan_infus}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{set_infus_setiap_72jam}.equals("NA")?0.0:Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{sebelum_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{menggunakan_apd_lengkap}.equals("NA")?0:1)+($F{lokasi_pemasangan_sesuai}.equals("NA")?0:1)+($F{alat_yang_digunakan_steril}.equals("NA")?0:1)+($F{pembersihan_kulit}.equals("NA")?0:1)+($F{setelah_melakukan_hand_hygiene}.equals("NA")?0:1)+($F{perawatan_dressing_infus}.equals("NA")?0:1)+($F{spoit_yang_digunakan_disposible}.equals("NA")?0:1)+($F{memberi_tanggal_dan_jam_pemasangan_infus}.equals("NA")?0:1)+($F{set_infus_setiap_72jam}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="540" y="0" width="50" height="10" uuid="7a297b05-45c7-4d2b-97d2-2db7eb863c9b"/>
@@ -542,7 +549,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sebelum_melakukan_hand_hygiene}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sebelum_melakukan_hand_hygiene}==null?"-":Math.round($V{sebelum_melakukan_hand_hygiene}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="290" y="0" width="50" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -552,7 +559,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{menggunakan_apd_lengkap}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{menggunakan_apd_lengkap}==null?"-":Math.round($V{menggunakan_apd_lengkap}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="340" y="0" width="50" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -562,7 +569,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{lokasi_pemasangan_sesuai}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{lokasi_pemasangan_sesuai}==null?"-":Math.round($V{lokasi_pemasangan_sesuai}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="390" y="0" width="50" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -572,7 +579,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{alat_yang_digunakan_steril}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{alat_yang_digunakan_steril}==null?"-":Math.round($V{alat_yang_digunakan_steril}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="440" y="0" width="50" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
@@ -582,7 +589,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{pembersihan_kulit}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{pembersihan_kulit}==null?"-":Math.round($V{pembersihan_kulit}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="490" y="0" width="50" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
@@ -592,7 +599,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{setelah_melakukan_hand_hygiene}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{setelah_melakukan_hand_hygiene}==null?"-":Math.round($V{setelah_melakukan_hand_hygiene}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -602,17 +609,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{sebelum_melakukan_hand_hygiene}*100)+
-	($V{menggunakan_apd_lengkap}*100)+
-	($V{lokasi_pemasangan_sesuai}*100)+
-	($V{alat_yang_digunakan_steril}*100)+
-	($V{pembersihan_kulit}*100)+
-	($V{setelah_melakukan_hand_hygiene}*100)+
-	($V{perawatan_dressing_infus}*100)+
-	($V{spoit_yang_digunakan_disposible}*100)+
-	($V{memberi_tanggal_dan_jam_pemasangan_infus}*100)+
-	($V{set_infus_setiap_72jam}*100)
-)/10)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">
@@ -632,7 +629,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{perawatan_dressing_infus}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{perawatan_dressing_infus}==null?"-":Math.round($V{perawatan_dressing_infus}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="590" y="0" width="50" height="10" uuid="71c26853-ee02-4284-a500-dff1827129b3">
@@ -642,7 +639,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{spoit_yang_digunakan_disposible}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{spoit_yang_digunakan_disposible}==null?"-":Math.round($V{spoit_yang_digunakan_disposible}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="640" y="0" width="50" height="10" uuid="5657cd28-ddf1-48b9-b617-138095e7a61b">
@@ -652,7 +649,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{memberi_tanggal_dan_jam_pemasangan_infus}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{memberi_tanggal_dan_jam_pemasangan_infus}==null?"-":Math.round($V{memberi_tanggal_dan_jam_pemasangan_infus}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="690" y="0" width="50" height="10" uuid="e8be5f35-2b87-45b2-a27d-5cd9673f7dc7">
@@ -662,7 +659,7 @@ Double.parseDouble($F{set_infus_setiap_72jam}.replaceAll("Ya","1").replaceAll("T
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{set_infus_setiap_72jam}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{set_infus_setiap_72jam}==null?"-":Math.round($V{set_infus_setiap_72jam}*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

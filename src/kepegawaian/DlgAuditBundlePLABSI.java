@@ -50,8 +50,9 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
     private int i=0; 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;  
-    private double sebelum_melakukan_hand_hygiene=0,menggunakan_apd_lengkap=0,lokasi_pemasangan_sesuai=0,alat_yang_digunakan_steril=0,pembersihan_kulit=0,setelah_melakukan_hand_hygiene=0,perawatan_dressing_infus=0,spoit_yang_digunakan_disposible=0,memberi_tanggal_dan_jam_pemasangan_infus=0,set_infus_setiap_72jam=0,
-                ttlsebelum_melakukan_hand_hygiene=0,ttlmenggunakan_apd_lengkap=0,ttllokasi_pemasangan_sesuai=0,ttlalat_yang_digunakan_steril=0,ttlpembersihan_kulit=0,ttlsetelah_melakukan_hand_hygiene=0,ttlperawatan_dressing_infus=0,ttlspoit_yang_digunakan_disposible=0,ttlmemberi_tanggal_dan_jam_pemasangan_infus=0,ttlset_infus_setiap_72jam=0,ttlpenilaian=0;
+    private double sebelum_melakukan_hand_hygiene=0,menggunakan_apd_lengkap=0,lokasi_pemasangan_sesuai=0,alat_yang_digunakan_steril=0,pembersihan_kulit=0,setelah_melakukan_hand_hygiene=0,perawatan_dressing_infus=0,spoit_yang_digunakan_disposible=0,memberi_tanggal_dan_jam_pemasangan_infus=0,set_infus_setiap_72jam=0,pembagi=0,
+                   nasebelum_melakukan_hand_hygiene=0,namenggunakan_apd_lengkap=0,nalokasi_pemasangan_sesuai=0,naalat_yang_digunakan_steril=0,napembersihan_kulit=0,nasetelah_melakukan_hand_hygiene=0,naperawatan_dressing_infus=0,naspoit_yang_digunakan_disposible=0,namemberi_tanggal_dan_jam_pemasangan_infus=0,naset_infus_setiap_72jam=0,
+                   ttlsebelum_melakukan_hand_hygiene=0,ttlmenggunakan_apd_lengkap=0,ttllokasi_pemasangan_sesuai=0,ttlalat_yang_digunakan_steril=0,ttlpembersihan_kulit=0,ttlsetelah_melakukan_hand_hygiene=0,ttlperawatan_dressing_infus=0,ttlspoit_yang_digunakan_disposible=0,ttlmemberi_tanggal_dan_jam_pemasangan_infus=0,ttlset_infus_setiap_72jam=0,ttlpenilaian=0;
     
     
     /** Creates new form DlgRujuk
@@ -532,7 +533,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(44, 60, 230, 23);
 
-        MelakukanHandHygiene.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MelakukanHandHygiene.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         MelakukanHandHygiene.setName("MelakukanHandHygiene"); // NOI18N
         MelakukanHandHygiene.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -548,7 +549,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(415, 60, 290, 23);
 
-        Menggunakan_Apd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Menggunakan_Apd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         Menggunakan_Apd.setName("Menggunakan_Apd"); // NOI18N
         Menggunakan_Apd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -564,7 +565,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(44, 120, 500, 20);
 
-        LokasiPemasangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LokasiPemasangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         LokasiPemasangan.setName("LokasiPemasangan"); // NOI18N
         LokasiPemasangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -586,7 +587,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(44, 90, 230, 23);
 
-        MelakukanHandHygieneSesudah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MelakukanHandHygieneSesudah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         MelakukanHandHygieneSesudah.setName("MelakukanHandHygieneSesudah"); // NOI18N
         MelakukanHandHygieneSesudah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -596,7 +597,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(MelakukanHandHygieneSesudah);
         MelakukanHandHygieneSesudah.setBounds(280, 170, 78, 23);
 
-        PembersihanKulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PembersihanKulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PembersihanKulit.setName("PembersihanKulit"); // NOI18N
         PembersihanKulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -612,7 +613,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(415, 90, 290, 23);
 
-        AlatYangSteril.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        AlatYangSteril.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         AlatYangSteril.setName("AlatYangSteril"); // NOI18N
         AlatYangSteril.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -628,7 +629,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel24);
         jLabel24.setBounds(44, 170, 240, 23);
 
-        SpoitDisposable.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SpoitDisposable.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SpoitDisposable.setName("SpoitDisposable"); // NOI18N
         SpoitDisposable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -644,7 +645,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(415, 170, 290, 23);
 
-        PerawatanDressing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PerawatanDressing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PerawatanDressing.setName("PerawatanDressing"); // NOI18N
         PerawatanDressing.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -666,7 +667,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(jLabel27);
         jLabel27.setBounds(44, 230, 240, 23);
 
-        PemberianTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PemberianTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         PemberianTanggal.setName("PemberianTanggal"); // NOI18N
         PemberianTanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -676,7 +677,7 @@ public final class DlgAuditBundlePLABSI extends javax.swing.JDialog {
         FormInput.add(PemberianTanggal);
         PemberianTanggal.setBounds(709, 200, 78, 23);
 
-        SetInfus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SetInfus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", "NA" }));
         SetInfus.setName("SetInfus"); // NOI18N
         SetInfus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1159,7 +1160,7 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
                     "where audit_bundle_plabsi.tanggal between ? and ? "+
                     "and (audit_bundle_plabsi.id_ruang like ? or ruang_audit_kepatuhan.nama_ruang like ?) order by audit_bundle_plabsi.tanggal");
             }
-                
+
             try {
                 if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -1170,52 +1171,118 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                 }
-                    
-               rs=ps.executeQuery();
+
+                rs=ps.executeQuery();
                 ttlsebelum_melakukan_hand_hygiene=0;ttlmenggunakan_apd_lengkap=0;ttllokasi_pemasangan_sesuai=0;ttlalat_yang_digunakan_steril=0;ttlpembersihan_kulit=0;ttlsetelah_melakukan_hand_hygiene=0;ttlperawatan_dressing_infus=0;ttlspoit_yang_digunakan_disposible=0;ttlmemberi_tanggal_dan_jam_pemasangan_infus=0;ttlset_infus_setiap_72jam=0;ttlpenilaian=0;
+                nasebelum_melakukan_hand_hygiene=0;namenggunakan_apd_lengkap=0;nalokasi_pemasangan_sesuai=0;naalat_yang_digunakan_steril=0;napembersihan_kulit=0;nasetelah_melakukan_hand_hygiene=0;naperawatan_dressing_infus=0;naspoit_yang_digunakan_disposible=0;namemberi_tanggal_dan_jam_pemasangan_infus=0;naset_infus_setiap_72jam=0;
                 i=1;
                 while(rs.next()){
-                    sebelum_melakukan_hand_hygiene=Double.parseDouble(rs.getString("sebelum_melakukan_hand_hygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsebelum_melakukan_hand_hygiene=ttlsebelum_melakukan_hand_hygiene+sebelum_melakukan_hand_hygiene;
-                    menggunakan_apd_lengkap=Double.parseDouble(rs.getString("menggunakan_apd_lengkap").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlmenggunakan_apd_lengkap=ttlmenggunakan_apd_lengkap+menggunakan_apd_lengkap;
-                    lokasi_pemasangan_sesuai=Double.parseDouble(rs.getString("lokasi_pemasangan_sesuai").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllokasi_pemasangan_sesuai=ttllokasi_pemasangan_sesuai+lokasi_pemasangan_sesuai;
-                    alat_yang_digunakan_steril=Double.parseDouble(rs.getString("alat_yang_digunakan_steril").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlalat_yang_digunakan_steril=ttlalat_yang_digunakan_steril+alat_yang_digunakan_steril;
-                    pembersihan_kulit=Double.parseDouble(rs.getString("pembersihan_kulit").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlpembersihan_kulit=ttlpembersihan_kulit+pembersihan_kulit;
-                    setelah_melakukan_hand_hygiene=Double.parseDouble(rs.getString("setelah_melakukan_hand_hygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlsetelah_melakukan_hand_hygiene=ttlsetelah_melakukan_hand_hygiene+setelah_melakukan_hand_hygiene;
-                    perawatan_dressing_infus=Double.parseDouble(rs.getString("perawatan_dressing_infus").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlperawatan_dressing_infus=ttlperawatan_dressing_infus+perawatan_dressing_infus;
-                    spoit_yang_digunakan_disposible=Double.parseDouble(rs.getString("spoit_yang_digunakan_disposible").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlspoit_yang_digunakan_disposible=ttlspoit_yang_digunakan_disposible+spoit_yang_digunakan_disposible;
-                    memberi_tanggal_dan_jam_pemasangan_infus=Double.parseDouble(rs.getString("memberi_tanggal_dan_jam_pemasangan_infus").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlmemberi_tanggal_dan_jam_pemasangan_infus=ttlmemberi_tanggal_dan_jam_pemasangan_infus+memberi_tanggal_dan_jam_pemasangan_infus;
-                    set_infus_setiap_72jam=Double.parseDouble(rs.getString("set_infus_setiap_72jam").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlset_infus_setiap_72jam=ttlset_infus_setiap_72jam+set_infus_setiap_72jam;
-                    
-                    ttlpenilaian=ttlpenilaian+(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/10)*100);
+                    pembagi=0;sebelum_melakukan_hand_hygiene=0;menggunakan_apd_lengkap=0;lokasi_pemasangan_sesuai=0;alat_yang_digunakan_steril=0;pembersihan_kulit=0;setelah_melakukan_hand_hygiene=0;perawatan_dressing_infus=0;spoit_yang_digunakan_disposible=0;memberi_tanggal_dan_jam_pemasangan_infus=0;set_infus_setiap_72jam=0;
+
+                    if(!rs.getString("sebelum_melakukan_hand_hygiene").equals("NA")){
+                        sebelum_melakukan_hand_hygiene=Double.parseDouble(rs.getString("sebelum_melakukan_hand_hygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsebelum_melakukan_hand_hygiene=ttlsebelum_melakukan_hand_hygiene+sebelum_melakukan_hand_hygiene;
+                        pembagi++;
+                    }else{
+                        nasebelum_melakukan_hand_hygiene++;
+                    }
+
+                    if(!rs.getString("menggunakan_apd_lengkap").equals("NA")){
+                        menggunakan_apd_lengkap=Double.parseDouble(rs.getString("menggunakan_apd_lengkap").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlmenggunakan_apd_lengkap=ttlmenggunakan_apd_lengkap+menggunakan_apd_lengkap;
+                        pembagi++;
+                    }else{
+                        namenggunakan_apd_lengkap++;
+                    }
+
+                    if(!rs.getString("lokasi_pemasangan_sesuai").equals("NA")){
+                        lokasi_pemasangan_sesuai=Double.parseDouble(rs.getString("lokasi_pemasangan_sesuai").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttllokasi_pemasangan_sesuai=ttllokasi_pemasangan_sesuai+lokasi_pemasangan_sesuai;
+                        pembagi++;
+                    }else{
+                        nalokasi_pemasangan_sesuai++;
+                    }
+
+                    if(!rs.getString("alat_yang_digunakan_steril").equals("NA")){
+                        alat_yang_digunakan_steril=Double.parseDouble(rs.getString("alat_yang_digunakan_steril").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlalat_yang_digunakan_steril=ttlalat_yang_digunakan_steril+alat_yang_digunakan_steril;
+                        pembagi++;
+                    }else{
+                        naalat_yang_digunakan_steril++;
+                    }
+
+                    if(!rs.getString("pembersihan_kulit").equals("NA")){
+                        pembersihan_kulit=Double.parseDouble(rs.getString("pembersihan_kulit").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlpembersihan_kulit=ttlpembersihan_kulit+pembersihan_kulit;
+                        pembagi++;
+                    }else{
+                        napembersihan_kulit++;
+                    }
+
+                    if(!rs.getString("setelah_melakukan_hand_hygiene").equals("NA")){
+                        setelah_melakukan_hand_hygiene=Double.parseDouble(rs.getString("setelah_melakukan_hand_hygiene").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlsetelah_melakukan_hand_hygiene=ttlsetelah_melakukan_hand_hygiene+setelah_melakukan_hand_hygiene;
+                        pembagi++;
+                    }else{
+                        nasetelah_melakukan_hand_hygiene++;
+                    }
+
+                    if(!rs.getString("perawatan_dressing_infus").equals("NA")){
+                        perawatan_dressing_infus=Double.parseDouble(rs.getString("perawatan_dressing_infus").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlperawatan_dressing_infus=ttlperawatan_dressing_infus+perawatan_dressing_infus;
+                        pembagi++;
+                    }else{
+                        naperawatan_dressing_infus++;
+                    }
+
+                    if(!rs.getString("spoit_yang_digunakan_disposible").equals("NA")){
+                        spoit_yang_digunakan_disposible=Double.parseDouble(rs.getString("spoit_yang_digunakan_disposible").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlspoit_yang_digunakan_disposible=ttlspoit_yang_digunakan_disposible+spoit_yang_digunakan_disposible;
+                        pembagi++;
+                    }else{
+                        naspoit_yang_digunakan_disposible++;
+                    }
+
+                    if(!rs.getString("memberi_tanggal_dan_jam_pemasangan_infus").equals("NA")){
+                        memberi_tanggal_dan_jam_pemasangan_infus=Double.parseDouble(rs.getString("memberi_tanggal_dan_jam_pemasangan_infus").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlmemberi_tanggal_dan_jam_pemasangan_infus=ttlmemberi_tanggal_dan_jam_pemasangan_infus+memberi_tanggal_dan_jam_pemasangan_infus;
+                        pembagi++;
+                    }else{
+                        namemberi_tanggal_dan_jam_pemasangan_infus++;
+                    }
+
+                    if(!rs.getString("set_infus_setiap_72jam").equals("NA")){
+                        set_infus_setiap_72jam=Double.parseDouble(rs.getString("set_infus_setiap_72jam").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                        ttlset_infus_setiap_72jam=ttlset_infus_setiap_72jam+set_infus_setiap_72jam;
+                        pembagi++;
+                    }else{
+                        naset_infus_setiap_72jam++;
+                    }
+
+                    ttlpenilaian=ttlpenilaian+(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/pembagi)*100);
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("sebelum_melakukan_hand_hygiene"),rs.getString("menggunakan_apd_lengkap"),
                         rs.getString("lokasi_pemasangan_sesuai"),rs.getString("alat_yang_digunakan_steril"),rs.getString("pembersihan_kulit"),rs.getString("setelah_melakukan_hand_hygiene"),rs.getString("perawatan_dressing_infus"),rs.getString("spoit_yang_digunakan_disposible"),rs.getString("memberi_tanggal_dan_jam_pemasangan_infus"),rs.getString("set_infus_setiap_72jam"),
-                        Math.round(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/10)*100)+" %"
+                        Math.round(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/pembagi)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new Object[]{
-                        "","Ya",":",""+ttlsebelum_melakukan_hand_hygiene,""+ttlmenggunakan_apd_lengkap,""+ttllokasi_pemasangan_sesuai,""+ttlalat_yang_digunakan_steril,""+ttlpembersihan_kulit,""+ttlsetelah_melakukan_hand_hygiene,""+ttlperawatan_dressing_infus,""+ttlspoit_yang_digunakan_disposible,""+ttlmemberi_tanggal_dan_jam_pemasangan_infus,""+ttlset_infus_setiap_72jam,""+(sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)
+                        "","NA",":",""+nasebelum_melakukan_hand_hygiene,""+namenggunakan_apd_lengkap,""+nalokasi_pemasangan_sesuai,""+naalat_yang_digunakan_steril,""+napembersihan_kulit,""+nasetelah_melakukan_hand_hygiene,""+naperawatan_dressing_infus,""+naspoit_yang_digunakan_disposible,""+namemberi_tanggal_dan_jam_pemasangan_infus,""+naset_infus_setiap_72jam,
+                        ""+(nasebelum_melakukan_hand_hygiene+namenggunakan_apd_lengkap+nalokasi_pemasangan_sesuai+naalat_yang_digunakan_steril+napembersihan_kulit+nasetelah_melakukan_hand_hygiene+naperawatan_dressing_infus+naspoit_yang_digunakan_disposible+namemberi_tanggal_dan_jam_pemasangan_infus+naset_infus_setiap_72jam)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Tidak",":",""+(i-ttlsebelum_melakukan_hand_hygiene),""+(i-ttlmenggunakan_apd_lengkap),""+(i-ttllokasi_pemasangan_sesuai),""+(i-ttlalat_yang_digunakan_steril),""+(i-ttlpembersihan_kulit),""+(i-ttlsetelah_melakukan_hand_hygiene),""+(i-ttlperawatan_dressing_infus),""+(i-ttlspoit_yang_digunakan_disposible),""+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus),""+(i-ttlset_infus_setiap_72jam),""+((i-ttlsebelum_melakukan_hand_hygiene)+
-                        (i-ttlmenggunakan_apd_lengkap)+(i-ttllokasi_pemasangan_sesuai)+(i-ttlalat_yang_digunakan_steril)+(i-ttlpembersihan_kulit)+(i-ttlsetelah_melakukan_hand_hygiene)+(i-ttlperawatan_dressing_infus)+(i-ttlspoit_yang_digunakan_disposible)+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus)+(i-ttlset_infus_setiap_72jam))
+                        "","Ya",":",""+ttlsebelum_melakukan_hand_hygiene,""+ttlmenggunakan_apd_lengkap,""+ttllokasi_pemasangan_sesuai,""+ttlalat_yang_digunakan_steril,""+ttlpembersihan_kulit,""+ttlsetelah_melakukan_hand_hygiene,""+ttlperawatan_dressing_infus,""+ttlspoit_yang_digunakan_disposible,""+ttlmemberi_tanggal_dan_jam_pemasangan_infus,""+ttlset_infus_setiap_72jam,""+(ttlsebelum_melakukan_hand_hygiene+ttlmenggunakan_apd_lengkap+ttllokasi_pemasangan_sesuai+ttlalat_yang_digunakan_steril+ttlpembersihan_kulit+ttlsetelah_melakukan_hand_hygiene+ttlperawatan_dressing_infus+ttlspoit_yang_digunakan_disposible+ttlmemberi_tanggal_dan_jam_pemasangan_infus+ttlset_infus_setiap_72jam)
                     });
                     tabMode.addRow(new Object[]{
-                        "","Rata-rata",":",Math.round((ttlsebelum_melakukan_hand_hygiene/i)*100)+" %",Math.round((ttlmenggunakan_apd_lengkap/i)*100)+" %",Math.round((ttllokasi_pemasangan_sesuai/i)*100)+" %",
-                        Math.round((ttlalat_yang_digunakan_steril/i)*100)+" %",Math.round((ttlpembersihan_kulit/i)*100)+" %",Math.round((ttlsetelah_melakukan_hand_hygiene/i)*100)+" %",Math.round((ttlperawatan_dressing_infus/i)*100)+" %",Math.round((ttlspoit_yang_digunakan_disposible/i)*100)+" %",Math.round((ttlmemberi_tanggal_dan_jam_pemasangan_infus/i)*100)+" %",Math.round((ttlset_infus_setiap_72jam/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Tidak",":",""+(i-ttlsebelum_melakukan_hand_hygiene-nasebelum_melakukan_hand_hygiene),""+(i-ttlmenggunakan_apd_lengkap-namenggunakan_apd_lengkap),""+(i-ttllokasi_pemasangan_sesuai-nalokasi_pemasangan_sesuai),""+(i-ttlalat_yang_digunakan_steril-naalat_yang_digunakan_steril),""+(i-ttlpembersihan_kulit-napembersihan_kulit),""+(i-ttlsetelah_melakukan_hand_hygiene-nasetelah_melakukan_hand_hygiene),""+(i-ttlperawatan_dressing_infus-naperawatan_dressing_infus),""+(i-ttlspoit_yang_digunakan_disposible-naspoit_yang_digunakan_disposible),""+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus-namemberi_tanggal_dan_jam_pemasangan_infus),""+(i-ttlset_infus_setiap_72jam-naset_infus_setiap_72jam),""+((i-ttlsebelum_melakukan_hand_hygiene-nasebelum_melakukan_hand_hygiene)+
+                        (i-ttlmenggunakan_apd_lengkap-namenggunakan_apd_lengkap)+(i-ttllokasi_pemasangan_sesuai-nalokasi_pemasangan_sesuai)+(i-ttlalat_yang_digunakan_steril-naalat_yang_digunakan_steril)+(i-ttlpembersihan_kulit-napembersihan_kulit)+(i-ttlsetelah_melakukan_hand_hygiene-nasetelah_melakukan_hand_hygiene)+(i-ttlperawatan_dressing_infus-naperawatan_dressing_infus)+(i-ttlspoit_yang_digunakan_disposible-naspoit_yang_digunakan_disposible)+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus-namemberi_tanggal_dan_jam_pemasangan_infus)+(i-ttlset_infus_setiap_72jam-naset_infus_setiap_72jam))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Rata-rata",":",Math.round((ttlsebelum_melakukan_hand_hygiene/(i-nasebelum_melakukan_hand_hygiene))*100)+" %",Math.round((ttlmenggunakan_apd_lengkap/(i-namenggunakan_apd_lengkap))*100)+" %",Math.round((ttllokasi_pemasangan_sesuai/(i-nalokasi_pemasangan_sesuai))*100)+" %",
+                        Math.round((ttlalat_yang_digunakan_steril/(i-naalat_yang_digunakan_steril))*100)+" %",Math.round((ttlpembersihan_kulit/(i-napembersihan_kulit))*100)+" %",Math.round((ttlsetelah_melakukan_hand_hygiene/(i-nasetelah_melakukan_hand_hygiene))*100)+" %",Math.round((ttlperawatan_dressing_infus/(i-naperawatan_dressing_infus))*100)+" %",Math.round((ttlspoit_yang_digunakan_disposible/(i-naspoit_yang_digunakan_disposible))*100)+" %",Math.round((ttlmemberi_tanggal_dan_jam_pemasangan_infus/(i-namemberi_tanggal_dan_jam_pemasangan_infus))*100)+" %",Math.round((ttlset_infus_setiap_72jam/(i-naset_infus_setiap_72jam))*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {

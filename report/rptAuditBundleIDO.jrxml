@@ -70,23 +70,26 @@ from audit_bundle_ido inner join ruang_audit_kepatuhan on audit_bundle_ido.id_ru
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_bundle_ido"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*100)]]></variableExpression>
+	<variable name="ttlpenilaian" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[(($F{pencukuran_rambut}.equals("NA")?0:1)+($F{antibiotik}.equals("NA")?0:1)+($F{temperature}.equals("NA")?0:1)+($F{sugar}.equals("NA")?0:1))==0 ? null :
+((($F{pencukuran_rambut}.equals("NA")?0.0:Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{antibiotik}.equals("NA")?0.0:Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{temperature}.equals("NA")?0.0:Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sugar}.equals("NA")?0.0:Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{pencukuran_rambut}.equals("NA")?0:1)+($F{antibiotik}.equals("NA")?0:1)+($F{temperature}.equals("NA")?0:1)+($F{sugar}.equals("NA")?0:1)))*100]]></variableExpression>
 	</variable>
 	<variable name="pencukuran_rambut" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{pencukuran_rambut}.equals("NA")?null:Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="antibiotik" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{antibiotik}.equals("NA")?null:Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="temperature" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{temperature}.equals("NA")?null:Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<variable name="sugar" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+		<variableExpression><![CDATA[$F{sugar}.equals("NA")?null:Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -298,10 +301,14 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(($F{pencukuran_rambut}.equals("NA")?0:1)+($F{antibiotik}.equals("NA")?0:1)+($F{temperature}.equals("NA")?0:1)+($F{sugar}.equals("NA")?0:1))==0 ? "-" :
+Math.round(((
+($F{pencukuran_rambut}.equals("NA")?0.0:Double.parseDouble($F{pencukuran_rambut}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{antibiotik}.equals("NA")?0.0:Double.parseDouble($F{antibiotik}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{temperature}.equals("NA")?0.0:Double.parseDouble($F{temperature}.replaceAll("Ya","1").replaceAll("Tidak","0")))+
+($F{sugar}.equals("NA")?0.0:Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0"))))
+/
+(($F{pencukuran_rambut}.equals("NA")?0:1)+($F{antibiotik}.equals("NA")?0:1)+($F{temperature}.equals("NA")?0:1)+($F{sugar}.equals("NA")?0:1)))*100)+" %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -377,7 +384,7 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{pencukuran_rambut}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{pencukuran_rambut}==null?"-":Math.round($V{pencukuran_rambut}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="471" y="0" width="90" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
@@ -387,7 +394,7 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{antibiotik}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{antibiotik}==null?"-":Math.round($V{antibiotik}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="561" y="0" width="89" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
@@ -397,7 +404,7 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{temperature}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{temperature}==null?"-":Math.round($V{temperature}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="650" y="0" width="90" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
@@ -407,7 +414,7 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sugar}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sugar}==null?"-":Math.round($V{sugar}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -417,11 +424,7 @@ Double.parseDouble($F{sugar}.replaceAll("Ya","1").replaceAll("Tidak","0")))/4)*1
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{pencukuran_rambut}*100)+
-	($V{antibiotik}*100)+
-	($V{temperature}*100)+
-	($V{sugar}*100)
-)/4)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($V{ttlpenilaian}==null || $V{REPORT_COUNT}==0) ? "-" : Math.round($V{ttlpenilaian}/$V{REPORT_COUNT})+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">
