@@ -208,6 +208,7 @@ import javax.swing.WindowConstants;
 import kepegawaian.DlgCariDokter;
 import keuangan.DlgDeposit;
 import permintaan.DlgPermintaanKonsultasiPerawat;
+import rekammedis.RMChecklistKriteriaKeluarIsolasi;
 import rekammedis.RMChecklistKriteriaMasukIsolasi;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
@@ -19376,7 +19377,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }
     
     private void MnCheckListKriteriaMasukIsolasiActionPerformed(java.awt.event.ActionEvent evt) {
-        
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -19419,6 +19419,61 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else{
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     RMChecklistKriteriaMasukIsolasi form=new RMChecklistKriteriaMasukIsolasi(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
+                    form.emptTeks();
+                    form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        }
+    }
+    
+    private void MnCheckListKriteriaKeluarIsolasiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
+                    try {
+                        psanak=koneksi.prepareStatement(
+                            "select ranap_gabung.no_rawat2 from ranap_gabung where ranap_gabung.no_rawat=?");            
+                        try {
+                            psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
+                            rs2=psanak.executeQuery();
+                            if(rs2.next()){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                RMChecklistKriteriaKeluarIsolasi form=new RMChecklistKriteriaKeluarIsolasi(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
+                                form.emptTeks();
+                                form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                tbKamIn.requestFocus();
+                            }
+                        } catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                              if(rs2 != null){
+                                  rs2.close();
+                              }
+                              if(psanak != null){
+                                  psanak.close();
+                              }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    RMChecklistKriteriaKeluarIsolasi form=new RMChecklistKriteriaKeluarIsolasi(null,false);
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
@@ -19829,7 +19884,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                   MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnPersetujuanPemeriksaanHIV,MnSuratPernyataanMemilihDPJP,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaKeluarNICU,MnPenilaianAwalMedisPsikiatri,
                                   MnCheckListKriteriaMasukPICU,MnCheckListKriteriaKeluarPICU,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnPenilaianAwalMedisJantung,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,
                                   MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,
-                                  MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi;
+                                  MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnCheckListKriteriaKeluarIsolasi;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnCatatanObservasi,MnEdukasi,MnSuratPersetujuan,MnHasilPemeriksaanAlat;
     
     private void tampil() {
@@ -20427,6 +20482,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCheckListKriteriaKeluarNICU.setEnabled(akses.getkriteria_keluar_nicu()); 
         MnCheckListKriteriaKeluarPICU.setEnabled(akses.getkriteria_keluar_picu()); 
         MnCheckListKriteriaMasukIsolasi.setEnabled(akses.getchecklist_kriteria_masuk_isolasi());  
+        MnCheckListKriteriaKeluarIsolasi.setEnabled(akses.getchecklist_kriteria_keluar_isolasi());  
         MnSkriningGiziKehamilan.setEnabled(akses.getskrining_gizi_kehamilan());   
         
         if(akses.getkode().equals("Admin Utama")){
@@ -21074,6 +21130,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCheckListKriteriaMasukIsolasi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnCheckListKriteriaMasukIsolasi.addActionListener(this::MnCheckListKriteriaMasukIsolasiActionPerformed);
         
+        MnCheckListKriteriaKeluarIsolasi = new javax.swing.JMenuItem();
+        MnCheckListKriteriaKeluarIsolasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCheckListKriteriaKeluarIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCheckListKriteriaKeluarIsolasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCheckListKriteriaKeluarIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCheckListKriteriaKeluarIsolasi.setText("Check List Kriteria Keluar Isolasi");
+        MnCheckListKriteriaKeluarIsolasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCheckListKriteriaKeluarIsolasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCheckListKriteriaKeluarIsolasi.setName("MnCheckListKriteriaKeluarIsolasi");
+        MnCheckListKriteriaKeluarIsolasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnCheckListKriteriaKeluarIsolasi.addActionListener(this::MnCheckListKriteriaKeluarIsolasiActionPerformed);
+        
         MnCheckListKriteriaKeluarPICU = new javax.swing.JMenuItem();
         MnCheckListKriteriaKeluarPICU.setBackground(new java.awt.Color(255, 255, 254));
         MnCheckListKriteriaKeluarPICU.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -21425,6 +21493,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnRMHCU.add(MnCheckListKriteriaMasukPICU);
         MnRMHCU.add(MnCheckListKriteriaKeluarPICU);
         MnRMHCU.add(MnCheckListKriteriaMasukIsolasi);
+        MnRMHCU.add(MnCheckListKriteriaKeluarIsolasi);
         
         MnPermintaan.add(MnPermintaanKonsultasiMedik);
         MnPermintaan.add(MnPermintaanKonsultasiPerawat);

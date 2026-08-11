@@ -175,6 +175,8 @@ import java.util.concurrent.RejectedExecutionException;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import permintaan.DlgPermintaanKonsultasiPerawat;
+import rekammedis.RMChecklistKriteriaKeluarIsolasi;
+import rekammedis.RMChecklistKriteriaMasukIsolasi;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
 import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
@@ -8976,6 +8978,40 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnChecklistKriteriaMasukIsolasiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMChecklistKriteriaMasukIsolasi form=new RMChecklistKriteriaMasukIsolasi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
+    private void BtnChecklistKriteriaKeluarIsolasiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMChecklistKriteriaKeluarIsolasi form=new RMChecklistKriteriaKeluarIsolasi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -9310,7 +9346,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnLaporanTindakan,
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
-                          BtnSkriningGiziKehamilan,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi;
+                          BtnSkriningGiziKehamilan,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnChecklistKriteriaKeluarIsolasi;
     private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
     private javax.swing.JMenuItem MnCopySOAP,MnPasteSOAP;
     
@@ -9995,6 +10031,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaMasukICU.setVisible(akses.getchecklist_kriteria_masuk_icu()); 
         if(akses.getchecklist_kriteria_masuk_icu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnChecklistKriteriaMasukIsolasi.setVisible(akses.getchecklist_kriteria_masuk_isolasi()); 
+        if(akses.getchecklist_kriteria_masuk_isolasi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnChecklistKriteriaKeluarIsolasi.setVisible(akses.getchecklist_kriteria_keluar_isolasi()); 
+        if(akses.getchecklist_kriteria_keluar_isolasi()==true){
             tinggi=tinggi+24;
         }
         BtnChecklistKriteriaMasukNICU.setVisible(akses.getkriteria_masuk_nicu()); 
@@ -11231,6 +11275,32 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnIntervensiNyeriNonFarmakologi.setRoundRect(false);
         BtnIntervensiNyeriNonFarmakologi.addActionListener(this::BtnIntervensiNyeriNonFarmakologiActionPerformed);
         
+        BtnChecklistKriteriaMasukIsolasi = new widget.Button();
+        BtnChecklistKriteriaMasukIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnChecklistKriteriaMasukIsolasi.setText("Check List Masuk Isolasi");
+        BtnChecklistKriteriaMasukIsolasi.setFocusPainted(false);
+        BtnChecklistKriteriaMasukIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnChecklistKriteriaMasukIsolasi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnChecklistKriteriaMasukIsolasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnChecklistKriteriaMasukIsolasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnChecklistKriteriaMasukIsolasi.setName("BtnChecklistKriteriaMasukIsolasi"); 
+        BtnChecklistKriteriaMasukIsolasi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnChecklistKriteriaMasukIsolasi.setRoundRect(false);
+        BtnChecklistKriteriaMasukIsolasi.addActionListener(this::BtnChecklistKriteriaMasukIsolasiActionPerformed);
+        
+        BtnChecklistKriteriaKeluarIsolasi = new widget.Button();
+        BtnChecklistKriteriaKeluarIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnChecklistKriteriaKeluarIsolasi.setText("Check List Keluar Isolasi");
+        BtnChecklistKriteriaKeluarIsolasi.setFocusPainted(false);
+        BtnChecklistKriteriaKeluarIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnChecklistKriteriaKeluarIsolasi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnChecklistKriteriaKeluarIsolasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnChecklistKriteriaKeluarIsolasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnChecklistKriteriaKeluarIsolasi.setName("BtnChecklistKriteriaKeluarIsolasi"); 
+        BtnChecklistKriteriaKeluarIsolasi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnChecklistKriteriaKeluarIsolasi.setRoundRect(false);
+        BtnChecklistKriteriaKeluarIsolasi.addActionListener(this::BtnChecklistKriteriaKeluarIsolasiActionPerformed);
+        
         MnCopySOAP = new javax.swing.JMenuItem();
         MnCopySOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnCopySOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -11378,6 +11448,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnChecklistKriteriaKeluarNICU);
         FormMenu.add(BtnChecklistKriteriaMasukPICU);
         FormMenu.add(BtnChecklistKriteriaKeluarPICU);
+        FormMenu.add(BtnChecklistKriteriaMasukIsolasi);
+        FormMenu.add(BtnChecklistKriteriaKeluarIsolasi);
         FormMenu.add(BtnMonitoringReaksiTranfusi);
         FormMenu.add(BtnSkriningNutrisiDewasa);
         FormMenu.add(BtnSkriningNutrisiLansia);
