@@ -94,6 +94,24 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
+            }else if(i==6){
+                column.setPreferredWidth(85);
+            }else if(i==7){
+                column.setPreferredWidth(95);
+            }else if(i==8){
+                column.setPreferredWidth(111);
+            }else if(i==9){
+                column.setPreferredWidth(105);
+            }else if(i==10){
+                column.setPreferredWidth(93);
+            }else if(i==11){
+                column.setPreferredWidth(84);
+            }else if(i==12){
+                column.setPreferredWidth(230);
+            }else if(i==13){
+                column.setPreferredWidth(90);
+            }else if(i==14){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -837,7 +855,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
                     if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),Sequel.ambiltanggalsekarang())==true){
                         hapus();
                     }
@@ -868,7 +886,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
                         if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),Sequel.ambiltanggalsekarang())==true){
                             if(TanggalRegistrasi.getText().equals("")){
                                 TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
@@ -1370,6 +1388,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
             KriteriaPedomanTerpenuhi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             PersetujuanDpjp.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             Keputusan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Alasan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
