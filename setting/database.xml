@@ -99,6 +99,8 @@
     <entry key="SECRETKEYSATUSEHAT">ukhrihQzC2cCqQ+DQy7T+wkKxe2YFfvnv1vQr/eAycsbJOiU0j6eeo7CFJE6D/WlEcwqwFE15TGfO5qcMTm+wclfWqpiscCeYZA9pZ/+44o=</entry>
     <entry key="URLAUTHSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/oauth2/v1</entry> 
     <entry key="URLFHIRSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/fhir-r4/v1</entry>
+    <entry key="URLAPPLINKSATUSEHAT">https://applink-stg.dto.kemkes.go.id/ssm/tte</entry>
+    <entry key="IDORGBPJSSATUSEHAT">100071505</entry>
     <entry key="IDSATUSEHAT">Z64Bi97zYtxq3TuJDUb/ng==</entry>
     <entry key="KELURAHANSATUSEHAT">3313160009</entry>
     <entry key="KECAMATANSATUSEHAT">3313160</entry>

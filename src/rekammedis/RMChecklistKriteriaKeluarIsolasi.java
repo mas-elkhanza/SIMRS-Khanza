@@ -159,7 +159,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaKeluarICU = new javax.swing.JMenuItem();
+        MnKriteriaKeluarIsolasi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -227,19 +227,19 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaKeluarICU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaKeluarICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaKeluarICU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaKeluarICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaKeluarICU.setText("Formulir Checklist Kriteria Keluar ICU");
-        MnKriteriaKeluarICU.setName("MnKriteriaKeluarICU"); // NOI18N
-        MnKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaKeluarICU.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaKeluarIsolasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaKeluarIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaKeluarIsolasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaKeluarIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaKeluarIsolasi.setText("Formulir Checklist Kriteria Keluar Isolasi");
+        MnKriteriaKeluarIsolasi.setName("MnKriteriaKeluarIsolasi"); // NOI18N
+        MnKriteriaKeluarIsolasi.setPreferredSize(new java.awt.Dimension(270, 26));
+        MnKriteriaKeluarIsolasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaKeluarICUActionPerformed(evt);
+                MnKriteriaKeluarIsolasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaKeluarICU);
+        jPopupMenu1.add(MnKriteriaKeluarIsolasi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -425,7 +425,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-08-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -439,7 +439,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-08-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -588,7 +588,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2026 05:50:25" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-08-2026 13:39:44" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -834,7 +834,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Kriteria11,BtnBatal);
+            Valid.pindah(evt,Alasan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -939,19 +939,15 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Lagi Memerlukan Perawatan ICU</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Meninggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Menghendaki Pasien Dipindahkan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi > 60 Atau < 100 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP > 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP < 120 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR > 12 Sampai < 25 x/menit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Membaik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi Transmisi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penunjang Memenuhi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pedoman Terpenuhi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Persetujuan DPJP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/ICU</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/Isolasi</b></td>"+
                     "</tr>"
                 );
                 
@@ -973,16 +969,12 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
                             "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1003,17 +995,17 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaKeluarICU.html");            
+                File f = new File("DataChecklistKriteriaKeluarIsolasi.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA KELUAR ICU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA KELUAR ISOLASI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1096,7 +1088,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaKeluarICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaKeluarICUActionPerformed
+    private void MnKriteriaKeluarIsolasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaKeluarIsolasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1106,20 +1098,18 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),17).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarICU.jasper","report","::[ Formulir Check List Kriteria Keluar ICU ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarIsolasi.jasper","report","::[ Formulir Check List Kriteria Keluar Isolasi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_isolasi.tanggal,"+
-                    "checklist_kriteria_keluar_isolasi.kriteria1,checklist_kriteria_keluar_isolasi.kriteria2,checklist_kriteria_keluar_isolasi.kriteria3,"+
-                    "checklist_kriteria_keluar_isolasi.kriteria4,checklist_kriteria_keluar_isolasi.kriteria5,checklist_kriteria_keluar_isolasi.kriteria6,"+
-                    "checklist_kriteria_keluar_isolasi.kriteria7,checklist_kriteria_keluar_isolasi.kriteria8,checklist_kriteria_keluar_isolasi.kriteria9,"+
-                    "checklist_kriteria_keluar_isolasi.kriteria10,checklist_kriteria_keluar_isolasi.kriteria11,checklist_kriteria_keluar_isolasi.nik,pegawai.nama "+
+                    "checklist_kriteria_keluar_isolasi.gejala_membaik,checklist_kriteria_keluar_isolasi.tidak_ada_indikasi_transmisi,checklist_kriteria_keluar_isolasi.hasil_penunjang_memenuhi,"+
+                    "checklist_kriteria_keluar_isolasi.kriteria_pedoman_terpenuhi,checklist_kriteria_keluar_isolasi.persetujuan_dpjp,checklist_kriteria_keluar_isolasi.keputusan,"+
+                    "checklist_kriteria_keluar_isolasi.alasan,checklist_kriteria_keluar_isolasi.nik,pegawai.nama "+
                     "from checklist_kriteria_keluar_isolasi inner join reg_periksa on checklist_kriteria_keluar_isolasi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_isolasi.nik "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=checklist_kriteria_keluar_isolasi.nik "+
                     "where checklist_kriteria_keluar_isolasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_keluar_isolasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaKeluarICUActionPerformed
+    }//GEN-LAST:event_MnKriteriaKeluarIsolasiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1251,7 +1241,7 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
     private widget.ComboBox KriteriaPedomanTerpenuhi;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaKeluarICU;
+    private javax.swing.JMenuItem MnKriteriaKeluarIsolasi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PersetujuanDpjp;
@@ -1467,12 +1457,11 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("checklist_kriteria_keluar_isolasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kriteria1=?,kriteria2=?,kriteria3=?,kriteria4=?,kriteria5=?,"+
-                "kriteria6=?,kriteria7=?,kriteria8=?,kriteria9=?,kriteria10=?,kriteria11=?,nik=?",16,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
-                Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
-                Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),
-                Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
+        if(Sequel.mengedittf("checklist_kriteria_keluar_isolasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,gejala_membaik=?,tidak_ada_indikasi_transmisi=?,hasil_penunjang_memenuhi=?,"+
+                "kriteria_pedoman_terpenuhi=?,persetujuan_dpjp=?,keputusan=?,alasan=?,nik=?",12,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),GejalaMembaik.getSelectedItem().toString(), 
+                TidakAdaIndikasiTransmisi.getSelectedItem().toString(),HasilPenunjangMemenuhi.getSelectedItem().toString(),KriteriaPedomanTerpenuhi.getSelectedItem().toString(), 
+                PersetujuanDpjp.getSelectedItem().toString(),Keputusan.getSelectedItem().toString(),Alasan.getText(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -1481,21 +1470,17 @@ public final class RMChecklistKriteriaKeluarIsolasi extends javax.swing.JDialog 
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(Kriteria1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Kriteria2.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(Kriteria3.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Kriteria4.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Kriteria5.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(Kriteria6.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(Kriteria7.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(Kriteria8.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(Kriteria9.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(Kriteria10.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(Kriteria11.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(GejalaMembaik.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(TidakAdaIndikasiTransmisi.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(HasilPenunjangMemenuhi.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(KriteriaPedomanTerpenuhi.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(PersetujuanDpjp.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Keputusan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(Alasan.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),14);
             emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {

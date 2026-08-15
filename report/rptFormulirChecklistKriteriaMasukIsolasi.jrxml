@@ -497,7 +497,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[KRITERIA PASIEN MASUK ISOLASI]]></text>
+				<text><![CDATA[KRITERIA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="19" width="20" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d6d852da-b176-4f72-bf65-db3072c89089">

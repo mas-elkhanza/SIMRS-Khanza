@@ -28,11 +28,12 @@
         <div class="card">
             <div class="body">
                 <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                    <li role="presentation" <?=(isset($_GET['iyem'])?"":"class='active'")?>><a href="#panduan" data-toggle="tab">PANDUAN</a></li>
+                    <li role="presentation" <?=(isset($_GET['iyem'])?"":"class='active'")?>><a href="#ios" data-toggle="tab">PANDUAN iOS</a></li>
+                    <li role="presentation"><a href="#android" data-toggle="tab">PANDUAN ANDROID</a></li>
                     <li role="presentation" <?=(isset($_GET['iyem'])?"class='active'":"")?>><a href="#riwayat" data-toggle="tab">RIWAYAT DATA</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" <?=(isset($_GET['iyem'])?"class='tab-pane fade'":"class='tab-pane fade in active'")?> id="panduan">
+                    <div role="tabpanel" <?=(isset($_GET['iyem'])?"class='tab-pane fade'":"class='tab-pane fade in active'")?> id="ios">
                         <br/>
                         <div class="alert alert-info">
                             <small><b>Untuk pengguna iPhone (Apple Health).</b> Data dikirim dari aplikasi Health melalui Shortcut.</small>
@@ -111,7 +112,7 @@
                         </div>
                         <div class="card">
                             <div class="header">
-                                <h2>4. Daftar Variabel yang Bisa Dikirim <small>Gunakan nama key persis seperti kolom 'Key JSON'</small></h2>
+                                <h2>4. Daftar Variabel yang Bisa Dikirim (iOS) <small>Gunakan nama key persis seperti kolom 'Key JSON'</small></h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -178,6 +179,87 @@
                                             <tr><td>51</td><td>Notifikasi Irama Tidak Teratur</td><td>irregularHeartRhythmEvent</td><td>-</td></tr>
                                             <tr><td>52</td><td>Paparan Suara Lingkungan</td><td>environmentalAudioExposure</td><td>dB[SPL]</td></tr>
                                             <tr><td>53</td><td>Paparan Suara Headphone</td><td>headphoneAudioExposure</td><td>dB[SPL]</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="android">
+                        <br/>
+                        <div class="alert alert-info">
+                            <small><b>Untuk pengguna Android (Health Connect).</b> Aplikasi membaca data dari <b>Health Connect</b>. Variabel yang didukung di Android lebih sedikit daripada iOS, mengikuti data yang tersedia di Health Connect.</small>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table dataTable">
+                                <tr>
+                                    <td><b>Token</b></td><td>: <?=encrypt_decrypt("{\"norm\":\"".encrypt_decrypt($_SESSION["ses_pasien"],"d")."\",\"password\":\"".getOne2("select AES_DECRYPT(personal_pasien.password,'windi') from personal_pasien where personal_pasien.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'")."\"}","e");?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>URL</b></td><td>: <?="http://".$_SERVER['HTTP_HOST']."/epasien/service.php";?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><small>Salin <b>kedua</b> baris di atas. Di aplikasi Android, masukkan <b>URL</b> dan <b>Token</b> ini lalu tekan Simpan.</small></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="card">
+                            <div class="header">
+                                <h2>1. Pasang Aplikasi <small>Cukup unduh sekali</small></h2>
+                            </div>
+                            <div class="body">
+                                <p>
+                                    <a href="<?="http://".$_SERVER['HTTP_HOST']."/epasien/downloadwearable.php?jenis=apk";?>" class="btn btn-success waves-effect">
+                                         <i class="material-icons">android</i> UNDUH APLIKASI ANDROID
+                                    </a>
+                                </p>
+                                <ol>
+                                    <li>Buka tautan di atas dari <b>HP Android Anda</b>, lalu simpan file <code>wearable.apk</code>.</li>
+                                    <li>Buka file yang terunduh. Jika muncul peringatan <b>'sumber tidak dikenal'</b>, izinkan pemasangan untuk aplikasi yang Anda pakai membuka file (Files/Chrome), lalu tekan <b>Pasang / Install</b>.</li>
+                                    <li>Buka aplikasi <b>wearable</b> yang sudah terpasang.</li>
+                                    <li>Isi kolom <b>URL</b> dan <b>Token</b> dengan nilai di atas, lalu tekan <b>Simpan Pengaturan</b>.</li>
+                                    <li>Centang variabel kesehatan yang ingin dikirim.</li>
+                                    <li>Tekan <b>1. Minta Izin Health Connect</b>, lalu setujui izin yang diminta.</li>
+                                    <li>Tekan <b>2. Baca dan Kirim</b>. Jika berhasil, akan muncul pesan data terkirim beserta respon dari server.</li>
+                                </ol>
+                                <p><small><b>Catatan:</b> data hanya dapat dibaca jika sudah tersedia di Health Connect. Jika HP Anda belum memiliki sumber data yang mengisi Health Connect, aplikasi tidak akan menemukan data untuk dikirim.</small></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="header">
+                                <h2>2. Daftar Variabel yang Bisa Dikirim (Android) <small>Sesuai data yang tersedia di Health Connect</small></h2>
+                            </div>
+                            <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Variabel</th>
+                                                <th>Key JSON</th>
+                                                <th width="15%">Satuan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>1</td><td>Detak Jantung</td><td>heartRate</td><td>/min</td></tr>
+                                            <tr><td>2</td><td>Detak Jantung Istirahat</td><td>restingHeartRate</td><td>/min</td></tr>
+                                            <tr><td>3</td><td>Variabilitas Detak Jantung (HRV)</td><td>heartRateVariabilitySDNN</td><td>ms</td></tr>
+                                            <tr><td>4</td><td>Saturasi Oksigen (SpO2)</td><td>oxygenSaturation</td><td>%</td></tr>
+                                            <tr><td>5</td><td>Tekanan Darah Sistolik</td><td>bloodPressureSystolic</td><td>mm[Hg]</td></tr>
+                                            <tr><td>6</td><td>Tekanan Darah Diastolik</td><td>bloodPressureDiastolic</td><td>mm[Hg]</td></tr>
+                                            <tr><td>7</td><td>Laju Napas</td><td>respiratoryRate</td><td>/min</td></tr>
+                                            <tr><td>8</td><td>Suhu Tubuh</td><td>bodyTemperature</td><td>Cel</td></tr>
+                                            <tr><td>9</td><td>Suhu Basal Tubuh</td><td>basalBodyTemperature</td><td>Cel</td></tr>
+                                            <tr><td>10</td><td>Glukosa Darah</td><td>bloodGlucose</td><td>mg/dL</td></tr>
+                                            <tr><td>11</td><td>Berat Badan</td><td>bodyMass</td><td>kg</td></tr>
+                                            <tr><td>12</td><td>Tinggi Badan</td><td>height</td><td>cm</td></tr>
+                                            <tr><td>13</td><td>Persentase Lemak Tubuh</td><td>bodyFatPercentage</td><td>%</td></tr>
+                                            <tr><td>14</td><td>Jumlah Langkah</td><td>stepCount</td><td>{steps}</td></tr>
+                                            <tr><td>15</td><td>Jarak Jalan/Lari</td><td>distanceWalkingRunning</td><td>m</td></tr>
+                                            <tr><td>16</td><td>Kalori Aktif</td><td>activeEnergyBurned</td><td>kcal</td></tr>
+                                            <tr><td>17</td><td>Kalori Basal</td><td>basalEnergyBurned</td><td>kcal</td></tr>
+                                            <tr><td>18</td><td>Lantai Dinaiki</td><td>flightsClimbed</td><td>{flights}</td></tr>
+                                            <tr><td>19</td><td>VO2 Max</td><td>vo2Max</td><td>mL/min/kg</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
