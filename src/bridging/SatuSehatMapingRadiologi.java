@@ -149,6 +149,9 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         jLabel5 = new widget.Label();
         SampelRadiologiSystem = new widget.TextBox();
         BtnSnomed = new widget.Button();
+        BtnLoinc = new widget.Button();
+        BtnSnomed1 = new widget.Button();
+        BtnLoinc1 = new widget.Button();
 
         NamaPemeriksaan.setEditable(false);
         NamaPemeriksaan.setHighlighter(null);
@@ -406,13 +409,13 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         jLabel4.setText("Periksa System :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(395, 10, 100, 23);
+        jLabel4.setBounds(425, 10, 100, 23);
 
         KodePemeriksaan.setEditable(false);
         KodePemeriksaan.setHighlighter(null);
         KodePemeriksaan.setName("KodePemeriksaan"); // NOI18N
         FormInput.add(KodePemeriksaan);
-        KodePemeriksaan.setBounds(241, 10, 110, 23);
+        KodePemeriksaan.setBounds(271, 10, 110, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('1');
@@ -429,7 +432,7 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnBarang);
-        btnBarang.setBounds(353, 10, 28, 23);
+        btnBarang.setBounds(383, 10, 28, 23);
 
         Code.setHighlighter(null);
         Code.setName("Code"); // NOI18N
@@ -469,7 +472,7 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(RadiologiSystem);
-        RadiologiSystem.setBounds(499, 10, 225, 23);
+        RadiologiSystem.setBounds(529, 10, 195, 23);
 
         jLabel11.setText("Sampel Code :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -489,7 +492,7 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(SampelCode);
-        SampelCode.setBounds(99, 70, 160, 23);
+        SampelCode.setBounds(99, 70, 110, 23);
 
         SampelDisplay.setHighlighter(null);
         SampelDisplay.setName("SampelDisplay"); // NOI18N
@@ -532,6 +535,57 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         });
         FormInput.add(BtnSnomed);
         BtnSnomed.setBounds(211, 10, 28, 23);
+
+        BtnLoinc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnLoinc.setMnemonic('1');
+        BtnLoinc.setToolTipText("Alt+1");
+        BtnLoinc.setName("BtnLoinc"); // NOI18N
+        BtnLoinc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLoincActionPerformed(evt);
+            }
+        });
+        BtnLoinc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnLoincKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnLoinc);
+        BtnLoinc.setBounds(241, 10, 28, 23);
+
+        BtnSnomed1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSnomed1.setMnemonic('1');
+        BtnSnomed1.setToolTipText("Alt+1");
+        BtnSnomed1.setName("BtnSnomed1"); // NOI18N
+        BtnSnomed1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSnomed1ActionPerformed(evt);
+            }
+        });
+        BtnSnomed1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSnomed1KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnSnomed1);
+        BtnSnomed1.setBounds(211, 70, 28, 23);
+
+        BtnLoinc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnLoinc1.setMnemonic('1');
+        BtnLoinc1.setToolTipText("Alt+1");
+        BtnLoinc1.setName("BtnLoinc1"); // NOI18N
+        BtnLoinc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLoinc1ActionPerformed(evt);
+            }
+        });
+        BtnLoinc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnLoinc1KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnLoinc1);
+        BtnLoinc1.setBounds(241, 70, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -885,6 +939,147 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         Valid.pindah(evt, RadiologiSystem, Display);
     }//GEN-LAST:event_BtnSnomedKeyPressed
 
+    private void BtnLoincActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoincActionPerformed
+        SatuSehatReferensiLOINC referensi=new SatuSehatReferensiLOINC(null,false);
+        referensi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(referensi.getTable().getSelectedRow()!= -1){
+                    Code.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),0).toString());
+                    Display.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),1).toString());
+                    RadiologiSystem.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),2).toString());
+                }
+                btnBarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        referensi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    referensi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        referensi.setLocationRelativeTo(internalFrame1);
+        referensi.setVisible(true);
+    }//GEN-LAST:event_BtnLoincActionPerformed
+
+    private void BtnLoincKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnLoincKeyPressed
+        Valid.pindah(evt, RadiologiSystem, Display);
+    }//GEN-LAST:event_BtnLoincKeyPressed
+
+    private void BtnSnomed1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSnomed1ActionPerformed
+        SatuSehatReferensiSnomed referensi=new SatuSehatReferensiSnomed(null,false);
+        referensi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(referensi.getTable().getSelectedRow()!= -1){
+                    SampelCode.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),0).toString());
+                    SampelDisplay.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),1).toString());
+                    SampelRadiologiSystem.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),2).toString());
+                }
+                btnBarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        referensi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    referensi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        referensi.setLocationRelativeTo(internalFrame1);
+        referensi.setVisible(true);
+    }//GEN-LAST:event_BtnSnomed1ActionPerformed
+
+    private void BtnSnomed1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSnomed1KeyPressed
+        Valid.pindah(evt, SampelRadiologiSystem, SampelDisplay);
+    }//GEN-LAST:event_BtnSnomed1KeyPressed
+
+    private void BtnLoinc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoinc1ActionPerformed
+        SatuSehatReferensiLOINC referensi=new SatuSehatReferensiLOINC(null,false);
+        referensi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(referensi.getTable().getSelectedRow()!= -1){
+                    SampelCode.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),0).toString());
+                    SampelDisplay.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),1).toString());
+                    SampelRadiologiSystem.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),2).toString());
+                }
+                btnBarang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        referensi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    referensi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        referensi.setLocationRelativeTo(internalFrame1);
+        referensi.setVisible(true);
+    }//GEN-LAST:event_BtnLoinc1ActionPerformed
+
+    private void BtnLoinc1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnLoinc1KeyPressed
+        Valid.pindah(evt, SampelRadiologiSystem, SampelDisplay);
+    }//GEN-LAST:event_BtnLoinc1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -908,9 +1103,12 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnLoinc;
+    private widget.Button BtnLoinc1;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Button BtnSnomed;
+    private widget.Button BtnSnomed1;
     private widget.CekBox ChkInput;
     private widget.TextBox Code;
     private widget.TextBox Display;
