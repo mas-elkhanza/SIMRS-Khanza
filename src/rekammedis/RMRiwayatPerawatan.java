@@ -4730,7 +4730,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSEPBPJS(rs.getString("no_rawat"));
                     menampilkanTriaseIGD(rs.getString("no_rawat"));
                     menampilkanAsuhanKeperawatanIGD(rs.getString("no_rawat"));
-                    menampilkanAsuhanMedisMCU(rs.getString("no_rawat"));
                     menampilkanAsuhanKeperawatanRalan(rs.getString("no_rawat"));
                     menampilkanAsuhanKeperawatanRalanGigi(rs.getString("no_rawat"));
                     menampilkanAsuhanKeperawatanRalanBayi(rs.getString("no_rawat"));
@@ -4745,6 +4744,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanPenilaianBayiBaruLahir(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisIGD(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisIGDPsikiatri(rs.getString("no_rawat"));
+                    menampilkanAsuhanMedisMCU(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatJalan(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatJalanKandungan(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatJalanBayi(rs.getString("no_rawat"));
