@@ -2054,7 +2054,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             if(TabSkala1dan2.getSelectedIndex()==0){
                                 for(i=0;i<tbSkala1.getRowCount();i++){ 
                                     if(tbSkala1.getValueAt(i,0).toString().equals("true")){
-                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?,''","Skala 1",2,new String[]{
                                                 TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
                                             })==true){
                                                 tbSkala1.setValueAt(false,i,0);
@@ -2066,7 +2066,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             }else if(TabSkala1dan2.getSelectedIndex()==1){
                                 for(i=0;i<tbSkala2.getRowCount();i++){ 
                                     if(tbSkala2.getValueAt(i,0).toString().equals("true")){
-                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?,''","Skala 2",2,new String[]{
                                                 TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
                                             })==true){
                                                 tbSkala2.setValueAt(false,i,0);
@@ -2150,7 +2150,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             if(TabSkala3dan4dan5.getSelectedIndex()==0){
                                 for(i=0;i<tbSkala3.getRowCount();i++){ 
                                     if(tbSkala3.getValueAt(i,0).toString().equals("true")){
-                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?,''","Skala 3",2,new String[]{
                                                 TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
                                             })==true){
                                                 tbSkala3.setValueAt(false,i,0);
@@ -2162,7 +2162,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
                                 for(i=0;i<tbSkala4.getRowCount();i++){ 
                                     if(tbSkala4.getValueAt(i,0).toString().equals("true")){
-                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?,''","Skala 4",2,new String[]{
                                                 TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
                                             })==true){
                                                 tbSkala4.setValueAt(false,i,0);
@@ -2174,7 +2174,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
                                 for(i=0;i<tbSkala5.getRowCount();i++){ 
                                     if(tbSkala5.getValueAt(i,0).toString().equals("true")){
-                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?,''","Skala 5",2,new String[]{
                                                 TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
                                             })==true){
                                                 tbSkala5.setValueAt(false,i,0);
@@ -5783,7 +5783,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         if(TabSkala1dan2.getSelectedIndex()==0){
                             for(i=0;i<tbSkala1.getRowCount();i++){ 
                                 if(tbSkala1.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?,''","Skala 1",2,new String[]{
                                             TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
                                         })==true){
                                             tbSkala1.setValueAt(false,i,0);
@@ -5795,7 +5795,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(TabSkala1dan2.getSelectedIndex()==1){
                             for(i=0;i<tbSkala2.getRowCount();i++){ 
                                 if(tbSkala2.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?,''","Skala 2",2,new String[]{
                                             TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
                                         })==true){
                                             tbSkala2.setValueAt(false,i,0);
@@ -5879,7 +5879,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         if(TabSkala3dan4dan5.getSelectedIndex()==0){
                             for(i=0;i<tbSkala3.getRowCount();i++){ 
                                 if(tbSkala3.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?,''","Skala 3",2,new String[]{
                                             TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
                                         })==true){
                                             tbSkala3.setValueAt(false,i,0);
@@ -5891,7 +5891,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
                             for(i=0;i<tbSkala4.getRowCount();i++){ 
                                 if(tbSkala4.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?,''","Skala 4",2,new String[]{
                                             TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
                                         })==true){
                                             tbSkala4.setValueAt(false,i,0);
@@ -5903,7 +5903,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
                             for(i=0;i<tbSkala5.getRowCount();i++){ 
                                 if(tbSkala5.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?,''","Skala 5",2,new String[]{
                                             TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
                                         })==true){
                                             tbSkala5.setValueAt(false,i,0);
