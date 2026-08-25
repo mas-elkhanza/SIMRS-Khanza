@@ -148,6 +148,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         Kd2 = new widget.TextBox();
         Popup = new javax.swing.JPopupMenu();
         ppBayarBeban = new javax.swing.JMenuItem();
+        ppBelumLunas = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -214,13 +215,30 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         ppBayarBeban.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBayarBeban.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBayarBeban.setName("ppBayarBeban"); // NOI18N
-        ppBayarBeban.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppBayarBeban.setPreferredSize(new java.awt.Dimension(225, 25));
         ppBayarBeban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBayarBebanBtnPrintActionPerformed(evt);
             }
         });
         Popup.add(ppBayarBeban);
+
+        ppBelumLunas.setBackground(new java.awt.Color(255, 255, 254));
+        ppBelumLunas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBelumLunas.setForeground(new java.awt.Color(50, 50, 50));
+        ppBelumLunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/bantuan.png"))); // NOI18N
+        ppBelumLunas.setText("Beban Hutang Lain Belum Lunas");
+        ppBelumLunas.setComponentPopupMenu(Popup);
+        ppBelumLunas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBelumLunas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBelumLunas.setName("ppBelumLunas"); // NOI18N
+        ppBelumLunas.setPreferredSize(new java.awt.Dimension(225, 25));
+        ppBelumLunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBelumLunasBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBelumLunas);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -235,6 +253,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -1028,6 +1047,10 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
         } 
     }//GEN-LAST:event_formWindowOpened
 
+    private void ppBelumLunasBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBelumLunasBtnPrintActionPerformed
+        runBackground(() ->tampilBelumTerbayar());
+    }//GEN-LAST:event_ppBelumLunasBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1093,6 +1116,7 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBayarBeban;
+    private javax.swing.JMenuItem ppBelumLunas;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
@@ -1118,6 +1142,45 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
                     ps.setString(8,"%"+TCari.getText()+"%");
                 }
                     
+                rs=ps.executeQuery();
+                total=0;
+                sisahutang=0;
+                while(rs.next()){                
+                    total=total+rs.getDouble("nominal");
+                    sisahutang=sisahutang+rs.getDouble("sisahutang");
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_hutang"),rs.getString("tgl_hutang"),rs.getString("nip"),rs.getString("nama"),rs.getString("kode_pemberi_hutang"),
+                        rs.getString("nama_pemberi_hutang"),rs.getString("keterangan"),rs.getString("tgltempo"),rs.getDouble("nominal"),rs.getDouble("sisahutang"),
+                        rs.getString("status")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif :"+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        LTotal.setText(Valid.SetAngka(total));
+        LTotal1.setText(Valid.SetAngka(sisahutang));
+    }
+    
+    private void tampilBelumTerbayar() {
+        Valid.tabelKosong(tabMode);
+        try{    
+            ps=koneksi.prepareStatement(
+                    "select beban_hutang_lain.no_hutang,beban_hutang_lain.tgl_hutang,beban_hutang_lain.nip,petugas.nama,beban_hutang_lain.kode_pemberi_hutang,"+
+                    "pemberi_hutang_lain.nama_pemberi_hutang,beban_hutang_lain.keterangan,beban_hutang_lain.tgltempo,beban_hutang_lain.nominal,beban_hutang_lain.sisahutang,beban_hutang_lain.status "+
+                    "from beban_hutang_lain inner join petugas on petugas.nip=beban_hutang_lain.nip inner join pemberi_hutang_lain on beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang "+
+                    "where beban_hutang_lain.status='Belum Lunas' order by beban_hutang_lain.tgl_hutang");
+            try {   
                 rs=ps.executeQuery();
                 total=0;
                 sisahutang=0;
@@ -1175,6 +1238,7 @@ private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//
         BtnSimpan.setEnabled(akses.getbeban_hutang_lain());
         BtnHapus.setEnabled(akses.getbeban_hutang_lain());
         BtnPrint.setEnabled(akses.getbeban_hutang_lain());
+        ppBelumLunas.setEnabled(akses.getbeban_hutang_lain());
         ppBayarBeban.setEnabled(akses.getbayar_beban_hutang_lain());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);

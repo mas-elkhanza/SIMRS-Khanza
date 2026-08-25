@@ -74,7 +74,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         setSize(628,674);
 
         tabModeIGDPrimer=new DefaultTableModel(null,new String[]{
-                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Petugas/Dokter/Praktisi","No.KTP Praktisi","Tanggal","Cara Masuk","ID Observation Cara Masuk",
+                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","ID Encounter","Petugas/Dokter/Praktisi","No.KTP Praktisi","Tanggal","Cara Masuk","ID Observation Cara Masuk",
                 "Alat Transportasi","ID Observation Alat Transportasi","Alasan Kedatangan","Keterangan Kedatangan","ID Observation Alasan Kedatangan",
                 "Macam Kasus","ID Observation Macam Kasus","TD","ID Observation TD","Nadi","ID Observation Nadi","Pernapasan","ID Observation Pernapasan",
                 "Suhu","ID Observation Suhu","Saturasi O²","ID Observation Saturasi O²","Nyeri","ID Observation_nyeri","Keluhan Utama","ID Observation Keluhan Utama",
@@ -95,7 +95,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                  java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                  java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                  java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -104,11 +104,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         };
         tbIGDPrimer.setModel(tabModeIGDPrimer);
 
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
         tbIGDPrimer.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbIGDPrimer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 38; i++) {
+        for (i = 0; i < 39; i++) {
             TableColumn column = tbIGDPrimer.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -118,6 +117,20 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(160);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(215);
+            }else if(i==6){
+                column.setPreferredWidth(160);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(115);
+            }else if(i==9){
+                column.setPreferredWidth(70);
+            }else if(i==10){
+                column.setPreferredWidth(215);
             }
         }
         tbIGDPrimer.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2411,21 +2424,17 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         Valid.tabelKosong(tabModeIGDPrimer);
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh, "+
-                   "ifnull(satu_sehat_observationttvsuhu.id_observation,'') as satu_sehat_observationttvsuhu from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvsuhu on satu_sehat_observationttvsuhu.no_rawat=pemeriksaan_ralan.no_rawat "+
-                   "and satu_sehat_observationttvsuhu.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvsuhu.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvsuhu.status='Ralan' where pemeriksaan_ralan.suhu_tubuh<>'' and reg_periksa.tgl_registrasi between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
-                   "reg_periksa.stts like ?)"));
+               "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,data_triase_igdprimer.tanggaltriase,data_triase_igd.cara_masuk,data_triase_igd.id_observation_cara_masuk,"+
+               "data_triase_igd.alat_transportasi,data_triase_igd.id_observation_alat_transportasi,data_triase_igd.alasan_kedatangan,data_triase_igd.keterangan_kedatangan,data_triase_igd.id_observation_alasan_kedatangan,master_triase_macam_kasus.macam_kasus,data_triase_igd.id_observation_macam_kasus,"+
+               "data_triase_igd.tekanan_darah,data_triase_igd.id_observation_tekanan_darah,data_triase_igd.nadi,data_triase_igd.id_observation_nadi,data_triase_igd.pernapasan,data_triase_igd.id_observation_pernapasan,data_triase_igd.suhu,data_triase_igd.id_observation_suhu,data_triase_igd.saturasi_o2,"+
+               "data_triase_igd.id_observation_saturasi_o2,data_triase_igd.nyeri,data_triase_igd.id_observation_nyeri,data_triase_igd.id_composition from reg_periksa inner join data_triase_igd on reg_periksa.no_rawat=data_triase_igd.no_rawat "+
+               "inner join data_triase_igdprimer on data_triase_igd.no_rawat=data_triase_igdprimer.no_rawat inner join pegawai on data_triase_igdprimer.nik=pegawai.nik inner join master_triase_macam_kasus on data_triase_igd.kode_kasus=master_triase_macam_kasus.kode_kasus  "+
+               "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat where data_triase_igdprimer.tanggaltriase between ? and ? "+(TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or "+
+               "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or master_triase_macam_kasus.macam_kasus like ?)")
+            );
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 if(!TCari.getText().equals("")){
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
@@ -2438,53 +2447,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModeIGDPrimer.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),"Ralan",rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("suhu_tubuh"),
-                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("satu_sehat_observationttvsuhu")
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh, "+
-                   "ifnull(satu_sehat_observationttvsuhu.id_observation,'') as satu_sehat_observationttvsuhu from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvsuhu on satu_sehat_observationttvsuhu.no_rawat=pemeriksaan_ranap.no_rawat "+
-                   "and satu_sehat_observationttvsuhu.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvsuhu.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvsuhu.status='Ranap' where pemeriksaan_ranap.suhu_tubuh<>'' and reg_periksa.tgl_registrasi between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
-                   "reg_periksa.stts like ?)"));
-            try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!TCari.getText().equals("")){
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                }
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabModeIGDPrimer.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),"Ranap",rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("suhu_tubuh"),
-                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("satu_sehat_observationttvsuhu")
+                        false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tanggaltriase"),rs.getString("cara_masuk"),rs.getString("id_observation_cara_masuk"),
+                        rs.getString("alat_transportasi"),rs.getString("id_observation_alat_transportasi"),rs.getString("alasan_kedatangan"),rs.getString("keterangan_kedatangan"),rs.getString("id_observation_alasan_kedatangan"),rs.getString("macam_kasus"),rs.getString("id_observation_macam_kasus"),
+                        rs.getString("tekanan_darah"),rs.getString("id_observation_tekanan_darah"),rs.getString("nadi"),rs.getString("id_observation_nadi"),rs.getString("pernapasan"),rs.getString("id_observation_pernapasan"),rs.getString("suhu"),rs.getString("id_observation_suhu"),rs.getString("saturasi_o2"),
+                        rs.getString("id_observation_saturasi_o2"),rs.getString("nyeri"),rs.getString("id_observation_nyeri"),rs.getString("id_composition")
                     });
                 }
             } catch (Exception e) {
@@ -2498,7 +2464,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 }
             }
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi IGD Primer : "+e);
         }
         LCount.setText(""+tabModeIGDPrimer.getRowCount());
     }

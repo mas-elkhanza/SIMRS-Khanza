@@ -2046,7 +2046,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(PrimerKritis.isSelected()==true){
                             keputusan="Ruang Kritis";
                         }
-                        if(Sequel.menyimpantf2("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
+                        if(Sequel.menyimpantf2("data_triase_igdprimer","?,?,?,?,?,?,?,'','','',''", 7,new String[]{
                             TNoRw.getText(),PrimerKeluhanUtama.getText(),PrimerKubutuhanKusus.getSelectedItem().toString(),PrimerCatatan.getText(),keputusan,
                             Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19), 
                             PrimerKodePetugas.getText()
