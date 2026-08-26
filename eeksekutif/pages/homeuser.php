@@ -246,6 +246,9 @@
                             <li <?=$subhalaman=="MutuPelayananRad"?"class='active'":""?>>
                                 <a href="index.php?act=MutuPelayananRad&hal=KendaliMutuBiaya">Lama Pelayanan Radiologi</a>
                             </li>
+                            <li <?=$subhalaman=="PerkiraanBiayaRanap"?"class='active'":""?>>
+                                <a href="index.php?act=PerkiraanBiayaRanap&hal=KendaliMutuBiaya">Perkiraan Biaya Ranap</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Kasir"?"class='active'":""?>>

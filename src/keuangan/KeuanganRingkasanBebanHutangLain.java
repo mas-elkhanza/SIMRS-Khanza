@@ -52,7 +52,7 @@ public final class KeuanganRingkasanBebanHutangLain extends javax.swing.JDialog 
         setSize(885,674);
 
         Object[] rowRwJlDr={
-            "Kode Suplier","Nama Supplier","Sisa Hutang"
+            "Kode","Nama Pemberi Hutang","Sisa Hutang"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -74,7 +74,7 @@ public final class KeuanganRingkasanBebanHutangLain extends javax.swing.JDialog 
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(75);
             }else if(i==1){
                 column.setPreferredWidth(420);
             }else if(i==2){
@@ -357,7 +357,7 @@ public final class KeuanganRingkasanBebanHutangLain extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptRingkasanHutangVendorAsetInventaris.jasper","report","::[ Ringkasan Hutang Vendor Barang Aset/Inventaris ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptRingkasanBebanHutangLain.jasper","report","::[ Ringkasan Beban Hutang Lain ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -497,18 +497,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tanggaldatang="";
             tanggaltempo="";
             if(ChkTanggalDatang.isSelected()==true){
-                tanggaldatang=" inventaris_pemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
+                tanggaldatang=" beban_hutang_lain.tgl_hutang between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
             }
             if(ChkTanggalTempo.isSelected()==true){
-                tanggaltempo=" inventaris_pemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
+                tanggaltempo=" beban_hutang_lain.tgltempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
             }
             ps=koneksi.prepareStatement(
-                    "select inventaris_pemesanan.kode_suplier,inventaris_suplier.nama_suplier,(inventaris_pemesanan.tagihan-"+
-                    "(SELECT ifnull(SUM(bayar_pemesanan_inventaris.besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur)) as sisahutang "+
-                    "from inventaris_pemesanan inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
-                    "where "+tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') "+
-                    (TCari.getText().trim().equals("")?"":"and (inventaris_suplier.nama_suplier like ? or inventaris_pemesanan.kode_suplier like ?) ")+
-                    "group by inventaris_pemesanan.kode_suplier order by inventaris_pemesanan.kode_suplier ");
+                    "select beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang,sum(beban_hutang_lain.sisahutang) as sisahutang "+
+                    "from beban_hutang_lain inner join pemberi_hutang_lain on beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang "+
+                    "where "+tanggaldatang+tanggaltempo+" beban_hutang_lain.status='Belum Lunas' "+
+                    (TCari.getText().trim().equals("")?"":"and (pemberi_hutang_lain.nama_pemberi_hutang like ? or beban_hutang_lain.kode_pemberi_hutang like ?) ")+
+                    "group by beban_hutang_lain.kode_pemberi_hutang order by beban_hutang_lain.kode_pemberi_hutang ");
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -519,13 +518,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 sisahutang=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_suplier"),rs.getString("nama_suplier"),rs.getDouble("sisahutang")
+                        rs.getString("kode_pemberi_hutang"),rs.getString("nama_pemberi_hutang"),rs.getDouble("sisahutang")
                     });
                     sisahutang=sisahutang+rs.getDouble("sisahutang");
                 }
                 LCount.setText(Valid.SetAngka(sisahutang));
             } catch (Exception e) {
-                System.out.println("Notifikasi Data Hutang: "+e);
+                System.out.println("Notifikasi Data Hutang : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();

@@ -76,8 +76,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         tabModeIGDPrimer=new DefaultTableModel(null,new String[]{
                 "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","ID Encounter","Petugas/Dokter/Praktisi","No.KTP Praktisi","Tanggal","Cara Masuk","ID Observation Cara Masuk",
                 "Alat Transportasi","ID Observation Alat Transportasi","Alasan Kedatangan","Keterangan Kedatangan","ID Observation Alasan Kedatangan",
-                "Macam Kasus","ID Observation Macam Kasus","TD","ID Observation TD","Nadi","ID Observation Nadi","Pernapasan","ID Observation Pernapasan",
-                "Suhu","ID Observation Suhu","Saturasi O²","ID Observation Saturasi O²","Nyeri","ID Observation_nyeri","Keluhan Utama","ID Observation Keluhan Utama",
+                "Macam Kasus","ID Observation Macam Kasus","TD","ID Observation TD","Nadi","ID Observation Nadi","RR","ID Observation RR","Suhu","ID Observation Suhu",
+                "Saturasi O²","ID Observation Saturasi O²","Nyeri","ID Observation_nyeri","Keluhan Utama","ID Observation Keluhan Utama",
                 "Kebutuhan Khusus","ID Observation Kebutuhan Khusus","Catatan","ID Observation Catatan","Plan","ID Careplan Keputusan","ID Composition"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -128,8 +128,50 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(115);
             }else if(i==9){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(66);
             }else if(i==10){
+                column.setPreferredWidth(215);
+            }else if(i==11){
+                column.setPreferredWidth(91);
+            }else if(i==12){
+                column.setPreferredWidth(215);
+            }else if(i==13){
+                column.setPreferredWidth(101);
+            }else if(i==14){
+                column.setPreferredWidth(130);
+            }else if(i==15){
+                column.setPreferredWidth(215);
+            }else if(i==16){
+                column.setPreferredWidth(160);
+            }else if(i==17){
+                column.setPreferredWidth(215);
+            }else if(i==18){
+                column.setPreferredWidth(50);
+            }else if(i==19){
+                column.setPreferredWidth(215);
+            }else if(i==20){
+                column.setPreferredWidth(45);
+            }else if(i==21){
+                column.setPreferredWidth(215);
+            }else if(i==22){
+                column.setPreferredWidth(45);
+            }else if(i==23){
+                column.setPreferredWidth(215);
+            }else if(i==24){
+                column.setPreferredWidth(45);
+            }else if(i==25){
+                column.setPreferredWidth(215);
+            }else if(i==26){
+                column.setPreferredWidth(65);
+            }else if(i==27){
+                column.setPreferredWidth(215);
+            }else if(i==28){
+                column.setPreferredWidth(45);
+            }else if(i==29){
+                column.setPreferredWidth(215);
+            }else if(i==30){
+                column.setPreferredWidth(200);
+            }else if(i==31){
                 column.setPreferredWidth(215);
             }
         }

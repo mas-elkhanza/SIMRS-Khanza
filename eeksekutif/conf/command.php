@@ -44,7 +44,7 @@
                 'RekeningTahun','SaldoAkunPerBulan','RingkasanHutangVendorFarmasi','RingkasanHutangVendorNonMedis','RingkasanHutangVendorDapur',
                 'RingkasanHutangVendorInventaris','RingkasanBebanHutangLain','RingkasanPiutangBelumLunas','RingkasanPiutangObatBelumLunas',
                 'UpdatePassword','MutuPelayananPoli','MutuPelayananRalan','MutuPelayananApotek','MutuPelayananLabPA','MutuPelayananLabPK',
-                'MutuPelayananLabMB','MutuPelayananRad'
+                'MutuPelayananLabMB','MutuPelayananRad','PerkiraanBiayaRanap'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -119,6 +119,7 @@
             case "MutuPelayananLabPK"                   : include_once("pages/mutupelayananlabpk.php"); break;
             case "MutuPelayananLabMB"                   : include_once("pages/mutupelayananlabmb.php"); break;
             case "MutuPelayananRad"                     : include_once("pages/mutupelayananradiologi.php"); break;
+            case "PerkiraanBiayaRanap"                  : include_once("pages/perkiraanbiayaranap.php"); break;
             default                                     : include_once("pages/listhome.php");
         }   
     }
