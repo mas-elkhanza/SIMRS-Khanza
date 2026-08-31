@@ -717,6 +717,90 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
+                    }else if(tbObat.getValueAt(i,9).toString().equals("IGDK")){
+                        try{
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                            json = "{" +
+                                        "\"resourceType\": \"Encounter\"," +
+                                        "\"status\": \"arrived\"," +
+                                        "\"class\": {" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
+                                            "\"code\": \"EMER\"," +
+                                            "\"display\": \"emergency\"" +
+                                        "}," +
+                                        "\"subject\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
+                                        "\"participant\": [" +
+                                            "{" +
+                                                "\"type\": [" +
+                                                    "{" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
+                                                                "\"code\": \"ATND\"," +
+                                                                "\"display\": \"attender\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}" +
+                                                "]," +
+                                                "\"individual\": {" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,7).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"period\": {" +
+                                            "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"" +
+                                        "}," +
+                                        "\"location\": [" +
+                                            "{" +
+                                                "\"location\": {" +
+                                                    "\"reference\": \"Location/"+tbObat.getValueAt(i,11).toString()+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,10).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"statusHistory\": [" +
+                                            "{" +
+                                                "\"status\": \"arrived\"," +
+                                                "\"period\": {" +
+                                                    "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
+                                                    "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"serviceProvider\": {" +
+                                            "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                        "}," +
+                                        "\"identifier\": [" +
+                                            "{" +
+                                                "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"value\": \""+tbObat.getValueAt(i,2).toString()+"\"" +
+                                            "}" +
+                                        "]" +
+                                    "}";
+                            System.out.println("URL : "+link+"/Encounter");
+                            System.out.println("Request JSON : "+json);
+                            requestEntity = new HttpEntity(json,headers);
+                            json=api.getRest().exchange(link+"/Encounter", HttpMethod.POST, requestEntity, String.class).getBody();
+                            System.out.println("Result JSON : "+json);
+                            root = mapper.readTree(json);
+                            response = root.path("id");
+                            if(!response.asText().equals("")){
+                                if(Sequel.menyimpantf2("satu_sehat_encounter","?,?","No.Rawat",2,new String[]{
+                                    tbObat.getValueAt(i,2).toString(),response.asText()
+                                })==true){
+                                    tbObat.setValueAt(response.asText(),i,15);
+                                    tbObat.setValueAt(false,i,0);
+                                }
+                            }
+                        }catch(Exception e){
+                            System.out.println("Notifikasi Bridging : "+e);
+                        }
                     }else{
                         try{
                             headers = new HttpHeaders();
@@ -827,80 +911,158 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                 try {
                     iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,8).toString());
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
-                    try{
-                        headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                        json = "{" +
-                                    "\"resourceType\": \"Encounter\"," +
-                                    "\"id\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
-                                    "\"identifier\": [" +
-                                        "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,2).toString()+"\"" +
-                                        "}" +
-                                    "]," +
-                                    "\"status\": \"arrived\"," +
-                                    "\"class\": {" +
-                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
-                                        "\"code\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
-                                        "\"display\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"," +
-                                        "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
-                                    "}," +
-                                    "\"participant\": [" +
-                                        "{" +
-                                            "\"type\": [" +
-                                                "{" +
-                                                    "\"coding\": [" +
-                                                        "{" +
-                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
-                                                            "\"code\": \"ATND\"," +
-                                                            "\"display\": \"attender\"" +
-                                                        "}" +
-                                                    "]" +
+                    if(tbObat.getValueAt(i,9).toString().equals("IGDK")){
+                        try{
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                            json = "{" +
+                                        "\"resourceType\": \"Encounter\"," +
+                                        "\"id\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
+                                        "\"identifier\": [" +
+                                            "{" +
+                                                "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"value\": \""+tbObat.getValueAt(i,2).toString()+"\"" +
+                                            "}" +
+                                        "]," +
+                                        "\"status\": \"arrived\"," +
+                                        "\"class\": {" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
+                                            "\"code\": \"EMER\"," +
+                                            "\"display\": \"emergency\"" +
+                                        "}," +
+                                        "\"subject\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
+                                        "\"participant\": [" +
+                                            "{" +
+                                                "\"type\": [" +
+                                                    "{" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
+                                                                "\"code\": \"ATND\"," +
+                                                                "\"display\": \"attender\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}" +
+                                                "]," +
+                                                "\"individual\": {" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,7).toString()+"\"" +
                                                 "}" +
-                                            "]," +
-                                            "\"individual\": {" +
-                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,7).toString()+"\"" +
                                             "}" +
-                                        "}" +
-                                    "]," +
-                                    "\"period\": {" +
-                                        "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"" +
-                                    "}," +
-                                    "\"location\": [" +
-                                        "{" +
-                                            "\"location\": {" +
-                                                "\"reference\": \"Location/"+tbObat.getValueAt(i,11).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,10).toString()+"\"" +
+                                        "]," +
+                                        "\"period\": {" +
+                                            "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"" +
+                                        "}," +
+                                        "\"location\": [" +
+                                            "{" +
+                                                "\"location\": {" +
+                                                    "\"reference\": \"Location/"+tbObat.getValueAt(i,11).toString()+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,10).toString()+"\"" +
+                                                "}" +
                                             "}" +
-                                        "}" +
-                                    "]," +
-                                    "\"statusHistory\": [" +
-                                        "{" +
-                                            "\"status\": \"arrived\"," +
-                                            "\"period\": {" +
-                                                "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
-                                                "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
+                                        "]," +
+                                        "\"statusHistory\": [" +
+                                            "{" +
+                                                "\"status\": \"arrived\"," +
+                                                "\"period\": {" +
+                                                    "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
+                                                    "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
+                                                "}" +
                                             "}" +
+                                        "]," +
+                                        "\"serviceProvider\": {" +
+                                            "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                         "}" +
-                                    "]," +
-                                    "\"serviceProvider\": {" +
-                                        "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
-                                    "}" +
-                                "}";
-                        System.out.println("URL : "+link+"/Encounter/"+tbObat.getValueAt(i,15).toString());
-                        System.out.println("Request JSON : "+json);
-                        requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Encounter/"+tbObat.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
-                        System.out.println("Result JSON : "+json);
-                        tbObat.setValueAt(false,i,0);
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Bridging : "+e);
+                                    "}";
+                            System.out.println("URL : "+link+"/Encounter/"+tbObat.getValueAt(i,15).toString());
+                            System.out.println("Request JSON : "+json);
+                            requestEntity = new HttpEntity(json,headers);
+                            json=api.getRest().exchange(link+"/Encounter/"+tbObat.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                            System.out.println("Result JSON : "+json);
+                            tbObat.setValueAt(false,i,0);
+                        }catch(Exception e){
+                            System.out.println("Notifikasi Bridging : "+e);
+                        }
+                    }else{
+                        try{
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                            json = "{" +
+                                        "\"resourceType\": \"Encounter\"," +
+                                        "\"id\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
+                                        "\"identifier\": [" +
+                                            "{" +
+                                                "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"value\": \""+tbObat.getValueAt(i,2).toString()+"\"" +
+                                            "}" +
+                                        "]," +
+                                        "\"status\": \"arrived\"," +
+                                        "\"class\": {" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
+                                            "\"code\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
+                                            "\"display\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
+                                        "}," +
+                                        "\"subject\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
+                                        "\"participant\": [" +
+                                            "{" +
+                                                "\"type\": [" +
+                                                    "{" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
+                                                                "\"code\": \"ATND\"," +
+                                                                "\"display\": \"attender\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}" +
+                                                "]," +
+                                                "\"individual\": {" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,7).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"period\": {" +
+                                            "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"" +
+                                        "}," +
+                                        "\"location\": [" +
+                                            "{" +
+                                                "\"location\": {" +
+                                                    "\"reference\": \"Location/"+tbObat.getValueAt(i,11).toString()+"\"," +
+                                                    "\"display\": \""+tbObat.getValueAt(i,10).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"statusHistory\": [" +
+                                            "{" +
+                                                "\"status\": \"arrived\"," +
+                                                "\"period\": {" +
+                                                    "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
+                                                    "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "]," +
+                                        "\"serviceProvider\": {" +
+                                            "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                        "}" +
+                                    "}";
+                            System.out.println("URL : "+link+"/Encounter/"+tbObat.getValueAt(i,15).toString());
+                            System.out.println("Request JSON : "+json);
+                            requestEntity = new HttpEntity(json,headers);
+                            json=api.getRest().exchange(link+"/Encounter/"+tbObat.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                            System.out.println("Result JSON : "+json);
+                            tbObat.setValueAt(false,i,0);
+                        }catch(Exception e){
+                            System.out.println("Notifikasi Bridging : "+e);
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
