@@ -149,6 +149,7 @@ public class DlgPembelian extends javax.swing.JDialog {
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
+        tppn.setDocument(new batasInput((byte)5).getOnlyAngka(tppn));
     }
 
     /** This method is called from within the constructor to

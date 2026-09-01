@@ -47,11 +47,7 @@ public class DlgJurnalHarian extends javax.swing.JDialog {
         Object[] row={"Tanggal","Kode Akun","Nama Akun","Keterangan","Debet","Kredit"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
+                return false;
              }
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
@@ -704,7 +700,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(8,"%"+TCari.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
                 }
-                    
+
                 rs=ps.executeQuery();
                 ttldebet=0;ttlkredit=0;
                 while(rs.next()){
@@ -740,16 +736,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
+
+            int row = tabMode.getRowCount();
+            for (int i = row - 1; i >= 1; i--) {
                 try {
-                    tanggal1=tbDokter.getValueAt(i,0).toString();
-                    tanggal2=tbDokter.getValueAt(i-1,0).toString();
-                    
-                    if((!tanggal1.equals(tanggal2))&&(!tanggal2.equals(""))){   
-                        tabMode.insertRow(i,new Object[]{"","","","",null,null}); 
-                    }  
+                    tanggal1 = tabMode.getValueAt(i, 0).toString();
+                    tanggal2 = tabMode.getValueAt(i - 1, 0).toString();
+
+                    if (!tanggal1.equals(tanggal2) && !tanggal2.equals("") && !tanggal1.equals("")) {
+                        tabMode.insertRow(i, new Object[]{"", "", "", "", null, null});
+                    }
                 } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
                 }
             }
         } catch (Exception e) {

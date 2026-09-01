@@ -152,7 +152,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
         NoOrder.setDocument(new batasInput((byte)20).getKata(NoOrder));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
-        tppn.setDocument(new batasInput((byte)5).getKata(tppn));
+        tppn.setDocument(new batasInput((byte)5).getOnlyAngka(tppn));
         Meterai.setDocument(new batasInput((byte)15).getOnlyAngka(Meterai));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
     }

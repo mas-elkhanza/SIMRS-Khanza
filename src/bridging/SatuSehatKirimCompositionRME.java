@@ -833,7 +833,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                 "\"coding\": [" +
                                                     "{" +
                                                         "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\"," +
-                                                        "\"code\": \"vital-signs\"," +
+                                                        "\"code\": \"exam\"," +
                                                         "\"display\": \"Vital Signs\"" +
                                                     "}" +
                                                 "]" +
