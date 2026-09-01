@@ -382,10 +382,13 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
-                     "select kategori_pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori,akun1.nm_rek as akun1,akun2.nm_rek as akun2 "+
-                     "from kategori_pengeluaran_harian inner join rekening as akun1 on kategori_pengeluaran_harian.kd_rek=akun1.kd_rek "+
-                     "inner join rekening as akun2 on kategori_pengeluaran_harian.kd_rek2=akun2.kd_rek order by kategori_pengeluaran_harian.nama_kategori"); 
+                "select kategori_pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori,akun1.nm_rek as akun1,akun2.nm_rek as akun2 from kategori_pengeluaran_harian "+
+                "inner join rekening as akun1 on kategori_pengeluaran_harian.kd_rek=akun1.kd_rek inner join rekening as akun2 on kategori_pengeluaran_harian.kd_rek2=akun2.kd_rek "+
+                (koneksiDB.KODEAKUNPENGELUARANHARIAN().equals("")?"":"where kategori_pengeluaran_harian.kd_rek2=?")+" order by kategori_pengeluaran_harian.nama_kategori"); 
             try {
+                if(!koneksiDB.KODEAKUNPENGELUARANHARIAN().equals("")){
+                    ps.setString(1,koneksiDB.KODEAKUNPENGELUARANHARIAN());
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
