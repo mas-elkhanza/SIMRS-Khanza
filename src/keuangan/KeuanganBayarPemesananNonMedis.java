@@ -967,95 +967,103 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        try {
-            Sequel.AutoComitFalse();
-            sukses=true;   
-            if(Sequel.queryu2tf("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
-                    "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),11).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),       
-                tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
-            })==true){
-                if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(BesarBayar.getText())){
-                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{NoFaktur.getText()});
-                }else{
-                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{NoFaktur.getText()});
-                }
-                
-                koderekening="";
+        if(tabMode.getRowCount()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+        }else {
+            if(tbKamar.getSelectedRow()>-1){
                 try {
-                    myObj = new FileReader("./cache/akunbayarhutang.iyem");
-                    root = mapper.readTree(myObj);
-                    response = root.path("akunbayarhutang");
-                    if(response.isArray()){
-                       for(JsonNode list:response){
-                           if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
-                                koderekening=list.path("KodeRek").asText();  
-                           }
-                       }
-                    }
-                    myObj.close();
-                } catch (Exception e) {
-                    sukses=false;
-                } finally {
-                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
-                    response = null;
-                    root = null;
-                }
-                
-                if(koderekening.equals("")){
-                    sukses=false; 
-                }else{
-                    total=0;
-                    if(koderekening.equals(Host_to_Host_Bank_Mandiri)){
-                        total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
-                        Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
-                    }
-                    Sequel.queryu("delete from tampjurnal");
-                    if(total>0){
-                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                            Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
-                        })==false){
-                            sukses=false;
+                    Sequel.AutoComitFalse();
+                    sukses=true;   
+                    if(Sequel.queryu2tf("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
+                            "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),11).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),       
+                        tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
+                    })==true){
+                        if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(BesarBayar.getText())){
+                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{NoFaktur.getText()});
+                        }else{
+                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{NoFaktur.getText()});
                         }
+
+                        koderekening="";
+                        try {
+                            myObj = new FileReader("./cache/akunbayarhutang.iyem");
+                            root = mapper.readTree(myObj);
+                            response = root.path("akunbayarhutang");
+                            if(response.isArray()){
+                               for(JsonNode list:response){
+                                   if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                                        koderekening=list.path("KodeRek").asText();  
+                                   }
+                               }
+                            }
+                            myObj.close();
+                        } catch (Exception e) {
+                            sukses=false;
+                        } finally {
+                            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                            response = null;
+                            root = null;
+                        }
+
+                        if(koderekening.equals("")){
+                            sukses=false; 
+                        }else{
+                            total=0;
+                            if(koderekening.equals(Host_to_Host_Bank_Mandiri)){
+                                total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                                Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                            }
+                            Sequel.queryu("delete from tampjurnal");
+                            if(total>0){
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                    Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
+                                })==false){
+                                    sukses=false;
+                                }
+                            }
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                koderekening,AkunBayar.getSelectedItem().toString(),(Valid.SetAngka(BesarBayar.getText())+total)+"","0"
+                            })==false){
+                                sukses=false;
+                            }    
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                Bayar_Pemesanan_Non_Medis,"HUTANG USAHA","0",BesarBayar.getText()
+                            })==false){
+                                sukses=false;
+                            } 
+                            if(sukses==true){
+                                sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                            }
+                        }
+                    }else{
+                        sukses=false;
                     }
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        koderekening,AkunBayar.getSelectedItem().toString(),(Valid.SetAngka(BesarBayar.getText())+total)+"","0"
-                    })==false){
-                        sukses=false;
-                    }    
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Bayar_Pemesanan_Non_Medis,"HUTANG USAHA","0",BesarBayar.getText()
-                    })==false){
-                        sukses=false;
-                    } 
+
                     if(sukses==true){
-                        sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                        Sequel.Commit();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
                     }
-                }
+                    Sequel.AutoComitTrue();
+                    if(sukses==true){
+                        tabMode.removeRow(tbKamar.getSelectedRow());
+                        LCount.setText(""+tabMode.getRowCount());
+                        emptTeks();
+                    }
+                }catch (Exception ex) {
+                    System.out.println(ex);
+                }  
             }else{
-                sukses=false;
-            }
-                           
-            if(sukses==true){
-                Sequel.Commit();
-            }else{
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                Sequel.RollBack();
-            }
-            Sequel.AutoComitTrue();
-            if(sukses==true){
-                tabMode.removeRow(tbKamar.getSelectedRow());
-                LCount.setText(""+tabMode.getRowCount());
-                emptTeks();
-            }
-        }catch (Exception ex) {
-            System.out.println(ex);
-        }          
+                JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            } 
+        }        
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

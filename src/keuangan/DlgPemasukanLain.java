@@ -785,6 +785,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                     emptTeks();
                     hitung();
                 }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }                
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
