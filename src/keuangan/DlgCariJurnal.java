@@ -776,6 +776,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }.execute();
         }
     }
+    
+    public void setJurnal(String nojurnal,String tanggal){
+        NoJur.setText(nojurnal);
+        Valid.SetTgl(TglJurnal1,tanggal);
+        tampil();
+    }
 
     public void emptTeks() {
         kdrek.setText("");

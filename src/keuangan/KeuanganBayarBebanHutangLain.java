@@ -196,6 +196,8 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         KodeBank = new widget.TextBox();
         BankTujuan = new widget.TextBox();
         KodeTransaksi = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        cetakbukti = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -379,6 +381,22 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
 
         DlgBayarMandiri.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
 
+        Popup.setName("Popup"); // NOI18N
+
+        cetakbukti.setBackground(new java.awt.Color(255, 255, 254));
+        cetakbukti.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        cetakbukti.setForeground(java.awt.Color.darkGray);
+        cetakbukti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        cetakbukti.setText("Cetak Bukti Kas Keluar");
+        cetakbukti.setName("cetakbukti"); // NOI18N
+        cetakbukti.setPreferredSize(new java.awt.Dimension(180, 25));
+        cetakbukti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakbuktiActionPerformed(evt);
+            }
+        });
+        Popup.add(cetakbukti);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -395,6 +413,7 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1417,6 +1436,14 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugas1ActionPerformed
 
+    private void cetakbuktiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakbuktiActionPerformed
+        if(tbKamar.getSelectedRow()>-1){
+            Valid.panggilUrl("billing/LaporanBuktiKasKeluar.php?kode="+NoBukti.getText()+"&tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&akunbayar="+AkunBayar.getSelectedItem().toString().replaceAll(" ","_")+"&petugas="+akses.getkode().replaceAll(" ","_")+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",akses.getkode()).replaceAll(" ","_")+"&dibayarkankepada="+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&notagihan="+NoHutang.getText().replaceAll(" ","_")+"&nominal="+Cicilan.getText()+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dicetak bukti kas keluarnya.\nKlik data pada table untuk memilih...!!!!");
+        }
+    }//GEN-LAST:event_cetakbuktiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1468,6 +1495,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NoHutang;
     private widget.TextBox NoRekening;
     private javax.swing.JPanel PanelInput;
+    private javax.swing.JPopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sisa;
@@ -1475,6 +1503,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Tanggal Tanggal;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private javax.swing.JMenuItem cetakbukti;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;
@@ -1577,7 +1606,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(row!= -1){
             KdPemberiHutang.setText(tbKamar.getValueAt(row,1).toString());
             NmPemberiHutang.setText(tbKamar.getValueAt(row,2).toString());
-            Cicilan.setText(tbKamar.getValueAt(row,3).toString());
+            Cicilan.setText(Valid.SetAngka5(Double.parseDouble(tbKamar.getValueAt(row,3).toString())));
             Keterangan.setText(tbKamar.getValueAt(row,4).toString());
             NoHutang.setText(tbKamar.getValueAt(row,5).toString());
             NoBukti.setText(tbKamar.getValueAt(row,8).toString());

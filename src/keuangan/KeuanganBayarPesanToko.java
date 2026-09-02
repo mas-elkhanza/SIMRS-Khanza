@@ -140,7 +140,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         BesarBayar.setDocument(new batasInput((byte)15).getOnlyAngka(BesarBayar));
         NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        keterangan.setDocument(new batasInput((byte)100).getKata(keterangan));
+        Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
@@ -204,6 +204,8 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         KodeBank = new widget.TextBox();
         BankTujuan = new widget.TextBox();
         KodeTransaksi = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        cetakbukti = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
         label34 = new widget.Label();
@@ -221,7 +223,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         BtnPetugas = new widget.Button();
         jLabel10 = new widget.Label();
         AkunBayar = new widget.ComboBox();
-        keterangan = new widget.TextBox();
+        Keterangan = new widget.TextBox();
         label39 = new widget.Label();
         BtnAll1 = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
@@ -388,6 +390,22 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 
         DlgBayarMandiri.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
 
+        Popup.setName("Popup"); // NOI18N
+
+        cetakbukti.setBackground(new java.awt.Color(255, 255, 254));
+        cetakbukti.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        cetakbukti.setForeground(java.awt.Color.darkGray);
+        cetakbukti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        cetakbukti.setText("Cetak Bukti Kas Keluar");
+        cetakbukti.setName("cetakbukti"); // NOI18N
+        cetakbukti.setPreferredSize(new java.awt.Dimension(180, 25));
+        cetakbukti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakbuktiActionPerformed(evt);
+            }
+        });
+        Popup.add(cetakbukti);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -536,20 +554,20 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         panelisi4.add(AkunBayar);
         AkunBayar.setBounds(388, 70, 292, 23);
 
-        keterangan.setHighlighter(null);
-        keterangan.setName("keterangan"); // NOI18N
-        keterangan.addActionListener(new java.awt.event.ActionListener() {
+        Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keteranganActionPerformed(evt);
+                KeteranganActionPerformed(evt);
             }
         });
-        keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                keteranganKeyPressed(evt);
+                KeteranganKeyPressed(evt);
             }
         });
-        panelisi4.add(keterangan);
-        keterangan.setBounds(388, 40, 160, 23);
+        panelisi4.add(Keterangan);
+        Keterangan.setBounds(388, 40, 160, 23);
 
         label39.setText("No.Bukti :");
         label39.setName("label39"); // NOI18N
@@ -809,6 +827,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -922,7 +941,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                                 }
                                 if(Sequel.menyimpantf2("toko_bayar_pemesanan","?,?,?,?,?,?,?","data", 7,new String[]{
                                     Valid.SetTgl(TglBayar.getSelectedItem()+""),NoFaktur.getText(),KdPetugas.getText(),
-                                    BesarBayar.getText(),keterangan.getText(),AkunBayar.getSelectedItem().toString(),
+                                    BesarBayar.getText(),Keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                                     NoBukti.getText()
                                 })==false){
                                     sukses=false;
@@ -1297,13 +1316,13 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         runBackground(() ->tampilAkunBayar());
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
-    private void keteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keteranganKeyPressed
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,KdPetugas,NoBukti);
-    }//GEN-LAST:event_keteranganKeyPressed
+    }//GEN-LAST:event_KeteranganKeyPressed
 
-    private void keteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keteranganActionPerformed
+    private void KeteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeteranganActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_keteranganActionPerformed
+    }//GEN-LAST:event_KeteranganActionPerformed
 
     private void AkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkunBayarKeyPressed
         Valid.pindah(evt,TglBayar,KdPetugas);
@@ -1355,7 +1374,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            keterangan.requestFocus();
+            Keterangan.requestFocus();
         }
     }//GEN-LAST:event_KdPetugasKeyPressed
 
@@ -1390,7 +1409,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     }//GEN-LAST:event_BesarBayarKeyPressed
 
     private void NoBuktiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoBuktiKeyPressed
-        Valid.pindah(evt,keterangan,BesarBayar);
+        Valid.pindah(evt,Keterangan,BesarBayar);
     }//GEN-LAST:event_NoBuktiKeyPressed
 
     private void NoBuktiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBuktiActionPerformed
@@ -1466,7 +1485,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                     }
                     if(Sequel.menyimpantf2("toko_bayar_pemesanan","?,?,?,?,?,?,?","data", 7,new String[]{
                             Valid.SetTgl(TglBayar.getSelectedItem()+""),NoFaktur.getText(),KdPetugas.getText(),
-                            BesarBayar.getText(),keterangan.getText(),AkunBayar.getSelectedItem().toString(),
+                            BesarBayar.getText(),Keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                             NoBukti.getText()
                         })==true){
                         if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
@@ -1550,6 +1569,14 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugas1ActionPerformed
 
+    private void cetakbuktiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakbuktiActionPerformed
+        if(tbKamar.getSelectedRow()>-1){
+            Valid.panggilUrl("billing/LaporanBuktiKasKeluar.php?kode="+NoBukti.getText()+"&tanggal="+Valid.SetTgl(TglBayar.getSelectedItem()+"")+"&akunbayar="+AkunBayar.getSelectedItem().toString().replaceAll(" ","_")+"&petugas="+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString().replaceAll(" ","_")+"&dibayarkankepada="+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&notagihan="+NoFaktur.getText().replaceAll(" ","_")+"&nominal="+BesarBayar.getText()+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dicetak bukti kas keluarnya.\nKlik data pada table untuk memilih...!!!!");
+        }
+    }//GEN-LAST:event_cetakbuktiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1586,6 +1613,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private javax.swing.JDialog DlgBayarMandiri;
     private widget.TextBox Kd2;
     private widget.TextBox KdPetugas;
+    private widget.TextBox Keterangan;
     private widget.TextBox KodeBank;
     private widget.TextBox KodeMetode;
     private widget.TextBox KodeTransaksi;
@@ -1597,6 +1625,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.TextBox NoBukti;
     private widget.TextBox NoFaktur;
     private widget.TextBox NoRekening;
+    private javax.swing.JPopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox SisaHutang;
@@ -1604,6 +1633,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.Tanggal TglBayar;
     private widget.Tanggal TglCari1;
     private widget.Tanggal TglCari2;
+    private javax.swing.JMenuItem cetakbukti;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;
@@ -1612,7 +1642,6 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel1;
     private widget.TextBox kdsup;
-    private widget.TextBox keterangan;
     private widget.Label label10;
     private widget.Label label12;
     private widget.Label label16;
@@ -1696,7 +1725,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         BesarBayar.setText("0");
         //setData(NoFaktur.getText());
         NoBukti.setText("");
-        keterangan.setText("");
+        Keterangan.setText("");
         TglBayar.setDate(new Date());
         TglBayar.requestFocus();
     }
@@ -1719,7 +1748,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
             AkunBayar.setSelectedItem(tbKamar.getValueAt(row,6).toString());
             NoBukti.setText(tbKamar.getValueAt(row,7).toString());
             BesarBayar.setText(Valid.SetAngka5(Double.parseDouble(tbKamar.getValueAt(row,8).toString())));
-            keterangan.setText(tbKamar.getValueAt(row,9).toString());
+            Keterangan.setText(tbKamar.getValueAt(row,9).toString());
         }
     }
 
