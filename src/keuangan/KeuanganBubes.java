@@ -669,8 +669,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }
     
+    public void setRiwayatTransaksi(String kodeakun){
+        kdrek.setText(kodeakun);
+        nmrek.setText(Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",kodeakun));
+        runBackground(() ->prosesCari());
+    }
+    
     public void isCek(){
         BtnPrint.setEnabled(akses.getbuku_besar());
+        CekJurnal.setEnabled(akses.getposting_jurnal()); 
     }
      
     private void runBackground(Runnable task) {

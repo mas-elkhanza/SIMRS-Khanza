@@ -114,7 +114,7 @@ public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
         
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Detail Pemeriksaan","Satuan","Nilai Rujukan","Permintaan","Jam","Sampel","Jam","Hasil",
-                "Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar","Method"
+                "Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar","Metode"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -228,7 +228,7 @@ public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
         tabMode4=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Detail Pemeriksaan","Satuan","Nilai Rujukan","Permintaan","Jam",
                 "Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis",
-                "Kode Bayar","Jenis Bayar","Method"
+                "Kode Bayar","Jenis Bayar","Metode"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

@@ -40,7 +40,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        tabMode=new DefaultTableModel(null,new Object[]{"","",""}){
+        tabMode=new DefaultTableModel(null,new Object[]{"","","",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         Table1.setModel(tabMode);
@@ -48,7 +48,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         Table1.setPreferredScrollableViewportSize(new Dimension(800,800));
         Table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = Table1.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -56,11 +56,14 @@ public class DlgLabaRugi extends javax.swing.JDialog {
                 column.setPreferredWidth(650);
             }else if(i==2){
                 column.setPreferredWidth(140);
+            }else if(i==3){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         Table1.setDefaultRenderer(Object.class, new WarnaTable());       
      
-        tabMode2=new DefaultTableModel(null,new Object[]{"","",""}){
+        tabMode2=new DefaultTableModel(null,new Object[]{"","","",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         Table2.setModel(tabMode2);
@@ -68,7 +71,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         Table2.setPreferredScrollableViewportSize(new Dimension(800,800));
         Table2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = Table2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -76,11 +79,14 @@ public class DlgLabaRugi extends javax.swing.JDialog {
                 column.setPreferredWidth(650);
             }else if(i==2){
                 column.setPreferredWidth(140);
+            }else if(i==3){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         Table2.setDefaultRenderer(Object.class, new WarnaTable());  
         
-        tabMode3=new DefaultTableModel(null,new Object[]{"","",""}){
+        tabMode3=new DefaultTableModel(null,new Object[]{"","","",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         Table3.setModel(tabMode3);
@@ -88,7 +94,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         Table3.setPreferredScrollableViewportSize(new Dimension(800,800));
         Table3.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = Table3.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -96,6 +102,9 @@ public class DlgLabaRugi extends javax.swing.JDialog {
                 column.setPreferredWidth(650);
             }else if(i==2){
                 column.setPreferredWidth(140);
+            }else if(i==3){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         Table3.setDefaultRenderer(Object.class, new WarnaTable());  
@@ -112,6 +121,8 @@ public class DlgLabaRugi extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        RiwayatTransaksi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
@@ -136,6 +147,22 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
 
+        Popup.setName("Popup"); // NOI18N
+
+        RiwayatTransaksi.setBackground(new java.awt.Color(255, 255, 254));
+        RiwayatTransaksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        RiwayatTransaksi.setForeground(java.awt.Color.darkGray);
+        RiwayatTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        RiwayatTransaksi.setText("Tampilkan Riwayat Transaksi");
+        RiwayatTransaksi.setName("RiwayatTransaksi"); // NOI18N
+        RiwayatTransaksi.setPreferredSize(new java.awt.Dimension(220, 25));
+        RiwayatTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RiwayatTransaksiActionPerformed(evt);
+            }
+        });
+        Popup.add(RiwayatTransaksi);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -145,7 +172,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Neraca Laba Rugi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Neraca Laba Rugi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -235,7 +262,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,6 +290,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
+        Table1.setComponentPopupMenu(Popup);
         Table1.setName("Table1"); // NOI18N
         scrollPane1.setViewportView(Table1);
 
@@ -289,6 +317,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
+        Table2.setComponentPopupMenu(Popup);
         Table2.setName("Table2"); // NOI18N
         scrollPane2.setViewportView(Table2);
 
@@ -315,6 +344,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
+        Table3.setComponentPopupMenu(Popup);
         Table3.setName("Table3"); // NOI18N
         scrollPane3.setViewportView(Table3);
 
@@ -421,6 +451,54 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         
     }//GEN-LAST:event_TabRawatMouseClicked
 
+    private void RiwayatTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RiwayatTransaksiActionPerformed
+        int lebar=internalFrame1.getWidth()-20;
+        int tinggi=internalFrame1.getHeight()-20;
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                if(Table1.getSelectedRow()>-1){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    KeuanganBubes form=new KeuanganBubes(null,false);
+                    form.isCek();
+                    form.setSize(lebar,tinggi);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setRiwayatTransaksi(Table1.getValueAt(Table1.getSelectedRow(),3).toString());
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau ditampilkan riwayat transaksinya.\nKlik data pada table untuk memilih...!!!!");
+                }   break;
+            case 1:
+                if(Table2.getSelectedRow()>-1){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    KeuanganBubes form=new KeuanganBubes(null,false);
+                    form.isCek();
+                    form.setSize(lebar,tinggi);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setRiwayatTransaksi(Table2.getValueAt(Table2.getSelectedRow(),3).toString());
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau ditampilkan riwayat transaksinya.\nKlik data pada table untuk memilih...!!!!");
+                }   break;
+            case 2:
+                if(Table3.getSelectedRow()>-1){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    KeuanganBubes form=new KeuanganBubes(null,false);
+                    form.isCek();
+                    form.setSize(lebar,tinggi);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setRiwayatTransaksi(Table3.getValueAt(Table3.getSelectedRow(),3).toString());
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau ditampilkan riwayat transaksinya.\nKlik data pada table untuk memilih...!!!!");
+                }   break;   
+            default:
+                break;
+        }
+    }//GEN-LAST:event_RiwayatTransaksiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -442,6 +520,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
+    private javax.swing.JPopupMenu Popup;
+    private javax.swing.JMenuItem RiwayatTransaksi;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Table Table1;
     private widget.Table Table2;
@@ -474,8 +554,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
             try {
                 saldoawal=0;debkret=0;saldoakhir=0;
-                tabMode.addRow(new Object[]{"Pendapatan : ","",""});
-                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                tabMode.addRow(new Object[]{"Pendapatan : ","","",""});
+                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir",""});
                 rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek, "+
                     "IFNULL((select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek=rekening.kd_rek and rekeningtahun.thn between '"+thnAwal+"' and '"+thnAkhir+"'),0) as saldo_awal, "+
@@ -486,7 +566,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     debkret=rs.getDouble("debkret");
                     saldoakhir=saldoawal+debkret;
                     pendapatan=pendapatan+saldoakhir;
-                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});
+                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir),rs.getString(1)});
                     try {
                         rs2=koneksi.prepareStatement(
                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -500,7 +580,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             debkret=rs2.getDouble("debkret");
                             saldoakhir=saldoawal+debkret;
                             pendapatan=pendapatan+saldoakhir;
-                            tabMode.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)});
+                            tabMode.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir),rs2.getString(1)});
                             try {
                                 rs3=koneksi.prepareStatement(
                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -514,7 +594,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     debkret=rs3.getDouble("debkret");
                                     saldoakhir=saldoawal+debkret;
                                     pendapatan=pendapatan+saldoakhir;
-                                    tabMode.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)});
+                                    tabMode.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir),rs3.getString(1)});
                                     try {
                                         rs4=koneksi.prepareStatement(
                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -528,7 +608,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             debkret=rs4.getDouble("debkret");
                                             saldoakhir=saldoawal+debkret;
                                             pendapatan=pendapatan+saldoakhir;
-                                            tabMode.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)});
+                                            tabMode.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir),rs4.getString(1)});
                                             try {
                                                 rs5=koneksi.prepareStatement(
                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -542,7 +622,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     debkret=rs5.getDouble("debkret");
                                                     saldoakhir=saldoawal+debkret;
                                                     pendapatan=pendapatan+saldoakhir;
-                                                    tabMode.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)});
+                                                    tabMode.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir),rs5.getString(1)});
                                                     try {
                                                         rs6=koneksi.prepareStatement(
                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -556,7 +636,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             debkret=rs6.getDouble("debkret");
                                                             saldoakhir=saldoawal+debkret;
                                                             pendapatan=pendapatan+saldoakhir;
-                                                            tabMode.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)});
+                                                            tabMode.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir),rs6.getString(1)});
                                                             try {
                                                                 rs7=koneksi.prepareStatement(
                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -570,7 +650,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     debkret=rs7.getDouble("debkret");
                                                                     saldoakhir=saldoawal+debkret;
                                                                     pendapatan=pendapatan+saldoakhir;
-                                                                    tabMode.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir)});
+                                                                    tabMode.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir),rs7.getString(1)});
                                                                     try {
                                                                         rs8=koneksi.prepareStatement(
                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -584,7 +664,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                             debkret=rs8.getDouble("debkret");
                                                                             saldoakhir=saldoawal+debkret;
                                                                             pendapatan=pendapatan+saldoakhir;
-                                                                            tabMode.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir)});
+                                                                            tabMode.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir),rs8.getString(1)});
                                                                             try {
                                                                                 rs9=koneksi.prepareStatement(
                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -598,7 +678,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                     debkret=rs9.getDouble("debkret");
                                                                                     saldoakhir=saldoawal+debkret;
                                                                                     pendapatan=pendapatan+saldoakhir;
-                                                                                    tabMode.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                    tabMode.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir),rs9.getString(1)});
                                                                                     try {
                                                                                         rs10=koneksi.prepareStatement(
                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -612,7 +692,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                             debkret=rs10.getDouble("debkret");
                                                                                             saldoakhir=saldoawal+debkret;
                                                                                             pendapatan=pendapatan+saldoakhir;
-                                                                                            tabMode.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                            tabMode.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir),rs10.getString(1)});
                                                                                             try {
                                                                                                 rs11=koneksi.prepareStatement(
                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -626,7 +706,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                     debkret=rs11.getDouble("debkret");
                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                     pendapatan=pendapatan+saldoakhir;
-                                                                                                    tabMode.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                    tabMode.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir),rs11.getString(1)});
                                                                                                     try {
                                                                                                         rs12=koneksi.prepareStatement(
                                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -640,7 +720,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                             debkret=rs12.getDouble("debkret");
                                                                                                             saldoakhir=saldoawal+debkret;
                                                                                                             pendapatan=pendapatan+saldoakhir;
-                                                                                                            tabMode.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                            tabMode.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir),rs12.getString(1)});
                                                                                                             try {
                                                                                                                 rs13=koneksi.prepareStatement(
                                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -654,7 +734,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                                     debkret=rs13.getDouble("debkret");
                                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                                     pendapatan=pendapatan+saldoakhir;
-                                                                                                                    tabMode.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                                    tabMode.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir),rs13.getString(1)});
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif Pendapatan 13 : "+e);
@@ -752,7 +832,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan)});
+                tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan),""});
                 tabMode.addRow(data);
             } catch (Exception e) {
                 System.out.println("Notif Pendapatan 1 : "+e);
@@ -764,8 +844,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
             try {
                 saldoawal=0;debkret=0;saldoakhir=0;
-                tabMode.addRow(new Object[]{"Biaya-Biaya :","",""});
-                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                tabMode.addRow(new Object[]{"Biaya-Biaya :","","",""});
+                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir",""});
                 rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek, "+
                     "IFNULL((select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek=rekening.kd_rek and rekeningtahun.thn between '"+thnAwal+"' and '"+thnAkhir+"'),0) as saldo_awal, "+
@@ -776,7 +856,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     debkret=rs.getDouble("debkret");
                     saldoakhir=saldoawal+debkret;
                     biaya=biaya+saldoakhir;
-                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});
+                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir),rs.getString(1)});
                     try {
                         rs2=koneksi.prepareStatement(
                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -790,7 +870,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             debkret=rs2.getDouble("debkret");
                             saldoakhir=saldoawal+debkret;
                             biaya=biaya+saldoakhir;
-                            tabMode.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)});
+                            tabMode.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir),rs2.getString(1)});
                             try {
                                 rs3=koneksi.prepareStatement(
                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -804,7 +884,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     debkret=rs3.getDouble("debkret");
                                     saldoakhir=saldoawal+debkret;
                                     biaya=biaya+saldoakhir;
-                                    tabMode.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)});
+                                    tabMode.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir),rs3.getString(1)});
                                     try {
                                         rs4=koneksi.prepareStatement(
                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -818,7 +898,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             debkret=rs4.getDouble("debkret");
                                             saldoakhir=saldoawal+debkret;
                                             biaya=biaya+saldoakhir;
-                                            tabMode.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)});
+                                            tabMode.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir),rs4.getString(1)});
                                             try {
                                                 rs5=koneksi.prepareStatement(
                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -832,7 +912,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     debkret=rs5.getDouble("debkret");
                                                     saldoakhir=saldoawal+debkret;
                                                     biaya=biaya+saldoakhir;
-                                                    tabMode.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)});
+                                                    tabMode.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir),rs5.getString(1)});
                                                     try {
                                                         rs6=koneksi.prepareStatement(
                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -846,7 +926,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             debkret=rs6.getDouble("debkret");
                                                             saldoakhir=saldoawal+debkret;
                                                             biaya=biaya+saldoakhir;
-                                                            tabMode.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)});
+                                                            tabMode.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir),rs6.getString(1)});
                                                             try {
                                                                 rs7=koneksi.prepareStatement(
                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -860,7 +940,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     debkret=rs7.getDouble("debkret");
                                                                     saldoakhir=saldoawal+debkret;
                                                                     biaya=biaya+saldoakhir;
-                                                                    tabMode.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir)});
+                                                                    tabMode.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir),rs7.getString(1)});
                                                                     try {
                                                                         rs8=koneksi.prepareStatement(
                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -874,7 +954,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                             debkret=rs8.getDouble("debkret");
                                                                             saldoakhir=saldoawal+debkret;
                                                                             biaya=biaya+saldoakhir;
-                                                                            tabMode.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir)});
+                                                                            tabMode.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir),rs8.getString(1)});
                                                                             try {
                                                                                 rs9=koneksi.prepareStatement(
                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -888,7 +968,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                     debkret=rs9.getDouble("debkret");
                                                                                     saldoakhir=saldoawal+debkret;
                                                                                     biaya=biaya+saldoakhir;
-                                                                                    tabMode.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                    tabMode.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir),rs9.getString(1)});
                                                                                     try {
                                                                                         rs10=koneksi.prepareStatement(
                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -902,7 +982,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                             debkret=rs10.getDouble("debkret");
                                                                                             saldoakhir=saldoawal+debkret;
                                                                                             biaya=biaya+saldoakhir;
-                                                                                            tabMode.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                            tabMode.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir),rs10.getString(1)});
                                                                                             try {
                                                                                                 rs11=koneksi.prepareStatement(
                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -916,7 +996,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                     debkret=rs11.getDouble("debkret");
                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                     biaya=biaya+saldoakhir;
-                                                                                                    tabMode.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                    tabMode.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir),rs11.getString(1)});
                                                                                                     try {
                                                                                                         rs12=koneksi.prepareStatement(
                                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -930,7 +1010,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                             debkret=rs12.getDouble("debkret");
                                                                                                             saldoakhir=saldoawal+debkret;
                                                                                                             biaya=biaya+saldoakhir;
-                                                                                                            tabMode.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                            tabMode.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir),rs12.getString(1)});
                                                                                                             try {
                                                                                                                 rs13=koneksi.prepareStatement(
                                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -944,7 +1024,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                                     debkret=rs13.getDouble("debkret");
                                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                                     biaya=biaya+saldoakhir;
-                                                                                                                    tabMode.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                                    tabMode.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir),rs13.getString(1)});
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif Biaya 13 : "+e);
@@ -1042,7 +1122,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya)});
+                tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya),""});
                 tabMode.addRow(data);
             } catch (Exception e) {
                 System.out.println("Notif Biaya 1 : "+e);
@@ -1052,14 +1132,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            tabMode.addRow(new Object[]{"","Laba Bersih : Total Pendapatan - Total Biaya-Biaya",df2.format(pendapatan-biaya)});
+            tabMode.addRow(new Object[]{"","Laba Bersih : Total Pendapatan - Total Biaya-Biaya",df2.format(pendapatan-biaya),""});
             tabMode.addRow(data);
 
             Valid.tabelKosong(tabMode2);
             try {
                 saldoawal=0;debkret=0;saldoakhir=0;
-                tabMode2.addRow(new Object[]{"Modal Awal :","",""});
-                tabMode2.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                tabMode2.addRow(new Object[]{"Modal Awal :","","",""});
+                tabMode2.addRow(new Object[]{"","Nama Rekening","Saldo Akhir",""});
                 rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek, "+
                     "IFNULL((select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek=rekening.kd_rek and rekeningtahun.thn between '"+thnAwal+"' and '"+thnAkhir+"'),0) as saldo_awal, "+
@@ -1070,7 +1150,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     debkret=rs.getDouble("debkret");
                     saldoakhir=saldoawal+debkret;
                     modal=modal+saldoakhir;
-                    tabMode2.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});
+                    tabMode2.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir),rs.getString(1)});
                     try {
                         rs2=koneksi.prepareStatement(
                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1084,7 +1164,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             debkret=rs2.getDouble("debkret");
                             saldoakhir=saldoawal+debkret;
                             modal=modal+saldoakhir;
-                            tabMode2.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)});
+                            tabMode2.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir),rs2.getString(1)});
                             try {
                                 rs3=koneksi.prepareStatement(
                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1098,7 +1178,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     debkret=rs3.getDouble("debkret");
                                     saldoakhir=saldoawal+debkret;
                                     modal=modal+saldoakhir;
-                                    tabMode2.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)});
+                                    tabMode2.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir),rs3.getString(1)});
                                     try {
                                         rs4=koneksi.prepareStatement(
                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1112,7 +1192,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             debkret=rs4.getDouble("debkret");
                                             saldoakhir=saldoawal+debkret;
                                             modal=modal+saldoakhir;
-                                            tabMode2.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)});
+                                            tabMode2.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir),rs4.getString(1)});
                                             try {
                                                 rs5=koneksi.prepareStatement(
                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1126,7 +1206,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     debkret=rs5.getDouble("debkret");
                                                     saldoakhir=saldoawal+debkret;
                                                     modal=modal+saldoakhir;
-                                                    tabMode2.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)});
+                                                    tabMode2.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir),rs5.getString(1)});
                                                     try {
                                                         rs6=koneksi.prepareStatement(
                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1140,7 +1220,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             debkret=rs6.getDouble("debkret");
                                                             saldoakhir=saldoawal+debkret;
                                                             modal=modal+saldoakhir;
-                                                            tabMode2.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)});
+                                                            tabMode2.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir),rs6.getString(1)});
                                                             try {
                                                                 rs7=koneksi.prepareStatement(
                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1154,7 +1234,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     debkret=rs7.getDouble("debkret");
                                                                     saldoakhir=saldoawal+debkret;
                                                                     modal=modal+saldoakhir;
-                                                                    tabMode2.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir)});
+                                                                    tabMode2.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir),rs7.getString(1)});
                                                                     try {
                                                                         rs8=koneksi.prepareStatement(
                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1168,7 +1248,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                             debkret=rs8.getDouble("debkret");
                                                                             saldoakhir=saldoawal+debkret;
                                                                             modal=modal+saldoakhir;
-                                                                            tabMode2.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir)});
+                                                                            tabMode2.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir),rs8.getString(1)});
                                                                             try {
                                                                                 rs9=koneksi.prepareStatement(
                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1182,7 +1262,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                     debkret=rs9.getDouble("debkret");
                                                                                     saldoakhir=saldoawal+debkret;
                                                                                     modal=modal+saldoakhir;
-                                                                                    tabMode2.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                    tabMode2.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir),rs9.getString(1)});
                                                                                     try {
                                                                                         rs10=koneksi.prepareStatement(
                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1196,7 +1276,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                             debkret=rs10.getDouble("debkret");
                                                                                             saldoakhir=saldoawal+debkret;
                                                                                             modal=modal+saldoakhir;
-                                                                                            tabMode2.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                            tabMode2.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir),rs10.getString(1)});
                                                                                             try {
                                                                                                 rs11=koneksi.prepareStatement(
                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1210,7 +1290,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                     debkret=rs11.getDouble("debkret");
                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                     modal=modal+saldoakhir;
-                                                                                                    tabMode2.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                    tabMode2.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir),rs11.getString(1)});
                                                                                                     try {
                                                                                                         rs12=koneksi.prepareStatement(
                                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1224,7 +1304,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                             debkret=rs12.getDouble("debkret");
                                                                                                             saldoakhir=saldoawal+debkret;
                                                                                                             modal=modal+saldoakhir;
-                                                                                                            tabMode2.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                            tabMode2.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir),rs12.getString(1)});
                                                                                                             try {
                                                                                                                 rs13=koneksi.prepareStatement(
                                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1238,7 +1318,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                                     debkret=rs13.getDouble("debkret");
                                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                                     modal=modal+saldoakhir;
-                                                                                                                    tabMode2.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                                    tabMode2.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir),rs13.getString(1)});
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif Modal Awal 13 : "+e);
@@ -1336,7 +1416,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                tabMode2.addRow(new Object[]{"","Total Modal ",df2.format(modal)});
+                tabMode2.addRow(new Object[]{"","Total Modal ",df2.format(modal),""});
                 tabMode2.addRow(data);
             } catch (Exception e) {
                 System.out.println("Notif Modal Awal 1 : "+e);
@@ -1346,14 +1426,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            tabMode2.addRow(new Object[]{"","Modal Akhir : Laba Bersih + Total Modal",df2.format(modal+(pendapatan-biaya))});
+            tabMode2.addRow(new Object[]{"","Modal Akhir : Laba Bersih + Total Modal",df2.format(modal+(pendapatan-biaya)),""});
             tabMode2.addRow(data);
 
             Valid.tabelKosong(tabMode3);
             try {
                 saldoawal=0;debkret=0;saldoakhir=0;
-                tabMode3.addRow(new Object[]{"Aktiva :","",""});
-                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                tabMode3.addRow(new Object[]{"Aktiva :","","",""});
+                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir",""});
                 rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek, "+
                     "IFNULL((select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek=rekening.kd_rek and rekeningtahun.thn between '"+thnAwal+"' and '"+thnAkhir+"'),0) as saldo_awal, "+
@@ -1364,7 +1444,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     debkret=rs.getDouble("debkret");
                     saldoakhir=saldoawal+debkret;
                     aktiva=aktiva+saldoakhir;
-                    tabMode3.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});
+                    tabMode3.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir),rs.getString(1)});
                     try {
                         rs2=koneksi.prepareStatement(
                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1378,7 +1458,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             debkret=rs2.getDouble("debkret");
                             saldoakhir=saldoawal+debkret;
                             aktiva=aktiva+saldoakhir;
-                            tabMode3.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)});
+                            tabMode3.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir),rs2.getString(1)});
                             try {
                                 rs3=koneksi.prepareStatement(
                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1392,7 +1472,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     debkret=rs3.getDouble("debkret");
                                     saldoakhir=saldoawal+debkret;
                                     aktiva=aktiva+saldoakhir;
-                                    tabMode3.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)});
+                                    tabMode3.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir),rs3.getString(1)});
                                     try {
                                         rs4=koneksi.prepareStatement(
                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1406,7 +1486,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             debkret=rs4.getDouble("debkret");
                                             saldoakhir=saldoawal+debkret;
                                             aktiva=aktiva+saldoakhir;
-                                            tabMode3.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)});
+                                            tabMode3.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir),rs4.getString(1)});
                                             try {
                                                 rs5=koneksi.prepareStatement(
                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1420,7 +1500,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     debkret=rs5.getDouble("debkret");
                                                     saldoakhir=saldoawal+debkret;
                                                     aktiva=aktiva+saldoakhir;
-                                                    tabMode3.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)});
+                                                    tabMode3.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir),rs5.getString(1)});
                                                     try {
                                                         rs6=koneksi.prepareStatement(
                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1434,7 +1514,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             debkret=rs6.getDouble("debkret");
                                                             saldoakhir=saldoawal+debkret;
                                                             aktiva=aktiva+saldoakhir;
-                                                            tabMode3.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)});
+                                                            tabMode3.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir),rs6.getString(1)});
                                                             try {
                                                                 rs7=koneksi.prepareStatement(
                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1448,7 +1528,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     debkret=rs7.getDouble("debkret");
                                                                     saldoakhir=saldoawal+debkret;
                                                                     aktiva=aktiva+saldoakhir;
-                                                                    tabMode3.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir)});
+                                                                    tabMode3.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir),rs7.getString(1)});
                                                                     try {
                                                                         rs8=koneksi.prepareStatement(
                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1462,7 +1542,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                             debkret=rs8.getDouble("debkret");
                                                                             saldoakhir=saldoawal+debkret;
                                                                             aktiva=aktiva+saldoakhir;
-                                                                            tabMode3.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir)});
+                                                                            tabMode3.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir),rs8.getString(1)});
                                                                             try {
                                                                                 rs9=koneksi.prepareStatement(
                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1476,7 +1556,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                     debkret=rs9.getDouble("debkret");
                                                                                     saldoakhir=saldoawal+debkret;
                                                                                     aktiva=aktiva+saldoakhir;
-                                                                                    tabMode3.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                    tabMode3.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir),rs9.getString(1)});
                                                                                     try {
                                                                                         rs10=koneksi.prepareStatement(
                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1490,7 +1570,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                             debkret=rs10.getDouble("debkret");
                                                                                             saldoakhir=saldoawal+debkret;
                                                                                             aktiva=aktiva+saldoakhir;
-                                                                                            tabMode3.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                            tabMode3.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir),rs10.getString(1)});
                                                                                             try {
                                                                                                 rs11=koneksi.prepareStatement(
                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1504,7 +1584,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                     debkret=rs11.getDouble("debkret");
                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                     aktiva=aktiva+saldoakhir;
-                                                                                                    tabMode3.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                    tabMode3.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir),rs11.getString(1)});
                                                                                                     try {
                                                                                                         rs12=koneksi.prepareStatement(
                                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1518,7 +1598,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                             debkret=rs12.getDouble("debkret");
                                                                                                             saldoakhir=saldoawal+debkret;
                                                                                                             aktiva=aktiva+saldoakhir;
-                                                                                                            tabMode3.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                            tabMode3.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir),rs12.getString(1)});
                                                                                                             try {
                                                                                                                 rs13=koneksi.prepareStatement(
                                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1532,7 +1612,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                                     debkret=rs13.getDouble("debkret");
                                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                                     aktiva=aktiva+saldoakhir;
-                                                                                                                    tabMode3.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                                    tabMode3.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir),rs13.getString(1)});
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif Aktiva 13 : "+e);
@@ -1630,7 +1710,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                tabMode3.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva)});
+                tabMode3.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva),""});
                 tabMode3.addRow(data);
             } catch (Exception e) {
                 System.out.println("Notif Aktiva 1 : "+e);
@@ -1642,8 +1722,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
             try {
                 saldoawal=0;debkret=0;saldoakhir=0;
-                tabMode3.addRow(new Object[]{"Pasiva :","",""});
-                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                tabMode3.addRow(new Object[]{"Pasiva :","","",""});
+                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir",""});
                 rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek, "+
                     "IFNULL((select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek=rekening.kd_rek and rekeningtahun.thn between '"+thnAwal+"' and '"+thnAkhir+"'),0) as saldo_awal, "+
@@ -1668,7 +1748,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             debkret=rs2.getDouble("debkret");
                             saldoakhir=saldoawal+debkret;
                             pasiva=pasiva+saldoakhir;
-                            tabMode3.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)});
+                            tabMode3.addRow(new Object[]{""," "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir),rs2.getString(1)});
                             try {
                                 rs3=koneksi.prepareStatement(
                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1682,7 +1762,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     debkret=rs3.getDouble("debkret");
                                     saldoakhir=saldoawal+debkret;
                                     pasiva=pasiva+saldoakhir;
-                                    tabMode3.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)});
+                                    tabMode3.addRow(new Object[]{"","  "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir),rs3.getString(1)});
                                     try {
                                         rs4=koneksi.prepareStatement(
                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1696,7 +1776,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             debkret=rs4.getDouble("debkret");
                                             saldoakhir=saldoawal+debkret;
                                             pasiva=pasiva+saldoakhir;
-                                            tabMode3.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)});
+                                            tabMode3.addRow(new Object[]{"","   "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir),rs4.getString(1)});
                                             try {
                                                 rs5=koneksi.prepareStatement(
                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1710,7 +1790,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     debkret=rs5.getDouble("debkret");
                                                     saldoakhir=saldoawal+debkret;
                                                     pasiva=pasiva+saldoakhir;
-                                                    tabMode3.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)});
+                                                    tabMode3.addRow(new Object[]{"","    "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir),rs5.getString(1)});
                                                     try {
                                                         rs6=koneksi.prepareStatement(
                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1724,7 +1804,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             debkret=rs6.getDouble("debkret");
                                                             saldoakhir=saldoawal+debkret;
                                                             pasiva=pasiva+saldoakhir;
-                                                            tabMode3.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)});
+                                                            tabMode3.addRow(new Object[]{"","     "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir),rs6.getString(1)});
                                                             try {
                                                                 rs7=koneksi.prepareStatement(
                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1738,7 +1818,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     debkret=rs7.getDouble("debkret");
                                                                     saldoakhir=saldoawal+debkret;
                                                                     pasiva=pasiva+saldoakhir;
-                                                                    tabMode3.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir)});
+                                                                    tabMode3.addRow(new Object[]{"","      "+rs7.getString(1)+" "+rs7.getString(2),"  "+df2.format(saldoakhir),rs7.getString(1)});
                                                                     try {
                                                                         rs8=koneksi.prepareStatement(
                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1752,7 +1832,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                             debkret=rs8.getDouble("debkret");
                                                                             saldoakhir=saldoawal+debkret;
                                                                             pasiva=pasiva+saldoakhir;
-                                                                            tabMode3.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir)});
+                                                                            tabMode3.addRow(new Object[]{"","       "+rs8.getString(1)+" "+rs8.getString(2),"  "+df2.format(saldoakhir),rs8.getString(1)});
                                                                             try {
                                                                                 rs9=koneksi.prepareStatement(
                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1766,7 +1846,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                     debkret=rs9.getDouble("debkret");
                                                                                     saldoakhir=saldoawal+debkret;
                                                                                     pasiva=pasiva+saldoakhir;
-                                                                                    tabMode3.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                    tabMode3.addRow(new Object[]{"","        "+rs9.getString(1)+" "+rs9.getString(2),"  "+df2.format(saldoakhir),rs9.getString(1)});
                                                                                     try {
                                                                                         rs10=koneksi.prepareStatement(
                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1780,7 +1860,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                             debkret=rs10.getDouble("debkret");
                                                                                             saldoakhir=saldoawal+debkret;
                                                                                             pasiva=pasiva+saldoakhir;
-                                                                                            tabMode3.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                            tabMode3.addRow(new Object[]{"","         "+rs10.getString(1)+" "+rs10.getString(2),"  "+df2.format(saldoakhir),rs10.getString(1)});
                                                                                             try {
                                                                                                 rs11=koneksi.prepareStatement(
                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1794,7 +1874,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                     debkret=rs11.getDouble("debkret");
                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                     pasiva=pasiva+saldoakhir;
-                                                                                                    tabMode3.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                    tabMode3.addRow(new Object[]{"","          "+rs11.getString(1)+" "+rs11.getString(2),"  "+df2.format(saldoakhir),rs11.getString(1)});
                                                                                                     try {
                                                                                                         rs12=koneksi.prepareStatement(
                                                                                                             "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1808,7 +1888,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                             debkret=rs12.getDouble("debkret");
                                                                                                             saldoakhir=saldoawal+debkret;
                                                                                                             pasiva=pasiva+saldoakhir;
-                                                                                                            tabMode3.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                            tabMode3.addRow(new Object[]{"","           "+rs12.getString(1)+" "+rs12.getString(2),"  "+df2.format(saldoakhir),rs12.getString(1)});
                                                                                                             try {
                                                                                                                 rs13=koneksi.prepareStatement(
                                                                                                                     "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance, "+
@@ -1822,7 +1902,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                                                                     debkret=rs13.getDouble("debkret");
                                                                                                                     saldoakhir=saldoawal+debkret;
                                                                                                                     pasiva=pasiva+saldoakhir;
-                                                                                                                    tabMode3.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir)});
+                                                                                                                    tabMode3.addRow(new Object[]{"","            "+rs13.getString(1)+" "+rs13.getString(2),"  "+df2.format(saldoakhir),rs13.getString(1)});
                                                                                                                 }
                                                                                                             } catch (Exception e) {
                                                                                                                 System.out.println("Notif Pasiva 13 : "+e);
@@ -1920,7 +2000,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                tabMode3.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya))});
+                tabMode3.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya)),""});
                 tabMode3.addRow(data);
             } catch (Exception e) {
                 System.out.println("Notif Pasiva 1 : "+e);
@@ -1937,6 +2017,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         BtnPrint.setEnabled(akses.getkeuangan());
+        RiwayatTransaksi.setEnabled(akses.getbuku_besar());
     }
      
     private void runBackground(Runnable task) {

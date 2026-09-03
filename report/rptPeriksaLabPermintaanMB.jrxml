@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="522" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20" uuid="5353c680-200b-4a22-8b8e-b6d4e4a440d6">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -398,7 +398,7 @@
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="340" y="213" width="106" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="7a588b36-d2c6-488b-a65e-ef3e97aabf16"/>
+				<reportElement mode="Transparent" x="270" y="213" width="106" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="7a588b36-d2c6-488b-a65e-ef3e97aabf16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -406,7 +406,7 @@
 				<text><![CDATA[Nilai Rujukan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="446" y="213" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="53925f40-a0c5-4c9d-8b6a-2173f8409f69"/>
+				<reportElement mode="Transparent" x="376" y="213" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="53925f40-a0c5-4c9d-8b6a-2173f8409f69"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -414,7 +414,7 @@
 				<text><![CDATA[Keterangan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="135" y="213" width="202" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="25500430-7156-4af5-bb54-91661dae69d0"/>
+				<reportElement mode="Transparent" x="135" y="213" width="134" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="25500430-7156-4af5-bb54-91661dae69d0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -446,13 +446,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="338" y="214" width="1" height="16" uuid="e572fb4f-9221-4759-9d5e-eee4fc206ef8"/>
+				<reportElement x="268" y="214" width="1" height="16" uuid="e572fb4f-9221-4759-9d5e-eee4fc206ef8"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="446" y="214" width="1" height="16" uuid="dfa3cd8a-6444-4b03-a8d2-8c4881ce9e02"/>
+				<reportElement x="376" y="214" width="1" height="16" uuid="dfa3cd8a-6444-4b03-a8d2-8c4881ce9e02"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -541,6 +541,20 @@
 				</textElement>
 				<text><![CDATA[Jam Permintaan]]></text>
 			</staticText>
+			<line>
+				<reportElement x="451" y="214" width="1" height="16" uuid="b5d4306a-835a-4819-8048-4d7d4ac0953d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="451" y="213" width="69" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="880e0290-6366-4bf9-b9a4-12469e1f700e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Metode]]></text>
+			</staticText>
 		</band>
 	</title>
 	<detail>
@@ -554,7 +568,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="202" height="13" uuid="26e0642a-9a6c-43c5-8813-655499efcd44">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="132" height="13" uuid="26e0642a-9a6c-43c5-8813-655499efcd44">
 					<printWhenExpression><![CDATA[($F{temp5}!="" ? Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -564,7 +578,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="340" y="1" width="106" height="13" uuid="50fed6b7-a74f-4d29-99f5-039635da7a35"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="1" width="106" height="13" uuid="50fed6b7-a74f-4d29-99f5-039635da7a35"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -572,7 +586,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="449" y="1" width="71" height="13" uuid="3de61d47-843c-41b1-a34c-e4d814dfb980"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="379" y="1" width="71" height="13" uuid="3de61d47-843c-41b1-a34c-e4d814dfb980"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -592,13 +606,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="338" y="0" width="1" height="14" uuid="5384c862-47ed-40f5-9493-c51980a7842c"/>
+				<reportElement stretchType="RelativeToBandHeight" x="268" y="0" width="1" height="14" uuid="5384c862-47ed-40f5-9493-c51980a7842c"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="446" y="0" width="1" height="14" uuid="729d8feb-6289-4de5-8519-565b8ff6df48"/>
+				<reportElement stretchType="RelativeToBandHeight" x="376" y="0" width="1" height="14" uuid="729d8feb-6289-4de5-8519-565b8ff6df48"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -610,7 +624,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="202" height="13" forecolor="#0000FF" uuid="17d6ff84-9390-4ef9-97ad-d3a16c440757">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="132" height="13" forecolor="#0000FF" uuid="17d6ff84-9390-4ef9-97ad-d3a16c440757">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("l") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -621,7 +635,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="202" height="13" forecolor="#FF0000" uuid="37932bd8-eb70-4a76-8c1a-90eb8cd4aabf">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="132" height="13" forecolor="#FF0000" uuid="37932bd8-eb70-4a76-8c1a-90eb8cd4aabf">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("h") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -632,7 +646,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="202" height="13" forecolor="#000000" uuid="da15d82d-9303-409f-bc60-d287cd9a3fd5">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="1" width="132" height="13" forecolor="#000000" uuid="da15d82d-9303-409f-bc60-d287cd9a3fd5">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("t") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -641,6 +655,20 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="451" y="0" width="1" height="14" uuid="1eaf4e44-1e43-4124-8cb5-4534cf3afc3d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="454" y="1" width="66" height="13" uuid="d3da0bbf-c949-47ad-826d-1255a8098213"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

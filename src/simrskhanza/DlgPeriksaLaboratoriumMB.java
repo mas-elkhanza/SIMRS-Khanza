@@ -87,7 +87,7 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         setSize(885,674);
 
         Object[] row={
-            "P","Pemeriksaan","Hasil","Satuan","Nilai Rujukan","Method","Keterangan","id_template","Biaya Item",
+            "P","Pemeriksaan","Hasil","Satuan","Nilai Rujukan","Metode","Keterangan","id_template","Biaya Item",
             "bagian_rs","bhp","bagian_perujuk","bagian_dokter","bagian_laborat","kso","menejemen","Kode Jenis"
         };
         tabMode=new DefaultTableModel(null,row){
@@ -919,11 +919,9 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                        ""+i,tbPemeriksaan.getValueAt(i,1).toString(),
-                        tbPemeriksaan.getValueAt(i,2).toString().replaceAll("'","`"),
-                        tbPemeriksaan.getValueAt(i,3).toString(),
-                        tbPemeriksaan.getValueAt(i,4).toString(),
-                        tbPemeriksaan.getValueAt(i,6).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                        ""+i,tbPemeriksaan.getValueAt(i,1).toString(),tbPemeriksaan.getValueAt(i,2).toString().replaceAll("'","`"),tbPemeriksaan.getValueAt(i,3).toString(),
+                        tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,6).toString(),tbPemeriksaan.getValueAt(i,5).toString(),"","","","","","","","",
+                        "","","","","","","","","","","","","","","","","","","","","","",""
                     });
                 }                
             }

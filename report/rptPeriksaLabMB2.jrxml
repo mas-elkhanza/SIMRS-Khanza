@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="493" leftMargin="85" rightMargin="17" topMargin="20" bottomMargin="20" uuid="49c1766a-0502-4afd-9117-53000bd45bd5">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -312,7 +312,7 @@
 				<text><![CDATA[PEMERIKSAAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="371" y="245" width="109" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="682504c0-e6fa-428c-9645-92d0efef77b3"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="291" y="245" width="109" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="682504c0-e6fa-428c-9645-92d0efef77b3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -320,7 +320,7 @@
 				<text><![CDATA[NORMAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="135" y="245" width="235" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="319c4760-07d5-4713-9054-4622af1c35cc"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="135" y="245" width="155" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="319c4760-07d5-4713-9054-4622af1c35cc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -339,12 +339,20 @@
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="400" y="245" width="80" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="274268ec-4e3c-4003-9aef-0820a9d73d64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[METODE]]></text>
+			</staticText>
 		</band>
 	</title>
 	<detail>
 		<band height="15" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="235" height="13" forecolor="#000000" uuid="b309f033-3930-4fe0-b61e-49ed67a3682a">
+				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="155" height="13" forecolor="#000000" uuid="b309f033-3930-4fe0-b61e-49ed67a3682a">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("t") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -363,7 +371,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="235" height="13" uuid="bdf2777a-e8ff-4806-9130-b161bca0dca2">
+				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="155" height="13" uuid="bdf2777a-e8ff-4806-9130-b161bca0dca2">
 					<printWhenExpression><![CDATA[($F{temp5}!="" ? Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -373,7 +381,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="371" y="1" width="109" height="13" uuid="f24a881e-8f42-4bf0-8e5a-c93750890ad7"/>
+				<reportElement stretchType="RelativeToBandHeight" x="291" y="1" width="109" height="13" uuid="f24a881e-8f42-4bf0-8e5a-c93750890ad7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -381,7 +389,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="235" height="13" forecolor="#0000FF" uuid="70491a76-a349-4c4a-bd76-a627bcea4e01">
+				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="155" height="13" forecolor="#0000FF" uuid="70491a76-a349-4c4a-bd76-a627bcea4e01">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("l") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -392,7 +400,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="235" height="13" forecolor="#FF0000" uuid="aad1de5d-1f32-4559-aecd-e4ca37b56e4a">
+				<reportElement stretchType="RelativeToBandHeight" x="135" y="1" width="155" height="13" forecolor="#FF0000" uuid="aad1de5d-1f32-4559-aecd-e4ca37b56e4a">
 					<printWhenExpression><![CDATA[($F{temp5}.toLowerCase().equals("h") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -408,6 +416,14 @@
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="400" y="1" width="80" height="13" uuid="64f70d88-2e64-4cfe-a8ed-57f8e5e16204"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
