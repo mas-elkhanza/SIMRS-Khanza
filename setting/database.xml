@@ -96,12 +96,12 @@
     <entry key="URLAPICORONA">http://sirs.kemkes.go.id/fo/index.php</entry>
     <entry key="IDCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CLIENTIDSATUSEHAT">at2QPae22OrZ5ap17uFdSOb634krFGAQ0eUD0F9zq9Fsim2b5UoN+IKhUd05IOpKeWZ9GbeLRCQD8ZK1RKh7iw==</entry>
-    <entry key="SECRETKEYSATUSEHAT">pHpIVf8/sKzSWgypatGDVI9K2DWx6F8hm0Bpe0i4GvvHl0OvdbTXdpDwDaeVP1rK6ZdaAzDb+trFA32eyLiWdu6MMwlEypThN/yycBhfqp8=</entry>
-    <entry key="URLAUTHSATUSEHAT">https://api-satusehat.kemkes.go.id/oauth2/v1</entry> 
-    <entry key="URLFHIRSATUSEHAT">https://api-satusehat.kemkes.go.id/fhir-r4/v1</entry>
-    <entry key="IDSATUSEHAT">gLnBTiQf8+MaRjQvPzFXiQ==</entry>
-    <entry key="URLAPPLINKSATUSEHAT">https://applink-stg.dto.kemkes.go.id/ssm/tte</entry>
+    <entry key="CLIENTIDSATUSEHAT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="SECRETKEYSATUSEHAT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAUTHSATUSEHAT">https://tanyakemkes.kemkes.go.id/oauth2/v1</entry> 
+    <entry key="URLFHIRSATUSEHAT">https://tanyakemkes.kemkes.go.id/fhir-r4/v1</entry>
+    <entry key="IDSATUSEHAT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPPLINKSATUSEHAT">https://tanyakemkes.kemkes.go.id/ssm/tte</entry>
     <entry key="IDORGBPJSSATUSEHAT">100071505</entry>
     <entry key="KELURAHANSATUSEHAT">3522162006</entry>
     <entry key="KECAMATANSATUSEHAT">352216</entry>
