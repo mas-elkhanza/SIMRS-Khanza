@@ -101,7 +101,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
-                    if ((colIndex==0)||(colIndex==2)||(colIndex==4)||(colIndex==5)) {
+                    if ((colIndex==0)||(colIndex==2)||(colIndex==4)||(colIndex==6)) {
                         a=true;
                     }
                     return a;

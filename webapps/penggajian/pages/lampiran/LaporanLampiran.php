@@ -419,7 +419,7 @@
                         $tmbhjgmlm = $sisamlm*$baris17[0];
                                     $ttltmbhjgmlm=$ttltmbhjgmlm+$tmbhjgmlm;
 
-                                    $_sql18  ="SELECT tnj from set_jgtambah where pendidikan='".$baris["pendidikan"]."' ";
+                                    $_sql18  ="SELECT ifnull(set_jgtambah.tnj,0) from set_jgtambah where set_jgtambah.pendidikan='".$baris["pendidikan"]."' ";
                                     $hasil18 =bukaquery($_sql18);
                                     $baris18 = mysqli_fetch_array($hasil18);
                                     $tmbahanjg =0;
@@ -444,19 +444,19 @@
                                         $ptg_krghadir=25000;
                                     }
 
-                                    $_sql20  ="SELECT tnj from set_lemburhb";
+                                    $_sql20  ="SELECT ifnull(set_lemburhb.tnj,0) from set_lemburhb";
                                     $hasil20 =bukaquery($_sql20);
                                     $baris20 = mysqli_fetch_array($hasil20);
                         $lemburhb=$hb*(isset($baris20[0])?$baris20[0]:0);
                                     $ttllemburhb=$ttllemburhb+$lemburhb;
 
-                                    $_sql21  ="SELECT tnj from set_lemburhr";
+                                    $_sql21  ="SELECT ifnull(set_lemburhr.tnj,0) from set_lemburhr";
                                     $hasil21 =bukaquery($_sql21);
                                     $baris21 = mysqli_fetch_array($hasil21);
                         $lemburhr=$hr*(isset($baris21[0])?$baris21[0]:0);
                                     $ttllemburhr=$ttllemburhr+$lemburhr;
 
-                                    $_sql22  ="SELECT ($ttln/sum(n))*100 from indekref where kdindex='".$baris["indexins"]."'";
+                                    $_sql22  ="SELECT ($ttln/sum(indekref.n))*100 from indekref where indekref.kdindex='".$baris["indexins"]."'";
 
 
                                     $hasil22 =bukaquery($_sql22);
