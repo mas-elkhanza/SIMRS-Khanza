@@ -8,20 +8,20 @@ import fungsi.validasi;
 import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -40,6 +40,8 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
     private volatile boolean ceksukses = false;
     private PreparedStatement ps;
     private ResultSet rs;
+    private DlgBarang barang;
+    private DlgCariCaraBayar penjab;
 
     /** Creates new form DlgObatPenyakit
      * @param parent
@@ -64,13 +66,13 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
          for (int i = 0; i < 4; i++) {
             TableColumn column = tbObatPenyakit.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(210);
             }
         }
         tbObatPenyakit.setDefaultRenderer(Object.class, new WarnaTable());
@@ -308,11 +310,6 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         NamaBayar.setEditable(false);
         NamaBayar.setHighlighter(null);
         NamaBayar.setName("NamaBayar"); // NOI18N
-        NamaBayar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NamaBayarKeyPressed(evt);
-            }
-        });
         panelGlass2.add(NamaBayar);
         NamaBayar.setBounds(185, 12, 302, 23);
 
@@ -352,11 +349,6 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
 
         NamaObat.setEditable(false);
         NamaObat.setName("NamaObat"); // NOI18N
-        NamaObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NamaObatKeyPressed(evt);
-            }
-        });
         panelGlass2.add(NamaObat);
         NamaObat.setBounds(185, 42, 302, 23);
 
@@ -384,10 +376,6 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NamaBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaBayarKeyPressed
-        //Valid.pindah(evt,TCari,cmbBangsal);
-}//GEN-LAST:event_NamaBayarKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NamaBayar.getText().trim().equals("")){
             Valid.textKosong(BtnCaraBayar,"Jenis Bayar");
@@ -396,7 +384,7 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         }else{
             if(Sequel.menyimpantf("set_resep_per_cara_bayar","'"+KodeBayar.getText()+"','"+KodeObat.getText()+"'","Cara Bayar & Obat")==true){
                 tabMode.addRow(new Object[]{
-                    KodeBayar.getText(),NamaBayar.getText(),KodeObat.getText(),NamaObat
+                    KodeBayar.getText(),NamaBayar.getText(),KodeObat.getText(),NamaObat.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
             }   
@@ -491,46 +479,42 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarActionPerformed
-        DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(penjab.getTable().getSelectedRow()!= -1){
-                    KodeBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    NamaBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                }  
-                KodeBayar.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        penjab.isCek();
-        penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        penjab.setLocationRelativeTo(internalFrame1);
+        if (penjab == null || !penjab.isDisplayable()) {
+            penjab=new DlgCariCaraBayar(null,false);
+            penjab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            penjab.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        KodeBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                        NamaBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    }  
+                    KodeBayar.requestFocus();
+                        penjab=null;
+                    }
+            }); 
+
+            penjab.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    } 
+                }
+            });   
+            penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            penjab.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (penjab == null) return;
+        if (!penjab.isVisible()) {
+            penjab.emptTeks();
+            penjab.isCek();
+        }  
+        if (penjab.isVisible()) {
+            penjab.toFront();
+            return;
+        }    
         penjab.setVisible(true);
 }//GEN-LAST:event_BtnCaraBayarActionPerformed
 
@@ -559,7 +543,6 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatPenyakitKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        runBackground(() ->tampil());
         emptTeks();
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -585,51 +568,43 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void NamaObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaObatKeyPressed
-        //Valid.pindah(evt,TKd,BtnSimpan);
-    }//GEN-LAST:event_NamaObatKeyPressed
-
     private void BtnObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObatActionPerformed
-        DlgBarang barang=new DlgBarang(null,false);
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(barang.getTable().getSelectedRow()!= -1){
-                    KodeObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
-                    NamaObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+        if (barang == null || !barang.isDisplayable()) {
+            barang=new DlgBarang(null,false);
+            barang.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            barang.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(barang.getTable().getSelectedRow()!= -1){
+                        KodeObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
+                        NamaObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+                    }
+                    KodeObat.requestFocus();
+                    barang=null;
                 }
-                KodeObat.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+            }); 
 
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    barang.dispose();
+            barang.getTable().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        barang.dispose();
+                    } 
                 }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        barang.isCek();
-        barang.emptTeks();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.setLocationRelativeTo(internalFrame1);
+            });   
+            barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            barang.setLocationRelativeTo(internalFrame1);
+        }
+               
+        if (barang == null) return;
+        if (!barang.isVisible()) {
+            barang.emptTeks();
+            barang.isCek();
+        }  
+        if (barang.isVisible()) {
+            barang.toFront();
+            return;
+        }    
         barang.setVisible(true);
     }//GEN-LAST:event_BtnObatActionPerformed
 

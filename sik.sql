@@ -33711,6 +33711,7 @@ CREATE TABLE `set_resep_per_cara_bayar` (
 
 LOCK TABLES `set_resep_per_cara_bayar` WRITE;
 /*!40000 ALTER TABLE `set_resep_per_cara_bayar` DISABLE KEYS */;
+INSERT INTO `set_resep_per_cara_bayar` VALUES ('A09','2018003'),('A19','B000000558'),('A20','B000000558');
 /*!40000 ALTER TABLE `set_resep_per_cara_bayar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44424,4 +44425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-09-12 12:30:40
+-- Dump completed on 2026-09-12 13:27:17

@@ -23722,7 +23722,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSetResepPerCaraBayar aplikasi=new DlgSetResepPerCaraBayar(this,true);
+        DlgSetResepPerCaraBayar aplikasi=new DlgSetResepPerCaraBayar(this,false);
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
