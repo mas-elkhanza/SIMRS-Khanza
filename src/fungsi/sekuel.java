@@ -763,6 +763,32 @@ public final class sekuel {
         return bool;
     }
     
+    public boolean meghapustf(String table,String field,String field2,String nilai_field,String nilai_field2) {
+        bool=true;
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=? and "+field2+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.setString(2,nilai_field2);
+                ps.executeUpdate(); 
+                bool=true;
+             }catch(Exception e){
+                bool=false;
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+            SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"' and "+field2+"='"+nilai_field2+"'");
+        } catch (Exception e) {
+            bool=false;
+            System.out.println("Notifikasi : "+e);
+        }
+        return bool;
+    }
+    
     public void meghapus(String table,String field,String field2,String nilai_field,String nilai_field2) {
         try {
             ps=connect.prepareStatement("delete from "+table+" where "+field+"=? and "+field2+"=?");

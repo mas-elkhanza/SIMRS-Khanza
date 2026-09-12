@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * DlgObatPenyakit.java
- *
- * Created on May 23, 2010, 12:40:35 AM
- */
-
 package setting;
 
 import fungsi.WarnaTable;
@@ -16,6 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -41,30 +31,28 @@ import simrskhanza.DlgCariCaraBayar;
  *
  * @author dosen
  */
-public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
+public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private ResultSet rs;
     private PreparedStatement ps;
+    private ResultSet rs;
 
     /** Creates new form DlgObatPenyakit
      * @param parent
      * @param modal */
-    public DlgSetHargaObatRanap(java.awt.Frame parent, boolean modal) {
+    public DlgSetResepPerCaraBayar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         this.setLocation(8,1);
         setSize(885,674);
-
-        Object[] row={"Kode Bayar",
-                "Nama Bayar",
-                "Harga Obat(%)","Kelas Kamar"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{
+                "Kode Bayar","Nama Bayar","Kode Barang","Nama Barang"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObatPenyakit.setModel(tabMode);
@@ -82,13 +70,10 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(100);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(300);
             }
         }
         tbObatPenyakit.setDefaultRenderer(Object.class, new WarnaTable());
-
-        harga.setDocument(new batasInput((byte)4).getOnlyAngka(harga));
-        kdpj.setDocument(new batasInput((byte)8).getKata(kdpj));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
     }
 
@@ -119,14 +104,13 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         panelGlass2 = new widget.panelisi();
         jLabel3 = new widget.Label();
+        NamaBayar = new widget.TextBox();
+        BtnCaraBayar = new widget.Button();
+        KodeBayar = new widget.TextBox();
         jLabel4 = new widget.Label();
-        nmpj = new widget.TextBox();
-        BtnSeek = new widget.Button();
-        kdpj = new widget.TextBox();
-        harga = new widget.TextBox();
-        jLabel5 = new widget.Label();
-        jLabel7 = new widget.Label();
-        Kelas = new widget.ComboBox();
+        KodeObat = new widget.TextBox();
+        NamaObat = new widget.TextBox();
+        BtnObat = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -138,7 +122,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Resep Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -319,81 +303,79 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         jLabel3.setText("Cara Bayar :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass2.add(jLabel3);
-        jLabel3.setBounds(0, 12, 80, 23);
+        jLabel3.setBounds(0, 12, 79, 23);
 
-        jLabel4.setText("Harga Obat :");
+        NamaBayar.setEditable(false);
+        NamaBayar.setHighlighter(null);
+        NamaBayar.setName("NamaBayar"); // NOI18N
+        NamaBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaBayarKeyPressed(evt);
+            }
+        });
+        panelGlass2.add(NamaBayar);
+        NamaBayar.setBounds(185, 12, 302, 23);
+
+        BtnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCaraBayar.setMnemonic('1');
+        BtnCaraBayar.setToolTipText("Alt+1");
+        BtnCaraBayar.setName("BtnCaraBayar"); // NOI18N
+        BtnCaraBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCaraBayarActionPerformed(evt);
+            }
+        });
+        BtnCaraBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCaraBayarKeyPressed(evt);
+            }
+        });
+        panelGlass2.add(BtnCaraBayar);
+        BtnCaraBayar.setBounds(490, 12, 28, 23);
+
+        KodeBayar.setEditable(false);
+        KodeBayar.setHighlighter(null);
+        KodeBayar.setName("KodeBayar"); // NOI18N
+        panelGlass2.add(KodeBayar);
+        KodeBayar.setBounds(83, 12, 100, 23);
+
+        jLabel4.setText("Obat/Alkes :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass2.add(jLabel4);
-        jLabel4.setBounds(0, 42, 80, 23);
+        jLabel4.setBounds(0, 42, 79, 23);
 
-        nmpj.setEditable(false);
-        nmpj.setHighlighter(null);
-        nmpj.setName("nmpj"); // NOI18N
-        nmpj.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeObat.setEditable(false);
+        KodeObat.setHighlighter(null);
+        KodeObat.setName("KodeObat"); // NOI18N
+        panelGlass2.add(KodeObat);
+        KodeObat.setBounds(83, 42, 100, 23);
+
+        NamaObat.setEditable(false);
+        NamaObat.setName("NamaObat"); // NOI18N
+        NamaObat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nmpjKeyPressed(evt);
+                NamaObatKeyPressed(evt);
             }
         });
-        panelGlass2.add(nmpj);
-        nmpj.setBounds(185, 12, 302, 23);
+        panelGlass2.add(NamaObat);
+        NamaObat.setBounds(185, 42, 302, 23);
 
-        BtnSeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek.setMnemonic('1');
-        BtnSeek.setToolTipText("Alt+1");
-        BtnSeek.setName("BtnSeek"); // NOI18N
-        BtnSeek.addActionListener(new java.awt.event.ActionListener() {
+        BtnObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnObat.setMnemonic('2');
+        BtnObat.setToolTipText("Alt+2");
+        BtnObat.setName("BtnObat"); // NOI18N
+        BtnObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeekActionPerformed(evt);
+                BtnObatActionPerformed(evt);
             }
         });
-        BtnSeek.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnObat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeekKeyPressed(evt);
+                BtnObatKeyPressed(evt);
             }
         });
-        panelGlass2.add(BtnSeek);
-        BtnSeek.setBounds(490, 12, 28, 23);
-
-        kdpj.setHighlighter(null);
-        kdpj.setName("kdpj"); // NOI18N
-        kdpj.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdpjKeyPressed(evt);
-            }
-        });
-        panelGlass2.add(kdpj);
-        kdpj.setBounds(83, 12, 100, 23);
-
-        harga.setHighlighter(null);
-        harga.setName("harga"); // NOI18N
-        harga.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                hargaKeyPressed(evt);
-            }
-        });
-        panelGlass2.add(harga);
-        harga.setBounds(83, 42, 60, 23);
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("  % dari Harga Beli");
-        jLabel5.setName("jLabel5"); // NOI18N
-        panelGlass2.add(jLabel5);
-        jLabel5.setBounds(143, 42, 110, 23);
-
-        jLabel7.setText("Kelas Kamar :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        panelGlass2.add(jLabel7);
-        jLabel7.setBounds(269, 42, 90, 23);
-
-        Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
-        Kelas.setName("Kelas"); // NOI18N
-        Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KelasKeyPressed(evt);
-            }
-        });
-        panelGlass2.add(Kelas);
-        Kelas.setBounds(362, 42, 125, 23);
+        panelGlass2.add(BtnObat);
+        BtnObat.setBounds(490, 42, 28, 23);
 
         internalFrame1.add(panelGlass2, java.awt.BorderLayout.PAGE_START);
 
@@ -402,17 +384,22 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nmpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmpjKeyPressed
+    private void NamaBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaBayarKeyPressed
         //Valid.pindah(evt,TCari,cmbBangsal);
-}//GEN-LAST:event_nmpjKeyPressed
+}//GEN-LAST:event_NamaBayarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(nmpj.getText().trim().equals("")){
-            Valid.textKosong(nmpj,"Jenis Bayar");
+        if(NamaBayar.getText().trim().equals("")){
+            Valid.textKosong(BtnCaraBayar,"Jenis Bayar");
+        }else if(NamaObat.getText().trim().equals("")){
+            Valid.textKosong(BtnObat,"Nama Obat");
         }else{
-            Sequel.menyimpan("set_harga_obat_ranap","'"+kdpj.getText()+"','"+Kelas.getSelectedItem()+"','"+harga.getText()+"'","Jenis Bayar");
-            runBackground(() ->tampil());
-            emptTeks();
+            if(Sequel.menyimpantf("set_resep_per_cara_bayar","'"+KodeBayar.getText()+"','"+KodeObat.getText()+"'","Cara Bayar & Obat")==true){
+                tabMode.addRow(new Object[]{
+                    KodeBayar.getText(),NamaBayar.getText(),KodeObat.getText(),NamaObat
+                });
+                LCount.setText(""+tabMode.getRowCount());
+            }   
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -420,7 +407,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,harga,BtnBatal);
+            Valid.pindah(evt,BtnObat,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -437,13 +424,16 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            kdpj.requestFocus();
-        }else if(nmpj.getText().trim().equals("")){
+            KodeBayar.requestFocus();
+        }else if(NamaBayar.getText().trim().equals("")&&NamaObat.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
-        }else if(!(nmpj.getText().trim().equals(""))){
-            Valid.hapusTable(tabMode,kdpj,"set_harga_obat_ranap","kelas='"+Kelas.getSelectedItem()+"' and kd_pj");
-            runBackground(() ->tampil());
-            emptTeks();
+        }else if((!NamaBayar.getText().trim().equals(""))&&(!NamaObat.getText().trim().equals(""))){
+            if(Sequel.meghapustf("set_resep_per_cara_bayar","kd_pj","kode_brng",KodeBayar.getText(),KodeObat.getText())==true){
+                if(tbObatPenyakit.getSelectedRow()!= -1){
+                    tabMode.removeRow(tbObatPenyakit.getSelectedRow());
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -500,7 +490,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
+    private void BtnCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarActionPerformed
         DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
         penjab.addWindowListener(new WindowListener() {
             @Override
@@ -510,10 +500,10 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(penjab.getTable().getSelectedRow()!= -1){
-                    kdpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                    nmpj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    KodeBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                    NamaBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                 }  
-                kdpj.requestFocus();
+                KodeBayar.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -542,11 +532,11 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
-}//GEN-LAST:event_BtnSeekActionPerformed
+}//GEN-LAST:event_BtnCaraBayarActionPerformed
 
-    private void BtnSeekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeekKeyPressed
-        Valid.pindah(evt,kdpj,harga);
-}//GEN-LAST:event_BtnSeekKeyPressed
+    private void BtnCaraBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCaraBayarKeyPressed
+        Valid.pindah(evt,TCari,BtnObat);
+}//GEN-LAST:event_BtnCaraBayarKeyPressed
 
     private void tbObatPenyakitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatPenyakitMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -567,18 +557,6 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             }
         }
 }//GEN-LAST:event_tbObatPenyakitKeyPressed
-
-private void kdpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpjKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj='"+kdpj.getText()+"'", nmpj);
-        }else{
-             Valid.pindah(evt,TCari,harga);
-        }
-}//GEN-LAST:event_kdpjKeyPressed
-
-private void hargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargaKeyPressed
-       Valid.pindah(evt,kdpj,Kelas);
-}//GEN-LAST:event_hargaKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         runBackground(() ->tampil());
@@ -604,19 +582,67 @@ private void hargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_har
                     }
                 }
             });
-        } 
+        }
     }//GEN-LAST:event_formWindowOpened
 
-    private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
-        Valid.pindah(evt,harga,BtnSimpan);
-    }//GEN-LAST:event_KelasKeyPressed
+    private void NamaObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaObatKeyPressed
+        //Valid.pindah(evt,TKd,BtnSimpan);
+    }//GEN-LAST:event_NamaObatKeyPressed
+
+    private void BtnObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObatActionPerformed
+        DlgBarang barang=new DlgBarang(null,false);
+        barang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(barang.getTable().getSelectedRow()!= -1){
+                    KodeObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
+                    NamaObat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+                }
+                KodeObat.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        barang.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    barang.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        barang.isCek();
+        barang.emptTeks();
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setLocationRelativeTo(internalFrame1);
+        barang.setVisible(true);
+    }//GEN-LAST:event_BtnObatActionPerformed
+
+    private void BtnObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnObatKeyPressed
+        Valid.pindah(evt,KodeObat,BtnSimpan);
+    }//GEN-LAST:event_BtnObatKeyPressed
 
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgSetHargaObatRanap dialog = new DlgSetHargaObatRanap(new javax.swing.JFrame(), true);
+            DlgSetResepPerCaraBayar dialog = new DlgSetResepPerCaraBayar(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -630,26 +656,25 @@ private void hargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_har
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
+    private widget.Button BtnCaraBayar;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnSeek;
+    private widget.Button BtnObat;
     private widget.Button BtnSimpan;
-    private widget.ComboBox Kelas;
+    private widget.TextBox KodeBayar;
+    private widget.TextBox KodeObat;
     private widget.Label LCount;
+    private widget.TextBox NamaBayar;
+    private widget.TextBox NamaObat;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox harga;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
-    private widget.Label jLabel5;
     private widget.Label jLabel6;
-    private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdpj;
-    private widget.TextBox nmpj;
     private widget.panelisi panelGlass2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -660,52 +685,55 @@ private void hargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_har
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select set_harga_obat_ranap.kd_pj,penjab.png_jawab,set_harga_obat_ranap.hargajual,set_harga_obat_ranap.kelas "+
-                "from set_harga_obat_ranap inner join penjab on set_harga_obat_ranap.kd_pj=penjab.kd_pj "+
-                (TCari.getText().trim().equals("")?"":"where set_harga_obat_ranap.kd_pj like ? or "+
-                "penjab.png_jawab like ? or set_harga_obat_ranap.hargajual like ? ")+"order by penjab.png_jawab"
+                "select set_resep_per_cara_bayar.kd_pj,penjab.png_jawab,set_resep_per_cara_bayar.kode_brng,databarang.nama_brng "+
+                "from set_resep_per_cara_bayar inner join penjab on set_resep_per_cara_bayar.kd_pj=penjab.kd_pj "+
+                "inner join databarang on set_resep_per_cara_bayar.kode_brng=databarang.kode_brng "+
+                (TCari.getText().trim().equals("")?"":"where set_resep_per_cara_bayar.kd_pj like ? or penjab.png_jawab like ? or "+
+                "set_resep_per_cara_bayar.kode_brng like ? or databarang.nama_brng like ? ")+"order by penjab.png_jawab"
             );
-            try {
+            try{
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText().trim()+"%");
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(1, "%"+TCari.getText().trim()+"%");
+                    ps.setString(2, "%"+TCari.getText().trim()+"%");
+                    ps.setString(3, "%"+TCari.getText().trim()+"%");
+                    ps.setString(4, "%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
-                    });
-                 }
-            } catch (Exception e) {
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                }
+            }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
+            }finally{
+                if( rs != null){
                     rs.close();
                 }
-                if(ps!=null){
+                
+                if( ps != null){
                     ps.close();
                 }
             }
-        }catch(Exception e){
+        }catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     private void emptTeks() {
-        harga.setText("0");
-        kdpj.setText("");
-        nmpj.setText("");
-        harga.requestFocus();
+        KodeBayar.setText("");
+        NamaBayar.setText("");
+        KodeObat.setText("");
+        NamaObat.setText("");
+        BtnCaraBayar.requestFocus();
     }
 
     private void getData() {
         int row=tbObatPenyakit.getSelectedRow();
         if(row!= -1){
-            kdpj.setText(tbObatPenyakit.getValueAt(row,0).toString());
-            nmpj.setText(tbObatPenyakit.getValueAt(row,1).toString());
-            harga.setText(tbObatPenyakit.getValueAt(row,2).toString());
-            Kelas.setSelectedItem(tbObatPenyakit.getValueAt(row,3).toString());
+            KodeBayar.setText(tbObatPenyakit.getValueAt(row,0).toString());
+            NamaBayar.setText(tbObatPenyakit.getValueAt(row,1).toString());
+            KodeObat.setText(tbObatPenyakit.getValueAt(row,1).toString());
+            NamaObat.setText(tbObatPenyakit.getValueAt(row,2).toString());
         }
     }
 

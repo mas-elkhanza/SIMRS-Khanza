@@ -3489,7 +3489,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         DTPCari2.setDate(tgl2);    
-        isRawat();              
+        isRawat();    
+        Alasan.setText(Sequel.cariIsi("select permintaan_ranap.alasan from permintaan_ranap where permintaan_ranap.no_rawat=?",norwt));
         ChkInput.setSelected(true);
         isForm();
         CaraKeluar.requestFocus();

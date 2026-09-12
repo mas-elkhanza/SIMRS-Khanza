@@ -442,7 +442,7 @@ public class DlgAdmin extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select AES_DECRYPT(admin.usere,'nur'),AES_DECRYPT(admin.passworde,'windi') from admin");

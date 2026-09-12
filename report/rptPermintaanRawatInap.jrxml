@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1769c073-87b0-4daa-ad3e-5c45ea9318fe">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1108" pageHeight="612" orientation="Landscape" columnWidth="1068" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1769c073-87b0-4daa-ad3e-5c45ea9318fe">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="248"/>
 	<property name="ireport.y" value="0"/>
@@ -8,6 +8,15 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -18,7 +27,7 @@
 	<queryString>
 		<![CDATA[select permintaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,
 pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,permintaan_ranap.tanggal,permintaan_ranap.kd_kamar,kamar.kd_bangsal,
-bangsal.nm_bangsal,kamar.trf_kamar,permintaan_ranap.diagnosa,permintaan_ranap.catatan from permintaan_ranap 
+bangsal.nm_bangsal,kamar.trf_kamar,permintaan_ranap.diagnosa,permintaan_ranap.alasan,permintaan_ranap.catatan from permintaan_ranap 
 inner join reg_periksa on permintaan_ranap.no_rawat=reg_periksa.no_rawat 
 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join penjab on reg_periksa.kd_pj=penjab.kd_pj 
@@ -123,6 +132,12 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 		<property name="com.jaspersoft.studio.field.tree.path" value="permintaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="alasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alasan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alasan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="permintaan_ranap"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="catatan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="catatan"/>
 		<property name="com.jaspersoft.studio.field.label" value="catatan"/>
@@ -135,7 +150,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="52" width="960" height="23" uuid="ee7a4847-ec68-44b5-a675-e2643f0be1a3"/>
+				<reportElement x="0" y="52" width="1066" height="23" uuid="ee7a4847-ec68-44b5-a675-e2643f0be1a3"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -143,7 +158,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<text><![CDATA[Data Permintaan Rawat Inap]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="25" width="958" height="14" uuid="56fa4d7b-b138-45bb-850e-181f8ae26a22"/>
+				<reportElement x="2" y="25" width="1064" height="14" uuid="56fa4d7b-b138-45bb-850e-181f8ae26a22"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -151,7 +166,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="0" width="958" height="17" uuid="2a991d2e-fd65-4f37-943c-bcd7410d81e3"/>
+				<reportElement x="2" y="0" width="1064" height="17" uuid="2a991d2e-fd65-4f37-943c-bcd7410d81e3"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -159,7 +174,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="35" width="958" height="14" uuid="9fb32a30-de31-462e-9e03-25c48f8a7d10"/>
+				<reportElement x="2" y="35" width="1064" height="14" uuid="9fb32a30-de31-462e-9e03-25c48f8a7d10"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -167,13 +182,13 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="48" width="960" height="1" uuid="2e3fd572-d8af-4258-a84f-86e433df1a6e"/>
+				<reportElement x="0" y="48" width="1066" height="1" uuid="2e3fd572-d8af-4258-a84f-86e433df1a6e"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="2" y="14" width="958" height="14" uuid="7c2d4cae-f999-4dde-88c8-1a2726994bd3"/>
+				<reportElement x="2" y="14" width="1064" height="14" uuid="7c2d4cae-f999-4dde-88c8-1a2726994bd3"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -192,6 +207,14 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
+				<reportElement mode="Opaque" x="870" y="0" width="90" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="1f287655-17f0-463f-bc85-578744492e66"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Alasan Dirawat]]></text>
+			</staticText>
+			<staticText>
 				<reportElement mode="Opaque" x="660" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="62a9b672-6f4d-4afa-8f84-49fb6e8ab54a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
@@ -208,7 +231,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<text><![CDATA[Diagnosa Awal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="870" y="0" width="90" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="3275c301-eb52-4cd9-bc65-7f56fe69fa72"/>
+				<reportElement mode="Opaque" x="960" y="0" width="106" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="3275c301-eb52-4cd9-bc65-7f56fe69fa72"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -300,13 +323,13 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<text><![CDATA[No.Telp]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="960" height="1" uuid="ff501bc5-0501-44ee-b1e8-8baafff528c0"/>
+				<reportElement x="0" y="0" width="1066" height="1" uuid="ff501bc5-0501-44ee-b1e8-8baafff528c0"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="960" height="1" uuid="b0940d02-8c99-4809-b1f0-56196854a013"/>
+				<reportElement x="0" y="16" width="1066" height="1" uuid="b0940d02-8c99-4809-b1f0-56196854a013"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -376,7 +399,7 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA[$F{png_jawab}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="960" height="1" uuid="7b06edd6-09f8-472c-adb1-030029fadbc9">
+				<reportElement positionType="Float" x="0" y="11" width="1066" height="1" uuid="7b06edd6-09f8-472c-adb1-030029fadbc9">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -426,12 +449,20 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA[$F{diagnosa}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="870" y="0" width="90" height="10" uuid="554ca61d-d022-44e7-80ce-fd051e439b07"/>
+				<reportElement positionType="Float" x="960" y="0" width="106" height="10" uuid="554ca61d-d022-44e7-80ce-fd051e439b07"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{catatan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="870" y="0" width="90" height="10" uuid="74f853c1-6716-4e23-90f3-8d284217465c"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alasan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -489,13 +520,13 @@ where permintaan_ranap.no_rawat not in (select DISTINCT no_rawat from kamar_inap
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="960" height="1" uuid="7cbdef7f-c39c-4acc-bf9f-180236ffe442"/>
+				<reportElement x="0" y="0" width="1066" height="1" uuid="7cbdef7f-c39c-4acc-bf9f-180236ffe442"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="17" width="960" height="1" uuid="18e13e9d-f770-4ff3-86d3-fb1181cd3c13"/>
+				<reportElement x="0" y="17" width="1066" height="1" uuid="18e13e9d-f770-4ff3-86d3-fb1181cd3c13"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

@@ -25,7 +25,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
@@ -48,6 +47,8 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private ResultSet rs;
+    private PreparedStatement ps;
 
     /** Creates new form DlgObatPenyakit
      * @param parent
@@ -631,30 +632,39 @@ private void hargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_har
 
 
     private void tampil() {
-        String sql="select set_harga_obat_ralan.kd_pj,penjab.png_jawab, set_harga_obat_ralan.hargajual "+
-                   "from set_harga_obat_ralan inner join penjab on set_harga_obat_ralan.kd_pj=penjab.kd_pj "+
-                   "where set_harga_obat_ralan.kd_pj like '%"+TCari.getText().trim()+"%' or "+
-                   "penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-                   "set_harga_obat_ralan.hargajual like '%"+TCari.getText().trim()+"%' order by penjab.png_jawab";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            PreparedStatement ps=koneksi.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement(
+                "select set_harga_obat_ralan.kd_pj,penjab.png_jawab, set_harga_obat_ralan.hargajual "+
+                "from set_harga_obat_ralan inner join penjab on set_harga_obat_ralan.kd_pj=penjab.kd_pj "+
+                (TCari.getText().trim().equals("")?"":"where set_harga_obat_ralan.kd_pj like ? or "+
+                "penjab.png_jawab like ? or set_harga_obat_ralan.hargajual like ? ")+"order by penjab.png_jawab"
+            );
+            try {
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3)
+                    });
+                 }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
     }
 
     private void emptTeks() {

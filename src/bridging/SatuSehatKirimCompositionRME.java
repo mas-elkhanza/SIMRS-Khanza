@@ -3343,57 +3343,147 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
                     
                     //Composition IGD
-                    try{
-                        headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                        json = "{" +
-                                    "\"resourceType\": \"CarePlan\"," +
-                                    "\"status\": \"active\"," +
-                                    "\"intent\": \"plan\"," +
-                                    "\"title\": \"Rencana Penempatan Pasien IGD\"," +
-                                    "\"description\": \"Zona Merah " + tbIGDPrimer.getValueAt(i, 36).toString()+"\"," +
-                                    "\"category\": ["+
-                                        "{"+
-                                            "\"coding\": ["+
-                                                "{"+
-                                                    "\"system\": \"http://snomed.info/sct\","+
-                                                    "\"code\": \"771082000\","+
-                                                    "\"display\": \"Acute medicine care plan\""+
-                                                "}"+
-                                            "]"+
-                                        "}"+
-                                    "]," +
-                                    "\"subject\": {"+
-                                        "\"reference\": \"Patient/" + idpasien + "\""+
-                                    "}," +
-                                    "\"encounter\": {"+
-                                        "\"reference\": \"Encounter/" + tbIGDPrimer.getValueAt(i, 5).toString() + "\""+
-                                    "}," +
-                                    "\"author\": {"+
-                                        "\"reference\": \"Practitioner/" + iddokter + "\""+
-                                    "}," +
-                                    "\"period\": {"+
-                                        "\"start\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\""+
-                                    "}" +
-                               "}";
-                        System.out.println("URL : "+link+"/CarePlan");
-                        System.out.println("Request JSON : "+json);
-                        requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/CarePlan", HttpMethod.POST, requestEntity, String.class).getBody();
-                        System.out.println("Result JSON : "+json);
-                        root = mapper.readTree(json);
-                        response = root.path("id");
-                        if(!response.asText().equals("")){
-                            if(Sequel.mengedittf("data_triase_igdprimer","no_rawat=?","id_careplan_keputusan=?",2,new String[]{
+                    if((!tbIGDPrimer.getValueAt(i,10).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,12).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,15).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,17).toString().equals(""))&&
+                            (!tbIGDPrimer.getValueAt(i,19).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,21).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,23).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,25).toString().equals(""))&&
+                            (!tbIGDPrimer.getValueAt(i,27).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,29).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,31).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,33).toString().equals(""))&&
+                            (!tbIGDPrimer.getValueAt(i,35).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,37).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,38).toString().equals(""))){
+                        try{
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                            json = "{" +
+                                        "\"resourceType\": \"Composition\"," +
+                                        "\"status\": \"final\"," +
+                                        "\"type\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"75500-9\"," +
+                                                    "\"display\": \"Triage note\"" +
+                                                "}" +
+                                            "]" +
+                                        "}," +
+                                        "\"subject\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"" +
+                                        "}," +
+                                        "\"encounter\": {" +
+                                            "\"reference\": \"Encounter/"+tbIGDPrimer.getValueAt(i,5).toString()+"\"" +
+                                        "}," +
+                                        "\"author\": [" +
+                                            "{" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                            "}" +
+                                        "]," +
+                                        "\"date\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
+                                        "\"title\": \"Data Triase IGD\"," +
+                                        "\"section\": [" +
+                                            "{" +
+                                                "\"title\": \"Identitas & Kedatangan\"," +
+                                                "\"code\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://loinc.org\"," +
+                                                            "\"code\": \"11459-5\"," +
+                                                            "\"display\": \"Mode of arrival\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,10).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,12).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,15).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,17).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Keluhan Utama\"," +
+                                                "\"code\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://loinc.org\"," +
+                                                            "\"code\": \"10154-3\"," +
+                                                            "\"display\": \"Chief complaint\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,31).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Tanda Vital\"," +
+                                                "\"code\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://loinc.org\"," +
+                                                            "\"code\": \"8716-3\"," +
+                                                            "\"display\": \"Vital signs\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,19).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,21).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,23).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,25).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,27).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Kebutuhan Khusus\"," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,33).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Nyeri & Kategori Triase\"," +
+                                                "\"code\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://loinc.org\"," +
+                                                            "\"code\": \"11283-9\"," +
+                                                            "\"display\": \"Acuity assessment\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,29).toString()+"\"}," +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,38).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Catatan\"," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,35).toString()+"\"}" +
+                                                "]" +
+                                            "}," +
+                                            "{" +
+                                                "\"title\": \"Plan/Keputusan\"," +
+                                                "\"entry\": [" +
+                                                    "{\"reference\": \"CarePlan/"+tbIGDPrimer.getValueAt(i,37).toString()+"\"}," +
+                                                    "{\"reference\": \"Encounter/"+tbIGDPrimer.getValueAt(i,5).toString()+"\"}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}";
+                            System.out.println("URL : "+link+"/Composition");
+                            System.out.println("Request JSON : "+json);
+                            requestEntity = new HttpEntity(json,headers);
+                            json=api.getRest().exchange(link+"/Composition",HttpMethod.POST,requestEntity,String.class).getBody();
+                            System.out.println("Result JSON : "+json);
+                            root = mapper.readTree(json);
+                            response = root.path("id");
+                            if(!response.asText().equals("")){
+                                if(Sequel.mengedittf("data_triase_igdprimer","no_rawat=?","id_composition=?",2,new String[]{
                                     response.asText(),tbIGDPrimer.getValueAt(i,1).toString()
                                 })==true){
-                                tbIGDPrimer.setValueAt(response.asText(), i,37);
-                                tbIGDPrimer.setValueAt(false,i,0);
+                                    tbIGDPrimer.setValueAt(response.asText(),i,39);
+                                    tbIGDPrimer.setValueAt(false,i,0);
+                                }
                             }
+                        }catch(Exception e){
+                            System.out.println("Notifikasi Composition Triase IGD : "+e);
                         }
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Keputusan : "+e);
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
