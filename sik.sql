@@ -7155,7 +7155,7 @@ CREATE TABLE `data_triase_igd` (
 
 LOCK TABLES `data_triase_igd` WRITE;
 /*!40000 ALTER TABLE `data_triase_igd` DISABLE KEYS */;
-INSERT INTO `data_triase_igd` VALUES ('2026/08/25/000001','2026-08-25 15:04:25','Kursi Roda','Swasta','Datang Sendiri','tes','002','170/120','120','120','39','98','10','5e881018-25e0-4467-b1a4-f39a878d0ff3','84050e45-949c-4241-99c6-554014855f08','4fc2217e-ae36-4267-9646-25add7088adf','a4334a8c-ce5d-4503-a20d-1f262f0f1fa8','da5c56f7-1497-44f7-9724-569ab74b9365','be034ac4-89a5-4289-95bc-dd8cf6be9721','767ba6ac-11b8-4653-b7cd-06f310d11a71','0975bc7c-cd88-479a-a8ba-6c9f768396a1','0bceaa28-b715-44be-b804-498f7968128e','581d3bb0-5812-4d7e-b3b1-454b6925f2df',''),('2026/09/09/000001','2026-09-09 11:28:06','Jalan','-','Datang Sendiri','','001','qwqw','qwq','wqw','qwqwq','wqw','wqwqw','','','','','','','','','','','');
+INSERT INTO `data_triase_igd` VALUES ('2026/08/25/000001','2026-08-25 15:04:25','Kursi Roda','Swasta','Datang Sendiri','tes','002','170/120','120','120','39','98','10','5e881018-25e0-4467-b1a4-f39a878d0ff3','84050e45-949c-4241-99c6-554014855f08','4fc2217e-ae36-4267-9646-25add7088adf','a4334a8c-ce5d-4503-a20d-1f262f0f1fa8','da5c56f7-1497-44f7-9724-569ab74b9365','be034ac4-89a5-4289-95bc-dd8cf6be9721','767ba6ac-11b8-4653-b7cd-06f310d11a71','0975bc7c-cd88-479a-a8ba-6c9f768396a1','0bceaa28-b715-44be-b804-498f7968128e','581d3bb0-5812-4d7e-b3b1-454b6925f2df','52a5d9cc-7c88-4d98-8438-cda8930d6f84'),('2026/09/09/000001','2026-09-09 11:28:06','Jalan','-','Datang Sendiri','','001','qwqw','qwq','wqw','qwqwq','wqw','wqwqw','','','','','','','','','','','');
 /*!40000 ALTER TABLE `data_triase_igd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44437,4 +44437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-09-13 10:59:42
+-- Dump completed on 2026-09-13 20:20:56

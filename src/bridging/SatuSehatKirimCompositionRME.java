@@ -1877,19 +1877,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 ps.setString(1,tbIGDPrimer.getValueAt(tbIGDPrimer.getSelectedRow(),1).toString());
                 rs=ps.executeQuery();
                 if(rs.next()){
-                    htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>"+
-                            "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='left' width='60%'>Immediate/Segera</td>"+
-                        "</tr>");
+                    htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>").
+                                    append("<td valign='middle' bgcolor='#AA0000' color='ffffff' align='left' width='60%'>Immediate/Segera</td>").
+                                append("</tr>");
                     rs.beforeFirst();
                     while(rs.next()){
-                        htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle'>"+rs.getString("nama_pemeriksaan")+"</td>"+
-                                "<td valign='middle' bgcolor='#AA0000' color='ffffff'>"+
-                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"
-                        );
+                        htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='middle'>").append(rs.getString("nama_pemeriksaan")).append("</td>").
+                                    append("<td valign='middle' bgcolor='#AA0000' color='ffffff'>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>");
                         ps2=koneksi.prepareStatement(
                             "select data_triase_igddetail_skala1.id_observation_skala1,master_triase_skala1.pengkajian_skala1 from master_triase_skala1 inner join data_triase_igddetail_skala1 "+
                             "on master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where master_triase_skala1.kode_pemeriksaan=? and data_triase_igddetail_skala1.no_rawat=? "+
@@ -1900,12 +1897,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             ps2.setString(2,tbIGDPrimer.getValueAt(tbIGDPrimer.getSelectedRow(),1).toString());
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
-                                htmlContent.append(                             
-                                    "<tr class='isi'>"+
-                                        "<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='50%'>"+rs2.getString("pengkajian_skala1")+"</td>"+
-                                        "<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='50%'>"+rs2.getString("id_observation_skala1")+"</td>"+
-                                    "</tr>"
-                                );
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='50%'>").append(rs2.getString("pengkajian_skala1")).append("</td>").
+                                                append("<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='50%'>").append(rs2.getString("id_observation_skala1")).append("</td>").
+                                            append("</tr>");
                                 jumlahigdprimer++;
                             }
                         } catch (Exception e) {
@@ -1918,11 +1913,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                                    "</table>"+
-                                "</td>"+
-                            "</tr>"
-                        );
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                    append("</tr>");
                     }
                 }
             } catch (Exception e) {
@@ -1947,19 +1940,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     ps.setString(1,tbIGDPrimer.getValueAt(tbIGDPrimer.getSelectedRow(),1).toString());
                     rs=ps.executeQuery();
                     if(rs.next()){
-                        htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60%'>Pemeriksaan</td>"+
-                                "<td valign='middle' bgcolor='#FF0000' color='ffffff' align='left' width='40%'>Emergensi</td>"+
-                            "</tr>");
+                        htmlContent.append("<tr class='isi'>").                                    
+                                        append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='60%'>Pemeriksaan</td>").                                    
+                                        append("<td valign='middle' bgcolor='#FF0000' color='ffffff' align='left' width='40%'>Emergensi</td>").                                    
+                                    append("</tr>");
                         rs.beforeFirst();
                         while(rs.next()){
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle'>"+rs.getString("nama_pemeriksaan")+"</td>"+
-                                    "<td valign='middle' bgcolor='#FF0000' color='ffffff'>"+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"
-                            );
+                            htmlContent.append("<tr class='isi'>").                                    
+                                        append("<td valign='middle'>").append(rs.getString("nama_pemeriksaan")).append("</td>").                                    
+                                        append("<td valign='middle' bgcolor='#FF0000' color='ffffff'>").
+                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>");
                             ps2=koneksi.prepareStatement(
                                 "select data_triase_igddetail_skala2.id_observation_skala2,master_triase_skala2.pengkajian_skala2 from master_triase_skala2 inner join data_triase_igddetail_skala2 "+
                                 "on master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where master_triase_skala2.kode_pemeriksaan=? and data_triase_igddetail_skala2.no_rawat=? "+
@@ -1970,12 +1960,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                 ps2.setString(2,rs.getString("no_rawat"));
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
-                                        "<tr class='isi'>"+
-                                            "<td border='0' valign='middle' bgcolor='#FF0000' color='ffffff' width='50%'>"+rs2.getString("pengkajian_skala2")+"</td>"+
-                                            "<td border='0' valign='middle' bgcolor='#FF0000' color='ffffff' width='50%'>"+rs2.getString("id_observation_skala2")+"</td>"+
-                                        "</tr>"
-                                    );
+                                    htmlContent.append("<tr class='isi'>").                                    
+                                                    append("<td border='0' valign='middle' bgcolor='#FF0000' color='ffffff' width='50%'>").append(rs2.getString("pengkajian_skala2")).append("</td>").                                    
+                                                    append("<td border='0' valign='middle' bgcolor='#FF0000' color='ffffff' width='50%'>").append(rs2.getString("id_observation_skala2")).append("</td>").                                    
+                                                append("</tr>");
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : "+e);
@@ -1987,11 +1975,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                     ps2.close();
                                 }
                             }
-                            htmlContent.append(
-                                        "</table>"+
-                                    "</td>"+
-                                "</tr>"
-                            );
+                            htmlContent.append("</table>").
+                                        append("</td>").                                    
+                                        append("</tr>");
                         }
                     }
                 } catch (Exception e) {
@@ -3071,9 +3057,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             rs.beforeFirst();
                             while(rs.next()){
                                 ps2=koneksi.prepareStatement(
-                                    "select data_triase_igddetail_skala1.kode_skala1,master_triase_skala1.pengkajian_skala1 from master_triase_skala1 "+
-                                    "inner join data_triase_igddetail_skala1 on master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 "+
-                                    "where data_triase_igddetail_skala1.id_observation_skala1='' and master_triase_skala1.kode_pemeriksaan=? and "+
+                                    "select data_triase_igddetail_skala1.kode_skala1,master_triase_skala1.pengkajian_skala1,data_triase_igddetail_skala1.id_observation_skala1 from master_triase_skala1 "+
+                                    "inner join data_triase_igddetail_skala1 on master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where master_triase_skala1.kode_pemeriksaan=? and "+
                                     "data_triase_igddetail_skala1.no_rawat=?"
                                 );
                                 try {
@@ -3081,64 +3066,69 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                     ps2.setString(2,tbIGDPrimer.getValueAt(i,1).toString());
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
-                                        try{
-                                            headers = new HttpHeaders();
-                                            headers.setContentType(MediaType.APPLICATION_JSON);
-                                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                                            json = "{" +
-                                                        "\"resourceType\": \"Observation\"," +
-                                                        "\"status\": \"final\"," +
-                                                        "\"category\": ["+
-                                                            "{"+
+                                        if(rs2.getString("id_observation_skala1").equals("")){
+                                            try{
+                                                headers = new HttpHeaders();
+                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                json = "{" +
+                                                            "\"resourceType\": \"Observation\"," +
+                                                            "\"status\": \"final\"," +
+                                                            "\"category\": ["+
+                                                                "{"+
+                                                                    "\"coding\": ["+
+                                                                        "{"+
+                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\","+
+                                                                            "\"code\": \"exam\","+
+                                                                            "\"display\": \"exam\""+
+                                                                        "}"+
+                                                                    "]"+
+                                                                "}"+
+                                                            "]," +
+                                                            "\"code\": {"+
                                                                 "\"coding\": ["+
                                                                     "{"+
-                                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\","+
-                                                                        "\"code\": \"exam\","+
-                                                                        "\"display\": \"exam\""+
+                                                                        "\"system\": \"http://loinc.org\","+
+                                                                        "\"code\": \"75321-0\","+
+                                                                        "\"display\": \"Clinical finding\""+
                                                                     "}"+
-                                                                "]"+
-                                                            "}"+
-                                                        "]," +
-                                                        "\"code\": {"+
-                                                            "\"coding\": ["+
+                                                                "],"+
+                                                                "\"text\": \"" + rs.getString("nama_pemeriksaan") + "\""+
+                                                            "}," +
+                                                            "\"subject\": {"+
+                                                                "\"reference\": \"Patient/" + idpasien + "\""+
+                                                            "}," +
+                                                            "\"performer\": ["+
                                                                 "{"+
-                                                                    "\"system\": \"http://loinc.org\","+
-                                                                    "\"code\": \"75321-0\","+
-                                                                    "\"display\": \"Clinical finding\""+
+                                                                    "\"reference\": \"Practitioner/" + iddokter + "\""+
                                                                 "}"+
-                                                            "],"+
-                                                            "\"text\": \"" + rs.getString("nama_pemeriksaan") + "\""+
-                                                        "}," +
-                                                        "\"subject\": {"+
-                                                            "\"reference\": \"Patient/" + idpasien + "\""+
-                                                        "}," +
-                                                        "\"performer\": ["+
-                                                            "{"+
-                                                                "\"reference\": \"Practitioner/" + iddokter + "\""+
-                                                            "}"+
-                                                        "]," +
-                                                        "\"encounter\": {"+
-                                                            "\"reference\": \"Encounter/" + tbIGDPrimer.getValueAt(i, 5).toString() + "\""+
-                                                        "}," +
-                                                        "\"effectiveDateTime\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
-                                                        "\"valueString\": \"" + rs2.getString("pengkajian_skala1").replace("\"", "'") + "\"" +
-                                                   "}";
-                                            System.out.println("URL : "+link+"/Observation");
-                                            System.out.println("Request JSON : "+json);
-                                            requestEntity = new HttpEntity(json,headers);
-                                            json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                            System.out.println("Result JSON : "+json);
-                                            root = mapper.readTree(json);
-                                            response = root.path("id");
-                                            if(!response.asText().equals("")){
-                                                Sequel.mengedit("data_triase_igddetail_skala1","no_rawat=? AND kode_skala1=?","id_observation_skala1=?",3,new String[]{
-                                                    response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala1")
-                                                });
-                                                iyembuilder.append("{\"reference\": \"Observation/"+response.asText()+"\"},");
+                                                            "]," +
+                                                            "\"encounter\": {"+
+                                                                "\"reference\": \"Encounter/" + tbIGDPrimer.getValueAt(i, 5).toString() + "\""+
+                                                            "}," +
+                                                            "\"effectiveDateTime\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
+                                                            "\"valueString\": \"" + rs2.getString("pengkajian_skala1").replace("\"", "'") + "\"" +
+                                                       "}";
+                                                System.out.println("URL : "+link+"/Observation");
+                                                System.out.println("Request JSON : "+json);
+                                                requestEntity = new HttpEntity(json,headers);
+                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                System.out.println("Result JSON : "+json);
+                                                root = mapper.readTree(json);
+                                                response = root.path("id");
+                                                if(!response.asText().equals("")){
+                                                    Sequel.mengedit("data_triase_igddetail_skala1","no_rawat=? AND kode_skala1=?","id_observation_skala1=?",3,new String[]{
+                                                        response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala1")
+                                                    });
+                                                    iyembuilder.append("{\"reference\": \"Observation/").append(response.asText()).append("\"},");
+                                                }
+                                            }catch(Exception e){
+                                                System.out.println("Notifikasi Triase Skala 1 : "+e);
                                             }
-                                        }catch(Exception e){
-                                            System.out.println("Notifikasi Triase Skala 1 : "+e);
+                                        }else{
+                                            iyembuilder.append("{\"reference\": \"Observation/").append(rs2.getString("id_observation_skala1")).append("\"},");
                                         }
+                                            
                                         jumlahigdprimer++;
                                     }
                                 } catch (Exception e) {
@@ -3251,9 +3241,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                 rs.beforeFirst();
                                 while(rs.next()){
                                     ps2=koneksi.prepareStatement(
-                                        "select data_triase_igddetail_skala2.kode_skala2,master_triase_skala2.pengkajian_skala2 from master_triase_skala2 "+
-                                        "inner join data_triase_igddetail_skala2 on master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 "+
-                                        "where data_triase_igddetail_skala2.id_observation_skala2='' and master_triase_skala2.kode_pemeriksaan=? and "+
+                                        "select data_triase_igddetail_skala2.kode_skala2,master_triase_skala2.pengkajian_skala2,data_triase_igddetail_skala2.id_observation_skala2 from master_triase_skala2 "+
+                                        "inner join data_triase_igddetail_skala2 on master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where master_triase_skala2.kode_pemeriksaan=? and "+
                                         "data_triase_igddetail_skala2.no_rawat=?"
                                     );
                                     try {
@@ -3261,64 +3250,69 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                         ps2.setString(2,tbIGDPrimer.getValueAt(i,1).toString());
                                         rs2=ps2.executeQuery();
                                         while(rs2.next()){
-                                            try{
-                                                headers = new HttpHeaders();
-                                                headers.setContentType(MediaType.APPLICATION_JSON);
-                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                                                json = "{" +
-                                                            "\"resourceType\": \"Observation\"," +
-                                                            "\"status\": \"final\"," +
-                                                            "\"category\": ["+
-                                                                "{"+
+                                            if(rs2.getString("id_observation_skala2").equals("")){
+                                                try{
+                                                    headers = new HttpHeaders();
+                                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                    json = "{" +
+                                                                "\"resourceType\": \"Observation\"," +
+                                                                "\"status\": \"final\"," +
+                                                                "\"category\": ["+
+                                                                    "{"+
+                                                                        "\"coding\": ["+
+                                                                            "{"+
+                                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\","+
+                                                                                "\"code\": \"exam\","+
+                                                                                "\"display\": \"exam\""+
+                                                                            "}"+
+                                                                        "]"+
+                                                                    "}"+
+                                                                "]," +
+                                                                "\"code\": {"+
                                                                     "\"coding\": ["+
                                                                         "{"+
-                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\","+
-                                                                            "\"code\": \"exam\","+
-                                                                            "\"display\": \"exam\""+
+                                                                            "\"system\": \"http://loinc.org\","+
+                                                                            "\"code\": \"75321-0\","+
+                                                                            "\"display\": \"Clinical finding\""+
                                                                         "}"+
-                                                                    "]"+
-                                                                "}"+
-                                                            "]," +
-                                                            "\"code\": {"+
-                                                                "\"coding\": ["+
+                                                                    "],"+
+                                                                    "\"text\": \"" + rs.getString("nama_pemeriksaan") + "\""+
+                                                                "}," +
+                                                                "\"subject\": {"+
+                                                                    "\"reference\": \"Patient/" + idpasien + "\""+
+                                                                "}," +
+                                                                "\"performer\": ["+
                                                                     "{"+
-                                                                        "\"system\": \"http://loinc.org\","+
-                                                                        "\"code\": \"75321-0\","+
-                                                                        "\"display\": \"Clinical finding\""+
+                                                                        "\"reference\": \"Practitioner/" + iddokter + "\""+
                                                                     "}"+
-                                                                "],"+
-                                                                "\"text\": \"" + rs.getString("nama_pemeriksaan") + "\""+
-                                                            "}," +
-                                                            "\"subject\": {"+
-                                                                "\"reference\": \"Patient/" + idpasien + "\""+
-                                                            "}," +
-                                                            "\"performer\": ["+
-                                                                "{"+
-                                                                    "\"reference\": \"Practitioner/" + iddokter + "\""+
-                                                                "}"+
-                                                            "]," +
-                                                            "\"encounter\": {"+
-                                                                "\"reference\": \"Encounter/" + tbIGDPrimer.getValueAt(i, 5).toString() + "\""+
-                                                            "}," +
-                                                            "\"effectiveDateTime\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
-                                                            "\"valueString\": \"" + rs2.getString("pengkajian_skala2").replace("\"", "'") + "\"" +
-                                                       "}";
-                                                System.out.println("URL : "+link+"/Observation");
-                                                System.out.println("Request JSON : "+json);
-                                                requestEntity = new HttpEntity(json,headers);
-                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                                System.out.println("Result JSON : "+json);
-                                                root = mapper.readTree(json);
-                                                response = root.path("id");
-                                                if(!response.asText().equals("")){
-                                                    Sequel.mengedit("data_triase_igddetail_skala2","no_rawat=? AND kode_skala2=?","id_observation_skala2=?",2,new String[]{
-                                                        response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala2")
-                                                    });
-                                                    iyembuilder.append("{\"reference\": \"Observation/"+response.asText()+"\"},");
+                                                                "]," +
+                                                                "\"encounter\": {"+
+                                                                    "\"reference\": \"Encounter/" + tbIGDPrimer.getValueAt(i, 5).toString() + "\""+
+                                                                "}," +
+                                                                "\"effectiveDateTime\": \""+tbIGDPrimer.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
+                                                                "\"valueString\": \"" + rs2.getString("pengkajian_skala2").replace("\"", "'") + "\"" +
+                                                           "}";
+                                                    System.out.println("URL : "+link+"/Observation");
+                                                    System.out.println("Request JSON : "+json);
+                                                    requestEntity = new HttpEntity(json,headers);
+                                                    json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                    System.out.println("Result JSON : "+json);
+                                                    root = mapper.readTree(json);
+                                                    response = root.path("id");
+                                                    if(!response.asText().equals("")){
+                                                        Sequel.mengedit("data_triase_igddetail_skala2","no_rawat=? AND kode_skala2=?","id_observation_skala2=?",2,new String[]{
+                                                            response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala2")
+                                                        });
+                                                        iyembuilder.append("{\"reference\": \"Observation/").append(response.asText()).append("\"},");
+                                                    }
+                                                }catch(Exception e){
+                                                    System.out.println("Notifikasi Triase Skala 2 : "+e);
                                                 }
-                                            }catch(Exception e){
-                                                System.out.println("Notifikasi Triase Skala 2 : "+e);
+                                            }else{
+                                                iyembuilder.append("{\"reference\": \"Observation/").append(rs2.getString("id_observation_skala2")).append("\"},");
                                             }
+                                                
                                             jumlahigdprimer++;
                                         }
                                     } catch (Exception e) {
@@ -3478,7 +3472,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             root = mapper.readTree(json);
                             response = root.path("id");
                             if(!response.asText().equals("")){
-                                if(Sequel.mengedittf("data_triase_igdprimer","no_rawat=?","id_composition=?",2,new String[]{
+                                if(Sequel.mengedittf("ata_triase_igd","no_rawat=?","id_composition=?",2,new String[]{
                                     response.asText(),tbIGDPrimer.getValueAt(i,1).toString()
                                 })==true){
                                     tbIGDPrimer.setValueAt(response.asText(),i,39);
