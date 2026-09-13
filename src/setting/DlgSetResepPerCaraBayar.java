@@ -707,8 +707,8 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         if(row!= -1){
             KodeBayar.setText(tbObatPenyakit.getValueAt(row,0).toString());
             NamaBayar.setText(tbObatPenyakit.getValueAt(row,1).toString());
-            KodeObat.setText(tbObatPenyakit.getValueAt(row,1).toString());
-            NamaObat.setText(tbObatPenyakit.getValueAt(row,2).toString());
+            KodeObat.setText(tbObatPenyakit.getValueAt(row,2).toString());
+            NamaObat.setText(tbObatPenyakit.getValueAt(row,3).toString());
         }
     }
 
