@@ -2983,8 +2983,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                         }
                     }
 
-                    jumlahigdprimer=0;
                     //Triase Skala 1
+                    jumlahigdprimer=0;
+                    StringBuilder iyembuilder = new StringBuilder();
                     ps=koneksi.prepareStatement(
                         "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan from master_triase_pemeriksaan "+
                         "inner join master_triase_skala1 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala1.kode_pemeriksaan "+
@@ -3133,6 +3134,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                 Sequel.mengedit("data_triase_igddetail_skala1","no_rawat=? AND kode_skala1=?","id_observation_skala1=?",3,new String[]{
                                                     response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala1")
                                                 });
+                                                iyembuilder.append("{\"reference\": \"Observation/"+response.asText()+"\"},");
                                             }
                                         }catch(Exception e){
                                             System.out.println("Notifikasi Triase Skala 1 : "+e);
@@ -3312,6 +3314,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                     Sequel.mengedit("data_triase_igddetail_skala2","no_rawat=? AND kode_skala2=?","id_observation_skala2=?",2,new String[]{
                                                         response.asText(),tbIGDPrimer.getValueAt(i,1).toString(),rs2.getString("kode_skala2")
                                                     });
+                                                    iyembuilder.append("{\"reference\": \"Observation/"+response.asText()+"\"},");
                                                 }
                                             }catch(Exception e){
                                                 System.out.println("Notifikasi Triase Skala 2 : "+e);
@@ -3436,7 +3439,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                 "]" +
                                             "}," +
                                             "{" +
-                                                "\"title\": \"Nyeri & Kategori Triase\"," +
+                                                "\"title\": \"Pengkajian & Skala/Kategori Triase\"," +
                                                 "\"code\": {" +
                                                     "\"coding\": [" +
                                                         "{" +
@@ -3447,6 +3450,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                     "]" +
                                                 "}," +
                                                 "\"entry\": [" +
+                                                    iyembuilder.toString()+
                                                     "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,29).toString()+"\"}," +
                                                     "{\"reference\": \"Observation/"+tbIGDPrimer.getValueAt(i,38).toString()+"\"}" +
                                                 "]" +
@@ -3485,6 +3489,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             System.out.println("Notifikasi Composition Triase IGD : "+e);
                         }
                     }
+                    iyembuilder=null;
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }
