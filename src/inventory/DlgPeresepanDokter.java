@@ -76,8 +76,9 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariDokter dokter;
-    private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
-            kamar="",norawatibu="",kelas,RESEPRAJALKEPLAN="no",NOTIFMAKSIMALNOMINALRESEPRAJAL="no";
+    private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
+            kamar="",norawatibu="",kelas,RESEPRAJALKEPLAN="no",NOTIFMAKSIMALNOMINALRESEPRAJAL="no",qrystokkosong="",joinresepdokter="",
+            carabayarpasien="";
     private File file;
     private FileWriter fileWriter;
     private ObjectMapper mapper = new ObjectMapper();
@@ -1681,13 +1682,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void buatcacheresep(){
         try{
-            qrystokkosong="";
             if(STOKKOSONGRESEP.equals("no")){
                 qrystokkosong=" and gudangbarang.stok>0 ";
             }
             
-            String joinresepdokter="";
-            String carabayarpasien="";
             if(resepdokter.getResepPerCaraBayar().equals("Yes")){
                 joinresepdokter="inner join set_resep_per_cara_bayar on set_resep_per_cara_bayar.kode_brng=databarang.kode_brng ";
                 carabayarpasien=" and (set_resep_per_cara_bayar.kd_pj='"+KdPj.getText()+"' or set_resep_per_cara_bayar.kd_pj='-') ";
