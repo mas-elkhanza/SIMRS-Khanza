@@ -2019,7 +2019,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     
     private void KirimTriaseIGDPrimer() {
         for(i=0;i<tbIGDPrimer.getRowCount();i++){
-            if(tbIGDPrimer.getValueAt(i,0).toString().equals("true")&&(!tbIGDPrimer.getValueAt(i,4).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,7).toString().equals(""))&&tbIGDPrimer.getValueAt(i,39).toString().equals("")){
+            if(tbIGDPrimer.getValueAt(i,0).toString().equals("true")&&(!tbIGDPrimer.getValueAt(i,4).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,7).toString().equals(""))){
                 try {
                     iddokter = cekViaSatuSehat.tampilIDParktisi(tbIGDPrimer.getValueAt(i,7).toString());
                     idpasien = cekViaSatuSehat.tampilIDPasien(tbIGDPrimer.getValueAt(i,4).toString());
@@ -3346,7 +3346,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     if((!tbIGDPrimer.getValueAt(i,10).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,12).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,15).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,17).toString().equals(""))&&
                             (!tbIGDPrimer.getValueAt(i,19).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,21).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,23).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,25).toString().equals(""))&&
                             (!tbIGDPrimer.getValueAt(i,27).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,29).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,31).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,33).toString().equals(""))&&
-                            (!tbIGDPrimer.getValueAt(i,35).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,37).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,38).toString().equals(""))){
+                            (!tbIGDPrimer.getValueAt(i,35).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,37).toString().equals(""))&&(!tbIGDPrimer.getValueAt(i,38).toString().equals(""))&&tbIGDPrimer.getValueAt(i,39).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);

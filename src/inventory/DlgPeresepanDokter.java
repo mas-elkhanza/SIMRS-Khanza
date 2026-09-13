@@ -1688,7 +1688,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             
             if(resepdokter.getResepPerCaraBayar().equals("Yes")){
                 joinresepdokter="inner join set_resep_per_cara_bayar on set_resep_per_cara_bayar.kode_brng=databarang.kode_brng ";
-                carabayarpasien=" and (set_resep_per_cara_bayar.kd_pj='"+KdPj.getText()+"' or set_resep_per_cara_bayar.kd_pj='-') ";
+                carabayarpasien=" and (set_resep_per_cara_bayar.kd_pj=? or set_resep_per_cara_bayar.kd_pj='-') ";
             }
             
             file=new File("./cache/peresepandokter.iyem");
@@ -1702,7 +1702,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+joinresepdokter+
-                        " where databarang.status='1' "+qrystokkosong+carabayarpasien+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
+                        " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+carabayarpasien+
                         " group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     psresep=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
@@ -1710,13 +1710,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+joinresepdokter+
-                        " where databarang.status='1' "+qrystokkosong+carabayarpasien+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=?  "+
+                        " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+carabayarpasien+
                         " order by databarang.nama_brng");
                 }
                     
                 try{
                     psresep.setDouble(1,kenaikan);
                     psresep.setString(2,bangsal);
+                    if(resepdokter.getResepPerCaraBayar().equals("Yes")){
+                        psresep.setString(3,KdPj.getText());
+                    }
                     rsobat=psresep.executeQuery();
                     while(rsobat.next()){
                         iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaRalan\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\"},");
@@ -1742,7 +1745,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+joinresepdokter+
-                        " where  databarang.status='1' "+qrystokkosong+carabayarpasien+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
+                        " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+carabayarpasien+
                         " group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     psresep=koneksi.prepareStatement(
@@ -1753,12 +1756,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+joinresepdokter+
-                        " where  databarang.status='1' "+qrystokkosong+carabayarpasien+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
+                        " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+carabayarpasien+
                         " order by databarang.nama_brng");
                 }
                     
                 try{
                     psresep.setString(1,bangsal);
+                    if(resepdokter.getResepPerCaraBayar().equals("Yes")){
+                        psresep.setString(2,KdPj.getText());
+                    }
                     rsobat=psresep.executeQuery();
                     while(rsobat.next()){
                         iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("karyawan"),100)).append("\",\"HargaRalan\":\"").append(Valid.roundUp(rsobat.getDouble("ralan"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("beliluar"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("kelas1"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("kelas2"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("kelas3"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vip"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vvip"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("utama"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\"},");

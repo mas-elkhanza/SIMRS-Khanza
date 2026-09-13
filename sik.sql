@@ -33888,7 +33888,7 @@ CREATE TABLE `set_tarif` (
 
 LOCK TABLES `set_tarif` WRITE;
 /*!40000 ALTER TABLE `set_tarif` DISABLE KEYS */;
-INSERT INTO `set_tarif` VALUES ('No','No','No','No','No','No','No','No','No','No','No','No');
+INSERT INTO `set_tarif` VALUES ('No','No','No','No','No','No','No','No','No','No','No','Yes');
 /*!40000 ALTER TABLE `set_tarif` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44437,4 +44437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-09-13 10:03:47
+-- Dump completed on 2026-09-13 10:44:39
