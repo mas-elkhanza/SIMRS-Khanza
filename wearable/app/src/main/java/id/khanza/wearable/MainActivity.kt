@@ -7,14 +7,17 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.health.connect.client.HealthConnectClient
 import androidx.health.connect.client.PermissionController
 import androidx.lifecycle.lifecycleScope
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,12 +26,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var inputUrl: EditText
     private lateinit var inputToken: EditText
+    private lateinit var inputMenit: EditText
     private lateinit var teksStatus: TextView
     private lateinit var wadahCheckbox: LinearLayout
 
     private val checkboxMap = LinkedHashMap<String, CheckBox>()
 
-    // daftar variabel: key JSON -> label tampilan
     private val daftarVariabel = linkedMapOf(
         "heartRate" to "Detak Jantung",
         "restingHeartRate" to "Detak Jantung Istirahat",
@@ -51,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         "vo2Max" to "VO2 Max"
     )
 
-    // launcher minta izin Health Connect
     private val mintaIzin =
         registerForActivityResult(PermissionController.createRequestPermissionResultContract()) { granted ->
             if (granted.containsAll(hc.izinDibutuhkan)) {
@@ -70,14 +72,15 @@ class MainActivity : AppCompatActivity() {
 
         inputUrl = findViewById(R.id.inputUrl)
         inputToken = findViewById(R.id.inputToken)
+        inputMenit = findViewById(R.id.inputMenit)
         teksStatus = findViewById(R.id.teksStatus)
         wadahCheckbox = findViewById(R.id.wadahCheckbox)
 
-        // muat pengaturan tersimpan
         inputUrl.setText(prefs.getString("url", ""))
         inputToken.setText(prefs.getString("token", ""))
+        val menitTersimpan = prefs.getInt("menit", 0)
+        inputMenit.setText(if (menitTersimpan > 0) menitTersimpan.toString() else "")
 
-        // buat checkbox variabel
         val terpilih = prefs.getStringSet("variabel", daftarVariabel.keys)!!
         for ((key, label) in daftarVariabel) {
             val cb = CheckBox(this)
@@ -87,23 +90,31 @@ class MainActivity : AppCompatActivity() {
             checkboxMap[key] = cb
         }
 
-        // tombol simpan pengaturan
         findViewById<Button>(R.id.btnSimpan).setOnClickListener {
             val dipilih = checkboxMap.filter { it.value.isChecked }.keys
+            val menit = inputMenit.text.toString().trim().toIntOrNull() ?: 0
             prefs.edit()
                 .putString("url", inputUrl.text.toString().trim())
                 .putString("token", inputToken.text.toString().trim())
                 .putStringSet("variabel", dipilih)
+                .putInt("menit", menit)
                 .apply()
-            teksStatus.text = "Status: pengaturan tersimpan."
+
+            aturJadwal(menit)
+
+            if (menit <= 0) {
+                teksStatus.text = "Status: pengaturan tersimpan. Pengiriman otomatis DIMATIKAN."
+            } else {
+                val efektif = if (menit < 15) 15 else menit
+                teksStatus.text = "Status: pengaturan tersimpan. Kirim otomatis tiap $efektif menit." +
+                        (if (menit < 15) " (minimum Android 15 menit)" else "")
+            }
         }
 
-        // tombol 1: minta izin
         findViewById<Button>(R.id.btnIzin).setOnClickListener {
             cekHealthConnect { mintaIzin.launch(hc.izinDibutuhkan) }
         }
 
-        // tombol 2: baca & kirim
         findViewById<Button>(R.id.btnKirim).setOnClickListener {
             val url = inputUrl.text.toString().trim()
             val token = inputToken.text.toString().trim()
@@ -115,7 +126,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // pastikan Health Connect tersedia sebelum aksi
+    private fun aturJadwal(menit: Int) {
+        val wm = WorkManager.getInstance(applicationContext)
+        if (menit <= 0) {
+            wm.cancelUniqueWork("kirim_wearable")
+            return
+        }
+        val interval = if (menit < 15) 15L else menit.toLong()
+        val req = PeriodicWorkRequestBuilder<KirimWorker>(interval, TimeUnit.MINUTES).build()
+        wm.enqueueUniquePeriodicWork(
+            "kirim_wearable",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            req
+        )
+    }
+
     private fun cekHealthConnect(lanjut: () -> Unit) {
         val status = HealthConnectClient.getSdkStatus(this)
         if (status != HealthConnectClient.SDK_AVAILABLE) {

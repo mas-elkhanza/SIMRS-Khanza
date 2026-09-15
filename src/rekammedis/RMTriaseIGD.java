@@ -2142,7 +2142,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(SekunderZonaHijau.isSelected()==true){
                             keputusan="Zona Hijau";
                         }
-                        if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?,'','',''", 6,new String[]{
+                        if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?,'','','',''", 6,new String[]{
                             TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
                             Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
                             SekunderKodePetugas.getText()
@@ -5858,7 +5858,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }else if(SekunderZonaHijau.isSelected()==true){
                         keputusan="Zona Hijau";
                     }
-                    if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?,'','',''", 6,new String[]{
+                    if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?,'','','',''", 6,new String[]{
                         TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
                         Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
                         SekunderKodePetugas.getText()

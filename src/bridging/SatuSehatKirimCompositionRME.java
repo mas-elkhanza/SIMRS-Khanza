@@ -44,7 +44,7 @@ import org.springframework.http.MediaType;
  * @author dosen
  */
 public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeIGDPrimer;
+    private final DefaultTableModel tabModeIGDPrimer,tabModeIGDSekunder;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -105,7 +105,6 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
              }
         };
         tbIGDPrimer.setModel(tabModeIGDPrimer);
-
         tbIGDPrimer.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbIGDPrimer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -195,6 +194,121 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         }
         tbIGDPrimer.setDefaultRenderer(Object.class, new WarnaTable());
         
+        tabModeIGDSekunder=new DefaultTableModel(null,new String[]{
+                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","ID Encounter","Petugas/Dokter/Praktisi","No.KTP Praktisi","Tanggal","Cara Masuk","ID Observation Cara Masuk",
+                "Alat Transportasi","ID Observation Alat Transportasi","Alasan Kedatangan","Keterangan Kedatangan","ID Observation Alasan Kedatangan",
+                "Macam Kasus","ID Observation Macam Kasus","TD","ID Observation TD","Nadi","ID Observation Nadi","RR","ID Observation RR","Suhu","ID Observation Suhu",
+                "Saturasi O²","ID Observation Saturasi O²","Nyeri","ID Observation Nyeri","Anamnesa Singkat","ID Clinicalimpression Anamnesa","Catatan","ID Observation Catatan",
+                "Plan/Keputusan","ID Careplan Keputusan","ID Observation Skala","ID Composition"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbIGDSekunder.setModel(tabModeIGDSekunder);
+        tbIGDSekunder.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbIGDSekunder.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 38; i++) {
+            TableColumn column = tbIGDSekunder.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(160);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(215);
+            }else if(i==6){
+                column.setPreferredWidth(160);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(115);
+            }else if(i==9){
+                column.setPreferredWidth(66);
+            }else if(i==10){
+                column.setPreferredWidth(215);
+            }else if(i==11){
+                column.setPreferredWidth(91);
+            }else if(i==12){
+                column.setPreferredWidth(215);
+            }else if(i==13){
+                column.setPreferredWidth(101);
+            }else if(i==14){
+                column.setPreferredWidth(130);
+            }else if(i==15){
+                column.setPreferredWidth(215);
+            }else if(i==16){
+                column.setPreferredWidth(160);
+            }else if(i==17){
+                column.setPreferredWidth(215);
+            }else if(i==18){
+                column.setPreferredWidth(50);
+            }else if(i==19){
+                column.setPreferredWidth(215);
+            }else if(i==20){
+                column.setPreferredWidth(45);
+            }else if(i==21){
+                column.setPreferredWidth(215);
+            }else if(i==22){
+                column.setPreferredWidth(45);
+            }else if(i==23){
+                column.setPreferredWidth(215);
+            }else if(i==24){
+                column.setPreferredWidth(45);
+            }else if(i==25){
+                column.setPreferredWidth(215);
+            }else if(i==26){
+                column.setPreferredWidth(65);
+            }else if(i==27){
+                column.setPreferredWidth(215);
+            }else if(i==28){
+                column.setPreferredWidth(45);
+            }else if(i==29){
+                column.setPreferredWidth(215);
+            }else if(i==30){
+                column.setPreferredWidth(215);
+            }else if(i==31){
+                column.setPreferredWidth(215);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(215);
+            }else if(i==34){
+                column.setPreferredWidth(90);
+            }else if(i==35){
+                column.setPreferredWidth(215);
+            }else if(i==36){
+                column.setPreferredWidth(215);
+            }else if(i==37){
+                column.setPreferredWidth(215);
+            }
+        }
+        tbIGDSekunder.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
         try {
@@ -270,7 +384,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbIGDPrimer = new widget.Table();
         Scroll10 = new widget.ScrollPane();
-        tbSuhu1 = new widget.Table();
+        tbIGDSekunder = new widget.Table();
         Scroll1 = new widget.ScrollPane();
         tbRespirasi = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -449,7 +563,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -462,7 +576,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -582,9 +696,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         Scroll10.setName("Scroll10"); // NOI18N
         Scroll10.setOpaque(true);
 
-        tbSuhu1.setComponentPopupMenu(jPopupMenu1);
-        tbSuhu1.setName("tbSuhu1"); // NOI18N
-        Scroll10.setViewportView(tbSuhu1);
+        tbIGDSekunder.setComponentPopupMenu(jPopupMenu1);
+        tbIGDSekunder.setName("tbIGDSekunder"); // NOI18N
+        Scroll10.setViewportView(tbIGDSekunder);
 
         TabRawat.addTab("Triase IGD Sekunder", Scroll10);
 
@@ -1649,7 +1763,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                runBackground(() ->tampilsuhu());
+                runBackground(() ->tampilIGDPrimer());
+                break;
+            case 1:
+                runBackground(() ->tampilIGDSekunder());
                 break;
             default:
                 break;
@@ -1782,17 +1899,17 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.Table tbBB;
     private widget.Table tbGCS;
     private widget.Table tbIGDPrimer;
+    private widget.Table tbIGDSekunder;
     private widget.Table tbKesadaran;
     private widget.Table tbLP;
     private widget.Table tbNadi;
     private widget.Table tbRespirasi;
     private widget.Table tbSpO2;
-    private widget.Table tbSuhu1;
     private widget.Table tbTB;
     private widget.Table tbTensi;
     // End of variables declaration//GEN-END:variables
     
-    private void tampilsuhu() {
+    private void tampilIGDPrimer() {
         Valid.tabelKosong(tabModeIGDPrimer);
         try{
             ps=koneksi.prepareStatement(
@@ -1841,6 +1958,57 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
             System.out.println("Notifikasi IGD Primer : "+e);
         }
         LCount.setText(""+tabModeIGDPrimer.getRowCount());
+    }
+    
+    private void tampilIGDSekunder() {
+        Valid.tabelKosong(tabModeIGDSekunder);
+        try{
+            ps=koneksi.prepareStatement(
+               "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,data_triase_igdsekunder.tanggaltriase,data_triase_igd.cara_masuk,data_triase_igd.id_observation_cara_masuk,"+
+               "data_triase_igd.alat_transportasi,data_triase_igd.id_observation_alat_transportasi,data_triase_igd.alasan_kedatangan,data_triase_igd.keterangan_kedatangan,data_triase_igd.id_observation_alasan_kedatangan,master_triase_macam_kasus.macam_kasus,data_triase_igd.id_observation_macam_kasus,"+
+               "data_triase_igd.tekanan_darah,data_triase_igd.id_observation_tekanan_darah,data_triase_igd.nadi,data_triase_igd.id_observation_nadi,data_triase_igd.pernapasan,data_triase_igd.id_observation_pernapasan,data_triase_igd.suhu,data_triase_igd.id_observation_suhu,data_triase_igd.saturasi_o2,"+
+               "data_triase_igd.id_observation_saturasi_o2,data_triase_igd.nyeri,data_triase_igd.id_observation_nyeri,data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.id_clinicalimpression_anamnesa,data_triase_igdsekunder.catatan,data_triase_igdsekunder.id_observation_catatan,"+
+               "data_triase_igdsekunder.plan,data_triase_igdsekunder.id_careplan_keputusan,data_triase_igdsekunder.id_observation_skala,data_triase_igd.id_composition from reg_periksa inner join data_triase_igd on reg_periksa.no_rawat=data_triase_igd.no_rawat "+
+               "inner join data_triase_igdsekunder on data_triase_igd.no_rawat=data_triase_igdsekunder.no_rawat inner join pegawai on data_triase_igdsekunder.nik=pegawai.nik inner join master_triase_macam_kasus on data_triase_igd.kode_kasus=master_triase_macam_kasus.kode_kasus  "+
+               "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat where data_triase_igdsekunder.tanggaltriase between ? and ? "+(TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or "+
+               "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or master_triase_macam_kasus.macam_kasus like ?)")
+            );
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                if(!TCari.getText().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeIGDSekunder.addRow(new Object[]{
+                        false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tanggaltriase"),rs.getString("cara_masuk"),rs.getString("id_observation_cara_masuk"),
+                        rs.getString("alat_transportasi"),rs.getString("id_observation_alat_transportasi"),rs.getString("alasan_kedatangan"),rs.getString("keterangan_kedatangan"),rs.getString("id_observation_alasan_kedatangan"),rs.getString("macam_kasus"),rs.getString("id_observation_macam_kasus"),
+                        rs.getString("tekanan_darah"),rs.getString("id_observation_tekanan_darah"),rs.getString("nadi"),rs.getString("id_observation_nadi"),rs.getString("pernapasan"),rs.getString("id_observation_pernapasan"),rs.getString("suhu"),rs.getString("id_observation_suhu"),rs.getString("saturasi_o2"),
+                        rs.getString("id_observation_saturasi_o2"),rs.getString("nyeri"),rs.getString("id_observation_nyeri"),rs.getString("anamnesa_singkat"),rs.getString("id_clinicalimpression_anamnesa"),rs.getString("catatan"),rs.getString("id_observation_catatan"),rs.getString("plan"),
+                        rs.getString("id_careplan_keputusan"),rs.getString("id_observation_skala"),rs.getString("id_composition")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi IGD Sekunder : "+e);
+        }
+        LCount.setText(""+tabModeIGDSekunder.getRowCount());
     }
     
     public void isCek(){
