@@ -309,9 +309,69 @@
                                 </tbody>
                             </table>
                         </div>
+                        <?php
+                            $normgrafik = cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"));
+                            $daftaritem = array();
+                            $queryitem  = bukaquery("select distinct pasien_wearable.item,pasien_wearable.satuan from pasien_wearable where pasien_wearable.no_rkm_medis='$normgrafik' order by pasien_wearable.item");
+                            while($rsqueryitem = mysqli_fetch_array($queryitem)) {
+                                $daftaritem[$rsqueryitem["item"]] = $rsqueryitem["satuan"];
+                            }
+                            $grafikada = false;
+                            $flotjs    = "";
+                            $idx       = 0;
+                        ?>
+                        <div class="row clearfix">
+                        <?php
+                            foreach($daftaritem as $item => $satuan){
+                                $titik = array();
+                                $ticks = array();
+                                $querigrafik = bukaquery("select pasien_wearable.tanggal,pasien_wearable.nilai from pasien_wearable where pasien_wearable.no_rkm_medis='$normgrafik' and pasien_wearable.item='".$item."' order by pasien_wearable.tanggal desc limit 10");
+                                $tmp = array();
+                                while($rsquerigrafik = mysqli_fetch_array($querigrafik)) {
+                                    if(is_numeric($rsquerigrafik["nilai"])){
+                                        $tmp[] = array($rsquerigrafik["tanggal"], $rsquerigrafik["nilai"]);
+                                    }
+                                }
+                                $tmp = array_reverse($tmp);
+                                $i = 0;
+                                foreach($tmp as $row){
+                                    $titik[] = array($i, $row[1]+0);
+                                    $ticks[] = array($i, $row[0]);
+                                    $i++;
+                                }
+                                if(count($titik) < 2){ continue; }
+                                $grafikada = true;
+                                $idx++;
+                                $cid = "flotwear".$idx;
+                                echo "<div class='col-md-12'>
+                                        <div class='container-fluid'>
+                                            <div class='card'>
+                                                <div class='header bg-white'>
+                                                    <div class='text-center'>".$item." (".$satuan.")</div>
+                                                </div>
+                                                <div class='body'>
+                                                    <div id='".$cid."' class='flot-chart' style='height: 300px;'></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>";
+                                $flotjs .= "$.plot(\"#".$cid."\", [{data:".json_encode($titik).", lines:{show:true}, points:{show:true}, color:\"#e53935\"}], {xaxis:{ticks:".json_encode($ticks).", rotateTicks:90}, yaxis:{}, grid:{hoverable:true, borderWidth:1}, legend:{show:false}});\n";
+                            }
+                        ?>
+                        </div>
+                        <?php if(!$grafikada){ echo "<div class='alert alert-warning'><small>Belum ada data numerik yang cukup untuk ditampilkan sebagai grafik (butuh minimal 2 pembacaan per variabel).</small></div>"; } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/flot-charts/jquery.flot.js"></script>
+<script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="plugins/flot-charts/jquery.flot.categories.js"></script>
+<script>
+$(function() {
+    <?php echo $flotjs; ?>
+});
+</script>

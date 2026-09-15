@@ -17832,7 +17832,7 @@ CREATE TABLE `pasien_wearable` (
 
 LOCK TABLES `pasien_wearable` WRITE;
 /*!40000 ALTER TABLE `pasien_wearable` DISABLE KEYS */;
-INSERT INTO `pasien_wearable` VALUES ('000022','2026-06-15 06:30:00','heartRate','90','/min','Detak jantung dalam batas normal.'),('000022','2026-06-15 20:42:27','heartRate','136','/min','Detak jantung sangat tinggi. Istirahat sejenak dan hindari kafein. Jika berlanjut atau disertai nyeri dada atau sesak, segera ke faskes.'),('000022','2026-06-15 20:42:27','stepCount','24','{steps}','Bagus! Langkah Anda hari ini tercatat. Tetap aktif ya.');
+INSERT INTO `pasien_wearable` VALUES ('000022','2026-06-15 06:30:00','heartRate','90','/min','Detak jantung dalam batas normal.'),('000022','2026-06-15 20:42:27','heartRate','136','/min','Detak jantung sangat tinggi. Istirahat sejenak dan hindari kafein. Jika berlanjut atau disertai nyeri dada atau sesak, segera ke faskes.'),('000022','2026-06-15 20:42:27','stepCount','24','{steps}','Bagus! Langkah Anda hari ini tercatat. Tetap aktif ya.'),('000022','2026-09-15 06:34:23','heartRate','70','/min','tes'),('000022','2026-09-15 06:41:51','stepCount','121212','{steps}','tes'),('000022','2026-09-15 09:34:23','heartRate','70','/min','tes');
 /*!40000 ALTER TABLE `pasien_wearable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30112,7 +30112,7 @@ CREATE TABLE `rujukan_internal_poli` (
 
 LOCK TABLES `rujukan_internal_poli` WRITE;
 /*!40000 ALTER TABLE `rujukan_internal_poli` DISABLE KEYS */;
-INSERT INTO `rujukan_internal_poli` VALUES ('2026/05/01/000001','D0000005','U0004'),('2026/04/13/000001','D0000005','U0007');
+INSERT INTO `rujukan_internal_poli` VALUES ('2026/05/01/000001','D0000005','U0004'),('2026/04/13/000001','D0000005','U0007'),('2026/09/15/000001','D0000005','U0012');
 /*!40000 ALTER TABLE `rujukan_internal_poli` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44437,4 +44437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-09-15  9:48:27
+-- Dump completed on 2026-09-15 13:16:38
