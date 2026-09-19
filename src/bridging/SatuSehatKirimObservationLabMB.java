@@ -626,6 +626,7 @@ public final class SatuSehatKirimObservationLabMB extends javax.swing.JDialog {
                                         "\"reference\": \"Specimen/"+tbObat.getValueAt(i,13).toString()+"\"" +
                                     "}," +
                                     "\"effectiveDateTime\": \""+tbObat.getValueAt(i,6).toString().replaceAll(" ","T")+"+07:00\"," +
+                                    "\"issued\": \""+tbObat.getValueAt(i,6).toString().replaceAll(" ","T")+"+07:00\"," +
                                     "\"valueString\": \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r|\r||\r)","<br>").replaceAll("\t", " ")+"\"" +
                                "}";
                         System.out.println("URL : "+link+"/Observation");
@@ -721,6 +722,7 @@ public final class SatuSehatKirimObservationLabMB extends javax.swing.JDialog {
                                         "\"reference\": \"Specimen/"+tbObat.getValueAt(i,13).toString()+"\"" +
                                     "}," +
                                     "\"effectiveDateTime\": \""+tbObat.getValueAt(i,6).toString().replaceAll(" ","T")+"+07:00\"," +
+                                    "\"issued\": \""+tbObat.getValueAt(i,6).toString().replaceAll(" ","T")+"+07:00\"," +
                                     "\"valueString\": \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r|\r||\r)","<br>").replaceAll("\t", " ")+"\"" +
                                "}";
                         System.out.println("URL : "+link+"/Observation/"+tbObat.getValueAt(i,18).toString());

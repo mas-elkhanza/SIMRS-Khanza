@@ -5158,6 +5158,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
@@ -5274,6 +5275,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
@@ -6495,6 +6497,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+("Hasil Lab : "+rs.getString("nilai")+" "+rs.getString("satuan")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan"))).replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
@@ -6614,6 +6617,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+("Hasil Lab : "+rs.getString("nilai")+" "+rs.getString("satuan")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan"))).replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
@@ -6735,6 +6739,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+("Hasil Lab : "+rs.getString("nilai")+" "+rs.getString("satuan")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan"))).replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
@@ -6854,6 +6859,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
                                             "\"valueString\": \""+("Hasil Lab : "+rs.getString("nilai")+" "+rs.getString("satuan")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan"))).replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
