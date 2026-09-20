@@ -126,7 +126,7 @@ public final class DlgTemplateLaboratorium extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Template Hasil Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Template Hasil Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -140,8 +140,8 @@ public final class DlgTemplateLaboratorium extends javax.swing.JDialog {
             }
         });
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbKamarKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbKamar);
@@ -234,7 +234,7 @@ public final class DlgTemplateLaboratorium extends javax.swing.JDialog {
             Valid.textKosong(KdPeriksa,"Pemeriksaan");
         }else{
             if(tbKamar.getSelectedRow()>-1){                
-                tabMode.insertRow(tbKamar.getSelectedRow(),new Object[]{"","","","","","","",0,0,0,0,0,0,0,0,""});
+                tabMode.insertRow(tbKamar.getSelectedRow(),new Object[]{"","","","","","","",0,0,0,0,0,0,0,0,"",""});
             }else{
                 tabMode.addRow(new Object[]{"","","","","","","",0,0,0,0,0,0,0,0,"",""});
                 tbKamar.requestFocus();
@@ -260,7 +260,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                tbKamar.getValueAt(i,5).toString(),tbKamar.getValueAt(i,6).toString(),tbKamar.getValueAt(i,7).toString(),
                                tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString(),tbKamar.getValueAt(i,10).toString(),
                                tbKamar.getValueAt(i,11).toString(),tbKamar.getValueAt(i,12).toString(),tbKamar.getValueAt(i,13).toString(),
-                               tbKamar.getValueAt(i,15).toString(),tbKamar.getValueAt(i,16).toString()       
+                               tbKamar.getValueAt(i,14).toString(),tbKamar.getValueAt(i,16).toString()       
                          });
                     }else if(!tbKamar.getValueAt(i,15).toString().equals("")){
                          Sequel.mengedit("template_laboratorium","id_template=?","Pemeriksaan=?,satuan=?,nilai_rujukan_ld=?,nilai_rujukan_la=?,nilai_rujukan_pd=?,nilai_rujukan_pa=?,"+
@@ -289,17 +289,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
-        if(tbKamar.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }            
-        }
-    }//GEN-LAST:event_tbKamarKeyPressed
-
     private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
         if(tbKamar.getRowCount()!=0){
             try {
@@ -308,6 +297,17 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             } 
         }
     }//GEN-LAST:event_tbKamarMouseClicked
+
+    private void tbKamarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyReleased
+        if(tbKamar.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }            
+        }
+    }//GEN-LAST:event_tbKamarKeyReleased
 
     /**
     * @param args the command line arguments

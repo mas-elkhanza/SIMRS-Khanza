@@ -44,7 +44,7 @@ import org.springframework.http.MediaType;
  * @author dosen
  */
 public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeIGDPrimer,tabModeIGDSekunder;
+    private final DefaultTableModel tabModeIGDPrimer,tabModeIGDSekunder,tabModeAwalKeperawatanIGD;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -308,6 +308,53 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         }
         tbIGDSekunder.setDefaultRenderer(Object.class, new WarnaTable());
         
+        tabModeAwalKeperawatanIGD=new DefaultTableModel(null,new String[]{
+                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","ID Encounter","Petugas/Dokter/Praktisi","No.KTP Praktisi","Tanggal"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbAwalKeperawatanIGD.setModel(tabModeAwalKeperawatanIGD);
+        tbAwalKeperawatanIGD.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbAwalKeperawatanIGD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 9; i++) {
+            TableColumn column = tbAwalKeperawatanIGD.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(160);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(215);
+            }else if(i==6){
+                column.setPreferredWidth(160);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(115);
+            }
+        }
+        tbAwalKeperawatanIGD.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
         try {
@@ -396,7 +443,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         ScrollIGDSekunder = new widget.ScrollPane();
         tbIGDSekunder = new widget.Table();
         Scroll1 = new widget.ScrollPane();
-        tbRespirasi = new widget.Table();
+        tbAwalKeperawatanIGD = new widget.Table();
         Scroll2 = new widget.ScrollPane();
         tbNadi = new widget.Table();
         Scroll3 = new widget.ScrollPane();
@@ -573,7 +620,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -586,7 +633,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -768,9 +815,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbRespirasi.setComponentPopupMenu(jPopupMenu1);
-        tbRespirasi.setName("tbRespirasi"); // NOI18N
-        Scroll1.setViewportView(tbRespirasi);
+        tbAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
+        tbAwalKeperawatanIGD.setName("tbAwalKeperawatanIGD"); // NOI18N
+        Scroll1.setViewportView(tbAwalKeperawatanIGD);
 
         TabRawat.addTab("Awal Keperawatan IGD", Scroll1);
 
@@ -1220,6 +1267,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppPilihSemua;
+    private widget.Table tbAwalKeperawatanIGD;
     private widget.Table tbBB;
     private widget.Table tbGCS;
     private widget.Table tbIGDPrimer;
@@ -1227,7 +1275,6 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.Table tbKesadaran;
     private widget.Table tbLP;
     private widget.Table tbNadi;
-    private widget.Table tbRespirasi;
     private widget.Table tbSpO2;
     private widget.Table tbTB;
     private widget.Table tbTensi;
