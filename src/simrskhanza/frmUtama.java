@@ -1114,6 +1114,7 @@ import bridging.SatuSehatBridgingTTE;
 import bridging.SatuSehatKirimCompositionRME;
 import keuangan.KeuanganRingkasanBebanHutangLain;
 import keuangan.KeuanganRingkasanHutangVendorAsetInventaris;
+import rekammedis.RMSkriningTOLAC;
 import setting.DlgEEksekutif;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
@@ -1898,8 +1899,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(205, 240, 205));
-        internalFrame3.setWarnaBawah(new java.awt.Color(245, 255, 245));
+        internalFrame3.setWarnaAtas(new java.awt.Color(199, 231, 199));
+        internalFrame3.setWarnaBawah(new java.awt.Color(235, 248, 235));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
@@ -2059,7 +2060,6 @@ public class frmUtama extends javax.swing.JFrame {
         ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkInput.setName("ChkInput"); // NOI18N
-        ChkInput.setOpaque(false);
         ChkInput.setPreferredSize(new java.awt.Dimension(25, 23));
         ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -2089,10 +2089,9 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/05/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/09/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
-        tanggal.setOpaque(false);
 
         btnDataPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357971_desktop_computer.png"))); // NOI18N
         btnDataPenjualan.setText("Data Penjualan Obat & BHP");
@@ -7170,8 +7169,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(245, 255, 245));
-        internalFrame1.setWarnaBawah(new java.awt.Color(200, 235, 200));
+        internalFrame1.setWarnaAtas(new java.awt.Color(235, 248, 235));
+        internalFrame1.setWarnaBawah(new java.awt.Color(199, 231, 199));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -7391,8 +7390,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(205, 240, 205));
-        internalFrame4.setWarnaBawah(new java.awt.Color(245, 255, 245));
+        internalFrame4.setWarnaAtas(new java.awt.Color(199, 231, 199));
+        internalFrame4.setWarnaBawah(new java.awt.Color(235, 248, 235));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -23729,6 +23728,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningTOLACActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningTOLAC form=new RMSkriningTOLAC(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24449,7 +24460,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
             btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat,
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
-            btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar;
+            btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
+            btnSkriningTOLAC;
     
     public void isWall(){
         try{            
@@ -29301,6 +29313,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_frailty_syndrome()==true){
                 Panelmenu.add(btnSkriningFrailtySyndrome);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_tolac()==true){
+                Panelmenu.add(btnSkriningTOLAC);
                 jmlmenu++;
             }
             
@@ -35349,6 +35366,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_frailty_syndrome()==true){
             Panelmenu.add(btnSkriningFrailtySyndrome);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_tolac()==true){
+            Panelmenu.add(btnSkriningTOLAC);
             jmlmenu++;
         }
         
@@ -43106,7 +43128,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSkriningFrailtySyndrome);
                 jmlmenu++;
             }                
-        }       
+        }  
+        
+        if(akses.getskrining_tolac()==true){
+            if(btnSkriningTOLAC.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningTOLAC);
+                jmlmenu++;
+            } 
+        }
         
         if(akses.getlaporan_tindakan()==true){
             if(btnLaporanTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -51165,5 +51194,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSetResepPerCaraBayar.setName("btnSetResepPerCaraBayar"); 
         btnSetResepPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSetResepPerCaraBayar.addActionListener(this::btnSetResepPerCaraBayarActionPerformed);
+        
+        btnSkriningTOLAC = new widget.ButtonBig();
+        btnSkriningTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pregnant-woman_14373989.png")));
+        btnSkriningTOLAC.setText("Skrining TOLAC");
+        btnSkriningTOLAC.setIconTextGap(0);
+        btnSkriningTOLAC.setName("btnSkriningTOLAC"); 
+        btnSkriningTOLAC.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningTOLAC.addActionListener(this::btnSkriningTOLACActionPerformed);
     }
 }
