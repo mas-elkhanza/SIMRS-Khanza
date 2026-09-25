@@ -1892,25 +1892,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 System.out.println("Menjalankan Query : select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO='"+order+"' and RESDT.TEST_NM='"+rstampil.getString("Pemeriksaan")+"'");
                                 if(rstindakan.next()){
                                     System.out.println("ID Detail Laborat Sysmex Yang Ditemukan : "+rstindakan.getString("ORDER_TESTID"));
-                                    if(rstindakan.getString("DATA_TYP").equals("FT")){
-                                        tabMode.addRow(new Object[]{
-                                            true,"   "+rstampil.getString("Pemeriksaan"),rstindakan.getString("RESULT_FT"),rstindakan.getString("UNIT"),
-                                            rstindakan.getString("REF_RANGE"),rstampil.getString("method"),rstindakan.getString("FLAG").replaceAll("LL","L").replaceAll("HH","H"),
-                                            rstampil.getString("id_template"),rstampil.getDouble("biaya_item"),rstampil.getDouble("bagian_rs"),
-                                            rstampil.getDouble("bhp"),rstampil.getDouble("bagian_perujuk"),rstampil.getDouble("bagian_dokter"),
-                                            rstampil.getDouble("bagian_laborat"),rstampil.getDouble("kso"),rstampil.getDouble("menejemen"),
-                                            tbTarif.getValueAt(i2,1).toString()
-                                        });
-                                    }else{
-                                        tabMode.addRow(new Object[]{
-                                            true,"   "+rstampil.getString("Pemeriksaan"),rstindakan.getString("RESULT_VALUE"),rstindakan.getString("UNIT"),
-                                            rstindakan.getString("REF_RANGE"),rstampil.getString("method"),rstindakan.getString("FLAG").replaceAll("LL","L").replaceAll("HH","H"),
-                                            rstampil.getString("id_template"),rstampil.getDouble("biaya_item"),rstampil.getDouble("bagian_rs"),
-                                            rstampil.getDouble("bhp"),rstampil.getDouble("bagian_perujuk"),rstampil.getDouble("bagian_dokter"),
-                                            rstampil.getDouble("bagian_laborat"),rstampil.getDouble("kso"),rstampil.getDouble("menejemen"),
-                                            tbTarif.getValueAt(i2,1).toString()
-                                        });
-                                    }   
+                                    tabMode.addRow(new Object[]{
+                                        true,"   "+rstampil.getString("Pemeriksaan"),(rstindakan.getString("DATA_TYP").equals("FT")?rstindakan.getString("RESULT_FT"):rstindakan.getString("RESULT_VALUE")),
+                                        rstindakan.getString("UNIT"),rstindakan.getString("REF_RANGE"),rstampil.getString("method"),rstindakan.getString("FLAG").replaceAll("LL","L").replaceAll("HH","H"),
+                                        rstampil.getString("id_template"),rstampil.getDouble("biaya_item"),rstampil.getDouble("bagian_rs"),rstampil.getDouble("bhp"),rstampil.getDouble("bagian_perujuk"),
+                                        rstampil.getDouble("bagian_dokter"),rstampil.getDouble("bagian_laborat"),rstampil.getDouble("kso"),rstampil.getDouble("menejemen"),tbTarif.getValueAt(i2,1).toString()
+                                    });  
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : "+e);
