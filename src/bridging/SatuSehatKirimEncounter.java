@@ -1004,8 +1004,8 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                                         "\"status\": \"arrived\"," +
                                         "\"class\": {" +
                                             "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
-                                            "\"code\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
-                                            "\"display\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
+                                            "\"code\": \""+(tbObat.getValueAt(i,13).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
+                                            "\"display\": \""+(tbObat.getValueAt(i,13).toString().equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
                                         "}," +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"," +
