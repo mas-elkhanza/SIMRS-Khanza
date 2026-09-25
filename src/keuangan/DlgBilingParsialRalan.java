@@ -1167,7 +1167,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         BtnNota = new widget.Button();
         TtlSemua = new widget.TextBox();
         jLabel11 = new widget.Label();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelGlass7 = new widget.panelisi();
         jLabel5 = new widget.Label();
@@ -1219,13 +1219,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         BtnSeekDokter3 = new widget.Button();
         TDokterPerujukLab = new widget.TextBox();
         internalFrame7 = new widget.InternalFrame();
-        TabRawatLaborat = new javax.swing.JTabbedPane();
+        TabRawatLaborat = new widget.TabPane();
         Scroll12 = new widget.ScrollPane();
         tbLaborat = new widget.Table();
         Scroll14 = new widget.ScrollPane();
         tbDetailLaborat = new widget.Table();
         internalFrame8 = new widget.InternalFrame();
-        TabRawatLaboratBayar = new javax.swing.JTabbedPane();
+        TabRawatLaboratBayar = new widget.TabPane();
         Scroll15 = new widget.ScrollPane();
         tbLaboratBayar = new widget.Table();
         Scroll16 = new widget.ScrollPane();
@@ -3451,9 +3451,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.TextBox TPerawat;
     private widget.TextBox TPerawat2;
-    private javax.swing.JTabbedPane TabRawat;
-    private javax.swing.JTabbedPane TabRawatLaborat;
-    private javax.swing.JTabbedPane TabRawatLaboratBayar;
+    private widget.TabPane TabRawat;
+    private widget.TabPane TabRawatLaborat;
+    private widget.TabPane TabRawatLaboratBayar;
     private widget.TextBox TagihanPPN;
     private widget.TextBox TtlSemua;
     private widget.CekBox chkPoli;

@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.RenderingHints;
+import java.awt.Rectangle;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 import java.awt.event.FocusAdapter;
@@ -17,6 +18,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -31,18 +33,23 @@ public final class Tanggal extends JDateTimePicker {
     private static final Color BORDER    = new Color(0xA7B6AD);
     private static final Color NONAKTIF  = new Color(0xFAFCFB);
     private static final Color PEMISAH   = new Color(0xD3DDD7);
-    private static final Color TINT      = new Color(0xE8F5EE);
+    private static final Color TINT      = new Color(0x16, 0xA0, 0x5D, 30);  
+    private static final Color BENING    = new Color(0, 0, 0, 0);            
+    private static final Color LATAR_PANAH = Color.WHITE;
     private static final Color TEKS      = new Color(0x1C2520);
     private static final int   RADIUS    = 6;
     private static final String KUNCI    = "widget.Tanggal.digayakan";
+
     private boolean hover;
+    private boolean hoverPanah;
 
     public Tanggal() {
         super();
         setForeground(TEKS);
-        setBackground(Color.WHITE);
+        setBackground(BENING);   
         setFont(new Font("Tahoma", Font.PLAIN, 11));
         gayakan();
+
         addContainerListener(new ContainerAdapter() {
             @Override
             public void componentAdded(ContainerEvent e) {
@@ -73,20 +80,24 @@ public final class Tanggal extends JDateTimePicker {
         JComponent jc = (JComponent) c;
         boolean sudah = Boolean.TRUE.equals(jc.getClientProperty(KUNCI));
 
-        if (c instanceof AbstractButton) {           
+        if (c instanceof AbstractButton) {                 
             AbstractButton b = (AbstractButton) c;
-            b.setBackground(Color.WHITE);
-            b.setBorder(BorderFactory.createMatteBorder(3, 1, 3, 0, PEMISAH));
+            b.setBackground(BENING);
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
+            b.setBorder(BorderFactory.createEmptyBorder());
             b.setFocusable(false);
             b.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             if (!sudah) {
                 b.addMouseListener(hoverTombol(b));
                 b.addMouseListener(hoverKomponen());
             }
-        } else if (c instanceof JTextComponent) {          // editor (mode editable)
+        } else if (c instanceof JTextComponent) {          
             JTextComponent t = (JTextComponent) c;
             t.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 4));
-            t.setBackground(Color.WHITE);
+            t.setBackground(BENING);
+            t.setOpaque(false);
             t.setForeground(TEKS);
             t.setSelectionColor(new Color(0xCDEBDA));
             t.setSelectedTextColor(new Color(0x0E3B24));
@@ -103,14 +114,14 @@ public final class Tanggal extends JDateTimePicker {
         return new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                if (isEnabled()) {
-                    b.setBackground(TINT);
-                }
+                hoverPanah = true;
+                repaint();
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                b.setBackground(isEnabled() ? Color.WHITE : NONAKTIF);
+                hoverPanah = false;
+                repaint();
             }
         };
     }
@@ -149,9 +160,9 @@ public final class Tanggal extends JDateTimePicker {
         super.setEnabled(b);
         for (Component c : getComponents()) {
             if (c instanceof AbstractButton) {
-                c.setBackground(b ? Color.WHITE : NONAKTIF);
+                c.setBackground(BENING);
             } else if (c instanceof JTextComponent) {
-                c.setBackground(b ? Color.WHITE : NONAKTIF);
+                c.setBackground(BENING);
             }
         }
         repaint();
@@ -174,15 +185,55 @@ public final class Tanggal extends JDateTimePicker {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        AbstractButton b = tombolPanah();
+        if (b == null || !b.isVisible() || b.getWidth() <= 0) {
+            return;
+        }
         Graphics2D g2 = (Graphics2D) g.create();
         try {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.setColor(isEnabled() ? Color.WHITE : NONAKTIF);
-            g2.fill(new RoundRectangle2D.Float(1, 1, getWidth() - 2, getHeight() - 2, RADIUS * 2f, RADIUS * 2f));
+            Rectangle r = b.getBounds();
+            
+            g2.clip(new RoundRectangle2D.Float(2, 2, getWidth() - 4, getHeight() - 4,
+                    RADIUS * 2f - 2, RADIUS * 2f - 2));
+            g2.clipRect(r.x, r.y, r.width, r.height);
+            g2.setColor(isEnabled() ? LATAR_PANAH : NONAKTIF);
+            g2.fillRect(r.x, r.y, r.width, r.height);
+            if (hoverPanah && isEnabled()) {
+                g2.setColor(TINT);
+                g2.fillRect(r.x, r.y, r.width, r.height);
+            }
+            
+            g2.setColor(PEMISAH);
+            g2.drawLine(r.x, r.y + 3, r.x, r.y + r.height - 4);
+
+            float cx = r.x + r.width / 2f + 0.5f;
+            float cy = r.y + r.height / 2f + 0.5f;
+            Path2D chevron = new Path2D.Float();
+            chevron.moveTo(cx - 4, cy - 2);
+            chevron.lineTo(cx, cy + 2);
+            chevron.lineTo(cx + 4, cy - 2);
+            g2.setColor(isEnabled() ? new Color(0x3E4B44) : new Color(0xB3BCB7));
+            g2.setStroke(new BasicStroke(1.6f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+            g2.draw(chevron);
         } finally {
             g2.dispose();
         }
-        super.paintComponent(g);
+    }
+
+    private AbstractButton tombolPanah() {
+        for (Component c : getComponents()) {
+            if (c instanceof AbstractButton) {
+                return (AbstractButton) c;
+            }
+        }
+        return null;
     }
 
     private class BorderModern extends AbstractBorder {

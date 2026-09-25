@@ -174,7 +174,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         WaktuDiet = new widget.TextBox();
         JamDiet = new widget.TextBox();
         BtnJam = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbDataDiet = new widget.Table();
         Scroll1 = new widget.ScrollPane();
@@ -1296,7 +1296,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TCari;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox WaktuDiet;
     private widget.TextBox WaktuDiet2;
     private widget.InternalFrame internalFrame1;

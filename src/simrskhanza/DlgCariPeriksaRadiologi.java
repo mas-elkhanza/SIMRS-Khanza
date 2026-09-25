@@ -240,7 +240,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormPhoto = new widget.PanelBiasa();
         FormPass2 = new widget.PanelBiasa();
         btnAmbilPhoto = new widget.Button();
@@ -2338,7 +2338,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.Label TglDicari;

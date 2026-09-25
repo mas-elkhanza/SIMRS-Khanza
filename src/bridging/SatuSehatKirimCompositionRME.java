@@ -427,7 +427,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalTriaseIGDPrimer = new widget.InternalFrame();
         PanelAccorIGDPrimer = new widget.PanelBiasa();
         ChkAccorIGDPrimer = new widget.CekBox();
@@ -678,7 +678,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        TabRawat.setTabLayoutPolicy(widget.TabPane.SCROLL_TAB_LAYOUT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1253,7 +1253,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.ScrollPane ScrollIGDPrimer;
     private widget.ScrollPane ScrollIGDSekunder;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalTriaseIGDPrimer;
     private widget.InternalFrame internalTriaseIGDSekunder;

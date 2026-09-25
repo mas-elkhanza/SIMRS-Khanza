@@ -307,7 +307,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormTelaah = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
         BtnTelaah = new widget.Button();
@@ -2341,7 +2341,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TNoRm;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private javax.swing.JDialog WindowInput3;
     private javax.swing.JDialog WindowInput4;
     private widget.Button btnDokter;

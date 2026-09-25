@@ -133,7 +133,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         label12 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         Table1 = new widget.Table();
@@ -522,7 +522,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox Kd2;
     private javax.swing.JPopupMenu Popup;
     private javax.swing.JMenuItem RiwayatTransaksi;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Table Table1;
     private widget.Table Table2;
     private widget.Table Table3;

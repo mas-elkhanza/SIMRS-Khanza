@@ -365,7 +365,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         FormInput = new widget.PanelBiasa();
         jLabel4 = new widget.Label();
@@ -5675,7 +5675,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.ScrollPane Scroll6;
     private widget.ScrollPane Scroll7;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Button btnDepartemenFarmasi;
     private widget.Button btnDepartemenKamar;
     private widget.Button btnDepartemenRS;

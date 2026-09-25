@@ -23,34 +23,18 @@ import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicPasswordFieldUI;
 
-/**
- * PasswordBox modern untuk SIMRS Khanza (pengganti usu.widget.glass.PasswordBox),
- * bentuk sama dengan widget.TextBox, tetap transparan.
- * <ul>
- *   <li>Kotak rounded, border tipis; fokus = border hijau + ring lembut; hover = border lebih gelap</li>
- *   <li>Karakter tersamar berupa titik bulat (•)</li>
- *   <li>Ikon mata di kanan: klik untuk menampilkan / menyembunyikan password</li>
- *   <li>TETAP TRANSPARAN seperti aslinya: tanpa latar, teks putih tebal, border putih tipis</li>
- * </ul>
- * Font tetap tebal 12 seperti aslinya. getText()/getPassword() tidak berubah.
- * Kompatibel Java 8.
- *
- * @author usu (dimodernkan)
- */
 public class PasswordBox extends JPasswordField {
-
     private static final long serialVersionUID = 2L;
 
-    // tema transparan: dirancang untuk latar gelap/gambar (seperti PasswordBox glass lama)
-    static final Color AKSEN    = new Color(0x3DDC84);                  // hijau terang, kontras di latar gelap
+    static final Color AKSEN    = new Color(0x3DDC84);                  
     static final Color BORDER   = new Color(255, 255, 255, 150);
     static final Color HOVER    = new Color(255, 255, 255, 200);
-    static final Color IKON     = new Color(255, 255, 255, 170);
+    static final Color IKON     = new Color(22, 160, 93);            
+    static final Color IKON_AKTIF = new Color(12, 110, 62);        
     static final char  TITIK    = '•';
     static final int   RADIUS   = 6;
     static final int   LEBAR_IKON = 22;
 
-    // tanpa initializer: updateUI() dipanggil dari konstruktor JPasswordField
     private boolean hover;
     private boolean hoverIkon;
     private boolean tampilkan;
@@ -115,10 +99,6 @@ public class PasswordBox extends JPasswordField {
         addMouseMotionListener(m);
     }
 
-    /**
-     * Border selalu BorderModern. Border dari luar (mis. setBorder di initComponents
-     * NetBeans atau dari L&amp;F) diabaikan supaya garis rounded tidak hilang.
-     */
     @Override
     public void setBorder(Border border) {
         if (!(getBorder() instanceof BorderModern)) {
@@ -126,7 +106,6 @@ public class PasswordBox extends JPasswordField {
         }
     }
 
-    /** Pakai BasicPasswordFieldUI supaya tampilan sama di semua OS / L&amp;F. */
     @Override
     public void updateUI() {
         setUI(new BasicPasswordFieldUI());
@@ -136,11 +115,9 @@ public class PasswordBox extends JPasswordField {
         return new Rectangle(getWidth() - LEBAR_IKON - 3, 0, LEBAR_IKON, getHeight());
     }
 
-    // ------------------------------------------------------------------ painting
 
     @Override
     protected void paintComponent(Graphics g) {
-        // transparan: tidak ada latar, hanya teks + border
         super.paintComponent(g);
 
         if (ikonMata && isEnabled()) {
@@ -156,11 +133,13 @@ public class PasswordBox extends JPasswordField {
             float cy = r.y + r.height / 2f;
 
             if (hoverIkon) {
-                g2.setColor(new Color(255, 255, 255, 40));
+                g2.setColor(new Color(22, 160, 93, 35));   
                 g2.fill(new RoundRectangle2D.Float(cx - 9, cy - 7, 18, 14, 6, 6));
             }
 
-            g2.setColor(hoverIkon || tampilkan ? AKSEN : IKON);
+            Color fg = getForeground();
+            boolean latarGelap = (fg.getRed() + fg.getGreen() + fg.getBlue()) > 600;
+            g2.setColor(hoverIkon || tampilkan ? (latarGelap ? AKSEN : IKON_AKTIF) : IKON);
             g2.setStroke(new BasicStroke(1.3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
             // bentuk mata
@@ -171,7 +150,6 @@ public class PasswordBox extends JPasswordField {
             g2.draw(mata);
             g2.fill(new Ellipse2D.Float(cx - 2f, cy - 2f, 4f, 4f));
 
-            // garis coret saat password tersembunyi
             if (!tampilkan) {
                 g2.draw(new Line2D.Float(cx - 6f, cy + 5f, cx + 6f, cy - 5f));
             }
@@ -180,7 +158,6 @@ public class PasswordBox extends JPasswordField {
         }
     }
 
-    /** Border rounded + ring fokus (identik dengan TextBox), ruang kanan untuk ikon mata. */
     private class BorderModern extends AbstractBorder {
 
         private static final long serialVersionUID = 1L;
@@ -227,11 +204,8 @@ public class PasswordBox extends JPasswordField {
         }
     }
 
-    // ------------------------------------------------------------------ properti
 
     public boolean isIkonMata() { return ikonMata; }
-
-    /** false = sembunyikan ikon mata (password tidak bisa ditampilkan). */
     public void setIkonMata(boolean b) {
         ikonMata = b;
         if (!b && tampilkan) {

@@ -225,7 +225,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -276,7 +276,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         LCount = new widget.Label();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormPhoto = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
         btnAmbil = new widget.Button();
@@ -1560,8 +1560,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabData;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabData;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;

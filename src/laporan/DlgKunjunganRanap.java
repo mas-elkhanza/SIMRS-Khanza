@@ -166,7 +166,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
         ppTampilkanBaru = new javax.swing.JMenuItem();
         ppTampilkanLama = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -1225,7 +1225,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;

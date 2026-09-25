@@ -153,7 +153,7 @@ public class DlgSetNota extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabSetting = new javax.swing.JTabbedPane();
+        TabSetting = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbAdmin = new widget.Table();
@@ -2484,7 +2484,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane ScrollInput;
-    private javax.swing.JTabbedPane TabSetting;
+    private widget.TabPane TabSetting;
     private widget.CekBox chkHarian;
     private widget.CekBox chkHarian1;
     private widget.CekBox chkKamar;

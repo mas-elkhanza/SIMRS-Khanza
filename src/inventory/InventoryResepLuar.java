@@ -279,7 +279,7 @@ public final class InventoryResepLuar extends javax.swing.JDialog {
         cmbDtk = new widget.ComboBox();
         ChkRM = new widget.CekBox();
         ChkJln = new widget.CekBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
@@ -1304,7 +1304,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox TCari;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Button btnDokter;
     private widget.ComboBox cmbDtk;
     private widget.ComboBox cmbJam;

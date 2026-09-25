@@ -93,7 +93,7 @@ public class DlgKIPPasienRanap extends javax.swing.JDialog {
         label9 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         LoadHTML = new widget.editorpane();
         internalFrame3 = new widget.InternalFrame();
@@ -453,7 +453,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.TextBox Kd2;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML1;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.Button btnBangsal;

@@ -253,7 +253,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         TJudul = new widget.TextBox();
         btnInv = new widget.Button();
         Harga = new widget.TextBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBayarDenda = new widget.Table();
@@ -1366,7 +1366,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     private widget.TextBox TNmA;
     private widget.TextBox TNoA;
     private widget.TextBox TNoI;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TglPinjam1;
     private widget.Tanggal TglPinjam2;
     private widget.Button btnAng;

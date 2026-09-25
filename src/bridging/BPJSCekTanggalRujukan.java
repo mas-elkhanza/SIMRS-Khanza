@@ -318,7 +318,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -654,7 +654,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.CekBox ChkJln;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;

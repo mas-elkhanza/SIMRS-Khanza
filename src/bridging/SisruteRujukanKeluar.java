@@ -699,7 +699,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         MnSuratRujukan = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -826,7 +826,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
-        TabRujukan = new javax.swing.JTabbedPane();
+        TabRujukan = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -3170,8 +3170,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
-    private javax.swing.JTabbedPane TabRujukan;
+    private widget.TabPane TabRawat;
+    private widget.TabPane TabRujukan;
     private widget.Tanggal TanggalRujuk;
     private widget.TextBox TekananDarah;
     private widget.TextBox TerapiTindakan;

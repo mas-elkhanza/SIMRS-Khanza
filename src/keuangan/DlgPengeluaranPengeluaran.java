@@ -626,7 +626,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountPengadaanToko = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         LCountPengembalianDeposit = new javax.swing.JLabel();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbBayarPesanObat = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -1504,7 +1504,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

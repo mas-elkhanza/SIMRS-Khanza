@@ -221,7 +221,7 @@ public class PCareDataPemberianTindakan extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -955,7 +955,7 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;

@@ -737,7 +737,7 @@ public class DlgPasien extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel6 = new widget.Label();
         cmbHlm = new widget.ComboBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -8887,7 +8887,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.TextBox TUmurBl;
     private widget.TextBox TUmurHr;
     private widget.TextBox TUmurTh;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private javax.swing.JDialog WindowGabungRM;
     private widget.Button btnAmbilPhoto;
     private widget.Button btnPropinsiPj;
