@@ -46,7 +46,7 @@ public final class DlgRl38 extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement pstindakan,pstindakan2;
     private ResultSet rstindakan,rstindakan2;
-    private int i=0,a=0,ttl=0;   
+    private int i=0,a=0,ttl=0,ttlL=0,ttlP=0;   
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     /** Creates new form DlgLhtBiaya
@@ -58,7 +58,7 @@ public final class DlgRl38 extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={"No.","Jenis Kegiatan","Jumlah"};
+        Object[] rowRwJlDr={"No.","Jenis Kegiatan","Jumlah","Laki-laki","Perempuan"};
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,14 +67,14 @@ public final class DlgRl38 extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(300);
             }else{
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(70);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -272,7 +272,9 @@ public final class DlgRl38 extends javax.swing.JDialog {
                         Sequel.menyimpan("temporary","'"+r+"','"+
                                         tabMode.getValueAt(r,0).toString()+"','"+
                                         tabMode.getValueAt(r,1).toString()+"','"+
-                                        tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                        tabMode.getValueAt(r,2).toString()+"','"+
+                                        tabMode.getValueAt(r,3).toString()+"','"+
+                                        tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                     }                    
                 }
 
@@ -393,82 +395,96 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     // End of variables declaration//GEN-END:variables
 
     private void tampil(){        
-        try{    
-            Valid.tabelKosong(tabMode);  
-            pstindakan=koneksi.prepareStatement(
-                "select jns_perawatan_lab.nm_perawatan,count(jns_perawatan_lab.nm_perawatan),jns_perawatan_lab.kd_jenis_prw from periksa_lab "+
-                "inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.tgl_periksa between ? and ? "+
-                (TCari.getText().trim().equals("")?"":"and jns_perawatan_lab.nm_perawatan like ? ")+"group by jns_perawatan_lab.nm_perawatan"
-            );
-            try {            
-                pstindakan.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstindakan.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                if(!TCari.getText().trim().equals("")){
-                    pstindakan.setString(3,"%"+TCari.getText().trim()+"%");
-                }
-                rstindakan=pstindakan.executeQuery();
-                i=1;
-                ttl=0;
-                while(rstindakan.next()){
-                    tabMode.addRow(new Object[]{
-                        i,rstindakan.getString(1),rstindakan.getInt(2)
-                    });
-                    pstindakan2=koneksi.prepareStatement(
-                        "select template_laboratorium.Pemeriksaan,count(template_laboratorium.Pemeriksaan) from detail_periksa_lab "+
-                        "inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                        "where detail_periksa_lab.tgl_periksa between ? and ? and template_laboratorium.kd_jenis_prw=? "+
-                        (TCari.getText().trim().equals("")?"":"and template_laboratorium.Pemeriksaan like ? ")+
-                        "group by template_laboratorium.Pemeriksaan "
-                    );
-                    try{
-                        pstindakan2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        pstindakan2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        pstindakan2.setString(3,rstindakan.getString(3));
-                        if(!TCari.getText().trim().equals("")){
-                            pstindakan2.setString(4,"%"+TCari.getText().trim()+"%");
-                        }
-
-                        rstindakan2=pstindakan2.executeQuery();
-                        a=1;
-                        while(rstindakan2.next()){
-                            tabMode.addRow(new Object[]{
-                                i+"."+a,rstindakan2.getString(1),rstindakan2.getInt(2)
-                            });
-                            ttl=ttl+rstindakan2.getInt(2);
-                            a++;                    
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    } finally{
-                        if(rstindakan2!=null){
-                            rstindakan2.close();
-                        }
-                        if(pstindakan2!=null){
-                            pstindakan2.close();
-                        }
-                    }
-                    ttl=ttl+rstindakan.getInt(2);
-                    i++;                    
-                }
-                if(i>1){
-                    tabMode.addRow(new Object[]{
-                        "","TOTAL",ttl
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            } finally{
-                if(rstindakan!=null){
-                    rstindakan.close();
-                }
-                if(pstindakan!=null){
-                    pstindakan.close();
-                }
+    try{    
+        Valid.tabelKosong(tabMode);  
+        pstindakan=koneksi.prepareStatement(
+            "select jns_perawatan_lab.nm_perawatan,count(jns_perawatan_lab.nm_perawatan),"+
+            "sum(case when pasien.jk='L' then 1 else 0 end),"+
+            "sum(case when pasien.jk='P' then 1 else 0 end),"+
+            "jns_perawatan_lab.kd_jenis_prw from periksa_lab "+
+            "inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+            "inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
+            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            "where periksa_lab.tgl_periksa between ? and ? "+
+            (TCari.getText().trim().equals("")?"":"and jns_perawatan_lab.nm_perawatan like ? ")+
+            "group by jns_perawatan_lab.nm_perawatan"
+        );
+        try {            
+            pstindakan.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+            pstindakan.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+            if(!TCari.getText().trim().equals("")){
+                pstindakan.setString(3,"%"+TCari.getText().trim()+"%");
             }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            rstindakan=pstindakan.executeQuery();
+            i=1;ttl=0;ttlL=0;ttlP=0;
+            while(rstindakan.next()){
+                tabMode.addRow(new Object[]{
+                    i,rstindakan.getString(1),rstindakan.getInt(2),rstindakan.getInt(3),rstindakan.getInt(4)
+                });
+                pstindakan2=koneksi.prepareStatement(
+                    "select template_laboratorium.Pemeriksaan,count(template_laboratorium.Pemeriksaan),"+
+                    "sum(case when pasien.jk='L' then 1 else 0 end),"+
+                    "sum(case when pasien.jk='P' then 1 else 0 end) from detail_periksa_lab "+
+                    "inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                    "inner join reg_periksa on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where detail_periksa_lab.tgl_periksa between ? and ? and template_laboratorium.kd_jenis_prw=? "+
+                    (TCari.getText().trim().equals("")?"":"and template_laboratorium.Pemeriksaan like ? ")+
+                    "group by template_laboratorium.Pemeriksaan "
+                );
+                try{
+                    pstindakan2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstindakan2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstindakan2.setString(3,rstindakan.getString(5));
+                    if(!TCari.getText().trim().equals("")){
+                        pstindakan2.setString(4,"%"+TCari.getText().trim()+"%");
+                    }
+
+                    rstindakan2=pstindakan2.executeQuery();
+                    a=1;
+                    while(rstindakan2.next()){
+                        tabMode.addRow(new Object[]{
+                            i+"."+a,rstindakan2.getString(1),rstindakan2.getInt(2),rstindakan2.getInt(3),rstindakan2.getInt(4)
+                        });
+                        ttl=ttl+rstindakan2.getInt(2);
+                        ttlL=ttlL+rstindakan2.getInt(3);
+                        ttlP=ttlP+rstindakan2.getInt(4);
+                        a++;                    
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                } finally{
+                    if(rstindakan2!=null){
+                        rstindakan2.close();
+                    }
+                    if(pstindakan2!=null){
+                        pstindakan2.close();
+                    }
+                }
+                ttl=ttl+rstindakan.getInt(2);
+                ttlL=ttlL+rstindakan.getInt(3);
+                ttlP=ttlP+rstindakan.getInt(4);
+                i++;                    
+            }
+            if(i>1){
+                tabMode.addRow(new Object[]{
+                    "","TOTAL",ttl,ttlL,ttlP
+                });
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally{
+            if(rstindakan!=null){
+                rstindakan.close();
+            }
+            if(pstindakan!=null){
+                pstindakan.close();
+            }
         }
+    }catch(Exception e){
+        System.out.println("Notifikasi : "+e);
     }
+}
 
     private void runBackground(Runnable task) {
         if (ceksukses) return;
