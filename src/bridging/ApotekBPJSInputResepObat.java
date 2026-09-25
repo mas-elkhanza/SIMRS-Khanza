@@ -446,7 +446,7 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         LabelDepo = new widget.Label();
         nmgudang = new widget.TextBox();
         BtnGudang = new widget.Button();
-        TabRawat = new widget.TabPane();
+        TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
@@ -599,10 +599,9 @@ public final class ApotekBPJSInputResepObat extends javax.swing.JDialog {
         TglResep.setBounds(84, 70, 135, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2026" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
-        DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         DTPTgl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1663,7 +1662,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRW;
     private widget.TextBox TPasien;
-    private widget.TabPane TabRawat;
+    private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox TglResep;
     private widget.TextBox TglSEP;
     private widget.ComboBox cmbDtk;
