@@ -124,9 +124,27 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             }else if(i==15){
                 column.setPreferredWidth(60);
             }else if(i==16){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(120);
             }else if(i==17){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(90);
+            }else if(i==18){
+                column.setPreferredWidth(121);
+            }else if(i==19){
+                column.setPreferredWidth(114);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setPreferredWidth(90);
+            }else if(i==22){
+                column.setPreferredWidth(107);
+            }else if(i==23){
+                column.setPreferredWidth(120);
+            }else if(i==24){
+                column.setPreferredWidth(87);
+            }else if(i==25){
+                column.setPreferredWidth(97);
+            }else if(i==26){
+                column.setPreferredWidth(170);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1362,7 +1380,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1372,7 +1390,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1453,7 +1471,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1463,7 +1481,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1660,6 +1678,28 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     }//GEN-LAST:event_PresentasiKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Inklusi1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Inklusi2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Inklusi3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Inklusi4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Eksklusi1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Eksklusi2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        Eksklusi3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
+        });
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -2209,6 +2249,12 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         }
+    }
+    
+    private void hitungKesimpulan(){
+        boolean semuaInklusiYa=Inklusi1.getSelectedItem().toString().equals("Ya")&&Inklusi2.getSelectedItem().toString().equals("Ya")&&Inklusi3.getSelectedItem().toString().equals("Ya")&&Inklusi4.getSelectedItem().toString().equals("Ya");
+        boolean adaEksklusiYa=Eksklusi1.getSelectedItem().toString().equals("Ya")||Eksklusi2.getSelectedItem().toString().equals("Ya")||Eksklusi3.getSelectedItem().toString().equals("Ya");
+        Kesimpulan.setSelectedItem((semuaInklusiYa&&!adaEksklusiYa)?"Kandidat TOLAC":"Rujuk SC Elektif");
     }
     
     private void runBackground(Runnable task) {
