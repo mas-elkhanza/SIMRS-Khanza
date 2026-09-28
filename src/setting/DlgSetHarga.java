@@ -206,7 +206,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabSetting = new javax.swing.JTabbedPane();
+        TabSetting = new widget.TabPane();
         internalFrame3 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
         tbPengaturanUmum = new widget.Table();
@@ -2840,7 +2840,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
     private widget.TextBox TCari1;
-    private javax.swing.JTabbedPane TabSetting;
+    private widget.TabPane TabSetting;
     private widget.TextBox beliluar;
     private widget.TextBox beliluarperbarang;
     private widget.TextBox beliluarumum;

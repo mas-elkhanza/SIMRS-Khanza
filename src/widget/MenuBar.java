@@ -22,18 +22,21 @@ public class MenuBar extends JMenuBar {
 
     private static final long serialVersionUID = 2L;
     public enum Tema {
-        HIJAU(new Color(0x1CB06C), new Color(0x0B8A4F), new Color(0x077242), Color.WHITE),
-        BIRU (new Color(0x3C8FF0), new Color(0x1D6DCE), new Color(0x165AAD), Color.WHITE),
-        UNGU (new Color(0x8C5FF6), new Color(0x6A40DA), new Color(0x5530B8), Color.WHITE),
-        GELAP(new Color(0x2D323A), new Color(0x1E2127), new Color(0x3DDC84), new Color(0xE8ECF1));
+        EXCEL(new Color(69, 122, 85), new Color(59, 114, 75), new Color(47, 95, 62), Color.WHITE, 10),
+        HIJAU(new Color(0x1CB06C), new Color(0x0B8A4F), new Color(0x077242), Color.WHITE, 45),
+        BIRU (new Color(0x3C8FF0), new Color(0x1D6DCE), new Color(0x165AAD), Color.WHITE, 45),
+        UNGU (new Color(0x8C5FF6), new Color(0x6A40DA), new Color(0x5530B8), Color.WHITE, 45),
+        GELAP(new Color(0x2D323A), new Color(0x1E2127), new Color(0x3DDC84), new Color(0xE8ECF1), 20);
 
         final Color atas, bawah, garis, teks;
+        final int kilau;   // intensitas efek glass (0 = flat)
 
-        Tema(Color atas, Color bawah, Color garis, Color teks) {
+        Tema(Color atas, Color bawah, Color garis, Color teks, int kilau) {
             this.atas = atas;
             this.bawah = bawah;
             this.garis = garis;
             this.teks = teks;
+            this.kilau = kilau;
         }
     }
 
@@ -41,6 +44,7 @@ public class MenuBar extends JMenuBar {
     private static final int INSET = 2;
 
     private Color warnaAtas, warnaBawah, warnaGaris, warnaTeks;
+    private int kilau = 45;
     private JMenu menuHover;
 
     private final MouseAdapter hoverHandler = new MouseAdapter() {
@@ -104,6 +108,7 @@ public class MenuBar extends JMenuBar {
         }
     }
 
+
     @Override
     protected void paintComponent(Graphics g) {
         if (!isOpaque()) {
@@ -119,23 +124,15 @@ public class MenuBar extends JMenuBar {
         Graphics2D g2 = (Graphics2D) g.create();
         try {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-            // 1. gradient dasar
             g2.setPaint(new GradientPaint(0, 0, warnaAtas, 0, h, warnaBawah));
             g2.fillRect(0, 0, w, h);
-
-            // 2. glass halus di setengah atas
-            g2.setPaint(new GradientPaint(0, 0, new Color(255, 255, 255, 45),
-                    0, h / 2f, new Color(255, 255, 255, 0)));
+            g2.setPaint(new GradientPaint(0, 0, new Color(255, 255, 255, kilau),0, h / 2f, new Color(255, 255, 255, 0)));
             g2.fillRect(0, 0, w, h / 2);
-
-            // 3. highlight atas & garis bawah
-            g2.setColor(new Color(255, 255, 255, 60));
+            g2.setColor(new Color(255, 255, 255, Math.min(60, kilau + 15)));
             g2.drawLine(0, 0, w, 0);
             g2.setColor(warnaGaris);
             g2.drawLine(0, h - 1, w, h - 1);
 
-            // 4. pill hover / menu terbuka
             for (Component c : getComponents()) {
                 if (!(c instanceof JMenu) || !c.isVisible()) {
                     continue;
@@ -164,6 +161,7 @@ public class MenuBar extends JMenuBar {
         warnaBawah = tema.bawah;
         warnaGaris = tema.garis;
         warnaTeks = tema.teks;
+        kilau = tema.kilau;
         for (Component c : getComponents()) {
             if (c instanceof JMenu) {
                 c.setForeground(warnaTeks);

@@ -262,7 +262,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         jLabel34 = new widget.Label();
         TNoRM = new widget.TextBox();
         TPasien = new widget.TextBox();
-        TabTarif = new javax.swing.JTabbedPane();
+        TabTarif = new widget.TabPane();
         Scroll1 = new widget.ScrollPane();
         panelBiasa1 = new widget.PanelBiasa();
         Scroll3 = new widget.ScrollPane();
@@ -773,7 +773,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabTarif;
+    private widget.TabPane TabTarif;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
     private widget.Label jLabel21;

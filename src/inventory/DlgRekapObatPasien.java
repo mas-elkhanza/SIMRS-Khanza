@@ -158,7 +158,7 @@ public class DlgRekapObatPasien extends javax.swing.JDialog {
         nmgolongan = new widget.TextBox();
         BtnGolongan = new widget.Button();
         status = new widget.ComboBox();
-        TabRawat1 = new javax.swing.JTabbedPane();
+        TabRawat1 = new widget.TabPane();
         scrollPane4 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         scrollPane5 = new widget.ScrollPane();
@@ -1001,7 +1001,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox Kd2;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat1;
+    private widget.TabPane TabRawat1;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;

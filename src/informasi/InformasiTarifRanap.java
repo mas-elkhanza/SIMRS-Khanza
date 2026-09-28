@@ -145,7 +145,7 @@ public final class InformasiTarifRanap extends javax.swing.JDialog {
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
         Scroll1 = new widget.ScrollPane();
@@ -402,7 +402,7 @@ public final class InformasiTarifRanap extends javax.swing.JDialog {
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
     private widget.Label jLabel7;

@@ -324,7 +324,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
-        TabPilihRawat = new javax.swing.JTabbedPane();
+        TabPilihRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelGlass9 = new widget.panelisi();
         jLabel14 = new widget.Label();
@@ -333,7 +333,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         CrPoli = new widget.TextBox();
         BtnSeek4 = new widget.Button();
-        TabRawatJalan = new javax.swing.JTabbedPane();
+        TabRawatJalan = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbRadiologiRalan = new widget.Table();
         scrollPane2 = new widget.ScrollPane();
@@ -348,7 +348,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnSeek6 = new widget.Button();
         jLabel18 = new widget.Label();
         cmbStatus = new widget.ComboBox();
-        TabRawatInap = new javax.swing.JTabbedPane();
+        TabRawatInap = new widget.TabPane();
         scrollPane3 = new widget.ScrollPane();
         tbRadiologiRanap = new widget.Table();
         scrollPane4 = new widget.ScrollPane();
@@ -2403,9 +2403,9 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane ScrollMenu;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabPilihRawat;
-    private javax.swing.JTabbedPane TabRawatInap;
-    private javax.swing.JTabbedPane TabRawatJalan;
+    private widget.TabPane TabPilihRawat;
+    private widget.TabPane TabRawatInap;
+    private widget.TabPane TabRawatJalan;
     private widget.Tanggal TanggalPulang;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;

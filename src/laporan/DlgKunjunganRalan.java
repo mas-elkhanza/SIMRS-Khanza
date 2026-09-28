@@ -197,7 +197,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         BtnSeek6 = new widget.Button();
         BtnSeek5 = new widget.Button();
         BtnSeek2 = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         table1 = new widget.Table();
@@ -1347,7 +1347,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;

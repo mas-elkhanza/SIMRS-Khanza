@@ -161,7 +161,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         jLabel7 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         Tabel1 = new widget.Table();
@@ -734,7 +734,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Table Tabel1;
     private widget.Table Tabel2;
     private widget.Tanggal Tgl1;

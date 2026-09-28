@@ -412,10 +412,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML2 = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
-        TabPilihan = new javax.swing.JTabbedPane();
+        TabPilihan = new widget.TabPane();
         ScrollTriase = new widget.ScrollPane();
         FormTriase = new widget.InternalFrame();
-        TabTriase = new javax.swing.JTabbedPane();
+        TabTriase = new widget.TabPane();
         internalFrame5 = new widget.InternalFrame();
         internalFrame7 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -463,7 +463,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         TCariSkala1 = new widget.TextBox();
         BtnCariSkala1 = new widget.Button();
         BtnTambahSkala1 = new widget.Button();
-        TabSkala1dan2 = new javax.swing.JTabbedPane();
+        TabSkala1dan2 = new widget.TabPane();
         Scroll3 = new widget.ScrollPane();
         tbSkala1 = new widget.Table();
         Scroll4 = new widget.ScrollPane();
@@ -513,7 +513,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         TCariSkala3 = new widget.TextBox();
         BtnCariSkala2 = new widget.Button();
         BtnTambahSkala2 = new widget.Button();
-        TabSkala3dan4dan5 = new javax.swing.JTabbedPane();
+        TabSkala3dan4dan5 = new widget.TabPane();
         Scroll6 = new widget.ScrollPane();
         tbSkala3 = new widget.Table();
         Scroll7 = new widget.ScrollPane();
@@ -4613,10 +4613,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.TextBox TPasien1;
-    private javax.swing.JTabbedPane TabPilihan;
-    private javax.swing.JTabbedPane TabSkala1dan2;
-    private javax.swing.JTabbedPane TabSkala3dan4dan5;
-    private javax.swing.JTabbedPane TabTriase;
+    private widget.TabPane TabPilihan;
+    private widget.TabPane TabSkala1dan2;
+    private widget.TabPane TabSkala3dan4dan5;
+    private widget.TabPane TabTriase;
     private widget.Tanggal TanggalKunjungan;
     private widget.ComboBox Transportasi;
     private widget.Button btnKasus;
