@@ -208,7 +208,7 @@ public final class ApotekBPJSPermintaanIterResep extends javax.swing.JDialog {
         BtnSimpan = new widget.Button();
         BtnHapus = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
@@ -803,7 +803,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.ScrollPane Scroll2;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Button btnDokter;
     private widget.ComboBox cmbDtk;
     private widget.ComboBox cmbJam;

@@ -2560,7 +2560,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -2771,12 +2771,11 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="22-07-2026"/>
+                                <StringItem index="0" value="27-09-2026"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                             <Property name="name" type="java.lang.String" value="DTPLahir" noResource="true"/>
-                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DTPLahirItemStateChanged"/>
@@ -2990,12 +2989,11 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="22-07-2026"/>
+                                <StringItem index="0" value="27-09-2026"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                             <Property name="name" type="java.lang.String" value="DTPDaftar" noResource="true"/>
-                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPDaftarKeyPressed"/>
@@ -3736,7 +3734,6 @@
                             <Property name="text" type="java.lang.String" value="Anggota TNI :"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="chkTNI" noResource="true"/>
-                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkTNIActionPerformed"/>
@@ -3916,7 +3913,6 @@
                             <Property name="text" type="java.lang.String" value="Anggota POLRI :"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="chkPolri" noResource="true"/>
-                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkPolriActionPerformed"/>

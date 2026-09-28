@@ -217,7 +217,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -1746,7 +1746,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextArea TandaYangDidapatkan;
     private widget.TextBox TempatKejadian;
     private widget.Tanggal TglAsuhan;

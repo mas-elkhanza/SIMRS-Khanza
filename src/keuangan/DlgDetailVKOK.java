@@ -432,7 +432,7 @@ public final class DlgDetailVKOK extends javax.swing.JDialog {
         label11 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame5 = new widget.InternalFrame();
         Scroll3 = new widget.ScrollPane();
         tbOperasi = new widget.Table();
@@ -817,7 +817,7 @@ public final class DlgDetailVKOK extends javax.swing.JDialog {
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;

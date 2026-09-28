@@ -248,7 +248,7 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         LCountDipilih1 = new widget.Label();
         jLabel14 = new widget.Label();
         BtnAll = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbBelumLunas = new widget.Table();
         Scroll1 = new widget.ScrollPane();
@@ -1630,7 +1630,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalTempo;
     private widget.TextBox Tempo;

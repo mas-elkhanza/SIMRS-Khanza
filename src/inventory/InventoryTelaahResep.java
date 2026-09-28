@@ -229,7 +229,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormValidasi1 = new widget.PanelBiasa();
         PanelInput = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
@@ -1560,7 +1560,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.TextBox TglLahir;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;

@@ -486,7 +486,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         StatusDiagnosa2 = new widget.TextBox();
         StatusDiagnosa3 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -6232,7 +6232,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.TextBox TSuhu;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TanggalDaftar;
     private widget.Tanggal TanggalEstRujuk;
     private widget.Tanggal TanggalKunjungan;

@@ -246,7 +246,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         ppHapusBHPMedisDanNonMedis = new javax.swing.JMenuItem();
         ppCekal = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelisi5 = new widget.panelisi();
         jPanel3 = new javax.swing.JPanel();
@@ -2481,7 +2481,7 @@ public final class UTDDonor extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox TCariMedis;
     private widget.TextBox TCariNonMedis;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalCari1;
     private widget.Tanggal TanggalCari2;

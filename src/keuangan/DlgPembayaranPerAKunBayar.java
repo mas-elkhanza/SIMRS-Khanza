@@ -108,7 +108,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         CmbStatus = new widget.ComboBox();
         label19 = new widget.Label();
         User = new widget.TextBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
         Scroll1 = new widget.ScrollPane();
@@ -562,7 +562,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.TextBox User;
     private widget.InternalFrame internalFrame1;

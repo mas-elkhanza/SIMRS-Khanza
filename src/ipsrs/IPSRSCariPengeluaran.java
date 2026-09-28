@@ -180,7 +180,7 @@ public class IPSRSCariPengeluaran extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         label12 = new widget.Label();
         TglBeli2 = new widget.Tanggal();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         scrollPane2 = new widget.ScrollPane();
@@ -993,7 +993,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label LTotal;
     private widget.TextBox NoKeluar;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TglBeli1;
     private widget.Tanggal TglBeli2;
     private widget.Button btnBarang;

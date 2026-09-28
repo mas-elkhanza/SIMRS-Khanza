@@ -190,7 +190,7 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
         BtnKeluar = new widget.Button();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         scrollPaneDetail = new widget.ScrollPane();
         tbDetailResep = new widget.Table();
         FormPhoto = new widget.PanelBiasa();
@@ -799,7 +799,7 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane Scroll4;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;

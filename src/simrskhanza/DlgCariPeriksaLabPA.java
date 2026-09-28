@@ -227,7 +227,7 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         panelisi2 = new widget.panelisi();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -2164,7 +2164,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane ScrollMenu;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private javax.swing.JMenuItem Tinggi150;

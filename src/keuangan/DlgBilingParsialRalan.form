@@ -1405,7 +1405,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="ff" red="ff" type="rgb"/>
@@ -2343,7 +2343,7 @@
                     <Property name="verticalGap" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat">
+                    <Container class="widget.TabPane" name="TabRawatLaborat">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>
@@ -2472,7 +2472,7 @@
                     <Property name="verticalGap" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="TabRawatLaboratBayar">
+                    <Container class="widget.TabPane" name="TabRawatLaboratBayar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>

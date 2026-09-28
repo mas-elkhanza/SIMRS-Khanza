@@ -171,7 +171,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==3){
                 column.setPreferredWidth(100);
             }else if(z==4){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(30);
             }else if(z==5){
                 column.setPreferredWidth(100);
             }else if(z==6){
@@ -737,7 +737,7 @@ public class DlgPasien extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel6 = new widget.Label();
         cmbHlm = new widget.ComboBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2418,10 +2418,9 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
-        DTPLahir.setOpaque(false);
         DTPLahir.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPLahirItemStateChanged(evt);
@@ -2550,10 +2549,9 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
-        DTPDaftar.setOpaque(false);
         DTPDaftar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPDaftarKeyPressed(evt);
@@ -3061,7 +3059,6 @@ public class DlgPasien extends javax.swing.JDialog {
         chkTNI.setText("Anggota TNI :");
         chkTNI.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkTNI.setName("chkTNI"); // NOI18N
-        chkTNI.setOpaque(false);
         chkTNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkTNIActionPerformed(evt);
@@ -3165,7 +3162,6 @@ public class DlgPasien extends javax.swing.JDialog {
         chkPolri.setText("Anggota POLRI :");
         chkPolri.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkPolri.setName("chkPolri"); // NOI18N
-        chkPolri.setOpaque(false);
         chkPolri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPolriActionPerformed(evt);
@@ -8887,7 +8883,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.TextBox TUmurBl;
     private widget.TextBox TUmurHr;
     private widget.TextBox TUmurTh;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private javax.swing.JDialog WindowGabungRM;
     private widget.Button btnAmbilPhoto;
     private widget.Button btnPropinsiPj;

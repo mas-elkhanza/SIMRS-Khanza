@@ -314,7 +314,7 @@ public final class SuratMasuk extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         internalFrame3 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
@@ -831,7 +831,7 @@ public final class SuratMasuk extends javax.swing.JDialog {
     private widget.TextBox StatusBalas;
     private widget.TextBox StatusSurat;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;

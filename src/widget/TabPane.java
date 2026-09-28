@@ -13,7 +13,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
@@ -22,7 +21,6 @@ import javax.swing.text.View;
 public class TabPane extends JTabbedPane {
     private static final long serialVersionUID = 3L;
     static final Color AKSEN = new Color(0x16A05D);
-
     private Color warnaAksen;
 
     public TabPane() {
@@ -30,6 +28,7 @@ public class TabPane extends JTabbedPane {
         warnaAksen = AKSEN;
         setBackground(new Color(255, 255, 255));
         setForeground(new Color(50, 50, 50));
+        setBorder(null);   
     }
 
     @Override
@@ -37,38 +36,25 @@ public class TabPane extends JTabbedPane {
         setUI(new MacTabUI());
     }
 
-    public static void pasangGlobal(boolean jugaDiMac) {
-        boolean mac = System.getProperty("os.name", "").toLowerCase().contains("mac");
-        if (mac && !jugaDiMac) {
-            return;
-        }
-        UIManager.put("TabbedPaneUI", MacTabUI.class.getName());
-    }
-
-    public static void pasangGlobal() {
-        pasangGlobal(false);
-    }
-
 
     public Color getWarnaAksen() { return warnaAksen != null ? warnaAksen : AKSEN; }
     public void setWarnaAksen(Color c) { warnaAksen = c; repaint(); }
-    
-    public static class MacTabUI extends BasicTabbedPaneUI {
 
-        private static final Color TRACK        = new Color(0xE6E9E7);
-        private static final Color TRACK_GARIS  = new Color(0xCCD3CF);
+    public static class MacTabUI extends BasicTabbedPaneUI {
+        private static final Color TRACK        = new Color(239, 244, 234);  
+        private static final Color TRACK_GARIS  = new Color(214, 224, 207);  
         private static final Color PILIH        = Color.WHITE;
-        private static final Color PILIH_GARIS  = new Color(0xC3CBC6);
-        private static final Color BAYANGAN     = new Color(0, 0, 0, 28);
+        private static final Color PILIH_GARIS  = new Color(206, 218, 198);
+        private static final Color BAYANGAN     = new Color(60, 90, 50, 26);
         private static final Color HOVER        = new Color(255, 255, 255, 140);
-        private static final Color PEMISAH      = new Color(0xC8CFCB);
-        private static final Color BINGKAI      = new Color(0xC9D1CC);
-        private static final Color TEKS         = new Color(0x1F2A24);
-        private static final Color TEKS_OFF     = new Color(0xA9B2AD);
+        private static final Color PEMISAH      = new Color(206, 218, 198);
+        private static final Color BINGKAI      = new Color(239, 244, 234);  
+        private static final Color TEKS         = new Color(50, 50, 50);     
+        private static final Color TEKS_OFF     = new Color(165, 175, 160);
         private static final int   ARC_TRACK    = 8;
         private static final int   ARC_PILIH    = 6;
         private static final int   ARC_BINGKAI  = 8;
-
+        private static final boolean TAMPIL_BINGKAI = false;
         private boolean lewatiBingkai;
 
         public static ComponentUI createUI(JComponent c) {
@@ -81,13 +67,13 @@ public class TabPane extends JTabbedPane {
             tabInsets = new Insets(3, 12, 3, 12);
             selectedTabPadInsets = new Insets(0, 0, 0, 0);
             tabAreaInsets = new Insets(4, 8, 4, 8);
-            contentBorderInsets = new Insets(2, 2, 2, 2);
+            contentBorderInsets = new Insets(0, 0, 0, 0);   
             tabRunOverlay = 0;
         }
 
         @Override
         protected Insets getContentBorderInsets(int placement) {
-            return new Insets(2, 2, 2, 2);
+            return new Insets(0, 0, 0, 0);
         }
 
         @Override
@@ -144,7 +130,7 @@ public class TabPane extends JTabbedPane {
             g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             if (tabPane.getTabCount() > 0) {
                 getTabBounds(tabPane, 0);      
-                gambarBingkai(g2);             
+                gambarBingkai(g2);            
             }
             lewatiBingkai = true;
             try {
@@ -162,6 +148,9 @@ public class TabPane extends JTabbedPane {
         }
 
         private void gambarBingkai(Graphics2D g2) {
+            if (!TAMPIL_BINGKAI) {
+                return;  
+            }
             Insets ins = tabPane.getInsets();
             int placement = tabPane.getTabPlacement();
             int x = ins.left, y = ins.top;
@@ -171,7 +160,6 @@ public class TabPane extends JTabbedPane {
             int tw = calculateTabAreaWidth(placement, runCount, maxTabWidth);
             Insets area = getTabAreaInsets(placement);
 
-            // garis bingkai lewat di tengah baris tab yang menempel ke panel isi
             switch (placement) {
                 case BOTTOM: h -= th - (area.top + maxTabHeight / 2); break;
                 case LEFT:   { int d = tw - (area.right + maxTabWidth / 2); x += d; w -= d; } break;
@@ -233,7 +221,6 @@ public class TabPane extends JTabbedPane {
             }
         }
 
-        /** Garis pemisah tipis antar tab yang tidak aktif (seperti segmented control macOS). */
         @Override
         protected void paintTabBorder(Graphics g, int placement, int tabIndex,
                                       int x, int y, int w, int h, boolean isSelected) {
