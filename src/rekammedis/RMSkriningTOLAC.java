@@ -75,7 +75,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal",
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal",
             "G P A","Diagnosa","Jumlah SC","SC Terakhir","Indikasi SC","Jenis Insisi","Riwayat Pervaginam",
             "TBJ(gram)","Presentasi Janin","Riwayat SC ≤1x","Panggul Klinis Adekuat","Janin Tunggal Kepala",
             "TBJ Sesuai","SC Klasik Ruptur","Riwayat SC ≥ 2 Kali","Plasenta Previa / Letak Lintang",
@@ -89,7 +89,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 26; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -100,50 +100,48 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(35);
-            }else if(i==5){
                 column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setPreferredWidth(150);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(120);
             }else if(i==7){
-                column.setPreferredWidth(120);
-            }else if(i==8){
                 column.setPreferredWidth(70);
-            }else if(i==9){
+            }else if(i==8){
                 column.setPreferredWidth(200);
-            }else if(i==10){
+            }else if(i==9){
                 column.setPreferredWidth(61);
-            }else if(i==11){
+            }else if(i==10){
                 column.setPreferredWidth(66);
-            }else if(i==12){
+            }else if(i==11){
                 column.setPreferredWidth(150);
-            }else if(i==13){
+            }else if(i==12){
                 column.setPreferredWidth(105);
+            }else if(i==13){
+                column.setPreferredWidth(120);
             }else if(i==14){
-                column.setPreferredWidth(120);
-            }else if(i==15){
                 column.setPreferredWidth(60);
+            }else if(i==15){
+                column.setPreferredWidth(120);
             }else if(i==16){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }else if(i==17){
-                column.setPreferredWidth(90);
-            }else if(i==18){
                 column.setPreferredWidth(121);
-            }else if(i==19){
+            }else if(i==18){
                 column.setPreferredWidth(114);
-            }else if(i==20){
+            }else if(i==19){
                 column.setPreferredWidth(65);
-            }else if(i==21){
+            }else if(i==20){
                 column.setPreferredWidth(90);
-            }else if(i==22){
+            }else if(i==21){
                 column.setPreferredWidth(107);
-            }else if(i==23){
+            }else if(i==22){
                 column.setPreferredWidth(120);
-            }else if(i==24){
+            }else if(i==23){
                 column.setPreferredWidth(87);
-            }else if(i==25){
+            }else if(i==24){
                 column.setPreferredWidth(97);
-            }else if(i==26){
+            }else if(i==25){
                 column.setPreferredWidth(170);
             }
         }
@@ -203,9 +201,8 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningHipertensi = new javax.swing.JMenuItem();
+        MnSkriningTOLAC = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
-        Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -274,8 +271,8 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         IndikasiSC = new widget.TextBox();
         JenisInsisi = new widget.ComboBox();
         jLabel17 = new widget.Label();
-        jLabel29 = new widget.Label();
         RiwayatPervaginam = new widget.ComboBox();
+        jLabel29 = new widget.Label();
         jLabel22 = new widget.Label();
         Inklusi1 = new widget.ComboBox();
         jLabel26 = new widget.Label();
@@ -305,26 +302,22 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningHipertensi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningHipertensi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningHipertensi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningHipertensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningHipertensi.setText("Formulir Skrining Hipertensi");
-        MnSkriningHipertensi.setName("MnSkriningHipertensi"); // NOI18N
-        MnSkriningHipertensi.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningHipertensi.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningTOLAC.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningTOLAC.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningTOLAC.setText("Formulir Skrining TOLAC");
+        MnSkriningTOLAC.setName("MnSkriningTOLAC"); // NOI18N
+        MnSkriningTOLAC.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningTOLAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningHipertensiActionPerformed(evt);
+                MnSkriningTOLACActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningHipertensi);
+        jPopupMenu1.add(MnSkriningTOLAC);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
-
-        Jk.setEditable(false);
-        Jk.setFocusTraversalPolicyProvider(true);
-        Jk.setName("Jk"); // NOI18N
 
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
@@ -338,7 +331,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Skrining TOLAC ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Skrining TOLAC - Poli Kebidanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(462, 1300));
@@ -506,7 +499,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -519,7 +512,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -639,7 +632,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -927,12 +920,6 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(44, 150, 80, 23);
 
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Riwayat Pervaginam");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(44, 120, 150, 23);
-
         RiwayatPervaginam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Sebelum & Sesudah SC", "Sesudah SC Saja", "Sebelum SC Saja" }));
         RiwayatPervaginam.setName("RiwayatPervaginam"); // NOI18N
         RiwayatPervaginam.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -942,6 +929,12 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         });
         FormInput.add(RiwayatPervaginam);
         RiwayatPervaginam.setBounds(154, 120, 180, 23);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Riwayat Pervaginam");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(44, 120, 130, 23);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel22.setText("Riwayat SC ≤1x, Insisi Transversal Rendah");
@@ -976,7 +969,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         Inklusi2.setBounds(275, 280, 80, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel30.setText("Janin Tunggal, Presentasi Kepala ");
+        jLabel30.setText("Janin Tunggal, Presentasi Kepala");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
         jLabel30.setBounds(44, 310, 180, 23);
@@ -1008,7 +1001,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         Inklusi4.setBounds(275, 340, 80, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("Riwayat SC Klasik / Ruptur Uteri ");
+        jLabel24.setText("Riwayat SC Klasik / Ruptur Uteri");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
         jLabel24.setBounds(530, 250, 180, 23);
@@ -1030,7 +1023,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         jLabel108.setBounds(10, 230, 200, 23);
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel32.setText("Riwayat SC ≥ 2 Kali ");
+        jLabel32.setText("Riwayat SC ≥ 2 Kali");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
         jLabel32.setBounds(530, 280, 180, 23);
@@ -1046,7 +1039,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         Eksklusi2.setBounds(709, 280, 80, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel33.setText("Plasenta Previa / Letak Lintang ");
+        jLabel33.setText("Plasenta Previa / Letak Lintang");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
         jLabel33.setBounds(530, 310, 180, 23);
@@ -1210,8 +1203,8 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
+                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),Sequel.ambiltanggalsekarang())==true){
                         hapus();
                     }
                 }else{
@@ -1249,8 +1242,8 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString())){
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),Sequel.ambiltanggalsekarang())==true){
                             if(TanggalRegistrasi.getText().equals("")){
                                 TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                             }
@@ -1321,7 +1314,6 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
@@ -1375,12 +1367,11 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+ 
                                     "</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1390,7 +1381,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1412,7 +1403,6 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
@@ -1466,12 +1456,11 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+ 
                                     "</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1481,7 +1470,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1498,11 +1487,11 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"G P A\";\"Diagnosa\";\"Jumlah SC\";\"SC Terakhir\";\"Indikasi SC\";\"Jenis Insisi\";\"Riwayat Pervaginam\";\"TBJ(gram)\";\"Presentasi Janin\";\"Riwayat SC ≤1x\";\"Panggul Klinis Adekuat\";\"Janin Tunggal Kepala\";\"TBJ Sesuai\";\"SC Klasik Ruptur\";\"Riwayat SC ≥ 2 Kali\";\"Plasenta Previa / Letak Lintang\";\"Kesimpulan\";\"Edukasi Diberikan\";\"Keterangan\"\n"
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"G P A\";\"Diagnosa\";\"Jumlah SC\";\"SC Terakhir\";\"Indikasi SC\";\"Jenis Insisi\";\"Riwayat Pervaginam\";\"TBJ(gram)\";\"Presentasi Janin\";\"Riwayat SC ≤1x\";\"Panggul Klinis Adekuat\";\"Janin Tunggal Kepala\";\"TBJ Sesuai\";\"SC Klasik Ruptur\";\"Riwayat SC ≥ 2 Kali\";\"Plasenta Previa / Letak Lintang\";\"Kesimpulan\";\"Edukasi Diberikan\";\"Keterangan\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
-                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\";\""+tbObat.getValueAt(i,23).toString()+"\";\""+tbObat.getValueAt(i,24).toString()+"\";\""+tbObat.getValueAt(i,25).toString()+"\";\""+tbObat.getValueAt(i,26).toString()+"\"\n"
+                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\";\""+tbObat.getValueAt(i,23).toString()+"\";\""+tbObat.getValueAt(i,24).toString()+"\";\""+tbObat.getValueAt(i,25).toString()+"\"\n"
                                 );
                             }
                             f = new File("DataSkriningTOLAC.csv");            
@@ -1639,7 +1628,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_BtnPetugasKeyPressed
 
-    private void MnSkriningHipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningHipertensiActionPerformed
+    private void MnSkriningTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningTOLACActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("nm_dokterrs",akses.getnamars());
@@ -1649,17 +1638,19 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningHipertensi.jasper","report","::[ Formulir Skrining Hipertensi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,"+
-                    "skrining_tolac.anamnesis1,skrining_tolac.anamnesis2,skrining_tolac.anamnesis3,skrining_tolac.anamnesis4,skrining_tolac.anamnesis5,"+
-                    "skrining_tolac.anamnesis6,skrining_tolac.anamnesis7,skrining_tolac.anamnesis8,skrining_tolac.sistole,skrining_tolac.diastole,"+
-                    "skrining_tolac.klasifikasi_hipertensi,skrining_tolac.hasil_skrining,skrining_tolac.keterangan from skrining_tolac "+
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirSkriningTOLAC.jasper","report","::[ Formulir Skrining Hipertensi ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,"+
+                    "skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
+                    "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
+                    "skrining_tolac.inklusi_tbj_sesuai,skrining_tolac.eksklusi_sc_klasik_ruptur,skrining_tolac.eksklusi_sc_2x,skrining_tolac.eksklusi_plasenta_previa,"+
+                    "skrining_tolac.kesimpulan,skrining_tolac.edukasi_diberikan,skrining_tolac.keterangan from skrining_tolac "+
                     "inner join reg_periksa on skrining_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningHipertensiActionPerformed
+    }//GEN-LAST:event_MnSkriningTOLACActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1681,21 +1672,27 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         Inklusi1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Inklusi2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Inklusi3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Inklusi4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Eksklusi1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Eksklusi2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
+        
         Eksklusi3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
         });
@@ -1833,7 +1830,6 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private widget.ComboBox Inklusi4;
     private widget.ComboBox Jam;
     private widget.ComboBox JenisInsisi;
-    private widget.TextBox Jk;
     private widget.TextBox JumlahSC;
     private widget.TextBox KdDokter;
     private widget.ComboBox Kesimpulan;
@@ -1841,7 +1837,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningHipertensi;
+    private javax.swing.JMenuItem MnSkriningTOLAC;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Presentasi;
@@ -1912,7 +1908,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,"+
                     "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
                     "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
@@ -1922,7 +1918,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                     "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where skrining_tolac.tanggal between ? and ? order by skrining_tolac.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,"+
                     "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
                     "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
@@ -1954,7 +1950,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+")",rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+")",rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("gpa"),rs.getString("diagnosa"),rs.getString("jumlah_sc"),rs.getString("tahun_sc"),rs.getString("indikasi_sc"),rs.getString("jenis_insisi"),rs.getString("riwayat_pervaginam"),rs.getString("tbj_gram"),rs.getString("presentasi_janin"),rs.getString("inklusi_riwayat_sc"),
                         rs.getString("inklusi_panggul_adekuat"),rs.getString("inklusi_janin_tunggal_kepala"),rs.getString("inklusi_tbj_sesuai"),rs.getString("eksklusi_sc_klasik_ruptur"),rs.getString("eksklusi_sc_2x"),rs.getString("eksklusi_plasenta_previa"),rs.getString("kesimpulan"),
                         rs.getString("edukasi_diberikan"),rs.getString("keterangan")
@@ -2006,37 +2002,36 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            GPA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            JumlahSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            SCTerakhir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            IndikasiSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            JenisInsisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            RiwayatPervaginam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            TBJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Presentasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Inklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Inklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Inklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Inklusi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Eksklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Eksklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Eksklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            Edukasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
+            GPA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            JumlahSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            SCTerakhir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            IndikasiSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            JenisInsisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            RiwayatPervaginam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            TBJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Presentasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Inklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Inklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Inklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Inklusi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Eksklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Eksklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Eksklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Edukasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(14,15));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(17,19));
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
     
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
                     "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
@@ -2047,7 +2042,6 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                     TNoRM.setText(rs.getString("no_rkm_medis"));
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     TPasien.setText(rs.getString("nm_pasien")+" ("+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+")");
-                    Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
@@ -2193,29 +2187,28 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
-               tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
-               tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),5);
-               tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),6);
-               tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(GPA.getText(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(JumlahSC.getText(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(SCTerakhir.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(IndikasiSC.getText(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(JenisInsisi.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(RiwayatPervaginam.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(TBJ.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(Presentasi.getText(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(Inklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(Inklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Inklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(Inklusi4.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(Eksklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(Eksklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(Eksklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(Kesimpulan.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(Edukasi.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
+               tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
+               tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),6);
+               tbObat.setValueAt(GPA.getText(),tbObat.getSelectedRow(),7);
+               tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(JumlahSC.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(SCTerakhir.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(IndikasiSC.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(JenisInsisi.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(RiwayatPervaginam.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(TBJ.getText(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(Presentasi.getText(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(Inklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(Inklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(Inklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(Inklusi4.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(Eksklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(Eksklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(Eksklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(Kesimpulan.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(Edukasi.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),25);
                emptTeks();
         }
     }
@@ -2241,7 +2234,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             Eksklusi3.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),Edukasi.getSelectedItem().toString(),Keterangan.getText(),KdDokter.getText()
         })==true){
             tabMode.addRow(new Object[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 GPA.getText(),Diagnosa.getText(),JumlahSC.getText(),SCTerakhir.getSelectedItem().toString(),IndikasiSC.getText(),JenisInsisi.getSelectedItem().toString(),RiwayatPervaginam.getSelectedItem().toString(),TBJ.getText(),Presentasi.getText(),
                 Inklusi1.getSelectedItem().toString(),Inklusi2.getSelectedItem().toString(),Inklusi3.getSelectedItem().toString(),Inklusi4.getSelectedItem().toString(),Eksklusi1.getSelectedItem().toString(),Eksklusi2.getSelectedItem().toString(), 
                 Eksklusi3.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),Edukasi.getSelectedItem().toString(),Keterangan.getText()

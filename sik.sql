@@ -36543,7 +36543,7 @@ CREATE TABLE `skrining_tolac` (
 
 LOCK TABLES `skrining_tolac` WRITE;
 /*!40000 ALTER TABLE `skrining_tolac` DISABLE KEYS */;
-INSERT INTO `skrining_tolac` VALUES ('2026/09/27/000001','2026-09-27 18:34:20','1','2','3','','4','Transversal Rendah','Sebelum & Sesudah SC','5','6','Ya','Ya','Ya','Ya','Tidak','Tidak','Tidak','Kandidat TOLAC','Tidak','7','D0000004');
+INSERT INTO `skrining_tolac` VALUES ('2026/09/27/000001','2026-09-28 08:57:31','1','2','3','','4 tes','-','Tidak Pernah','5','6','Ya','Ya','Ya','Ya','Tidak','Tidak','Tidak','Kandidat TOLAC','Ya','7','D0000004');
 /*!40000 ALTER TABLE `skrining_tolac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44492,4 +44492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-09-27 20:30:09
+-- Dump completed on 2026-09-28 10:44:44
