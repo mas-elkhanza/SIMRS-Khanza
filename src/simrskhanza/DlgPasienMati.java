@@ -248,7 +248,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbMati.setAutoCreateRowSorter(true);
+        tbMati.setAutoCreateRowSorter(false);
         tbMati.setComponentPopupMenu(jPopupMenu1);
         tbMati.setName("tbMati"); // NOI18N
         tbMati.addMouseListener(new java.awt.event.MouseAdapter() {

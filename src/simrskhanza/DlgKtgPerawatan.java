@@ -144,7 +144,7 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKategori.setAutoCreateRowSorter(true);
+        tbKategori.setAutoCreateRowSorter(false);
         tbKategori.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKategori.setName("tbKategori"); // NOI18N
         tbKategori.addMouseListener(new java.awt.event.MouseAdapter() {

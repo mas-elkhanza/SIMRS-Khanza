@@ -297,7 +297,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbSJP.setAutoCreateRowSorter(true);
+        tbSJP.setAutoCreateRowSorter(false);
         tbSJP.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbSJP.setName("tbSJP"); // NOI18N
         tbSJP.addMouseListener(new java.awt.event.MouseAdapter() {

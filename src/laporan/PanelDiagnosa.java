@@ -513,7 +513,7 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setOpaque(true);
 
-        tbDiagnosaPasien.setAutoCreateRowSorter(true);
+        tbDiagnosaPasien.setAutoCreateRowSorter(false);
         tbDiagnosaPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll.setViewportView(tbDiagnosaPasien);
 
@@ -527,7 +527,7 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setOpaque(true);
 
-        tbTindakanPasien.setAutoCreateRowSorter(true);
+        tbTindakanPasien.setAutoCreateRowSorter(false);
         tbTindakanPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll3.setViewportView(tbTindakanPasien);
 

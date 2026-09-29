@@ -308,7 +308,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbTindakan.setAutoCreateRowSorter(true);
+        tbTindakan.setAutoCreateRowSorter(false);
         tbTindakan.setToolTipText("");
         tbTindakan.setComponentPopupMenu(Popup);
         tbTindakan.setName("tbTindakan"); // NOI18N

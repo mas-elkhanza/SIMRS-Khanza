@@ -136,7 +136,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbkecamatan.setAutoCreateRowSorter(true);
+        tbkecamatan.setAutoCreateRowSorter(false);
         tbkecamatan.setName("tbkecamatan"); // NOI18N
         tbkecamatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

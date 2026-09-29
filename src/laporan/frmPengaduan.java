@@ -385,7 +385,7 @@ public class frmPengaduan extends javax.swing.JFrame {
 
         Scroll.setOpaque(true);
 
-        tbPengaduan.setAutoCreateRowSorter(true);
+        tbPengaduan.setAutoCreateRowSorter(false);
         tbPengaduan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbPengaduanMouseClicked(evt);
