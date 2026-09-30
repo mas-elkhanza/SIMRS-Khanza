@@ -318,7 +318,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setName("tbObat"); // NOI18N
         Scroll.setViewportView(tbObat);
 
@@ -328,7 +328,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbObat1.setAutoCreateRowSorter(true);
+        tbObat1.setAutoCreateRowSorter(false);
         tbObat1.setComponentPopupMenu(jPopupMenu1);
         tbObat1.setName("tbObat1"); // NOI18N
         Scroll1.setViewportView(tbObat1);

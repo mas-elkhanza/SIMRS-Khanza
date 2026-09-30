@@ -677,7 +677,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbDataDiet.setAutoCreateRowSorter(true);
+        tbDataDiet.setAutoCreateRowSorter(false);
         tbDataDiet.setComponentPopupMenu(jPopupMenu1);
         tbDataDiet.setName("tbDataDiet"); // NOI18N
         tbDataDiet.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -697,7 +697,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbRekapDiet.setAutoCreateRowSorter(true);
+        tbRekapDiet.setAutoCreateRowSorter(false);
         tbRekapDiet.setComponentPopupMenu(jPopupMenu1);
         tbRekapDiet.setName("tbRekapDiet"); // NOI18N
         tbRekapDiet.addMouseListener(new java.awt.event.MouseAdapter() {

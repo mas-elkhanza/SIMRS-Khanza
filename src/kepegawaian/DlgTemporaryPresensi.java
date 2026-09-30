@@ -268,7 +268,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbTemporary.setAutoCreateRowSorter(true);
+        tbTemporary.setAutoCreateRowSorter(false);
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);

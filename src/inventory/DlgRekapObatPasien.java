@@ -519,7 +519,7 @@ public class DlgRekapObatPasien extends javax.swing.JDialog {
         scrollPane4.setName("scrollPane4"); // NOI18N
         scrollPane4.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
+        tbDokter.setAutoCreateRowSorter(false);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -540,7 +540,7 @@ public class DlgRekapObatPasien extends javax.swing.JDialog {
         scrollPane5.setName("scrollPane5"); // NOI18N
         scrollPane5.setOpaque(true);
 
-        tbDokter2.setAutoCreateRowSorter(true);
+        tbDokter2.setAutoCreateRowSorter(false);
         tbDokter2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

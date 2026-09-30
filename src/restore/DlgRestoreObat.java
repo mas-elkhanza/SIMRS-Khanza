@@ -183,7 +183,7 @@ public final class DlgRestoreObat extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setName("tbObat"); // NOI18N
         Scroll.setViewportView(tbObat);
 

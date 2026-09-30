@@ -426,7 +426,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        Table1.setAutoCreateRowSorter(true);
+        Table1.setAutoCreateRowSorter(false);
         Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table1.setName("Table1"); // NOI18N
         Table1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -582,7 +582,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        Table2.setAutoCreateRowSorter(true);
+        Table2.setAutoCreateRowSorter(false);
         Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table2.setName("Table2"); // NOI18N
         Table2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -824,7 +824,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        Table3.setAutoCreateRowSorter(true);
+        Table3.setAutoCreateRowSorter(false);
         Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table3.setName("Table3"); // NOI18N
         Table3.addMouseListener(new java.awt.event.MouseAdapter() {

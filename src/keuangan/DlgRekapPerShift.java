@@ -360,7 +360,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbRanap.setAutoCreateRowSorter(true);
+        tbRanap.setAutoCreateRowSorter(false);
         tbRanap.setToolTipText("");
         tbRanap.setName("tbRanap"); // NOI18N
         Scroll2.setViewportView(tbRanap);
@@ -377,7 +377,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbPemasukan.setAutoCreateRowSorter(true);
+        tbPemasukan.setAutoCreateRowSorter(false);
         tbPemasukan.setToolTipText("");
         tbPemasukan.setName("tbPemasukan"); // NOI18N
         tbPemasukan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,7 +404,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbDeposit.setAutoCreateRowSorter(true);
+        tbDeposit.setAutoCreateRowSorter(false);
         tbDeposit.setToolTipText("");
         tbDeposit.setName("tbDeposit"); // NOI18N
         tbDeposit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -431,7 +431,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbPengeluaran.setAutoCreateRowSorter(true);
+        tbPengeluaran.setAutoCreateRowSorter(false);
         tbPengeluaran.setToolTipText("");
         tbPengeluaran.setName("tbPengeluaran"); // NOI18N
         tbPengeluaran.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -315,7 +315,7 @@ public final class BPJSProgramPRB extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbProgramPRB.setAutoCreateRowSorter(true);
+        tbProgramPRB.setAutoCreateRowSorter(false);
         tbProgramPRB.setComponentPopupMenu(jPopupMenu1);
         tbProgramPRB.setName("tbProgramPRB"); // NOI18N
         tbProgramPRB.addMouseListener(new java.awt.event.MouseAdapter() {

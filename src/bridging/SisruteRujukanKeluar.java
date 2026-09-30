@@ -1955,7 +1955,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -1977,7 +1977,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbObat2.setAutoCreateRowSorter(true);
+        tbObat2.setAutoCreateRowSorter(false);
         tbObat2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat2.setComponentPopupMenu(jPopupMenu1);
         tbObat2.setName("tbObat2"); // NOI18N

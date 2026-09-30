@@ -257,7 +257,7 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         Scroll.setViewportView(tbJnsPerawatan);
@@ -268,7 +268,7 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbJnsPerawatan1.setAutoCreateRowSorter(true);
+        tbJnsPerawatan1.setAutoCreateRowSorter(false);
         tbJnsPerawatan1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan1.setName("tbJnsPerawatan1"); // NOI18N
         Scroll1.setViewportView(tbJnsPerawatan1);
@@ -279,7 +279,7 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbJnsPerawatan2.setAutoCreateRowSorter(true);
+        tbJnsPerawatan2.setAutoCreateRowSorter(false);
         tbJnsPerawatan2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan2.setName("tbJnsPerawatan2"); // NOI18N
         Scroll2.setViewportView(tbJnsPerawatan2);

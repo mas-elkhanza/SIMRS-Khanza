@@ -253,7 +253,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPetugas.setAutoCreateRowSorter(true);
+        tbPetugas.setAutoCreateRowSorter(false);
         tbPetugas.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPetugas.setComponentPopupMenu(Popup);
         tbPetugas.setName("tbPetugas"); // NOI18N
