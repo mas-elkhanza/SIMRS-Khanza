@@ -9348,7 +9348,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
                           BtnSkriningGiziKehamilan,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnChecklistKriteriaKeluarIsolasi;
     private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
-    private javax.swing.JMenuItem MnCopySOAP,MnPasteSOAP;
+    private widget.MenuItem MnCopySOAP,MnPasteSOAP;
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -11301,7 +11301,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnChecklistKriteriaKeluarIsolasi.setRoundRect(false);
         BtnChecklistKriteriaKeluarIsolasi.addActionListener(this::BtnChecklistKriteriaKeluarIsolasiActionPerformed);
         
-        MnCopySOAP = new javax.swing.JMenuItem();
+        MnCopySOAP = new widget.MenuItem();
         MnCopySOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnCopySOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnCopySOAP.setForeground(new java.awt.Color(50, 50, 50));
@@ -11313,7 +11313,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnCopySOAP.setPreferredSize(new java.awt.Dimension(210, 26));
         MnCopySOAP.addActionListener(this::MnCopySOAPActionPerformed);
         
-        MnPasteSOAP = new javax.swing.JMenuItem();
+        MnPasteSOAP = new widget.MenuItem();
         MnPasteSOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnPasteSOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnPasteSOAP.setForeground(new java.awt.Color(50, 50, 50));

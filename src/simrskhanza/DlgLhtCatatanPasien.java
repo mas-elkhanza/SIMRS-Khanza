@@ -91,7 +91,7 @@ public final class DlgLhtCatatanPasien extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanPasien = new javax.swing.JMenuItem();
+        MnCatatanPasien = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -474,7 +474,7 @@ private void MnCatatanPasienActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private javax.swing.JMenuItem MnCatatanPasien;
+    private widget.MenuItem MnCatatanPasien;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;

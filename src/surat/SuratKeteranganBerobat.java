@@ -108,7 +108,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratKeterangan = new javax.swing.JMenuItem();
+        MnCetakSuratKeterangan = new widget.MenuItem();
         TanggalJamPeriksa = new widget.TextBox();
         KodeDokter = new widget.TextBox();
         NamaDokter = new widget.TextBox();
@@ -895,7 +895,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox KodeDokter;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratKeterangan;
+    private widget.MenuItem MnCetakSuratKeterangan;
     private widget.TextBox NamaDokter;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;

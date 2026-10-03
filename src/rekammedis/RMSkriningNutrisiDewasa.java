@@ -156,7 +156,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
+        MnSkriningNutrisi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1419,7 +1419,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private widget.MenuItem MnSkriningNutrisi;
     private widget.ComboBox Nilai1;
     private widget.ComboBox Nilai2;
     private widget.TextBox NmPetugas;

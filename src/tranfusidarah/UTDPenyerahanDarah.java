@@ -234,8 +234,8 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppStok = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppStok = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
@@ -1801,8 +1801,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.panelisi panelisi6;
     private widget.panelisi panelisi7;
     private widget.panelisi panelisi8;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppStok;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppStok;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Tanggal tanggal;

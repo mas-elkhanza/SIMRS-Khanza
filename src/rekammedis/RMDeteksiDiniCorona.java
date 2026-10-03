@@ -150,7 +150,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakDeteksiDini = new javax.swing.JMenuItem();
+        MnCetakDeteksiDini = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1603,7 +1603,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdPetugas;
     private widget.ComboBox Kesimpulan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakDeteksiDini;
+    private widget.MenuItem MnCetakDeteksiDini;
     private widget.TextBox NIK;
     private widget.TextBox NamaPasien;
     private widget.TextBox NmPetugas;

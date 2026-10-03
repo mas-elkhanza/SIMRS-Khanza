@@ -171,7 +171,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKankerKolorektal = new javax.swing.JMenuItem();
+        MnSkriningKankerKolorektal = new widget.MenuItem();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
         LoadHTML = new widget.editorpane();
@@ -1440,7 +1440,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningKankerKolorektal;
+    private widget.MenuItem MnSkriningKankerKolorektal;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Polip;

@@ -313,7 +313,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianTerapiWicara = new javax.swing.JMenuItem();
+        MnPenilaianTerapiWicara = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -2862,7 +2862,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private widget.TextArea Mengunyah;
     private widget.TextArea Meniup;
     private widget.TextBox Mimik;
-    private javax.swing.JMenuItem MnPenilaianTerapiWicara;
+    private widget.MenuItem MnPenilaianTerapiWicara;
     private widget.ComboBox Nada;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;

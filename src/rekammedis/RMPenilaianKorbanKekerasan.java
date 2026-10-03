@@ -207,7 +207,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianKorbanKekerasan = new javax.swing.JMenuItem();
+        MnPenilaianKorbanKekerasan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -1725,7 +1725,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     private widget.TextBox LamaKekerasan;
     private widget.editorpane LoadHTML;
     private widget.ComboBox MemerlukanPendampingan;
-    private javax.swing.JMenuItem MnPenilaianKorbanKekerasan;
+    private widget.MenuItem MnPenilaianKorbanKekerasan;
     private widget.TextBox NmDokter;
     private usu.widget.glass.PanelGlass PanelWall1;
     private widget.TextBox PemeriksaanAbdomen;

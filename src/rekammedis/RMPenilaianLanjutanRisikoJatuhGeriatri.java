@@ -198,7 +198,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianLanjutanRisikoGeriatri = new javax.swing.JMenuItem();
+        MnPenilaianLanjutanRisikoGeriatri = new widget.MenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -1986,7 +1986,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoGeriatri;
+    private widget.MenuItem MnPenilaianLanjutanRisikoGeriatri;
     private widget.TextBox NilaiResiko1;
     private widget.TextBox NilaiResiko10;
     private widget.TextBox NilaiResiko11;

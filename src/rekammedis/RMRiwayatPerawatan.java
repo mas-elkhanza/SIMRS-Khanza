@@ -241,9 +241,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         Pekerjaan = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnGeneratePDF = new javax.swing.JMenuItem();
-        MnGeneratePDFESign = new javax.swing.JMenuItem();
-        MnGeneratePDFSertiSign = new javax.swing.JMenuItem();
+        MnGeneratePDF = new widget.MenuItem();
+        MnGeneratePDFESign = new widget.MenuItem();
+        MnGeneratePDFSertiSign = new widget.MenuItem();
         WindowPhrase = new javax.swing.JDialog();
         internalFrame8 = new widget.InternalFrame();
         jLabel42 = new widget.Label();
@@ -3843,9 +3843,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.editorpane LoadHTMLRiwayatPerawatan;
     private widget.editorpane LoadHTMLSOAPI;
     private widget.editorpane LoadHTMLWearable;
-    private javax.swing.JMenuItem MnGeneratePDF;
-    private javax.swing.JMenuItem MnGeneratePDFESign;
-    private javax.swing.JMenuItem MnGeneratePDFSertiSign;
+    private widget.MenuItem MnGeneratePDF;
+    private widget.MenuItem MnGeneratePDFESign;
+    private widget.MenuItem MnGeneratePDFSertiSign;
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
     private widget.TextBox NoRawat;

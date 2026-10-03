@@ -165,8 +165,8 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup2 = new javax.swing.JPopupMenu();
-        ppUbahAturanPakai = new javax.swing.JMenuItem();
-        ppUbahAturanPakai1 = new javax.swing.JMenuItem();
+        ppUbahAturanPakai = new widget.MenuItem();
+        ppUbahAturanPakai1 = new widget.MenuItem();
         WindowInput3 = new javax.swing.JDialog();
         internalFrame4 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -1086,8 +1086,8 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppUbahAturanPakai;
-    private javax.swing.JMenuItem ppUbahAturanPakai1;
+    private widget.MenuItem ppUbahAturanPakai;
+    private widget.MenuItem ppUbahAturanPakai1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbResep;

@@ -180,7 +180,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenCURB65 = new javax.swing.JMenuItem();
+        MnSkriningInstrumenCURB65 = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -1472,7 +1472,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenCURB65;
+    private widget.MenuItem MnSkriningInstrumenCURB65;
     private widget.TextBox NilaiCURB1;
     private widget.TextBox NilaiCURB2;
     private widget.TextBox NilaiCURB3;

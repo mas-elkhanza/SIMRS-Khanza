@@ -142,7 +142,7 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratSakit2 = new javax.swing.JMenuItem();
+        MnCetakSuratSakit2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1206,7 +1206,7 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
     private widget.TextBox Instansi;
     private widget.Label LCount;
     private widget.TextBox LamaSakit;
-    private javax.swing.JMenuItem MnCetakSuratSakit2;
+    private widget.MenuItem MnCetakSuratSakit2;
     private widget.TextBox NamaPihak2;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;

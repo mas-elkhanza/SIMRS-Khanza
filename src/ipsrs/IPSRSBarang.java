@@ -128,7 +128,7 @@ public final class IPSRSBarang extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -941,7 +941,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;

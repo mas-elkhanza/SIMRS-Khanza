@@ -184,7 +184,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianPasienTerminal = new javax.swing.JMenuItem();
+        MnPenilaianPasienTerminal = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1578,7 +1578,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private widget.ComboBox MenjelangAjal;
-    private javax.swing.JMenuItem MnPenilaianPasienTerminal;
+    private widget.MenuItem MnPenilaianPasienTerminal;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;

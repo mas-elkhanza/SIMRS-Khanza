@@ -152,7 +152,7 @@ public final class RMCatatanPengkajianPaskaOperasi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -1468,7 +1468,7 @@ public final class RMCatatanPengkajianPaskaOperasi extends javax.swing.JDialog {
     private widget.TextArea Lainlain;
     private widget.editorpane LoadHTML;
     private widget.TextArea MedikamentosaLain;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox NmDokter;
     private widget.TextArea PemeriksaanLaborat;
     private widget.TextArea RawatPaskaOperasi;

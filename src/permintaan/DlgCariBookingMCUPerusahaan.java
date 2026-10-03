@@ -147,10 +147,10 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup1 = new javax.swing.JPopupMenu();
-        ppRiwayatPerawatan = new javax.swing.JMenuItem();
-        ppPilih = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppBatalMCU = new javax.swing.JMenuItem();
+        ppRiwayatPerawatan = new widget.MenuItem();
+        ppPilih = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppBatalMCU = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label11 = new widget.Label();
@@ -1116,10 +1116,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBatalMCU;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPilih;
-    private javax.swing.JMenuItem ppRiwayatPerawatan;
+    private widget.MenuItem ppBatalMCU;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppPilih;
+    private widget.MenuItem ppRiwayatPerawatan;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

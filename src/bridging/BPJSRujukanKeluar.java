@@ -169,7 +169,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSuratRujukan = new javax.swing.JMenuItem();
+        MnSuratRujukan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1089,7 +1089,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox KdPpkRujukan1;
     private widget.Label LCount;
     private widget.Label LabelPoli1;
-    private javax.swing.JMenuItem MnSuratRujukan;
+    private widget.MenuItem MnSuratRujukan;
     private widget.TextBox NmPenyakit1;
     private widget.TextBox NmPoli1;
     private widget.TextBox NmPpkRujukan1;
