@@ -236,7 +236,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         TujuanPemeriksaan = new widget.ComboBox();
         jLabel57 = new widget.Label();
         scrollPane7 = new widget.ScrollPane();
-        KetAlloAuto = new javax.swing.JTextArea();
+        KetAlloAuto = new widget.TextArea();
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
@@ -1556,7 +1556,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.TextArea Kepribadian;
     private widget.TextArea Kesimpulanpsikolog;
-    private javax.swing.JTextArea KetAlloAuto;
+    private widget.TextArea KetAlloAuto;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.MenuItem MnPenilaianMedis;

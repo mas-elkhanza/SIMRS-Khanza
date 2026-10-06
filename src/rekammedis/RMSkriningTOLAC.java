@@ -201,7 +201,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTOLAC = new widget.MenuItem();
+        MnSkriningTOLAC = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -243,7 +243,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         jLabel18 = new widget.Label();
         KdDokter = new widget.TextBox();
         NmDokter = new widget.TextBox();
-        BtnPetugas = new widget.Button();
+        BtnDokter = new widget.Button();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel100 = new widget.Label();
         jLabel8 = new widget.Label();
@@ -499,7 +499,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -512,7 +512,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -632,7 +632,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -715,22 +715,22 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         FormInput.add(NmDokter);
         NmDokter.setBounds(570, 40, 187, 23);
 
-        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPetugas.setMnemonic('2');
-        BtnPetugas.setToolTipText("ALt+2");
-        BtnPetugas.setName("BtnPetugas"); // NOI18N
-        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter.setMnemonic('2');
+        BtnDokter.setToolTipText("ALt+2");
+        BtnDokter.setName("BtnDokter"); // NOI18N
+        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPetugasActionPerformed(evt);
+                BtnDokterActionPerformed(evt);
             }
         });
-        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPetugasKeyPressed(evt);
+                BtnDokterKeyPressed(evt);
             }
         });
-        FormInput.add(BtnPetugas);
-        BtnPetugas.setBounds(761, 40, 28, 23);
+        FormInput.add(BtnDokter);
+        BtnDokter.setBounds(761, 40, 28, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1153,9 +1153,9 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
+            Valid.textKosong(KdDokter,"Dokter");
         }else if(GPA.getText().trim().equals("")){
             Valid.textKosong(GPA,"G P A");
         }else if(Diagnosa.getText().trim().equals("")){
@@ -1226,9 +1226,9 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
+            Valid.textKosong(KdDokter,"Dokter");
         }else if(GPA.getText().trim().equals("")){
             Valid.textKosong(GPA,"G P A");
         }else if(Diagnosa.getText().trim().equals("")){
@@ -1589,10 +1589,10 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     }//GEN-LAST:event_MenitKeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
-        Valid.pindah(evt,Menit,BtnPetugas);
+        Valid.pindah(evt,Menit,BtnDokter);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         if (dokter == null || !dokter.isDisplayable()) {
             dokter=new DlgCariDokter(null,false);
             dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -1603,7 +1603,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
                         KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                         NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                     }  
-                    BtnPetugas.requestFocus();
+                    BtnDokter.requestFocus();
                     dokter=null;
                 }
             });
@@ -1622,11 +1622,11 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             return;
         }
         dokter.setVisible(true); 
-    }//GEN-LAST:event_BtnPetugasActionPerformed
+    }//GEN-LAST:event_BtnDokterActionPerformed
 
-    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
-        //Valid.pindah(evt,Detik,BB);
-    }//GEN-LAST:event_BtnPetugasKeyPressed
+    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+        Valid.pindah(evt,Detik,GPA);
+    }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void MnSkriningTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningTOLACActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -1640,7 +1640,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningTOLAC.jasper","report","::[ Formulir Skrining Hipertensi ]::",
+            Valid.MyReportqry("rptFormulirSkriningTOLAC.jasper","report","::[ Formulir Skrining TOLAC ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,"+
                     "skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
@@ -1805,10 +1805,10 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
@@ -1837,7 +1837,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private widget.MenuItem MnSkriningTOLAC;
+    private javax.swing.JMenuItem MnSkriningTOLAC;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Presentasi;
@@ -2098,7 +2098,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getskrining_tolac()); 
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
-            BtnPetugas.setEnabled(false);
+            BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
             NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
             if(NmDokter.getText().equals("")){

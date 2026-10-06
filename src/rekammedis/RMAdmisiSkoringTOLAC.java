@@ -76,10 +76,9 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal",
-            "G P A","Diagnosa","Jumlah SC","SC Terakhir","Indikasi SC","Jenis Insisi","Riwayat Pervaginam",
-            "TBJ(gram)","Presentasi Janin","Riwayat SC ≤1x","Panggul Klinis Adekuat","Janin Tunggal Kepala",
-            "TBJ Sesuai","SC Klasik Ruptur","Riwayat SC ≥ 2 Kali","Plasenta Previa / Letak Lintang",
-            "Kesimpulan","Edukasi Diberikan","Keterangan"
+            "His (x/10 mnt)","Durasi (detik)","DJJ","Pembukaan (cm)","Pendataran (%)","Kepala","Usia Ibu","Skor Usia",
+            "Riwayat Pervaginam","Skor Riwayat","Indikasi SC","Skor Indikasi","Pendataran Serviks","Skor Pendataran",
+            "Pembukaan Serviks","Skor Pembukaan","Total Skor","Peluang VBAC (%)","Keputusan","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -89,7 +88,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 26; i++) {
+        for (i = 0; i < 27; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -106,42 +105,44 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(120);
             }else if(i==7){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(61);
+                column.setPreferredWidth(37);
             }else if(i==10){
-                column.setPreferredWidth(66);
+                column.setPreferredWidth(95);
             }else if(i==11){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==12){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(80);
             }else if(i==13){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(85);
             }else if(i==14){
-                column.setPreferredWidth(60);
-            }else if(i==15){
-                column.setPreferredWidth(120);
-            }else if(i==16){
-                column.setPreferredWidth(90);
-            }else if(i==17){
-                column.setPreferredWidth(121);
-            }else if(i==18){
-                column.setPreferredWidth(114);
-            }else if(i==19){
                 column.setPreferredWidth(65);
-            }else if(i==20){
-                column.setPreferredWidth(90);
-            }else if(i==21){
-                column.setPreferredWidth(107);
-            }else if(i==22){
+            }else if(i==15){
+                column.setPreferredWidth(125);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(200);
+            }else if(i==18){
+                column.setPreferredWidth(85);
+            }else if(i==19){
                 column.setPreferredWidth(120);
+            }else if(i==20){
+                column.setPreferredWidth(100);
+            }else if(i==21){
+                column.setPreferredWidth(120);
+            }else if(i==22){
+                column.setPreferredWidth(100);
             }else if(i==23){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(70);
             }else if(i==24){
-                column.setPreferredWidth(97);
+                column.setPreferredWidth(110);
             }else if(i==25){
+                column.setPreferredWidth(90);
+            }else if(i==26){
                 column.setPreferredWidth(170);
             }
         }
@@ -150,12 +151,12 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdDokter.setDocument(new batasInput((byte)20).getKata(KdDokter));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        GPA.setDocument(new batasInput((int)15).getKata(GPA));
-        Diagnosa.setDocument(new batasInput((int)100).getKata(Diagnosa));
-        JumlahSC.setDocument(new batasInput((int)1).getKata(JumlahSC));
-        IndikasiSC.setDocument(new batasInput((int)50).getKata(IndikasiSC));
-        TBJ.setDocument(new batasInput((int)5).getKata(TBJ));
-        Presentasi.setDocument(new batasInput((int)30).getKata(Presentasi));
+        HIS.setDocument(new batasInput((int)2).getOnlyAngka(HIS));
+        Durasi.setDocument(new batasInput((int)5).getOnlyAngka(Durasi));
+        DJJ.setDocument(new batasInput((int)5).getOnlyAngka(DJJ));
+        VTPembukaan.setDocument(new batasInput((int)2).getOnlyAngka(VTPembukaan));
+        VTPendataran.setDocument(new batasInput((int)3).getOnlyAngka(VTPendataran));
+        Kepala.setDocument(new batasInput((int)20).getKata(Kepala));
         Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
         
         ChkInput.setSelected(false);
@@ -186,8 +187,6 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         }
         
         jam();
-        
-        Valid.LoadTahun2(SCTerakhir);
     }
 
 
@@ -201,7 +200,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTOLAC = new widget.MenuItem();
+        MnSkriningTOLAC = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -243,62 +242,60 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         jLabel18 = new widget.Label();
         KdDokter = new widget.TextBox();
         NmDokter = new widget.TextBox();
-        BtnPetugas = new widget.Button();
+        BtnDokter = new widget.Button();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel100 = new widget.Label();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        SCTerakhir = new widget.ComboBox();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel106 = new widget.Label();
-        jLabel9 = new widget.Label();
-        TBJ = new widget.TextBox();
-        jLabel14 = new widget.Label();
-        jLabel23 = new widget.Label();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel107 = new widget.Label();
         jLabel27 = new widget.Label();
-        Presentasi = new widget.TextBox();
-        jLabel28 = new widget.Label();
         jLabel5 = new widget.Label();
-        GPA = new widget.TextBox();
-        jLabel20 = new widget.Label();
-        Diagnosa = new widget.TextBox();
-        jLabel11 = new widget.Label();
-        JumlahSC = new widget.TextBox();
-        jLabel15 = new widget.Label();
-        jLabel25 = new widget.Label();
-        IndikasiSC = new widget.TextBox();
-        JenisInsisi = new widget.ComboBox();
-        jLabel17 = new widget.Label();
-        RiwayatPervaginam = new widget.ComboBox();
-        jLabel29 = new widget.Label();
+        HIS = new widget.TextBox();
         jLabel22 = new widget.Label();
-        Inklusi1 = new widget.ComboBox();
+        UsiaIbu = new widget.ComboBox();
         jLabel26 = new widget.Label();
-        Inklusi2 = new widget.ComboBox();
+        RiwayatPervaginam = new widget.ComboBox();
         jLabel30 = new widget.Label();
-        Inklusi3 = new widget.ComboBox();
+        IndikasiSC = new widget.ComboBox();
+        PendataranServiks = new widget.ComboBox();
         jLabel31 = new widget.Label();
-        Inklusi4 = new widget.ComboBox();
+        PembukaanServiks = new widget.ComboBox();
         jLabel24 = new widget.Label();
-        Eksklusi1 = new widget.ComboBox();
         jLabel108 = new widget.Label();
-        jLabel32 = new widget.Label();
-        Eksklusi2 = new widget.ComboBox();
-        jLabel33 = new widget.Label();
-        Eksklusi3 = new widget.ComboBox();
-        jLabel10 = new widget.Label();
-        jLabel12 = new widget.Label();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel109 = new widget.Label();
-        jLabel34 = new widget.Label();
         jLabel13 = new widget.Label();
-        Kesimpulan = new widget.ComboBox();
-        jLabel35 = new widget.Label();
-        Edukasi = new widget.ComboBox();
+        Keputusan = new widget.ComboBox();
         jLabel36 = new widget.Label();
         Keterangan = new widget.TextBox();
+        jLabel9 = new widget.Label();
+        jLabel10 = new widget.Label();
+        Durasi = new widget.TextBox();
+        jLabel11 = new widget.Label();
+        jLabel12 = new widget.Label();
+        DJJ = new widget.TextBox();
+        jLabel14 = new widget.Label();
+        jLabel15 = new widget.Label();
+        VTPembukaan = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        jLabel23 = new widget.Label();
+        jLabel25 = new widget.Label();
+        NilaiPembukaanServiks = new widget.TextBox();
+        jLabel28 = new widget.Label();
+        Kepala = new widget.TextBox();
+        jLabel29 = new widget.Label();
+        VTPendataran = new widget.TextBox();
+        NilaiUsiaIbu = new widget.TextBox();
+        NilaiRiwayatPervaginam = new widget.TextBox();
+        NilaiIndikasiSC = new widget.TextBox();
+        NilaiPendataranServiks = new widget.TextBox();
+        NilaiFlammGeiger = new widget.TextBox();
+        jLabel32 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel110 = new widget.Label();
+        jLabel20 = new widget.Label();
+        jLabel37 = new widget.Label();
+        PeluangVBAC = new widget.TextBox();
+        jLabel33 = new widget.Label();
+        jLabel38 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -306,9 +303,9 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         MnSkriningTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningTOLAC.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningTOLAC.setText("Formulir Skrining TOLAC");
+        MnSkriningTOLAC.setText("Formulir Admisi & Skoring TOLAC");
         MnSkriningTOLAC.setName("MnSkriningTOLAC"); // NOI18N
-        MnSkriningTOLAC.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningTOLAC.setPreferredSize(new java.awt.Dimension(230, 26));
         MnSkriningTOLAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSkriningTOLACActionPerformed(evt);
@@ -499,7 +496,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -512,7 +509,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -572,7 +569,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 446));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 306));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -602,7 +599,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 313));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 283));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -632,7 +629,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -715,35 +712,29 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         FormInput.add(NmDokter);
         NmDokter.setBounds(570, 40, 187, 23);
 
-        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPetugas.setMnemonic('2');
-        BtnPetugas.setToolTipText("ALt+2");
-        BtnPetugas.setName("BtnPetugas"); // NOI18N
-        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter.setMnemonic('2');
+        BtnDokter.setToolTipText("ALt+2");
+        BtnDokter.setName("BtnDokter"); // NOI18N
+        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPetugasActionPerformed(evt);
+                BtnDokterActionPerformed(evt);
             }
         });
-        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPetugasKeyPressed(evt);
+                BtnDokterKeyPressed(evt);
             }
         });
-        FormInput.add(BtnPetugas);
-        BtnPetugas.setBounds(761, 40, 28, 23);
+        FormInput.add(BtnDokter);
+        BtnDokter.setBounds(761, 40, 28, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator1.setName("jSeparator1"); // NOI18N
         FormInput.add(jSeparator1);
-        jSeparator1.setBounds(0, 100, 807, 1);
-
-        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("RIWAYAT SC SEBELUMNYA");
-        jLabel100.setName("jLabel100"); // NOI18N
-        FormInput.add(jLabel100);
-        jLabel100.setBounds(10, 100, 490, 23);
+        jSeparator1.setBounds(0, 120, 807, 1);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -756,367 +747,170 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        SCTerakhir.setName("SCTerakhir"); // NOI18N
-        SCTerakhir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SCTerakhirKeyPressed(evt);
-            }
-        });
-        FormInput.add(SCTerakhir);
-        SCTerakhir.setBounds(699, 120, 90, 23);
-
-        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator3.setName("jSeparator3"); // NOI18N
-        FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 180, 807, 1);
-
-        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel106.setText("DATA KEHAMILAN SEKARANG");
-        jLabel106.setName("jLabel106"); // NOI18N
-        FormInput.add(jLabel106);
-        jLabel106.setBounds(10, 180, 490, 23);
-
-        jLabel9.setText(":");
-        jLabel9.setName("jLabel9"); // NOI18N
-        FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 200, 100, 23);
-
-        TBJ.setFocusTraversalPolicyProvider(true);
-        TBJ.setName("TBJ"); // NOI18N
-        TBJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TBJKeyPressed(evt);
-            }
-        });
-        FormInput.add(TBJ);
-        TBJ.setBounds(104, 200, 75, 23);
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("TBJ (USG)");
-        jLabel14.setName("jLabel14"); // NOI18N
-        FormInput.add(jLabel14);
-        jLabel14.setBounds(44, 200, 90, 23);
-
-        jLabel23.setText("Presentasi Janin :");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(290, 200, 90, 23);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 230, 807, 1);
-
-        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("KRITERIA EKSKLUSI ");
-        jLabel107.setName("jLabel107"); // NOI18N
-        FormInput.add(jLabel107);
-        jLabel107.setBounds(496, 230, 200, 23);
-
         jLabel27.setText(":");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
         jLabel27.setBounds(0, 700, 117, 23);
 
-        Presentasi.setFocusTraversalPolicyProvider(true);
-        Presentasi.setName("Presentasi"); // NOI18N
-        Presentasi.setOpaque(true);
-        Presentasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PresentasiKeyPressed(evt);
-            }
-        });
-        FormInput.add(Presentasi);
-        Presentasi.setBounds(384, 200, 220, 23);
-
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel28.setText("gram");
-        jLabel28.setName("jLabel28"); // NOI18N
-        FormInput.add(jLabel28);
-        jLabel28.setBounds(181, 200, 40, 23);
-
-        jLabel5.setText("G P A :");
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("His");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(0, 70, 75, 23);
+        jLabel5.setBounds(30, 90, 40, 23);
 
-        GPA.setHighlighter(null);
-        GPA.setName("GPA"); // NOI18N
-        GPA.addKeyListener(new java.awt.event.KeyAdapter() {
+        HIS.setHighlighter(null);
+        HIS.setName("HIS"); // NOI18N
+        HIS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GPAKeyPressed(evt);
+                HISKeyPressed(evt);
             }
         });
-        FormInput.add(GPA);
-        GPA.setBounds(79, 70, 80, 23);
+        FormInput.add(HIS);
+        HIS.setBounds(56, 90, 35, 23);
 
-        jLabel20.setText("Diagnosa :");
-        jLabel20.setName("jLabel20"); // NOI18N
-        FormInput.add(jLabel20);
-        jLabel20.setBounds(160, 70, 80, 23);
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("Usia Ibu");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(30, 140, 170, 23);
 
-        Diagnosa.setHighlighter(null);
-        Diagnosa.setName("Diagnosa"); // NOI18N
-        Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosaKeyPressed(evt);
+        UsiaIbu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "< 40 Tahun", ">= 40 Tahun" }));
+        UsiaIbu.setName("UsiaIbu"); // NOI18N
+        UsiaIbu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                UsiaIbuItemStateChanged(evt);
             }
         });
-        FormInput.add(Diagnosa);
-        Diagnosa.setBounds(244, 70, 545, 23);
-
-        jLabel11.setText("SC Terakhir :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(615, 120, 80, 23);
-
-        JumlahSC.setFocusTraversalPolicyProvider(true);
-        JumlahSC.setName("JumlahSC"); // NOI18N
-        JumlahSC.addKeyListener(new java.awt.event.KeyAdapter() {
+        UsiaIbu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                JumlahSCKeyPressed(evt);
+                UsiaIbuKeyPressed(evt);
             }
         });
-        FormInput.add(JumlahSC);
-        JumlahSC.setBounds(493, 120, 55, 23);
+        FormInput.add(UsiaIbu);
+        UsiaIbu.setBounds(191, 140, 268, 23);
 
-        jLabel15.setText("Jumlah SC :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        FormInput.add(jLabel15);
-        jLabel15.setBounds(419, 120, 70, 23);
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("Riwayat Persalinan Pervaginam");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(30, 170, 170, 23);
 
-        jLabel25.setText("Indikasi SC :");
-        jLabel25.setName("jLabel25"); // NOI18N
-        FormInput.add(jLabel25);
-        jLabel25.setBounds(335, 150, 80, 23);
-
-        IndikasiSC.setHighlighter(null);
-        IndikasiSC.setName("IndikasiSC"); // NOI18N
-        IndikasiSC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                IndikasiSCKeyPressed(evt);
-            }
-        });
-        FormInput.add(IndikasiSC);
-        IndikasiSC.setBounds(419, 150, 370, 23);
-
-        JenisInsisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Transversal Rendah", "Klasik", "Tidak Diketahui" }));
-        JenisInsisi.setName("JenisInsisi"); // NOI18N
-        JenisInsisi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JenisInsisiKeyPressed(evt);
-            }
-        });
-        FormInput.add(JenisInsisi);
-        JenisInsisi.setBounds(108, 150, 165, 23);
-
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("Jenis Insisi");
-        jLabel17.setName("jLabel17"); // NOI18N
-        FormInput.add(jLabel17);
-        jLabel17.setBounds(44, 150, 80, 23);
-
-        RiwayatPervaginam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Sebelum & Sesudah SC", "Sesudah SC Saja", "Sebelum SC Saja" }));
+        RiwayatPervaginam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sebelum & Sesudah SC", "Sesudah SC Saja", "Sebelum SC Saja", "Tidak Pernah" }));
         RiwayatPervaginam.setName("RiwayatPervaginam"); // NOI18N
+        RiwayatPervaginam.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RiwayatPervaginamItemStateChanged(evt);
+            }
+        });
         RiwayatPervaginam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RiwayatPervaginamKeyPressed(evt);
             }
         });
         FormInput.add(RiwayatPervaginam);
-        RiwayatPervaginam.setBounds(154, 120, 180, 23);
-
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Riwayat Pervaginam");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(44, 120, 130, 23);
-
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel22.setText("Riwayat SC ≤1x, Insisi Transversal Rendah");
-        jLabel22.setName("jLabel22"); // NOI18N
-        FormInput.add(jLabel22);
-        jLabel22.setBounds(44, 250, 220, 23);
-
-        Inklusi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Inklusi1.setName("Inklusi1"); // NOI18N
-        Inklusi1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Inklusi1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Inklusi1);
-        Inklusi1.setBounds(275, 250, 80, 23);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel26.setText("Panggul Klinis Adekuat");
-        jLabel26.setName("jLabel26"); // NOI18N
-        FormInput.add(jLabel26);
-        jLabel26.setBounds(44, 280, 140, 23);
-
-        Inklusi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Inklusi2.setName("Inklusi2"); // NOI18N
-        Inklusi2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Inklusi2KeyPressed(evt);
-            }
-        });
-        FormInput.add(Inklusi2);
-        Inklusi2.setBounds(275, 280, 80, 23);
+        RiwayatPervaginam.setBounds(191, 170, 268, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel30.setText("Janin Tunggal, Presentasi Kepala");
+        jLabel30.setText("Indikasi SC Sebelumnya");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(44, 310, 180, 23);
+        jLabel30.setBounds(30, 200, 170, 23);
 
-        Inklusi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Inklusi3.setName("Inklusi3"); // NOI18N
-        Inklusi3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Inklusi3KeyPressed(evt);
+        IndikasiSC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bukan Kegagalan Kemajuan Persalinan", "Kegagalan Kemajuan Persalinan / CPD-distosia" }));
+        IndikasiSC.setName("IndikasiSC"); // NOI18N
+        IndikasiSC.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IndikasiSCItemStateChanged(evt);
             }
         });
-        FormInput.add(Inklusi3);
-        Inklusi3.setBounds(275, 310, 80, 23);
+        IndikasiSC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IndikasiSCKeyPressed(evt);
+            }
+        });
+        FormInput.add(IndikasiSC);
+        IndikasiSC.setBounds(191, 200, 268, 23);
+
+        PendataranServiks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=75%", "50–74%", "25–49%", "<25%" }));
+        PendataranServiks.setName("PendataranServiks"); // NOI18N
+        PendataranServiks.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PendataranServiksItemStateChanged(evt);
+            }
+        });
+        PendataranServiks.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PendataranServiksKeyPressed(evt);
+            }
+        });
+        FormInput.add(PendataranServiks);
+        PendataranServiks.setBounds(676, 140, 80, 23);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel31.setText("TBJ Sesuai (Bukan Makrosomia Berat)");
+        jLabel31.setText("Pendataran Serviks (Saat Masuk)");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(44, 340, 220, 23);
+        jLabel31.setBounds(512, 140, 180, 23);
 
-        Inklusi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Inklusi4.setName("Inklusi4"); // NOI18N
-        Inklusi4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Inklusi4KeyPressed(evt);
+        PembukaanServiks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=4 cm", "<4 cm" }));
+        PembukaanServiks.setName("PembukaanServiks"); // NOI18N
+        PembukaanServiks.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PembukaanServiksItemStateChanged(evt);
             }
         });
-        FormInput.add(Inklusi4);
-        Inklusi4.setBounds(275, 340, 80, 23);
+        PembukaanServiks.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PembukaanServiksKeyPressed(evt);
+            }
+        });
+        FormInput.add(PembukaanServiks);
+        PembukaanServiks.setBounds(676, 170, 80, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("Riwayat SC Klasik / Ruptur Uteri");
+        jLabel24.setText("Pembukaan Serviks (Saat Masuk)");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(530, 250, 180, 23);
-
-        Eksklusi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Eksklusi1.setName("Eksklusi1"); // NOI18N
-        Eksklusi1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Eksklusi1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Eksklusi1);
-        Eksklusi1.setBounds(709, 250, 80, 23);
+        jLabel24.setBounds(512, 170, 180, 23);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel108.setText("KRITERIA INKLUSI");
+        jLabel108.setText("SKOR FLAMM-GEIGER");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(10, 230, 200, 23);
-
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel32.setText("Riwayat SC ≥ 2 Kali");
-        jLabel32.setName("jLabel32"); // NOI18N
-        FormInput.add(jLabel32);
-        jLabel32.setBounds(530, 280, 180, 23);
-
-        Eksklusi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Eksklusi2.setName("Eksklusi2"); // NOI18N
-        Eksklusi2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Eksklusi2KeyPressed(evt);
-            }
-        });
-        FormInput.add(Eksklusi2);
-        Eksklusi2.setBounds(709, 280, 80, 23);
-
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel33.setText("Plasenta Previa / Letak Lintang");
-        jLabel33.setName("jLabel33"); // NOI18N
-        FormInput.add(jLabel33);
-        jLabel33.setBounds(530, 310, 180, 23);
-
-        Eksklusi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Eksklusi3.setName("Eksklusi3"); // NOI18N
-        Eksklusi3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Eksklusi3KeyPressed(evt);
-            }
-        });
-        FormInput.add(Eksklusi3);
-        Eksklusi3.setBounds(709, 310, 80, 23);
-
-        jLabel10.setText(":");
-        jLabel10.setName("jLabel10"); // NOI18N
-        FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 120, 150, 23);
-
-        jLabel12.setText(":");
-        jLabel12.setName("jLabel12"); // NOI18N
-        FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 150, 104, 23);
+        jLabel108.setBounds(10, 120, 200, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 370, 807, 1);
+        jSeparator5.setBounds(0, 230, 807, 1);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("HASIL SKRINING");
+        jLabel109.setText("KESIMPULAN & KEPUTUSAN");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(10, 370, 490, 23);
+        jLabel109.setBounds(10, 230, 490, 23);
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel34.setText("Kesimpulan");
-        jLabel34.setName("jLabel34"); // NOI18N
-        FormInput.add(jLabel34);
-        jLabel34.setBounds(44, 390, 80, 23);
-
-        jLabel13.setText(":");
+        jLabel13.setText("Keputusan :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 390, 107, 23);
+        jLabel13.setBounds(205, 250, 70, 23);
 
-        Kesimpulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kandidat TOLAC", "Rujuk SC Elektif" }));
-        Kesimpulan.setName("Kesimpulan"); // NOI18N
-        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keputusan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lanjut TOLAC", "Lakukan SC" }));
+        Keputusan.setName("Keputusan"); // NOI18N
+        Keputusan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KesimpulanKeyPressed(evt);
+                KeputusanKeyPressed(evt);
             }
         });
-        FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(111, 390, 130, 23);
-
-        jLabel35.setText("Edukasi Risiko Diberikan :");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(242, 390, 140, 23);
-
-        Edukasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Edukasi.setName("Edukasi"); // NOI18N
-        Edukasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                EdukasiKeyPressed(evt);
-            }
-        });
-        FormInput.add(Edukasi);
-        Edukasi.setBounds(386, 390, 80, 23);
+        FormInput.add(Keputusan);
+        Keputusan.setBounds(279, 250, 110, 23);
 
         jLabel36.setText("Keterangan :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
-        jLabel36.setBounds(465, 390, 80, 23);
+        jLabel36.setBounds(405, 250, 80, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -1126,7 +920,199 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(549, 390, 240, 23);
+        Keterangan.setBounds(489, 250, 300, 23);
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("x/10 menit,");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(94, 90, 70, 23);
+
+        jLabel10.setText("durasi");
+        jLabel10.setName("jLabel10"); // NOI18N
+        FormInput.add(jLabel10);
+        jLabel10.setBounds(147, 90, 37, 23);
+
+        Durasi.setHighlighter(null);
+        Durasi.setName("Durasi"); // NOI18N
+        Durasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DurasiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Durasi);
+        Durasi.setBounds(187, 90, 35, 23);
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("detik");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(225, 90, 40, 23);
+
+        jLabel12.setText("DJJ :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(266, 90, 38, 23);
+
+        DJJ.setHighlighter(null);
+        DJJ.setName("DJJ"); // NOI18N
+        DJJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DJJKeyPressed(evt);
+            }
+        });
+        FormInput.add(DJJ);
+        DJJ.setBounds(308, 90, 35, 23);
+
+        jLabel14.setText("Pembukaan");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(411, 90, 80, 23);
+
+        jLabel15.setText("VT :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(390, 90, 40, 23);
+
+        VTPembukaan.setHighlighter(null);
+        VTPembukaan.setName("VTPembukaan"); // NOI18N
+        VTPembukaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VTPembukaanKeyPressed(evt);
+            }
+        });
+        FormInput.add(VTPembukaan);
+        VTPembukaan.setBounds(494, 90, 35, 23);
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("cm,");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(532, 90, 30, 23);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("x/menit");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(346, 90, 70, 23);
+
+        jLabel25.setText("pendataran");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(539, 90, 70, 23);
+
+        NilaiPembukaanServiks.setEditable(false);
+        NilaiPembukaanServiks.setHighlighter(null);
+        NilaiPembukaanServiks.setName("NilaiPembukaanServiks"); // NOI18N
+        FormInput.add(NilaiPembukaanServiks);
+        NilaiPembukaanServiks.setBounds(759, 170, 30, 23);
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText("%");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(173, 250, 30, 23);
+
+        Kepala.setHighlighter(null);
+        Kepala.setName("Kepala"); // NOI18N
+        Kepala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KepalaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kepala);
+        Kepala.setBounds(704, 90, 85, 23);
+
+        jLabel29.setText("kepala");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(650, 90, 50, 23);
+
+        VTPendataran.setHighlighter(null);
+        VTPendataran.setName("VTPendataran"); // NOI18N
+        VTPendataran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VTPendataranKeyPressed(evt);
+            }
+        });
+        FormInput.add(VTPendataran);
+        VTPendataran.setBounds(612, 90, 35, 23);
+
+        NilaiUsiaIbu.setEditable(false);
+        NilaiUsiaIbu.setHighlighter(null);
+        NilaiUsiaIbu.setName("NilaiUsiaIbu"); // NOI18N
+        FormInput.add(NilaiUsiaIbu);
+        NilaiUsiaIbu.setBounds(462, 140, 30, 23);
+
+        NilaiRiwayatPervaginam.setEditable(false);
+        NilaiRiwayatPervaginam.setHighlighter(null);
+        NilaiRiwayatPervaginam.setName("NilaiRiwayatPervaginam"); // NOI18N
+        FormInput.add(NilaiRiwayatPervaginam);
+        NilaiRiwayatPervaginam.setBounds(462, 170, 30, 23);
+
+        NilaiIndikasiSC.setEditable(false);
+        NilaiIndikasiSC.setHighlighter(null);
+        NilaiIndikasiSC.setName("NilaiIndikasiSC"); // NOI18N
+        FormInput.add(NilaiIndikasiSC);
+        NilaiIndikasiSC.setBounds(462, 200, 30, 23);
+
+        NilaiPendataranServiks.setEditable(false);
+        NilaiPendataranServiks.setHighlighter(null);
+        NilaiPendataranServiks.setName("NilaiPendataranServiks"); // NOI18N
+        FormInput.add(NilaiPendataranServiks);
+        NilaiPendataranServiks.setBounds(759, 140, 30, 23);
+
+        NilaiFlammGeiger.setEditable(false);
+        NilaiFlammGeiger.setHighlighter(null);
+        NilaiFlammGeiger.setName("NilaiFlammGeiger"); // NOI18N
+        FormInput.add(NilaiFlammGeiger);
+        NilaiFlammGeiger.setBounds(749, 200, 40, 23);
+
+        jLabel32.setText("Total Skor :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(625, 200, 120, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 70, 807, 1);
+
+        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel110.setText("HASIL PEMERIKSAAN");
+        jLabel110.setName("jLabel110"); // NOI18N
+        FormInput.add(jLabel110);
+        jLabel110.setBounds(10, 70, 200, 23);
+
+        jLabel20.setText(":");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(0, 90, 52, 23);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel37.setText("Peluang VBAC");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(30, 250, 80, 23);
+
+        PeluangVBAC.setEditable(false);
+        PeluangVBAC.setHighlighter(null);
+        PeluangVBAC.setName("PeluangVBAC"); // NOI18N
+        FormInput.add(PeluangVBAC);
+        PeluangVBAC.setBounds(110, 250, 60, 23);
+
+        jLabel33.setText(":");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(0, 250, 106, 23);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel38.setText("%,");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(650, 90, 30, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1153,17 +1139,21 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
-        }else if(GPA.getText().trim().equals("")){
-            Valid.textKosong(GPA,"G P A");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
-        }else if(TBJ.getText().trim().equals("")){
-            Valid.textKosong(TBJ,"TBJ");
-        }else if(Presentasi.getText().trim().equals("")){
-            Valid.textKosong(Presentasi,"Presentasi");
+            Valid.textKosong(KdDokter,"Dokter");
+        }else if(HIS.getText().trim().equals("")){
+            Valid.textKosong(HIS,"His");
+        }else if(Durasi.getText().trim().equals("")){
+            Valid.textKosong(Durasi,"Durasi His");
+        }else if(DJJ.getText().trim().equals("")){
+            Valid.textKosong(DJJ,"DJJ");
+        }else if(VTPembukaan.getText().trim().equals("")){
+            Valid.textKosong(VTPembukaan,"Pembukaan");
+        }else if(VTPendataran.getText().trim().equals("")){
+            Valid.textKosong(VTPendataran,"Pendataran");
+        }else if(Kepala.getText().trim().equals("")){
+            Valid.textKosong(Kepala,"Kepala");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1213,7 +1203,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-        }  
+        } 
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1226,17 +1216,21 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
-        }else if(GPA.getText().trim().equals("")){
-            Valid.textKosong(GPA,"G P A");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
-        }else if(TBJ.getText().trim().equals("")){
-            Valid.textKosong(TBJ,"TBJ");
-        }else if(Presentasi.getText().trim().equals("")){
-            Valid.textKosong(Presentasi,"Presentasi");
+            Valid.textKosong(KdDokter,"Dokter");
+        }else if(HIS.getText().trim().equals("")){
+            Valid.textKosong(HIS,"His");
+        }else if(Durasi.getText().trim().equals("")){
+            Valid.textKosong(Durasi,"Durasi His");
+        }else if(DJJ.getText().trim().equals("")){
+            Valid.textKosong(DJJ,"DJJ");
+        }else if(VTPembukaan.getText().trim().equals("")){
+            Valid.textKosong(VTPembukaan,"Pembukaan");
+        }else if(VTPendataran.getText().trim().equals("")){
+            Valid.textKosong(VTPendataran,"Pendataran");
+        }else if(Kepala.getText().trim().equals("")){
+            Valid.textKosong(Kepala,"Kepala");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1317,24 +1311,25 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>G P A</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jumlah SC</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SC Terakhir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi SC</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Insisi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>His (x/10 mnt)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Durasi (detik)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DJJ</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembukaan (cm)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pendataran (%)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kepala</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Ibu</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Usia</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Pervaginam</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ(gram)</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Presentasi Janin</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat SC ≤1x</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Panggul Klinis Adekuat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Janin Tunggal Kepala</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ Sesuai</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SC Klasik Ruptur</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat SC ≥ 2 Kali</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Plasenta Previa / Letak Lintang</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Edukasi Diberikan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Riwayat</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi SC</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Indikasi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pendataran Serviks</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Pendataran</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembukaan Serviks</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Pembukaan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Peluang VBAC (%)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                                 "</tr>"
                             );
@@ -1342,52 +1337,53 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                                 htmlContent.append(
                                     "<tr class='isi'>"+
                                        "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+ 
+                                       "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
                                     "</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningTOLAC.html");            
+                            f = new File("DataAdmisiSkoringTOLAC.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING TOLAC<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA ADMISI SKORING TOLAC<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1406,24 +1402,25 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>G P A</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jumlah SC</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SC Terakhir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi SC</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Insisi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>His (x/10 mnt)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Durasi (detik)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DJJ</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembukaan (cm)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pendataran (%)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kepala</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Ibu</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Usia</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Pervaginam</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ(gram)</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Presentasi Janin</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat SC ≤1x</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Panggul Klinis Adekuat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Janin Tunggal Kepala</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ Sesuai</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SC Klasik Ruptur</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat SC ≥ 2 Kali</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Plasenta Previa / Letak Lintang</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Edukasi Diberikan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Riwayat</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi SC</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Indikasi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pendataran Serviks</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Pendataran</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembukaan Serviks</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor Pembukaan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Peluang VBAC (%)</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                                 "</tr>"
                             );
@@ -1431,52 +1428,53 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                                 htmlContent.append(
                                     "<tr class='isi'>"+
                                        "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+ 
-                                        "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+ 
+                                       "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
                                     "</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningTOLAC.wps");            
+                            f = new File("DataAdmisiSkoringTOLAC.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING TOLAC<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA ADMISI SKORING TOLAC<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1487,14 +1485,14 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"G P A\";\"Diagnosa\";\"Jumlah SC\";\"SC Terakhir\";\"Indikasi SC\";\"Jenis Insisi\";\"Riwayat Pervaginam\";\"TBJ(gram)\";\"Presentasi Janin\";\"Riwayat SC ≤1x\";\"Panggul Klinis Adekuat\";\"Janin Tunggal Kepala\";\"TBJ Sesuai\";\"SC Klasik Ruptur\";\"Riwayat SC ≥ 2 Kali\";\"Plasenta Previa / Letak Lintang\";\"Kesimpulan\";\"Edukasi Diberikan\";\"Keterangan\"\n"
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"His (x/10 mnt)\";\"Durasi (detik)\";\"DJJ\";\"Pembukaan (cm)\";\"Pendataran (%)\";\"Kepala\";\"Usia Ibu\";\"Skor Usia\";\"Riwayat Pervaginam\";\"Skor Riwayat\";\"Indikasi SC\";\"Skor Indikasi\";\"Pendataran Serviks\";\"Skor Pendataran\";\"Pembukaan Serviks\";\"Skor Pembukaan\";\"Total Skor\";\"Peluang VBAC (%)\";\"Keputusan\";\"Keterangan\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
-                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\";\""+tbObat.getValueAt(i,23).toString()+"\";\""+tbObat.getValueAt(i,24).toString()+"\";\""+tbObat.getValueAt(i,25).toString()+"\"\n"
+                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\";\""+tbObat.getValueAt(i,23).toString()+"\";\""+tbObat.getValueAt(i,24).toString()+"\";\""+tbObat.getValueAt(i,25).toString()+"\";\""+tbObat.getValueAt(i,26).toString()+"\"\n"
                                 );
                             }
-                            f = new File("DataSkriningTOLAC.csv");            
+                            f = new File("DataAdmisiSkoringTOLAC.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -1589,10 +1587,10 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     }//GEN-LAST:event_MenitKeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
-        Valid.pindah(evt,Menit,BtnPetugas);
+        Valid.pindah(evt,Menit,BtnDokter);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         if (dokter == null || !dokter.isDisplayable()) {
             dokter=new DlgCariDokter(null,false);
             dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -1603,7 +1601,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                         KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                         NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                     }  
-                    BtnPetugas.requestFocus();
+                    BtnDokter.requestFocus();
                     dokter=null;
                 }
             });
@@ -1622,11 +1620,11 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             return;
         }
         dokter.setVisible(true); 
-    }//GEN-LAST:event_BtnPetugasActionPerformed
+    }//GEN-LAST:event_BtnDokterActionPerformed
 
-    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
-        //Valid.pindah(evt,Detik,BB);
-    }//GEN-LAST:event_BtnPetugasKeyPressed
+    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+        Valid.pindah(evt,Detik,HIS);
+    }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void MnSkriningTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningTOLACActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -1640,13 +1638,14 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningTOLAC.jasper","report","::[ Formulir Skrining Hipertensi ]::",
+            Valid.MyReportqry("rptFormulirAdmisiSkoringTOLAC.jasper","report","::[ Formulir Admisi & Skoring TOLAC ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,"+
-                    "skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
-                    "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
-                    "skrining_tolac.inklusi_tbj_sesuai,skrining_tolac.eksklusi_sc_klasik_ruptur,skrining_tolac.eksklusi_sc_2x,skrining_tolac.eksklusi_plasenta_previa,"+
-                    "skrining_tolac.kesimpulan,skrining_tolac.edukasi_diberikan,skrining_tolac.keterangan from skrining_tolac "+
+                    "admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
+                    "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
+                    "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
+                    "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
+                    "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
+                    "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan from skrining_tolac "+
                     "inner join reg_periksa on skrining_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1656,47 +1655,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void SCTerakhirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SCTerakhirKeyPressed
-        Valid.pindah(evt,JumlahSC,JenisInsisi);
-    }//GEN-LAST:event_SCTerakhirKeyPressed
-
-    private void TBJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBJKeyPressed
-        Valid.pindah(evt,IndikasiSC,Presentasi);
-    }//GEN-LAST:event_TBJKeyPressed
-
-    private void PresentasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PresentasiKeyPressed
-        Valid.pindah(evt,TBJ,Inklusi1);
-    }//GEN-LAST:event_PresentasiKeyPressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Inklusi1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Inklusi2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Inklusi3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Inklusi4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Eksklusi1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Eksklusi2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
-        Eksklusi3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { hitungKesimpulan(); }
-        });
-        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -1721,69 +1680,108 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void GPAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GPAKeyPressed
-        Valid.pindah(evt,Tanggal,Diagnosa);
-    }//GEN-LAST:event_GPAKeyPressed
+    private void HISKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HISKeyPressed
+        Valid.pindah(evt,BtnDokter,Durasi);
+    }//GEN-LAST:event_HISKeyPressed
 
-    private void JumlahSCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahSCKeyPressed
-        Valid.pindah(evt,RiwayatPervaginam,SCTerakhir);
-    }//GEN-LAST:event_JumlahSCKeyPressed
-
-    private void JenisInsisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisInsisiKeyPressed
-        Valid.pindah(evt,SCTerakhir,IndikasiSC);
-    }//GEN-LAST:event_JenisInsisiKeyPressed
+    private void UsiaIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaIbuKeyPressed
+        Valid.pindah(evt,Kepala,RiwayatPervaginam);
+    }//GEN-LAST:event_UsiaIbuKeyPressed
 
     private void RiwayatPervaginamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPervaginamKeyPressed
-        Valid.pindah(evt,Diagnosa,JumlahSC);
+        Valid.pindah(evt,UsiaIbu,IndikasiSC);
     }//GEN-LAST:event_RiwayatPervaginamKeyPressed
 
-    private void Inklusi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inklusi1KeyPressed
-        Valid.pindah(evt,Presentasi,Inklusi2);
-    }//GEN-LAST:event_Inklusi1KeyPressed
-
-    private void Inklusi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inklusi2KeyPressed
-        Valid.pindah(evt,Inklusi1,Inklusi3);
-    }//GEN-LAST:event_Inklusi2KeyPressed
-
-    private void Inklusi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inklusi3KeyPressed
-        Valid.pindah(evt,Inklusi2,Inklusi4);
-    }//GEN-LAST:event_Inklusi3KeyPressed
-
-    private void Inklusi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inklusi4KeyPressed
-        Valid.pindah(evt,Inklusi3,Eksklusi1);
-    }//GEN-LAST:event_Inklusi4KeyPressed
-
-    private void Eksklusi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Eksklusi1KeyPressed
-        Valid.pindah(evt,Inklusi4,Eksklusi2);
-    }//GEN-LAST:event_Eksklusi1KeyPressed
-
-    private void Eksklusi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Eksklusi2KeyPressed
-        Valid.pindah(evt,Eksklusi1,Eksklusi3);
-    }//GEN-LAST:event_Eksklusi2KeyPressed
-
-    private void Eksklusi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Eksklusi3KeyPressed
-        Valid.pindah(evt,Eksklusi2,Kesimpulan);
-    }//GEN-LAST:event_Eksklusi3KeyPressed
-
-    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah(evt,Eksklusi3,Edukasi);
-    }//GEN-LAST:event_KesimpulanKeyPressed
-
-    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah(evt,Kesimpulan,Keterangan);
-    }//GEN-LAST:event_EdukasiKeyPressed
-
-    private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
-        Valid.pindah(evt,GPA,RiwayatPervaginam);
-    }//GEN-LAST:event_DiagnosaKeyPressed
-
     private void IndikasiSCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndikasiSCKeyPressed
-        Valid.pindah(evt,JenisInsisi,TBJ);
+        Valid.pindah(evt,RiwayatPervaginam,PendataranServiks);
     }//GEN-LAST:event_IndikasiSCKeyPressed
 
+    private void PendataranServiksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendataranServiksKeyPressed
+        Valid.pindah(evt,IndikasiSC,PembukaanServiks);
+    }//GEN-LAST:event_PendataranServiksKeyPressed
+
+    private void PembukaanServiksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembukaanServiksKeyPressed
+        Valid.pindah(evt,PendataranServiks,Keputusan);
+    }//GEN-LAST:event_PembukaanServiksKeyPressed
+
+    private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
+        Valid.pindah(evt,PembukaanServiks,Keterangan);
+    }//GEN-LAST:event_KeputusanKeyPressed
+
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        Valid.pindah(evt,Edukasi,BtnSimpan);
+        Valid.pindah(evt,Keputusan,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
+
+    private void DurasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DurasiKeyPressed
+        Valid.pindah(evt,HIS,DJJ);
+    }//GEN-LAST:event_DurasiKeyPressed
+
+    private void DJJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DJJKeyPressed
+        Valid.pindah(evt,Durasi,VTPembukaan);
+    }//GEN-LAST:event_DJJKeyPressed
+
+    private void VTPembukaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VTPembukaanKeyPressed
+        Valid.pindah(evt,DJJ,VTPendataran);
+    }//GEN-LAST:event_VTPembukaanKeyPressed
+
+    private void KepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepalaKeyPressed
+        Valid.pindah(evt,VTPendataran,UsiaIbu);
+    }//GEN-LAST:event_KepalaKeyPressed
+
+    private void VTPendataranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VTPendataranKeyPressed
+        Valid.pindah(evt,VTPembukaan,Kepala);
+    }//GEN-LAST:event_VTPendataranKeyPressed
+
+    private void UsiaIbuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UsiaIbuItemStateChanged
+        if(UsiaIbu.getSelectedIndex()==0){
+            NilaiUsiaIbu.setText("2");
+        }else{
+            NilaiUsiaIbu.setText("0");
+        }
+        hitungSkor();
+    }//GEN-LAST:event_UsiaIbuItemStateChanged
+
+    private void RiwayatPervaginamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatPervaginamItemStateChanged
+        if(RiwayatPervaginam.getSelectedIndex()==0){
+            NilaiRiwayatPervaginam.setText("4");
+        }else if(RiwayatPervaginam.getSelectedIndex()==1){
+            NilaiRiwayatPervaginam.setText("2");
+        }else if(RiwayatPervaginam.getSelectedIndex()==2){
+            NilaiRiwayatPervaginam.setText("1");
+        }else{
+            NilaiRiwayatPervaginam.setText("0");
+        }
+        hitungSkor();
+    }//GEN-LAST:event_RiwayatPervaginamItemStateChanged
+
+    private void IndikasiSCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IndikasiSCItemStateChanged
+        if(IndikasiSC.getSelectedIndex()==0){
+            NilaiIndikasiSC.setText("1");
+        }else{
+            NilaiIndikasiSC.setText("0");
+        }
+        hitungSkor();
+    }//GEN-LAST:event_IndikasiSCItemStateChanged
+
+    private void PendataranServiksItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PendataranServiksItemStateChanged
+        if(PendataranServiks.getSelectedIndex()==0){
+            NilaiPendataranServiks.setText("2");
+        }else if(PendataranServiks.getSelectedIndex()==1){
+            NilaiPendataranServiks.setText("1");
+        }else{
+            NilaiPendataranServiks.setText("0");
+        }
+        hitungSkor();
+    }//GEN-LAST:event_PendataranServiksItemStateChanged
+
+    private void PembukaanServiksItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PembukaanServiksItemStateChanged
+        if(PembukaanServiks.getSelectedIndex()==0){
+            NilaiPembukaanServiks.setText("1");
+        }else{
+            NilaiPembukaanServiks.setText("0");
+        }
+        hitungSkor();
+    }//GEN-LAST:event_PembukaanServiksItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -1805,46 +1803,44 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
+    private widget.TextBox DJJ;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
-    private widget.TextBox Diagnosa;
-    private widget.ComboBox Edukasi;
-    private widget.ComboBox Eksklusi1;
-    private widget.ComboBox Eksklusi2;
-    private widget.ComboBox Eksklusi3;
+    private widget.TextBox Durasi;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox GPA;
-    private widget.TextBox IndikasiSC;
-    private widget.ComboBox Inklusi1;
-    private widget.ComboBox Inklusi2;
-    private widget.ComboBox Inklusi3;
-    private widget.ComboBox Inklusi4;
+    private widget.TextBox HIS;
+    private widget.ComboBox IndikasiSC;
     private widget.ComboBox Jam;
-    private widget.ComboBox JenisInsisi;
-    private widget.TextBox JumlahSC;
     private widget.TextBox KdDokter;
-    private widget.ComboBox Kesimpulan;
+    private widget.TextBox Kepala;
+    private widget.ComboBox Keputusan;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private widget.MenuItem MnSkriningTOLAC;
+    private javax.swing.JMenuItem MnSkriningTOLAC;
+    private widget.TextBox NilaiFlammGeiger;
+    private widget.TextBox NilaiIndikasiSC;
+    private widget.TextBox NilaiPembukaanServiks;
+    private widget.TextBox NilaiPendataranServiks;
+    private widget.TextBox NilaiRiwayatPervaginam;
+    private widget.TextBox NilaiUsiaIbu;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
-    private widget.TextBox Presentasi;
+    private widget.TextBox PeluangVBAC;
+    private widget.ComboBox PembukaanServiks;
+    private widget.ComboBox PendataranServiks;
     private widget.ComboBox RiwayatPervaginam;
-    private widget.ComboBox SCTerakhir;
     private widget.ScrollPane Scroll;
-    private widget.TextBox TBJ;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1852,14 +1848,15 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
+    private widget.ComboBox UsiaIbu;
+    private widget.TextBox VTPembukaan;
+    private widget.TextBox VTPendataran;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
-    private widget.Label jLabel100;
-    private widget.Label jLabel106;
-    private widget.Label jLabel107;
     private widget.Label jLabel108;
     private widget.Label jLabel109;
     private widget.Label jLabel11;
+    private widget.Label jLabel110;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
@@ -1882,9 +1879,9 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private widget.Label jLabel31;
     private widget.Label jLabel32;
     private widget.Label jLabel33;
-    private widget.Label jLabel34;
-    private widget.Label jLabel35;
     private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1894,8 +1891,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator5;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1908,26 +1904,26 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,"+
-                    "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
-                    "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
-                    "skrining_tolac.inklusi_tbj_sesuai,skrining_tolac.eksklusi_sc_klasik_ruptur,skrining_tolac.eksklusi_sc_2x,skrining_tolac.eksklusi_plasenta_previa,"+
-                    "skrining_tolac.kesimpulan,skrining_tolac.edukasi_diberikan,skrining_tolac.keterangan from skrining_tolac "+
-                    "inner join reg_periksa on skrining_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where skrining_tolac.tanggal between ? and ? order by skrining_tolac.tanggal ");
+                    "select "+
+                    "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
+                    "dokter.nm_dokter,admisi_skoring_tolac.tanggal,admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
+                    "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
+                    "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
+                    "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
+                    "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
+                    "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan "+
+                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter where admisi_skoring_tolac.tanggal between ? and ? order by admisi_skoring_tolac.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,skrining_tolac.gpa,skrining_tolac.diagnosa,skrining_tolac.jumlah_sc,"+
-                    "skrining_tolac.tahun_sc,skrining_tolac.indikasi_sc,skrining_tolac.jenis_insisi,skrining_tolac.riwayat_pervaginam,skrining_tolac.tbj_gram,"+
-                    "skrining_tolac.presentasi_janin,skrining_tolac.inklusi_riwayat_sc,skrining_tolac.inklusi_panggul_adekuat,skrining_tolac.inklusi_janin_tunggal_kepala,"+
-                    "skrining_tolac.inklusi_tbj_sesuai,skrining_tolac.eksklusi_sc_klasik_ruptur,skrining_tolac.eksklusi_sc_2x,skrining_tolac.eksklusi_plasenta_previa,"+
-                    "skrining_tolac.kesimpulan,skrining_tolac.edukasi_diberikan,skrining_tolac.keterangan from skrining_tolac "+
-                    "inner join reg_periksa on skrining_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where skrining_tolac.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_tolac.kd_dokter like ? or dokter.nm_dokter like ? or skrining_tolac.kesimpulan like ? or skrining_tolac.keterangan like ?) "+
-                    "order by skrining_tolac.tanggal ");
+                    "select "+
+                    "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
+                    "dokter.nm_dokter,admisi_skoring_tolac.tanggal,admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
+                    "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
+                    "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
+                    "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
+                    "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
+                    "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan "+
+                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter where admisi_skoring_tolac.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or admisi_skoring_tolac.kd_dokter like ? or dokter.nm_dokter like ? or admisi_skoring_tolac.keputusan like ? or admisi_skoring_tolac.keterangan like ?) order by admisi_skoring_tolac.tanggal ");
             }
                 
             try {
@@ -1944,16 +1940,16 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
-
                 }
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+")",rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("gpa"),rs.getString("diagnosa"),rs.getString("jumlah_sc"),rs.getString("tahun_sc"),rs.getString("indikasi_sc"),rs.getString("jenis_insisi"),rs.getString("riwayat_pervaginam"),rs.getString("tbj_gram"),rs.getString("presentasi_janin"),rs.getString("inklusi_riwayat_sc"),
-                        rs.getString("inklusi_panggul_adekuat"),rs.getString("inklusi_janin_tunggal_kepala"),rs.getString("inklusi_tbj_sesuai"),rs.getString("eksklusi_sc_klasik_ruptur"),rs.getString("eksklusi_sc_2x"),rs.getString("eksklusi_plasenta_previa"),rs.getString("kesimpulan"),
-                        rs.getString("edukasi_diberikan"),rs.getString("keterangan")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+")",rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                        rs.getString("tanggal"),rs.getString("his_frekuensi"),rs.getString("his_durasi_detik"),rs.getString("djj"),rs.getString("pembukaan_cm"),rs.getString("pendataran_persen"),
+                        rs.getString("penurunan_kepala"),rs.getString("pilihan_usia"),rs.getString("skor_usia"),rs.getString("pilihan_riwayat_pervaginam"),rs.getString("skor_riwayat_pervaginam"),rs.getString("pilihan_indikasi_sc"),
+                        rs.getString("skor_indikasi_sc"),rs.getString("pilihan_pendataran"),rs.getString("skor_pendataran"),rs.getString("pilihan_pembukaan"),rs.getString("skor_pembukaan"),rs.getString("total_skor"),
+                        rs.getString("peluang_vbac"),rs.getString("keputusan"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -1973,27 +1969,28 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        GPA.setText("");
-        Diagnosa.setText("");
+        HIS.setText("");
+        Durasi.setText("");
+        DJJ.setText("");
+        VTPembukaan.setText("");
+        VTPendataran.setText("");
+        Kepala.setText("");
+        UsiaIbu.setSelectedIndex(0);
+        NilaiUsiaIbu.setText("2");
         RiwayatPervaginam.setSelectedIndex(0);
-        JumlahSC.setText("");
-        SCTerakhir.setSelectedIndex(0);
-        JenisInsisi.setSelectedIndex(0);
-        IndikasiSC.setText("");
-        TBJ.setText("");
-        Presentasi.setText("");
-        Inklusi1.setSelectedIndex(0);
-        Inklusi2.setSelectedIndex(0);
-        Inklusi3.setSelectedIndex(0);
-        Inklusi4.setSelectedIndex(0);
-        Eksklusi1.setSelectedIndex(0);
-        Eksklusi2.setSelectedIndex(0);
-        Eksklusi3.setSelectedIndex(0);
-        Kesimpulan.setSelectedIndex(0);
-        Edukasi.setSelectedIndex(0);
+        NilaiRiwayatPervaginam.setText("4");
+        IndikasiSC.setSelectedIndex(0);
+        NilaiIndikasiSC.setText("1");
+        PendataranServiks.setSelectedIndex(0);
+        NilaiPendataranServiks.setText("2");
+        PembukaanServiks.setSelectedIndex(0);
+        NilaiPembukaanServiks.setText("1");
+        NilaiFlammGeiger.setText("10");
+        PeluangVBAC.setText("95-99");
+        Keputusan.setSelectedIndex(0);
         Keterangan.setText("");
         Tanggal.setDate(new Date());
-        GPA.requestFocus();
+        HIS.requestFocus();
     } 
 
     private void getData() {
@@ -2002,27 +1999,21 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            GPA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            JumlahSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            SCTerakhir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            IndikasiSC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            JenisInsisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            RiwayatPervaginam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            TBJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Presentasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Inklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Inklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Inklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Inklusi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Eksklusi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Eksklusi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Eksklusi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Edukasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            HIS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Durasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            DJJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            VTPembukaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            VTPendataran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Kepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            UsiaIbu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            RiwayatPervaginam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            IndikasiSC.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            PendataranServiks.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            PembukaanServiks.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Keputusan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(14,15));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(17,19));
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
@@ -2072,9 +2063,9 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>618){
+            if(internalFrame1.getHeight()>478){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,446));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,306));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2092,13 +2083,13 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_tolac());
-        BtnHapus.setEnabled(akses.getskrining_tolac());
-        BtnEdit.setEnabled(akses.getskrining_tolac());
-        BtnPrint.setEnabled(akses.getskrining_tolac()); 
+        BtnSimpan.setEnabled(akses.getadmisi_skoring_tolac());
+        BtnHapus.setEnabled(akses.getadmisi_skoring_tolac());
+        BtnEdit.setEnabled(akses.getadmisi_skoring_tolac());
+        BtnPrint.setEnabled(akses.getadmisi_skoring_tolac()); 
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
-            BtnPetugas.setEnabled(false);
+            BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
             NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
@@ -2173,15 +2164,15 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_tolac","no_rawat=?","no_rawat=?,tanggal=?,gpa=?,diagnosa=?,jumlah_sc=?,tahun_sc=?,indikasi_sc=?,jenis_insisi=?,riwayat_pervaginam=?,tbj_gram=?,"+
-                "presentasi_janin=?,inklusi_riwayat_sc=?,inklusi_panggul_adekuat=?,inklusi_janin_tunggal_kepala=?,inklusi_tbj_sesuai=?,eksklusi_sc_klasik_ruptur=?,eksklusi_sc_2x=?,"+
-                "eksklusi_plasenta_previa=?,kesimpulan=?,edukasi_diberikan=?,keterangan=?,kd_dokter=?",23,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GPA.getText(),Diagnosa.getText(),JumlahSC.getText(),SCTerakhir.getSelectedItem().toString(),IndikasiSC.getText(),JenisInsisi.getSelectedItem().toString(), 
-                RiwayatPervaginam.getSelectedItem().toString(),TBJ.getText(),Presentasi.getText(),Inklusi1.getSelectedItem().toString(),Inklusi2.getSelectedItem().toString(), 
-                Inklusi3.getSelectedItem().toString(),Inklusi4.getSelectedItem().toString(),Eksklusi1.getSelectedItem().toString(),Eksklusi2.getSelectedItem().toString(), 
-                Eksklusi3.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),Edukasi.getSelectedItem().toString(),Keterangan.getText(),KdDokter.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("admisi_skoring_tolac","no_rawat=?","no_rawat=?,tanggal=?,his_frekuensi=?,his_durasi_detik=?,djj=?,pembukaan_cm=?,pendataran_persen=?,penurunan_kepala=?,pilihan_usia=?,skor_usia=?,pilihan_riwayat_pervaginam=?,skor_riwayat_pervaginam=?,pilihan_indikasi_sc=?,skor_indikasi_sc=?,pilihan_pendataran=?,skor_pendataran=?,pilihan_pembukaan=?,skor_pembukaan=?,total_skor=?,peluang_vbac=?,keputusan=?,keterangan=?,kd_dokter=?",24,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),HIS.getText(),
+            Durasi.getText(),DJJ.getText(),VTPembukaan.getText(),
+            VTPendataran.getText(),Kepala.getText(),UsiaIbu.getSelectedItem().toString(),
+            NilaiUsiaIbu.getText(),RiwayatPervaginam.getSelectedItem().toString(),NilaiRiwayatPervaginam.getText(),
+            IndikasiSC.getSelectedItem().toString(),NilaiIndikasiSC.getText(),PendataranServiks.getSelectedItem().toString(),
+            NilaiPendataranServiks.getText(),PembukaanServiks.getSelectedItem().toString(),NilaiPembukaanServiks.getText(),
+            NilaiFlammGeiger.getText(),PeluangVBAC.getText(),Keputusan.getSelectedItem().toString(),
+            Keterangan.getText(),KdDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2190,31 +2181,32 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
                tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
                tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),6);
-               tbObat.setValueAt(GPA.getText(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(JumlahSC.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(SCTerakhir.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(IndikasiSC.getText(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(JenisInsisi.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(RiwayatPervaginam.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(TBJ.getText(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(Presentasi.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(Inklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(Inklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(Inklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Inklusi4.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(Eksklusi1.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(Eksklusi2.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(Eksklusi3.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(Kesimpulan.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(Edukasi.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(HIS.getText(),tbObat.getSelectedRow(),7);
+               tbObat.setValueAt(Durasi.getText(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(DJJ.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(VTPembukaan.getText(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(VTPendataran.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(Kepala.getText(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(UsiaIbu.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(NilaiUsiaIbu.getText(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(RiwayatPervaginam.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(NilaiRiwayatPervaginam.getText(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(IndikasiSC.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(NilaiIndikasiSC.getText(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(PendataranServiks.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(NilaiPendataranServiks.getText(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(PembukaanServiks.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(NilaiPembukaanServiks.getText(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(NilaiFlammGeiger.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(PeluangVBAC.getText(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(Keputusan.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),26);
                emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_tolac where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from admisi_skoring_tolac where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2226,28 +2218,58 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_tolac","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",22,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            GPA.getText(),Diagnosa.getText(),JumlahSC.getText(),SCTerakhir.getSelectedItem().toString(),IndikasiSC.getText(),JenisInsisi.getSelectedItem().toString(), 
-            RiwayatPervaginam.getSelectedItem().toString(),TBJ.getText(),Presentasi.getText(),Inklusi1.getSelectedItem().toString(),Inklusi2.getSelectedItem().toString(), 
-            Inklusi3.getSelectedItem().toString(),Inklusi4.getSelectedItem().toString(),Eksklusi1.getSelectedItem().toString(),Eksklusi2.getSelectedItem().toString(), 
-            Eksklusi3.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),Edukasi.getSelectedItem().toString(),Keterangan.getText(),KdDokter.getText()
+        if(Sequel.menyimpantf("admisi_skoring_tolac","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",23,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),HIS.getText(),
+            Durasi.getText(),DJJ.getText(),VTPembukaan.getText(),
+            VTPendataran.getText(),Kepala.getText(),UsiaIbu.getSelectedItem().toString(),
+            NilaiUsiaIbu.getText(),RiwayatPervaginam.getSelectedItem().toString(),NilaiRiwayatPervaginam.getText(),
+            IndikasiSC.getSelectedItem().toString(),NilaiIndikasiSC.getText(),PendataranServiks.getSelectedItem().toString(),
+            NilaiPendataranServiks.getText(),PembukaanServiks.getSelectedItem().toString(),NilaiPembukaanServiks.getText(),
+            NilaiFlammGeiger.getText(),PeluangVBAC.getText(),Keputusan.getSelectedItem().toString(),
+            Keterangan.getText(),KdDokter.getText()
         })==true){
             tabMode.addRow(new Object[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GPA.getText(),Diagnosa.getText(),JumlahSC.getText(),SCTerakhir.getSelectedItem().toString(),IndikasiSC.getText(),JenisInsisi.getSelectedItem().toString(),RiwayatPervaginam.getSelectedItem().toString(),TBJ.getText(),Presentasi.getText(),
-                Inklusi1.getSelectedItem().toString(),Inklusi2.getSelectedItem().toString(),Inklusi3.getSelectedItem().toString(),Inklusi4.getSelectedItem().toString(),Eksklusi1.getSelectedItem().toString(),Eksklusi2.getSelectedItem().toString(), 
-                Eksklusi3.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),Edukasi.getSelectedItem().toString(),Keterangan.getText()
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),
+                TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),HIS.getText(),Durasi.getText(),
+                DJJ.getText(),VTPembukaan.getText(),VTPendataran.getText(),
+                Kepala.getText(),UsiaIbu.getSelectedItem().toString(),NilaiUsiaIbu.getText(),
+                RiwayatPervaginam.getSelectedItem().toString(),NilaiRiwayatPervaginam.getText(),IndikasiSC.getSelectedItem().toString(),
+                NilaiIndikasiSC.getText(),PendataranServiks.getSelectedItem().toString(),NilaiPendataranServiks.getText(),
+                PembukaanServiks.getSelectedItem().toString(),NilaiPembukaanServiks.getText(),NilaiFlammGeiger.getText(),
+                PeluangVBAC.getText(),Keputusan.getSelectedItem().toString(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         }
     }
     
-    private void hitungKesimpulan(){
-        boolean semuaInklusiYa=Inklusi1.getSelectedItem().toString().equals("Ya")&&Inklusi2.getSelectedItem().toString().equals("Ya")&&Inklusi3.getSelectedItem().toString().equals("Ya")&&Inklusi4.getSelectedItem().toString().equals("Ya");
-        boolean adaEksklusiYa=Eksklusi1.getSelectedItem().toString().equals("Ya")||Eksklusi2.getSelectedItem().toString().equals("Ya")||Eksklusi3.getSelectedItem().toString().equals("Ya");
-        Kesimpulan.setSelectedItem((semuaInklusiYa&&!adaEksklusiYa)?"Kandidat TOLAC":"Rujuk SC Elektif");
+    private void hitungSkor(){
+        try{
+            NilaiFlammGeiger.setText(""+(Integer.parseInt(NilaiUsiaIbu.getText())+Integer.parseInt(NilaiRiwayatPervaginam.getText())+Integer.parseInt(NilaiIndikasiSC.getText())+Integer.parseInt(NilaiPendataranServiks.getText())+Integer.parseInt(NilaiPembukaanServiks.getText())));
+        } catch (Exception e) {
+            NilaiFlammGeiger.setText("0");
+        }
+        
+        try{
+            if(Integer.parseInt(NilaiFlammGeiger.getText())<=2){
+                PeluangVBAC.setText("42-49");
+            }else if(Integer.parseInt(NilaiFlammGeiger.getText())==3){
+                PeluangVBAC.setText("59-60");
+            }else if(Integer.parseInt(NilaiFlammGeiger.getText())==4){
+                PeluangVBAC.setText("64-67");
+            }else if(Integer.parseInt(NilaiFlammGeiger.getText())==5){
+                PeluangVBAC.setText("77-79");
+            }else if(Integer.parseInt(NilaiFlammGeiger.getText())==6){
+                PeluangVBAC.setText("88-89");
+            }else if(Integer.parseInt(NilaiFlammGeiger.getText())==7){
+                PeluangVBAC.setText("93");
+            }else{
+                PeluangVBAC.setText("95-99");
+            }
+        } catch (Exception e) {
+            PeluangVBAC.setText("42-49");
+        }
     }
     
     private void runBackground(Runnable task) {
