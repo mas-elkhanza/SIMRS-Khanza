@@ -291,10 +291,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppSemua = new javax.swing.JMenuItem();
-        ppBersihkan1 = new javax.swing.JMenuItem();
-        ppSemua1 = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppSemua = new widget.MenuItem();
+        ppBersihkan1 = new widget.MenuItem();
+        ppSemua1 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbUser = new widget.Table();
@@ -721,10 +721,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass8;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppBersihkan1;
-    private javax.swing.JMenuItem ppSemua;
-    private javax.swing.JMenuItem ppSemua1;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppBersihkan1;
+    private widget.MenuItem ppSemua;
+    private widget.MenuItem ppSemua1;
     private widget.Table tbUser;
     // End of variables declaration//GEN-END:variables
 

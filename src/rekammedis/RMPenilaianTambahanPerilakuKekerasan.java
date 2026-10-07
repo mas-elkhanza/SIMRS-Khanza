@@ -234,7 +234,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianTambahanPerilakuKekerasan = new javax.swing.JMenuItem();
+        MnPenilaianTambahanPerilakuKekerasan = new widget.MenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -2320,7 +2320,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
     private widget.Label Level;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
+    private widget.MenuItem MnPenilaianTambahanPerilakuKekerasan;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

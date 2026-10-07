@@ -146,7 +146,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiInduksiPersalinan = new javax.swing.JMenuItem();
+        MnCatatanObservasiInduksiPersalinan = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1162,7 +1162,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiInduksiPersalinan;
+    private widget.MenuItem MnCatatanObservasiInduksiPersalinan;
     private widget.TextBox NmPetugas;
     private widget.TextBox Obat;
     private javax.swing.JPanel PanelInput;

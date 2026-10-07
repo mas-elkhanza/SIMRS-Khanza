@@ -169,7 +169,7 @@ public class DlgDeposit extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKwitansiDeposit = new javax.swing.JMenuItem();
+        MnKwitansiDeposit = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1200,7 +1200,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Keterangan;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKwitansiDeposit;
+    private widget.MenuItem MnKwitansiDeposit;
     private widget.TextBox NamaPetugas;
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;

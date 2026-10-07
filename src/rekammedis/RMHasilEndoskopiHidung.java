@@ -231,7 +231,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -1789,7 +1789,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private widget.editorpane LoadHTML2;
     private widget.ComboBox MeatusMediusKanan;
     private widget.ComboBox MeatusMediusKiri;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.ComboBox NasofaringKanan;
     private widget.ComboBox NasofaringKiri;
     private widget.TextBox NmDokter;

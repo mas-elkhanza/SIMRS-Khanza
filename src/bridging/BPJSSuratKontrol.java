@@ -265,7 +265,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSurat = new javax.swing.JMenuItem();
+        MnSurat = new widget.MenuItem();
         NoKartu = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -2114,7 +2114,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label LCount1;
     private widget.TextBox LDL;
     private widget.ComboBox MampuAktivitas;
-    private javax.swing.JMenuItem MnSurat;
+    private widget.MenuItem MnSurat;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPasien;
     private widget.TextBox NmPoli;

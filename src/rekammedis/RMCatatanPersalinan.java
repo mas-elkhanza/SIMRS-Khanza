@@ -349,7 +349,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanPersalinan = new javax.swing.JMenuItem();
+        MnCatatanPersalinan = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -2364,7 +2364,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox KontraksiUterus;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnCatatanPersalinan;
+    private widget.MenuItem MnCatatanPersalinan;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;

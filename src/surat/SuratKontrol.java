@@ -160,7 +160,7 @@ public class SuratKontrol extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSurat = new javax.swing.JMenuItem();
+        MnSurat = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1607,7 +1607,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdDokter;
     private widget.TextBox KdPoli;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnSurat;
+    private widget.MenuItem MnSurat;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPoli;
     private widget.TextBox NoReg;

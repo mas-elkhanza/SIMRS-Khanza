@@ -248,7 +248,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningObesitas = new javax.swing.JMenuItem();
+        MnSkriningObesitas = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -1661,7 +1661,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     private widget.TextBox LP;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningObesitas;
+    private widget.MenuItem MnSkriningObesitas;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox RisikoLP;

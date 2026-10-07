@@ -141,12 +141,12 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKelas1 = new javax.swing.JMenuItem();
-        MnKelas2 = new javax.swing.JMenuItem();
-        MnKelas3 = new javax.swing.JMenuItem();
-        MnKelasVIP = new javax.swing.JMenuItem();
-        MnKelasVVIP = new javax.swing.JMenuItem();
-        MnKelasUtama = new javax.swing.JMenuItem();
+        MnKelas1 = new widget.MenuItem();
+        MnKelas2 = new widget.MenuItem();
+        MnKelas3 = new widget.MenuItem();
+        MnKelasVIP = new widget.MenuItem();
+        MnKelasVVIP = new widget.MenuItem();
+        MnKelasUtama = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -719,12 +719,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPrint;
     private widget.Button BtnSeek6;
     private widget.TextBox Kamar;
-    private javax.swing.JMenuItem MnKelas1;
-    private javax.swing.JMenuItem MnKelas2;
-    private javax.swing.JMenuItem MnKelas3;
-    private javax.swing.JMenuItem MnKelasUtama;
-    private javax.swing.JMenuItem MnKelasVIP;
-    private javax.swing.JMenuItem MnKelasVVIP;
+    private widget.MenuItem MnKelas1;
+    private widget.MenuItem MnKelas2;
+    private widget.MenuItem MnKelas3;
+    private widget.MenuItem MnKelasUtama;
+    private widget.MenuItem MnKelasVIP;
+    private widget.MenuItem MnKelasVVIP;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TKd;

@@ -186,8 +186,8 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanPasien = new javax.swing.JMenuItem();
-        ppTampilkanSeleksi = new javax.swing.JMenuItem();
+        ppTampilkanPasien = new widget.MenuItem();
+        ppTampilkanSeleksi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -648,8 +648,8 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
     private widget.TextBox nmdokter;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanPasien;
-    private javax.swing.JMenuItem ppTampilkanSeleksi;
+    private widget.MenuItem ppTampilkanPasien;
+    private widget.MenuItem ppTampilkanSeleksi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

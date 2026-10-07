@@ -158,12 +158,12 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDetailPiutang = new javax.swing.JMenuItem();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppKapitasiPaket = new javax.swing.JMenuItem();
-        ppUmbal = new javax.swing.JMenuItem();
-        ppUmbalAsuransi = new javax.swing.JMenuItem();
+        MnDetailPiutang = new widget.MenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppKapitasiPaket = new widget.MenuItem();
+        ppUmbal = new widget.MenuItem();
+        ppUmbalAsuransi = new widget.MenuItem();
         WindowHitungPaket = new javax.swing.JDialog();
         internalFrame8 = new widget.InternalFrame();
         jLabel42 = new widget.Label();
@@ -1628,7 +1628,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel LCount;
     private javax.swing.JLabel LCount1;
     private widget.TextBox LebihBayarPiutang;
-    private javax.swing.JMenuItem MnDetailPiutang;
+    private widget.MenuItem MnDetailPiutang;
     private widget.TextBox NilaiKapitasiPaket;
     private widget.TextBox PersentaseBayarPaket;
     private widget.ComboBox PilihanKekurangan;
@@ -1661,11 +1661,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppKapitasiPaket;
-    private javax.swing.JMenuItem ppPilihSemua;
-    private javax.swing.JMenuItem ppUmbal;
-    private javax.swing.JMenuItem ppUmbalAsuransi;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppKapitasiPaket;
+    private widget.MenuItem ppPilihSemua;
+    private widget.MenuItem ppUmbal;
+    private widget.MenuItem ppUmbalAsuransi;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

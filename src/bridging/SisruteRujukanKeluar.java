@@ -696,8 +696,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSuratRujukan = new javax.swing.JMenuItem();
-        ppRiwayat = new javax.swing.JMenuItem();
+        MnSuratRujukan = new widget.MenuItem();
+        ppRiwayat = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
@@ -3151,7 +3151,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox KriteriaNmSarana;
     private widget.Label LCount;
     private widget.TextBox Laborat;
-    private javax.swing.JMenuItem MnSuratRujukan;
+    private widget.MenuItem MnSuratRujukan;
     private widget.TextBox NmAlasan;
     private widget.TextBox NmDiagnosa;
     private widget.TextBox NmFaskes;
@@ -3231,7 +3231,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppRiwayat;
+    private widget.MenuItem ppRiwayat;
     private widget.Table tbObat;
     private widget.Table tbObat2;
     // End of variables declaration//GEN-END:variables

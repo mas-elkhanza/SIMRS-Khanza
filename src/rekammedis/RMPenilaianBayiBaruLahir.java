@@ -528,7 +528,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         Keadaan = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -3969,7 +3969,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox MacamPersalinan;
     private widget.ComboBox Mata;
     private widget.TextBox MenitKetubanPecah;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox2 N1;
     private widget.TextBox2 N10;
     private widget.TextBox2 N5;

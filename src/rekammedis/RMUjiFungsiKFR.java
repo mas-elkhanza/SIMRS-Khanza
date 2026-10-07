@@ -143,7 +143,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnUjiFungsi = new javax.swing.JMenuItem();
+        MnUjiFungsi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1161,7 +1161,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private widget.TextBox Kesimpulan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnUjiFungsi;
+    private widget.MenuItem MnUjiFungsi;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Rekomendasi;

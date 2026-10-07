@@ -201,7 +201,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPemantauanMEOWS = new javax.swing.JMenuItem();
+        MnPemantauanMEOWS = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         LoadHTML = new widget.editorpane();
@@ -1745,7 +1745,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPemantauanMEOWS;
+    private widget.MenuItem MnPemantauanMEOWS;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox ParameterSkor;

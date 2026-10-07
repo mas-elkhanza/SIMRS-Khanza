@@ -467,7 +467,7 @@ public class CoronaPasien extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppDiagnosaPasien = new javax.swing.JMenuItem();
+        ppDiagnosaPasien = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2007,7 +2007,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
-    private javax.swing.JMenuItem ppDiagnosaPasien;
+    private widget.MenuItem ppDiagnosaPasien;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 

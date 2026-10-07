@@ -105,7 +105,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratKeterangan = new javax.swing.JMenuItem();
+        MnCetakSuratKeterangan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -856,7 +856,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kehamilan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratKeterangan;
+    private widget.MenuItem MnCetakSuratKeterangan;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

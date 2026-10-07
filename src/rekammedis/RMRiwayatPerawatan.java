@@ -496,6 +496,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkResepPulang = new widget.CekBox();
         chkTambahanBiaya = new widget.CekBox();
         chkPotonganBiaya = new widget.CekBox();
+        chkAdmisiSkoringTOLAC = new widget.CekBox();
         Scroll4 = new widget.ScrollPane();
         LoadHTMLPembelian = new widget.editorpane();
         Scroll5 = new widget.ScrollPane();
@@ -866,7 +867,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2407,6 +2407,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPotonganBiaya.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPotonganBiaya);
 
+        chkAdmisiSkoringTOLAC.setSelected(true);
+        chkAdmisiSkoringTOLAC.setText("Catatan Dokter");
+        chkAdmisiSkoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAdmisiSkoringTOLAC.setName("chkAdmisiSkoringTOLAC"); // NOI18N
+        chkAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAdmisiSkoringTOLAC);
+
         ScrollMenu.setViewportView(FormMenu);
 
         PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
@@ -3877,6 +3884,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private javax.swing.JDialog WindowPhrase;
     private javax.swing.JDialog WindowURLSertisign;
     private javax.swing.ButtonGroup buttonGroup1;
+    private widget.CekBox chkAdmisiSkoringTOLAC;
     private widget.CekBox chkAsuhanFisioterapi;
     private widget.CekBox chkAsuhanGizi;
     private widget.CekBox chkAsuhanKeperawatanIGD;

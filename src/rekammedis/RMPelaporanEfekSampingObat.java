@@ -552,7 +552,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnMonitoringEso = new javax.swing.JMenuItem();
+        MnMonitoringEso = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -4765,7 +4765,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.TextArea Masalah_Kualitas;
-    private javax.swing.JMenuItem MnMonitoringEso;
+    private widget.MenuItem MnMonitoringEso;
     private widget.ComboBox Naranjo1;
     private widget.ComboBox Naranjo10;
     private widget.ComboBox Naranjo2;

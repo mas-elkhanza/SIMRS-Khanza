@@ -119,7 +119,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppMT940 = new javax.swing.JMenuItem();
+        ppMT940 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -495,7 +495,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label17;
     private widget.Label label18;
     private widget.panelisi panelGlass5;
-    private javax.swing.JMenuItem ppMT940;
+    private widget.MenuItem ppMT940;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

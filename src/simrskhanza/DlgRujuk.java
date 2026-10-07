@@ -143,7 +143,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSuratRujukan = new javax.swing.JMenuItem();
+        MnSuratRujukan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1256,7 +1256,7 @@ private void NmDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdDokter;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnSuratRujukan;
+    private widget.MenuItem MnSuratRujukan;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

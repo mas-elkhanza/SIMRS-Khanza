@@ -132,7 +132,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        cetakkwitansi = new javax.swing.JMenuItem();
+        cetakkwitansi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -1115,7 +1115,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal Tanggal;
     private widget.Button btnKategori;
     private widget.Button btnPetugas;
-    private javax.swing.JMenuItem cetakkwitansi;
+    private widget.MenuItem cetakkwitansi;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel11;
     private widget.Label jLabel12;

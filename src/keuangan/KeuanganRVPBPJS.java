@@ -217,12 +217,12 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDetailPiutang = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppUmbal = new javax.swing.JMenuItem();
-        ppRincian = new javax.swing.JMenuItem();
-        ppHilangkanRincian = new javax.swing.JMenuItem();
+        MnDetailPiutang = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppUmbal = new widget.MenuItem();
+        ppRincian = new widget.MenuItem();
+        ppHilangkanRincian = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -3006,7 +3006,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel LCount1;
     private javax.swing.JLabel LCount2;
     private javax.swing.JLabel LCount3;
-    private javax.swing.JMenuItem MnDetailPiutang;
+    private widget.MenuItem MnDetailPiutang;
     private widget.TextBox NmPetugas;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -3028,11 +3028,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppHilangkanRincian;
-    private javax.swing.JMenuItem ppPilihSemua;
-    private javax.swing.JMenuItem ppRincian;
-    private javax.swing.JMenuItem ppUmbal;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppHilangkanRincian;
+    private widget.MenuItem ppPilihSemua;
+    private widget.MenuItem ppRincian;
+    private widget.MenuItem ppUmbal;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

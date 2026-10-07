@@ -126,7 +126,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        MnKartu = new javax.swing.JMenuItem();
+        MnKartu = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -1066,7 +1066,7 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
     private widget.ComboBox JK;
     private widget.ComboBox Jenis;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKartu;
+    private widget.MenuItem MnKartu;
     private widget.TextBox NmAnggota;
     private widget.TextBox NoAnggota;
     private widget.TextBox NoID;

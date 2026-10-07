@@ -91,8 +91,8 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanBaru = new javax.swing.JMenuItem();
-        ppTampilkanLama = new javax.swing.JMenuItem();
+        ppTampilkanBaru = new widget.MenuItem();
+        ppTampilkanLama = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -746,8 +746,8 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private widget.TextBox nmpoli;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanBaru;
-    private javax.swing.JMenuItem ppTampilkanLama;
+    private widget.MenuItem ppTampilkanBaru;
+    private widget.MenuItem ppTampilkanLama;
     // End of variables declaration//GEN-END:variables
 
     private void tampil(){        

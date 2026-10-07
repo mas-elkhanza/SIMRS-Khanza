@@ -313,8 +313,8 @@ public class PanelDiagnosa extends widget.panelisi {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnStatusBaru = new javax.swing.JMenuItem();
-        MnStatusLama = new javax.swing.JMenuItem();
+        MnStatusBaru = new widget.MenuItem();
+        MnStatusLama = new widget.MenuItem();
         TabRawat = new widget.TabPane();
         ScrollInput = new widget.ScrollPane();
         FormData = new widget.PanelBiasa();
@@ -770,8 +770,8 @@ public class PanelDiagnosa extends widget.panelisi {
     private widget.Button BtnCariProsedur;
     public widget.TextBox Diagnosa;
     public widget.PanelBiasa FormData;
-    private javax.swing.JMenuItem MnStatusBaru;
-    private javax.swing.JMenuItem MnStatusLama;
+    private widget.MenuItem MnStatusBaru;
+    private widget.MenuItem MnStatusLama;
     private widget.TextBox Prosedur;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
