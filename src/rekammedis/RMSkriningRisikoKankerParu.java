@@ -197,7 +197,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningRisikoKankerParu = new javax.swing.JMenuItem();
+        MnSkriningRisikoKankerParu = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -1709,7 +1709,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.ComboBox LingkunganTinggal;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningRisikoKankerParu;
+    private widget.MenuItem MnSkriningRisikoKankerParu;
     private widget.TextBox NilaiDalamRumah;
     private widget.TextBox NilaiJenisKelamin;
     private widget.TextBox NilaiKeluargaKanker;

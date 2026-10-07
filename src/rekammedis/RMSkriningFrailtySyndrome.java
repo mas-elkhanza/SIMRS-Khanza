@@ -203,7 +203,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningFrailtySyndrome = new javax.swing.JMenuItem();
+        MnSkriningFrailtySyndrome = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -1991,7 +1991,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningFrailtySyndrome;
+    private widget.MenuItem MnSkriningFrailtySyndrome;
     private widget.TextBox NilaiAktivitas;
     private widget.TextBox NilaiBeratBadan;
     private widget.TextBox NilaiPenyakit;

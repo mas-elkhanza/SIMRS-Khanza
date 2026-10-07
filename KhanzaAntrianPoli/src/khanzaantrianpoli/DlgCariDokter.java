@@ -142,9 +142,9 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppOrder = new javax.swing.JMenu();
-        ppOrderKode = new javax.swing.JMenuItem();
-        ppOrderNama = new javax.swing.JMenuItem();
+        ppOrder = new widget.Menu();
+        ppOrderKode = new widget.MenuItem();
+        ppOrderNama = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -223,7 +223,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
@@ -428,9 +428,9 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private widget.Label label10;
     private widget.Label label9;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenu ppOrder;
-    private javax.swing.JMenuItem ppOrderKode;
-    private javax.swing.JMenuItem ppOrderNama;
+    private widget.Menu ppOrder;
+    private widget.MenuItem ppOrderKode;
+    private widget.MenuItem ppOrderNama;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

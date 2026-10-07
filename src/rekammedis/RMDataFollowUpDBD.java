@@ -143,7 +143,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnFollowUpDBD = new javax.swing.JMenuItem();
+        MnFollowUpDBD = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1136,7 +1136,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox Leo;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnFollowUpDBD;
+    private widget.MenuItem MnFollowUpDBD;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

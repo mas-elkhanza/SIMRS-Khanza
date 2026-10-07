@@ -262,7 +262,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -1641,7 +1641,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -2624,7 +2624,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
     private widget.ComboBox Kulit;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextArea Mood;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;

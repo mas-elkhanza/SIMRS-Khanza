@@ -90,7 +90,7 @@ public class KeuanganBubes extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         Popup = new javax.swing.JPopupMenu();
-        CekJurnal = new javax.swing.JMenuItem();
+        CekJurnal = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -511,7 +511,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.ComboBox Bulan;
-    private javax.swing.JMenuItem CekJurnal;
+    private widget.MenuItem CekJurnal;
     private widget.CekBox ChkBulan;
     private widget.CekBox ChkTanggal;
     private widget.TextBox Kd2;

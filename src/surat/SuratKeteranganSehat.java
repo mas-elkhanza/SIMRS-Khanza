@@ -126,8 +126,8 @@ public final class SuratKeteranganSehat extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratSehat = new javax.swing.JMenuItem();
-        MnCetakSuratSehat1 = new javax.swing.JMenuItem();
+        MnCetakSuratSehat = new widget.MenuItem();
+        MnCetakSuratSehat1 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1101,8 +1101,8 @@ public final class SuratKeteranganSehat extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox Keperluan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratSehat;
-    private javax.swing.JMenuItem MnCetakSuratSehat1;
+    private widget.MenuItem MnCetakSuratSehat;
+    private widget.MenuItem MnCetakSuratSehat1;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

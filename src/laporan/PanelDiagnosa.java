@@ -313,8 +313,8 @@ public class PanelDiagnosa extends widget.panelisi {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnStatusBaru = new javax.swing.JMenuItem();
-        MnStatusLama = new javax.swing.JMenuItem();
+        MnStatusBaru = new widget.MenuItem();
+        MnStatusLama = new widget.MenuItem();
         TabRawat = new widget.TabPane();
         ScrollInput = new widget.ScrollPane();
         FormData = new widget.PanelBiasa();
@@ -513,7 +513,7 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setOpaque(true);
 
-        tbDiagnosaPasien.setAutoCreateRowSorter(true);
+        tbDiagnosaPasien.setAutoCreateRowSorter(false);
         tbDiagnosaPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll.setViewportView(tbDiagnosaPasien);
 
@@ -527,7 +527,7 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setOpaque(true);
 
-        tbTindakanPasien.setAutoCreateRowSorter(true);
+        tbTindakanPasien.setAutoCreateRowSorter(false);
         tbTindakanPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll3.setViewportView(tbTindakanPasien);
 
@@ -770,8 +770,8 @@ public class PanelDiagnosa extends widget.panelisi {
     private widget.Button BtnCariProsedur;
     public widget.TextBox Diagnosa;
     public widget.PanelBiasa FormData;
-    private javax.swing.JMenuItem MnStatusBaru;
-    private javax.swing.JMenuItem MnStatusLama;
+    private widget.MenuItem MnStatusBaru;
+    private widget.MenuItem MnStatusLama;
     private widget.TextBox Prosedur;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;

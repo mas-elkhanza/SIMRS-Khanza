@@ -231,7 +231,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningDiabetes = new javax.swing.JMenuItem();
+        MnSkriningDiabetes = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1895,7 +1895,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningDiabetes;
+    private widget.MenuItem MnSkriningDiabetes;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

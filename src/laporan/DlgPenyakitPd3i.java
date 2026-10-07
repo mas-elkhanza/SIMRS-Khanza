@@ -140,7 +140,7 @@ public class DlgPenyakitPd3i extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbAdmin.setAutoCreateRowSorter(true);
+        tbAdmin.setAutoCreateRowSorter(false);
         tbAdmin.setName("tbAdmin"); // NOI18N
         tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

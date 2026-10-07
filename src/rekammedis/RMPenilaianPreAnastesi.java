@@ -251,7 +251,7 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -557,7 +557,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
@@ -678,7 +677,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 20:18:00" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
-        TglAsuhan.setOpaque(false);
         TglAsuhan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglAsuhanKeyPressed(evt);
@@ -697,7 +695,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         TglOperasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 20:18:00" }));
         TglOperasi.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglOperasi.setName("TglOperasi"); // NOI18N
-        TglOperasi.setOpaque(false);
         TglOperasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglOperasiKeyPressed(evt);
@@ -1316,7 +1313,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         TglPuasa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 20:18:00" }));
         TglPuasa.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglPuasa.setName("TglPuasa"); // NOI18N
-        TglPuasa.setOpaque(false);
         TglPuasa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPuasaKeyPressed(evt);
@@ -1325,7 +1321,7 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         FormInput.add(TglPuasa);
         TglPuasa.setBounds(594, 780, 130, 23);
 
-        AngkaASA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "E" }));
+        AngkaASA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "E", "2E", "3E", "4E", "5E" }));
         AngkaASA.setName("AngkaASA"); // NOI18N
         AngkaASA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1414,7 +1410,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -1428,7 +1423,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -2146,7 +2140,7 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
     private widget.TextBox MedisEndocrine;
     private widget.TextBox MedisLainnya;
     private widget.TextBox MedisRespiratory;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.TextBox PenyakitAlergiLainnya;

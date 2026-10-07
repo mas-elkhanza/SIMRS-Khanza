@@ -443,7 +443,7 @@ public final class RMMCU extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMCU = new javax.swing.JMenuItem();
+        MnPenilaianMCU = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -3198,7 +3198,7 @@ public final class RMMCU extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -4740,7 +4740,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox Mamae;
     private widget.ComboBox MenggunakanKacamata;
     private widget.TextBox Merokok;
-    private javax.swing.JMenuItem MnPenilaianMCU;
+    private widget.MenuItem MnPenilaianMCU;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.ComboBox NyeriKtok;

@@ -131,9 +131,9 @@ public final class DlgPetugas extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
-        MnKartu = new javax.swing.JMenuItem();
-        MnKartu1 = new javax.swing.JMenuItem();
+        MnRestore = new widget.MenuItem();
+        MnKartu = new widget.MenuItem();
+        MnKartu1 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbPetugas = new widget.Table();
@@ -253,7 +253,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPetugas.setAutoCreateRowSorter(true);
+        tbPetugas.setAutoCreateRowSorter(false);
         tbPetugas.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPetugas.setComponentPopupMenu(Popup);
         tbPetugas.setName("tbPetugas"); // NOI18N
@@ -1282,9 +1282,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdJbtn;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKartu;
-    private javax.swing.JMenuItem MnKartu1;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnKartu;
+    private widget.MenuItem MnKartu1;
+    private widget.MenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;

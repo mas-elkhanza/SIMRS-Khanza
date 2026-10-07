@@ -133,10 +133,10 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppGrafikTerbanyakBatang = new javax.swing.JMenuItem();
-        ppGrafikTerbanyakPie = new javax.swing.JMenuItem();
-        ppGrafikTerkecilBatang = new javax.swing.JMenuItem();
-        ppGrafikTerkecilPie = new javax.swing.JMenuItem();
+        ppGrafikTerbanyakBatang = new widget.MenuItem();
+        ppGrafikTerbanyakPie = new widget.MenuItem();
+        ppGrafikTerkecilBatang = new widget.MenuItem();
+        ppGrafikTerkecilPie = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
@@ -395,7 +395,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
+        tbDokter.setAutoCreateRowSorter(false);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -418,7 +418,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
-        tbDokter2.setAutoCreateRowSorter(true);
+        tbDokter2.setAutoCreateRowSorter(false);
         tbDokter2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -2775,10 +2775,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox nmkelurahan;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppGrafikTerbanyakBatang;
-    private javax.swing.JMenuItem ppGrafikTerbanyakPie;
-    private javax.swing.JMenuItem ppGrafikTerkecilBatang;
-    private javax.swing.JMenuItem ppGrafikTerkecilPie;
+    private widget.MenuItem ppGrafikTerbanyakBatang;
+    private widget.MenuItem ppGrafikTerbanyakPie;
+    private widget.MenuItem ppGrafikTerkecilBatang;
+    private widget.MenuItem ppGrafikTerkecilPie;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbDokter;

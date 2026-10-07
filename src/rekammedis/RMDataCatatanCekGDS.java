@@ -137,7 +137,7 @@ public final class RMDataCatatanCekGDS extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanCekGDS = new javax.swing.JMenuItem();
+        MnCatatanCekGDS = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1077,7 +1077,7 @@ public final class RMDataCatatanCekGDS extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanCekGDS;
+    private widget.MenuItem MnCatatanCekGDS;
     private widget.TextBox NmPetugas;
     private widget.TextBox ObatGula;
     private javax.swing.JPanel PanelInput;

@@ -231,7 +231,7 @@ public final class RMPenilaianAwalMedisRanapJantung extends javax.swing.JDialog 
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -2146,7 +2146,7 @@ public final class RMPenilaianAwalMedisRanapJantung extends javax.swing.JDialog 
     private widget.TextArea Lab;
     private widget.TextArea Lainnya;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.TextBox Nyeri;

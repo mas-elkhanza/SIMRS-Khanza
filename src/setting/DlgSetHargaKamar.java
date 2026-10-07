@@ -162,7 +162,7 @@ public class DlgSetHargaKamar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbSpesialis.setAutoCreateRowSorter(true);
+        tbSpesialis.setAutoCreateRowSorter(false);
         tbSpesialis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbSpesialis.setName("tbSpesialis"); // NOI18N
         tbSpesialis.addMouseListener(new java.awt.event.MouseAdapter() {

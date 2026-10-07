@@ -277,11 +277,11 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLaporanResume = new javax.swing.JMenuItem();
-        MnLaporanResumeESign = new javax.swing.JMenuItem();
-        MnLaporanResumeSertisign = new javax.swing.JMenuItem();
-        MnInputDiagnosa = new javax.swing.JMenuItem();
-        ppBerkasDigital = new javax.swing.JMenuItem();
+        MnLaporanResume = new widget.MenuItem();
+        MnLaporanResumeESign = new widget.MenuItem();
+        MnLaporanResumeSertisign = new widget.MenuItem();
+        MnInputDiagnosa = new widget.MenuItem();
+        ppBerkasDigital = new widget.MenuItem();
         WindowURLSertisign = new javax.swing.JDialog();
         internalFrame9 = new widget.InternalFrame();
         jLabel43 = new widget.Label();
@@ -678,7 +678,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -3142,10 +3142,10 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextArea LabBelum;
     private widget.TextBox Masuk;
-    private javax.swing.JMenuItem MnInputDiagnosa;
-    private javax.swing.JMenuItem MnLaporanResume;
-    private javax.swing.JMenuItem MnLaporanResumeESign;
-    private javax.swing.JMenuItem MnLaporanResumeSertisign;
+    private widget.MenuItem MnInputDiagnosa;
+    private widget.MenuItem MnLaporanResume;
+    private widget.MenuItem MnLaporanResumeESign;
+    private widget.MenuItem MnLaporanResumeSertisign;
     private widget.TextBox NamaDokterPengirim;
     private widget.TextBox NmDokter;
     private widget.TextBox NmRuang;
@@ -3223,7 +3223,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
-    private javax.swing.JMenuItem ppBerkasDigital;
+    private widget.MenuItem ppBerkasDigital;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane10;
     private widget.ScrollPane scrollPane11;

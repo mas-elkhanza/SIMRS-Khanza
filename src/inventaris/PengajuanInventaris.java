@@ -169,9 +169,9 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppProses = new javax.swing.JMenuItem();
-        ppDosetujui = new javax.swing.JMenuItem();
-        ppDitolak = new javax.swing.JMenuItem();
+        ppProses = new widget.MenuItem();
+        ppDosetujui = new widget.MenuItem();
+        ppDitolak = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -303,7 +303,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -1414,9 +1414,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppDitolak;
-    private javax.swing.JMenuItem ppDosetujui;
-    private javax.swing.JMenuItem ppProses;
+    private widget.MenuItem ppDitolak;
+    private widget.MenuItem ppDosetujui;
+    private widget.MenuItem ppProses;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;

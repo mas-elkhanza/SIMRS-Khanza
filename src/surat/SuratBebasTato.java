@@ -115,7 +115,7 @@ public final class SuratBebasTato extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratBebasTato = new javax.swing.JMenuItem();
+        MnCetakSuratBebasTato = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -883,7 +883,7 @@ public final class SuratBebasTato extends javax.swing.JDialog {
     private widget.ComboBox HasilPeriksa;
     private widget.TextBox Keperluan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratBebasTato;
+    private widget.MenuItem MnCetakSuratBebasTato;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

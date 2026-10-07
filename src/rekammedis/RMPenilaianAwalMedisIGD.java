@@ -228,7 +228,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -2109,7 +2109,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
     private widget.ComboBox Leher;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Mata;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private usu.widget.glass.PanelGlass PanelWall;

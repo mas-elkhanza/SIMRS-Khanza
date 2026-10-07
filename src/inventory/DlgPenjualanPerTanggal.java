@@ -89,7 +89,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppLokasi = new javax.swing.JMenuItem();
+        ppLokasi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJadwal = new widget.Table();
@@ -756,7 +756,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
     private widget.TextBox nmkategori;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
-    private javax.swing.JMenuItem ppLokasi;
+    private widget.MenuItem ppLokasi;
     private widget.Table tbJadwal;
     // End of variables declaration//GEN-END:variables
 
