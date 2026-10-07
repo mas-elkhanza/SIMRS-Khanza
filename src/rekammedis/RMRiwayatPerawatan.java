@@ -241,9 +241,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         Pekerjaan = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnGeneratePDF = new javax.swing.JMenuItem();
-        MnGeneratePDFESign = new javax.swing.JMenuItem();
-        MnGeneratePDFSertiSign = new javax.swing.JMenuItem();
+        MnGeneratePDF = new widget.MenuItem();
+        MnGeneratePDFESign = new widget.MenuItem();
+        MnGeneratePDFSertiSign = new widget.MenuItem();
         WindowPhrase = new javax.swing.JDialog();
         internalFrame8 = new widget.InternalFrame();
         jLabel42 = new widget.Label();
@@ -347,6 +347,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkKonsultasiMedik = new widget.CekBox();
         chkKonsultasiPerawat = new widget.CekBox();
         chkCatatanDokter = new widget.CekBox();
+        chkAdmisiSkoringTOLAC = new widget.CekBox();
         chkCatatanObservasiIGD = new widget.CekBox();
         chkCatatanObservasiCHBP = new widget.CekBox();
         chkCatatanObservasiInduksiPersalinan = new widget.CekBox();
@@ -496,7 +497,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkResepPulang = new widget.CekBox();
         chkTambahanBiaya = new widget.CekBox();
         chkPotonganBiaya = new widget.CekBox();
-        chkAdmisiSkoringTOLAC = new widget.CekBox();
         Scroll4 = new widget.ScrollPane();
         LoadHTMLPembelian = new widget.editorpane();
         Scroll5 = new widget.ScrollPane();
@@ -540,9 +540,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnGeneratePDF.setBackground(new java.awt.Color(255, 255, 254));
-        MnGeneratePDF.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGeneratePDF.setForeground(new java.awt.Color(50, 50, 50));
         MnGeneratePDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGeneratePDF.setText("Jadikan File PDF");
         MnGeneratePDF.setName("MnGeneratePDF"); // NOI18N
@@ -554,9 +551,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnGeneratePDF);
 
-        MnGeneratePDFESign.setBackground(new java.awt.Color(255, 255, 254));
-        MnGeneratePDFESign.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGeneratePDFESign.setForeground(new java.awt.Color(50, 50, 50));
         MnGeneratePDFESign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGeneratePDFESign.setText("Jadikan File PDF E-Sign");
         MnGeneratePDFESign.setName("MnGeneratePDFESign"); // NOI18N
@@ -568,9 +562,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnGeneratePDFESign);
 
-        MnGeneratePDFSertiSign.setBackground(new java.awt.Color(255, 255, 254));
-        MnGeneratePDFSertiSign.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGeneratePDFSertiSign.setForeground(new java.awt.Color(50, 50, 50));
         MnGeneratePDFSertiSign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGeneratePDFSertiSign.setText("Jadikan File PDF SertiSign");
         MnGeneratePDFSertiSign.setName("MnGeneratePDFSertiSign"); // NOI18N
@@ -643,7 +634,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2026 09:18:00" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2026 08:20:48" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -950,7 +941,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4775));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4790));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1363,6 +1354,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanDokter.setName("chkCatatanDokter"); // NOI18N
         chkCatatanDokter.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanDokter);
+
+        chkAdmisiSkoringTOLAC.setSelected(true);
+        chkAdmisiSkoringTOLAC.setText("Admisi & Skoring TOLAC");
+        chkAdmisiSkoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAdmisiSkoringTOLAC.setName("chkAdmisiSkoringTOLAC"); // NOI18N
+        chkAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAdmisiSkoringTOLAC);
 
         chkCatatanObservasiIGD.setSelected(true);
         chkCatatanObservasiIGD.setText("Catatan Observasi IGD");
@@ -2407,13 +2405,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPotonganBiaya.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPotonganBiaya);
 
-        chkAdmisiSkoringTOLAC.setSelected(true);
-        chkAdmisiSkoringTOLAC.setText("Catatan Dokter");
-        chkAdmisiSkoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkAdmisiSkoringTOLAC.setName("chkAdmisiSkoringTOLAC"); // NOI18N
-        chkAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(245, 22));
-        FormMenu.add(chkAdmisiSkoringTOLAC);
-
         ScrollMenu.setViewportView(FormMenu);
 
         PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
@@ -3073,6 +3064,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaMasukIsolasi.setSelected(true);
             chkChecklistKriteriaKeluarIsolasi.setSelected(true);
             chkSkriningTOLAC.setSelected(true);
+            chkAdmisiSkoringTOLAC.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3280,6 +3272,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaMasukIsolasi.setSelected(false);
             chkChecklistKriteriaKeluarIsolasi.setSelected(false);
             chkSkriningTOLAC.setSelected(false);
+            chkAdmisiSkoringTOLAC.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3850,9 +3843,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.editorpane LoadHTMLRiwayatPerawatan;
     private widget.editorpane LoadHTMLSOAPI;
     private widget.editorpane LoadHTMLWearable;
-    private javax.swing.JMenuItem MnGeneratePDF;
-    private javax.swing.JMenuItem MnGeneratePDFESign;
-    private javax.swing.JMenuItem MnGeneratePDFSertiSign;
+    private widget.MenuItem MnGeneratePDF;
+    private widget.MenuItem MnGeneratePDFESign;
+    private widget.MenuItem MnGeneratePDFSertiSign;
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
     private widget.TextBox NoRawat;
@@ -4563,6 +4556,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanMedisRawatInapPsikiatrik(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisHemodialisa(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatInapJantung(rs.getString("no_rawat"));
+                    menampilkanAdmisiSkoringTOLAC(rs.getString("no_rawat"));
                     menampilkanEdukasiPasienTerintegrasiRawatJalan(rs.getString("no_rawat"));
                     menampilkanPerencanaanPemulangan(rs.getString("no_rawat"));
                     menampilkanCatatanObservasi(rs.getString("no_rawat"));
@@ -37654,6 +37648,124 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Skrining TOLAC : "+e);
+        }
+    }
+    
+    private void menampilkanAdmisiSkoringTOLAC(String norawat) {
+        try {
+            if(chkAdmisiSkoringTOLAC.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select admisi_skoring_tolac.kd_dokter,dokter.nm_dokter,admisi_skoring_tolac.tanggal,admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,"+
+                            "admisi_skoring_tolac.djj,admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,"+
+                            "admisi_skoring_tolac.pilihan_usia,admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
+                            "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,admisi_skoring_tolac.skor_pendataran,"+
+                            "admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,admisi_skoring_tolac.peluang_vbac,"+
+                            "admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan from admisi_skoring_tolac inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter "+
+                            "where admisi_skoring_tolac.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append("<tr class='isi'>").
+                                        append("<td valign='top' width='2%'></td>").
+                                        append("<td valign='top' width='18%'>Admisi & Skoring TOLAC (Kamar Bersalin)</td>").
+                                        append("<td valign='top' width='1%' align='center'>:</td>").
+                                        append("<td valign='top' width='79%'>").
+                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                            append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("YANG MELAKUKAN PENGKAJIAN").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").
+                                                            append("<td width='70%' border='0'>Dokter : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>").
+                                            append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("HASIL PEMERIKSAAN").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td width='35%'>His : ").append(rs2.getString("his_frekuensi")).append(" x/10 menit, durasi ").append(rs2.getString("his_durasi_detik")).append(" detik</td>").
+                                                            append("<td width='20%'>DJJ : ").append(rs2.getString("djj")).append(" x/menit</td>").
+                                                            append("<td width='45%'>VT : Pembukaan ").append(rs2.getString("pembukaan_cm")).append(" cm, pendataran ").append(rs2.getString("pendataran_persen")).append(" %, kepala ").append(rs2.getString("penurunan_kepala")).append("</td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>").
+                                            append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("SKOR FLAMM-GEIGER").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>").
+                                                            append("<td valign='top' width='34%' bgcolor='#FFFAF8' align='center'>Kriteria</td>").
+                                                            append("<td valign='top' width='50%' bgcolor='#FFFAF8' align='center'>Jawaban</td>").
+                                                            append("<td valign='top' width='12%' bgcolor='#FFFAF8' align='center'>Nilai</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td width='4%' align='center'>1.</td>").
+                                                            append("<td width='34%'>Usia Ibu</td>").
+                                                            append("<td width='50%'>").append(rs2.getString("pilihan_usia")).append("</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("skor_usia")).append("</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td width='4%' align='center'>2.</td>").
+                                                            append("<td width='34%'>Riwayat Persalinan Pervaginam</td>").
+                                                            append("<td width='50%'>").append(rs2.getString("pilihan_riwayat_pervaginam")).append("</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("skor_riwayat_pervaginam")).append("</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td width='4%' align='center'>3.</td>").
+                                                            append("<td width='34%'>Indikasi SC Sebelumnya</td>").
+                                                            append("<td width='50%'>").append(rs2.getString("pilihan_indikasi_sc")).append("</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("skor_indikasi_sc")).append("</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td width='4%' align='center'>4.</td>").
+                                                            append("<td width='34%'>Pendataran Serviks (Saat Masuk)</td>").
+                                                            append("<td width='50%'>").append(rs2.getString("pilihan_pendataran")).append("</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("skor_pendataran")).append("</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td width='4%' align='center'>5.</td>").
+                                                            append("<td width='34%'>Pembukaan Serviks (Saat Masuk)</td>").
+                                                            append("<td width='50%'>").append(rs2.getString("pilihan_pembukaan")).append("</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("skor_pembukaan")).append("</td>").
+                                                        append("</tr>").
+                                                        append("<tr>").
+                                                            append("<td colspan='3' align='right'>Total Skor :</td>").
+                                                            append("<td width='12%' align='center'>").append(rs2.getString("total_skor")).append("</td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>").
+                                            append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("KESIMPULAN & KEPUTUSAN").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td width='25%'>Peluang VBAC : ").append(rs2.getString("peluang_vbac")).append(" %</td>").
+                                                            append("<td width='25%'>Keputusan : ").append(rs2.getString("keputusan")).append("</td>").
+                                                            append("<td width='50%' colspan='2'>Keterangan : ").append(rs2.getString("keterangan")).append("</td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>").
+                                        append("</table>").
+                                        append("</td>").
+                                    append("</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Admisi Skoring TOLAC : "+e);
         }
     }
 

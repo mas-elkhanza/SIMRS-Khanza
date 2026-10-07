@@ -82,7 +82,7 @@ CREATE TABLE `admisi_skoring_tolac` (
 
 LOCK TABLES `admisi_skoring_tolac` WRITE;
 /*!40000 ALTER TABLE `admisi_skoring_tolac` DISABLE KEYS */;
-INSERT INTO `admisi_skoring_tolac` VALUES ('2026/09/14/000001','2026-10-06 07:47:40','1','2','3','4','5','6','>= 40 Tahun','0','Sesudah SC Saja','2','Kegagalan Kemajuan Persalinan / CPD-distosia','0','25–75%','1','<4 cm','0','3','59-60','Lanjut TOLAC','7','D0000004');
+INSERT INTO `admisi_skoring_tolac` VALUES ('2026/04/07/000001','2026-10-07 08:40:35','1','2','3','4','5','6','< 40 Tahun','2','Sebelum & Sesudah SC','4','Bukan Kegagalan Kemajuan Persalinan','1','>75%','2','>=4 cm','1','10','95-99','Lanjut TOLAC','7','D0000004');
 /*!40000 ALTER TABLE `admisi_skoring_tolac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44541,4 +44541,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-07  8:06:57
+-- Dump completed on 2026-10-07  8:57:39
