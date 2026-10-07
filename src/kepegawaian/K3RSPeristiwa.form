@@ -26,7 +26,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerTahun">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerTahun">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -52,7 +52,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerTahunActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerTahun">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerTahun">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -78,7 +78,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerTahunActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerBulan">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerBulan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -104,7 +104,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerBulanActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerBulan">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerBulan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -130,7 +130,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerBulanActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerTanggal">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerTanggal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -156,7 +156,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerTanggalActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerTanggal">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerTanggal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -182,7 +182,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerTanggalActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerJenisCidera">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerJenisCidera">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -208,7 +208,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerJenisCideraActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerJenisCidera">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerJenisCidera">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -234,7 +234,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerJenisCideraActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerPenyebab">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerPenyebab">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -260,7 +260,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerPenyebabActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerPenyebab">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerPenyebab">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -286,7 +286,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerPenyebabActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerJenisLuka">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerJenisLuka">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -312,7 +312,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerJenisLukaActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerJenisLuka">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerJenisLuka">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -338,7 +338,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerJenisLukaActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerLokasiKejadian">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerLokasiKejadian">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -364,7 +364,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerLokasiKejadianActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerLokasiKejadian">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerLokasiKejadian">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -390,7 +390,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerLokasiKejadianActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerDampakCidera">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerDampakCidera">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -416,7 +416,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerDampakCideraActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerDampakCidera">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerDampakCidera">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -442,7 +442,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerDampakCideraActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerJenisPekerjaan">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerJenisPekerjaan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -468,7 +468,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerJenisPekerjaanActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerJenisPekerjaan">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerJenisPekerjaan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -494,7 +494,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikPiePeristiwaK3PerJenisPekerjaanActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikBatangPeristiwaK3PerBagianTubuh">
+        <MenuItem class="widget.MenuItem" name="ppGrafikBatangPeristiwaK3PerBagianTubuh">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -520,7 +520,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppGrafikBatangPeristiwaK3PerBagianTubuhActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppGrafikPiePeristiwaK3PerBagianTubuh">
+        <MenuItem class="widget.MenuItem" name="ppGrafikPiePeristiwaK3PerBagianTubuh">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>

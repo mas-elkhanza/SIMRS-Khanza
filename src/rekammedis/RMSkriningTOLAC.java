@@ -201,7 +201,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTOLAC = new javax.swing.JMenuItem();
+        MnSkriningTOLAC = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1837,7 +1837,7 @@ public final class RMSkriningTOLAC extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningTOLAC;
+    private widget.MenuItem MnSkriningTOLAC;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Presentasi;

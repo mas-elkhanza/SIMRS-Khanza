@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnSkriningTOLAC">
+        <MenuItem class="widget.MenuItem" name="MnSkriningTOLAC">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1082,11 +1082,10 @@
                     <Component class="widget.ComboBox" name="PendataranServiks">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="&gt;=75%"/>
-                            <StringItem index="1" value="50&#x2013;74%"/>
-                            <StringItem index="2" value="25&#x2013;49%"/>
-                            <StringItem index="3" value="&lt;25%"/>
+                          <StringArray count="3">
+                            <StringItem index="0" value="&gt;75%"/>
+                            <StringItem index="1" value="25&#x2013;75%"/>
+                            <StringItem index="2" value="&lt;25%"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="PendataranServiks" noResource="true"/>

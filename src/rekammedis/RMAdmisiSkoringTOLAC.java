@@ -200,7 +200,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTOLAC = new javax.swing.JMenuItem();
+        MnSkriningTOLAC = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -831,7 +831,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         FormInput.add(IndikasiSC);
         IndikasiSC.setBounds(191, 200, 268, 23);
 
-        PendataranServiks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=75%", "50–74%", "25–49%", "<25%" }));
+        PendataranServiks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">75%", "25–75%", "<25%" }));
         PendataranServiks.setName("PendataranServiks"); // NOI18N
         PendataranServiks.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1639,15 +1639,15 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirAdmisiSkoringTOLAC.jasper","report","::[ Formulir Admisi & Skoring TOLAC ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_tolac.kd_dokter,dokter.nm_dokter,skrining_tolac.tanggal,"+
-                    "admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,admisi_skoring_tolac.kd_dokter,dokter.nm_dokter,admisi_skoring_tolac.tanggal,"+
+                    "admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
                     "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
                     "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
                     "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
-                    "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan from skrining_tolac "+
-                    "inner join reg_periksa on skrining_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter on skrining_tolac.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan from admisi_skoring_tolac "+
+                    "inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningTOLACActionPerformed
 
@@ -1827,7 +1827,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningTOLAC;
+    private widget.MenuItem MnSkriningTOLAC;
     private widget.TextBox NilaiFlammGeiger;
     private widget.TextBox NilaiIndikasiSC;
     private widget.TextBox NilaiPembukaanServiks;

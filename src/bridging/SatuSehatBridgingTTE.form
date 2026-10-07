@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPilihSemua">
+        <MenuItem class="widget.MenuItem" name="ppPilihSemua">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pilih Semua"/>
             <Property name="name" type="java.lang.String" value="ppPilihSemua" noResource="true"/>
@@ -20,7 +20,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPilihSemuaActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppHapusSemua">
+        <MenuItem class="widget.MenuItem" name="ppHapusSemua">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hapus Semua"/>
             <Property name="name" type="java.lang.String" value="ppHapusSemua" noResource="true"/>
