@@ -175,7 +175,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -192,7 +192,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -1082,7 +1082,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1932,7 +1932,7 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ComboBox Kategori;
     private widget.ComboBox Kelas;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TAkomodasi;
@@ -1965,7 +1965,7 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox TSarpras;
     private widget.TextBox TSewaOK;
     private widget.TextBox TTotal;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox TdrPJAnak;
     private widget.TextBox TdrUmum;
     private widget.InternalFrame internalFrame1;

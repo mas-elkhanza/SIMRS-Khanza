@@ -157,7 +157,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianDehidrasi = new javax.swing.JMenuItem();
+        MnPenilaianDehidrasi = new widget.MenuItem();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1380,7 +1380,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private widget.TextBox KdDokter;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianDehidrasi;
+    private widget.MenuItem MnPenilaianDehidrasi;
     private widget.TextBox Nilai1;
     private widget.TextBox Nilai2;
     private widget.TextBox Nilai3;

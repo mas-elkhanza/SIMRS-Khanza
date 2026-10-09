@@ -238,15 +238,15 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup2 = new javax.swing.JPopupMenu();
-        ppResepObat = new javax.swing.JMenuItem();
-        ppResepObat1 = new javax.swing.JMenuItem();
-        ppResepObat2 = new javax.swing.JMenuItem();
-        ppLabelDataObat = new javax.swing.JMenuItem();
-        ppLembarObat = new javax.swing.JMenuItem();
-        ppLembarObat1 = new javax.swing.JMenuItem();
-        ppLembarObat2 = new javax.swing.JMenuItem();
-        ppUbahAturanPakai = new javax.swing.JMenuItem();
-        ppUbahAturanPakai1 = new javax.swing.JMenuItem();
+        ppResepObat = new widget.MenuItem();
+        ppResepObat1 = new widget.MenuItem();
+        ppResepObat2 = new widget.MenuItem();
+        ppLabelDataObat = new widget.MenuItem();
+        ppLembarObat = new widget.MenuItem();
+        ppLembarObat1 = new widget.MenuItem();
+        ppLembarObat2 = new widget.MenuItem();
+        ppUbahAturanPakai = new widget.MenuItem();
+        ppUbahAturanPakai1 = new widget.MenuItem();
         WindowInput3 = new javax.swing.JDialog();
         internalFrame4 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -307,7 +307,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormTelaah = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
         BtnTelaah = new widget.Button();
@@ -2341,7 +2341,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TNoRm;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private javax.swing.JDialog WindowInput3;
     private javax.swing.JDialog WindowInput4;
     private widget.Button btnDokter;
@@ -2366,15 +2366,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.panelisi panelGlass9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppLabelDataObat;
-    private javax.swing.JMenuItem ppLembarObat;
-    private javax.swing.JMenuItem ppLembarObat1;
-    private javax.swing.JMenuItem ppLembarObat2;
-    private javax.swing.JMenuItem ppResepObat;
-    private javax.swing.JMenuItem ppResepObat1;
-    private javax.swing.JMenuItem ppResepObat2;
-    private javax.swing.JMenuItem ppUbahAturanPakai;
-    private javax.swing.JMenuItem ppUbahAturanPakai1;
+    private widget.MenuItem ppLabelDataObat;
+    private widget.MenuItem ppLembarObat;
+    private widget.MenuItem ppLembarObat1;
+    private widget.MenuItem ppLembarObat2;
+    private widget.MenuItem ppResepObat;
+    private widget.MenuItem ppResepObat1;
+    private widget.MenuItem ppResepObat2;
+    private widget.MenuItem ppUbahAturanPakai;
+    private widget.MenuItem ppUbahAturanPakai1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbResep;

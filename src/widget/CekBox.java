@@ -32,7 +32,7 @@ public class CekBox extends JCheckBox {
         setFocusPainted(false);
         setRolloverEnabled(true);
         setOpaque(false);                                        
-        setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));  
+        setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));  
         setIconTextGap(6);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 

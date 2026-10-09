@@ -261,7 +261,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppPeserta = new javax.swing.JMenuItem();
+        ppPeserta = new widget.MenuItem();
         WindowInputPeserta = new javax.swing.JDialog();
         internalFrame7 = new widget.InternalFrame();
         BtnCloseIn6 = new widget.Button();
@@ -459,7 +459,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1513,7 +1513,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private widget.TextBox kdClub;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppPeserta;
+    private widget.MenuItem ppPeserta;
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 

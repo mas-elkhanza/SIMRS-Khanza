@@ -243,7 +243,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -254,7 +254,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -323,7 +323,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         LCount = new widget.Label();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         FormPhoto = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
         btnAmbil = new widget.Button();
@@ -1791,7 +1791,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private widget.TextBox LingkarAbdomen;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox PanjangFemur;
@@ -1804,8 +1804,8 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabData;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabData;
+    private widget.TabPane TabRawat;
     private widget.TextBox TafsiranBerat;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;

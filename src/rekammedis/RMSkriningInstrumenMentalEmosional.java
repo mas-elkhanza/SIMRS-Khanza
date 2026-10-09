@@ -202,7 +202,7 @@ public final class RMSkriningInstrumenMentalEmosional extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenACRS = new javax.swing.JMenuItem();
+        MnSkriningInstrumenACRS = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -1818,7 +1818,7 @@ public final class RMSkriningInstrumenMentalEmosional extends javax.swing.JDialo
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenACRS;
+    private widget.MenuItem MnSkriningInstrumenACRS;
     private widget.TextBox NilaiACRS1;
     private widget.TextBox NilaiACRS10;
     private widget.TextBox NilaiACRS2;

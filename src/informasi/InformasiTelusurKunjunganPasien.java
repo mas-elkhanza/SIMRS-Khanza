@@ -187,7 +187,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setPreferredSize(new java.awt.Dimension(360, 421));
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,7 +289,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbRegistrasi.setAutoCreateRowSorter(true);
+        tbRegistrasi.setAutoCreateRowSorter(false);
         tbRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRegistrasi.setName("tbRegistrasi"); // NOI18N
         Scroll1.setViewportView(tbRegistrasi);

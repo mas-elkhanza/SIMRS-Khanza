@@ -449,7 +449,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JTabbedPane" name="TabTarif">
+            <Container class="widget.TabPane" name="TabTarif">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fe" green="ff" red="ff" type="rgb"/>

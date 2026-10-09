@@ -446,7 +446,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -457,7 +457,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -3619,7 +3619,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.TextBox LokasiProyek;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextArea MonotoringHalKhusus;
     private widget.TextBox NamaAktivitas;
     private widget.TextBox NamaDirektur;
@@ -3650,7 +3650,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
     private widget.TextBox TCariRisikoKeselamatan;
     private widget.TextBox TCariRisikoUtilitas;
     private widget.TextBox TCariTindakanPengendalian;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TanggalMulai;
     private widget.Tanggal TanggalPengkajian;
     private widget.TextBox TanggalRegistrasi;

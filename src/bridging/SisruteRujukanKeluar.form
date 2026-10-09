@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnSuratRujukan">
+        <MenuItem class="widget.MenuItem" name="MnSuratRujukan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -35,7 +35,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSuratRujukanActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppRiwayat">
+        <MenuItem class="widget.MenuItem" name="ppRiwayat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -123,7 +123,7 @@
         <Property name="verticalGap" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -2105,7 +2105,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JTabbedPane" name="TabRujukan">
+                <Container class="widget.TabPane" name="TabRujukan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="ff" red="ff" type="rgb"/>

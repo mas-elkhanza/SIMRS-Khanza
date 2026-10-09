@@ -157,7 +157,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKtgPny.setAutoCreateRowSorter(true);
+        tbKtgPny.setAutoCreateRowSorter(false);
         tbKtgPny.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKtgPny.setName("tbKtgPny"); // NOI18N
         tbKtgPny.addMouseListener(new java.awt.event.MouseAdapter() {

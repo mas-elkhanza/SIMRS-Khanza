@@ -528,7 +528,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         Keadaan = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -538,7 +538,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -3969,7 +3969,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox MacamPersalinan;
     private widget.ComboBox Mata;
     private widget.TextBox MenitKetubanPecah;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox2 N1;
     private widget.TextBox2 N10;
     private widget.TextBox2 N5;
@@ -4001,7 +4001,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.ComboBox TaliPusat;
     private widget.Tanggal TanggalPersalinan;
     private widget.TextBox TanggalRegistrasi;

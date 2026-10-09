@@ -260,9 +260,9 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppSuratPermintaan = new javax.swing.JMenuItem();
-        ppDapatDilayani = new javax.swing.JMenuItem();
-        ppTidakDapatDilayani = new javax.swing.JMenuItem();
+        ppSuratPermintaan = new widget.MenuItem();
+        ppDapatDilayani = new widget.MenuItem();
+        ppTidakDapatDilayani = new widget.MenuItem();
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
@@ -326,7 +326,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
         tbPermintaan = new widget.Table();
@@ -2023,7 +2023,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.PanelBiasa PanelAccor;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private javax.swing.JDialog WindowInput;
@@ -2059,9 +2059,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppDapatDilayani;
-    private javax.swing.JMenuItem ppSuratPermintaan;
-    private javax.swing.JMenuItem ppTidakDapatDilayani;
+    private widget.MenuItem ppDapatDilayani;
+    private widget.MenuItem ppSuratPermintaan;
+    private widget.MenuItem ppTidakDapatDilayani;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane4;

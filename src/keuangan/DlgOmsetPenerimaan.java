@@ -484,7 +484,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         LCountJualToko = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         LCountPiutangTokoDibayar = new javax.swing.JLabel();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbRawatJalan = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -1206,7 +1206,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

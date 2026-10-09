@@ -207,7 +207,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianKorbanKekerasan = new javax.swing.JMenuItem();
+        MnPenilaianKorbanKekerasan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -217,7 +217,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -1725,7 +1725,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     private widget.TextBox LamaKekerasan;
     private widget.editorpane LoadHTML;
     private widget.ComboBox MemerlukanPendampingan;
-    private javax.swing.JMenuItem MnPenilaianKorbanKekerasan;
+    private widget.MenuItem MnPenilaianKorbanKekerasan;
     private widget.TextBox NmDokter;
     private usu.widget.glass.PanelGlass PanelWall1;
     private widget.TextBox PemeriksaanAbdomen;
@@ -1746,7 +1746,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextArea TandaYangDidapatkan;
     private widget.TextBox TempatKejadian;
     private widget.Tanggal TglAsuhan;

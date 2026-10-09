@@ -237,16 +237,16 @@ public final class UTDDonor extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanBHPMedis = new javax.swing.JMenuItem();
-        ppTampilkanBHPPenunjang = new javax.swing.JMenuItem();
-        ppTampilkanBHPPenunjangDanMedis = new javax.swing.JMenuItem();
-        ppUbah = new javax.swing.JMenuItem();
-        ppHapusBHPMedis = new javax.swing.JMenuItem();
-        ppHapusBHPNonMedis = new javax.swing.JMenuItem();
-        ppHapusBHPMedisDanNonMedis = new javax.swing.JMenuItem();
-        ppCekal = new javax.swing.JMenuItem();
+        ppTampilkanBHPMedis = new widget.MenuItem();
+        ppTampilkanBHPPenunjang = new widget.MenuItem();
+        ppTampilkanBHPPenunjangDanMedis = new widget.MenuItem();
+        ppUbah = new widget.MenuItem();
+        ppHapusBHPMedis = new widget.MenuItem();
+        ppHapusBHPNonMedis = new widget.MenuItem();
+        ppHapusBHPMedisDanNonMedis = new widget.MenuItem();
+        ppCekal = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelisi5 = new widget.panelisi();
         jPanel3 = new javax.swing.JPanel();
@@ -2481,7 +2481,7 @@ public final class UTDDonor extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox TCariMedis;
     private widget.TextBox TCariNonMedis;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalCari1;
     private widget.Tanggal TanggalCari2;
@@ -2530,14 +2530,14 @@ public final class UTDDonor extends javax.swing.JDialog {
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
     private widget.panelisi panelisi7;
-    private javax.swing.JMenuItem ppCekal;
-    private javax.swing.JMenuItem ppHapusBHPMedis;
-    private javax.swing.JMenuItem ppHapusBHPMedisDanNonMedis;
-    private javax.swing.JMenuItem ppHapusBHPNonMedis;
-    private javax.swing.JMenuItem ppTampilkanBHPMedis;
-    private javax.swing.JMenuItem ppTampilkanBHPPenunjang;
-    private javax.swing.JMenuItem ppTampilkanBHPPenunjangDanMedis;
-    private javax.swing.JMenuItem ppUbah;
+    private widget.MenuItem ppCekal;
+    private widget.MenuItem ppHapusBHPMedis;
+    private widget.MenuItem ppHapusBHPMedisDanNonMedis;
+    private widget.MenuItem ppHapusBHPNonMedis;
+    private widget.MenuItem ppTampilkanBHPMedis;
+    private widget.MenuItem ppTampilkanBHPPenunjang;
+    private widget.MenuItem ppTampilkanBHPPenunjangDanMedis;
+    private widget.MenuItem ppUbah;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbMedis;
     private widget.Table tbNonMedis;

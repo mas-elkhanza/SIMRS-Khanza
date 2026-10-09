@@ -159,7 +159,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         jLabel100 = new widget.Label();
         jLabel101 = new widget.Label();
         Popup = new javax.swing.JPopupMenu();
-        cetakbukti = new javax.swing.JMenuItem();
+        cetakbukti = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -384,7 +384,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbResep.setAutoCreateRowSorter(true);
+        tbResep.setAutoCreateRowSorter(false);
         tbResep.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbResep.setComponentPopupMenu(Popup);
         tbResep.setName("tbResep"); // NOI18N
@@ -1481,7 +1481,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal Tanggal;
     private widget.Button btnKategori;
     private widget.Button btnPetugas;
-    private javax.swing.JMenuItem cetakbukti;
+    private widget.MenuItem cetakbukti;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel100;

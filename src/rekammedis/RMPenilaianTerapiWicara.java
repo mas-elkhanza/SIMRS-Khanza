@@ -313,7 +313,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianTerapiWicara = new javax.swing.JMenuItem();
+        MnPenilaianTerapiWicara = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -323,7 +323,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2862,7 +2862,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private widget.TextArea Mengunyah;
     private widget.TextArea Meniup;
     private widget.TextBox Mimik;
-    private javax.swing.JMenuItem MnPenilaianTerapiWicara;
+    private widget.MenuItem MnPenilaianTerapiWicara;
     private widget.ComboBox Nada;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
@@ -2888,7 +2888,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.TextArea TindakLanjut;

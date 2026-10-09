@@ -211,7 +211,7 @@ public class DlgCariPasien extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPasien.setAutoCreateRowSorter(true);
+        tbPasien.setAutoCreateRowSorter(false);
         tbPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPasien.setName("tbPasien"); // NOI18N
         tbPasien.addMouseListener(new java.awt.event.MouseAdapter() {

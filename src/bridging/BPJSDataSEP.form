@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP">
+        <MenuItem class="widget.MenuItem" name="ppSEP">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -37,7 +37,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEPBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP1">
+        <MenuItem class="widget.MenuItem" name="ppSEP1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -63,7 +63,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP1BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP2">
+        <MenuItem class="widget.MenuItem" name="ppSEP2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -89,7 +89,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP2BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP3">
+        <MenuItem class="widget.MenuItem" name="ppSEP3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -115,7 +115,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP3BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP4">
+        <MenuItem class="widget.MenuItem" name="ppSEP4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -141,7 +141,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP4BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP5">
+        <MenuItem class="widget.MenuItem" name="ppSEP5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -167,7 +167,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP5BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP6">
+        <MenuItem class="widget.MenuItem" name="ppSEP6">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -193,7 +193,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP6BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSEP7">
+        <MenuItem class="widget.MenuItem" name="ppSEP7">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -219,7 +219,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSEP7BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPulang">
+        <MenuItem class="widget.MenuItem" name="ppPulang">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -245,7 +245,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPulangBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppDetailSEPPeserta">
+        <MenuItem class="widget.MenuItem" name="ppDetailSEPPeserta">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -271,7 +271,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppDetailSEPPesertaBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppRujukan">
+        <MenuItem class="widget.MenuItem" name="ppRujukan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -297,7 +297,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppRujukanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppDaftarRujukan">
+        <MenuItem class="widget.MenuItem" name="ppDaftarRujukan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -323,7 +323,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppDaftarRujukanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="MnRujukanKhusus">
+        <MenuItem class="widget.MenuItem" name="MnRujukanKhusus">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -347,7 +347,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnRujukanKhususActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSuratKontrol">
+        <MenuItem class="widget.MenuItem" name="ppSuratKontrol">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -373,7 +373,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSuratKontrolBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSuratPRI">
+        <MenuItem class="widget.MenuItem" name="ppSuratPRI">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -399,7 +399,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSuratPRIBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppProgramPRB">
+        <MenuItem class="widget.MenuItem" name="ppProgramPRB">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -425,7 +425,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppProgramPRBActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSuplesiJasaRaharja">
+        <MenuItem class="widget.MenuItem" name="ppSuplesiJasaRaharja">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -451,7 +451,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSuplesiJasaRaharjaBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppDataIndukKecelakaan">
+        <MenuItem class="widget.MenuItem" name="ppDataIndukKecelakaan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -477,7 +477,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppDataIndukKecelakaanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppDataSEPInternal">
+        <MenuItem class="widget.MenuItem" name="ppDataSEPInternal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -503,7 +503,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppDataSEPInternalBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppRiwayatPerawatan">
+        <MenuItem class="widget.MenuItem" name="ppRiwayatPerawatan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -529,7 +529,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppRiwayatPerawatanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSepRujukSama">
+        <MenuItem class="widget.MenuItem" name="ppSepRujukSama">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -555,7 +555,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSepRujukSamaBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSepRujukBeda">
+        <MenuItem class="widget.MenuItem" name="ppSepRujukBeda">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -581,7 +581,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppSepRujukBedaBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppCekSEPApotekBPJS">
+        <MenuItem class="widget.MenuItem" name="ppCekSEPApotekBPJS">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -607,7 +607,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppCekSEPApotekBPJSBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppTampilSEPRawatJalan">
+        <MenuItem class="widget.MenuItem" name="ppTampilSEPRawatJalan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -633,7 +633,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppTampilSEPRawatJalanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppTampilSEPRawatInap">
+        <MenuItem class="widget.MenuItem" name="ppTampilSEPRawatInap">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1346,7 +1346,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan">
+        <MenuItem class="widget.MenuItem" name="ppPengajuan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1372,7 +1372,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan1">
+        <MenuItem class="widget.MenuItem" name="ppPengajuan1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1398,7 +1398,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuan1BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan2">
+        <MenuItem class="widget.MenuItem" name="ppPengajuan2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1424,7 +1424,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuan2BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan3">
+        <MenuItem class="widget.MenuItem" name="ppPengajuan3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1450,7 +1450,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuan3BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppAmbilSep">
+        <MenuItem class="widget.MenuItem" name="ppAmbilSep">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1476,7 +1476,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppAmbilSepBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppStatusFinger">
+        <MenuItem class="widget.MenuItem" name="ppStatusFinger">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1702,7 +1702,7 @@
         <Property name="verticalGap" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>

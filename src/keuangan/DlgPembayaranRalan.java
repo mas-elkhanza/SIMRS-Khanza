@@ -128,10 +128,10 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnBilling = new javax.swing.JMenuItem();
-        MnSudahBayar = new javax.swing.JMenuItem();
-        MnBelumBayar = new javax.swing.JMenuItem();
-        MnSemuaStatusBayar = new javax.swing.JMenuItem();
+        MnBilling = new widget.MenuItem();
+        MnSudahBayar = new widget.MenuItem();
+        MnBelumBayar = new widget.MenuItem();
+        MnSemuaStatusBayar = new widget.MenuItem();
         KdDokter = new widget.TextBox();
         KdPoli = new widget.TextBox();
         KdCaraBayar = new widget.TextBox();
@@ -1053,10 +1053,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
     private widget.Label LCount2;
-    private javax.swing.JMenuItem MnBelumBayar;
-    private javax.swing.JMenuItem MnBilling;
-    private javax.swing.JMenuItem MnSemuaStatusBayar;
-    private javax.swing.JMenuItem MnSudahBayar;
+    private widget.MenuItem MnBelumBayar;
+    private widget.MenuItem MnBilling;
+    private widget.MenuItem MnSemuaStatusBayar;
+    private widget.MenuItem MnSudahBayar;
     private widget.TextBox NmCaraBayar;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPoli;

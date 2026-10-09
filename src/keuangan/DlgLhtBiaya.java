@@ -145,7 +145,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setAutoCreateRowSorter(true);
+        tbBangsal.setAutoCreateRowSorter(false);
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 

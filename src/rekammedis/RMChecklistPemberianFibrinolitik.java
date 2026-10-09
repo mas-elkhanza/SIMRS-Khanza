@@ -236,7 +236,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnChecklistPemberianFibrinolitik = new javax.swing.JMenuItem();
+        MnChecklistPemberianFibrinolitik = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2194,7 +2194,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnChecklistPemberianFibrinolitik;
+    private widget.MenuItem MnChecklistPemberianFibrinolitik;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RisikoTinggi1;

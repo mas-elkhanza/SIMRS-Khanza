@@ -110,7 +110,7 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -179,7 +179,7 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
@@ -892,7 +892,7 @@ private void NmPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.TextBox KdPeminjam;
     private widget.TextBox KodeRekening;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private widget.TextBox NamaRekening;
     private widget.TextBox NmPeminjam;
     private widget.TextBox NoTelp;

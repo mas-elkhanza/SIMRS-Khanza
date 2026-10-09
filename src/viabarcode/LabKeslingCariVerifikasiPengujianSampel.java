@@ -245,9 +245,9 @@ public class LabKeslingCariVerifikasiPengujianSampel extends javax.swing.JDialog
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppSuratVerifikasi = new javax.swing.JMenuItem();
-        ppHapusVerifikasiPengujian = new javax.swing.JMenuItem();
-        ppValidasiPengujian = new javax.swing.JMenuItem();
+        ppSuratVerifikasi = new widget.MenuItem();
+        ppHapusVerifikasiPengujian = new widget.MenuItem();
+        ppValidasiPengujian = new widget.MenuItem();
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
@@ -282,7 +282,7 @@ public class LabKeslingCariVerifikasiPengujianSampel extends javax.swing.JDialog
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
         tbVerifikasi = new widget.Table();
@@ -1580,7 +1580,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.PanelBiasa PanelAccor;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private widget.Button btnPelanggan;
@@ -1602,9 +1602,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppHapusVerifikasiPengujian;
-    private javax.swing.JMenuItem ppSuratVerifikasi;
-    private javax.swing.JMenuItem ppValidasiPengujian;
+    private widget.MenuItem ppHapusVerifikasiPengujian;
+    private widget.MenuItem ppSuratVerifikasi;
+    private widget.MenuItem ppValidasiPengujian;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPaneDetail;

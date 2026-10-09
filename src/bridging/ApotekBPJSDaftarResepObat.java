@@ -301,7 +301,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -492,7 +492,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbResep.setAutoCreateRowSorter(true);
+        tbResep.setAutoCreateRowSorter(false);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1272,7 +1272,7 @@ public final class ApotekBPJSDaftarResepObat extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;

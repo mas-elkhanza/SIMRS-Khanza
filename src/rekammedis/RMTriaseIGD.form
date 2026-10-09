@@ -72,7 +72,7 @@
         <Property name="verticalGap" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="TabPilihan">
+        <Container class="widget.TabPane" name="TabPilihan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -132,7 +132,7 @@
                     <Property name="verticalGap" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="TabTriase">
+                    <Container class="widget.TabPane" name="TabTriase">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -924,7 +924,7 @@
                                             </Component>
                                           </SubComponents>
                                         </Container>
-                                        <Container class="javax.swing.JTabbedPane" name="TabSkala1dan2">
+                                        <Container class="widget.TabPane" name="TabSkala1dan2">
                                           <Properties>
                                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1762,7 +1762,7 @@
                                             </Component>
                                           </SubComponents>
                                         </Container>
-                                        <Container class="javax.swing.JTabbedPane" name="TabSkala3dan4dan5">
+                                        <Container class="widget.TabPane" name="TabSkala3dan4dan5">
                                           <Properties>
                                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                               <Color blue="fe" green="ff" red="ff" type="rgb"/>

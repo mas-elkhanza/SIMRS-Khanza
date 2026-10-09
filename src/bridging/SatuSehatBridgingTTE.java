@@ -251,8 +251,8 @@ public class SatuSehatBridgingTTE extends JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppHapusSemua = new javax.swing.JMenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppHapusSemua = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         splitUtama = new javax.swing.JSplitPane();
         splitTabel = new javax.swing.JSplitPane();
@@ -3193,8 +3193,8 @@ public class SatuSehatBridgingTTE extends JDialog {
     private javax.swing.JPanel panelKanan;
     private javax.swing.JPanel panelKananAtas;
     private widget.panelisi panelTombol;
-    private javax.swing.JMenuItem ppHapusSemua;
-    private javax.swing.JMenuItem ppPilihSemua;
+    private widget.MenuItem ppHapusSemua;
+    private widget.MenuItem ppPilihSemua;
     private widget.ScrollPane spKanan;
     private widget.ScrollPane spKiri;
     private widget.ScrollPane spLog;

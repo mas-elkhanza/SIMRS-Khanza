@@ -189,10 +189,10 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppRincian = new javax.swing.JMenuItem();
-        ppHilangkanRincian = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppRincian = new widget.MenuItem();
+        ppHilangkanRincian = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -2330,10 +2330,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppHilangkanRincian;
-    private javax.swing.JMenuItem ppPilihSemua;
-    private javax.swing.JMenuItem ppRincian;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppHilangkanRincian;
+    private widget.MenuItem ppPilihSemua;
+    private widget.MenuItem ppRincian;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

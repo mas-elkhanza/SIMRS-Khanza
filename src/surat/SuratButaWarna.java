@@ -114,7 +114,7 @@ public final class SuratButaWarna extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratButaWarna = new javax.swing.JMenuItem();
+        MnCetakSuratButaWarna = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -846,7 +846,7 @@ public final class SuratButaWarna extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.ComboBox HasilPeriksa;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratButaWarna;
+    private widget.MenuItem MnCetakSuratButaWarna;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

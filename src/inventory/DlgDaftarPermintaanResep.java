@@ -440,9 +440,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         label10 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
-        TabPilihRawat = new javax.swing.JTabbedPane();
+        TabPilihRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
-        TabRawatJalan = new javax.swing.JTabbedPane();
+        TabRawatJalan = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbResepRalan = new widget.Table();
         scrollPane2 = new widget.ScrollPane();
@@ -455,7 +455,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         CrPoli = new widget.TextBox();
         BtnSeek4 = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
-        TabRawatInap = new javax.swing.JTabbedPane();
+        TabRawatInap = new widget.TabPane();
         scrollPane3 = new widget.ScrollPane();
         tbResepRanap = new widget.Table();
         scrollPane4 = new widget.ScrollPane();
@@ -3864,9 +3864,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane ScrollMenu;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabPilihRawat;
-    private javax.swing.JTabbedPane TabRawatInap;
-    private javax.swing.JTabbedPane TabRawatJalan;
+    private widget.TabPane TabPilihRawat;
+    private widget.TabPane TabRawatInap;
+    private widget.TabPane TabRawatJalan;
     private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;

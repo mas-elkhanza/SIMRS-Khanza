@@ -201,7 +201,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
+        MnSkriningNutrisi = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -1867,7 +1867,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     private widget.Label LabelSkrining;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private widget.MenuItem MnSkriningNutrisi;
     private widget.TextBox Nilai1;
     private widget.TextBox Nilai2;
     private widget.TextBox Nilai3;

@@ -121,7 +121,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
 
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnBilling = new javax.swing.JMenuItem();
+        MnBilling = new widget.MenuItem();
         kdpenjab = new widget.TextBox();
         KdPoli = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -868,7 +868,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
     private widget.Label LCount2;
-    private javax.swing.JMenuItem MnBilling;
+    private widget.MenuItem MnBilling;
     private widget.TextBox NmPoli;
     private widget.ScrollPane Scroll;
     private widget.ComboBox StatusLunas;

@@ -105,10 +105,10 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppGrafikTerbanyakBatang = new javax.swing.JMenuItem();
-        ppGrafikTerbanyakPie = new javax.swing.JMenuItem();
-        ppGrafikTerkecilBatang = new javax.swing.JMenuItem();
-        ppGrafikTerkecilPie = new javax.swing.JMenuItem();
+        ppGrafikTerbanyakBatang = new widget.MenuItem();
+        ppGrafikTerbanyakPie = new widget.MenuItem();
+        ppGrafikTerkecilBatang = new widget.MenuItem();
+        ppGrafikTerkecilPie = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -235,7 +235,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
+        tbDokter.setAutoCreateRowSorter(false);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -1886,10 +1886,10 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox nmpenjab;
     private widget.TextBox nmpoli;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppGrafikTerbanyakBatang;
-    private javax.swing.JMenuItem ppGrafikTerbanyakPie;
-    private javax.swing.JMenuItem ppGrafikTerkecilBatang;
-    private javax.swing.JMenuItem ppGrafikTerkecilPie;
+    private widget.MenuItem ppGrafikTerbanyakBatang;
+    private widget.MenuItem ppGrafikTerbanyakPie;
+    private widget.MenuItem ppGrafikTerkecilBatang;
+    private widget.MenuItem ppGrafikTerkecilPie;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

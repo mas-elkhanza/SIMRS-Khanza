@@ -232,9 +232,9 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLembarSkriningRalan = new javax.swing.JMenuItem();
-        MnPDFSkriningRalan = new javax.swing.JMenuItem();
-        ppPasienCorona = new javax.swing.JMenuItem();
+        MnLembarSkriningRalan = new widget.MenuItem();
+        MnPDFSkriningRalan = new widget.MenuItem();
+        ppPasienCorona = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1449,8 +1449,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox Kesadaran;
     private widget.Label LCount;
     private widget.TextBox Lahir;
-    private javax.swing.JMenuItem MnLembarSkriningRalan;
-    private javax.swing.JMenuItem MnPDFSkriningRalan;
+    private widget.MenuItem MnLembarSkriningRalan;
+    private widget.MenuItem MnPDFSkriningRalan;
     private widget.TextBox NmPetugas;
     private widget.ComboBox NyeriDada;
     private javax.swing.JPanel PanelInput;
@@ -1485,7 +1485,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
-    private javax.swing.JMenuItem ppPasienCorona;
+    private widget.MenuItem ppPasienCorona;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 

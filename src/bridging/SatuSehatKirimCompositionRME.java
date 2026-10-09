@@ -406,8 +406,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -427,7 +427,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalTriaseIGDPrimer = new widget.InternalFrame();
         PanelAccorIGDPrimer = new widget.PanelBiasa();
         ChkAccorIGDPrimer = new widget.CekBox();
@@ -620,10 +620,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari1);
 
@@ -633,10 +632,9 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
@@ -676,9 +674,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        TabRawat.setTabLayoutPolicy(widget.TabPane.SCROLL_TAB_LAYOUT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1253,7 +1250,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.ScrollPane ScrollIGDPrimer;
     private widget.ScrollPane ScrollIGDSekunder;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalTriaseIGDPrimer;
     private widget.InternalFrame internalTriaseIGDSekunder;
@@ -1265,8 +1262,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPilihSemua;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppPilihSemua;
     private widget.Table tbAwalKeperawatanIGD;
     private widget.Table tbBB;
     private widget.Table tbGCS;

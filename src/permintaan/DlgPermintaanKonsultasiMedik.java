@@ -183,7 +183,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         label3 = new widget.Label();
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnGenerateSBAR = new javax.swing.JMenuItem();
+        MnGenerateSBAR = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -420,7 +420,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1694,7 +1694,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdDokterDikonsuli;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnGenerateSBAR;
+    private widget.MenuItem MnGenerateSBAR;
     private widget.TextBox NmDokter;
     private widget.TextBox NmDokterDikonsuli;
     private widget.TextBox NmPasien;

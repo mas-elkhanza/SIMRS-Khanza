@@ -137,7 +137,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnAsuhanGizi = new javax.swing.JMenuItem();
+        MnAsuhanGizi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1070,7 +1070,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnAsuhanGizi;
+    private widget.MenuItem MnAsuhanGizi;
     private widget.TextArea Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
