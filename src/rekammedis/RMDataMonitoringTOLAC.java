@@ -151,7 +151,7 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiCHBP = new widget.MenuItem();
+        MnMonitoringTOLAC = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -221,16 +221,16 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiCHBP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiCHBP.setText("Formulir Monitoring Selama TOLAC");
-        MnCatatanObservasiCHBP.setName("MnCatatanObservasiCHBP"); // NOI18N
-        MnCatatanObservasiCHBP.setPreferredSize(new java.awt.Dimension(240, 26));
-        MnCatatanObservasiCHBP.addActionListener(new java.awt.event.ActionListener() {
+        MnMonitoringTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnMonitoringTOLAC.setText("Formulir Monitoring Selama TOLAC");
+        MnMonitoringTOLAC.setName("MnMonitoringTOLAC"); // NOI18N
+        MnMonitoringTOLAC.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnMonitoringTOLAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiCHBPActionPerformed(evt);
+                MnMonitoringTOLACActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiCHBP);
+        jPopupMenu1.add(MnMonitoringTOLAC);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -998,8 +998,8 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                     "monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,monitoring_tolac.djj,"+
                     "monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,monitoring_tolac.keterangan,"+
-                    "monitoring_tolac.nip,petugas.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_tolac.nip=petugas.nip where "+
+                    "monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on monitoring_tolac.nip=pegawai.nik where "+
                     "monitoring_tolac.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
                     "order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat",param);
             }else{
@@ -1007,11 +1007,11 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                     "monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,monitoring_tolac.djj,"+
                     "monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,monitoring_tolac.keterangan,"+
-                    "monitoring_tolac.nip,petugas.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_tolac.nip=petugas.nip where "+
+                    "monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on monitoring_tolac.nip=pegawai.nik where "+
                     "monitoring_tolac.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or monitoring_tolac.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or monitoring_tolac.nip like '%"+TCari.getText().trim()+"%' or pegawai.nama like '%"+TCari.getText().trim()+"%' or "+
                     "monitoring_tolac.tanda_bahaya like '%"+TCari.getText().trim()+"%' or monitoring_tolac.keterangan like '%"+TCari.getText().trim()+"%') "+
                     "order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat",param);
             }  
@@ -1153,7 +1153,7 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,TD);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiCHBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiCHBPActionPerformed
+    private void MnMonitoringTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnMonitoringTOLACActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1167,12 +1167,12 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                     "monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,monitoring_tolac.djj,"+
                     "monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,monitoring_tolac.keterangan,"+
-                    "monitoring_tolac.nip,petugas.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_tolac.nip=petugas.nip "+
+                    "monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on monitoring_tolac.nip=pegawai.nik "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiCHBPActionPerformed
+    }//GEN-LAST:event_MnMonitoringTOLACActionPerformed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
         Valid.pindah(evt,TD,DJJ);
@@ -1271,7 +1271,7 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private widget.MenuItem MnCatatanObservasiCHBP;
+    private widget.MenuItem MnMonitoringTOLAC;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1323,23 +1323,23 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select "+
-                    "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                     "monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,monitoring_tolac.djj,"+
                     "monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,monitoring_tolac.keterangan,"+
-                    "monitoring_tolac.nip,petugas.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_tolac.nip=petugas.nip where "+
-                    "monitoring_tolac.tgl_perawatan between ? and ? order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat ");
+                    "monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on monitoring_tolac.nip=pegawai.nik where "+
+                    "monitoring_tolac.tgl_perawatan between ? and ? "+
+                    "order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select "+
                     "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                     "monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,monitoring_tolac.djj,"+
                     "monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,monitoring_tolac.keterangan,"+
-                    "monitoring_tolac.nip,petugas.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_tolac.nip=petugas.nip where "+
+                    "monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join reg_periksa on monitoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on monitoring_tolac.nip=pegawai.nik where "+
                     "monitoring_tolac.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "monitoring_tolac.nip like ? or petugas.nama like ? or monitoring_tolac.tanda_bahaya like ? or monitoring_tolac.keterangan like ?) "+
+                    "monitoring_tolac.nip like ? or pegawai.nama like ? or monitoring_tolac.tanda_bahaya like ? or monitoring_tolac.keterangan like ?) "+
                     "order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat ");
             }
                 

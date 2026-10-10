@@ -5295,6 +5295,7 @@ CREATE TABLE `catatan_observasi_ranap_kebidanan` (
 
 LOCK TABLES `catatan_observasi_ranap_kebidanan` WRITE;
 /*!40000 ALTER TABLE `catatan_observasi_ranap_kebidanan` DISABLE KEYS */;
+INSERT INTO `catatan_observasi_ranap_kebidanan` VALUES ('2026/04/07/000001','2026-10-10','11:22:16','1','2','3','4','5','6','7','8','9','10','12/09/1988/001');
 /*!40000 ALTER TABLE `catatan_observasi_ranap_kebidanan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16780,7 +16781,7 @@ CREATE TABLE `monitoring_tolac` (
 
 LOCK TABLES `monitoring_tolac` WRITE;
 /*!40000 ALTER TABLE `monitoring_tolac` DISABLE KEYS */;
-INSERT INTO `monitoring_tolac` VALUES ('2026/04/07/000001','2026-10-10','10:46:25','1','2','6','5','4','3','Tidak Ada','7','12/09/1988/001');
+INSERT INTO `monitoring_tolac` VALUES ('2026/04/07/000001','2026-10-10','11:14:47','1','2','6','5','4','3','Tidak Ada','7','156798');
 /*!40000 ALTER TABLE `monitoring_tolac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44579,4 +44580,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-10 10:53:40
+-- Dump completed on 2026-10-10 11:27:24

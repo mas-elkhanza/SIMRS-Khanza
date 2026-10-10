@@ -350,6 +350,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAdmisiSkoringTOLAC = new widget.CekBox();
         chkCatatanObservasiIGD = new widget.CekBox();
         chkCatatanObservasiCHBP = new widget.CekBox();
+        chkMonitoringSelamaTOLAC = new widget.CekBox();
         chkCatatanObservasiInduksiPersalinan = new widget.CekBox();
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
@@ -943,7 +944,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4790));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4815));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1377,6 +1378,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiCHBP.setName("chkCatatanObservasiCHBP"); // NOI18N
         chkCatatanObservasiCHBP.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiCHBP);
+
+        chkMonitoringSelamaTOLAC.setSelected(true);
+        chkMonitoringSelamaTOLAC.setText("Monitoring Selama TOLAC");
+        chkMonitoringSelamaTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkMonitoringSelamaTOLAC.setName("chkMonitoringSelamaTOLAC"); // NOI18N
+        chkMonitoringSelamaTOLAC.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkMonitoringSelamaTOLAC);
 
         chkCatatanObservasiInduksiPersalinan.setSelected(true);
         chkCatatanObservasiInduksiPersalinan.setText("Catatan Observasi Induksi Persalinan");
@@ -3067,6 +3075,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaKeluarIsolasi.setSelected(true);
             chkSkriningTOLAC.setSelected(true);
             chkAdmisiSkoringTOLAC.setSelected(true);
+            chkMonitoringSelamaTOLAC.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3275,6 +3284,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaKeluarIsolasi.setSelected(false);
             chkSkriningTOLAC.setSelected(false);
             chkAdmisiSkoringTOLAC.setSelected(false);
+            chkMonitoringSelamaTOLAC.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4002,6 +4012,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkLayananProgramKFR;
     private widget.CekBox chkMonitoringGizi;
     private widget.CekBox chkMonitoringReaksiTranfusi;
+    private widget.CekBox chkMonitoringSelamaTOLAC;
     private widget.CekBox chkOperasiVK;
     private widget.CekBox chkPelayananInformasiObat;
     private widget.CekBox chkPemantauanEWSNeonatus;
@@ -4561,6 +4572,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAdmisiSkoringTOLAC(rs.getString("no_rawat"));
                     menampilkanEdukasiPasienTerintegrasiRawatJalan(rs.getString("no_rawat"));
                     menampilkanPerencanaanPemulangan(rs.getString("no_rawat"));
+                    menampilkanMonitoringSelamaTOLAC(rs.getString("no_rawat"));
                     menampilkanCatatanObservasi(rs.getString("no_rawat"));
                     menampilkanPemeriksaanRanap(rs.getString("no_rawat"));
                     menampilkanKonsultasiMedik(rs.getString("no_rawat"));
@@ -37771,6 +37783,77 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    private void menampilkanMonitoringSelamaTOLAC(String norawat) {
+        try {
+            //menampilkan monitoring selama TOLAC
+            if(chkMonitoringSelamaTOLAC.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat,monitoring_tolac.his_frekuensi,monitoring_tolac.his_durasi_detik,"+
+                            "monitoring_tolac.djj,monitoring_tolac.nadi,monitoring_tolac.td,monitoring_tolac.pembukaan_cm,monitoring_tolac.tanda_bahaya,"+
+                            "monitoring_tolac.keterangan,monitoring_tolac.nip,pegawai.nama from monitoring_tolac inner join pegawai on monitoring_tolac.nip=pegawai.nik "+
+                            "where monitoring_tolac.no_rawat='"+norawat+"' order by monitoring_tolac.tgl_perawatan,monitoring_tolac.jam_rawat").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append(
+                            "<td valign='top' width='2%'></td>").append(
+                            "<td valign='top' width='18%'>Monitoring Selama TOLAC</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                 "<tr align='center'>").append(
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>").append(
+                                    "<td valign='middle' width='14%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>").append(
+                                    "<td valign='top' width='50%' bgcolor='#FFFAF8' colspan='7'>Monitoring</td>").append(
+                                    "<td valign='middle' width='14%' bgcolor='#FFFAF8' rowspan='2'>Keterangan</td>").append(
+                                    "<td valign='middle' width='18%' bgcolor='#FFFAF8' rowspan='2'>Petugas</td>").append(
+                                 "</tr>").append(
+                                 "<tr align='center'>").append(
+                                    "<td valign='top' width='7%' bgcolor='#FFFAF8'>His (x/10 mnt)</td>").append(
+                                    "<td valign='top' width='7%' bgcolor='#FFFAF8'>Durasi His (detik)</td>").append(
+                                    "<td valign='top' width='6%' bgcolor='#FFFAF8'>DJJ (x/mnt)</td>").append(
+                                    "<td valign='top' width='6%' bgcolor='#FFFAF8'>Nadi (x/mnt)</td>").append(
+                                    "<td valign='top' width='8%' bgcolor='#FFFAF8'>TD (mmHg)</td>").append(
+                                    "<td valign='top' width='8%' bgcolor='#FFFAF8'>Pembukaan (cm)</td>").append(
+                                    "<td valign='top' width='8%' bgcolor='#FFFAF8'>Tanda Bahaya</td>").append(
+                                 "</tr>"
+                        );
+                        w=1;
+                        do{
+                            htmlContent.append(
+                                 "<tr>").append(
+                                    "<td valign='top' align='center'>").append(w).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("tgl_perawatan")).append(" ").append(rs2.getString("jam_rawat")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("his_frekuensi")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("his_durasi_detik")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("djj")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("nadi")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("td")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("pembukaan_cm")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append("Ada".equals(rs2.getString("tanda_bahaya"))?"<font color='#CC0000'><b>Ada</b></font>":rs2.getString("tanda_bahaya")).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("keterangan")).append("</td>").append(
+                                    "<td valign='top'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                 "</tr>");
+                            w++;
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Monitoring Selama TOLAC : "+e);
+        }
+    }
+    
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;

@@ -2432,7 +2432,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(205,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(215,HEIGHT));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  
