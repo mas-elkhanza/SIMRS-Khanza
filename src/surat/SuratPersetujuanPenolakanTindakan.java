@@ -516,7 +516,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
@@ -544,7 +543,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane7.setName("scrollPane7"); // NOI18N
 
         Diagnosa.setColumns(20);
-        Diagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Diagnosa.setRows(5);
         Diagnosa.setName("Diagnosa"); // NOI18N
         Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -653,7 +651,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 520, 175, 23);
 
-        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
+        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Suami", "Istri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
         HubunganDenganPasien.setName("HubunganDenganPasien"); // NOI18N
         HubunganDenganPasien.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -672,7 +670,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
-        TglPernyataan.setOpaque(false);
         TglPernyataan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPernyataanKeyPressed(evt);
@@ -725,7 +722,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane8.setName("scrollPane8"); // NOI18N
 
         TindakanKedokteran.setColumns(20);
-        TindakanKedokteran.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TindakanKedokteran.setRows(5);
         TindakanKedokteran.setName("TindakanKedokteran"); // NOI18N
         TindakanKedokteran.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -754,7 +750,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane9.setName("scrollPane9"); // NOI18N
 
         IndikasiTindakan.setColumns(20);
-        IndikasiTindakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         IndikasiTindakan.setRows(5);
         IndikasiTindakan.setName("IndikasiTindakan"); // NOI18N
         IndikasiTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -771,7 +766,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane10.setName("scrollPane10"); // NOI18N
 
         TataCara.setColumns(20);
-        TataCara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TataCara.setRows(5);
         TataCara.setName("TataCara"); // NOI18N
         TataCara.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -794,7 +788,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane11.setName("scrollPane11"); // NOI18N
 
         Risiko.setColumns(20);
-        Risiko.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Risiko.setRows(5);
         Risiko.setName("Risiko"); // NOI18N
         Risiko.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -811,7 +804,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane12.setName("scrollPane12"); // NOI18N
 
         Tujuan.setColumns(20);
-        Tujuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Tujuan.setRows(5);
         Tujuan.setName("Tujuan"); // NOI18N
         Tujuan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -846,7 +838,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane13.setName("scrollPane13"); // NOI18N
 
         Komplikasi.setColumns(20);
-        Komplikasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Komplikasi.setRows(5);
         Komplikasi.setName("Komplikasi"); // NOI18N
         Komplikasi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -863,7 +854,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane14.setName("scrollPane14"); // NOI18N
 
         Prognosis.setColumns(20);
-        Prognosis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Prognosis.setRows(5);
         Prognosis.setName("Prognosis"); // NOI18N
         Prognosis.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -892,7 +882,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane15.setName("scrollPane15"); // NOI18N
 
         AlternatifResiko.setColumns(20);
-        AlternatifResiko.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         AlternatifResiko.setRows(5);
         AlternatifResiko.setName("AlternatifResiko"); // NOI18N
         AlternatifResiko.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -909,7 +898,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         scrollPane16.setName("scrollPane16"); // NOI18N
 
         LainLain.setColumns(20);
-        LainLain.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         LainLain.setRows(5);
         LainLain.setName("LainLain"); // NOI18N
         LainLain.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1004,7 +992,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
-        TglLahirPenerima.setOpaque(false);
         TglLahirPenerima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglLahirPenerimaKeyPressed(evt);
@@ -1178,7 +1165,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -1192,7 +1178,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -1316,7 +1301,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormPhoto.add(FormPass3, java.awt.BorderLayout.PAGE_END);
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
-        TabData.setForeground(new java.awt.Color(50, 50, 50));
         TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
