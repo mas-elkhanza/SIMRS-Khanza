@@ -265,7 +265,8 @@ public final class akses {
             intervensi_nyeri_nonfarmakologi=false,surat_pengajuan_cuti_pasien=false,checklist_kriteria_masuk_isolasi=false,satu_sehat_mapping_kptl_tindakan_ralan=false,
             satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false,satu_sehat_mapping_kptl_tindakan_operasi=false,
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,
-            ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false;
+            ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
+            monitoring_tolac=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1508,6 +1509,7 @@ public final class akses {
                         akses.set_resep_per_cara_bayar=true;
                         akses.skrining_tolac=true;
                         akses.admisi_skoring_tolac=true;
+                        akses.monitoring_tolac=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2734,6 +2736,7 @@ public final class akses {
                         akses.set_resep_per_cara_bayar=rs2.getBoolean("set_resep_per_cara_bayar");
                         akses.skrining_tolac=rs2.getBoolean("skrining_tolac");
                         akses.admisi_skoring_tolac=rs2.getBoolean("admisi_skoring_tolac");
+                        akses.monitoring_tolac=rs2.getBoolean("monitoring_tolac");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3982,6 +3985,7 @@ public final class akses {
         akses.set_resep_per_cara_bayar=false;
         akses.skrining_tolac=false;
         akses.admisi_skoring_tolac=false;
+        akses.monitoring_tolac=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5247,4 +5251,5 @@ public final class akses {
     public static boolean getset_resep_per_cara_bayar(){return akses.set_resep_per_cara_bayar;}
     public static boolean getskrining_tolac(){return akses.skrining_tolac;}
     public static boolean getadmisi_skoring_tolac(){return akses.admisi_skoring_tolac;}
+    public static boolean getmonitoring_tolac(){return akses.monitoring_tolac;}
 }   

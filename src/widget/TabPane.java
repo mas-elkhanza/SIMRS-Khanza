@@ -36,25 +36,27 @@ public class TabPane extends JTabbedPane {
         setUI(new MacTabUI());
     }
 
-
     public Color getWarnaAksen() { return warnaAksen != null ? warnaAksen : AKSEN; }
     public void setWarnaAksen(Color c) { warnaAksen = c; repaint(); }
 
     public static class MacTabUI extends BasicTabbedPaneUI {
-        private static final Color TRACK        = new Color(239, 244, 234);  
-        private static final Color TRACK_GARIS  = new Color(214, 224, 207);  
+
+        private static final Color TRACK        = new Color(247, 250, 245);
+        private static final Color TRACK_GARIS  = new Color(219, 227, 213);
         private static final Color PILIH        = Color.WHITE;
-        private static final Color PILIH_GARIS  = new Color(206, 218, 198);
-        private static final Color BAYANGAN     = new Color(60, 90, 50, 26);
+        private static final Color PILIH_GARIS  = new Color(210, 220, 203);
+        private static final Color BAYANGAN     = new Color(60, 90, 50, 26);  
         private static final Color HOVER        = new Color(255, 255, 255, 140);
-        private static final Color PEMISAH      = new Color(206, 218, 198);
-        private static final Color BINGKAI      = new Color(239, 244, 234);  
-        private static final Color TEKS         = new Color(50, 50, 50);     
+        private static final Color PEMISAH      = new Color(198, 209, 191);
+        private static final Color BINGKAI      = new Color(239, 244, 234);   
+        private static final Color TEKS         = new Color(50, 50, 50);      
         private static final Color TEKS_OFF     = new Color(165, 175, 160);
         private static final int   ARC_TRACK    = 8;
         private static final int   ARC_PILIH    = 6;
         private static final int   ARC_BINGKAI  = 8;
         private static final boolean TAMPIL_BINGKAI = false;
+        private static final Color GARIS_TAB    = new Color(239,244,234);
+
         private boolean lewatiBingkai;
 
         public static ComponentUI createUI(JComponent c) {
@@ -66,7 +68,7 @@ public class TabPane extends JTabbedPane {
             super.installDefaults();
             tabInsets = new Insets(3, 12, 3, 12);
             selectedTabPadInsets = new Insets(0, 0, 0, 0);
-            tabAreaInsets = new Insets(4, 8, 4, 8);
+            tabAreaInsets = new Insets(4, 8, 1, 8);   
             contentBorderInsets = new Insets(0, 0, 0, 0);   
             tabRunOverlay = 0;
         }
@@ -129,7 +131,7 @@ public class TabPane extends JTabbedPane {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             if (tabPane.getTabCount() > 0) {
-                getTabBounds(tabPane, 0);      
+                getTabBounds(tabPane, 0);     
                 gambarBingkai(g2);            
             }
             lewatiBingkai = true;
@@ -137,6 +139,40 @@ public class TabPane extends JTabbedPane {
                 super.paint(g, c);
             } finally {
                 lewatiBingkai = false;
+            }
+            if (tabPane.getTabCount() > 0) {
+                gambarGarisTab(g);
+            }
+        }
+
+        private void gambarGarisTab(Graphics g) {
+            Insets ins = tabPane.getInsets();
+            int placement = tabPane.getTabPlacement();
+            int x = ins.left;
+            int y = ins.top;
+            int w = tabPane.getWidth() - ins.left - ins.right;
+            int h = tabPane.getHeight() - ins.top - ins.bottom;
+            g.setColor(GARIS_TAB);
+            switch (placement) {
+                case BOTTOM: {
+                    int th = calculateTabAreaHeight(placement, runCount, maxTabHeight);
+                    g.fillRect(x, y + h - th, w, 1);
+                    break;
+                }
+                case LEFT: {
+                    int tw = calculateTabAreaWidth(placement, runCount, maxTabWidth);
+                    g.fillRect(x + tw - 1, y, 1, h);
+                    break;
+                }
+                case RIGHT: {
+                    int tw = calculateTabAreaWidth(placement, runCount, maxTabWidth);
+                    g.fillRect(x + w - tw, y, 1, h);
+                    break;
+                }
+                default: {
+                    int th = calculateTabAreaHeight(placement, runCount, maxTabHeight);
+                    g.fillRect(x, y + th - 1, w, 1);
+                }
             }
         }
 
@@ -149,7 +185,7 @@ public class TabPane extends JTabbedPane {
 
         private void gambarBingkai(Graphics2D g2) {
             if (!TAMPIL_BINGKAI) {
-                return;  
+                return;   
             }
             Insets ins = tabPane.getInsets();
             int placement = tabPane.getTabPlacement();
