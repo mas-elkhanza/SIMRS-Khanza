@@ -24,35 +24,44 @@ import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicPasswordFieldUI;
 
 public class PasswordBox extends JPasswordField {
-    private static final long serialVersionUID = 2L;
 
-    static final Color AKSEN    = new Color(0x3DDC84);                  
-    static final Color BORDER   = new Color(255, 255, 255, 150);
-    static final Color HOVER    = new Color(255, 255, 255, 200);
-    static final Color IKON     = new Color(22, 160, 93);            
-    static final Color IKON_AKTIF = new Color(12, 110, 62);        
-    static final char  TITIK    = '•';
-    static final int   RADIUS   = 6;
-    static final int   LEBAR_IKON = 22;
+    private static final long serialVersionUID = 3L;
+
+    static final Color AKSEN_GELAP  = new Color(0x3DDC84);                  
+    static final Color BORDER_GELAP = new Color(255, 255, 255, 150);
+    static final Color HOVER_GELAP  = new Color(255, 255, 255, 200);
+    static final Color OFF_GELAP    = new Color(255, 255, 255, 60);
+    static final Color TEKS_GELAP   = Color.WHITE;
+
+    static final Color AKSEN        = new Color(22, 160, 93);               
+    static final Color BORDER       = new Color(0x96BEA5);                  
+    static final Color HOVER        = new Color(0x5A9170);
+    static final Color OFF          = new Color(0xC9D3CD);
+    static final Color TEKS         = new Color(50, 50, 50);
+
+    static final Color IKON         = new Color(22, 160, 93);               
+    static final Color IKON_AKTIF   = new Color(12, 110, 62);               
+    static final Color TINT_IKON    = new Color(22, 160, 93, 35);
+    static final char  TITIK        = '•';
+    static final int   RADIUS       = 6;
+    static final int   LEBAR_IKON   = 22;
 
     private boolean hover;
     private boolean hoverIkon;
     private boolean tampilkan;
     private boolean ikonMata;
+    private Boolean latarGelap;     
+    private int     modeTerpasang;  
 
     public PasswordBox() {
         super();
         ikonMata = true;
         setFont(new Font("Tahoma", Font.BOLD, 12));
-        setForeground(Color.WHITE);
-        setSelectionColor(new Color(255, 255, 255, 90));
-        setSelectedTextColor(Color.WHITE);
-        setCaretColor(Color.WHITE);
-        setDisabledTextColor(new Color(255, 255, 255, 110));
         setHorizontalAlignment(LEFT);
         setEchoChar(TITIK);
         setOpaque(false);
         setBorder(new BorderModern());
+        terapkanWarna(true);   
 
         addFocusListener(new FocusAdapter() {
             @Override
@@ -115,9 +124,54 @@ public class PasswordBox extends JPasswordField {
         return new Rectangle(getWidth() - LEBAR_IKON - 3, 0, LEBAR_IKON, getHeight());
     }
 
+    private boolean gelap() {
+        if (latarGelap != null) {
+            return latarGelap;
+        }
+        
+        for (Component p = getParent(); p != null; p = p.getParent()) {
+            if (p.isOpaque()) {
+                Color c = p.getBackground();
+                if (c == null) {
+                    return false;
+                }
+                int terang = (c.getRed() * 299 + c.getGreen() * 587 + c.getBlue() * 114) / 1000;
+                return terang < 128;
+            }
+        }
+        return false;
+    }
+
+    private void terapkanWarna(boolean modeGelap) {
+        int mode = modeGelap ? 1 : 2;
+        if (mode == modeTerpasang) {
+            return;
+        }
+        Color fg = getForeground();
+        boolean fgBawaan = modeTerpasang == 0 || fg == null || fg.equals(TEKS_GELAP) || fg.equals(TEKS);
+        modeTerpasang = mode;
+        if (modeGelap) {
+            if (fgBawaan) {
+                setForeground(TEKS_GELAP);
+            }
+            setCaretColor(Color.WHITE);
+            setSelectionColor(new Color(255, 255, 255, 90));
+            setSelectedTextColor(Color.WHITE);
+            setDisabledTextColor(new Color(255, 255, 255, 110));
+        } else {
+            if (fgBawaan) {
+                setForeground(TEKS);
+            }
+            setCaretColor(AKSEN);
+            setSelectionColor(new Color(0xCDEBDA));
+            setSelectedTextColor(new Color(0x0E3B24));
+            setDisabledTextColor(new Color(0x55625B));
+        }
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
+        terapkanWarna(gelap());
         super.paintComponent(g);
 
         if (ikonMata && isEnabled()) {
@@ -133,13 +187,12 @@ public class PasswordBox extends JPasswordField {
             float cy = r.y + r.height / 2f;
 
             if (hoverIkon) {
-                g2.setColor(new Color(22, 160, 93, 35));   
+                g2.setColor(TINT_IKON);   
                 g2.fill(new RoundRectangle2D.Float(cx - 9, cy - 7, 18, 14, 6, 6));
             }
 
-            Color fg = getForeground();
-            boolean latarGelap = (fg.getRed() + fg.getGreen() + fg.getBlue()) > 600;
-            g2.setColor(hoverIkon || tampilkan ? (latarGelap ? AKSEN : IKON_AKTIF) : IKON);
+            boolean modeGelap = modeTerpasang == 1;
+            g2.setColor(hoverIkon || tampilkan ? (modeGelap ? AKSEN_GELAP : IKON_AKTIF) : IKON);
             g2.setStroke(new BasicStroke(1.3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
             // bentuk mata
@@ -167,24 +220,26 @@ public class PasswordBox extends JPasswordField {
             Graphics2D g2 = (Graphics2D) g.create();
             try {
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                boolean modeGelap = modeTerpasang != 2;
                 boolean aktif = isEnabled() && isEditable();
                 boolean fokus = aktif && isFocusOwner();
+                Color aksen = modeGelap ? AKSEN_GELAP : AKSEN;
                 float arc = RADIUS * 2f;
 
                 if (fokus) {
-                    g2.setColor(new Color(AKSEN.getRed(), AKSEN.getGreen(), AKSEN.getBlue(), 80));
+                    g2.setColor(new Color(aksen.getRed(), aksen.getGreen(), aksen.getBlue(), modeGelap ? 80 : 60));
                     g2.setStroke(new BasicStroke(2f));
                     g2.draw(new RoundRectangle2D.Float(x + 1, y + 1, w - 2, h - 2, arc + 1, arc + 1));
                 }
-                Color garis = !isEnabled() ? new Color(255, 255, 255, 60)
-                        : fokus ? AKSEN
-                        : (hover && aktif) ? HOVER
-                        : BORDER;
-                // lapis 1: garis gelap tipis di luar (agar tetap terlihat di latar terang)
+                Color garis = !isEnabled() ? (modeGelap ? OFF_GELAP : OFF)
+                        : fokus ? aksen
+                        : (hover && aktif) ? (modeGelap ? HOVER_GELAP : HOVER)
+                        : (modeGelap ? BORDER_GELAP : BORDER);
                 g2.setStroke(new BasicStroke(1f));
-                g2.setColor(new Color(0, 0, 0, isEnabled() ? 70 : 35));
-                g2.draw(new RoundRectangle2D.Float(x + 0.5f, y + 0.5f, w - 1, h - 1, arc + 1, arc + 1));
-                // lapis 2: garis utama (putih / hijau saat fokus)
+                if (modeGelap) {
+                    g2.setColor(new Color(0, 0, 0, isEnabled() ? 70 : 35));
+                    g2.draw(new RoundRectangle2D.Float(x + 0.5f, y + 0.5f, w - 1, h - 1, arc + 1, arc + 1));
+                }
                 g2.setColor(garis);
                 g2.draw(new RoundRectangle2D.Float(x + 1.5f, y + 1.5f, w - 3, h - 3, arc, arc));
             } finally {
@@ -204,7 +259,6 @@ public class PasswordBox extends JPasswordField {
         }
     }
 
-
     public boolean isIkonMata() { return ikonMata; }
     public void setIkonMata(boolean b) {
         ikonMata = b;
@@ -213,6 +267,13 @@ public class PasswordBox extends JPasswordField {
             setEchoChar(TITIK);
         }
         revalidate();
+        repaint();
+    }
+
+    public Boolean getLatarGelap() { return latarGelap; }
+
+    public void setLatarGelap(Boolean b) {
+        latarGelap = b;
         repaint();
     }
 }
