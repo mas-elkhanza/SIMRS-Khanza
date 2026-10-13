@@ -103,7 +103,7 @@
         <copy todir="${dist.dir}/suara">
             <fileset dir="suara/" includes="**/*.mp3" />
         </copy> 
-        <copy todir="${build.dir}/gambar">
+        <copy todir="${dist.dir}/gambar">
             <fileset dir="gambar/" includes="**/*.png, **/*.jpg" />
         </copy>
     </target>
