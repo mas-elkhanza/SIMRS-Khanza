@@ -131,7 +131,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCekKodeBooking = new javax.swing.JMenuItem();
+        MnCekKodeBooking = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -521,7 +521,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private widget.Label MJknBelum;
     private widget.Label MJknCapaian;
     private widget.Label MJknSelesai;
-    private javax.swing.JMenuItem MnCekKodeBooking;
+    private widget.MenuItem MnCekKodeBooking;
     private widget.Label NonJKNBelum;
     private widget.Label NonJKNSelesai;
     private widget.Label SEPTerbit;

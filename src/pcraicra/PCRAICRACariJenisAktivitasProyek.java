@@ -120,7 +120,7 @@ public final class PCRAICRACariJenisAktivitasProyek extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

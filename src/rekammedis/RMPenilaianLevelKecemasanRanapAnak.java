@@ -323,7 +323,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLevelKecemasan = new javax.swing.JMenuItem();
+        MnLevelKecemasan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -4522,7 +4522,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox MerasaTertekan;
     private widget.ComboBox MimpiBuruk;
     private widget.ComboBox MimpiMenakutkan;
-    private javax.swing.JMenuItem MnLevelKecemasan;
+    private widget.MenuItem MnLevelKecemasan;
     private widget.ComboBox Mual;
     private widget.ComboBox MudahBerkeringat;
     private widget.ComboBox MudahMenangis;

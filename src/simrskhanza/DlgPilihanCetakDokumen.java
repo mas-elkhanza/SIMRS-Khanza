@@ -107,7 +107,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbData.setAutoCreateRowSorter(true);
+        tbData.setAutoCreateRowSorter(false);
         tbData.setName("tbData"); // NOI18N
         Scroll.setViewportView(tbData);
 

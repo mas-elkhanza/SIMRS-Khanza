@@ -127,7 +127,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKelompokRisikoArea.setAutoCreateRowSorter(true);
+        tbKelompokRisikoArea.setAutoCreateRowSorter(false);
         tbKelompokRisikoArea.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKelompokRisikoArea.setName("tbKelompokRisikoArea"); // NOI18N
         tbKelompokRisikoArea.addMouseListener(new java.awt.event.MouseAdapter() {

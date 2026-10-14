@@ -173,7 +173,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPenyakit.setAutoCreateRowSorter(true);
+        tbPenyakit.setAutoCreateRowSorter(false);
         tbPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPenyakit.setName("tbPenyakit"); // NOI18N
         tbPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {

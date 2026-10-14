@@ -586,7 +586,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(310, 402));
 
-        tbDokter.setAutoCreateRowSorter(true);
+        tbDokter.setAutoCreateRowSorter(false);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

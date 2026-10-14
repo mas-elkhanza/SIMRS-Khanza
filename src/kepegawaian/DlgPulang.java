@@ -115,7 +115,7 @@ public final class DlgPulang extends javax.swing.JDialog {
         id_pegawai = new widget.TextBox();
         jam_datang = new widget.TextBox();
         popup = new javax.swing.JPopupMenu();
-        inpketerangan = new javax.swing.JMenuItem();
+        inpketerangan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -260,7 +260,7 @@ public final class DlgPulang extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setAutoCreateRowSorter(true);
+        tbBangsal.setAutoCreateRowSorter(false);
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setComponentPopupMenu(popup);
         tbBangsal.setName("tbBangsal"); // NOI18N
@@ -558,7 +558,7 @@ public final class DlgPulang extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox catatan;
     private widget.TextBox id_pegawai;
-    private javax.swing.JMenuItem inpketerangan;
+    private widget.MenuItem inpketerangan;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.Label jLabel6;

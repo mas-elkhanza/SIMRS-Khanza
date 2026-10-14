@@ -161,9 +161,9 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppHapus = new javax.swing.JMenuItem();
-        ppBayar = new javax.swing.JMenuItem();
-        ppUbah = new javax.swing.JMenuItem();
+        ppHapus = new widget.MenuItem();
+        ppBayar = new widget.MenuItem();
+        ppUbah = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -220,7 +220,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         BtnRefreshPhoto = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         Scroll = new widget.ScrollPane();
@@ -1538,7 +1538,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ScrollPane Scroll4;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TglBeli1;
     private widget.Tanggal TglBeli2;
     private widget.Tanggal TglFaktur1;
@@ -1577,9 +1577,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppBayar;
-    private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenuItem ppUbah;
+    private widget.MenuItem ppBayar;
+    private widget.MenuItem ppHapus;
+    private widget.MenuItem ppUbah;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

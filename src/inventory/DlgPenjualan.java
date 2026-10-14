@@ -358,9 +358,9 @@ public class DlgPenjualan extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppStok = new javax.swing.JMenuItem();
-        ppStok1 = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppStok = new widget.MenuItem();
+        ppStok1 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
@@ -415,7 +415,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         kdgudang = new widget.TextBox();
         nmgudang = new widget.TextBox();
         BtnGudang = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
@@ -1060,7 +1060,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbDetailObatRacikan.setAutoCreateRowSorter(true);
+        tbDetailObatRacikan.setAutoCreateRowSorter(false);
         tbDetailObatRacikan.setName("tbDetailObatRacikan"); // NOI18N
         tbDetailObatRacikan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2471,7 +2471,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Label TagihanPPn;
     private widget.Tanggal Tgl;
     private widget.TextBox catatan;
@@ -2503,9 +2503,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi5;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppStok;
-    private javax.swing.JMenuItem ppStok1;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppStok;
+    private widget.MenuItem ppStok1;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDetailObatRacikan;
     private widget.Table tbObat;

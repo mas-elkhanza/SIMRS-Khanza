@@ -149,7 +149,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -149,7 +149,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiCHBP = new javax.swing.JMenuItem();
+        MnCatatanObservasiCHBP = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1203,7 +1203,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiCHBP;
+    private widget.MenuItem MnCatatanObservasiCHBP;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
     private widget.TextBox PPV;

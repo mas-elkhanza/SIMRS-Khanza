@@ -165,7 +165,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakLaporan = new javax.swing.JMenuItem();
+        MnCetakLaporan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2498,7 +2498,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.ComboBox MesinAnestesi3;
     private widget.ComboBox MesinAnestesi4;
     private widget.ComboBox MesinAnestesi5;
-    private javax.swing.JMenuItem MnCetakLaporan;
+    private widget.MenuItem MnCetakLaporan;
     private widget.TextBox NamaPetugas;
     private widget.TextBox NmDokter;
     private widget.ComboBox ObatObat1;

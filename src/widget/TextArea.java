@@ -21,31 +21,13 @@ import javax.swing.JViewport;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 
-/**
- * TextArea modern untuk SIMRS Khanza, tampilannya SAMA dengan widget.TextBox.
- * <p>
- * Karena TextArea selalu dibungkus ScrollPane, border rounded dipasang otomatis
- * ke ScrollPane pembungkusnya (apa pun border lamanya), sehingga:
- * <ul>
- *   <li>Kotak rounded, border tipis, warna sama persis dengan TextBox</li>
- *   <li>Fokus: border hijau + ring lembut; hover: border lebih gelap</li>
- *   <li>Non-editable / disabled: latar hampir putih, teks tetap terbaca</li>
- *   <li>Scrollbar tipis modern (sama dengan widget.ScrollPane)</li>
- *   <li>Seleksi hijau muda, caret hijau, placeholder opsional</li>
- * </ul>
- * Drop-in: konstruktor sama, extends JTextArea. Kompatibel Java 8.
- *
- * @author usu (dimodernkan)
- */
 public class TextArea extends JTextArea {
 
     private static final long serialVersionUID = 2L;
 
-    // warna & ukuran disamakan dengan widget.TextBox
     static final Color AKSEN    = new Color(0x16A05D);
-    static final Color BORDER   = new Color(0xA7B6AD);
-    static final Color HOVER    = new Color(0x6F8578);
-    static final Color NONAKTIF = new Color(0xFAFCFB);
+    static final Color BORDER   = new Color(0x96BEA5);   
+    static final Color HOVER    = new Color(0x5A9170);
     static final int   RADIUS   = 6;
 
     private String placeholder;
@@ -81,8 +63,6 @@ public class TextArea extends JTextArea {
         });
     }
 
-    // ------------------------------------------------------------------ pasang gaya ke ScrollPane
-
     @Override
     public void addNotify() {
         super.addNotify();
@@ -93,7 +73,7 @@ public class TextArea extends JTextArea {
             sp.setViewportBorder(null);
             JViewport vp = sp.getViewport();
             vp.setOpaque(false);
-            vp.setScrollMode(JViewport.SIMPLE_SCROLL_MODE);   // aman untuk viewport transparan
+            vp.setScrollMode(JViewport.SIMPLE_SCROLL_MODE);   
             sp.getVerticalScrollBar().setUI(new ScrollPane.ModernScrollBarUI());
             sp.getHorizontalScrollBar().setUI(new ScrollPane.ModernScrollBarUI());
             sp.getVerticalScrollBar().setOpaque(false);
@@ -127,7 +107,6 @@ public class TextArea extends JTextArea {
         }
     }
 
-    /** Border rounded identik dengan TextBox; sekaligus menggambar latar di dalamnya. */
     private class BorderTextArea extends AbstractBorder {
 
         private static final long serialVersionUID = 1L;
@@ -140,10 +119,6 @@ public class TextArea extends JTextArea {
                 float arc = RADIUS * 2f;
                 boolean aktif = isEnabled() && isEditable();
                 boolean fokus = aktif && isFocusOwner();
-
-                // latar (dipakai karena scrollpane & viewport transparan)
-                g2.setColor(aktif ? getBackground() : NONAKTIF);
-                g2.fill(new RoundRectangle2D.Float(x + 1, y + 1, w - 2, h - 2, arc, arc));
 
                 if (fokus) {
                     g2.setColor(new Color(AKSEN.getRed(), AKSEN.getGreen(), AKSEN.getBlue(), 60));
@@ -174,16 +149,8 @@ public class TextArea extends JTextArea {
         }
     }
 
-    // ------------------------------------------------------------------ painting
-
     @Override
     protected void paintComponent(Graphics g) {
-        // bila TIDAK dibungkus scrollpane, latar non-aktif digambar sendiri
-        if (scrollPane() == null && (!isEnabled() || !isEditable())) {
-            g.setColor(NONAKTIF);
-            g.fillRect(0, 0, getWidth(), getHeight());
-        }
-
         super.paintComponent(g);
 
         if (placeholder != null && !placeholder.isEmpty() && getText().isEmpty() && !isFocusOwner()) {
@@ -200,8 +167,6 @@ public class TextArea extends JTextArea {
             }
         }
     }
-
-    // ------------------------------------------------------------------ properti
 
     public String getPlaceholder() { return placeholder; }
     public void setPlaceholder(String p) { placeholder = p; repaint(); }

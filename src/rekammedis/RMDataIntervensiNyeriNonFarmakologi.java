@@ -130,7 +130,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnFormulirIntervensiNyeriNonFarmakologi = new javax.swing.JMenuItem();
+        MnFormulirIntervensiNyeriNonFarmakologi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1030,7 +1030,7 @@ public final class RMDataIntervensiNyeriNonFarmakologi extends javax.swing.JDial
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnFormulirIntervensiNyeriNonFarmakologi;
+    private widget.MenuItem MnFormulirIntervensiNyeriNonFarmakologi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

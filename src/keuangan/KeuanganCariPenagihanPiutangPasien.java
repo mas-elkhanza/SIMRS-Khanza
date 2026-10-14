@@ -126,10 +126,10 @@ public class KeuanganCariPenagihanPiutangPasien extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppHapus = new javax.swing.JMenuItem();
-        ppDisetujui = new javax.swing.JMenuItem();
-        ppTidakDisetujui = new javax.swing.JMenuItem();
-        ppVerifikasi = new javax.swing.JMenuItem();
+        ppHapus = new widget.MenuItem();
+        ppDisetujui = new widget.MenuItem();
+        ppTidakDisetujui = new widget.MenuItem();
+        ppVerifikasi = new widget.MenuItem();
         Perusahaan = new widget.TextBox();
         AlamatAsuransi = new widget.TextBox();
         NoTelp = new widget.TextBox();
@@ -1116,10 +1116,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label9;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppDisetujui;
-    private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenuItem ppTidakDisetujui;
-    private javax.swing.JMenuItem ppVerifikasi;
+    private widget.MenuItem ppDisetujui;
+    private widget.MenuItem ppHapus;
+    private widget.MenuItem ppTidakDisetujui;
+    private widget.MenuItem ppVerifikasi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

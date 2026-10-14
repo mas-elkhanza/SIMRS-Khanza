@@ -225,7 +225,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPostOperasi = new javax.swing.JMenuItem();
+        MnPostOperasi = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1979,7 +1979,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private widget.TextBox LetakDrain;
     private widget.editorpane LoadHTML;
     private widget.ComboBox MRI;
-    private javax.swing.JMenuItem MnPostOperasi;
+    private widget.MenuItem MnPostOperasi;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasAnest;

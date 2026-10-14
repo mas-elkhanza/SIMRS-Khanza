@@ -252,7 +252,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianFisio = new javax.swing.JMenuItem();
+        MnPenilaianFisio = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -262,7 +262,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2299,7 +2299,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
     private widget.TextBox LainlainFungsioal;
     private widget.editorpane LoadHTML;
     private widget.TextBox LuasGerakSendi;
-    private javax.swing.JMenuItem MnPenilaianFisio;
+    private widget.MenuItem MnPenilaianFisio;
     private widget.TextBox NmPetugas;
     private widget.TextBox NyeriDiam;
     private widget.TextBox NyeriGerak;
@@ -2330,7 +2330,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.InternalFrame internalFrame1;

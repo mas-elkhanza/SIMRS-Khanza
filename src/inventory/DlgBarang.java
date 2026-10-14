@@ -217,11 +217,11 @@ public class DlgBarang extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppBarcode = new javax.swing.JMenuItem();
-        ppBarcodeItem = new javax.swing.JMenuItem();
-        ppStok = new javax.swing.JMenuItem();
-        ppStok2 = new javax.swing.JMenuItem();
-        MnRestore = new javax.swing.JMenuItem();
+        ppBarcode = new widget.MenuItem();
+        ppBarcodeItem = new widget.MenuItem();
+        ppStok = new widget.MenuItem();
+        ppStok2 = new widget.MenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
@@ -593,7 +593,7 @@ public class DlgBarang extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -2373,7 +2373,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox KdIF;
     private widget.Label LCount;
     private widget.TextBox Letak;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private widget.TextBox Nm;
     private widget.TextBox NmIF;
     private javax.swing.JPanel PanelInput;
@@ -2429,10 +2429,10 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox nmsatBesar;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppBarcode;
-    private javax.swing.JMenuItem ppBarcodeItem;
-    private javax.swing.JMenuItem ppStok;
-    private javax.swing.JMenuItem ppStok2;
+    private widget.MenuItem ppBarcode;
+    private widget.MenuItem ppBarcodeItem;
+    private widget.MenuItem ppStok;
+    private widget.MenuItem ppStok2;
     private widget.TextBox ralan;
     private widget.ScrollPane scrollPane1;
     private widget.TextBox stok_minimal;

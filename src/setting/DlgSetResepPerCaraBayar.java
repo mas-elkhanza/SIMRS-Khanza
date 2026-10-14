@@ -131,7 +131,7 @@ public final class DlgSetResepPerCaraBayar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObatPenyakit.setAutoCreateRowSorter(true);
+        tbObatPenyakit.setAutoCreateRowSorter(false);
         tbObatPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObatPenyakit.setName("tbObatPenyakit"); // NOI18N
         tbObatPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {

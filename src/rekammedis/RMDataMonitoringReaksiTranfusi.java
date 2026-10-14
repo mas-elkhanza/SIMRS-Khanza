@@ -162,7 +162,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnMonitoringReaksiTranfusi = new javax.swing.JMenuItem();
+        MnMonitoringReaksiTranfusi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1425,7 +1425,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox LokasiInsersi;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnMonitoringReaksiTranfusi;
+    private widget.MenuItem MnMonitoringReaksiTranfusi;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoKantong;
     private javax.swing.JPanel PanelInput;

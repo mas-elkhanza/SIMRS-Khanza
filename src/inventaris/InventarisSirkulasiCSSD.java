@@ -693,7 +693,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamIn.setAutoCreateRowSorter(true);
+        tbKamIn.setAutoCreateRowSorter(false);
         tbKamIn.setName("tbKamIn"); // NOI18N
         tbKamIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

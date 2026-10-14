@@ -498,7 +498,7 @@ public class InventoryRingkasanBiayaObatPasienPerTanggal extends javax.swing.JDi
         scrollPane4.setName("scrollPane4"); // NOI18N
         scrollPane4.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
+        tbDokter.setAutoCreateRowSorter(false);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

@@ -255,7 +255,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -265,7 +265,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2388,7 +2388,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
     private widget.TextBox LMANo;
     private widget.TextBox Lainlain;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NasopharingNo;
     private widget.TextBox NmDokter;
@@ -2403,7 +2403,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox TatalaksanaLainlain;
     private widget.TextBox TeknikRegionalHasil;
     private widget.TextBox TeknikRegionalJenis;

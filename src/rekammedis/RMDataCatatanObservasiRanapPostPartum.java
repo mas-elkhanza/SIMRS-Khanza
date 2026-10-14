@@ -159,7 +159,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiRanapPostPartum = new javax.swing.JMenuItem();
+        MnCatatanObservasiRanapPostPartum = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1301,7 +1301,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
     private widget.TextBox Kontraksi;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiRanapPostPartum;
+    private widget.MenuItem MnCatatanObservasiRanapPostPartum;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Perdarahan;

@@ -145,7 +145,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanSeleksi = new javax.swing.JMenuItem();
+        ppTampilkanSeleksi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
@@ -1194,7 +1194,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanSeleksi;
+    private widget.MenuItem ppTampilkanSeleksi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDetail;
     // End of variables declaration//GEN-END:variables

@@ -256,7 +256,7 @@ public final class LabKeslingBayarTagihanPengujianSampel extends javax.swing.JDi
         NoBayar = new widget.TextBox();
         jLabel6 = new widget.Label();
         DibayarOleh = new widget.TextBox();
-        TabData = new javax.swing.JTabbedPane();
+        TabData = new widget.TabPane();
         Scroll2 = new widget.ScrollPane();
         tbValidasi = new widget.Table();
         scrollPane8 = new widget.ScrollPane();
@@ -986,7 +986,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
     public widget.TextBox TKembali;
-    private javax.swing.JTabbedPane TabData;
+    private widget.TabPane TabData;
     private widget.TextBox TagihanPPn;
     private widget.Tanggal TanggalValidasi;
     private widget.TextBox TitikSampel;

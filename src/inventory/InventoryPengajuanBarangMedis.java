@@ -136,8 +136,8 @@ public class InventoryPengajuanBarangMedis extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppStok2 = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppStok2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -912,8 +912,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.TextBox nmptg;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppStok2;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppStok2;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

@@ -149,7 +149,7 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         Scroll.setViewportView(tbJnsPerawatan);
 

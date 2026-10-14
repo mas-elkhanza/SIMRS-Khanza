@@ -187,7 +187,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningPenglihatan = new javax.swing.JMenuItem();
+        MnSkriningPenglihatan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1743,7 +1743,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox MataLuar;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningPenglihatan;
+    private widget.MenuItem MnSkriningPenglihatan;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RefraksiKanan;

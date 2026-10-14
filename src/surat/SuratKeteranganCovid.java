@@ -134,7 +134,7 @@ public final class SuratKeteranganCovid extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratCovid = new javax.swing.JMenuItem();
+        MnCetakSuratCovid = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1139,7 +1139,7 @@ public final class SuratKeteranganCovid extends javax.swing.JDialog {
     private widget.TextBox KdDokter;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratCovid;
+    private widget.MenuItem MnCetakSuratCovid;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoSurat;

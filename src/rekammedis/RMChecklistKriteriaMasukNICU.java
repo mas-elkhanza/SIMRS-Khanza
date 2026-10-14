@@ -151,7 +151,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukNICU = new javax.swing.JMenuItem();
+        MnKriteriaMasukNICU = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1801,7 +1801,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private widget.ComboBox Metabolik1;
     private widget.ComboBox Metabolik2;
     private widget.ComboBox Metabolik3;
-    private javax.swing.JMenuItem MnKriteriaMasukNICU;
+    private widget.MenuItem MnKriteriaMasukNICU;
     private widget.TextBox NamaPetugas;
     private widget.ComboBox Neuro1;
     private widget.ComboBox Neuro2;

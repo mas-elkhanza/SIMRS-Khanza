@@ -158,7 +158,7 @@ public class DlgPilihPoli extends javax.swing.JDialog {
 
         jScrollPane1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
 
-        tbAdmin.setAutoCreateRowSorter(true);
+        tbAdmin.setAutoCreateRowSorter(false);
         tbAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

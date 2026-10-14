@@ -154,8 +154,8 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppRincian = new javax.swing.JMenuItem();
-        ppRincian2 = new javax.swing.JMenuItem();
+        ppRincian = new widget.MenuItem();
+        ppRincian2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -1445,8 +1445,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label16;
     private widget.Label label9;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppRincian;
-    private javax.swing.JMenuItem ppRincian2;
+    private widget.MenuItem ppRincian;
+    private widget.MenuItem ppRincian2;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

@@ -142,8 +142,8 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanSeleksi = new javax.swing.JMenuItem();
-        ppTampilkanRanapGabung = new javax.swing.JMenuItem();
+        ppTampilkanSeleksi = new widget.MenuItem();
+        ppTampilkanRanapGabung = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
@@ -166,7 +166,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         scrollPane3 = new widget.ScrollPane();
@@ -1192,7 +1192,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnSeek2;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.CekBox chkLaborat;
@@ -1209,8 +1209,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox nmdokter;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanRanapGabung;
-    private javax.swing.JMenuItem ppTampilkanSeleksi;
+    private widget.MenuItem ppTampilkanRanapGabung;
+    private widget.MenuItem ppTampilkanSeleksi;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
