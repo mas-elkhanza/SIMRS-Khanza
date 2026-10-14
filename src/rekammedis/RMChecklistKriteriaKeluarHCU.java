@@ -149,7 +149,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaKeluarHCU = new javax.swing.JMenuItem();
+        MnKriteriaKeluarHCU = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1358,7 +1358,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
     private widget.ComboBox Kriteria9;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaKeluarHCU;
+    private widget.MenuItem MnKriteriaKeluarHCU;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

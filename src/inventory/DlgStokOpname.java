@@ -168,20 +168,20 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         nofaktur = new widget.TextBox();
         KdGudang = new widget.TextBox();
         Popup1 = new javax.swing.JPopupMenu();
-        MnKodeBarangDesc = new javax.swing.JMenuItem();
-        MnKodeBarangAsc = new javax.swing.JMenuItem();
-        MnNamaBarangDesc = new javax.swing.JMenuItem();
-        MnNamaBarangAsc = new javax.swing.JMenuItem();
-        MnKategoriAsc = new javax.swing.JMenuItem();
-        MnKategoriDesc = new javax.swing.JMenuItem();
-        MnJenisDesc = new javax.swing.JMenuItem();
-        MnJenisAsc = new javax.swing.JMenuItem();
-        MnGolonganDesc = new javax.swing.JMenuItem();
-        MnGolonganAsc = new javax.swing.JMenuItem();
-        MnKodeLokasiOpnameDesc = new javax.swing.JMenuItem();
-        MnKodeLokasiOpnameAsc = new javax.swing.JMenuItem();
-        MnNamaLokasiOpnameDesc = new javax.swing.JMenuItem();
-        MnNamaLokasiOpnameAsc = new javax.swing.JMenuItem();
+        MnKodeBarangDesc = new widget.MenuItem();
+        MnKodeBarangAsc = new widget.MenuItem();
+        MnNamaBarangDesc = new widget.MenuItem();
+        MnNamaBarangAsc = new widget.MenuItem();
+        MnKategoriAsc = new widget.MenuItem();
+        MnKategoriDesc = new widget.MenuItem();
+        MnJenisDesc = new widget.MenuItem();
+        MnJenisAsc = new widget.MenuItem();
+        MnGolonganDesc = new widget.MenuItem();
+        MnGolonganAsc = new widget.MenuItem();
+        MnKodeLokasiOpnameDesc = new widget.MenuItem();
+        MnKodeLokasiOpnameAsc = new widget.MenuItem();
+        MnNamaLokasiOpnameDesc = new widget.MenuItem();
+        MnNamaLokasiOpnameAsc = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -705,7 +705,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setComponentPopupMenu(Popup1);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1504,20 +1504,20 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Label LTotalLebih;
     private widget.Label LTotalReal;
     private widget.TextBox Lebih;
-    private javax.swing.JMenuItem MnGolonganAsc;
-    private javax.swing.JMenuItem MnGolonganDesc;
-    private javax.swing.JMenuItem MnJenisAsc;
-    private javax.swing.JMenuItem MnJenisDesc;
-    private javax.swing.JMenuItem MnKategoriAsc;
-    private javax.swing.JMenuItem MnKategoriDesc;
-    private javax.swing.JMenuItem MnKodeBarangAsc;
-    private javax.swing.JMenuItem MnKodeBarangDesc;
-    private javax.swing.JMenuItem MnKodeLokasiOpnameAsc;
-    private javax.swing.JMenuItem MnKodeLokasiOpnameDesc;
-    private javax.swing.JMenuItem MnNamaBarangAsc;
-    private javax.swing.JMenuItem MnNamaBarangDesc;
-    private javax.swing.JMenuItem MnNamaLokasiOpnameAsc;
-    private javax.swing.JMenuItem MnNamaLokasiOpnameDesc;
+    private widget.MenuItem MnGolonganAsc;
+    private widget.MenuItem MnGolonganDesc;
+    private widget.MenuItem MnJenisAsc;
+    private widget.MenuItem MnJenisDesc;
+    private widget.MenuItem MnKategoriAsc;
+    private widget.MenuItem MnKategoriDesc;
+    private widget.MenuItem MnKodeBarangAsc;
+    private widget.MenuItem MnKodeBarangDesc;
+    private widget.MenuItem MnKodeLokasiOpnameAsc;
+    private widget.MenuItem MnKodeLokasiOpnameDesc;
+    private widget.MenuItem MnNamaBarangAsc;
+    private widget.MenuItem MnNamaBarangDesc;
+    private widget.MenuItem MnNamaLokasiOpnameAsc;
+    private widget.MenuItem MnNamaLokasiOpnameDesc;
     private widget.TextBox NmGudang;
     private widget.TextBox Nmbar;
     private widget.TextBox NomiLebih;

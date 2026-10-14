@@ -739,7 +739,7 @@ public class frmUtama extends javax.swing.JFrame {
                         //pasien Non JKN
                         TeksArea.append("Menjalankan WS tambah antrian Mobile JKN Pasien Non BPJS/BJS Onsite\n");
                         ps=koneksi.prepareStatement(
-                                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,reg_periksa.no_rkm_medis,reg_periksa.kd_pj "+
+                                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,reg_periksa.no_rkm_medis,reg_periksa.kd_pj "+
                                 "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.tgl_registrasi between '"+Tanggal1.getText()+"' and '"+Tanggal2.getText()+"' "+
                                 "and reg_periksa.no_rawat not in (select referensi_mobilejkn_bpjs.no_rawat from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.tanggalperiksa between '"+Tanggal1.getText()+"' and '"+Tanggal2.getText()+"') "+
                                 "order by concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg)");
@@ -859,7 +859,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 }
 
                                                 modulus = modulus % 9;
-                                                datajam = Sequel.cariIsi("select SUBDATE(if(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg)>concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg),concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"')), INTERVAL " + (38 + modulus) + " MINUTE) from reg_periksa where reg_periksa.no_rawat=?", rs.getString("no_rawat"));
+                                                datajam = Sequel.cariIsi("select SUBDATE(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg), INTERVAL " + (38 + modulus) + " MINUTE) from reg_periksa where reg_periksa.no_rawat=?", rs.getString("no_rawat"));
                                                 if (!datajam.equals("") && Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid", "?,?,?", "task id", 3, new String[]{rs.getString("no_rawat"), "1", datajam})) {
                                                    parsedDate = dateFormat.parse(datajam);
 
@@ -900,7 +900,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 }
 
                                                 modulus = modulus % 6;
-                                                datajam = Sequel.cariIsi("select SUBDATE(if(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg)>concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg),concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"')), INTERVAL " + (13 + modulus) + " MINUTE) from reg_periksa where reg_periksa.no_rawat=?", rs.getString("no_rawat"));
+                                                datajam = Sequel.cariIsi("select SUBDATE(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg), INTERVAL " + (13 + modulus) + " MINUTE) from reg_periksa where reg_periksa.no_rawat=?", rs.getString("no_rawat"));
                                                 if (!datajam.equals("") && Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid", "?,?,?", "task id", 3, new String[]{rs.getString("no_rawat"), "2", datajam})) {
                                                    parsedDate = dateFormat.parse(datajam);
 
@@ -932,7 +932,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             }
                                             
                                             if(task2.equals("Sudah")&&task3.equals("")){
-                                                datajam=Sequel.cariIsi("select if(concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg)>concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg),concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"')) as tanggal from reg_periksa where reg_periksa.no_rawat=?",rs.getString("no_rawat"));
+                                                datajam=Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",rs.getString("no_rawat"));
                                                 if(!datajam.equals("")){
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);

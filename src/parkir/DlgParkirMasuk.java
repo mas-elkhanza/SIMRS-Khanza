@@ -566,7 +566,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamIn.setAutoCreateRowSorter(true);
+        tbKamIn.setAutoCreateRowSorter(false);
         tbKamIn.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamIn.setName("tbKamIn"); // NOI18N
         tbKamIn.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -149,7 +149,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiRestrain = new javax.swing.JMenuItem();
+        MnCatatanObservasiRestrain = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1272,7 +1272,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private widget.TextArea Kondisi;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiRestrain;
+    private widget.MenuItem MnCatatanObservasiRestrain;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

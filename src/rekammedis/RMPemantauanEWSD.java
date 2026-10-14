@@ -159,7 +159,7 @@ public final class RMPemantauanEWSD extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPemantauanPEWS = new javax.swing.JMenuItem();
+        MnPemantauanPEWS = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1443,7 +1443,7 @@ public final class RMPemantauanEWSD extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPemantauanPEWS;
+    private widget.MenuItem MnPemantauanPEWS;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox ParameterSkor;

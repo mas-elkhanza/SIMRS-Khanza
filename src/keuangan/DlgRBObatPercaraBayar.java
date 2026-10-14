@@ -128,8 +128,8 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnUrut1 = new javax.swing.JMenuItem();
-        MnUrut2 = new javax.swing.JMenuItem();
+        MnUrut1 = new widget.MenuItem();
+        MnUrut2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -590,8 +590,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private widget.TextBox Kd2;
-    private javax.swing.JMenuItem MnUrut1;
-    private javax.swing.JMenuItem MnUrut2;
+    private widget.MenuItem MnUrut1;
+    private widget.MenuItem MnUrut2;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;

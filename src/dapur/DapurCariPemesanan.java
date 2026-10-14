@@ -128,8 +128,8 @@ public class DapurCariPemesanan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppHapus = new javax.swing.JMenuItem();
-        ppBayar = new javax.swing.JMenuItem();
+        ppHapus = new widget.MenuItem();
+        ppBayar = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -1121,8 +1121,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppBayar;
-    private javax.swing.JMenuItem ppHapus;
+    private widget.MenuItem ppBayar;
+    private widget.MenuItem ppHapus;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

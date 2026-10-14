@@ -135,7 +135,7 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
         kdpoli = new widget.TextBox();
         kdpenjab = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnInputDiagnosa = new javax.swing.JMenuItem();
+        MnInputDiagnosa = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -894,7 +894,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnSeek3;
     private widget.CekBox ChkInput;
     private widget.panelisi FormInput;
-    private javax.swing.JMenuItem MnInputDiagnosa;
+    private widget.MenuItem MnInputDiagnosa;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.ComboBox Status;

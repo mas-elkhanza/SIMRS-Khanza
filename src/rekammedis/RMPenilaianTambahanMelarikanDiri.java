@@ -230,7 +230,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianTambahanMelarikanDiri = new javax.swing.JMenuItem();
+        MnPenilaianTambahanMelarikanDiri = new widget.MenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -2262,7 +2262,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private widget.Label Level;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianTambahanMelarikanDiri;
+    private widget.MenuItem MnPenilaianTambahanMelarikanDiri;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

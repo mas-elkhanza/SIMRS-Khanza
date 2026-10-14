@@ -167,7 +167,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakLayananProgramKFR = new javax.swing.JMenuItem();
+        MnCetakLayananProgramKFR = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1406,7 +1406,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCetakLayananProgramKFR;
+    private widget.MenuItem MnCetakLayananProgramKFR;
     private widget.TextBox NmPetugas;
     public widget.TextBox NoPermintaan;
     private widget.PanelBiasa PanelAccor;

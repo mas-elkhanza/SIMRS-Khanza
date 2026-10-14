@@ -155,7 +155,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -247,7 +247,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit, untuk menghapus data silahkan centang kemudian klik hapus");
         tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1345,7 +1345,7 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox KdKtg;
     private widget.Label LCount;
     private widget.TextBox Menejemen;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private widget.TextBox NmKtg;
     private widget.TextBox NmPoli;
     private javax.swing.JPanel PanelInput;

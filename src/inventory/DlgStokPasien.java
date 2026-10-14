@@ -173,11 +173,11 @@ public final class DlgStokPasien extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppResepObat = new javax.swing.JMenuItem();
-        ppResepObat1 = new javax.swing.JMenuItem();
-        ppResepObat2 = new javax.swing.JMenuItem();
-        ppLabelObat = new javax.swing.JMenuItem();
-        ppLabelObat2 = new javax.swing.JMenuItem();
+        ppResepObat = new widget.MenuItem();
+        ppResepObat1 = new widget.MenuItem();
+        ppResepObat2 = new widget.MenuItem();
+        ppLabelObat = new widget.MenuItem();
+        ppLabelObat2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -306,7 +306,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
@@ -1956,11 +1956,11 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppLabelObat;
-    private javax.swing.JMenuItem ppLabelObat2;
-    private javax.swing.JMenuItem ppResepObat;
-    private javax.swing.JMenuItem ppResepObat1;
-    private javax.swing.JMenuItem ppResepObat2;
+    private widget.MenuItem ppLabelObat;
+    private widget.MenuItem ppLabelObat2;
+    private widget.MenuItem ppResepObat;
+    private widget.MenuItem ppResepObat1;
+    private widget.MenuItem ppResepObat2;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

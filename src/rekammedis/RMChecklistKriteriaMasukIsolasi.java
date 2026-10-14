@@ -220,7 +220,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukIsolasi = new javax.swing.JMenuItem();
+        MnKriteriaMasukIsolasi = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2201,7 +2201,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.ComboBox KontakSkabies;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukIsolasi;
+    private widget.MenuItem MnKriteriaMasukIsolasi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PintuKamarOtomatis;

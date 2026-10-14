@@ -234,7 +234,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianMedis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -244,7 +244,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2286,7 +2286,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     private widget.TextArea Laborat;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Mata;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private usu.widget.glass.PanelGlass PanelWall;
@@ -2308,7 +2308,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextArea Tatalaksana;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;

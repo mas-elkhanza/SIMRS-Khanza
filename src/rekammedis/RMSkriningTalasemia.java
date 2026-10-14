@@ -186,7 +186,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningThalassemia = new javax.swing.JMenuItem();
+        MnSkriningThalassemia = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1615,7 +1615,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     private widget.ComboBox MCHC;
     private widget.ComboBox MVC;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningThalassemia;
+    private widget.MenuItem MnSkriningThalassemia;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Pendek;

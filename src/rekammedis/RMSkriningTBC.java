@@ -277,7 +277,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTBC = new javax.swing.JMenuItem();
+        MnSkriningTBC = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -2169,7 +2169,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private widget.ComboBox Malnutrisi;
     private widget.ComboBox Menit;
     private widget.ComboBox Merokok;
-    private javax.swing.JMenuItem MnSkriningTBC;
+    private widget.MenuItem MnSkriningTBC;
     private widget.TextBox NmPetugas;
     private widget.ComboBox Odhiv;
     private javax.swing.JPanel PanelInput;

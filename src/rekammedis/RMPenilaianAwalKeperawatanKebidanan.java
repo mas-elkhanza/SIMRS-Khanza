@@ -593,7 +593,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -5368,7 +5368,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
     private widget.Tanggal TP;
     private widget.TextBox TPasien;
     private widget.TextBox TPasien1;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TanggalPersalinan;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TempatPersalinan;

@@ -88,8 +88,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppCentang = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppCentang = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbAdmin = new widget.Table();
@@ -433,8 +433,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private widget.panelisi panelGlass1;
     private widget.panelisi panelGlass7;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppCentang;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppCentang;
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 

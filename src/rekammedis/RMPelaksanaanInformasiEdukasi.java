@@ -182,7 +182,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakPelaksanaanEdukasi = new javax.swing.JMenuItem();
+        MnCetakPelaksanaanEdukasi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1505,7 +1505,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.TextArea Materi;
     private widget.ComboBox Menit;
     private widget.ComboBox Metode;
-    private javax.swing.JMenuItem MnCetakPelaksanaanEdukasi;
+    private widget.MenuItem MnCetakPelaksanaanEdukasi;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.PanelBiasa PanelAccor;

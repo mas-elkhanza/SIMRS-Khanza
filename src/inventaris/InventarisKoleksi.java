@@ -167,9 +167,9 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppBarcode = new javax.swing.JMenuItem();
-        ppBarcode2 = new javax.swing.JMenuItem();
-        ppBarcode3 = new javax.swing.JMenuItem();
+        ppBarcode = new widget.MenuItem();
+        ppBarcode2 = new widget.MenuItem();
+        ppBarcode3 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -301,7 +301,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1455,9 +1455,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private widget.ComboBox no_rak;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppBarcode;
-    private javax.swing.JMenuItem ppBarcode2;
-    private javax.swing.JMenuItem ppBarcode3;
+    private widget.MenuItem ppBarcode;
+    private widget.MenuItem ppBarcode2;
+    private widget.MenuItem ppBarcode3;
     private widget.ComboBox status_barang;
     private widget.Table tbJnsPerawatan;
     private widget.Tanggal tgl_pengadaan;

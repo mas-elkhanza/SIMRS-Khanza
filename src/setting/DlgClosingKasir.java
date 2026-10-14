@@ -151,7 +151,7 @@ public class DlgClosingKasir extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setAutoCreateRowSorter(true);
+        tbJadwal.setAutoCreateRowSorter(false);
         tbJadwal.setToolTipText("<html>Untuk mengatur closing shift silahkan gunakkan jam secara bersambung,<br>\njangan menggunakan jam yang sama antara jam mulai dengan jam selesai<br>\npada shift sebelumnya</html>");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {

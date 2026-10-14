@@ -147,8 +147,8 @@ public class INACBGPerawatanCorona extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
-        MnNIK = new javax.swing.JMenuItem();
-        MnKartu = new javax.swing.JMenuItem();
+        MnNIK = new widget.MenuItem();
+        MnKartu = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -252,7 +252,7 @@ public class INACBGPerawatanCorona extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1117,8 +1117,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa FormInput;
     private widget.ComboBox KantongJenazah;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKartu;
-    private javax.swing.JMenuItem MnNIK;
+    private widget.MenuItem MnKartu;
+    private widget.MenuItem MnNIK;
     private widget.ComboBox MobilJenazah;
     private widget.TextBox NamaPasien;
     private widget.TextBox NoJaminan;

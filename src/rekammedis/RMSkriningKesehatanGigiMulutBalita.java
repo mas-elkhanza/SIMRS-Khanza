@@ -180,7 +180,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKesehatanGigiMulutBalita = new javax.swing.JMenuItem();
+        MnSkriningKesehatanGigiMulutBalita = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1591,7 +1591,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private widget.ComboBox MengemutMakanan;
     private widget.ComboBox Menit;
     private widget.ComboBox MenyikatGigi;
-    private javax.swing.JMenuItem MnSkriningKesehatanGigiMulutBalita;
+    private widget.MenuItem MnSkriningKesehatanGigiMulutBalita;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PernahPemeriksaanGigi;

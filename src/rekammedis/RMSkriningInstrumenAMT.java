@@ -201,7 +201,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenAMT = new javax.swing.JMenuItem();
+        MnSkriningInstrumenAMT = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -1775,7 +1775,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenAMT;
+    private widget.MenuItem MnSkriningInstrumenAMT;
     private widget.TextBox NilaiAMT1;
     private widget.TextBox NilaiAMT10;
     private widget.TextBox NilaiAMT2;

@@ -183,7 +183,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSignInSebelumAnestesi = new javax.swing.JMenuItem();
+        MnSignInSebelumAnestesi = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1617,7 +1617,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnSignInSebelumAnestesi;
+    private widget.MenuItem MnSignInSebelumAnestesi;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;

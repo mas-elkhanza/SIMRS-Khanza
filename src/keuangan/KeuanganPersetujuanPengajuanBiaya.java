@@ -466,9 +466,9 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         panelisi1.add(BtnSetujui);
 
         BtnTolak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnTolak.setMnemonic('s');
+        BtnTolak.setMnemonic('l');
         BtnTolak.setText("Tolak");
-        BtnTolak.setToolTipText("Alt+S");
+        BtnTolak.setToolTipText("Alt+L");
         BtnTolak.setName("BtnTolak"); // NOI18N
         BtnTolak.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnTolak.addActionListener(new java.awt.event.ActionListener() {

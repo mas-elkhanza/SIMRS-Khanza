@@ -192,7 +192,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKekerasanPadaPerempuan = new javax.swing.JMenuItem();
+        MnSkriningKekerasanPadaPerempuan = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -1657,7 +1657,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningKekerasanPadaPerempuan;
+    private widget.MenuItem MnSkriningKekerasanPadaPerempuan;
     private widget.TextBox NilaiPertanyaanAwal1;
     private widget.TextBox NilaiPertanyaanAwal2;
     private widget.TextBox NilaiPertanyaanLanjutan1;

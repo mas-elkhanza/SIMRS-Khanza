@@ -136,7 +136,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
+        ppBersihkan = new widget.MenuItem();
         TNoRw = new widget.TextBox();
         TKdPny = new widget.TextBox();
         Tanggal = new widget.TextBox();
@@ -241,7 +241,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -806,7 +806,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label label9;
     private widget.TextBox nmgudang;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBersihkan;
+    private widget.MenuItem ppBersihkan;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

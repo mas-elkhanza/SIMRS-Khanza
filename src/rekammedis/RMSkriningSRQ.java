@@ -243,7 +243,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenSRQ = new javax.swing.JMenuItem();
+        MnSkriningInstrumenSRQ = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -2442,7 +2442,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenSRQ;
+    private widget.MenuItem MnSkriningInstrumenSRQ;
     private widget.TextBox NilaiSRQ1;
     private widget.TextBox NilaiSRQ10;
     private widget.TextBox NilaiSRQ11;

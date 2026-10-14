@@ -223,7 +223,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="fe" type="rgb"/>
@@ -2649,7 +2649,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Container class="javax.swing.JTabbedPane" name="TabRencanaKeperawatan">
+                        <Container class="widget.TabPane" name="TabRencanaKeperawatan">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="fe" green="ff" red="ff" type="rgb"/>
