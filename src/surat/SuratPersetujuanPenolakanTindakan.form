@@ -319,7 +319,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Diagnosa">
+                            <Component class="javax.swing.JTextArea" name="Diagnosa">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -678,7 +678,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="TindakanKedokteran">
+                            <Component class="javax.swing.JTextArea" name="TindakanKedokteran">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -734,7 +734,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="IndikasiTindakan">
+                            <Component class="javax.swing.JTextArea" name="IndikasiTindakan">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -766,7 +766,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="TataCara">
+                            <Component class="javax.swing.JTextArea" name="TataCara">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -810,7 +810,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Risiko">
+                            <Component class="javax.swing.JTextArea" name="Risiko">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -842,7 +842,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Tujuan">
+                            <Component class="javax.swing.JTextArea" name="Tujuan">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -910,7 +910,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Komplikasi">
+                            <Component class="javax.swing.JTextArea" name="Komplikasi">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -942,7 +942,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Prognosis">
+                            <Component class="javax.swing.JTextArea" name="Prognosis">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -998,7 +998,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="AlternatifResiko">
+                            <Component class="javax.swing.JTextArea" name="AlternatifResiko">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1030,7 +1030,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="LainLain">
+                            <Component class="javax.swing.JTextArea" name="LainLain">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
