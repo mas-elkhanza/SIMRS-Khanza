@@ -10395,6 +10395,7 @@ CREATE TABLE `hasil_persalinan_tolac` (
 
 LOCK TABLES `hasil_persalinan_tolac` WRITE;
 /*!40000 ALTER TABLE `hasil_persalinan_tolac` DISABLE KEYS */;
+INSERT INTO `hasil_persalinan_tolac` VALUES ('2026/04/07/000001','2026-10-15 09:09:19','Spontan','Tidak','Ya','VBAC Berhasil','1','2','Tidak Ada','3','Tidak','Tidak','4','Hidup','5','6','7','Tidak','Tidak','8','D0000004');
 /*!40000 ALTER TABLE `hasil_persalinan_tolac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44626,4 +44627,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-12  8:42:25
+-- Dump completed on 2026-10-15  9:13:38
