@@ -516,7 +516,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
@@ -653,7 +652,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 520, 175, 23);
 
-        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
+        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Suami", "Istri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
         HubunganDenganPasien.setName("HubunganDenganPasien"); // NOI18N
         HubunganDenganPasien.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -672,7 +671,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
-        TglPernyataan.setOpaque(false);
         TglPernyataan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPernyataanKeyPressed(evt);
@@ -1004,7 +1002,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
-        TglLahirPenerima.setOpaque(false);
         TglLahirPenerima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglLahirPenerimaKeyPressed(evt);
@@ -1178,7 +1175,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -1192,7 +1188,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -1316,7 +1311,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormPhoto.add(FormPass3, java.awt.BorderLayout.PAGE_END);
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
-        TabData.setForeground(new java.awt.Color(50, 50, 50));
         TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
