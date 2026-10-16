@@ -35,8 +35,8 @@ public class ScrollPane extends JScrollPane {
 
         getVerticalScrollBar().setUI(new ModernScrollBarUI());
         getHorizontalScrollBar().setUI(new ModernScrollBarUI());
-        getVerticalScrollBar().setUnitIncrement(15);
-        getHorizontalScrollBar().setUnitIncrement(15);
+        getVerticalScrollBar().setUnitIncrement(25);
+        getHorizontalScrollBar().setUnitIncrement(25);
         getVerticalScrollBar().setOpaque(false);
         getHorizontalScrollBar().setOpaque(false);
 

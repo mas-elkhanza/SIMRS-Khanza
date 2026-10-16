@@ -21,8 +21,8 @@ public class RadioButton extends JRadioButton {
     private static final long serialVersionUID = 2L;
 
     static final Color AKSEN    = new Color(0x16A05D);
-    static final Color BORDER   = new Color(0xA7B6AD);
-    static final Color HOVER    = new Color(0x6F8578);
+    static final Color BORDER   = new Color(0x96BEA5);   
+    static final Color HOVER    = new Color(0x5A9170);
     static final Color NONAKTIF = new Color(0xF1F4F2);
     static final Color RING     = new Color(0x16, 0xA0, 0x5D, 70);
 

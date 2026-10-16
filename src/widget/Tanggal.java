@@ -30,7 +30,7 @@ import uz.ncipro.calendar.JDateTimePicker;
 public final class Tanggal extends JDateTimePicker {
     private static final long serialVersionUID = 2L;
     private static final Color AKSEN     = new Color(0x16A05D);
-    private static final Color BORDER    = new Color(0xA7B6AD);
+    private static final Color BORDER    = new Color(0x96BEA5);   
     private static final Color NONAKTIF  = new Color(0xFAFCFB);
     private static final Color PEMISAH   = new Color(0xD3DDD7);
     private static final Color TINT      = new Color(0x16, 0xA0, 0x5D, 30);  
@@ -93,7 +93,7 @@ public final class Tanggal extends JDateTimePicker {
                 b.addMouseListener(hoverTombol(b));
                 b.addMouseListener(hoverKomponen());
             }
-        } else if (c instanceof JTextComponent) {          
+        } else if (c instanceof JTextComponent) {         
             JTextComponent t = (JTextComponent) c;
             t.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 4));
             t.setBackground(BENING);
@@ -209,10 +209,10 @@ public final class Tanggal extends JDateTimePicker {
                 g2.setColor(TINT);
                 g2.fillRect(r.x, r.y, r.width, r.height);
             }
-            
+
             g2.setColor(PEMISAH);
             g2.drawLine(r.x, r.y + 3, r.x, r.y + r.height - 4);
-
+            
             float cx = r.x + r.width / 2f + 0.5f;
             float cy = r.y + r.height / 2f + 0.5f;
             Path2D chevron = new Path2D.Float();
@@ -255,7 +255,7 @@ public final class Tanggal extends JDateTimePicker {
                 }
                 Color garis = !isEnabled() ? new Color(BORDER.getRed(), BORDER.getGreen(), BORDER.getBlue(), 130)
                         : f ? AKSEN
-                        : hover ? new Color(0x6F8578)
+                        : hover ? new Color(0x5A9170)
                         : BORDER;
                 g2.setColor(garis);
                 g2.setStroke(new BasicStroke(1f));
@@ -267,7 +267,7 @@ public final class Tanggal extends JDateTimePicker {
 
         @Override
         public Insets getBorderInsets(Component c) {
-            return new Insets(2, 6, 2, 3);  
+            return new Insets(2, 6, 2, 3);   
         }
 
         @Override

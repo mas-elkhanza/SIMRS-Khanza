@@ -1904,26 +1904,28 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select "+
-                    "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
                     "dokter.nm_dokter,admisi_skoring_tolac.tanggal,admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
                     "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
                     "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
                     "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
                     "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
                     "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan "+
-                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter where admisi_skoring_tolac.tanggal between ? and ? order by admisi_skoring_tolac.tanggal ");
+                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter "+
+                    "where admisi_skoring_tolac.tanggal between ? and ? order by admisi_skoring_tolac.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select "+
-                    "reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,admisi_skoring_tolac.kd_dokter,"+
                     "dokter.nm_dokter,admisi_skoring_tolac.tanggal,admisi_skoring_tolac.his_frekuensi,admisi_skoring_tolac.his_durasi_detik,admisi_skoring_tolac.djj,"+
                     "admisi_skoring_tolac.pembukaan_cm,admisi_skoring_tolac.pendataran_persen,admisi_skoring_tolac.penurunan_kepala,admisi_skoring_tolac.pilihan_usia,"+
                     "admisi_skoring_tolac.skor_usia,admisi_skoring_tolac.pilihan_riwayat_pervaginam,admisi_skoring_tolac.skor_riwayat_pervaginam,"+
                     "admisi_skoring_tolac.pilihan_indikasi_sc,admisi_skoring_tolac.skor_indikasi_sc,admisi_skoring_tolac.pilihan_pendataran,"+
                     "admisi_skoring_tolac.skor_pendataran,admisi_skoring_tolac.pilihan_pembukaan,admisi_skoring_tolac.skor_pembukaan,admisi_skoring_tolac.total_skor,"+
                     "admisi_skoring_tolac.peluang_vbac,admisi_skoring_tolac.keputusan,admisi_skoring_tolac.keterangan "+
-                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter where admisi_skoring_tolac.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or admisi_skoring_tolac.kd_dokter like ? or dokter.nm_dokter like ? or admisi_skoring_tolac.keputusan like ? or admisi_skoring_tolac.keterangan like ?) order by admisi_skoring_tolac.tanggal ");
+                    "from admisi_skoring_tolac inner join reg_periksa on admisi_skoring_tolac.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on admisi_skoring_tolac.kd_dokter=dokter.kd_dokter "+
+                    "where admisi_skoring_tolac.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or admisi_skoring_tolac.kd_dokter like ? or dokter.nm_dokter like ? or admisi_skoring_tolac.keputusan like ? or admisi_skoring_tolac.keterangan like ?) order by admisi_skoring_tolac.tanggal ");
             }
                 
             try {
