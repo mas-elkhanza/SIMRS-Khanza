@@ -1692,7 +1692,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where bayar_pemesanan.no_faktur=pemesanan.no_faktur) as bayar, "+
                     "datasuplier.nama_bank,datasuplier.rekening from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
                     "inner join bangsal on pemesanan.kd_bangsal=bangsal.kd_bangsal inner join petugas on pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"(pemesanan.status='Belum Dibayar' or pemesanan.status='Belum Lunas') and datasuplier.nama_suplier like ? "+
+                    tanggaldatang+tanggaltempo+" pemesanan.status in ('Belum Dibayar','Belum Lunas') and datasuplier.nama_suplier like ? "+
                     (TCari.getText().trim().equals("")?"":"and (pemesanan.no_faktur like ? or pemesanan.no_order like ? or pemesanan.tgl_tempo like ? or "+
                     "datasuplier.nama_suplier like ? or bangsal.nm_bangsal like ? or petugas.nama like ?) ")+"order by pemesanan.tgl_tempo ");
             try {

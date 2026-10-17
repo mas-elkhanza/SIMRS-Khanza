@@ -503,12 +503,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 tanggaltempo=" ipsrspemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
             }
             ps=koneksi.prepareStatement(
-                    "select ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier,(ipsrspemesanan.tagihan-"+
-                    "(SELECT ifnull(SUM(bayar_pemesanan_non_medis.besar_bayar),0) FROM bayar_pemesanan_non_medis where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur)) as sisahutang "+
-                    "from ipsrspemesanan inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
-                    "where "+tanggaldatang+tanggaltempo+"(ipsrspemesanan.status='Belum Dibayar' or ipsrspemesanan.status='Belum Lunas') "+
-                    (TCari.getText().trim().equals("")?"":"and (ipsrssuplier.nama_suplier like ? or ipsrspemesanan.kode_suplier like ?) ")+
-                    "group by ipsrspemesanan.kode_suplier order by ipsrspemesanan.kode_suplier ");
+                "select ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier,sum(ipsrspemesanan.tagihan-(SELECT ifnull(SUM(bayar_pemesanan_non_medis.besar_bayar),0) FROM bayar_pemesanan_non_medis "+
+                "where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur)) as sisahutang from ipsrspemesanan inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
+                "where "+tanggaldatang+tanggaltempo+" ipsrspemesanan.status in ('Belum Dibayar','Belum Lunas') "+
+                (TCari.getText().trim().equals("")?"":"and (ipsrssuplier.nama_suplier like ? or ipsrspemesanan.kode_suplier like ?) ")+
+                "group by ipsrspemesanan.kode_suplier order by ipsrspemesanan.kode_suplier "
+            );
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");

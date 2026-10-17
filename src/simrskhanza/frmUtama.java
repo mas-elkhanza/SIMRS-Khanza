@@ -1341,11 +1341,11 @@ public class frmUtama extends javax.swing.JFrame {
         DlgHome = new javax.swing.JDialog();
         panelMenu = new widget.InternalFrame();
         panelisi2 = new widget.panelisi();
+        button1 = new widget.Button();
         label35 = new widget.Label();
         cmbMenu = new widget.ComboBox();
         TCari = new widget.TextBox();
         ChkInput = new widget.CekBox();
-        button1 = new widget.Button();
         scrollPane2 = new widget.ScrollPane();
         Panelmenu = new widget.panelGlass();
         tanggal = new widget.Tanggal();
@@ -2026,6 +2026,18 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        button1.setGlassColor(new java.awt.Color(255, 255, 255));
+        button1.setMinimumSize(new java.awt.Dimension(28, 23));
+        button1.setName("button1"); // NOI18N
+        button1.setPreferredSize(new java.awt.Dimension(25, 23));
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        panelisi2.add(button1);
+
         label35.setText("Tampilkan Menu :");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -2069,18 +2081,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(ChkInput);
 
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        button1.setGlassColor(new java.awt.Color(255, 255, 255));
-        button1.setMinimumSize(new java.awt.Dimension(28, 23));
-        button1.setName("button1"); // NOI18N
-        button1.setPreferredSize(new java.awt.Dimension(25, 23));
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        panelisi2.add(button1);
-
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(238, 240, 230)));
@@ -2099,7 +2099,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/10/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/10/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
 

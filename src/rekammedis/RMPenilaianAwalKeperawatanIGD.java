@@ -844,7 +844,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
@@ -1245,7 +1244,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         FormInput.add(Nyeri);
         Nyeri.setBounds(375, 700, 130, 23);
 
-        Provokes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Proses Penyakit", "Benturan", "Lain-lain" }));
+        Provokes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Proses Penyakit", "Benturan", "Lain-lain" }));
         Provokes.setName("Provokes"); // NOI18N
         Provokes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1270,7 +1269,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         FormInput.add(jLabel80);
         jLabel80.setBounds(510, 700, 60, 23);
 
-        Quality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seperti Tertusuk", "Berdenyut", "Teriris", "Tertindih", "Tertiban", "Lain-lain" }));
+        Quality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Seperti Tertusuk", "Berdenyut", "Teriris", "Tertindih", "Tertiban", "Lain-lain" }));
         Quality.setName("Quality"); // NOI18N
         Quality.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1418,10 +1417,9 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         KetDokter.setBounds(774, 850, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024 05:41:57" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-10-2026 21:34:07" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
-        TglAsuhan.setOpaque(false);
         TglAsuhan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglAsuhanKeyPressed(evt);
@@ -1574,7 +1572,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         FormInput.add(jLabel78);
         jLabel78.setBounds(440, 150, 106, 23);
 
-        StatusKehamilan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Hamil", "Hamil" }));
+        StatusKehamilan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Tidak Hamil", "Hamil" }));
         StatusKehamilan.setName("StatusKehamilan"); // NOI18N
         StatusKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2242,7 +2240,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         TabRencanaKeperawatan.setBackground(new java.awt.Color(255, 255, 254));
         TabRencanaKeperawatan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabRencanaKeperawatan.setForeground(new java.awt.Color(50, 50, 50));
         TabRencanaKeperawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRencanaKeperawatan.setName("TabRencanaKeperawatan"); // NOI18N
 
@@ -2386,10 +2383,9 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -2400,10 +2396,9 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -4199,6 +4194,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }
+        Valid.tabelKosong(tabModeRencana);
         TabRawat.setSelectedIndex(0);
         Informasi.requestFocus();
     } 
@@ -4758,7 +4754,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 Valid.tabelKosong(tabModeDetailRencana);
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?,'-'",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
@@ -4768,7 +4764,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?,'-'",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
@@ -4802,7 +4798,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("penilaian_awal_keperawatan_igd","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",69,new String[]{
+        if(Sequel.menyimpantf("penilaian_awal_keperawatan_igd","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","No.Rawat",69,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),KeluhanUtama.getText(),RPD.getText(),RPO.getText(),StatusKehamilan.getSelectedItem().toString(),
                 Gravida.getText(),Para.getText(),Abortus.getText(),HPHT.getText(),Tekanan.getSelectedItem().toString(),Pupil.getSelectedItem().toString(),Neurosensorik.getSelectedItem().toString(),Integumen.getSelectedItem().toString(),
                 Turgor.getSelectedItem().toString(),Edema.getSelectedItem().toString(),Mukosa.getSelectedItem().toString(),Perdarahan.getSelectedItem().toString(),JumlahPerdarahan.getText(),
@@ -4829,7 +4825,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 Valid.tabelKosong(tabModeDetailRencana);
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?,'-'",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
@@ -4839,7 +4835,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?,'-'",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
