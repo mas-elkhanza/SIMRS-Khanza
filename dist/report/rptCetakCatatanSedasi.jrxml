@@ -1,0 +1,1644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="javascript" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="diagnosa" class="java.lang.String"/>
+	<parameter name="lokalis" class="java.io.InputStream"/>
+	<parameter name="masalah" class="java.lang.String"/>
+	<parameter name="finger" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,catatan_anestesi_sedasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,
+                catatan_anestesi_sedasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,catatan_anestesi_sedasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,
+                catatan_anestesi_sedasi.nip_perawat_ok,petugasbedah.nama as petugasbedah,catatan_anestesi_sedasi.diagnosa_pre_bedah,catatan_anestesi_sedasi.tindakan_jenis_pembedahan,
+                catatan_anestesi_sedasi.diagnosa_pasca_bedah,catatan_anestesi_sedasi.pre_induksi_jam,catatan_anestesi_sedasi.pre_induksi_kesadaran,catatan_anestesi_sedasi.pre_induksi_td,
+                catatan_anestesi_sedasi.pre_induksi_nadi,catatan_anestesi_sedasi.pre_induksi_rr,catatan_anestesi_sedasi.pre_induksi_suhu,catatan_anestesi_sedasi.pre_induksi_o2,
+                catatan_anestesi_sedasi.pre_induksi_tb,catatan_anestesi_sedasi.pre_induksi_bb,catatan_anestesi_sedasi.pre_induksi_rhesus,catatan_anestesi_sedasi.pre_induksi_hb,
+                catatan_anestesi_sedasi.pre_induksi_ht,catatan_anestesi_sedasi.pre_induksi_leko,catatan_anestesi_sedasi.pre_induksi_trombo,catatan_anestesi_sedasi.pre_induksi_btct,
+                catatan_anestesi_sedasi.pre_induksi_gds,catatan_anestesi_sedasi.pre_induksi_lainlain,catatan_anestesi_sedasi.teknik_alat_hiopotensi,catatan_anestesi_sedasi.teknik_alat_tci,
+                catatan_anestesi_sedasi.teknik_alat_cpb,catatan_anestesi_sedasi.teknik_alat_ventilasi,catatan_anestesi_sedasi.teknik_alat_broncoskopy,catatan_anestesi_sedasi.teknik_alat_glidescopi,
+                catatan_anestesi_sedasi.teknik_alat_usg,catatan_anestesi_sedasi.teknik_alat_stimulator_saraf,catatan_anestesi_sedasi.teknik_alat_lainlain,catatan_anestesi_sedasi.monitoring_ekg,
+                catatan_anestesi_sedasi.monitoring_ekg_keterangan,catatan_anestesi_sedasi.monitoring_arteri,catatan_anestesi_sedasi.monitoring_arteri_keterangan,catatan_anestesi_sedasi.monitoring_cvp,
+                catatan_anestesi_sedasi.monitoring_cvp_keterangan,catatan_anestesi_sedasi.monitoring_etco,catatan_anestesi_sedasi.monitoring_stetoskop,catatan_anestesi_sedasi.monitoring_nibp,
+                catatan_anestesi_sedasi.monitoring_ngt,catatan_anestesi_sedasi.monitoring_bis,catatan_anestesi_sedasi.monitoring_cath_a_pulmo,catatan_anestesi_sedasi.monitoring_spo2,
+                catatan_anestesi_sedasi.monitoring_kateter,catatan_anestesi_sedasi.monitoring_temp,catatan_anestesi_sedasi.monitoring_lainlain,catatan_anestesi_sedasi.status_fisik_asa,
+                catatan_anestesi_sedasi.status_fisik_alergi,catatan_anestesi_sedasi.status_fisik_alergi_keterangan,catatan_anestesi_sedasi.status_fisik_penyulit_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut,
+                catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,
+                catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,
+                catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,
+                catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat 
+                inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter 
+                inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter 
+                inner join petugas as petugasanestesi on catatan_anestesi_sedasi.nip_perawat_anestesi=petugasanestesi.nip 
+                inner join petugas as petugasbedah on catatan_anestesi_sedasi.nip_perawat_ok=petugasbedah.nip]]>
+	</queryString>
+	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	</field>
+	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="kd_dokter_anestesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_dokter_anestesi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter_anestesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dokteranestesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="dokteranestesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
+	</field>
+	<field name="nip_perawat_anestesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip_perawat_anestesi"/>
+		<property name="com.jaspersoft.studio.field.label" value="nip_perawat_anestesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="petugasanestesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="petugasanestesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
+	</field>
+	<field name="kd_dokter_bedah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_dokter_bedah"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter_bedah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dokterbedah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="dokterbedah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
+	</field>
+	<field name="nip_perawat_ok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip_perawat_ok"/>
+		<property name="com.jaspersoft.studio.field.label" value="nip_perawat_ok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="petugasbedah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="petugasbedah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
+	</field>
+	<field name="diagnosa_pre_bedah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_pre_bedah"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnosa_pre_bedah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tindakan_jenis_pembedahan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tindakan_jenis_pembedahan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tindakan_jenis_pembedahan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnosa_pasca_bedah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_pasca_bedah"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnosa_pasca_bedah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_jam" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_jam"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_jam"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_kesadaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_kesadaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_kesadaran"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_td" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_td"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_td"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_nadi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_nadi"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_nadi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_rr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_rr"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_rr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_suhu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_suhu"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_suhu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_o2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_o2"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_o2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_tb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_tb"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_tb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_bb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_bb"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_bb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_rhesus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_rhesus"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_rhesus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_hb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_hb"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_hb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_ht" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_ht"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_ht"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_leko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_leko"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_leko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_trombo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_trombo"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_trombo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_btct" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_btct"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_btct"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_gds" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_gds"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_gds"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pre_induksi_lainlain" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pre_induksi_lainlain"/>
+		<property name="com.jaspersoft.studio.field.label" value="pre_induksi_lainlain"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_hiopotensi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_hiopotensi"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_hiopotensi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_tci" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_tci"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_tci"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_cpb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_cpb"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_cpb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_ventilasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_ventilasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_ventilasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_broncoskopy" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_broncoskopy"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_broncoskopy"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_glidescopi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_glidescopi"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_glidescopi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_usg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_usg"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_usg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_stimulator_saraf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_stimulator_saraf"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_stimulator_saraf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teknik_alat_lainlain" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teknik_alat_lainlain"/>
+		<property name="com.jaspersoft.studio.field.label" value="teknik_alat_lainlain"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_ekg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_ekg"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_ekg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_ekg_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_ekg_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_ekg_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_arteri" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_arteri"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_arteri"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_arteri_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_arteri_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_arteri_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_cvp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_cvp"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_cvp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_cvp_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_cvp_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_cvp_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_etco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_etco"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_etco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_stetoskop" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_stetoskop"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_stetoskop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_nibp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_nibp"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_nibp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_ngt" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_ngt"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_ngt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_bis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_bis"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_bis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_cath_a_pulmo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_cath_a_pulmo"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_cath_a_pulmo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_spo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_spo2"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_spo2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_kateter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_kateter"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_kateter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_temp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_temp"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_temp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monitoring_lainlain" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="monitoring_lainlain"/>
+		<property name="com.jaspersoft.studio.field.label" value="monitoring_lainlain"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_fisik_asa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_fisik_asa"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_fisik_asa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_fisik_alergi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_fisik_alergi"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_fisik_alergi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_fisik_alergi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_fisik_alergi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_fisik_alergi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_fisik_penyulit_sedasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_fisik_penyulit_sedasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_fisik_penyulit_sedasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_sedasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_sedasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_sedasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_sedasi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_sedasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_sedasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_spinal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_spinal"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_spinal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_anestesi_umum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_anestesi_umum"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_anestesi_umum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_anestesi_umum_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_anestesi_umum_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_anestesi_umum_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_blok_perifer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_blok_perifer"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_blok_perifer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_blok_perifer_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_blok_perifer_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_blok_perifer_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_lanjut_epidural" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_lanjut_epidural"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_lanjut_epidural"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_batal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_batal"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_batal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_batal_alasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_batal_alasan"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_batal_alasan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catatan_anestesi_sedasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gol_darah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gol_darah"/>
+		<property name="com.jaspersoft.studio.field.label" value="gol_darah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="636">
+			<rectangle>
+				<reportElement x="0" y="60" width="557" height="575" uuid="7b9d2e83-d6d8-4fb2-99c3-b9134c7755e1"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="44" width="555" height="14" uuid="2c2c779f-b976-4237-b015-6090c3225557"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="96" width="228" height="11" uuid="e639886f-7e8a-4542-8834-6e2b10aac592">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="81" width="49" height="11" uuid="5313eb3c-a735-4f2f-be58-53b96fde3959">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="354" y="96" width="49" height="11" uuid="91db409e-9799-453a-81f2-1b11974c411f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="110" width="557" height="1" uuid="82da4d05-ebe2-4cc6-826d-5a567ff2dc56"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="54" y="96" width="7" height="11" uuid="eb2d8840-e1d4-4438-929f-9b743d2e8696">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="96" width="50" height="11" uuid="1d9e6cf2-93c4-4d1c-9247-8b6d4f3fa7ed">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="81" width="57" height="11" uuid="73734d7b-f33d-42b9-b6ad-6db25261570a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="96" width="57" height="11" uuid="c99b4fe5-32c8-46fe-9e90-8c414a4ea14d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="81" width="7" height="11" uuid="9266a183-25bc-4e98-9201-1b7b1beab194">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="96" width="7" height="11" uuid="854f8232-feac-4619-ab6d-2f7d7e02be74">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="34" width="555" height="14" uuid="096e469d-73a2-4167-94c4-8556ac919cd3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="9" width="555" height="17" uuid="089bdb6c-b5b3-4316-a58f-578a0ed38d87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="23" width="555" height="14" uuid="85a023cf-6a86-4f25-b02d-c0678e881437"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" isUsingCache="true" onErrorType="Blank">
+				<reportElement x="1" y="10" width="45" height="45" uuid="7cbac9b1-a974-4d0d-8de0-94b99cdd60f2"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="56" width="557" height="1" uuid="46d14ded-763b-4c5a-add9-89cb79e36fd3"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="61" width="556" height="17" backcolor="#F0F0DC" uuid="b27a30cd-1512-40c0-8223-fed1945951bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[CATATAN ANASTESI - SEDASI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="407" y="78" width="1" height="32" uuid="d3666a9f-2b81-447b-8c92-babdac8b188b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="412" y="81" width="40" height="11" uuid="1b74f8d2-2b4c-4efe-b65f-459a4e38406a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="452" y="81" width="7" height="11" uuid="324f5140-d561-4033-baab-a314c29383e3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="459" y="81" width="94" height="11" uuid="d50ed745-c279-4f52-b1fb-7c350da58218">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="144" width="457" height="11" uuid="5202cb5a-6780-4f02-be2c-e51561d0e8ef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosa_pre_bedah}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="190" width="247" height="11" uuid="2871f247-643c-4a90-8b15-956b09d86686">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[I. PENGKAJIAN PRA INDUKSI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="169" y="536" width="1" height="100" uuid="ebca76b0-c3c8-41a4-99fb-4e01e36ffb4a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="538" width="166" height="11" uuid="0c78f62a-9d91-4381-9edc-eac750180c22">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal dan Jam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="538" width="381" height="11" uuid="2cb620d8-a8bc-4e2e-9532-a8470b7005f3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Dokter dan Tanda Tangan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="550" width="557" height="1" uuid="0dc31805-9cc0-43ec-b13e-cd8ea26386d4"/>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
+				<reportElement mode="Transparent" x="3" y="580" width="166" height="28" uuid="f2456642-100c-41a8-b7ed-73dc8e8b1e66">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="172" y="551" width="97" height="82" isRemoveLineWhenBlank="true" uuid="ca573ded-493e-4285-9aa1-76f543dabb97">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement mode="Transparent" x="270" y="551" width="284" height="85" uuid="15269d1e-5458-46d8-b993-8560eba888ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dokteranestesi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="536" width="557" height="1" uuid="6ed49587-a394-4190-8f04-21f8c76fa9db"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="54" y="81" width="7" height="11" uuid="a4a64aad-c11d-4482-a219-4d4252f69f44">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="81" width="50" height="11" uuid="5377d1c6-86d8-4f3b-92d8-d5a07ff69c09">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. RM]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="62" y="81" width="126" height="11" uuid="77105aaa-e90d-4c2f-8b25-e57640e6ce74">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="159" width="457" height="11" uuid="5d14590b-518b-4742-84ff-004b33a9791b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tindakan_jenis_pembedahan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="89" y="144" width="7" height="11" uuid="3c4fd20b-97e8-46c3-ae7f-dc38c7ef14a4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="144" width="86" height="11" uuid="11bbc094-69d0-426d-ac36-f6fd0f818ccf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosa Pra-Bedah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="159" width="86" height="11" uuid="ef5aaa6c-f4e6-4488-b75a-cf79e74ffc37">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tindakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="159" width="7" height="11" uuid="cda3ec36-25aa-4c5e-a084-0d8badada552">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="128" width="7" height="11" uuid="7581c706-e72a-4c22-9514-c9f173958b5c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="128" width="71" height="11" uuid="fa1abdbf-fcfc-430e-ab07-b02549fff51b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Perawat Anastesi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="113" width="7" height="11" uuid="f6ad928b-3978-4719-ba16-205939f59cbc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="113" width="71" height="11" uuid="fd908843-742b-437a-adc7-81f3590b5bba">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DPJP Anestesi]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="81" y="113" width="197" height="11" uuid="74f6cb1a-9562-4cc5-ab6c-28510695831a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dokteranestesi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="128" width="197" height="11" uuid="deb112d7-4806-4779-9446-a5bfdfdcf196">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{petugasanestesi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="349" y="128" width="7" height="11" uuid="e4a284ee-aac8-43df-8ef8-3a0310ea97be">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="128" width="71" height="11" uuid="ae362ac2-426a-47fe-84d2-d51b4f3d0bfc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Perawat Bedah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="113" width="71" height="11" uuid="d5fc1544-7356-4202-9885-0949fb56d67d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DPJP Bedah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="113" width="7" height="11" uuid="df7970d2-1026-4464-bffa-04635764f3e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="356" y="113" width="197" height="11" uuid="fcd65cf8-ab29-41e4-981e-fc4f6463aeba">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dokterbedah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="128" width="197" height="11" uuid="9c6a133a-f7f9-434a-849f-6867a67f0cc4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{petugasbedah}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="141" width="557" height="1" uuid="470543c1-edc1-44da-b5b9-803ccf01cc94"/>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="174" width="86" height="11" uuid="14432a90-ae98-43a9-b82c-9bfe439e8214">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosa Paska-Bedah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="174" width="7" height="11" uuid="74a0d6b6-a0b0-4a90-ab05-3fbd246456af">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="174" width="457" height="11" uuid="5411ebf0-1902-4b89-a652-4695134df238">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosa_pasca_bedah}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="187" width="557" height="1" uuid="735a5b70-79ff-4454-9bed-589d70dbb135"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="8" y="202" width="85" height="11" uuid="387d3437-1e3c-424b-9cf9-a11a211c7e2c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam : "+$F{pre_induksi_jam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="202" width="140" height="11" uuid="32b5b0f5-12e0-4789-bcac-9b2cd2ae0189">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kesadaran : "+$F{pre_induksi_kesadaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="202" width="117" height="11" uuid="d90e3fd6-890f-4027-beff-ffb7cc4d0605">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TD : "+$F{pre_induksi_td}+" mmHg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="202" width="100" height="11" uuid="549e3ab3-65e5-45e6-89d8-578f35da36cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nadi : "+$F{pre_induksi_nadi}+" x/m"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="202" width="102" height="11" uuid="100c2aa9-9542-4d0a-a8fe-bbc6cabe49c0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RR : "+$F{pre_induksi_rr}+" x/m"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="217" width="85" height="11" uuid="aad7cd31-7c33-4e87-8f2d-2a897717cf56">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Suhu : "+$F{pre_induksi_suhu}+" °C"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="217" width="140" height="11" uuid="fe0a74c1-5fa0-44e1-ba0c-a3872a3311fc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Saturasi O2 : "+$F{pre_induksi_o2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="217" width="117" height="11" uuid="99a3ebc5-e6cb-4002-b685-4f7b96ffbcc9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TB : "+$F{pre_induksi_tb}+" Cm"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="217" width="100" height="11" uuid="f00b6a44-eadb-4795-bb34-f4bc00cbd40e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BB : "+$F{pre_induksi_bb}+" Kg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="217" width="102" height="11" uuid="2951c11a-20b0-4152-88f3-2aa74ccf8341">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GD : "+$F{gol_darah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="232" width="102" height="11" uuid="d8d5a7ca-441f-45cc-b897-b853217a702f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Trombo : "+$F{pre_induksi_trombo}+" ul"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="232" width="100" height="11" uuid="fb4e3707-1ff4-4248-b875-4a23c2ed84b7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Leko : "+$F{pre_induksi_leko}+" ul"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="232" width="117" height="11" uuid="fff18315-03f2-4edd-be65-d4b748588a6b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["HT :"+$F{pre_induksi_ht}+" %"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="232" width="140" height="11" uuid="f5940507-b75c-4118-872d-81a2f52518cd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["HB : "+$F{pre_induksi_hb}+" gr/dl"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="232" width="85" height="11" uuid="a285560d-71d6-4fd2-95e6-009bb187310b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rhesus : "+$F{pre_induksi_rhesus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="247" width="85" height="11" uuid="6ff66f0d-1698-4d43-8941-0131af784da7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BT-CT : "+$F{pre_induksi_btct}+" menit"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="247" width="140" height="11" uuid="e2f9ad5c-8afe-40fd-ae85-f7b711aaad98">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GDS : "+$F{pre_induksi_gds}+" MG/dl"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="247" width="320" height="11" uuid="67c27f99-db7b-4575-9519-21e044fa3a90">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lain-lain :"+$F{pre_induksi_lainlain}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="261" width="557" height="1" uuid="a8748a0a-8fc9-4c76-b0d0-619eeb8d3afc"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="264" width="247" height="11" uuid="e911441a-6ec5-4c5a-8e17-cd9560d5cdfb">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[II. TEKNIK & ALAT KHUSUS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="8" y="276" width="133" height="11" uuid="511a12f3-2e7e-406e-bdd7-08d2c7ae720e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TCI : "+$F{teknik_alat_tci}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="276" width="133" height="11" uuid="e912b294-6a94-46a9-a1e6-1c5c84330418">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Glidescope : "+$F{teknik_alat_glidescopi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="276" width="133" height="11" uuid="4c7ef8cb-1d11-42c7-80ba-1e576a2a6b07">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Stimulator Saraf : "+$F{teknik_alat_stimulator_saraf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="276" width="133" height="11" uuid="3d0e6635-adac-4d38-9ade-78bcbff2f047">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CPB : "+$F{teknik_alat_cpb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="291" width="133" height="11" uuid="c1a91d41-a9f1-4cc6-91a7-8706cea882d9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hiopotensi : "+$F{teknik_alat_hiopotensi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="291" width="133" height="11" uuid="ca103230-367d-4a5b-9c65-10da3b86f146">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Broncoskopy : "+$F{teknik_alat_broncoskopy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="291" width="133" height="11" uuid="b58c56df-41a9-472e-bf1b-8ea2232d51d5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["USG : "+$F{teknik_alat_usg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="291" width="133" height="11" uuid="9e31a7fc-91a6-425f-b56b-c8db6f344fd4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ventilator : "+$F{teknik_alat_ventilasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="306" width="545" height="11" uuid="5c06fc8d-ac53-4b18-904c-f56105729c19">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lainnya : "+$F{teknik_alat_lainlain}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="320" width="557" height="1" uuid="babc1d35-591a-4e2e-baaa-fcb3435ad836"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="323" width="247" height="11" uuid="0333eb8f-e511-47e3-b286-25ae8c283b3d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[III. MONITORING]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="8" y="335" width="133" height="11" uuid="b2c025cd-9a23-4ee6-83f6-bb52c46053bb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EtCO2 : "+$F{monitoring_etco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="335" width="133" height="11" uuid="94aebcfc-f187-4201-a484-452ee3997954">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Stetoskop : "+$F{monitoring_stetoskop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="335" width="133" height="11" uuid="d1c17c09-3e30-4705-8e89-1ea89402484c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cath A Pulmo : "+$F{monitoring_cath_a_pulmo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="335" width="133" height="11" uuid="75aae1cc-0d1c-477f-9627-c2db045aece3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NGT : "+$F{monitoring_ngt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="350" width="133" height="11" uuid="4c505ee1-8d33-4a7c-8e57-0880ca324eb4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SpO2 : "+$F{monitoring_spo2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="350" width="133" height="11" uuid="ca84963d-8af4-4144-9a97-9366ad666ef3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NIBP : "+$F{monitoring_nibp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="350" width="133" height="11" uuid="ede64e7f-6406-4d21-acdb-8feaf018e8c6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kateter Urine : "+$F{monitoring_kateter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="350" width="133" height="11" uuid="af10fcf5-f9eb-4f2d-9e52-59122ebf9456">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BIS : "+$F{monitoring_bis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="365" width="271" height="11" uuid="654d3549-b2ed-4b36-9090-bc3d6ab3a57c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CVP : "+$F{monitoring_cvp}+($F{monitoring_cvp_keterangan}.equals("")?"":", "+$F{monitoring_cvp_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="365" width="270" height="11" uuid="04f2b607-2368-4f1e-858a-4a32539b75c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Arteri Line : "+$F{monitoring_arteri}+($F{monitoring_arteri_keterangan}.equals("")?"":", "+$F{monitoring_arteri_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="380" width="270" height="11" uuid="366d4963-e159-43a5-8354-1e5cb97f0cf5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Temp. : "+$F{monitoring_temp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="380" width="271" height="11" uuid="5397ca47-1f75-4de7-83b9-083db6dc5eb2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EKG Lead : "+$F{monitoring_ekg}+($F{monitoring_ekg_keterangan}.equals("")?"":", "+$F{monitoring_ekg_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="395" width="545" height="11" uuid="bf635fb5-d4f6-4a6c-bb99-8a6d889e8470">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lain-lain : "+$F{monitoring_lainlain}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="411" width="247" height="11" uuid="64f37bfe-21a9-4252-aec5-6cb1babcc2b1">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IV. STATUS FISIK]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="408" width="557" height="1" uuid="0c73499a-687f-445f-960e-9ed4b0f1c9ec"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="8" y="423" width="88" height="11" uuid="929a7429-ba0a-4a7f-b7df-4e29bb06dc19">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Angka ASA : "+$F{status_fisik_asa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="423" width="317" height="11" uuid="3a3472dc-9821-4ee6-b201-b68ea234854f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Alergi : "+$F{status_fisik_alergi}+($F{status_fisik_alergi_keterangan}.equals("")?"":", "+$F{status_fisik_alergi_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="438" width="545" height="11" uuid="6ca059d9-c893-4ea1-ae9f-13e012947a89">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Penyulit Pra Anastesi/Sedasi : "+$F{status_fisik_penyulit_sedasi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="454" width="247" height="11" uuid="54a83003-4282-4744-a277-4127c3dcd623">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[V. PERENCANAAN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="451" width="557" height="1" uuid="a94d1a72-b4c0-4854-84cb-a1f3fa36f2a8"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="8" y="466" width="152" height="11" uuid="5c108ff8-94d4-4c3c-82b2-abb7091e6255">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lanjut Tindakan : "+$F{perencanaan_lanjut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="477" width="354" height="11" uuid="ff99c866-000a-4b65-9359-1fadc2283603">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sedasi : "+$F{perencanaan_lanjut_sedasi}+($F{perencanaan_lanjut_sedasi_keterangan}.equals("")?"":", "+$F{perencanaan_lanjut_sedasi_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="477" width="86" height="11" uuid="37f9bffb-0b31-48d0-9ade-67ad9546fd34">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Spinal : "+$F{perencanaan_lanjut_spinal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="477" width="86" height="11" uuid="224af94c-98a8-40ac-8623-65eb8177ae84">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Epidural : "+$F{perencanaan_lanjut_epidural}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="492" width="266" height="11" uuid="894d2718-ac53-4b03-bb5d-70909e08aa4c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Anastesi Umum : "+$F{perencanaan_lanjut_anestesi_umum}+($F{perencanaan_lanjut_anestesi_umum_keterangan}.equals("")?"":", "+$F{perencanaan_lanjut_anestesi_umum_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="492" width="264" height="11" uuid="0250f17a-7ce1-469f-a344-8d4b1c3aeebf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Blok Perifer : "+$F{perencanaan_lanjut_blok_perifer}+($F{perencanaan_lanjut_blok_perifer_keterangan}.equals("")?"":", "+$F{perencanaan_lanjut_blok_perifer_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="506" width="152" height="11" uuid="7babe6e2-c685-4f43-896e-ed7667850065">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Batal Tindakan : "+$F{perencanaan_batal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="517" width="536" height="11" uuid="79067b2e-27a3-473d-8518-ee19acd03a40">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Alasan Batal Tindakan : "+$F{perencanaan_batal_alasan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
