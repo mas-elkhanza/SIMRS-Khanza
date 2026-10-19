@@ -539,7 +539,7 @@ public final class DlgIGD extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDataRM = new widget.Menu();
         MnRMIGD = new widget.Menu();
         MnDataTriaseIGD = new widget.MenuItem();
@@ -631,7 +631,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPilihBilling = new widget.Menu();
         MnBillingParsial = new widget.MenuItem();
         MnBilling = new widget.MenuItem();
-        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jSeparator12 = new widget.PopupMenu.Separator();
         jMenu1 = new widget.Menu();
         MnLaporanRekapKunjunganPoli = new widget.MenuItem();
         MnLaporanRekapKunjunganDokter = new widget.MenuItem();
@@ -711,7 +711,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList1 = new widget.MenuItem();
         MnCheckList2 = new widget.MenuItem();
         MnCheckList3 = new widget.MenuItem();
-        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jSeparator13 = new widget.PopupMenu.Separator();
         MnRujukan = new widget.Menu();
         MnRujuk = new widget.MenuItem();
         MnRujukMasuk = new widget.MenuItem();
@@ -12920,9 +12920,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Menu jMenu7;
     private widget.Menu jMenu8;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu.Separator jSeparator12;
-    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu.Separator jSeparator12;
+    private widget.PopupMenu.Separator jSeparator13;
     private widget.TextBox kdpnj;
     private widget.TextBox nmpnj;
     private widget.PanelBiasa panelBiasa3;

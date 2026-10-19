@@ -203,7 +203,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private void initComponents() {
 
         TglLahir = new widget.Tanggal();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppGrafikBatangPeristiwaK3PerTahun = new widget.MenuItem();
         ppGrafikPiePeristiwaK3PerTahun = new widget.MenuItem();
         ppGrafikBatangPeristiwaK3PerBulan = new widget.MenuItem();
@@ -3296,7 +3296,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.MenuItem ppGrafikBatangPeristiwaK3PerBagianTubuh;

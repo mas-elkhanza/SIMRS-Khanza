@@ -204,7 +204,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         KodeBank = new widget.TextBox();
         BankTujuan = new widget.TextBox();
         KodeTransaksi = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         cetakbukti = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
@@ -1625,7 +1625,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.TextBox NoBukti;
     private widget.TextBox NoFaktur;
     private widget.TextBox NoRekening;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox SisaHutang;

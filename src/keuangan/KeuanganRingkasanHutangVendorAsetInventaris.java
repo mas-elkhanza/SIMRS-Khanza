@@ -503,10 +503,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 tanggaltempo=" inventaris_pemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
             }
             ps=koneksi.prepareStatement(
-                    "select inventaris_pemesanan.kode_suplier,inventaris_suplier.nama_suplier,(inventaris_pemesanan.tagihan-"+
-                    "(SELECT ifnull(SUM(bayar_pemesanan_inventaris.besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur)) as sisahutang "+
-                    "from inventaris_pemesanan inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
-                    "where "+tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') "+
+                    "select inventaris_pemesanan.kode_suplier,inventaris_suplier.nama_suplier,sum(inventaris_pemesanan.tagihan-(SELECT ifnull(SUM(bayar_pemesanan_inventaris.besar_bayar),0) FROM bayar_pemesanan_inventaris "+
+                    "where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur)) as sisahutang from inventaris_pemesanan inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
+                    "where "+tanggaldatang+tanggaltempo+" inventaris_pemesanan.status in ('Belum Dibayar','Belum Lunas') "+
                     (TCari.getText().trim().equals("")?"":"and (inventaris_suplier.nama_suplier like ? or inventaris_pemesanan.kode_suplier like ?) ")+
                     "group by inventaris_pemesanan.kode_suplier order by inventaris_pemesanan.kode_suplier ");
             try {

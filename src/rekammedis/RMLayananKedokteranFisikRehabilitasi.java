@@ -180,7 +180,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnLayananRehab = new widget.MenuItem();
         MnLayananProgramKFR = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
@@ -1763,7 +1763,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator14;
     private widget.Label label11;

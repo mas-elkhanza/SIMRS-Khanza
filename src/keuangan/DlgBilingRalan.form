@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JPopupMenu" name="jPopupMenu1">
+    <Container class="widget.PopupMenu" name="jPopupMenu1">
       <Properties>
         <Property name="name" type="java.lang.String" value="jPopupMenu1" noResource="true"/>
       </Properties>
@@ -1456,7 +1456,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupBayar">
+    <Container class="widget.PopupMenu" name="PopupBayar">
       <Properties>
         <Property name="name" type="java.lang.String" value="PopupBayar" noResource="true"/>
       </Properties>
@@ -1493,7 +1493,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupPiutang">
+    <Container class="widget.PopupMenu" name="PopupPiutang">
       <Properties>
         <Property name="name" type="java.lang.String" value="PopupPiutang" noResource="true"/>
       </Properties>
@@ -1740,7 +1740,7 @@
                     </LineBorder>
                   </Border>
                 </Property>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
@@ -1759,7 +1759,7 @@
                 <Component class="widget.Table" name="tbBilling">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbBilling" noResource="true"/>
@@ -1776,7 +1776,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="PopupBayar"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="scrollPane8" noResource="true"/>
@@ -2063,7 +2063,7 @@
                     </Component>
                     <Container class="widget.ScrollPane" name="scrollPane3">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupBayar"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="scrollPane3" noResource="true"/>
@@ -2083,7 +2083,7 @@
                               <Table columnCount="0" rowCount="4"/>
                             </Property>
                             <Property name="toolTipText" type="java.lang.String" value=""/>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupBayar"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="tbAkunBayar" noResource="true"/>
@@ -2114,7 +2114,7 @@
                     </Component>
                     <Container class="widget.ScrollPane" name="scrollPane4">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupPiutang"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="scrollPane4" noResource="true"/>
@@ -2134,7 +2134,7 @@
                               <Table columnCount="0" rowCount="4"/>
                             </Property>
                             <Property name="toolTipText" type="java.lang.String" value=""/>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupPiutang"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="tbAkunPiutang" noResource="true"/>
@@ -2325,7 +2325,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupBayar"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane5" noResource="true"/>
@@ -2339,7 +2339,7 @@
                           <Table columnCount="0" rowCount="4"/>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupBayar"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="tbLab" noResource="true"/>
@@ -2365,7 +2365,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupBayar"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane6" noResource="true"/>
@@ -2379,7 +2379,7 @@
                           <Table columnCount="0" rowCount="4"/>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupBayar"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="tbRadiologi" noResource="true"/>
@@ -2405,7 +2405,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupBayar"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane7" noResource="true"/>
@@ -2419,7 +2419,7 @@
                           <Table columnCount="0" rowCount="4"/>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupBayar"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="tbApotek" noResource="true"/>

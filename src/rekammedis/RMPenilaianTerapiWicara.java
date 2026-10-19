@@ -312,7 +312,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnPenilaianTerapiWicara = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -2986,7 +2986,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private widget.Label jLabel90;
     private widget.Label jLabel91;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private widget.Label label11;
     private widget.Label label14;

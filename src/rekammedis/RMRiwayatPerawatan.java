@@ -240,7 +240,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         Pekerjaan = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnGeneratePDF = new widget.MenuItem();
         MnGeneratePDFESign = new widget.MenuItem();
         MnGeneratePDFSertiSign = new widget.MenuItem();
@@ -423,6 +423,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHasilPemeriksaanEndoskopiHidung = new widget.CekBox();
         chkHasilPemeriksaanEndoskopiTelinga = new widget.CekBox();
         chkCatatanPersalinan = new widget.CekBox();
+        chkHasilPersalinanTOLAC = new widget.CekBox();
         chkLaporanTindakan = new widget.CekBox();
         chkDokumentasiTindakanESWL = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
@@ -635,7 +636,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026 10:29:20" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-10-2026 09:14:55" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -944,7 +945,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4815));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4835));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1889,6 +1890,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanPersalinan.setName("chkCatatanPersalinan"); // NOI18N
         chkCatatanPersalinan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanPersalinan);
+
+        chkHasilPersalinanTOLAC.setSelected(true);
+        chkHasilPersalinanTOLAC.setText("Resume Hasil Persalinan TOLAC");
+        chkHasilPersalinanTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHasilPersalinanTOLAC.setName("chkHasilPersalinanTOLAC"); // NOI18N
+        chkHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkHasilPersalinanTOLAC);
 
         chkLaporanTindakan.setSelected(true);
         chkLaporanTindakan.setText("Laporan Tindakan Medis");
@@ -3076,6 +3084,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningTOLAC.setSelected(true);
             chkAdmisiSkoringTOLAC.setSelected(true);
             chkMonitoringSelamaTOLAC.setSelected(true);
+            chkHasilPersalinanTOLAC.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3285,6 +3294,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningTOLAC.setSelected(false);
             chkAdmisiSkoringTOLAC.setSelected(false);
             chkMonitoringSelamaTOLAC.setSelected(false);
+            chkHasilPersalinanTOLAC.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4001,6 +4011,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkHasilPemeriksaanUSGGynecologi;
     private widget.CekBox chkHasilPemeriksaanUSGNeonatus;
     private widget.CekBox chkHasilPemeriksaanUSGUrologi;
+    private widget.CekBox chkHasilPersalinanTOLAC;
     private widget.CekBox chkHemodialisa;
     private widget.CekBox chkIntervensiNyeriFarmakologi;
     private widget.CekBox chkIntervensiNyeriNonFarmakologi;
@@ -4106,7 +4117,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel40;
     private widget.Label jLabel42;
     private widget.Label jLabel43;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
@@ -4632,6 +4643,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanHasilEndoskopiHidung(rs.getString("no_rawat"));
                     menampilkanHasilEndoskopiTelinga(rs.getString("no_rawat"));
                     menampilkanCatatanPersalinan(rs.getString("no_rawat"));
+                    menampilkanHasilPersalinanTOLAC(rs.getString("no_rawat"));
                     menampilkanLaporanTindakan(rs.getString("no_rawat"));
                     menampilkanDokumentasiTindakanESWL(rs.getString("no_rawat"));
                     menampilkanPenilaianPasienTerminal(rs.getString("no_rawat"));
@@ -37700,9 +37712,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("HASIL PEMERIKSAAN").
                                                     append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                         append("<tr>").
-                                                            append("<td width='35%'>His : ").append(rs2.getString("his_frekuensi")).append(" x/10 menit, durasi ").append(rs2.getString("his_durasi_detik")).append(" detik</td>").
-                                                            append("<td width='20%'>DJJ : ").append(rs2.getString("djj")).append(" x/menit</td>").
-                                                            append("<td width='45%'>VT : Pembukaan ").append(rs2.getString("pembukaan_cm")).append(" cm, pendataran ").append(rs2.getString("pendataran_persen")).append(" %, kepala ").append(rs2.getString("penurunan_kepala")).append("</td>").
+                                                            append("<td width='35%' border='0'>His : ").append(rs2.getString("his_frekuensi")).append(" x/10 menit, durasi ").append(rs2.getString("his_durasi_detik")).append(" detik</td>").
+                                                            append("<td width='20%' border='0'>DJJ : ").append(rs2.getString("djj")).append(" x/menit</td>").
+                                                            append("<td width='45%' border='0'>VT : Pembukaan ").append(rs2.getString("pembukaan_cm")).append(" cm, pendataran ").append(rs2.getString("pendataran_persen")).append(" %, kepala ").append(rs2.getString("penurunan_kepala")).append("</td>").
                                                         append("</tr>").
                                                     append("</table>").
                                                 append("</td>").
@@ -37759,9 +37771,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("KESIMPULAN & KEPUTUSAN").
                                                     append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                         append("<tr>").
-                                                            append("<td width='25%'>Peluang VBAC : ").append(rs2.getString("peluang_vbac")).append(" %</td>").
-                                                            append("<td width='25%'>Keputusan : ").append(rs2.getString("keputusan")).append("</td>").
-                                                            append("<td width='50%' colspan='2'>Keterangan : ").append(rs2.getString("keterangan")).append("</td>").
+                                                            append("<td width='25%' border='0'>Peluang VBAC : ").append(rs2.getString("peluang_vbac")).append(" %</td>").
+                                                            append("<td width='25%' border='0'>Keputusan : ").append(rs2.getString("keputusan")).append("</td>").
+                                                            append("<td width='50%' border='0' colspan='2'>Keterangan : ").append(rs2.getString("keterangan")).append("</td>").
                                                         append("</tr>").
                                                     append("</table>").
                                                 append("</td>").
@@ -37851,6 +37863,106 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Monitoring Selama TOLAC : "+e);
+        }
+    }
+    
+    private void menampilkanHasilPersalinanTOLAC(String norawat) {
+        try {
+            //menampilkan hasil persalinan TOLAC
+            if(chkHasilPersalinanTOLAC.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select hasil_persalinan_tolac.kd_dokter,dokter.nm_dokter,hasil_persalinan_tolac.tanggal,hasil_persalinan_tolac.awitan_persalinan,"+
+                            "hasil_persalinan_tolac.augmentasi,hasil_persalinan_tolac.ctg_kontinu,hasil_persalinan_tolac.cara_persalinan,hasil_persalinan_tolac.indikasi_gagal,"+
+                            "hasil_persalinan_tolac.lama_kala2_menit,hasil_persalinan_tolac.ruptur_uteri,hasil_persalinan_tolac.jumlah_perdarahan_ml,hasil_persalinan_tolac.transfusi,"+
+                            "hasil_persalinan_tolac.histerektomi,hasil_persalinan_tolac.komplikasi_lain,hasil_persalinan_tolac.luaran_perinatal,hasil_persalinan_tolac.bb_lahir_gram,"+
+                            "hasil_persalinan_tolac.apgar_1,hasil_persalinan_tolac.apgar_5,hasil_persalinan_tolac.hie,hasil_persalinan_tolac.masuk_nicu,hasil_persalinan_tolac.keterangan "+
+                            "from hasil_persalinan_tolac inner join dokter on hasil_persalinan_tolac.kd_dokter=dokter.kd_dokter "+
+                            "where hasil_persalinan_tolac.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append(
+                            "<td valign='top' width='2%'></td>").append(
+                            "<td valign='top' width='18%'>Resume Hasil Persalinan TOLAC</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                      "YANG MELAKUKAN PENGKAJIAN").append(
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                         "<tr>").append(
+                                            "<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
+                                            "<td width='70%' border='0'>DPJP : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").append(
+                                         "</tr>").append(
+                                      "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                      "PERSALINAN").append(
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                         "<tr>").append(
+                                            "<td width='34%' border='0'>Awitan : ").append(rs2.getString("awitan_persalinan")).append("</td>").append(
+                                            "<td width='33%' border='0'>Augmentasi : ").append(rs2.getString("augmentasi")).append("</td>").append(
+                                            "<td width='33%' border='0'>CTG Kontinu : ").append(rs2.getString("ctg_kontinu")).append("</td>").append(
+                                         "</tr>").append(
+                                         "<tr>").append(
+                                            "<td width='34%' border='0'>Cara Persalinan : ").append(rs2.getString("cara_persalinan")).append("</td>").append(
+                                            "<td width='33%' border='0'>Lama Kala II : ").append(rs2.getString("lama_kala2_menit")).append(" menit</td>").append(
+                                            "<td width='33%' border='0'>Indikasi Gagal : ").append(rs2.getString("indikasi_gagal")).append("</td>").append(
+                                         "</tr>").append(
+                                      "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                      "KOMPLIKASI IBU").append(
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                         "<tr>").append(
+                                            "<td width='34%' border='0'>Ruptur Uteri : ").append(rs2.getString("ruptur_uteri")).append("</td>").append(
+                                            "<td width='33%' border='0'>Perdarahan : ").append(rs2.getString("jumlah_perdarahan_ml")).append(" ml</td>").append(
+                                            "<td width='33%' border='0'>Transfusi : ").append(rs2.getString("transfusi")).append("</td>").append(
+                                         "</tr>").append(
+                                         "<tr>").append(
+                                            "<td width='34%' border='0'>Histerektomi : ").append(rs2.getString("histerektomi")).append("</td>").append(
+                                            "<td width='66%' border='0' colspan='2'>Komplikasi Lain : ").append(rs2.getString("komplikasi_lain")).append("</td>").append(
+                                         "</tr>").append(
+                                      "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                      "KONDISI BAYI").append(
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                         "<tr>").append(
+                                            "<td width='25%' border='0'>Luaran Perinatal : ").append(rs2.getString("luaran_perinatal")).append("</td>").append(
+                                            "<td width='25%' border='0'>BB Lahir : ").append(rs2.getString("bb_lahir_gram")).append(" gram</td>").append(
+                                            "<td width='25%' border='0'>APGAR : ").append(rs2.getString("apgar_1")).append(" / ").append(rs2.getString("apgar_5")).append("</td>").append(
+                                            "<td width='25%' border='0'>HIE : ").append(rs2.getString("hie")).append("</td>").append(
+                                         "</tr>").append(
+                                         "<tr>").append(
+                                            "<td width='25%' border='0'>Masuk NICU : ").append(rs2.getString("masuk_nicu")).append("</td>").append(
+                                            "<td colspan='3' border='0'>Keterangan : ").append(rs2.getString("keterangan")).append("</td>").append(
+                                         "</tr>").append(
+                                      "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>"
+                        );
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Hasil Persalinan TOLAC : "+e);
         }
     }
     

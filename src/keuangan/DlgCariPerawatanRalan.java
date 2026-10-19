@@ -184,7 +184,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppDokter = new widget.MenuItem();
         ppPetugas = new widget.MenuItem();
@@ -1179,7 +1179,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Label LCount;
     private widget.TextBox Nip2;
     private widget.TextBox NmPetugas2;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCariTindakan;
     private widget.TextBox TNoRw;

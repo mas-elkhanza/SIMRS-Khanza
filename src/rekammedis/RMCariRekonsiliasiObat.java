@@ -743,6 +743,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        // PENTING: panggil tampil() langsung (sinkron), JANGAN lewat BtnCariActionPerformed.
+        // BtnCariActionPerformed menjalankan tampil() lewat runBackground() yang bersifat ASYNC
+        // (submit ke ExecutorService lalu langsung return). Kalau dipanggil di sini, baris
+        // pengecekan tabMode.getRowCount() dan loop di bawah bisa jalan SEBELUM tampil() selesai
+        // mengisi ulang tabMode, sehingga data yang disalin ke tabel "temporary" bisa kosong/tidak
+        // lengkap -> query jasper mengembalikan 0 baris -> muncul error "No pages found".
+        tampil();
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();

@@ -114,7 +114,7 @@ public final class DlgPulang extends javax.swing.JDialog {
         catatan = new widget.TextBox();
         id_pegawai = new widget.TextBox();
         jam_datang = new widget.TextBox();
-        popup = new javax.swing.JPopupMenu();
+        popup = new widget.PopupMenu();
         inpketerangan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -569,7 +569,7 @@ public final class DlgPulang extends javax.swing.JDialog {
     private widget.Label label23;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
-    private javax.swing.JPopupMenu popup;
+    private widget.PopupMenu popup;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

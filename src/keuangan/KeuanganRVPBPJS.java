@@ -216,7 +216,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDetailPiutang = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
         ppPilihSemua = new widget.MenuItem();
@@ -3021,7 +3021,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label17;
     private widget.Label label19;
     private widget.Label label33;

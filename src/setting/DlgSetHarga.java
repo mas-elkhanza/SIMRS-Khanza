@@ -193,11 +193,11 @@ public class DlgSetHarga extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppUPdate = new widget.MenuItem();
-        Popup1 = new javax.swing.JPopupMenu();
+        Popup1 = new widget.PopupMenu();
         ppUPdate1 = new widget.MenuItem();
-        Popup2 = new javax.swing.JPopupMenu();
+        Popup2 = new widget.PopupMenu();
         ppUPdate2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
@@ -2831,9 +2831,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.Button Btnbarang;
     private widget.Label LCount;
     private widget.Label LCount1;
-    private javax.swing.JPopupMenu Popup;
-    private javax.swing.JPopupMenu Popup1;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup;
+    private widget.PopupMenu Popup1;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;

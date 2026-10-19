@@ -230,11 +230,11 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnJadikanPerkiraan = new widget.MenuItem();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         MnJadikanPerkiraan1 = new widget.MenuItem();
-        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jPopupMenu3 = new widget.PopupMenu();
         MnJadikanPerkiraan2 = new widget.MenuItem();
         MnPerkiraanBiayaManual = new widget.MenuItem();
         WindowInput = new javax.swing.JDialog();
@@ -1296,9 +1296,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.InternalFrame internalFrame2;
     private widget.Label jLabel13;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu jPopupMenu3;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
+    private widget.PopupMenu jPopupMenu3;
     private widget.Label label10;
     private widget.Label label17;
     private widget.Label label9;
