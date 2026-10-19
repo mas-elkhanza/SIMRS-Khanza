@@ -276,7 +276,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         ppCSVWARocket = new widget.MenuItem();
@@ -1653,7 +1653,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox NmPoli;
     private widget.TextBox NoReg;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
     private widget.ScrollPane Scroll;

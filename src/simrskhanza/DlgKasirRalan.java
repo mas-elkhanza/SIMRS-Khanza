@@ -472,7 +472,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDataRM = new widget.Menu();
         MnRMIGD = new widget.Menu();
         MnDataTriaseIGD = new widget.MenuItem();
@@ -597,7 +597,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPilihBilling = new widget.Menu();
         MnBillingParsial = new widget.MenuItem();
         MnBilling = new widget.MenuItem();
-        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jSeparator12 = new widget.PopupMenu.Separator();
         MnRekap = new widget.Menu();
         MnRekapHarianDokter = new widget.MenuItem();
         MnRekapHarianParamedis = new widget.MenuItem();
@@ -644,7 +644,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPersetujuanRawatInap = new widget.MenuItem();
         MnPersetujuanPenundaanPelayanan = new widget.MenuItem();
         MnPenolakanAnjuranMedis = new widget.MenuItem();
-        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jSeparator13 = new widget.PopupMenu.Separator();
         MnRujukan = new widget.Menu();
         MnRujuk = new widget.MenuItem();
         MnPoliInternal = new widget.MenuItem();
@@ -781,7 +781,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         btnBayar = new widget.Button();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         MnPermintaan1 = new widget.Menu();
         MnJadwalOperasi1 = new widget.MenuItem();
         MnPermintaanLab1 = new widget.MenuItem();
@@ -806,7 +806,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenjualan1 = new widget.MenuItem();
         MnCopyResep2 = new widget.MenuItem();
         MnBilling1 = new widget.MenuItem();
-        jSeparator14 = new javax.swing.JPopupMenu.Separator();
+        jSeparator14 = new widget.PopupMenu.Separator();
         MenuInputData1 = new widget.Menu();
         ppBerkasDigital1 = new widget.MenuItem();
         ppIKP1 = new widget.MenuItem();
@@ -16392,11 +16392,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Menu jMenu6;
     private widget.Menu jMenu7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu.Separator jSeparator12;
-    private javax.swing.JPopupMenu.Separator jSeparator13;
-    private javax.swing.JPopupMenu.Separator jSeparator14;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
+    private widget.PopupMenu.Separator jSeparator12;
+    private widget.PopupMenu.Separator jSeparator13;
+    private widget.PopupMenu.Separator jSeparator14;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;

@@ -240,7 +240,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         Pekerjaan = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnGeneratePDF = new widget.MenuItem();
         MnGeneratePDFESign = new widget.MenuItem();
         MnGeneratePDFSertiSign = new widget.MenuItem();
@@ -4117,7 +4117,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel40;
     private widget.Label jLabel42;
     private widget.Label jLabel43;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;

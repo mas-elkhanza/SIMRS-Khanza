@@ -141,7 +141,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppPilihSemua = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -572,7 +572,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
     private widget.ScrollPane Scroll4;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label9;
     private widget.panelisi panelisi3;

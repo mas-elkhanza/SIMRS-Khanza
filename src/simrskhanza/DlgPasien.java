@@ -602,7 +602,7 @@ public class DlgPasien extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         KartuPasien = new widget.Menu();
         MnKartu1 = new widget.MenuItem();
         MnKartu2 = new widget.MenuItem();
@@ -685,7 +685,7 @@ public class DlgPasien extends javax.swing.JDialog {
         Propinsi2 = new widget.TextBox();
         jLabel41 = new widget.Label();
         NoRm = new widget.TextBox();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         MnViaBPJSNik = new widget.MenuItem();
         MnViaBPJSNoKartu = new widget.MenuItem();
         MnViaDukcapilNikDKI = new widget.MenuItem();
@@ -8942,8 +8942,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Menu jMenu1;
     private widget.Menu jMenu2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
     private javax.swing.JSeparator jSeparator5;
     private widget.TextBox kdbahasa;
     private widget.TextBox kdcacat;

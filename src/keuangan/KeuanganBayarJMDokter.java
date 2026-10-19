@@ -152,7 +152,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         KdCaraBayar = new widget.TextBox();
@@ -2072,7 +2072,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox NmDokter;
     private widget.TextBox NoRekening;
     private widget.TextBox NoTagihan;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;

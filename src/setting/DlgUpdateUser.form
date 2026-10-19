@@ -14,7 +14,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TKdKeyPressed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>
@@ -155,7 +155,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="Popup"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
@@ -172,7 +172,7 @@
             <Component class="widget.Table" name="tbUser">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Untuk memegang hak akses agar tidak hilang karena pencarian data, silahkan klik di bagian P. &#xa;Untuk memberikan hak akses klik pada akses. Gunakan klik kanan untuk menampilkan popup menu."/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbUser" noResource="true"/>

@@ -502,7 +502,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         kdpoli = new widget.TextBox();
         TPoli = new widget.TextBox();
         TBiaya = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDocument = new widget.MenuItem();
         ppPengajuan = new widget.MenuItem();
         ppPengajuan1 = new widget.MenuItem();
@@ -6380,7 +6380,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     private widget.Label jLabel57;
     private widget.Label jLabel58;
     private widget.Label jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdbahasa;
     private widget.TextBox kdcacat;
     private widget.TextBox kddokter;

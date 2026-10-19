@@ -130,7 +130,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         MnRestore = new widget.MenuItem();
         MnKartu = new widget.MenuItem();
         MnKartu1 = new widget.MenuItem();
@@ -1286,7 +1286,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.MenuItem MnKartu1;
     private widget.MenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TAlmt;
     private widget.TextBox TCari;

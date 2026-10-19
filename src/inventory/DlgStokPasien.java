@@ -172,7 +172,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppResepObat = new widget.MenuItem();
         ppResepObat1 = new widget.MenuItem();
         ppResepObat2 = new widget.MenuItem();
@@ -1949,7 +1949,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label19;

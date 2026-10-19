@@ -10971,7 +10971,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,
                           BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnSkriningTOLAC,BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,
                           BtnHasilPersalinanTOLAC;   
-    private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
+    private widget.PopupMenu PopupSOAP,PopupPemeriksaan;
     private widget.MenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
     
     private void tampilDr() {
@@ -14298,11 +14298,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnMonitoringTolac.setRoundRect(false);
         BtnMonitoringTolac.addActionListener(this::BtnMonitoringTolacActionPerformed);
         
-        PopupSOAP = new javax.swing.JPopupMenu();
+        PopupSOAP = new widget.PopupMenu();
         PopupSOAP.setName("PopupSOAP");
         tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
         
-        PopupPemeriksaan = new javax.swing.JPopupMenu();
+        PopupPemeriksaan = new widget.PopupMenu();
         PopupPemeriksaan.setName("PopupPemeriksaan");
         
         TKeluhan.setComponentPopupMenu(PopupPemeriksaan);

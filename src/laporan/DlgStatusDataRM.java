@@ -134,7 +134,7 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         kdpoli = new widget.TextBox();
         kdpenjab = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnInputDiagnosa = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -906,7 +906,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label jLabel18;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
     private widget.Label label11;

@@ -120,7 +120,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup2 = new javax.swing.JPopupMenu();
+        Popup2 = new widget.PopupMenu();
         ppVerify = new widget.MenuItem();
         ppVerifySemua = new widget.MenuItem();
         ppHapusSemua = new widget.MenuItem();
@@ -684,7 +684,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnTambah;
     private widget.Label LCount;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;

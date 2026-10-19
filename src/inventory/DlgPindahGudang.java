@@ -169,7 +169,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         kdjenis = new widget.TextBox();
         kdkategori = new widget.TextBox();
         kdgolongan = new widget.TextBox();
-        Popup1 = new javax.swing.JPopupMenu();
+        Popup1 = new widget.PopupMenu();
         MnKodeBarangDesc = new widget.MenuItem();
         MnKodeBarangAsc = new widget.MenuItem();
         MnNamaBarangDesc = new widget.MenuItem();
@@ -1433,7 +1433,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.MenuItem MnNamaLokasiAsalDesc;
     private widget.MenuItem MnNamaLokasiTujuanDesc;
     private widget.MenuItem MnNamaLokasiTujuanlAsc;
-    private javax.swing.JPopupMenu Popup1;
+    private widget.PopupMenu Popup1;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
