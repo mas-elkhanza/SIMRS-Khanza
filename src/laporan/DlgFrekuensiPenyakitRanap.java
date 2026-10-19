@@ -185,9 +185,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -201,9 +198,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakBatang);
 
-        ppGrafikTerbanyakPie.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -217,9 +211,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakPie);
 
-        ppGrafikTerkecilBatang.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -233,9 +224,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerkecilBatang);
 
-        ppGrafikTerkecilPie.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilPie.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -381,7 +369,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -395,7 +382,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(false);
+        tbDokter.setAutoCreateRowSorter(true);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -418,7 +405,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
-        tbDokter2.setAutoCreateRowSorter(false);
+        tbDokter2.setAutoCreateRowSorter(true);
         tbDokter2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

@@ -121,6 +121,7 @@ import rekammedis.RMDataIntervensiNyeriFarmakologi;
 import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
+import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMDataSkriningGiziKehamilan;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMHemodialisa;
@@ -140,6 +141,7 @@ import rekammedis.RMHasilPemeriksaanUSGAbdomen;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGNeonatus;
 import rekammedis.RMHasilPemeriksaanUSGUrologi;
+import rekammedis.RMHasilPersalinanTOLAC;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMLaporanTindakan;
@@ -15957,6 +15959,50 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
+    private void MnMonitoringTOLACActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMDataMonitoringTOLAC form=new RMDataMonitoringTOLAC(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
+    private void MnHasilPersalinanTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanPersalinanActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMHasilPersalinanTOLAC form=new RMHasilPersalinanTOLAC(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16405,7 +16451,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,
                                   MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,
                                   MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat,MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,
-                                  MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnSkriningTOLAC,MnAdmisiSkoringTOLAC;
+                                  MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnSkriningTOLAC,MnAdmisiSkoringTOLAC,
+                                  MnMonitoringTOLAC,MnHasilPersalinanTOLAC;
     private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
     private void tampilkasir() { 
@@ -16791,6 +16838,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnCatatanKeperawatan.setEnabled(akses.getcatatan_keperawatan_ralan());
         MnCatatanPersalinan.setEnabled(akses.getcatatan_persalinan());
         MnAdmisiSkoringTOLAC.setEnabled(akses.getadmisi_skoring_tolac());
+        MnHasilPersalinanTOLAC.setEnabled(akses.gethasil_persalinan_tolac());
         MnSkorAldrettePascaAnestesi.setEnabled(akses.getskor_aldrette_pasca_anestesi());
         MnSkorStewardPascaAnestesi.setEnabled(akses.getskor_steward_pasca_anestesi());
         MnSkorBromagePascaAnestesi.setEnabled(akses.getskor_bromage_pasca_anestesi());
@@ -16810,6 +16858,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnCatatanKeseimbanganCairan.setEnabled(akses.getbalance_cairan());
         MnCatatanObservasiInduksiPersalinan.setEnabled(akses.getcatatan_observasi_induksi_persalinan());
         MnCatatanObservasiHemodialisa.setEnabled(akses.getcatatan_observasi_hemodialisa());
+        MnMonitoringTOLAC.setEnabled(akses.getmonitoring_tolac());
         MnCatatanCairanHemodialisa.setEnabled(akses.getcatatan_cairan_hemodialisa());
         MnChecklistPemberianFibrinolitik.setEnabled(akses.getchecklist_pemberian_fibrinolitik());
         MnPermintaanKonsultasiMedik.setEnabled(akses.getkonsultasi_medik());
@@ -17807,6 +17856,18 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnCatatanObservasiHemodialisa.setPreferredSize(new java.awt.Dimension(210, 26));
         MnCatatanObservasiHemodialisa.addActionListener(this::MnCatatanObservasiHemodialisaActionPerformed);
         
+        MnMonitoringTOLAC = new widget.MenuItem();
+        MnMonitoringTOLAC.setBackground(new java.awt.Color(255, 255, 254));
+        MnMonitoringTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnMonitoringTOLAC.setForeground(new java.awt.Color(50, 50, 50));
+        MnMonitoringTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnMonitoringTOLAC.setText("Monitoring Selama TOLAC");
+        MnMonitoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnMonitoringTOLAC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnMonitoringTOLAC.setName("MnMonitoringTOLAC");
+        MnMonitoringTOLAC.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnMonitoringTOLAC.addActionListener(this::MnMonitoringTOLACActionPerformed);
+        
         MnCatatanCairanHemodialisa = new widget.MenuItem();
         MnCatatanCairanHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
         MnCatatanCairanHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -18620,8 +18681,20 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnAdmisiSkoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnAdmisiSkoringTOLAC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnAdmisiSkoringTOLAC.setName("MnAdmisiSkoringTOLAC");
-        MnAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(240, 26));
         MnAdmisiSkoringTOLAC.addActionListener(this::MnAdmisiSkoringTOLACActionPerformed);
+        
+        MnHasilPersalinanTOLAC = new widget.MenuItem();
+        MnHasilPersalinanTOLAC.setBackground(new java.awt.Color(255, 255, 254));
+        MnHasilPersalinanTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnHasilPersalinanTOLAC.setForeground(new java.awt.Color(50, 50, 50));
+        MnHasilPersalinanTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnHasilPersalinanTOLAC.setText("Resume Hasil Persalinan TOLAC");
+        MnHasilPersalinanTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHasilPersalinanTOLAC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHasilPersalinanTOLAC.setName("MnHasilPersalinanTOLAC");
+        MnHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnHasilPersalinanTOLAC.addActionListener(this::MnHasilPersalinanTOLACActionPerformed);
         
         MnHasilUSG = new widget.Menu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
@@ -18837,10 +18910,12 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnRMCatatanMonitoring.add(MnCatatanKeperawatan);
         MnRMCatatanMonitoring.add(MnAdmisiSkoringTOLAC);
         MnRMCatatanMonitoring.add(MnCatatanPersalinan);
+        MnRMCatatanMonitoring.add(MnHasilPersalinanTOLAC);
         MnRMCatatanMonitoring.add(MnCatatanKeseimbanganCairan);
         MnRMCatatanMonitoring.add(MnCatatanObservasiIGD);
         MnRMCatatanMonitoring.add(MnCatatanObservasiCHBP);
         MnRMCatatanMonitoring.add(MnCatatanObservasiInduksiPersalinan);
+        MnRMCatatanMonitoring.add(MnMonitoringTOLAC);
         MnRMCatatanMonitoring.add(MnCatatanObservasiBayi);
         MnRMCatatanMonitoring.add(MnCatatanObservasiHemodialisa);
         MnRMCatatanMonitoring.add(MnCatatanCairanHemodialisa);

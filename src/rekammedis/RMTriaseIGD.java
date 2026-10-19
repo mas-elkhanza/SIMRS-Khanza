@@ -591,7 +591,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabPilihan.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihan.setForeground(new java.awt.Color(50, 50, 50));
         TabPilihan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihan.setName("TabPilihan"); // NOI18N
         TabPilihan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -600,7 +599,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             }
         });
 
-        ScrollTriase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         ScrollTriase.setName("ScrollTriase"); // NOI18N
         ScrollTriase.setOpaque(true);
 
@@ -610,7 +608,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
         TabTriase.setBackground(new java.awt.Color(255, 255, 254));
         TabTriase.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        TabTriase.setForeground(new java.awt.Color(50, 50, 50));
         TabTriase.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabTriase.setName("TabTriase"); // NOI18N
         TabTriase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -820,10 +817,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:45" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026 08:45:40" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
-        PrimerTanggalTriase.setOpaque(false);
         PrimerTanggalTriase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PrimerTanggalTriaseKeyPressed(evt);
@@ -1023,7 +1019,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
         TabSkala1dan2.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala1dan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala1dan2.setForeground(new java.awt.Color(50, 50, 50));
         TabSkala1dan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala1dan2.setName("TabSkala1dan2"); // NOI18N
         TabSkala1dan2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1247,10 +1242,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:46" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026 08:45:41" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
-        SekunderTanggalTriase.setOpaque(false);
         SekunderTanggalTriase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SekunderTanggalTriaseKeyPressed(evt);
@@ -1449,7 +1443,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
         TabSkala3dan4dan5.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala3dan4dan5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala3dan4dan5.setForeground(new java.awt.Color(50, 50, 50));
         TabSkala3dan4dan5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala3dan4dan5.setName("TabSkala3dan4dan5"); // NOI18N
         TabSkala3dan4dan5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1513,18 +1506,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 10, 89, 23);
 
-        TNoRw.setBackground(new java.awt.Color(245, 250, 240));
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
         FormInput.add(TNoRw);
         TNoRw.setBounds(93, 10, 122, 23);
 
-        TPasien.setBackground(new java.awt.Color(245, 250, 240));
+        TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
         TPasien.setBounds(289, 10, 225, 23);
 
+        TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
         TNoRM.addActionListener(new java.awt.event.ActionListener() {
@@ -1541,10 +1534,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 11:11:47" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026 08:45:42" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
-        TanggalKunjungan.setOpaque(false);
         TanggalKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKunjunganKeyPressed(evt);
@@ -1700,10 +1692,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -1714,10 +1705,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 

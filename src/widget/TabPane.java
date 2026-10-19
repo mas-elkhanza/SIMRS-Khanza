@@ -1,6 +1,5 @@
 package widget;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -10,7 +9,6 @@ import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 import javax.swing.plaf.ComponentUI;
@@ -19,7 +17,8 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.text.View;
 
 public class TabPane extends JTabbedPane {
-    private static final long serialVersionUID = 3L;
+
+    private static final long serialVersionUID = 4L;
     static final Color AKSEN = new Color(0x16A05D);
     private Color warnaAksen;
 
@@ -28,7 +27,7 @@ public class TabPane extends JTabbedPane {
         warnaAksen = AKSEN;
         setBackground(new Color(255, 255, 255));
         setForeground(new Color(50, 50, 50));
-        setBorder(null);   
+        setBorder(null);
     }
 
     @Override
@@ -36,26 +35,19 @@ public class TabPane extends JTabbedPane {
         setUI(new MacTabUI());
     }
 
-
     public Color getWarnaAksen() { return warnaAksen != null ? warnaAksen : AKSEN; }
     public void setWarnaAksen(Color c) { warnaAksen = c; repaint(); }
 
     public static class MacTabUI extends BasicTabbedPaneUI {
-        private static final Color TRACK        = new Color(239, 244, 234);  
-        private static final Color TRACK_GARIS  = new Color(214, 224, 207);  
-        private static final Color PILIH        = Color.WHITE;
-        private static final Color PILIH_GARIS  = new Color(206, 218, 198);
-        private static final Color BAYANGAN     = new Color(60, 90, 50, 26);
-        private static final Color HOVER        = new Color(255, 255, 255, 140);
-        private static final Color PEMISAH      = new Color(206, 218, 198);
-        private static final Color BINGKAI      = new Color(239, 244, 234);  
-        private static final Color TEKS         = new Color(50, 50, 50);     
-        private static final Color TEKS_OFF     = new Color(165, 175, 160);
-        private static final int   ARC_TRACK    = 8;
-        private static final int   ARC_PILIH    = 6;
-        private static final int   ARC_BINGKAI  = 8;
-        private static final boolean TAMPIL_BINGKAI = false;
-        private boolean lewatiBingkai;
+
+        private static final Color GARIS_DASAR = new Color(255, 255, 255);   
+        private static final Color GARIS_PILIH = new Color(22, 160, 93);     
+        private static final Color TEKS_PILIH  = new Color(50, 50, 50);      
+        private static final Color TEKS_HOVER  = new Color(22, 120, 70);     
+        private static final Color TEKS        = new Color(112, 128, 118);   
+        private static final Color TEKS_OFF    = new Color(190, 196, 192);   
+        private static final int   TEBAL_PILIH = 1;                          
+        private static final int   SISI_GARIS  = 4;                          
 
         public static ComponentUI createUI(JComponent c) {
             return new MacTabUI();
@@ -64,10 +56,10 @@ public class TabPane extends JTabbedPane {
         @Override
         protected void installDefaults() {
             super.installDefaults();
-            tabInsets = new Insets(3, 12, 3, 12);
+            tabInsets = new Insets(1, 8, 1, 8);            
             selectedTabPadInsets = new Insets(0, 0, 0, 0);
-            tabAreaInsets = new Insets(4, 8, 4, 8);
-            contentBorderInsets = new Insets(0, 0, 0, 0);   
+            tabAreaInsets = new Insets(0, 4, 0, 4);          
+            contentBorderInsets = new Insets(0, 0, 0, 0);
             tabRunOverlay = 0;
         }
 
@@ -78,7 +70,7 @@ public class TabPane extends JTabbedPane {
 
         @Override
         protected int calculateTabHeight(int placement, int tabIndex, int fontHeight) {
-            return Math.max(super.calculateTabHeight(placement, tabIndex, fontHeight), 22);
+            return Math.max(super.calculateTabHeight(placement, tabIndex, fontHeight), 26);
         }
 
         @Override
@@ -124,75 +116,50 @@ public class TabPane extends JTabbedPane {
         }
 
         @Override
-        public void paint(Graphics g, JComponent c) {
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            if (tabPane.getTabCount() > 0) {
-                getTabBounds(tabPane, 0);      
-                gambarBingkai(g2);            
-            }
-            lewatiBingkai = true;
-            try {
-                super.paint(g, c);
-            } finally {
-                lewatiBingkai = false;
-            }
-        }
-
-        @Override
         protected void paintContentBorder(Graphics g, int placement, int selectedIndex) {
-            if (!lewatiBingkai) {
-                gambarBingkai((Graphics2D) g);
-            }
-        }
-
-        private void gambarBingkai(Graphics2D g2) {
-            if (!TAMPIL_BINGKAI) {
-                return;  
-            }
-            Insets ins = tabPane.getInsets();
-            int placement = tabPane.getTabPlacement();
-            int x = ins.left, y = ins.top;
-            int w = tabPane.getWidth() - ins.left - ins.right;
-            int h = tabPane.getHeight() - ins.top - ins.bottom;
-            int th = calculateTabAreaHeight(placement, runCount, maxTabHeight);
-            int tw = calculateTabAreaWidth(placement, runCount, maxTabWidth);
-            Insets area = getTabAreaInsets(placement);
-
-            switch (placement) {
-                case BOTTOM: h -= th - (area.top + maxTabHeight / 2); break;
-                case LEFT:   { int d = tw - (area.right + maxTabWidth / 2); x += d; w -= d; } break;
-                case RIGHT:  w -= tw - (area.left + maxTabWidth / 2); break;
-                default:     { int d = th - area.bottom - maxTabHeight / 2; y += d; h -= d; }
-            }
-            g2.setColor(BINGKAI);
-            g2.setStroke(new BasicStroke(1f));
-            g2.draw(new RoundRectangle2D.Float(x + 0.5f, y + 0.5f, w - 1, h - 1, ARC_BINGKAI, ARC_BINGKAI));
         }
 
         @Override
         protected void paintTabArea(Graphics g, int placement, int selectedIndex) {
-            Graphics2D g2 = (Graphics2D) g.create();
-            try {
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                int n = tabPane.getTabCount();
-                for (int r = 0; r < runCount; r++) {
-                    int awal = tabRuns[r];
-                    int akhir = lastTabInRun(n, r);
-                    Rectangle a = new Rectangle(rects[awal]);
-                    for (int i = awal + 1; i <= akhir; i++) {
-                        a = a.union(rects[i]);
+            int n = tabPane.getTabCount();
+            if (n > 0) {
+                Insets ins = tabPane.getInsets();
+                int w = tabPane.getWidth() - ins.left - ins.right;
+                int h = tabPane.getHeight() - ins.top - ins.bottom;
+                g.setColor(GARIS_DASAR);
+                switch (placement) {
+                    case BOTTOM: {
+                        int y = Integer.MAX_VALUE;
+                        for (int i = 0; i < n; i++) {
+                            y = Math.min(y, rects[i].y);
+                        }
+                        g.fillRect(ins.left, y, w, 1);
+                        break;
                     }
-                    RoundRectangle2D pil = new RoundRectangle2D.Float(a.x + 0.5f, a.y + 0.5f,
-                            a.width - 1, a.height - 1, ARC_TRACK, ARC_TRACK);
-                    g2.setColor(TRACK);
-                    g2.fill(pil);
-                    g2.setColor(TRACK_GARIS);
-                    g2.draw(pil);
+                    case LEFT: {
+                        int x = 0;
+                        for (int i = 0; i < n; i++) {
+                            x = Math.max(x, rects[i].x + rects[i].width);
+                        }
+                        g.fillRect(x - 1, ins.top, 1, h);
+                        break;
+                    }
+                    case RIGHT: {
+                        int x = Integer.MAX_VALUE;
+                        for (int i = 0; i < n; i++) {
+                            x = Math.min(x, rects[i].x);
+                        }
+                        g.fillRect(x, ins.top, 1, h);
+                        break;
+                    }
+                    default: {
+                        int y = 0;
+                        for (int i = 0; i < n; i++) {
+                            y = Math.max(y, rects[i].y + rects[i].height);
+                        }
+                        g.fillRect(ins.left, y - 1, w, 1);
+                    }
                 }
-            } finally {
-                g2.dispose();
             }
             super.paintTabArea(g, placement, selectedIndex);
         }
@@ -200,44 +167,27 @@ public class TabPane extends JTabbedPane {
         @Override
         protected void paintTabBackground(Graphics g, int placement, int tabIndex,
                                           int x, int y, int w, int h, boolean isSelected) {
-            Graphics2D g2 = (Graphics2D) g.create();
-            try {
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                if (isSelected) {
-                    RoundRectangle2D r = new RoundRectangle2D.Float(x + 2, y + 2, w - 4, h - 4, ARC_PILIH, ARC_PILIH);
-                    g2.setColor(BAYANGAN);
-                    g2.fill(new RoundRectangle2D.Float(x + 2, y + 3, w - 4, h - 4, ARC_PILIH, ARC_PILIH));
-                    g2.setColor(PILIH);
-                    g2.fill(r);
-                    g2.setColor(PILIH_GARIS);
-                    g2.setStroke(new BasicStroke(0.8f));
-                    g2.draw(r);
-                } else if (tabIndex == getRolloverTab() && tabPane.isEnabledAt(tabIndex)) {
-                    g2.setColor(HOVER);
-                    g2.fill(new RoundRectangle2D.Float(x + 2, y + 2, w - 4, h - 4, ARC_PILIH, ARC_PILIH));
-                }
-            } finally {
-                g2.dispose();
-            }
         }
 
         @Override
         protected void paintTabBorder(Graphics g, int placement, int tabIndex,
                                       int x, int y, int w, int h, boolean isSelected) {
-            int n = tabPane.getTabCount();
-            int run = getRunForTab(n, tabIndex);
-            if (isSelected || tabIndex == lastTabInRun(n, run)) {
+            if (!isSelected) {
                 return;
             }
-            int berikut = tabIndex + 1;
-            if (berikut < n && berikut == tabPane.getSelectedIndex()) {
-                return;
-            }
-            g.setColor(PEMISAH);
-            if (placement == LEFT || placement == RIGHT) {
-                g.drawLine(x + 6, y + h - 1, x + w - 7, y + h - 1);
-            } else {
-                g.drawLine(x + w - 1, y + 6, x + w - 1, y + h - 7);
+            g.setColor(GARIS_PILIH);
+            switch (placement) {
+                case BOTTOM:
+                    g.fillRect(x + SISI_GARIS, y, w - SISI_GARIS * 2, TEBAL_PILIH);
+                    break;
+                case LEFT:
+                    g.fillRect(x + w - TEBAL_PILIH, y + SISI_GARIS, TEBAL_PILIH, h - SISI_GARIS * 2);
+                    break;
+                case RIGHT:
+                    g.fillRect(x, y + SISI_GARIS, TEBAL_PILIH, h - SISI_GARIS * 2);
+                    break;
+                default:
+                    g.fillRect(x + SISI_GARIS, y + h - TEBAL_PILIH, w - SISI_GARIS * 2, TEBAL_PILIH);
             }
         }
 
@@ -252,7 +202,17 @@ public class TabPane extends JTabbedPane {
             Graphics2D g2 = (Graphics2D) g;
             g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             g2.setFont(font);
-            g2.setColor(tabPane.isEnabled() && tabPane.isEnabledAt(tabIndex) ? TEKS : TEKS_OFF);
+            Color warna;
+            if (!tabPane.isEnabled() || !tabPane.isEnabledAt(tabIndex)) {
+                warna = TEKS_OFF;
+            } else if (isSelected) {
+                warna = TEKS_PILIH;
+            } else if (tabIndex == getRolloverTab()) {
+                warna = TEKS_HOVER;
+            } else {
+                warna = TEKS;
+            }
+            g2.setColor(warna);
             BasicGraphicsUtils.drawStringUnderlineCharAt(g2, title,
                     tabPane.getDisplayedMnemonicIndexAt(tabIndex),
                     textRect.x, textRect.y + metrics.getAscent());
