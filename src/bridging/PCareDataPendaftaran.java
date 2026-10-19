@@ -452,7 +452,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void initComponents() {
 
         ProviderPeserta = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnGelang = new widget.Menu();
         MnGelang1 = new widget.MenuItem();
         MnGelang2 = new widget.MenuItem();
@@ -475,12 +475,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppBuktiKunjungan = new widget.MenuItem();
         ppKirimTindakanObat = new widget.MenuItem();
         tanggal = new widget.Tanggal();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         ppFilterTerkirim = new widget.MenuItem();
         ppFilterGagal = new widget.MenuItem();
         ppSinkronGagal = new widget.MenuItem();
         ppJadikanKunjungan = new widget.MenuItem();
-        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jPopupMenu3 = new widget.PopupMenu();
         ppRujukanPCare = new widget.MenuItem();
         StatusDiagnosa1 = new widget.TextBox();
         StatusDiagnosa2 = new widget.TextBox();
@@ -6298,9 +6298,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu jPopupMenu3;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
+    private widget.PopupMenu jPopupMenu3;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.panelisi panelGlass8;

@@ -10,7 +10,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>

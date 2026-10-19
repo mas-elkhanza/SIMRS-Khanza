@@ -145,7 +145,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         Tinggi70 = new widget.MenuItem();
         Tinggi200 = new widget.MenuItem();
         Tinggi250 = new widget.MenuItem();
@@ -1257,7 +1257,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private widget.Label LCount2;
     private widget.editorpane LoadHTML;
     private widget.PanelBiasa PanelAccor;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;

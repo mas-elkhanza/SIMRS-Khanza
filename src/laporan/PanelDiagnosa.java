@@ -312,7 +312,7 @@ public class PanelDiagnosa extends widget.panelisi {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnStatusBaru = new widget.MenuItem();
         MnStatusLama = new widget.MenuItem();
         TabRawat = new widget.TabPane();
@@ -785,7 +785,7 @@ public class PanelDiagnosa extends widget.panelisi {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel13;
     private widget.Label jLabel15;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     public widget.Table tbDiagnosa;
     public widget.Table tbDiagnosaPasien;
     public widget.Table tbProsedur;

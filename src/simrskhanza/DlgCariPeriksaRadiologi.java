@@ -181,7 +181,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnCetakNota = new widget.MenuItem();
         MnUbahDokterPetugas = new widget.MenuItem();
         ppBerkasDigital = new widget.MenuItem();
@@ -2361,7 +2361,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdmem;
     private widget.TextBox kdptg;
     private widget.Label label10;

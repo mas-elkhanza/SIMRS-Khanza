@@ -229,7 +229,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppNotaPiutang = new widget.MenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1440,7 +1440,7 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox Nmmem;
     private widget.TextBox NoRawat;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sisa;
     private widget.TextBox TCari;

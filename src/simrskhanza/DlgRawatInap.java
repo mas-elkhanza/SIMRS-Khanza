@@ -9401,7 +9401,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
                           BtnSkriningGiziKehamilan,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnChecklistKriteriaKeluarIsolasi,
                           BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,BtnHasilPersalinanTOLAC;
-    private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
+    private widget.PopupMenu PopupSOAP,PopupPemeriksaan;
     private widget.MenuItem MnCopySOAP,MnPasteSOAP;
     
     private void tampilDr() {
@@ -11434,11 +11434,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi");
         
-        PopupSOAP = new javax.swing.JPopupMenu();
+        PopupSOAP = new widget.PopupMenu();
         PopupSOAP.setName("PopupSOAP");
         tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
         
-        PopupPemeriksaan = new javax.swing.JPopupMenu();
+        PopupPemeriksaan = new widget.PopupMenu();
         PopupPemeriksaan.setName("PopupPemeriksaan");
         
         TKeluhan.setComponentPopupMenu(PopupPemeriksaan);

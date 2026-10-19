@@ -153,7 +153,7 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         DlgBayarMandiri = new javax.swing.JDialog();
@@ -1560,7 +1560,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox NmPetugas;
     private widget.TextBox NoBukti;
     private widget.TextBox NoRekening;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;

@@ -260,7 +260,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppPeserta = new widget.MenuItem();
         WindowInputPeserta = new javax.swing.JDialog();
         internalFrame7 = new widget.InternalFrame();
@@ -1484,7 +1484,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private widget.TextBox NoRM;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pembicara;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;

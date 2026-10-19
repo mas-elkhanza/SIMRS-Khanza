@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>

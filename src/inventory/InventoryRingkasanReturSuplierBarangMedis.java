@@ -104,7 +104,7 @@ public class InventoryRingkasanReturSuplierBarangMedis extends javax.swing.JDial
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup1 = new javax.swing.JPopupMenu();
+        Popup1 = new widget.PopupMenu();
         MnKodeBarangDesc = new widget.MenuItem();
         MnKodeBarangAsc = new widget.MenuItem();
         MnNamaBarangDesc = new widget.MenuItem();
@@ -1065,7 +1065,7 @@ public class InventoryRingkasanReturSuplierBarangMedis extends javax.swing.JDial
     private widget.TextBox Nmptg;
     private widget.TextBox NoFaktur;
     private widget.TextBox NoRetur;
-    private javax.swing.JPopupMenu Popup1;
+    private widget.PopupMenu Popup1;
     private widget.TextBox TCari;
     private widget.Tanggal TglRetur1;
     private widget.Tanggal TglRetur2;

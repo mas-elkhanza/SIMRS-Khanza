@@ -447,7 +447,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         kdpoli = new widget.TextBox();
         TPoli = new widget.TextBox();
         TBiaya = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDocument = new widget.MenuItem();
         NoBalasan = new widget.TextBox();
         kdsuku = new widget.TextBox();
@@ -4309,7 +4309,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdbahasa;
     private widget.TextBox kdcacat;
     private widget.TextBox kdgolonganpolri;
