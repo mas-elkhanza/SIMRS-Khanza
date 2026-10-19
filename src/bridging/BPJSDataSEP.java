@@ -427,7 +427,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppSEP = new widget.MenuItem();
         ppSEP1 = new widget.MenuItem();
         ppSEP2 = new widget.MenuItem();
@@ -494,7 +494,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Catatan1 = new widget.TextBox();
         jLabel50 = new widget.Label();
         TanggalKunjungRujukan = new widget.Tanggal();
-        Popup1 = new javax.swing.JPopupMenu();
+        Popup1 = new widget.PopupMenu();
         ppPengajuan = new widget.MenuItem();
         ppPengajuan1 = new widget.MenuItem();
         ppPengajuan2 = new widget.MenuItem();
@@ -6056,8 +6056,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.ComboBox Pembiayaan;
     private widget.TextBox PenanggungJawab;
     private widget.ComboBox Penunjang;
-    private javax.swing.JPopupMenu Popup;
-    private javax.swing.JPopupMenu Popup1;
+    private widget.PopupMenu Popup;
+    private widget.PopupMenu Popup1;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;

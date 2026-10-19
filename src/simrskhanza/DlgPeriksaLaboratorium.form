@@ -39,7 +39,7 @@
         <Property name="name" type="java.lang.String" value="Alamat" noResource="true"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>
@@ -1031,7 +1031,7 @@
           <SubComponents>
             <Container class="widget.ScrollPane" name="Scroll">
               <Properties>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
@@ -1047,7 +1047,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbPemeriksaan">
                   <Properties>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="Popup"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbPemeriksaan" noResource="true"/>

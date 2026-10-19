@@ -171,7 +171,7 @@ public final class KeuanganBayarPiutangJasaPerusahaan extends javax.swing.JDialo
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppNotaPiutang = new widget.MenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1114,7 +1114,7 @@ private void BtnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private widget.TextBox NmPerusahaan;
     private widget.TextBox NoPiutang;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sisa;
     private widget.TextBox TCari;

@@ -218,7 +218,7 @@ public final class DlgPeriksaLaboratoriumMB extends javax.swing.JDialog {
         Umur = new widget.TextBox();
         buttonGroup1 = new javax.swing.ButtonGroup();
         Alamat = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         rbDewasa = new widget.RadioButton();
@@ -1409,7 +1409,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa PanelInput;
     private widget.TextBox Pemeriksaan;
     private widget.TextBox Penjab;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;

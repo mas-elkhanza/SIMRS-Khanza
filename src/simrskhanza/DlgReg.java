@@ -715,7 +715,7 @@ public final class DlgReg extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDataRM = new widget.Menu();
         MnRMRawatJalan = new widget.Menu();
         MnAwalKeperawatan = new widget.Menu();
@@ -829,7 +829,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPilihBilling = new widget.Menu();
         MnBillingParsial = new widget.MenuItem();
         MnBilling = new widget.MenuItem();
-        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        jSeparator10 = new widget.PopupMenu.Separator();
         jMenu1 = new widget.Menu();
         MnLaporanRekapKunjunganPoli = new widget.MenuItem();
         MnLaporanRekapKunjunganDokter = new widget.MenuItem();
@@ -920,7 +920,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnGelang5 = new widget.MenuItem();
         MnGelang6 = new widget.MenuItem();
         MnGelang7 = new widget.MenuItem();
-        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jSeparator11 = new widget.PopupMenu.Separator();
         MnRujukan = new widget.Menu();
         MnRujukMasuk = new widget.MenuItem();
         MnRujuk = new widget.MenuItem();
@@ -1007,7 +1007,7 @@ public final class DlgReg extends javax.swing.JDialog {
         CrDokter3 = new widget.TextBox();
         jLabel24 = new widget.Label();
         NoBalasan = new widget.TextBox();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         MnPermintaan1 = new widget.Menu();
         MnJadwalOperasi1 = new widget.MenuItem();
         MnPermintaanLab1 = new widget.MenuItem();
@@ -1027,7 +1027,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnNoResep1 = new widget.MenuItem();
         MnResepDOkter1 = new widget.MenuItem();
         MnBilling1 = new widget.MenuItem();
-        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jSeparator12 = new widget.PopupMenu.Separator();
         MenuInputData1 = new widget.Menu();
         ppBerkasDigital1 = new widget.MenuItem();
         ppIKP1 = new widget.MenuItem();
@@ -17094,11 +17094,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Menu jMenu7;
     private widget.Menu jMenu8;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu.Separator jSeparator10;
-    private javax.swing.JPopupMenu.Separator jSeparator11;
-    private javax.swing.JPopupMenu.Separator jSeparator12;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
+    private widget.PopupMenu.Separator jSeparator10;
+    private widget.PopupMenu.Separator jSeparator11;
+    private widget.PopupMenu.Separator jSeparator12;
     private widget.TextBox kdpnj;
     private widget.TextBox kdpoli;
     private widget.TextBox nmpnj;

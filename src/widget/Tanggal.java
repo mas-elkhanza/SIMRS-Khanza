@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -33,7 +34,7 @@ public final class Tanggal extends JDateTimePicker {
     private static final Color BORDER    = new Color(0x96BEA5);   
     private static final Color NONAKTIF  = new Color(0xFAFCFB);
     private static final Color PEMISAH   = new Color(0xD3DDD7);
-    private static final Color TINT      = new Color(0x16, 0xA0, 0x5D, 30);  
+    private static final Color TINT      = new Color(0x16, 0xA0, 0x5D, 30);   
     private static final Color BENING    = new Color(0, 0, 0, 0);            
     private static final Color LATAR_PANAH = Color.WHITE;
     private static final Color TEKS      = new Color(0x1C2520);
@@ -80,7 +81,7 @@ public final class Tanggal extends JDateTimePicker {
         JComponent jc = (JComponent) c;
         boolean sudah = Boolean.TRUE.equals(jc.getClientProperty(KUNCI));
 
-        if (c instanceof AbstractButton) {                 
+        if (c instanceof AbstractButton) {               
             AbstractButton b = (AbstractButton) c;
             b.setBackground(BENING);
             b.setOpaque(false);
@@ -93,7 +94,7 @@ public final class Tanggal extends JDateTimePicker {
                 b.addMouseListener(hoverTombol(b));
                 b.addMouseListener(hoverKomponen());
             }
-        } else if (c instanceof JTextComponent) {         
+        } else if (c instanceof JTextComponent) {        
             JTextComponent t = (JTextComponent) c;
             t.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 4));
             t.setBackground(BENING);
@@ -191,18 +192,17 @@ public final class Tanggal extends JDateTimePicker {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        AbstractButton b = tombolPanah();
-        if (b == null || !b.isVisible() || b.getWidth() <= 0) {
+        Rectangle r = areaPanah();
+        if (r == null) {
             return;
         }
         Graphics2D g2 = (Graphics2D) g.create();
         try {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            Rectangle r = b.getBounds();
-            
             g2.clip(new RoundRectangle2D.Float(2, 2, getWidth() - 4, getHeight() - 4,
                     RADIUS * 2f - 2, RADIUS * 2f - 2));
             g2.clipRect(r.x, r.y, r.width, r.height);
+
             g2.setColor(isEnabled() ? LATAR_PANAH : NONAKTIF);
             g2.fillRect(r.x, r.y, r.width, r.height);
             if (hoverPanah && isEnabled()) {
@@ -212,7 +212,7 @@ public final class Tanggal extends JDateTimePicker {
 
             g2.setColor(PEMISAH);
             g2.drawLine(r.x, r.y + 3, r.x, r.y + r.height - 4);
-            
+
             float cx = r.x + r.width / 2f + 0.5f;
             float cy = r.y + r.height / 2f + 0.5f;
             Path2D chevron = new Path2D.Float();
@@ -225,6 +225,46 @@ public final class Tanggal extends JDateTimePicker {
         } finally {
             g2.dispose();
         }
+    }
+
+    private Rectangle areaPanah() {
+        Insets in = getInsets();
+        int lebar = getHeight() - in.top - in.bottom;     
+        if (lebar <= 0) {
+            return null;
+        }
+        AbstractButton b = tombolPanah();
+        if (b != null && b.isVisible() && b.getWidth() > 0) {
+            lebar = Math.max(lebar, getWidth() - in.right - b.getX());
+        }
+        lebar = Math.min(lebar, getWidth() / 2);
+        return new Rectangle(getWidth() - in.right - lebar, in.top, lebar, getHeight() - in.top - in.bottom);
+    }
+
+    @Override
+    public void doLayout() {
+        AbstractButton b = tombolPanah();
+        if (b != null) {
+            Insets in = getInsets();
+            int s = getHeight() - in.top - in.bottom;
+            if (s > 0) {
+                Dimension d = b.isPreferredSizeSet() ? b.getPreferredSize() : null;
+                if (d == null || d.width != s || d.height != s) {
+                    b.setPreferredSize(new Dimension(s, s));
+                }
+            }
+        }
+        super.doLayout();
+    }
+
+    @Override
+    public boolean isOptimizedDrawingEnabled() {
+        return false;
+    }
+
+    @Override
+    protected boolean isPaintingOrigin() {
+        return true;
     }
 
     private AbstractButton tombolPanah() {
