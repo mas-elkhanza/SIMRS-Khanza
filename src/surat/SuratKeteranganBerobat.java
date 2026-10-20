@@ -107,8 +107,8 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratKeterangan = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCetakSuratKeterangan = new widget.MenuItem();
         TanggalJamPeriksa = new widget.TextBox();
         KodeDokter = new widget.TextBox();
         NamaDokter = new widget.TextBox();
@@ -895,7 +895,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox KodeDokter;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratKeterangan;
+    private widget.MenuItem MnCetakSuratKeterangan;
     private widget.TextBox NamaDokter;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
@@ -916,7 +916,7 @@ public final class SuratKeteranganBerobat extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

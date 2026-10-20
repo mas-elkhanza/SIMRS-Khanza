@@ -136,7 +136,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbpropinsi.setAutoCreateRowSorter(true);
+        tbpropinsi.setAutoCreateRowSorter(false);
         tbpropinsi.setName("tbpropinsi"); // NOI18N
         tbpropinsi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

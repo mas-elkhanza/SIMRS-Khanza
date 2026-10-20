@@ -130,8 +130,8 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCekKodeBooking = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCekKodeBooking = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -521,7 +521,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private widget.Label MJknBelum;
     private widget.Label MJknCapaian;
     private widget.Label MJknSelesai;
-    private javax.swing.JMenuItem MnCekKodeBooking;
+    private widget.MenuItem MnCekKodeBooking;
     private widget.Label NonJKNBelum;
     private widget.Label NonJKNSelesai;
     private widget.Label SEPTerbit;
@@ -542,7 +542,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;

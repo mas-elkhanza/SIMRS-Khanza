@@ -922,7 +922,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbRalanDokter = new widget.Table();
@@ -3495,7 +3495,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.ComboBox cmbStatus;

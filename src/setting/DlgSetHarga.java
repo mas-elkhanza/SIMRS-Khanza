@@ -193,12 +193,12 @@ public class DlgSetHarga extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppUPdate = new javax.swing.JMenuItem();
-        Popup1 = new javax.swing.JPopupMenu();
-        ppUPdate1 = new javax.swing.JMenuItem();
-        Popup2 = new javax.swing.JPopupMenu();
-        ppUPdate2 = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppUPdate = new widget.MenuItem();
+        Popup1 = new widget.PopupMenu();
+        ppUPdate1 = new widget.MenuItem();
+        Popup2 = new widget.PopupMenu();
+        ppUPdate2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -206,7 +206,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabSetting = new javax.swing.JTabbedPane();
+        TabSetting = new widget.TabPane();
         internalFrame3 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
         tbPengaturanUmum = new widget.Table();
@@ -2831,16 +2831,16 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.Button Btnbarang;
     private widget.Label LCount;
     private widget.Label LCount1;
-    private javax.swing.JPopupMenu Popup;
-    private javax.swing.JPopupMenu Popup1;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup;
+    private widget.PopupMenu Popup1;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
     private widget.TextBox TCari1;
-    private javax.swing.JTabbedPane TabSetting;
+    private widget.TabPane TabSetting;
     private widget.TextBox beliluar;
     private widget.TextBox beliluarperbarang;
     private widget.TextBox beliluarumum;
@@ -2908,9 +2908,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
-    private javax.swing.JMenuItem ppUPdate;
-    private javax.swing.JMenuItem ppUPdate1;
-    private javax.swing.JMenuItem ppUPdate2;
+    private widget.MenuItem ppUPdate;
+    private widget.MenuItem ppUPdate1;
+    private widget.MenuItem ppUPdate2;
     private widget.TextBox ralan;
     private widget.TextBox ralanperbarang;
     private widget.TextBox ralanumum;

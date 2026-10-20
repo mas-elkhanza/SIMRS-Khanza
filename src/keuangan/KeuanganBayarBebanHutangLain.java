@@ -196,8 +196,8 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         KodeBank = new widget.TextBox();
         BankTujuan = new widget.TextBox();
         KodeTransaksi = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
-        cetakbukti = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        cetakbukti = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -1495,7 +1495,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NoHutang;
     private widget.TextBox NoRekening;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sisa;
@@ -1503,7 +1503,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Tanggal Tanggal;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
-    private javax.swing.JMenuItem cetakbukti;
+    private widget.MenuItem cetakbukti;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;

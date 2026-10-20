@@ -204,9 +204,9 @@ public final class BPJSProgramPRB extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSurat = new javax.swing.JMenuItem();
-        MnTampilkanObatPRB = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSurat = new widget.MenuItem();
+        MnTampilkanObatPRB = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbProgramPRB = new widget.Table();
@@ -315,7 +315,7 @@ public final class BPJSProgramPRB extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbProgramPRB.setAutoCreateRowSorter(true);
+        tbProgramPRB.setAutoCreateRowSorter(false);
         tbProgramPRB.setComponentPopupMenu(jPopupMenu1);
         tbProgramPRB.setName("tbProgramPRB"); // NOI18N
         tbProgramPRB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1484,8 +1484,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdProgram;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnSurat;
-    private javax.swing.JMenuItem MnTampilkanObatPRB;
+    private widget.MenuItem MnSurat;
+    private widget.MenuItem MnTampilkanObatPRB;
     private widget.TextBox NmDPJP;
     private widget.TextBox NmPasien;
     private widget.TextBox NmProgram;
@@ -1519,7 +1519,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

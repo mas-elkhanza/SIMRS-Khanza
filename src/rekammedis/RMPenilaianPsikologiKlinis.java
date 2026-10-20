@@ -291,8 +291,8 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnPenilaianMedis = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -303,7 +303,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -320,7 +320,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         TujuanPemeriksaan = new widget.ComboBox();
         jLabel57 = new widget.Label();
         scrollPane7 = new widget.ScrollPane();
-        KetAlloAuto = new javax.swing.JTextArea();
+        KetAlloAuto = new widget.TextArea();
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
@@ -2718,13 +2718,13 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.TextArea KeluhanUtama;
     private widget.TextBox Kesadaran;
-    private javax.swing.JTextArea KetAlloAuto;
+    private widget.TextArea KetAlloAuto;
     private widget.TextBox KontrolImpuls;
     private widget.Label LCount;
     private widget.TextBox Lainnya;
     private widget.editorpane LoadHTML;
     private widget.TextArea ManifestasiFungsiPsikologis;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.MenuItem MnPenilaianMedis;
     private widget.TextBox NamaTes;
     private widget.TextBox NmPetugas;
     private widget.TextBox Orientasi;
@@ -2742,7 +2742,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox TahapanIntevensi1;
     private widget.TextBox TahapanIntevensi2;
     private widget.TextBox TahapanIntevensi3;
@@ -2845,7 +2845,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.Label jLabel99;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;

@@ -200,8 +200,8 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenACRS = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSkriningInstrumenACRS = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -1775,7 +1775,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenACRS;
+    private widget.MenuItem MnSkriningInstrumenACRS;
     private widget.TextBox NilaiACRS1;
     private widget.TextBox NilaiACRS10;
     private widget.TextBox NilaiACRS2;
@@ -1843,7 +1843,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;

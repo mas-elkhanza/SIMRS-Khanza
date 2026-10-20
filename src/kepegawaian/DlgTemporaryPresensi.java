@@ -120,13 +120,13 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup2 = new javax.swing.JPopupMenu();
-        ppVerify = new javax.swing.JMenuItem();
-        ppVerifySemua = new javax.swing.JMenuItem();
-        ppHapusSemua = new javax.swing.JMenuItem();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppBersihkanSemua = new javax.swing.JMenuItem();
-        ppVerifyOtomatis = new javax.swing.JMenuItem();
+        Popup2 = new widget.PopupMenu();
+        ppVerify = new widget.MenuItem();
+        ppVerifySemua = new widget.MenuItem();
+        ppHapusSemua = new widget.MenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppBersihkanSemua = new widget.MenuItem();
+        ppVerifyOtomatis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbTemporary = new widget.Table();
@@ -268,7 +268,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbTemporary.setAutoCreateRowSorter(true);
+        tbTemporary.setAutoCreateRowSorter(false);
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);
@@ -684,7 +684,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnTambah;
     private widget.Label LCount;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
@@ -693,12 +693,12 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
-    private javax.swing.JMenuItem ppBersihkanSemua;
-    private javax.swing.JMenuItem ppHapusSemua;
-    private javax.swing.JMenuItem ppPilihSemua;
-    private javax.swing.JMenuItem ppVerify;
-    private javax.swing.JMenuItem ppVerifyOtomatis;
-    private javax.swing.JMenuItem ppVerifySemua;
+    private widget.MenuItem ppBersihkanSemua;
+    private widget.MenuItem ppHapusSemua;
+    private widget.MenuItem ppPilihSemua;
+    private widget.MenuItem ppVerify;
+    private widget.MenuItem ppVerifyOtomatis;
+    private widget.MenuItem ppVerifySemua;
     private widget.Table tbTemporary;
     // End of variables declaration//GEN-END:variables
 

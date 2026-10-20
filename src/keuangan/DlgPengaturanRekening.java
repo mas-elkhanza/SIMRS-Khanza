@@ -475,13 +475,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCopyRekening = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCopyRekening = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         tbPengaturan = new widget.Table();
         Scroll1 = new widget.ScrollPane();
@@ -1239,13 +1239,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
-    private javax.swing.JMenuItem MnCopyRekening;
+    private widget.MenuItem MnCopyRekening;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.Table tbPengaturan;
     private widget.Table tbPengaturanRalan;

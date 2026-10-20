@@ -87,8 +87,8 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppLokasi = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppLokasi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJadwal = new widget.Table();
@@ -759,7 +759,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label20;
     private widget.Label label22;
@@ -769,7 +769,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     private widget.TextBox nmkategori;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
-    private javax.swing.JMenuItem ppLokasi;
+    private widget.MenuItem ppLokasi;
     private widget.Table tbJadwal;
     // End of variables declaration//GEN-END:variables
 

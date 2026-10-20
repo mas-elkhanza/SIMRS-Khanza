@@ -6,7 +6,6 @@ package widget;
 
 import java.awt.Color;
 import javax.swing.JTabbedPane;
-
 /**
  *
  * @author khanzamedia

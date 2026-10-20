@@ -164,8 +164,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakLaporan = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCetakLaporan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2498,7 +2498,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.ComboBox MesinAnestesi3;
     private widget.ComboBox MesinAnestesi4;
     private widget.ComboBox MesinAnestesi5;
-    private javax.swing.JMenuItem MnCetakLaporan;
+    private widget.MenuItem MnCetakLaporan;
     private widget.TextBox NamaPetugas;
     private widget.TextBox NmDokter;
     private widget.ComboBox ObatObat1;
@@ -2577,7 +2577,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.Label jLabel96;
     private widget.Label jLabel97;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;

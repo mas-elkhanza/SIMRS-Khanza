@@ -128,9 +128,9 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDetailPiutang = new javax.swing.JMenuItem();
-        MnDetailCicilan = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnDetailPiutang = new widget.MenuItem();
+        MnDetailCicilan = new widget.MenuItem();
         kdpenjab = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -741,8 +741,8 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Button BtnSeek2;
     private javax.swing.JLabel LCount;
     private widget.Label LCount2;
-    private javax.swing.JMenuItem MnDetailCicilan;
-    private javax.swing.JMenuItem MnDetailPiutang;
+    private widget.MenuItem MnDetailCicilan;
+    private widget.MenuItem MnDetailPiutang;
     private widget.ScrollPane Scroll;
     private widget.ComboBox StatusLunas;
     private widget.TextBox TCari;
@@ -751,7 +751,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
     private widget.Label label10;
     private widget.Label label11;

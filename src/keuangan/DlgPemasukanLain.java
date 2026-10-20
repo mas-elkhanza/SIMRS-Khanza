@@ -131,8 +131,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        cetakkwitansi = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        cetakkwitansi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -208,7 +208,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbResep.setAutoCreateRowSorter(true);
+        tbResep.setAutoCreateRowSorter(false);
         tbResep.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbResep.setComponentPopupMenu(Popup);
         tbResep.setName("tbResep"); // NOI18N
@@ -1109,13 +1109,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox NmPtg;
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnKategori;
     private widget.Button btnPetugas;
-    private javax.swing.JMenuItem cetakkwitansi;
+    private widget.MenuItem cetakkwitansi;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel11;
     private widget.Label jLabel12;

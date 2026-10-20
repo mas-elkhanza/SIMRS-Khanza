@@ -197,8 +197,8 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianLanjutanRisikoGeriatri = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnPenilaianLanjutanRisikoGeriatri = new widget.MenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -1986,7 +1986,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoGeriatri;
+    private widget.MenuItem MnPenilaianLanjutanRisikoGeriatri;
     private widget.TextBox NilaiResiko1;
     private widget.TextBox NilaiResiko10;
     private widget.TextBox NilaiResiko11;
@@ -2080,7 +2080,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

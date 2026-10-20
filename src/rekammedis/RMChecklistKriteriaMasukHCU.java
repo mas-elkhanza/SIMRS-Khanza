@@ -150,8 +150,8 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukHCU = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnKriteriaMasukHCU = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1813,7 +1813,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukHCU;
+    private widget.MenuItem MnKriteriaMasukHCU;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Pembedahan1;
@@ -1891,7 +1891,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Label jLabel93;
     private widget.Label jLabel94;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;

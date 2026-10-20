@@ -130,7 +130,7 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPersyaratan.setAutoCreateRowSorter(true);
+        tbPersyaratan.setAutoCreateRowSorter(false);
         tbPersyaratan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPersyaratan.setName("tbPersyaratan"); // NOI18N
         tbPersyaratan.addMouseListener(new java.awt.event.MouseAdapter() {

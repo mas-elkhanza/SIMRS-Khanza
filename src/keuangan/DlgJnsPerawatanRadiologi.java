@@ -130,8 +130,8 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -215,7 +215,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1118,7 +1118,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
     private widget.ComboBox Kelas;
     private widget.Label LCount;
     private widget.TextBox Menejemen;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1142,7 +1142,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdpnj;
     private widget.TextBox nmpnj;
     private widget.panelisi panelGlass8;

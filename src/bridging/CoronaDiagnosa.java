@@ -222,10 +222,10 @@ public class CoronaDiagnosa extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppBersihkan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
-        TabSetting = new javax.swing.JTabbedPane();
+        TabSetting = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -929,11 +929,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Tanggal DTPCari2;
     private widget.TextBox Kd2;
     private widget.Label LCount;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TCari2;
-    private javax.swing.JTabbedPane TabSetting;
+    private widget.TabPane TabSetting;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -952,7 +952,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.panelisi panelisi2;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppBersihkan;
+    private widget.MenuItem ppBersihkan;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     private widget.Table tbKamar;

@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanDr">
+    <Container class="widget.PopupMenu" name="PopupTindakanDr">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -13,7 +13,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanDr">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanDr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -38,7 +38,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanDrActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanDr">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanDr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -65,7 +65,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanDrBayar">
+    <Container class="widget.PopupMenu" name="PopupTindakanDrBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -76,7 +76,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanDrBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanDrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -101,7 +101,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanDrBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanDrBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanDrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -128,7 +128,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanPr">
+    <Container class="widget.PopupMenu" name="PopupTindakanPr">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -139,7 +139,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanPr">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanPr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -164,7 +164,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanPrActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanPr">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanPr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -191,7 +191,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanPrBayar">
+    <Container class="widget.PopupMenu" name="PopupTindakanPrBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -202,7 +202,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanPrBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanPrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -227,7 +227,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanPrBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanPrBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanPrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -254,7 +254,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanDrPr">
+    <Container class="widget.PopupMenu" name="PopupTindakanDrPr">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -265,7 +265,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanDrPr">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanDrPr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -290,7 +290,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanDrPrActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanDrPr">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanDrPr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -317,7 +317,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupTindakanDrPrBayar">
+    <Container class="widget.PopupMenu" name="PopupTindakanDrPrBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -328,7 +328,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanTindakanDrPrBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanTindakanDrPrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -353,7 +353,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanTindakanDrPrBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaTindakanDrPrBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaTindakanDrPrBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -380,7 +380,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupRadiologi">
+    <Container class="widget.PopupMenu" name="PopupRadiologi">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -391,7 +391,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanRadiologi">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanRadiologi">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -416,7 +416,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanRadiologiActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaRadiologi">
+        <MenuItem class="widget.MenuItem" name="ppSemuaRadiologi">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -443,7 +443,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupRadiologiBayar">
+    <Container class="widget.PopupMenu" name="PopupRadiologiBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -454,7 +454,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanRadiologiBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanRadiologiBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -479,7 +479,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanRadiologiBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaRadiologiBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaRadiologiBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -506,7 +506,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupLaborat">
+    <Container class="widget.PopupMenu" name="PopupLaborat">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -517,7 +517,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanLaborat">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanLaborat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -542,7 +542,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanLaboratActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaLaborat">
+        <MenuItem class="widget.MenuItem" name="ppSemuaLaborat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -569,7 +569,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupDetailLaborat">
+    <Container class="widget.PopupMenu" name="PopupDetailLaborat">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -580,7 +580,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanDetailLaborat">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanDetailLaborat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -605,7 +605,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanDetailLaboratActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaDetailLaborat">
+        <MenuItem class="widget.MenuItem" name="ppSemuaDetailLaborat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -632,7 +632,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupLaboratBayar">
+    <Container class="widget.PopupMenu" name="PopupLaboratBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -643,7 +643,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanLaboratBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanLaboratBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -668,7 +668,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanLaboratBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaLaboratBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaLaboratBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -695,7 +695,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupDetailLaboratBayar">
+    <Container class="widget.PopupMenu" name="PopupDetailLaboratBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -706,7 +706,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanDetailLaboratBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanDetailLaboratBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -731,7 +731,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanDetailLaboratBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaDetailLaboratBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaDetailLaboratBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -758,7 +758,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupObat">
+    <Container class="widget.PopupMenu" name="PopupObat">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -769,7 +769,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanObat">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanObat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -794,7 +794,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanObatActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaObat">
+        <MenuItem class="widget.MenuItem" name="ppSemuaObat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -821,7 +821,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPopupMenu" name="PopupObatBayar">
+    <Container class="widget.PopupMenu" name="PopupObatBayar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -832,7 +832,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBersihkanObatBayar">
+        <MenuItem class="widget.MenuItem" name="ppBersihkanObatBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -857,7 +857,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBersihkanObatBayarActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppSemuaObatBayar">
+        <MenuItem class="widget.MenuItem" name="ppSemuaObatBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -1405,7 +1405,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="TabRawat">
+        <Container class="widget.TabPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="ff" red="ff" type="rgb"/>
@@ -1549,7 +1549,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanDr"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1566,7 +1566,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanDr">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanDr"/>
                         </Property>
                       </Properties>
@@ -1588,7 +1588,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanDrBayar"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1605,7 +1605,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanDrBayar">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanDrBayar"/>
                         </Property>
                       </Properties>
@@ -1731,7 +1731,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanPr"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1748,7 +1748,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanPr">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanPr"/>
                         </Property>
                       </Properties>
@@ -1774,7 +1774,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanPrBayar"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1791,7 +1791,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanPrBayar">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanPrBayar"/>
                         </Property>
                       </Properties>
@@ -1973,7 +1973,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanDrPr"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1990,7 +1990,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanDrPr">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanDrPr"/>
                         </Property>
                       </Properties>
@@ -2012,7 +2012,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupTindakanDrPrBayar"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2029,7 +2029,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbTindakanDrPrBayar">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupTindakanDrPrBayar"/>
                         </Property>
                       </Properties>
@@ -2075,7 +2075,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupRadiologi"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2092,7 +2092,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRadiologi">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupRadiologi"/>
                         </Property>
                       </Properties>
@@ -2114,7 +2114,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupRadiologiBayar"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2131,7 +2131,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRadiologiBayar">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupRadiologiBayar"/>
                         </Property>
                       </Properties>
@@ -2343,7 +2343,7 @@
                     <Property name="verticalGap" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat">
+                    <Container class="widget.TabPane" name="TabRawatLaborat">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>
@@ -2378,7 +2378,7 @@
                                 </LineBorder>
                               </Border>
                             </Property>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupLaborat"/>
                             </Property>
                             <Property name="opaque" type="boolean" value="true"/>
@@ -2398,7 +2398,7 @@
                           <SubComponents>
                             <Component class="widget.Table" name="tbLaborat">
                               <Properties>
-                                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                                   <ComponentRef name="PopupLaborat"/>
                                 </Property>
                               </Properties>
@@ -2414,7 +2414,7 @@
                                 </LineBorder>
                               </Border>
                             </Property>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupDetailLaborat"/>
                             </Property>
                             <Property name="opaque" type="boolean" value="true"/>
@@ -2434,7 +2434,7 @@
                           <SubComponents>
                             <Component class="widget.Table" name="tbDetailLaborat">
                               <Properties>
-                                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                                   <ComponentRef name="PopupDetailLaborat"/>
                                 </Property>
                               </Properties>
@@ -2472,7 +2472,7 @@
                     <Property name="verticalGap" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="TabRawatLaboratBayar">
+                    <Container class="widget.TabPane" name="TabRawatLaboratBayar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>
@@ -2507,7 +2507,7 @@
                                 </LineBorder>
                               </Border>
                             </Property>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupLaboratBayar"/>
                             </Property>
                             <Property name="opaque" type="boolean" value="true"/>
@@ -2527,7 +2527,7 @@
                           <SubComponents>
                             <Component class="widget.Table" name="tbLaboratBayar">
                               <Properties>
-                                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                                   <ComponentRef name="PopupLaboratBayar"/>
                                 </Property>
                               </Properties>
@@ -2546,7 +2546,7 @@
                                 </LineBorder>
                               </Border>
                             </Property>
-                            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupDetailLaboratBayar"/>
                             </Property>
                             <Property name="opaque" type="boolean" value="true"/>
@@ -2566,7 +2566,7 @@
                           <SubComponents>
                             <Component class="widget.Table" name="tbDetailLaboratBayar">
                               <Properties>
-                                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                                   <ComponentRef name="PopupDetailLaboratBayar"/>
                                 </Property>
                               </Properties>
@@ -2619,7 +2619,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupObat"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2639,7 +2639,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbObat">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupObat"/>
                         </Property>
                       </Properties>
@@ -2661,7 +2661,7 @@
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="PopupObatBayar"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2678,7 +2678,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbObatBayar">
                       <Properties>
-                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="PopupObatBayar"/>
                         </Property>
                       </Properties>

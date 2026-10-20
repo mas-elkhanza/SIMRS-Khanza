@@ -79,7 +79,7 @@ public class DlgRL4A extends javax.swing.JDialog {
         label9 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
         Scroll1 = new widget.ScrollPane();
@@ -343,7 +343,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.editorpane LoadHTML1;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.Button btnCari;

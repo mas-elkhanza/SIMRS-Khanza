@@ -181,8 +181,8 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakPelaksanaanEdukasi = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCetakPelaksanaanEdukasi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1505,7 +1505,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.TextArea Materi;
     private widget.ComboBox Menit;
     private widget.ComboBox Metode;
-    private javax.swing.JMenuItem MnCetakPelaksanaanEdukasi;
+    private widget.MenuItem MnCetakPelaksanaanEdukasi;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.PanelBiasa PanelAccor;
@@ -1541,7 +1541,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollPane1;

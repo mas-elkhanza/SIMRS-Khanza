@@ -551,8 +551,8 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnMonitoringEso = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnMonitoringEso = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -563,7 +563,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -4765,7 +4765,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.TextArea Masalah_Kualitas;
-    private javax.swing.JMenuItem MnMonitoringEso;
+    private widget.MenuItem MnMonitoringEso;
     private widget.ComboBox Naranjo1;
     private widget.ComboBox Naranjo10;
     private widget.ComboBox Naranjo2;
@@ -4822,7 +4822,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal TanggaKesudahan;
     private widget.Tanggal TanggalAkhir1;
     private widget.Tanggal TanggalAkhir10;
@@ -4913,7 +4913,7 @@ public final class RMPelaporanEfekSampingObat extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private widget.Label jLabel94;
     private widget.Label jLabel99;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;

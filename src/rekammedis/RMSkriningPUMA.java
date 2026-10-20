@@ -191,8 +191,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningPuma = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSkriningPuma = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1735,7 +1735,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox LamaMerokok;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningPuma;
+    private widget.MenuItem MnSkriningPuma;
     private widget.ComboBox NafasPendek;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1797,7 +1797,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

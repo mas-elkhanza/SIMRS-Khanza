@@ -175,9 +175,9 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppPilih = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppPilih = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
         DTPDaftar = new widget.Tanggal();
         NoRm = new widget.TextBox();
         TNo = new widget.TextBox();
@@ -704,7 +704,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Tanggal DTPDaftar;
     private widget.Label LCount;
     private widget.TextBox NoRm;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox TCari;
     private widget.TextBox TNo;
     private widget.TextBox TNoBooking;
@@ -712,8 +712,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label jLabel7;
     private widget.Label label10;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPilih;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

@@ -123,11 +123,11 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnBilling = new javax.swing.JMenuItem();
-        MnSudahBayar = new javax.swing.JMenuItem();
-        MnBelumBayar = new javax.swing.JMenuItem();
-        MnSemuaStatusBayar = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnBilling = new widget.MenuItem();
+        MnSudahBayar = new widget.MenuItem();
+        MnBelumBayar = new widget.MenuItem();
+        MnSemuaStatusBayar = new widget.MenuItem();
         kdbangsal = new widget.TextBox();
         KdCaraBayar = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -948,10 +948,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox KdCaraBayar;
     private javax.swing.JLabel LCount;
     private widget.Label LCount2;
-    private javax.swing.JMenuItem MnBelumBayar;
-    private javax.swing.JMenuItem MnBilling;
-    private javax.swing.JMenuItem MnSemuaStatusBayar;
-    private javax.swing.JMenuItem MnSudahBayar;
+    private widget.MenuItem MnBelumBayar;
+    private widget.MenuItem MnBilling;
+    private widget.MenuItem MnSemuaStatusBayar;
+    private widget.MenuItem MnSudahBayar;
     private widget.TextBox NmCaraBayar;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -960,7 +960,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdbangsal;
     private widget.Label label10;
     private widget.Label label11;

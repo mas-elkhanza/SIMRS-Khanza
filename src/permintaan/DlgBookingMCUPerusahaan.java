@@ -157,10 +157,10 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppPilih = new javax.swing.JMenuItem();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppPengajuanPasienBaru = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppPilih = new widget.MenuItem();
+        ppBersihkan = new widget.MenuItem();
+        ppPengajuanPasienBaru = new widget.MenuItem();
         TNoReg = new widget.TextBox();
         TNoRw = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1140,7 +1140,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NmDokter;
     private widget.TextBox NmPerusahaan;
     private widget.TextBox NmPoli;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox TCari;
     private widget.TextBox TNoReg;
     private widget.TextBox TNoRw;
@@ -1155,9 +1155,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPengajuanPasienBaru;
-    private javax.swing.JMenuItem ppPilih;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppPengajuanPasienBaru;
+    private widget.MenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

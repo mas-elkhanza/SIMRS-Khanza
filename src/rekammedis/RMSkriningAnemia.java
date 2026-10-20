@@ -216,8 +216,8 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningAnemia = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSkriningAnemia = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1797,7 +1797,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox MasalahPubertas;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningAnemia;
+    private widget.MenuItem MnSkriningAnemia;
     private widget.ComboBox MudahLelah;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1863,7 +1863,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

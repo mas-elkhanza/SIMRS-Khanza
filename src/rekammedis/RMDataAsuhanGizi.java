@@ -225,8 +225,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnAsuhanGizi = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnAsuhanGizi = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
@@ -387,7 +387,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -1873,7 +1873,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox LiLA;
     private widget.TextBox LiLAPerU;
-    private javax.swing.JMenuItem MnAsuhanGizi;
+    private widget.MenuItem MnAsuhanGizi;
     private widget.TextArea Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1952,7 +1952,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;

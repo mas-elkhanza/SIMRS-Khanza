@@ -348,8 +348,8 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanPersalinan = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCatatanPersalinan = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -360,7 +360,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -2364,7 +2364,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox KontraksiUterus;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnCatatanPersalinan;
+    private widget.MenuItem MnCatatanPersalinan;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;
@@ -2382,7 +2382,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox TaliPusat;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
@@ -2414,7 +2414,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private widget.Label label11;

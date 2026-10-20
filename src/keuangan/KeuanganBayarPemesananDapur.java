@@ -204,8 +204,8 @@ public final class KeuanganBayarPemesananDapur extends javax.swing.JDialog {
         KodeBank = new widget.TextBox();
         BankTujuan = new widget.TextBox();
         KodeTransaksi = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
-        cetakbukti = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        cetakbukti = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
         label34 = new widget.Label();
@@ -1618,7 +1618,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.TextBox NoBukti;
     private widget.TextBox NoFaktur;
     private widget.TextBox NoRekening;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox SisaHutang;
@@ -1626,7 +1626,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Tanggal TglBayar;
     private widget.Tanggal TglCari1;
     private widget.Tanggal TglCari2;
-    private javax.swing.JMenuItem cetakbukti;
+    private widget.MenuItem cetakbukti;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;

@@ -168,8 +168,8 @@ public class DlgDeposit extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKwitansiDeposit = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnKwitansiDeposit = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -255,7 +255,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
@@ -1200,7 +1200,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Keterangan;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKwitansiDeposit;
+    private widget.MenuItem MnKwitansiDeposit;
     private widget.TextBox NamaPetugas;
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;
@@ -1228,7 +1228,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

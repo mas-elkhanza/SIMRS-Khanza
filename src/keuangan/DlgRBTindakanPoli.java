@@ -185,9 +185,9 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanPasien = new javax.swing.JMenuItem();
-        ppTampilkanSeleksi = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppTampilkanPasien = new widget.MenuItem();
+        ppTampilkanSeleksi = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -642,7 +642,7 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdpoli;
     private widget.Label label11;
     private widget.Label label17;
@@ -651,8 +651,8 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
     private widget.TextBox nmpoli;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanPasien;
-    private javax.swing.JMenuItem ppTampilkanSeleksi;
+    private widget.MenuItem ppTampilkanPasien;
+    private widget.MenuItem ppTampilkanSeleksi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

@@ -13,7 +13,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kd2KeyPressed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>
@@ -22,7 +22,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBayarBeban">
+        <MenuItem class="widget.MenuItem" name="ppBayarBeban">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -37,7 +37,7 @@
               <Image iconType="3" name="/picture/bantuan.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bayar Beban Hutang Lain"/>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="Popup"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
@@ -51,7 +51,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBayarBebanBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppBelumLunas">
+        <MenuItem class="widget.MenuItem" name="ppBelumLunas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -66,7 +66,7 @@
               <Image iconType="3" name="/picture/bantuan.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Beban Hutang Lain Belum Lunas"/>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="Popup"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
@@ -140,7 +140,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="Popup"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
@@ -157,7 +157,7 @@
             <Component class="widget.Table" name="tbKamar">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>

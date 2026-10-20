@@ -90,9 +90,9 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanBaru = new javax.swing.JMenuItem();
-        ppTampilkanLama = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppTampilkanBaru = new widget.MenuItem();
+        ppTampilkanLama = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -115,7 +115,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         BtnSeek3 = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
@@ -727,7 +727,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
@@ -735,7 +735,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
     private widget.Label label11;
@@ -746,8 +746,8 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private widget.TextBox nmpoli;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanBaru;
-    private javax.swing.JMenuItem ppTampilkanLama;
+    private widget.MenuItem ppTampilkanBaru;
+    private widget.MenuItem ppTampilkanLama;
     // End of variables declaration//GEN-END:variables
 
     private void tampil(){        

@@ -111,12 +111,12 @@ public final class SuratSakit extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratSakit = new javax.swing.JMenuItem();
-        MnCetakSuratSakit1 = new javax.swing.JMenuItem();
-        MnCetakSuratSakit4 = new javax.swing.JMenuItem();
-        MnCetakSuratSakit5 = new javax.swing.JMenuItem();
-        MnCetakSuratSakit2 = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCetakSuratSakit = new widget.MenuItem();
+        MnCetakSuratSakit1 = new widget.MenuItem();
+        MnCetakSuratSakit4 = new widget.MenuItem();
+        MnCetakSuratSakit5 = new widget.MenuItem();
+        MnCetakSuratSakit2 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1116,11 +1116,11 @@ public final class SuratSakit extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.Label LCount;
     private widget.TextBox LamaSakit;
-    private javax.swing.JMenuItem MnCetakSuratSakit;
-    private javax.swing.JMenuItem MnCetakSuratSakit1;
-    private javax.swing.JMenuItem MnCetakSuratSakit2;
-    private javax.swing.JMenuItem MnCetakSuratSakit4;
-    private javax.swing.JMenuItem MnCetakSuratSakit5;
+    private widget.MenuItem MnCetakSuratSakit;
+    private widget.MenuItem MnCetakSuratSakit1;
+    private widget.MenuItem MnCetakSuratSakit2;
+    private widget.MenuItem MnCetakSuratSakit4;
+    private widget.MenuItem MnCetakSuratSakit5;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1141,7 +1141,7 @@ public final class SuratSakit extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

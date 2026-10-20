@@ -196,8 +196,8 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningRisikoKankerParu = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSkriningRisikoKankerParu = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -1709,7 +1709,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.ComboBox LingkunganTinggal;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningRisikoKankerParu;
+    private widget.MenuItem MnSkriningRisikoKankerParu;
     private widget.TextBox NilaiDalamRumah;
     private widget.TextBox NilaiJenisKelamin;
     private widget.TextBox NilaiKeluargaKanker;
@@ -1784,7 +1784,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;

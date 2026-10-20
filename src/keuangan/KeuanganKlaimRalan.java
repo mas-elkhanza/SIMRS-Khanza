@@ -117,8 +117,8 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnBilling = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnBilling = new widget.MenuItem();
         KdDokter = new widget.TextBox();
         KdPoli = new widget.TextBox();
         KdCaraBayar = new widget.TextBox();
@@ -796,7 +796,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox KdPerusahaan;
     private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
-    private javax.swing.JMenuItem MnBilling;
+    private widget.MenuItem MnBilling;
     private widget.TextBox NmCaraBayar;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPerusahaan;
@@ -808,7 +808,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button btnPerusahaan;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;

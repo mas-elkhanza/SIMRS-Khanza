@@ -200,8 +200,8 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPemantauanMEOWS = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnPemantauanMEOWS = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         LoadHTML = new widget.editorpane();
@@ -1745,7 +1745,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPemantauanMEOWS;
+    private widget.MenuItem MnPemantauanMEOWS;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox ParameterSkor;
@@ -1813,7 +1813,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

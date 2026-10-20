@@ -316,7 +316,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelGlass6 = new widget.panelisi();
         jLabel3 = new widget.Label();
@@ -978,7 +978,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.TextBox TNm;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;

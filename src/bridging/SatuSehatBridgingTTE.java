@@ -250,9 +250,9 @@ public class SatuSehatBridgingTTE extends JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppHapusSemua = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppPilihSemua = new widget.MenuItem();
+        ppHapusSemua = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         splitUtama = new javax.swing.JSplitPane();
         splitTabel = new javax.swing.JSplitPane();
@@ -3185,7 +3185,7 @@ public class SatuSehatBridgingTTE extends JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label labelDok;
     private widget.Label labelJmlPasien;
     private widget.panelisi panelFilter;
@@ -3193,8 +3193,8 @@ public class SatuSehatBridgingTTE extends JDialog {
     private javax.swing.JPanel panelKanan;
     private javax.swing.JPanel panelKananAtas;
     private widget.panelisi panelTombol;
-    private javax.swing.JMenuItem ppHapusSemua;
-    private javax.swing.JMenuItem ppPilihSemua;
+    private widget.MenuItem ppHapusSemua;
+    private widget.MenuItem ppPilihSemua;
     private widget.ScrollPane spKanan;
     private widget.ScrollPane spKiri;
     private widget.ScrollPane spLog;

@@ -170,8 +170,8 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppNotaPiutang = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppNotaPiutang = new widget.MenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1164,7 +1164,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NmPeminjam;
     private widget.TextBox NoNota;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sisa;
     private widget.TextBox TCari;
@@ -1187,7 +1187,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppNotaPiutang;
+    private widget.MenuItem ppNotaPiutang;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

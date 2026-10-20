@@ -235,8 +235,8 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnChecklistPemberianFibrinolitik = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnChecklistPemberianFibrinolitik = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2194,7 +2194,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnChecklistPemberianFibrinolitik;
+    private widget.MenuItem MnChecklistPemberianFibrinolitik;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RisikoTinggi1;
@@ -2261,7 +2261,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label jLabel92;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;

@@ -152,9 +152,9 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppSemua = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppBersihkan = new widget.MenuItem();
+        ppSemua = new widget.MenuItem();
         KdCaraBayar = new widget.TextBox();
         DlgBayarMandiri = new javax.swing.JDialog();
         internalFrame4 = new widget.InternalFrame();
@@ -2072,7 +2072,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox NmDokter;
     private widget.TextBox NoRekening;
     private widget.TextBox NoTagihan;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -2107,8 +2107,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppSemua;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppSemua;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

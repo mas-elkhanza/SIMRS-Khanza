@@ -164,9 +164,9 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup2 = new javax.swing.JPopupMenu();
-        ppUbahAturanPakai = new javax.swing.JMenuItem();
-        ppUbahAturanPakai1 = new javax.swing.JMenuItem();
+        Popup2 = new widget.PopupMenu();
+        ppUbahAturanPakai = new widget.MenuItem();
+        ppUbahAturanPakai1 = new widget.MenuItem();
         WindowInput3 = new javax.swing.JDialog();
         internalFrame4 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -1067,7 +1067,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox NoResepUbah3;
     private widget.TextBox NoResepUbah4;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private javax.swing.JDialog WindowInput3;
@@ -1086,8 +1086,8 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppUbahAturanPakai;
-    private javax.swing.JMenuItem ppUbahAturanPakai1;
+    private widget.MenuItem ppUbahAturanPakai;
+    private widget.MenuItem ppUbahAturanPakai1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbResep;

@@ -188,11 +188,11 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppBersihkan = new javax.swing.JMenuItem();
-        ppPilihSemua = new javax.swing.JMenuItem();
-        ppRincian = new javax.swing.JMenuItem();
-        ppHilangkanRincian = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppBersihkan = new widget.MenuItem();
+        ppPilihSemua = new widget.MenuItem();
+        ppRincian = new widget.MenuItem();
+        ppHilangkanRincian = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -2324,16 +2324,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
-    private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppHilangkanRincian;
-    private javax.swing.JMenuItem ppPilihSemua;
-    private javax.swing.JMenuItem ppRincian;
+    private widget.MenuItem ppBersihkan;
+    private widget.MenuItem ppHilangkanRincian;
+    private widget.MenuItem ppPilihSemua;
+    private widget.MenuItem ppRincian;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

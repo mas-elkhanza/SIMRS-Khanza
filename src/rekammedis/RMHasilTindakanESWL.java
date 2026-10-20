@@ -177,8 +177,8 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDokumenESWL = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnDokumenESWL = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -189,7 +189,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
@@ -1488,7 +1488,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
     private widget.TextBox Kekurangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnDokumenESWL;
+    private widget.MenuItem MnDokumenESWL;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;
     private widget.TextBox ObatAnastesi;
@@ -1501,7 +1501,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.TextBox Tindakan;
@@ -1519,7 +1519,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

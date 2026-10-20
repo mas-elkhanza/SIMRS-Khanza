@@ -183,8 +183,8 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianPasienTerminal = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnPenilaianPasienTerminal = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -1578,7 +1578,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private widget.ComboBox MenjelangAjal;
-    private javax.swing.JMenuItem MnPenilaianPasienTerminal;
+    private widget.MenuItem MnPenilaianPasienTerminal;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1628,7 +1628,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;

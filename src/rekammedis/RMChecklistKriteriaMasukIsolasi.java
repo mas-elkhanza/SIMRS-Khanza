@@ -219,8 +219,8 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukIsolasi = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnKriteriaMasukIsolasi = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -2201,7 +2201,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.ComboBox KontakSkabies;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukIsolasi;
+    private widget.MenuItem MnKriteriaMasukIsolasi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PintuKamarOtomatis;
@@ -2288,7 +2288,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;

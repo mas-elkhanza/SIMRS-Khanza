@@ -133,9 +133,9 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppTemplate = new javax.swing.JMenuItem();
-        MnRestore = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppTemplate = new widget.MenuItem();
+        MnRestore = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -237,7 +237,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
+        tbJnsPerawatan.setAutoCreateRowSorter(false);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
@@ -1194,9 +1194,9 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private widget.ComboBox Kelas;
     private widget.Label LCount;
     private widget.TextBox Menejemen;
-    private javax.swing.JMenuItem MnRestore;
+    private widget.MenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
@@ -1224,7 +1224,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private widget.TextBox nmpnj;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppTemplate;
+    private widget.MenuItem ppTemplate;
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 

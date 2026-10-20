@@ -287,8 +287,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnFormulirSkriningInstrumenSDQ = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnFormulirSkriningInstrumenSDQ = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -3221,7 +3221,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnFormulirSkriningInstrumenSDQ;
+    private widget.MenuItem MnFormulirSkriningInstrumenSDQ;
     private widget.TextBox NilaiKesimpulanKesulitan;
     private widget.TextBox NilaiKesimpulanSkorC;
     private widget.TextBox NilaiKesimpulanSkorE;
@@ -3392,7 +3392,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;

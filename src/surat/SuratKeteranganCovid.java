@@ -133,8 +133,8 @@ public final class SuratKeteranganCovid extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratCovid = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnCetakSuratCovid = new widget.MenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1139,7 +1139,7 @@ public final class SuratKeteranganCovid extends javax.swing.JDialog {
     private widget.TextBox KdDokter;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratCovid;
+    private widget.MenuItem MnCetakSuratCovid;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoSurat;
@@ -1169,7 +1169,7 @@ public final class SuratKeteranganCovid extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;

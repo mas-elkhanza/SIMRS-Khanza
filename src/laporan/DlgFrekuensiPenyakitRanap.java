@@ -132,11 +132,11 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppGrafikTerbanyakBatang = new javax.swing.JMenuItem();
-        ppGrafikTerbanyakPie = new javax.swing.JMenuItem();
-        ppGrafikTerkecilBatang = new javax.swing.JMenuItem();
-        ppGrafikTerkecilPie = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppGrafikTerbanyakBatang = new widget.MenuItem();
+        ppGrafikTerbanyakPie = new widget.MenuItem();
+        ppGrafikTerkecilBatang = new widget.MenuItem();
+        ppGrafikTerkecilPie = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
@@ -150,7 +150,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         label9 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         scrollPane2 = new widget.ScrollPane();
@@ -185,9 +185,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -201,9 +198,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakBatang);
 
-        ppGrafikTerbanyakPie.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -217,9 +211,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakPie);
 
-        ppGrafikTerkecilBatang.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -233,9 +224,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerkecilBatang);
 
-        ppGrafikTerkecilPie.setBackground(new java.awt.Color(255, 255, 254));
-        ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilPie.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -381,7 +369,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2750,12 +2737,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox Kd2;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.TextBox kdkamar;
     private widget.TextBox kdpenjab;
@@ -2775,10 +2762,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox nmkelurahan;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelisi1;
-    private javax.swing.JMenuItem ppGrafikTerbanyakBatang;
-    private javax.swing.JMenuItem ppGrafikTerbanyakPie;
-    private javax.swing.JMenuItem ppGrafikTerkecilBatang;
-    private javax.swing.JMenuItem ppGrafikTerkecilPie;
+    private widget.MenuItem ppGrafikTerbanyakBatang;
+    private widget.MenuItem ppGrafikTerbanyakPie;
+    private widget.MenuItem ppGrafikTerkecilBatang;
+    private widget.MenuItem ppGrafikTerkecilPie;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbDokter;

@@ -350,8 +350,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         kdpoli = new widget.TextBox();
         TPoli = new widget.TextBox();
         TBiaya = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDocument = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnDocument = new widget.MenuItem();
         NoBalasan = new widget.TextBox();
         kdsuku = new widget.TextBox();
         kdbahasa = new widget.TextBox();
@@ -690,7 +690,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setAutoCreateRowSorter(false);
         tbKamar.setToolTipText("");
         tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
@@ -4451,7 +4451,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private widget.Label LabelSatuanTNI;
     private widget.ComboBox LakaLantas;
     private widget.TextBox LokasiLaka;
-    private javax.swing.JMenuItem MnDocument;
+    private widget.MenuItem MnDocument;
     private widget.TextBox NIP;
     private widget.TextBox NmBangsal;
     private widget.TextBox NmIbu;
@@ -4543,7 +4543,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private widget.Label jLabel46;
     private widget.Label jLabel5;
     private widget.Label jLabel9;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdbahasa;
     private widget.TextBox kdcacat;
     private widget.TextBox kddokter;

@@ -173,16 +173,16 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         panelruntext = new javax.swing.JPanel();
         labelruntext = new widget.Label();
         Popup1 = new javax.swing.JPopupMenu();
-        ppAntri1 = new javax.swing.JMenuItem();
-        ppUndo1 = new javax.swing.JMenuItem();
+        ppAntri1 = new widget.MenuItem();
+        ppUndo1 = new widget.MenuItem();
         Popup2 = new javax.swing.JPopupMenu();
-        ppAntri2 = new javax.swing.JMenuItem();
-        ppUndo2 = new javax.swing.JMenuItem();
+        ppAntri2 = new widget.MenuItem();
+        ppUndo2 = new widget.MenuItem();
         Popup3 = new javax.swing.JPopupMenu();
-        ppAntri3 = new javax.swing.JMenuItem();
-        ppUndo3 = new javax.swing.JMenuItem();
+        ppAntri3 = new widget.MenuItem();
+        ppUndo3 = new widget.MenuItem();
         Popup4 = new javax.swing.JPopupMenu();
-        ppClose = new javax.swing.JMenuItem();
+        ppClose = new widget.MenuItem();
         norawat1 = new widget.TextBox();
         norawat2 = new widget.TextBox();
         norawat3 = new widget.TextBox();
@@ -1399,13 +1399,13 @@ private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.panelisi panelisi6;
     private widget.panelisi panelisi7;
     private javax.swing.JPanel panelruntext;
-    private javax.swing.JMenuItem ppAntri1;
-    private javax.swing.JMenuItem ppAntri2;
-    private javax.swing.JMenuItem ppAntri3;
-    private javax.swing.JMenuItem ppClose;
-    private javax.swing.JMenuItem ppUndo1;
-    private javax.swing.JMenuItem ppUndo2;
-    private javax.swing.JMenuItem ppUndo3;
+    private widget.MenuItem ppAntri1;
+    private widget.MenuItem ppAntri2;
+    private widget.MenuItem ppAntri3;
+    private widget.MenuItem ppClose;
+    private widget.MenuItem ppUndo1;
+    private widget.MenuItem ppUndo2;
+    private widget.MenuItem ppUndo3;
     // End of variables declaration//GEN-END:variables
     
     private void tampil1(){

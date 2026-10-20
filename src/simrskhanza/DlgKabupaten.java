@@ -136,7 +136,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbkabupaten.setAutoCreateRowSorter(true);
+        tbkabupaten.setAutoCreateRowSorter(false);
         tbkabupaten.setName("tbkabupaten"); // NOI18N
         tbkabupaten.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

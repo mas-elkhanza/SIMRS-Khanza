@@ -199,11 +199,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppTampilkanBaru = new javax.swing.JMenuItem();
-        ppTampilkanLama = new javax.swing.JMenuItem();
-        ppTampilkanLanjutRalan = new javax.swing.JMenuItem();
-        ppTampilkanLanjutRanap = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        ppTampilkanBaru = new widget.MenuItem();
+        ppTampilkanLama = new widget.MenuItem();
+        ppTampilkanLanjutRalan = new widget.MenuItem();
+        ppTampilkanLanjutRanap = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -233,7 +233,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         label21 = new widget.Label();
         nmkabupaten = new widget.TextBox();
         BtnSeek5 = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         table = new widget.Table();
@@ -1082,7 +1082,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
@@ -1090,7 +1090,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
@@ -1106,10 +1106,10 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.TextBox nmpoli;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanBaru;
-    private javax.swing.JMenuItem ppTampilkanLama;
-    private javax.swing.JMenuItem ppTampilkanLanjutRalan;
-    private javax.swing.JMenuItem ppTampilkanLanjutRanap;
+    private widget.MenuItem ppTampilkanBaru;
+    private widget.MenuItem ppTampilkanLama;
+    private widget.MenuItem ppTampilkanLanjutRalan;
+    private widget.MenuItem ppTampilkanLanjutRanap;
     private widget.Table table;
     private widget.Table table2;
     // End of variables declaration//GEN-END:variables

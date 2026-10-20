@@ -208,10 +208,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppSEP = new javax.swing.JMenuItem();
-        ppPulang = new javax.swing.JMenuItem();
-        ppMapping = new javax.swing.JMenuItem();
+        Popup = new widget.PopupMenu();
+        ppSEP = new widget.MenuItem();
+        ppPulang = new widget.MenuItem();
+        ppMapping = new widget.MenuItem();
         WindowUpdatePulang = new javax.swing.JDialog();
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
@@ -419,7 +419,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setAutoCreateRowSorter(false);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
@@ -1843,7 +1843,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.TextBox NoKartu;
     private widget.TextBox NoRujukan;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1884,9 +1884,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppMapping;
-    private javax.swing.JMenuItem ppPulang;
-    private javax.swing.JMenuItem ppSEP;
+    private widget.MenuItem ppMapping;
+    private widget.MenuItem ppPulang;
+    private widget.MenuItem ppSEP;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 

@@ -73,6 +73,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.MasterCariTemplatePemeriksaan;
+import rekammedis.RMAdmisiSkoringTOLAC;
 import rekammedis.RMCari5SOAPTerakhir;
 import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMCatatanAnastesiSedasi;
@@ -102,6 +103,7 @@ import rekammedis.RMDataIntervensiNyeriFarmakologi;
 import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
+import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMDataSkriningGiziKehamilan;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
@@ -119,6 +121,7 @@ import rekammedis.RMHasilPemeriksaanUSGAbdomen;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGNeonatus;
 import rekammedis.RMHasilPemeriksaanUSGUrologi;
+import rekammedis.RMHasilPersalinanTOLAC;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMLaporanTindakan;
@@ -1176,14 +1179,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnTambahTindakan = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         internalFrame2 = new widget.InternalFrame();
         panelGlass7 = new widget.panelisi();
         jLabel5 = new widget.Label();
         KdDok = new widget.TextBox();
         BtnSeekDokter = new widget.Button();
         TDokter = new widget.TextBox();
-        TabRawatTindakanDokter = new javax.swing.JTabbedPane();
+        TabRawatTindakanDokter = new widget.TabPane();
         Scroll6 = new widget.ScrollPane();
         tbTindakan = new widget.Table();
         Scroll = new widget.ScrollPane();
@@ -1194,7 +1197,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         kdptg = new widget.TextBox();
         BtnSeekPetugas = new widget.Button();
         TPerawat = new widget.TextBox();
-        TabRawatTindakanPetugas = new javax.swing.JTabbedPane();
+        TabRawatTindakanPetugas = new widget.TabPane();
         Scroll7 = new widget.ScrollPane();
         tbTindakan2 = new widget.Table();
         Scroll8 = new widget.ScrollPane();
@@ -1209,7 +1212,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         KdDok2 = new widget.TextBox();
         TDokter2 = new widget.TextBox();
         BtnSeekDokter2 = new widget.Button();
-        TabRawatTindakanDokterPetugas = new javax.swing.JTabbedPane();
+        TabRawatTindakanDokterPetugas = new widget.TabPane();
         Scroll9 = new widget.ScrollPane();
         tbTindakan3 = new widget.Table();
         Scroll10 = new widget.ScrollPane();
@@ -1758,7 +1761,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         TabRawat.setName("TabRawat"); 
@@ -10555,6 +10557,57 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnAdmisiSkoringTOLACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanPersalinananActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMAdmisiSkoringTOLAC form=new RMAdmisiSkoringTOLAC(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
+    private void BtnMonitoringTolacActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataMonitoringTOLAC form=new RMDataMonitoringTOLAC(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
+    private void BtnHasilPersalinanTOLACActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMHasilPersalinanTOLAC form=new RMHasilPersalinanTOLAC(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10770,10 +10823,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox TUkuran;
     private widget.TextBox TVulva;
     private widget.TextBox TVulvaInspekulo;
-    private javax.swing.JTabbedPane TabRawat;
-    private javax.swing.JTabbedPane TabRawatTindakanDokter;
-    private javax.swing.JTabbedPane TabRawatTindakanDokterPetugas;
-    private javax.swing.JTabbedPane TabRawatTindakanPetugas;
+    private widget.TabPane TabRawat;
+    private widget.TabPane TabRawatTindakanDokter;
+    private widget.TabPane TabRawatTindakanDokterPetugas;
+    private widget.TabPane TabRawatTindakanPetugas;
     private widget.TextArea TindakLanjut;
     private widget.Button btnPasien;
     private widget.ComboBox cmbAlbus;
@@ -10916,9 +10969,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi,
                           BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,
-                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnSkriningTOLAC;   
-    private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
-    private javax.swing.JMenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
+                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnSkriningTOLAC,BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,
+                          BtnHasilPersalinanTOLAC;   
+    private widget.PopupMenu PopupSOAP,PopupPemeriksaan;
+    private widget.MenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -11661,6 +11715,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnCatatanPersalinanan.setVisible(akses.getcatatan_persalinan()); 
         if(akses.getcatatan_persalinan()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAdmisiSkoringTOLAC.setVisible(akses.getadmisi_skoring_tolac()); 
+        if(akses.getadmisi_skoring_tolac()==true){
+            tinggi=tinggi+24;
+        }
+        BtnMonitoringTolac.setVisible(akses.getmonitoring_tolac()); 
+        if(akses.getmonitoring_tolac()==true){
+            tinggi=tinggi+24;
+        }
+        BtnHasilPersalinanTOLAC.setVisible(akses.gethasil_persalinan_tolac()); 
+        if(akses.gethasil_persalinan_tolac()==true){
             tinggi=tinggi+24;
         }
         BtnSkorAldrettePascaAnestesi.setVisible(akses.getskor_aldrette_pasca_anestesi()); 
@@ -14193,11 +14259,50 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningTOLAC.setRoundRect(false);
         BtnSkriningTOLAC.addActionListener(this::BtnSkriningTOLACActionPerformed);
         
-        PopupSOAP = new javax.swing.JPopupMenu();
+        BtnAdmisiSkoringTOLAC = new widget.Button();
+        BtnAdmisiSkoringTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnAdmisiSkoringTOLAC.setText("Admisi & Skoring TOLAC");
+        BtnAdmisiSkoringTOLAC.setFocusPainted(false);
+        BtnAdmisiSkoringTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnAdmisiSkoringTOLAC.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAdmisiSkoringTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAdmisiSkoringTOLAC.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAdmisiSkoringTOLAC.setName("BtnAdmisiSkoringTOLAC"); 
+        BtnAdmisiSkoringTOLAC.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAdmisiSkoringTOLAC.setRoundRect(false);
+        BtnAdmisiSkoringTOLAC.addActionListener(this::BtnAdmisiSkoringTOLACActionPerformed);
+        
+        BtnHasilPersalinanTOLAC = new widget.Button();
+        BtnHasilPersalinanTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnHasilPersalinanTOLAC.setText("Hasil Persalinan TOLAC");
+        BtnHasilPersalinanTOLAC.setFocusPainted(false);
+        BtnHasilPersalinanTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnHasilPersalinanTOLAC.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnHasilPersalinanTOLAC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnHasilPersalinanTOLAC.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnHasilPersalinanTOLAC.setName("BtnHasilPersalinanTOLAC"); 
+        BtnHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnHasilPersalinanTOLAC.setRoundRect(false);
+        BtnHasilPersalinanTOLAC.addActionListener(this::BtnHasilPersalinanTOLACActionPerformed);
+        
+        BtnMonitoringTolac = new widget.Button();
+        BtnMonitoringTolac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnMonitoringTolac.setText("Monitoring Selama TOLAC");
+        BtnMonitoringTolac.setFocusPainted(false);
+        BtnMonitoringTolac.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnMonitoringTolac.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnMonitoringTolac.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnMonitoringTolac.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnMonitoringTolac.setName("BtnMonitoringTolac"); 
+        BtnMonitoringTolac.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnMonitoringTolac.setRoundRect(false);
+        BtnMonitoringTolac.addActionListener(this::BtnMonitoringTolacActionPerformed);
+        
+        PopupSOAP = new widget.PopupMenu();
         PopupSOAP.setName("PopupSOAP");
         tbPemeriksaan.setComponentPopupMenu(PopupSOAP);
         
-        PopupPemeriksaan = new javax.swing.JPopupMenu();
+        PopupPemeriksaan = new widget.PopupMenu();
         PopupPemeriksaan.setName("PopupPemeriksaan");
         
         TKeluhan.setComponentPopupMenu(PopupPemeriksaan);
@@ -14207,7 +14312,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TInstruksi.setComponentPopupMenu(PopupPemeriksaan);
         TEvaluasi.setComponentPopupMenu(PopupPemeriksaan);
         
-        MnSOAPDokter = new javax.swing.JMenuItem();
+        MnSOAPDokter = new widget.MenuItem();
         MnSOAPDokter.setBackground(new java.awt.Color(255, 255, 254));
         MnSOAPDokter.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnSOAPDokter.setForeground(new java.awt.Color(50, 50, 50));
@@ -14219,7 +14324,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnSOAPDokter.setPreferredSize(new java.awt.Dimension(210, 26));
         MnSOAPDokter.addActionListener(this::MnSOAPDokterActionPerformed);
         
-        MnSOAPPetugas = new javax.swing.JMenuItem();
+        MnSOAPPetugas = new widget.MenuItem();
         MnSOAPPetugas.setBackground(new java.awt.Color(255, 255, 254));
         MnSOAPPetugas.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnSOAPPetugas.setForeground(new java.awt.Color(50, 50, 50));
@@ -14231,7 +14336,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnSOAPPetugas.setPreferredSize(new java.awt.Dimension(210, 26));
         MnSOAPPetugas.addActionListener(this::MnSOAPPetugasActionPerformed);
         
-        MnCopySOAP = new javax.swing.JMenuItem();
+        MnCopySOAP = new widget.MenuItem();
         MnCopySOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnCopySOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnCopySOAP.setForeground(new java.awt.Color(50, 50, 50));
@@ -14243,7 +14348,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnCopySOAP.setPreferredSize(new java.awt.Dimension(210, 26));
         MnCopySOAP.addActionListener(this::MnCopySOAPActionPerformed);
         
-        MnPasteSOAP = new javax.swing.JMenuItem();
+        MnPasteSOAP = new widget.MenuItem();
         MnPasteSOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnPasteSOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnPasteSOAP.setForeground(new java.awt.Color(50, 50, 50));
@@ -14313,10 +14418,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnAwalMedisRehabMedik);
         FormMenu.add(BtnAwalMedisHemodialisa);
         FormMenu.add(BtnRujukKeluar);
+        FormMenu.add(BtnAdmisiSkoringTOLAC);
         FormMenu.add(BtnCatatan);
         FormMenu.add(BtnCatatanObservasiIGD);
         FormMenu.add(BtnCatatanObservasiCHBP);
         FormMenu.add(BtnCatatanObservasiInduksiPersalinan);
+        FormMenu.add(BtnMonitoringTolac);
         FormMenu.add(BtnCatatanObservasiBayi);
         FormMenu.add(BtnCatatanObservasiHemodialisa);
         FormMenu.add(BtnCatatanObservasiRuangOperasi);
@@ -14381,6 +14488,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnDokumentasiESWL);
         FormMenu.add(BtnCatatanPersalinanan);
         FormMenu.add(BtnLaporanTindakan);
+        FormMenu.add(BtnHasilPersalinanTOLAC);
         FormMenu.add(BtnSkriningMerokokUsiaRemaja);
         FormMenu.add(BtnSkriningKekerasanPadaWanita);
         FormMenu.add(BtnSkriningObesitas);
