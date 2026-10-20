@@ -1235,6 +1235,7 @@ import javax.swing.SwingUtilities;
 import rekammedis.RMAdmisiSkoringTOLAC;
 import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMReaksiTransfusi;
 
 
 /**
@@ -1297,7 +1298,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                DlgHome.setOpacity(0.67f);
+                DlgHome.setOpacity(0.70f);
             }     
         }catch(Exception e){            
         } 
@@ -23702,6 +23703,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanReaksiTranfusiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMReaksiTransfusi aplikasi=new RMReaksiTransfusi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24422,7 +24436,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat,
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
-            btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC;
+            btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi;
     
     public void isWall(){
         try{            
@@ -28805,6 +28819,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmonitoring_reaksi_tranfusi()==true){
                 Panelmenu.add(btnMonitoringReaksiTranfusi);
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_reaksi_transfusi()==true){
+                Panelmenu.add(btnLaporanReaksiTranfusi);
                 jmlmenu++;
             }
             
@@ -34873,6 +34892,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmonitoring_reaksi_tranfusi()==true){
             Panelmenu.add(btnMonitoringReaksiTranfusi);
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_reaksi_transfusi()==true){
+            Panelmenu.add(btnLaporanReaksiTranfusi);
             jmlmenu++;
         }
         
@@ -42629,6 +42653,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnMonitoringReaksiTranfusi);
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.getlaporan_reaksi_transfusi()==true){
+            if(btnLaporanReaksiTranfusi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanReaksiTranfusi);
+                jmlmenu++;
+            } 
         }
         
         if(akses.getpemantauan_pews_anak()==true){
@@ -51286,5 +51317,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPersalinanTOLAC.setName("btnHasilPersalinanTOLAC"); 
         btnHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPersalinanTOLAC.addActionListener(this::btnHasilPersalinanTOLACActionPerformed);
+        
+        btnLaporanReaksiTranfusi = new widget.ButtonBig();
+        btnLaporanReaksiTranfusi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/blood-transfusion_1225585.png")));
+        btnLaporanReaksiTranfusi.setText("Laporan Reaksi Tranfusi");
+        btnLaporanReaksiTranfusi.setIconTextGap(0);
+        btnLaporanReaksiTranfusi.setName("btnLaporanReaksiTranfusi"); 
+        btnLaporanReaksiTranfusi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanReaksiTranfusi.addActionListener(this::btnLaporanReaksiTranfusiActionPerformed);
     }
 }

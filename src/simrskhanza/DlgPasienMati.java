@@ -248,7 +248,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbMati.setAutoCreateRowSorter(false);
+        tbMati.setAutoCreateRowSorter(true);
         tbMati.setComponentPopupMenu(jPopupMenu1);
         tbMati.setName("tbMati"); // NOI18N
         tbMati.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -494,12 +494,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
         FormInput.add(TPasien);
         TPasien.setBounds(230, 40, 393, 23);
 
-        DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-08-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
-        DTPTgl.setOpaque(false);
         DTPTgl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPTglKeyPressed(evt);
