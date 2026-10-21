@@ -5459,8 +5459,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                         }
                     }
 
-                    /*//Gravida
-                    if(tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
+                    //Gravida
+                    if(tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,19).toString().equals(""))){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5480,8 +5480,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11996-6\"," +
+                                                    "\"display\": \"[#] Pregnancies\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Gravida\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5517,7 +5524,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Para
-                    if(tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,21).toString().equals(""))){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5537,6 +5544,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11977-6\"," +
+                                                    "\"display\": \"[#] Parity\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Para\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -5573,7 +5587,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                         }
                     }
 
-                    //Abortus
+                    /*//Abortus
                     if(tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
                         try{
                             headers = new HttpHeaders();
