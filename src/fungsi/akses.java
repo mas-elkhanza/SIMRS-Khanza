@@ -266,7 +266,7 @@ public final class akses {
             satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false,satu_sehat_mapping_kptl_tindakan_operasi=false,
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,
             ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
-            monitoring_tolac=false,hasil_persalinan_tolac=false;
+            monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1511,6 +1511,7 @@ public final class akses {
                         akses.admisi_skoring_tolac=true;
                         akses.monitoring_tolac=true;
                         akses.hasil_persalinan_tolac=true;
+                        akses.laporan_reaksi_transfusi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2739,6 +2740,7 @@ public final class akses {
                         akses.admisi_skoring_tolac=rs2.getBoolean("admisi_skoring_tolac");
                         akses.monitoring_tolac=rs2.getBoolean("monitoring_tolac");
                         akses.hasil_persalinan_tolac=rs2.getBoolean("hasil_persalinan_tolac");
+                        akses.laporan_reaksi_transfusi=rs2.getBoolean("laporan_reaksi_transfusi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3989,6 +3991,7 @@ public final class akses {
         akses.admisi_skoring_tolac=false;
         akses.monitoring_tolac=false;
         akses.hasil_persalinan_tolac=false;
+        akses.laporan_reaksi_transfusi=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5256,4 +5259,5 @@ public final class akses {
     public static boolean getadmisi_skoring_tolac(){return akses.admisi_skoring_tolac;}
     public static boolean getmonitoring_tolac(){return akses.monitoring_tolac;}
     public static boolean gethasil_persalinan_tolac(){return akses.hasil_persalinan_tolac;}
+    public static boolean getlaporan_reaksi_transfusi(){return akses.laporan_reaksi_transfusi;}
 }   
