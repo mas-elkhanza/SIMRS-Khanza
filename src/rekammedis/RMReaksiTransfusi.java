@@ -262,9 +262,9 @@ public final class RMReaksiTransfusi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulir.setText("Formulir Reaksi Transfusi Darah");
+        MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setPreferredSize(new java.awt.Dimension(230, 26));
         MnFormulir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -529,7 +529,7 @@ public final class RMReaksiTransfusi extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 443));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 442));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -559,7 +559,7 @@ public final class RMReaksiTransfusi extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 420));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 419));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -1640,9 +1640,9 @@ public final class RMReaksiTransfusi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nm_pelapor"),
-                        rs.getString("tanggal"),rs.getString("diagnosis_klinis"),rs.getString("indikasi_transfusi"),rs.getString("komponen_darah"),rs.getString("komponen_lainnya"),
-                        rs.getString("volume_cc"),rs.getString("nokantong"),rs.getString("jenis_reaksi"),rs.getString("penanganan")
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nm_pelapor"),rs.getString("tanggal"),rs.getString("diagnosis_klinis"),
+                        rs.getString("indikasi_transfusi"),rs.getString("komponen_darah"),rs.getString("komponen_lainnya"),rs.getString("volume_cc"),rs.getString("nokantong"),
+                        rs.getString("jenis_reaksi"),rs.getString("penanganan")
                     });
                 }
             } catch (Exception e) {
@@ -1742,9 +1742,9 @@ public final class RMReaksiTransfusi extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>615){
+            if(internalFrame1.getHeight()>614){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,443));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,442));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{

@@ -677,77 +677,87 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_kddariKeyPressed
 
     private void btnDariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDariActionPerformed
-        if (lokasidepo == null || !lokasidepo.isDisplayable()) {
-            lokasidepo=new DlgCariBangsal(null,false);
-            lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            lokasidepo.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(lokasidepo.getTable().getSelectedRow()!= -1){                   
-                        kddari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
-                        nmdari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
-                        kddari.requestFocus();
-                        if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
-                            runBackground(() ->loadTabelStok());
-                        }else{
-                            runBackground(() ->loadTabel());
-                        }
-                    } 
-                    lokasidepo=null;
-                }
-            }); 
+        if(index>0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan bersihkan jumlah jika ingin mengganti lokasi depo...!!!");
+            tbDokter.requestFocus();
+        }else{
+            if (lokasidepo == null || !lokasidepo.isDisplayable()) {
+                lokasidepo=new DlgCariBangsal(null,false);
+                lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                lokasidepo.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(lokasidepo.getTable().getSelectedRow()!= -1){                   
+                            kddari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
+                            nmdari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
+                            kddari.requestFocus();
+                            if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
+                                runBackground(() ->loadTabelStok());
+                            }else{
+                                runBackground(() ->loadTabel());
+                            }
+                        } 
+                        lokasidepo=null;
+                    }
+                }); 
 
-            lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            lokasidepo.setLocationRelativeTo(internalFrame1);
-        }
-        if (lokasidepo == null) return;
-        if (!lokasidepo.isVisible()) {
-            lokasidepo.isCek();    
-            lokasidepo.emptTeks();
-        }
+                lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                lokasidepo.setLocationRelativeTo(internalFrame1);
+            }
+            if (lokasidepo == null) return;
+            if (!lokasidepo.isVisible()) {
+                lokasidepo.isCek();    
+                lokasidepo.emptTeks();
+            }
 
-        if (lokasidepo.isVisible()) {
-            lokasidepo.toFront();
-            return;
+            if (lokasidepo.isVisible()) {
+                lokasidepo.toFront();
+                return;
+            }
+            lokasidepo.setVisible(true);
         }
-        lokasidepo.setVisible(true);
     }//GEN-LAST:event_btnDariActionPerformed
 
     private void btnKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeActionPerformed
-        if (lokasidepo == null || !lokasidepo.isDisplayable()) {
-            lokasidepo=new DlgCariBangsal(null,false);
-            lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            lokasidepo.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(lokasidepo.getTable().getSelectedRow()!= -1){                   
-                        kdke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
-                        nmke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
-                        kdke.requestFocus();
-                        if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
-                            runBackground(() ->loadTabelStok());
-                        }else{
-                            runBackground(() ->loadTabel());
-                        }
-                    } 
-                    lokasidepo=null;
-                }
-            }); 
+        if(index>0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan bersihkan jumlah jika ingin mengganti lokasi depo...!!!");
+            tbDokter.requestFocus();
+        }else{
+            if (lokasidepo == null || !lokasidepo.isDisplayable()) {
+                lokasidepo=new DlgCariBangsal(null,false);
+                lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                lokasidepo.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(lokasidepo.getTable().getSelectedRow()!= -1){                   
+                            kdke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
+                            nmke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
+                            kdke.requestFocus();
+                            if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
+                                runBackground(() ->loadTabelStok());
+                            }else{
+                                runBackground(() ->loadTabel());
+                            }
+                        } 
+                        lokasidepo=null;
+                    }
+                }); 
 
-            lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            lokasidepo.setLocationRelativeTo(internalFrame1);
-        }
-        if (lokasidepo == null) return;
-        if (!lokasidepo.isVisible()) {
-            lokasidepo.isCek();    
-            lokasidepo.emptTeks();
-        }
+                lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                lokasidepo.setLocationRelativeTo(internalFrame1);
+            }
+            if (lokasidepo == null) return;
+            if (!lokasidepo.isVisible()) {
+                lokasidepo.isCek();    
+                lokasidepo.emptTeks();
+            }
 
-        if (lokasidepo.isVisible()) {
-            lokasidepo.toFront();
-            return;
+            if (lokasidepo.isVisible()) {
+                lokasidepo.toFront();
+                return;
+            }
+            lokasidepo.setVisible(true);
         }
-        lokasidepo.setVisible(true);
     }//GEN-LAST:event_btnKeActionPerformed
 
     private void kdkeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkeKeyPressed
