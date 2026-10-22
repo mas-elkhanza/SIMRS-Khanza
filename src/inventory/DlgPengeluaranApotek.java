@@ -851,36 +851,41 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_kdgudangKeyPressed
 
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
-    if (bangsal == null || !bangsal.isDisplayable()) {
-        bangsal=new DlgCariBangsal(null,false);
-        bangsal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        bangsal.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                   
-                    kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                    nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    runBackground(() ->tampil());   
-                } 
-                kdgudang.requestFocus();
-                bangsal=null;
-            }
-        }); 
+    if(index>0){
+        JOptionPane.showMessageDialog(null,"Maaf, silahkan bersihkan jumlah jika ingin mengganti lokasi depo...!!!");
+        tbDokter.requestFocus();
+    }else{
+        if (bangsal == null || !bangsal.isDisplayable()) {
+            bangsal=new DlgCariBangsal(null,false);
+            bangsal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            bangsal.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(bangsal.getTable().getSelectedRow()!= -1){                   
+                        kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                        nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                        runBackground(() ->tampil());   
+                    } 
+                    kdgudang.requestFocus();
+                    bangsal=null;
+                }
+            }); 
 
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-    }
-    if (bangsal == null) return;
-    if (!bangsal.isVisible()) {
-        bangsal.isCek();    
-        bangsal.emptTeks();
-    }
+            bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            bangsal.setLocationRelativeTo(internalFrame1);
+        }
+        if (bangsal == null) return;
+        if (!bangsal.isVisible()) {
+            bangsal.isCek();    
+            bangsal.emptTeks();
+        }
 
-    if (bangsal.isVisible()) {
-        bangsal.toFront();
-        return;
+        if (bangsal.isVisible()) {
+            bangsal.toFront();
+            return;
+        }
+        bangsal.setVisible(true);
     }
-    bangsal.setVisible(true);
 }//GEN-LAST:event_BtnGudangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
