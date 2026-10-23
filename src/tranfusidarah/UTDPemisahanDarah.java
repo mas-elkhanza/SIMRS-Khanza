@@ -264,7 +264,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
         BtnTutup = new widget.Button();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppTampilkanBHPMedis = new widget.MenuItem();
         ppTampilkanBHPPenunjang = new widget.MenuItem();
         ppTampilkanBHPPenunjangDanMedis = new widget.MenuItem();
@@ -1767,7 +1767,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
