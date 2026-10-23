@@ -1212,7 +1212,7 @@
                     <Component class="widget.Label" name="jLabel18">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="II. RISIKO &amp; KETERANGAN"/>
+                        <Property name="text" type="java.lang.String" value="II. INTERPRETASI"/>
                         <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
                       </Properties>
                       <Constraints>

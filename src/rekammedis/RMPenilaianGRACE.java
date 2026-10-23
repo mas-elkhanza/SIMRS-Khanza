@@ -525,7 +525,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -539,7 +539,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
 
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
@@ -692,7 +692,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         jLabel16.setBounds(10, 70, 150, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026 07:24:40" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026 04:43:37" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -988,7 +988,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         jLabel39.setBounds(0, 40, 75, 23);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("II. RISIKO & KETERANGAN");
+        jLabel18.setText("II. INTERPRETASI");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
         jLabel18.setBounds(10, 240, 240, 23);
