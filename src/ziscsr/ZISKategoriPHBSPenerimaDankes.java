@@ -120,7 +120,7 @@ public final class ZISKategoriPHBSPenerimaDankes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppSimpan = new widget.MenuItem();
         ppGanti = new widget.MenuItem();
         ppHapus = new widget.MenuItem();
@@ -621,7 +621,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox Kd;
     private widget.Label LCount;
     private widget.TextBox Nm;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;

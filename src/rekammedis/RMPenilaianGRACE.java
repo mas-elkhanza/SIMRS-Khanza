@@ -72,7 +72,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat", "No.RM", "Nama Pasien", "J.K.", "Tgl.Lahir", "Kode Dokter", "Dokter", "Tgl/Jam Penilaian", "Usia", "Skor Usia", 
-            "Heart Rate (bpm)", "Skor Heart Rate", "SBP (mmHg)", "Skor SBP", "Creatinine (mg/dl)", "Skor Creatinine", "Killip Class", 
+            "HR(bpm)", "Skor HR", "SBP (mmHg)", "Skor SBP", "Creatinine (mg/dl)", "Skor Creatinine", "Killip Class", 
             "Skor Killip", "ST Deviation", "Skor ST Deviation", "Elevated Troponin", "Skor Troponin", "Cardiac Arrest", "Skor Cardiac Arrest", 
             "Total GRACE Score", "Kategori Risiko", "Keterangan Dokter"
         }){
@@ -101,45 +101,45 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==9){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(55);
             }else if(i==10){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(52);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(48);
             }else if(i==12){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(70);
             }else if(i==13){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(55);
             }else if(i==14){
                 column.setPreferredWidth(100);
             }else if(i==15){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(90);
             }else if(i==16){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(195);
             }else if(i==17){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(155);
             }else if(i==19){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(95);
             }else if(i==20){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(99);
             }else if(i==21){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==22){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(77);
             }else if(i==23){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(104);
             }else if(i==24){
                 column.setPreferredWidth(100);
             }else if(i==25){
                 column.setPreferredWidth(95);
             }else if(i==26){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(220);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -152,7 +152,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         Kreatinin.setDocument(new batasInput((byte)5).getOnlyAngka(Kreatinin));
         Keterangan.setDocument(new batasInput((int)255).getKata(Keterangan));
         
-        javax.swing.event.DocumentListener hitung=new javax.swing.event.DocumentListener(){
+        Usia.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent e) {
                 hitungSkor();
@@ -165,11 +165,52 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             public void changedUpdate(DocumentEvent e) {
                 hitungSkor();
             }
-        };
+        });
         
-        DenyutJantung.getDocument().addDocumentListener(hitung);
-        Sistolik.getDocument().addDocumentListener(hitung);
-        Kreatinin.getDocument().addDocumentListener(hitung);
+        DenyutJantung.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+        });
+        
+        Sistolik.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+        });
+        
+        Kreatinin.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                hitungSkor();
+            }
+        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -209,7 +250,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnFormulir = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
@@ -256,39 +297,27 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel10 = new widget.Label();
         Usia = new widget.TextBox();
-        jLabel11 = new widget.Label();
-        jLabel12 = new widget.Label();
         SkorUsia = new widget.TextBox();
         jLabel13 = new widget.Label();
         DenyutJantung = new widget.TextBox();
-        jLabel14 = new widget.Label();
-        jLabel15 = new widget.Label();
         SkorDenyut = new widget.TextBox();
         jLabel17 = new widget.Label();
         Sistolik = new widget.TextBox();
-        jLabel18 = new widget.Label();
-        jLabel38 = new widget.Label();
         SkorSistolik = new widget.TextBox();
         jLabel20 = new widget.Label();
         Kreatinin = new widget.TextBox();
-        jLabel21 = new widget.Label();
-        jLabel22 = new widget.Label();
         SkorKreatinin = new widget.TextBox();
         jLabel24 = new widget.Label();
         Killip = new widget.ComboBox();
-        jLabel25 = new widget.Label();
         SkorKillip = new widget.TextBox();
         jLabel26 = new widget.Label();
         DeviasiST = new widget.ComboBox();
-        jLabel27 = new widget.Label();
         SkorST = new widget.TextBox();
         jLabel28 = new widget.Label();
         Troponin = new widget.ComboBox();
-        jLabel29 = new widget.Label();
         SkorTroponin = new widget.TextBox();
         jLabel30 = new widget.Label();
         HentiJantung = new widget.ComboBox();
-        jLabel31 = new widget.Label();
         SkorHenti = new widget.TextBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel32 = new widget.Label();
@@ -297,17 +326,15 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         Kategori = new widget.TextBox();
         jLabel34 = new widget.Label();
         Keterangan = new widget.TextBox();
-        jLabel35 = new widget.Label();
-        jLabel36 = new widget.Label();
-        jLabel37 = new widget.Label();
         jLabel39 = new widget.Label();
+        jLabel18 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnFormulir.setText("Formulir Penilaian GRACE");
-        MnFormulir.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnFormulir.setText("Formulir Penilaian GRACE Score");
+        MnFormulir.setName("MnFormulir"); // NOI18N
+        MnFormulir.setPreferredSize(new java.awt.Dimension(205, 26));
         MnFormulir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnFormulirActionPerformed(evt);
@@ -385,11 +412,11 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnSimpan);
 
-        BtnBatal.setName("BtnBatal"); // NOI18N
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
         BtnBatal.setText("Baru");
         BtnBatal.setToolTipText("Alt+B");
+        BtnBatal.setName("BtnBatal"); // NOI18N
         BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,11 +466,11 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnEdit);
 
-        BtnPrint.setName("BtnPrint"); // NOI18N
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
         BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
         BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,7 +525,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-10-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -512,7 +539,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
 
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-10-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
@@ -571,7 +598,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 476));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 316));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -601,7 +628,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 353));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 293));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -658,13 +685,14 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(705, 10, 84, 23);
 
-        jLabel16.setText("PENILAIAN");
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("I. PENILAIAN");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 70, 75, 23);
+        jLabel16.setBounds(10, 70, 150, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-10-2026 05:49:27" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2026 04:43:37" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -716,39 +744,28 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         FormInput.add(jSeparator1);
         jSeparator1.setBounds(0, 70, 807, 1);
 
-        jLabel10.setText("Umur :");
+        jLabel10.setText("Umur (tahun) :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 178, 120, 23);
+        jLabel10.setBounds(0, 90, 140, 23);
 
         Usia.setEditable(false);
         Usia.setHighlighter(null);
         Usia.setName("Usia"); // NOI18N
         FormInput.add(Usia);
-        Usia.setBounds(124, 178, 50, 23);
-
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("tahun");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(178, 178, 45, 23);
-
-        jLabel12.setText("Skor :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        FormInput.add(jLabel12);
-        jLabel12.setBounds(226, 178, 45, 23);
+        Usia.setBounds(144, 90, 50, 23);
 
         SkorUsia.setEditable(false);
         SkorUsia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorUsia.setHighlighter(null);
         SkorUsia.setName("SkorUsia"); // NOI18N
         FormInput.add(SkorUsia);
-        SkorUsia.setBounds(274, 178, 40, 23);
+        SkorUsia.setBounds(197, 90, 40, 23);
 
-        jLabel13.setText("Heart Rate :");
+        jLabel13.setText("Heart Rate (bpm) :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 208, 120, 23);
+        jLabel13.setBounds(0, 120, 140, 23);
 
         DenyutJantung.setHighlighter(null);
         DenyutJantung.setName("DenyutJantung"); // NOI18N
@@ -758,30 +775,19 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(DenyutJantung);
-        DenyutJantung.setBounds(124, 208, 50, 23);
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("bpm");
-        jLabel14.setName("jLabel14"); // NOI18N
-        FormInput.add(jLabel14);
-        jLabel14.setBounds(178, 208, 45, 23);
-
-        jLabel15.setText("Skor :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        FormInput.add(jLabel15);
-        jLabel15.setBounds(226, 208, 45, 23);
+        DenyutJantung.setBounds(144, 120, 50, 23);
 
         SkorDenyut.setEditable(false);
         SkorDenyut.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorDenyut.setHighlighter(null);
         SkorDenyut.setName("SkorDenyut"); // NOI18N
         FormInput.add(SkorDenyut);
-        SkorDenyut.setBounds(274, 208, 40, 23);
+        SkorDenyut.setBounds(197, 120, 40, 23);
 
-        jLabel17.setText("SBP :");
+        jLabel17.setText("SBP (mmHg) :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(0, 238, 120, 23);
+        jLabel17.setBounds(0, 150, 140, 23);
 
         Sistolik.setHighlighter(null);
         Sistolik.setName("Sistolik"); // NOI18N
@@ -791,31 +797,19 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sistolik);
-        Sistolik.setBounds(124, 238, 50, 23);
-
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("mmHg");
-        jLabel18.setName("jLabel18"); // NOI18N
-        FormInput.add(jLabel18);
-        jLabel18.setBounds(178, 238, 45, 23);
-
-        jLabel38.setText("Skor :");
-        jLabel38.setName("jLabel19"); // NOI18N
-        jLabel38.setPreferredSize(new java.awt.Dimension(60, 23));
-        FormInput.add(jLabel38);
-        jLabel38.setBounds(226, 238, 45, 23);
+        Sistolik.setBounds(144, 150, 50, 23);
 
         SkorSistolik.setEditable(false);
         SkorSistolik.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorSistolik.setHighlighter(null);
         SkorSistolik.setName("SkorSistolik"); // NOI18N
         FormInput.add(SkorSistolik);
-        SkorSistolik.setBounds(274, 238, 40, 23);
+        SkorSistolik.setBounds(197, 150, 40, 23);
 
-        jLabel20.setText("Creatinine :");
+        jLabel20.setText("Creatinine (mg/dl) :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(0, 268, 120, 23);
+        jLabel20.setBounds(0, 180, 140, 23);
 
         Kreatinin.setHighlighter(null);
         Kreatinin.setName("Kreatinin"); // NOI18N
@@ -825,32 +819,21 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kreatinin);
-        Kreatinin.setBounds(124, 268, 50, 23);
-
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel21.setText("mg/dl");
-        jLabel21.setName("jLabel21"); // NOI18N
-        FormInput.add(jLabel21);
-        jLabel21.setBounds(178, 268, 45, 23);
-
-        jLabel22.setText("Skor :");
-        jLabel22.setName("jLabel22"); // NOI18N
-        FormInput.add(jLabel22);
-        jLabel22.setBounds(226, 268, 45, 23);
+        Kreatinin.setBounds(144, 180, 50, 23);
 
         SkorKreatinin.setEditable(false);
         SkorKreatinin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorKreatinin.setHighlighter(null);
         SkorKreatinin.setName("SkorKreatinin"); // NOI18N
         FormInput.add(SkorKreatinin);
-        SkorKreatinin.setBounds(274, 268, 40, 23);
+        SkorKreatinin.setBounds(197, 180, 40, 23);
 
         jLabel24.setText("Killip Class :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(330, 178, 176, 23);
+        jLabel24.setBounds(246, 90, 160, 23);
 
-        Killip.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I", "II", "III", "IV" }));
+        Killip.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I : Tidak Ada Ronkhi Di Paru", "II : Ronkhi Di Setengah Bawah Paru", "III : Ronkhi Hingga Setengah Atas Paru Disertai Edema Paru", "IV : Syok Kardiogenik (TD < 90 mmHg)" }));
         Killip.setName("Killip"); // NOI18N
         Killip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -863,26 +846,21 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(Killip);
-        Killip.setBounds(510, 178, 90, 23);
-
-        jLabel25.setText("Skor :");
-        jLabel25.setName("jLabel25"); // NOI18N
-        FormInput.add(jLabel25);
-        jLabel25.setBounds(606, 178, 40, 23);
+        Killip.setBounds(410, 90, 336, 23);
 
         SkorKillip.setEditable(false);
         SkorKillip.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorKillip.setHighlighter(null);
         SkorKillip.setName("SkorKillip"); // NOI18N
         FormInput.add(SkorKillip);
-        SkorKillip.setBounds(648, 178, 40, 23);
+        SkorKillip.setBounds(749, 90, 40, 23);
 
         jLabel26.setText("ST Deviation :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(330, 208, 176, 23);
+        jLabel26.setBounds(246, 120, 160, 23);
 
-        DeviasiST.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        DeviasiST.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Deviasi Signifikan", "ST Elevasi Atau ST Depresi > 1 mm" }));
         DeviasiST.setName("DeviasiST"); // NOI18N
         DeviasiST.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -895,24 +873,19 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(DeviasiST);
-        DeviasiST.setBounds(510, 208, 90, 23);
-
-        jLabel27.setText("Skor :");
-        jLabel27.setName("jLabel27"); // NOI18N
-        FormInput.add(jLabel27);
-        jLabel27.setBounds(606, 208, 40, 23);
+        DeviasiST.setBounds(410, 120, 336, 23);
 
         SkorST.setEditable(false);
         SkorST.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorST.setHighlighter(null);
         SkorST.setName("SkorST"); // NOI18N
         FormInput.add(SkorST);
-        SkorST.setBounds(648, 208, 40, 23);
+        SkorST.setBounds(749, 120, 40, 23);
 
         jLabel28.setText("Elevated Troponin :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(330, 238, 176, 23);
+        jLabel28.setBounds(246, 150, 160, 23);
 
         Troponin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Troponin.setName("Troponin"); // NOI18N
@@ -927,24 +900,19 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(Troponin);
-        Troponin.setBounds(510, 238, 90, 23);
-
-        jLabel29.setText("Skor :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(606, 238, 40, 23);
+        Troponin.setBounds(410, 150, 336, 23);
 
         SkorTroponin.setEditable(false);
         SkorTroponin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorTroponin.setHighlighter(null);
         SkorTroponin.setName("SkorTroponin"); // NOI18N
         FormInput.add(SkorTroponin);
-        SkorTroponin.setBounds(648, 238, 40, 23);
+        SkorTroponin.setBounds(749, 150, 40, 23);
 
-        jLabel30.setText("Cardiac Arrest at Admission :");
+        jLabel30.setText("Cardiac Arrest At Admission :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(330, 268, 176, 23);
+        jLabel30.setBounds(246, 180, 160, 23);
 
         HentiJantung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         HentiJantung.setName("HentiJantung"); // NOI18N
@@ -959,57 +927,50 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(HentiJantung);
-        HentiJantung.setBounds(510, 268, 90, 23);
-
-        jLabel31.setText("Skor :");
-        jLabel31.setName("jLabel31"); // NOI18N
-        FormInput.add(jLabel31);
-        jLabel31.setBounds(606, 268, 40, 23);
+        HentiJantung.setBounds(410, 180, 336, 23);
 
         SkorHenti.setEditable(false);
         SkorHenti.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorHenti.setHighlighter(null);
         SkorHenti.setName("SkorHenti"); // NOI18N
         FormInput.add(SkorHenti);
-        SkorHenti.setBounds(648, 268, 40, 23);
+        SkorHenti.setBounds(749, 180, 40, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 302, 807, 1);
+        jSeparator2.setBounds(0, 240, 807, 1);
 
-        jLabel32.setText("TOTAL GRACE SCORE :");
+        jLabel32.setText("Total Skor :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
-        jLabel32.setBounds(0, 310, 120, 23);
+        jLabel32.setBounds(600, 210, 120, 23);
 
         TotalSkor.setEditable(false);
         TotalSkor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TotalSkor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         TotalSkor.setHighlighter(null);
         TotalSkor.setName("TotalSkor"); // NOI18N
         FormInput.add(TotalSkor);
-        TotalSkor.setBounds(124, 310, 60, 23);
+        TotalSkor.setBounds(729, 210, 60, 23);
 
         jLabel33.setText("Kategori Risiko :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(330, 310, 176, 23);
+        jLabel33.setBounds(0, 260, 140, 23);
 
         Kategori.setEditable(false);
         Kategori.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Kategori.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Kategori.setHighlighter(null);
         Kategori.setName("Kategori"); // NOI18N
         FormInput.add(Kategori);
-        Kategori.setBounds(510, 310, 120, 23);
+        Kategori.setBounds(144, 260, 120, 23);
 
         jLabel34.setText("Keterangan :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(0, 340, 120, 23);
+        jLabel34.setBounds(260, 260, 95, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -1019,30 +980,18 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(124, 340, 665, 23);
-
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("Killip I : tidak ada ronkhi di paru;  Killip II : ronkhi di setengah bawah paru;");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(124, 372, 665, 23);
-
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel36.setText("Killip III : ronkhi hingga setengah atas paru disertai edema paru;  Killip IV : syok kardiogenik (TD < 90 mmHg).");
-        jLabel36.setName("jLabel36"); // NOI18N
-        FormInput.add(jLabel36);
-        jLabel36.setBounds(124, 396, 665, 23);
-
-        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel37.setText("ST Deviation : ST elevasi atau ST depresi > 1 mm.   Risiko : Low < 109,  Intermediate 109 - 140,  High > 140.");
-        jLabel37.setName("jLabel37"); // NOI18N
-        FormInput.add(jLabel37);
-        jLabel37.setBounds(124, 420, 665, 23);
+        Keterangan.setBounds(359, 260, 430, 23);
 
         jLabel39.setText("Tanggal :");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
         jLabel39.setBounds(0, 40, 75, 23);
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("II. INTERPRETASI");
+        jLabel18.setName("jLabel18"); // NOI18N
+        FormInput.add(jLabel18);
+        jLabel18.setBounds(10, 240, 240, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1281,7 +1230,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2610px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2510px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1291,7 +1240,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2610px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2510px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1372,7 +1321,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
                             }
                             LoadHTML.setText(
                                 "<html>"+
-                                  "<table width='2610px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                  "<table width='2510px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                                    htmlContent.toString()+
                                   "</table>"+
                                 "</html>"
@@ -1382,7 +1331,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                        "<table width='2610px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<table width='2510px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                             "<tr class='isi2'>"+
                                                 "<td valign='top' align='center'>"+
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1530,12 +1479,12 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,10)); 
             Valid.MyReportqry(
                 "rptFormulirPenilaianGRACE.jasper","report","::[ Formulir Penilaian GRACE ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,s"+
-                "kor_grace.usia,penilaian_grace_scor.skor_usia,penilaian_grace_scor.denyut_jantung,penilaian_grace_scor.skor_denyut_jantung,penilaian_grace_scor.sistolik,penilaian_grace_scor.skor_sistolik,penilaian_grace_scor.k"+
-                "reatinin,penilaian_grace_scor.skor_kreatinin,penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,penilaian_grace_scor.troponin,skor_"+
-                "grace.skor_troponin,penilaian_grace_scor.henti_jantung,penilaian_grace_scor.skor_henti_jantung,penilaian_grace_scor.skor,penilaian_grace_scor.kategori,penilaian_grace_scor.keterangan from penilaian_grace_scor i"+
-                "nner join reg_periksa on penilaian_grace_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter "+
-                "on penilaian_grace_scor.kd_dokter=dokter.kd_dokter where penilaian_grace_scor.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,"+
+                "penilaian_grace_scor.usia,penilaian_grace_scor.skor_usia,penilaian_grace_scor.denyut_jantung,penilaian_grace_scor.skor_denyut_jantung,penilaian_grace_scor.sistolik,penilaian_grace_scor.skor_sistolik,"+
+                "penilaian_grace_scor.kreatinin,penilaian_grace_scor.skor_kreatinin,penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,"+
+                "penilaian_grace_scor.troponin,penilaian_grace_scor.skor_troponin,penilaian_grace_scor.henti_jantung,penilaian_grace_scor.skor_henti_jantung,penilaian_grace_scor.skor,penilaian_grace_scor.kategori,"+
+                "penilaian_grace_scor.keterangan from penilaian_grace_scor inner join reg_periksa on penilaian_grace_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join dokter on penilaian_grace_scor.kd_dokter=dokter.kd_dokter where penilaian_grace_scor.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",
                 param
             );
         }else{
@@ -1698,34 +1647,20 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
     private widget.TextBox Usia;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
-    private widget.Label jLabel11;
-    private widget.Label jLabel12;
     private widget.Label jLabel13;
-    private widget.Label jLabel14;
-    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
-    private widget.Label jLabel21;
-    private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel24;
-    private widget.Label jLabel25;
     private widget.Label jLabel26;
-    private widget.Label jLabel27;
     private widget.Label jLabel28;
-    private widget.Label jLabel29;
     private widget.Label jLabel30;
-    private widget.Label jLabel31;
     private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
-    private widget.Label jLabel35;
-    private widget.Label jLabel36;
-    private widget.Label jLabel37;
-    private widget.Label jLabel38;
     private widget.Label jLabel39;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
@@ -1734,7 +1669,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private widget.Label jLabelSd;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;
@@ -1748,17 +1683,17 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,skor_grace.usia,penilaian_grace_scor.skor_usia,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,penilaian_grace_scor.usia,penilaian_grace_scor.skor_usia,"+
                     "penilaian_grace_scor.denyut_jantung,penilaian_grace_scor.skor_denyut_jantung,penilaian_grace_scor.sistolik,penilaian_grace_scor.skor_sistolik,penilaian_grace_scor.kreatinin,penilaian_grace_scor.skor_kreatinin,"+
-                    "penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,penilaian_grace_scor.troponin,skor_grace.skor_troponin,penilaian_grace_scor.henti_jantung,"+
+                    "penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,penilaian_grace_scor.troponin,penilaian_grace_scor.skor_troponin,penilaian_grace_scor.henti_jantung,"+
                     "penilaian_grace_scor.skor_henti_jantung,penilaian_grace_scor.skor,penilaian_grace_scor.kategori,penilaian_grace_scor.keterangan from penilaian_grace_scor inner join reg_periksa on penilaian_grace_scor.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on penilaian_grace_scor.kd_dokter=dokter.kd_dokter where penilaian_grace_scor.tanggal between ? and ? order by penilaian_grace_scor.tanggal"
                 );
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,skor_grace.usia,penilaian_grace_scor.skor_usia,"+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_grace_scor.kd_dokter,dokter.nm_dokter,penilaian_grace_scor.tanggal,penilaian_grace_scor.usia,penilaian_grace_scor.skor_usia,"+
                     "penilaian_grace_scor.denyut_jantung,penilaian_grace_scor.skor_denyut_jantung,penilaian_grace_scor.sistolik,penilaian_grace_scor.skor_sistolik,penilaian_grace_scor.kreatinin,penilaian_grace_scor.skor_kreatinin,"+
-                    "penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,penilaian_grace_scor.troponin,skor_grace.skor_troponin,penilaian_grace_scor.henti_jantung,"+
+                    "penilaian_grace_scor.killip,penilaian_grace_scor.skor_killip,penilaian_grace_scor.deviasi_st,penilaian_grace_scor.skor_deviasi_st,penilaian_grace_scor.troponin,penilaian_grace_scor.skor_troponin,penilaian_grace_scor.henti_jantung,"+
                     "penilaian_grace_scor.skor_henti_jantung,penilaian_grace_scor.skor,penilaian_grace_scor.kategori,penilaian_grace_scor.keterangan from penilaian_grace_scor inner join reg_periksa on penilaian_grace_scor.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on penilaian_grace_scor.kd_dokter=dokter.kd_dokter where penilaian_grace_scor.tanggal between ? and ? and (reg_periksa.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_grace_scor.kd_dokter like ? or dokter.nm_dokter like ? or penilaian_grace_scor.kategori like ?) order by penilaian_grace_scor.tanggal"
@@ -1820,30 +1755,52 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
     } 
 
     private void hitungSkor() {
-        SkorKillip.setText(""+(Killip.getSelectedIndex()==0?0:Killip.getSelectedIndex()==1?21:Killip.getSelectedIndex()==2?43:64));
-        SkorST.setText(""+(DeviasiST.getSelectedIndex()==1?30:0));
-        SkorTroponin.setText(""+(Troponin.getSelectedIndex()==1?15:0));
-        SkorHenti.setText(""+(HentiJantung.getSelectedIndex()==1?43:0));
+        int sKillip=Killip.getSelectedIndex()==0?0:Killip.getSelectedIndex()==1?21:Killip.getSelectedIndex()==2?43:64;
+        int sST=DeviasiST.getSelectedIndex()==1?30:0;
+        int sTroponin=Troponin.getSelectedIndex()==1?15:0;
+        int sHenti=HentiJantung.getSelectedIndex()==1?43:0;
+        SkorKillip.setText(""+sKillip);
+        SkorST.setText(""+sST);
+        SkorTroponin.setText(""+sTroponin);
+        SkorHenti.setText(""+sHenti);
+        
+        Integer sUsia=0,sDenyut=0,sSistolik=0,sKreatinin=0;
         try {
             int umur=Integer.parseInt(Usia.getText().trim());
+            sUsia=umur<40?0:umur<50?18:umur<60?36:umur<70?55:umur<80?73:91;
+        } catch (Exception e) {
+            sUsia=0;
+        }
+        try {
             int nadi=Integer.parseInt(DenyutJantung.getText().trim());
+            sDenyut=nadi<70?0:nadi<90?7:nadi<110?13:nadi<150?23:nadi<200?36:46;
+        } catch (Exception e) {
+            sDenyut=0;
+        }
+        try {
             int td=Integer.parseInt(Sistolik.getText().trim());
-            double kreat=Double.parseDouble(Kreatinin.getText().trim().replace(",","."));
-            SkorUsia.setText(""+(umur<40?0:umur<50?18:umur<60?36:umur<70?55:umur<80?73:91));
-            SkorDenyut.setText(""+(nadi<70?0:nadi<90?7:nadi<110?13:nadi<150?23:nadi<200?36:46));
-            SkorSistolik.setText(""+(td<80?63:td<100?58:td<120?47:td<140?37:td<160?26:td<200?11:0));
-            SkorKreatinin.setText(""+(kreat<0.4?2:kreat<0.8?5:kreat<1.2?8:kreat<1.6?11:kreat<2.0?14:kreat<4.0?23:31));
-            int skor=Integer.parseInt(SkorUsia.getText())+Integer.parseInt(SkorDenyut.getText())+Integer.parseInt(SkorSistolik.getText())+Integer.parseInt(SkorKreatinin.getText())+
-                     Integer.parseInt(SkorKillip.getText())+Integer.parseInt(SkorST.getText())+Integer.parseInt(SkorTroponin.getText())+Integer.parseInt(SkorHenti.getText());
+            sSistolik=td<80?63:td<100?58:td<120?47:td<140?37:td<160?26:td<200?11:0;
+        } catch (Exception e) {
+            sSistolik=0;
+        }
+        try {
+            double kreat=Double.parseDouble(Kreatinin.getText());
+            sKreatinin=kreat<0.4?2:kreat<0.8?5:kreat<1.2?8:kreat<1.6?11:kreat<2.0?14:kreat<4.0?23:31;
+        } catch (Exception e) {
+            sKreatinin=0;
+        }
+        SkorUsia.setText(""+sUsia);
+        SkorDenyut.setText(""+sDenyut);
+        SkorSistolik.setText(""+sSistolik);
+        SkorKreatinin.setText(""+sKreatinin);
+        
+        try {
+            int skor=sUsia+sDenyut+sSistolik+sKreatinin+sKillip+sST+sTroponin+sHenti;
             TotalSkor.setText(""+skor);
             Kategori.setText(skor<109?"Low Risk":skor<=140?"Intermediate Risk":"High Risk");
         } catch (Exception e) {
-            SkorUsia.setText("");
-            SkorDenyut.setText("");
-            SkorSistolik.setText("");
-            SkorKreatinin.setText("");
-            TotalSkor.setText("");
-            Kategori.setText("");
+            TotalSkor.setText("0");
+            Kategori.setText("Low Risk");
         }
     }
 
@@ -1923,9 +1880,9 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>548){
+            if(internalFrame1.getHeight()>488){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,376));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,316));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{

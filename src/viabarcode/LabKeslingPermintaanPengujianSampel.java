@@ -153,7 +153,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         KegiatanUsaha = new widget.TextBox();
         PersonalDihubungi = new widget.TextBox();
         KontakPelanggan = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -1468,7 +1468,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NmPetugas;
     private widget.PanelBiasa PanelInput;
     private widget.TextBox PersonalDihubungi;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCariPeriksa;
     private widget.TextBox TNoPermintaan;
