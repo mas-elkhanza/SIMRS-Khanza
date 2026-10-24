@@ -334,7 +334,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setAutoCreateRowSorter(false);
+        tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -501,7 +501,6 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -515,7 +514,6 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -661,14 +659,13 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 17:53:10" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setOpaque(false);
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(74, 40, 130, 23);
+        Tanggal.setBounds(74, 40, 140, 23);
 
         jLabel23.setText("Perawat/Petugas :");
         jLabel23.setName("jLabel23"); // NOI18N

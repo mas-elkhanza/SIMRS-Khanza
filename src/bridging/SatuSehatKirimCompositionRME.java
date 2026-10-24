@@ -5459,8 +5459,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                         }
                     }
 
-                    /*//Gravida
-                    if(tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
+                    //Gravida
+                    if(tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,19).toString().equals(""))){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5480,8 +5480,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11996-6\"," +
+                                                    "\"display\": \"[#] Pregnancies\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Gravida\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5517,7 +5524,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Para
-                    if(tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,21).toString().equals(""))){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5537,6 +5544,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11977-6\"," +
+                                                    "\"display\": \"[#] Parity\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Para\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -5574,7 +5588,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Abortus
-                    if(tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,23).toString().equals(""))){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5594,8 +5608,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11612-9\"," +
+                                                    "\"display\": \"[#] Abortions\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Abortus\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5651,8 +5672,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"8665-2\"," +
+                                                    "\"display\": \"Last menstrual period start date\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"HPHT\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5708,6 +5736,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"10202-0\"," +
+                                                    "\"display\": \"Physical findings of Nervous system Narrative\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Tekanan Intrakranial\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -5765,6 +5800,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"32466-5\"," +
+                                                    "\"display\": \"Physical findings of Pupil\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Pupil\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -5822,6 +5864,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11410-8\"," +
+                                                    "\"display\": \"Physical findings of Musculoskeletal system Narrative\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Neurosensorik / Muskuloskeletal\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -5879,8 +5928,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"29302-7\"," +
+                                                    "\"display\": \"Physical findings of Integumentary system Narrative\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Integumen\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5936,8 +5992,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"39109-4\"," +
+                                                    "\"display\": \"Turgor [Interpretation] of Skin\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Turgor Kulit\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -5993,8 +6056,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"44966-0\"," +
+                                                    "\"display\": \"Edema\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Edema\"" +
-                                        "}," +
+                                        "},"+
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -6050,6 +6120,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"32454-1\"," +
+                                                    "\"display\": \"Physical findings of Mucous membrane\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Mukosa Mulut\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6107,6 +6184,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"131148009\"," +
+                                                    "\"display\": \"Bleeding (finding)\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Perdarahan\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6164,8 +6248,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"1149322001\"," +
+                                                    "\"display\": \"Intoxication\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Intoksikasi\"" +
-                                        "}," +
+                                        "},"  +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
                                         "}," +
@@ -6221,6 +6312,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"81677-7\"," +
+                                                    "\"display\": \"Output assessment panel\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Eliminasi\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6236,7 +6334,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                         "}," +
                                         "\"effectiveDateTime\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
                                         "\"issued\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
-                                        "\"valueString\": \""+"BAB : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,47).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,48).toString()+" -Konsistensi : "+tbAwalKeperawatanIGD.getValueAt(i,49).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,50).toString()+"; BAK : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,51).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,52).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,53).toString()+" -Lain-lain : "+tbAwalKeperawatanIGD.getValueAt(i,54).toString()+"\"" +
+                                        "\"valueString\": \"BAB : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,47).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,48).toString()+" -Konsistensi : "+tbAwalKeperawatanIGD.getValueAt(i,49).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,50).toString()+"; BAK : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,51).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,52).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,53).toString()+" -Lain-lain : "+tbAwalKeperawatanIGD.getValueAt(i,54).toString()+"\"" +
                                    "}";
                             System.out.println("URL : "+link+"/Observation");
                             System.out.println("Request JSON : "+json);
@@ -6258,7 +6356,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Kondisi Psikologis
-                    if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
+                    /*if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);

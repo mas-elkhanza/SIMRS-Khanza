@@ -98,7 +98,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppHapus = new widget.MenuItem();
         ppDatang = new widget.MenuItem();
         ppProses = new widget.MenuItem();
@@ -980,7 +980,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button btnSuplier;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdbar;
     private widget.TextBox kdjenis;
     private widget.TextBox kdptg;
