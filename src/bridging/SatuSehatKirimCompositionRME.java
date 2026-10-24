@@ -6292,7 +6292,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Eliminasi
-                    /*if(tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -6312,6 +6312,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"81677-7\"," +
+                                                    "\"display\": \"Output assessment panel\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Eliminasi\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6327,7 +6334,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                         "}," +
                                         "\"effectiveDateTime\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
                                         "\"issued\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
-                                        "\"valueString\": \""+"BAB : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,47).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,48).toString()+" -Konsistensi : "+tbAwalKeperawatanIGD.getValueAt(i,49).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,50).toString()+"; BAK : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,51).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,52).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,53).toString()+" -Lain-lain : "+tbAwalKeperawatanIGD.getValueAt(i,54).toString()+"\"" +
+                                        "\"valueString\": \"BAB : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,47).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,48).toString()+" -Konsistensi : "+tbAwalKeperawatanIGD.getValueAt(i,49).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,50).toString()+"; BAK : -Frekuensi : "+tbAwalKeperawatanIGD.getValueAt(i,51).toString()+" x / "+tbAwalKeperawatanIGD.getValueAt(i,52).toString()+" -Warna : "+tbAwalKeperawatanIGD.getValueAt(i,53).toString()+" -Lain-lain : "+tbAwalKeperawatanIGD.getValueAt(i,54).toString()+"\"" +
                                    "}";
                             System.out.println("URL : "+link+"/Observation");
                             System.out.println("Request JSON : "+json);
@@ -6349,7 +6356,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Kondisi Psikologis
-                    if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
+                    /*if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);

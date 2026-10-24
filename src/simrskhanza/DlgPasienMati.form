@@ -143,7 +143,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jPopupMenu1"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
@@ -160,7 +160,7 @@
             <Component class="widget.Table" name="tbMati">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbMati" noResource="true"/>
