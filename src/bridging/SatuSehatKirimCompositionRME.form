@@ -504,7 +504,7 @@
                 </Container>
                 <Container class="widget.ScrollPane" name="ScrollIGDPrimer">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="ScrollIGDPrimer" noResource="true"/>
@@ -520,7 +520,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbIGDPrimer">
                       <Properties>
-                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="tbIGDPrimer" noResource="true"/>
@@ -645,7 +645,7 @@
                 </Container>
                 <Container class="widget.ScrollPane" name="ScrollIGDSekunder">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="ScrollIGDSekunder" noResource="true"/>
@@ -661,7 +661,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbIGDSekunder">
                       <Properties>
-                        <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="tbIGDSekunder" noResource="true"/>
@@ -677,7 +677,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll1">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll1" noResource="true"/>
@@ -695,7 +695,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbAwalKeperawatanIGD">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbAwalKeperawatanIGD" noResource="true"/>
@@ -705,7 +705,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll2">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll2" noResource="true"/>
@@ -723,7 +723,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbNadi">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbNadi" noResource="true"/>
@@ -733,7 +733,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll3">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll3" noResource="true"/>
@@ -751,7 +751,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbSpO2">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbSpO2" noResource="true"/>
@@ -761,7 +761,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll4">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll4" noResource="true"/>
@@ -779,7 +779,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbGCS">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbGCS" noResource="true"/>
@@ -789,7 +789,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll5">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll5" noResource="true"/>
@@ -807,7 +807,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbKesadaran">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbKesadaran" noResource="true"/>
@@ -817,7 +817,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll6">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll6" noResource="true"/>
@@ -835,7 +835,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbTensi">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbTensi" noResource="true"/>
@@ -845,7 +845,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll7">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll7" noResource="true"/>
@@ -863,7 +863,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbTB">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbTB" noResource="true"/>
@@ -873,7 +873,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll8">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll8" noResource="true"/>
@@ -891,7 +891,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbBB">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbBB" noResource="true"/>
@@ -901,7 +901,7 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll9">
               <Properties>
-                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll9" noResource="true"/>
@@ -919,7 +919,7 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbLP">
                   <Properties>
-                    <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tbLP" noResource="true"/>
