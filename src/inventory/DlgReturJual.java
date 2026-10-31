@@ -149,7 +149,7 @@ public class DlgReturJual extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppCetakNota = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -1280,7 +1280,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox NoFaktur;
     private widget.TextBox NoNota;
     private widget.TextBox NoRetur;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox Satuanbar;
     private widget.TextBox Subtotal;
     private widget.Tanggal TglRetur;

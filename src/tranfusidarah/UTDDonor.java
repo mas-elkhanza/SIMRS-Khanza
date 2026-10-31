@@ -236,7 +236,7 @@ public final class UTDDonor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppTampilkanBHPMedis = new widget.MenuItem();
         ppTampilkanBHPPenunjang = new widget.MenuItem();
         ppTampilkanBHPPenunjangDanMedis = new widget.MenuItem();
@@ -2510,7 +2510,7 @@ public final class UTDDonor extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label17;

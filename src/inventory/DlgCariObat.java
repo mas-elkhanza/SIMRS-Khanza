@@ -369,7 +369,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppStok = new widget.MenuItem();
         ppStok1 = new widget.MenuItem();
@@ -428,8 +428,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -443,8 +441,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(50, 50, 50));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -458,8 +454,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
         });
         Popup.add(ppStok);
 
-        ppStok1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok1.setForeground(new java.awt.Color(50, 50, 50));
         ppStok1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok1.setText("Tampilkan Stok Lokasi Lain");
         ppStok1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -872,7 +866,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -933,7 +926,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbDetailObatRacikan.setAutoCreateRowSorter(false);
+        tbDetailObatRacikan.setAutoCreateRowSorter(true);
         tbDetailObatRacikan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDetailObatRacikan.setComponentPopupMenu(Popup);
         tbDetailObatRacikan.setName("tbDetailObatRacikan"); // NOI18N
@@ -1695,35 +1688,40 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_kdgudangKeyPressed
 
     private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
-        if (lokasidepo == null || !lokasidepo.isDisplayable()) {
-            lokasidepo=new DlgCariBangsal(null,false);
-            lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            lokasidepo.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(lokasidepo.getTable().getSelectedRow()!= -1){                   
-                        kdgudang.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
-                        nmgudang.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
-                    } 
-                    kdgudang.requestFocus();
-                    lokasidepo=null;
-                }
-            }); 
+        if(ttl>0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan bersihkan jumlah jika ingin mengganti lokasi depo...!!!");
+            TCari.requestFocus();
+        }else{
+            if (lokasidepo == null || !lokasidepo.isDisplayable()) {
+                lokasidepo=new DlgCariBangsal(null,false);
+                lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                lokasidepo.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(lokasidepo.getTable().getSelectedRow()!= -1){                   
+                            kdgudang.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
+                            nmgudang.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
+                        } 
+                        kdgudang.requestFocus();
+                        lokasidepo=null;
+                    }
+                }); 
 
-            lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            lokasidepo.setLocationRelativeTo(internalFrame1);
-        }
-        if (lokasidepo == null) return;
-        if (!lokasidepo.isVisible()) {
-            lokasidepo.isCek();    
-            lokasidepo.emptTeks();
-        }
+                lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                lokasidepo.setLocationRelativeTo(internalFrame1);
+            }
+            if (lokasidepo == null) return;
+            if (!lokasidepo.isVisible()) {
+                lokasidepo.isCek();    
+                lokasidepo.emptTeks();
+            }
 
-        if (lokasidepo.isVisible()) {
-            lokasidepo.toFront();
-            return;
+            if (lokasidepo.isVisible()) {
+                lokasidepo.toFront();
+                return;
+            }
+            lokasidepo.setVisible(true);
         }
-        lokasidepo.setVisible(true);
     }//GEN-LAST:event_BtnGudangActionPerformed
 
     private void tbObatPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbObatPropertyChange
@@ -2082,7 +2080,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label LTotal;
     private widget.Label LTotalTagihan;
     private widget.TextBox LblNoRawat;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;

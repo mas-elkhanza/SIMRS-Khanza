@@ -139,7 +139,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppResepObat = new widget.MenuItem();
         ppResepObat1 = new widget.MenuItem();
         ppResepObat2 = new widget.MenuItem();
@@ -948,7 +948,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.MenuItem ppResepObat;

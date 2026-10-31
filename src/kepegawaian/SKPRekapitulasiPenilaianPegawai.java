@@ -217,7 +217,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -1008,7 +1008,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NmDinilai;
     private widget.TextBox NmPenilai;
     private widget.TextBox NoPenilaian;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextArea RPS;
     private widget.TextArea RPS1;
     private widget.TextBox TCari;

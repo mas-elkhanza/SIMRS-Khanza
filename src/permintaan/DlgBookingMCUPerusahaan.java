@@ -157,7 +157,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppPilih = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
         ppPengajuanPasienBaru = new widget.MenuItem();
@@ -1140,7 +1140,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NmDokter;
     private widget.TextBox NmPerusahaan;
     private widget.TextBox NmPoli;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox TCari;
     private widget.TextBox TNoReg;
     private widget.TextBox TNoRw;

@@ -172,7 +172,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppGrafikBatangKejadianIKPPerDampak = new widget.MenuItem();
         ppGrafikPieKejadianIKPPerDampak = new widget.MenuItem();
         ppGrafikBatangKejadianIKPPerJenis = new widget.MenuItem();
@@ -1657,7 +1657,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.MenuItem ppGrafikBatangKejadianIKPPerDampak;

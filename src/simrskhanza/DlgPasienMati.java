@@ -135,7 +135,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnCetakSuratMati = new widget.MenuItem();
         MnCetakSuratMati1 = new widget.MenuItem();
         MnAngkutJenazah = new widget.MenuItem();
@@ -248,7 +248,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbMati.setAutoCreateRowSorter(false);
+        tbMati.setAutoCreateRowSorter(true);
         tbMati.setComponentPopupMenu(jPopupMenu1);
         tbMati.setName("tbMati"); // NOI18N
         tbMati.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -494,12 +494,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
         FormInput.add(TPasien);
         TPasien.setBounds(230, 40, 393, 23);
 
-        DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-08-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
-        DTPTgl.setOpaque(false);
         DTPTgl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPTglKeyPressed(evt);
@@ -1163,7 +1161,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbMati;

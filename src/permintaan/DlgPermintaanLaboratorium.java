@@ -307,13 +307,13 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
     private void initComponents() {
 
         Penjab = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         Jk = new widget.TextBox();
         Umur = new widget.TextBox();
         Alamat = new widget.TextBox();
-        PopupMB = new javax.swing.JPopupMenu();
+        PopupMB = new widget.PopupMenu();
         ppBersihkan1 = new widget.MenuItem();
         ppSemua1 = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -1976,8 +1976,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox PemeriksaanMB;
     private widget.TextBox PemeriksaanPA;
     private widget.TextBox Penjab;
-    private javax.swing.JPopupMenu Popup;
-    private javax.swing.JPopupMenu PopupMB;
+    private widget.PopupMenu Popup;
+    private widget.PopupMenu PopupMB;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;

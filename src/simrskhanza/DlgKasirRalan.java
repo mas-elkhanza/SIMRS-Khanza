@@ -187,6 +187,7 @@ import rekammedis.RMPenilaianAwalMedisRalanUrologi;
 import rekammedis.RMPenilaianBayiBaruLahir;
 import rekammedis.RMPenilaianDerajatDehidrasi;
 import rekammedis.RMPenilaianFisioterapi;
+import rekammedis.RMPenilaianGRACE;
 import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
@@ -210,6 +211,7 @@ import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
 import rekammedis.RMPenilaianTerapiWicara;
 import rekammedis.RMPenilaianUlangNyeri;
+import rekammedis.RMReaksiTransfusi;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
@@ -472,7 +474,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDataRM = new widget.Menu();
         MnRMIGD = new widget.Menu();
         MnDataTriaseIGD = new widget.MenuItem();
@@ -597,7 +599,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPilihBilling = new widget.Menu();
         MnBillingParsial = new widget.MenuItem();
         MnBilling = new widget.MenuItem();
-        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jSeparator12 = new widget.PopupMenu.Separator();
         MnRekap = new widget.Menu();
         MnRekapHarianDokter = new widget.MenuItem();
         MnRekapHarianParamedis = new widget.MenuItem();
@@ -644,7 +646,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPersetujuanRawatInap = new widget.MenuItem();
         MnPersetujuanPenundaanPelayanan = new widget.MenuItem();
         MnPenolakanAnjuranMedis = new widget.MenuItem();
-        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jSeparator13 = new widget.PopupMenu.Separator();
         MnRujukan = new widget.Menu();
         MnRujuk = new widget.MenuItem();
         MnPoliInternal = new widget.MenuItem();
@@ -781,7 +783,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         btnBayar = new widget.Button();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new widget.PopupMenu();
         MnPermintaan1 = new widget.Menu();
         MnJadwalOperasi1 = new widget.MenuItem();
         MnPermintaanLab1 = new widget.MenuItem();
@@ -806,7 +808,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenjualan1 = new widget.MenuItem();
         MnCopyResep2 = new widget.MenuItem();
         MnBilling1 = new widget.MenuItem();
-        jSeparator14 = new javax.swing.JPopupMenu.Separator();
+        jSeparator14 = new widget.PopupMenu.Separator();
         MenuInputData1 = new widget.Menu();
         ppBerkasDigital1 = new widget.MenuItem();
         ppIKP1 = new widget.MenuItem();
@@ -16003,6 +16005,50 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
+    private void MnLaporanReaksiTranfusiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanPersalinanActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMReaksiTransfusi form=new RMReaksiTransfusi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
+    private void MnPenilaianGRACEScoreActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianGRACE form=new RMPenilaianGRACE(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16392,11 +16438,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Menu jMenu6;
     private widget.Menu jMenu7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu.Separator jSeparator12;
-    private javax.swing.JPopupMenu.Separator jSeparator13;
-    private javax.swing.JPopupMenu.Separator jSeparator14;
+    private widget.PopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu2;
+    private widget.PopupMenu.Separator jSeparator12;
+    private widget.PopupMenu.Separator jSeparator13;
+    private widget.PopupMenu.Separator jSeparator14;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
@@ -16452,8 +16498,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,
                                   MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat,MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,
                                   MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnSkriningTOLAC,MnAdmisiSkoringTOLAC,
-                                  MnMonitoringTOLAC,MnHasilPersalinanTOLAC;
-    private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
+                                  MnMonitoringTOLAC,MnHasilPersalinanTOLAC,MnLaporanReaksiTranfusi,MnPenilaianGRACEScore;
+    private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu,MnCatatanObservasi;
     
     private void tampilkasir() { 
         if(ceksukses==false){
@@ -16839,6 +16885,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnCatatanPersalinan.setEnabled(akses.getcatatan_persalinan());
         MnAdmisiSkoringTOLAC.setEnabled(akses.getadmisi_skoring_tolac());
         MnHasilPersalinanTOLAC.setEnabled(akses.gethasil_persalinan_tolac());
+        MnLaporanReaksiTranfusi.setEnabled(akses.getlaporan_reaksi_transfusi());
+        MnPenilaianGRACEScore.setEnabled(akses.getpenilaian_grace_scor());
         MnSkorAldrettePascaAnestesi.setEnabled(akses.getskor_aldrette_pasca_anestesi());
         MnSkorStewardPascaAnestesi.setEnabled(akses.getskor_steward_pasca_anestesi());
         MnSkorBromagePascaAnestesi.setEnabled(akses.getskor_bromage_pasca_anestesi());
@@ -18696,6 +18744,30 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(240, 26));
         MnHasilPersalinanTOLAC.addActionListener(this::MnHasilPersalinanTOLACActionPerformed);
         
+        MnLaporanReaksiTranfusi = new widget.MenuItem();
+        MnLaporanReaksiTranfusi.setBackground(new java.awt.Color(255, 255, 254));
+        MnLaporanReaksiTranfusi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnLaporanReaksiTranfusi.setForeground(new java.awt.Color(50, 50, 50));
+        MnLaporanReaksiTranfusi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnLaporanReaksiTranfusi.setText("Laporan Reaksi Tranfusi");
+        MnLaporanReaksiTranfusi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnLaporanReaksiTranfusi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnLaporanReaksiTranfusi.setName("MnLaporanReaksiTranfusi");
+        MnLaporanReaksiTranfusi.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnLaporanReaksiTranfusi.addActionListener(this::MnLaporanReaksiTranfusiActionPerformed);
+        
+        MnPenilaianGRACEScore = new widget.MenuItem();
+        MnPenilaianGRACEScore.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianGRACEScore.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianGRACEScore.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianGRACEScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPenilaianGRACEScore.setText("Penilaian GRACE Score");
+        MnPenilaianGRACEScore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianGRACEScore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianGRACEScore.setName("MnPenilaianGRACEScore");
+        MnPenilaianGRACEScore.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnPenilaianGRACEScore.addActionListener(this::MnPenilaianGRACEScoreActionPerformed);
+        
         MnHasilUSG = new widget.Menu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -18728,6 +18800,17 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnRMSkrining.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRMSkrining.setName("MnRMSkrining"); 
         MnRMSkrining.setPreferredSize(new java.awt.Dimension(200, 26));
+        
+        MnCatatanObservasi = new widget.Menu();
+        MnCatatanObservasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCatatanObservasi.setText("Observasi");
+        MnCatatanObservasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnCatatanObservasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanObservasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanObservasi.setName("MnCatatanObservasi"); 
+        MnCatatanObservasi.setPreferredSize(new java.awt.Dimension(200, 26));
         
         MnEdukasi = new widget.Menu();
         MnEdukasi.setBackground(new java.awt.Color(255, 255, 254));
@@ -18902,24 +18985,28 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnPenilaianLain.add(MnHemodialisa);
         MnPenilaianLain.add(MnPenilaianBayiBaruLahir);
         
-        MnRMCatatanMonitoring.add(MnCatatanCekGDS);
-        MnRMCatatanMonitoring.add(MnMonitoringReaksiTranfusi);
         MnRMCatatanMonitoring.add(MnPenilaianUlangNyeri);
         MnRMCatatanMonitoring.add(MnIntervensiNyeriFarmakologi);
         MnRMCatatanMonitoring.add(MnIntervensiNyeriNonFarmakologi);
         MnRMCatatanMonitoring.add(MnCatatanKeperawatan);
         MnRMCatatanMonitoring.add(MnAdmisiSkoringTOLAC);
         MnRMCatatanMonitoring.add(MnCatatanPersalinan);
+        
+        MnRMCatatanMonitoring.add(MnCatatanObservasi);
+        MnCatatanObservasi.add(MnCatatanCekGDS);
+        MnCatatanObservasi.add(MnMonitoringReaksiTranfusi);
+        MnCatatanObservasi.add(MnCatatanKeseimbanganCairan);
+        MnCatatanObservasi.add(MnCatatanObservasiIGD);
+        MnCatatanObservasi.add(MnCatatanObservasiCHBP);
+        MnCatatanObservasi.add(MnCatatanObservasiInduksiPersalinan);
+        MnCatatanObservasi.add(MnMonitoringTOLAC);
+        MnCatatanObservasi.add(MnCatatanObservasiBayi);
+        MnCatatanObservasi.add(MnCatatanObservasiHemodialisa);
+        
         MnRMCatatanMonitoring.add(MnHasilPersalinanTOLAC);
-        MnRMCatatanMonitoring.add(MnCatatanKeseimbanganCairan);
-        MnRMCatatanMonitoring.add(MnCatatanObservasiIGD);
-        MnRMCatatanMonitoring.add(MnCatatanObservasiCHBP);
-        MnRMCatatanMonitoring.add(MnCatatanObservasiInduksiPersalinan);
-        MnRMCatatanMonitoring.add(MnMonitoringTOLAC);
-        MnRMCatatanMonitoring.add(MnCatatanObservasiBayi);
-        MnRMCatatanMonitoring.add(MnCatatanObservasiHemodialisa);
         MnRMCatatanMonitoring.add(MnCatatanCairanHemodialisa);
         MnRMCatatanMonitoring.add(MnChecklistPemberianFibrinolitik);
+        MnRMCatatanMonitoring.add(MnLaporanReaksiTranfusi);
         MnRMCatatanMonitoring.add(MnLaporanTindakan);
         
         MnRMSkrining.add(MnSkriningMerokokUsiaSekolahRemaja);
@@ -19025,5 +19112,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPersetujuan.add(MnSuratPermintaanSecondOpinion);
         MnSuratPersetujuan.add(MnSuratPenolakanResusitasi);
         MnSuratPersetujuan.add(MnPengajuanCutiPerawatanPasien);
+        
+        MnRMIGD.add(MnPenilaianGRACEScore);
     }
 }

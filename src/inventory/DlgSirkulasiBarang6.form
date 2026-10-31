@@ -13,7 +13,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="jPopupMenu1">
+    <Container class="widget.PopupMenu" name="jPopupMenu1">
       <Properties>
         <Property name="name" type="java.lang.String" value="jPopupMenu1" noResource="true"/>
       </Properties>
@@ -406,7 +406,7 @@
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok pada riwayat obat/alkes/bhp pada tanggal terdekat pencarian di tanggal pertama. &#xa;&lt;br&gt;Sirkulasi 6 ini ditujukan untuk tracking seluruh data berdasarkan nomor faktur dan nomor batch.&lt;/html&gt;"/>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jPopupMenu1"/>
             </Property>
             <Property name="name" type="java.lang.String" value="scrollPane1" noResource="true"/>
@@ -426,7 +426,7 @@
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok pada riwayat obat/alkes/bhp pada tanggal terdekat pencarian di tanggal pertama. &#xa;&lt;br&gt;Sirkulasi 6 ini ditujukan untuk tracking seluruh data berdasarkan nomor faktur dan nomor batch.&lt;/html&gt;"/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbDokter" noResource="true"/>

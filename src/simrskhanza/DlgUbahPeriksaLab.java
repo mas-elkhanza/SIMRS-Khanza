@@ -186,7 +186,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         Jk = new widget.TextBox();
         Penjab = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -1279,7 +1279,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa PanelInput;
     private widget.TextBox Pemeriksaan;
     private widget.TextBox Penjab;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;

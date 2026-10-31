@@ -141,7 +141,7 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnDetailPiutang = new widget.MenuItem();
         ppPilihSemua = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
@@ -915,7 +915,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel jLabel12;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label17;
     private widget.Label label32;
     private widget.panelisi panelisi1;

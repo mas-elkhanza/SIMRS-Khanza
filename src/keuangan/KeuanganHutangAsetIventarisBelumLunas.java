@@ -182,7 +182,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppSemua = new widget.MenuItem();
         DlgBayarMandiri = new javax.swing.JDialog();
@@ -1667,7 +1667,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox NoBukti;
     private widget.TextBox NoRekening;
     private widget.PanelBiasa PanelAccor;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll4;
@@ -1724,7 +1724,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
                     "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
                     "and inventaris_pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
+                    tanggaldatang+tanggaltempo+" inventaris_pemesanan.status in ('Belum Dibayar','Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
                     (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
                     "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
             try {

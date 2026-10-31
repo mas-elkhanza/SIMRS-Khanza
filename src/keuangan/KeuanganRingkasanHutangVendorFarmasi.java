@@ -502,12 +502,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 tanggaltempo=" pemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
             }
             ps=koneksi.prepareStatement(
-                    "select pemesanan.kode_suplier,datasuplier.nama_suplier,(pemesanan.tagihan-"+
-                    "(SELECT ifnull(SUM(bayar_pemesanan.besar_bayar),0) FROM bayar_pemesanan where bayar_pemesanan.no_faktur=pemesanan.no_faktur)) as sisahutang "+
-                    "from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
-                    "where "+tanggaldatang+tanggaltempo+"(pemesanan.status='Belum Dibayar' or pemesanan.status='Belum Lunas') "+
-                    (TCari.getText().trim().equals("")?"":"and (datasuplier.nama_suplier like ? or pemesanan.kode_suplier like ?) ")+
-                    "group by pemesanan.kode_suplier order by pemesanan.kode_suplier ");
+                "select pemesanan.kode_suplier,datasuplier.nama_suplier,sum(pemesanan.tagihan-ifnull((select sum(bayar_pemesanan.besar_bayar) from bayar_pemesanan "+
+                "where bayar_pemesanan.no_faktur=pemesanan.no_faktur),0)) as sisahutang from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
+                "where "+tanggaldatang+tanggaltempo+" pemesanan.status in ('Belum Dibayar','Belum Lunas') "+
+                (TCari.getText().trim().equals("")?"":"and (datasuplier.nama_suplier like ? or pemesanan.kode_suplier like ?) ")+
+                "group by pemesanan.kode_suplier,datasuplier.nama_suplier order by pemesanan.kode_suplier"
+            );
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");

@@ -13,7 +13,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="Popup">
+    <Container class="widget.PopupMenu" name="Popup">
       <Properties>
         <Property name="name" type="java.lang.String" value="Popup" noResource="true"/>
       </Properties>
@@ -108,7 +108,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="Popup"/>
             </Property>
             <Property name="name" type="java.lang.String" value="scrollPane1" noResource="true"/>
@@ -131,7 +131,7 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>
                 </Property>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                <Property name="componentPopupMenu" type="widget.PopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbDokter" noResource="true"/>

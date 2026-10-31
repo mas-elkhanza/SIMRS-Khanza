@@ -158,7 +158,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         KodeTransaksi = new widget.TextBox();
         jLabel100 = new widget.Label();
         jLabel101 = new widget.Label();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         cetakbukti = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1474,7 +1474,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pengeluaran;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;

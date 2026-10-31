@@ -199,7 +199,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppTampilkanBaru = new widget.MenuItem();
         ppTampilkanLama = new widget.MenuItem();
         ppTampilkanLanjutRalan = new widget.MenuItem();
@@ -1090,7 +1090,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;

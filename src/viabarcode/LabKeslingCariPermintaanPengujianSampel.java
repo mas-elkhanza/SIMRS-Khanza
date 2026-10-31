@@ -259,7 +259,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppSuratPermintaan = new widget.MenuItem();
         ppDapatDilayani = new widget.MenuItem();
         ppTidakDapatDilayani = new widget.MenuItem();
@@ -2040,7 +2040,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label jLabel43;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;

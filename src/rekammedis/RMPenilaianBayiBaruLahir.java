@@ -527,7 +527,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel114 = new widget.Label();
         Keadaan = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnPenilaianMedis = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -4125,7 +4125,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel96;
     private widget.Label jLabel97;
     private widget.Label jLabel99;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;

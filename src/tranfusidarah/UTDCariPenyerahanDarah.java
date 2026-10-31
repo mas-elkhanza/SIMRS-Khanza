@@ -118,7 +118,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         ppCetakNota = new widget.MenuItem();
         ppHapus = new widget.MenuItem();
         ppVerif = new widget.MenuItem();
@@ -1322,7 +1322,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button btnKomponen;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.TextBox kdkomponen;
     private widget.Label label10;
     private widget.Label label11;

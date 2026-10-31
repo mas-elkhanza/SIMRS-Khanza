@@ -301,7 +301,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppGrafikjkbayi = new widget.MenuItem();
         jMenu1 = new widget.Menu();
         ppGrafikberat = new widget.MenuItem();
@@ -3936,7 +3936,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ComboBox PekerjaanSaksi2;
     private widget.ComboBox PenolongLahir;
     private widget.TextBox PenyulitKehamilan;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox Proses;
     private widget.TextBox Resusitas;
     private widget.ScrollPane Scroll1;

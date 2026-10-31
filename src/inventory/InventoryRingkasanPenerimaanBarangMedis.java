@@ -108,7 +108,7 @@ public class InventoryRingkasanPenerimaanBarangMedis extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup1 = new javax.swing.JPopupMenu();
+        Popup1 = new widget.PopupMenu();
         MnKodeBarangDesc = new widget.MenuItem();
         MnKodeBarangAsc = new widget.MenuItem();
         MnNamaBarangDesc = new widget.MenuItem();
@@ -1272,7 +1272,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.MenuItem MnTotalDesc;
     private widget.TextBox NmIF;
     private widget.TextBox NoFaktur;
-    private javax.swing.JPopupMenu Popup1;
+    private widget.PopupMenu Popup1;
     private widget.TextBox TCari;
     private widget.Tanggal TglBeli1;
     private widget.Tanggal TglBeli2;

@@ -357,7 +357,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         ppStok = new widget.MenuItem();
         ppStok1 = new widget.MenuItem();
@@ -2467,7 +2467,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox Ongkir;
     private widget.TextBox Persenppn;
     private widget.TextBox PersenppnObat;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;

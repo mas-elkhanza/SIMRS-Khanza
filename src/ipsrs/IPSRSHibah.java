@@ -125,7 +125,7 @@ public class IPSRSHibah extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
+        Popup = new widget.PopupMenu();
         ppBersihkan = new widget.MenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -842,7 +842,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox Keterangan;
     private widget.Label LTotal;
     private widget.TextBox NoFaktur;
-    private javax.swing.JPopupMenu Popup;
+    private widget.PopupMenu Popup;
     private widget.TextBox TCari;
     private widget.Tanggal TglBeli;
     private widget.Button btnPetugas;

@@ -176,7 +176,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup2 = new javax.swing.JPopupMenu();
+        Popup2 = new widget.PopupMenu();
         ppResepObat = new widget.MenuItem();
         ppNoRawat = new widget.MenuItem();
         ppLokasi = new widget.MenuItem();
@@ -1307,7 +1307,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label LCount;
     private widget.Label LCount1;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup2;
+    private widget.PopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.TextBox TBiayaObat;
     private widget.TextBox TCari;
