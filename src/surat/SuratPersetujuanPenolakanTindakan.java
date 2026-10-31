@@ -267,7 +267,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormInput = new widget.PanelBiasa();
         jSeparator14 = new javax.swing.JSeparator();
         scrollPane7 = new widget.ScrollPane();
-        Diagnosa = new widget.TextArea();
+        Diagnosa = new javax.swing.JTextArea();
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
@@ -291,31 +291,31 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         scrollPane8 = new widget.ScrollPane();
-        TindakanKedokteran = new widget.TextArea();
+        TindakanKedokteran = new javax.swing.JTextArea();
         jLabel84 = new widget.Label();
         jLabel85 = new widget.Label();
         scrollPane9 = new widget.ScrollPane();
-        IndikasiTindakan = new widget.TextArea();
+        IndikasiTindakan = new javax.swing.JTextArea();
         scrollPane10 = new widget.ScrollPane();
-        TataCara = new widget.TextArea();
+        TataCara = new javax.swing.JTextArea();
         jLabel86 = new widget.Label();
         scrollPane11 = new widget.ScrollPane();
-        Risiko = new widget.TextArea();
+        Risiko = new javax.swing.JTextArea();
         scrollPane12 = new widget.ScrollPane();
-        Tujuan = new widget.TextArea();
+        Tujuan = new javax.swing.JTextArea();
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
         jLabel89 = new widget.Label();
         scrollPane13 = new widget.ScrollPane();
-        Komplikasi = new widget.TextArea();
+        Komplikasi = new javax.swing.JTextArea();
         scrollPane14 = new widget.ScrollPane();
-        Prognosis = new widget.TextArea();
+        Prognosis = new javax.swing.JTextArea();
         jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
         scrollPane15 = new widget.ScrollPane();
-        AlternatifResiko = new widget.TextArea();
+        AlternatifResiko = new javax.swing.JTextArea();
         scrollPane16 = new widget.ScrollPane();
-        LainLain = new widget.TextArea();
+        LainLain = new javax.swing.JTextArea();
         jLabel12 = new widget.Label();
         Biaya = new widget.TextBox();
         jSeparator2 = new javax.swing.JSeparator();
@@ -516,7 +516,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
@@ -653,7 +652,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 520, 175, 23);
 
-        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
+        HubunganDenganPasien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diri Sendiri", "Suami", "Istri", "Orang Tua", "Anak", "Saudara Kandung", "Teman", "Lain-lain" }));
         HubunganDenganPasien.setName("HubunganDenganPasien"); // NOI18N
         HubunganDenganPasien.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -672,7 +671,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
-        TglPernyataan.setOpaque(false);
         TglPernyataan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPernyataanKeyPressed(evt);
@@ -1004,7 +1002,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
-        TglLahirPenerima.setOpaque(false);
         TglLahirPenerima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglLahirPenerimaKeyPressed(evt);
@@ -1178,7 +1175,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -1192,7 +1188,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -1316,7 +1311,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormPhoto.add(FormPass3, java.awt.BorderLayout.PAGE_END);
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
-        TabData.setForeground(new java.awt.Color(50, 50, 50));
         TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2287,7 +2281,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AlamatPenerima;
     private widget.TextBox AlasanDiwakilkan;
-    private widget.TextArea AlternatifResiko;
+    private javax.swing.JTextArea AlternatifResiko;
     private widget.TextBox Biaya;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -2305,19 +2299,19 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.TextArea Diagnosa;
+    private javax.swing.JTextArea Diagnosa;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
     private widget.ComboBox HubunganDenganPasien;
-    private widget.TextArea IndikasiTindakan;
+    private javax.swing.JTextArea IndikasiTindakan;
     private widget.ComboBox JKPenerima;
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.TextBox KdPerawat;
-    private widget.TextArea Komplikasi;
+    private javax.swing.JTextArea Komplikasi;
     private widget.Label LCount;
-    private widget.TextArea LainLain;
+    private javax.swing.JTextArea LainLain;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private widget.TextBox NmDokter;
@@ -2326,8 +2320,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.TextBox NoPenyataan;
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox PenerimaInformasi;
-    private widget.TextArea Prognosis;
-    private widget.TextArea Risiko;
+    private javax.swing.JTextArea Prognosis;
+    private javax.swing.JTextArea Risiko;
     private widget.TextBox SaksiKeluarga;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
@@ -2338,12 +2332,12 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.TextBox TPasien;
     private widget.TabPane TabData;
     private widget.TabPane TabRawat;
-    private widget.TextArea TataCara;
+    private javax.swing.JTextArea TataCara;
     private widget.TextBox TglLahir;
     private widget.Tanggal TglLahirPenerima;
     private widget.Tanggal TglPernyataan;
-    private widget.TextArea TindakanKedokteran;
-    private widget.TextArea Tujuan;
+    private javax.swing.JTextArea TindakanKedokteran;
+    private javax.swing.JTextArea Tujuan;
     private widget.TextBox UmurPenerima;
     private widget.Button btnAmbil;
     private widget.InternalFrame internalFrame1;
