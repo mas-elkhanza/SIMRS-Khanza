@@ -6356,7 +6356,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Kondisi Psikologis
-                    /*if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -6376,6 +6376,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"80296-7\"," +
+                                                    "\"display\": \"Patient Mood\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kondisi Psikologis\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6433,6 +6440,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11365-4\"," +
+                                                    "\"display\": \"History of Psychiatric disorders\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Gangguan Jiwa Di Masa Lalu\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6490,6 +6504,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11452-0\"," +
+                                                    "\"display\": \"Psychiatric findings\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Adakah Perilaku\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6547,6 +6568,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"22032002\"," +
+                                                    "\"display\": \"Family-related social factor\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Hubungan Pasien Dengan Anggota Keluarga\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6604,6 +6632,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"46468-5\"," +
+                                                    "\"display\": \"Current living arrangement\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Tinggal Dengan\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6661,6 +6696,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"81364-2\"," +
+                                                    "\"display\": \"Religious or cultural beliefs Narrative - Reported\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kepercayaan / Budaya / Nilai-nilai Khusus\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6718,7 +6760,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
-                                            "\"text\": \"Pendidikan P.J.\"" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"82589-3\"," +
+                                                    "\"display\": \"Highest level of education\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"text\": \"Pendidikan Penanggung Jawab\"" +
                                         "}," +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
@@ -6775,6 +6824,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"311401005\"," +
+                                                    "\"display\": \"Patient education\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Edukasi Diberikan Kepada\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6832,6 +6888,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"75276-6\"," +
+                                                    "\"display\": \"Functional status [Interpretation]\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kemampuan Aktifitas Sehari-hari\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6889,6 +6952,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"301998005\"," +
+                                                    "\"display\": \"Ability to move\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Aktifitas\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6946,6 +7016,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"100180-9\"," +
+                                                    "\"display\": \"Assistive mobility devices used\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Alat Bantu\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -7067,7 +7144,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
-                                            "\"text\": \"Pengkajian Resiko Jatuh\"" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"73830-2\"," +
+                                                    "\"display\": \"Fall risk assessment\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"text\": \"Pengkajian Resiko Jatuh (Get Up And Go)\"" +
                                         "}," +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
@@ -7113,11 +7197,22 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                         "\"resourceType\": \"CarePlan\"," +
                                         "\"status\": \"active\"," +
                                         "\"intent\": \"plan\"," +
-                                        "\"title\": \"Rencana Keperawatan IGD\"," +
+                                        "\"title\": \"Rencana Keperawatan Lainnya\"," +
                                         "\"description\": \""+tbAwalKeperawatanIGD.getValueAt(i,106).toString()+"\"," +
                                         "\"subject\": {"+
                                             "\"reference\": \"Patient/" + idpasien + "\""+
                                         "}," +
+                                        "\"category\": [" +
+                                            "{" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.kemkes.go.id\"," +
+                                                        "\"code\": \"TK000068\"," +
+                                                        "\"display\": \"Emergency care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]," +
                                         "\"encounter\": {"+
                                             "\"reference\": \"Encounter/" + tbAwalKeperawatanIGD.getValueAt(i,5).toString() + "\""+
                                         "}," +
@@ -7148,7 +7243,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Composition Awal Keperawatan IGD
-                    if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")||(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")))&&(tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")||!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals(""))&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
+                    /*if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")||(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")))&&(tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")||!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals(""))&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
                         try{
                             StringBuilder iyembuilder = new StringBuilder();
                             if(tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
