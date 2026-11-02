@@ -1492,7 +1492,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnUpdateActionPerformed
 
     private void ChkAccorAwalKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorAwalKeperawatanIGDActionPerformed
-        // TODO add your handling code here:
+        if(tbIGDSekunder.getSelectedRow()!= -1){
+            isMenuAwalKeperawatanIGD();
+            getDataAwalKeperawatanIGD();
+        }else{
+            ChkAccorIGDSekunder.setSelected(false);
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
+        }
     }//GEN-LAST:event_ChkAccorAwalKeperawatanIGDActionPerformed
 
     /**
@@ -2140,6 +2146,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+    }
+    
+    private void getDataAwalKeperawatanIGD(){
+        
     }
     
     private void KirimTriaseIGDPrimer() {

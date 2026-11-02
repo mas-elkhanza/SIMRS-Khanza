@@ -239,6 +239,7 @@ import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMDataSkriningGiziKehamilan;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMPenilaianBishop;
 import rekammedis.RMPenilaianGRACE;
 import rekammedis.RMReaksiTransfusi;
 import rekammedis.RMSkriningTOLAC;
@@ -12682,6 +12683,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnPenilaianBISHOPScoreActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianBishop form=new RMPenilaianBishop(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @data args the command line arguments
     */
@@ -13018,7 +13041,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                   MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiMedik,
                                   MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat,
                                   MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,
-                                  MnSkriningTOLAC,MnAdmisiSkoringTOLAC,MnMonitoringTOLAC,MnHasilPersalinanTOLAC,MnLaporanReaksiTranfusi,MnPenilaianGRACEScore;
+                                  MnSkriningTOLAC,MnAdmisiSkoringTOLAC,MnMonitoringTOLAC,MnHasilPersalinanTOLAC,MnLaporanReaksiTranfusi,MnPenilaianGRACEScore,MnPenilaianBISHOPScore;
     private widget.Menu MnRMSkrining,MnEdukasi,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu,MnCatatanObservasi;
     
     private void tampil() {
@@ -13443,6 +13466,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnHasilPersalinanTOLAC.setEnabled(akses.gethasil_persalinan_tolac());
         MnLaporanReaksiTranfusi.setEnabled(akses.getlaporan_reaksi_transfusi());
         MnPenilaianGRACEScore.setEnabled(akses.getpenilaian_grace_scor());
+        MnPenilaianBISHOPScore.setEnabled(akses.getpenilaian_bishop_scor());
         MnSkorAldrettePascaAnestesi.setEnabled(akses.getskor_aldrette_pasca_anestesi());
         MnSkorStewardPascaAnestesi.setEnabled(akses.getskor_steward_pasca_anestesi());
         MnSkorBromagePascaAnestesi.setEnabled(akses.getskor_bromage_pasca_anestesi());
@@ -14668,6 +14692,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianGRACEScore.setPreferredSize(new java.awt.Dimension(240, 26));
         MnPenilaianGRACEScore.addActionListener(this::MnPenilaianGRACEScoreActionPerformed);
         
+        MnPenilaianBISHOPScore = new widget.MenuItem();
+        MnPenilaianBISHOPScore.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianBISHOPScore.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianBISHOPScore.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianBISHOPScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPenilaianBISHOPScore.setText("Penilaian BISHOP Score");
+        MnPenilaianBISHOPScore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianBISHOPScore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianBISHOPScore.setName("MnPenilaianBISHOPScore");
+        MnPenilaianBISHOPScore.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnPenilaianBISHOPScore.addActionListener(this::MnPenilaianBISHOPScoreActionPerformed);
+        
         MnRMSkriningRisikoKanker = new widget.Menu();
         MnRMSkriningRisikoKanker.setBackground(new java.awt.Color(255, 255, 254));
         MnRMSkriningRisikoKanker.setForeground(new java.awt.Color(50, 50, 50));
@@ -14773,6 +14809,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnRMOperasi.add(MnCatatanObservasiRuangOperasi);
         
         MnRMIGD.add(MnPenilaianGRACEScore);
+        MnRMIGD.add(MnPenilaianBISHOPScore);
         MnRMIGD.add(MnHasilPemeriksaanEKG);
         MnRMIGD.add(MnHasilPemeriksaanECHO);
         MnRMIGD.add(MnHasilPemeriksaanECHOPediatrik);

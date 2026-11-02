@@ -71,7 +71,9 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat", "No.RM", "Nama Pasien", "J.K.", "Tgl.Lahir", "Kode Dokter", "DPJP", "Tgl/Jam Penilaian", "Pembukaan (Dilatasi)", "Skor Pembukaan", "Pendataran (Effacement)", "Skor Pendataran", "Station", "Skor Station", "Konsistensi Serviks", "Skor Konsistensi", "Posisi Serviks", "Skor Posisi", "Total Skor Bishop", "Kategori", "Keterangan Dokter"
+            "No.Rawat", "No.RM", "Nama Pasien", "J.K.", "Tgl.Lahir", "Kode Dokter", "DPJP", "Tanggal", "Pembukaan (Dilatasi)", 
+            "Skor Pembukaan", "Pendataran (Effacement)", "Skor Pendataran", "Station", "Skor Station", "Konsistensi Serviks", "Skor Konsistensi", 
+            "Posisi Serviks", "Skor Posisi", "Total Skor Bishop", "Kategori", "Keterangan Dokter"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -90,41 +92,41 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }else if(i==4){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(65);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(115);
             }else if(i==8){
                 column.setPreferredWidth(110);
             }else if(i==9){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(90);
             }else if(i==10){
                 column.setPreferredWidth(125);
             }else if(i==11){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(90);
             }else if(i==12){
                 column.setPreferredWidth(90);
             }else if(i==13){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==14){
                 column.setPreferredWidth(115);
             }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
                 column.setPreferredWidth(90);
+            }else if(i==16){
+                column.setPreferredWidth(80);
             }else if(i==17){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(65);
             }else if(i==18){
-                column.setPreferredWidth(110);
-            }else if(i==19){
                 column.setPreferredWidth(95);
+            }else if(i==19){
+                column.setPreferredWidth(80);
             }else if(i==20){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(240);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -172,7 +174,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu1 = new widget.PopupMenu();
         MnFormulir = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
@@ -270,7 +272,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Skor Bishop (Kesiapan Serviks) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Skor BISHOP (Kesiapan Serviks) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(462, 1300));
@@ -409,11 +411,11 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         LCount.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(LCount);
 
-        BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,14 +435,14 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setText("Tanggal :");
+        jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari1);
@@ -453,7 +455,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
 
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
@@ -512,10 +514,9 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 346));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 256));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkInput.setName("ChkInput"); // NOI18N
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setText(".: Input Data");
@@ -525,6 +526,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         ChkInput.setFocusable(false);
         ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
         ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
         ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
@@ -542,16 +544,16 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 323));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 233));
         FormInput.setLayout(null);
 
-        jLabel4.setName("jLabel4"); // NOI18N
         jLabel4.setText("No.Rawat :");
+        jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 10, 75, 23);
 
-        TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.setHighlighter(null);
+        TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRwKeyPressed(evt);
@@ -593,21 +595,21 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(656, 10, 45, 23);
 
-        TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setEditable(false);
         TglLahir.setHighlighter(null);
+        TglLahir.setName("TglLahir"); // NOI18N
         FormInput.add(TglLahir);
         TglLahir.setBounds(705, 10, 84, 23);
 
-        jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText("PENILAIAN SERVIKS (SKOR BISHOP)");
+        jLabel16.setText("I. PENILAIAN SERVIKS");
+        jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
         jLabel16.setBounds(10, 70, 250, 23);
 
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2026 10:07:46" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2026 12:37:23" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -634,10 +636,10 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         FormInput.add(NmDokter);
         NmDokter.setBounds(448, 40, 311, 23);
 
-        BtnDokter.setName("BtnDokter"); // NOI18N
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
         BtnDokter.setToolTipText("Alt+2");
+        BtnDokter.setName("BtnDokter"); // NOI18N
         BtnDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnDokterActionPerformed(evt);
@@ -658,13 +660,13 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         FormInput.add(jSeparator1);
         jSeparator1.setBounds(0, 70, 807, 1);
 
-        jLabel10.setName("jLabel10"); // NOI18N
         jLabel10.setText("Pembukaan (Dilatasi) :");
+        jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 90, 140, 23);
+        jLabel10.setBounds(0, 90, 180, 23);
 
-        Pembukaan.setName("Pembukaan"); // NOI18N
         Pembukaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0 cm (Tertutup)", "1-2 cm", "3-4 cm", ">= 5 cm" }));
+        Pembukaan.setName("Pembukaan"); // NOI18N
         Pembukaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PembukaanActionPerformed(evt);
@@ -676,22 +678,22 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pembukaan);
-        Pembukaan.setBounds(144, 90, 600, 23);
+        Pembukaan.setBounds(184, 90, 150, 23);
 
-        SkorPembukaan.setName("SkorPembukaan"); // NOI18N
         SkorPembukaan.setEditable(false);
         SkorPembukaan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorPembukaan.setHighlighter(null);
+        SkorPembukaan.setName("SkorPembukaan"); // NOI18N
         FormInput.add(SkorPembukaan);
-        SkorPembukaan.setBounds(749, 90, 40, 23);
+        SkorPembukaan.setBounds(337, 90, 40, 23);
 
-        jLabel13.setName("jLabel13"); // NOI18N
         jLabel13.setText("Pendataran (Effacement) :");
+        jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 120, 140, 23);
+        jLabel13.setBounds(0, 120, 180, 23);
 
-        Pendataran.setName("Pendataran"); // NOI18N
         Pendataran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0-30 %", "40-50 %", "60-70 %", ">= 80 %" }));
+        Pendataran.setName("Pendataran"); // NOI18N
         Pendataran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PendataranActionPerformed(evt);
@@ -703,22 +705,22 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pendataran);
-        Pendataran.setBounds(144, 120, 600, 23);
+        Pendataran.setBounds(184, 120, 150, 23);
 
-        SkorPendataran.setName("SkorPendataran"); // NOI18N
         SkorPendataran.setEditable(false);
         SkorPendataran.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorPendataran.setHighlighter(null);
+        SkorPendataran.setName("SkorPendataran"); // NOI18N
         FormInput.add(SkorPendataran);
-        SkorPendataran.setBounds(749, 120, 40, 23);
+        SkorPendataran.setBounds(337, 120, 40, 23);
 
-        jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setText("Station (Penurunan Kepala) :");
+        jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(0, 150, 140, 23);
+        jLabel17.setBounds(0, 150, 180, 23);
 
+        Station.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-3", "-2", "-1 Atau 0", "+1 Atau +2" }));
         Station.setName("Station"); // NOI18N
-        Station.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-3", "-2", "-1 atau 0", "+1 atau +2" }));
         Station.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StationActionPerformed(evt);
@@ -730,22 +732,22 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
         FormInput.add(Station);
-        Station.setBounds(144, 150, 600, 23);
+        Station.setBounds(184, 150, 150, 23);
 
-        SkorStation.setName("SkorStation"); // NOI18N
         SkorStation.setEditable(false);
         SkorStation.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorStation.setHighlighter(null);
+        SkorStation.setName("SkorStation"); // NOI18N
         FormInput.add(SkorStation);
-        SkorStation.setBounds(749, 150, 40, 23);
+        SkorStation.setBounds(337, 150, 40, 23);
 
-        jLabel20.setName("jLabel20"); // NOI18N
         jLabel20.setText("Konsistensi Serviks :");
+        jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(0, 180, 140, 23);
+        jLabel20.setBounds(412, 90, 180, 23);
 
-        Konsistensi.setName("Konsistensi"); // NOI18N
         Konsistensi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Keras", "Sedang", "Lunak" }));
+        Konsistensi.setName("Konsistensi"); // NOI18N
         Konsistensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KonsistensiActionPerformed(evt);
@@ -757,22 +759,22 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
         FormInput.add(Konsistensi);
-        Konsistensi.setBounds(144, 180, 600, 23);
+        Konsistensi.setBounds(596, 90, 150, 23);
 
-        SkorKonsistensi.setName("SkorKonsistensi"); // NOI18N
         SkorKonsistensi.setEditable(false);
         SkorKonsistensi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorKonsistensi.setHighlighter(null);
+        SkorKonsistensi.setName("SkorKonsistensi"); // NOI18N
         FormInput.add(SkorKonsistensi);
-        SkorKonsistensi.setBounds(749, 180, 40, 23);
+        SkorKonsistensi.setBounds(749, 90, 40, 23);
 
-        jLabel24.setName("jLabel24"); // NOI18N
         jLabel24.setText("Posisi Serviks :");
+        jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(0, 210, 140, 23);
+        jLabel24.setBounds(412, 120, 180, 23);
 
-        Posisi.setName("Posisi"); // NOI18N
         Posisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Posterior", "Tengah", "Anterior" }));
+        Posisi.setName("Posisi"); // NOI18N
         Posisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PosisiActionPerformed(evt);
@@ -784,71 +786,71 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             }
         });
         FormInput.add(Posisi);
-        Posisi.setBounds(144, 210, 600, 23);
+        Posisi.setBounds(596, 120, 150, 23);
 
-        SkorPosisi.setName("SkorPosisi"); // NOI18N
         SkorPosisi.setEditable(false);
         SkorPosisi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         SkorPosisi.setHighlighter(null);
+        SkorPosisi.setName("SkorPosisi"); // NOI18N
         FormInput.add(SkorPosisi);
-        SkorPosisi.setBounds(749, 210, 40, 23);
+        SkorPosisi.setBounds(749, 120, 40, 23);
 
-        jSeparator2.setName("jSeparator2"); // NOI18N
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 270, 807, 1);
+        jSeparator2.setBounds(0, 180, 807, 1);
 
+        jLabel32.setText("Total Skor :");
         jLabel32.setName("jLabel32"); // NOI18N
-        jLabel32.setText("Total Skor Bishop :");
         FormInput.add(jLabel32);
-        jLabel32.setBounds(600, 240, 120, 23);
+        jLabel32.setBounds(605, 150, 120, 23);
 
-        TotalSkor.setName("TotalSkor"); // NOI18N
         TotalSkor.setEditable(false);
         TotalSkor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TotalSkor.setHighlighter(null);
+        TotalSkor.setName("TotalSkor"); // NOI18N
         FormInput.add(TotalSkor);
-        TotalSkor.setBounds(729, 240, 60, 23);
+        TotalSkor.setBounds(729, 150, 60, 23);
 
-        jLabel33.setName("jLabel33"); // NOI18N
         jLabel33.setText("Kategori Serviks :");
+        jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(0, 290, 140, 23);
+        jLabel33.setBounds(0, 200, 125, 23);
 
-        Kategori.setName("Kategori"); // NOI18N
         Kategori.setEditable(false);
         Kategori.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Kategori.setHighlighter(null);
+        Kategori.setName("Kategori"); // NOI18N
         FormInput.add(Kategori);
-        Kategori.setBounds(144, 290, 120, 23);
+        Kategori.setBounds(129, 200, 120, 23);
 
-        jLabel34.setName("jLabel34"); // NOI18N
         jLabel34.setText("Keterangan :");
+        jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(260, 290, 95, 23);
+        jLabel34.setBounds(260, 200, 95, 23);
 
-        Keterangan.setName("Keterangan"); // NOI18N
         Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
         Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KeteranganKeyPressed(evt);
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(359, 290, 430, 23);
+        Keterangan.setBounds(359, 200, 430, 23);
 
         jLabel39.setName("jLabel39"); // NOI18N
         jLabel39.setText("Tanggal :");
         FormInput.add(jLabel39);
         jLabel39.setBounds(0, 40, 75, 23);
 
-        jLabel18.setName("jLabel18"); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("KATEGORI & KETERANGAN");
+        jLabel18.setText("II. KATEGORI & KETERANGAN");
+        jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(10, 270, 200, 23);
+        jLabel18.setBounds(10, 180, 200, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1299,15 +1301,10 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,10)); 
             Valid.MyReportqry(
-                "rptFormulirPenilaianBishop.jasper","report","::[ Formulir Penilaian Skor Bishop ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian"+
-                "_bishop_scor.tanggal,penilaian_bishop_scor.pembukaan,penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_"+
-                "pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,penilaian_bishop_scor.skor_konsistensi,p"+
-                "enilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterang"+
-                "an from penilaian_bishop_scor inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_me"+
-                "dis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter "+
-                "where penilaian_bishop_scor.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",
-                param
+                "rptFormulirPenilaianBishop.jasper","report","::[ Formulir Penilaian Skor Bishop ]::","select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian_bishop_scor.tanggal,"+
+                "penilaian_bishop_scor.pembukaan,penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,penilaian_bishop_scor.skor_konsistensi,"+
+                "penilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterangan from penilaian_bishop_scor inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter where penilaian_bishop_scor.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param
             );
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -1478,7 +1475,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private widget.Label jLabelSd;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;
@@ -1492,23 +1489,21 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian"+
-                    "_bishop_scor.tanggal,penilaian_bishop_scor.pembukaan,penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_"+
-                    "pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,penilaian_bishop_scor.skor_konsistensi,p"+
-                    "enilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterang"+
-                    "an from penilaian_bishop_scor inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_me"+
-                    "dis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter where penilaian_bishop_scor.tanggal between ? and ? orde"+
-                    "r by penilaian_bishop_scor.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian_bishop_scor.tanggal,penilaian_bishop_scor.pembukaan,"+
+                    "penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,"+
+                    "penilaian_bishop_scor.skor_konsistensi,penilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterangan from penilaian_bishop_scor "+
+                    "inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter "+
+                    "where penilaian_bishop_scor.tanggal between ? and ? order by penilaian_bishop_scor.tanggal"
+                );
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian"+
-                    "_bishop_scor.tanggal,penilaian_bishop_scor.pembukaan,penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_"+
-                    "pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,penilaian_bishop_scor.skor_konsistensi,p"+
-                    "enilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterang"+
-                    "an from penilaian_bishop_scor inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_me"+
-                    "dis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter where penilaian_bishop_scor.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_bishop_scor.kd_dokter like ? or dokter.nm_dokter li"+
-                    "ke ? or penilaian_bishop_scor.kategori like ?) order by penilaian_bishop_scor.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_bishop_scor.kd_dokter,dokter.nm_dokter,penilaian_bishop_scor.tanggal,penilaian_bishop_scor.pembukaan,"+
+                    "penilaian_bishop_scor.skor_pembukaan,penilaian_bishop_scor.pendataran,penilaian_bishop_scor.skor_pendataran,penilaian_bishop_scor.station,penilaian_bishop_scor.skor_station,penilaian_bishop_scor.konsistensi,"+
+                    "penilaian_bishop_scor.skor_konsistensi,penilaian_bishop_scor.posisi,penilaian_bishop_scor.skor_posisi,penilaian_bishop_scor.skor,penilaian_bishop_scor.kategori,penilaian_bishop_scor.keterangan from penilaian_bishop_scor "+
+                    "inner join reg_periksa on penilaian_bishop_scor.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on penilaian_bishop_scor.kd_dokter=dokter.kd_dokter "+
+                    "where penilaian_bishop_scor.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_bishop_scor.kd_dokter like ? or dokter.nm_dokter like ? or "+
+                    "penilaian_bishop_scor.kategori like ?) order by penilaian_bishop_scor.tanggal"
+                );
             }
                 
             try {
@@ -1529,26 +1524,10 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),
-                        rs.getString("no_rkm_medis"),
-                        rs.getString("nm_pasien"),
-                        rs.getString("jk"),
-                        rs.getString("tgl_lahir"),
-                        rs.getString("kd_dokter"),
-                        rs.getString("nm_dokter"),
-                        rs.getString("tanggal"),
-                        rs.getString("pembukaan"),
-                        rs.getString("skor_pembukaan"),
-                        rs.getString("pendataran"),
-                        rs.getString("skor_pendataran"),
-                        rs.getString("station"),
-                        rs.getString("skor_station"),
-                        rs.getString("konsistensi"),
-                        rs.getString("skor_konsistensi"),
-                        rs.getString("posisi"),
-                        rs.getString("skor_posisi"),
-                        rs.getString("skor"),
-                        rs.getString("kategori"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("pembukaan"),rs.getString("skor_pembukaan"),
+                        rs.getString("pendataran"),rs.getString("skor_pendataran"),rs.getString("station"),rs.getString("skor_station"),rs.getString("konsistensi"),
+                        rs.getString("skor_konsistensi"),rs.getString("posisi"),rs.getString("skor_posisi"),rs.getString("skor"),rs.getString("kategori"),
                         rs.getString("keterangan")
                     });
                 }
@@ -1581,14 +1560,17 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
     } 
 
     private void hitungSkor() {
-        //skor tiap parameter sama dengan urutan pilihannya (0, 1, 2, 3), total 0 - 13
         SkorPembukaan.setText(""+Pembukaan.getSelectedIndex());
         SkorPendataran.setText(""+Pendataran.getSelectedIndex());
         SkorStation.setText(""+Station.getSelectedIndex());
         SkorKonsistensi.setText(""+Konsistensi.getSelectedIndex());
         SkorPosisi.setText(""+Posisi.getSelectedIndex());
-        TotalSkor.setText(""+(Pembukaan.getSelectedIndex()+Pendataran.getSelectedIndex()+Station.getSelectedIndex()+Konsistensi.getSelectedIndex()+Posisi.getSelectedIndex()));
-        Kategori.setText(Integer.parseInt(TotalSkor.getText())<6?"Belum Matang":Integer.parseInt(TotalSkor.getText())<8?"Menengah":"Matang");
+        TotalSkor.setText(
+            ""+(Pembukaan.getSelectedIndex()+Pendataran.getSelectedIndex()+Station.getSelectedIndex()+Konsistensi.getSelectedIndex()+Posisi.getSelectedIndex())
+        );
+        Kategori.setText(
+            Integer.parseInt(TotalSkor.getText())<6?"Belum Matang":Integer.parseInt(TotalSkor.getText())<8?"Menengah":"Matang"
+        );
     }
 
     private void getData() {
@@ -1598,9 +1580,6 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             Pembukaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             SkorPembukaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Pendataran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
@@ -1614,6 +1593,7 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
             TotalSkor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Kategori.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
     
@@ -1661,9 +1641,9 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>488){
+            if(internalFrame1.getHeight()>428){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,346));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,256));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -1707,23 +1687,8 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("penilaian_bishop_scor","no_rawat=?","no_rawat=?,tanggal=?,pembukaan=?,skor_pembukaan=?,pendataran=?,skor_pendataran=?,station=?,skor_station=?,konsistensi=?,skor_konsistensi=?,posisi=?,skor_posisi=?,skor=?,kategori=?,keterangan=?,kd_dokter=?",17,new String[]{
-            TNoRw.getText(),
-            Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-            Pembukaan.getSelectedItem().toString(),
-            SkorPembukaan.getText(),
-            Pendataran.getSelectedItem().toString(),
-            SkorPendataran.getText(),
-            Station.getSelectedItem().toString(),
-            SkorStation.getText(),
-            Konsistensi.getSelectedItem().toString(),
-            SkorKonsistensi.getText(),
-            Posisi.getSelectedItem().toString(),
-            SkorPosisi.getText(),
-            TotalSkor.getText(),
-            Kategori.getText(),
-            Keterangan.getText(),
-            KdDokter.getText(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pembukaan.getSelectedItem().toString(),SkorPembukaan.getText(),Pendataran.getSelectedItem().toString(),SkorPendataran.getText(),Station.getSelectedItem().toString(),
+            SkorStation.getText(),Konsistensi.getSelectedItem().toString(),SkorKonsistensi.getText(),Posisi.getSelectedItem().toString(),SkorPosisi.getText(),TotalSkor.getText(),Kategori.getText(),Keterangan.getText(),KdDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1764,45 +1729,17 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
     
     private void simpan() {
         if(Sequel.menyimpantf("penilaian_bishop_scor","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
-            TNoRw.getText(),
-            Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-            Pembukaan.getSelectedItem().toString(),
-            SkorPembukaan.getText(),
-            Pendataran.getSelectedItem().toString(),
-            SkorPendataran.getText(),
-            Station.getSelectedItem().toString(),
-            SkorStation.getText(),
-            Konsistensi.getSelectedItem().toString(),
-            SkorKonsistensi.getText(),
-            Posisi.getSelectedItem().toString(),
-            SkorPosisi.getText(),
-            TotalSkor.getText(),
-            Kategori.getText(),
-            Keterangan.getText(),
-            KdDokter.getText()
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+            Pembukaan.getSelectedItem().toString(),SkorPembukaan.getText(),Pendataran.getSelectedItem().toString(),SkorPendataran.getText(),
+            Station.getSelectedItem().toString(),SkorStation.getText(),Konsistensi.getSelectedItem().toString(),SkorKonsistensi.getText(),
+            Posisi.getSelectedItem().toString(),SkorPosisi.getText(),TotalSkor.getText(),Kategori.getText(),Keterangan.getText(),KdDokter.getText()
         })==true){
             tabMode.addRow(new Object[]{
-                TNoRw.getText(),
-                TNoRM.getText(),
-                TPasien.getText(),
-                JK.getText(),
-                TglLahir.getText(),
-                KdDokter.getText(),
-                NmDokter.getText(),
-                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                Pembukaan.getSelectedItem().toString(),
-                SkorPembukaan.getText(),
-                Pendataran.getSelectedItem().toString(),
-                SkorPendataran.getText(),
-                Station.getSelectedItem().toString(),
-                SkorStation.getText(),
-                Konsistensi.getSelectedItem().toString(),
-                SkorKonsistensi.getText(),
-                Posisi.getSelectedItem().toString(),
-                SkorPosisi.getText(),
-                TotalSkor.getText(),
-                Kategori.getText(),
-                Keterangan.getText()
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),JK.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pembukaan.getSelectedItem().toString(),
+                SkorPembukaan.getText(),Pendataran.getSelectedItem().toString(),SkorPendataran.getText(),Station.getSelectedItem().toString(),
+                SkorStation.getText(),Konsistensi.getSelectedItem().toString(),SkorKonsistensi.getText(),Posisi.getSelectedItem().toString(),
+                SkorPosisi.getText(),TotalSkor.getText(),Kategori.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
