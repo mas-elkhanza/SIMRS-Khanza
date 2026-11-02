@@ -603,6 +603,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTMLIGDPrimer.setEditorKit(kit);
         LoadHTMLIGDSekunder.setEditable(true);
         LoadHTMLIGDSekunder.setEditorKit(kit);
+        LoadHTMLAwalKeperawatanIGD.setEditable(true);
+        LoadHTMLAwalKeperawatanIGD.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -619,12 +621,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTML.setDocument(doc);
         LoadHTMLIGDPrimer.setDocument(doc);
         LoadHTMLIGDSekunder.setDocument(doc);
+        LoadHTMLAwalKeperawatanIGD.setDocument(doc);
         
         ChkAccorIGDPrimer.setSelected(false);
         isMenuIGDPrimer();
-        
         ChkAccorIGDSekunder.setSelected(false);
         isMenuIGDSekunder();
+        ChkAccorAwalKeperawatanIGD.setSelected(false);
+        isMenuAwalKeperawatanIGD();
     }
     
     
@@ -642,6 +646,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         ppPilihSemua = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
+        internalFRame = new widget.InternalFrame();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -675,8 +680,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTMLIGDSekunder = new widget.editorpane();
         ScrollIGDSekunder = new widget.ScrollPane();
         tbIGDSekunder = new widget.Table();
-        Scroll1 = new widget.ScrollPane();
+        internalAwalKeperawatanIGD = new widget.InternalFrame();
+        ScrollAwalKeperawatanIGD = new widget.ScrollPane();
         tbAwalKeperawatanIGD = new widget.Table();
+        PanelAccorAwalKeperawatanIGD = new widget.PanelBiasa();
+        ChkAccorAwalKeperawatanIGD = new widget.CekBox();
+        ScrollHTMLAwalKeperawatanIGD = new widget.ScrollPane();
+        LoadHTMLAwalKeperawatanIGD = new widget.editorpane();
         Scroll2 = new widget.ScrollPane();
         tbNadi = new widget.Table();
         Scroll3 = new widget.ScrollPane();
@@ -724,6 +734,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        internalFRame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        internalFRame.setName("internalFRame"); // NOI18N
+        internalFRame.setLayout(new java.awt.BorderLayout(1, 1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -847,7 +861,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -859,7 +873,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1034,15 +1048,57 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
 
         TabRawat.addTab("Triase IGD Sekunder", internalTriaseIGDSekunder);
 
-        Scroll1.setComponentPopupMenu(jPopupMenu1);
-        Scroll1.setName("Scroll1"); // NOI18N
-        Scroll1.setOpaque(true);
+        internalAwalKeperawatanIGD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        internalAwalKeperawatanIGD.setName("internalAwalKeperawatanIGD"); // NOI18N
+        internalAwalKeperawatanIGD.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ScrollAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
+        ScrollAwalKeperawatanIGD.setName("ScrollAwalKeperawatanIGD"); // NOI18N
+        ScrollAwalKeperawatanIGD.setOpaque(true);
 
         tbAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
         tbAwalKeperawatanIGD.setName("tbAwalKeperawatanIGD"); // NOI18N
-        Scroll1.setViewportView(tbAwalKeperawatanIGD);
+        ScrollAwalKeperawatanIGD.setViewportView(tbAwalKeperawatanIGD);
 
-        TabRawat.addTab("Awal Keperawatan IGD", Scroll1);
+        internalAwalKeperawatanIGD.add(ScrollAwalKeperawatanIGD, java.awt.BorderLayout.CENTER);
+
+        PanelAccorAwalKeperawatanIGD.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAccorAwalKeperawatanIGD.setName("PanelAccorAwalKeperawatanIGD"); // NOI18N
+        PanelAccorAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(470, 43));
+        PanelAccorAwalKeperawatanIGD.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkAccorAwalKeperawatanIGD.setBackground(new java.awt.Color(255, 250, 250));
+        ChkAccorAwalKeperawatanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setSelected(true);
+        ChkAccorAwalKeperawatanIGD.setFocusable(false);
+        ChkAccorAwalKeperawatanIGD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccorAwalKeperawatanIGD.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccorAwalKeperawatanIGD.setName("ChkAccorAwalKeperawatanIGD"); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(15, 20));
+        ChkAccorAwalKeperawatanIGD.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAccorAwalKeperawatanIGDActionPerformed(evt);
+            }
+        });
+        PanelAccorAwalKeperawatanIGD.add(ChkAccorAwalKeperawatanIGD, java.awt.BorderLayout.WEST);
+
+        ScrollHTMLAwalKeperawatanIGD.setBorder(null);
+        ScrollHTMLAwalKeperawatanIGD.setName("ScrollHTMLAwalKeperawatanIGD"); // NOI18N
+        ScrollHTMLAwalKeperawatanIGD.setOpaque(true);
+        ScrollHTMLAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(470, 16));
+
+        LoadHTMLAwalKeperawatanIGD.setBorder(null);
+        LoadHTMLAwalKeperawatanIGD.setName("LoadHTMLAwalKeperawatanIGD"); // NOI18N
+        ScrollHTMLAwalKeperawatanIGD.setViewportView(LoadHTMLAwalKeperawatanIGD);
+
+        PanelAccorAwalKeperawatanIGD.add(ScrollHTMLAwalKeperawatanIGD, java.awt.BorderLayout.CENTER);
+
+        internalAwalKeperawatanIGD.add(PanelAccorAwalKeperawatanIGD, java.awt.BorderLayout.EAST);
+
+        TabRawat.addTab("Awal Keperawatan IGD", internalAwalKeperawatanIGD);
 
         Scroll2.setComponentPopupMenu(jPopupMenu1);
         Scroll2.setName("Scroll2"); // NOI18N
@@ -1314,12 +1370,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
+                ChkAccorIGDPrimer.setSelected(false);
                 runBackground(() ->tampilIGDPrimer());
                 break;
             case 1:
+                ChkAccorIGDSekunder.setSelected(false);
                 runBackground(() ->tampilIGDSekunder());
                 break;
             case 2:
+                ChkAccorAwalKeperawatanIGD.setSelected(false);
                 runBackground(() ->tampilAwalKeperawatanIGD());
                 break;
             default:
@@ -1432,6 +1491,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnUpdateActionPerformed
 
+    private void ChkAccorAwalKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorAwalKeperawatanIGDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChkAccorAwalKeperawatanIGDActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1455,17 +1518,19 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.Button BtnKirim;
     private widget.Button BtnPrint;
     private widget.Button BtnUpdate;
+    private widget.CekBox ChkAccorAwalKeperawatanIGD;
     private widget.CekBox ChkAccorIGDPrimer;
     private widget.CekBox ChkAccorIGDSekunder;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
+    private widget.editorpane LoadHTMLAwalKeperawatanIGD;
     private widget.editorpane LoadHTMLIGDPrimer;
     private widget.editorpane LoadHTMLIGDSekunder;
+    private widget.PanelBiasa PanelAccorAwalKeperawatanIGD;
     private widget.PanelBiasa PanelAccorIGDPrimer;
     private widget.PanelBiasa PanelAccorIGDSekunder;
-    private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -1474,12 +1539,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
+    private widget.ScrollPane ScrollAwalKeperawatanIGD;
+    private widget.ScrollPane ScrollHTMLAwalKeperawatanIGD;
     private widget.ScrollPane ScrollHTMLIGDPrimer;
     private widget.ScrollPane ScrollHTMLIGDSekunder;
     private widget.ScrollPane ScrollIGDPrimer;
     private widget.ScrollPane ScrollIGDSekunder;
     private widget.TextBox TCari;
     private widget.TabPane TabRawat;
+    private widget.InternalFrame internalAwalKeperawatanIGD;
+    private widget.InternalFrame internalFRame;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalTriaseIGDPrimer;
     private widget.InternalFrame internalTriaseIGDSekunder;
@@ -1713,6 +1782,20 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
             PanelAccorIGDSekunder.setPreferredSize(new Dimension(15,HEIGHT));
             ScrollHTMLIGDSekunder.setVisible(false);
             ChkAccorIGDSekunder.setVisible(true);
+        }
+    }
+    
+    private void isMenuAwalKeperawatanIGD(){
+        if(ChkAccorAwalKeperawatanIGD.isSelected()==true){
+            ChkAccorAwalKeperawatanIGD.setVisible(false);
+            PanelAccorAwalKeperawatanIGD.setPreferredSize(new Dimension(520,HEIGHT));
+            ScrollHTMLAwalKeperawatanIGD.setVisible(true);  
+            ChkAccorAwalKeperawatanIGD.setVisible(true);
+        }else if(ChkAccorAwalKeperawatanIGD.isSelected()==false){   
+            ChkAccorAwalKeperawatanIGD.setVisible(false);
+            PanelAccorAwalKeperawatanIGD.setPreferredSize(new Dimension(15,HEIGHT));
+            ScrollHTMLAwalKeperawatanIGD.setVisible(false);
+            ChkAccorAwalKeperawatanIGD.setVisible(true);
         }
     }
     

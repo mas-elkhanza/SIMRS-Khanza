@@ -266,7 +266,7 @@ public final class akses {
             satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false,satu_sehat_mapping_kptl_tindakan_operasi=false,
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,
             ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
-            monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false;
+            monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false,penilaian_bishop_scor=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1513,6 +1513,7 @@ public final class akses {
                         akses.hasil_persalinan_tolac=true;
                         akses.laporan_reaksi_transfusi=true;
                         akses.penilaian_grace_scor=true;
+                        akses.penilaian_bishop_scor=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2743,6 +2744,7 @@ public final class akses {
                         akses.hasil_persalinan_tolac=rs2.getBoolean("hasil_persalinan_tolac");
                         akses.laporan_reaksi_transfusi=rs2.getBoolean("laporan_reaksi_transfusi");
                         akses.penilaian_grace_scor=rs2.getBoolean("penilaian_grace_scor");
+                        akses.penilaian_bishop_scor=rs2.getBoolean("penilaian_bishop_scor");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3995,6 +3997,7 @@ public final class akses {
         akses.hasil_persalinan_tolac=false;
         akses.laporan_reaksi_transfusi=false;
         akses.penilaian_grace_scor=false;
+        akses.penilaian_bishop_scor=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5264,4 +5267,5 @@ public final class akses {
     public static boolean gethasil_persalinan_tolac(){return akses.hasil_persalinan_tolac;}
     public static boolean getlaporan_reaksi_transfusi(){return akses.laporan_reaksi_transfusi;}
     public static boolean getpenilaian_grace_scor(){return akses.penilaian_grace_scor;}
+    public static boolean getpenilaian_bishop_scor(){return akses.penilaian_bishop_scor;}
 }   
