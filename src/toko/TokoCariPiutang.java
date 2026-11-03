@@ -1216,7 +1216,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 "from tokopiutang inner join petugas on tokopiutang.nip=petugas.nip "+
                 "inner join toko_detail_piutang on tokopiutang.nota_piutang=toko_detail_piutang.nota_piutang "+
                 "inner join tokobarang on toko_detail_piutang.kode_brng=tokobarang.kode_brng "+
-                "inner join tokojenisbarang on tokojenis=tokojenisbarang.kd_jenis "+
+                "inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                 "inner join kodesatuan on toko_detail_piutang.kode_sat=kodesatuan.kode_sat "+
                 "where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
                 "(tokopiutang.nota_piutang like '%"+TCari.getText()+"%' or tokopiutang.no_member like '%"+TCari.getText()+"%' or "+
@@ -1254,7 +1254,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         " toko_detail_piutang.total from "+
                         " toko_detail_piutang inner join tokobarang on toko_detail_piutang.kode_brng=tokobarang.kode_brng "+
                         " inner join kodesatuan on toko_detail_piutang.kode_sat=kodesatuan.kode_sat "+
-                        " inner join tokojenisbarang on tokojenis=tokojenisbarang.kd_jenis "+
+                        " inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                         " where toko_detail_piutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and "+
                         " (toko_detail_piutang.kode_brng like '%"+TCari.getText()+"%' or tokobarang.nama_brng like '%"+TCari.getText()+"%' or "+
                         " toko_detail_piutang.kode_sat like '%"+TCari.getText()+"%' or tokojenisbarang.nm_jenis like '%"+TCari.getText()+"%')"+
@@ -1369,7 +1369,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "from tokopiutang inner join petugas on tokopiutang.nip=petugas.nip "+
                     "inner join toko_detail_piutang on tokopiutang.nota_piutang=toko_detail_piutang.nota_piutang "+
                     "inner join tokobarang on toko_detail_piutang.kode_brng=tokobarang.kode_brng "+
-                    "inner join tokojenisbarang on tokojenis=tokojenisbarang.kd_jenis "+
+                    "inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                     "inner join kodesatuan on toko_detail_piutang.kode_sat=kodesatuan.kode_sat "+
                     "where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
                     "(tokopiutang.nota_piutang like '%"+TCari.getText()+"%' or tokopiutang.no_member like '%"+TCari.getText()+"%' or "+
@@ -1426,7 +1426,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         " toko_detail_piutang.total from "+
                         " toko_detail_piutang inner join tokobarang on toko_detail_piutang.kode_brng=tokobarang.kode_brng "+
                         " inner join kodesatuan on toko_detail_piutang.kode_sat=kodesatuan.kode_sat "+
-                        " inner join tokojenisbarang on tokojenis=tokojenisbarang.kd_jenis "+
+                        " inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                         " where toko_detail_piutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and "+
                         " (toko_detail_piutang.kode_brng like '%"+TCari.getText()+"%' or tokobarang.nama_brng like '%"+TCari.getText()+"%' or "+
                         " toko_detail_piutang.kode_sat like '%"+TCari.getText()+"%' or tokojenisbarang.nm_jenis like '%"+TCari.getText()+"%')"+

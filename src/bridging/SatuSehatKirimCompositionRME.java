@@ -603,6 +603,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTMLIGDPrimer.setEditorKit(kit);
         LoadHTMLIGDSekunder.setEditable(true);
         LoadHTMLIGDSekunder.setEditorKit(kit);
+        LoadHTMLAwalKeperawatanIGD.setEditable(true);
+        LoadHTMLAwalKeperawatanIGD.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -619,12 +621,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTML.setDocument(doc);
         LoadHTMLIGDPrimer.setDocument(doc);
         LoadHTMLIGDSekunder.setDocument(doc);
+        LoadHTMLAwalKeperawatanIGD.setDocument(doc);
         
         ChkAccorIGDPrimer.setSelected(false);
         isMenuIGDPrimer();
-        
         ChkAccorIGDSekunder.setSelected(false);
         isMenuIGDSekunder();
+        ChkAccorAwalKeperawatanIGD.setSelected(false);
+        isMenuAwalKeperawatanIGD();
     }
     
     
@@ -642,6 +646,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         ppPilihSemua = new widget.MenuItem();
         ppBersihkan = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
+        internalFRame = new widget.InternalFrame();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -675,8 +680,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         LoadHTMLIGDSekunder = new widget.editorpane();
         ScrollIGDSekunder = new widget.ScrollPane();
         tbIGDSekunder = new widget.Table();
-        Scroll1 = new widget.ScrollPane();
+        internalAwalKeperawatanIGD = new widget.InternalFrame();
+        ScrollAwalKeperawatanIGD = new widget.ScrollPane();
         tbAwalKeperawatanIGD = new widget.Table();
+        PanelAccorAwalKeperawatanIGD = new widget.PanelBiasa();
+        ChkAccorAwalKeperawatanIGD = new widget.CekBox();
+        ScrollHTMLAwalKeperawatanIGD = new widget.ScrollPane();
+        LoadHTMLAwalKeperawatanIGD = new widget.editorpane();
         Scroll2 = new widget.ScrollPane();
         tbNadi = new widget.Table();
         Scroll3 = new widget.ScrollPane();
@@ -724,6 +734,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        internalFRame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        internalFRame.setName("internalFRame"); // NOI18N
+        internalFRame.setLayout(new java.awt.BorderLayout(1, 1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -847,7 +861,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -859,7 +873,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1034,15 +1048,57 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
 
         TabRawat.addTab("Triase IGD Sekunder", internalTriaseIGDSekunder);
 
-        Scroll1.setComponentPopupMenu(jPopupMenu1);
-        Scroll1.setName("Scroll1"); // NOI18N
-        Scroll1.setOpaque(true);
+        internalAwalKeperawatanIGD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        internalAwalKeperawatanIGD.setName("internalAwalKeperawatanIGD"); // NOI18N
+        internalAwalKeperawatanIGD.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ScrollAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
+        ScrollAwalKeperawatanIGD.setName("ScrollAwalKeperawatanIGD"); // NOI18N
+        ScrollAwalKeperawatanIGD.setOpaque(true);
 
         tbAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
         tbAwalKeperawatanIGD.setName("tbAwalKeperawatanIGD"); // NOI18N
-        Scroll1.setViewportView(tbAwalKeperawatanIGD);
+        ScrollAwalKeperawatanIGD.setViewportView(tbAwalKeperawatanIGD);
 
-        TabRawat.addTab("Awal Keperawatan IGD", Scroll1);
+        internalAwalKeperawatanIGD.add(ScrollAwalKeperawatanIGD, java.awt.BorderLayout.CENTER);
+
+        PanelAccorAwalKeperawatanIGD.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAccorAwalKeperawatanIGD.setName("PanelAccorAwalKeperawatanIGD"); // NOI18N
+        PanelAccorAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(470, 43));
+        PanelAccorAwalKeperawatanIGD.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkAccorAwalKeperawatanIGD.setBackground(new java.awt.Color(255, 250, 250));
+        ChkAccorAwalKeperawatanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setSelected(true);
+        ChkAccorAwalKeperawatanIGD.setFocusable(false);
+        ChkAccorAwalKeperawatanIGD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccorAwalKeperawatanIGD.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccorAwalKeperawatanIGD.setName("ChkAccorAwalKeperawatanIGD"); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(15, 20));
+        ChkAccorAwalKeperawatanIGD.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccorAwalKeperawatanIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAccorAwalKeperawatanIGDActionPerformed(evt);
+            }
+        });
+        PanelAccorAwalKeperawatanIGD.add(ChkAccorAwalKeperawatanIGD, java.awt.BorderLayout.WEST);
+
+        ScrollHTMLAwalKeperawatanIGD.setBorder(null);
+        ScrollHTMLAwalKeperawatanIGD.setName("ScrollHTMLAwalKeperawatanIGD"); // NOI18N
+        ScrollHTMLAwalKeperawatanIGD.setOpaque(true);
+        ScrollHTMLAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(470, 16));
+
+        LoadHTMLAwalKeperawatanIGD.setBorder(null);
+        LoadHTMLAwalKeperawatanIGD.setName("LoadHTMLAwalKeperawatanIGD"); // NOI18N
+        ScrollHTMLAwalKeperawatanIGD.setViewportView(LoadHTMLAwalKeperawatanIGD);
+
+        PanelAccorAwalKeperawatanIGD.add(ScrollHTMLAwalKeperawatanIGD, java.awt.BorderLayout.CENTER);
+
+        internalAwalKeperawatanIGD.add(PanelAccorAwalKeperawatanIGD, java.awt.BorderLayout.EAST);
+
+        TabRawat.addTab("Awal Keperawatan IGD", internalAwalKeperawatanIGD);
 
         Scroll2.setComponentPopupMenu(jPopupMenu1);
         Scroll2.setName("Scroll2"); // NOI18N
@@ -1314,12 +1370,15 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
+                ChkAccorIGDPrimer.setSelected(false);
                 runBackground(() ->tampilIGDPrimer());
                 break;
             case 1:
+                ChkAccorIGDSekunder.setSelected(false);
                 runBackground(() ->tampilIGDSekunder());
                 break;
             case 2:
+                ChkAccorAwalKeperawatanIGD.setSelected(false);
                 runBackground(() ->tampilAwalKeperawatanIGD());
                 break;
             default:
@@ -1432,6 +1491,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnUpdateActionPerformed
 
+    private void ChkAccorAwalKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorAwalKeperawatanIGDActionPerformed
+        if(tbIGDSekunder.getSelectedRow()!= -1){
+            isMenuAwalKeperawatanIGD();
+            getDataAwalKeperawatanIGD();
+        }else{
+            ChkAccorIGDSekunder.setSelected(false);
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
+        }
+    }//GEN-LAST:event_ChkAccorAwalKeperawatanIGDActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1455,17 +1524,19 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.Button BtnKirim;
     private widget.Button BtnPrint;
     private widget.Button BtnUpdate;
+    private widget.CekBox ChkAccorAwalKeperawatanIGD;
     private widget.CekBox ChkAccorIGDPrimer;
     private widget.CekBox ChkAccorIGDSekunder;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
+    private widget.editorpane LoadHTMLAwalKeperawatanIGD;
     private widget.editorpane LoadHTMLIGDPrimer;
     private widget.editorpane LoadHTMLIGDSekunder;
+    private widget.PanelBiasa PanelAccorAwalKeperawatanIGD;
     private widget.PanelBiasa PanelAccorIGDPrimer;
     private widget.PanelBiasa PanelAccorIGDSekunder;
-    private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -1474,12 +1545,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
     private widget.ScrollPane Scroll9;
+    private widget.ScrollPane ScrollAwalKeperawatanIGD;
+    private widget.ScrollPane ScrollHTMLAwalKeperawatanIGD;
     private widget.ScrollPane ScrollHTMLIGDPrimer;
     private widget.ScrollPane ScrollHTMLIGDSekunder;
     private widget.ScrollPane ScrollIGDPrimer;
     private widget.ScrollPane ScrollIGDSekunder;
     private widget.TextBox TCari;
     private widget.TabPane TabRawat;
+    private widget.InternalFrame internalAwalKeperawatanIGD;
+    private widget.InternalFrame internalFRame;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalTriaseIGDPrimer;
     private widget.InternalFrame internalTriaseIGDSekunder;
@@ -1713,6 +1788,20 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
             PanelAccorIGDSekunder.setPreferredSize(new Dimension(15,HEIGHT));
             ScrollHTMLIGDSekunder.setVisible(false);
             ChkAccorIGDSekunder.setVisible(true);
+        }
+    }
+    
+    private void isMenuAwalKeperawatanIGD(){
+        if(ChkAccorAwalKeperawatanIGD.isSelected()==true){
+            ChkAccorAwalKeperawatanIGD.setVisible(false);
+            PanelAccorAwalKeperawatanIGD.setPreferredSize(new Dimension(520,HEIGHT));
+            ScrollHTMLAwalKeperawatanIGD.setVisible(true);  
+            ChkAccorAwalKeperawatanIGD.setVisible(true);
+        }else if(ChkAccorAwalKeperawatanIGD.isSelected()==false){   
+            ChkAccorAwalKeperawatanIGD.setVisible(false);
+            PanelAccorAwalKeperawatanIGD.setPreferredSize(new Dimension(15,HEIGHT));
+            ScrollHTMLAwalKeperawatanIGD.setVisible(false);
+            ChkAccorAwalKeperawatanIGD.setVisible(true);
         }
     }
     
@@ -2057,6 +2146,10 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+    }
+    
+    private void getDataAwalKeperawatanIGD(){
+        
     }
     
     private void KirimTriaseIGDPrimer() {
@@ -6356,7 +6449,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Kondisi Psikologis
-                    /*if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
+                    if(tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -6376,6 +6469,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"80296-7\"," +
+                                                    "\"display\": \"Patient Mood\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kondisi Psikologis\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6433,6 +6533,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11365-4\"," +
+                                                    "\"display\": \"History of Psychiatric disorders\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Gangguan Jiwa Di Masa Lalu\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6490,6 +6597,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11452-0\"," +
+                                                    "\"display\": \"Psychiatric findings\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Adakah Perilaku\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6547,6 +6661,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"22032002\"," +
+                                                    "\"display\": \"Family-related social factor\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Hubungan Pasien Dengan Anggota Keluarga\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6604,6 +6725,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"46468-5\"," +
+                                                    "\"display\": \"Current living arrangement\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Tinggal Dengan\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6661,6 +6789,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"81364-2\"," +
+                                                    "\"display\": \"Religious or cultural beliefs Narrative - Reported\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kepercayaan / Budaya / Nilai-nilai Khusus\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6718,7 +6853,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
-                                            "\"text\": \"Pendidikan P.J.\"" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"82589-3\"," +
+                                                    "\"display\": \"Highest level of education\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"text\": \"Pendidikan Penanggung Jawab\"" +
                                         "}," +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
@@ -6775,6 +6917,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"311401005\"," +
+                                                    "\"display\": \"Patient education\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Edukasi Diberikan Kepada\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6832,6 +6981,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"75276-6\"," +
+                                                    "\"display\": \"Functional status [Interpretation]\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Kemampuan Aktifitas Sehari-hari\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6889,6 +7045,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"301998005\"," +
+                                                    "\"display\": \"Ability to move\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Aktifitas\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -6946,6 +7109,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"100180-9\"," +
+                                                    "\"display\": \"Assistive mobility devices used\"" +
+                                                "}" +
+                                            "]," +
                                             "\"text\": \"Alat Bantu\"" +
                                         "}," +
                                         "\"subject\": {" +
@@ -7067,7 +7237,14 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                             "}" +
                                         "]," +
                                         "\"code\": {" +
-                                            "\"text\": \"Pengkajian Resiko Jatuh\"" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"73830-2\"," +
+                                                    "\"display\": \"Fall risk assessment\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"text\": \"Pengkajian Resiko Jatuh (Get Up And Go)\"" +
                                         "}," +
                                         "\"subject\": {" +
                                             "\"reference\": \"Patient/"+idpasien+"\"" +
@@ -7113,11 +7290,22 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                         "\"resourceType\": \"CarePlan\"," +
                                         "\"status\": \"active\"," +
                                         "\"intent\": \"plan\"," +
-                                        "\"title\": \"Rencana Keperawatan IGD\"," +
+                                        "\"title\": \"Rencana Keperawatan Lainnya\"," +
                                         "\"description\": \""+tbAwalKeperawatanIGD.getValueAt(i,106).toString()+"\"," +
                                         "\"subject\": {"+
                                             "\"reference\": \"Patient/" + idpasien + "\""+
                                         "}," +
+                                        "\"category\": [" +
+                                            "{" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.kemkes.go.id\"," +
+                                                        "\"code\": \"TK000068\"," +
+                                                        "\"display\": \"Emergency care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]," +
                                         "\"encounter\": {"+
                                             "\"reference\": \"Encounter/" + tbAwalKeperawatanIGD.getValueAt(i,5).toString() + "\""+
                                         "}," +
@@ -7148,7 +7336,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                     }
 
                     //Composition Awal Keperawatan IGD
-                    if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")||(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")))&&(tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")||!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals(""))&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
+                    /*if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")||(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")))&&(tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")||!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals(""))&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
                         try{
                             StringBuilder iyembuilder = new StringBuilder();
                             if(tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
