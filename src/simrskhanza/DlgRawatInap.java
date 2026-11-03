@@ -185,6 +185,7 @@ import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMDataSkriningGiziKehamilan;
 import rekammedis.RMHasilPemeriksaanUSGAbdomen;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMPenilaianBishop;
 import rekammedis.RMReaksiTransfusi;
 
 /**
@@ -9083,6 +9084,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnPenilaianBISHOPScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMonitoringReaksiTranfusiActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianBishop form=new RMPenilaianBishop(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -9418,7 +9436,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
                           BtnSkriningGiziKehamilan,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnChecklistKriteriaKeluarIsolasi,
-                          BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,BtnHasilPersalinanTOLAC,BtnLaporanReaksiTranfusi;
+                          BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,BtnHasilPersalinanTOLAC,BtnLaporanReaksiTranfusi,BtnPenilaianBISHOPScore;
     private widget.PopupMenu PopupSOAP,PopupPemeriksaan;
     private widget.MenuItem MnCopySOAP,MnPasteSOAP;
     
@@ -10047,6 +10065,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnLaporanReaksiTranfusi.setVisible(akses.getlaporan_reaksi_transfusi()); 
         if(akses.getlaporan_reaksi_transfusi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianBISHOPScore.setVisible(akses.getpenilaian_bishop_scor()); 
+        if(akses.getpenilaian_bishop_scor()==true){
             tinggi=tinggi+24;
         }
         BtnPenilaianKorbanKekerasan.setVisible(akses.getpenilaian_korban_kekerasan()); 
@@ -11441,6 +11463,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnLaporanReaksiTranfusi.setRoundRect(false);
         BtnLaporanReaksiTranfusi.addActionListener(this::BtnLaporanReaksiTranfusiActionPerformed);
         
+        BtnPenilaianBISHOPScore = new widget.Button();
+        BtnPenilaianBISHOPScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnPenilaianBISHOPScore.setText("Penilaian BISHOP Score");
+        BtnPenilaianBISHOPScore.setFocusPainted(false);
+        BtnPenilaianBISHOPScore.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnPenilaianBISHOPScore.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianBISHOPScore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianBISHOPScore.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianBISHOPScore.setName("BtnPenilaianBISHOPScore"); 
+        BtnPenilaianBISHOPScore.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianBISHOPScore.setRoundRect(false);
+        BtnPenilaianBISHOPScore.addActionListener(this::BtnPenilaianBISHOPScoreActionPerformed);
+        
         MnCopySOAP = new widget.MenuItem();
         MnCopySOAP.setBackground(new java.awt.Color(255, 255, 254));
         MnCopySOAP.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -11554,6 +11589,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnHasilEndoskopiHidung);
         FormMenu.add(BtnHasilEndoskopiTelinga);
         FormMenu.add(BtnDokumentasiESWL);
+        FormMenu.add(BtnPenilaianBISHOPScore);
         FormMenu.add(BtnAdmisiSkoringTOLAC);
         FormMenu.add(BtnCatatanPersalinan);
         FormMenu.add(BtnLaporanTindakan);
