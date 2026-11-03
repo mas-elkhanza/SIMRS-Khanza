@@ -1235,6 +1235,7 @@ import javax.swing.SwingUtilities;
 import rekammedis.RMAdmisiSkoringTOLAC;
 import rekammedis.RMDataMonitoringTOLAC;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMPenilaianBishop;
 import rekammedis.RMPenilaianGRACE;
 import rekammedis.RMReaksiTransfusi;
 
@@ -23734,6 +23735,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianBISHOPScoreActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianBishop aplikasi=new RMPenilaianBishop(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24454,7 +24468,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat,
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
-            btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore;
+            btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore,btnPenilaianBISHOPScore;
     
     public void isWall(){
         try{            
@@ -28847,6 +28861,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_grace_scor()==true){
                 Panelmenu.add(btnPenilaianGRACEScore);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_bishop_scor()==true){
+                Panelmenu.add(btnPenilaianBISHOPScore);
                 jmlmenu++;
             }
             
@@ -34925,6 +34944,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_grace_scor()==true){
             Panelmenu.add(btnPenilaianGRACEScore);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_bishop_scor()==true){
+            Panelmenu.add(btnPenilaianBISHOPScore);
             jmlmenu++;
         }
         
@@ -42693,6 +42717,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_grace_scor()==true){
             if(btnPenilaianGRACEScore.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianGRACEScore);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getpenilaian_bishop_scor()==true){
+            if(btnPenilaianBISHOPScore.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianBISHOPScore);
                 jmlmenu++;
             } 
         }
@@ -51368,5 +51399,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianGRACEScore.setName("btnPenilaianGRACEScore"); 
         btnPenilaianGRACEScore.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianGRACEScore.addActionListener(this::btnPenilaianGRACEScoreActionPerformed);
+        
+        btnPenilaianBISHOPScore = new widget.ButtonBig();
+        btnPenilaianBISHOPScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pregnant_5390232.png")));
+        btnPenilaianBISHOPScore.setText("Penilaian BISHOP Score");
+        btnPenilaianBISHOPScore.setIconTextGap(0);
+        btnPenilaianBISHOPScore.setName("btnPenilaianBISHOPScore"); 
+        btnPenilaianBISHOPScore.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianBISHOPScore.addActionListener(this::btnPenilaianBISHOPScoreActionPerformed);
     }
 }
