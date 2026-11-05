@@ -316,7 +316,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 "Kondisi Psikologis","ID Observation Kondisi Psikologis","Gangguan Jiwa Di Masa Lalu","ID Observation Gangguan Jiwa","Adakah Perilaku","Dilaporkan Ke","Sebutkan","ID Observation Perilaku","Hubungan Pasien Dengan Anggota Keluarga","ID Observation Hubungan Keluarga",
                 "Tinggal Dengan","Ket. Tinggal Dengan","ID Observation Tinggal Dengan","Nilai-nilai Kebudayaan","Ket. Nilai-nilai Kebudayaan","ID Observation Budaya","Pendidikan PJ","Ket. Pendidikan PJ","ID Observation Pendidikan PJ","Edukasi Diberikan Kepada","Ket. Edukasi Diberikan Kepada","ID Observation Edukasi",
                 "Kemampuan Aktifitas Sehari-hari","ID Observation Kemampuan Aktifitas","Aktifitas","ID Observation Aktifitas","Alat bantu","Ket. Alat bantu","ID Observation Alat Bantu","Tingkat Nyeri","Provokes","Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri Hilang","Ket. Hilang Nyeri",
-                "Lapor Ke Dokter","Jam Lapor","ID Observation Nyeri","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Pengkajian Resiko Jatuh","Lapor Dokter","Ket. Lapor","ID Observation Resiko Jatuh","Rencana","ID Careplan Rencana","ID Composition"
+                "Lapor Ke Dokter","Jam Lapor","ID Observation Nyeri","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Pengkajian Resiko Jatuh","Lapor Dokter","Ket. Lapor","ID Observation Resiko Jatuh","Rencana Keperawatan Lainnya","ID Careplan Rencana Kep Lainnya","ID Composition"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -861,7 +861,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -873,7 +873,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1058,6 +1058,16 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
 
         tbAwalKeperawatanIGD.setComponentPopupMenu(jPopupMenu1);
         tbAwalKeperawatanIGD.setName("tbAwalKeperawatanIGD"); // NOI18N
+        tbAwalKeperawatanIGD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAwalKeperawatanIGDMouseClicked(evt);
+            }
+        });
+        tbAwalKeperawatanIGD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbAwalKeperawatanIGDKeyPressed(evt);
+            }
+        });
         ScrollAwalKeperawatanIGD.setViewportView(tbAwalKeperawatanIGD);
 
         internalAwalKeperawatanIGD.add(ScrollAwalKeperawatanIGD, java.awt.BorderLayout.CENTER);
@@ -1492,14 +1502,32 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnUpdateActionPerformed
 
     private void ChkAccorAwalKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorAwalKeperawatanIGDActionPerformed
-        if(tbIGDSekunder.getSelectedRow()!= -1){
+        if(tbAwalKeperawatanIGD.getSelectedRow()!= -1){
             isMenuAwalKeperawatanIGD();
             getDataAwalKeperawatanIGD();
         }else{
-            ChkAccorIGDSekunder.setSelected(false);
+            ChkAccorAwalKeperawatanIGD.setSelected(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
         }
     }//GEN-LAST:event_ChkAccorAwalKeperawatanIGDActionPerformed
+
+    private void tbAwalKeperawatanIGDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbAwalKeperawatanIGDKeyPressed
+        if(tabModeAwalKeperawatanIGD.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                if(tbAwalKeperawatanIGD.getSelectedRow()!= -1){
+                    getDataIGDSekunder();
+                }
+            }          
+        }
+    }//GEN-LAST:event_tbAwalKeperawatanIGDKeyPressed
+
+    private void tbAwalKeperawatanIGDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAwalKeperawatanIGDMouseClicked
+        if(ChkAccorAwalKeperawatanIGD.isSelected()==true){
+            if(tbAwalKeperawatanIGD.getSelectedRow()!= -1){
+                getDataAwalKeperawatanIGD();
+            }
+        }
+    }//GEN-LAST:event_tbAwalKeperawatanIGDMouseClicked
 
     /**
     * @param args the command line arguments
@@ -1899,7 +1927,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             );
                             try {
                                 ps2.setString(1,rs.getString("kode_pemeriksaan"));
-                                ps2.setString(2,rs.getString("no_rawat"));
+                                ps2.setString(2,tbIGDPrimer.getValueAt(tbIGDPrimer.getSelectedRow(),1).toString());
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
                                     htmlContent.append("<tr class='isi'>").                                    
@@ -2039,7 +2067,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             );
                             try {
                                 ps2.setString(1,rs.getString("kode_pemeriksaan"));
-                                ps2.setString(2,rs.getString("no_rawat"));
+                                ps2.setString(2,tbIGDSekunder.getValueAt(tbIGDSekunder.getSelectedRow(),1).toString());
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
                                     htmlContent.append("<tr class='isi'>").                                    
@@ -2102,7 +2130,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             );
                             try {
                                 ps2.setString(1,rs.getString("kode_pemeriksaan"));
-                                ps2.setString(2,rs.getString("no_rawat"));
+                                ps2.setString(2,tbIGDSekunder.getValueAt(tbIGDSekunder.getSelectedRow(),1).toString());
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
                                     htmlContent.append("<tr class='isi'>").                                    
@@ -2149,7 +2177,77 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
     }
     
     private void getDataAwalKeperawatanIGD(){
-        
+        try {
+            StringBuilder htmlContent= new StringBuilder();
+            ps=koneksi.prepareStatement(
+                "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah,ifnull(penilaian_awal_keperawatan_igd_masalah.id_condition_masalah,'') as id_condition_masalah "+
+                "from penilaian_awal_keperawatan_igd_masalah inner join master_masalah_keperawatan_igd on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
+                "where penilaian_awal_keperawatan_igd_masalah.no_rawat=? order by penilaian_awal_keperawatan_igd_masalah.kode_masalah"
+            );
+            try {
+                ps.setString(1,tbAwalKeperawatanIGD.getValueAt(tbAwalKeperawatanIGD.getSelectedRow(),1).toString());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Masalah Keperawatan</td>").
+                                    append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Rencana Keperawatan</td>").
+                                append("</tr>");
+                    rs.beforeFirst();
+                    while(rs.next()){
+                        htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='middle'>").append(rs.getString("nama_masalah")).append("<br>").append(rs.getString("id_condition_masalah")).append("</td>").
+                                    append("<td valign='top'>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>");
+                        ps2=koneksi.prepareStatement(
+                            "select master_rencana_keperawatan_igd.rencana_keperawatan,ifnull(penilaian_awal_keperawatan_ralan_rencana_igd.id_careplan_rencana,'') as id_careplan_rencana "+
+                            "from penilaian_awal_keperawatan_ralan_rencana_igd inner join master_rencana_keperawatan_igd on penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana=master_rencana_keperawatan_igd.kode_rencana "+
+                            "where master_rencana_keperawatan_igd.kode_masalah=? and penilaian_awal_keperawatan_ralan_rencana_igd.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana"
+                        );
+                        try {
+                            ps2.setString(1,rs.getString("kode_masalah"));
+                            ps2.setString(2,tbAwalKeperawatanIGD.getValueAt(tbAwalKeperawatanIGD.getSelectedRow(),1).toString());
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='middle' width='60%'>").append(rs2.getString("rencana_keperawatan")).append("</td>").
+                                                append("<td valign='middle' width='40%'>").append(rs2.getString("id_careplan_rencana")).append("</td>").
+                                            append("</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                    append("</tr>");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+
+            LoadHTMLAwalKeperawatanIGD.setText(
+                "<html>"+
+                  "<table width='750px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                   htmlContent.toString()+
+                  "</table>"+
+                "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     private void KirimTriaseIGDPrimer() {
@@ -5231,6 +5329,8 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 try {
                     iddokter = cekViaSatuSehat.tampilIDParktisi(tbAwalKeperawatanIGD.getValueAt(i,7).toString());
                     idpasien = cekViaSatuSehat.tampilIDPasien(tbAwalKeperawatanIGD.getValueAt(i,4).toString());
+                    StringBuilder masalahbuilder = new StringBuilder();
+                    StringBuilder rencanabuilder = new StringBuilder();
 
                     //Informasi
                     if(tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")){
@@ -7280,7 +7380,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                         }
                     }
 
-                    //Rencana Keperawatan
+                    //Rencana Keperawatan Lainnya
                     if(tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")){
                         try{
                             headers = new HttpHeaders();
@@ -7334,26 +7434,220 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             System.out.println("Notifikasi Rencana Keperawatan : "+e);
                         }
                     }
+                    //Masalah Keperawatan
+                    ps=koneksi.prepareStatement(
+                        "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah,ifnull(penilaian_awal_keperawatan_igd_masalah.id_condition_masalah,'') as id_condition_masalah "+
+                        "from penilaian_awal_keperawatan_igd_masalah inner join master_masalah_keperawatan_igd on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
+                        "where penilaian_awal_keperawatan_igd_masalah.no_rawat=? order by penilaian_awal_keperawatan_igd_masalah.kode_masalah"
+                    );
+                    try {
+                        ps.setString(1,tbAwalKeperawatanIGD.getValueAt(i,1).toString());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            if(rs.getString("id_condition_masalah").equals("")){
+                                try{
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                    json = "{" +
+                                                "\"resourceType\": \"Condition\"," +
+                                                "\"clinicalStatus\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"," +
+                                                            "\"code\": \"active\"," +
+                                                            "\"display\": \"Active\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}," +
+                                               "\"category\": [" +
+                                                    "{" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://loinc.org\"," +
+                                                                "\"code\": \"11450-4\"," +
+                                                                "\"display\": \"Problem list - Reported\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}" +
+                                                "]," +
+                                                "\"code\": {" +
+                                                    "\"text\": \""+rs.getString("nama_masalah").replace("\"", "'")+"\"" +
+                                                "}," +
+                                                "\"subject\": {" +
+                                                    "\"reference\": \"Patient/"+idpasien+"\"" +
+                                                "}," +
+                                                "\"encounter\": {" +
+                                                    "\"reference\": \"Encounter/"+tbAwalKeperawatanIGD.getValueAt(i,5).toString()+"\"" +
+                                                "}," +
+                                                "\"recordedDate\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\"," +
+                                                "\"recorder\": {" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                "}" +
+                                           "}";
+                                    System.out.println("URL : "+link+"/Condition");
+                                    System.out.println("Request JSON : "+json);
+                                    requestEntity = new HttpEntity(json,headers);
+                                    json=api.getRest().exchange(link+"/Condition", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println("Result JSON : "+json);
+                                    root = mapper.readTree(json);
+                                    response = root.path("id");
+                                    if(!response.asText().equals("")){
+                                        Sequel.mengedit("penilaian_awal_keperawatan_igd_masalah","no_rawat=? AND kode_masalah=?","id_condition_masalah=?",3,new String[]{
+                                            response.asText(),tbAwalKeperawatanIGD.getValueAt(i,1).toString(),rs.getString("kode_masalah")
+                                        });
+                                        masalahbuilder.append("{\"reference\": \"Condition/").append(response.asText()).append("\"},");
+                                    }
+                                }catch(Exception e){
+                                    System.out.println("Notifikasi Masalah Keperawatan : "+e);
+                                }
+                            }else{
+                                masalahbuilder.append("{\"reference\": \"Condition/").append(rs.getString("id_condition_masalah")).append("\"},");
+                            }
+
+                            //Rencana Keperawatan per Masalah
+                            ps2=koneksi.prepareStatement(
+                                "select penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana,master_rencana_keperawatan_igd.rencana_keperawatan,ifnull(penilaian_awal_keperawatan_ralan_rencana_igd.id_careplan_rencana,'') as id_careplan_rencana "+
+                                "from penilaian_awal_keperawatan_ralan_rencana_igd inner join master_rencana_keperawatan_igd on penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana=master_rencana_keperawatan_igd.kode_rencana "+
+                                "where master_rencana_keperawatan_igd.kode_masalah=? and penilaian_awal_keperawatan_ralan_rencana_igd.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana"
+                            );
+                            try {
+                                ps2.setString(1,rs.getString("kode_masalah"));
+                                ps2.setString(2,tbAwalKeperawatanIGD.getValueAt(i,1).toString());
+                                rs2=ps2.executeQuery();
+                                while(rs2.next()){
+                                    if(rs2.getString("id_careplan_rencana").equals("")){
+                                        try{
+                                            headers = new HttpHeaders();
+                                            headers.setContentType(MediaType.APPLICATION_JSON);
+                                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                            json = "{" +
+                                                        "\"resourceType\": \"CarePlan\"," +
+                                                        "\"status\": \"active\"," +
+                                                        "\"intent\": \"plan\"," +
+                                                        "\"title\": \"Rencana Keperawatan\"," +
+                                                        "\"description\": \""+rs2.getString("rencana_keperawatan").replace("\"", "'")+"\"," +
+                                                        "\"subject\": {"+
+                                                            "\"reference\": \"Patient/" + idpasien + "\""+
+                                                        "}," +
+                                                        "\"category\": [" +
+                                                            "{" +
+                                                                "\"coding\": [" +
+                                                                    "{" +
+                                                                        "\"system\": \"http://terminology.kemkes.go.id\"," +
+                                                                        "\"code\": \"TK000068\"," +
+                                                                        "\"display\": \"Emergency care plan\"" +
+                                                                    "}" +
+                                                                "]" +
+                                                            "}" +
+                                                        "]," +
+                                                        "\"encounter\": {"+
+                                                            "\"reference\": \"Encounter/" + tbAwalKeperawatanIGD.getValueAt(i,5).toString() + "\""+
+                                                        "}," +
+                                                        "\"author\": {"+
+                                                            "\"reference\": \"Practitioner/" + iddokter + "\""+
+                                                        "}," +
+                                                        "\"period\": {"+
+                                                            "\"start\": \""+tbAwalKeperawatanIGD.getValueAt(i,8).toString().replace(" ", "T")+"+07:00\""+
+                                                        "}" +
+                                                   "}";
+                                            System.out.println("URL : "+link+"/CarePlan");
+                                            System.out.println("Request JSON : "+json);
+                                            requestEntity = new HttpEntity(json,headers);
+                                            json=api.getRest().exchange(link+"/CarePlan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                            System.out.println("Result JSON : "+json);
+                                            root = mapper.readTree(json);
+                                            response = root.path("id");
+                                            if(!response.asText().equals("")){
+                                                Sequel.mengedit("penilaian_awal_keperawatan_ralan_rencana_igd","no_rawat=? AND kode_rencana=?","id_careplan_rencana=?",3,new String[]{
+                                                    response.asText(),tbAwalKeperawatanIGD.getValueAt(i,1).toString(),rs2.getString("kode_rencana")
+                                                });
+                                                rencanabuilder.append("{\"reference\": \"CarePlan/").append(response.asText()).append("\"},");
+                                            }
+                                        }catch(Exception e){
+                                            System.out.println("Notifikasi Rencana Keperawatan : "+e);
+                                        }
+                                    }else{
+                                        rencanabuilder.append("{\"reference\": \"CarePlan/").append(rs2.getString("id_careplan_rencana")).append("\"},");
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(ps2!=null){
+                                    ps2.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
 
                     //Composition Awal Keperawatan IGD
-                    /*if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&(!tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")||(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")))&&(tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")||!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals(""))&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
+                    if(!tbAwalKeperawatanIGD.getValueAt(i,10).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,12).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,14).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,16).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,28).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,30).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,32).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,34).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,36).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,38).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,40).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,44).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,46).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,55).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,57).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,59).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,63).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,65).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,68).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,71).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,74).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,77).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,79).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,81).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,84).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,98).toString().equals("")&&!tbAwalKeperawatanIGD.getValueAt(i,105).toString().equals("")&&tbAwalKeperawatanIGD.getValueAt(i,108).toString().equals("")){
                         try{
                             StringBuilder iyembuilder = new StringBuilder();
-                            if(tbAwalKeperawatanIGD.getValueAt(i,17).toString().equals("Hamil")){
-                                iyembuilder.append(
-                                    "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,20).toString()+"\"}," +
-                                    "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,22).toString()+"\"}," +
-                                    "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,24).toString()+"\"}," +
-                                    "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,26).toString()+"\"},"
-                                );
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,18).toString().equals("")){
+                                iyembuilder.append("{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,18).toString()+"\"},");
+                            }
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,20).toString().equals("")){
+                                iyembuilder.append("{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,20).toString()+"\"},");
+                            }
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,22).toString().equals("")){
+                                iyembuilder.append("{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,22).toString()+"\"},");
+                            }
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,24).toString().equals("")){
+                                iyembuilder.append("{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,24).toString()+"\"},");
+                            }
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,26).toString().equals("")){
+                                iyembuilder.append("{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,26).toString()+"\"},");
+                            }
+                            if(iyembuilder.length()>0){
+                                iyembuilder.setLength(iyembuilder.length()-1);
+                                iyembuilder.insert(0,"{\"title\": \"Status Kehamilan & Riwayat Obstetri\",\"entry\": [").append("]},");
                             }
                             StringBuilder iyembuilder2 = new StringBuilder();
-                            if(!tbAwalKeperawatanIGD.getValueAt(i,106).toString().equals("")){
+                            if(!tbAwalKeperawatanIGD.getValueAt(i,107).toString().equals("")){
+                                rencanabuilder.append("{\"reference\": \"CarePlan/"+tbAwalKeperawatanIGD.getValueAt(i,107).toString()+"\"},");
+                            }
+                            if(rencanabuilder.length()>0){
+                                rencanabuilder.setLength(rencanabuilder.length()-1);
                                 iyembuilder2.append(
                                     "{" +
                                         "\"title\": \"Rencana Keperawatan\"," +
                                         "\"entry\": [" +
-                                            "{\"reference\": \"CarePlan/"+tbAwalKeperawatanIGD.getValueAt(i,107).toString()+"\"}" +
+                                            rencanabuilder.toString() +
+                                        "]" +
+                                    "}"
+                                );
+                            }
+                            StringBuilder iyembuilder3 = new StringBuilder();
+                            if(masalahbuilder.length()>0){
+                                masalahbuilder.setLength(masalahbuilder.length()-1);
+                                iyembuilder3.append(
+                                    "{" +
+                                        "\"title\": \"Masalah Keperawatan\"," +
+                                        "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://loinc.org\"," +
+                                                    "\"code\": \"11450-4\"," +
+                                                    "\"display\": \"Problem list - Reported\"" +
+                                                "}" +
+                                            "]" +
+                                        "}," +
+                                        "\"entry\": [" +
+                                            masalahbuilder.toString() +
                                         "]" +
                                     "}"
                                 );
@@ -7396,13 +7690,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                     "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,16).toString()+"\"}" +
                                                 "]" +
                                             "}"+ "," +
-                                            "{" +
-                                                "\"title\": \"Status Kehamilan & Riwayat Obstetri\"," +
-                                                "\"entry\": [" +
-                                                    iyembuilder.toString()+
-                                                    "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,18).toString()+"\"}" +
-                                                "]" +
-                                            "}"+ "," +
+                                            iyembuilder.toString()+
                                             "{" +
                                                 "\"title\": \"Pemeriksaan Fisik & Eliminasi\"," +
                                                 "\"entry\": [" +
@@ -7451,6 +7739,7 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                                                     "{\"reference\": \"Observation/"+tbAwalKeperawatanIGD.getValueAt(i,105).toString()+"\"}" +
                                                 "]" +
                                             "}"+
+                                            (iyembuilder3.length()>0?","+iyembuilder3.toString():"")+
                                             (iyembuilder2.length()>0?","+iyembuilder2.toString():"")+
                                         "]" +
                                     "}";
@@ -7471,10 +7760,13 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                             }
                             iyembuilder=null;
                             iyembuilder2=null;
+                            iyembuilder3=null;
                         }catch(Exception e){
                             System.out.println("Notifikasi Composition Awal Keperawatan IGD : "+e);
                         }
-                    }*/
+                    }
+                    masalahbuilder=null;
+                    rencanabuilder=null;
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }
