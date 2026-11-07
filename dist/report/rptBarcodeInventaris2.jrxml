@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptBarcodeInventarisGPI" language="javascript" printOrder="Horizontal" pageWidth="212" pageHeight="68" columnWidth="208" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="0" uuid="0968896a-5f36-49b7-9e40-8b51034525a4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="parameter" class="java.lang.String"/>
+	<parameter name="ruang" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, 
+                   inventaris_barang.nama_barang, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn, 
+                   inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis,inventaris.asal_barang,inventaris.tgl_pengadaan, 
+                   inventaris.harga,inventaris.status_barang,inventaris_ruang.nama_ruang,inventaris.no_rak,inventaris.no_box ,
+                   inventaris.id_ruang,inventaris_barang.id_merk,inventaris_jenis.id_jenis ,inventaris_kategori.id_kategori
+                   from inventaris inner join inventaris_barang inner join inventaris_ruang 
+                   inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk 
+                   on inventaris_barang.kode_barang=inventaris_barang.kode_barang and inventaris_barang.id_merk=inventaris_merk.id_merk 
+                   and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis 
+                   and inventaris_barang.kode_barang=inventaris.kode_barang and inventaris.id_ruang=inventaris_ruang.id_ruang 
+                   where inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.kode_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.nama_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris.no_inventaris like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris.asal_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris.tgl_pengadaan like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris.status_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_ruang.nama_ruang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.jml_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.nama_barang like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_merk.nama_merk like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.thn_produksi like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.isbn like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_kategori.nama_kategori like $P{parameter} 
+                    or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_jenis.nama_jenis like $P{parameter} order by inventaris_barang.kode_barang,inventaris.no_inventaris]]>
+	</queryString>
+	<field name="no_inventaris" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_inventaris"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_inventaris"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kode_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="kode_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COLUMN_4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="nama_merk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_merk"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_merk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_merk"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="thn_produksi" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="thn_produksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="thn_produksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_kategori" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_kategori"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_kategori"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_kategori"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_jenis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_jenis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_jenis"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="asal_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="asal_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="asal_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_pengadaan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_pengadaan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_pengadaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_ruang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_ruang"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_ruang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_ruang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rak"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_box" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_box"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_box"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_ruang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_ruang"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_ruang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_merk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_merk"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_merk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_jenis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_jenis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_jenis"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_kategori" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_kategori"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_kategori"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_kategori"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="1" width="204" height="16" uuid="3224c9e0-b740-4ec8-8a82-1d2c16fc2301">
+					<property name="com.jaspersoft.studio.unit.x" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="6" y="19" width="34" height="16" backcolor="#CCCCCC" uuid="bf2fccfe-4ed4-41ed-907f-557d229700d8">
+					<property name="com.jaspersoft.studio.unit.y" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lokasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="41" y="19" width="34" height="16" backcolor="#CCCCCC" uuid="febf7ce2-1de5-4677-91d8-59c0050d243d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tahun]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="76" y="19" width="42" height="16" backcolor="#CCCCCC" uuid="f63174cb-5315-4dbf-a94d-029e22fc1c01">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kelompok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="119" y="19" width="34" height="16" backcolor="#CCCCCC" uuid="151d1535-127b-45b8-b4b9-340f904f35ec">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="36" width="34" height="16" uuid="8218edc3-ce6f-4464-91a2-8c1dea46ac51">
+					<property name="com.jaspersoft.studio.unit.x" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_ruang}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy">
+				<reportElement x="41" y="36" width="34" height="16" uuid="f16a7862-8e2c-48ec-9e44-0fadee4798c3">
+					<property name="com.jaspersoft.studio.unit.x" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thn_produksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="36" width="42" height="16" uuid="ada10a40-0a13-4561-b851-44c24c2524ed">
+					<property name="com.jaspersoft.studio.unit.x" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_kategori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="36" width="34" height="16" uuid="9acc28e3-d356-43f6-94bf-ca1e92e9baa2">
+					<property name="com.jaspersoft.studio.unit.x" value="mm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_jenis}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="18" width="1" height="35" uuid="2c8da79c-2ed7-4f5e-94a5-ac892983f0dd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="153" y="18" width="1" height="35" uuid="fa35e8b6-e7f3-4a8c-bbdc-79f1184ec84e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="118" y="18" width="1" height="35" uuid="783fbb80-1d1c-4838-9693-5cd635719a3d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="75" y="18" width="1" height="35" uuid="78ff5ce7-8bfb-43ef-9fde-79c0501df75b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="40" y="18" width="1" height="35" uuid="91a3b551-2983-4fac-b13c-178eaaa06adf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="5" y="18" width="149" height="1" uuid="ed75a26a-7fb1-4854-90e1-7f363739ac8f">
+					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="5" y="35" width="149" height="1" uuid="5e5caa1a-6f63-4cd5-ae33-d72d8a36ad58">
+					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="5" y="52" width="149" height="1" uuid="5a5aeb5f-62de-46a9-aa21-d03563243ad2">
+					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<componentElement>
+				<reportElement x="154" y="9" width="56" height="56" uuid="d0860f7c-32af-4d39-9aa3-1d2be51de83e"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
