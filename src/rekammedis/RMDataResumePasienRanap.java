@@ -3282,9 +3282,10 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                         "select if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,"+
                         "if(kamar_inap.jam_keluar='00:00:00',current_time(),kamar_inap.jam_keluar) as jam_keluar,kamar_inap.kd_kamar,bangsal.nm_bangsal "+
                         "from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                        "where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc,kamar_inap.jam_keluar desc limit 1");
+                        "where kamar_inap.no_rawat=ifnull((select ranap_gabung.no_rawat from ranap_gabung where ranap_gabung.no_rawat2=? limit 1),?) order by kamar_inap.tgl_keluar desc,kamar_inap.jam_keluar desc limit 1");
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
+                        ps2.setString(2,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){
                             kodekamar=rs2.getString("kd_kamar");
@@ -3444,7 +3445,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                     "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
                     "inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                     "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj "+
-                    "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "+
+                    "inner join kamar_inap on kamar_inap.no_rawat=ifnull((select ranap_gabung.no_rawat from ranap_gabung where ranap_gabung.no_rawat2=reg_periksa.no_rawat limit 1),reg_periksa.no_rawat) "+
                     "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                     "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                     "where reg_periksa.no_rawat=? order by kamar_inap.tgl_keluar desc,kamar_inap.jam_keluar desc limit 1");

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="268" pageHeight="210" orientation="Landscape" columnWidth="258" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="15b5de22-5e9c-4ad8-84db-f041b25c6931">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,
+utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,
+utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop 
+from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec
+inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop 
+order by utd_pendonor.no_pendonor desc]]>
+	</queryString>
+	<field name="no_pendonor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_pendonor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="nama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="no_ktp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_ktp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tmp_lahir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tmp_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kd_kel" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="kd_kel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="kd_kec" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="kd_kec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="kd_kab" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="kd_kab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="kd_prop" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="kd_prop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="golongan_darah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="golongan_darah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="resus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="resus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="no_telp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_telp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="utd_pendonor"/>
+	</field>
+	<field name="nm_kel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_kel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kelurahan"/>
+	</field>
+	<field name="nm_kec" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_kec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kecamatan"/>
+	</field>
+	<field name="nm_kab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_kab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kabupaten"/>
+	</field>
+	<field name="nm_prop" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_prop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="propinsi"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<detail>
+		<band height="190">
+			<componentElement>
+				<reportElement x="80" y="131" width="136" height="22" uuid="d99d3135-cfab-4094-8081-aaf83eff65ef"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="65">
+					<jr:codeExpression><![CDATA[$F{no_pendonor}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="29" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="3e72cc8a-4dae-43e3-b73c-2f0361cab27f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="40" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="15dda3a0-93d1-40b0-9a94-6a60c37d6ba6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Pendonor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="62" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="dfccb001-c3ae-42f4-83f9-a0499e273e85">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.KTP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="51" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="7ae00cc6-4fbc-4186-a84e-3ef6149ebffd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[J.K.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="73" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="1ed20f80-8130-4ba3-b2b1-60f139129769">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tempat Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="84" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="e6468fc2-3ed4-48ca-bc61-a3b0251986a4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tgl.Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="95" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="89006025-ddb0-4c91-a6d5-71373198102d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="118" width="50" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="3228a168-050c-45e6-9e86-1a9667b29908">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Telp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="29" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="bee412c3-dcac-4961-8c79-bc0c59b3ac99"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="40" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="2e11ae4d-ff43-4585-8acb-d9cbba3e2d49"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="62" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="73b840d3-1980-4a54-aa79-b077f98542db"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="51" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="2bf5be48-9bbe-4702-8513-fca4cdc9aefd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="73" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="ae0ae6bd-e188-4ca7-8efe-0547af722dd7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="84" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="5366b683-fd50-4ef2-bdc4-d5310499b4f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="95" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="cf50d53a-15ec-4535-bb78-e13dea738e8d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="118" width="5" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="b8d2f4b0-8c40-4208-aee0-3fd6ff33a102"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="29" width="180" height="11" uuid="22998d7e-474a-4fbb-b877-a6c5b1344773">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_pendonor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="40" width="180" height="11" uuid="066665aa-506f-47be-91d3-c19831702911">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="62" width="180" height="11" uuid="384f3215-f83a-4fcf-9985-a0f8976c270b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_ktp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="51" width="180" height="11" uuid="8c1891ac-acfa-4600-a292-03df0a8fd471">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jk}.replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="73" width="180" height="11" uuid="bf5ad65c-9ddd-4071-9c57-70ed6efbd049">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tmp_lahir}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="84" width="180" height="11" uuid="42890578-4ccc-46e9-9789-d2a67bfe4569">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="95" width="180" height="22" uuid="8b02a5d5-670c-4806-b95c-7ddc9a89cce6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}+", "+$F{nm_kel}+", "+$F{nm_kec}+", "+$F{nm_kab}+", "+$F{nm_prop}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="10" y="131" width="39" height="22" uuid="be1a2d8d-b24c-422b-be73-a3727861bc72"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="18"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{golongan_darah}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="65" y="118" width="180" height="11" uuid="a4b87aec-116b-47b1-aab9-e692ed053e45">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_telp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="49" y="131" width="30" height="22" uuid="d448fb59-6780-4fa9-8d90-8e4caaa7b47c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
