@@ -1,16 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * DlgLhtBiaya.java
- *
- * Created on 12 Jul 10, 16:21:34
- */
-
 package rekammedis;
 
+import bridging.ApiSatuSehat;
+import bridging.SatuSehatCekNIK;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -66,8 +57,18 @@ import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
+import javafx.embed.swing.JFXPanel;
+import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javax.swing.SwingUtilities;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 
 
@@ -93,6 +94,12 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private JsonNode root;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private String link="";
+    private ApiSatuSehat api=new ApiSatuSehat();
+    private HttpHeaders headers;
+    private JFXPanel PanelRMESatuSehat;
+    private WebEngine webRMESatuSehat;
+    private org.springframework.http.HttpEntity requestEntity;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -510,6 +517,11 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLRetensi = new widget.editorpane();
         Scroll6 = new widget.ScrollPane();
         LoadHTMLWearable = new widget.editorpane();
+        PanelSatuSehat = new widget.PanelBiasa();
+        panelisiSatuSehat = new widget.panelisi();
+        BtnSatuSehatRME1 = new widget.Button();
+        BtnSatuSehatRME = new widget.Button();
+        PanelWebSatuSehat = new widget.PanelBiasa();
         PanelInput = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
         FormInput = new widget.panelisi();
@@ -639,7 +651,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2026 22:51:55" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2026 10:09:07" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -2495,6 +2507,50 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         TabRawat.addTab("Wearable", Scroll6);
 
+        PanelSatuSehat.setBackground(new java.awt.Color(255, 255, 255));
+        PanelSatuSehat.setBorder(null);
+        PanelSatuSehat.setName("PanelSatuSehat"); // NOI18N
+        PanelSatuSehat.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelisiSatuSehat.setBorder(null);
+        panelisiSatuSehat.setForeground(new java.awt.Color(50, 50, 50));
+        panelisiSatuSehat.setName("panelisiSatuSehat"); // NOI18N
+        panelisiSatuSehat.setPreferredSize(new java.awt.Dimension(44, 38));
+        panelisiSatuSehat.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 4));
+
+        BtnSatuSehatRME1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/EDIT2.png"))); // NOI18N
+        BtnSatuSehatRME1.setText("Persetujuan Akses");
+        BtnSatuSehatRME1.setName("BtnSatuSehatRME1"); // NOI18N
+        BtnSatuSehatRME1.setPreferredSize(new java.awt.Dimension(160, 30));
+        BtnSatuSehatRME1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSatuSehatRME1ActionPerformed(evt);
+            }
+        });
+        panelisiSatuSehat.add(BtnSatuSehatRME1);
+
+        BtnSatuSehatRME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnSatuSehatRME.setText("Buka RME Nasional");
+        BtnSatuSehatRME.setEnabled(false);
+        BtnSatuSehatRME.setName("BtnSatuSehatRME"); // NOI18N
+        BtnSatuSehatRME.setPreferredSize(new java.awt.Dimension(160, 30));
+        BtnSatuSehatRME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSatuSehatRMEActionPerformed(evt);
+            }
+        });
+        panelisiSatuSehat.add(BtnSatuSehatRME);
+
+        PanelSatuSehat.add(panelisiSatuSehat, java.awt.BorderLayout.PAGE_START);
+
+        PanelWebSatuSehat.setBackground(new java.awt.Color(255, 255, 255));
+        PanelWebSatuSehat.setBorder(null);
+        PanelWebSatuSehat.setName("PanelWebSatuSehat"); // NOI18N
+        PanelWebSatuSehat.setLayout(new java.awt.BorderLayout(1, 1));
+        PanelSatuSehat.add(PanelWebSatuSehat, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("RME Satu Sehat", PanelSatuSehat);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         PanelInput.setBackground(new java.awt.Color(255, 255, 255));
@@ -3851,6 +3907,14 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }//GEN-LAST:event_BtnDownloadBukaFileActionPerformed
 
+    private void BtnSatuSehatRMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuSehatRMEActionPerformed
+        runBackground(() -> tampilSatuSehat("shl"));
+    }//GEN-LAST:event_BtnSatuSehatRMEActionPerformed
+
+    private void BtnSatuSehatRME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuSehatRME1ActionPerformed
+        runBackground(() -> tampilSatuSehat("chl"));
+    }//GEN-LAST:event_BtnSatuSehatRME1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3880,6 +3944,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Button BtnKeluar;
     private widget.Button BtnPasien;
     private widget.Button BtnPrint;
+    private widget.Button BtnSatuSehatRME;
+    private widget.Button BtnSatuSehatRME1;
     private widget.Button BtnSimpanTandaTangan;
     private widget.TextBox CacatFisik;
     private widget.CekBox ChkAccor;
@@ -3903,6 +3969,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox NoRawat;
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
+    private widget.PanelBiasa PanelSatuSehat;
+    private widget.PanelBiasa PanelWebSatuSehat;
     private widget.TextBox Pekerjaan;
     private widget.TextBox Pendidikan;
     private widget.PasswordBox Phrase;
@@ -4167,6 +4235,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
+    private widget.panelisi panelisiSatuSehat;
     private widget.Table tbRegistrasi;
     // End of variables declaration//GEN-END:variables
 
@@ -38302,6 +38371,81 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Penilaian Skor BISHOP : "+e);
+        }
+    }
+    
+    private void tampilSatuSehat(String endpoint) {
+        try {
+            BtnSatuSehatRME.setEnabled(false);
+            String idpasien="",idpraktisi="";
+            SatuSehatCekNIK cekID=new SatuSehatCekNIK();
+            idpasien=cekID.tampilIDPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",NoRM.getText()));
+            if(idpasien.equals("")){
+                JOptionPane.showMessageDialog(null,"Pasien belum terdaftar di SATUSEHAT atau NIK pasien belum diisi");
+                return;
+            }
+            idpraktisi=cekID.tampilIDParktisi(Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
+            if(idpraktisi.equals("")){
+                JOptionPane.showMessageDialog(null,"Praktisi belum terdaftar di SATUSEHAT atau NIK praktisi belum diisi");
+                return;
+            }
+            link=koneksiDB.URLRMESATUSEHAT()+"/"+endpoint;
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+            json="{" +
+                    "\"patient_id\": \""+idpasien+"\"," +
+                    "\"patient_name\": \""+NmPasien.getText()+"\"," +
+                    "\"practitioner_id\": \""+idpraktisi+"\"," +
+                    "\"practitioner_name\": \""+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",akses.getkode())+"\"," +
+                    "\"organization_id\": \""+koneksiDB.IDSATUSEHAT()+"\"," +
+                    "\"organization_name\": \""+akses.getnamars()+"\"" +
+                 "}";
+            System.out.println("URL : "+link);
+            System.out.println("Request JSON : "+json);
+            
+            requestEntity = new org.springframework.http.HttpEntity(json,headers);
+            try {
+                json=api.getRest().exchange(link, HttpMethod.POST, requestEntity, String.class).getBody();
+            } catch (HttpClientErrorException | HttpServerErrorException ex) {
+                json=ex.getResponseBodyAsString();
+            }
+            System.out.println("Result JSON : "+json);
+            root = mapper.readTree(json);
+            link=root.path("data").path(endpoint.equals("chl")?"verificationUrl":"shlinkUrl").asText();
+            if(link.equals("")){
+                JOptionPane.showMessageDialog(null,root.path("message").asText());
+                if(root.path("message").asText().contains("belum dibagikan")){
+                    JOptionPane.showMessageDialog(null,"Pasien belum mengaktifkan berbagi resume medis.\n\nMinta pasien:\n"+
+                            "1. Membuka aplikasi SATUSEHAT Mobile\n2. Melakukan verifikasi identitas (KYC)\n"+
+                            "3. Mengaktifkan 'Bagikan Resume Medis' di pengaturan aplikasi");
+                }
+                return;
+            }else{
+                BtnSatuSehatRME.setEnabled(true);
+            }
+            JOptionPane.showMessageDialog(null,endpoint.equals("chl")?"Minta pasien scan QR / input kode akses di SATUSEHAT Mobile, lalu klik Buka RME Nasional":"RME Nasional terbuka");
+            SwingUtilities.invokeLater(() -> {
+                if(PanelRMESatuSehat==null){
+                    PanelRMESatuSehat=new JFXPanel();
+                    PanelWebSatuSehat.add(PanelRMESatuSehat,java.awt.BorderLayout.CENTER);
+                    PanelWebSatuSehat.revalidate();
+                }
+                Platform.setImplicitExit(false);
+                Platform.runLater(() -> {
+                    if(webRMESatuSehat==null){
+                        WebView view=new WebView();
+                        webRMESatuSehat=view.getEngine();
+                        webRMESatuSehat.setJavaScriptEnabled(true);
+                        webRMESatuSehat.setCreatePopupHandler(p -> webRMESatuSehat);
+                        PanelRMESatuSehat.setScene(new Scene(view));
+                    }
+                    webRMESatuSehat.load(link);
+                });
+            });
+        } catch (Exception e) {
+            System.out.println("Notifikasi Bridging : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal : "+e.getMessage());
         }
     }
     
