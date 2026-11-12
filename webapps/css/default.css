@@ -47,7 +47,7 @@ h1 {
 	padding: 5px 40px 0 30px; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
 	color:#98ac8e;
 	font-size:11px;
-        font:Tahoma;
+        font-family: Tahoma;
         font-style: normal;
         background:url(images/folder_full.png) no-repeat left center;
         height:25px;
@@ -64,7 +64,7 @@ h1 {
 	padding: 5px 40px 0 30px; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
 	color:#43573;
 	font-size:11px;
-        font:Tahoma;
+        font-family: Tahoma;
         font-style: normal;
         background:url(images/folder_full.png) no-repeat left center;
         height:25px;
@@ -393,7 +393,7 @@ color: #323232;
 	padding-right:8px;
 	color:#323232;
 	font-size: 15px;
-        font: Tahoma;
+        font-family: Tahoma;
 }
 
 .button {
@@ -402,7 +402,7 @@ color: #323232;
 	border: none;
 	background: #C11212;
 	font-size: 22px;
-        font: Tahoma;
+        font-family: Tahoma;
 	color: #ffffff;
 }
 
@@ -412,7 +412,7 @@ color: #323232;
 	border: none;
 	background: #C11212;
 	font-size: 15px;
-        font: Tahoma;
+        font-family: Tahoma;
 	color: #ffffff;
         width:100px;
 }
@@ -420,7 +420,7 @@ color: #323232;
 .text {
 	background: #ffffff;
         font-size: 20px;
-        font: Tahoma;
+        font-family: Tahoma;
 	padding: 3px 0 3px 5px;
 	border: 1px solid #e2e7de;
 	color: #323232;
@@ -429,7 +429,7 @@ color: #323232;
 .text2 {
 	background: #ffffff;
         font-size: 11px;
-        font: Tahoma;
+        font-family: Tahoma;
 	padding: 3px 0 3px 5px;
 	border: 1px solid #e2e7de;
 	color: #323232;
@@ -439,11 +439,15 @@ color: #323232;
 .text3 {
 	background: #ffffff;
         font-size: 11px;
-        font: Tahoma;
+        font-family: Tahoma;
 	padding: 3px 0 3px 5px;
 	border: 1px solid #e2e7de;
 	color: #323232;
         width:90px;
+}
+
+select.text, select.text2, select.text3 {
+        padding-right: 20px;
 }
 
 .caption{

@@ -604,6 +604,11 @@ color: #333333;
 	color: #000000;
 }
 
+select.text, select.text2, select.text3, select.text4, select.text5, select.text6, select.text7 {
+        font-family: Tahoma;
+        padding-right: 20px;
+}
+
 .caption{
         height: 22px;
 	padding: 0px 0 0 3px;

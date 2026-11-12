@@ -5,17 +5,17 @@
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "8136a1e5c26f16fb2873573b4c33ca0d9f85fbe54918e1939505315d992cf05e";   
+       $keyRS = "abcb41899d81dfdc504eceb241af9f52d07c221fbee5cebd425613a49041ad25";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://eklaim.bolmongkab.go.id/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.10.153/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "DP";
+        $kelasRS = "DS";
         return $kelasRS;
     }
 

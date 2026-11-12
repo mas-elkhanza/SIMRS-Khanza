@@ -293,3 +293,140 @@ function validasiPengguna()
 
 
 
+
+/* Perbaikan <select> pada WebView JavaFX di macOS: klik mouse pada popup bawaan tidak memilih item. Dropdown diganti dengan daftar HTML. */
+(function () {
+    var ua = navigator.userAgent;
+    if (ua.indexOf('JavaFX') < 0 || ua.indexOf('Macintosh') < 0 || window.__selectJavaFX) {
+        return;
+    }
+    window.__selectJavaFX = true;
+    var box = null, sel = null, idx = -1;
+
+    function tutup() {
+        if (box && box.parentNode) {
+            box.parentNode.removeChild(box);
+        }
+        box = null;
+        sel = null;
+        idx = -1;
+    }
+
+    function sorot(i) {
+        var it = box.childNodes, n;
+        for (n = 0; n < it.length; n++) {
+            it[n].style.background = (n === i) ? '#1a8fc9' : '#ffffff';
+            it[n].style.color = (n === i) ? '#ffffff' : '#323232';
+        }
+        idx = i;
+        if (it[i]) {
+            var t = it[i].offsetTop, h = it[i].offsetHeight;
+            if (t < box.scrollTop) {
+                box.scrollTop = t;
+            } else if (t + h > box.scrollTop + box.clientHeight) {
+                box.scrollTop = t + h - box.clientHeight;
+            }
+        }
+    }
+
+    function pilih(i) {
+        var s = sel;
+        tutup();
+        if (s && i >= 0 && s.selectedIndex !== i) {
+            s.selectedIndex = i;
+            var e1 = document.createEvent('HTMLEvents');
+            e1.initEvent('input', true, false);
+            s.dispatchEvent(e1);
+            var e2 = document.createEvent('HTMLEvents');
+            e2.initEvent('change', true, false);
+            s.dispatchEvent(e2);
+        }
+        if (s) {
+            s.focus();
+        }
+    }
+
+    function buka(s) {
+        var r = s.getBoundingClientRect(), cs = window.getComputedStyle(s), o = s.options, n, d;
+        tutup();
+        sel = s;
+        box = document.createElement('div');
+        box.style.cssText = 'position:absolute;z-index:2147483647;background:#fff;border:1px solid #9aa5a0;box-shadow:0 3px 8px rgba(0,0,0,.3);overflow-y:auto;max-height:260px;margin:0;padding:2px 0;box-sizing:border-box;';
+        box.style.fontFamily = cs.fontFamily;
+        box.style.fontSize = cs.fontSize;
+        box.style.minWidth = r.width + 'px';
+        for (n = 0; n < o.length; n++) {
+            d = document.createElement('div');
+            d.appendChild(document.createTextNode(o[n].text === '' ? ' ' : o[n].text));
+            d.style.cssText = 'padding:2px 8px;cursor:default;white-space:nowrap;';
+            d.setAttribute('data-i', n);
+            if (o[n].disabled) {
+                d.style.color = '#999999';
+                d.setAttribute('data-d', '1');
+            }
+            box.appendChild(d);
+        }
+        document.body.appendChild(box);
+        var tinggi = box.offsetHeight, bawah = window.innerHeight - r.bottom;
+        box.style.left = (r.left + window.pageXOffset) + 'px';
+        box.style.top = ((bawah < tinggi && r.top > bawah) ? (r.top - tinggi) : r.bottom) + window.pageYOffset + 'px';
+        sorot(s.selectedIndex);
+    }
+
+    document.addEventListener('mousedown', function (e) {
+        var t = e.target;
+        if (box && box.contains(t)) {
+            e.preventDefault();
+            return;
+        }
+        if (t.tagName === 'SELECT' && !t.multiple && !(t.size > 1) && !t.disabled) {
+            e.preventDefault();
+            var sama = (sel === t);
+            t.focus();
+            if (sama) {
+                tutup();
+            } else {
+                buka(t);
+            }
+            return;
+        }
+        tutup();
+    }, true);
+
+    document.addEventListener('click', function (e) {
+        var t = e.target;
+        if (box && box.contains(t) && t.getAttribute('data-i') !== null && t.getAttribute('data-d') === null) {
+            pilih(parseInt(t.getAttribute('data-i'), 10));
+        }
+    }, true);
+
+    document.addEventListener('mouseover', function (e) {
+        var t = e.target;
+        if (box && box.contains(t) && t.getAttribute('data-i') !== null) {
+            sorot(parseInt(t.getAttribute('data-i'), 10));
+        }
+    }, true);
+
+    document.addEventListener('keydown', function (e) {
+        if (!box) {
+            return;
+        }
+        var k = e.keyCode, n = box.childNodes.length;
+        if (k === 27 || k === 9) {
+            tutup();
+        } else if (k === 40 && idx < n - 1) {
+            e.preventDefault();
+            sorot(idx + 1);
+        } else if (k === 38 && idx > 0) {
+            e.preventDefault();
+            sorot(idx - 1);
+        } else if (k === 13 || k === 32) {
+            e.preventDefault();
+            e.stopPropagation();
+            pilih(idx);
+        }
+    }, true);
+
+    window.addEventListener('blur', tutup);
+    window.addEventListener('resize', tutup);
+})();
