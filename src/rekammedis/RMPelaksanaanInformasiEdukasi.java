@@ -181,8 +181,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new widget.PopupMenu();
-        MnCetakPelaksanaanEdukasi = new widget.MenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -255,22 +253,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         Scroll5 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnCetakPelaksanaanEdukasi.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakPelaksanaanEdukasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakPelaksanaanEdukasi.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakPelaksanaanEdukasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakPelaksanaanEdukasi.setText("Formulir Pelaksanaan Informasi & Edukasi");
-        MnCetakPelaksanaanEdukasi.setName("MnCetakPelaksanaanEdukasi"); // NOI18N
-        MnCetakPelaksanaanEdukasi.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnCetakPelaksanaanEdukasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCetakPelaksanaanEdukasiActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnCetakPelaksanaanEdukasi);
-
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
 
@@ -302,7 +284,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -458,10 +439,9 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari1);
 
@@ -472,10 +452,9 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
@@ -568,10 +547,9 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setOpaque(false);
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
@@ -773,7 +751,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(393, 150, 70, 23);
 
-        Metode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ceramah", "Diskusi", "Demonstrasi" }));
+        Metode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ceramah", "Diskusi", "Demonstrasi", "Simulasi", "Observasi", "Praktik Langsung", "Lain-lain" }));
         Metode.setName("Metode"); // NOI18N
         Metode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1294,35 +1272,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Materi);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCetakPelaksanaanEdukasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakPelaksanaanEdukasiActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            dpjp=Sequel.cariIsi("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            if(dpjp.equals("")){
-                dpjp=Sequel.cariIsi("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            }
-            param.put("dpjp",dpjp);   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirPelaksanaanInformasiEdukasi.jasper","report","::[ Formulir Pelaksanaan Informasi & Edukasi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,pelaksanaan_informasi_edukasi.tanggal,pegawai.jbtn,reg_periksa.tgl_registrasi,"+
-                    "pelaksanaan_informasi_edukasi.nik,pegawai.nama,pelaksanaan_informasi_edukasi.materi_edukasi,pelaksanaan_informasi_edukasi.keterangan,pelaksanaan_informasi_edukasi.diberikan_pada,reg_periksa.jam_reg,"+
-                    "pelaksanaan_informasi_edukasi.keterangan_diberikan_pada,pelaksanaan_informasi_edukasi.lama_edukasi,pelaksanaan_informasi_edukasi.metode_edukasi,pelaksanaan_informasi_edukasi.hasil_verifikasi,"+
-                    "pelaksanaan_informasi_edukasi.status,concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaanedukasi/',bukti_pelaksanaan_informasi_edukasi.photo) as photo  "+
-                    "from pelaksanaan_informasi_edukasi inner join reg_periksa on pelaksanaan_informasi_edukasi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pelaksanaan_informasi_edukasi.nik=pegawai.nik "+
-                    "inner join bukti_pelaksanaan_informasi_edukasi on pelaksanaan_informasi_edukasi.no_rawat=bukti_pelaksanaan_informasi_edukasi.no_rawat "+
-                    "and pelaksanaan_informasi_edukasi.tanggal=bukti_pelaksanaan_informasi_edukasi.tanggal "+     
-                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                    "order by pelaksanaan_informasi_edukasi.tanggal",param);
-        }
-    }//GEN-LAST:event_MnCetakPelaksanaanEdukasiActionPerformed
-
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,Materi,Lama);
     }//GEN-LAST:event_KeteranganKeyPressed
@@ -1505,7 +1454,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.TextArea Materi;
     private widget.ComboBox Menit;
     private widget.ComboBox Metode;
-    private widget.MenuItem MnCetakPelaksanaanEdukasi;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.PanelBiasa PanelAccor;
@@ -1541,7 +1489,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollPane1;

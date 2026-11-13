@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef67bd88-74aa-4304-a7f8-a091551dc8e0">
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString language="SQL">
+		<![CDATA[select perpustakaan_bayar_denda.tgl_denda,perpustakaan_bayar_denda.no_anggota,perpustakaan_anggota.nama_anggota,
+                perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, 
+                perpustakaan_denda.kode_denda,perpustakaan_denda.jenis_denda,
+                perpustakaan_bayar_denda.besar_denda,perpustakaan_bayar_denda.keterangan_denda from perpustakaan_inventaris 
+                inner join perpustakaan_buku inner join perpustakaan_bayar_denda inner join perpustakaan_anggota inner join perpustakaan_denda on 
+                perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_bayar_denda.no_anggota=perpustakaan_anggota.no_anggota 
+                and perpustakaan_inventaris.no_inventaris=perpustakaan_bayar_denda.no_inventaris and perpustakaan_bayar_denda.kode_denda=perpustakaan_denda.kode_denda ]]>
+	</queryString>
+	<field name="tgl_denda" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_denda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_bayar_denda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_anggota" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_anggota"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_bayar_denda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_anggota" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_anggota"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_anggota"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_inventaris" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_inventaris"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_inventaris"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_buku" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_buku"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_buku"/>
+	</field>
+	<field name="judul_buku" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="judul_buku"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_buku"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_denda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_denda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_denda"/>
+	</field>
+	<field name="jenis_denda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jenis_denda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_denda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="besar_denda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="besar_denda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_bayar_denda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keterangan_denda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="keterangan_denda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="perpustakaan_bayar_denda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{besar_denda}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="30" width="800" height="14" uuid="b783b602-db73-425b-af17-6dd1c1d2c0a7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="800" height="14" uuid="f2a8d45b-a543-46d4-94dd-04ae14a9bf87"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="11" width="800" height="14" uuid="be294610-fbb2-4bca-a023-4fcb11e58013"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="21" width="800" height="14" uuid="59b367cd-5980-4c5b-bf3d-2f2094cc527e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" isUsingCache="true" onErrorType="Blank">
+				<reportElement x="1" y="0" width="45" height="43" uuid="31eecde2-5332-401f-8fc4-2e7248be120f"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<line direction="BottomUp">
+				<reportElement x="0" y="43" width="801" height="1" uuid="7e94dc9a-219e-46f8-9ec0-33c2c5e89201"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="52" width="800" height="28" uuid="b9004612-7fd3-4c7e-95a9-86587488d2b3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DATA PEMBAYARAN DENDA LAIN-LAIN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="3" width="55" height="11" forecolor="#000000" backcolor="#999999" uuid="bd213edd-38b9-4d85-9f36-f36084f7586a"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TGL.DENDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="62" y="3" width="69" height="11" forecolor="#000000" backcolor="#999999" uuid="3101e2c6-b1d3-4af0-855b-32bc2b0fe880"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.ANGGOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="133" y="3" width="83" height="11" forecolor="#000000" backcolor="#999999" uuid="2d2513d7-ed0f-4ea0-9f5b-fa06d4c094bf"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA ANGGOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="218" y="3" width="69" height="11" forecolor="#000000" backcolor="#999999" uuid="15695834-77a8-4a76-9a55-67a99996af2e"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.INVENTARIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="290" y="3" width="200" height="11" forecolor="#000000" backcolor="#999999" uuid="b2c2ecdc-295e-421e-a67c-b09d8c9d275f"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUDUL INVENTARIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="493" y="3" width="76" height="11" forecolor="#000000" backcolor="#999999" uuid="98e2dd67-0662-4901-ad71-4ede59bd41a6"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS DENDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="571" y="3" width="91" height="11" forecolor="#000000" backcolor="#999999" uuid="9400e9a4-5c53-41a5-b0ef-9d987d67dc46"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BESAR DENDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="664" y="3" width="139" height="11" forecolor="#000000" backcolor="#999999" uuid="33b8f72d-f006-4fc9-9bf0-869d94a7265b"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KETERANGAN DENDA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="a40b523b-0cba-4816-a0af-e5f6fcd2ad45"/>
+			</line>
+			<line>
+				<reportElement x="0" y="16" width="802" height="1" uuid="74e0cb50-fbdc-49df-a8ae-d5b41f115e0f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement x="4" y="0" width="55" height="10" uuid="34f6ec09-0577-459b-afa4-88d95cac8ae5"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_denda}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="62" y="0" width="69" height="10" uuid="a1f5ca67-9a21-4792-8ba6-c2502df0f5e7"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_anggota}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="133" y="0" width="83" height="10" uuid="1075f9c9-0efa-4c1e-bde3-08437d12c119"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_anggota}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="218" y="0" width="69" height="10" uuid="f68dddcd-5d1b-4adb-91d5-bc4fd82f6edb"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_inventaris}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="290" y="0" width="200" height="10" uuid="56263b53-5046-40d8-9e0e-da8d1c01e495"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{judul_buku}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="493" y="0" width="76" height="10" uuid="dbe8a40c-2a33-45f2-ba5a-d05ac9994ac1"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_denda}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement x="571" y="0" width="91" height="10" uuid="906c10af-7f94-4ed7-bcf0-b0a23e8895a9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{besar_denda}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="664" y="0" width="139" height="10" uuid="96a79319-ef37-4cf9-8c77-e524c72f8fa8"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keterangan_denda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="739" y="6" width="61" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e18e7fb3-16a9-4459-ae58-ef0b77ec1524"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="664" y="6" width="75" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="fa6f3b44-4b1c-4e3c-8c3d-ace1d30d4684"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="7" y="6" width="209" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="b20c7452-aa31-47f4-8e42-f6890f41b7ae"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="6" width="143" height="11" uuid="940eba96-7bc2-4b59-9049-2408263c9bd0"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="247" y="6" width="40" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ba7a3c73-0e93-49be-be15-0ee0a3da254d"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECORD :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="e195afee-1713-4eab-bb25-d62b49e289a7"/>
+			</line>
+			<line>
+				<reportElement x="0" y="23" width="802" height="1" uuid="fa08caaf-798d-4277-8d21-2e64772c8bed"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="546" y="6" width="115" height="11" uuid="252741dc-2241-427a-b2d4-a9142d23b309"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="475" y="6" width="71" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="b0307af3-79c0-439a-907e-dce40df0c9d8"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DENDA :]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
