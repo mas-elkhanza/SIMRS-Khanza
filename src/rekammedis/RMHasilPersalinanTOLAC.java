@@ -299,6 +299,7 @@ public final class RMHasilPersalinanTOLAC extends javax.swing.JDialog {
 
         MnHasilPersalinanTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHasilPersalinanTOLAC.setText("Formulir Resume Hasil Persalinan TOLAC");
+        MnHasilPersalinanTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnHasilPersalinanTOLAC.setName("MnHasilPersalinanTOLAC"); // NOI18N
         MnHasilPersalinanTOLAC.setPreferredSize(new java.awt.Dimension(260, 26));
         MnHasilPersalinanTOLAC.addActionListener(new java.awt.event.ActionListener() {

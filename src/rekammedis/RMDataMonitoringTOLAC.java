@@ -223,6 +223,7 @@ public final class RMDataMonitoringTOLAC extends javax.swing.JDialog {
 
         MnMonitoringTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnMonitoringTOLAC.setText("Formulir Monitoring Selama TOLAC");
+        MnMonitoringTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnMonitoringTOLAC.setName("MnMonitoringTOLAC"); // NOI18N
         MnMonitoringTOLAC.setPreferredSize(new java.awt.Dimension(240, 26));
         MnMonitoringTOLAC.addActionListener(new java.awt.event.ActionListener() {

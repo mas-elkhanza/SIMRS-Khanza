@@ -34,7 +34,7 @@ public class Table extends JTable {
     static final Color GARIS_BARIS  = new Color(228, 235, 230);   
     static final Color GARIS_KOLOM  = new Color(238, 242, 239);   
     static final Color TEKS_PILIH   = new Color(14, 59, 36);      
-    static final int   TINGGI_HEADER = 22;
+    static final int   TINGGI_HEADER = 21;
     static final int   ARC_PILIH     = 8;
     private JViewport viewportTerpasang;
     private final ChangeListener scrollHandler = e -> repaint();

@@ -246,9 +246,10 @@ public final class RMPenilaianBishop extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulir.setText("Formulir Penilaian Skor Bishop");
+        MnFormulir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setPreferredSize(new java.awt.Dimension(230, 26));
         MnFormulir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

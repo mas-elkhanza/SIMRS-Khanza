@@ -299,11 +299,9 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningTOLAC.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningTOLAC.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningTOLAC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSkriningTOLAC.setText("Formulir Admisi & Skoring TOLAC");
+        MnSkriningTOLAC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningTOLAC.setName("MnSkriningTOLAC"); // NOI18N
         MnSkriningTOLAC.setPreferredSize(new java.awt.Dimension(230, 26));
         MnSkriningTOLAC.addActionListener(new java.awt.event.ActionListener() {
@@ -496,7 +494,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -509,7 +507,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -629,7 +627,7 @@ public final class RMAdmisiSkoringTOLAC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -333,6 +333,7 @@ public final class RMPenilaianGRACE extends javax.swing.JDialog {
 
         MnFormulir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulir.setText("Formulir Penilaian GRACE Score");
+        MnFormulir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnFormulir.setName("MnFormulir"); // NOI18N
         MnFormulir.setPreferredSize(new java.awt.Dimension(205, 26));
         MnFormulir.addActionListener(new java.awt.event.ActionListener() {
