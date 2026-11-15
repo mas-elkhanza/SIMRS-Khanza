@@ -472,7 +472,6 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
@@ -579,10 +578,9 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-04-2026 14:52:47" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2026 07:54:44" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setOpaque(false);
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
@@ -682,7 +680,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         FormInput.add(IntervalPR);
         IntervalPR.setBounds(454, 140, 270, 23);
 
-        SegmenST.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        SegmenST.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "Poor R wave Progression", "ST depresi I, aVL", "ST depresi V1-V4", "early repolarization lateral", "ST depresi III, aVF", "ST depresi II, III, aVF" }));
         SegmenST.setName("SegmenST"); // NOI18N
         SegmenST.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -717,7 +715,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         FormInput.add(jLabel127);
         jLabel127.setBounds(370, 200, 80, 23);
 
-        GelombangT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        GelombangT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "T inversi V1-V4", "T inversi V1-V5", "T bifasik V1-V4", "T inversi V1-V3", "Mild T bifasik V1-V2", "T bifasik V1-V2", "incomplete RBBB (dapat varian normal EKG)" }));
         GelombangT.setName("GelombangT"); // NOI18N
         GelombangT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -806,10 +804,9 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -820,10 +817,9 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
@@ -895,7 +891,6 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
-        TabData.setForeground(new java.awt.Color(50, 50, 50));
         TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
