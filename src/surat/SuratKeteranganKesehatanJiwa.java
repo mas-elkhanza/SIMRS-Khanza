@@ -35,7 +35,9 @@ public final class SuratKeteranganKesehatanJiwa extends javax.swing.JDialog {
     public SuratKeteranganKesehatanJiwa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(570,290);
+        // Ukuran jendela diambil dari pack() di initComponents (preferredSize FormInput = 560x195).
+        // Jangan setSize() lagi setelah pack(): di macOS ukuran bisa kembali ke hasil pack()
+        // sehingga field input terpotong.
 
         NoSurat.setDocument(new batasInput((byte)50).getKata(NoSurat));
         Kesimpulan.setDocument(new batasInput((byte)100).getKata(Kesimpulan));
@@ -85,7 +87,7 @@ public final class SuratKeteranganKesehatanJiwa extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 195));
+        FormInput.setPreferredSize(new java.awt.Dimension(560, 195));
         FormInput.setLayout(null);
 
         jLabel1.setText("No. Rawat :");
