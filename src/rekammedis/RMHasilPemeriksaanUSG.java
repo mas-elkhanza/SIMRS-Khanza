@@ -179,10 +179,10 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         JenisPrestasi.setDocument(new batasInput((int)30).getKata(JenisPrestasi));
         UkuranKantong.setDocument(new batasInput((int)6).getKata(UkuranKantong));
         UkuranBokong.setDocument(new batasInput((int)6).getKata(UkuranBokong));
-        DiameterBiparietal.setDocument(new batasInput((int)6).getKata(DiameterBiparietal));
-        PanjangFemur.setDocument(new batasInput((int)6).getKata(PanjangFemur));
-        LingkarAbdomen.setDocument(new batasInput((int)6).getKata(LingkarAbdomen));
-        TafsiranBerat.setDocument(new batasInput((int)6).getKata(TafsiranBerat));
+        DiameterBiparietal.setDocument(new batasInput((int)10).getKata(DiameterBiparietal));
+        PanjangFemur.setDocument(new batasInput((int)10).getKata(PanjangFemur));
+        LingkarAbdomen.setDocument(new batasInput((int)10).getKata(LingkarAbdomen));
+        TafsiranBerat.setDocument(new batasInput((int)10).getKata(TafsiranBerat));
         UsiaKehamilan.setDocument(new batasInput((int)15).getKata(UsiaKehamilan));
         Plasenta.setDocument(new batasInput((int)50).getKata(Plasenta));
         IndexCairan.setDocument(new batasInput((int)40).getKata(IndexCairan));
