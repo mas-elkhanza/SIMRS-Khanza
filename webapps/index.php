@@ -194,6 +194,20 @@
                                       </a>
                                     </td>
                                     <td width='25%' align='center'>
+                                      <a target=_blank href=pernyataanbersediadirujuk/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/document_6777296.png'/><br>
+                                         Pernyataan Bersedia Dirujuk                                    
+                                      </a>
+                                    </td>
+                                </tr>
+                                <tr width='100%' align='center'>
+                                    <td width='25%' align='center'>
+                                      <a target=_blank href=pernyataanbersediamenungguigd/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/flashcard_5386247.png'/><br>
+                                         Pernyataan Bersedia Menunggu Di IGD/UGD                                   
+                                      </a>
+                                    </td>
+                                    <td width='25%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               

@@ -1243,6 +1243,7 @@ import rekammedis.RMPenilaianBishop;
 import rekammedis.RMPenilaianGRACE;
 import rekammedis.RMProfilRingkasRawatJalan;
 import rekammedis.RMReaksiTransfusi;
+import surat.SuratKesediaanMenungguIGD;
 import surat.SuratPernyataanBersediaDirujuk;
 
 
@@ -23833,6 +23834,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratPernyataanBersediaMenungguDiIGDActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratKesediaanMenungguIGD aplikasi=new SuratKesediaanMenungguIGD(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24554,7 +24568,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
             btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore,btnPenilaianBISHOPScore,btnProfilRingkasRawatJalan,
-            btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk;
+            btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk,btnSuratPernyataanBersediaMenungguDiIGD;
     
     public void isWall(){
         try{            
@@ -30324,6 +30338,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_pernyataan_bersedia_dirujuk()==true){
                 Panelmenu.add(btnSuratPernyataanBersediaDirujuk);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_kesediaan_menunggu_igd()==true){
+                Panelmenu.add(btnSuratPernyataanBersediaMenungguDiIGD);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==16){ 
@@ -36434,6 +36453,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_pernyataan_bersedia_dirujuk()==true){
             Panelmenu.add(btnSuratPernyataanBersediaDirujuk);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_kesediaan_menunggu_igd()==true){
+            Panelmenu.add(btnSuratPernyataanBersediaMenungguDiIGD);
             jmlmenu++;
         }
 
@@ -44795,6 +44819,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getsurat_kesediaan_menunggu_igd()==true){
+            if(btnSuratPernyataanBersediaMenungguDiIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratPernyataanBersediaMenungguDiIGD);                 
+                jmlmenu++;
+            }
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -51643,5 +51674,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratPernyataanBersediaDirujuk.setName("btnSuratPernyataanBersediaDirujuk"); 
         btnSuratPernyataanBersediaDirujuk.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuratPernyataanBersediaDirujuk.addActionListener(this::btnSuratPernyataanBersediaDirujukActionPerformed);
+        
+        btnSuratPernyataanBersediaMenungguDiIGD = new widget.ButtonBig();
+        btnSuratPernyataanBersediaMenungguDiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/flashcard_5386247.png")));
+        btnSuratPernyataanBersediaMenungguDiIGD.setText("Surat Bersedia Menunggu Di IGD/UGD");
+        btnSuratPernyataanBersediaMenungguDiIGD.setIconTextGap(0);
+        btnSuratPernyataanBersediaMenungguDiIGD.setName("btnSuratPernyataanBersediaMenungguDiIGD"); 
+        btnSuratPernyataanBersediaMenungguDiIGD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPernyataanBersediaMenungguDiIGD.addActionListener(this::btnSuratPernyataanBersediaMenungguDiIGDActionPerformed);
     }
 }

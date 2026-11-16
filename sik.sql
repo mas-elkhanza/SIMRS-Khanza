@@ -421,6 +421,7 @@ CREATE TABLE `antrikesediaanmenungguigd` (
 
 LOCK TABLES `antrikesediaanmenungguigd` WRITE;
 /*!40000 ALTER TABLE `antrikesediaanmenungguigd` DISABLE KEYS */;
+INSERT INTO `antrikesediaanmenungguigd` VALUES ('KMI20261116002','2026/11/03/000001');
 /*!40000 ALTER TABLE `antrikesediaanmenungguigd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -37846,6 +37847,7 @@ CREATE TABLE `surat_kesediaan_menunggu_igd` (
 
 LOCK TABLES `surat_kesediaan_menunggu_igd` WRITE;
 /*!40000 ALTER TABLE `surat_kesediaan_menunggu_igd` DISABLE KEYS */;
+INSERT INTO `surat_kesediaan_menunggu_igd` VALUES ('KMI20261116002','2026/11/03/000001','2026-11-16','1','4','2','2026-11-16','L','5','Diri Sendiri','3','12/09/1988/001');
 /*!40000 ALTER TABLE `surat_kesediaan_menunggu_igd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -37870,6 +37872,7 @@ CREATE TABLE `surat_kesediaan_menunggu_igd_pembuat_pernyataan` (
 
 LOCK TABLES `surat_kesediaan_menunggu_igd_pembuat_pernyataan` WRITE;
 /*!40000 ALTER TABLE `surat_kesediaan_menunggu_igd_pembuat_pernyataan` DISABLE KEYS */;
+INSERT INTO `surat_kesediaan_menunggu_igd_pembuat_pernyataan` VALUES ('KMI20261116002','pages/upload/KMI20261116002.jpeg');
 /*!40000 ALTER TABLE `surat_kesediaan_menunggu_igd_pembuat_pernyataan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45324,4 +45327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-16 10:55:46
+-- Dump completed on 2026-11-16 14:43:34

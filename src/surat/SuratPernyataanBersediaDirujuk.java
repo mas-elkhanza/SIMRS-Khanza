@@ -1448,7 +1448,7 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
         NoKTP.setText("");
         AlamatPj.setText("");
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_pernyataan_bersedia_dirujuk.no_surat,3),signed)),0) from surat_pernyataan_bersedia_dirujuk where surat_pernyataan_bersedia_dirujuk.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PPU"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
+                "PBD"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
         NamaPJ.requestFocus();
     }
 

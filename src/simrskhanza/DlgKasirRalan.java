@@ -262,6 +262,7 @@ import surat.SuratBebasNarkoba;
 import surat.SuratBebasTato;
 import surat.SuratButaWarna;
 import surat.SuratCutiHamil;
+import surat.SuratKesediaanMenungguIGD;
 import surat.SuratKeteranganBebasTBC;
 import surat.SuratKeteranganBerobat;
 import surat.SuratKeteranganCovid;
@@ -16210,6 +16211,28 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
+    private void MnSuratPernyataanBersediaMenungguDiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanUmumActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratKesediaanMenungguIGD form=new SuratKesediaanMenungguIGD(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16660,7 +16683,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat,MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,
                                   MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnSkriningTOLAC,MnAdmisiSkoringTOLAC,
                                   MnMonitoringTOLAC,MnHasilPersalinanTOLAC,MnLaporanReaksiTranfusi,MnPenilaianGRACEScore,MnPenilaianBISHOPScore,MnProfilRingkasRawatJalan,MnHasilPemeriksaanUSGTestis,MnHasilPemeriksaanUSGKepala,
-                                  MnHasilPemeriksaanUSGMammae,MnHasilPemeriksaanSpirometri,MnSuratPernyataanBersediaDirujuk;
+                                  MnHasilPemeriksaanUSGMammae,MnHasilPemeriksaanSpirometri,MnSuratPernyataanBersediaDirujuk,MnSuratPernyataanBersediaMenungguDiIGD;
     private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu,MnCatatanObservasi;
     
     private void tampilkasir() { 
@@ -17128,6 +17151,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPenolakanResusitasi.setEnabled(akses.getsurat_penolakan_resusitasi());
         MnPengajuanCutiPerawatanPasien.setEnabled(akses.getsurat_pengajuan_cuti_pasien());
         MnSuratPernyataanBersediaDirujuk.setEnabled(akses.getsurat_pernyataan_bersedia_dirujuk());
+        MnSuratPernyataanBersediaMenungguDiIGD.setEnabled(akses.getsurat_kesediaan_menunggu_igd());
         MnCheckListKriteriaMasukNICU.setEnabled(akses.getkriteria_masuk_nicu());   
         MnCheckListKriteriaMasukPICU.setEnabled(akses.getkriteria_masuk_picu()); 
         MnCheckListKriteriaMasukIsolasi.setEnabled(akses.getchecklist_kriteria_masuk_isolasi());  
@@ -18781,6 +18805,18 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPernyataanBersediaDirujuk.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSuratPernyataanBersediaDirujuk.addActionListener(this::MnSuratPernyataanBersediaDirujukActionPerformed);
         
+        MnSuratPernyataanBersediaMenungguDiIGD = new widget.MenuItem();
+        MnSuratPernyataanBersediaMenungguDiIGD.setBackground(new java.awt.Color(255, 255, 254));
+        MnSuratPernyataanBersediaMenungguDiIGD.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnSuratPernyataanBersediaMenungguDiIGD.setForeground(new java.awt.Color(50, 50, 50));
+        MnSuratPernyataanBersediaMenungguDiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSuratPernyataanBersediaMenungguDiIGD.setText("Pernyataan Bersedia Menunggu Di IGD/UGD");
+        MnSuratPernyataanBersediaMenungguDiIGD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSuratPernyataanBersediaMenungguDiIGD.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSuratPernyataanBersediaMenungguDiIGD.setName("MnSuratPernyataanBersediaMenungguDiIGD");
+        MnSuratPernyataanBersediaMenungguDiIGD.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnSuratPernyataanBersediaMenungguDiIGD.addActionListener(this::MnSuratPernyataanBersediaMenungguDiIGDActionPerformed);
+        
         MnCheckListKriteriaMasukNICU = new widget.MenuItem();
         MnCheckListKriteriaMasukNICU.setBackground(new java.awt.Color(255, 255, 254));
         MnCheckListKriteriaMasukNICU.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -19371,6 +19407,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPersetujuan.add(MnSuratPenolakanResusitasi);
         MnSuratPersetujuan.add(MnPengajuanCutiPerawatanPasien);
         MnSuratPersetujuan.add(MnSuratPernyataanBersediaDirujuk);
+        MnSuratPersetujuan.add(MnSuratPernyataanBersediaMenungguDiIGD);
         
         MnRMIGD.add(MnPenilaianGRACEScore);
         MnRMIGD.add(MnPenilaianBISHOPScore);

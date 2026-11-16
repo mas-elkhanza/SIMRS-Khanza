@@ -1001,8 +1001,10 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                     "surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd "+
                     "inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip where "+
-                    "surat_kesediaan_menunggu_igd.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_kesediaan_menunggu_igd.tanggal",param);
+                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip "+
+                    "where surat_kesediaan_menunggu_igd.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                    "order by surat_kesediaan_menunggu_igd.tanggal",param
+                );
             }else{
                 Valid.MyReportqry("rptDataSuratKesediaanMenungguIGD.jasper","report","::[ Data Surat Pernyataan Kesediaan Menunggu di IGD ]::",
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
@@ -1012,12 +1014,13 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                     "surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd "+
                     "inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip where "+
-                    "surat_kesediaan_menunggu_igd.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip "+
+                    "where surat_kesediaan_menunggu_igd.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                     "surat_kesediaan_menunggu_igd.alamatpj like '%"+TCari.getText().trim()+"%' or surat_kesediaan_menunggu_igd.nama_pj like '%"+TCari.getText().trim()+"%' or "+
                     "surat_kesediaan_menunggu_igd.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by surat_kesediaan_menunggu_igd.tanggal",param);
+                    "order by surat_kesediaan_menunggu_igd.tanggal",param
+                );
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1235,14 +1238,15 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/kesediaanmenunggu/"+lokasifile);
+                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanbersediamenungguigd/"+lokasifile);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),16).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
                 Valid.MyReportqry("rptSuratKesediaanMenungguIGD.jasper","report","::[ Surat Pernyataan Kesediaan Menunggu di IGD ]::",
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_kesediaan_menunggu_igd.tanggal,surat_kesediaan_menunggu_igd.nama_pj,"+
 		    "surat_kesediaan_menunggu_igd.no_ktppj,surat_kesediaan_menunggu_igd.tempat_lahirpj,surat_kesediaan_menunggu_igd.lahirpj,surat_kesediaan_menunggu_igd.jkpj,surat_kesediaan_menunggu_igd.alamatpj,surat_kesediaan_menunggu_igd.hubungan,surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
 		    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_kesediaan_menunggu_igd.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "where surat_kesediaan_menunggu_igd.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param
+                );
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1371,8 +1375,9 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                     "surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd "+
                     "inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip where "+
-                    "surat_kesediaan_menunggu_igd.tanggal between ? and ? order by surat_kesediaan_menunggu_igd.tanggal");
+                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip "+
+                    "where surat_kesediaan_menunggu_igd.tanggal between ? and ? order by surat_kesediaan_menunggu_igd.tanggal"
+                );
             }else{
                 ps=koneksi.prepareStatement(
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
@@ -1382,12 +1387,13 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                     "surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd "+
                     "inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip where "+
-                    "surat_kesediaan_menunggu_igd.tanggal between ? and ? and "+
+                    "inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip "+
+                    "where surat_kesediaan_menunggu_igd.tanggal between ? and ? and "+
                     "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "surat_kesediaan_menunggu_igd.alamatpj like ? or surat_kesediaan_menunggu_igd.nama_pj like ? or "+
                     "surat_kesediaan_menunggu_igd.nip like ? or petugas.nama like ?) "+
-                    "order by surat_kesediaan_menunggu_igd.tanggal");
+                    "order by surat_kesediaan_menunggu_igd.tanggal"
+                );
             }
                 
             try {
@@ -1442,7 +1448,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
         NoKTP.setText("");
         AlamatPj.setText("");
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_kesediaan_menunggu_igd.no_surat,3),signed)),0) from surat_kesediaan_menunggu_igd where surat_kesediaan_menunggu_igd.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PPU"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
+                "KMI"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
         NamaPJ.requestFocus();
     }
 
@@ -1471,9 +1477,10 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
-                    "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.no_rawat=?");
+                "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
+                "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "where reg_periksa.no_rawat=?"
+            );
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -1543,9 +1550,8 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
   
     private void ganti() {
         if(Sequel.mengedittf("surat_kesediaan_menunggu_igd","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,no_ktppj=?,tempat_lahirpj=?,lahirpj=?,jkpj=?,alamatpj=?,hubungan=?,no_telp=?,nip=?",13,new String[]{
-            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
-            TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
-            AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),
+            JKPJ.getSelectedItem().toString().substring(0,1),AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
@@ -1609,7 +1615,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/kesediaanmenunggu/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanbersediamenungguigd/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";
