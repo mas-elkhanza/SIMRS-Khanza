@@ -1001,8 +1001,10 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                     "surat_pernyataan_bersedia_dirujuk.no_telp,surat_pernyataan_bersedia_dirujuk.nip,petugas.nama from surat_pernyataan_bersedia_dirujuk "+
                     "inner join reg_periksa on surat_pernyataan_bersedia_dirujuk.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip where "+
-                    "surat_pernyataan_bersedia_dirujuk.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_pernyataan_bersedia_dirujuk.tanggal",param);
+                    "inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip "+
+                    "where surat_pernyataan_bersedia_dirujuk.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                    "order by surat_pernyataan_bersedia_dirujuk.tanggal",param
+                );
             }else{
                 Valid.MyReportqry("rptDataSuratPernyataanBersediaDirujuk.jasper","report","::[ Data Surat Pernyataan Bersedia Dirujuk ]::",
                     "select surat_pernyataan_bersedia_dirujuk.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
@@ -1012,12 +1014,13 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                     "surat_pernyataan_bersedia_dirujuk.no_telp,surat_pernyataan_bersedia_dirujuk.nip,petugas.nama from surat_pernyataan_bersedia_dirujuk "+
                     "inner join reg_periksa on surat_pernyataan_bersedia_dirujuk.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip where "+
-                    "surat_pernyataan_bersedia_dirujuk.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip "+
+                    "where surat_pernyataan_bersedia_dirujuk.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                     "surat_pernyataan_bersedia_dirujuk.alamatpj like '%"+TCari.getText().trim()+"%' or surat_pernyataan_bersedia_dirujuk.nama_pj like '%"+TCari.getText().trim()+"%' or "+
                     "surat_pernyataan_bersedia_dirujuk.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by surat_pernyataan_bersedia_dirujuk.tanggal",param);
+                    "order by surat_pernyataan_bersedia_dirujuk.tanggal",param
+                );
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1235,14 +1238,15 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/bersediadirujuk/"+lokasifile);
+                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanbersediadirujuk/"+lokasifile);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),16).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
                 Valid.MyReportqry("rptSuratPernyataanBersediaDirujuk.jasper","report","::[ Surat Pernyataan Bersedia Dirujuk ]::",
-                    "select surat_pernyataan_bersedia_dirujuk.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_bersedia_dirujuk.tanggal,surat_pernyataan_bersedia_dirujuk.nama_pj,"+
-		    "surat_pernyataan_bersedia_dirujuk.no_ktppj,surat_pernyataan_bersedia_dirujuk.tempat_lahirpj,surat_pernyataan_bersedia_dirujuk.lahirpj,surat_pernyataan_bersedia_dirujuk.jkpj,surat_pernyataan_bersedia_dirujuk.alamatpj,surat_pernyataan_bersedia_dirujuk.hubungan,surat_pernyataan_bersedia_dirujuk.no_telp,surat_pernyataan_bersedia_dirujuk.nip,petugas.nama from surat_pernyataan_bersedia_dirujuk inner join reg_periksa on surat_pernyataan_bersedia_dirujuk.no_rawat=reg_periksa.no_rawat "+
-		    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_pernyataan_bersedia_dirujuk.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "select surat_pernyataan_bersedia_dirujuk.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_bersedia_dirujuk.tanggal,"+
+                    "surat_pernyataan_bersedia_dirujuk.nama_pj,surat_pernyataan_bersedia_dirujuk.no_ktppj,surat_pernyataan_bersedia_dirujuk.tempat_lahirpj,surat_pernyataan_bersedia_dirujuk.lahirpj,surat_pernyataan_bersedia_dirujuk.jkpj,surat_pernyataan_bersedia_dirujuk.alamatpj,surat_pernyataan_bersedia_dirujuk.hubungan,surat_pernyataan_bersedia_dirujuk.no_telp,surat_pernyataan_bersedia_dirujuk.nip,petugas.nama "+
+                    "from surat_pernyataan_bersedia_dirujuk inner join reg_periksa on surat_pernyataan_bersedia_dirujuk.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop where surat_pernyataan_bersedia_dirujuk.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param
+                );
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1372,7 +1376,8 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                     "inner join reg_periksa on surat_pernyataan_bersedia_dirujuk.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on surat_pernyataan_bersedia_dirujuk.nip=petugas.nip where "+
-                    "surat_pernyataan_bersedia_dirujuk.tanggal between ? and ? order by surat_pernyataan_bersedia_dirujuk.tanggal");
+                    "surat_pernyataan_bersedia_dirujuk.tanggal between ? and ? order by surat_pernyataan_bersedia_dirujuk.tanggal"
+                );
             }else{
                 ps=koneksi.prepareStatement(
                     "select surat_pernyataan_bersedia_dirujuk.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
@@ -1387,7 +1392,8 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                     "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "surat_pernyataan_bersedia_dirujuk.alamatpj like ? or surat_pernyataan_bersedia_dirujuk.nama_pj like ? or "+
                     "surat_pernyataan_bersedia_dirujuk.nip like ? or petugas.nama like ?) "+
-                    "order by surat_pernyataan_bersedia_dirujuk.tanggal");
+                    "order by surat_pernyataan_bersedia_dirujuk.tanggal"
+                );
             }
                 
             try {
@@ -1609,7 +1615,7 @@ public final class SuratPernyataanBersediaDirujuk extends javax.swing.JDialog {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/bersediadirujuk/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanbersediadirujuk/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";
