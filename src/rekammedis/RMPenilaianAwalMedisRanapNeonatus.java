@@ -5,6 +5,7 @@
 
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRanap;
 import fungsi.WarnaTable;
 import fungsi.WarnaTable5;
 import fungsi.batasInput;
@@ -4679,6 +4680,13 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRanap.dari(TNoRw.getText())
+                .isi("penilaian",Diagnosis)
+                .isi("suhu_tubuh",Suhu)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .jalankan();
     }
  
     public void setNoRm(String norwt,Date tgl2) {

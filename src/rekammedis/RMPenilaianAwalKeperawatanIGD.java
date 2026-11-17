@@ -7,6 +7,7 @@ package rekammedis;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.AutofillPemeriksaanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -4334,6 +4335,10 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .jalankan();
     }
     
     public void setNoRm(String norwt, Date tgl2) {

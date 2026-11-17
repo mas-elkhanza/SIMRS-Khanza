@@ -14,6 +14,7 @@ package rekammedis;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.AutofillPemeriksaanRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -10072,6 +10073,18 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRanap.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("tensi",FisikTD)
+                .isi("nadi",FisikHR)
+                .isi("respirasi",FisikRR)
+                .isi("suhu_tubuh",FisikSuhu)
+                .isi("spo2",FisikSPO)
+                .isi("gcs",FisikGCS)
+                .isi("tinggi",FisikTB)
+                .isi("berat",FisikBB)
+                .jalankan();
     }
     
     public void setNoRm(String norwt,Date tgl2) {

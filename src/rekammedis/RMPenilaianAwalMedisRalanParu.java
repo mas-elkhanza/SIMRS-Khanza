@@ -5,6 +5,7 @@
 
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -2407,6 +2408,18 @@ public final class RMPenilaianAwalMedisRalanParu extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("penilaian",Diagnosis)
+                .isi("tensi",TD)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .isi("gcs",GCS)
+                .isi("berat",BB)
+                .isi("suhu_tubuh",Suhu)
+                .isi("alergi",Alergi)
+                .jalankan();
     }
  
     public void setNoRm(String norwt,Date tgl2) {

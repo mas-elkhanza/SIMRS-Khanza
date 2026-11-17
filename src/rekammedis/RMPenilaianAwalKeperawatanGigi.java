@@ -14,6 +14,7 @@ package rekammedis;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.AutofillPemeriksaanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -3946,6 +3947,17 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("tensi",TD)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .isi("suhu_tubuh",Suhu)
+                .isi("tinggi",TB)
+                .isi("berat",BB)
+                .isi("alergi",Alergi)
+                .jalankan();
     }
     
     public void setNoRm(String norwt, Date tgl2) {
