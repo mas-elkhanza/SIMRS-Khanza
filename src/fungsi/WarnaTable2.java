@@ -15,15 +15,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author Owner
  */
 public class WarnaTable2 extends DefaultTableCellRenderer {
+    private static final Color PUTIH = new Color(255, 255, 255);
+    private static final Color ZEBRA = new Color(245, 250, 245);
     public int kolom;
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        if (row % 2 == 1){
-            component.setBackground(new Color(255,244,244));
-        }else{
-            component.setBackground(new Color(255,255,255));
-        } 
+        if (!isSelected) {
+            component.setBackground(row % 2 == 1 ? ZEBRA : PUTIH);
+        }
         if (column == kolom){
             component.setBackground(new Color(215,215,255));
             component.setForeground(new Color(255,255,255));
