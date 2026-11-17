@@ -1,5 +1,6 @@
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -2620,6 +2621,18 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("penilaian",Diagnosis)
+                .isi("rtl",Tindakan)
+                .isi("suhu_tubuh",Suhu)
+                .isi("tensi",TD)
+                .isi("berat",BB)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .isi("gcs",GCS)
+                .jalankan();
     }
  
     public void setNoRm(String norwt,Date tgl2) {

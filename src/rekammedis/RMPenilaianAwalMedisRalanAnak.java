@@ -1,5 +1,6 @@
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -2381,6 +2382,20 @@ public final class RMPenilaianAwalMedisRalanAnak extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("pemeriksaan",KetFisik)
+                .isi("penilaian",Diagnosis)
+                .isi("suhu_tubuh",Suhu)
+                .isi("tensi",TD)
+                .isi("berat",BB)
+                .isi("tinggi",TB)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .isi("spo2",SPO)
+                .isi("gcs",GCS)
+                .jalankan();
     }
  
     public void setNoRm(String norwt,Date tgl2) {

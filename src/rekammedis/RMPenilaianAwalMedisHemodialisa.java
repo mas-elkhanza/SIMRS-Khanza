@@ -5,6 +5,8 @@
 
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRalan;
+import fungsi.AutofillPemeriksaanRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -4029,6 +4031,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRalan autofill=Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()).equals("Ranap")?
+                AutofillPemeriksaanRanap.dari(TNoRw.getText()):AutofillPemeriksaanRalan.dari(TNoRw.getText());
+        autofill.isi("tensi",TD)
+                .isi("nadi",Nadi)
+                .isi("respirasi",Napas)
+                .isi("suhu_tubuh",Suhu)
+                .isi("tinggi",TB)
+                .isi("berat",BB)
+                .isi("alergi",Alergi)
+                .jalankan();
     }
  
     public void setNoRm(String norwt,Date tgl2,String asalruangan) {

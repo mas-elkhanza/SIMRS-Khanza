@@ -1,5 +1,6 @@
 package rekammedis;
 
+import fungsi.AutofillPemeriksaanRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7757,6 +7758,19 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+
+        AutofillPemeriksaanRanap.dari(TNoRw.getText())
+                .isi("keluhan",KeluhanUtama)
+                .isi("tensi",TD)
+                .isi("nadi",Nadi)
+                .isi("respirasi",RR)
+                .isi("suhu_tubuh",Suhu)
+                .isi("spo2",SpO2)
+                .isi("gcs",GCS)
+                .isi("tinggi",TB)
+                .isi("berat",BB)
+                .isi("alergi",Alergi)
+                .jalankan();
     }
     
     public void setNoRm(String norwt, Date tgl2,String carabayar,String norm) {
