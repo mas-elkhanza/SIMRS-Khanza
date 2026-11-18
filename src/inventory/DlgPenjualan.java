@@ -749,7 +749,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         panelisi5.add(BesarPPNObat);
         BesarPPNObat.setBounds(320, 10, 85, 23);
 
-        PersenppnObat.setText("11");
+        PersenppnObat.setText("0");
         PersenppnObat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PersenppnObat.setName("PersenppnObat"); // NOI18N
         PersenppnObat.setPreferredSize(new java.awt.Dimension(150, 23));
