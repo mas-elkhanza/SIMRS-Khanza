@@ -292,6 +292,7 @@ import rekammedis.RMHasilPemeriksaanUSGKepala;
 import rekammedis.RMHasilPemeriksaanUSGMammae;
 import rekammedis.RMHasilPemeriksaanUSGTestis;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMPenilaianAwalMedisRalanGigi;
 import rekammedis.RMPenilaianBishop;
 import rekammedis.RMPenilaianGRACE;
 import rekammedis.RMProfilRingkasRawatJalan;
@@ -16944,6 +16945,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnPenilaianAwalMedisRalanGigiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianAwalMedisRalanGigi form=new RMPenilaianAwalMedisRalanGigi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17388,7 +17411,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningInstrumenESAT,MnSkriningCURB65,MnSkriningGiziKehamilan,MnSerahTerimaBarangAnggotaTubuh,MnPermintaanKonsultasiPerawat,MnPersetujuanBimbinganRohani,MnPermintaanPerlindunganDariKekerasan,MnSuratPermohonanPrivasi,MnSuratPermintaanSecondOpinion,MnCetakSuratKeteranganBerobat,
             MnSuratPenolakanResusitasi,MnCatatanObservasiRuangOperasi,MnHasilPemeriksaanUSGAbdomen,MnIntervensiNyeriFarmakologi,MnIntervensiNyeriNonFarmakologi,MnPengajuanCutiPerawatanPasien,MnCheckListKriteriaMasukIsolasi,MnSkriningTOLAC,MnAdmisiSkoringTOLAC,MnMonitoringTOLAC,
             MnHasilPersalinanTOLAC,MnLaporanReaksiTranfusi,MnPenilaianGRACEScore,MnPenilaianBISHOPScore,MnProfilRingkasRawatJalan,MnHasilPemeriksaanUSGTestis,MnHasilPemeriksaanUSGKepala,MnHasilPemeriksaanUSGMammae,MnHasilPemeriksaanSpirometri,MnSuratPernyataanBersediaDirujuk,
-            MnSuratPernyataanBersediaMenungguDiIGD;
+            MnSuratPernyataanBersediaMenungguDiIGD,MnPenilaianAwalMedisRalanGigi;
     private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu,MnCatatanObservasi;
     
     private void tampil() {
@@ -17890,7 +17913,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisRalanKebidanan.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());     
         MnPenilaianAwalMedisRalanBayi.setEnabled(akses.getpenilaian_awal_medis_ralan_anak());        
         MnPenilaianAwalMedisRalanJantung.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());     
-        MnPenilaianAwalMedisRalanUrologi.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi());     
+        MnPenilaianAwalMedisRalanUrologi.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi()); 
+        MnPenilaianAwalMedisRalanGigi.setEnabled(akses.getpenilaian_awal_medis_gigi_mulut()); 
         MnPenilaianFisioterapi.setEnabled(akses.getpenilaian_fisioterapi());             
         ppProgramPRB.setEnabled(akses.getbpjs_program_prb());    
         ppSuplesiJasaRaharja.setEnabled(akses.getbpjs_suplesi_jasaraharja());    
@@ -19553,6 +19577,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisRalanUrologi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPenilaianAwalMedisRalanUrologi.addActionListener(this::MnPenilaianAwalMedisRalanUrologiActionPerformed);
         
+        MnPenilaianAwalMedisRalanGigi = new widget.MenuItem();
+        MnPenilaianAwalMedisRalanGigi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianAwalMedisRalanGigi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianAwalMedisRalanGigi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianAwalMedisRalanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPenilaianAwalMedisRalanGigi.setText("Pengkajian Awal Medis Gigi");
+        MnPenilaianAwalMedisRalanGigi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianAwalMedisRalanGigi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianAwalMedisRalanGigi.setName("MnPenilaianAwalMedisRalanGigi");
+        MnPenilaianAwalMedisRalanGigi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPenilaianAwalMedisRalanGigi.addActionListener(this::MnPenilaianAwalMedisRalanGigiActionPerformed);
+        
         MnIntervensiNyeriFarmakologi = new widget.MenuItem();
         MnIntervensiNyeriFarmakologi.setBackground(new java.awt.Color(255, 255, 254));
         MnIntervensiNyeriFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -19889,6 +19925,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnAwalMedis.add(MnPenilaianAwalMedisRalanParu);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanJantung);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanUrologi);
+        MnAwalMedis.add(MnPenilaianAwalMedisRalanGigi);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanFisikRehabilitasi);
         MnAwalMedis.add(MnPenilaianAwalMedisHemodialisa);
         

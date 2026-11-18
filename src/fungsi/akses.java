@@ -267,7 +267,8 @@ public final class akses {
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,
             ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
             monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false,penilaian_bishop_scor=false,profil_ringkas_rawat_jalan=false,
-            hasil_usg_testis=false,hasil_usg_kepala=false,hasil_usg_mammae=false,hasil_spirometri=false,surat_pernyataan_bersedia_dirujuk=false,surat_kesediaan_menunggu_igd=false;
+            hasil_usg_testis=false,hasil_usg_kepala=false,hasil_usg_mammae=false,hasil_spirometri=false,surat_pernyataan_bersedia_dirujuk=false,surat_kesediaan_menunggu_igd=false,
+            penilaian_awal_medis_gigi_mulut=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1522,6 +1523,7 @@ public final class akses {
                         akses.hasil_spirometri=true;
                         akses.surat_pernyataan_bersedia_dirujuk=true;
                         akses.surat_kesediaan_menunggu_igd=true;
+                        akses.penilaian_awal_medis_gigi_mulut=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2760,6 +2762,7 @@ public final class akses {
                         akses.hasil_spirometri=rs2.getBoolean("hasil_spirometri");
                         akses.surat_pernyataan_bersedia_dirujuk=rs2.getBoolean("surat_pernyataan_bersedia_dirujuk");
                         akses.surat_kesediaan_menunggu_igd=rs2.getBoolean("surat_kesediaan_menunggu_igd");
+                        akses.penilaian_awal_medis_gigi_mulut=rs2.getBoolean("penilaian_awal_medis_gigi_mulut");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -4020,6 +4023,7 @@ public final class akses {
         akses.hasil_spirometri=false;
         akses.surat_pernyataan_bersedia_dirujuk=false;
         akses.surat_kesediaan_menunggu_igd=false;
+        akses.penilaian_awal_medis_gigi_mulut=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5297,4 +5301,5 @@ public final class akses {
     public static boolean gethasil_spirometri(){return akses.hasil_spirometri;}
     public static boolean getsurat_pernyataan_bersedia_dirujuk(){return akses.surat_pernyataan_bersedia_dirujuk;}
     public static boolean getsurat_kesediaan_menunggu_igd(){return akses.surat_kesediaan_menunggu_igd;}
+    public static boolean getpenilaian_awal_medis_gigi_mulut(){return akses.penilaian_awal_medis_gigi_mulut;}
 }   

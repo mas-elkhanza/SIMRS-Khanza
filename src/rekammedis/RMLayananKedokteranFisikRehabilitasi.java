@@ -273,10 +273,10 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnLayananRehab.setBackground(new java.awt.Color(255, 255, 254));
-        MnLayananRehab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLayananRehab.setForeground(new java.awt.Color(50, 50, 50));
         MnLayananRehab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLayananRehab.setText("Laporan Formulir Layanan");
+        MnLayananRehab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLayananRehab.setName("MnLayananRehab"); // NOI18N
         MnLayananRehab.setPreferredSize(new java.awt.Dimension(220, 26));
         MnLayananRehab.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +450,6 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
@@ -614,7 +613,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
-        label11.setBounds(370, 40, 57, 23);
+        label11.setBounds(366, 40, 57, 23);
 
         jLabel11.setText("J.K. :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -622,17 +621,16 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         jLabel11.setBounds(740, 10, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2026 09:32:51" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2026 13:33:35" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
-        TglAsuhan.setOpaque(false);
         TglAsuhan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglAsuhanKeyPressed(evt);
             }
         });
         FormInput.add(TglAsuhan);
-        TglAsuhan.setBounds(431, 40, 130, 23);
+        TglAsuhan.setBounds(427, 40, 136, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -895,10 +893,9 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
@@ -909,10 +906,9 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 

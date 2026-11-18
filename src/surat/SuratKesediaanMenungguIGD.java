@@ -246,7 +246,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Surat Pernyataan Kesediaan Menunggu di IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Surat Pernyataan Bersedia Menunggu di IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -419,7 +419,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -432,7 +432,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -638,7 +638,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 70, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2026" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -664,7 +664,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
         TempatLahir.setBounds(500, 90, 140, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -993,7 +993,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSuratKesediaanMenungguIGD.jasper","report","::[ Data Surat Pernyataan Kesediaan Menunggu di IGD ]::",
+                Valid.MyReportqry("rptDataSuratKesediaanMenungguIGD.jasper","report","::[ Data Surat Pernyataan Bersedia Menunggu di IGD ]::",
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_kesediaan_menunggu_igd.tanggal,surat_kesediaan_menunggu_igd.nama_pj,"+
                     "surat_kesediaan_menunggu_igd.no_ktppj,surat_kesediaan_menunggu_igd.tempat_lahirpj,surat_kesediaan_menunggu_igd.lahirpj,"+
@@ -1006,7 +1006,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                     "order by surat_kesediaan_menunggu_igd.tanggal",param
                 );
             }else{
-                Valid.MyReportqry("rptDataSuratKesediaanMenungguIGD.jasper","report","::[ Data Surat Pernyataan Kesediaan Menunggu di IGD ]::",
+                Valid.MyReportqry("rptDataSuratKesediaanMenungguIGD.jasper","report","::[ Data Surat Pernyataan Bersedia Menunggu di IGD ]::",
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_kesediaan_menunggu_igd.tanggal,surat_kesediaan_menunggu_igd.nama_pj,"+
                     "surat_kesediaan_menunggu_igd.no_ktppj,surat_kesediaan_menunggu_igd.tempat_lahirpj,surat_kesediaan_menunggu_igd.lahirpj,"+
@@ -1241,7 +1241,7 @@ public final class SuratKesediaanMenungguIGD extends javax.swing.JDialog {
                 param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanbersediamenungguigd/"+lokasifile);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),16).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
-                Valid.MyReportqry("rptSuratKesediaanMenungguIGD.jasper","report","::[ Surat Pernyataan Kesediaan Menunggu di IGD ]::",
+                Valid.MyReportqry("rptSuratKesediaanMenungguIGD.jasper","report","::[ Surat Pernyataan Bersedia Menunggu di IGD ]::",
                     "select surat_kesediaan_menunggu_igd.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_kesediaan_menunggu_igd.tanggal,surat_kesediaan_menunggu_igd.nama_pj,"+
 		    "surat_kesediaan_menunggu_igd.no_ktppj,surat_kesediaan_menunggu_igd.tempat_lahirpj,surat_kesediaan_menunggu_igd.lahirpj,surat_kesediaan_menunggu_igd.jkpj,surat_kesediaan_menunggu_igd.alamatpj,surat_kesediaan_menunggu_igd.hubungan,surat_kesediaan_menunggu_igd.no_telp,surat_kesediaan_menunggu_igd.nip,petugas.nama from surat_kesediaan_menunggu_igd inner join reg_periksa on surat_kesediaan_menunggu_igd.no_rawat=reg_periksa.no_rawat "+
 		    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_kesediaan_menunggu_igd.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
