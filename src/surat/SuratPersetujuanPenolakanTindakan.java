@@ -32,13 +32,13 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.WindowConstants;
 
 
@@ -60,17 +60,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private DlgCariPetugas petugas;
     private MasterCariTemplatePersetujuanPenolakanTindakan template;
     private String finger="",finger2="",lokasifile="",lokasifile2="";
-    private final ExecutorService executor = newExecutorOtomatis();
-
-    private static ExecutorService newExecutorOtomatis() {
-        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
-            Thread t = new Thread(r);
-            t.setDaemon(true);
-            return t;
-        });
-        ex.allowCoreThreadTimeOut(true);
-        return ex;
-    }
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     
     /** Creates new form DlgRujuk
@@ -2762,19 +2752,33 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     
     private void runBackground(Runnable task) {
         if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
         ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        executor.submit(() -> {
-            try {
-                task.run();
-            } finally {
-                ceksukses = false;
-                SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
-                });
-            }
-        });
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
