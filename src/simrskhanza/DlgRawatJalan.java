@@ -98,7 +98,9 @@ import rekammedis.RMDataCatatanObservasiCHBP;
 import rekammedis.RMDataCatatanObservasiHemodialisa;
 import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiInduksiPersalinan;
+import rekammedis.RMDataCatatanDuranteAnestesi;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
+import rekammedis.RMDataCatatanObservasiRuangPulih;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
 import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
@@ -129,6 +131,7 @@ import rekammedis.RMLayananKedokteranFisikRehabilitasi;
 import rekammedis.RMMCU;
 import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMMonitoringBromagePascaAnestesi;
+import rekammedis.RMMonitoringPADSSPascaAnestesi;
 import rekammedis.RMMonitoringStewardPascaAnestesi;
 import rekammedis.RMPelaksanaanInformasiEdukasi;
 import rekammedis.RMPemantauanMEOWS;
@@ -136,6 +139,7 @@ import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
 import rekammedis.RMPemantauanEWSNeonatus;
 import rekammedis.RMPenatalaksanaanTerapiOkupasi;
+import rekammedis.RMPenandaanLokasiLuka;
 import rekammedis.RMPengkajianRestrain;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
@@ -267,6 +271,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initRawatJalan();
+        initMenuBedahAnestesi();
 
         this.setLocation(8,1);
         setSize(885,674);
@@ -9181,6 +9186,131 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnSkorAldrettePascaAnestesiActionPerformed
 
+    private void BtnPenandaanLokasiLukaActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenandaanLokasiLuka form=new RMPenandaanLokasiLuka(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
+    private void BtnCatatanDuranteAnestesiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataCatatanDuranteAnestesi form=new RMDataCatatanDuranteAnestesi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
+    private void BtnCatatanObservasiRuangPulihActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataCatatanObservasiRuangPulih form=new RMDataCatatanObservasiRuangPulih(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
+    private void BtnSkorPADSSPascaAnestesiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMMonitoringPADSSPascaAnestesi form=new RMMonitoringPADSSPascaAnestesi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
+    private widget.Button BtnPenandaanLokasiLuka,BtnCatatanDuranteAnestesi,BtnCatatanObservasiRuangPulih,BtnSkorPADSSPascaAnestesi;
+
+    private widget.Button buatItemBedahAnestesi(String nama,String teks,java.awt.event.ActionListener aksi) {
+        widget.Button m=new widget.Button();
+        m.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        m.setFocusPainted(false);
+        m.setFont(new java.awt.Font("Tahoma", 0, 11));
+        m.setGlassColor(new java.awt.Color(255, 255, 255));
+        m.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        m.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        m.setPreferredSize(new java.awt.Dimension(190, 23));
+        m.setRoundRect(false);
+        m.setVisible(akses.getskor_aldrette_pasca_anestesi());
+        m.setText(teks);
+        m.setName(nama);
+        m.addActionListener(aksi);
+        return m;
+    }
+
+    /** tombol Penandaan Lokasi Luka, Catatan Durante Anestesi, Catatan Observasi Ruang Pulih, Skor PADSS (disisipkan setelah Skor Bromage di FormMenu) */
+    private void initMenuBedahAnestesi() {
+        BtnPenandaanLokasiLuka=buatItemBedahAnestesi("BtnPenandaanLokasiLuka","Penandaan Lokasi Luka",this::BtnPenandaanLokasiLukaActionPerformed);
+        BtnCatatanDuranteAnestesi=buatItemBedahAnestesi("BtnCatatanDuranteAnestesi","Catatan Durante Anestesi",this::BtnCatatanDuranteAnestesiActionPerformed);
+        BtnCatatanObservasiRuangPulih=buatItemBedahAnestesi("BtnCatatanObservasiRuangPulih","Catatan Observasi Ruang Pulih",this::BtnCatatanObservasiRuangPulihActionPerformed);
+        BtnSkorPADSSPascaAnestesi=buatItemBedahAnestesi("BtnSkorPADSSPascaAnestesi","Skor PADSS Pasca Anestesi",this::BtnSkorPADSSPascaAnestesiActionPerformed);
+        int idx=java.util.Arrays.asList(FormMenu.getComponents()).indexOf(BtnSkorBromagePascaAnestesi);
+        if(idx<0){
+            idx=FormMenu.getComponentCount()-1;
+        }
+        FormMenu.add(BtnPenandaanLokasiLuka,++idx);
+        FormMenu.add(BtnCatatanDuranteAnestesi,++idx);
+        FormMenu.add(BtnCatatanObservasiRuangPulih,++idx);
+        FormMenu.add(BtnSkorPADSSPascaAnestesi,++idx);
+    }
+
+    /** atur tampil tombol sesuai hak akses; mengembalikan tinggi tambahan untuk FormMenu */
+    private int aturTombolBedahAnestesi() {
+        int tambah=0;
+        BtnPenandaanLokasiLuka.setVisible(akses.getpenandaan_lokasi_luka());
+        if(akses.getpenandaan_lokasi_luka()==true){
+            tambah=tambah+24;
+        }
+        BtnCatatanDuranteAnestesi.setVisible(akses.getcatatan_durante_anestesi());
+        if(akses.getcatatan_durante_anestesi()==true){
+            tambah=tambah+24;
+        }
+        BtnCatatanObservasiRuangPulih.setVisible(akses.getcatatan_observasi_ruang_pulih());
+        if(akses.getcatatan_observasi_ruang_pulih()==true){
+            tambah=tambah+24;
+        }
+        BtnSkorPADSSPascaAnestesi.setVisible(akses.getskor_padss_pasca_anestesi());
+        if(akses.getskor_padss_pasca_anestesi()==true){
+            tambah=tambah+24;
+        }
+        return tambah;
+    }
+
     private void BtnSkorStewardPascaAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSkorStewardPascaAnestesiActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -12053,6 +12183,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getkriteria_masuk_picu()==true){
             tinggi=tinggi+24;
         }
+        tinggi=tinggi+aturTombolBedahAnestesi();
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
         TCari.setPreferredSize(new Dimension(207,23));
         
