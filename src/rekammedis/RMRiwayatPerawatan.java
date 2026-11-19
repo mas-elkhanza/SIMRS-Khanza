@@ -39172,7 +39172,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             String[] kondisiGigi=new String[urut.length],ketGigi=new String[urut.length];
                             
                             try {
-                                rs3=koneksi.prepareStatement("select no_gigi,kondisi,keterangan from penilaian_awal_medis_gigi_odontogram where no_rawat='"+norawat+"'").executeQuery();
+                                rs3=koneksi.prepareStatement("select penilaian_awal_medis_gigi_odontogram.no_gigi,penilaian_awal_medis_gigi_odontogram.kondisi,penilaian_awal_medis_gigi_odontogram.keterangan from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat='"+norawat+"'").executeQuery();
                                 while(rs3.next()){
                                     for(a=0;a<urut.length;a++){
                                         if(urut[a].equals(rs3.getString("no_gigi"))){
@@ -39198,12 +39198,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             for(a=0;a<awal.length;a++){
                                 htmlContent.append(
                                      "<tr>").append(
-                                        "<td align='center'>").append(
-                                           "<table border='1' align='center' cellpadding='2px' cellspacing='0px'>").append(
+                                        "<td border='0' align='center'>").append(
+                                           "<table border='0' align='center' cellpadding='0' cellspacing='1' bgcolor='#8c8c8c'>").append(
                                               "<tr>"
                                 );
                                 for(b=awal[a];b<akhir[a];b++){
-                                    htmlContent.append("<td width='32' align='center'").append(kondisiGigi[b]==null?">":" bgcolor='#FFF4BE'>").append(urut[b]).append("<br>").append(kondisiGigi[b]==null?"&nbsp;":kondisiGigi[b].substring(0,3)).append("</td>");
+                                    htmlContent.append("<td width='34' height='30' align='center' style='border-right:0px;border-bottom:0px' bgcolor='").append(kondisiGigi[b]==null?"#FFFFFF":"#FFF4BE").append("'>").append(urut[b]).append("<br>").append(kondisiGigi[b]==null?"&nbsp;":kondisiGigi[b].substring(0,3)).append("</td>");
                                 }
                                 htmlContent.append(
                                               "</tr>").append(
@@ -39247,7 +39247,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='50%'>Diastema : ").append(rs2.getString("diastema")).append((rs2.getString("ket_diastema").equals("")?"":", "+rs2.getString("ket_diastema"))).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td colspan='2' width='100%'>Lain-lain : ").append(rs2.getString("lain_lain").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                              "<td colspan='2'>Lain-lain : ").append(rs2.getString("lain_lain").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
