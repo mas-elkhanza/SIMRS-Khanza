@@ -49235,7 +49235,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalMedisRalanBedahMulut = new widget.ButtonBig();
         btnPenilaianAwalMedisRalanBedahMulut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5947116_avoid_do not_hand_mouth_touch_icon.png"))); 
-        btnPenilaianAwalMedisRalanBedahMulut.setText("Awal Medis Ralan Bedah Mulut");
+        btnPenilaianAwalMedisRalanBedahMulut.setText("Awal Medis Ralan Gigi");
         btnPenilaianAwalMedisRalanBedahMulut.setIconTextGap(0);
         btnPenilaianAwalMedisRalanBedahMulut.setName("btnPenilaianAwalMedisRalanBedahMulut"); 
         btnPenilaianAwalMedisRalanBedahMulut.setPreferredSize(new java.awt.Dimension(200, 90));
