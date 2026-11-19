@@ -43,7 +43,17 @@ public final class MasterCariTemplatePersetujuanPenolakanTindakan extends javax.
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = newExecutorOtomatis();
+
+    private static ExecutorService newExecutorOtomatis() {
+        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        });
+        ex.allowCoreThreadTimeOut(true);
+        return ex;
+    }
     private volatile boolean ceksukses = false;
     private MasterTemplatePersetujuanPenolakanTindakan formtemplate;
     /** Creates new form DlgPenyakit

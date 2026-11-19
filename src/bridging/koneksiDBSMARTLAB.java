@@ -25,7 +25,7 @@ public class koneksiDBSMARTLAB {
     public static Connection condb(){ 
         if(connection == null){
             try{
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
                 dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSMARTLAB"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSMARTLAB"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESMARTLAB"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERSMARTLAB")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASSMARTLAB")));

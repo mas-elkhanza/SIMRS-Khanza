@@ -41,7 +41,7 @@ public class DUKCAPILCekNIK {
     public DUKCAPILCekNIK(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             URL = prop.getProperty("URLDUKCAPIL");
         } catch (Exception e) {
             System.out.println("Notif : "+e);

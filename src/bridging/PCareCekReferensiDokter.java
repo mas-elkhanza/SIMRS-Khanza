@@ -113,7 +113,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));    
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }    
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
             URL = prop.getProperty("URLAPIPCARE")+"/dokter/0/500";        
         } catch (Exception e) {

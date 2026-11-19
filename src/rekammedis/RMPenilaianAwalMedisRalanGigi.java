@@ -54,7 +54,6 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private boolean sukses=true;
     private DlgCariDokter dokter;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
@@ -151,11 +150,11 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         for (i = 0; i < 3; i++) {
             TableColumn column = tbOdontogram.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(45);
             }else if(i==1){
-                column.setPreferredWidth(260);
+                column.setPreferredWidth(220);
             }else if(i==2){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(450);
             }
         }
         tbOdontogram.setDefaultRenderer(Object.class, new WarnaTable());
@@ -172,11 +171,11 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         for (i = 0; i < 3; i++) {
             TableColumn column = tbOdontogram1.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(45);
             }else if(i==1){
-                column.setPreferredWidth(240);
+                column.setPreferredWidth(220);
             }else if(i==2){
-                column.setPreferredWidth(420);
+                column.setPreferredWidth(450);
             }
         }
         tbOdontogram1.setDefaultRenderer(Object.class, new WarnaTable());
@@ -757,7 +756,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         FormInput.add(KetGigi);
         KetGigi.setBounds(542, 450, 312, 23);
 
-        BtnTambahGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnTambahGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         BtnTambahGigi.setName("BtnTambahGigi"); // NOI18N
         BtnTambahGigi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1223,8 +1222,8 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1244,7 +1243,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setText("Tanggal :");
+        jLabel19.setText("Tgl.Asuhan :");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel19);
@@ -1315,7 +1314,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(760, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
@@ -1357,7 +1356,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         TPasien1.setBackground(new java.awt.Color(245, 250, 240));
         TPasien1.setHighlighter(null);
         TPasien1.setName("TPasien1"); // NOI18N
-        TPasien1.setPreferredSize(new java.awt.Dimension(250, 23));
+        TPasien1.setPreferredSize(new java.awt.Dimension(285, 23));
         FormMenu.add(TPasien1);
 
         PanelAccor.add(FormMenu, java.awt.BorderLayout.NORTH);
@@ -1399,14 +1398,20 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
-        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter Gigi");
+        if(TNoRM.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Nama Pasien");
+        }else if(NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
+        }else if(RPS.getText().trim().equals("")){
+            Valid.textKosong(RPS,"Riwayat Penyakit Sekarang");
+        }else if(RiwayatKeluarga.getText().trim().equals("")){
+            Valid.textKosong(RiwayatKeluarga,"Riwayat Penyakit Keluarga");
+        }else if(RPD.getText().trim().equals("")){
+            Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
+        }else if(RPO.getText().trim().equals("")){
+            Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1466,14 +1471,20 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
-        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter Gigi");
+        if(TNoRM.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Nama Pasien");
+        }else if(NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
+        }else if(RPS.getText().trim().equals("")){
+            Valid.textKosong(RPS,"Riwayat Penyakit Sekarang");
+        }else if(RiwayatKeluarga.getText().trim().equals("")){
+            Valid.textKosong(RiwayatKeluarga,"Riwayat Penyakit Keluarga");
+        }else if(RPD.getText().trim().equals("")){
+            Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
+        }else if(RPO.getText().trim().equals("")){
+            Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1614,7 +1625,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4030px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='3900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1650,58 +1661,59 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
                 "select penilaian_awal_medis_gigi_mulut.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_awal_medis_gigi_mulut.tanggal,penilaian_awal_medis_gigi_mulut.kd_dokter,dokter.nm_dokter,penilaian_awal_medis_gigi_mulut.anamnesis,penilaian_awal_medis_gigi_mulut.hubungan,penilaian_awal_medis_gigi_mulut.keluhan_utama,penilaian_awal_medis_gigi_mulut.rps,"+
                 "penilaian_awal_medis_gigi_mulut.rpd,penilaian_awal_medis_gigi_mulut.rpo,penilaian_awal_medis_gigi_mulut.alergi,penilaian_awal_medis_gigi_mulut.riwayat_keluarga,penilaian_awal_medis_gigi_mulut.occlusi,penilaian_awal_medis_gigi_mulut.torus_palatinus,penilaian_awal_medis_gigi_mulut.torus_mandibularis,penilaian_awal_medis_gigi_mulut.supernumerary,penilaian_awal_medis_gigi_mulut.ket_supernumerary,"+
                 "penilaian_awal_medis_gigi_mulut.gigi_anomali,penilaian_awal_medis_gigi_mulut.ket_gigi_anomali,penilaian_awal_medis_gigi_mulut.diastema,penilaian_awal_medis_gigi_mulut.ket_diastema,penilaian_awal_medis_gigi_mulut.lain_lain,penilaian_awal_medis_gigi_mulut.data_penunjang,penilaian_awal_medis_gigi_mulut.diagnosa,penilaian_awal_medis_gigi_mulut.masalah_keperawatan,penilaian_awal_medis_gigi_mulut.terapi,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='11') as g11,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='12') as g12,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='13') as g13,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='14') as g14,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='15') as g15,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='16') as g16,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='17') as g17,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='18') as g18,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='21') as g21,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='22') as g22,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='23') as g23,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='24') as g24,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='25') as g25,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='26') as g26,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='27') as g27,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='28') as g28,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='31') as g31,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='32') as g32,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='33') as g33,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='34') as g34,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='35') as g35,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='36') as g36,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='37') as g37,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='38') as g38,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='41') as g41,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='42') as g42,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='43') as g43,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='44') as g44,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='45') as g45,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='46') as g46,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='47') as g47,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='48') as g48,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='51') as g51,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='52') as g52,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='53') as g53,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='54') as g54,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='55') as g55,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='61') as g61,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='62') as g62,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='63') as g63,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='64') as g64,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='65') as g65,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='71') as g71,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='72') as g72,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='73') as g73,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='74') as g74,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='75') as g75,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='81') as g81,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='82') as g82,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='83') as g83,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='84') as g84,"+
-                "(select concat(penilaian_awal_medis_gigi_odontogram.kondisi,if(penilaian_awal_medis_gigi_odontogram.keterangan='','',concat(' (',penilaian_awal_medis_gigi_odontogram.keterangan,')'))) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='85') as g85 "+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='11') as g11,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='12') as g12,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='13') as g13,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='14') as g14,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='15') as g15,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='16') as g16,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='17') as g17,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='18') as g18,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='21') as g21,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='22') as g22,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='23') as g23,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='24') as g24,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='25') as g25,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='26') as g26,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='27') as g27,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='28') as g28,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='31') as g31,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='32') as g32,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='33') as g33,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='34') as g34,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='35') as g35,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='36') as g36,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='37') as g37,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='38') as g38,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='41') as g41,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='42') as g42,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='43') as g43,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='44') as g44,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='45') as g45,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='46') as g46,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='47') as g47,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='48') as g48,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='51') as g51,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='52') as g52,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='53') as g53,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='54') as g54,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='55') as g55,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='61') as g61,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='62') as g62,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='63') as g63,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='64') as g64,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='65') as g65,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='71') as g71,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='72') as g72,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='73') as g73,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='74') as g74,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='75') as g75,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='81') as g81,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='82') as g82,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='83') as g83,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='84') as g84,"+
+                "(select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='85') as g85,"+
+                "(select group_concat(concat(penilaian_awal_medis_gigi_odontogram.no_gigi,' : ',penilaian_awal_medis_gigi_odontogram.keterangan) order by penilaian_awal_medis_gigi_odontogram.no_gigi separator '; ') from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.keterangan<>'') as ket_gigi "+
                 "from penilaian_awal_medis_gigi_mulut inner join reg_periksa on penilaian_awal_medis_gigi_mulut.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join dokter on penilaian_awal_medis_gigi_mulut.kd_dokter=dokter.kd_dokter where penilaian_awal_medis_gigi_mulut.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param
             );
@@ -1756,7 +1768,6 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
-                getData();
                 ChkAccor.setSelected(true);
                 isMenu();
                 getOdontogram();
@@ -1772,7 +1783,6 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
-                    getData();
                     ChkAccor.setSelected(true);
                     isMenu();
                     getOdontogram();
@@ -1781,7 +1791,6 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 try {
                     getData();
-                    getOdontogram();
                     TabRawat.setSelectedIndex(0);
                 } catch (java.lang.NullPointerException e) {
                 }
@@ -1851,7 +1860,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     }//GEN-LAST:event_HubunganKeyPressed
 
     private void NoGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoGigiKeyPressed
-        Valid.pindah2(evt,RiwayatKeluarga,Kondisi);
+        Valid.pindah(evt,RiwayatKeluarga,Kondisi);
     }//GEN-LAST:event_NoGigiKeyPressed
 
     private void KondisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKeyPressed
@@ -2265,30 +2274,9 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
             Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
             MasalahKeperawatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
             Terapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            try {
-                Valid.tabelKosong(tabModeGigi);
-                ps=koneksi.prepareStatement(
-                    "select penilaian_awal_medis_gigi_odontogram.no_gigi,penilaian_awal_medis_gigi_odontogram.kondisi,penilaian_awal_medis_gigi_odontogram.keterangan "+
-                    "from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=? order by penilaian_awal_medis_gigi_odontogram.no_gigi"
-                );
-                try {
-                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabModeGigi.addRow(new Object[]{rs.getString("no_gigi"),rs.getString("kondisi"),rs.getString("keterangan")});
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
+            Valid.tabelKosong(tabModeGigi);
+            for(i=0;i<tabModeGigiDetail.getRowCount();i++){
+                tabModeGigi.addRow(new Object[]{tabModeGigiDetail.getValueAt(i,0),tabModeGigiDetail.getValueAt(i,1),tabModeGigiDetail.getValueAt(i,2)});
             }
         }
     }
@@ -2353,101 +2341,84 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     }
   
     private void simpan() {
-        sukses=true;
-        Sequel.AutoComitFalse();
         if(Sequel.menyimpantf2("penilaian_awal_medis_gigi_mulut","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",25,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),
-            Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),
-            TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),Supernumerary.getSelectedItem().toString(),KetSupernumerary.getText(),
-            GigiAnomali.getSelectedItem().toString(),KetGigiAnomali.getText(),Diastema.getSelectedItem().toString(),KetDiastema.getText(),LainLain.getText(),DataPenunjang.getText(),
-            Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText()
-        })==false){
-            sukses=false;
-        }
-        for(i=0;i<tabModeGigi.getRowCount();i++){
-            if(Sequel.menyimpantf2("penilaian_awal_medis_gigi_odontogram","?,?,?,?",4,new String[]{
-                TNoRw.getText(),tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
-            })==false){
-                sukses=false;
-            }
-        }
-        if(sukses==true){
-            Sequel.Commit();
-        }else{
-            JOptionPane.showMessageDialog(null,"Gagal menyimpan, periksa kembali data atau pengkajian pasien ini sudah ada..!!");
-            Sequel.RollBack();
-        }
-        Sequel.AutoComitTrue();
-        if(sukses==true){
-            tabMode.addRow(new Object[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),
-                TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),Supernumerary.getSelectedItem().toString().equals("Ada")?"Ada : "+KetSupernumerary.getText():"Tidak Ada",
-                GigiAnomali.getSelectedItem().toString().equals("Ada")?"Ada : "+KetGigiAnomali.getText():"Tidak Ada",Diastema.getSelectedItem().toString().equals("Ada")?"Ada : "+KetDiastema.getText():"Tidak Ada",
-                LainLain.getText(),DataPenunjang.getText(),Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText()
-            });
-            LCount.setText(""+tabMode.getRowCount());
-            emptTeks();
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),
+                Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),
+                TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),Supernumerary.getSelectedItem().toString(),KetSupernumerary.getText(),
+                GigiAnomali.getSelectedItem().toString(),KetGigiAnomali.getText(),Diastema.getSelectedItem().toString(),KetDiastema.getText(),LainLain.getText(),DataPenunjang.getText(),
+                Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText()
+            })==true){
+                tabMode.addRow(new Object[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                    Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),
+                    TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),Supernumerary.getSelectedItem().toString().equals("Ada")?"Ada : "+KetSupernumerary.getText():"Tidak Ada",
+                    GigiAnomali.getSelectedItem().toString().equals("Ada")?"Ada : "+KetGigiAnomali.getText():"Tidak Ada",Diastema.getSelectedItem().toString().equals("Ada")?"Ada : "+KetDiastema.getText():"Tidak Ada",
+                    LainLain.getText(),DataPenunjang.getText(),Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                Valid.tabelKosong(tabModeGigiDetail);
+                for(i=0;i<tabModeGigi.getRowCount();i++){
+                    if(Sequel.menyimpantf2("penilaian_awal_medis_gigi_odontogram","?,?,?,?",4,new String[]{
+                            TNoRw.getText(),tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
+                        })==true){
+                        tabModeGigiDetail.addRow(new Object[]{
+                            tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
+                        });
+                    }
+                }
+                TNoRM1.setText(TNoRM.getText());
+                TPasien1.setText(TPasien.getText());
+                emptTeks();
         }
     }
 
     private void ganti() {
-        sukses=true;
-        Sequel.AutoComitFalse();
         if(Sequel.mengedittf2("penilaian_awal_medis_gigi_mulut","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,alergi=?,riwayat_keluarga=?,occlusi=?,torus_palatinus=?,torus_mandibularis=?,supernumerary=?,ket_supernumerary=?,gigi_anomali=?,ket_gigi_anomali=?,diastema=?,ket_diastema=?,lain_lain=?,data_penunjang=?,diagnosa=?,masalah_keperawatan=?,terapi=?",26,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),
-            Supernumerary.getSelectedItem().toString(),KetSupernumerary.getText(),GigiAnomali.getSelectedItem().toString(),KetGigiAnomali.getText(),Diastema.getSelectedItem().toString(),KetDiastema.getText(),LainLain.getText(),DataPenunjang.getText(),Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        })==false){
-            sukses=false;
-        }
-        if(Sequel.queryu2tf("delete from penilaian_awal_medis_gigi_odontogram where no_rawat=?",1,new String[]{TNoRw.getText()})==false){
-            sukses=false;
-        }
-        for(i=0;i<tabModeGigi.getRowCount();i++){
-            if(Sequel.menyimpantf2("penilaian_awal_medis_gigi_odontogram","?,?,?,?",4,new String[]{
-                TNoRw.getText(),tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
-            })==false){
-                sukses=false;
-            }
-        }
-        if(sukses==true){
-            Sequel.Commit();
-        }else{
-            JOptionPane.showMessageDialog(null,"Gagal mengganti, periksa kembali data..!!");
-            Sequel.RollBack();
-        }
-        Sequel.AutoComitTrue();
-        if(sukses==true){
-            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
-            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
-            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
-            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
-            tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
-            tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(Anamnesis.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Hubungan.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(KeluhanUtama.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(RPS.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(RPD.getText(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(RPO.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(RiwayatKeluarga.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(Occlusi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(TorusPalatinus.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(TorusMandibularis.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(Supernumerary.getSelectedItem().toString().equals("Ada")?"Ada : "+KetSupernumerary.getText():"Tidak Ada",tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(GigiAnomali.getSelectedItem().toString().equals("Ada")?"Ada : "+KetGigiAnomali.getText():"Tidak Ada",tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(Diastema.getSelectedItem().toString().equals("Ada")?"Ada : "+KetDiastema.getText():"Tidak Ada",tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(LainLain.getText(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(DataPenunjang.getText(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(MasalahKeperawatan.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(Terapi.getText(),tbObat.getSelectedRow(),26);
-            getOdontogram();
-            emptTeks();
-            TabRawat.setSelectedIndex(1);
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),RiwayatKeluarga.getText(),Occlusi.getSelectedItem().toString(),TorusPalatinus.getSelectedItem().toString(),TorusMandibularis.getSelectedItem().toString(),
+                Supernumerary.getSelectedItem().toString(),KetSupernumerary.getText(),GigiAnomali.getSelectedItem().toString(),KetGigiAnomali.getText(),Diastema.getSelectedItem().toString(),KetDiastema.getText(),LainLain.getText(),DataPenunjang.getText(),Diagnosa.getText(),MasalahKeperawatan.getText(),Terapi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            })==true){
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(Anamnesis.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(Hubungan.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(KeluhanUtama.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(RPS.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(RPD.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(RPO.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(RiwayatKeluarga.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(Occlusi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(TorusPalatinus.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(TorusMandibularis.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(Supernumerary.getSelectedItem().toString().equals("Ada")?"Ada : "+KetSupernumerary.getText():"Tidak Ada",tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(GigiAnomali.getSelectedItem().toString().equals("Ada")?"Ada : "+KetGigiAnomali.getText():"Tidak Ada",tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(Diastema.getSelectedItem().toString().equals("Ada")?"Ada : "+KetDiastema.getText():"Tidak Ada",tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(LainLain.getText(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(DataPenunjang.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(MasalahKeperawatan.getText(),tbObat.getSelectedRow(),25);
+                tbObat.setValueAt(Terapi.getText(),tbObat.getSelectedRow(),26);
+                Sequel.meghapus("penilaian_awal_medis_gigi_odontogram","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.tabelKosong(tabModeGigiDetail);
+                for(i=0;i<tabModeGigi.getRowCount();i++){
+                    if(Sequel.menyimpantf2("penilaian_awal_medis_gigi_odontogram","?,?,?,?",4,new String[]{
+                            TNoRw.getText(),tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
+                        })==true){
+                        tabModeGigiDetail.addRow(new Object[]{
+                            tabModeGigi.getValueAt(i,0).toString(),tabModeGigi.getValueAt(i,1).toString(),tabModeGigi.getValueAt(i,2).toString()
+                        });
+                    }
+                }
+                TNoRM1.setText(TNoRM.getText());
+                TPasien1.setText(TPasien.getText());
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
         }
     }
 
@@ -2469,7 +2440,7 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(760,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(470,HEIGHT));
             FormMenu.setVisible(true);
             FormOdontogram.setVisible(true);
             ChkAccor.setVisible(true);
@@ -2486,9 +2457,30 @@ public final class RMPenilaianAwalMedisRalanGigi extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             TNoRM1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            Valid.tabelKosong(tabModeGigiDetail);
-            for(i=0;i<tabModeGigi.getRowCount();i++){
-                tabModeGigiDetail.addRow(new Object[]{tabModeGigi.getValueAt(i,0),tabModeGigi.getValueAt(i,1),tabModeGigi.getValueAt(i,2)});
+            try {
+                Valid.tabelKosong(tabModeGigiDetail);
+                ps=koneksi.prepareStatement(
+                    "select penilaian_awal_medis_gigi_odontogram.no_gigi,penilaian_awal_medis_gigi_odontogram.kondisi,penilaian_awal_medis_gigi_odontogram.keterangan "+
+                    "from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=? order by penilaian_awal_medis_gigi_odontogram.no_gigi"
+                );
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabModeGigiDetail.addRow(new Object[]{rs.getString("no_gigi"),rs.getString("kondisi"),rs.getString("keterangan")});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
             }
         }
     }

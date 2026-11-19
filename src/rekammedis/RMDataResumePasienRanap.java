@@ -2846,7 +2846,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 HttpEntity entity = entityBuilder.build();
                 post.setEntity(entity);
                 System.out.println("URL Kirim File : "+koneksiDB.URLAPISERTISIGN());
-                try (CloseableHttpResponse response = httpClient.execute(post)) {
+                try (httpClient; CloseableHttpResponse response = httpClient.execute(post)) {
                     if (response.getCode() == 200) {
                         json=EntityUtils.toString(response.getEntity());
                         System.out.println("Respon Kirim File : " + json);
@@ -2997,7 +2997,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                     System.out.println("URL Akses file :"+koneksiDB.URLAKSESFILEESIGN());
                     System.out.println("JSON Dikirim :"+json);
                     post.setEntity(new StringEntity(json));
-                    try (CloseableHttpResponse response = httpClient.execute(post)) {
+                    try (httpClient; CloseableHttpResponse response = httpClient.execute(post)) {
                         System.out.println("Response Status : " + response.getCode());
                         json=EntityUtils.toString(response.getEntity());
                         root = mapper.readTree(json);

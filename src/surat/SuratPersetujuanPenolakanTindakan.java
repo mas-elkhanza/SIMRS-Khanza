@@ -60,7 +60,17 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private DlgCariPetugas petugas;
     private MasterCariTemplatePersetujuanPenolakanTindakan template;
     private String finger="",finger2="",lokasifile="",lokasifile2="";
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = newExecutorOtomatis();
+
+    private static ExecutorService newExecutorOtomatis() {
+        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        });
+        ex.allowCoreThreadTimeOut(true);
+        return ex;
+    }
     private volatile boolean ceksukses = false;
     
     /** Creates new form DlgRujuk
@@ -237,9 +247,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
-        Document doc = kit.createDefaultDocument();
-        LoadHTML2.setDocument(doc);
-        LoadHTML3.setDocument(doc);
+        LoadHTML2.setDocument(kit.createDefaultDocument());
+        LoadHTML3.setDocument(kit.createDefaultDocument());
     }
 
 

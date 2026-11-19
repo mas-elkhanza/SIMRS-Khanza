@@ -79,7 +79,7 @@ public class koneksiDB {
         try (FileInputStream fis =new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);
         }
-        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=100000&socketTimeout=600000&maintainTimeStats=false&autoReconnect=true");
+        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=100000&socketTimeout=600000&maintainTimeStats=false&autoReconnect=true&dontTrackOpenResources=true");
         dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
         dataSource.setCachePreparedStatements(true);
@@ -1809,7 +1809,7 @@ public class koneksiDB {
     
     public static String URLAPPLINKSATUSEHAT() {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             var = prop.getProperty("URLAPPLINKSATUSEHAT");
         } catch (Exception e) {
             var = "";
@@ -1819,7 +1819,7 @@ public class koneksiDB {
     
     public static String URLRMESATUSEHAT() {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             var = prop.getProperty("URLRMESATUSEHAT");
         } catch (Exception e) {
             var = "";
@@ -1829,7 +1829,7 @@ public class koneksiDB {
     
     public static String IDORGBPJSSATUSEHAT() {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             var = prop.getProperty("IDORGBPJSSATUSEHAT");
         } catch (Exception e) {
             var = "";
@@ -1839,7 +1839,7 @@ public class koneksiDB {
     
     public static String KODEAKUNPENGELUARANHARIAN() {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             var = prop.getProperty("KODEAKUNPENGELUARANHARIAN");
         } catch (Exception e) {
             var = "";

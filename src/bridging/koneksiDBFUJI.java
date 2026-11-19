@@ -25,7 +25,7 @@ public class koneksiDBFUJI {
     public static Connection condb(){ 
         if(connection == null){
             try{
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
                 dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTFUJI"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTFUJI"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEFUJI"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERFUJI")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASFUJI")));

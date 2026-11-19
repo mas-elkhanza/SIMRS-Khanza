@@ -43,6 +43,23 @@ import javax.swing.WindowConstants;
  * @author dosen
  */
 public final class RMRekonsiliasiObat extends javax.swing.JDialog {
+    private javax.swing.Timer timerJam;
+
+    @Override
+    public void dispose() {
+        if (timerJam != null) {
+            timerJam.stop();
+        }
+        super.dispose();
+    }
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+    }
+
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -1076,7 +1093,8 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
             }
         };
         // Timer
-        new Timer(1000, taskPerformer).start();
+        timerJam = new javax.swing.Timer(1000, taskPerformer);
+        timerJam.start();
     } 
     
     public void setNoRm(String norwt) {

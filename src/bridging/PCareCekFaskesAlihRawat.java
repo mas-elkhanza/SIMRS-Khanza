@@ -111,7 +111,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }  
             URL=prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/khusus/";
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
         } catch (Exception e) {

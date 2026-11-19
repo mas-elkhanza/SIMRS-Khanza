@@ -25,7 +25,7 @@ public class koneksiDBELIMS {
     public static Connection condb(){ 
         if(connection == null){
             try{
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
                 dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTELIMS"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTELIMS"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEELIMS"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERELIMS")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASELIMS")));

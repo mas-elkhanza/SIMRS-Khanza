@@ -1586,7 +1586,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     
     public void isCek(){
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
             namaruang=prop.getProperty("KAMARAKTIFRANAP");
         } catch (Exception ex) {
             namaruang="";

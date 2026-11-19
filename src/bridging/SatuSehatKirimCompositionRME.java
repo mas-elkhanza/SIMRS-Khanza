@@ -31,7 +31,6 @@ import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
-import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import org.springframework.http.HttpEntity;
@@ -619,12 +618,11 @@ public final class SatuSehatKirimCompositionRME extends javax.swing.JDialog {
                 ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
-        Document doc = kit.createDefaultDocument();
-        LoadHTML.setDocument(doc);
-        LoadHTMLIGDPrimer.setDocument(doc);
-        LoadHTMLIGDSekunder.setDocument(doc);
-        LoadHTMLAwalKeperawatanIGD.setDocument(doc);
-        LoadHTMLAwalKeperawatanRalan.setDocument(doc);
+        LoadHTML.setDocument(kit.createDefaultDocument());
+        LoadHTMLIGDPrimer.setDocument(kit.createDefaultDocument());
+        LoadHTMLIGDSekunder.setDocument(kit.createDefaultDocument());
+        LoadHTMLAwalKeperawatanIGD.setDocument(kit.createDefaultDocument());
+        LoadHTMLAwalKeperawatanRalan.setDocument(kit.createDefaultDocument());
         
         ChkAccorIGDPrimer.setSelected(false);
         isMenuIGDPrimer();

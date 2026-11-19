@@ -94,6 +94,9 @@ public class DlgRiwayatNaikGaji extends javax.swing.JDialog {
         Platform.runLater(new Runnable() {
 
             public void run() {
+                if (engine != null) {
+                    return;
+                }
                 WebView view = new WebView();
                 
                 engine = view.getEngine();
@@ -153,7 +156,7 @@ public class DlgRiwayatNaikGaji extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                                try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
                                 if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                     Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
@@ -488,6 +491,20 @@ public class DlgRiwayatNaikGaji extends javax.swing.JDialog {
     
     @Override
     public void dispose() {
+        try {
+            Platform.runLater(() -> {
+                try {
+                    WebEngine eng = engine;
+                    engine = null;
+                    if (eng != null) {
+                        eng.load(null);
+                    }
+                    jfxPanel.setScene(null);
+                } catch (Exception ignore) {
+                }
+            });
+        } catch (Exception ignore) {
+        }
         executor.shutdownNow();
         super.dispose();
     }

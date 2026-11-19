@@ -28,7 +28,17 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
     private PreparedStatement ps;
     private ResultSet rs;
     private int i;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = newExecutorOtomatis();
+
+    private static ExecutorService newExecutorOtomatis() {
+        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        });
+        ex.allowCoreThreadTimeOut(true);
+        return ex;
+    }
     private volatile boolean ceksukses = false;
 
     /** Creates new form DlgProgramStudi

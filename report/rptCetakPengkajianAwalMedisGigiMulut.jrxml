@@ -1,0 +1,3685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCetakPengkajianAwalMedisGigiMulut" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="18aa96de-5280-4ed7-80cd-47796a8ce86d">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="finger" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select penilaian_awal_medis_gigi_mulut.no_rawat,
+                pasien.no_rkm_medis,
+                pasien.nm_pasien,
+                pasien.tgl_lahir,
+                pasien.jk,
+                penilaian_awal_medis_gigi_mulut.tanggal,
+                penilaian_awal_medis_gigi_mulut.kd_dokter,
+                dokter.nm_dokter,
+                penilaian_awal_medis_gigi_mulut.anamnesis,
+                penilaian_awal_medis_gigi_mulut.hubungan,
+                penilaian_awal_medis_gigi_mulut.keluhan_utama,
+                penilaian_awal_medis_gigi_mulut.rps,
+                penilaian_awal_medis_gigi_mulut.rpd,
+                penilaian_awal_medis_gigi_mulut.rpo,
+                penilaian_awal_medis_gigi_mulut.alergi,
+                penilaian_awal_medis_gigi_mulut.riwayat_keluarga,
+                penilaian_awal_medis_gigi_mulut.occlusi,
+                penilaian_awal_medis_gigi_mulut.torus_palatinus,
+                penilaian_awal_medis_gigi_mulut.torus_mandibularis,
+                penilaian_awal_medis_gigi_mulut.supernumerary,
+                penilaian_awal_medis_gigi_mulut.ket_supernumerary,
+                penilaian_awal_medis_gigi_mulut.gigi_anomali,
+                penilaian_awal_medis_gigi_mulut.ket_gigi_anomali,
+                penilaian_awal_medis_gigi_mulut.diastema,
+                penilaian_awal_medis_gigi_mulut.ket_diastema,
+                penilaian_awal_medis_gigi_mulut.lain_lain,
+                penilaian_awal_medis_gigi_mulut.data_penunjang,
+                penilaian_awal_medis_gigi_mulut.diagnosa,
+                penilaian_awal_medis_gigi_mulut.masalah_keperawatan,
+                penilaian_awal_medis_gigi_mulut.terapi,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='11') as g11,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='12') as g12,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='13') as g13,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='14') as g14,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='15') as g15,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='16') as g16,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='17') as g17,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='18') as g18,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='21') as g21,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='22') as g22,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='23') as g23,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='24') as g24,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='25') as g25,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='26') as g26,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='27') as g27,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='28') as g28,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='31') as g31,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='32') as g32,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='33') as g33,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='34') as g34,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='35') as g35,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='36') as g36,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='37') as g37,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='38') as g38,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='41') as g41,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='42') as g42,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='43') as g43,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='44') as g44,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='45') as g45,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='46') as g46,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='47') as g47,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='48') as g48,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='51') as g51,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='52') as g52,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='53') as g53,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='54') as g54,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='55') as g55,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='61') as g61,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='62') as g62,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='63') as g63,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='64') as g64,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='65') as g65,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='71') as g71,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='72') as g72,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='73') as g73,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='74') as g74,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='75') as g75,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='81') as g81,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='82') as g82,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='83') as g83,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='84') as g84,
+                (select left(penilaian_awal_medis_gigi_odontogram.kondisi,3) from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.no_gigi='85') as g85,
+                (select group_concat(concat(penilaian_awal_medis_gigi_odontogram.no_gigi,' : ',penilaian_awal_medis_gigi_odontogram.keterangan) order by penilaian_awal_medis_gigi_odontogram.no_gigi separator '; ') from penilaian_awal_medis_gigi_odontogram where penilaian_awal_medis_gigi_odontogram.no_rawat=penilaian_awal_medis_gigi_mulut.no_rawat and penilaian_awal_medis_gigi_odontogram.keterangan<>'') as ket_gigi
+                from penilaian_awal_medis_gigi_mulut inner join reg_periksa on penilaian_awal_medis_gigi_mulut.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                inner join dokter on penilaian_awal_medis_gigi_mulut.kd_dokter=dokter.kd_dokter]]>
+	</queryString>
+	<field name="no_rawat" class="java.lang.String"/>
+	<field name="no_rkm_medis" class="java.lang.String"/>
+	<field name="nm_pasien" class="java.lang.String"/>
+	<field name="tgl_lahir" class="java.sql.Date"/>
+	<field name="jk" class="java.lang.String"/>
+	<field name="tanggal" class="java.sql.Timestamp"/>
+	<field name="kd_dokter" class="java.lang.String"/>
+	<field name="nm_dokter" class="java.lang.String"/>
+	<field name="anamnesis" class="java.lang.String"/>
+	<field name="hubungan" class="java.lang.String"/>
+	<field name="keluhan_utama" class="java.lang.String"/>
+	<field name="rps" class="java.lang.String"/>
+	<field name="rpd" class="java.lang.String"/>
+	<field name="rpo" class="java.lang.String"/>
+	<field name="alergi" class="java.lang.String"/>
+	<field name="riwayat_keluarga" class="java.lang.String"/>
+	<field name="occlusi" class="java.lang.String"/>
+	<field name="torus_palatinus" class="java.lang.String"/>
+	<field name="torus_mandibularis" class="java.lang.String"/>
+	<field name="supernumerary" class="java.lang.String"/>
+	<field name="ket_supernumerary" class="java.lang.String"/>
+	<field name="gigi_anomali" class="java.lang.String"/>
+	<field name="ket_gigi_anomali" class="java.lang.String"/>
+	<field name="diastema" class="java.lang.String"/>
+	<field name="ket_diastema" class="java.lang.String"/>
+	<field name="lain_lain" class="java.lang.String"/>
+	<field name="data_penunjang" class="java.lang.String"/>
+	<field name="diagnosa" class="java.lang.String"/>
+	<field name="masalah_keperawatan" class="java.lang.String"/>
+	<field name="terapi" class="java.lang.String"/>
+	<field name="g11" class="java.lang.String"/>
+	<field name="g12" class="java.lang.String"/>
+	<field name="g13" class="java.lang.String"/>
+	<field name="g14" class="java.lang.String"/>
+	<field name="g15" class="java.lang.String"/>
+	<field name="g16" class="java.lang.String"/>
+	<field name="g17" class="java.lang.String"/>
+	<field name="g18" class="java.lang.String"/>
+	<field name="g21" class="java.lang.String"/>
+	<field name="g22" class="java.lang.String"/>
+	<field name="g23" class="java.lang.String"/>
+	<field name="g24" class="java.lang.String"/>
+	<field name="g25" class="java.lang.String"/>
+	<field name="g26" class="java.lang.String"/>
+	<field name="g27" class="java.lang.String"/>
+	<field name="g28" class="java.lang.String"/>
+	<field name="g31" class="java.lang.String"/>
+	<field name="g32" class="java.lang.String"/>
+	<field name="g33" class="java.lang.String"/>
+	<field name="g34" class="java.lang.String"/>
+	<field name="g35" class="java.lang.String"/>
+	<field name="g36" class="java.lang.String"/>
+	<field name="g37" class="java.lang.String"/>
+	<field name="g38" class="java.lang.String"/>
+	<field name="g41" class="java.lang.String"/>
+	<field name="g42" class="java.lang.String"/>
+	<field name="g43" class="java.lang.String"/>
+	<field name="g44" class="java.lang.String"/>
+	<field name="g45" class="java.lang.String"/>
+	<field name="g46" class="java.lang.String"/>
+	<field name="g47" class="java.lang.String"/>
+	<field name="g48" class="java.lang.String"/>
+	<field name="g51" class="java.lang.String"/>
+	<field name="g52" class="java.lang.String"/>
+	<field name="g53" class="java.lang.String"/>
+	<field name="g54" class="java.lang.String"/>
+	<field name="g55" class="java.lang.String"/>
+	<field name="g61" class="java.lang.String"/>
+	<field name="g62" class="java.lang.String"/>
+	<field name="g63" class="java.lang.String"/>
+	<field name="g64" class="java.lang.String"/>
+	<field name="g65" class="java.lang.String"/>
+	<field name="g71" class="java.lang.String"/>
+	<field name="g72" class="java.lang.String"/>
+	<field name="g73" class="java.lang.String"/>
+	<field name="g74" class="java.lang.String"/>
+	<field name="g75" class="java.lang.String"/>
+	<field name="g81" class="java.lang.String"/>
+	<field name="g82" class="java.lang.String"/>
+	<field name="g83" class="java.lang.String"/>
+	<field name="g84" class="java.lang.String"/>
+	<field name="g85" class="java.lang.String"/>
+	<field name="ket_gigi" class="java.lang.String"/>
+	<detail>
+		<band height="750">
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="240" width="557" height="140" uuid="7a06fb41-c65f-4287-94ba-207c08429b72"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="557" height="12" uuid="83ddae14-36bc-4588-be99-9b662e88d72b"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RJ.04.05"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="12" width="205" height="60" uuid="f7deadfc-f95c-4754-8c84-83db8b8cfbb3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="205" y="12" width="210" height="60" uuid="335d371c-65c2-48da-8463-690c462940c5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="415" y="12" width="142" height="60" uuid="a246df1a-978d-42cc-a507-adf5d1988a5c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image scaleImage="FillFrame" isUsingCache="true" onErrorType="Blank">
+				<reportElement x="8" y="22" width="40" height="40" uuid="3604db7a-eec4-47c3-b188-0c41ba713562"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="54" y="20" width="148" height="16" uuid="e2ccb53c-b6d5-460f-8cdb-44f0380c85b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="54" y="36" width="148" height="34" uuid="415f46dc-eac4-448e-8960-e01b8e4d38e1"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="205" y="12" width="210" height="60" uuid="12e421f4-2148-4104-8a5c-158c5847f1db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PENGKAJIAN AWAL PASIEN 
+RAWAT JALAN GIGI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="18" width="40" height="14" uuid="64348436-312c-4654-8bd3-896abcc3f74d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.RM]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="458" y="18" width="97" height="14" uuid="338ceddb-cfb5-4ada-83fa-7be104f7e93b"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{no_rkm_medis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="34" width="40" height="14" uuid="eab59f7e-9067-448a-84b5-534004b53b5d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="458" y="34" width="97" height="14" uuid="eb90b91e-0744-4469-8532-dbba2245394d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{nm_pasien}+" ("+$F{jk}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="50" width="40" height="14" uuid="3f0e2c79-9c6e-45d1-8cb3-978cab3fbef3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TGL. LAHIR]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="458" y="50" width="97" height="14" uuid="09186f7e-ca6a-4cb9-9ffa-da080d6bf5ed"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+($F{tgl_lahir}==null?"":new SimpleDateFormat("dd-MM-yyyy").format($F{tgl_lahir}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="72" width="557" height="14" backcolor="#D9D9D9" uuid="f9a9ce75-d7a3-4997-8aa5-0c3ad03bd734"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ANAMNESA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="250" y="72" width="304" height="14" uuid="0e8b6c2a-5d1f-4a8e-b1d2-7c3f9a4e6b10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Anamnesis : "+$F{anamnesis}+("Alloanamnesis".equals($F{anamnesis})?" ("+$F{hubungan}+")":"")]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="86" width="557" height="140" uuid="7e293272-e65d-47ca-ac2c-3d423b567652"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="87" width="140" height="12" uuid="3ed026a8-44d9-4183-8f06-8ee845d5ed5c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Keluhan Utama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="87" width="6" height="12" uuid="f2d6a43f-1c92-4683-aaa7-80cae4cdbe25"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="87" width="405" height="24" uuid="6aa31b66-7ee1-4d40-8cb4-4ef22ec3baa3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keluhan_utama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="112" width="140" height="12" uuid="32b2751a-2968-45ea-b72c-d0028d0a4d97"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Riwayat Penyakit Sekarang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="112" width="6" height="12" uuid="3d5a523b-1d70-4614-9ef6-e093aa90fc2c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="112" width="405" height="24" uuid="d983df76-5fff-476a-b2ad-25f80acedab8"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rps}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="137" width="140" height="12" uuid="c4d16a10-ae70-4d58-8814-edebcbe7860a"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Riwayat Penyakit Dahulu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="137" width="6" height="12" uuid="d8c0d357-c022-4e3e-95ad-a778d4a5c659"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="137" width="405" height="24" uuid="9ada6d5e-06cf-483f-ba32-5596dc7e3166"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpd}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="162" width="140" height="12" uuid="2e5ff2e2-1ccc-47dc-a83a-1e90f43f938d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Riwayat Pengobatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="162" width="6" height="12" uuid="f541b000-35df-4fa5-b462-3173e5a7ab36"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="162" width="405" height="24" uuid="8981a073-f216-4392-a31e-3930e84506c9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="213" width="140" height="12" uuid="4d0bdd8d-6d56-48fa-b598-1a9c5746f3eb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Riwayat Alergi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="213" width="6" height="12" uuid="1c176bdd-c32d-4f4f-b864-c14b79bbb984"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="213" width="405" height="12" uuid="326abe51-dd34-4c07-94fb-50ffe7daa7c6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alergi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="187" width="140" height="12" uuid="a7ce37ce-9fb8-467c-898e-6ab7548883e6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Riwayat Penyakit Keluarga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="187" width="6" height="12" uuid="5a6c5342-2293-4fc0-8596-4a8089c0c9f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="187" width="405" height="26" uuid="1575a651-8647-4af2-8e85-f4631448e498"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{riwayat_keluarga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="226" width="557" height="14" backcolor="#D9D9D9" uuid="4eb7b6c8-b18e-4168-b24e-a8cc07a772da"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ODONTOGRAM]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="10" y="252" width="30" height="20" uuid="00b2994e-0726-4119-b97a-d5e4cf6be59e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="19" y="258" width="12" height="8" uuid="d94134c3-0a12-41c4-b560-c8a4fe28b13c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="10" y="252" width="9" height="6" uuid="05de72f3-2924-4dda-9efa-96eff449da10"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="31" y="252" width="9" height="6" uuid="ff92e85c-4a1c-441a-b892-e8f3b12fa983"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="10" y="266" width="9" height="6" uuid="6d3a445f-2427-4089-a244-ba5235bf29ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="31" y="266" width="9" height="6" uuid="fffc3c96-c333-4de5-b3c1-baaa8110e720"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="14" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="1960d344-53d8-417c-8f2c-f0c3c9480d30">
+					<printWhenExpression><![CDATA[$F{g18}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g18}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="241" width="30" height="10" uuid="8c38e93d-7915-41e4-bc26-40ee353d6a48"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[18]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="43" y="252" width="30" height="20" uuid="7f80aa7d-f360-4bcd-852d-1a19a1ffea56"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="52" y="258" width="12" height="8" uuid="f9d2d8f4-8934-406b-bbe5-b214a278ea12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="43" y="252" width="9" height="6" uuid="571e0365-7357-45cf-9df3-57c4d72b7795"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="64" y="252" width="9" height="6" uuid="3dcde81c-3213-4e57-8275-79daa760f581"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="43" y="266" width="9" height="6" uuid="23c914b2-206a-433c-8a55-1263850b7393"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="64" y="266" width="9" height="6" uuid="80f9634e-aa85-40c6-8dd0-50c5a86380e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="47" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="0868d040-849b-4c79-96b9-92309c36a82d">
+					<printWhenExpression><![CDATA[$F{g17}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g17}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="241" width="30" height="10" uuid="c214ca19-d4f1-4f02-8afb-1a78fce67ba5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[17]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="76" y="252" width="30" height="20" uuid="56972a18-53c0-4e16-ab3a-2c4861f791be"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="85" y="258" width="12" height="8" uuid="14d257b7-2caa-4317-bfa4-8d79349145bd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="76" y="252" width="9" height="6" uuid="73e90e2f-092c-4eb6-9fc4-78a97b084cd1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="97" y="252" width="9" height="6" uuid="9ee7ffa4-d338-4eb3-9bde-6bf5db4cc630"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="76" y="266" width="9" height="6" uuid="dfbdc52f-2672-4815-a9bb-b874381dbb9d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="97" y="266" width="9" height="6" uuid="37e30cfd-8992-4fc1-92a8-321918d5c355"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="80" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="904b4a5b-167c-4c01-9235-47dc186874eb">
+					<printWhenExpression><![CDATA[$F{g16}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g16}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="76" y="241" width="30" height="10" uuid="41c5af36-e521-41d2-85bf-bfc73a4bc04b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[16]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="109" y="252" width="30" height="20" uuid="8df5ce2d-bd5b-4c39-8b94-4fc4f421b5e3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="118" y="258" width="12" height="8" uuid="0c204857-b9b7-4026-97b7-fd20c67b679c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="109" y="252" width="9" height="6" uuid="e959aa4b-36e0-45cb-a308-0a7f19a77146"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="252" width="9" height="6" uuid="2eff3ebb-6d9a-4e85-8b80-3ee3eaac0dab"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="109" y="266" width="9" height="6" uuid="fc77f79d-dbd4-4faf-ba66-c69200cb33ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="266" width="9" height="6" uuid="6531ce80-a3a5-48a5-9884-6baefc1fb793"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="113" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="7454b885-13c6-486d-84ff-03e01c0d9151">
+					<printWhenExpression><![CDATA[$F{g15}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="241" width="30" height="10" uuid="a96a0a01-6288-4c35-8f76-5e59638acc03"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[15]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="142" y="252" width="30" height="20" uuid="1744148d-e3b0-4fa9-8a6d-e80c84edae1e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="151" y="258" width="12" height="8" uuid="3d37e027-b6f4-4d70-8fb6-26c06e24f9a2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="142" y="252" width="9" height="6" uuid="ebc5fe57-3c96-4a90-9540-e21e4a7d63ab"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="163" y="252" width="9" height="6" uuid="1380f460-e021-4b73-a90c-91641a026242"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="142" y="266" width="9" height="6" uuid="801fc441-f310-46c4-b0a7-b7bede5789d3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="163" y="266" width="9" height="6" uuid="8d4f0355-f969-481d-8748-0312dc4ed231"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="146" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="380ee29b-d1a3-44d3-9d9e-8ff59ab96f8b">
+					<printWhenExpression><![CDATA[$F{g14}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g14}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="241" width="30" height="10" uuid="d8ca0126-1625-4e94-8350-ffcc2b17c451"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[14]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="175" y="252" width="30" height="20" uuid="7574f0ab-8d92-4258-b8f6-b1f53ef28871"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="175" y="252" width="9" height="10" uuid="cb4d6a3e-ec49-4a03-9e9f-fcd43be595a6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="175" y="262" width="9" height="10" uuid="5cf6d820-b277-450d-b6aa-c5756d12b15c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="196" y="252" width="9" height="10" uuid="d8e8e4ad-3a4a-4b02-881b-5398d63a1840"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="196" y="262" width="9" height="10" uuid="e057f6a2-31c7-4a78-94a0-dbc72a4721c6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="184" y="262" width="12" height="1" uuid="18a045a4-7551-4039-9513-c15baca1572c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="179" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="662f33ad-496d-4f9c-a61c-2f4b12605c91">
+					<printWhenExpression><![CDATA[$F{g13}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g13}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="241" width="30" height="10" uuid="52fa043a-48a8-4682-9f41-771e96332977"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[13]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="208" y="252" width="30" height="20" uuid="26c409fd-1ce2-439d-9803-a44bc1b68c07"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="208" y="252" width="9" height="10" uuid="de67fddd-a24a-4239-80a0-738dba746542"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="208" y="262" width="9" height="10" uuid="af578096-ef64-4c5e-b9b4-cb44d66aade6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="229" y="252" width="9" height="10" uuid="80cfb7fa-a205-48e8-9142-851af1f79eb6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="229" y="262" width="9" height="10" uuid="da9a7565-5cbf-4112-bd1d-56fec4e3a066"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="217" y="262" width="12" height="1" uuid="2902ac97-f789-4176-814d-abd87f0cb2c3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="212" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="531be738-0320-46a5-b634-a2df2b1a319e">
+					<printWhenExpression><![CDATA[$F{g12}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g12}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="241" width="30" height="10" uuid="8468ac1e-2382-4645-af0c-919992511674"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[12]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="241" y="252" width="30" height="20" uuid="9169cd4d-55ef-4428-843f-275eae984957"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="241" y="252" width="9" height="10" uuid="902a2708-2099-4cb5-a9eb-784388d50a22"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="241" y="262" width="9" height="10" uuid="71af11e2-82d9-4bd8-81f8-ca230a0a3579"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="262" y="252" width="9" height="10" uuid="6134309f-99d0-4707-9056-1e9e5805310a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="262" y="262" width="9" height="10" uuid="d2480c0b-2fd2-4172-abdf-86d5d5fad74e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="250" y="262" width="12" height="1" uuid="cd4550b6-e623-434f-bfd0-582beb430625"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="245" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="b9774ad5-3b0e-4bc7-92bb-d5f52f108c63">
+					<printWhenExpression><![CDATA[$F{g11}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g11}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="241" y="241" width="30" height="10" uuid="4e905f69-9553-4776-9cb1-3cb069be14d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="282" y="252" width="30" height="20" uuid="28b6ce6a-c62c-48e7-8903-ebfc0c8d8a92"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="282" y="252" width="9" height="10" uuid="654b02aa-2d99-48f5-b7db-986cb264a80f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="282" y="262" width="9" height="10" uuid="0057f192-0f2c-470a-b691-f7443b4ba96b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="303" y="252" width="9" height="10" uuid="998fcf89-957b-410b-98bb-e7417d6beb93"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="303" y="262" width="9" height="10" uuid="d29d3d71-7af0-4291-86a8-f783933ff71b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="291" y="262" width="12" height="1" uuid="7f43ba8f-1e56-478c-9f21-656529ace53a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="286" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="f5d90e5e-dff2-40ec-b87b-ad81abe32f37">
+					<printWhenExpression><![CDATA[$F{g21}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g21}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="282" y="241" width="30" height="10" uuid="faf291ac-dd58-4966-960a-dcdaccd8d723"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="315" y="252" width="30" height="20" uuid="5bca2101-60fb-471a-a264-1b2379379c0f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="315" y="252" width="9" height="10" uuid="d07d9b28-2b5d-4507-ad80-d9ec2d52304c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="315" y="262" width="9" height="10" uuid="40e5ecb2-340b-4153-bd02-01c66970c3af"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="336" y="252" width="9" height="10" uuid="681dd8ca-82c1-44cd-ae5d-bf914e49c274"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="336" y="262" width="9" height="10" uuid="05fa9e06-6f06-4481-902e-c2d96f5ae441"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="324" y="262" width="12" height="1" uuid="ea95bba5-6ead-4146-89cc-6242443691e0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="319" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="306f3fe6-33f9-4469-8fb5-a91723b3e8c8">
+					<printWhenExpression><![CDATA[$F{g22}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g22}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="315" y="241" width="30" height="10" uuid="10000846-6228-4d2a-8773-854c1dc1901b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[22]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="348" y="252" width="30" height="20" uuid="e6812c97-045c-4ac6-b03e-f5e17c5f713f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="348" y="252" width="9" height="10" uuid="58489e3d-1658-484a-9ffa-110304498ecb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="348" y="262" width="9" height="10" uuid="1e0f15d1-8050-4179-9dbb-31901c87b9b6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="369" y="252" width="9" height="10" uuid="ff1dfc4f-2645-4a59-9535-f5ead964bdfb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="369" y="262" width="9" height="10" uuid="43cd08da-ad59-4ae2-97c5-a63b70df4ef1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="357" y="262" width="12" height="1" uuid="95aa972a-7854-4693-a952-8bb9c6b30a6a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="352" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="1ab6794c-51b5-41b7-8279-26b5862b6789">
+					<printWhenExpression><![CDATA[$F{g23}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g23}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="241" width="30" height="10" uuid="71594b65-5dce-4bea-8ee3-54570f7d0a18"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="381" y="252" width="30" height="20" uuid="85c56092-5485-4b70-b52e-5229f26270c3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="390" y="258" width="12" height="8" uuid="8fb116fa-01a3-4b97-b070-a6a4e4dac7ab"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="381" y="252" width="9" height="6" uuid="0d9360dc-5af7-41b9-837c-62c698de55c0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="402" y="252" width="9" height="6" uuid="cbe93219-7d75-46e7-b58f-a5ef9c8ccad9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="381" y="266" width="9" height="6" uuid="1c1ec754-6ebc-4064-aa05-4ca7fc16fce8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="402" y="266" width="9" height="6" uuid="7b57a970-dc8a-40ce-a978-9ee1133eb97d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="385" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="009eccae-c60c-426b-838d-d524bb01f872">
+					<printWhenExpression><![CDATA[$F{g24}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g24}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="241" width="30" height="10" uuid="63b2cc4b-ce6a-4079-b76b-2fc977b5869f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[24]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="414" y="252" width="30" height="20" uuid="7ddfe657-880a-4272-9b7e-64077275bab1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="423" y="258" width="12" height="8" uuid="93120e62-b656-4c0d-af05-3007025671e8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="414" y="252" width="9" height="6" uuid="58d0c66f-a0fd-4225-8981-43ed80cd3c1f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="435" y="252" width="9" height="6" uuid="3ef0ef9b-6548-46e9-a004-d306683460eb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="414" y="266" width="9" height="6" uuid="a3a3fc0b-2187-496e-a257-cdb418a7dd54"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="435" y="266" width="9" height="6" uuid="02a0dd71-cc90-4421-9863-9cc952e8e7da"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="418" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="6ed03c57-27fc-4477-8e8b-985e3b39063d">
+					<printWhenExpression><![CDATA[$F{g25}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g25}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="241" width="30" height="10" uuid="dfd3be1e-c0b9-4c61-9810-95a9bf32ca76"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[25]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="447" y="252" width="30" height="20" uuid="62215464-5228-4e4a-b41a-887135ae3ccb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="456" y="258" width="12" height="8" uuid="73eb4dde-446f-4371-a5db-4f309b74eace"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="447" y="252" width="9" height="6" uuid="bc0ea857-4403-4874-9e06-b4f93eeec98b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="468" y="252" width="9" height="6" uuid="e75cb693-63e8-427c-ba09-503782b7de0e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="447" y="266" width="9" height="6" uuid="36f68c86-eb89-4391-8460-176123557153"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="468" y="266" width="9" height="6" uuid="ea9941cc-7843-4805-ac80-79967d995781"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="451" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="7c884226-755e-4757-97e2-a53780a494a8">
+					<printWhenExpression><![CDATA[$F{g26}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g26}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="241" width="30" height="10" uuid="3e12be94-04b3-4ed6-8684-2a1ad5df510e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[26]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="480" y="252" width="30" height="20" uuid="3164c3ad-af7c-4515-854d-4421e518ffae"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="489" y="258" width="12" height="8" uuid="cfd20f75-76da-4bf5-90e3-d6a6a5ca23dd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="480" y="252" width="9" height="6" uuid="26fc8b2b-0af6-4cea-b740-e7830af95506"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="501" y="252" width="9" height="6" uuid="6e92102a-c80d-4a3c-8df5-5ecc4172387e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="480" y="266" width="9" height="6" uuid="17bc8df4-20aa-4587-8282-1537b89877b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="501" y="266" width="9" height="6" uuid="e7123110-d635-4f9a-89f8-b68cef4a0634"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="484" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="e5e2b803-65f6-4063-b4dc-fb2763be0830">
+					<printWhenExpression><![CDATA[$F{g27}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g27}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="241" width="30" height="10" uuid="e78875f6-580d-4ea4-b0b3-85821081e283"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[27]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="513" y="252" width="30" height="20" uuid="5256b62f-bbf3-4bd4-9041-a32e5488128c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="522" y="258" width="12" height="8" uuid="d5398cc8-474b-4c64-b1fb-aeb7bd699b65"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="513" y="252" width="9" height="6" uuid="d2fc62ce-233e-487b-9a73-c0a34306b9eb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="534" y="252" width="9" height="6" uuid="42ee1b21-ea6a-44ee-a0c9-cddb2aa3cb7b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="513" y="266" width="9" height="6" uuid="a709103a-deec-4252-b533-a8968f452d92"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="534" y="266" width="9" height="6" uuid="3ca3bc43-6bc1-43e2-9190-3bdb3059c2f9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="517" y="257" width="22" height="10" backcolor="#FFF4BE" uuid="7463c03c-9a35-4559-a87c-bec96ec2e9b1">
+					<printWhenExpression><![CDATA[$F{g28}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g28}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="513" y="241" width="30" height="10" uuid="b68747a0-b6e4-4b0f-9e28-9c13fb180082"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[28]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="109" y="286" width="30" height="20" uuid="9f7a2b77-958a-4c45-a6e2-75d3c7d99d21"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="118" y="292" width="12" height="8" uuid="f94fe0ad-ae5a-4bea-8c83-ad5c569ba736"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="109" y="286" width="9" height="6" uuid="057ae23c-9c4a-48fc-ba3f-3d6a83207a12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="286" width="9" height="6" uuid="a62e1bf3-07cc-40fd-9b33-e7432d209ec7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="109" y="300" width="9" height="6" uuid="f36e5ebc-3ca0-4bb1-8898-7dd05688f874"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="300" width="9" height="6" uuid="658d5b7d-27ff-45fa-8dc8-2796790b10fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="113" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="35d8bf66-a119-4c4b-9a86-f32b66698a13">
+					<printWhenExpression><![CDATA[$F{g55}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g55}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="275" width="30" height="10" uuid="9c2ed2fb-22b9-4df5-ba10-b0ff61db2f55"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[55]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="142" y="286" width="30" height="20" uuid="bd77ad88-4398-4f76-a8a4-752e2b7b62c4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="151" y="292" width="12" height="8" uuid="476825e7-eb19-483d-b4cc-bd87c66701ca"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="142" y="286" width="9" height="6" uuid="437d6fd9-33cd-421c-bd4a-04accfd016f3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="163" y="286" width="9" height="6" uuid="321e5b9d-a29f-4178-8bb9-864f30c9c339"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="142" y="300" width="9" height="6" uuid="cb35c61e-3c44-4719-bcaa-576a18a18cba"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="163" y="300" width="9" height="6" uuid="693df982-524c-4c25-9b98-707356f0b1a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="146" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="df95baad-0ffd-478e-97aa-f5adecb2996e">
+					<printWhenExpression><![CDATA[$F{g54}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g54}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="275" width="30" height="10" uuid="f77d9f04-1a10-4e34-bd55-e7334062010a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[54]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="175" y="286" width="30" height="20" uuid="67657f03-2d43-4dec-ae2d-dd8961dec26f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="175" y="286" width="9" height="10" uuid="26ea7ced-84b1-4f2b-ae14-064680757f4f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="175" y="296" width="9" height="10" uuid="01ee6240-b0d8-4e06-8d18-697c4859fd8a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="196" y="286" width="9" height="10" uuid="f144f12b-37c1-4a3a-9714-1c6a4cd74a08"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="196" y="296" width="9" height="10" uuid="8b82f968-e55b-4f00-8c38-e13e50fc5b8d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="184" y="296" width="12" height="1" uuid="b1b975a3-dd38-4cd4-bc12-9b4239de0d9f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="179" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="a5e872fc-5912-43f2-933d-0959a88e5cc3">
+					<printWhenExpression><![CDATA[$F{g53}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g53}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="275" width="30" height="10" uuid="80ee0c10-29ed-4678-913f-46683dee1d2f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[53]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="208" y="286" width="30" height="20" uuid="83ab54f9-2b72-4920-baee-c5427503f580"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="208" y="286" width="9" height="10" uuid="a08ef8a9-5807-44eb-b0e4-d22c39552124"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="208" y="296" width="9" height="10" uuid="cc6dc33c-2864-47f6-854f-6d0aa0da1dd7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="229" y="286" width="9" height="10" uuid="cfb5f03c-0d85-4579-a7f1-175d82312f36"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="229" y="296" width="9" height="10" uuid="8586e162-3b3a-483f-815a-1e73587484df"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="217" y="296" width="12" height="1" uuid="e1090c4c-6426-4608-8cc3-5b99f28c8d13"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="212" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="d777f221-7bda-4ad4-9a6e-36b2d15650b2">
+					<printWhenExpression><![CDATA[$F{g52}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g52}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="275" width="30" height="10" uuid="78eb3aa4-2fab-45f1-ad90-4aa14fdb4f58"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[52]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="241" y="286" width="30" height="20" uuid="9de6c571-59da-47a2-af1b-7583c282f3e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="241" y="286" width="9" height="10" uuid="7b107996-23ad-4c66-a35d-d441dda3a959"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="241" y="296" width="9" height="10" uuid="79fbd62d-98b4-4648-88d3-fa9382c2493a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="262" y="286" width="9" height="10" uuid="1acdc1bd-1fee-4462-bfcf-ecfb2cedb26f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="262" y="296" width="9" height="10" uuid="2d1a9dbd-f474-4471-9c0d-3dda5570cd9b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="250" y="296" width="12" height="1" uuid="20664889-a43f-4789-a6e6-5badb6b8ed28"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="245" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="51f2f89d-48e1-4df5-8c23-1beaa967d7e9">
+					<printWhenExpression><![CDATA[$F{g51}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g51}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="241" y="275" width="30" height="10" uuid="e5a14e52-d7f1-4326-981f-c34f2c974c7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[51]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="282" y="286" width="30" height="20" uuid="2473213a-8cd2-4f53-b581-7968ddc2bfd8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="282" y="286" width="9" height="10" uuid="13a0ee23-c2e6-4d95-8859-e7359b79aa76"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="282" y="296" width="9" height="10" uuid="39e4eff9-40a6-4036-871f-3a9f84617122"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="303" y="286" width="9" height="10" uuid="afc42d01-109f-4ffa-b565-a417da6347e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="303" y="296" width="9" height="10" uuid="25d95c75-308c-47f9-a3d2-3a023cdda985"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="291" y="296" width="12" height="1" uuid="93f394c9-f40e-4f3d-b33e-163dfc230263"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="286" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="bf66cf88-ad23-4987-af82-30236f22b001">
+					<printWhenExpression><![CDATA[$F{g61}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g61}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="282" y="275" width="30" height="10" uuid="9bf265d4-b406-4bc8-a557-16d492c00a07"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[61]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="315" y="286" width="30" height="20" uuid="f09fe3b5-5687-4190-a4f3-c7527f56dd3d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="315" y="286" width="9" height="10" uuid="bcc89891-403a-4e5c-a8bf-661119c81257"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="315" y="296" width="9" height="10" uuid="519a5fb7-68c6-4b83-86f1-56a430d8f8ab"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="336" y="286" width="9" height="10" uuid="47f15f01-81ed-4da0-a7f2-1a250ba8ccea"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="336" y="296" width="9" height="10" uuid="dd3517fb-b1c6-42e6-88cd-e751e1c5779b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="324" y="296" width="12" height="1" uuid="900e4bde-5d65-4042-8a28-8274534ebe01"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="319" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="6d767dcd-4496-48e4-b0d4-a57107a43e23">
+					<printWhenExpression><![CDATA[$F{g62}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g62}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="315" y="275" width="30" height="10" uuid="0df9bb6a-b22c-4ea7-8b40-73f1bc3cc6bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[62]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="348" y="286" width="30" height="20" uuid="ada10e3a-ade8-4101-b960-b92345055f56"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="348" y="286" width="9" height="10" uuid="008ea308-d1fa-4ce3-99d8-fa1ac26e99f1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="348" y="296" width="9" height="10" uuid="c5e46183-6d75-4eac-ad0a-e7dec0ea2fc0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="369" y="286" width="9" height="10" uuid="b1a9a3f1-9697-4618-b155-aae66b7e2b4c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="369" y="296" width="9" height="10" uuid="19068902-11df-46f2-bf83-b219954a18b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="357" y="296" width="12" height="1" uuid="939da3cc-f501-4bbc-a987-eb5328114f9f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="352" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="18075e92-2bb7-401d-9b36-3aaa634a1456">
+					<printWhenExpression><![CDATA[$F{g63}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g63}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="275" width="30" height="10" uuid="9028e450-9683-4d0b-83c2-22eaa41ee4e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[63]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="381" y="286" width="30" height="20" uuid="d498a383-099e-4ef5-a7dd-ef89901bec44"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="390" y="292" width="12" height="8" uuid="e16b085a-588c-4ab8-b790-df8f81dbb89a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="381" y="286" width="9" height="6" uuid="2e172956-6948-403a-9aac-0af5763ca0ce"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="402" y="286" width="9" height="6" uuid="425601a4-d83d-4cbf-85b2-d2b519c721fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="381" y="300" width="9" height="6" uuid="80aad176-368f-4199-b0f9-e8c48f45457e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="402" y="300" width="9" height="6" uuid="945c4747-52ec-4878-9a23-d2690f0a88ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="385" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="e4c93afd-5537-4db8-aa92-9acc88d186a4">
+					<printWhenExpression><![CDATA[$F{g64}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g64}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="275" width="30" height="10" uuid="300cc939-7863-4d24-8cea-35e5ff146048"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[64]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="414" y="286" width="30" height="20" uuid="577d114c-3680-4370-b90e-5517f50838f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="423" y="292" width="12" height="8" uuid="0a74e60b-62b6-45fa-be40-a2015c62ac7b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="414" y="286" width="9" height="6" uuid="9cff8503-3a34-4f6c-bc85-fae1fdada4f8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="435" y="286" width="9" height="6" uuid="52f7428b-0ee1-43d9-a037-8a1d82d3712f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="414" y="300" width="9" height="6" uuid="f4a31b5d-eaa8-43d2-b9a3-88c1efb8c4f2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="435" y="300" width="9" height="6" uuid="fe4be456-371e-4f56-8b52-c39718da2890"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="418" y="291" width="22" height="10" backcolor="#FFF4BE" uuid="4084db48-b90d-4d66-8c5a-497386ec98c6">
+					<printWhenExpression><![CDATA[$F{g65}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g65}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="275" width="30" height="10" uuid="c433cd26-c0b5-4461-b8f5-99c89d83b4fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[65]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="109" y="314" width="30" height="20" uuid="e64e4856-e345-49d3-a222-0ba5265345c0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="118" y="320" width="12" height="8" uuid="f2922d37-a0a1-4820-94bb-b4924a00e401"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="109" y="314" width="9" height="6" uuid="951b68ce-8775-4c97-bd5a-99afd331d46e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="314" width="9" height="6" uuid="28400584-060c-47af-9dfd-57c1647b35f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="109" y="328" width="9" height="6" uuid="bda71407-3dfd-4dba-96d9-68f17eededde"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="328" width="9" height="6" uuid="31fc074c-3b9b-4cfa-a677-621a5d62ccdc"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="113" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="32e5e9d6-53ab-4c0e-b6a1-cc0b780a062c">
+					<printWhenExpression><![CDATA[$F{g85}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g85}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="335" width="30" height="10" uuid="ae52f857-dc99-4004-a438-5f52e8a9b5c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[85]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="142" y="314" width="30" height="20" uuid="be69e90c-9dd4-4305-85d7-abedb0d55238"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="151" y="320" width="12" height="8" uuid="4234777d-d5fb-4142-bc7e-1253cbf75433"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="142" y="314" width="9" height="6" uuid="f07f30cb-36bd-4fd9-a5c4-ad802c1077e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="163" y="314" width="9" height="6" uuid="c9028d7f-4b31-4ccb-a8e0-98ed06f80225"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="142" y="328" width="9" height="6" uuid="6cbac6d1-f90b-44ba-afd6-f7f04a7489c4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="163" y="328" width="9" height="6" uuid="157b620d-d75f-4c45-82da-eb437e2c35ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="146" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="50f2d577-1557-4898-a62d-b84bb6567a53">
+					<printWhenExpression><![CDATA[$F{g84}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g84}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="335" width="30" height="10" uuid="ff861e11-e1c4-4007-95c4-f55a9ae8027d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[84]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="175" y="314" width="30" height="20" uuid="66af95de-6350-4a74-8fc6-48bd3c4d25f2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="175" y="314" width="9" height="10" uuid="cbe878b3-825c-4353-8d24-ccbee02ceca3"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="175" y="324" width="9" height="10" uuid="d7ecda4e-c4a0-44bd-9f43-1d3b7c76109a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="196" y="314" width="9" height="10" uuid="3dec364d-0b2b-4f35-896c-d8172c9830d6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="196" y="324" width="9" height="10" uuid="5e902c27-65e9-476e-821c-cfcf370f7b02"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="184" y="324" width="12" height="1" uuid="2fcbf116-ff72-40aa-8db0-2e08719ab29f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="179" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="f7503d0e-0c77-4430-95a6-e01e369c5683">
+					<printWhenExpression><![CDATA[$F{g83}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g83}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="335" width="30" height="10" uuid="e2375453-1b5f-47fc-bb58-4bcd5e8caf04"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[83]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="208" y="314" width="30" height="20" uuid="038eeac3-8692-4151-8d17-7af1248c7150"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="208" y="314" width="9" height="10" uuid="e7057fad-fe1e-4e61-8704-0d0e8d2388e4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="208" y="324" width="9" height="10" uuid="88e23694-a62d-4482-a714-7d9b5436b93d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="229" y="314" width="9" height="10" uuid="22201fe3-b509-4490-a1e7-9ea3f4dfef37"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="229" y="324" width="9" height="10" uuid="f0335d15-9cc4-457e-9a15-37363ba55ae7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="217" y="324" width="12" height="1" uuid="9f38a08c-3413-4c59-811b-3050d0028c97"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="212" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="8b73dbc9-fb5b-4c22-812d-23f4cff3e1d6">
+					<printWhenExpression><![CDATA[$F{g82}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g82}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="335" width="30" height="10" uuid="955f9328-799e-471e-acc2-7407cd0ca28e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[82]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="241" y="314" width="30" height="20" uuid="2a7505af-ad02-408f-93f1-b5b716c66e82"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="241" y="314" width="9" height="10" uuid="fb04dabe-cedd-4d19-be62-e7f1e011dc9d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="241" y="324" width="9" height="10" uuid="d40f8568-9a7b-49f4-825e-8b4541c0c1bd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="262" y="314" width="9" height="10" uuid="9276618e-3edd-48be-9db7-eac9c0e0b2ef"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="262" y="324" width="9" height="10" uuid="16801561-4d27-4b53-b60d-89a6f2045051"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="250" y="324" width="12" height="1" uuid="d285f896-a561-4c76-9c2f-0dbdc3045777"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="245" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="5f7e998a-94ca-407e-8845-688a22a596d3">
+					<printWhenExpression><![CDATA[$F{g81}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g81}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="241" y="335" width="30" height="10" uuid="1840328e-a325-4be1-b5fc-dfac7f9f1663"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[81]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="282" y="314" width="30" height="20" uuid="8f1d2bbb-05d9-4cbe-9add-ed41ce4ac4b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="282" y="314" width="9" height="10" uuid="80a6864d-0237-41a6-b3d5-65439223f7b8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="282" y="324" width="9" height="10" uuid="16d4e8a8-de91-4bc6-8822-d3d255c5b5e4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="303" y="314" width="9" height="10" uuid="e57ffe4a-fd60-48b6-823a-54ccb04b81ca"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="303" y="324" width="9" height="10" uuid="753bb9d3-d697-4256-a643-9ad3d67bba49"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="291" y="324" width="12" height="1" uuid="7d17125b-d9cc-4c46-b39d-f283328e7ad2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="286" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="1fd4e881-625c-4b7f-82d8-00d11df84b67">
+					<printWhenExpression><![CDATA[$F{g71}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g71}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="282" y="335" width="30" height="10" uuid="e31df938-e869-4c07-810a-8c2a73cd089a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[71]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="315" y="314" width="30" height="20" uuid="2b2cc602-c6cc-461c-aeaa-71fa7a34374d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="315" y="314" width="9" height="10" uuid="2bcc8f85-1142-49c5-9c45-ae21a6bc16bf"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="315" y="324" width="9" height="10" uuid="8ef30c3a-eb6c-4d31-8e20-92c7757714b5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="336" y="314" width="9" height="10" uuid="ac04cc21-3b32-40fa-992b-8455c94feb44"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="336" y="324" width="9" height="10" uuid="217f62b7-189e-4a8a-8311-f55a281ae3f7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="324" y="324" width="12" height="1" uuid="760f7766-ba6e-4258-bdcf-4746f61e6d8b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="319" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="541b512b-bec4-4c51-93ea-bd6d33113862">
+					<printWhenExpression><![CDATA[$F{g72}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g72}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="315" y="335" width="30" height="10" uuid="9ac8210a-d84b-40dc-9201-352cdcbf75e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[72]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="348" y="314" width="30" height="20" uuid="13f2f5c3-0b08-4c20-b83b-784c8b1ab6b7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="348" y="314" width="9" height="10" uuid="6aa7703b-9110-4e63-bde7-efce642a6f44"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="348" y="324" width="9" height="10" uuid="f074ff21-94d1-4674-9a14-1f77dcb09d0f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="369" y="314" width="9" height="10" uuid="31956e89-ccd7-443a-84c9-73328f480ce8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="369" y="324" width="9" height="10" uuid="ef27d603-36bd-4051-8b9e-88accd5ad3f2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="357" y="324" width="12" height="1" uuid="2c93ece4-3af0-4b55-ab80-582f791ee289"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="352" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="cf4a1cb6-eebe-464c-8025-33f5ced8ba6b">
+					<printWhenExpression><![CDATA[$F{g73}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g73}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="335" width="30" height="10" uuid="2224ffc2-f588-43ec-b5dd-ddad8ceb4d11"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[73]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="381" y="314" width="30" height="20" uuid="a3510235-cbe8-460f-8076-f72c53f31ede"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="390" y="320" width="12" height="8" uuid="cedac820-aaeb-40a4-a049-aeaf2646c719"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="381" y="314" width="9" height="6" uuid="112533d0-c5b0-462a-8525-b94bdb92917e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="402" y="314" width="9" height="6" uuid="ef2abaca-39e1-465e-ada3-0e461e721f41"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="381" y="328" width="9" height="6" uuid="96a0afc1-be88-4bf7-80c4-7222e0da96e1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="402" y="328" width="9" height="6" uuid="dcfd37d5-4cf6-49bc-a402-f14a41ceb971"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="385" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="0e653f22-6518-4e41-a4ff-4e3efd9cb581">
+					<printWhenExpression><![CDATA[$F{g74}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g74}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="335" width="30" height="10" uuid="2c643ebc-ab4f-48a5-be63-df74c0a728ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[74]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="414" y="314" width="30" height="20" uuid="e8aef498-be76-464d-8a89-ed7d57ced3f6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="423" y="320" width="12" height="8" uuid="68800453-d8f9-43ac-931b-e6e16b1bef36"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="414" y="314" width="9" height="6" uuid="5a23c98a-e132-43dc-aed7-14989cfa1533"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="435" y="314" width="9" height="6" uuid="b5df177b-8193-4e85-8a53-593b2ce90f08"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="414" y="328" width="9" height="6" uuid="6a2191f7-253a-4758-93a1-3e8b4434e2d8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="435" y="328" width="9" height="6" uuid="96680da6-0e6f-496c-b38e-24135ba3d99c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="418" y="319" width="22" height="10" backcolor="#FFF4BE" uuid="85eb2917-93e4-48be-a10e-c5d97b753945">
+					<printWhenExpression><![CDATA[$F{g75}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g75}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="335" width="30" height="10" uuid="c60caf51-3ed0-4fa9-ac88-b3d3fcb2cd2e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[75]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="10" y="344" width="30" height="20" uuid="84a42c54-0daa-4de9-9726-f67447f5b2d5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="19" y="350" width="12" height="8" uuid="ca72c5a2-b243-4d41-b86c-b7e16584508e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="10" y="344" width="9" height="6" uuid="241715c6-4ff0-42cb-abfd-0b3aeab48a73"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="31" y="344" width="9" height="6" uuid="47bee817-4f03-4749-a4c3-2e1f81b43679"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="10" y="358" width="9" height="6" uuid="93a1aabd-4ee2-4995-8e81-f4d7f3414ddb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="31" y="358" width="9" height="6" uuid="1e3d30fd-0f56-46e3-b358-fa4035bf9868"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="14" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="2d12241f-6d35-4ac0-90bb-6c5f56ed78ef">
+					<printWhenExpression><![CDATA[$F{g48}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g48}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="365" width="30" height="10" uuid="8fc0e9b9-50d9-4eb9-ac44-d96512fad30a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[48]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="43" y="344" width="30" height="20" uuid="92afbabd-5bc5-41c0-bcfb-a9b3d9041b7d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="52" y="350" width="12" height="8" uuid="0af87518-d48b-4370-a032-ac4104774033"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="43" y="344" width="9" height="6" uuid="642fb0be-b200-4868-867a-4609abe4d2d1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="64" y="344" width="9" height="6" uuid="c57b405a-25fc-4459-ad39-aa61b7864305"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="43" y="358" width="9" height="6" uuid="618b0264-2190-43a9-89fb-2ec32d559188"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="64" y="358" width="9" height="6" uuid="328f128c-6cc4-48d1-8a84-39d5c7f65aac"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="47" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="9b4dee4e-722d-437f-ab9d-fdbd66dc1969">
+					<printWhenExpression><![CDATA[$F{g47}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g47}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="365" width="30" height="10" uuid="018babef-5613-4756-a8b5-4a8566261929"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[47]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="76" y="344" width="30" height="20" uuid="ce94d10b-ff2e-4f49-adfa-645821a4cef5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="85" y="350" width="12" height="8" uuid="b949b1e4-2af0-472c-a7b8-d07b8a69545d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="76" y="344" width="9" height="6" uuid="755fa046-e4ea-4f94-a495-93b0c7cfe7ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="97" y="344" width="9" height="6" uuid="d181d477-e372-483f-b03c-b01b11e845de"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="76" y="358" width="9" height="6" uuid="76b9f6ef-be46-4887-a91c-19d5bca6f583"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="97" y="358" width="9" height="6" uuid="5b5daef3-4b6c-4442-bb77-08f72237405b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="80" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="f3bc4574-8e1e-4e41-a49b-5d1ddd04ad10">
+					<printWhenExpression><![CDATA[$F{g46}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g46}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="76" y="365" width="30" height="10" uuid="cb98b68d-ac78-4906-994d-4fdcffd27df9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[46]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="109" y="344" width="30" height="20" uuid="e362e21a-df0f-4cab-bc30-ee41e37f38b1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="118" y="350" width="12" height="8" uuid="8684c9da-38ea-4223-984d-d2e2f2c400e6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="109" y="344" width="9" height="6" uuid="359cc57e-b644-464c-9520-982030f9b8ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="344" width="9" height="6" uuid="192a7b94-50eb-4ea2-943f-834ec6a5bf58"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="109" y="358" width="9" height="6" uuid="3de754af-ecfc-482b-a02f-2508e2f03e04"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="130" y="358" width="9" height="6" uuid="434f8636-f2a1-4104-9cd4-6b1b5c61e925"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="113" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="ba3bf574-5402-4854-9927-dafa3d74646e">
+					<printWhenExpression><![CDATA[$F{g45}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g45}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="365" width="30" height="10" uuid="4fb48927-c80d-411b-a2fd-f3b9a219df00"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[45]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="142" y="344" width="30" height="20" uuid="0f014f6c-0e50-4d34-8b3c-a72fb74c2845"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="151" y="350" width="12" height="8" uuid="8a80bfca-a831-4f90-b7a4-5e426c85d133"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="142" y="344" width="9" height="6" uuid="7f63ab14-4f71-4cf3-8e8c-0d9f392d36b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="163" y="344" width="9" height="6" uuid="dc9b84a7-60ad-4a2b-bfd8-c7357b56d9a5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="142" y="358" width="9" height="6" uuid="709b7d26-f1e6-4d12-b0df-51630e6c209b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="163" y="358" width="9" height="6" uuid="7151f71d-785d-400a-b218-6340d0b6cefa"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="146" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="e4406860-2062-4255-952e-d700d0187c9c">
+					<printWhenExpression><![CDATA[$F{g44}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g44}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="365" width="30" height="10" uuid="84e0b916-b4f5-4919-b8b4-89b8665accba"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[44]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="175" y="344" width="30" height="20" uuid="75462f73-a678-4513-a2f0-2b6f6274c521"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="175" y="344" width="9" height="10" uuid="55f437c4-7550-41db-8848-835099db3033"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="175" y="354" width="9" height="10" uuid="702a9417-7779-4d78-ba40-64946a4ddc6d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="196" y="344" width="9" height="10" uuid="929b4443-80f2-4674-ad59-a4e04184e92b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="196" y="354" width="9" height="10" uuid="3f27a675-2f44-4103-821f-a648b1b7f371"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="184" y="354" width="12" height="1" uuid="61e0e461-38b3-41d5-95f9-2a27e8d9a6b6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="179" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="b8ce012d-262c-486e-ba2e-24b0848ebf91">
+					<printWhenExpression><![CDATA[$F{g43}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g43}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="365" width="30" height="10" uuid="2323864b-3638-474a-8ae0-0d29e34a9a6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[43]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="208" y="344" width="30" height="20" uuid="8dc2a8d2-c40d-4f28-8f8f-81bd4d4e2045"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="208" y="344" width="9" height="10" uuid="9a9b0918-23ef-485a-a7cc-79a8d7fcbae1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="208" y="354" width="9" height="10" uuid="6f188b30-46e8-4976-9ed8-3234c1d109c0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="229" y="344" width="9" height="10" uuid="ac8aa5cc-47a0-4c3b-bab6-bbdb35d3ac60"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="229" y="354" width="9" height="10" uuid="623de0ad-415f-4a52-9820-04611a77a8f2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="217" y="354" width="12" height="1" uuid="00bb83af-899c-4aa9-95e9-a00d3c2eabe4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="212" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="eab92df3-53fb-4076-b472-c935911c1a47">
+					<printWhenExpression><![CDATA[$F{g42}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g42}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="365" width="30" height="10" uuid="4cd2be33-1772-4640-aec6-32d7727cd6f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[42]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="241" y="344" width="30" height="20" uuid="497f4c7f-ec07-43d8-8ad7-bec63147cb9f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="241" y="344" width="9" height="10" uuid="f9baeb0b-b52e-4728-a607-2eafee43510d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="241" y="354" width="9" height="10" uuid="8d3d94f9-3bfb-423c-910c-117c29d59764"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="262" y="344" width="9" height="10" uuid="68f51ac6-29b5-4602-8a84-1a23fcdeb690"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="262" y="354" width="9" height="10" uuid="5cd0ad9f-616c-479a-937d-5cebef56dc43"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="250" y="354" width="12" height="1" uuid="aa735462-4093-4c20-95e1-3e507351a61a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="245" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="9eb40412-7652-4f3c-80e2-e80a336c186f">
+					<printWhenExpression><![CDATA[$F{g41}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g41}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="241" y="365" width="30" height="10" uuid="779b1906-3a2f-4a50-8314-fc2ad7364b5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[41]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="282" y="344" width="30" height="20" uuid="47943e10-d157-4b87-baff-e4774777f353"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="282" y="344" width="9" height="10" uuid="460b8f0c-2e49-4495-87ff-8c1df5673849"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="282" y="354" width="9" height="10" uuid="ed8bf1bb-ef82-40f9-aafb-1397d38c5d46"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="303" y="344" width="9" height="10" uuid="182cb7f3-235a-47a4-8f79-583691d7abcd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="303" y="354" width="9" height="10" uuid="b101141b-0c51-4d0b-908c-cbbbb88f993c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="291" y="354" width="12" height="1" uuid="42efd406-1d8b-4a3d-8683-d72be9a5ea6f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="286" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="61198a60-c7f2-4682-9c6a-18b0052cbfb6">
+					<printWhenExpression><![CDATA[$F{g31}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g31}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="282" y="365" width="30" height="10" uuid="3cdd4040-513e-474b-b9a7-b7de93a28d81"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[31]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="315" y="344" width="30" height="20" uuid="e15d83f1-c8cc-48e1-9e53-b521bbe3bad0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="315" y="344" width="9" height="10" uuid="311254ff-e8a9-4402-9bd3-8dda8f1550d8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="315" y="354" width="9" height="10" uuid="2a27e118-7edf-4d22-8bdb-67f242a047a5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="336" y="344" width="9" height="10" uuid="03406b68-eb84-451b-8831-7dc0ca2eb0c4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="336" y="354" width="9" height="10" uuid="c20f024b-1638-4b96-9b65-488307238e99"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="324" y="354" width="12" height="1" uuid="e721376e-b586-4999-9e74-c1eec4ace2b2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="319" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="1be00bc8-a18c-497d-8819-4faf40ffff5f">
+					<printWhenExpression><![CDATA[$F{g32}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g32}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="315" y="365" width="30" height="10" uuid="86ebc5c4-7527-4140-bfdf-359a560c7c6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[32]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="348" y="344" width="30" height="20" uuid="86de3aa7-6b7d-4009-aa27-4017357f2581"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="348" y="344" width="9" height="10" uuid="0ad6ea85-fb6c-46d2-bd8d-0f4960c94f49"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="348" y="354" width="9" height="10" uuid="d4c1d047-3ef4-436e-a0eb-e293b469bb56"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="369" y="344" width="9" height="10" uuid="3305f066-2cfe-404e-af43-ec99d896d0ae"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="369" y="354" width="9" height="10" uuid="e56a1d5b-5831-4234-b56b-9eca7089d7da"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="357" y="354" width="12" height="1" uuid="71095afe-adde-471d-a5a4-5c1919cede55"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="352" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="f2e568db-1659-4183-8451-ecb21f1d74cf">
+					<printWhenExpression><![CDATA[$F{g33}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g33}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="365" width="30" height="10" uuid="fc22cdfb-7000-440f-aa14-339cbc343057"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[33]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="381" y="344" width="30" height="20" uuid="9eac04b7-d1c9-436e-b88a-9a961da6288b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="390" y="350" width="12" height="8" uuid="699e0040-debf-4803-98f0-d402371dfd45"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="381" y="344" width="9" height="6" uuid="a70612ff-4b20-4a47-91be-7d42001e1f26"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="402" y="344" width="9" height="6" uuid="1d640534-be08-4f31-9dd6-b619b6d061b1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="381" y="358" width="9" height="6" uuid="6cff8ad4-3ede-475e-86fc-2b3a463322fc"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="402" y="358" width="9" height="6" uuid="2aecf678-0f88-4189-87e2-5709caa96831"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="385" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="ca992225-47dd-4e5b-8f1d-d4183bf5a578">
+					<printWhenExpression><![CDATA[$F{g34}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g34}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="365" width="30" height="10" uuid="77c5580e-5a7a-4933-9527-7ecfb26af822"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[34]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="414" y="344" width="30" height="20" uuid="39d60247-51c3-4e19-8033-e0fbb75c4793"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="423" y="350" width="12" height="8" uuid="ca60e4d6-fe9c-49a8-a57e-1d8e6de2cebe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="414" y="344" width="9" height="6" uuid="6bf50b65-0c63-46f6-8844-17b65570d5f7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="435" y="344" width="9" height="6" uuid="4af8076d-efb3-4102-9437-59055da05068"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="414" y="358" width="9" height="6" uuid="57af95f5-e3ed-43f6-814e-fe3fb87f19ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="435" y="358" width="9" height="6" uuid="f251bd88-508e-4949-93d2-9621289fec81"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="418" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="c0ce6cc4-5bd6-4b19-8768-b13fd57b9a88">
+					<printWhenExpression><![CDATA[$F{g35}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g35}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="365" width="30" height="10" uuid="ab493cef-a8eb-457c-8f6f-d0ad5deaaf48"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[35]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="447" y="344" width="30" height="20" uuid="83600518-aded-4df9-aa8c-1fd6c70075e4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="456" y="350" width="12" height="8" uuid="77775a57-e43f-461f-bc5a-27584ba5238a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="447" y="344" width="9" height="6" uuid="e81104fb-81f9-4520-9f93-2ec330c4e419"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="468" y="344" width="9" height="6" uuid="fe5d4ce1-6bb8-45e0-a4ec-fe1bc159cb76"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="447" y="358" width="9" height="6" uuid="d4caccff-e841-4dc3-8cad-0826267f89a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="468" y="358" width="9" height="6" uuid="fcd343b6-8655-4e82-9bac-63ef6d7f5fd1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="451" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="3ae40864-e35d-4020-99c2-d5ebe0b5cf69">
+					<printWhenExpression><![CDATA[$F{g36}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g36}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="365" width="30" height="10" uuid="c70a77fe-dfc9-4e37-a362-36eb52f301dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[36]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="480" y="344" width="30" height="20" uuid="681e5281-9045-4bc2-84ae-92f399477f4c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="489" y="350" width="12" height="8" uuid="d7677273-006c-447a-b27a-cb8140f4d5c5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="480" y="344" width="9" height="6" uuid="19dd8ff1-5760-439b-9d64-e76a4c1d47e8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="501" y="344" width="9" height="6" uuid="f8a33cb6-8420-4255-81ea-a32252c8593e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="480" y="358" width="9" height="6" uuid="2d8308df-44ef-4204-a3ee-051466af4692"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="501" y="358" width="9" height="6" uuid="5919a963-8cbb-48d7-b5ad-1034ef724a65"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="484" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="f2aa2d45-8c06-4cae-9697-1bdb77dcebc7">
+					<printWhenExpression><![CDATA[$F{g37}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g37}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="365" width="30" height="10" uuid="36723448-a466-4f1c-aef7-c851fc507987"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[37]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="513" y="344" width="30" height="20" uuid="5401f50f-9e36-4b0c-b14f-2f955b18dd8f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="522" y="350" width="12" height="8" uuid="d840434a-6c7b-4d74-9dc0-49ee142b3b18"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="513" y="344" width="9" height="6" uuid="5342ec93-0096-4607-8e76-a7d9e85732ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="534" y="344" width="9" height="6" uuid="b2855be9-aca3-4371-92ef-04252bee92f8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="513" y="358" width="9" height="6" uuid="e115c726-a94f-4110-9062-1ea09a7ad289"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="534" y="358" width="9" height="6" uuid="2e92a780-da25-41a4-95a3-7c1d2903da27"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="517" y="349" width="22" height="10" backcolor="#FFF4BE" uuid="b450a5b0-d902-4349-8fc9-a0ad45e6f11f">
+					<printWhenExpression><![CDATA[$F{g38}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g38}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="513" y="365" width="30" height="10" uuid="985b6106-cc9e-4665-bb1c-cc4cb4deab65"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[38]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="296" width="40" height="10" uuid="4ae0ee8e-a150-493c-9055-b7f97033b137"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[KANAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="296" width="40" height="10" uuid="671132e2-d15d-47c4-8230-f9a447380577"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[KIRI]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="380" width="557" height="42" uuid="47fa43db-4f4c-4965-84c7-0b3bb89bfe0d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="381" width="551" height="28" uuid="79abf565-e73d-4b9c-b66c-58375d257aa5"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="6"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Kode : sou = Gigi sehat (normal); car = Karies; non = Gigi non-vital; une = Gigi belum erupsi; pre = Erupsi sebagian; ano = Gigi anomali; mis = Gigi hilang; rrx = Sisa akar; cfr = Fraktur mahkota; amf = Tambalan amalgam; cof = Tambalan komposit; gic = Tambalan glass ionomer; fmc = Mahkota logam penuh; poc = Mahkota porselen; mpc = Mahkota porselen fusi logam; rct = Perawatan saluran akar; ipx = Implan; meb = Jembatan logam; pob = Jembatan porselen; gtl = Gigi tiruan sebagian lepasan; gtp = Gigi tiruan penuh; lai = Lainnya (isi keterangan)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="409" width="551" height="12" uuid="953c20e4-37c2-422d-8dd4-c4674143d8af"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ket_gigi}==null?"":"Keterangan gigi : "+$F{ket_gigi}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="422" width="278" height="84" uuid="109bfd79-04ac-4b3c-b411-dc18fd01efba"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="278" y="422" width="279" height="84" uuid="4e976ba8-e186-4f09-98a6-23bc7026343a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="424" width="85" height="12" uuid="7c7aa999-e22a-433a-b22f-d1f6f66143f6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Occlusi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="424" width="6" height="12" uuid="66c42a6e-0b60-4d05-969d-6841564edba4"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="424" width="183" height="12" uuid="32cec637-f6b2-4389-8581-eea4343e5d12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Normal".equals($F{occlusi})?"[X] ":"[   ] ")+"Normal"+"   "+("Cross Bite".equals($F{occlusi})?"[X] ":"[   ] ")+"Cross Bite"+"   "+("Deep Bite".equals($F{occlusi})?"[X] ":"[   ] ")+"Deep Bite"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="440" width="85" height="12" uuid="ce562787-f789-408f-9d87-687138217a0d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Torus Palatinus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="440" width="6" height="12" uuid="c1c5cc2a-feac-43df-bac3-0e2d281b8360"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="440" width="183" height="12" uuid="5c5ab451-c354-4058-b10a-dde04982c2d0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Tidak Ada".equals($F{torus_palatinus})?"[X] ":"[   ] ")+"Tidak ada"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="452" width="183" height="12" uuid="829b6f82-ed2e-4e5a-b51b-75b2eb4f4c13"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Kecil".equals($F{torus_palatinus})?"[X] ":"[   ] ")+"Kecil"+"  "+("Sedang".equals($F{torus_palatinus})?"[X] ":"[   ] ")+"Sedang"+"  "+("Besar".equals($F{torus_palatinus})?"[X] ":"[   ] ")+"Besar"+"  "+("Multiple".equals($F{torus_palatinus})?"[X] ":"[   ] ")+"Multiple"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="470" width="85" height="12" uuid="7ceccda4-3a49-494d-a75f-87c193f50139"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Torus Mandibularis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="470" width="6" height="12" uuid="9f235a7c-e784-4e18-a5ce-6e844e8800dc"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="470" width="183" height="12" uuid="d9d189c6-3b2d-4322-9bf2-45f8f95609c1"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Tidak Ada".equals($F{torus_mandibularis})?"[X] ":"[   ] ")+"Tidak ada"+"   "+("Sisi Kanan".equals($F{torus_mandibularis})?"[X] ":"[   ] ")+"Sisi kanan"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="482" width="183" height="12" uuid="d549eb42-3dd6-4808-856a-d822eb28f154"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Sisi Kiri".equals($F{torus_mandibularis})?"[X] ":"[   ] ")+"Sisi kiri"+"   "+("Kedua Sisi".equals($F{torus_mandibularis})?"[X] ":"[   ] ")+"Kedua sisi"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="424" width="92" height="12" uuid="ca03b137-724d-496c-848d-85fa2487cdd7"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Supernumerary Teeth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="424" width="6" height="12" uuid="aeafb9e0-3553-4764-91da-1d5b63535a67"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="424" width="176" height="16" uuid="e03bf42d-7faf-43c0-8aff-060e7be3b61c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Ada".equals($F{supernumerary})?"[   ] Tidak Ada   [X] Ada : "+$F{ket_supernumerary}:"[X] Tidak Ada   [   ] Ada :")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="442" width="92" height="12" uuid="54e5eafe-e89d-48fa-94d5-a4c84de4c5eb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Gigi Anomali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="442" width="6" height="12" uuid="4178aeb2-c494-4245-b037-7ce2f503b4e9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="442" width="176" height="16" uuid="38434d18-2223-4304-ad32-5e94fe1d919a"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Ada".equals($F{gigi_anomali})?"[   ] Tidak Ada   [X] Ada : "+$F{ket_gigi_anomali}:"[X] Tidak Ada   [   ] Ada :")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="460" width="92" height="12" uuid="b00f16bf-3d61-4bee-8940-4dbfa90f4727"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diastema]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="460" width="6" height="12" uuid="6fb6df87-b63f-4046-b2b2-06343bcf44f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="460" width="176" height="16" uuid="2dc44ae7-d4e7-4444-a630-c6e9fc4bc342"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[("Ada".equals($F{diastema})?"[   ] Tidak Ada   [X] Ada : "+$F{ket_diastema}:"[X] Tidak Ada   [   ] Ada :")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="478" width="92" height="12" uuid="e5978c28-d03e-42c4-8e36-65565d584fbe"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lain - lain]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="478" width="6" height="12" uuid="fcb57c34-eaa3-43b7-af83-c5ca5e78d0e5"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="478" width="176" height="26" uuid="664b4f6f-935b-4aa4-bb89-0f88bec9b6ac"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lain_lain}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="506" width="557" height="34" uuid="7554b725-2db9-4773-92a4-8f3f65e00a8d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="508" width="95" height="12" uuid="0eb4006e-073f-4d4d-b599-68ceaf8c4583"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Data Penunjang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="508" width="6" height="12" uuid="0549bb83-e79b-488a-9cce-78980a8ba8d5"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="106" y="508" width="449" height="30" uuid="160dea4d-9ebf-43e9-8710-f54fe290e26b"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_penunjang}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="540" width="557" height="32" uuid="5ccb9bd7-9499-4514-93b9-aa97a3b6177d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="542" width="95" height="12" uuid="4b400fec-4710-4b54-8e13-77f0828de50e"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="542" width="6" height="12" uuid="97b8de8e-4e47-4307-9029-6b13016a0990"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="106" y="542" width="449" height="28" uuid="e7b82ea0-918d-499c-8e12-3abbbb264477"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosa}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="572" width="557" height="28" uuid="0c568741-64fc-4503-8a4a-9cb58e0d0dee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="574" width="95" height="12" uuid="5981a9be-07da-4f07-af68-1d560f113772"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Masalah Keperawatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="574" width="6" height="12" uuid="466501ca-1140-4ff9-b47a-8b756a83d860"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="106" y="574" width="449" height="24" uuid="442768bc-a7cf-40cd-9d05-0056a05c1af9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{masalah_keperawatan}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="600" width="557" height="40" uuid="0abde737-ba8a-4381-98fc-923179e495b7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="602" width="95" height="12" uuid="a084f543-4eb7-4884-bd0a-e15ccbdd9816"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Terapi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="602" width="6" height="12" uuid="c49fbf2b-2c39-4f65-bf37-ab15c43fa3dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="106" y="602" width="449" height="36" uuid="29ea0e82-7a11-4ccd-8e78-eafd36db748c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{terapi}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="640" width="557" height="110" uuid="110aebe7-2292-4e92-9404-56729373d609"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="642" width="277" height="12" uuid="2fbb51d3-882a-4baf-b7f0-3f4977ac14d6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tanggal "+(new SimpleDateFormat("dd-MM-yyyy HH:mm").format($F{tanggal}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="656" width="274" height="12" uuid="f79e0ec8-2141-4ad9-a275-052862eef840"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Dokter Gigi]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="282" y="669" width="271" height="62" uuid="5b1a0e0c-3c63-4a4e-9f2b-0c6b1d7a9e11"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="732" width="274" height="12" uuid="2dd76ab4-0294-476c-9e0c-0c620c362406"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+$F{nm_dokter}+" )"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

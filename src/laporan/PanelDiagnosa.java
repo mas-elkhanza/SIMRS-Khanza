@@ -44,7 +44,17 @@ public class PanelDiagnosa extends widget.panelisi {
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,validcode,accpdx,asterisk,im,urut,multy;
     private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = newExecutorOtomatis();
+
+    private static ExecutorService newExecutorOtomatis() {
+        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        });
+        ex.allowCoreThreadTimeOut(true);
+        return ex;
+    }
     private volatile boolean ceksukses = false;
     /**
      * Creates new form panelDiagnosa

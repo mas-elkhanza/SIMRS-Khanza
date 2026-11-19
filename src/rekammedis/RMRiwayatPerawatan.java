@@ -29,7 +29,6 @@ import javax.swing.JTable;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import org.apache.commons.httpclient.HttpClient;
@@ -97,9 +96,10 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private JsonNode root;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    private ApiSatuSehat api=new ApiSatuSehat();
     private JFXPanel PanelRMESatuSehat;
     private WebEngine webRMESatuSehat;
+    private Thread cekSatuSehat;
+    private volatile boolean satuSehatDitutup = false;
     private volatile String NoRMSatuSehat="";
     private String bodySatuSehat="";
     private final KriptoSatuSehat kriptoSatuSehat=new KriptoSatuSehat();
@@ -162,8 +162,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLProfilRingkasRalan.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
-        Document doc = kit.createDefaultDocument();
-        LoadHTMLRiwayatPerawatan.setDocument(doc);
+        LoadHTMLRiwayatPerawatan.setDocument(kit.createDefaultDocument());
         LoadHTMLRiwayatPerawatan.setEditable(false);
         LoadHTMLRiwayatPerawatan.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -175,7 +174,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
               }
             }
         });
-        LoadHTMLSOAPI.setDocument(doc);
+        LoadHTMLSOAPI.setDocument(kit.createDefaultDocument());
         LoadHTMLSOAPI.setEditable(false);
         LoadHTMLSOAPI.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -187,7 +186,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
                 }
             }
         });
-        LoadHTMLPembelian.setDocument(doc);
+        LoadHTMLPembelian.setDocument(kit.createDefaultDocument());
         LoadHTMLPembelian.setEditable(false);
         LoadHTMLPembelian.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -199,7 +198,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
                 }
             }
         });
-        LoadHTMLPiutang.setDocument(doc);
+        LoadHTMLPiutang.setDocument(kit.createDefaultDocument());
         LoadHTMLPiutang.setEditable(false);
         LoadHTMLPiutang.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -211,7 +210,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
                 }
             }
         });
-        LoadHTMLRetensi.setDocument(doc);
+        LoadHTMLRetensi.setDocument(kit.createDefaultDocument());
         LoadHTMLRetensi.setEditable(false);
         LoadHTMLRetensi.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -223,7 +222,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
                 }
             }
         });
-        LoadHTMLWearable.setDocument(doc);
+        LoadHTMLWearable.setDocument(kit.createDefaultDocument());
         LoadHTMLWearable.setEditable(false);
         LoadHTMLWearable.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -235,7 +234,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
                 }
             }
         });
-        LoadHTMLProfilRingkasRalan.setDocument(doc);
+        LoadHTMLProfilRingkasRalan.setDocument(kit.createDefaultDocument());
         LoadHTMLProfilRingkasRalan.setEditable(false);
         LoadHTMLProfilRingkasRalan.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -353,6 +352,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalanParu = new widget.CekBox();
         chkAsuhanMedisRalanJantung = new widget.CekBox();
         chkAsuhanMedisRalanUrologi = new widget.CekBox();
+        chkAsuhanMedisRalanGigi = new widget.CekBox();
         chkAsuhanMedisRalanKedokteranFisik = new widget.CekBox();
         chkAsuhanMedisRanap = new widget.CekBox();
         chkAsuhanMedisRanapKandungan = new widget.CekBox();
@@ -669,7 +669,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2026 15:46:23" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-11-2026 18:14:31" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -978,7 +978,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4995));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 5015));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1272,6 +1272,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalanUrologi.setName("chkAsuhanMedisRalanUrologi"); // NOI18N
         chkAsuhanMedisRalanUrologi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanMedisRalanUrologi);
+
+        chkAsuhanMedisRalanGigi.setSelected(true);
+        chkAsuhanMedisRalanGigi.setText("Awal Medis Ralan Gigi");
+        chkAsuhanMedisRalanGigi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanMedisRalanGigi.setName("chkAsuhanMedisRalanGigi"); // NOI18N
+        chkAsuhanMedisRalanGigi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanMedisRalanGigi);
 
         chkAsuhanMedisRalanKedokteranFisik.setSelected(true);
         chkAsuhanMedisRalanKedokteranFisik.setText("Awal Medis Ralan Fisik & Rehabilitasi");
@@ -3199,6 +3206,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGKepala.setSelected(true);
             chkHasilPemeriksaanUSGMammae.setSelected(true);
             chkHasilPemeriksaanSpirometri.setSelected(true);
+            chkAsuhanMedisRalanGigi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3416,6 +3424,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGKepala.setSelected(false);
             chkHasilPemeriksaanUSGMammae.setSelected(false);
             chkHasilPemeriksaanSpirometri.setSelected(false);
+            chkAsuhanMedisRalanGigi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3683,7 +3692,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
                         System.out.println("URL Akses file :"+koneksiDB.URLAKSESFILEESIGN());
                         post.setEntity(new StringEntity(json));
-                        try (CloseableHttpResponse response = httpClient.execute(post)) {
+                        try (httpClient; CloseableHttpResponse response = httpClient.execute(post)) {
                             System.out.println("Response Status : " + response.getCode());
                             json=EntityUtils.toString(response.getEntity());
                             root = mapper.readTree(json);
@@ -3870,7 +3879,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         HttpEntity entity = entityBuilder.build();
                         post.setEntity(entity);
                         System.out.println("URL Kirim File : "+koneksiDB.URLAPISERTISIGN());
-                        try (CloseableHttpResponse response = httpClient.execute(post)) {
+                        try (httpClient; CloseableHttpResponse response = httpClient.execute(post)) {
                             if (response.getCode() == 200) {
                                 json=EntityUtils.toString(response.getEntity());
                                 System.out.println("Respon Kirim File : " + json);
@@ -4053,6 +4062,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanMedisRalanBedah;
     private widget.CekBox chkAsuhanMedisRalanBedahMulut;
     private widget.CekBox chkAsuhanMedisRalanGeriatri;
+    private widget.CekBox chkAsuhanMedisRalanGigi;
     private widget.CekBox chkAsuhanMedisRalanJantung;
     private widget.CekBox chkAsuhanMedisRalanKandungan;
     private widget.CekBox chkAsuhanMedisRalanKedokteranFisik;
@@ -4328,7 +4338,20 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     private void tampilKunjungan() {
-        Valid.tabelKosong(tabModeRegistrasi);
+        final java.util.List<Object[]> baris = new java.util.ArrayList<>();
+        try {
+            muatKunjungan(baris);
+        } finally {
+            SwingUtilities.invokeLater(() -> {
+                Valid.tabelKosong(tabModeRegistrasi);
+                for (Object[] b : baris) {
+                    tabModeRegistrasi.addRow(b);
+                }
+            });
+        }
+    }
+
+    private void muatKunjungan(final java.util.List<Object[]> baris) {
         try{   
             if(R1.isSelected()==true){
                 ps=koneksi.prepareStatement(
@@ -4378,7 +4401,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 rs=ps.executeQuery();
                 while(rs.next()){
                     i++;
-                    tabModeRegistrasi.addRow(new Object[]{
+                    baris.add(new Object[]{
                         i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),rs.getString("jam_reg"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab")
@@ -4391,7 +4414,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){       
-                            tabModeRegistrasi.addRow(new Object[]{
+                            baris.add(new Object[]{
                                 "",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
                                 rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                                 rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab")
@@ -4426,7 +4449,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){                            
-                            tabModeRegistrasi.addRow(new Object[]{
+                            baris.add(new Object[]{
                                 "",rs.getString("no_rawat"),rs2.getString("tgl_masuk"),rs2.getString("jam_masuk"),
                                 kddpjp,dpjp,rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                                 rs2.getString("kd_kamar")+" "+rs2.getString("nm_bangsal"),rs.getString("png_jawab")
@@ -6567,7 +6590,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     );
                 }
                 
-                LoadHTMLRiwayatPerawatan.setText(
+                isiHtml(LoadHTMLRiwayatPerawatan, 
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -6745,7 +6768,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
             
-            LoadHTMLSOAPI.setText(
+            isiHtml(LoadHTMLSOAPI, 
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -6848,7 +6871,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
             
-            LoadHTMLProfilRingkasRalan.setText(
+            isiHtml(LoadHTMLProfilRingkasRalan, 
                     "<html>"+
                       "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -7084,7 +7107,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     ps.close();
                 }
             }
-            LoadHTMLPembelian.setText(
+            isiHtml(LoadHTMLPembelian, 
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -7232,7 +7255,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     ps.close();
                 }
             }
-            LoadHTMLPiutang.setText(
+            isiHtml(LoadHTMLPiutang, 
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -7283,7 +7306,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     rs3.close();
                 }
             }
-            LoadHTMLRetensi.setText("<html>"+htmlContent.toString()+"</html>");
+            isiHtml(LoadHTMLRetensi, "<html>"+htmlContent.toString()+"</html>");
             htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -7350,7 +7373,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     rs3.close();
                 }
             }
-            LoadHTMLWearable.setText("<html>"+htmlContent.toString()+"</html>");
+            isiHtml(LoadHTMLWearable, "<html>"+htmlContent.toString()+"</html>");
             htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -39116,6 +39139,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             } catch (Exception e) {
                 System.out.println("Notifikasi SHL : " + e.getMessage());
                 loadURLSatuSehat(ambilLinkSatuSehat("chl"));
+                if (cekSatuSehat != null) {
+                    cekSatuSehat.interrupt();
+                }
                 Thread cek = new Thread(() -> {
                     for (int i = 0; i < 120; i++) {
                         try {
@@ -39136,6 +39162,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     NoRMSatuSehat = "";
                 });
                 cek.setDaemon(true);
+                cekSatuSehat = cek;
                 cek.start();
                 JOptionPane.showMessageDialog(null, "Minta pasien membagikan Kode Akses dari SATUSEHAT Mobile, lalu masukkan di halaman persetujuan.\nRME Nasional akan terbuka otomatis setelah kode diterima");
             }
@@ -39152,6 +39179,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 
     private String ambilLinkSatuSehat(String endpoint) throws Exception {
+        ApiSatuSehat api=new ApiSatuSehat();
         HttpHeaders hdr = new HttpHeaders();
         hdr.setContentType(MediaType.APPLICATION_JSON);
         hdr.add("Authorization", "Bearer " + api.TokenSatuSehat());
@@ -39171,48 +39199,48 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 
     private void createSceneSatuSehat() {
-        Platform.runLater(new Runnable() {
-            public void run() {
-                WebView view = new WebView();
-                
-                webRMESatuSehat = view.getEngine();
-                webRMESatuSehat.setJavaScriptEnabled(true);
-                webRMESatuSehat.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15");
-                
-                webRMESatuSehat.setCreatePopupHandler(p -> webRMESatuSehat);
-                
-                webRMESatuSehat.setOnAlert(e -> System.out.println("Notifikasi WebView : "+e.getData()));
-                
-                webRMESatuSehat.documentProperty().addListener((o, lama, baru) -> {
-                    if (baru != null) {
-                        pasangKriptoSatuSehat();
-                    }
-                });
-                
-                webRMESatuSehat.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
-                    if (webRMESatuSehat.getLoadWorker().getState() == FAILED) {
-                        SwingUtilities.invokeLater(() -> {
-                            JOptionPane.showMessageDialog(
-                                    PanelWebSatuSehat,
-                                    (value != null) ?
-                                            webRMESatuSehat.getLocation() + "\n" + value.getMessage() :
-                                            webRMESatuSehat.getLocation() + "\nUnexpected Catatan.",
-                                    "Loading Catatan...",
-                                    JOptionPane.ERROR_MESSAGE);
-                        });
-                    }
-                });
-                
-                PanelRMESatuSehat.setScene(new Scene(view));
+        Platform.runLater(() -> {
+            if (satuSehatDitutup || webRMESatuSehat != null || PanelRMESatuSehat == null) {
+                return;
             }
+            WebView view = new WebView();
+            final WebEngine engine = view.getEngine();
+            webRMESatuSehat = engine;
+            engine.setJavaScriptEnabled(true);
+            engine.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15");
+            engine.setCreatePopupHandler(p -> engine);
+            engine.setOnAlert(e -> System.out.println("Notifikasi WebView : " + e.getData()));
+
+            engine.documentProperty().addListener((o, lama, baru) -> {
+                if (baru != null && !satuSehatDitutup) {
+                    pasangKriptoSatuSehat(engine);
+                }
+            });
+
+            engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
+                if (!satuSehatDitutup && engine.getLoadWorker().getState() == FAILED) {
+                    final String lokasi = engine.getLocation();
+                    SwingUtilities.invokeLater(() -> {
+                        JOptionPane.showMessageDialog(
+                                PanelWebSatuSehat,
+                                (value != null) ?
+                                        lokasi + "\n" + value.getMessage() :
+                                        lokasi + "\nUnexpected Catatan.",
+                                "Loading Catatan...",
+                                JOptionPane.ERROR_MESSAGE);
+                    });
+                }
+            });
+
+            PanelRMESatuSehat.setScene(new Scene(view));
         });
     }
-    
+
     @SuppressWarnings("removal")
-    private void pasangKriptoSatuSehat() {
+    private void pasangKriptoSatuSehat(WebEngine engine) {
         try {
-            ((JSObject) webRMESatuSehat.executeScript("window")).setMember("kriptoJava", kriptoSatuSehat);
-            webRMESatuSehat.executeScript(JS_KRIPTO_SATUSEHAT);
+            ((JSObject) engine.executeScript("window")).setMember("kriptoJava", kriptoSatuSehat);
+            engine.executeScript(JS_KRIPTO_SATUSEHAT);
         } catch (Exception e) {
             System.out.println("Notifikasi Kripto WebView : " + e);
         }
@@ -39333,25 +39361,37 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
     private void loadURLSatuSehat(String url) {
         SwingUtilities.invokeLater(() -> {
+            if (satuSehatDitutup) {
+                return;
+            }
             if (PanelRMESatuSehat == null) {
                 PanelRMESatuSehat = new JFXPanel();
                 PanelWebSatuSehat.add(PanelRMESatuSehat, java.awt.BorderLayout.CENTER);
                 PanelWebSatuSehat.revalidate();
             }
             Platform.setImplicitExit(false);
-            try {
-                createSceneSatuSehat();
-            } catch (Exception e) {
-            }
+            createSceneSatuSehat();
 
             Platform.runLater(() -> {
-                try {
-                    webRMESatuSehat.load(url);
-                } catch (Exception exception) {
-                    webRMESatuSehat.load(url);
+                WebEngine engine = webRMESatuSehat;
+                if (satuSehatDitutup || engine == null) {
+                    return;
                 }
+                engine.load(url);
             });
         });
+    }
+
+    private void isiHtml(final javax.swing.text.JTextComponent pane, final String html) {
+        if (SwingUtilities.isEventDispatchThread()) {
+            pane.setText(html);
+        } else {
+            SwingUtilities.invokeLater(() -> {
+                if (isDisplayable()) {
+                    pane.setText(html);
+                }
+            });
+        }
     }
 
     private void runBackground(Runnable task) {
@@ -39382,7 +39422,41 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     @Override
     public void dispose() {
+        satuSehatDitutup = true;
         executor.shutdownNow();
+        if (cekSatuSehat != null) {
+            cekSatuSehat.interrupt();
+        }
+        bersihkanSatuSehat();
         super.dispose();
+    }
+
+    private void bersihkanSatuSehat() {
+        final JFXPanel panel = PanelRMESatuSehat;
+        if (panel == null) {
+            return;
+        }
+        PanelRMESatuSehat = null;
+        Runnable lepas = () -> {
+            PanelWebSatuSehat.remove(panel);
+            PanelWebSatuSehat.revalidate();
+        };
+        if (SwingUtilities.isEventDispatchThread()) {
+            lepas.run();
+        } else {
+            SwingUtilities.invokeLater(lepas);
+        }
+        Platform.runLater(() -> {
+            try {
+                WebEngine engine = webRMESatuSehat;
+                webRMESatuSehat = null;
+                if (engine != null) {
+                    engine.load(null);
+                }
+                panel.setScene(null);
+            } catch (Exception e) {
+                System.out.println("Notifikasi Bersihkan WebView : " + e);
+            }
+        });
     }
 }

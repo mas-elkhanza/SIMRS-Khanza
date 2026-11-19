@@ -1290,7 +1290,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         lblTgl.setText(tanggal.getSelectedItem().toString());
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }
         } catch (Exception e) {
             System.out.println("Notif Setting : "+e);
         }

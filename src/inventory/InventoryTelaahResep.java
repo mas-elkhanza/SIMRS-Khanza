@@ -61,7 +61,17 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas;
     private StringBuilder htmlContent;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = newExecutorOtomatis();
+
+    private static ExecutorService newExecutorOtomatis() {
+        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        });
+        ex.allowCoreThreadTimeOut(true);
+        return ex;
+    }
     private volatile boolean ceksukses = false;
     /** Creates new form DlgRujuk
      * @param parent

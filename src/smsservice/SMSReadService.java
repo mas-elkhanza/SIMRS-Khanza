@@ -48,7 +48,7 @@ public class SMSReadService {
     public void startService() throws Exception{
         Properties prop = new Properties();
         try {
-            prop.loadFromXML(new FileInputStream("setting/modem.xml"));
+            try (FileInputStream fisx = new FileInputStream("setting/modem.xml")) { prop.loadFromXML(fisx); }
         } catch (IOException ex) {
             Logger.getLogger(SMSReadService.class.getName()).log(Level.SEVERE, null, ex);
         }

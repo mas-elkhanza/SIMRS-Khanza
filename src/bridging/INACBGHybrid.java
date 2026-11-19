@@ -108,6 +108,9 @@ public class INACBGHybrid extends javax.swing.JDialog {
         Platform.runLater(new Runnable() {
 
             public void run() {
+                if (engine != null) {
+                    return;
+                }
                 WebView view = new WebView();
                 
                 engine = view.getEngine();
@@ -568,6 +571,20 @@ public class INACBGHybrid extends javax.swing.JDialog {
     
     @Override
     public void dispose() {
+        try {
+            Platform.runLater(() -> {
+                try {
+                    WebEngine eng = engine;
+                    engine = null;
+                    if (eng != null) {
+                        eng.load(null);
+                    }
+                    jfxPanel.setScene(null);
+                } catch (Exception ignore) {
+                }
+            });
+        } catch (Exception ignore) {
+        }
         executor.shutdownNow();
         super.dispose();
     }

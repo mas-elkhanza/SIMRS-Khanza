@@ -73,7 +73,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
         
         initComponents2();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }                                
         } catch (Exception e) {
         }
         

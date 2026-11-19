@@ -61,7 +61,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         initComponents();
 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }   
             aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
         } catch (Exception e) {
             System.out.println("E : "+e);

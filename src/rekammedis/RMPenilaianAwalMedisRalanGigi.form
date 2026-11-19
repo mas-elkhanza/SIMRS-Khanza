@@ -816,7 +816,7 @@
                         <Component class="widget.Button" name="BtnTambahGigi">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/picture/plus_16.png"/>
+                              <Image iconType="3" name="/picture/add-file-16x16.png"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="BtnTambahGigi" noResource="true"/>
                           </Properties>
@@ -1732,10 +1732,10 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbObat">
                       <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbObat" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1765,7 +1765,7 @@
                   <SubComponents>
                     <Component class="widget.Label" name="jLabel19">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Tanggal :"/>
+                        <Property name="text" type="java.lang.String" value="Tgl.Asuhan :"/>
                         <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[70, 23]"/>
@@ -1881,7 +1881,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="PanelAccor" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[760, 43]"/>
+                      <Dimension value="[470, 43]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1987,7 +1987,7 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TPasien1" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[250, 23]"/>
+                              <Dimension value="[285, 23]"/>
                             </Property>
                           </Properties>
                         </Component>

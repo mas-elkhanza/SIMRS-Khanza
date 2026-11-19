@@ -156,9 +156,8 @@ public final class ApotekBPJSDaftarPermintaanResepIterasi extends javax.swing.JD
                 ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
-        Document doc = kit.createDefaultDocument();
-        LoadHTML.setDocument(doc);
-        LoadHTMLPhoto.setDocument(doc);
+        LoadHTML.setDocument(kit.createDefaultDocument());
+        LoadHTMLPhoto.setDocument(kit.createDefaultDocument());
     }
     
     

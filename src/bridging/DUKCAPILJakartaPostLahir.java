@@ -44,7 +44,7 @@ public class DUKCAPILJakartaPostLahir {
     public DUKCAPILJakartaPostLahir(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }            
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }

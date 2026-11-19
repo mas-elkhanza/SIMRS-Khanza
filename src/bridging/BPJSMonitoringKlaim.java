@@ -150,7 +150,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); } 
             link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);

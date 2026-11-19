@@ -44,6 +44,16 @@ import kepegawaian.DlgCariPetugas;
  * @author perpustakaan
  */
 public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
+    private javax.swing.Timer timerJam;
+
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+    }
+
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -1476,7 +1486,8 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
             }
         };
         // Timer
-        new Timer(1000, taskPerformer).start();
+        timerJam = new javax.swing.Timer(1000, taskPerformer);
+        timerJam.start();
     }
 
     private void ganti() {
@@ -1563,6 +1574,9 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
     
     @Override
     public void dispose() {
+        if (timerJam != null) {
+            timerJam.stop();
+        }
         executor.shutdownNow();
         super.dispose();
     }
