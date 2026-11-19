@@ -56,7 +56,6 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -15125,6 +15124,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     @Override
     public void dispose() {
+        if (panelDiagnosa1 != null) {
+            panelDiagnosa1.tutup();
+        }
         if (timerJam != null) {
             timerJam.stop();
         }

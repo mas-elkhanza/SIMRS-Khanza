@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -43,17 +44,7 @@ public class PanelDiagnosa extends widget.panelisi {
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,validcode,accpdx,asterisk,im,urut,multy;
     private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
-    private final ExecutorService executor = newExecutorOtomatis();
-
-    private static ExecutorService newExecutorOtomatis() {
-        java.util.concurrent.ThreadPoolExecutor ex = new java.util.concurrent.ThreadPoolExecutor(1, 1, 30L, java.util.concurrent.TimeUnit.SECONDS, new java.util.concurrent.LinkedBlockingQueue<Runnable>(), r -> {
-            Thread t = new Thread(r);
-            t.setDaemon(true);
-            return t;
-        });
-        ex.allowCoreThreadTimeOut(true);
-        return ex;
-    }
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     /**
      * Creates new form panelDiagnosa
@@ -1387,6 +1378,10 @@ public class PanelDiagnosa extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    public void tutup() {
+        executor.shutdownNow();
+    }
+
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;

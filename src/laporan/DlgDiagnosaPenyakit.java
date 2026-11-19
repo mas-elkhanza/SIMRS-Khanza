@@ -30,7 +30,7 @@ import javax.swing.event.DocumentEvent;
  * @author perpustakaan
  */
 public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
-    private validasi Valid=new validasi();
+    private final validasi Valid=new validasi();
     private final sekuel Sequel=new sekuel();
 
     /** Creates new form DlgPemberianObat
@@ -672,8 +672,12 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         panelDiagnosa1.btnTambahPenyakit.setEnabled(akses.getpenyakit());
         panelDiagnosa1.btnTambahProsedur.setEnabled(akses.geticd9());
     }
-
     
-
-
+    @Override
+    public void dispose() {
+        if (panelDiagnosa1 != null) {
+            panelDiagnosa1.tutup();
+        }
+        super.dispose();
+    }
 }
