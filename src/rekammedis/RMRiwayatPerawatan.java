@@ -1202,7 +1202,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.add(chkAsuhanMedisRalanBedah);
 
         chkAsuhanMedisRalanBedahMulut.setSelected(true);
-        chkAsuhanMedisRalanBedahMulut.setText("Awal Medis Ralan Bedah Mulut");
+        chkAsuhanMedisRalanBedahMulut.setText("Awal Medis Ralan Gigi");
         chkAsuhanMedisRalanBedahMulut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanMedisRalanBedahMulut.setName("chkAsuhanMedisRalanBedahMulut"); // NOI18N
         chkAsuhanMedisRalanBedahMulut.setPreferredSize(new java.awt.Dimension(245, 22));

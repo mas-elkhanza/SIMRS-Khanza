@@ -4073,7 +4073,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnAwalMedisBedahMulut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnAwalMedisBedahMulut.setText("Awal Medis Bedah Mulut");
+        BtnAwalMedisBedahMulut.setText("Awal Medis Gigi");
         BtnAwalMedisBedahMulut.setFocusPainted(false);
         BtnAwalMedisBedahMulut.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnAwalMedisBedahMulut.setGlassColor(new java.awt.Color(255, 255, 255));
