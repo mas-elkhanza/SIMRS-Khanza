@@ -46,35 +46,28 @@ inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter left join pegawai on
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField isBlankWhenNull="true">
-				<reportElement x="70" y="0" width="375" height="16" uuid="7aa659a3-b26f-4fed-a26c-04a4b83dcc28"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["PEMERINTAH PROVINSI "+($P{propinsirs}==null?"":$P{propinsirs}.toUpperCase())]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="70" y="16" width="375" height="19" uuid="ca206222-b3ce-488f-b840-74cb2baf39fc"/>
+				<reportElement x="70" y="6" width="375" height="19" uuid="ca206222-b3ce-488f-b840-74cb2baf39fc"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}==null?"":$P{namars}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="40" y="35" width="435" height="12" uuid="ccd006c0-bd35-4028-9285-59069ca1cf90"/>
+				<reportElement x="40" y="25" width="435" height="12" uuid="ccd006c0-bd35-4028-9285-59069ca1cf90"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="40" y="47" width="435" height="12" uuid="88983073-9592-4587-87b6-c67dc4ef4c5f"/>
+				<reportElement x="40" y="37" width="435" height="12" uuid="88983073-9592-4587-87b6-c67dc4ef4c5f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="40" y="59" width="435" height="12" uuid="5d40e02d-096a-40f5-915f-3a44f62f58ec"/>
+				<reportElement x="40" y="49" width="435" height="12" uuid="5d40e02d-096a-40f5-915f-3a44f62f58ec"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
