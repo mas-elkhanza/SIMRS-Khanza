@@ -215,6 +215,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttlpendapatan=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0;
     private String kode_poli="",kamar="",jenisbayar="",TANGGALMUNDUR="yes";
     private RMRiwayatPerawatan riwayat;
+    private DlgPeresepanDokter resepobat;
+    private DlgPermintaanLaboratorium permintaanlab;
 
     /** Creates new form DlgRawatInap
      * @param parent
@@ -6637,17 +6639,34 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{
-                DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
-                resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                resep.setLocationRelativeTo(internalFrame1);
-                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),
-                        cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ranap");
-                resep.isCek();
-                resep.tampilobat();
-                resep.setVisible(true);
+                if (resepobat == null || !resepobat.isDisplayable()) {
+                    resepobat=new DlgPeresepanDokter(null,false);
+                    resepobat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    resepobat.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            resepobat=null;
+                        }
+                    }); 
+
+                    resepobat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    resepobat.setLocationRelativeTo(internalFrame1);
+                }
+                if (resepobat == null) return;
+                if (!resepobat.isVisible()) {
+                    resepobat.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ranap");
+                    resepobat.isCek();
+                    resepobat.tampilobat();
+                }
+
+                if (resepobat.isVisible()) {
+                    resepobat.toFront();
+                    return;
+                }
+                resepobat.setVisible(true);
             }
         }
-    }//GEN-LAST:event_BtnResepObatActionPerformed
+    }
 
     private void BtnCopyResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCopyResepActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -6741,13 +6760,31 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPermintaanLaboratorium dlgro=new DlgPermintaanLaboratorium(null,false);
-            dlgro.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgro.setLocationRelativeTo(internalFrame1);
-            dlgro.emptTeks();
-            dlgro.isCek();
-            dlgro.setNoRm(TNoRw.getText(),"Ranap");
-            dlgro.setVisible(true);
+            if (permintaanlab == null || !permintaanlab.isDisplayable()) {
+                permintaanlab=new DlgPermintaanLaboratorium(null,false);
+                permintaanlab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                permintaanlab.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        permintaanlab=null;
+                    }
+                }); 
+
+                permintaanlab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                permintaanlab.setLocationRelativeTo(internalFrame1);
+            }
+            if (permintaanlab == null) return;
+            if (!permintaanlab.isVisible()) {
+                permintaanlab.emptTeks();
+                permintaanlab.isCek();
+                permintaanlab.setNoRm(TNoRw.getText(),"Ranap");
+            }
+
+            if (permintaanlab.isVisible()) {
+                permintaanlab.toFront();
+                return;
+            }
+            permintaanlab.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPermintaanLabActionPerformed

@@ -266,6 +266,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private volatile boolean ceksukses = false;
     private DlgPeresepanDokter resepobat;
     private RMRiwayatPerawatan riwayat;
+    private DlgPermintaanLaboratorium permintaanlab;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -7316,13 +7317,31 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                DlgPermintaanLaboratorium dlgro=new DlgPermintaanLaboratorium(null,false);
-                dlgro.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                dlgro.setLocationRelativeTo(internalFrame1);
-                dlgro.emptTeks();
-                dlgro.isCek();
-                dlgro.setNoRm(TNoRw.getText(),"Ralan");
-                dlgro.setVisible(true);
+                if (permintaanlab == null || !permintaanlab.isDisplayable()) {
+                    permintaanlab=new DlgPermintaanLaboratorium(null,false);
+                    permintaanlab.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    permintaanlab.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            permintaanlab=null;
+                        }
+                    }); 
+
+                    permintaanlab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    permintaanlab.setLocationRelativeTo(internalFrame1);
+                }
+                if (permintaanlab == null) return;
+                if (!permintaanlab.isVisible()) {
+                    permintaanlab.emptTeks();
+                    permintaanlab.isCek();
+                    permintaanlab.setNoRm(TNoRw.getText(),"Ralan");
+                }
+
+                if (permintaanlab.isVisible()) {
+                    permintaanlab.toFront();
+                    return;
+                }
+                permintaanlab.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());  
             }          
         }
