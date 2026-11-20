@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -1820,7 +1820,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{kali}==""?"":$F{kali}+" kali")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[("".equals($F{kali})?"":$F{kali}+" kali")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="334" y="283" width="70" height="11" uuid="cf6827a0-bc06-492b-b1bf-7f09e2e29d40">
@@ -2874,7 +2874,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{kebiasaan}+($F{ket_kebiasaan}==""?"":", "+$F{ket_kebiasaan})+". Merokok : "+$F{kebiasaan1}+($F{ket_kebiasaan1}==""?"":", "+$F{ket_kebiasaan1}+" batang/hari")+". Alkohol : "+$F{kebiasaan2}+($F{ket_kebiasaan2}==""?"":", "+$F{ket_kebiasaan2}+" gelas/hari")+". Obat tidur/Narkoba : "+$F{kebiasaan3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[": "+$F{kebiasaan}+("".equals($F{ket_kebiasaan})?"":", "+$F{ket_kebiasaan})+". Merokok : "+$F{kebiasaan1}+("".equals($F{ket_kebiasaan1})?"":", "+$F{ket_kebiasaan1}+" batang/hari")+". Alkohol : "+$F{kebiasaan2}+("".equals($F{ket_kebiasaan2})?"":", "+$F{ket_kebiasaan2}+" gelas/hari")+". Obat tidur/Narkoba : "+$F{kebiasaan3}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="3" y="442" width="70" height="11" uuid="cf081e2e-2727-4626-a525-004a1f11bdc1">
@@ -2904,7 +2904,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{kb}+". Lamanya : "+$F{ket_kb}+". Komplikasi KB : "+$F{komplikasi}+($F{ket_komplikasi}==""?"":", "+$F{ket_komplikasi})+". Berhenti KB : "+$F{berhenti}+". Alasan : "+$F{alasan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[": "+$F{kb}+". Lamanya : "+$F{ket_kb}+". Komplikasi KB : "+$F{komplikasi}+("".equals($F{ket_komplikasi})?"":", "+$F{ket_komplikasi})+". Berhenti KB : "+$F{berhenti}+". Alasan : "+$F{alasan}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="468" width="557" height="1" uuid="e3a44fc9-f35a-4702-bdbf-82d268e990b6"/>
@@ -3186,7 +3186,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{status_psiko}+($F{ket_psiko}==""?"":", "+$F{ket_psiko})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{status_psiko}+("".equals($F{ket_psiko})?"":", "+$F{ket_psiko})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="244" y="568" width="311" height="11" uuid="4a1d4dc0-2506-48dc-a83b-bf968395e4ef">
@@ -3196,7 +3196,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{budaya}+($F{ket_budaya}==""?"":", "+$F{ket_budaya})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{budaya}+("".equals($F{ket_budaya})?"":", "+$F{ket_budaya})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="381" y="580" width="174" height="11" uuid="bf34df1c-8131-4e5c-bf58-694eae26ebf2">
@@ -3206,7 +3206,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{edukasi}+($F{ket_edukasi}==""?"":", "+$F{ket_edukasi})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{edukasi}+("".equals($F{ket_edukasi})?"":", "+$F{ket_edukasi})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="136" y="580" width="130" height="11" uuid="d41a061e-bafb-4c6e-a020-3ad2da98bda8">
@@ -3411,7 +3411,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Dilaporkan ke dokter ? "+$F{lapor}+($F{ket_lapor}==""?"":", "+$F{ket_lapor})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Dilaporkan ke dokter ? "+$F{lapor}+("".equals($F{ket_lapor})?"":", "+$F{ket_lapor})]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="668" width="557" height="1" uuid="3cae3ac2-f9b8-49e8-a68e-bae6a7ff35a2"/>

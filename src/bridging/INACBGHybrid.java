@@ -113,10 +113,11 @@ public class INACBGHybrid extends javax.swing.JDialog {
                 }
                 WebView view = new WebView();
                 
-                engine = view.getEngine();
-                engine.setJavaScriptEnabled(true);
+                final WebEngine we = view.getEngine();
+                engine = we;
+                we.setJavaScriptEnabled(true);
                 
-                engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
+                we.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
                     @Override
                     public WebEngine call(PopupFeatures p) {
                         Stage stage = new Stage(StageStyle.TRANSPARENT);
@@ -124,34 +125,34 @@ public class INACBGHybrid extends javax.swing.JDialog {
                     }
                 });
                 
-                engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
+                we.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
                         INACBGHybrid.this.setTitle(newValue);
                     });
                 });
                 
                 
-                engine.setOnStatusChanged((final WebEvent<String> event) -> {
+                we.setOnStatusChanged((final WebEvent<String> event) -> {
                     SwingUtilities.invokeLater(() -> {
                         lblStatus.setText(event.getData());
                     });
                 });
                 
                 
-                engine.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
+                we.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
                     SwingUtilities.invokeLater(() -> {
                         progressBar.setValue(newValue.intValue());
                     });                                                   
                 });
                 
-                engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
-                    if (engine.getLoadWorker().getState() == FAILED) {
+                we.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
+                    if (we.getLoadWorker().getState() == FAILED) {
                         SwingUtilities.invokeLater(() -> {
                             JOptionPane.showMessageDialog(
                                     panel,
                                     (value != null) ?
-                                            engine.getLocation() + "\n" + value.getMessage() :
-                                            engine.getLocation() + "\nUnexpected Catatan.",
+                                            we.getLocation() + "\n" + value.getMessage() :
+                                            we.getLocation() + "\nUnexpected Catatan.",
                                     "Loading Catatan...",
                                     JOptionPane.ERROR_MESSAGE);
                         });
@@ -159,26 +160,26 @@ public class INACBGHybrid extends javax.swing.JDialog {
                 });
                 
                 
-                engine.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
+                we.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
                         txtURL.setText(newValue);
                     });
                 });
                 
-                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+                we.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
                     @Override
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("inacbg/pages")){
+                                if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("inacbg/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/",""));
-                                    engine.executeScript("history.back()");
+                                    Valid.panggilUrl(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/",""));
+                                    we.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("Keluar")){
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("Keluar")){
                                     dispose();    
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("InputDiagnosa")){
-                                    URL=engine.getLocation().replaceAll("InputDiagnosa","no");
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("InputDiagnosa")){
+                                    URL=we.getLocation().replaceAll("InputDiagnosa","no");
                                     ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat, reg_periksa.status_lanjut, reg_periksa.tgl_registrasi  "+
                                             "from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat");
                                     try {
@@ -232,8 +233,8 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                             ps.close();
                                         }
                                     }   
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("InputCorona")){
-                                    URL=engine.getLocation().replaceAll("InputCorona","no");
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("InputCorona")){
+                                    URL=we.getLocation().replaceAll("InputCorona","no");
                                     ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien "+
                                             "from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis");
@@ -276,8 +277,8 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                             ps.close();
                                         }
                                     }   
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("RiwayatPerawatan")){
-                                    URL=engine.getLocation().replaceAll("RiwayatPerawatan","no");
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("RiwayatPerawatan")){
+                                    URL=we.getLocation().replaceAll("RiwayatPerawatan","no");
                                     ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien "+
                                             "from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis");
@@ -330,8 +331,8 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                             ps.close();
                                         }
                                     }   
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("DataBilling")){
-                                    URL=engine.getLocation().replaceAll("DataBilling","no");
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("DataBilling")){
+                                    URL=we.getLocation().replaceAll("DataBilling","no");
                                     ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat,reg_periksa.status_lanjut from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat");
                                     try {
                                         rs=ps.executeQuery();
@@ -446,10 +447,9 @@ public class INACBGHybrid extends javax.swing.JDialog {
         }
         
         Platform.runLater(() -> {
-            try {
-                engine.load(url);
-            }catch (Exception exception) {
-                engine.load(url);
+            final WebEngine eng = engine;
+            if (eng != null) {
+                eng.load(url);
             }
         });        
     }    
