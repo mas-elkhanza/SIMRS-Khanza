@@ -24,7 +24,8 @@
 <field name="lokasi_gambar" class="java.lang.String"/>
 <field name="kd_dokter" class="java.lang.String"/>
 <field name="nm_dokter" class="java.lang.String"/>
-<title><band height="770" splitType="Stretch">
+<field name="photo" class="java.lang.String"/>
+<title><band height="784" splitType="Stretch">
 <image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" onErrorType="Blank"><reportElement x="0" y="0" width="56" height="56"/><imageExpression><![CDATA[$P{logo}]]></imageExpression></image>
 <textField isBlankWhenNull="true"><reportElement x="60" y="0" width="495" height="20"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="14" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression></textField>
 <textField isBlankWhenNull="true"><reportElement x="60" y="20" width="495" height="11"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{alamatrs}]]></textFieldExpression></textField>
@@ -60,11 +61,12 @@
 <staticText><reportElement x="90" y="656" width="8" height="14"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="9"/></textElement><text><![CDATA[:]]></text></staticText>
 <textField isBlankWhenNull="true"><reportElement x="98" y="656" width="457" height="14"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="9"/></textElement><textFieldExpression><![CDATA[$F{tanggal}.substring(11,19)]]></textFieldExpression></textField>
 <staticText><reportElement x="0" y="678" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9"/></textElement><text><![CDATA[Pasien / yang mewakili,]]></text></staticText>
-<line direction="TopDown"><reportElement x="30" y="744" width="217" height="0"/><graphicElement><pen lineWidth="0.7"/></graphicElement></line>
-<textField isBlankWhenNull="true"><reportElement x="0" y="747" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9" isBold="true"/></textElement><textFieldExpression><![CDATA[($F{nama_wali}==null?"":$F{nama_wali})]]></textFieldExpression></textField>
+<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" onErrorType="Blank"><reportElement x="96" y="692" width="84" height="66"/><imageExpression><![CDATA[($F{photo}==null||$F{photo}.trim().length()==0)?null:$F{photo}.trim()]]></imageExpression></image>
+<line direction="TopDown"><reportElement x="30" y="759" width="217" height="0"/><graphicElement><pen lineWidth="0.7"/></graphicElement></line>
+<textField isBlankWhenNull="true"><reportElement x="0" y="762" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9" isBold="true"/></textElement><textFieldExpression><![CDATA[($F{nama_wali}==null?"":$F{nama_wali})]]></textFieldExpression></textField>
 <staticText><reportElement x="277" y="678" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9"/></textElement><text><![CDATA[Dokter Bedah,]]></text></staticText>
-<componentElement><reportElement x="385" y="692" width="60" height="60"/><c:QRCode xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="L"><c:codeExpression><![CDATA[$P{finger}]]></c:codeExpression></c:QRCode></componentElement>
-<textField isBlankWhenNull="true"><reportElement x="277" y="754" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{dokter}]]></textFieldExpression></textField>
+<componentElement><reportElement x="385" y="696" width="60" height="60"/><c:QRCode xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="L"><c:codeExpression><![CDATA[$P{finger}]]></c:codeExpression></c:QRCode></componentElement>
+<textField isBlankWhenNull="true"><reportElement x="277" y="762" width="277" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="9" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{dokter}]]></textFieldExpression></textField>
 </band></title>
 <pageFooter><band height="16" splitType="Stretch">
 <textField isBlankWhenNull="true"><reportElement x="435" y="2" width="120" height="12"/><textElement textAlignment="Right" verticalAlignment="Middle"><font fontName="SansSerif" size="7"/></textElement><textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}]]></textFieldExpression></textField>
