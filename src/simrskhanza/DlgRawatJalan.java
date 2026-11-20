@@ -56,6 +56,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -67,7 +68,6 @@ import laporan.DlgBerkasRawat;
 import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanKonsultasiMedik;
 import permintaan.DlgPermintaanKonsultasiPerawat;
-import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
@@ -244,16 +244,7 @@ import rekammedis.RMUjiFungsiKFR;
  * @author dosen
  */
 public final class DlgRawatJalan extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabModeDr,tabModePr,tabModeDrPr,
             tabModePemeriksaan,tabModeObstetri,tabModeGinekologi,
             TabModeTindakan,TabModeTindakan2,TabModeTindakan3,TabModeCatatan;
@@ -274,6 +265,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private DlgPeresepanDokter resepobat;
+    private RMRiwayatPerawatan riwayat;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -7633,12 +7625,29 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMDataResumePasien resume=new RMDataResumePasien(null,false);
-            resume.isCek();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            resume.setVisible(true);
+            if (riwayat == null || !riwayat.isDisplayable()) {
+                riwayat=new RMRiwayatPerawatan(null,false);
+                riwayat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                riwayat.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        riwayat=null;
+                    }
+                });
+
+                riwayat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                riwayat.setLocationRelativeTo(internalFrame1);
+            }
+            if (riwayat == null) return;
+            if (!riwayat.isVisible()) {
+                riwayat.setNoRm(TNoRM.getText(),TPasien.getText());
+            }
+
+            if (riwayat.isVisible()) {
+                riwayat.toFront();
+                return;
+            }
+            riwayat.setVisible(true); 
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnResumeActionPerformed
@@ -15135,5 +15144,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

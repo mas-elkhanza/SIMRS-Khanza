@@ -49,16 +49,7 @@ import simrskhanza.DlgCariPerusahaan;
 import simrskhanza.DlgCariPoli;
 
 public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -1382,5 +1373,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

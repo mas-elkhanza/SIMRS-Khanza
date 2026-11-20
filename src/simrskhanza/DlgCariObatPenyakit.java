@@ -50,16 +50,7 @@ import javax.swing.table.TableColumn;
  * @author dosen
  */
 public final class DlgCariObatPenyakit extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -1151,4 +1142,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         super.dispose();
     }
 
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+    }
 }

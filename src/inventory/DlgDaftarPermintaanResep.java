@@ -43,7 +43,7 @@ import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgInputResepPulang;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
+    private Timer timerJam;
 
     @Override
     public void dispose() {
@@ -52,14 +52,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         }
         super.dispose();
     }
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -6400,6 +6392,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);    
             ChkAccor.setVisible(true);
+        }
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
         }
     }
 }

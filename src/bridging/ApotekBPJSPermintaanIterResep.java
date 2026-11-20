@@ -44,7 +44,7 @@ import java.util.Map;
  * @author dosen
  */
 public final class ApotekBPJSPermintaanIterResep extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
+    private Timer timerJam;
 
     @Override
     public void dispose() {
@@ -53,14 +53,6 @@ public final class ApotekBPJSPermintaanIterResep extends javax.swing.JDialog {
         }
         super.dispose();
     }
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
     private final DefaultTableModel tabModeobat,tabModeObatRacikan,tabModeDetailObatRacikan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -1013,5 +1005,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         // Timer
         timerJam = new javax.swing.Timer(1000, taskPerformer);
         timerJam.start();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

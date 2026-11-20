@@ -53,16 +53,7 @@ import kepegawaian.DlgCariPetugas;
  * @author perpustakaan
  */
 public final class RMSkriningInstrumenMentalEmosional extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -2301,5 +2292,13 @@ public final class RMSkriningInstrumenMentalEmosional extends javax.swing.JDialo
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

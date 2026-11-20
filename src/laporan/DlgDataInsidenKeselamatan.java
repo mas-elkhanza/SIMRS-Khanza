@@ -60,20 +60,8 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author perpustakaan
  */
 public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-    private javax.swing.Timer timerJam2;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-        if (timerJam2 != null && !timerJam2.isRunning()) {
-            timerJam2.start();
-        }
-    }
-
+    private Timer timerJam;
+    private Timer timerJam2;
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -2032,5 +2020,16 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+        if (timerJam2 != null && !timerJam2.isRunning()) {
+            timerJam2.start();
+        }
     }
 }

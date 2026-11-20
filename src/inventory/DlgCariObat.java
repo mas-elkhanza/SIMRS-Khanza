@@ -68,16 +68,7 @@ import widget.Button;
  * @author dosen
  */
 public final class DlgCariObat extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabModeobat,tabModeObatRacikan,tabModeDetailObatRacikan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -4330,5 +4321,13 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

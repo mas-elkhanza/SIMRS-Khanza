@@ -65,16 +65,7 @@ import simrskhanza.DlgCariBangsal;
  * @author dosen
  */
 public final class DlgCariObat2 extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
+    private Timer timerJam;
     private final DefaultTableModel tabMode,tabModeObatRacikan,tabModeDetailObatRacikan;;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -4524,5 +4515,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

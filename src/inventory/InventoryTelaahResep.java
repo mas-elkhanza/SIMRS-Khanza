@@ -1759,14 +1759,17 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            ChkInput.setVisible(false);
-            if(this.getHeight()>600){
+            if(this.getHeight()>526){
+                ChkInput.setVisible(false);
                 PanelInput.setPreferredSize(new Dimension(WIDTH,354));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
             }else{
-                PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-230));
-            }   
-            FormInput.setVisible(true);      
-            ChkInput.setVisible(true);
+                ChkInput.setVisible(false);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-230));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
+            }
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));

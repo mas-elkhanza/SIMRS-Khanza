@@ -313,7 +313,7 @@ import surat.SuratSerahTerimaBarangAnggotaTubuh;
  * @author dosen
  */
 public final class DlgReg extends javax.swing.JDialog {
-    private javax.swing.Timer timerJam;
+    private Timer timerJam;
 
     @Override
     public void dispose() {
@@ -322,14 +322,6 @@ public final class DlgReg extends javax.swing.JDialog {
         }
         super.dispose();
     }
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        if (timerJam != null && !timerJam.isRunning()) {
-            timerJam.start();
-        }
-    }
-
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -20138,5 +20130,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         
         MnRMIGD.add(MnPenilaianGRACEScore);
         MnRMIGD.add(MnPenilaianBISHOPScore);
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }
