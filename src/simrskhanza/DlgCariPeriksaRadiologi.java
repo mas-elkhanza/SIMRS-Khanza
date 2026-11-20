@@ -281,10 +281,10 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnCetakNota.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakNota.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakNota.setText("Cetak Nota Radiologi");
+        MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakNota.setName("MnCetakNota"); // NOI18N
         MnCetakNota.setPreferredSize(new java.awt.Dimension(220, 28));
         MnCetakNota.addActionListener(new java.awt.event.ActionListener() {
@@ -295,10 +295,10 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         jPopupMenu1.add(MnCetakNota);
 
         MnUbahDokterPetugas.setBackground(new java.awt.Color(255, 255, 254));
-        MnUbahDokterPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUbahDokterPetugas.setForeground(new java.awt.Color(50, 50, 50));
         MnUbahDokterPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnUbahDokterPetugas.setText("Ubah P.J.Lab, Perujuk & Petugas");
+        MnUbahDokterPetugas.setText("Ubah P.J.Rad, Perujuk & Petugas");
+        MnUbahDokterPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUbahDokterPetugas.setName("MnUbahDokterPetugas"); // NOI18N
         MnUbahDokterPetugas.setPreferredSize(new java.awt.Dimension(220, 28));
         MnUbahDokterPetugas.addActionListener(new java.awt.event.ActionListener() {
@@ -309,10 +309,10 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         jPopupMenu1.add(MnUbahDokterPetugas);
 
         ppBerkasDigital.setBackground(new java.awt.Color(255, 255, 254));
-        ppBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBerkasDigital.setForeground(new java.awt.Color(50, 50, 50));
         ppBerkasDigital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBerkasDigital.setText("Berkas Digital Perawatan");
+        ppBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBerkasDigital.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBerkasDigital.setName("ppBerkasDigital"); // NOI18N
@@ -840,7 +840,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
-        TabData.setForeground(new java.awt.Color(50, 50, 50));
         TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2003,7 +2002,43 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh diubah.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                     TCari.requestFocus();
                 }else{
-                    panggilMedis();
+                    try {
+                        ps5=koneksi.prepareStatement(
+                            "select periksa_radiologi.nip,petugas.nama,periksa_radiologi.dokter_perujuk,"+
+                            "periksa_radiologi.kd_dokter,dokter.nm_dokter from periksa_radiologi "+
+                            "inner join petugas on periksa_radiologi.nip=petugas.nip "+
+                            "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
+                            "where periksa_radiologi.no_rawat=? "+
+                            "and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=?");  
+                        try {
+                            ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                            ps5.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                            ps5.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                            rs5=ps5.executeQuery();
+                            if(rs5.next()){      
+                                KodePerujuk.setText(rs5.getString("dokter_perujuk"));
+                                NmPerujuk.setText(Sequel.CariDokter(rs5.getString("dokter_perujuk")));
+                                KodePj.setText(rs5.getString("kd_dokter"));
+                                NmDokterPj.setText(rs5.getString("nm_dokter"));
+                                KdPtgUbah.setText(rs5.getString("nip"));
+                                NmPtgUbah.setText(rs5.getString("nama"));
+                                WindowGantiDokterParamedis.setSize(600,130);
+                                WindowGantiDokterParamedis.setLocationRelativeTo(internalFrame1);
+                                WindowGantiDokterParamedis.setVisible(true);
+                            } 
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs5!=null){
+                                rs5.close();
+                            }
+                            if(ps5!=null){
+                                ps5.close();
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    }
                 }
             } 
         }
@@ -2582,46 +2617,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         NoRawat.setText(pasien);
     }
 
-    private void panggilMedis() {
-        try {
-            ps5=koneksi.prepareStatement(
-                "select periksa_radiologi.nip,petugas.nama,periksa_radiologi.dokter_perujuk,"+
-                "periksa_radiologi.kd_dokter,dokter.nm_dokter from periksa_radiologi "+
-                "inner join petugas on periksa_radiologi.nip=petugas.nip "+
-                "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
-                "where periksa_radiologi.no_rawat=? "+
-                "and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=?");  
-            try {
-                ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                ps5.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
-                ps5.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                rs5=ps5.executeQuery();
-                if(rs5.next()){      
-                    KodePerujuk.setText(rs5.getString("dokter_perujuk"));
-                    NmPerujuk.setText(Sequel.CariDokter(rs5.getString("dokter_perujuk")));
-                    KodePj.setText(rs5.getString("kd_dokter"));
-                    NmDokterPj.setText(rs5.getString("nm_dokter"));
-                    KdPtgUbah.setText(rs5.getString("nip"));
-                    NmPtgUbah.setText(rs5.getString("nama"));
-                    WindowGantiDokterParamedis.setSize(600,130);
-                    WindowGantiDokterParamedis.setLocationRelativeTo(internalFrame1);
-                    WindowGantiDokterParamedis.setVisible(true);
-                } 
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs5!=null){
-                    rs5.close();
-                }
-                if(ps5!=null){
-                    ps5.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }
-    }
- 
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             PanelDataDicari.setVisible(true);
