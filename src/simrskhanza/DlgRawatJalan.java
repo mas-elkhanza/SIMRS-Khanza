@@ -10434,18 +10434,21 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                 }else{ 
                     if(kd_pj.equals(kodebpjs.getKodeBPJS())){
-                        String pilihaniterasi = (String)JOptionPane.showInputDialog(null,"Silahkan pilih iterasi..!!","Pilihan Resep Iterasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Iterasi 1x","Iterasi 2x","Batal"},"Iterasi 1x");
-                        switch (pilihaniterasi) {
-                            case "Iterasi 1x": 
-                                pilihiterasi="1. Iterasi 1x";
-                                inputResep();
-                                break;
-                            case "Iterasi 2x": 
-                                pilihiterasi="2. Iterasi 2x";
-                                inputResep();
-                                break;
-                            default:
-                                break;
+                        try {
+                            String pilihaniterasi = (String)JOptionPane.showInputDialog(null,"Silahkan pilih iterasi..!!","Pilihan Resep Iterasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Iterasi 1x","Iterasi 2x","Batal"},"Iterasi 1x");
+                            switch (pilihaniterasi) {
+                                case "Iterasi 1x": 
+                                    pilihiterasi="1. Iterasi 1x";
+                                    inputResep();
+                                    break;
+                                case "Iterasi 2x": 
+                                    pilihiterasi="2. Iterasi 2x";
+                                    inputResep();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        } catch (Exception e) {
                         }
                     }else{
                         JOptionPane.showMessageDialog(rootPane,"Cara/Jenis Bayar pasien bukan BPJS ..!!");
