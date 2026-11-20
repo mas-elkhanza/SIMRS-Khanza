@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,6 +66,14 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
     private String TANGGALMUNDUR="yes";
     private String finger="";
     private PanelGambarTubuh kanvas;
+    private widget.PanelBiasa PanelAccor;
+    private widget.PanelBiasa FormPhoto;
+    private widget.CekBox ChkAccor;
+    private widget.Button btnAmbil;
+    private widget.Button BtnRefreshPhoto1;
+    private javax.swing.JLabel lblStatusSetuju;
+    private javax.swing.JLabel lblFotoSetuju;
+    private int nomorMuatFoto=0;
 
     /** Creates new form RMPenandaanLokasiLuka
      * @param parent
@@ -77,7 +86,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal","Jam","Tindakan Bedah",
-            "Pasien/Yang Mewakili","Kode Dokter","Dokter Bedah","Lokasi Yang Ditandai"
+            "Pasien/Yang Mewakili","Kode Dokter","Dokter Bedah","Lokasi Yang Ditandai","Persetujuan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -86,7 +95,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        int[] lebar={105,65,160,35,20,65,70,60,200,150,80,160,260};
+        int[] lebar={105,65,160,35,20,65,70,60,200,150,80,160,260,80};
         for (i = 0; i < lebar.length; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             column.setPreferredWidth(lebar[i]);
@@ -162,6 +171,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         skrol.getVerticalScrollBar().setUnitIncrement(24);
         panelGambar.add(skrol,BorderLayout.CENTER);
         TabData.addTab("Penandaan Gambar",panelGambar);
+        initPanelPersetujuan();
 
         ChkInput.setSelected(false);
         isForm();
@@ -863,6 +873,9 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
             TabData.setSelectedIndex(1);
         }else{
             if(tbObat.getSelectedRow()>-1){
+                if(v(13).equals("Sudah")&&JOptionPane.showConfirmDialog(rootPane,"Data ini sudah memiliki bukti persetujuan pasien/wali.\nMengubah data TIDAK mengubah bukti yang lama. Jika isi penandaan berubah,\nambil ulang persetujuan lewat panah di sisi kanan form. Lanjutkan menyimpan perubahan ?","Konfirmasi",JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION){
+                    return;
+                }
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
@@ -1059,10 +1072,14 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
             Valid.MyReportqry("rptFormulirPenandaanLokasiLuka.jasper","report","::[ Formulir Penandaan Lokasi Luka ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                 "penandaan_lokasi_luka.tanggal,penandaan_lokasi_luka.tindakan_bedah,penandaan_lokasi_luka.nama_wali,penandaan_lokasi_luka.lokasi_gambar,"+
-                "penandaan_lokasi_luka.kd_dokter,dokter.nm_dokter from penandaan_lokasi_luka "+
+                "penandaan_lokasi_luka.kd_dokter,dokter.nm_dokter,"+
+                "concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penandaanlokasiluka/',bukti_penandaan_lokasi_luka.photo) as photo "+
+                "from penandaan_lokasi_luka "+
                 "inner join reg_periksa on penandaan_lokasi_luka.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join dokter on penandaan_lokasi_luka.kd_dokter=dokter.kd_dokter "+
+                "left join bukti_penandaan_lokasi_luka on bukti_penandaan_lokasi_luka.no_rawat=penandaan_lokasi_luka.no_rawat "+
+                "and bukti_penandaan_lokasi_luka.tanggal=penandaan_lokasi_luka.tanggal "+
                 "where penandaan_lokasi_luka.no_rawat='"+norawat+"' and penandaan_lokasi_luka.tanggal='"+tgl+"'",param);
         }
     }//GEN-LAST:event_MnFormulirPenandaanActionPerformed
@@ -1213,10 +1230,13 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                 "pasien.jk,pasien.tgl_lahir,penandaan_lokasi_luka.tanggal,penandaan_lokasi_luka.tindakan_bedah,penandaan_lokasi_luka.nama_wali,"+
-                "penandaan_lokasi_luka.kd_dokter,dokter.nm_dokter,penandaan_lokasi_luka.lokasi_gambar from penandaan_lokasi_luka "+
+                "penandaan_lokasi_luka.kd_dokter,dokter.nm_dokter,penandaan_lokasi_luka.lokasi_gambar,"+
+                "if(ifnull(bukti_penandaan_lokasi_luka.photo,'')='','Belum','Sudah') as setuju from penandaan_lokasi_luka "+
                 "inner join reg_periksa on penandaan_lokasi_luka.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join dokter on penandaan_lokasi_luka.kd_dokter=dokter.kd_dokter where "+
+                "inner join dokter on penandaan_lokasi_luka.kd_dokter=dokter.kd_dokter "+
+                "left join bukti_penandaan_lokasi_luka on bukti_penandaan_lokasi_luka.no_rawat=penandaan_lokasi_luka.no_rawat "+
+                "and bukti_penandaan_lokasi_luka.tanggal=penandaan_lokasi_luka.tanggal where "+
                 "date(penandaan_lokasi_luka.tanggal) between ? and ? "+
                 (cari.equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penandaan_lokasi_luka.tindakan_bedah like ? or dokter.nm_dokter like ?) ")+
                 "order by penandaan_lokasi_luka.tanggal");
@@ -1235,7 +1255,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         tgl.substring(0,10),tgl.substring(11,19),rs.getString("tindakan_bedah"),rs.getString("nama_wali"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("lokasi_gambar")
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("lokasi_gambar"),rs.getString("setuju")
                     });
                 }
             } catch (Exception e) {
@@ -1279,6 +1299,9 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
             NmDokter.setText(v(11));
             Valid.SetTgl(Tanggal,v(6));
             kanvas.setSemuaGoresan(ambilGoresan(v(0),v(6)+" "+v(7)));
+            if(FormPhoto!=null&&FormPhoto.isVisible()){
+                tampilBukti();
+            }
         }
     }
 
@@ -1430,8 +1453,244 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         return new Object[]{
             TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
             Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Tindakan.getText(),Wali.getText(),KdDokter.getText(),NmDokter.getText(),kanvas.getRingkasan()
+            Tindakan.getText(),Wali.getText(),KdDokter.getText(),NmDokter.getText(),kanvas.getRingkasan(),
+            statusPersetujuan(TNoRw.getText(),tanggalLengkap())
         };
+    }
+
+    // ------------------------------------------------------------------ persetujuan pasien/wali (panel samping berpanah)
+    // Pola sama dengan Pelaksanaan Informasi & Edukasi: SIMRS mengisi antripenandaanlokasiluka,
+    // pasien/wali membuka webapps/penandaanlokasiluka (tablet/PC berkamera), foto bukti disimpan
+    // di bukti_penandaan_lokasi_luka dan ditampilkan di sini serta pada formulir cetak.
+    private javax.swing.ImageIcon ikonPanah(String lokasi) {
+        java.net.URL u=getClass().getResource(lokasi);
+        return u==null?null:new javax.swing.ImageIcon(u);
+    }
+
+    /** Panel samping dengan panah (seperti Pelaksanaan Informasi & Edukasi): foto bukti + tombol Ambil/Refresh. */
+    private void initPanelPersetujuan() {
+        PanelAccor=new widget.PanelBiasa();
+        PanelAccor.setBackground(new java.awt.Color(255,255,255));
+        PanelAccor.setName("PanelAccor");
+        PanelAccor.setLayout(new BorderLayout(1,1));
+
+        ChkAccor=new widget.CekBox();
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setIcon(ikonPanah("/picture/kiri.png"));
+        ChkAccor.setSelected(false);
+        ChkAccor.setFocusable(false);
+        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setName("ChkAccor");
+        ChkAccor.setToolTipText("Persetujuan pasien/wali (foto bukti)");
+        ChkAccor.setPreferredSize(new java.awt.Dimension(15,20));
+        ChkAccor.setRolloverIcon(ikonPanah("/picture/kiri.png"));
+        ChkAccor.setRolloverSelectedIcon(ikonPanah("/picture/kanan.png"));
+        ChkAccor.setSelectedIcon(ikonPanah("/picture/kanan.png"));
+        ChkAccor.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChkAccorActionPerformed();
+            }
+        });
+        PanelAccor.add(ChkAccor,BorderLayout.WEST);
+
+        FormPhoto=new widget.PanelBiasa();
+        FormPhoto.setBackground(new java.awt.Color(255,255,255));
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1,1,1,1)," Bukti Persetujuan Pasien/Wali : ",javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,javax.swing.border.TitledBorder.DEFAULT_POSITION,new Font("Tahoma",0,11),new java.awt.Color(50,50,50)));
+        FormPhoto.setName("FormPhoto");
+        FormPhoto.setLayout(new BorderLayout());
+
+        lblStatusSetuju=new javax.swing.JLabel("  Alur : Ambil, pasien/wali setuju di tablet, lalu Refresh");
+        lblStatusSetuju.setFont(new Font("Tahoma",2,11));
+        FormPhoto.add(lblStatusSetuju,BorderLayout.PAGE_START);
+
+        lblFotoSetuju=new javax.swing.JLabel("Pilih data penandaan pada tabel",javax.swing.SwingConstants.CENTER);
+        lblFotoSetuju.setFont(new Font("Tahoma",0,11));
+        lblFotoSetuju.setForeground(new java.awt.Color(67,67,67));
+        widget.ScrollPane skrol=new widget.ScrollPane();
+        skrol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+        skrol.setName("ScrollBukti");
+        skrol.setOpaque(true);
+        skrol.setPreferredSize(new java.awt.Dimension(200,200));
+        skrol.setViewportView(lblFotoSetuju);
+        FormPhoto.add(skrol,BorderLayout.CENTER);
+
+        widget.PanelBiasa tombol=new widget.PanelBiasa();
+        tombol.setBackground(new java.awt.Color(255,255,255));
+        tombol.setBorder(null);
+        tombol.setName("FormPassBukti");
+        tombol.setPreferredSize(new java.awt.Dimension(115,40));
+
+        btnAmbil=new widget.Button();
+        btnAmbil.setIcon(ikonPanah("/picture/plus_16.png"));
+        btnAmbil.setText("Ambil");
+        btnAmbil.setToolTipText("Kirim data terpilih ke layar pasien/wali (webapps/penandaanlokasiluka)");
+        btnAmbil.setName("btnAmbil");
+        btnAmbil.setPreferredSize(new java.awt.Dimension(100,30));
+        btnAmbil.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ambilPersetujuan();
+            }
+        });
+        tombol.add(btnAmbil);
+
+        BtnRefreshPhoto1=new widget.Button();
+        BtnRefreshPhoto1.setIcon(ikonPanah("/picture/refresh.png"));
+        BtnRefreshPhoto1.setText("Refresh");
+        BtnRefreshPhoto1.setToolTipText("Muat ulang foto bukti persetujuan");
+        BtnRefreshPhoto1.setName("BtnRefreshPhoto1");
+        BtnRefreshPhoto1.setPreferredSize(new java.awt.Dimension(100,30));
+        BtnRefreshPhoto1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tbObat.getSelectedRow()>-1){
+                    tampilBukti();
+                }else{
+                    JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data penandaan terlebih dahulu..!!");
+                }
+            }
+        });
+        tombol.add(BtnRefreshPhoto1);
+
+        FormPhoto.add(tombol,BorderLayout.PAGE_END);
+        PanelAccor.add(FormPhoto,BorderLayout.CENTER);
+        internalFrame1.add(PanelAccor,BorderLayout.EAST);
+
+        ChkAccor.setSelected(false);
+        isPhoto();
+    }
+
+    private void isPhoto() {
+        ChkAccor.setVisible(false);
+        if(ChkAccor.isSelected()){
+            PanelAccor.setPreferredSize(new java.awt.Dimension(480,10));
+            FormPhoto.setVisible(true);
+        }else{
+            PanelAccor.setPreferredSize(new java.awt.Dimension(15,10));
+            FormPhoto.setVisible(false);
+        }
+        ChkAccor.setVisible(true);
+        PanelAccor.revalidate();
+    }
+
+    private void ChkAccorActionPerformed() {
+        if(tbObat.getSelectedRow()!=-1){
+            isPhoto();
+            tampilBukti();
+        }else{
+            ChkAccor.setSelected(false);
+            isPhoto();
+            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data penandaan pada tabel terlebih dahulu..!!!");
+        }
+    }
+
+    /** Kirim data terpilih ke antrian layar pasien/wali. */
+    private void ambilPersetujuan() {
+        if(tbObat.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data penandaan pada tabel terlebih dahulu..!!");
+            return;
+        }
+        String norawat=v(0);
+        String tgl=v(6)+" "+v(7);
+        if(!bacaPhoto(norawat,tgl).equals("")){
+            if(JOptionPane.showConfirmDialog(rootPane,"Bukti persetujuan untuk data ini sudah ada.\nAmbil ulang dan ganti bukti yang lama ?","Konfirmasi",JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION){
+                return;
+            }
+        }
+        Sequel.queryu2("delete from antripenandaanlokasiluka");
+        if(Sequel.queryu2tf("insert into antripenandaanlokasiluka values(?,?)",2,new String[]{norawat,tgl})==true){
+            Sequel.queryu2("delete from bukti_penandaan_lokasi_luka where no_rawat=? and tanggal=?",2,new String[]{norawat,tgl});
+            tabMode.setValueAt("Belum",tbObat.getSelectedRow(),13);
+            lblFotoSetuju.setIcon(null);
+            lblFotoSetuju.setText("Menunggu pasien/wali menyatakan persetujuan ...");
+            lblStatusSetuju.setText("  Status : data sudah dikirim ke layar pasien/wali.");
+            JOptionPane.showMessageDialog(rootPane,"Data sudah dikirim ke layar pasien/wali.\nMinta pasien/wali membuka menu \"Penandaan Lokasi Luka\" di portal webapps,\nlalu setelah selesai klik Refresh pada panel ini.");
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Gagal mengirim data ke layar pasien/wali, pastikan tabel antripenandaanlokasiluka sudah dibuat...!!");
+        }
+    }
+
+    /** Nama file foto bukti (relatif terhadap folder webapp), "" jika belum ada. */
+    private String bacaPhoto(String norawat,String tgl) {
+        String hasil="";
+        try {
+            PreparedStatement p2=koneksi.prepareStatement("select bukti_penandaan_lokasi_luka.photo from bukti_penandaan_lokasi_luka where bukti_penandaan_lokasi_luka.no_rawat=? and bukti_penandaan_lokasi_luka.tanggal=?");
+            try {
+                p2.setString(1,norawat);
+                p2.setString(2,tgl);
+                ResultSet r2=p2.executeQuery();
+                if(r2.next()){
+                    hasil=r2.getString(1)==null?"":r2.getString(1);
+                }
+                r2.close();
+            } finally {
+                p2.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        return hasil;
+    }
+
+    private String statusPersetujuan(String norawat,String tgl) {
+        return bacaPhoto(norawat,tgl).equals("")?"Belum":"Sudah";
+    }
+
+    /** Muat foto bukti untuk baris terpilih (di latar belakang agar layar tidak membeku). */
+    private void tampilBukti() {
+        if(!FormPhoto.isVisible()){
+            return;
+        }
+        final int nomor=++nomorMuatFoto;
+        lblFotoSetuju.setIcon(null);
+        if(tbObat.getSelectedRow()==-1){
+            lblFotoSetuju.setText("Pilih data penandaan pada tabel terlebih dahulu");
+            return;
+        }
+        String photo=bacaPhoto(v(0),v(6)+" "+v(7));
+        tabMode.setValueAt(photo.equals("")?"Belum":"Sudah",tbObat.getSelectedRow(),13);
+        if(photo.equals("")){
+            lblFotoSetuju.setText("Belum ada bukti persetujuan pasien/wali");
+            lblStatusSetuju.setText("  Status : belum ada bukti persetujuan.");
+            return;
+        }
+        final String alamat="http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penandaanlokasiluka/"+photo;
+        lblFotoSetuju.setText("Memuat foto ...");
+        lblStatusSetuju.setText("  Status : sudah ada bukti persetujuan.");
+        new javax.swing.SwingWorker<BufferedImage,Void>(){
+            @Override
+            protected BufferedImage doInBackground() throws Exception {
+                java.net.URLConnection uc=new java.net.URL(alamat).openConnection();
+                uc.setConnectTimeout(5000);
+                uc.setReadTimeout(8000);
+                uc.setUseCaches(false);
+                try (java.io.InputStream in=uc.getInputStream()) {
+                    return javax.imageio.ImageIO.read(in);
+                }
+            }
+
+            @Override
+            protected void done() {
+                if(nomor!=nomorMuatFoto){
+                    return;
+                }
+                try {
+                    BufferedImage gbr=get();
+                    if(gbr==null){
+                        throw new Exception("bukan gambar");
+                    }
+                    int w=Math.min(gbr.getWidth(),430);
+                    int h=(int)Math.round(gbr.getHeight()*(w/(double)gbr.getWidth()));
+                    lblFotoSetuju.setText("");
+                    lblFotoSetuju.setIcon(new javax.swing.ImageIcon(gbr.getScaledInstance(w,h,java.awt.Image.SCALE_SMOOTH)));
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                    lblFotoSetuju.setText("Foto tidak dapat dimuat dari server web : "+alamat);
+                }
+            }
+        }.execute();
     }
 
     private void simpan() {
