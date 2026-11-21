@@ -52,8 +52,20 @@
     }
 
     try {
-        Tambah3("bukti_penandaan_lokasi_luka","'".$norawat."','".$tanggal."','pages/upload/$fileName'");
-        echo $htmlHead."<body><center>Proses Pengambilan Bukti Persetujuan Penandaan Lokasi Luka Sudah Selesai ..!!".$htmlFoot;
+        // waktu_persetujuan = tanggal & jam pasien/wali menyetujui (kolom dibuat oleh sql/03).
+        // Bila sql/03 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
+        $waktuSimpan = date("d-m-Y H:i:s");
+        try {
+            Tambah3("bukti_penandaan_lokasi_luka","'".$norawat."','".$tanggal."','pages/upload/$fileName',now()");
+            $waktuSimpan = getOne("select date_format(bukti_penandaan_lokasi_luka.waktu_persetujuan,'%d-%m-%Y %H:%i:%s') from bukti_penandaan_lokasi_luka where bukti_penandaan_lokasi_luka.no_rawat='".$norawat."' and bukti_penandaan_lokasi_luka.tanggal='".$tanggal."'");
+        } catch (mysqli_sql_exception $e1) {
+            if($e1->getCode() != 1136){
+                throw $e1;
+            }
+            Tambah3("bukti_penandaan_lokasi_luka","'".$norawat."','".$tanggal."','pages/upload/$fileName'");
+            $waktuSimpan = "";
+        }
+        echo $htmlHead."<body><center>Proses Pengambilan Bukti Persetujuan Penandaan Lokasi Luka Sudah Selesai".($waktuSimpan!=""?" (".htmlspecialchars($waktuSimpan,ENT_QUOTES,'UTF-8').")":"")." ..!!".$htmlFoot;
     } catch (mysqli_sql_exception $e) {
         @unlink($file);
         if($e->getCode() == 1062){

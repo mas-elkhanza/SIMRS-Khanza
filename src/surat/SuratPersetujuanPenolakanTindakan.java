@@ -2178,6 +2178,27 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         template.setVisible(true);
     }//GEN-LAST:event_BtnTemplateActionPerformed
 
+    /** Tanggal & jam foto bukti persetujuan diambil ("dd-MM-yyyy HH:mm:ss"); "" bila belum ada / kolom waktu_persetujuan belum dibuat (jalankan sql/04_jam_persetujuan_penolakan_tindakan.sql). */
+    private String waktuBukti(String tabel,String nopernyataan) {
+        String hasil="";
+        try {
+            PreparedStatement psw=koneksi.prepareStatement("select date_format("+tabel+".waktu_persetujuan,'%d-%m-%Y %H:%i:%s') from "+tabel+" where "+tabel+".no_pernyataan=?");
+            try {
+                psw.setString(1,nopernyataan);
+                ResultSet rsw=psw.executeQuery();
+                if(rsw.next()){
+                    hasil=rsw.getString(1)==null?"":rsw.getString(1);
+                }
+                rsw.close();
+            } finally {
+                psw.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        return hasil;
+    }
+
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
         if(tbObat.getSelectedRow()>-1){
             if(lokasifile.equals("")){
@@ -2193,6 +2214,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 param.put("photo_penerima","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile);
                 param.put("photo_saksi","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2);
+                param.put("waktu_penerima",waktuBukti("bukti_persetujuan_penolakan_tindakan_penerimainformasi",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+                param.put("waktu_saksi",waktuBukti("bukti_persetujuan_penolakan_tindakan_saksikeluarga",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
                 finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),29).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));

@@ -19,7 +19,16 @@
     $htmlHead   = "<head><title>SIMKES Khanza</title><link rel='stylesheet' href='../css/bootstrap.min.css'/><style>#results { padding:0px; background:#EEFFEE; width:490; height:390 }</style></head>";
 
     try {
-        Tambah3("bukti_persetujuan_penolakan_tindakan_saksikeluarga","'".$nopernyataan."','pages/upload/$fileName'");
+        // waktu_persetujuan = tanggal & jam foto persetujuan diambil (kolom dibuat oleh sql/04).
+        // Bila sql/04 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
+        try {
+            Tambah3("bukti_persetujuan_penolakan_tindakan_saksikeluarga","'".$nopernyataan."','pages/upload/$fileName',now()");
+        } catch (mysqli_sql_exception $e1) {
+            if($e1->getCode() != 1136){
+                throw $e1;
+            }
+            Tambah3("bukti_persetujuan_penolakan_tindakan_saksikeluarga","'".$nopernyataan."','pages/upload/$fileName'");
+        }
         echo $htmlHead."<body><center>Proses Pengambilan Persetujuan Saksi 1 Keluarga Sudah Selesai ..!! <br><a href='".$urlKembali."' class='btn btn-secondary'>Kembali</a></center></body>";
     } catch (mysqli_sql_exception $e) {
         if($e->getCode() == 1062){

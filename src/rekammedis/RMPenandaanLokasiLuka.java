@@ -71,6 +71,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
     private widget.CekBox ChkAccor;
     private widget.Button btnAmbil;
     private widget.Button BtnRefreshPhoto1;
+    private widget.Button BtnSurat;
     private javax.swing.JLabel lblStatusSetuju;
     private javax.swing.JLabel lblFotoSetuju;
     private int nomorMuatFoto=0;
@@ -1068,7 +1069,7 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
             p.setSemuaGoresan(ambilGoresan(norawat,tgl));
             param.put("gambar",p.renderKomposit(900));
             param.put("dokter",v(11));
-            param.put("finger",teksTTE(v(10),v(11)));
+            param.put("finger",teksTTE(v(10),v(11),v(6)+" "+v(7)));
             Valid.MyReportqry("rptFormulirPenandaanLokasiLuka.jasper","report","::[ Formulir Penandaan Lokasi Luka ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
                 "penandaan_lokasi_luka.tanggal,penandaan_lokasi_luka.tindakan_bedah,penandaan_lokasi_luka.nama_wali,penandaan_lokasi_luka.lokasi_gambar,"+
@@ -1196,9 +1197,14 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
     }
 
-    private String teksTTE(String nik,String nama) {
+    /** waktu = "yyyy-MM-dd HH:mm:ss" (tanggal & jam penandaan) -> dicetak "dd-MM-yyyy HH:mm:ss" pada teks TTE. */
+    private String teksTTE(String nik,String nama,String waktu) {
         finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",nik);
-        return "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+nama+"\nID "+(finger.equals("")?nik:finger);
+        String wkt="";
+        if(waktu!=null&&waktu.trim().length()>=10){
+            wkt="\n"+Valid.SetTgl3(waktu.trim())+(waktu.trim().length()>=19?" "+waktu.trim().substring(11,19):"");
+        }
+        return "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+nama+"\nID "+(finger.equals("")?nik:finger)+wkt;
     }
 
     /** coretan satu penandaan : peta kode gambar -> teks goresan */
@@ -1554,6 +1560,21 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         });
         tombol.add(BtnRefreshPhoto1);
 
+        BtnSurat=new widget.Button();
+        BtnSurat.setIcon(ikonPanah("/picture/item (copy).png"));
+        BtnSurat.setMnemonic('U');
+        BtnSurat.setText("Surat");
+        BtnSurat.setToolTipText("Alt+U : cetak Surat Persetujuan Penandaan Lokasi Luka");
+        BtnSurat.setName("BtnSurat");
+        BtnSurat.setPreferredSize(new java.awt.Dimension(100,30));
+        BtnSurat.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cetakSurat();
+            }
+        });
+        tombol.add(BtnSurat);
+
         FormPhoto.add(tombol,BorderLayout.PAGE_END);
         PanelAccor.add(FormPhoto,BorderLayout.CENTER);
         internalFrame1.add(PanelAccor,BorderLayout.EAST);
@@ -1634,6 +1655,65 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         return hasil;
     }
 
+    /** Tanggal & jam pasien/wali menyatakan persetujuan ("dd-MM-yyyy HH:mm:ss"), "" bila belum ada / kolom belum dibuat (sql/03). */
+    private String waktuPersetujuan(String norawat,String tgl) {
+        String hasil="";
+        try {
+            PreparedStatement p2=koneksi.prepareStatement("select date_format(bukti_penandaan_lokasi_luka.waktu_persetujuan,'%d-%m-%Y %H:%i:%s') from bukti_penandaan_lokasi_luka where bukti_penandaan_lokasi_luka.no_rawat=? and bukti_penandaan_lokasi_luka.tanggal=?");
+            try {
+                p2.setString(1,norawat);
+                p2.setString(2,tgl);
+                ResultSet r2=p2.executeQuery();
+                if(r2.next()){
+                    hasil=r2.getString(1)==null?"":r2.getString(1);
+                }
+                r2.close();
+            } finally {
+                p2.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        return hasil;
+    }
+
+    /** Tombol Surat (meniru Surat Persetujuan Penolakan Tindakan) : syarat bukti foto persetujuan sudah ada. */
+    private void cetakSurat() {
+        if(tbObat.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
+            return;
+        }
+        String norawat=v(0);
+        String tgl=v(6)+" "+v(7);
+        String photo=bacaPhoto(norawat,tgl);
+        if(photo.equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti persetujuan penandaan lokasi luka terlebih dahulu..!!!!");
+            return;
+        }
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Map<String, Object> param = new HashMap<>();
+        isiParamRS(param);
+        PanelGambarTubuh p=new PanelGambarTubuh();
+        p.setSemuaGoresan(ambilGoresan(norawat,tgl));
+        param.put("gambar",p.renderKomposit(900));
+        param.put("finger",teksTTE(v(10),v(11),tgl));
+        param.put("photo_penerima","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penandaanlokasiluka/"+photo);
+        param.put("waktu_persetujuan",waktuPersetujuan(norawat,tgl));
+        Valid.MyReportqry("rptSuratPenandaanLokasiLuka.jasper","report","::[ Surat Persetujuan Penandaan Lokasi Luka ]::",
+            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tmp_lahir,"+
+            "concat(pasien.alamat,', ',ifnull(kelurahan.nm_kel,''),', ',ifnull(kecamatan.nm_kec,''),', ',ifnull(kabupaten.nm_kab,''),', ',ifnull(propinsi.nm_prop,'')) as alamat,"+
+            "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,penandaan_lokasi_luka.tanggal,penandaan_lokasi_luka.tindakan_bedah,"+
+            "penandaan_lokasi_luka.nama_wali,penandaan_lokasi_luka.lokasi_gambar,penandaan_lokasi_luka.kd_dokter,dokter.nm_dokter "+
+            "from penandaan_lokasi_luka "+
+            "inner join reg_periksa on penandaan_lokasi_luka.no_rawat=reg_periksa.no_rawat "+
+            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            "inner join dokter on penandaan_lokasi_luka.kd_dokter=dokter.kd_dokter "+
+            "left join kelurahan on pasien.kd_kel=kelurahan.kd_kel left join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+            "left join kabupaten on pasien.kd_kab=kabupaten.kd_kab left join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+            "where penandaan_lokasi_luka.no_rawat='"+norawat+"' and penandaan_lokasi_luka.tanggal='"+tgl+"'",param);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     private String statusPersetujuan(String norawat,String tgl) {
         return bacaPhoto(norawat,tgl).equals("")?"Belum":"Sudah";
     }
@@ -1658,7 +1738,8 @@ public final class RMPenandaanLokasiLuka extends javax.swing.JDialog {
         }
         final String alamat="http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penandaanlokasiluka/"+photo;
         lblFotoSetuju.setText("Memuat foto ...");
-        lblStatusSetuju.setText("  Status : sudah ada bukti persetujuan.");
+        String wktSetuju=waktuPersetujuan(v(0),v(6)+" "+v(7));
+        lblStatusSetuju.setText("  Status : sudah ada bukti persetujuan"+(wktSetuju.equals("")?".":" ("+wktSetuju+")."));
         new javax.swing.SwingWorker<BufferedImage,Void>(){
             @Override
             protected BufferedImage doInBackground() throws Exception {

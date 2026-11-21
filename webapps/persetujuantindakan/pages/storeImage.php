@@ -66,7 +66,16 @@
     $htmlHead = "<head><title>SIMKES Khanza</title><link rel='stylesheet' href='../css/bootstrap.min.css'/><style>#results { padding:0px; background:#EEFFEE; width:490; height:390 }</style></head>";
 
     try {
-        Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName'");
+        // waktu_persetujuan = tanggal & jam foto persetujuan diambil (kolom dibuat oleh sql/04).
+        // Bila sql/04 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
+        try {
+            Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName',now()");
+        } catch (mysqli_sql_exception $e1) {
+            if($e1->getCode() != 1136){
+                throw $e1;
+            }
+            Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName'");
+        }
         Ubah2("persetujuan_penolakan_tindakan","diagnosa_konfirmasi='$diagnosa_konfirmasi',tindakan_konfirmasi='$tindakan_konfirmasi',indikasi_tindakan_konfirmasi='$indikasi_tindakan_konfirmasi',
                tata_cara_konfirmasi='$tata_cara_konfirmasi',tujuan_konfirmasi='$tujuan_konfirmasi',risiko_konfirmasi='$risiko_konfirmasi',komplikasi_konfirmasi='$komplikasi_konfirmasi',
                prognosis_konfirmasi='$prognosis_konfirmasi',alternatif_konfirmasi='$alternatif_konfirmasi',biaya_konfirmasi='$biaya_konfirmasi',lain_lain_konfirmasi='$lain_lain_konfirmasi',

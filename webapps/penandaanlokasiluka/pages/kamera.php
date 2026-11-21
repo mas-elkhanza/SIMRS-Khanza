@@ -12,7 +12,7 @@
     $tanggal       = "";
     $norawat       = "";
 
-    // antrian : diisi dari SIMRS (form Penandaan Lokasi Luka -> tab Persetujuan -> tombol Ambil)
+    // antrian : diisi dari SIMRS (form Penandaan Lokasi Luka -> panah di tepi kanan form -> tombol Ambil)
     $_sql          = "select antripenandaanlokasiluka.no_rawat,antripenandaanlokasiluka.tanggal from antripenandaanlokasiluka limit 1";
     $hasil         = bukaquery2($_sql);
     while ($data = mysqli_fetch_array ($hasil)){
@@ -49,16 +49,18 @@
     // data formulir penandaan lokasi luka
     $formAda       = false;
     $tanggalform   = "";
+    $jamform       = "";
     $tindakan      = "";
     $nama_wali     = "";
     $nm_dokter     = "";
-    $_sql3  = "select DATE_FORMAT(penandaan_lokasi_luka.tanggal,'%d-%m-%Y') as tanggalform,penandaan_lokasi_luka.tindakan_bedah,penandaan_lokasi_luka.nama_wali,dokter.nm_dokter ".
+    $_sql3  = "select DATE_FORMAT(penandaan_lokasi_luka.tanggal,'%d-%m-%Y') as tanggalform,DATE_FORMAT(penandaan_lokasi_luka.tanggal,'%H:%i:%s') as jamform,penandaan_lokasi_luka.tindakan_bedah,penandaan_lokasi_luka.nama_wali,dokter.nm_dokter ".
               "from penandaan_lokasi_luka inner join dokter on penandaan_lokasi_luka.kd_dokter=dokter.kd_dokter ".
               "where penandaan_lokasi_luka.tanggal='$tanggal' and penandaan_lokasi_luka.no_rawat='$norawat'" ;
     $hasil3 = bukaquery2($_sql3);
     while ($data3  = mysqli_fetch_array ($hasil3)){
         $formAda     = true;
         $tanggalform = $data3['tanggalform'];
+        $jamform     = $data3['jamform'];
         $tindakan    = $data3['tindakan_bedah'];
         $nama_wali   = $data3['nama_wali'];
         $nm_dokter   = $data3['nm_dokter'];
@@ -101,6 +103,16 @@
     if($formAda){
         $sudahAda = (getOne("select count(*) from bukti_penandaan_lokasi_luka where bukti_penandaan_lokasi_luka.tanggal='$tanggal' and bukti_penandaan_lokasi_luka.no_rawat='$norawat'")>0);
     }
+
+    // jam persetujuan (kolom waktu_persetujuan dibuat oleh sql/03; bila belum ada, abaikan)
+    $waktuSetuju = "";
+    if($sudahAda){
+        try {
+            $waktuSetuju = getOne("select ifnull(date_format(bukti_penandaan_lokasi_luka.waktu_persetujuan,'%d-%m-%Y %H:%i:%s'),'') from bukti_penandaan_lokasi_luka where bukti_penandaan_lokasi_luka.tanggal='$tanggal' and bukti_penandaan_lokasi_luka.no_rawat='$norawat'");
+        } catch (Throwable $ex) {
+            $waktuSetuju = "";
+        }
+    }
 ?>
 
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -118,14 +130,14 @@
 
 <?php if(!$formAda || $nm_pasien==""){ ?>
     <div class="alert alert-warning" role="alert">
-        <center>Belum ada data penandaan lokasi luka yang dikirim dari SIMRS. Silahkan petugas memilih data pada form Penandaan Lokasi Luka (tab Persetujuan) lalu klik Ambil, kemudian klik Refresh di halaman ini.</center>
+        <center>Belum ada data penandaan lokasi luka yang dikirim dari SIMRS. Silahkan petugas memilih data pada form Penandaan Lokasi Luka (klik panah di tepi kanan form) lalu klik Ambil, kemudian klik Refresh di halaman ini.</center>
     </div>
 <?php }elseif($sudahAda){ ?>
     <div class="alert alert-success" role="alert">
-        <center>Bukti persetujuan untuk data ini sudah tersimpan. Terima kasih.<br>Jika perlu mengulang, petugas dapat klik Ambil kembali di SIMRS lalu klik Refresh di halaman ini.</center>
+        <center>Bukti persetujuan untuk data ini sudah tersimpan<?php if($waktuSetuju!=""){ ?> pada <?=$e($waktuSetuju);?><?php } ?>. Terima kasih.<br>Jika perlu mengulang, petugas dapat klik Ambil kembali di SIMRS lalu klik Refresh di halaman ini.</center>
     </div>
 <?php }else{ ?>
-    <h7 class="text-dark"><center>Tanggal <?=$e($tanggalform);?></center></h7><br/>
+    <h7 class="text-dark"><center>Tanggal <?=$e($tanggalform);?>, Jam <?=$e($jamform);?></center></h7><br/>
     <form method="POST" action="pages/storeImage.php" onsubmit="return validasiFoto();" enctype=multipart/form-data>
         <input type="hidden" name="tanggal" value="<?=$e($tanggal);?>">
         <input type="hidden" name="norawat" value="<?=$e($norawat);?>">
