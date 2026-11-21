@@ -2275,7 +2275,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }
                     if (riwayat == null) return;
                     if (!riwayat.isVisible()) {
-                        riwayat.setNoRawat(NoRawat);
+                        norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",NoRawat);
+                        riwayat.setNoRm(norm, Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     }
 
                     if (riwayat.isVisible()) {
@@ -2310,7 +2311,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }
                     if (riwayat == null) return;
                     if (!riwayat.isVisible()) {
-                        riwayat.setNoRawat(NoRawat);
+                        norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",NoRawat);
+                        riwayat.setNoRm(norm, Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     }
 
                     if (riwayat.isVisible()) {
