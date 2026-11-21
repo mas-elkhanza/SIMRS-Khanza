@@ -194,11 +194,22 @@
                                       </a>
                                     </td>
                                     <td width='25%' align='center'>
+                                      <a target=_blank href=penandaanlokasiluka/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/6771569_education_learning_pencil_school_signature_icon.png'/><br>
+                                         Persetujuan Penandaan Lokasi Luka                                     
+                                      </a>
+                                    </td>
+                                </tr>
+                                <tr width='100%' align='center'>
+                                    <td width='25%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               
                                       </a>
                                     </td>
+                                    <td width='25%' align='center'></td>
+                                    <td width='25%' align='center'></td>
+                                    <td width='25%' align='center'></td>
                                 </tr>
                             </table> 
                         </div>

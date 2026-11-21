@@ -216,7 +216,7 @@ public final class akses {
             penilaian_medis_ralan_gawat_darurat_psikiatri=false,bpjs_referensi_setting_apotek=false,bpjs_referensi_obat_apotek=false,bpjs_mapping_obat_apotek=false,
             pembayaran_bank_mandiri=false,penilaian_ulang_nyeri=false,penilaian_terapi_wicara=false,bpjs_obat_23hari_apotek=false,pengkajian_restrain=false,
             bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false,
-            catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,
+            catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,skor_padss_pasca_anestesi=false,penandaan_lokasi_luka=false,catatan_durante_anestesi=false,catatan_observasi_ruang_pulih=false,
             penilaian_pre_induksi=false,hasil_usg_urologi=false,hasil_usg_gynecologi=false,hasil_pemeriksaan_ekg=false,hapus_edit_sep_bpjs=false,satu_sehat_kirim_diet=false,
             satu_sehat_mapping_obat=false,dapur_ringkasan_pembelian=false,satu_sehat_kirim_medication=false,satu_sehat_kirim_medicationrequest=false,
             penatalaksanaan_terapi_okupasi=false,satu_sehat_kirim_medicationdispense=false,hasil_usg_neonatus=false,hasil_endoskopi_faring_laring=false,
@@ -266,7 +266,7 @@ public final class akses {
             satu_sehat_mapping_kptl_tindakan_ranap=false,satu_sehat_mapping_kptl_tindakan_radiologi=false,satu_sehat_mapping_kptl_tindakan_laborat=false,satu_sehat_mapping_kptl_tindakan_operasi=false,
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,
             ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
-            monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false;
+            monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false,penilaian_bishop_scor=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1285,6 +1285,10 @@ public final class akses {
                         akses.skor_aldrette_pasca_anestesi=true;
                         akses.skor_steward_pasca_anestesi=true;
                         akses.skor_bromage_pasca_anestesi=true;
+                        akses.skor_padss_pasca_anestesi=true;
+                        akses.penandaan_lokasi_luka=true;
+                        akses.catatan_durante_anestesi=true;
+                        akses.catatan_observasi_ruang_pulih=true;
                         akses.penilaian_pre_induksi=true;
                         akses.hasil_usg_urologi=true;
                         akses.hasil_usg_gynecologi=true;
@@ -1513,6 +1517,7 @@ public final class akses {
                         akses.hasil_persalinan_tolac=true;
                         akses.laporan_reaksi_transfusi=true;
                         akses.penilaian_grace_scor=true;
+                        akses.penilaian_bishop_scor=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2515,6 +2520,10 @@ public final class akses {
                         akses.skor_aldrette_pasca_anestesi=rs2.getBoolean("skor_aldrette_pasca_anestesi");
                         akses.skor_steward_pasca_anestesi=rs2.getBoolean("skor_steward_pasca_anestesi");
                         akses.skor_bromage_pasca_anestesi=rs2.getBoolean("skor_bromage_pasca_anestesi");
+                        akses.skor_padss_pasca_anestesi=rs2.getBoolean("skor_padss_pasca_anestesi");
+                        akses.penandaan_lokasi_luka=rs2.getBoolean("penandaan_lokasi_luka");
+                        akses.catatan_durante_anestesi=rs2.getBoolean("catatan_durante_anestesi");
+                        akses.catatan_observasi_ruang_pulih=rs2.getBoolean("catatan_observasi_ruang_pulih");
                         akses.penilaian_pre_induksi=rs2.getBoolean("penilaian_pre_induksi");
                         akses.hasil_usg_urologi=rs2.getBoolean("hasil_usg_urologi");
                         akses.hasil_usg_gynecologi=rs2.getBoolean("hasil_usg_gynecologi");
@@ -2743,6 +2752,7 @@ public final class akses {
                         akses.hasil_persalinan_tolac=rs2.getBoolean("hasil_persalinan_tolac");
                         akses.laporan_reaksi_transfusi=rs2.getBoolean("laporan_reaksi_transfusi");
                         akses.penilaian_grace_scor=rs2.getBoolean("penilaian_grace_scor");
+                        akses.penilaian_bishop_scor=rs2.getBoolean("penilaian_bishop_scor");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3767,6 +3777,10 @@ public final class akses {
         akses.skor_aldrette_pasca_anestesi=false;
         akses.skor_steward_pasca_anestesi=false;
         akses.skor_bromage_pasca_anestesi=false;
+        akses.skor_padss_pasca_anestesi=false;
+        akses.penandaan_lokasi_luka=false;
+        akses.catatan_durante_anestesi=false;
+        akses.catatan_observasi_ruang_pulih=false;
         akses.penilaian_pre_induksi=false;
         akses.hasil_usg_urologi=false;
         akses.hasil_usg_gynecologi=false;
@@ -3995,6 +4009,7 @@ public final class akses {
         akses.hasil_persalinan_tolac=false;
         akses.laporan_reaksi_transfusi=false;
         akses.penilaian_grace_scor=false;
+        akses.penilaian_bishop_scor=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5034,6 +5049,10 @@ public final class akses {
     public static boolean getcatatan_keperawatan_ralan(){return akses.catatan_keperawatan_ralan;}
     public static boolean getcatatan_persalinan(){return akses.catatan_persalinan;}
     public static boolean getskor_aldrette_pasca_anestesi(){return akses.skor_aldrette_pasca_anestesi;}
+    public static boolean getskor_padss_pasca_anestesi(){return akses.skor_padss_pasca_anestesi;}
+    public static boolean getpenandaan_lokasi_luka(){return akses.penandaan_lokasi_luka;}
+    public static boolean getcatatan_durante_anestesi(){return akses.catatan_durante_anestesi;}
+    public static boolean getcatatan_observasi_ruang_pulih(){return akses.catatan_observasi_ruang_pulih;}
     public static boolean getskor_steward_pasca_anestesi(){return akses.skor_steward_pasca_anestesi;}
     public static boolean getskor_bromage_pasca_anestesi(){return akses.skor_bromage_pasca_anestesi;}
     public static boolean getpenilaian_pre_induksi(){return akses.penilaian_pre_induksi;}
@@ -5264,4 +5283,5 @@ public final class akses {
     public static boolean gethasil_persalinan_tolac(){return akses.hasil_persalinan_tolac;}
     public static boolean getlaporan_reaksi_transfusi(){return akses.laporan_reaksi_transfusi;}
     public static boolean getpenilaian_grace_scor(){return akses.penilaian_grace_scor;}
+    public static boolean getpenilaian_bishop_scor(){return akses.penilaian_bishop_scor;}
 }   

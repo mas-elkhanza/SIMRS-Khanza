@@ -274,7 +274,7 @@ public final class DlgRl38 extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,1).toString()+"','"+
                                         tabMode.getValueAt(r,2).toString()+"','"+
                                         tabMode.getValueAt(r,3).toString()+"','"+
-                                        tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                        tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap");
                     }                    
                 }
 

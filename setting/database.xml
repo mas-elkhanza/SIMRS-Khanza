@@ -100,6 +100,7 @@
     <entry key="SECRETKEYSATUSEHAT">pHpIVf8/l4nh5eVYrLAER/yycBhfqp8=</entry>
     <entry key="URLAUTHSATUSEHAT">https://tanyakemkes/oauth2/v1</entry> 
     <entry key="URLFHIRSATUSEHAT">https://tanyakemnkes/fhir-r4/v1</entry>
+    <entry key="URLRMESATUSEHAT">https://api-satusehat.kemkes.go.id/ssrme/v2/ntl</entry>
     <entry key="IDSATUSEHAT">l4nh5eVYrLAER</entry>
     <entry key="URLAPPLINKSATUSEHAT">https://tanyakemkes/ssm/tte</entry>
     <entry key="IDORGBPJSSATUSEHAT">100071505</entry>

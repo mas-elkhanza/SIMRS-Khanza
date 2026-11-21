@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptFormulirCatatanObservasiRuangPulih" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail">
+<parameter name="namars" class="java.lang.String"/>
+<parameter name="alamatrs" class="java.lang.String"/>
+<parameter name="kotars" class="java.lang.String"/>
+<parameter name="propinsirs" class="java.lang.String"/>
+<parameter name="kontakrs" class="java.lang.String"/>
+<parameter name="emailrs" class="java.lang.String"/>
+<parameter name="logo" class="java.io.InputStream"/>
+<parameter name="gambar" class="java.awt.Image"/>
+<parameter name="awasi" class="java.lang.String"/>
+<parameter name="nyeri" class="java.lang.String"/>
+<parameter name="mual" class="java.lang.String"/>
+<parameter name="cairan" class="java.lang.String"/>
+<parameter name="perhatian" class="java.lang.String"/>
+<parameter name="dokter" class="java.lang.String"/>
+<parameter name="petugas" class="java.lang.String"/>
+<parameter name="finger" class="java.lang.String"/>
+<parameter name="finger2" class="java.lang.String"/>
+<queryString><![CDATA[]]></queryString>
+<field name="no_rawat" class="java.lang.String"/>
+<field name="no_rkm_medis" class="java.lang.String"/>
+<field name="nm_pasien" class="java.lang.String"/>
+<field name="jk" class="java.lang.String"/>
+<field name="tgl_lahir" class="java.lang.String"/>
+<field name="umurdaftar" class="java.lang.String"/>
+<field name="sttsumur" class="java.lang.String"/>
+<field name="tgl_perawatan" class="java.lang.String"/>
+<field name="jam_rawat" class="java.lang.String"/>
+<field name="sistole" class="java.lang.String"/>
+<field name="diastole" class="java.lang.String"/>
+<field name="nadi" class="java.lang.String"/>
+<field name="respirasi" class="java.lang.String"/>
+<field name="suhu" class="java.lang.String"/>
+<field name="spo2" class="java.lang.String"/>
+<field name="perintah_ruangan_awasi" class="java.lang.String"/>
+<field name="perintah_ruangan_nyeri" class="java.lang.String"/>
+<field name="perintah_ruangan_mual" class="java.lang.String"/>
+<field name="program_cairan_obat" class="java.lang.String"/>
+<field name="perhatian_khusus" class="java.lang.String"/>
+<field name="kd_dokter" class="java.lang.String"/>
+<field name="nm_dokter" class="java.lang.String"/>
+<field name="nip" class="java.lang.String"/>
+<field name="nama" class="java.lang.String"/>
+<title><band height="722" splitType="Stretch">
+<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" onErrorType="Blank"><reportElement x="0" y="0" width="56" height="56"/><imageExpression><![CDATA[$P{logo}]]></imageExpression></image>
+<textField isBlankWhenNull="true"><reportElement x="60" y="0" width="495" height="20"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="14" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression></textField>
+<textField isBlankWhenNull="true"><reportElement x="60" y="20" width="495" height="11"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{alamatrs}]]></textFieldExpression></textField>
+<textField isBlankWhenNull="true"><reportElement x="60" y="31" width="495" height="11"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression></textField>
+<textField isBlankWhenNull="true"><reportElement x="60" y="42" width="495" height="11"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{kontakrs}+", E-mail : "+$P{emailrs}]]></textFieldExpression></textField>
+<line direction="TopDown"><reportElement x="0" y="58" width="555" height="0"/><graphicElement><pen lineWidth="1.5"/></graphicElement></line>
+<staticText><reportElement x="0" y="62" width="555" height="16"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="11" isBold="true"/></textElement><text><![CDATA[CATATAN RUANG PULIH (PEMULIHAN PASCA ANESTESI)]]></text></staticText>
+<rectangle><reportElement x="0" y="84" width="555" height="50"/><graphicElement><pen lineWidth="0.5"/></graphicElement></rectangle>
+<staticText><reportElement x="6" y="87" width="60" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[No.RM]]></text></staticText>
+<staticText><reportElement x="66" y="87" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="74" y="87" width="200" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression></textField>
+<staticText><reportElement x="6" y="101" width="60" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Nama]]></text></staticText>
+<staticText><reportElement x="66" y="101" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="74" y="101" width="220" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8" isBold="true"/></textElement><textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression></textField>
+<staticText><reportElement x="6" y="115" width="60" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[No.Rawat]]></text></staticText>
+<staticText><reportElement x="66" y="115" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="74" y="115" width="200" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression></textField>
+<staticText><reportElement x="305" y="87" width="70" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Tanggal Lahir]]></text></staticText>
+<staticText><reportElement x="375" y="87" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="383" y="87" width="168" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$F{tgl_lahir}+"   ("+($F{jk}.equals("L")?"L":"P")+")"]]></textFieldExpression></textField>
+<staticText><reportElement x="305" y="101" width="70" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Umur]]></text></staticText>
+<staticText><reportElement x="375" y="101" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="383" y="101" width="168" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression></textField>
+<staticText><reportElement x="305" y="115" width="70" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Tanggal]]></text></staticText>
+<staticText><reportElement x="375" y="115" width="8" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="383" y="115" width="168" height="13"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$F{tgl_perawatan}]]></textFieldExpression></textField>
+<staticText><reportElement x="0" y="138" width="300" height="14"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="9" isBold="true"/></textElement><text><![CDATA[Ruang Pulih :]]></text></staticText>
+<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" onErrorType="Blank"><reportElement x="0" y="152" width="555" height="330"/><box><pen lineWidth="0.5" lineColor="#000000"/></box><imageExpression><![CDATA[$P{gambar}]]></imageExpression></image>
+<staticText><reportElement x="0" y="490" width="555" height="14"/><textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="SansSerif" size="8" isBold="true"/></textElement><text><![CDATA[PERINTAH DI RUANGAN :]]></text></staticText>
+<staticText><reportElement x="10" y="506" width="110" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[- Awasi]]></text></staticText>
+<staticText><reportElement x="120" y="506" width="6" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="128" y="506" width="427" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{awasi}]]></textFieldExpression></textField>
+<staticText><reportElement x="10" y="522" width="110" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[- Kesakitan diberi]]></text></staticText>
+<staticText><reportElement x="120" y="522" width="6" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="128" y="522" width="427" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{nyeri}]]></textFieldExpression></textField>
+<staticText><reportElement x="10" y="538" width="110" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[- Mual-mual/muntah diberi]]></text></staticText>
+<staticText><reportElement x="120" y="538" width="6" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="128" y="538" width="427" height="14"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{mual}]]></textFieldExpression></textField>
+<staticText><reportElement x="10" y="558" width="110" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Program Cairan / Obat-obatan]]></text></staticText>
+<staticText><reportElement x="120" y="558" width="6" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="128" y="558" width="427" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{cairan}]]></textFieldExpression></textField>
+<staticText><reportElement x="10" y="592" width="110" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Perhatian / Perintah Khusus]]></text></staticText>
+<staticText><reportElement x="120" y="592" width="6" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[:]]></text></staticText>
+<textField isBlankWhenNull="true"><reportElement x="128" y="592" width="427" height="30"/><textElement textAlignment="Left" verticalAlignment="Top"><font fontName="SansSerif" size="8"/></textElement><textFieldExpression><![CDATA[$P{perhatian}]]></textFieldExpression></textField>
+<staticText><reportElement x="0" y="630" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Ahli anestesi,]]></text></staticText>
+<componentElement><reportElement x="62" y="644" width="60" height="60"/><c:QRCode xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="L"><c:codeExpression><![CDATA[$P{finger}]]></c:codeExpression></c:QRCode></componentElement>
+<textField isBlankWhenNull="true"><reportElement x="0" y="706" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{dokter}]]></textFieldExpression></textField>
+<staticText><reportElement x="185" y="630" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Penata / Perawat anestesi / RR]]></text></staticText>
+<componentElement><reportElement x="247" y="644" width="60" height="60"/><c:QRCode xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="L"><c:codeExpression><![CDATA[$P{finger2}]]></c:codeExpression></c:QRCode></componentElement>
+<textField isBlankWhenNull="true"><reportElement x="185" y="706" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8" isBold="true"/></textElement><textFieldExpression><![CDATA[$P{petugas}]]></textFieldExpression></textField>
+<staticText><reportElement x="370" y="630" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="8"/></textElement><text><![CDATA[Yang menerima,]]></text></staticText>
+<line direction="TopDown"><reportElement x="390" y="702" width="145" height="0"/><graphicElement><pen lineWidth="0.7"/></graphicElement></line>
+<staticText><reportElement x="370" y="706" width="185" height="13"/><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="SansSerif" size="7" isItalic="true"/></textElement><text><![CDATA[(Tanda tangan dan nama jelas)]]></text></staticText>
+</band></title>
+<pageFooter><band height="16" splitType="Stretch">
+<textField isBlankWhenNull="true"><reportElement x="435" y="2" width="120" height="12"/><textElement textAlignment="Right" verticalAlignment="Middle"><font fontName="SansSerif" size="7"/></textElement><textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}]]></textFieldExpression></textField>
+</band></pageFooter>
+</jasperReport>

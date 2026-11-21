@@ -32,12 +32,12 @@ public class PopupMenu extends JPopupMenu {
     static final int   TEMBUS = 228;
     static final Color LATAR  = new Color(255, 255, 254, TEMBUS);
     static final Color LATAR_PEJAL = new Color(255, 255, 254);
-    static final Color GARIS  = new Color(22, 160, 93, 40);   
-    static final int   ARC    = 18;                           
+    static final Color GARIS  = new Color(22, 160, 93, 40);
+    static final int   ARC    = 18;
     private static final String KUNCI = "widget.PopupMenu.gaya";
     private static final String KOTAK = "widget.PopupMenu.kotak";
 
-    static final Color PEMISAH = new Color(228, 239, 232);  
+    static final Color PEMISAH = new Color(228, 239, 232);
 
     private static final AbstractBorder BORDER = new BorderPopup();
     private static final SeparatorUI UI_PEMISAH = new PemisahUI();
@@ -56,6 +56,15 @@ public class PopupMenu extends JPopupMenu {
             }
         }
     };
+
+    public static class Separator extends JPopupMenu.Separator {
+
+        private static final long serialVersionUID = 1L;
+
+        public Separator() {
+            super();
+        }
+    }
 
     public PopupMenu() {
         super();
@@ -90,7 +99,7 @@ public class PopupMenu extends JPopupMenu {
         if (java.beans.Beans.isDesignTime()) {
             return true;
         }
-        ClassLoader cl = PopupMenu.class.getClassLoader();  
+        ClassLoader cl = PopupMenu.class.getClassLoader();
         String nl = cl == null ? "" : cl.getClass().getName();
         if (nl.contains("netbeans") || nl.contains("openide")) {
             return true;
@@ -108,8 +117,8 @@ public class PopupMenu extends JPopupMenu {
 
     private static void gayakan(JPopupMenu p) {
         p.putClientProperty(KUNCI, Boolean.TRUE);
-        p.setUI(new BasicPopupMenuUI());   
-        p.setOpaque(false);                
+        p.setUI(new BasicPopupMenuUI());
+        p.setOpaque(false);
         p.setBackground(LATAR);
         p.setBorder(BORDER);
         p.addHierarchyListener(PASANG);
@@ -132,7 +141,7 @@ public class PopupMenu extends JPopupMenu {
         boolean jendelaSendiri = w instanceof JWindow
                 && p.getParent() == ((JWindow) w).getContentPane();
         if (!jendelaSendiri) {
-            p.putClientProperty(KOTAK, null);     
+            p.putClientProperty(KOTAK, null);
             return;
         }
         if (bisaTransparan(w)) {
@@ -156,7 +165,7 @@ public class PopupMenu extends JPopupMenu {
         try {
             String os = System.getProperty("os.name", "").toLowerCase();
             if (os.contains("linux") || os.contains("bsd") || os.contains("sunos")) {
-                return false;      
+                return false;
             }
             GraphicsDevice gd = w.getGraphicsConfiguration().getDevice();
             return gd.isWindowTranslucencySupported(GraphicsDevice.WindowTranslucency.PERPIXEL_TRANSLUCENT);
@@ -168,8 +177,8 @@ public class PopupMenu extends JPopupMenu {
     private static final class BorderPopup extends AbstractBorder {
 
         private static final long serialVersionUID = 2L;
-        private static final int R = ARC / 2;                     
-        private static final BufferedImage SUDUT = buatSudut();   
+        private static final int R = ARC / 2;
+        private static final BufferedImage SUDUT = buatSudut();
 
         private static BufferedImage buatSudut() {
             BufferedImage img = new BufferedImage(R * 2, R * 2, BufferedImage.TYPE_INT_ARGB);
@@ -194,7 +203,7 @@ public class PopupMenu extends JPopupMenu {
                     && Boolean.TRUE.equals(((JComponent) c).getClientProperty(KOTAK));
             Color latar = c.getBackground() != null ? c.getBackground() : LATAR;
             if (kotak) {
-                g.setColor(latar.getAlpha() == 255 ? latar : LATAR_PEJAL);   
+                g.setColor(latar.getAlpha() == 255 ? latar : LATAR_PEJAL);
                 g.fillRect(x, y, w, h);
                 g.setColor(GARIS);
                 g.drawRect(x, y, w - 1, h - 1);
@@ -209,18 +218,18 @@ public class PopupMenu extends JPopupMenu {
                 }
                 return;
             }
-            
+
             g.setColor(latar);
             g.fillRect(x + R, y, w - R * 2, h);
             g.fillRect(x, y + R, R, h - R * 2);
             g.fillRect(x + w - R, y + R, R, h - R * 2);
-            
+
             g.setColor(GARIS);
             g.fillRect(x + R, y, w - R * 2, 1);
             g.fillRect(x + R, y + h - 1, w - R * 2, 1);
             g.fillRect(x, y + R, 1, h - R * 2);
             g.fillRect(x + w - 1, y + R, 1, h - R * 2);
-            
+
             int x2 = x + w - R;
             int y2 = y + h - R;
             g.drawImage(SUDUT, x, y, x + R, y + R, 0, 0, R, R, null);
@@ -256,7 +265,7 @@ public class PopupMenu extends JPopupMenu {
 
         @Override
         public Dimension getMaximumSize(JComponent c) {
-            return new Dimension(Short.MAX_VALUE, 9);  
+            return new Dimension(Short.MAX_VALUE, 9);
         }
     }
 }
