@@ -336,6 +336,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private DlgCariPoli2 poli2;
     private DlgRawatJalan dlgrwjl;
     private DlgPeresepanDokter resepobat;
+    private RMRiwayatPerawatan riwayat;
     private PreparedStatement ps,ps3,pscaripiutang;
     private ResultSet rs;
     private int i=0,kuota=0,jmlparsial=0;
@@ -10031,11 +10032,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{
             if(tbPetugas.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
-                resume.setNoRm(TNoRM.getText(),TPasien.getText());
-                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                resume.setLocationRelativeTo(internalFrame1);
-                resume.setVisible(true);
+                if (riwayat == null || !riwayat.isDisplayable()) {
+                    riwayat=new RMRiwayatPerawatan(null,false);
+                    riwayat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    riwayat.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            riwayat=null;
+                        }
+                    });
+
+                    riwayat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    riwayat.setLocationRelativeTo(internalFrame1);
+                }
+                if (riwayat == null) return;
+                if (!riwayat.isVisible()) {
+                    riwayat.setNoRm(TNoRM.getText(),TPasien.getText());
+                }
+
+                if (riwayat.isVisible()) {
+                    riwayat.toFront();
+                    return;
+                }
+                riwayat.setVisible(true); 
                 this.setCursor(Cursor.getDefaultCursor());    
             }
         }

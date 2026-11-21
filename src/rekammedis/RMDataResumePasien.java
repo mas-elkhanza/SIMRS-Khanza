@@ -2420,7 +2420,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-122));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-175));
             scrollInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

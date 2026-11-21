@@ -10,6 +10,7 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import static java.awt.image.ImageObserver.HEIGHT;
@@ -28,6 +29,7 @@ import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -55,6 +57,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private RMRiwayatPerawatan riwayat;
     
 
     /** Creates new form DlgPemberianInfus
@@ -956,11 +959,29 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
-            resume.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setVisible(true);
+            if (riwayat == null || !riwayat.isDisplayable()) {
+                riwayat=new RMRiwayatPerawatan(null,false);
+                riwayat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                riwayat.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        riwayat=null;
+                    }
+                });
+
+                riwayat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                riwayat.setLocationRelativeTo(internalFrame1);
+            }
+            if (riwayat == null) return;
+            if (!riwayat.isVisible()) {
+                riwayat.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            }
+
+            if (riwayat.isVisible()) {
+                riwayat.toFront();
+                return;
+            }
+            riwayat.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnRiwayatPasienActionPerformed

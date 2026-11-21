@@ -305,6 +305,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private DlgRawatJalan formrawatjalan;
     private DlgPeresepanDokter resepobat;
     private DlgCariPerawatanRalan dlgrwjl;
+    private RMRiwayatPerawatan riwayat;
     private String aktifkanparsial="no",caripenjab="",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
             tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",variabel="",terbitsep="";
     private DlgBilingRalan billing;
@@ -8863,11 +8864,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
-            resume.setNoRm(TNoRMCari.getText(),TPasienCari.getText());
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setVisible(true);
+            if (riwayat == null || !riwayat.isDisplayable()) {
+                riwayat=new RMRiwayatPerawatan(null,false);
+                riwayat.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                riwayat.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        riwayat=null;
+                    }
+                });
+
+                riwayat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                riwayat.setLocationRelativeTo(internalFrame1);
+            }
+            if (riwayat == null) return;
+            if (!riwayat.isVisible()) {
+                riwayat.setNoRm(TNoRMCari.getText(),TPasienCari.getText());
+            }
+
+            if (riwayat.isVisible()) {
+                riwayat.toFront();
+                return;
+            }
+            riwayat.setVisible(true); 
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_ppRiwayatBtnPrintActionPerformed
