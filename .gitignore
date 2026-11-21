@@ -1,3 +1,8 @@
 dist/SIMRSKhanza.jar
 .aider*
 ss_temp/
+
+# Abaikan folder hasil kompilasi Java / NetBeans
+build/
+dist/
+*.class
