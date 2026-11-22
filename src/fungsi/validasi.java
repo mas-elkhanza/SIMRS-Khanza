@@ -898,6 +898,22 @@ public final class validasi {
     }
 
 
+    public void pindah(java.awt.event.KeyEvent evt,java.awt.Component kiri,java.awt.Component kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,java.awt.Component kiri,java.awt.Component kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();

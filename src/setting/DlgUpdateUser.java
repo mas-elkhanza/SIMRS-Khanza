@@ -233,7 +233,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             satu_sehat_mapping_kptl_tarif_kamar=false,checklist_kriteria_keluar_isolasi=false,satu_sehat_tanda_tangan_elektronik=false,satu_sehat_kirim_composition=false,ringkasan_hutang_vendor_inventaris=false,
             ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,
             penilaian_grace_scor=false,penilaian_bishop_scor=false,profil_ringkas_rawat_jalan=false,hasil_usg_testis=false,hasil_usg_kepala=false,hasil_usg_mammae=false,hasil_spirometri=false,
-            surat_pernyataan_bersedia_dirujuk=false,surat_kesediaan_menunggu_igd=false,penilaian_awal_medis_gigi_mulut=false;
+            surat_pernyataan_bersedia_dirujuk=false,surat_kesediaan_menunggu_igd=false,penilaian_awal_medis_gigi_mulut=false,laporan_meso=false;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
 
@@ -906,7 +906,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         satu_sehat_mapping_kptl_tarif_kamar=false;checklist_kriteria_keluar_isolasi=false;satu_sehat_tanda_tangan_elektronik=false;satu_sehat_kirim_composition=false;ringkasan_hutang_vendor_inventaris=false;
         ringkasan_beban_hutang_lain=false;set_resep_per_cara_bayar=false;skrining_tolac=false;admisi_skoring_tolac=false;monitoring_tolac=false;hasil_persalinan_tolac=false;laporan_reaksi_transfusi=false;
         penilaian_grace_scor=false;penilaian_bishop_scor=false;profil_ringkas_rawat_jalan=false;hasil_usg_testis=false;hasil_usg_kepala=false;hasil_usg_mammae=false;hasil_spirometri=false;
-        surat_pernyataan_bersedia_dirujuk=false;surat_kesediaan_menunggu_igd=false;penilaian_awal_medis_gigi_mulut=false;
+        surat_pernyataan_bersedia_dirujuk=false;surat_kesediaan_menunggu_igd=false;penilaian_awal_medis_gigi_mulut=false;laporan_meso=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1179,7 +1179,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.satu_sehat_mapping_kptl_tarif_kamar,user.checklist_kriteria_keluar_isolasi,user.satu_sehat_tanda_tangan_elektronik,user.satu_sehat_kirim_composition,"+
                 "user.ringkasan_hutang_vendor_inventaris,user.ringkasan_beban_hutang_lain,user.set_resep_per_cara_bayar,user.skrining_tolac,user.admisi_skoring_tolac,user.monitoring_tolac,"+
                 "user.hasil_persalinan_tolac,user.laporan_reaksi_transfusi,user.penilaian_grace_scor,user.penilaian_bishop_scor,user.profil_ringkas_rawat_jalan,user.hasil_usg_testis,"+
-                "user.hasil_usg_kepala,user.hasil_usg_mammae,user.hasil_spirometri,user.surat_pernyataan_bersedia_dirujuk,user.surat_kesediaan_menunggu_igd,user.penilaian_awal_medis_gigi_mulut from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.hasil_usg_kepala,user.hasil_usg_mammae,user.hasil_spirometri,user.surat_pernyataan_bersedia_dirujuk,user.surat_kesediaan_menunggu_igd,user.penilaian_awal_medis_gigi_mulut,"+
+                "user.laporan_meso from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1322,7 +1323,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     satu_sehat_mapping_kptl_tindakan_ranap=rs.getBoolean("satu_sehat_mapping_kptl_tindakan_ranap");satu_sehat_mapping_kptl_tindakan_radiologi=rs.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi");satu_sehat_mapping_kptl_tindakan_laborat=rs.getBoolean("satu_sehat_mapping_kptl_tindakan_laborat");satu_sehat_mapping_kptl_tindakan_operasi=rs.getBoolean("satu_sehat_mapping_kptl_tindakan_operasi");satu_sehat_mapping_kptl_tarif_kamar=rs.getBoolean("satu_sehat_mapping_kptl_tarif_kamar");checklist_kriteria_keluar_isolasi=rs.getBoolean("checklist_kriteria_keluar_isolasi");
                     satu_sehat_tanda_tangan_elektronik=rs.getBoolean("satu_sehat_tanda_tangan_elektronik");satu_sehat_kirim_composition=rs.getBoolean("satu_sehat_kirim_composition");ringkasan_hutang_vendor_inventaris=rs.getBoolean("ringkasan_hutang_vendor_inventaris");ringkasan_beban_hutang_lain=rs.getBoolean("ringkasan_beban_hutang_lain");set_resep_per_cara_bayar=rs.getBoolean("set_resep_per_cara_bayar");skrining_tolac=rs.getBoolean("skrining_tolac");admisi_skoring_tolac=rs.getBoolean("admisi_skoring_tolac");monitoring_tolac=rs.getBoolean("monitoring_tolac");hasil_persalinan_tolac=rs.getBoolean("hasil_persalinan_tolac");
                     laporan_reaksi_transfusi=rs.getBoolean("laporan_reaksi_transfusi");penilaian_grace_scor=rs.getBoolean("penilaian_grace_scor");penilaian_bishop_scor=rs.getBoolean("penilaian_bishop_scor");profil_ringkas_rawat_jalan=rs.getBoolean("profil_ringkas_rawat_jalan");hasil_usg_testis=rs.getBoolean("hasil_usg_testis");hasil_usg_kepala=rs.getBoolean("hasil_usg_kepala");hasil_usg_mammae=rs.getBoolean("hasil_usg_mammae");hasil_spirometri=rs.getBoolean("hasil_spirometri");surat_pernyataan_bersedia_dirujuk=rs.getBoolean("surat_pernyataan_bersedia_dirujuk");surat_kesediaan_menunggu_igd=rs.getBoolean("surat_kesediaan_menunggu_igd");
-                    penilaian_awal_medis_gigi_mulut=rs.getBoolean("penilaian_awal_medis_gigi_mulut");
+                    penilaian_awal_medis_gigi_mulut=rs.getBoolean("penilaian_awal_medis_gigi_mulut");laporan_meso=rs.getBoolean("laporan_meso");
                     setTampil();setTampil2();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -5227,6 +5228,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Pengkajian Awal Medis Ralan Gigi".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Pengkajian Awal Medis Ralan Gigi",penilaian_awal_medis_gigi_mulut});
+        }
+        
+        if("[M]Laporan Monitoring Efek Samping Obat".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Laporan Monitoring Efek Samping Obat",laporan_meso});
         }
                 
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -10166,6 +10171,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Pengkajian Awal Medis Ralan Gigi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_gigi_mulut='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Laporan Monitoring Efek Samping Obat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","laporan_meso='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

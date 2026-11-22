@@ -1239,6 +1239,7 @@ import rekammedis.RMHasilPemeriksaanUSGKepala;
 import rekammedis.RMHasilPemeriksaanUSGMammae;
 import rekammedis.RMHasilPemeriksaanUSGTestis;
 import rekammedis.RMHasilPersalinanTOLAC;
+import rekammedis.RMLaporanMESO;
 import rekammedis.RMPenilaianAwalMedisRalanGigi;
 import rekammedis.RMPenilaianBishop;
 import rekammedis.RMPenilaianGRACE;
@@ -23862,6 +23863,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanMESOActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMLaporanMESO aplikasi=new RMLaporanMESO(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24583,7 +24598,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
             btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore,btnPenilaianBISHOPScore,btnProfilRingkasRawatJalan,
-            btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk,btnSuratPernyataanBersediaMenungguDiIGD,btnPenilaianAwalMedisRalanGigi;
+            btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk,btnSuratPernyataanBersediaMenungguDiIGD,btnPenilaianAwalMedisRalanGigi,
+            btnLaporanMESO;
     
     public void isWall(){
         try{            
@@ -29311,6 +29327,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekonsiliasi_obat()==true){
                 Panelmenu.add(btnRekonsiliasiObat);
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_meso()==true){
+                Panelmenu.add(btnLaporanMESO);
                 jmlmenu++;
             }
             
@@ -35434,6 +35455,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekonsiliasi_obat()==true){
             Panelmenu.add(btnRekonsiliasiObat);
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_meso()==true){
+            Panelmenu.add(btnLaporanMESO);
             jmlmenu++;
         }
         
@@ -43381,6 +43407,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekonsiliasi_obat()==true){
             if(btnRekonsiliasiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekonsiliasiObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_meso()==true){
+            if(btnLaporanMESO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanMESO);
                 jmlmenu++;
             }                
         }
@@ -51722,5 +51755,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanGigi.setName("btnPenilaianAwalMedisRalanGigi"); 
         btnPenilaianAwalMedisRalanGigi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanGigi.addActionListener(this::btnPenilaianAwalMedisRalanGigiActionPerformed);
+        
+        btnLaporanMESO = new widget.ButtonBig();
+        btnLaporanMESO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medicine_5793723.png")));
+        btnLaporanMESO.setText("Laporan Monitoring Efek Samping Obat");
+        btnLaporanMESO.setIconTextGap(0);
+        btnLaporanMESO.setName("btnLaporanMESO"); 
+        btnLaporanMESO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanMESO.addActionListener(this::btnLaporanMESOActionPerformed);
     }
 }

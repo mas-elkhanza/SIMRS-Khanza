@@ -128,6 +128,7 @@ import rekammedis.RMHasilPemeriksaanUSGUrologi;
 import rekammedis.RMHasilPersalinanTOLAC;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
+import rekammedis.RMLaporanMESO;
 import rekammedis.RMLaporanTindakan;
 import rekammedis.RMLayananKedokteranFisikRehabilitasi;
 import rekammedis.RMMCU;
@@ -10850,6 +10851,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnLaporanMESOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRekonsiliasiObatActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMLaporanMESO form=new RMLaporanMESO(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -11213,7 +11231,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,
                           BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi,BtnChecklistKriteriaMasukIsolasi,BtnSkriningTOLAC,BtnAdmisiSkoringTOLAC,BtnMonitoringTolac,
                           BtnHasilPersalinanTOLAC,BtnLaporanReaksiTranfusi,BtnPenilaianGRACEScore,BtnPenilaianBISHOPScore,BtnProfilRawatJalan,BtnHasilPemeriksaanUSGTestis,BtnHasilPemeriksaanUSGKepala,BtnHasilPemeriksaanUSGMammae,
-                          BtnHasilPemeriksaanSpirometri,BtnAwalMedisGigi;   
+                          BtnHasilPemeriksaanSpirometri,BtnAwalMedisGigi,BtnLaporanMESO;   
     private widget.PopupMenu PopupSOAP,PopupPemeriksaan;
     private widget.MenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
     
@@ -12038,6 +12056,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnHasilPemeriksaanSpirometri.setVisible(akses.gethasil_spirometri()); 
         if(akses.gethasil_spirometri()==true){
+            tinggi=tinggi+24;
+        }
+        BtnLaporanMESO.setVisible(akses.getlaporan_meso()); 
+        if(akses.getlaporan_meso()==true){
             tinggi=tinggi+24;
         }
         BtnHasilEndoskopiFaringLaring.setVisible(akses.gethasil_endoskopi_faring_laring()); 
@@ -13694,6 +13716,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnHasilPemeriksaanSpirometri.setRoundRect(false);
         BtnHasilPemeriksaanSpirometri.addActionListener(this::BtnHasilPemeriksaanSpirometriActionPerformed);
         
+        BtnLaporanMESO = new widget.Button();
+        BtnLaporanMESO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnLaporanMESO.setText("Laporan MESO");
+        BtnLaporanMESO.setFocusPainted(false);
+        BtnLaporanMESO.setFont(new java.awt.Font("Tahoma", 0, 11));
+        BtnLaporanMESO.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnLaporanMESO.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnLaporanMESO.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnLaporanMESO.setName("BtnLaporanMESO");
+        BtnLaporanMESO.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnLaporanMESO.setRoundRect(false);
+        BtnLaporanMESO.addActionListener(this::BtnLaporanMESOActionPerformed);
+        
         BtnHasilPemeriksaanEKG = new widget.Button();
         BtnHasilPemeriksaanEKG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
         BtnHasilPemeriksaanEKG.setText("Hasil Pemeriksaan EKG");
@@ -14935,6 +14970,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnKonselingFarmasi);
         FormMenu.add(BtnInformasiObat);
         FormMenu.add(BtnRekonsiliasiObat);
+        FormMenu.add(BtnLaporanMESO);
         FormMenu.add(BtnTransferAntarRuang);
         FormMenu.add(BtnEdukasiPasienKeluarga);
         FormMenu.add(BtnPelaksanaanInformasiEdukasi);
