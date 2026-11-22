@@ -337,6 +337,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private DlgRawatJalan dlgrwjl;
     private DlgPeresepanDokter resepobat;
     private RMRiwayatPerawatan riwayat;
+    private DlgKamarInap kamarinap;
     private PreparedStatement ps,ps3,pscaripiutang;
     private ResultSet rs;
     private int i=0,kuota=0,jmlparsial=0;
@@ -8399,13 +8400,31 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }else{
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         akses.setstatus(true);
-                        DlgKamarInap dlgki=new DlgKamarInap(null,false);
-                        dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgki.setLocationRelativeTo(internalFrame1);
-                        dlgki.emptTeks();
-                        dlgki.isCek();
-                        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
-                        dlgki.setVisible(true);
+                        if (kamarinap == null || !kamarinap.isDisplayable()) {
+                            kamarinap=new DlgKamarInap(null,false);
+                            kamarinap.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            kamarinap.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    kamarinap=null;
+                                }
+                            });
+
+                            kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            kamarinap.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (kamarinap == null) return;
+                        if (!kamarinap.isVisible()) {
+                            kamarinap.emptTeks();
+                            kamarinap.isCek();
+                            kamarinap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
+                        }
+
+                        if (kamarinap.isVisible()) {
+                            kamarinap.toFront();
+                            return;
+                        }
+                        kamarinap.setVisible(true); 
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }
@@ -10649,13 +10668,31 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         akses.setstatus(true);
-                        DlgKamarInap dlgki=new DlgKamarInap(null,false);
-                        dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgki.setLocationRelativeTo(internalFrame1);
-                        dlgki.emptTeks();
-                        dlgki.isCek();
-                        dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),6).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),7).toString());   
-                        dlgki.setVisible(true);
+                        if (kamarinap == null || !kamarinap.isDisplayable()) {
+                            kamarinap=new DlgKamarInap(null,false);
+                            kamarinap.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            kamarinap.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    kamarinap=null;
+                                }
+                            });
+
+                            kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            kamarinap.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (kamarinap == null) return;
+                        if (!kamarinap.isVisible()) {
+                            kamarinap.emptTeks();
+                            kamarinap.isCek();
+                            kamarinap.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),6).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),7).toString());   
+                        }
+
+                        if (kamarinap.isVisible()) {
+                            kamarinap.toFront();
+                            return;
+                        }
+                        kamarinap.setVisible(true); 
                         this.setCursor(Cursor.getDefaultCursor());
                     } 
                 }                  

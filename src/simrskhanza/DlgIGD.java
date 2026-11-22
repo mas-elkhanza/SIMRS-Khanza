@@ -284,6 +284,7 @@ public final class DlgIGD extends javax.swing.JDialog {
     private DlgCariDokter dokter;
     private DlgRawatJalan dlgrwjl;
     private RMRiwayatPerawatan riwayat;
+    private DlgKamarInap kamarinap;
     private ResultSet rs;
     private boolean ceksukses=false;
     private int i=0,jmlparsial=0;
@@ -6328,13 +6329,31 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }else{
                         akses.setstatus(true);
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        DlgKamarInap dlgki=new DlgKamarInap(null,false);
-                        dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                        dlgki.setLocationRelativeTo(internalFrame1);
-                        dlgki.emptTeks();
-                        dlgki.isCek();
-                        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
-                        dlgki.setVisible(true);
+                        if (kamarinap == null || !kamarinap.isDisplayable()) {
+                            kamarinap=new DlgKamarInap(null,false);
+                            kamarinap.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            kamarinap.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    kamarinap=null;
+                                }
+                            });
+
+                            kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            kamarinap.setLocationRelativeTo(internalFrame1);
+                        }
+                        if (kamarinap == null) return;
+                        if (!kamarinap.isVisible()) {
+                            kamarinap.emptTeks();
+                            kamarinap.isCek();
+                            kamarinap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
+                        }
+
+                        if (kamarinap.isVisible()) {
+                            kamarinap.toFront();
+                            return;
+                        }
+                        kamarinap.setVisible(true); 
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }
