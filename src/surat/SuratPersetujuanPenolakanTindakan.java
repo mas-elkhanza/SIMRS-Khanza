@@ -14,6 +14,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,12 +25,14 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -60,6 +64,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private DlgCariPetugas petugas;
     private MasterCariTemplatePersetujuanPenolakanTindakan template;
     private String finger="",finger2="",lokasifile="",lokasifile2="";
+    private String TANGGALMUNDUR="yes",jamFoto1="",jamFoto2="";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     
@@ -119,7 +124,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }else if(i==5){
                 column.setPreferredWidth(25);
             }else if(i==6){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(125);
             }else if(i==7){
                 column.setPreferredWidth(200);
             }else if(i==8){
@@ -240,6 +245,13 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         Document doc = kit.createDefaultDocument();
         LoadHTML2.setDocument(doc);
         LoadHTML3.setDocument(doc);
+
+        jam();
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -284,6 +296,10 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel36 = new widget.Label();
         HubunganDenganPasien = new widget.ComboBox();
         TglPernyataan = new widget.Tanggal();
+        Jam = new widget.ComboBox();
+        Menit = new widget.ComboBox();
+        Detik = new widget.ComboBox();
+        ChkKejadian = new widget.CekBox();
         jLabel9 = new widget.Label();
         NoPenyataan = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
@@ -587,13 +603,13 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         KdDokter.setName("KdDokter"); // NOI18N
         KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
         FormInput.add(KdDokter);
-        KdDokter.setBounds(84, 40, 120, 23);
+        KdDokter.setBounds(84, 40, 70, 23);
 
         NmDokter.setEditable(false);
         NmDokter.setName("NmDokter"); // NOI18N
         NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter);
-        NmDokter.setBounds(206, 40, 215, 23);
+        NmDokter.setBounds(156, 40, 144, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -611,7 +627,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(423, 40, 28, 23);
+        BtnDokter.setBounds(302, 40, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -639,7 +655,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
-        label11.setBounds(465, 40, 57, 23);
+        label11.setBounds(336, 40, 57, 23);
 
         jLabel11.setText("J.K. :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -676,12 +692,51 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(TglPernyataan);
-        TglPernyataan.setBounds(526, 40, 90, 23);
+        TglPernyataan.setBounds(395, 40, 90, 23);
+
+        Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        Jam.setName("Jam"); // NOI18N
+        Jam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JamKeyPressed(evt);
+            }
+        });
+        FormInput.add(Jam);
+        Jam.setBounds(488, 40, 44, 23);
+
+        Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        Menit.setName("Menit"); // NOI18N
+        Menit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenitKeyPressed(evt);
+            }
+        });
+        FormInput.add(Menit);
+        Menit.setBounds(534, 40, 44, 23);
+
+        Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        Detik.setName("Detik"); // NOI18N
+        Detik.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DetikKeyPressed(evt);
+            }
+        });
+        FormInput.add(Detik);
+        Detik.setBounds(580, 40, 44, 23);
+
+        ChkKejadian.setBorder(null);
+        ChkKejadian.setSelected(true);
+        ChkKejadian.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkKejadian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkKejadian.setName("ChkKejadian"); // NOI18N
+        FormInput.add(ChkKejadian);
+        ChkKejadian.setBounds(626, 40, 23, 23);
 
         jLabel9.setText("No.Pernyataan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(630, 40, 90, 23);
+        jLabel9.setBounds(655, 40, 90, 23);
 
         NoPenyataan.setHighlighter(null);
         NoPenyataan.setName("NoPenyataan"); // NOI18N
@@ -691,7 +746,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(NoPenyataan);
-        NoPenyataan.setBounds(724, 40, 130, 23);
+        NoPenyataan.setBounds(749, 40, 105, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1365,7 +1420,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             Valid.textKosong(Biaya,"Biaya");
         }else{
             if(Sequel.menyimpantf("persetujuan_penolakan_tindakan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Pernyataan",37,new String[]{
-                    NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),Diagnosa.getText(),"false",TindakanKedokteran.getText(),"false",
+                    NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Diagnosa.getText(),"false",TindakanKedokteran.getText(),"false",
                     IndikasiTindakan.getText(),"false",TataCara.getText(),"false",Tujuan.getText(),"false",Risiko.getText(),"false",Komplikasi.getText(),"false",Prognosis.getText(), 
                     "false",AlternatifResiko.getText(),"false",Biaya.getText(),"false",LainLain.getText(),"false",KdDokter.getText(),KdPerawat.getText(),PenerimaInformasi.getText(),
                     AlasanDiwakilkan.getText(),JKPenerima.getSelectedItem().toString().substring(0,1),Valid.SetTgl(TglLahirPenerima.getSelectedItem()+""),UmurPenerima.getText(),
@@ -1933,8 +1988,20 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_HubunganDenganPasienKeyPressed
 
     private void TglPernyataanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPernyataanKeyPressed
-        Valid.pindah(evt,BtnDokter,HubunganDenganPasien);
+        Valid.pindah(evt,BtnDokter,Jam);
     }//GEN-LAST:event_TglPernyataanKeyPressed
+
+    private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKeyPressed
+        Valid.pindah(evt,TglPernyataan,Menit);
+    }//GEN-LAST:event_JamKeyPressed
+
+    private void MenitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenitKeyPressed
+        Valid.pindah(evt,Jam,Detik);
+    }//GEN-LAST:event_MenitKeyPressed
+
+    private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
+        Valid.pindah(evt,Menit,HubunganDenganPasien);
+    }//GEN-LAST:event_DetikKeyPressed
 
     private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
         Valid.pindah2(evt,NoPenyataan,TindakanKedokteran);
@@ -2214,8 +2281,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 param.put("photo_penerima","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile);
                 param.put("photo_saksi","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2);
-                param.put("waktu_penerima",waktuBukti("bukti_persetujuan_penolakan_tindakan_penerimainformasi",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
-                param.put("waktu_saksi",waktuBukti("bukti_persetujuan_penolakan_tindakan_saksikeluarga",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+                param.put("waktu_penerima",waktuCetak("bukti_persetujuan_penolakan_tindakan_penerimainformasi",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+                param.put("waktu_saksi",waktuCetak("bukti_persetujuan_penolakan_tindakan_saksikeluarga",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
                 finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),29).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
@@ -2239,13 +2306,13 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             if(lokasifile.equals("")){
                 LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
             }else{
-                LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile+"' alt='photo' width='450' height='550'/></center></body></html>");
+                LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile+"' alt='photo' width='450' height='550'/>"+captionJam(jamFoto1)+"</center></body></html>");
             } 
         }else{
             if(lokasifile2.equals("")){
                 LoadHTML3.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
             }else{
-                LoadHTML3.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2+"' alt='photo' width='450' height='550'/></center></body></html>");
+                LoadHTML3.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2+"' alt='photo' width='450' height='550'/>"+captionJam(jamFoto2)+"</center></body></html>");
             } 
         }
     }//GEN-LAST:event_TabDataMouseClicked
@@ -2310,6 +2377,10 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Button BtnSimpan;
     private widget.Button BtnTemplate;
     private widget.CekBox ChkAccor;
+    private widget.CekBox ChkKejadian;
+    private widget.ComboBox Detik;
+    private widget.ComboBox Jam;
+    private widget.ComboBox Menit;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private javax.swing.JTextArea Diagnosa;
@@ -2502,6 +2573,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     public void emptTeks() {
         HubunganDenganPasien.setSelectedIndex(0);
         TglPernyataan.setDate(new Date());
+        ChkKejadian.setSelected(true);
         TabRawat.setSelectedIndex(0);
         Diagnosa.setText("");
         TindakanKedokteran.setText("");
@@ -2525,7 +2597,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         KdPerawat.setText("");
         NmPerawat.setText("");
         SaksiKeluarga.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(persetujuan_penolakan_tindakan.no_pernyataan,3),signed)),0) from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.tanggal='"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(persetujuan_penolakan_tindakan.no_pernyataan,3),signed)),0) from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.tanggal between '"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+" 23:59:59' ",
                 "PM"+TglPernyataan.getSelectedItem().toString().substring(6,10)+TglPernyataan.getSelectedItem().toString().substring(3,5)+TglPernyataan.getSelectedItem().toString().substring(0,2),3,NoPenyataan);
         TabRawat.setSelectedIndex(0);
         NoPenyataan.requestFocus();
@@ -2565,6 +2637,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             HubunganDenganPasien.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
             SaksiKeluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
             Valid.SetTgl2(TglPernyataan,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            isiJamDariTabel(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Valid.SetTgl2(TglLahirPenerima,tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
         }
     }
@@ -2632,7 +2705,17 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
             }
-        }            
+        }
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                TglPernyataan.setEditable(false);
+                TglPernyataan.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
     
     public void setTampil(){
@@ -2653,7 +2736,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
 
     private void ganti() {
         if(Sequel.mengedittf("persetujuan_penolakan_tindakan","no_pernyataan=?","no_pernyataan=?,no_rawat=?,tanggal=?,diagnosa=?,diagnosa_konfirmasi=?,tindakan=?,tindakan_konfirmasi=?,indikasi_tindakan=?,indikasi_tindakan_konfirmasi=?,tata_cara=?,tata_cara_konfirmasi=?,tujuan=?,tujuan_konfirmasi=?,risiko=?,risiko_konfirmasi=?,komplikasi=?,komplikasi_konfirmasi=?,prognosis=?,prognosis_konfirmasi=?,alternatif_dan_risikonya=?,alternatif_konfirmasi=?,biaya=?,biaya_konfirmasi=?,lain_lain=?,lain_lain_konfirmasi=?,kd_dokter=?,nip=?,penerima_informasi=?,alasan_diwakilkan_penerima_informasi=?,jk_penerima_informasi=?,tanggal_lahir_penerima_informasi=?,umur_penerima_informasi=?,alamat_penerima_informasi=?,no_hp=?,hubungan_penerima_informasi=?,pernyataan=?,saksi_keluarga=?",38,new String[]{
-                NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),Diagnosa.getText(),"false",TindakanKedokteran.getText(),"false",
+                NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Diagnosa.getText(),"false",TindakanKedokteran.getText(),"false",
                 IndikasiTindakan.getText(),"false",TataCara.getText(),"false",Tujuan.getText(),"false",Risiko.getText(),"false",Komplikasi.getText(),"false",Prognosis.getText(), 
                 "false",AlternatifResiko.getText(),"false",Biaya.getText(),"false",LainLain.getText(),"false",KdDokter.getText(),KdPerawat.getText(),PenerimaInformasi.getText(),
                 AlasanDiwakilkan.getText(),JKPenerima.getSelectedItem().toString().substring(0,1),Valid.SetTgl(TglLahirPenerima.getSelectedItem()+""),UmurPenerima.getText(),
@@ -2712,6 +2795,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 System.out.println("Notif : "+e);
             }
 
+            jamFoto1=waktuBukti("bukti_persetujuan_penolakan_tindakan_penerimainformasi",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            jamFoto2=waktuBukti("bukti_persetujuan_penolakan_tindakan_saksikeluarga",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             lokasifile2="";
             try {
                 ps=koneksi.prepareStatement("select bukti_persetujuan_penolakan_tindakan_saksikeluarga.photo from bukti_persetujuan_penolakan_tindakan_saksikeluarga where bukti_persetujuan_penolakan_tindakan_saksikeluarga.no_pernyataan=?");
@@ -2746,18 +2831,118 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 if(lokasifile.equals("")){
                     LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                 }else{
-                    LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile+"' alt='photo' width='450' height='550'/></center></body></html>");
+                    LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile+"' alt='photo' width='450' height='550'/>"+captionJam(jamFoto1)+"</center></body></html>");
                 } 
             }else{
                 if(lokasifile2.equals("")){
                     LoadHTML3.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                 }else{
-                    LoadHTML3.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2+"' alt='photo' width='450' height='550'/></center></body></html>");
+                    LoadHTML3.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+lokasifile2+"' alt='photo' width='450' height='550'/>"+captionJam(jamFoto2)+"</center></body></html>");
                 } 
             }
         }
     }
     
+    /** Jam berjalan (real time) selama kotak "kejadian" dicentang; bila tidak, jam diisi manual. */
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nol_jam = "";
+                String nol_menit = "";
+                String nol_detik = "";
+
+                Date now = Calendar.getInstance().getTime();
+
+                if(ChkKejadian.isSelected()==true){
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                }else if(ChkKejadian.isSelected()==false){
+                    nilai_jam =Jam.getSelectedIndex();
+                    nilai_menit =Menit.getSelectedIndex();
+                    nilai_detik =Detik.getSelectedIndex();
+                }
+
+                if (nilai_jam <= 9) {
+                    nol_jam = "0";
+                }
+                if (nilai_menit <= 9) {
+                    nol_menit = "0";
+                }
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                Jam.setSelectedItem(jam);
+                Menit.setSelectedItem(menit);
+                Detik.setSelectedItem(detik);
+            }
+        };
+        new Timer(1000, taskPerformer).start();
+    }
+
+    /** Isi Jam/Menit/Detik dari nilai kolom Tanggal tabel ("yyyy-MM-dd HH:mm:ss"); data lama (tanggal saja) -> 00:00:00. */
+    private void isiJamDariTabel(String tanggal){
+        ChkKejadian.setSelected(false);
+        String jamTeks="00",menitTeks="00",detikTeks="00";
+        try {
+            if(tanggal.length()>=19){
+                jamTeks=tanggal.substring(11,13);
+                menitTeks=tanggal.substring(14,16);
+                detikTeks=tanggal.substring(17,19);
+            }
+        } catch (Exception e) {
+            jamTeks="00";menitTeks="00";detikTeks="00";
+        }
+        Jam.setSelectedItem(jamTeks);
+        Menit.setSelectedItem(menitTeks);
+        Detik.setSelectedItem(detikTeks);
+    }
+
+    /** Jam pada foto di panel: hanya bila foto bukti punya catatan waktu. */
+    private String captionJam(String waktu){
+        if(waktu==null||waktu.trim().equals("")){
+            return "";
+        }
+        return "<br><font face='tahoma' size='2' color='#434343'>Tgl/Jam : "+waktu+"</font>";
+    }
+
+    /** Tanggal & jam pada surat sendiri (kolom tanggal bertipe datetime), "" bila yang tersimpan hanya tanggal. */
+    private String waktuSurat(String nopernyataan) {
+        String hasil="";
+        try {
+            PreparedStatement psw=koneksi.prepareStatement("select if(time(persetujuan_penolakan_tindakan.tanggal)='00:00:00','',date_format(persetujuan_penolakan_tindakan.tanggal,'%d-%m-%Y %H:%i:%s')) from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.no_pernyataan=?");
+            try {
+                psw.setString(1,nopernyataan);
+                ResultSet rsw=psw.executeQuery();
+                if(rsw.next()){
+                    hasil=rsw.getString(1)==null?"":rsw.getString(1);
+                }
+                rsw.close();
+            } finally {
+                psw.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        return hasil;
+    }
+
+    /** Jam untuk surat cetak: jam foto bukti bila ada, selain itu jam pada surat. */
+    private String waktuCetak(String tabel,String nopernyataan) {
+        String hasil=waktuBukti(tabel,nopernyataan);
+        if(hasil.equals("")){
+            hasil=waktuSurat(nopernyataan);
+        }
+        return hasil;
+    }
+
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         ceksukses = true;

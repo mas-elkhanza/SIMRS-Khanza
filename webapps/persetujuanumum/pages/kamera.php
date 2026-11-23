@@ -41,18 +41,20 @@
     }
     
     $tanggal        = "";
+    $jam            = "";
     $nama_pj        = "";
     $umur_pj        = "";
     $no_ktppj       = "";
     $jkpj           = "";
     $bertindak_atas = "";
     $no_telp        = "";
-    $_sql2  = "select DATE_FORMAT(surat_persetujuan_umum.tanggal,'%d-%m-%Y') as tanggal,surat_persetujuan_umum.nama_pj,surat_persetujuan_umum.umur_pj,
+    $_sql2  = "select DATE_FORMAT(surat_persetujuan_umum.tanggal,'%d-%m-%Y') as tanggal,DATE_FORMAT(surat_persetujuan_umum.tanggal,'%H:%i:%s') as jam,surat_persetujuan_umum.nama_pj,surat_persetujuan_umum.umur_pj,
                surat_persetujuan_umum.no_ktppj,if(surat_persetujuan_umum.jkpj='L','LAKI-LAKI','PEREMPUAN') as jkpj,surat_persetujuan_umum.bertindak_atas,
                surat_persetujuan_umum.no_telp from surat_persetujuan_umum where surat_persetujuan_umum.no_surat='$nosurat'" ;  
     $hasil2 = bukaquery2($_sql2);
     while ($data2  = mysqli_fetch_array ($hasil2)){
         $tanggal        = $data2['tanggal'];
+        $jam            = $data2['jam'];
         $nama_pj        = $data2['nama_pj'];
         $umur_pj        = $data2['umur_pj'];
         $no_ktppj       = $data2['no_ktppj'];
@@ -76,7 +78,7 @@
 <body>
     <div class="container">
         <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>KETENTUAN RAWAT INAP DAN PERSETUJUAN UMUM (GENERAL CONSENT)<br>NO. <?=$nosurat;?></center></h5>
-        <h7 class="text-dark"><center>Tanggal <?=$tanggal;?></center></h7><br/>
+        <h7 class="text-dark"><center>Tanggal <?=$tanggal;?><?php if($jam!="" && $jam!="00:00:00"){ ?>, Jam <?=$jam;?><?php } ?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nosurat" value="<?=$nosurat;?>">
             <h7 class="text-dark">

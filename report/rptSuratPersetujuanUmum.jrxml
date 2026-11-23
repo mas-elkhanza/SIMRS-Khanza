@@ -22,6 +22,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="finger" class="java.lang.String"/>
 	<parameter name="photo" class="java.lang.String"/>
+	<parameter name="waktu_verifikasi" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select surat_persetujuan_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,
 				reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_persetujuan_umum.tanggal,surat_persetujuan_umum.pengobatan_kepada,
@@ -60,6 +61,9 @@
 	<field name="nilai_kepercayaan" class="java.lang.String"/>
 	<field name="pengobatan_kepada" class="java.lang.String"/>
 	<field name="png_jawab" class="java.lang.String"/>
+	<variable name="status_pj" class="java.lang.String">
+		<variableExpression><![CDATA[$F{bertindak_atas}==null || $F{bertindak_atas}.trim().equals("") ? "" : ($F{bertindak_atas}.trim().equalsIgnoreCase("Diri Sendiri") ? "Pasien (Diri Sendiri)" : $F{bertindak_atas}.trim()+" pasien")]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -150,7 +154,7 @@
 				<textFieldExpression><![CDATA[$F{umur_pj}+" / "+$F{jkpj}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="330" y="951" width="184" height="10" uuid="61481e35-032b-4bda-8774-c5fa08d79a61">
+				<reportElement x="330" y="946" width="184" height="10" uuid="61481e35-032b-4bda-8774-c5fa08d79a61">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -159,8 +163,24 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_pj}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="330" y="936" width="184" height="9" uuid="a7d3c1e2-5b8f-4c1a-9e41-3f6d2b7a8c10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{waktu_verifikasi}==null || $P{waktu_verifikasi}.trim().equals("")) ? "" : "Tgl/Jam Verifikasi : "+$P{waktu_verifikasi}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="330" y="957" width="184" height="10" uuid="b2e4d6f8-7a19-4d3b-8c52-1e9f0a6b3d21"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{status_pj}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="330" y="836" width="184" height="10" uuid="e310e9c8-eb47-4aab-8710-9d2c1ca5fff8">
+				<reportElement x="330" y="832" width="184" height="10" uuid="e310e9c8-eb47-4aab-8710-9d2c1ca5fff8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -267,7 +287,7 @@
 					<font fontName="Tahoma" size="8" isBold="false" isItalic="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{bertindak_atas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{status_pj}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="330" y="157" width="75" height="10" uuid="18f2bfda-2542-4cc7-a363-d204e912c96c">
@@ -474,7 +494,7 @@
 				<text><![CDATA[No. KTP]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="330" y="824" width="184" height="10" uuid="4c8f3953-e7f9-4169-bcbe-4d3a8a213111">
+				<reportElement mode="Transparent" x="330" y="822" width="184" height="10" uuid="4c8f3953-e7f9-4169-bcbe-4d3a8a213111">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -510,7 +530,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="332" y="850" width="182" height="99" uuid="82be7067-df57-42c0-9b3b-1d4fdb82dbcf"/>
+				<reportElement x="332" y="843" width="182" height="92" uuid="82be7067-df57-42c0-9b3b-1d4fdb82dbcf"/>
 				<imageExpression><![CDATA[$P{photo}]]></imageExpression>
 			</image>
 			<staticText>

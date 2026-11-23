@@ -24,6 +24,8 @@
 	<parameter name="photo_penerima" class="java.lang.String"/>
 	<parameter name="photo_saksi" class="java.lang.String"/>
 	<parameter name="finger2" class="java.lang.String"/>
+	<parameter name="waktu_penerima" class="java.lang.String"/>
+	<parameter name="waktu_saksi" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select persetujuan_penolakan_tindakan.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,
 				pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,
@@ -310,7 +312,27 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{kotars}+", "+$F{tanggal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+$F{tanggal}+(($P{waktu_penerima}==null||$P{waktu_penerima}.trim().length()<19)?"":" Jam "+$P{waktu_penerima}.trim().substring(11,19))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="147" y="939" width="172" height="9" uuid="52a167e3-c68d-4cbb-9c45-20e9f329c4eb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{waktu_saksi}==null||$P{waktu_saksi}.trim().length()<19)?"":"Tgl/Jam : "+$P{waktu_saksi}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="330" y="939" width="184" height="9" uuid="90aa105f-8dfb-44a2-ac08-88b9e95daf0f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{waktu_penerima}==null||$P{waktu_penerima}.trim().length()<19)?"":"Tgl/Jam : "+$P{waktu_penerima}.trim()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="428" y="683" width="90" height="10" uuid="51f08870-37b2-4a71-b7ec-8f4d51db3bfd">

@@ -66,7 +66,7 @@
     $htmlHead = "<head><title>SIMKES Khanza</title><link rel='stylesheet' href='../css/bootstrap.min.css'/><style>#results { padding:0px; background:#EEFFEE; width:490; height:390 }</style></head>";
 
     try {
-        // waktu_persetujuan = tanggal & jam foto persetujuan diambil (kolom dibuat oleh sql/04).
+        // waktu_persetujuan = tanggal & jam foto persetujuan diambil (kolom dibuat oleh sql/05).
         // Bila sql/04 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
         try {
             Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName',now()");

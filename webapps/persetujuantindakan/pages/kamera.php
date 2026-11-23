@@ -39,6 +39,7 @@
     }
     
     $tanggal                = "";
+    $jam                    = "";
     $diagnosa               = "";
     $tindakan               = "";
     $indikasi_tindakan      = "";
@@ -61,7 +62,7 @@
     $no_hp                  = "";
     $hubungan_penerima_informasi= "";
     $saksi_keluarga         = "";
-    $_sql2  = "select persetujuan_penolakan_tindakan.tanggal,persetujuan_penolakan_tindakan.diagnosa,persetujuan_penolakan_tindakan.tindakan,persetujuan_penolakan_tindakan.indikasi_tindakan,
+    $_sql2  = "select DATE_FORMAT(persetujuan_penolakan_tindakan.tanggal,'%d-%m-%Y') as tanggal,DATE_FORMAT(persetujuan_penolakan_tindakan.tanggal,'%H:%i:%s') as jam,persetujuan_penolakan_tindakan.diagnosa,persetujuan_penolakan_tindakan.tindakan,persetujuan_penolakan_tindakan.indikasi_tindakan,
                persetujuan_penolakan_tindakan.tata_cara,persetujuan_penolakan_tindakan.tujuan,persetujuan_penolakan_tindakan.risiko,persetujuan_penolakan_tindakan.komplikasi,
                persetujuan_penolakan_tindakan.prognosis,persetujuan_penolakan_tindakan.alternatif_dan_risikonya,persetujuan_penolakan_tindakan.biaya,
                persetujuan_penolakan_tindakan.lain_lain,persetujuan_penolakan_tindakan.kd_dokter,persetujuan_penolakan_tindakan.nip,persetujuan_penolakan_tindakan.penerima_informasi,
@@ -73,6 +74,7 @@
     $hasil2 = bukaquery2($_sql2);
     while ($data2  = mysqli_fetch_array ($hasil2)){
         $tanggal                = $data2['tanggal'];
+        $jam                    = $data2['jam'];
         $diagnosa               = $data2['diagnosa'];
         $tindakan               = $data2['tindakan'];
         $indikasi_tindakan      = $data2['indikasi_tindakan'];
@@ -112,7 +114,7 @@
 <body>
     <div class="container">
         <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5>
-        <h7 class="text-dark"><center>Tanggal <?=$tanggal?></center></h7><br/>
+        <h7 class="text-dark"><center>Tanggal <?=$tanggal?><?php if($jam!="" && $jam!="00:00:00"){ ?>, Jam <?=$jam;?><?php } ?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
             <h7 class="text-dark">

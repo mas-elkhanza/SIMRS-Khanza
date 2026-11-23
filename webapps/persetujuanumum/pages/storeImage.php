@@ -21,7 +21,16 @@
     $urlKembali = '../login.php?iyem='.encrypt_decrypt('{"usere":"'.USERHYBRIDWEB.'","passwordte":"'.PASHYBRIDWEB.'"}','e');
     $htmlHead = "<head><title>SIMKES Khanza</title><link rel='stylesheet' href='../css/bootstrap.min.css'/><style>#results { padding:0px; background:#EEFFEE; width:490; height:390 }</style></head>";
     try {
-        Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName'");
+        // waktu_persetujuan = tanggal & jam foto verifikasi diambil (kolom dibuat oleh sql/05).
+        // Bila sql/05 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
+        try {
+            Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName',now()");
+        } catch (mysqli_sql_exception $e1) {
+            if($e1->getCode() != 1136){
+                throw $e1;
+            }
+            Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName'");
+        }
         Ubah2("surat_persetujuan_umum","pengobatan_kepada='$pengobatan_kepada',nilai_kepercayaan='$nilai_kepercayaan' where no_surat='$nosurat'");
         echo $htmlHead."<body><center>Proses Pengambilan Persetujuan Umum Pasien/Keluarga Pasien Sudah Selesai ..!! <br><a href='".$urlKembali."' class='btn btn-secondary'>Kembali</a></center></body>";
     } catch (mysqli_sql_exception $e) {

@@ -15,6 +15,10 @@
     }else{
         exit(header("Location:../index.php"));
     }
+
+    // tanggal & jam pernyataan (kolom tanggal bertipe datetime; jam 00:00:00 = data lama tanpa jam)
+    $tanggalform = getOne("select DATE_FORMAT(persetujuan_penolakan_tindakan.tanggal,'%d-%m-%Y') from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.no_pernyataan='$nopernyataan'");
+    $jamform     = getOne("select DATE_FORMAT(persetujuan_penolakan_tindakan.tanggal,'%H:%i:%s') from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.no_pernyataan='$nopernyataan'");
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +34,8 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-dark"><h5><center>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5><br/>
+        <h5 class="text-dark"><h5><center>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5>
+        <h7 class="text-dark"><center>Tanggal <?=$tanggalform;?><?php if($jamform!="" && $jamform!="00:00:00"){ ?>, Jam <?=$jamform;?><?php } ?></center></h7><br/>
         <form method="POST" action="pages/storeImage2.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
             <h7 class="text-dark">
