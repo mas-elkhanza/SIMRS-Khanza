@@ -500,6 +500,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
+        chkLaporanMESO = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
         chkTransferAntarRuang = new widget.CekBox();
         chkPengkajianRestrain = new widget.CekBox();
@@ -669,7 +670,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-11-2026 18:14:31" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2026 16:37:22" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -978,7 +979,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 5015));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 5040));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -2309,6 +2310,13 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPelayananInformasiObat.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPelayananInformasiObat);
 
+        chkLaporanMESO.setSelected(true);
+        chkLaporanMESO.setText("Laporan MESO");
+        chkLaporanMESO.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLaporanMESO.setName("chkLaporanMESO"); // NOI18N
+        chkLaporanMESO.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkLaporanMESO);
+
         chkBerkasDigital.setSelected(true);
         chkBerkasDigital.setText("Berkas Digital Perawatan");
         chkBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -3207,6 +3215,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGMammae.setSelected(true);
             chkHasilPemeriksaanSpirometri.setSelected(true);
             chkAsuhanMedisRalanGigi.setSelected(true);
+            chkLaporanMESO.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3425,6 +3434,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGMammae.setSelected(false);
             chkHasilPemeriksaanSpirometri.setSelected(false);
             chkAsuhanMedisRalanGigi.setSelected(false);
+            chkLaporanMESO.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4156,6 +4166,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkKonselingFarmasi;
     private widget.CekBox chkKonsultasiMedik;
     private widget.CekBox chkKonsultasiPerawat;
+    private widget.CekBox chkLaporanMESO;
     private widget.CekBox chkLaporanTindakan;
     private widget.CekBox chkLayananKedokteranFisikRehabilitasi;
     private widget.CekBox chkLayananProgramKFR;
@@ -4849,6 +4860,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanRekonsiliasiObat(rs.getString("no_rawat"));
                     menampilkanKonselingFarmasi(rs.getString("no_rawat"));
                     menampilkanPelayananInformasiObat(rs.getString("no_rawat"));
+                    menampilkanLaporanMESO(rs.getString("no_rawat"));
                     menampilkanTransferAntarRuang(rs.getString("no_rawat"));
                     menampilkanPengkajianRestrain(rs.getString("no_rawat"));
                     menampilkanDiagnosa(rs.getString("no_rawat"));
@@ -39304,6 +39316,127 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Pengkajian Awal Medis Rawat Jalan Gigi : "+e);
+        }
+    }
+    
+    private void menampilkanLaporanMESO(String norawat) {
+        try {
+            if(chkLaporanMESO.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select laporan_meso.no_laporan,laporan_meso.tanggal,laporan_meso.nip,petugas.nama,laporan_meso.tgl_mula_eso,laporan_meso.manifestasi_eso,"+
+                            "laporan_meso.kesudahan_eso,laporan_meso.tgl_kesudahan_eso,laporan_meso.skor_naranjo,laporan_meso.kategori_naranjo "+
+                            "from laporan_meso inner join petugas on laporan_meso.nip=petugas.nip "+
+                            "where laporan_meso.no_rawat='"+norawat+"' order by laporan_meso.tanggal,laporan_meso.no_laporan").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append( 
+                            "<td valign='top' width='2%'></td>").append(        
+                            "<td valign='top' width='18%'>Laporan Monitoring Efek Samping Obat</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        do{
+                            htmlContent.append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "YANG MELAPORKAN").append(  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
+                                              "<td width='70%' border='0'>Pelapor : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "I. EFEK SAMPING OBAT").append(  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='33%' border='0'>Tgl.Mula Terjadi : ").append(rs2.getString("tgl_mula_eso")).append("</td>").append(
+                                              "<td width='33%' border='0'>Tgl.Kesudahan ESO : ").append(rs2.getString("tgl_kesudahan_eso")).append("</td>").append(
+                                              "<td width='34%' border='0'>Kesudahan ESO : ").append(rs2.getString("kesudahan_eso")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td colspan='3' border='0'>Manifestasi ESO : ").append(rs2.getString("manifestasi_eso").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "II. OBAT").append(  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>").append(
+                                              "<td valign='top' width='26%' bgcolor='#FFFAF8' align='center'>Nama Obat</td>").append(
+                                              "<td valign='top' width='11%' bgcolor='#FFFAF8' align='center'>Bentuk Sediaan</td>").append(
+                                              "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Dicurigai</td>").append(
+                                              "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Cara</td>").append(
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Dosis/Waktu</td>").append(
+                                              "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tgl.Mulai</td>").append(
+                                              "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tgl.Akhir</td>").append(
+                                              "<td valign='top' width='14%' bgcolor='#FFFAF8' align='center'>Indikasi</td>").append(
+                                          "</tr>"
+                            );
+                            rs3=koneksi.prepareStatement(
+                                    "select laporan_meso_obat.nama_obat,laporan_meso_obat.bentuk_sediaan,laporan_meso_obat.obat_dicurigai,laporan_meso_obat.cara,"+
+                                    "laporan_meso_obat.dosis_waktu,laporan_meso_obat.tgl_mulai,laporan_meso_obat.tgl_akhir,laporan_meso_obat.indikasi "+
+                                    "from laporan_meso_obat where laporan_meso_obat.no_laporan='"+rs2.getString("no_laporan")+"' order by laporan_meso_obat.nama_obat").executeQuery();
+                            w=1;
+                            while(rs3.next()){
+                                htmlContent.append(
+                                          "<tr>").append(
+                                              "<td valign='top' align='center'>").append(w).append("</td>").append(
+                                              "<td valign='top'>").append(rs3.getString("nama_obat")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("bentuk_sediaan")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("obat_dicurigai")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("cara")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("dosis_waktu")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("tgl_mulai")).append("</td>").append(
+                                              "<td valign='top' align='center'>").append(rs3.getString("tgl_akhir")).append("</td>").append(
+                                              "<td valign='top'>").append(rs3.getString("indikasi")).append("</td>").append(
+                                          "</tr>"
+                                );
+                                w++;
+                            }
+                            htmlContent.append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "III. INTERPRETASI NARANJO").append(  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='30%' border='0'>Total Skor : ").append(rs2.getString("skor_naranjo")).append("</td>").append(
+                                              "<td width='70%' border='0'>Kategori : ").append(rs2.getString("kategori_naranjo")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs3!=null){
+                        rs3.close();
+                    }
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Laporan MESO : "+e);
         }
     }
     

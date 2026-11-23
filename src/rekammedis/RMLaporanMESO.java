@@ -12,10 +12,14 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +36,9 @@ import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -48,6 +55,7 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private DlgCariPetugas petugas;
+    private StringBuilder htmlContent;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     
@@ -61,10 +69,10 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
                 "No.Laporan","No.Rawat","No.R.M.","Nama Pasien","Tgl.Laporan","NIP","Pelapor","Tgl.Lahir","J.K.","Suku",
                 "Pekerjaan","BB (kg)","Anamnesa","Penyakit Utama","Kesudahan Penyakit","Gg.Ginjal","Gg.Hati","Alergi",
                 "Kondisi Medis Lain","Faktor Industri","Lain-lain","Ket.Lain-lain","Manifestasi ESO","Masalah Mutu Obat",
-                "Tgl.Mula ESO","Kesudahan ESO","Tgl.Kesudahan ESO","Riwayat ESO","Ket.Tambahan","Data Laboratorium","Tgl.Lab",
-                "Naranjo 1","Skor 1","Naranjo 2","Skor 2","Naranjo 3","Skor 3","Naranjo 4","Skor 4","Naranjo 5","Skor 5",
-                "Naranjo 6","Skor 6","Naranjo 7","Skor 7","Naranjo 8","Skor 8","Naranjo 9","Skor 9","Naranjo 10","Skor 10",
-                "Skor Naranjo","Kategori Naranjo"
+                "Tgl.Mula ESO","Kesudahan ESO","Tgl.Kesudahan ESO","Riwayat ESO","Keterangan Tambahan","Data Laboratorium",
+                "Tgl.Lab","Naranjo 1","Skor 1","Naranjo 2","Skor 2","Naranjo 3","Skor 3","Naranjo 4","Skor 4","Naranjo 5",
+                "Skor 5","Naranjo 6","Skor 6","Naranjo 7","Skor 7","Naranjo 8","Skor 8","Naranjo 9","Skor 9","Naranjo 10",
+                "Skor 10","Skor Naranjo","Kategori Naranjo"
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -84,27 +92,27 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(115);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
                 column.setPreferredWidth(120);
             }else if(i==11){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(45);
             }else if(i==12){
                 column.setPreferredWidth(250);
             }else if(i==13){
                 column.setPreferredWidth(200);
             }else if(i==14){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(140);
             }else if(i==15){
                 column.setPreferredWidth(60);
             }else if(i==16){
@@ -124,9 +132,9 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
             }else if(i==23){
                 column.setPreferredWidth(200);
             }else if(i==24){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==25){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(140);
             }else if(i==26){
                 column.setPreferredWidth(100);
             }else if(i==27){
@@ -136,49 +144,49 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
             }else if(i==29){
                 column.setPreferredWidth(200);
             }else if(i==30){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(65);
             }else if(i==31){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==32){
                 column.setPreferredWidth(45);
             }else if(i==33){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==34){
                 column.setPreferredWidth(45);
             }else if(i==35){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==36){
                 column.setPreferredWidth(45);
             }else if(i==37){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==38){
                 column.setPreferredWidth(45);
             }else if(i==39){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==40){
                 column.setPreferredWidth(45);
             }else if(i==41){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==42){
                 column.setPreferredWidth(45);
             }else if(i==43){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==44){
                 column.setPreferredWidth(45);
             }else if(i==45){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==46){
                 column.setPreferredWidth(45);
             }else if(i==47){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==48){
                 column.setPreferredWidth(45);
             }else if(i==49){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==50){
                 column.setPreferredWidth(45);
             }else if(i==51){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==52){
                 column.setPreferredWidth(110);
             }
@@ -275,6 +283,24 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
         Indikasi.setDocument(new batasInput((int)100).getKata(Indikasi));
         KeteranganTambahan.setDocument(new batasInput((int)500).getKata(KeteranganTambahan));
         DataLab.setDocument(new batasInput((int)300).getKata(DataLab));
+
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
     
     
@@ -287,8 +313,11 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.InternalFrame();
+        LoadHTML = new widget.editorpane();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnFormulir = new widget.MenuItem();
         TanggalRegistrasi = new widget.TextBox();
+        internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -466,6 +495,25 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnFormulir.setBackground(new java.awt.Color(255, 255, 254));
+        MnFormulir.setForeground(new java.awt.Color(50, 50, 50));
+        MnFormulir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnFormulir.setText("Formulir Pelaporan MESO");
+        MnFormulir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFormulir.setName("MnFormulir"); // NOI18N
+        MnFormulir.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnFormulir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnFormulirActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnFormulir);
 
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
         TanggalRegistrasi.setHighlighter(null);
@@ -667,7 +715,7 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
         jLabelTgl.setBounds(640, 40, 70, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2026 09:30:26" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2026 15:43:01" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1744,6 +1792,7 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2050,6 +2099,176 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            try {
+                htmlContent = new StringBuilder();
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Laporan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tgl.Laporan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Pelapor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Suku</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Pekerjaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>BB (kg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='250px'><b>Anamnesa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Penyakit Utama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='140px'><b>Kesudahan Penyakit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Gg.Ginjal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Gg.Hati</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Alergi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'><b>Kondisi Medis Lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Faktor Industri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Lain-lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ket.Lain-lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Manifestasi ESO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Masalah Mutu Obat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Tgl.Mula ESO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='140px'><b>Kesudahan ESO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Tgl.Kesudahan ESO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Riwayat ESO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Keterangan Tambahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Data Laboratorium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lab</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Naranjo 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Skor 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>Skor Naranjo</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'><b>Kategori Naranjo</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                        "</tr>");
+                }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='5371px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataLaporanMESO.html");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='5371px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA LAPORAN MONITORING EFEK SAMPING OBAT (MESO)<br><br></font>"+
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();
+                Desktop.getDesktop().browse(f.toURI());
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnPrintActionPerformed
+
+    private void MnFormulirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFormulirActionPerformed
         if(tbObat.getSelectedRow()>-1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
@@ -2058,6 +2277,8 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptFormulirLaporanMESO.jasper","report","::[ Formulir Pelaporan Efek Samping Obat (ESO) ]::",
                 "select laporan_meso.no_laporan,laporan_meso.tanggal,pasien.nm_pasien,date_format(pasien.tgl_lahir,'%d-%m-%Y') as tgl_lahir,suku_bangsa.nama_suku_bangsa as suku,"+
                 "laporan_meso.berat_badan,pasien.pekerjaan,pasien.jk,laporan_meso.anamnesa,laporan_meso.penyakit_utama,laporan_meso.kesudahan_penyakit,laporan_meso.gangguan_ginjal,"+
@@ -2079,7 +2300,7 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }
-    }//GEN-LAST:event_BtnPrintActionPerformed
+    }//GEN-LAST:event_MnFormulirActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -2561,8 +2782,10 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
     private widget.CekBox KondisiMedisLain;
     private widget.Label LCount;
     private widget.CekBox LainLain;
+    private widget.editorpane LoadHTML;
     private widget.TextArea ManifestasiESO;
     private widget.TextArea MasalahMutu;
+    private widget.MenuItem MnFormulir;
     private widget.TextBox NamaObat;
     private widget.ComboBox Naranjo1;
     private widget.ComboBox Naranjo10;
@@ -2601,10 +2824,10 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
     private widget.TextBox TNoRMData;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TPasienData;
     private widget.TabPane TabRawat;
     private widget.Tanggal Tanggal;
+    private widget.TextBox TanggalRegistrasi;
     private widget.Tanggal TglAkhirObat;
     private widget.Tanggal TglKesudahanESO;
     private widget.Tanggal TglLab;
@@ -2683,6 +2906,7 @@ public final class RMLaporanMESO extends javax.swing.JDialog {
     private widget.Label jLabelTglKesESO;
     private widget.Label jLabelTglLab;
     private widget.Label jLabelTglLahir;
+    private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparatorMeso1;
     private javax.swing.JSeparator jSeparatorMeso2;
     private javax.swing.JSeparator jSeparatorMeso3;

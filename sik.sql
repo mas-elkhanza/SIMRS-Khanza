@@ -15524,7 +15524,7 @@ CREATE TABLE `laporan_meso` (
 
 LOCK TABLES `laporan_meso` WRITE;
 /*!40000 ALTER TABLE `laporan_meso` DISABLE KEYS */;
-INSERT INTO `laporan_meso` VALUES ('MSO20261123001','2026/05/11/000003','2026-11-23 11:03:35','10908789','8','1	','2	','Sembuh Dengan Gejala Sisa','Ya','Ya','Ya','Ya','Ya','Ya','3','4	','5	','2026-11-23','Sembuh Dengan Gejala Sisa','2026-11-23','6	','8	','9	','2026-11-23','Ya',1,'Ya',2,'Ya',1,'Tidak Diketahui',0,'Tidak Diketahui',0,'Tidak',1,'Ya',1,'Ya',1,'Ya',1,'Ya',1,9,'Highly Probable');
+INSERT INTO `laporan_meso` VALUES ('MSO20261123001','2026/05/11/000003','2026-11-23 11:03:35','120000134','8','1	','2	','Sembuh Dengan Gejala Sisa','Ya','Ya','Ya','Ya','Ya','Ya','3','4	','5	','2026-11-23','Sembuh Dengan Gejala Sisa','2026-11-23','6	','8	','9	','2026-11-23','Ya',1,'Ya',2,'Ya',1,'Tidak Diketahui',0,'Tidak Diketahui',0,'Tidak',1,'Ya',1,'Ya',1,'Ya',1,'Ya',1,9,'Highly Probable');
 /*!40000 ALTER TABLE `laporan_meso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45544,4 +45544,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-23 15:25:21
+-- Dump completed on 2026-11-24  4:28:34
