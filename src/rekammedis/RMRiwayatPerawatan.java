@@ -433,6 +433,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkLayananKedokteranFisikRehabilitasi = new widget.CekBox();
         chkLayananProgramKFR = new widget.CekBox();
         chkUjiFungsiKFR = new widget.CekBox();
+        chkFormAssesment = new widget.CekBox();
+        chkLembarProgramTerapi = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningNutrisiDewasa = new widget.CekBox();
         chkSkriningNutrisiLansia = new widget.CekBox();
@@ -948,7 +950,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4900));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4946));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1964,6 +1966,20 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkUjiFungsiKFR.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkUjiFungsiKFR);
 
+        chkFormAssesment.setSelected(true);
+        chkFormAssesment.setText("Form Re Assesment");
+        chkFormAssesment.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkFormAssesment.setName("chkFormAssesment"); // NOI18N
+        chkFormAssesment.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkFormAssesment);
+
+        chkLembarProgramTerapi.setSelected(true);
+        chkLembarProgramTerapi.setText("Lembar Program Terapi");
+        chkLembarProgramTerapi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLembarProgramTerapi.setName("chkLembarProgramTerapi"); // NOI18N
+        chkLembarProgramTerapi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkLembarProgramTerapi);
+
         chkHemodialisa.setSelected(true);
         chkHemodialisa.setText("Hemodialisa");
         chkHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2899,432 +2915,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void chkSemuaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkSemuaItemStateChanged
-        if(chkSemua.isSelected()==true){
-            chkTriase.setSelected(true);
-            chkAsuhanKeperawatanRalan.setSelected(true);
-            chkAsuhanKeperawatanRalanGigi.setSelected(true);
-            chkAsuhanKeperawatanRalanBayi.setSelected(true);
-            chkAsuhanKeperawatanRalanKandungan.setSelected(true);
-            chkAsuhanKeperawatanRanap.setSelected(true);
-            chkAsuhanKeperawatanRanapKandungan.setSelected(true);
-            chkAsuhanKeperawatanRanapNeonatus.setSelected(true);
-            chkAsuhanKeperawatanRalanPsikiatri.setSelected(true);
-            chkAsuhanMedisRalan.setSelected(true);
-            chkAsuhanMedisIGD.setSelected(true);
-            chkAsuhanMedisRalanKandungan.setSelected(true);
-            chkAsuhanMedisRalanBayi.setSelected(true);
-            chkAsuhanMedisRalanTHT.setSelected(true);
-            chkAsuhanMedisRalanPenyakitDalam.setSelected(true);
-            chkAsuhanMedisRalanMata.setSelected(true);
-            chkAsuhanMedisRalanNeurologi.setSelected(true);
-            chkAsuhanMedisRalanOrthopedi.setSelected(true);
-            chkAsuhanMedisRalanBedah.setSelected(true);
-            chkAsuhanMedisRanap.setSelected(true);
-            chkAsuhanMedisRanapKandungan.setSelected(true);
-            chkDiagnosaPenyakit.setSelected(true);
-            chkProsedurTindakan.setSelected(true);
-            chkCatatanDokter.setSelected(true);
-            chkHemodialisa.setSelected(true);
-            chkPemeriksaanRalan.setSelected(true);
-            chkPemeriksaanObstetriRalan.setSelected(true);
-            chkPemeriksaanGenekologiRalan.setSelected(true);
-            chkPemeriksaanRanap.setSelected(true);
-            chkPemeriksaanObstetriRanap.setSelected(true);
-            chkPemeriksaanGenekologiRanap.setSelected(true);
-            chkSkriningGiziLanjut.setSelected(true);
-            chkAsuhanGizi.setSelected(true);
-            chkMonitoringGizi.setSelected(true);
-            chkTindakanRalanDokter.setSelected(true);
-            chkTindakanRalanParamedis.setSelected(true);
-            chkTindakanRalanDokterParamedis.setSelected(true);
-            chkTindakanRanapDokter.setSelected(true);
-            chkTindakanRanapParamedis.setSelected(true);
-            chkTindakanRanapDokterParamedis.setSelected(true);
-            chkPenggunaanKamar.setSelected(true);
-            chkOperasiVK.setSelected(true);
-            chkPemeriksaanRadiologi.setSelected(true);
-            chkPemeriksaanLaborat.setSelected(true);
-            chkPemberianObat.setSelected(true);
-            chkPenggunaanObatOperasi.setSelected(true);
-            chkResepPulang.setSelected(true);
-            chkTambahanBiaya.setSelected(true);
-            chkPotonganBiaya.setSelected(true);
-            chkResume.setSelected(true);
-            chkBerkasDigital.setSelected(true);
-            chkUjiFungsiKFR.setSelected(true);
-            chkAsuhanKeperawatanIGD.setSelected(true);
-            chkCatatanObservasiIGD.setSelected(true);
-            chkCatatanObservasiRanap.setSelected(true);
-            chkCatatanObservasiRanapKebidanan.setSelected(true);
-            chkCatatanObservasiRanapPostPartum.setSelected(true);
-            chkCatatanKeperawatanRanap.setSelected(true);
-            chkPemantauanPEWSAnak.setSelected(true);
-            chkAsuhanFisioterapi.setSelected(true);
-            chkAsuhanPsikolog.setSelected(true);
-            chkAsuhanMedisRalanPsikiatri.setSelected(true);
-            chkAsuhanPreOperasi.setSelected(true);
-            chkAsuhanPreAnestesi.setSelected(true);
-            chkPerencanaanPemulangan.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhDewasa.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhAnak.setSelected(true);
-            chkAsuhanMedisRalanGeriatri.setSelected(true);
-            chkAsuhanTambahanGeriatri.setSelected(true);
-            chkSkriningNutrisiDewasa.setSelected(true);
-            chkHasilPemeriksaanUSG.setSelected(true);
-            chkSkriningNutrisiLansia.setSelected(true);
-            chkSkriningNutrisiAnak.setSelected(true);
-            chkKonselingFarmasi.setSelected(true);
-            chkPelayananInformasiObat.setSelected(true);
-            chkTransferAntarRuang.setSelected(true);
-            chkCatatanCekGDS.setSelected(true);
-            chkChecklistPreOperasi.setSelected(true);
-            chkSignInSebelumAnestesi.setSelected(true);
-            chkTimeOutSebelumInsisi.setSelected(true);
-            chkSignOutSebelumMenutupLuka.setSelected(true);
-            chkChecklistPostOperasi.setSelected(true);
-            chkRekonsiliasiObat.setSelected(true);
-            chkPenilaianPasienTerminal.setSelected(true);
-            chkMonitoringReaksiTranfusi.setSelected(true);
-            chkPenilaianKorbanKekerasan.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhLansia.setSelected(true);
-            chkPenilaianPasienPenyakitMenular.setSelected(true);
-            chkEdukasiPasienTerintegrasiRawatJalan.setSelected(true);
-            chkPemantauanPEWSDewasa.setSelected(true);
-            chkAsuhanTambahanBunuhDiri.setSelected(true);
-            chkAsuhanTambahanPerilakuKekerasan.setSelected(true);
-            chkAsuhanTambahanMelarikanDiri.setSelected(true);
-            chkPenilaianPasienKeracunan.setSelected(true);
-            chkAsuhanMedisRalanBedahMulut.setSelected(true);
-            chkPemantauanMOEWSObstetri.setSelected(true);
-            chkCatatanADIMEGizi.setSelected(true);
-            chkAsuhanKeperawatanRalanGeriatri.setSelected(true);
-            chkChecklistKriteriaMasukHCU.setSelected(true);
-            chkChecklistKriteriaKeluarHCU.setSelected(true);
-            chkAsuhanRisikoDekubitus.setSelected(true);
-            chkDokumentasiTindakanESWL.setSelected(true);
-            chkChecklistKriteriaMasukICU.setSelected(true);
-            chkChecklistKriteriaKeluarICU.setSelected(true);
-            chkFollowUpDBD.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhNeonatus.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhGeriatri.setSelected(true);
-            chkPemantauanEWSNeonatus.setSelected(true);
-            chkAsuhanMedisRalanKulitKelamin.setSelected(true);
-            chkPenilaianLevelKecemasanRanapAnak.setSelected(true);
-            chkAsuhanMedisHemodialisa.setSelected(true);
-            chkAsuhanLanjutanRisikoJatuhPsikiatri.setSelected(true);
-            chkAsuhanLanjutanSkriningFungsional.setSelected(true);
-            chkAsuhanMedisRalanKedokteranFisik.setSelected(true);
-            chkAsuhanMedisIGDPsikiatri.setSelected(true);
-            chkPenilaianUlangNyeri.setSelected(true);
-            chkAsuhanTerapiWicara.setSelected(true);
-            chkPengkajianRestrain.setSelected(true);
-            chkAsuhanMedisRalanParu.setSelected(true);
-            chkCatatanKeperawatanRalan.setSelected(true);
-            chkCatatanPersalinan.setSelected(true);
-            chkSkorAldrettePascaAnestesi.setSelected(true);
-            chkSkorStewardPascaAnestesi.setSelected(true);
-            chkSkorBromagePascaAnestesi.setSelected(true);
-            chkAsuhanPreInduksi.setSelected(true);
-            chkHasilPemeriksaanUSGUrologi.setSelected(true);
-            chkHasilPemeriksaanUSGGynecologi.setSelected(true);
-            chkHasilPemeriksaanEKG.setSelected(true);
-            chkPenatalaksanaanTerapiOkupasi.setSelected(true);
-            chkHasilPemeriksaanUSGNeonatus.setSelected(true);
-            chkHasilPemeriksaanEndoskopiFaringLaring.setSelected(true);
-            chkHasilPemeriksaanEndoskopiHidung.setSelected(true);
-            chkHasilPemeriksaanEndoskopiTelinga.setSelected(true);
-            chkPenilaianPasienImunitasRendah.setSelected(true);
-            chkCatatanKeseimbanganCairan.setSelected(true);
-            chkCatatanObservasiCHBP.setSelected(true);
-            chkCatatanObservasiInduksiPersalinan.setSelected(true);
-            chkKonsultasiMedik.setSelected(true);
-            chkSkriningMerokokUsiaRemaja.setSelected(true);
-            chkSkriningKekerasanPadaPerempuan.setSelected(true);
-            chkSkriningObesitas.setSelected(true);
-            chkSkriningRisikoKankerPayudara.setSelected(true);
-            chkSkriningRisikoKankerParu.setSelected(true);
-            chkSkriningGigiMulutRemaja.setSelected(true);
-            chkSkriningTBC.setSelected(true);
-            chkAsuhanMedisMCU.setSelected(true);
-            chkAsuhanKeperawatanRanapBayi.setSelected(true);
-            chkCatatanObservasiRestrainNonFarmakologi.setSelected(true);
-            chkCatatanObservasiVentilator.setSelected(true);
-            chkCatatanAnastesiSedasi.setSelected(true);
-            chkSkriningPUMA.setSelected(true);
-            chkSkriningAdiksiNikotin.setSelected(true);
-            chkSkriningThalasemia.setSelected(true);
-            chkSkriningInstrumenSDQ.setSelected(true);
-            chkSkriningInstrumenSRQ.setSelected(true);
-            chkChecklistPemberianFibrinolitik.setSelected(true);
-            chkSkriningKankerKolorektal.setSelected(true);
-            chkAsuhanPsikologiKlinis.setSelected(true);
-            chkAsuhanMedisRanapNeonatus.setSelected(true);
-            chkHasilPemeriksaanEcho.setSelected(true);
-            chkSEPBPJS.setSelected(true);
-            chkSkriningDiabetesMelitus.setSelected(true);
-            chkPenilaianBayiBaruLahir.setSelected(true);
-            chkLaporanTindakan.setSelected(true);
-            chkLayananKedokteranFisikRehabilitasi.setSelected(true);
-            chkSkriningGigiMulutBalita.setSelected(true);
-            chkSkriningAnemia.setSelected(true);
-            chkLayananProgramKFR.setSelected(true);
-            chkSkriningHipertensi.setSelected(true);
-            chkSkriningKesehatanPenglihatan.setSelected(true);
-            chkCatatanObservasiHemodialisa.setSelected(true);
-            chkSkriningGigiMulutDewasa.setSelected(true);
-            chkCatatanCairanHemodialisa.setSelected(true);
-            chkSkriningRisikoKankerServiks.setSelected(true);
-            chkSkriningGigiMulutLansia.setSelected(true);
-            chkSkriningIndraPendengaran.setSelected(true);
-            chkCatatanPengkajianPaskaOperasi.setSelected(true);
-            chkSkriningFrailtySyndrome.setSelected(true);
-            chkCatatanObservasiBayi.setSelected(true);
-            chkHasilPemeriksaanSlitLamp.setSelected(true);
-            chkHasilPemeriksaanOCT.setSelected(true);
-            chkChecklistKesiapanAnestesi.setSelected(true);
-            chkSkriningInstrumenACRS.setSelected(true);
-            chkChecklistKriteriaMasukNICU.setSelected(true);
-            chkChecklistKriteriaKeluarNICU.setSelected(true);
-            chkAsuhanMedisRanapPsikiatri.setSelected(true);
-            chkChecklistKriteriaMasukPICU.setSelected(true);
-            chkChecklistKriteriaKeluarPICU.setSelected(true);
-            chkSkriningInstrumenAMT.setSelected(true);
-            chkAsuhanMedisRalanJantung.setSelected(true);
-            chkAsuhanMedisRalanUrologi.setSelected(true);
-            chkHasilPemeriksaanTreadmill.setSelected(true);
-            chkHasilPemeriksaanEchoPediatrik.setSelected(true);
-            chkSkriningPSI.setSelected(true);
-            chkSkriningInstrumenESAT.setSelected(true);
-            chkAsuhanMedisRanapJantung.setSelected(true);
-            chkSkriningCRUB65.setSelected(true);
-            chkSkriningGiziKehamilan.setSelected(true);
-            chkKonsultasiPerawat.setSelected(true);
-            chkCatatanObservasiRuangOperasi.setSelected(true);
-            chkHasilPemeriksaanUSGAbdomen.setSelected(true);
-            chkIntervensiNyeriFarmakologi.setSelected(true);
-            chkIntervensiNyeriNonFarmakologi.setSelected(true);
-            chkChecklistKriteriaMasukIsolasi.setSelected(true);
-            chkChecklistKriteriaKeluarIsolasi.setSelected(true);
-            chkSkriningTOLAC.setSelected(true);
-            chkAdmisiSkoringTOLAC.setSelected(true);
-            chkMonitoringSelamaTOLAC.setSelected(true);
-            chkHasilPersalinanTOLAC.setSelected(true);
-            chkReaksiTranfusi.setSelected(true);
-            chkPenilaianGRACEScore.setSelected(true);
-            chkPenilaianBishop.setSelected(true);
-        }else{
-            chkTriase.setSelected(false);
-            chkAsuhanKeperawatanRalan.setSelected(false);
-            chkAsuhanKeperawatanRalanGigi.setSelected(false);
-            chkAsuhanKeperawatanRalanBayi.setSelected(false);
-            chkAsuhanKeperawatanRalanKandungan.setSelected(false);
-            chkAsuhanKeperawatanRanap.setSelected(false);
-            chkAsuhanKeperawatanRanapKandungan.setSelected(false);
-            chkAsuhanKeperawatanRanapNeonatus.setSelected(false);
-            chkAsuhanKeperawatanRalanPsikiatri.setSelected(false);
-            chkAsuhanMedisRalan.setSelected(false);
-            chkAsuhanMedisIGD.setSelected(false);
-            chkAsuhanMedisRalanKandungan.setSelected(false);
-            chkAsuhanMedisRalanBayi.setSelected(false);
-            chkAsuhanMedisRalanTHT.setSelected(false);
-            chkAsuhanMedisRalanPenyakitDalam.setSelected(false);
-            chkAsuhanMedisRalanMata.setSelected(false);
-            chkAsuhanMedisRalanNeurologi.setSelected(false);
-            chkAsuhanMedisRalanOrthopedi.setSelected(false);
-            chkAsuhanMedisRalanBedah.setSelected(false);
-            chkAsuhanMedisRanap.setSelected(false);
-            chkAsuhanMedisRanapKandungan.setSelected(false);
-            chkDiagnosaPenyakit.setSelected(false);
-            chkProsedurTindakan.setSelected(false);
-            chkCatatanDokter.setSelected(false);
-            chkHemodialisa.setSelected(false);
-            chkPemeriksaanRalan.setSelected(false);
-            chkPemeriksaanObstetriRalan.setSelected(false);
-            chkPemeriksaanGenekologiRalan.setSelected(false);
-            chkPemeriksaanRanap.setSelected(false);
-            chkPemeriksaanObstetriRanap.setSelected(false);
-            chkPemeriksaanGenekologiRanap.setSelected(false);
-            chkSkriningGiziLanjut.setSelected(false);
-            chkAsuhanGizi.setSelected(false);
-            chkMonitoringGizi.setSelected(false);
-            chkTindakanRalanDokter.setSelected(false);
-            chkTindakanRalanParamedis.setSelected(false);
-            chkTindakanRalanDokterParamedis.setSelected(false);
-            chkTindakanRanapDokter.setSelected(false);
-            chkTindakanRanapParamedis.setSelected(false);
-            chkTindakanRanapDokterParamedis.setSelected(false);
-            chkPenggunaanKamar.setSelected(false);
-            chkOperasiVK.setSelected(false);
-            chkPemeriksaanRadiologi.setSelected(false);
-            chkPemeriksaanLaborat.setSelected(false);
-            chkPemberianObat.setSelected(false);
-            chkPenggunaanObatOperasi.setSelected(false);
-            chkResepPulang.setSelected(false);
-            chkTambahanBiaya.setSelected(false);
-            chkPotonganBiaya.setSelected(false);
-            chkResume.setSelected(false);
-            chkBerkasDigital.setSelected(false);
-            chkUjiFungsiKFR.setSelected(false);
-            chkAsuhanKeperawatanIGD.setSelected(false);
-            chkCatatanObservasiIGD.setSelected(false);
-            chkCatatanObservasiRanap.setSelected(false);
-            chkCatatanObservasiRanapKebidanan.setSelected(false);
-            chkCatatanObservasiRanapPostPartum.setSelected(false);
-            chkCatatanKeperawatanRanap.setSelected(false);
-            chkPemantauanPEWSAnak.setSelected(false);
-            chkAsuhanFisioterapi.setSelected(false);
-            chkAsuhanPsikolog.setSelected(false);
-            chkAsuhanMedisRalanPsikiatri.setSelected(false);
-            chkAsuhanPreOperasi.setSelected(false);
-            chkAsuhanPreAnestesi.setSelected(false);
-            chkPerencanaanPemulangan.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhDewasa.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhAnak.setSelected(false);
-            chkAsuhanMedisRalanGeriatri.setSelected(false);
-            chkAsuhanTambahanGeriatri.setSelected(false);
-            chkSkriningNutrisiDewasa.setSelected(false);
-            chkHasilPemeriksaanUSG.setSelected(false);
-            chkSkriningNutrisiLansia.setSelected(false);
-            chkSkriningNutrisiAnak.setSelected(false);
-            chkKonselingFarmasi.setSelected(false);
-            chkPelayananInformasiObat.setSelected(false);
-            chkTransferAntarRuang.setSelected(false);
-            chkCatatanCekGDS.setSelected(false);
-            chkChecklistPreOperasi.setSelected(false);
-            chkSignInSebelumAnestesi.setSelected(false);
-            chkTimeOutSebelumInsisi.setSelected(false);
-            chkSignOutSebelumMenutupLuka.setSelected(false);
-            chkChecklistPostOperasi.setSelected(false);
-            chkRekonsiliasiObat.setSelected(false);
-            chkPenilaianPasienTerminal.setSelected(false);
-            chkMonitoringReaksiTranfusi.setSelected(false);
-            chkPenilaianKorbanKekerasan.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhLansia.setSelected(false);
-            chkPenilaianPasienPenyakitMenular.setSelected(false);
-            chkEdukasiPasienTerintegrasiRawatJalan.setSelected(false);
-            chkPemantauanPEWSDewasa.setSelected(false);
-            chkAsuhanTambahanBunuhDiri.setSelected(false);
-            chkAsuhanTambahanPerilakuKekerasan.setSelected(false);
-            chkAsuhanTambahanMelarikanDiri.setSelected(false);
-            chkPenilaianPasienKeracunan.setSelected(false);
-            chkAsuhanMedisRalanBedahMulut.setSelected(false);
-            chkPemantauanMOEWSObstetri.setSelected(false);
-            chkCatatanADIMEGizi.setSelected(false);
-            chkAsuhanKeperawatanRalanGeriatri.setSelected(false);
-            chkChecklistKriteriaMasukHCU.setSelected(false);
-            chkChecklistKriteriaKeluarHCU.setSelected(false);
-            chkAsuhanRisikoDekubitus.setSelected(false);
-            chkDokumentasiTindakanESWL.setSelected(false);
-            chkChecklistKriteriaMasukICU.setSelected(false);
-            chkChecklistKriteriaKeluarICU.setSelected(false);
-            chkFollowUpDBD.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhNeonatus.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhGeriatri.setSelected(false);
-            chkPemantauanEWSNeonatus.setSelected(false);
-            chkAsuhanMedisRalanKulitKelamin.setSelected(false);
-            chkPenilaianLevelKecemasanRanapAnak.setSelected(false);
-            chkAsuhanMedisHemodialisa.setSelected(false);
-            chkAsuhanLanjutanRisikoJatuhPsikiatri.setSelected(false);
-            chkAsuhanLanjutanSkriningFungsional.setSelected(false);
-            chkAsuhanMedisRalanKedokteranFisik.setSelected(false);
-            chkAsuhanMedisIGDPsikiatri.setSelected(false);
-            chkPenilaianUlangNyeri.setSelected(false);
-            chkAsuhanTerapiWicara.setSelected(false);
-            chkPengkajianRestrain.setSelected(false);
-            chkAsuhanMedisRalanParu.setSelected(false);
-            chkCatatanKeperawatanRalan.setSelected(false);
-            chkCatatanPersalinan.setSelected(false);
-            chkSkorAldrettePascaAnestesi.setSelected(false);
-            chkSkorStewardPascaAnestesi.setSelected(false);
-            chkSkorBromagePascaAnestesi.setSelected(false);
-            chkAsuhanPreInduksi.setSelected(false);
-            chkHasilPemeriksaanUSGUrologi.setSelected(false);
-            chkHasilPemeriksaanUSGGynecologi.setSelected(false);
-            chkHasilPemeriksaanEKG.setSelected(false);
-            chkPenatalaksanaanTerapiOkupasi.setSelected(false);
-            chkHasilPemeriksaanUSGNeonatus.setSelected(false);
-            chkHasilPemeriksaanEndoskopiFaringLaring.setSelected(false);
-            chkHasilPemeriksaanEndoskopiHidung.setSelected(false);
-            chkHasilPemeriksaanEndoskopiTelinga.setSelected(false);
-            chkPenilaianPasienImunitasRendah.setSelected(false);
-            chkCatatanKeseimbanganCairan.setSelected(false);
-            chkCatatanObservasiCHBP.setSelected(false);
-            chkCatatanObservasiInduksiPersalinan.setSelected(false);
-            chkKonsultasiMedik.setSelected(false);
-            chkSkriningMerokokUsiaRemaja.setSelected(false);
-            chkSkriningKekerasanPadaPerempuan.setSelected(false);
-            chkSkriningObesitas.setSelected(false);
-            chkSkriningRisikoKankerPayudara.setSelected(false);
-            chkSkriningRisikoKankerParu.setSelected(false);
-            chkSkriningGigiMulutRemaja.setSelected(false);
-            chkSkriningTBC.setSelected(false);
-            chkAsuhanMedisMCU.setSelected(false);
-            chkAsuhanKeperawatanRanapBayi.setSelected(false);
-            chkCatatanObservasiRestrainNonFarmakologi.setSelected(false);
-            chkCatatanObservasiVentilator.setSelected(false);
-            chkCatatanAnastesiSedasi.setSelected(false);
-            chkSkriningPUMA.setSelected(false);
-            chkSkriningAdiksiNikotin.setSelected(false);
-            chkSkriningThalasemia.setSelected(false);
-            chkSkriningInstrumenSDQ.setSelected(false);
-            chkSkriningInstrumenSRQ.setSelected(false);
-            chkChecklistPemberianFibrinolitik.setSelected(false);
-            chkSkriningKankerKolorektal.setSelected(false);
-            chkAsuhanPsikologiKlinis.setSelected(false);
-            chkAsuhanMedisRanapNeonatus.setSelected(false);
-            chkHasilPemeriksaanEcho.setSelected(false);
-            chkSEPBPJS.setSelected(false);
-            chkSkriningDiabetesMelitus.setSelected(false);
-            chkPenilaianBayiBaruLahir.setSelected(false);
-            chkLaporanTindakan.setSelected(false);
-            chkLayananKedokteranFisikRehabilitasi.setSelected(false);
-            chkSkriningGigiMulutBalita.setSelected(false);
-            chkSkriningAnemia.setSelected(false);
-            chkLayananProgramKFR.setSelected(false);
-            chkSkriningHipertensi.setSelected(false);
-            chkSkriningKesehatanPenglihatan.setSelected(false);
-            chkCatatanObservasiHemodialisa.setSelected(false);
-            chkSkriningGigiMulutDewasa.setSelected(false);
-            chkCatatanCairanHemodialisa.setSelected(false);
-            chkSkriningRisikoKankerServiks.setSelected(false);
-            chkSkriningGigiMulutLansia.setSelected(false);
-            chkSkriningIndraPendengaran.setSelected(false);
-            chkCatatanPengkajianPaskaOperasi.setSelected(false);
-            chkSkriningFrailtySyndrome.setSelected(false);
-            chkCatatanObservasiBayi.setSelected(false);
-            chkHasilPemeriksaanSlitLamp.setSelected(false);
-            chkHasilPemeriksaanOCT.setSelected(false);
-            chkChecklistKesiapanAnestesi.setSelected(false);
-            chkSkriningInstrumenACRS.setSelected(false);
-            chkChecklistKriteriaMasukNICU.setSelected(false);
-            chkChecklistKriteriaKeluarNICU.setSelected(false);
-            chkAsuhanMedisRanapPsikiatri.setSelected(false);
-            chkChecklistKriteriaMasukPICU.setSelected(false);
-            chkChecklistKriteriaKeluarPICU.setSelected(false);
-            chkSkriningInstrumenAMT.setSelected(false);
-            chkAsuhanMedisRalanJantung.setSelected(false);
-            chkAsuhanMedisRalanUrologi.setSelected(false);
-            chkHasilPemeriksaanTreadmill.setSelected(false);
-            chkHasilPemeriksaanEchoPediatrik.setSelected(false);
-            chkSkriningPSI.setSelected(false);
-            chkSkriningInstrumenESAT.setSelected(false);
-            chkAsuhanMedisRanapJantung.setSelected(false);
-            chkSkriningCRUB65.setSelected(false);
-            chkSkriningGiziKehamilan.setSelected(false);
-            chkKonsultasiPerawat.setSelected(false);
-            chkCatatanObservasiRuangOperasi.setSelected(false);
-            chkHasilPemeriksaanUSGAbdomen.setSelected(false);
-            chkIntervensiNyeriFarmakologi.setSelected(false);
-            chkIntervensiNyeriNonFarmakologi.setSelected(false);
-            chkChecklistKriteriaMasukIsolasi.setSelected(false);
-            chkChecklistKriteriaKeluarIsolasi.setSelected(false);
-            chkSkriningTOLAC.setSelected(false);
-            chkAdmisiSkoringTOLAC.setSelected(false);
-            chkMonitoringSelamaTOLAC.setSelected(false);
-            chkHasilPersalinanTOLAC.setSelected(false);
-            chkReaksiTranfusi.setSelected(false);
-            chkPenilaianGRACEScore.setSelected(false);
-            chkPenilaianBishop.setSelected(false);
+        boolean pilih=chkSemua.isSelected();
+        for(java.awt.Component komponen : FormMenu.getComponents()){
+            if((komponen instanceof widget.CekBox)&&(komponen!=chkSemua)){
+                ((widget.CekBox)komponen).setSelected(pilih);
+            }
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4142,6 +3737,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkTransferAntarRuang;
     private widget.CekBox chkTriase;
     private widget.CekBox chkUjiFungsiKFR;
+    private widget.CekBox chkFormAssesment;
+    private widget.CekBox chkLembarProgramTerapi;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame8;
@@ -4601,6 +4198,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanLayananKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
                     menampilkanLayananProgramKFR(rs.getString("no_rawat"));
                     menampilkanUjiFungsiKFR(rs.getString("no_rawat"));
+                    menampilkanFormAssesment(rs.getString("no_rawat"));
+                    menampilkanLembarProgramTerapi(rs.getString("no_rawat"));
                     menampilkanHemodialisa(rs.getString("no_rawat"));
                     menampilkanPemeriksaanRalan(rs.getString("no_rawat"));
                     menampilkanAsuhanKeperawatanRawatInap(rs.getString("no_rawat"));
@@ -11171,6 +10770,175 @@ try{
             }
         } catch (Exception e) {
             System.out.println("Notif Uji Fungsi KFR : "+e);
+        }
+    }
+
+    private void menampilkanFormAssesment(String norawat) {
+        try {
+            if(chkFormAssesment.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select lembar_reassesment.tanggal,lembar_reassesment.kd_dokter,dokter.nm_dokter,"+
+                            "ifnull(lembar_reassesment.subjective,'') as subjective,ifnull(lembar_reassesment.objective,'') as objective,"+
+                            "ifnull(lembar_reassesment.assesment,'') as assesment,lembar_reassesment.goal,"+
+                            "ifnull(lembar_reassesment.tindakan,'') as tindakan,lembar_reassesment.edukasi,"+
+                            "lembar_reassesment.frekuensi,lembar_reassesment.rencana "+
+                            "from lembar_reassesment inner join dokter on lembar_reassesment.kd_dokter=dokter.kd_dokter where "+
+                            "lembar_reassesment.no_rawat='"+norawat+"' order by lembar_reassesment.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append(
+                            "<td valign='top' width='2%'></td>").append(
+                            "<td valign='top' width='18%'>Form Re Assesment</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        do{
+                            htmlContent.append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "YANG MELAKUKAN PEMERIKSAAN").append(
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='33%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
+                                              "<td width='67%' border='0'>Dokter : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Subjective</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("subjective").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Objective</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("objective").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Assesment</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("assesment").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Goal Of Treatment</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("goal")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Tindakan / Program</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("tindakan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Edukasi</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("edukasi")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Frekuensi Kunjungan</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("frekuensi")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Rencana Tindak Lanjut</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("rencana")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>"
+                            );
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Form Re Assesment : "+e);
+        }
+    }
+
+    private void menampilkanLembarProgramTerapi(String norawat) {
+        try {
+            if(chkLembarProgramTerapi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select lembar_program_terapi.tanggal,lembar_program_terapi.kd_dokter,dokter.nm_dokter,"+
+                            "lembar_program_terapi.kd_pegawai,pegawai.nama,"+
+                            "ifnull(lembar_program_terapi.subjective,'') as subjective,ifnull(lembar_program_terapi.objective,'') as objective,"+
+                            "ifnull(lembar_program_terapi.assesment,'') as assesment,ifnull(lembar_program_terapi.`procedure`,'') as `procedure` "+
+                            "from lembar_program_terapi inner join dokter on lembar_program_terapi.kd_dokter=dokter.kd_dokter "+
+                            "inner join pegawai on lembar_program_terapi.kd_pegawai=pegawai.nik where "+
+                            "lembar_program_terapi.no_rawat='"+norawat+"' order by lembar_program_terapi.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>").append(
+                            "<td valign='top' width='2%'></td>").append(
+                            "<td valign='top' width='18%'>Lembar Program Terapi</td>").append(
+                            "<td valign='top' width='1%' align='center'>:</td>").append(
+                            "<td valign='top' width='79%'>").append(
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        do{
+                            htmlContent.append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "YANG MELAKUKAN PEMERIKSAAN").append(
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='33%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
+                                              "<td width='33%' border='0'>Dokter : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").append(
+                                              "<td width='34%' border='0'>Petugas : ").append(rs2.getString("kd_pegawai")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>").append(
+                                 "<tr>").append(
+                                    "<td valign='top'>").append(
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Subjective</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("subjective").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Objective</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("objective").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Assesment</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("assesment").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                          "<tr>").append(
+                                              "<td width='25%' border='0' valign='top'>Procedure</td>").append(
+                                              "<td width='75%' border='0' valign='top'>: ").append(rs2.getString("procedure").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                          "</tr>").append(
+                                       "</table>").append(
+                                    "</td>").append(
+                                 "</tr>"
+                            );
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>").append(
+                            "</td>").append(
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Lembar Program Terapi : "+e);
         }
     }
 
