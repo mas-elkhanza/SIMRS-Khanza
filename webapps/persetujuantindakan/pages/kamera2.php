@@ -51,6 +51,11 @@
                 </div>
                 <div class="col-md-6">
                     <div id="results"><h7 class="text-success"><center>Gambar akan diambil jika anda sudah mengeklik ya</center></h7></div>
+                    <div id="infoJam" style="margin-top:6px; text-align:center; font-size:13px;">
+                        <b>Tanggal/Jam Verifikasi :</b> <span id="jamVerifikasi" style="color:#CC0000; font-weight:bold;">-</span><br/>
+                        <span id="ketJamVerifikasi" style="font-size:10px; color:#666666;">Jam mengikuti waktu server dan berhenti saat tombol &quot;Ya&quot; ditekan</span>
+                    </div>
+                    <input type="hidden" name="waktu_ambil" id="waktu_ambil" value="">
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </div>
                 <div class="col-md-12 text-center">
@@ -72,10 +77,38 @@
 
         Webcam.attach( '#my_camera' );
 
+        // Jam verifikasi mengikuti waktu server webapp (bukan jam komputer/tablet pengguna).
+        var wsParts = "<?=htmlspecialchars((string)getOne("select now()"));?>".split(/[- :]/);
+        var wsBase  = new Date(wsParts[0], wsParts[1]-1, wsParts[2], wsParts[3], wsParts[4], wsParts[5]).getTime();
+        if (isNaN(wsBase)) { wsBase = Date.now(); }
+        var wsMulai = Date.now();
+        var jamBerhenti = false;
+
+        function waktuServer() { return new Date(wsBase + (Date.now() - wsMulai)); }
+        function dua(n) { return (n < 10 ? "0" : "") + n; }
+        function jamTampil(d) {
+            return dua(d.getDate()) + "-" + dua(d.getMonth() + 1) + "-" + d.getFullYear() + " " + dua(d.getHours()) + ":" + dua(d.getMinutes()) + ":" + dua(d.getSeconds());
+        }
+        function jamDb(d) {
+            return d.getFullYear() + "-" + dua(d.getMonth() + 1) + "-" + dua(d.getDate()) + " " + dua(d.getHours()) + ":" + dua(d.getMinutes()) + ":" + dua(d.getSeconds());
+        }
+        function tickJam() {
+            if (!jamBerhenti) {
+                document.getElementById('jamVerifikasi').innerHTML = jamTampil(waktuServer());
+            }
+        }
+        setInterval(tickJam, 1000);
+        tickJam();
+
         function take_snapshot() {
             Webcam.snap( function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                var w = waktuServer();
+                jamBerhenti = true;
+                document.getElementById('jamVerifikasi').innerHTML = jamTampil(w);
+                document.getElementById('waktu_ambil').value = jamDb(w);
+                document.getElementById('ketJamVerifikasi').innerHTML = 'Waktu foto diambil (mengikuti waktu server)';
             } );
         }
     </script>

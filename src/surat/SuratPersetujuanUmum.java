@@ -599,18 +599,18 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(322, 40, 50, 23);
+        jLabel18.setBounds(381, 40, 50, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
         FormInput.add(KdPetugas);
-        KdPetugas.setBounds(374, 40, 64, 23);
+        KdPetugas.setBounds(433, 40, 64, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(440, 40, 100, 23);
+        NmPetugas.setBounds(499, 40, 100, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('2');
@@ -627,7 +627,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPetugas);
-        BtnPetugas.setBounds(542, 40, 28, 23);
+        BtnPetugas.setBounds(601, 40, 28, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -670,7 +670,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(166, 40, 42, 23);
+        Jam.setBounds(166, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -680,7 +680,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(210, 40, 42, 23);
+        Menit.setBounds(230, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -690,7 +690,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(254, 40, 42, 23);
+        Detik.setBounds(294, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -699,7 +699,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(298, 40, 21, 23);
+        ChkKejadian.setBounds(358, 40, 21, 23);
 
         jLabel14.setText("Penanggung Jawab Pasien :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -709,7 +709,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         jLabel3.setText("No.Persetujuan :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(574, 40, 90, 23);
+        jLabel3.setBounds(633, 40, 90, 23);
 
         NoSurat.setHighlighter(null);
         NoSurat.setName("NoSurat"); // NOI18N
@@ -719,7 +719,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoSurat);
-        NoSurat.setBounds(668, 40, 110, 23);
+        NoSurat.setBounds(727, 40, 110, 23);
 
         jLabel15.setText("Nomor KTP :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -1432,7 +1432,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("pengobatan_kepada"),rs.getString("nilai_kepercayaan"),rs.getString("nama_pj"),
+                        tglJam(rs.getString("tanggal")),rs.getString("pengobatan_kepada"),rs.getString("nilai_kepercayaan"),rs.getString("nama_pj"),
                         rs.getString("umur_pj"),rs.getString("no_ktppj"),rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("bertindak_atas"),
                         rs.getString("nip"),rs.getString("nama") 
                     });
@@ -1662,6 +1662,14 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         }
     }
     
+    /** "yyyy-MM-dd HH:mm:ss.0" (kolom datetime) -> "yyyy-MM-dd HH:mm:ss" agar tabel tidak menampilkan pecahan detik. */
+    private String tglJam(String tanggal){
+        if(tanggal==null){
+            return null;
+        }
+        return tanggal.length()>19?tanggal.substring(0,19):tanggal;
+    }
+
     /** Jam berjalan (real time) selama kotak "kejadian" dicentang; bila tidak, jam diisi manual. */
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){

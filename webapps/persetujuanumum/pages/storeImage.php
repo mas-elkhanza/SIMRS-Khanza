@@ -8,6 +8,15 @@
         @unlink(host()."/webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg");
     }
     
+    // Waktu verifikasi = waktu foto diambil menurut jam server webapp (dikirim halaman kamera); bila tidak valid pakai now() server database.
+    $waktuSql    = "now()";
+    $waktu_ambil = isset($_POST["waktu_ambil"]) ? trim($_POST["waktu_ambil"]) : "";
+    if(preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/',$waktu_ambil)){
+        if(abs(strtotime($waktu_ambil)-strtotime(getOne("select now()"))) <= 3600){
+            $waktuSql = "'".$waktu_ambil."'";
+        }
+    }
+
     $img        = $_POST["image"];
     $folderPath = "upload/";
     $image_parts     = explode(";base64,", $img);
@@ -24,15 +33,16 @@
         // waktu_persetujuan = tanggal & jam foto verifikasi diambil (kolom dibuat oleh sql/05).
         // Bila sql/05 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
         try {
-            Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName',now()");
+            Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName',".$waktuSql);
         } catch (mysqli_sql_exception $e1) {
             if($e1->getCode() != 1136){
                 throw $e1;
             }
             Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nosurat."','pages/upload/$fileName'");
         }
+        $waktuTampil = ($waktuSql=="now()") ? getOne("select DATE_FORMAT(now(),'%d-%m-%Y %H:%i:%s')") : date('d-m-Y H:i:s',strtotime($waktu_ambil));
         Ubah2("surat_persetujuan_umum","pengobatan_kepada='$pengobatan_kepada',nilai_kepercayaan='$nilai_kepercayaan' where no_surat='$nosurat'");
-        echo $htmlHead."<body><center>Proses Pengambilan Persetujuan Umum Pasien/Keluarga Pasien Sudah Selesai ..!! <br><a href='".$urlKembali."' class='btn btn-secondary'>Kembali</a></center></body>";
+        echo $htmlHead."<body><center>Proses Pengambilan Persetujuan Umum Pasien/Keluarga Pasien Sudah Selesai ..!! <br>Waktu verifikasi : ".$waktuTampil."<br><a href='".$urlKembali."' class='btn btn-secondary'>Kembali</a></center></body>";
     } catch (mysqli_sql_exception $e) {
         if($e->getCode() == 1062){
             echo $htmlHead."<body><center>Gagal, kemungkinan sudah dilakukan pengambilan persetujuan sebelumnya ..!! <br><a href='".$urlKembali."' class='btn btn-secondary'>Kembali</a></center></body>";

@@ -51,6 +51,15 @@
         $biaya_konfirmasi = "true";
     }
     
+    // Waktu verifikasi = waktu foto diambil menurut jam server webapp (dikirim halaman kamera); bila tidak valid pakai now() server database.
+    $waktuSql    = "now()";
+    $waktu_ambil = isset($_POST["waktu_ambil"]) ? trim($_POST["waktu_ambil"]) : "";
+    if(preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/',$waktu_ambil)){
+        if(abs(strtotime($waktu_ambil)-strtotime(getOne("select now()"))) <= 3600){
+            $waktuSql = "'".$waktu_ambil."'";
+        }
+    }
+
     $pilihansetuju  = validTeks4($_POST["pilihansetuju"],20);
     $img            = $_POST["image"];
     $folderPath     = "upload/";
@@ -69,18 +78,19 @@
         // waktu_persetujuan = tanggal & jam foto persetujuan diambil (kolom dibuat oleh sql/05).
         // Bila sql/04 belum dijalankan (jumlah kolom tidak cocok), simpan tanpa jam agar tetap berfungsi.
         try {
-            Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName',now()");
+            Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName',".$waktuSql);
         } catch (mysqli_sql_exception $e1) {
             if($e1->getCode() != 1136){
                 throw $e1;
             }
             Tambah3("bukti_persetujuan_penolakan_tindakan_penerimainformasi","'".$nopernyataan."','pages/upload/$fileName'");
         }
+        $waktuTampil = ($waktuSql=="now()") ? getOne("select DATE_FORMAT(now(),'%d-%m-%Y %H:%i:%s')") : date('d-m-Y H:i:s',strtotime($waktu_ambil));
         Ubah2("persetujuan_penolakan_tindakan","diagnosa_konfirmasi='$diagnosa_konfirmasi',tindakan_konfirmasi='$tindakan_konfirmasi',indikasi_tindakan_konfirmasi='$indikasi_tindakan_konfirmasi',
                tata_cara_konfirmasi='$tata_cara_konfirmasi',tujuan_konfirmasi='$tujuan_konfirmasi',risiko_konfirmasi='$risiko_konfirmasi',komplikasi_konfirmasi='$komplikasi_konfirmasi',
                prognosis_konfirmasi='$prognosis_konfirmasi',alternatif_konfirmasi='$alternatif_konfirmasi',biaya_konfirmasi='$biaya_konfirmasi',lain_lain_konfirmasi='$lain_lain_konfirmasi',
                pernyataan='$pilihansetuju' where no_pernyataan='$nopernyataan'");
-        echo $htmlHead."<body><center>Proses pengambilan persetujuan Pembuat Pernyataan/Penerima Informasi sudah selesai ..!! <br/>Silahkan lanjutkan untuk Pengambilan Saksi 1 Keluarga<br/><a href='".$urlLanjutkan."' class='btn btn-secondary'>Lanjutkan</a></center></body>";
+        echo $htmlHead."<body><center>Proses pengambilan persetujuan Pembuat Pernyataan/Penerima Informasi sudah selesai ..!! <br/>Waktu verifikasi : ".$waktuTampil."<br/>Silahkan lanjutkan untuk Pengambilan Saksi 1 Keluarga<br/><a href='".$urlLanjutkan."' class='btn btn-secondary'>Lanjutkan</a></center></body>";
     } catch (mysqli_sql_exception $e) {
         if($e->getCode() == 1062){
             echo $htmlHead."<body><center>Gagal, kemungkinan sudah dilakukan pengambilan persetujuan sebelumnya ..!! <br><a href='".$urlLanjutkan."' class='btn btn-secondary'>Kembali</a></center></body>";

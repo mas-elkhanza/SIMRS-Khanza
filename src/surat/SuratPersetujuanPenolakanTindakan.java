@@ -609,7 +609,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         NmDokter.setName("NmDokter"); // NOI18N
         NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter);
-        NmDokter.setBounds(156, 40, 144, 23);
+        NmDokter.setBounds(156, 40, 120, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -627,7 +627,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(302, 40, 28, 23);
+        BtnDokter.setBounds(278, 40, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -655,7 +655,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
-        label11.setBounds(336, 40, 57, 23);
+        label11.setBounds(312, 40, 57, 23);
 
         jLabel11.setText("J.K. :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -692,7 +692,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(TglPernyataan);
-        TglPernyataan.setBounds(395, 40, 90, 23);
+        TglPernyataan.setBounds(371, 40, 90, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -702,7 +702,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(488, 40, 44, 23);
+        Jam.setBounds(464, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -712,7 +712,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(534, 40, 44, 23);
+        Menit.setBounds(528, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -722,7 +722,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(580, 40, 44, 23);
+        Detik.setBounds(592, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -731,12 +731,12 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(626, 40, 23, 23);
+        ChkKejadian.setBounds(656, 40, 23, 23);
 
         jLabel9.setText("No.Pernyataan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(655, 40, 90, 23);
+        jLabel9.setBounds(683, 40, 90, 23);
 
         NoPenyataan.setHighlighter(null);
         NoPenyataan.setName("NoPenyataan"); // NOI18N
@@ -746,7 +746,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             }
         });
         FormInput.add(NoPenyataan);
-        NoPenyataan.setBounds(749, 40, 105, 23);
+        NoPenyataan.setBounds(777, 40, 105, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1663,7 +1663,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                                             "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
                                             "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
                                             "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                                            "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                                            "<td valign='top'>"+tglJam(rs.getString("tanggal"))+"</td>"+
                                             "<td valign='top'>"+rs.getString("diagnosa")+"</td>"+
                                             "<td valign='top' align='center'><input type=checkbox "+rs.getString("diagnosa_konfirmasi").replaceAll("true","checked").replaceAll("false","")+"></td>"+
                                             "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
@@ -1776,7 +1776,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                                             "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
                                             "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
                                             "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                                            "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                                            "<td valign='top'>"+tglJam(rs.getString("tanggal"))+"</td>"+
                                             "<td valign='top'>"+rs.getString("diagnosa")+"</td>"+
                                             "<td valign='top' align='center'><input type=checkbox "+rs.getString("diagnosa_konfirmasi").replaceAll("true","checked").replaceAll("false","")+"></td>"+
                                             "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
@@ -1838,7 +1838,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                                 ); 
                                 while(rs.next()){
                                     htmlContent.append(
-                                        "\""+rs.getString("no_pernyataan")+"\";\""+rs.getString("no_rawat")+"\";\" "+rs.getString("no_rkm_medis")+"\";\""+rs.getString("nm_pasien")+"\";\""+rs.getString("tgl_lahir")+"\";\""+rs.getString("jk")+"\";\""+rs.getString("tanggal")+"\";\""+rs.getString("diagnosa")+"\";\""+rs.getString("diagnosa_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tindakan")+"\";\""+rs.getString("tindakan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("indikasi_tindakan")+"\";\""+rs.getString("indikasi_tindakan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tata_cara")+"\";\""+rs.getString("tata_cara_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tujuan")+"\";\""+rs.getString("tujuan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("risiko")+"\";\""+rs.getString("risiko_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("komplikasi")+"\";\""+rs.getString("komplikasi_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("prognosis")+"\";\""+rs.getString("prognosis_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("alternatif_dan_risikonya")+"\";\""+rs.getString("alternatif_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("lain_lain")+"\";\""+rs.getString("lain_lain_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("biaya")+"\";\""+rs.getString("biaya_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("kd_dokter")+"\";\""+rs.getString("nm_dokter")+"\";\""+rs.getString("nip")+"\";\""+rs.getString("nama")+"\";\""+rs.getString("penerima_informasi")+"\";\""+rs.getString("alasan_diwakilkan_penerima_informasi")+"\";\""+rs.getString("jk_penerima_informasi")+"\";\""+rs.getString("tanggal_lahir_penerima_informasi")+"\";\""+rs.getString("umur_penerima_informasi")+"\";\""+rs.getString("alamat_penerima_informasi")+"\";\""+rs.getString("no_hp")+"\";\""+rs.getString("hubungan_penerima_informasi")+"\";\""+rs.getString("pernyataan")+"\";\""+rs.getString("saksi_keluarga")+"\"\n"
+                                        "\""+rs.getString("no_pernyataan")+"\";\""+rs.getString("no_rawat")+"\";\" "+rs.getString("no_rkm_medis")+"\";\""+rs.getString("nm_pasien")+"\";\""+rs.getString("tgl_lahir")+"\";\""+rs.getString("jk")+"\";\""+tglJam(rs.getString("tanggal"))+"\";\""+rs.getString("diagnosa")+"\";\""+rs.getString("diagnosa_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tindakan")+"\";\""+rs.getString("tindakan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("indikasi_tindakan")+"\";\""+rs.getString("indikasi_tindakan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tata_cara")+"\";\""+rs.getString("tata_cara_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("tujuan")+"\";\""+rs.getString("tujuan_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("risiko")+"\";\""+rs.getString("risiko_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("komplikasi")+"\";\""+rs.getString("komplikasi_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("prognosis")+"\";\""+rs.getString("prognosis_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("alternatif_dan_risikonya")+"\";\""+rs.getString("alternatif_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("lain_lain")+"\";\""+rs.getString("lain_lain_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("biaya")+"\";\""+rs.getString("biaya_konfirmasi").replaceAll("true","Ya").replaceAll("false","Tidak")+"\";\""+rs.getString("kd_dokter")+"\";\""+rs.getString("nm_dokter")+"\";\""+rs.getString("nip")+"\";\""+rs.getString("nama")+"\";\""+rs.getString("penerima_informasi")+"\";\""+rs.getString("alasan_diwakilkan_penerima_informasi")+"\";\""+rs.getString("jk_penerima_informasi")+"\";\""+rs.getString("tanggal_lahir_penerima_informasi")+"\";\""+rs.getString("umur_penerima_informasi")+"\";\""+rs.getString("alamat_penerima_informasi")+"\";\""+rs.getString("no_hp")+"\";\""+rs.getString("hubungan_penerima_informasi")+"\";\""+rs.getString("pernyataan")+"\";\""+rs.getString("saksi_keluarga")+"\"\n"
                                     );
                                 }
                                 f = new File("PersetujuanPenolakanTindakan.csv");            
@@ -2542,7 +2542,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),tglJam(rs.getString("tanggal")),
                         rs.getString("diagnosa"),rs.getBoolean("diagnosa_konfirmasi"),rs.getString("tindakan"),rs.getBoolean("tindakan_konfirmasi"),rs.getString("indikasi_tindakan"),
                         rs.getBoolean("indikasi_tindakan_konfirmasi"),rs.getString("tata_cara"),rs.getBoolean("tata_cara_konfirmasi"),rs.getString("tujuan"),rs.getBoolean("tujuan_konfirmasi"),
                         rs.getString("risiko"),rs.getBoolean("risiko_konfirmasi"),rs.getString("komplikasi"),rs.getBoolean("komplikasi_konfirmasi"),rs.getString("prognosis"),rs.getBoolean("prognosis_konfirmasi"),
@@ -2843,6 +2843,14 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }
     }
     
+    /** "yyyy-MM-dd HH:mm:ss.0" (kolom datetime) -> "yyyy-MM-dd HH:mm:ss" agar tabel tidak menampilkan pecahan detik. */
+    private String tglJam(String tanggal){
+        if(tanggal==null){
+            return null;
+        }
+        return tanggal.length()>19?tanggal.substring(0,19):tanggal;
+    }
+
     /** Jam berjalan (real time) selama kotak "kejadian" dicentang; bila tidak, jam diisi manual. */
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
