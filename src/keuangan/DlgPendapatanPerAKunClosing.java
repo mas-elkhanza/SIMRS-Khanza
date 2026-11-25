@@ -724,6 +724,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                 rs=ps.executeQuery();
                 while(rs.next()){                            
+                    nonota=rs.getString("no_nota");
                     if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
                             "<tr class='isi'>").append(
@@ -1136,6 +1137,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                 rs=ps.executeQuery();
                 while(rs.next()){                            
+                    nonota=rs.getString("no_nota");
                     if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
                             "<tr class='isi'>").append(

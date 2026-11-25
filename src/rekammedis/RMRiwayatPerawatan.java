@@ -39324,10 +39324,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             if(chkLaporanMESO.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
-                            "select laporan_meso.no_laporan,laporan_meso.tanggal,laporan_meso.nip,petugas.nama,laporan_meso.tgl_mula_eso,laporan_meso.manifestasi_eso,"+
-                            "laporan_meso.kesudahan_eso,laporan_meso.tgl_kesudahan_eso,laporan_meso.skor_naranjo,laporan_meso.kategori_naranjo "+
-                            "from laporan_meso inner join petugas on laporan_meso.nip=petugas.nip "+
-                            "where laporan_meso.no_rawat='"+norawat+"' order by laporan_meso.tanggal,laporan_meso.no_laporan").executeQuery();
+                        "select laporan_meso.no_laporan,laporan_meso.tanggal,laporan_meso.nip,petugas.nama,laporan_meso.tgl_mula_eso,laporan_meso.manifestasi_eso,"+
+                        "laporan_meso.kesudahan_eso,laporan_meso.tgl_kesudahan_eso,laporan_meso.skor_naranjo,laporan_meso.kategori_naranjo from laporan_meso "+
+                        "inner join petugas on laporan_meso.nip=petugas.nip where laporan_meso.no_rawat='"+norawat+"' "+
+                        "order by laporan_meso.tanggal,laporan_meso.no_laporan"
+                    ).executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
                           "<tr class='isi'>").append( 
@@ -39345,7 +39346,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
-                                              "<td width='70%' border='0'>Pelapor : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                              "<td width='40%' border='0'>Pelapor : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
+                                              "<td width='30%' border='0'>No.Laporan : ").append(rs2.getString("no_laporan")).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
