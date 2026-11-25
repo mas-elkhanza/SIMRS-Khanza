@@ -248,6 +248,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan;
     private ResultSet rs,rstindakan;
     private int i=0,jmlparsial=0,jml=0,index=0,tinggi=0;
+    private widget.FilterMenu TCariMenu;
     private String aktifkanparsial="no",kode_poli="",kd_pj="",TANGGALMUNDUR="yes",pilihiterasi="";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
@@ -1122,6 +1123,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         isForm3(); 
         ChkInput3.setSelected(false);
         isForm4();
+        TCariMenu=new widget.FilterMenu(FormMenu);
+        PanelAccor.add(TCariMenu,java.awt.BorderLayout.NORTH);
         ChkAccor.setSelected(true);
         isMenu(); 
         jam();
@@ -11318,16 +11321,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(205,HEIGHT));
             FormMenu.setVisible(true);  
+            TCariMenu.setVisible(true);
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);
+            TCariMenu.setVisible(false);
             ChkAccor.setVisible(true);
         }
     }
     
     public void isCek(){
+        TCariMenu.setText("");
         tinggi=0;
         BtnSimpan.setEnabled(akses.gettindakan_ralan());
         BtnHapus.setEnabled(akses.gettindakan_ralan());
