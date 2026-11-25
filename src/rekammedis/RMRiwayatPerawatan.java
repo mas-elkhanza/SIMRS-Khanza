@@ -93,6 +93,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private JsonNode root;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private widget.FilterMenu TCariMenu;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -225,6 +226,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
             }
         });
         
+        TCariMenu=new widget.FilterMenu(FormMenu);
+        PanelAccor.add(TCariMenu,java.awt.BorderLayout.NORTH);
+        TCariMenu.pinTercentang(chkSemua);
         ChkAccor.setSelected(false);
         isMenu();
     }    
@@ -3962,11 +3966,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(275,HEIGHT));
             FormMenu.setVisible(true); 
+            TCariMenu.setVisible(true);
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);    
+            TCariMenu.setVisible(false);
             ChkAccor.setVisible(true);
         }
     }
