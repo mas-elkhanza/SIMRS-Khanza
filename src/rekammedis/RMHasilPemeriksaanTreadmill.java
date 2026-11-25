@@ -161,7 +161,7 @@ public final class RMHasilPemeriksaanTreadmill extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
         DiagnosaKlinis.setDocument(new batasInput((int)50).getKata(DiagnosaKlinis));
-        KeteranganProtokol.setDocument(new batasInput((int)30).getKata(KeteranganProtokol));
+        KeteranganProtokol.setDocument(new batasInput((int)200).getKata(KeteranganProtokol));
         TDAwal.setDocument(new batasInput((int)8).getKata(TDAwal));
         NadiAwal.setDocument(new batasInput((int)5).getKata(NadiAwal));
         DenyutJantungMaksimal.setDocument(new batasInput((int)5).getKata(DenyutJantungMaksimal));
