@@ -1,58 +1,40 @@
 package fungsi;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
  * @author windiartonugroho
  */
 public class cacherawatinap {
-    private static boolean PilihanBelumPulang=true,PilihanTanggalMasuk=false,PilihanTanggalPulang=false;
-    private static Date TanggalMasuk1=null,TanggalMasuk2=null,TanggalPulang1=null,TanggalPulang2=null;
-    private static String KeyWord=null,StatusBayar=null,Kamar=null;
-    private static final ArrayList<Object[]> DataPasien = new ArrayList<>();
+    private static String KodePetugas=null,NamaPetugas=null,KodePetugas2=null,NamaPetugas2=null,KodePemeriksa=null,NamaPemeriksa=null,JabatanPemeriksa;
     
-    public static void SetPilihanBelumPulang(boolean status) {PilihanBelumPulang=status;}
-    public static boolean getPilihanBelumPulang(){return PilihanBelumPulang;}
+    public static void SetKodePetugas(String data) {KodePetugas=data;}
+    public static String getKodePetugas(){return KodePetugas;}
     
-    public static void SetPilihanTanggalMasuk(boolean status) {PilihanTanggalMasuk=status;}
-    public static boolean getPilihanTanggalMasuk(){return PilihanTanggalMasuk;}
+    public static void SetNamaPetugas(String data) {NamaPetugas=data;}
+    public static String getNamaPetugas(){return NamaPetugas;}
     
-    public static void SetPilihanTanggalPulang(boolean status) {PilihanTanggalPulang=status;}
-    public static boolean getPilihanTanggalPulang(){return PilihanTanggalPulang;}
+    public static void SetKodePetugas2(String data) {KodePetugas2=data;}
+    public static String getKodePetugas2(){return KodePetugas2;}
     
-    public static void SetTanggalMasuk1(Date tanggal) {TanggalMasuk1=tanggal;}
-    public static Date getTanggalMasuk1(){return TanggalMasuk1;}
+    public static void SetNamaPetugas2(String data) {NamaPetugas2=data;}
+    public static String getNamaPetugas2(){return NamaPetugas2;}
     
-    public static void SetTanggalMasuk2(Date tanggal) {TanggalMasuk2=tanggal;}
-    public static Date getTanggalMasuk2(){return TanggalMasuk2;}
+    public static void SetKodePemeriksa(String data) {KodePemeriksa=data;}
+    public static String getKodePemeriksa(){return KodePemeriksa;}
     
-    public static void SetTanggalPulang1(Date tanggal) {TanggalPulang1=tanggal;}
-    public static Date getTanggalPulang1(){return TanggalPulang1;}
+    public static void SetNamaPemeriksa(String data) {NamaPemeriksa=data;}
+    public static String getNamaPemeriksa(){return NamaPemeriksa;}
     
-    public static void SetTanggalPulang2(Date tanggal) {TanggalPulang2=tanggal;}
-    public static Date getTanggalPulang2(){return TanggalPulang2;}
+    public static void SetJabatanPemeriksa(String data) {JabatanPemeriksa=data;}
+    public static String getJabatanPemeriksa(){return JabatanPemeriksa;}
     
-    public static void SetKeyWord(String data) {KeyWord=data;}
-    public static String getKeyWord(){return KeyWord;}
-    
-    public static void SetStatusBayar(String data) {StatusBayar=data;}
-    public static String getStatusBayar(){return StatusBayar;}
-    
-    public static void SetKamar(String data) {Kamar=data;}
-    public static String getKamar(){return Kamar;}
-    
-    public static void setDataPasien(Object[] baris) { DataPasien.add(baris); }
-    public static ArrayList<Object[]> getDataPasien() { return DataPasien; }
-    public static void clearDataPasien() { DataPasien.clear(); }
     public static void reset() {
-        TanggalMasuk1=null;
-        TanggalMasuk2=null;
-        TanggalPulang1=null;
-        TanggalPulang2=null;
-        KeyWord=null;
-        StatusBayar=null;
-        Kamar=null;
-        DataPasien.clear();
+        KodePetugas=null;
+        NamaPetugas=null;
+        KodePetugas2=null;
+        NamaPetugas2=null;
+        KodePemeriksa=null;
+        NamaPemeriksa=null;
+        JabatanPemeriksa=null;
     }
 }

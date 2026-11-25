@@ -41,7 +41,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akseskamarinapralan;
 import fungsi.akuntindakanralan;
-import fungsi.cacherawatjalan;
+import fungsi.cachekasirralan;
 import fungsi.catatanpasien;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
@@ -9123,22 +9123,22 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
-        cacherawatjalan.SetTanggalAwal(DTPCari1.getDate());
-        cacherawatjalan.SetTanggalAkhir(DTPCari2.getDate());
-        cacherawatjalan.SetKeyWord(TCari.getText());
-        cacherawatjalan.SetDokter(CrPtg.getText());
-        cacherawatjalan.SetPoli(CrPoli.getText());
-        cacherawatjalan.SetPenjab(caripenjab);
-        cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
-        cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
-        cacherawatjalan.clearDataPasien();
+        cachekasirralan.SetTanggalAwal(DTPCari1.getDate());
+        cachekasirralan.SetTanggalAkhir(DTPCari2.getDate());
+        cachekasirralan.SetKeyWord(TCari.getText());
+        cachekasirralan.SetDokter(CrPtg.getText());
+        cachekasirralan.SetPoli(CrPoli.getText());
+        cachekasirralan.SetPenjab(caripenjab);
+        cachekasirralan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cachekasirralan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
+        cachekasirralan.clearDataPasien();
         
         for (i = 0; i < tabModekasir.getRowCount(); i++) {
             Object[] baris = new Object[tabModekasir.getColumnCount()];
             for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
                 baris[j] = tabModekasir.getValueAt(i, j);
             }
-            cacherawatjalan.setDataPasien(baris);
+            cachekasirralan.setDataPasien(baris);
         }
     }
     
@@ -9147,44 +9147,44 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             akuntindakanralan.SetAkunTindakanRalan();
         }
         
-        if(cacherawatjalan.getTanggalAwal()!=null){
-            DTPCari1.setDate(cacherawatjalan.getTanggalAwal());
+        if(cachekasirralan.getTanggalAwal()!=null){
+            DTPCari1.setDate(cachekasirralan.getTanggalAwal());
         }
         
-        if(cacherawatjalan.getTanggalAkhir()!=null){
-            DTPCari2.setDate(cacherawatjalan.getTanggalAkhir());
+        if(cachekasirralan.getTanggalAkhir()!=null){
+            DTPCari2.setDate(cachekasirralan.getTanggalAkhir());
         }
         
-        if(cacherawatjalan.getKeyWord()!=null){
-            TCari.setText(cacherawatjalan.getKeyWord());
+        if(cachekasirralan.getKeyWord()!=null){
+            TCari.setText(cachekasirralan.getKeyWord());
         }
         
-        if(cacherawatjalan.getDokter()!=null){
-            CrPtg.setText(cacherawatjalan.getDokter());
+        if(cachekasirralan.getDokter()!=null){
+            CrPtg.setText(cachekasirralan.getDokter());
         }
         
-        if(cacherawatjalan.getPoli()!=null){
-            CrPoli.setText(cacherawatjalan.getPoli());
+        if(cachekasirralan.getPoli()!=null){
+            CrPoli.setText(cachekasirralan.getPoli());
         }
         
-        if(cacherawatjalan.getPenjab()!=null){
-            caripenjab=cacherawatjalan.getPenjab();
+        if(cachekasirralan.getPenjab()!=null){
+            caripenjab=cachekasirralan.getPenjab();
         }
         
-        if(cacherawatjalan.getStatusBayar()!=null){
-            cmbStatusBayar.setSelectedItem(cacherawatjalan.getStatusBayar());
+        if(cachekasirralan.getStatusBayar()!=null){
+            cmbStatusBayar.setSelectedItem(cachekasirralan.getStatusBayar());
         }
         
-        if(cacherawatjalan.getStatusPelayanan()!=null){
-            cmbStatus.setSelectedItem(cacherawatjalan.getStatusPelayanan());
+        if(cachekasirralan.getStatusPelayanan()!=null){
+            cmbStatus.setSelectedItem(cachekasirralan.getStatusPelayanan());
         }
         
-        if(!cacherawatjalan.getDataPasien().isEmpty()){
-            for (Object[] baris : cacherawatjalan.getDataPasien()) {
+        if(!cachekasirralan.getDataPasien().isEmpty()){
+            for (Object[] baris : cachekasirralan.getDataPasien()) {
                 tabModekasir.addRow(baris);
             }
             LCount.setText("" + tabModekasir.getRowCount());
-            cacherawatjalan.clearDataPasien();
+            cachekasirralan.clearDataPasien();
         }else{
             tampilkasir();
         }

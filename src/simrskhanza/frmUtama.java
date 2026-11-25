@@ -672,8 +672,8 @@ import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
 import dapur.DapurVerifikasiPenerimaan;
 import fungsi.cacheigd;
-import fungsi.cacherawatinap;
-import fungsi.cacherawatjalan;
+import fungsi.cachekamarinap;
+import fungsi.cachekasirralan;
 import fungsi.cacheregistrasi;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
@@ -8335,8 +8335,8 @@ public class frmUtama extends javax.swing.JFrame {
         }else {
             try {   
                 cacheigd.reset();
-                cacherawatjalan.reset();
-                cacherawatinap.reset();
+                cachekasirralan.reset();
+                cachekamarinap.reset();
                 cacheregistrasi.reset();
                 akses.setData(edAdmin.getText(),edPwd.getText());        
                 if(akses.getjml1()>=1){    

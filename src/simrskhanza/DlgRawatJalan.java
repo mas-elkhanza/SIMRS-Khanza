@@ -23,6 +23,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akuntindakanralan;
+import fungsi.cacherawatjalan;
 import fungsi.copypastesoapralan;
 import fungsi.kodebpjs;
 import fungsi.tarifralan;
@@ -1506,6 +1507,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -5095,9 +5099,47 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
+        cacherawatjalan.SetKodePetugas(kdptg.getText());
+        cacherawatjalan.SetNamaPetugas(TPerawat.getText());
+        cacherawatjalan.SetKodePetugas2(kdptg2.getText());
+        cacherawatjalan.SetNamaPetugas2(TPerawat2.getText());
+        cacherawatjalan.SetKodePemeriksa(KdPeg.getText());
+        cacherawatjalan.SetNamaPemeriksa(TPegawai.getText());
+        cacherawatjalan.SetJabatanPemeriksa(Jabatan.getText());
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
             akuntindakanralan.SetAkunTindakanRalan();
+        }
+        
+        if(cacherawatjalan.getKodePetugas()!=null){
+            kdptg.setText(cacherawatjalan.getKodePetugas());
+        }
+        
+        if(cacherawatjalan.getNamaPetugas()!=null){
+            TPerawat.setText(cacherawatjalan.getNamaPetugas());
+        }
+        
+        if(cacherawatjalan.getKodePetugas2()!=null){
+            kdptg2.setText(cacherawatjalan.getKodePetugas2());
+        }
+        
+        if(cacherawatjalan.getNamaPetugas2()!=null){
+            TPerawat2.setText(cacherawatjalan.getNamaPetugas2());
+        }
+        
+        if(cacherawatjalan.getKodePemeriksa()!=null){
+            KdPeg.setText(cacherawatjalan.getKodePemeriksa());
+        }
+        
+        if(cacherawatjalan.getNamaPemeriksa()!=null){
+            TPegawai.setText(cacherawatjalan.getNamaPemeriksa());
+        }
+        
+        if(cacherawatjalan.getJabatanPemeriksa()!=null){
+            Jabatan.setText(cacherawatjalan.getJabatanPemeriksa());
         }
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

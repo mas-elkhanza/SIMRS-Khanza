@@ -120,7 +120,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Nama (Singkatan) : "+$F{nm_pasien}.trim().replaceAll("(\\S)\\S*\\s*","$1").toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Nama : "+$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
 				<reportElement x="125" y="36" width="92" height="22" uuid="e889392a-47dc-4d3d-854e-0ee715be93a0"/>

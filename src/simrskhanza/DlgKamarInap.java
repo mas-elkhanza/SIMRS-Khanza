@@ -38,7 +38,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.lokasidepoutama;
-import fungsi.cacherawatinap;
+import fungsi.cachekamarinap;
 import fungsi.pengaturankamarinap;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
@@ -8017,24 +8017,24 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) { 
-        cacherawatinap.SetPilihanBelumPulang(R1.isSelected());
-        cacherawatinap.SetPilihanTanggalMasuk(R2.isSelected());
-        cacherawatinap.SetPilihanTanggalPulang(R3.isSelected());
-        cacherawatinap.SetTanggalMasuk1(DTPCari1.getDate());
-        cacherawatinap.SetTanggalMasuk2(DTPCari2.getDate());
-        cacherawatinap.SetTanggalPulang1(DTPCari3.getDate());
-        cacherawatinap.SetTanggalPulang2(DTPCari4.getDate());
-        cacherawatinap.SetKeyWord(TCari.getText());
-        cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
-        cacherawatinap.SetKamar(BangsalCari.getText());
+        cachekamarinap.SetPilihanBelumPulang(R1.isSelected());
+        cachekamarinap.SetPilihanTanggalMasuk(R2.isSelected());
+        cachekamarinap.SetPilihanTanggalPulang(R3.isSelected());
+        cachekamarinap.SetTanggalMasuk1(DTPCari1.getDate());
+        cachekamarinap.SetTanggalMasuk2(DTPCari2.getDate());
+        cachekamarinap.SetTanggalPulang1(DTPCari3.getDate());
+        cachekamarinap.SetTanggalPulang2(DTPCari4.getDate());
+        cachekamarinap.SetKeyWord(TCari.getText());
+        cachekamarinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cachekamarinap.SetKamar(BangsalCari.getText());
         
-        cacherawatinap.clearDataPasien();
+        cachekamarinap.clearDataPasien();
         for (i = 0; i < tabMode.getRowCount(); i++) {
             Object[] baris = new Object[tabMode.getColumnCount()];
             for (int j = 0; j < tabMode.getColumnCount(); j++) {
                 baris[j] = tabMode.getValueAt(i, j);
             }
-            cacherawatinap.setDataPasien(baris);
+            cachekamarinap.setDataPasien(baris);
         }
     }
     
@@ -8049,44 +8049,44 @@ public class DlgKamarInap extends javax.swing.JDialog {
             diagnosaakhir.setEditable(false);
         }
         
-        if(cacherawatinap.getTanggalMasuk1()!=null){
-            DTPCari1.setDate(cacherawatinap.getTanggalMasuk1());
+        if(cachekamarinap.getTanggalMasuk1()!=null){
+            DTPCari1.setDate(cachekamarinap.getTanggalMasuk1());
         }
         
-        if(cacherawatinap.getTanggalMasuk2()!=null){
-            DTPCari2.setDate(cacherawatinap.getTanggalMasuk2());
+        if(cachekamarinap.getTanggalMasuk2()!=null){
+            DTPCari2.setDate(cachekamarinap.getTanggalMasuk2());
         }
         
-        if(cacherawatinap.getTanggalPulang1()!=null){
-            DTPCari3.setDate(cacherawatinap.getTanggalPulang1());
+        if(cachekamarinap.getTanggalPulang1()!=null){
+            DTPCari3.setDate(cachekamarinap.getTanggalPulang1());
         }
         
-        if(cacherawatinap.getTanggalPulang2()!=null){
-            DTPCari4.setDate(cacherawatinap.getTanggalPulang2());
+        if(cachekamarinap.getTanggalPulang2()!=null){
+            DTPCari4.setDate(cachekamarinap.getTanggalPulang2());
         }
         
-        if(cacherawatinap.getKeyWord()!=null){
-            TCari.setText(cacherawatinap.getKeyWord());
+        if(cachekamarinap.getKeyWord()!=null){
+            TCari.setText(cachekamarinap.getKeyWord());
         }
         
-        if(cacherawatinap.getStatusBayar()!=null){
-            cmbStatusBayar.setSelectedItem(cacherawatinap.getStatusBayar());
+        if(cachekamarinap.getStatusBayar()!=null){
+            cmbStatusBayar.setSelectedItem(cachekamarinap.getStatusBayar());
         }
         
-        if(cacherawatinap.getKamar()!=null){
-            BangsalCari.setText(cacherawatinap.getKamar());
+        if(cachekamarinap.getKamar()!=null){
+            BangsalCari.setText(cachekamarinap.getKamar());
         }
         
-        R1.setSelected(cacherawatinap.getPilihanBelumPulang());
-        R2.setSelected(cacherawatinap.getPilihanTanggalMasuk());
-        R3.setSelected(cacherawatinap.getPilihanTanggalPulang());
+        R1.setSelected(cachekamarinap.getPilihanBelumPulang());
+        R2.setSelected(cachekamarinap.getPilihanTanggalMasuk());
+        R3.setSelected(cachekamarinap.getPilihanTanggalPulang());
         
-        if(!cacherawatinap.getDataPasien().isEmpty()){
-            for (Object[] baris : cacherawatinap.getDataPasien()) {
+        if(!cachekamarinap.getDataPasien().isEmpty()){
+            for (Object[] baris : cachekamarinap.getDataPasien()) {
                 tabMode.addRow(baris);
             }
             LCount.setText("" + tabMode.getRowCount());
-            cacherawatinap.clearDataPasien();
+            cachekamarinap.clearDataPasien();
         }else{
             tampil();
         }
