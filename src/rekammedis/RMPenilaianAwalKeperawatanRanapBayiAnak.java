@@ -7335,6 +7335,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 "penilaian_awal_keperawatan_ranap_bayi.nyeri_diberitahukan_pada_dokter as pada_dokter, "+
                 "penilaian_awal_keperawatan_ranap_bayi.nyeri_diberitahukan_pada_dokter_keterangan as ket_dokter, "+
                 "penilaian_awal_keperawatan_ranap_bayi.rencana, "+
+                "penilaian_awal_keperawatan_ranap_bayi.informasi_perencanaan_pulang,penilaian_awal_keperawatan_ranap_bayi.lama_ratarata,penilaian_awal_keperawatan_ranap_bayi.perencanaan_pulang,penilaian_awal_keperawatan_ranap_bayi.kondisi_klinis_pulang, "+
+                "penilaian_awal_keperawatan_ranap_bayi.perawatan_lanjutan_dirumah,penilaian_awal_keperawatan_ranap_bayi.cara_transportasi_pulang,penilaian_awal_keperawatan_ranap_bayi.transportasi_digunakan, "+
                 "penilaian_awal_keperawatan_ranap_bayi.nip1 as nip, "+
                 "petugas.nama "+
                 "from reg_periksa "+

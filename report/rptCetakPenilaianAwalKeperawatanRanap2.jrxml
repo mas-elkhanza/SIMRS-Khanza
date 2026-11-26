@@ -78,7 +78,7 @@
 			penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,
 			penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,
 			penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,
-			penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,
+			penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.informasi_perencanaan_pulang,penilaian_awal_keperawatan_ranap.lama_ratarata,penilaian_awal_keperawatan_ranap.perencanaan_pulang,penilaian_awal_keperawatan_ranap.kondisi_klinis_pulang,penilaian_awal_keperawatan_ranap.perawatan_lanjutan_dirumah,penilaian_awal_keperawatan_ranap.cara_transportasi_pulang,penilaian_awal_keperawatan_ranap.transportasi_digunakan,penilaian_awal_keperawatan_ranap.nip1,
 			penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter 
                 from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                 inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat 
@@ -492,16 +492,23 @@
 	<field name="nip1" class="java.lang.String"/>
 	<field name="nip2" class="java.lang.String"/>
 	<field name="kd_dokter" class="java.lang.String"/>
+	<field name="informasi_perencanaan_pulang" class="java.lang.String"/>
+	<field name="lama_ratarata" class="java.lang.String"/>
+	<field name="perencanaan_pulang" class="java.sql.Date"/>
+	<field name="kondisi_klinis_pulang" class="java.lang.String"/>
+	<field name="perawatan_lanjutan_dirumah" class="java.lang.String"/>
+	<field name="cara_transportasi_pulang" class="java.lang.String"/>
+	<field name="transportasi_digunakan" class="java.lang.String"/>
 	<title>
-		<band height="630">
+		<band height="669">
 			<rectangle>
-				<reportElement x="0" y="20" width="557" height="609" uuid="1a9c0c49-677d-4e5d-9fb8-e3319c2f81d5"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="20" width="557" height="648" uuid="1a9c0c49-677d-4e5d-9fb8-e3319c2f81d5"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="2" y="555" width="549" height="11" uuid="34e584e5-9745-4c37-9d14-2962fad7933b">
+				<reportElement positionType="Float" x="2" y="594" width="549" height="11" uuid="34e584e5-9745-4c37-9d14-2962fad7933b">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -512,19 +519,19 @@
 				<text><![CDATA[YANG MELAKUKAN PENGKAJIAN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="553" width="557" height="1" uuid="0ad013ce-d028-41fb-afa3-63895427a557"/>
+				<reportElement positionType="Float" x="0" y="592" width="557" height="1" uuid="0ad013ce-d028-41fb-afa3-63895427a557"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="567" width="557" height="1" uuid="bf801b91-a1da-4203-9a34-e4e34270faae"/>
+				<reportElement positionType="Float" x="0" y="606" width="557" height="1" uuid="bf801b91-a1da-4203-9a34-e4e34270faae"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="252" y="565" width="1" height="63" uuid="07c6f0b3-8e45-4323-b9e9-676d52fd36ed">
+				<reportElement positionType="Float" x="252" y="604" width="1" height="63" uuid="07c6f0b3-8e45-4323-b9e9-676d52fd36ed">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -532,7 +539,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="2" y="569" width="250" height="11" uuid="21e46dcb-9357-4dca-bb70-034177f1260f">
+				<reportElement positionType="Float" x="2" y="608" width="250" height="11" uuid="21e46dcb-9357-4dca-bb70-034177f1260f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -543,7 +550,7 @@
 				<text><![CDATA[Tanggal dan Jam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="258" y="569" width="295" height="11" uuid="2e8055d0-2489-4424-86ab-a771e9468670">
+				<reportElement positionType="Float" x="258" y="608" width="295" height="11" uuid="2e8055d0-2489-4424-86ab-a771e9468670">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -554,13 +561,13 @@
 				<text><![CDATA[Tanda Tangan dan Nama Perawat]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="581" width="557" height="1" uuid="43b490bf-09c2-4521-8e96-f4bd36d885b1"/>
+				<reportElement positionType="Float" x="0" y="620" width="557" height="1" uuid="43b490bf-09c2-4521-8e96-f4bd36d885b1"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
 			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
-				<reportElement mode="Transparent" x="3" y="595" width="250" height="11" uuid="d05c7ed5-e050-45ca-ab19-73d1701fcf1d">
+				<reportElement positionType="Float" mode="Transparent" x="3" y="634" width="250" height="11" uuid="d05c7ed5-e050-45ca-ab19-73d1701fcf1d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
@@ -570,7 +577,7 @@
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="346" y="583" width="103" height="44" isRemoveLineWhenBlank="true" uuid="045c70d9-18fe-44f4-a5b9-ff5aa8bcd7e0">
+				<reportElement positionType="Float" x="346" y="622" width="103" height="44" isRemoveLineWhenBlank="true" uuid="045c70d9-18fe-44f4-a5b9-ff5aa8bcd7e0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -578,7 +585,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement x="260" y="466" width="247" height="11" uuid="e3594ce0-8bee-4a9e-8961-5e539f3a6039">
+				<reportElement positionType="Float" x="260" y="505" width="247" height="11" uuid="e3594ce0-8bee-4a9e-8961-5e539f3a6039">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -589,13 +596,13 @@
 				<text><![CDATA[RENCANA KEPERAWATAN :]]></text>
 			</staticText>
 			<line>
-				<reportElement x="252" y="464" width="1" height="88" uuid="c678927c-66e4-4bde-bb59-6a3ea3fe9ae8"/>
+				<reportElement positionType="Float" x="252" y="503" width="1" height="88" uuid="c678927c-66e4-4bde-bb59-6a3ea3fe9ae8"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="3" y="466" width="247" height="11" uuid="9d15e89b-dae3-422e-920f-acfd049534ad">
+				<reportElement positionType="Float" x="3" y="505" width="247" height="11" uuid="9d15e89b-dae3-422e-920f-acfd049534ad">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -606,7 +613,7 @@
 				<text><![CDATA[MASALAH KEPERAWATAN :]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="259" y="480" width="296" height="73" uuid="740e350c-445f-46d0-924a-256b9acc52ad">
+				<reportElement positionType="Float" mode="Transparent" x="259" y="519" width="296" height="73" uuid="740e350c-445f-46d0-924a-256b9acc52ad">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
@@ -616,7 +623,7 @@
 				<textFieldExpression><![CDATA[($P{rencana}.equals("")?$F{rencana}:$P{rencana}+$F{rencana})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="5" y="480" width="246" height="72" uuid="3e7b7f0c-3ef9-41f5-a51a-d93d1d79a4d0">
+				<reportElement positionType="Float" mode="Transparent" x="5" y="519" width="246" height="72" uuid="3e7b7f0c-3ef9-41f5-a51a-d93d1d79a4d0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
@@ -1854,17 +1861,113 @@
 				<textFieldExpression><![CDATA[$F{skrining_gizi_diketahui_dietisen}+" "+"("+$F{skrining_gizi_jam_diketahui_dietisen}+")"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="477" width="557" height="1" uuid="d490bdbe-8930-4949-8f87-809a3e7ca803"/>
+				<reportElement positionType="Float" x="1" y="516" width="557" height="1" uuid="d490bdbe-8930-4949-8f87-809a3e7ca803"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="465" width="557" height="1" uuid="36369d03-785e-4370-90eb-7d36f04501b8"/>
+				<reportElement positionType="Float" x="1" y="504" width="557" height="1" uuid="36369d03-785e-4370-90eb-7d36f04501b8"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="440" width="557" height="1" uuid="25317bad-9208-43c6-9181-ad94a98c3285">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="3" y="443" width="406" height="11" uuid="b819e0d7-ebbe-45d2-aa2c-e0a6ed47f9cd">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IX. PERENCANAAN PULANG (DISCHARGE PLANNING)]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="3" y="455" width="300" height="11" uuid="e7820abd-003d-466c-938d-8132580c3bfc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pasien/Keluarga Diberikan Informasi Perencanaan Pulang : "+($F{informasi_perencanaan_pulang}==null?"":$F{informasi_perencanaan_pulang})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="303" y="455" width="110" height="11" uuid="f940e60a-4e19-4b58-86de-6001fad30157">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lama Rawat Rata-rata : "+($F{lama_ratarata}==null?"":$F{lama_ratarata})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="413" y="455" width="143" height="11" uuid="60f6a384-04a7-440d-89b5-bd0c0eaf15f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Perencanaan Pulang : "+($F{perencanaan_pulang}==null?"":new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{perencanaan_pulang}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="3" y="467" width="552" height="11" uuid="3bfcf966-9114-4e16-8571-9ca86c4001e8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kondisi Klinis Saat Pulang : "+($F{kondisi_klinis_pulang}==null?"":$F{kondisi_klinis_pulang})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="3" y="479" width="552" height="11" uuid="97c36922-9f7e-4e41-b8a2-281d5481b57e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Perawatan Lanjutan Yang Diberikan Di Rumah : "+($F{perawatan_lanjutan_dirumah}==null?"":$F{perawatan_lanjutan_dirumah})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="3" y="491" width="276" height="11" uuid="31e81a74-7bf7-436a-8257-2b0806dfc5ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cara Transportasi Pulang : "+($F{cara_transportasi_pulang}==null?"":$F{cara_transportasi_pulang})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="280" y="491" width="274" height="11" uuid="0d0f2574-6d16-42fc-aea9-15d612e16f86">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Transportasi Yang Digunakan : "+($F{transportasi_digunakan}==null?"":$F{transportasi_digunakan})]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 </jasperReport>
