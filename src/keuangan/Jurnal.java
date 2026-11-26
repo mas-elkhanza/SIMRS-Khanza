@@ -29,7 +29,7 @@ public class Jurnal {
             try {
                 rscek=pscek.executeQuery();
                 if(rscek.next()){
-                    if(rscek.getInt("debet")==rscek.getInt("kredit")){
+                    if(rscek.getDouble("debet")==rscek.getDouble("kredit")){
                         if(rscek.getInt("jml")>0){
                             nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(jurnal.no_jurnal,6),signed)),0) from jurnal where jurnal.tgl_jurnal='"+rscek.getString("tanggal")+"' ","JR"+rscek.getString("tanggal").replaceAll("-",""),6);
                             try {
@@ -107,7 +107,7 @@ public class Jurnal {
                                         try {
                                             rs=koneksi.prepareStatement("select sum(detailjurnal.debet),sum(detailjurnal.kredit) from detailjurnal where detailjurnal.no_jurnal='"+nojur+"'").executeQuery();
                                             while(rs.next()){
-                                                if(rs.getInt(1)!=rs.getInt(2)){
+                                                if(rs.getDouble(1)!=rs.getDouble(2)){
                                                     sukses=false;
                                                     System.out.println("Notif : Debet dan Kredit tidak sama");
                                                 }
