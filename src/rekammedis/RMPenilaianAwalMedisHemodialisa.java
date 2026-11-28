@@ -285,7 +285,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         Hubungan.setDocument(new batasInput((byte)30).getKata(Hubungan));
         AsalRuangan.setDocument(new batasInput((byte)50).getKata(AsalRuangan));
-        Alergi.setDocument(new batasInput((int)100).getKata(Alergi));
+        Alergi.setDocument(new batasInput((int)80).getKata(Alergi));
         StatusNutrisi.setDocument(new batasInput((int)100).getKata(StatusNutrisi));
         KeteranganHipertensi.setDocument(new batasInput((byte)30).getKata(KeteranganHipertensi));
         KeteranganDiabetesMelitus.setDocument(new batasInput((byte)30).getKata(KeteranganDiabetesMelitus));
@@ -4004,7 +4004,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
-                    "reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
+                    "reg_periksa.jam_reg,alergi_pasien.alergi from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis left join alergi_pasien on alergi_pasien.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -4014,6 +4014,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    Alergi.setText(rs.getString("alergi"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
@@ -4103,6 +4104,9 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
                 Leukosit.getText(),Trombosit.getText(),HitungJenis.getText(),Ureum.getText(),UrinLengkap.getText(),Kreatinin.getText(),CCT.getText(),SGOT.getText(),SGPT.getText(),CT.getText(),AsamUrat.getText(),HbsAg.getSelectedItem().toString(),AntiHCV.getSelectedItem().toString(),Edukasi.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
+                if(!Alergi.getText().equals("")){
+                    Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+                }
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);                
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);                
                 tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);                
@@ -4218,6 +4222,9 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             (ChkKulturUrin.isSelected()==true?Valid.SetTgl(TglKultururin.getSelectedItem()+""):"0000-00-00"),(ChkLaborat.isSelected()==true?"Ya":"Tidak"),(ChkLaborat.isSelected()==true?Valid.SetTgl(TglLaboratorium.getSelectedItem()+""):"0000-00-00"),Hematokrit.getText(),Hemoglobin.getText(), 
             Leukosit.getText(),Trombosit.getText(),HitungJenis.getText(),Ureum.getText(),UrinLengkap.getText(),Kreatinin.getText(),CCT.getText(),SGOT.getText(),SGPT.getText(),CT.getText(),AsamUrat.getText(),HbsAg.getSelectedItem().toString(),AntiHCV.getSelectedItem().toString(),Edukasi.getText()
         })==true){
+            if(!Alergi.getText().equals("")){
+                Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+            }
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
                 AsalRuangan.getText(),Alergi.getText(),Nyeri.getSelectedItem().toString(),StatusNutrisi.getText(),Hipertensi.getSelectedItem().toString(),KeteranganHipertensi.getText(),DiabetesMelitus.getSelectedItem().toString(),KeteranganDiabetesMelitus.getText(),BatuSaluranKemih.getSelectedItem().toString(),

@@ -166,7 +166,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         RPS.setDocument(new batasInput((int)2000).getKata(RPS));
         RPD.setDocument(new batasInput((int)1000).getKata(RPD));
         RPO.setDocument(new batasInput((int)1000).getKata(RPO));
-        Alergi.setDocument(new batasInput((int)50).getKata(Alergi));
+        Alergi.setDocument(new batasInput((int)80).getKata(Alergi));
         TD.setDocument(new batasInput((byte)8).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
@@ -1473,6 +1473,9 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                     Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Tes.getText(),Penunjang.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),
                     Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText()
                 })==true){
+                    if(!Alergi.getText().equals("")){
+                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+                    }
                     emptTeks();
             }
         }
@@ -2289,8 +2292,8 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi "+
-                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,alergi_pasien.alergi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis left join alergi_pasien on alergi_pasien.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
@@ -2301,6 +2304,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    Alergi.setText(rs.getString("alergi"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -2364,6 +2368,9 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                 Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Tes.getText(),Penunjang.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),
                 Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
+               if(!Alergi.getText().equals("")){
+                   Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+               }
                runBackground(() ->tampil());
                emptTeks();
                TabRawat.setSelectedIndex(1);

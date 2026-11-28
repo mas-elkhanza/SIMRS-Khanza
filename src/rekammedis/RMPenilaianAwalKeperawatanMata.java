@@ -310,7 +310,7 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
         RPS.setDocument(new batasInput((int)100).getKata(RPS));
         RPK.setDocument(new batasInput((int)100).getKata(RPK));
         RPO.setDocument(new batasInput((int)100).getKata(RPO));
-        Alergi.setDocument(new batasInput((int)20).getKata(Alergi));
+        Alergi.setDocument(new batasInput((int)80).getKata(Alergi));
         KetBantu.setDocument(new batasInput((int)50).getKata(KetBantu));
         KetProthesa.setDocument(new batasInput((int)50).getKata(KetProthesa));
         KetBudaya.setDocument(new batasInput((int)50).getKata(KetBudaya));
@@ -2804,6 +2804,9 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
                     BMDKanan.getText(),BMDKiri.getText(),IrisKanan.getText(),IrisKiri.getText(),PupilKanan.getText(),PupilKiri.getText(),LensaKanan.getText(),LensaKiri.getText(),OftalmoskopiKanan.getText(),OftalmoskopiKiri.getText(),
                     Rencana.getText(),KdPetugas.getText()
                 })==true){
+                    if(!Alergi.getText().equals("")){
+                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+                    }
                     for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                         if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                             Sequel.menyimpan2("penilaian_awal_keperawatan_mata_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
@@ -2919,6 +2922,9 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
                         TioKanan.getText(),TioKiri.getText(),PalberaKanan.getText(),PalberaKiri.getText(),KonjungtivaKanan.getText(),KonjungtivaKiri.getText(),SkleraKanan.getText(),SkleraKiri.getText(),KorneaKanan.getText(),KorneaKiri.getText(),
                         BMDKanan.getText(),BMDKiri.getText(),IrisKanan.getText(),IrisKiri.getText(),PupilKanan.getText(),PupilKiri.getText(),LensaKanan.getText(),LensaKiri.getText(),OftalmoskopiKanan.getText(),OftalmoskopiKiri.getText(),Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                      })==true){
+                        if(!Alergi.getText().equals("")){
+                            Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),Alergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{Alergi.getText(),TNoRM.getText()});
+                        }
                         Sequel.meghapus("penilaian_awal_keperawatan_mata_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                         for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                             if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
@@ -4662,8 +4668,8 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,"+
-                    "pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,reg_periksa.tgl_registrasi "+
-                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,reg_periksa.tgl_registrasi,alergi_pasien.alergi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis left join alergi_pasien on alergi_pasien.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik "+
                     "where reg_periksa.no_rawat=?");
@@ -4676,6 +4682,7 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    Alergi.setText(rs.getString("alergi"));
                     Agama.setText(rs.getString("agama"));
                     Bahasa.setText(rs.getString("nama_bahasa"));
                     CacatFisik.setText(rs.getString("nama_cacat"));

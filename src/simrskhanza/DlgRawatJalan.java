@@ -1001,7 +1001,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TPemeriksaan.setDocument(new batasInput((int)2000).getKata(TPemeriksaan));
         TPenilaian.setDocument(new batasInput((int)2000).getKata(TPenilaian));    
         TInstruksi.setDocument(new batasInput((int)2000).getKata(TInstruksi));     
-        TAlergi.setDocument(new batasInput((int)50).getKata(TAlergi));        
+        TAlergi.setDocument(new batasInput((int)80).getKata(TAlergi));        
         TCari.setDocument(new batasInput((int)100).getKata(TCari));       
         TGCS.setDocument(new batasInput((byte)10).getKata(TGCS));
         TTinggi.setDocument(new batasInput((byte)5).getKata(TTinggi));
