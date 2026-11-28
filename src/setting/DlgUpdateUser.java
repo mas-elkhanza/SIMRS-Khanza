@@ -603,9 +603,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         }else if(TPass.getText().trim().equals("")){
             Valid.textKosong(TPass,"Password");            
         }else{ 
+            setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Simpan();
             Simpan2();
             Simpan3();
+            setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 

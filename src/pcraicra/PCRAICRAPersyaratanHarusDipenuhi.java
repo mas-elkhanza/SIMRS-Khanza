@@ -130,7 +130,7 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPersyaratan.setAutoCreateRowSorter(false);
+        tbPersyaratan.setAutoCreateRowSorter(true);
         tbPersyaratan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPersyaratan.setName("tbPersyaratan"); // NOI18N
         tbPersyaratan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,13 +148,13 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 45, 23);
+        jLabel3.setBounds(0, 10, 45, 23);
 
         KodePersyaratan.setHighlighter(null);
         KodePersyaratan.setName("KodePersyaratan"); // NOI18N
@@ -164,12 +164,12 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
             }
         });
         panelGlass7.add(KodePersyaratan);
-        KodePersyaratan.setBounds(49, 12, 60, 23);
+        KodePersyaratan.setBounds(49, 10, 60, 23);
 
         jLabel4.setText("Persyaratan :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(112, 12, 80, 23);
+        jLabel4.setBounds(112, 10, 80, 23);
 
         NamaPersyaratan.setName("NamaPersyaratan"); // NOI18N
         NamaPersyaratan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,7 +178,7 @@ public final class PCRAICRAPersyaratanHarusDipenuhi extends javax.swing.JDialog 
             }
         });
         panelGlass7.add(NamaPersyaratan);
-        NamaPersyaratan.setBounds(196, 12, 325, 23);
+        NamaPersyaratan.setBounds(196, 10, 325, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

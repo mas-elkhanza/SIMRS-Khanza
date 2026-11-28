@@ -130,7 +130,7 @@ public final class PCRAICRAIdentifikasiRisikoKebakaran extends javax.swing.JDial
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJabatan.setAutoCreateRowSorter(false);
+        tbJabatan.setAutoCreateRowSorter(true);
         tbJabatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJabatan.setName("tbJabatan"); // NOI18N
         tbJabatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,13 +148,13 @@ public final class PCRAICRAIdentifikasiRisikoKebakaran extends javax.swing.JDial
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode Risiko :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 80, 23);
+        jLabel3.setBounds(0, 10, 80, 23);
 
         KodeRisiko.setHighlighter(null);
         KodeRisiko.setName("KodeRisiko"); // NOI18N
@@ -164,12 +164,12 @@ public final class PCRAICRAIdentifikasiRisikoKebakaran extends javax.swing.JDial
             }
         });
         panelGlass7.add(KodeRisiko);
-        KodeRisiko.setBounds(84, 12, 60, 23);
+        KodeRisiko.setBounds(84, 10, 60, 23);
 
         jLabel4.setText("Risiko Kebakaran :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(147, 12, 130, 23);
+        jLabel4.setBounds(147, 10, 130, 23);
 
         NamaRisiko.setName("NamaRisiko"); // NOI18N
         NamaRisiko.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,7 +178,7 @@ public final class PCRAICRAIdentifikasiRisikoKebakaran extends javax.swing.JDial
             }
         });
         panelGlass7.add(NamaRisiko);
-        NamaRisiko.setBounds(281, 12, 235, 23);
+        NamaRisiko.setBounds(281, 10, 235, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

@@ -138,13 +138,13 @@ public final class PCRAICRAKelasKewaspadaan extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 45, 23);
+        jLabel3.setBounds(0, 10, 45, 23);
 
         KodeKewaspadaan.setHighlighter(null);
         KodeKewaspadaan.setName("KodeKewaspadaan"); // NOI18N
@@ -154,12 +154,12 @@ public final class PCRAICRAKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(KodeKewaspadaan);
-        KodeKewaspadaan.setBounds(49, 12, 50, 23);
+        KodeKewaspadaan.setBounds(49, 10, 50, 23);
 
         jLabel4.setText("Kewaspadaan :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(102, 12, 90, 23);
+        jLabel4.setBounds(102, 10, 90, 23);
 
         NamaKewaspadaan.setName("NamaKewaspadaan"); // NOI18N
         NamaKewaspadaan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -168,12 +168,12 @@ public final class PCRAICRAKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(NamaKewaspadaan);
-        NamaKewaspadaan.setBounds(196, 12, 170, 23);
+        NamaKewaspadaan.setBounds(196, 10, 170, 23);
 
         jLabel5.setText("Perlu Izin :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass7.add(jLabel5);
-        jLabel5.setBounds(374, 12, 65, 23);
+        jLabel5.setBounds(374, 10, 65, 23);
 
         PerluIzin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         PerluIzin.setName("PerluIzin"); // NOI18N
@@ -183,7 +183,7 @@ public final class PCRAICRAKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(PerluIzin);
-        PerluIzin.setBounds(443, 12, 70, 23);
+        PerluIzin.setBounds(443, 10, 70, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

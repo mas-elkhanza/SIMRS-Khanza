@@ -57,7 +57,7 @@ public final class PCRAICRACariKelasKewaspadaan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Kewaspadaan","Nama Kelas Kewaspadaan"};
+        Object[] row={"Kode","Kelas Kewaspadaan","Perlu Izin"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,12 +67,14 @@ public final class PCRAICRACariKelasKewaspadaan extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(400);
+            }else if(i==2){
+                column.setPreferredWidth(80);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -365,12 +367,12 @@ public final class PCRAICRACariKelasKewaspadaan extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select pcra_icra_kelas_kewaspadaan.kode_kewaspadaan,pcra_icra_kelas_kewaspadaan.nama_kewaspadaan from pcra_icra_kelas_kewaspadaan");   
+            ps=koneksi.prepareStatement("select pcra_icra_kelas_kewaspadaan.kode_kewaspadaan,pcra_icra_kelas_kewaspadaan.nama_kewaspadaan,pcra_icra_kelas_kewaspadaan.perlu_izin from pcra_icra_kelas_kewaspadaan");   
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"Nama\":\"").append(rs.getString(2)).append("\"},");
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"Nama\":\"").append(rs.getString(2)).append("\",\"Izin\":\"").append(rs.getString(3)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -409,7 +411,7 @@ public final class PCRAICRACariKelasKewaspadaan extends javax.swing.JDialog {
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
-                            list.path("Kode").asText(),list.path("Nama").asText()
+                            list.path("Kode").asText(),list.path("Nama").asText(),list.path("Izin").asText()
                         }); 
                     }
                 }else{
@@ -417,7 +419,7 @@ public final class PCRAICRACariKelasKewaspadaan extends javax.swing.JDialog {
                     for(JsonNode list:response){
                         if(list.path("Kode").asText().toLowerCase().contains(cari)||list.path("Nama").asText().toLowerCase().contains(cari)){
                             tabMode.addRow(new Object[]{
-                                list.path("Kode").asText(),list.path("Nama").asText()
+                                list.path("Kode").asText(),list.path("Nama").asText(),list.path("Izin").asText()
                             });                    
                         }
                     }

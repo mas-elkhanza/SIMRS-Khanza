@@ -51,7 +51,7 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         this.setLocation(10,10);
         
 
-        Object[] row={"Kd.Aktivitas","Tipe Aktivitas","Kd.Kelas","Kelompok Risiko","Kd.Waspada","Kelas Kewaspadaan"};
+        Object[] row={"Kode Aktivitas","Tipe Aktivitas","Kode Risiko","Kelompok Risiko","Kode Waspada","Kelas Kewaspadaan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,15 +63,15 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         for (int i = 0; i < 6; i++) {
             TableColumn column = tbJabatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(85);
             }else if(i==1){
                 column.setPreferredWidth(300);
             }else if(i==2){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(165);
             }else if(i==4){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==5){
                 column.setPreferredWidth(130);
             }
@@ -95,16 +95,16 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         tbJabatan = new widget.Table();
         panelGlass7 = new widget.panelisi();
         jLabel3 = new widget.Label();
-        KodeKewaspadaan = new widget.TextBox();
-        jLabel4 = new widget.Label();
-        NamaKewaspadaan = new widget.TextBox();
-        jLabel5 = new widget.Label();
         KodeAktivitas = new widget.TextBox();
         NamaAktivitas = new widget.TextBox();
         BtnAktivitas = new widget.Button();
+        jLabel4 = new widget.Label();
         KodeKelas = new widget.TextBox();
         NamaKelas = new widget.TextBox();
         BtnKelas = new widget.Button();
+        jLabel5 = new widget.Label();
+        KodeKewaspadaan = new widget.TextBox();
+        NamaKewaspadaan = new widget.TextBox();
         BtnKewaspadaan = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -112,12 +112,12 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
+        BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
 
@@ -155,23 +155,23 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 75));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Aktivitas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 60, 23);
+        jLabel3.setBounds(0, 10, 65, 23);
 
         KodeAktivitas.setEditable(false);
         KodeAktivitas.setName("KodeAktivitas"); // NOI18N
         panelGlass7.add(KodeAktivitas);
-        KodeAktivitas.setBounds(64, 12, 55, 23);
+        KodeAktivitas.setBounds(69, 10, 90, 23);
 
         NamaAktivitas.setEditable(false);
         NamaAktivitas.setName("NamaAktivitas"); // NOI18N
         panelGlass7.add(NamaAktivitas);
-        NamaAktivitas.setBounds(122, 12, 200, 23);
+        NamaAktivitas.setBounds(162, 10, 425, 23);
 
         BtnAktivitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnAktivitas.setName("BtnAktivitas"); // NOI18N
@@ -182,22 +182,22 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnAktivitas);
-        BtnAktivitas.setBounds(325, 12, 28, 23);
+        BtnAktivitas.setBounds(590, 10, 28, 23);
 
         jLabel4.setText("Risiko :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(360, 12, 45, 23);
+        jLabel4.setBounds(0, 40, 65, 23);
 
         KodeKelas.setEditable(false);
         KodeKelas.setName("KodeKelas"); // NOI18N
         panelGlass7.add(KodeKelas);
-        KodeKelas.setBounds(409, 12, 40, 23);
+        KodeKelas.setBounds(69, 40, 45, 23);
 
         NamaKelas.setEditable(false);
         NamaKelas.setName("NamaKelas"); // NOI18N
         panelGlass7.add(NamaKelas);
-        NamaKelas.setBounds(452, 12, 130, 23);
+        NamaKelas.setBounds(117, 40, 147, 23);
 
         BtnKelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKelas.setName("BtnKelas"); // NOI18N
@@ -208,22 +208,22 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnKelas);
-        BtnKelas.setBounds(585, 12, 28, 23);
+        BtnKelas.setBounds(267, 40, 28, 23);
 
         jLabel5.setText("Kewaspadaan :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass7.add(jLabel5);
-        jLabel5.setBounds(622, 12, 92, 23);
+        jLabel5.setBounds(297, 40, 91, 23);
 
         KodeKewaspadaan.setEditable(false);
         KodeKewaspadaan.setName("KodeKewaspadaan"); // NOI18N
         panelGlass7.add(KodeKewaspadaan);
-        KodeKewaspadaan.setBounds(718, 12, 40, 23);
+        KodeKewaspadaan.setBounds(392, 40, 45, 23);
 
         NamaKewaspadaan.setEditable(false);
         NamaKewaspadaan.setName("NamaKewaspadaan"); // NOI18N
         panelGlass7.add(NamaKewaspadaan);
-        NamaKewaspadaan.setBounds(761, 12, 110, 23);
+        NamaKewaspadaan.setBounds(440, 40, 147, 23);
 
         BtnKewaspadaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKewaspadaan.setName("BtnKewaspadaan"); // NOI18N
@@ -234,7 +234,7 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnKewaspadaan);
-        BtnKewaspadaan.setBounds(874, 12, 28, 23);
+        BtnKewaspadaan.setBounds(590, 40, 28, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -319,6 +319,24 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnEdit);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('2');
+        BtnAll.setText("Semua");
+        BtnAll.setToolTipText("Alt+2");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnAll);
+
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -349,7 +367,7 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(250, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -376,23 +394,6 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
             }
         });
         panelGlass9.add(BtnCari);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('2');
-        BtnAll.setToolTipText("Alt+2");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnAll);
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -709,23 +710,23 @@ public final class PCRAICRAMatriksKelasKewaspadaan extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAktivitas;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
-    private widget.Button BtnKeluar;
-    private widget.Button BtnSimpan;
-    private widget.TextBox KodeKewaspadaan;
-    private widget.Label LCount;
-    private widget.TextBox NamaKewaspadaan;
-    private widget.Button BtnAktivitas;
     private widget.Button BtnKelas;
+    private widget.Button BtnKeluar;
     private widget.Button BtnKewaspadaan;
+    private widget.Button BtnSimpan;
     private widget.TextBox KodeAktivitas;
     private widget.TextBox KodeKelas;
+    private widget.TextBox KodeKewaspadaan;
+    private widget.Label LCount;
     private widget.TextBox NamaAktivitas;
     private widget.TextBox NamaKelas;
+    private widget.TextBox NamaKewaspadaan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;

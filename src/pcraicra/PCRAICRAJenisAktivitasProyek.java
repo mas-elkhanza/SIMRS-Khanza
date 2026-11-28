@@ -130,7 +130,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJabatan.setAutoCreateRowSorter(false);
+        tbJabatan.setAutoCreateRowSorter(true);
         tbJabatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJabatan.setName("tbJabatan"); // NOI18N
         tbJabatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,13 +148,13 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode Aktivitas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 94, 23);
+        jLabel3.setBounds(0, 10, 94, 23);
 
         KodeAktivitas.setHighlighter(null);
         KodeAktivitas.setName("KodeAktivitas"); // NOI18N
@@ -164,12 +164,12 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(KodeAktivitas);
-        KodeAktivitas.setBounds(98, 12, 60, 23);
+        KodeAktivitas.setBounds(98, 10, 60, 23);
 
         jLabel4.setText("Nama Aktivitas :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(177, 12, 90, 23);
+        jLabel4.setBounds(177, 10, 90, 23);
 
         NamaAktivitas.setName("NamaAktivitas"); // NOI18N
         NamaAktivitas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,7 +178,7 @@ public final class PCRAICRAJenisAktivitasProyek extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(NamaAktivitas);
-        NamaAktivitas.setBounds(271, 12, 245, 23);
+        NamaAktivitas.setBounds(271, 10, 245, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

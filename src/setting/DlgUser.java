@@ -294,8 +294,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Skrining TOLAC","[M]Admisi & Skoring TOLAC","[M]Monitoring Selama TOLAC","[M]Resume Hasil Persalinan TOLAC","[M]Laporan Reaksi Tranfusi","[M]Penilaian GRACE Score",
                 "[M]Penilaian BISHOP Score","[M]Profil Ringkas Rawat Jalan","[M]Hasil USG Testis","[M]Hasil USG Kepala","[M]Hasil USG Mammae","[M]Hasil Pemeriksaan Spirometri",
                 "[P]Surat Pernyataan Bersedia Dirujuk","[P]Surat Pernyataan Bersedia Menunggu Di IGD/UGD","[M]Pengkajian Awal Medis Ralan Gigi","Laporan Monitoring Efek Samping Obat",
-                "[R]Kelas Kewaspadaan ICRA",
-                "[R]Matriks Kelas Kewaspadaan ICRA"
+                "[R]Kelas Kewaspadaan ICRA","[R]Matriks Kelas Kewaspadaan ICRA"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -1694,7 +1693,7 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1234 -> column.setPreferredWidth(187);
                 case 1235 -> column.setPreferredWidth(197);
                 case 1236 -> column.setPreferredWidth(145);
-                case 1237 -> column.setPreferredWidth(230);
+                case 1237 -> column.setPreferredWidth(184);
                 default -> column.setPreferredWidth(133);
             }
         }

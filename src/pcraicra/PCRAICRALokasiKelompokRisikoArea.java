@@ -127,7 +127,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKelompokRisikoArea.setAutoCreateRowSorter(false);
+        tbKelompokRisikoArea.setAutoCreateRowSorter(true);
         tbKelompokRisikoArea.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKelompokRisikoArea.setName("tbKelompokRisikoArea"); // NOI18N
         tbKelompokRisikoArea.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,13 +145,13 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode Area :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(0, 12, 70, 23);
+        jLabel3.setBounds(0, 10, 70, 23);
 
         KodeArea.setHighlighter(null);
         KodeArea.setName("KodeArea"); // NOI18N
@@ -161,12 +161,12 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
             }
         });
         panelGlass7.add(KodeArea);
-        KodeArea.setBounds(74, 12, 60, 23);
+        KodeArea.setBounds(74, 10, 60, 23);
 
         jLabel4.setText("Nama Lokasi & Kelompok :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(137, 12, 140, 23);
+        jLabel4.setBounds(137, 10, 140, 23);
 
         NamaLokasiArea.setName("NamaLokasiArea"); // NOI18N
         NamaLokasiArea.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -175,7 +175,7 @@ public final class PCRAICRALokasiKelompokRisikoArea extends javax.swing.JDialog 
             }
         });
         panelGlass7.add(NamaLokasiArea);
-        NamaLokasiArea.setBounds(281, 12, 235, 23);
+        NamaLokasiArea.setBounds(281, 10, 235, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
