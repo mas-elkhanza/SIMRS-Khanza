@@ -268,7 +268,7 @@ public final class akses {
             ringkasan_hutang_vendor_inventaris=false,ringkasan_beban_hutang_lain=false,set_resep_per_cara_bayar=false,skrining_tolac=false,admisi_skoring_tolac=false,
             monitoring_tolac=false,hasil_persalinan_tolac=false,laporan_reaksi_transfusi=false,penilaian_grace_scor=false,penilaian_bishop_scor=false,profil_ringkas_rawat_jalan=false,
             hasil_usg_testis=false,hasil_usg_kepala=false,hasil_usg_mammae=false,hasil_spirometri=false,surat_pernyataan_bersedia_dirujuk=false,surat_kesediaan_menunggu_igd=false,
-            penilaian_awal_medis_gigi_mulut=false,laporan_meso=false;
+            penilaian_awal_medis_gigi_mulut=false,laporan_meso=false,pcra_icra_kelas_kewaspadaan=false,pcra_icra_matriks_kelas_kewaspadaan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1525,6 +1525,8 @@ public final class akses {
                         akses.surat_kesediaan_menunggu_igd=true;
                         akses.penilaian_awal_medis_gigi_mulut=true;
                         akses.laporan_meso=true;
+                        akses.pcra_icra_kelas_kewaspadaan=true;
+                        akses.pcra_icra_matriks_kelas_kewaspadaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2765,6 +2767,8 @@ public final class akses {
                         akses.surat_kesediaan_menunggu_igd=rs2.getBoolean("surat_kesediaan_menunggu_igd");
                         akses.penilaian_awal_medis_gigi_mulut=rs2.getBoolean("penilaian_awal_medis_gigi_mulut");
                         akses.laporan_meso=rs2.getBoolean("laporan_meso");
+                        akses.pcra_icra_kelas_kewaspadaan=rs2.getBoolean("pcra_icra_kelas_kewaspadaan");
+                        akses.pcra_icra_matriks_kelas_kewaspadaan=rs2.getBoolean("pcra_icra_matriks_kelas_kewaspadaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -4027,6 +4031,8 @@ public final class akses {
         akses.surat_kesediaan_menunggu_igd=false;
         akses.penilaian_awal_medis_gigi_mulut=false;
         akses.laporan_meso=false;
+        akses.pcra_icra_kelas_kewaspadaan=false;
+        akses.pcra_icra_matriks_kelas_kewaspadaan=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5306,4 +5312,6 @@ public final class akses {
     public static boolean getsurat_kesediaan_menunggu_igd(){return akses.surat_kesediaan_menunggu_igd;}
     public static boolean getpenilaian_awal_medis_gigi_mulut(){return akses.penilaian_awal_medis_gigi_mulut;}
     public static boolean getlaporan_meso(){return akses.laporan_meso;}
+    public static boolean getpcra_icra_kelas_kewaspadaan(){return akses.pcra_icra_kelas_kewaspadaan;}
+    public static boolean getpcra_icra_matriks_kelas_kewaspadaan(){return akses.pcra_icra_matriks_kelas_kewaspadaan;}
 }   

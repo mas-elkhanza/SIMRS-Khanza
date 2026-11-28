@@ -859,8 +859,10 @@ import pcraicra.PCRAICRAIdentifikasiRisikoKebakaran;
 import pcraicra.PCRAICRAIdentifikasiRisikoKeselamatan;
 import pcraicra.PCRAICRAIdentifikasiRisikoUtilitas;
 import pcraicra.PCRAICRAJenisAktivitasProyek;
+import pcraicra.PCRAICRAKelasKewaspadaan;
 import pcraicra.PCRAICRAKelasRisikoPencegahan;
 import pcraicra.PCRAICRALokasiKelompokRisikoArea;
+import pcraicra.PCRAICRAMatriksKelasKewaspadaan;
 import pcraicra.PCRAICRAPengkajianRisikoPraKonstruksi;
 import pcraicra.PCRAICRAPersyaratanHarusDipenuhi;
 import pcraicra.PCRAICRATindakanPengendalian;
@@ -23184,6 +23186,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPCRAICRAKelasKewaspadaanActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        PCRAICRAKelasKewaspadaan form=new PCRAICRAKelasKewaspadaan(this,false);
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPCRAICRAMatriksKelasKewaspadaanActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        PCRAICRAMatriksKelasKewaspadaan form=new PCRAICRAMatriksKelasKewaspadaan(this,false);
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPCRAICRAKelasRisikoPencegahanActionPerformed(java.awt.event.ActionEvent evt) {                                                
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         isTutup();
@@ -24599,7 +24625,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
             btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore,btnPenilaianBISHOPScore,btnProfilRingkasRawatJalan,
             btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk,btnSuratPernyataanBersediaMenungguDiIGD,btnPenilaianAwalMedisRalanGigi,
-            btnLaporanMESO;
+            btnLaporanMESO,btnPCRAICRAKelasKewaspadaan,btnPCRAICRAMatriksKelasKewaspadaan;
     
     public void isWall(){
         try{            
@@ -30475,6 +30501,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpcra_icra_kelas_risiko_pencegahan()==true){
                 Panelmenu.add(btnPCRAICRAKelasRisikoPencegahan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcra_icra_kelas_kewaspadaan()==true){
+                Panelmenu.add(btnPCRAICRAKelasKewaspadaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcra_icra_matriks_kelas_kewaspadaan()==true){
+                Panelmenu.add(btnPCRAICRAMatriksKelasKewaspadaan);
                 jmlmenu++;
             }
             
@@ -36598,6 +36634,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpcra_icra_kelas_risiko_pencegahan()==true){
             Panelmenu.add(btnPCRAICRAKelasRisikoPencegahan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcra_icra_kelas_kewaspadaan()==true){
+            Panelmenu.add(btnPCRAICRAKelasKewaspadaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcra_icra_matriks_kelas_kewaspadaan()==true){
+            Panelmenu.add(btnPCRAICRAMatriksKelasKewaspadaan);
             jmlmenu++;
         }
         
@@ -45002,6 +45048,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
         }
+
+        if(akses.getpcra_icra_kelas_kewaspadaan()==true){
+            if(btnPCRAICRAKelasKewaspadaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCRAICRAKelasKewaspadaan);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getpcra_icra_matriks_kelas_kewaspadaan()==true){
+            if(btnPCRAICRAMatriksKelasKewaspadaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCRAICRAMatriksKelasKewaspadaan);
+                jmlmenu++;
+            }
+        }
         
         if(akses.getpcra_icra_tindakan_pengendalian()==true){
             if(btnPCRAICRATindakanPengendalian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -51363,6 +51423,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRAKelasRisikoPencegahan.setName("btnPCRAICRAKelasRisikoPencegahan"); 
         btnPCRAICRAKelasRisikoPencegahan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRAKelasRisikoPencegahan.addActionListener(this::btnPCRAICRAKelasRisikoPencegahanActionPerformed);
+        
+        btnPCRAICRAKelasKewaspadaan = new widget.ButtonBig();
+        btnPCRAICRAKelasKewaspadaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kelas_kewaspadaan_icra.png")));
+        btnPCRAICRAKelasKewaspadaan.setText("Kelas Kewaspadaan ICRA");
+        btnPCRAICRAKelasKewaspadaan.setIconTextGap(0);
+        btnPCRAICRAKelasKewaspadaan.setName("btnPCRAICRAKelasKewaspadaan"); 
+        btnPCRAICRAKelasKewaspadaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCRAICRAKelasKewaspadaan.addActionListener(this::btnPCRAICRAKelasKewaspadaanActionPerformed);
+        
+        btnPCRAICRAMatriksKelasKewaspadaan = new widget.ButtonBig();
+        btnPCRAICRAMatriksKelasKewaspadaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/matriks_kewaspadaan_icra.png")));
+        btnPCRAICRAMatriksKelasKewaspadaan.setText("Matriks Kelas Kewaspadaan ICRA");
+        btnPCRAICRAMatriksKelasKewaspadaan.setIconTextGap(0);
+        btnPCRAICRAMatriksKelasKewaspadaan.setName("btnPCRAICRAMatriksKelasKewaspadaan"); 
+        btnPCRAICRAMatriksKelasKewaspadaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCRAICRAMatriksKelasKewaspadaan.addActionListener(this::btnPCRAICRAMatriksKelasKewaspadaanActionPerformed);
         
         btnPCRAICRATindakanPengendalian = new widget.ButtonBig();
         btnPCRAICRATindakanPengendalian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/real-estate_3309891.png")));
