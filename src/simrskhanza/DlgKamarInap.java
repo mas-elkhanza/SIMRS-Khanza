@@ -263,6 +263,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initKamarInap();
+        initKelompokRanap();
         initMenuBedahAnestesi();
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","Nomer RM","Nama Pasien","Alamat Pasien","Penanggung Jawab","Hubungan P.J.","Jenis Bayar","Kamar","Tarif Kamar",
@@ -5687,6 +5688,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         "kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' or pasien.agama like '%"+TCari.getText().trim()+"%') "+terbitsep;
                 }
 
+                key=key+syaratKelompok();
+
                 try{
                     String pilihancetak = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2","Lembar Bimbingan Rohani"},"Laporan 1");
                     switch (pilihancetak) {
@@ -8026,6 +8029,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cacherawatinap.SetKeyWord(TCari.getText());
         cacherawatinap.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
         cacherawatinap.SetKamar(BangsalCari.getText());
+        simpanCacheKelompok();
         
         cacherawatinap.clearDataPasien();
         for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -8080,7 +8084,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setSelected(cacherawatinap.getPilihanTanggalMasuk());
         R3.setSelected(cacherawatinap.getPilihanTanggalPulang());
         
-        if(!cacherawatinap.getDataPasien().isEmpty()){
+        if(INGAT_PILIHAN_KELOMPOK&&!cacherawatinap.getDataPasien().isEmpty()){
             for (Object[] baris : cacherawatinap.getDataPasien()) {
                 tabMode.addRow(baris);
             }
@@ -20385,6 +20389,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Menu MnHasilUSG,MnHasilEndoskopi,MnCatatanObservasi,MnEdukasi,MnSuratPersetujuan,MnHasilPemeriksaanAlat;
     
     private void tampil() {
+        if(!adaKelompokDipilih()){
+            // belum ada kelompok yang diklik -> pasien tidak ditampilkan
+            if(ceksukses==false){
+                Valid.tabelKosong(tabMode);
+                LCount.setText("0");
+            }
+            return;
+        }
         if(ceksukses==false){
             ceksukses=true;
             if(R1.isSelected()==true){
@@ -20412,6 +20424,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                    "kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or "+
                    "kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or pasien.agama like '%"+TCari.getText().trim()+"%') "+terbitsep;
             }
+
+            key=key+syaratKelompok();
 
             Valid.tabelKosong(tabMode);
             new SwingWorker<Void, Object[]>() {
@@ -20498,6 +20512,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 protected void done() {
                     LCount.setText(""+i);
                     ceksukses = false;
+                    if(tampilUlang){
+                        tampilUlang=false;
+                        tampil();
+                    }
                 }
             }.execute(); 
         }
@@ -21056,6 +21074,257 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } 
     }
     
+    // ===================== FILTER KELOMPOK RAWAT INAP (RANAP ATAS / RANAP BAWAH / ICU / NICU / PICU / HCU / KAMAR LAINNYA / SEMUA KAMAR) =====================
+    // Pasien baru ditampilkan setelah salah satu tombol diklik. Kelompok sebuah bangsal ditentukan oleh:
+    //   1) mapping manual di tabel mapping_kelompok_ranap (tombol "MAPPING KAMAR" -> DlgMappingKamarInap), bila tidak ada
+    //   2) kesamaan NAMA bangsal : memuat NICU / PICU / HCU / ICU (otomatis), bila tidak cocok
+    //   3) masuk "KAMAR LAINNYA" (khusus kamar aktif).
+    // "SEMUA KAMAR" menampilkan semua pasien tanpa filter kelompok. Pasien di kamar NONAKTIF tidak pernah ditampilkan (HANYA_KAMAR_AKTIF).
+    // Blok ini sengaja dibuat di luar initComponents() supaya tidak hilang bila form dibuka/disimpan ulang di NetBeans.
+    private static final boolean KELOMPOK_PILIH_BANYAK=true;    // true : boleh klik lebih dari satu kelompok sekaligus ; false : hanya satu tombol aktif
+    private static final boolean INGAT_PILIHAN_KELOMPOK=true;   // true : pilihan tombol diingat saat jendela ditutup lalu dibuka lagi (seperti filter tanggal/keyword)
+    private static final boolean HANYA_KAMAR_AKTIF=true;        // true : pasien di kamar NONAKTIF (Data Kamar : statusdata <> 1) tidak pernah ditampilkan, termasuk di SEMUA KAMAR ; false : semua kamar ikut
+    // indeks 0..5 = kelompok, 6 = KAMAR LAINNYA, 7 = SEMUA KAMAR
+    private static final boolean[] CACHE_KELOMPOK=new boolean[DlgMappingKamarInap.KELOMPOK.length+2];
+    private TombolKelompok[] tombolKelompok;
+    private TombolKelompok tombolLainnya,tombolSemua;
+    private TombolMapping btnMappingKamar;
+    private boolean tampilUlang=false;
+
+    private static void gambarTombol(java.awt.Graphics g,javax.swing.AbstractButton b,boolean aktif){
+        java.awt.Graphics2D g2=(java.awt.Graphics2D)g.create();
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING,java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        int w=b.getWidth(),h=b.getHeight();
+        boolean sorot=b.getModel().isRollover()||b.getModel().isArmed();
+        java.awt.Color isi=aktif?new java.awt.Color(50,150,50):(sorot?new java.awt.Color(222,236,212):new java.awt.Color(244,247,240));
+        java.awt.Color garis=aktif?new java.awt.Color(30,110,30):new java.awt.Color(165,180,155);
+        if(!b.isEnabled()){
+            isi=new java.awt.Color(235,235,235);
+            garis=new java.awt.Color(200,200,200);
+        }
+        g2.setColor(isi);
+        g2.fillRoundRect(0,0,w-1,h-1,10,10);
+        g2.setColor(garis);
+        g2.drawRoundRect(0,0,w-1,h-1,10,10);
+        if(b.hasFocus()){
+            g2.setColor(new java.awt.Color(90,90,90,140));
+            g2.drawRoundRect(2,2,w-5,h-5,7,7);
+        }
+        g2.setFont(b.getFont());
+        java.awt.FontMetrics fm=g2.getFontMetrics();
+        String teks=b.getText();
+        g2.setColor(!b.isEnabled()?new java.awt.Color(140,140,140):(aktif?java.awt.Color.WHITE:new java.awt.Color(50,50,50)));
+        g2.drawString(teks,(w-fm.stringWidth(teks))/2,(h-fm.getHeight())/2+fm.getAscent());
+        g2.dispose();
+    }
+
+    private static final class TombolKelompok extends javax.swing.JToggleButton {
+        TombolKelompok(String teks){
+            super(teks);
+            setFont(new java.awt.Font("Tahoma",1,11));
+            setFocusPainted(false);
+            setContentAreaFilled(false);
+            setBorderPainted(false);
+            setOpaque(false);
+            setRolloverEnabled(true);
+            setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        @Override protected void paintComponent(java.awt.Graphics g){
+            gambarTombol(g,this,isSelected());
+        }
+    }
+
+    private static final class TombolMapping extends javax.swing.JButton {
+        TombolMapping(String teks){
+            super(teks);
+            setFont(new java.awt.Font("Tahoma",1,11));
+            setFocusPainted(false);
+            setContentAreaFilled(false);
+            setBorderPainted(false);
+            setOpaque(false);
+            setRolloverEnabled(true);
+            setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        @Override protected void paintComponent(java.awt.Graphics g){
+            gambarTombol(g,this,false);
+        }
+    }
+
+    private TombolKelompok buatTombol(String teks,String tip,int lebar,int indeksCache){
+        TombolKelompok t=new TombolKelompok(teks);
+        t.setName("BtnKelompok"+teks.replace(" ",""));
+        t.setPreferredSize(new java.awt.Dimension(lebar,25));
+        t.setToolTipText(tip);
+        t.setSelected(INGAT_PILIHAN_KELOMPOK&&CACHE_KELOMPOK[indeksCache]);
+        return t;
+    }
+
+    private void initKelompokRanap(){
+        final String[] nama=DlgMappingKamarInap.KELOMPOK;
+        final int[] lebar={88,100,44,50,50,44};
+        tombolKelompok=new TombolKelompok[nama.length];
+        javax.swing.JLabel jarak1=new javax.swing.JLabel();
+        jarak1.setPreferredSize(new java.awt.Dimension(14,23));
+        panelCari.add(jarak1);
+        for(int k=0;k<nama.length;k++){
+            final int idx=k;
+            tombolKelompok[k]=buatTombol(nama[k],"Klik untuk menampilkan pasien "+nama[k]+" (klik lagi untuk menyembunyikan)",lebar[k],k);
+            tombolKelompok[k].addActionListener(e -> kelompokDiklik(idx));
+            panelCari.add(tombolKelompok[k]);
+        }
+        tombolLainnya=buatTombol("KAMAR LAINNYA","Pasien di kamar AKTIF pada bangsal yang belum masuk kelompok mana pun (belum dimapping dan namanya bukan HCU/ICU/NICU/PICU)",112,nama.length);
+        tombolLainnya.addActionListener(e -> lainnyaDiklik());
+        panelCari.add(tombolLainnya);
+
+        javax.swing.JLabel jarak2=new javax.swing.JLabel();
+        jarak2.setPreferredSize(new java.awt.Dimension(13,23));
+        panelGlass11.add(jarak2);
+        tombolSemua=buatTombol("SEMUA KAMAR","Tampilkan semua pasien (kamar aktif) tanpa filter kelompok",115,nama.length+1);
+        tombolSemua.addActionListener(e -> semuaDiklik());
+        panelGlass11.add(tombolSemua);
+        btnMappingKamar=new TombolMapping("MAPPING KAMAR");
+        btnMappingKamar.setName("btnMappingKamar");
+        btnMappingKamar.setPreferredSize(new java.awt.Dimension(130,25));
+        btnMappingKamar.setToolTipText("Atur bangsal mana yang masuk RANAP ATAS, RANAP BAWAH, ICU, NICU, PICU, HCU (satu bangsal hanya boleh di satu kelompok)");
+        btnMappingKamar.addActionListener(e -> bukaMappingKamar());
+        panelGlass11.add(btnMappingKamar);
+        panelCari.revalidate();
+        panelGlass11.revalidate();
+    }
+
+    private void simpanCacheKelompok(){
+        if(tombolKelompok!=null){
+            for(int k=0;k<tombolKelompok.length;k++){
+                CACHE_KELOMPOK[k]=tombolKelompok[k].isSelected();
+            }
+            CACHE_KELOMPOK[tombolKelompok.length]=tombolLainnya.isSelected();
+            CACHE_KELOMPOK[tombolKelompok.length+1]=tombolSemua.isSelected();
+        }
+    }
+
+    private boolean adaKelompokDipilih(){
+        if(tombolKelompok==null){
+            return false;
+        }
+        if(tombolSemua.isSelected()||tombolLainnya.isSelected()){
+            return true;
+        }
+        for(TombolKelompok t : tombolKelompok){
+            if(t.isSelected()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Potongan SQL (AND ...) pembatas kelompok. Isinya hanya konstanta (nama kelompok & aturan nama), bukan input user.
+     *  Kamar nonaktif tidak pernah tampil (HANYA_KAMAR_AKTIF). SEMUA KAMAR -> semua kelompok. KAMAR LAINNYA -> kelompok kosong dan kamar aktif. */
+    private String syaratKelompok(){
+        final String aktif=HANYA_KAMAR_AKTIF?" and kamar.statusdata='1' ":"";
+        if(tombolSemua.isSelected()){
+            return aktif;
+        }
+        StringBuilder daftar=new StringBuilder();
+        for(int k=0;k<tombolKelompok.length;k++){
+            if(tombolKelompok[k].isSelected()){
+                if(daftar.length()>0){
+                    daftar.append(",");
+                }
+                daftar.append("'").append(DlgMappingKamarInap.KELOMPOK[k]).append("'");
+            }
+        }
+        StringBuilder syarat=new StringBuilder();
+        if(daftar.length()>0){
+            syarat.append(DlgMappingKamarInap.SQL_KELOMPOK).append(" in (").append(daftar).append(")");
+        }
+        if(tombolLainnya.isSelected()){
+            if(syarat.length()>0){
+                syarat.append(" or ");
+            }
+            syarat.append("(").append(DlgMappingKamarInap.SQL_KELOMPOK).append(" is null and kamar.statusdata='1')");
+        }
+        return aktif+" and ("+syarat+") ";
+    }
+
+    private void matikanTombol(boolean kelompok,boolean lainnya,boolean semua){
+        if(kelompok){
+            for(TombolKelompok t : tombolKelompok){
+                t.setSelected(false);
+            }
+        }
+        if(lainnya){
+            tombolLainnya.setSelected(false);
+        }
+        if(semua){
+            tombolSemua.setSelected(false);
+        }
+    }
+
+    private void muatUlangKelompok(){
+        if(ceksukses){
+            tampilUlang=true;
+        }else{
+            tampil();
+        }
+    }
+
+    private void kelompokDiklik(int idx){
+        if(tombolKelompok[idx].isSelected()){
+            tombolSemua.setSelected(false);
+            if(!KELOMPOK_PILIH_BANYAK){
+                matikanTombol(true,true,false);
+                tombolKelompok[idx].setSelected(true);
+            }
+            int jml=DlgMappingKamarInap.jumlahBangsalKelompok(koneksi,DlgMappingKamarInap.KELOMPOK[idx]);
+            if(jml<0){
+                tombolKelompok[idx].setSelected(false);
+                JOptionPane.showMessageDialog(null,"Maaf, tabel mapping_kelompok_ranap belum ada di database.\nSilahkan jalankan dulu file 07_mapping_kelompok_ranap.sql...!!!!");
+                return;
+            }else if(jml==0){
+                JOptionPane.showMessageDialog(null,"Belum ada bangsal yang dimapping ke "+DlgMappingKamarInap.KELOMPOK[idx]+".\nSilahkan klik MAPPING KAMAR untuk mengaturnya...!!!!");
+            }
+        }
+        muatUlangKelompok();
+    }
+
+    private void lainnyaDiklik(){
+        if(tombolLainnya.isSelected()){
+            tombolSemua.setSelected(false);
+            if(!KELOMPOK_PILIH_BANYAK){
+                matikanTombol(true,false,false);
+            }
+            if(DlgMappingKamarInap.jumlahBangsalKelompok(koneksi,DlgMappingKamarInap.KELOMPOK[0])<0){
+                tombolLainnya.setSelected(false);
+                JOptionPane.showMessageDialog(null,"Maaf, tabel mapping_kelompok_ranap belum ada di database.\nSilahkan jalankan dulu file 07_mapping_kelompok_ranap.sql...!!!!");
+                return;
+            }
+        }
+        muatUlangKelompok();
+    }
+
+    private void semuaDiklik(){
+        if(tombolSemua.isSelected()){
+            matikanTombol(true,true,false);   // SEMUA KAMAR menggantikan pilihan kelompok lain
+        }
+        muatUlangKelompok();
+    }
+
+    private void bukaMappingKamar(){
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgMappingKamarInap form=new DlgMappingKamarInap(null,true);
+        form.isCek();
+        form.setSize(780,480);
+        form.setLocationRelativeTo(internalFrame1);
+        form.tampil();
+        this.setCursor(Cursor.getDefaultCursor());
+        form.setVisible(true);
+        form.dispose();
+        if(adaKelompokDipilih()){
+            muatUlangKelompok();
+        }
+    }
+
     private void initKamarInap(){
         MnPenilaianPreInduksi = new widget.MenuItem();
         MnPenilaianPreInduksi.setBackground(new java.awt.Color(255, 255, 254));
