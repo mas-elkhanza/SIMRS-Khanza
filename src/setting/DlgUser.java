@@ -294,7 +294,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Skrining TOLAC","[M]Admisi & Skoring TOLAC","[M]Monitoring Selama TOLAC","[M]Resume Hasil Persalinan TOLAC","[M]Laporan Reaksi Tranfusi","[M]Penilaian GRACE Score",
                 "[M]Penilaian BISHOP Score","[M]Profil Ringkas Rawat Jalan","[M]Hasil USG Testis","[M]Hasil USG Kepala","[M]Hasil USG Mammae","[M]Hasil Pemeriksaan Spirometri",
                 "[P]Surat Pernyataan Bersedia Dirujuk","[P]Surat Pernyataan Bersedia Menunggu Di IGD/UGD","[M]Pengkajian Awal Medis Ralan Gigi","Laporan Monitoring Efek Samping Obat",
-                "[R]Kelas Kewaspadaan ICRA","[R]Matriks Kelas Kewaspadaan ICRA"
+                "[R]Kelas Kewaspadaan ICRA","[R]Matriks Kelas Kewaspadaan ICRA","[R]Pengkajian Risiko Pengendalian Infeksi/ICRA"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -623,7 +623,8 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -636,7 +637,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1238;i++) {
+        for (i = 0; i < 1239;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0 -> column.setPreferredWidth(130);
@@ -1694,6 +1695,7 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1235 -> column.setPreferredWidth(197);
                 case 1236 -> column.setPreferredWidth(145);
                 case 1237 -> column.setPreferredWidth(184);
+                case 1238 -> column.setPreferredWidth(240);
                 default -> column.setPreferredWidth(133);
             }
         }
@@ -2124,7 +2126,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -2155,7 +2157,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -3440,7 +3442,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_awal_medis_gigi_mulut='"+tbUser.getValueAt(i,1234).toString()+"',"+
                     "laporan_meso='"+tbUser.getValueAt(i,1235).toString()+"',"+
                     "pcra_icra_kelas_kewaspadaan='"+tbUser.getValueAt(i,1236).toString()+"',"+
-                    "pcra_icra_matriks_kelas_kewaspadaan='"+tbUser.getValueAt(i,1237).toString()+"'")==true){
+                    "pcra_icra_matriks_kelas_kewaspadaan='"+tbUser.getValueAt(i,1237).toString()+"',"+
+                    "pcra_icra_pengkajian_risiko_infeksi='"+tbUser.getValueAt(i,1238).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -4962,7 +4965,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "penilaian_awal_medis_gigi_mulut='"+tbUser.getValueAt(barisdicopy,1234).toString()+"',"+
                                         "laporan_meso='"+tbUser.getValueAt(barisdicopy,1235).toString()+"',"+
                                         "pcra_icra_kelas_kewaspadaan='"+tbUser.getValueAt(barisdicopy,1236).toString()+"',"+
-                                        "pcra_icra_matriks_kelas_kewaspadaan='"+tbUser.getValueAt(barisdicopy,1237).toString()+"'");
+                                        "pcra_icra_matriks_kelas_kewaspadaan='"+tbUser.getValueAt(barisdicopy,1237).toString()+"',"+
+                                        "pcra_icra_pengkajian_risiko_infeksi='"+tbUser.getValueAt(barisdicopy,1238).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5306,7 +5310,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.ringkasan_hutang_vendor_inventaris,user.ringkasan_beban_hutang_lain,user.set_resep_per_cara_bayar,user.skrining_tolac,user.admisi_skoring_tolac,user.monitoring_tolac,"+
                             "user.hasil_persalinan_tolac,user.laporan_reaksi_transfusi,user.penilaian_grace_scor,user.penilaian_bishop_scor,user.profil_ringkas_rawat_jalan,user.hasil_usg_testis,"+
                             "user.hasil_usg_kepala,user.hasil_usg_mammae,user.hasil_spirometri,user.surat_pernyataan_bersedia_dirujuk,user.surat_kesediaan_menunggu_igd,user.penilaian_awal_medis_gigi_mulut,"+
-                            "user.laporan_meso,user.pcra_icra_kelas_kewaspadaan,user.pcra_icra_matriks_kelas_kewaspadaan from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.laporan_meso,user.pcra_icra_kelas_kewaspadaan,user.pcra_icra_matriks_kelas_kewaspadaan,user.pcra_icra_pengkajian_risiko_infeksi from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -6558,7 +6562,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("penilaian_awal_medis_gigi_mulut"),
                                            rs.getBoolean("laporan_meso"),
                                            rs.getBoolean("pcra_icra_kelas_kewaspadaan"),
-                                           rs.getBoolean("pcra_icra_matriks_kelas_kewaspadaan")
+                                           rs.getBoolean("pcra_icra_matriks_kelas_kewaspadaan"),
+                                           rs.getBoolean("pcra_icra_pengkajian_risiko_infeksi")
                                         });
                                     }   
                                 } catch (Exception e) {
@@ -7798,7 +7803,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("penilaian_awal_medis_gigi_mulut"),
                                        rs.getBoolean("laporan_meso"),
                                        rs.getBoolean("pcra_icra_kelas_kewaspadaan"),
-                                       rs.getBoolean("pcra_icra_matriks_kelas_kewaspadaan")
+                                       rs.getBoolean("pcra_icra_matriks_kelas_kewaspadaan"),
+                                       rs.getBoolean("pcra_icra_pengkajian_risiko_infeksi")
                                     });
                                 }                                             
                              }

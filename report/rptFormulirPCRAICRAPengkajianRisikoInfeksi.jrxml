@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptFormulirPCRAICRAPengkajianRisikoInfeksi" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="895298e6-8b7e-40c3-a008-365298ff7dac">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString language="SQL">
+		<![CDATA[select pcra_icra_pengkajian_risiko_infeksi.no_icra,pcra_icra_pengkajian_risiko_infeksi.no_pcra,pcra_icra_pengkajian_risiko_infeksi.tanggal_pengkajian,pcra_icra_pengkajian_risiko_prakonstruksi.no_proyek,pcra_icra_pengkajian_risiko_prakonstruksi.nama_proyek,pcra_icra_pengkajian_risiko_prakonstruksi.lokasi_proyek,pcra_icra_pengkajian_risiko_prakonstruksi.pelaksana_proyek,pcra_icra_pengkajian_risiko_prakonstruksi.mulai_proyek,pcra_icra_pengkajian_risiko_prakonstruksi.perkiraan_selesai,pcra_icra_pengkajian_risiko_prakonstruksi.deskripsi_pekerjaan,pcra_icra_pengkajian_risiko_infeksi.kegiatan_lainnya,pcra_icra_pengkajian_risiko_infeksi.pekerjaan_lainnya,pcra_icra_pengkajian_risiko_infeksi.gangguan_lainnya,pcra_icra_pengkajian_risiko_infeksi.lokasi_sekitar,pcra_icra_pengkajian_risiko_infeksi.rute_pekerja,pcra_icra_pengkajian_risiko_infeksi.jam_mulai,pcra_icra_pengkajian_risiko_infeksi.jam_selesai,pcra_icra_pengkajian_risiko_infeksi.waktu_kerja,pcra_icra_pengkajian_risiko_infeksi.area_tetap_beroperasi,pcra_icra_pengkajian_risiko_infeksi.keterangan_operasi,pcra_icra_jenis_aktivitas_proyek.nama_aktivitas,pcra_icra_kelas_risiko_pencegahan.nama_kelas as risiko_pasien,pcra_icra_kelas_kewaspadaan.nama_kewaspadaan,pcra_icra_kelas_kewaspadaan.perlu_izin,pcra_icra_pengkajian_risiko_infeksi.alasan_kelas,pcra_icra_pengkajian_risiko_infeksi.keputusan,pcra_icra_pengkajian_risiko_infeksi.persyaratan,pemohon.nama as nama_pemohon,ipsrs.nama as nama_ipsrs,k3rs.nama as nama_k3rs,ppi.nama as nama_ppi,manajemen.nama as nama_manajemen,daftar_jenis.urut,daftar_jenis.jenis,isi_jenis.uraian,isi_jenis.keterangan,isi_jenis.pic from pcra_icra_pengkajian_risiko_infeksi inner join pcra_icra_pengkajian_risiko_prakonstruksi on pcra_icra_pengkajian_risiko_prakonstruksi.no_pcra=pcra_icra_pengkajian_risiko_infeksi.no_pcra inner join pcra_icra_jenis_aktivitas_proyek on pcra_icra_jenis_aktivitas_proyek.kode_aktivitas=pcra_icra_pengkajian_risiko_infeksi.kode_aktivitas inner join pcra_icra_kelas_risiko_pencegahan on pcra_icra_kelas_risiko_pencegahan.kode_kelas=pcra_icra_pengkajian_risiko_infeksi.kode_kelas_risiko inner join pcra_icra_kelas_kewaspadaan on pcra_icra_kelas_kewaspadaan.kode_kewaspadaan=pcra_icra_pengkajian_risiko_infeksi.kode_kewaspadaan inner join pegawai as pemohon on pemohon.nik=pcra_icra_pengkajian_risiko_infeksi.nik_pemohon inner join pegawai as ppi on ppi.nik=pcra_icra_pengkajian_risiko_infeksi.nik_ppi left join pegawai as ipsrs on ipsrs.nik=pcra_icra_pengkajian_risiko_infeksi.nik_ipsrs left join pegawai as k3rs on k3rs.nik=pcra_icra_pengkajian_risiko_infeksi.nik_k3rs left join pegawai as manajemen on manajemen.nik=pcra_icra_pengkajian_risiko_infeksi.nik_manajemen inner join (select 1 as urut,'Jenis Kegiatan' as jenis union all select 2,'Jenis Pekerjaan' union all select 3,'Potensi Gangguan' union all select 4,'Kelompok Pasien / Area Terdampak' union all select 5,'Rencana Pengendalian') as daftar_jenis left join (select 1 as urut,pcra_icra_jenis_kegiatan.nama_kegiatan as uraian,'' as keterangan,'' as pic from pcra_icra_pengkajian_risiko_infeksi_kegiatan inner join pcra_icra_jenis_kegiatan on pcra_icra_jenis_kegiatan.kode_kegiatan=pcra_icra_pengkajian_risiko_infeksi_kegiatan.kode_kegiatan where pcra_icra_pengkajian_risiko_infeksi_kegiatan.no_icra='' union all select 2,pcra_icra_jenis_pekerjaan.nama_pekerjaan as uraian,'' as keterangan,'' as pic from pcra_icra_pengkajian_risiko_infeksi_pekerjaan inner join pcra_icra_jenis_pekerjaan on pcra_icra_jenis_pekerjaan.kode_pekerjaan=pcra_icra_pengkajian_risiko_infeksi_pekerjaan.kode_pekerjaan where pcra_icra_pengkajian_risiko_infeksi_pekerjaan.no_icra='' union all select 3,pcra_icra_potensi_gangguan.nama_gangguan as uraian,'' as keterangan,'' as pic from pcra_icra_pengkajian_risiko_infeksi_gangguan inner join pcra_icra_potensi_gangguan on pcra_icra_potensi_gangguan.kode_gangguan=pcra_icra_pengkajian_risiko_infeksi_gangguan.kode_gangguan where pcra_icra_pengkajian_risiko_infeksi_gangguan.no_icra='' union all select 4,pcra_icra_lokasi_kelompok_risiko_area.nama_area as uraian,pcra_icra_pengkajian_risiko_infeksi_area.keterangan as keterangan,'' as pic from pcra_icra_pengkajian_risiko_infeksi_area inner join pcra_icra_lokasi_kelompok_risiko_area on pcra_icra_lokasi_kelompok_risiko_area.kode_area=pcra_icra_pengkajian_risiko_infeksi_area.kode_area where pcra_icra_pengkajian_risiko_infeksi_area.no_icra='' union all select 5,pcra_icra_tindakan_pengendalian.nama_pengendalian as uraian,pcra_icra_pengkajian_risiko_infeksi_pengendalian.rencana as keterangan,pcra_icra_pengkajian_risiko_infeksi_pengendalian.pic as pic from pcra_icra_pengkajian_risiko_infeksi_pengendalian inner join pcra_icra_tindakan_pengendalian on pcra_icra_tindakan_pengendalian.kode_pengendalian=pcra_icra_pengkajian_risiko_infeksi_pengendalian.kode_pengendalian where pcra_icra_pengkajian_risiko_infeksi_pengendalian.no_icra='') as isi_jenis on isi_jenis.urut=daftar_jenis.urut where pcra_icra_pengkajian_risiko_infeksi.no_icra='' order by daftar_jenis.urut,isi_jenis.uraian]]>
+	</queryString>
+	<field name="no_icra" class="java.lang.String"/>
+	<field name="no_pcra" class="java.lang.String"/>
+	<field name="tanggal_pengkajian" class="java.sql.Timestamp"/>
+	<field name="no_proyek" class="java.lang.String"/>
+	<field name="nama_proyek" class="java.lang.String"/>
+	<field name="lokasi_proyek" class="java.lang.String"/>
+	<field name="pelaksana_proyek" class="java.lang.String"/>
+	<field name="mulai_proyek" class="java.sql.Date"/>
+	<field name="perkiraan_selesai" class="java.sql.Date"/>
+	<field name="deskripsi_pekerjaan" class="java.lang.String"/>
+	<field name="lokasi_sekitar" class="java.lang.String"/>
+	<field name="rute_pekerja" class="java.lang.String"/>
+	<field name="jam_mulai" class="java.lang.String"/>
+	<field name="jam_selesai" class="java.lang.String"/>
+	<field name="waktu_kerja" class="java.lang.String"/>
+	<field name="area_tetap_beroperasi" class="java.lang.String"/>
+	<field name="keterangan_operasi" class="java.lang.String"/>
+	<field name="nama_aktivitas" class="java.lang.String"/>
+	<field name="risiko_pasien" class="java.lang.String"/>
+	<field name="nama_kewaspadaan" class="java.lang.String"/>
+	<field name="perlu_izin" class="java.lang.String"/>
+	<field name="alasan_kelas" class="java.lang.String"/>
+	<field name="keputusan" class="java.lang.String"/>
+	<field name="persyaratan" class="java.lang.String"/>
+	<field name="nama_pemohon" class="java.lang.String"/>
+	<field name="nama_ipsrs" class="java.lang.String"/>
+	<field name="nama_k3rs" class="java.lang.String"/>
+	<field name="nama_ppi" class="java.lang.String"/>
+	<field name="nama_manajemen" class="java.lang.String"/>
+	<field name="urut" class="java.lang.Integer"/>
+	<field name="jenis" class="java.lang.String"/>
+	<field name="uraian" class="java.lang.String"/>
+	<field name="keterangan" class="java.lang.String"/>
+	<field name="pic" class="java.lang.String"/>
+	<group name="icra">
+		<groupExpression><![CDATA[$F{no_icra}]]></groupExpression>
+		<groupHeader>
+		<band height="148" splitType="Stretch">
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="557" height="22" uuid="11ee39cc-030f-47de-a303-cd6c9fd0c951"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FORMULIR PENGKAJIAN RISIKO PENGENDALIAN INFEKSI/ICRA (INFECTION CONTROL RISK ASSESSMENT)"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement mode="Opaque" backcolor="#E8E8E8" x="0" y="22" width="557" height="14" uuid="93481728-c43d-48a5-b566-9d7aef4c99dc"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DATA PROYEK"]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="0" y="36" width="557" height="14" uuid="506e8de1-855b-4d33-8646-448c7d3f3602"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="485e5c96-e299-49d5-ad08-563bf6777eef"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No.ICRA"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="1b92de33-e0ba-4ada-970b-a11472338dcd"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="161b1afe-9b34-4369-bdec-e9f8d1f49126"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_icra}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="50" width="557" height="14" uuid="af5578a6-7599-4c45-8f5b-f9e14bba92cc"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="1438ad79-be98-4903-a839-fbb89126cbdb"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tanggal Pengkajian"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="73e968f6-b5c4-4086-a1c6-64c585a00022"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="d442d221-750f-4525-83c8-07db860e7e8d"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MM-yyyy").format($F{tanggal_pengkajian})]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="64" width="557" height="14" uuid="97d2f4c6-4df1-4ca5-8524-f53cd6116e10"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="8fdcbd81-03e3-43e2-8468-813e8cf97973"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No.PCRA / No.Proyek"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="80df4c9e-926d-4df1-ad88-4abba6f3a4d4"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="83fbe545-36c4-4d4b-9c43-4c6020aaeef6"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_pcra}+" / "+$F{no_proyek}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="78" width="557" height="14" uuid="2216a8f2-7968-419d-acdf-bb3318b72bb5"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="4c7cae63-8a59-4166-a258-f789d6dcb023"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Proyek"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="20ab4d6c-5b98-44b8-8b43-f3043794a416"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="63046db5-2c10-4174-996f-ce5d968151f4"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_proyek}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="92" width="557" height="14" uuid="9a4f6d5b-3667-4acf-88e9-e141c3881d1d"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="616ed6bb-2da4-4190-bfe0-75bf114c94d0"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lokasi Proyek"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="2406e980-5a1f-44ed-8a06-7c1f86bafe3b"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="d11f9a9b-84ce-4273-9d3a-251b40e495da"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lokasi_proyek}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="106" width="557" height="14" uuid="b53cc599-6a84-4db1-89e0-c577d698c327"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="0ed7b673-e286-49f9-b98a-3466e0cc1850"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Periode Pekerjaan"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="08984388-bd98-4799-9c23-ca9a061a478a"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="073cc243-c57a-4e09-a8aa-8faab6316b6f"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MM-yyyy").format($F{mulai_proyek})+" s/d "+new java.text.SimpleDateFormat("dd-MM-yyyy").format($F{perkiraan_selesai})]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="120" width="557" height="14" uuid="774e635e-d453-4417-a67f-4847f45f0ac4"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="02f9c6f9-4b0f-4cb4-811a-c0709e1dce64"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Uraian Pekerjaan"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="301afb74-f727-4386-bc50-046d20575fdb"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="042f2d2a-bf78-44f0-b3da-b9f4c84b7cba"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deskripsi_pekerjaan}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="134" width="557" height="14" uuid="ab94cfe0-96c2-4157-9c91-e66ec2ae318f"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="a2286e8e-8dd7-4009-878a-6bcc8cd47480"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pelaksana/Kontraktor"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="7f6770a1-6e20-4bb1-abc3-fac98e0a3e91"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="3011cb0f-d25e-421a-98e3-e680387edf98"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pelaksana_proyek}]]></textFieldExpression>
+			</textField>
+			</frame>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="60" splitType="Prevent">
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement mode="Opaque" backcolor="#E8E8E8" x="0" y="0" width="557" height="16" uuid="c772f022-2ccb-4c3e-baf6-4364f852acbb"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["V. KEPUTUSAN DAN PERSETUJUAN PRA-PEKERJAAN"]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="0" y="16" width="557" height="14" uuid="1436eb08-4b2a-46b3-8fb5-74f0b98b7ef9"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="25281c83-ff22-4b3c-953a-b0d5ab5d3e71"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Keputusan"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="d3d3c619-df55-43c1-b590-f318a6c2a16a"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="2bf02075-cb2b-47b4-b7fd-c8b0b82d0e8a"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keputusan}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="30" width="557" height="14" uuid="eeb189ed-dba2-4f32-9755-4181ecebe37e"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="d93c8848-834f-4ef9-a91b-05bb2cd0f441"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Persyaratan / Catatan"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="04bc3f57-ce7a-41f4-88c7-c2ab1a6fe3be"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="67b82666-7e44-4787-859d-665e24d0bb5b"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persyaratan}]]></textFieldExpression>
+			</textField>
+			</frame>
+		</band>
+		<band height="100" splitType="Prevent">
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="4" width="557" height="14" uuid="f31297bd-90ac-4248-bd97-1a86bb5c8285"></reportElement>
+				
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+new java.text.SimpleDateFormat("dd-MM-yyyy").format($F{tanggal_pengkajian})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="22" width="109" height="14" uuid="010a63c7-e0a1-49b0-9094-7df68792afaf"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pemohon/Unit"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="76" width="109" height="14" uuid="756ce46c-310c-490c-a6f8-cce2041d5f48"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+($F{nama_pemohon}!=null && !$F{nama_pemohon}.trim().equals("") ? $F{nama_pemohon} : "..................")+" )"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="112" y="22" width="109" height="14" uuid="4dbfa29c-30d1-42f1-aab6-67b9741c7d49"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IPSRS"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="112" y="76" width="109" height="14" uuid="0a247323-ad22-48a4-a6c9-f943720c169e"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+($F{nama_ipsrs}!=null && !$F{nama_ipsrs}.trim().equals("") ? $F{nama_ipsrs} : "..................")+" )"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="224" y="22" width="109" height="14" uuid="a1f66613-3f35-4f25-9c85-da0a05f443bf"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["K3RS"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="224" y="76" width="109" height="14" uuid="08c1964b-9f7e-4e84-8809-ceaddffce21e"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+($F{nama_k3rs}!=null && !$F{nama_k3rs}.trim().equals("") ? $F{nama_k3rs} : "..................")+" )"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="336" y="22" width="109" height="14" uuid="2cf43c28-c038-40e0-905d-94d858e13076"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tim PPI"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="336" y="76" width="109" height="14" uuid="187dee94-e9a6-4100-b8ff-00dc045be4c3"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+($F{nama_ppi}!=null && !$F{nama_ppi}.trim().equals("") ? $F{nama_ppi} : "..................")+" )"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="448" y="22" width="109" height="14" uuid="2b386a2c-5e03-488c-944a-570f15665b2a"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Manajemen"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="448" y="76" width="109" height="14" uuid="9b7b27a5-9cee-4fd7-ac1a-8e0c8dc1db35"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+($F{nama_manajemen}!=null && !$F{nama_manajemen}.trim().equals("") ? $F{nama_manajemen} : "..................")+" )"]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="jenis" keepTogether="true">
+		<groupExpression><![CDATA[$F{urut}]]></groupExpression>
+		<groupHeader>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==1 || $F{urut}.intValue()==2]]></printWhenExpression>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement mode="Opaque" backcolor="#E8E8E8" x="0" y="0" width="557" height="16" uuid="6c758af1-4196-4657-a5eb-835efa50ccfd"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{urut}.intValue()==1 ? "I. IDENTIFIKASI RUANG LINGKUP PEKERJAAN DAN RISIKO" : "II. IDENTIFIKASI KELOMPOK PASIEN / AREA BERISIKO"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="78" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==3]]></printWhenExpression>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement mode="Opaque" backcolor="#E8E8E8" x="0" y="0" width="557" height="16" uuid="77173c64-a1f5-410f-8bc4-c08b70189373"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["III. PENETAPAN KELAS PENCEGAHAN ICRA"]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="0" y="16" width="557" height="14" uuid="c9abe7a5-585c-41cd-bf95-58bdaa64caff"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="8f08d4b8-c79e-4fd1-9919-6c5a6dca7855"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tipe Pekerjaan"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="bf6ca56d-c59e-4fe5-a85e-a6634011a256"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="6732557d-2246-402e-8512-144ee091e26a"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_aktivitas}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="30" width="557" height="14" uuid="83850857-3ef8-4848-ab56-c92d602176fe"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="753d02c3-ffbc-4a52-b7c1-da013e3cc128"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Risiko Pasien"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="48b72121-54ed-4b10-bf32-816e4fd8b6e2"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="6075beaf-66af-40d5-9366-cd763267d1c8"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{risiko_pasien}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="44" width="557" height="14" uuid="afa53166-b2b5-4500-888e-3fe04cded552"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="e8b5a2f2-ccd7-46f6-ad6a-5ae66bf53336"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kelas ICRA"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="6519d9bf-8331-437b-a138-44de1b350e53"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="5b66f92b-21a8-4d6d-82d3-7f07637bb512"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_kewaspadaan}+" (Perlu izin kerja : "+$F{perlu_izin}+")"]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="58" width="557" height="14" uuid="75697bc7-6cfd-43f7-9e34-69480fe4b01f"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="418925fe-a1b6-4085-bab8-d793e92e8238"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Alasan Penetapan Kelas"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="384df6cf-6ea9-442a-bb97-a3c0d1770bab"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="66eb73a2-a739-4433-be49-9380e323a939"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alasan_kelas}]]></textFieldExpression>
+			</textField>
+			</frame>
+		</band>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==3]]></printWhenExpression>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement mode="Opaque" backcolor="#E8E8E8" x="0" y="0" width="557" height="16" uuid="1cecf623-37ea-4d5e-81a2-a2abd291d514"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IV. RENCANA PENGENDALIAN"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="16" splitType="Stretch">
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="2" width="557" height="14" uuid="d7b20460-9e59-43de-82c0-8430fc1e91df"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==2]]></printWhenExpression>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="10" y="0" width="270" height="14" uuid="c23dfd93-c068-435d-8b70-aaca0fd3e300"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kelompok Pasien / Area"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="280" y="0" width="277" height="14" uuid="eeadcfb9-b392-41fa-b7b4-ab409afac834"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Keterangan (jarak, jumlah, kerentanan pasien)"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==3]]></printWhenExpression>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="10" y="0" width="200" height="14" uuid="01ceac68-a950-4fe2-bf81-8b2966ce8720"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tindakan Pengendalian"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="210" y="0" width="267" height="14" uuid="25043edd-74b6-4d0e-bb96-51e4eabc5f59"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rencana Pengendalian"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="477" y="0" width="80" height="14" uuid="ca8ea706-0765-4874-93cd-29355fcd52a9"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PIC"]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="62" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==1]]></printWhenExpression>
+			<frame>
+				<reportElement positionType="Float" x="0" y="0" width="557" height="14" uuid="10b4a457-967f-4382-a282-c5799e4bda57"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="50b7080b-bfa7-475d-807b-4ac47f8a8c99"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lokasi/Ruang Sekitar"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="be0d3854-5824-48bd-b0aa-9c25c191a0e3"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="567be548-41e6-4a28-ae75-3f10a0067b13"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lokasi_sekitar}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="14" width="557" height="14" uuid="ce580f1b-69cd-40fd-af69-8513a29e2f33"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="413869d4-584e-494e-9b5c-b1d855f04e04"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rute Pekerja/Material"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="3be7a137-30ed-4b72-bd65-9e887a755d15"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="9302f98f-c64e-478b-86aa-592ec0428017"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rute_pekerja}]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="28" width="557" height="14" uuid="a6ac53c8-c7fe-4ca6-95d6-6e2eedb232a1"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="e35c1d5a-08b1-47d3-bc83-627fbbd6db1d"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam Kerja"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="8066b81f-11ab-4f39-857e-8260d0081b34"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="53104095-d816-44a7-840a-14dcd0b42e55"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jam_mulai}.substring(0,5)+" s/d "+$F{jam_selesai}.substring(0,5)+" ("+$F{waktu_kerja}+")"]]></textFieldExpression>
+			</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="42" width="557" height="14" uuid="431d822e-17d1-40a0-bffa-130ae06e3062"/>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="170" height="14" uuid="a38d0807-0f05-450e-b0d3-74384f8835ca"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Area Tetap Beroperasi"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="170" y="0" width="10" height="14" uuid="d4a88757-59cc-4fee-8d64-f93ecdb742d5"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="377" height="14" uuid="ef9df784-6437-46ea-b4f3-2f5bf05a9044"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area_tetap_beroperasi}+($F{keterangan_operasi}!=null && !$F{keterangan_operasi}.trim().equals("") ? " - "+$F{keterangan_operasi} : "")]]></textFieldExpression>
+			</textField>
+			</frame>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="54" splitType="Stretch">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="0" y="2" width="48" height="45" uuid="2d984505-0825-45ba-9f2c-4bf37c8da20b"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="2" y="0" width="553" height="17" uuid="c209d75f-d359-4966-8c88-ab04984c2ab7"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="2" y="14" width="553" height="14" uuid="8521c25e-ec6b-49e2-b4d9-b5a774c15c3b"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="2" y="25" width="553" height="14" uuid="ce8a5ef3-66c4-47a8-ba54-c495d35e3123"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="false" isBlankWhenNull="true">
+				<reportElement x="2" y="35" width="553" height="14" uuid="c275664c-ca22-47f0-87ff-d44043c3c511"></reportElement>
+				
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="50" width="557" height="1" uuid="38e78244-6da2-474e-9cf1-374cbb2b36f7"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==1]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="10" y="0" width="547" height="14" uuid="d0721247-a254-4d23-906b-507b7609efbf"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{uraian}!=null ? "√ "+$F{uraian} : "-"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==2]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="0" width="270" height="14" uuid="2616d3f1-9d9f-4225-9870-e1d5105d73c7"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{uraian}!=null ? "√ "+$F{uraian} : "-"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="280" y="0" width="277" height="14" uuid="7430856f-b18a-4139-99cf-2fb42e89af08"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{urut}.intValue()==3]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="0" width="200" height="14" uuid="9729b489-8f2e-418a-b7a1-d7164ff891e7"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{uraian}!=null ? "√ "+$F{uraian} : "-"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="210" y="0" width="267" height="14" uuid="d5e42eaf-4179-433a-a35e-5ff998cd2308"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="477" y="0" width="80" height="14" uuid="6d39ff76-fcc2-4753-a430-a63083a4fd34"></reportElement>
+				
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pic}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

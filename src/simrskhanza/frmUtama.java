@@ -863,6 +863,7 @@ import pcraicra.PCRAICRAKelasKewaspadaan;
 import pcraicra.PCRAICRAKelasRisikoPencegahan;
 import pcraicra.PCRAICRALokasiKelompokRisikoArea;
 import pcraicra.PCRAICRAMatriksKelasKewaspadaan;
+import pcraicra.PCRAICRAPengkajianRisikoInfeksi;
 import pcraicra.PCRAICRAPengkajianRisikoPraKonstruksi;
 import pcraicra.PCRAICRAPersyaratanHarusDipenuhi;
 import pcraicra.PCRAICRATindakanPengendalian;
@@ -23222,6 +23223,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPCRAICRAPengkajianRisikoInfeksiActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        PCRAICRAPengkajianRisikoInfeksi form=new PCRAICRAPengkajianRisikoInfeksi(this,false);
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPCRAICRATindakanPengendalianActionPerformed(java.awt.event.ActionEvent evt) {                                                
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         isTutup();
@@ -24625,7 +24638,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar,
             btnSkriningTOLAC,btnAdmisiSkoringTOLAC,btnMonitoringTOLAC,btnHasilPersalinanTOLAC,btnLaporanReaksiTranfusi,btnPenilaianGRACEScore,btnPenilaianBISHOPScore,btnProfilRingkasRawatJalan,
             btnHasilUSGTestis,btnHasilUSGKepala,btnHasilUSGMammae,btnHasilPemeriksaanSpirometri,btnSuratPernyataanBersediaDirujuk,btnSuratPernyataanBersediaMenungguDiIGD,btnPenilaianAwalMedisRalanGigi,
-            btnLaporanMESO,btnPCRAICRAKelasKewaspadaan,btnPCRAICRAMatriksKelasKewaspadaan;
+            btnLaporanMESO,btnPCRAICRAKelasKewaspadaan,btnPCRAICRAMatriksKelasKewaspadaan,btnPCRAICRAPengkajianRisikoInfeksi;
     
     public void isWall(){
         try{            
@@ -30546,6 +30559,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpcra_icra_pengkajian_risiko_prakonstruksi()==true){
                 Panelmenu.add(btnPCRAICRAPengkajianRisikoPraKonstruksi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcra_icra_pengkajian_risiko_infeksi()==true){
+                Panelmenu.add(btnPCRAICRAPengkajianRisikoInfeksi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){  
@@ -36679,6 +36697,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpcra_icra_pengkajian_risiko_prakonstruksi()==true){
             Panelmenu.add(btnPCRAICRAPengkajianRisikoPraKonstruksi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcra_icra_pengkajian_risiko_infeksi()==true){
+            Panelmenu.add(btnPCRAICRAPengkajianRisikoInfeksi);
             jmlmenu++;
         }
 
@@ -45112,6 +45135,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getpcra_icra_pengkajian_risiko_infeksi()==true){
+            if(btnPCRAICRAPengkajianRisikoInfeksi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCRAICRAPengkajianRisikoInfeksi);
+                jmlmenu++;
+            }
+        }
+        
         if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             Panelmenu.add(btnPenelitianPerpustakaan);
             jmlmenu++;
@@ -51527,6 +51557,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCRAICRAPersyaratanHarusDipenuhi.setName("btnPCRAICRAPersyaratanHarusDipenuhi"); 
         btnPCRAICRAPersyaratanHarusDipenuhi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPCRAICRAPersyaratanHarusDipenuhi.addActionListener(this::btnPCRAICRAPersyaratanHarusDipenuhiActionPerformed);
+        
+        btnPCRAICRAPengkajianRisikoInfeksi = new widget.ButtonBig();
+        btnPCRAICRAPengkajianRisikoInfeksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pengkajian_risiko_infeksi_icra.png")));
+        btnPCRAICRAPengkajianRisikoInfeksi.setText("Pengkajian Risiko Pengendalian Infeksi/ICRA");
+        btnPCRAICRAPengkajianRisikoInfeksi.setIconTextGap(0);
+        btnPCRAICRAPengkajianRisikoInfeksi.setName("btnPCRAICRAPengkajianRisikoInfeksi"); 
+        btnPCRAICRAPengkajianRisikoInfeksi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCRAICRAPengkajianRisikoInfeksi.addActionListener(this::btnPCRAICRAPengkajianRisikoInfeksiActionPerformed);
         
         btnKirimQRTelaahFarmasiSatuSehat = new widget.ButtonBig();
         btnKirimQRTelaahFarmasiSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
