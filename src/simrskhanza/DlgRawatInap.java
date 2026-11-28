@@ -5455,6 +5455,9 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     tbPemeriksaan.setValueAt(KdPeg.getText(),tbPemeriksaan.getSelectedRow(), 22);
                                     tbPemeriksaan.setValueAt(TPegawai.getText(),tbPemeriksaan.getSelectedRow(), 23);
                                     tbPemeriksaan.setValueAt(Jabatan.getText(),tbPemeriksaan.getSelectedRow(), 24);
+                                    if(!TAlergi.getText().equals("")){
+                                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                    }
                                     BtnBatalActionPerformed(evt);
                                 }
                             }else{
@@ -5497,6 +5500,9 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                                 tbPemeriksaan.setValueAt(KdPeg.getText(),tbPemeriksaan.getSelectedRow(), 22);
                                                 tbPemeriksaan.setValueAt(TPegawai.getText(),tbPemeriksaan.getSelectedRow(), 23);
                                                 tbPemeriksaan.setValueAt(Jabatan.getText(),tbPemeriksaan.getSelectedRow(), 24);
+                                                if(!TAlergi.getText().equals("")){
+                                                    Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                                }
                                                 BtnBatalActionPerformed(evt);
                                             }
                                         }
@@ -12279,6 +12285,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     Jabatan.getText()
                                 });
                                 LCount.setText(""+tabModePemeriksaan.getRowCount());
+                                if(!TAlergi.getText().equals("")){
+                                    Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                }
                                 BtnBatalActionPerformed(null);
                             }
                         }else{
@@ -12296,6 +12305,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         Jabatan.getText()
                                     });
                                     LCount.setText(""+tabModePemeriksaan.getRowCount());
+                                    if(!TAlergi.getText().equals("")){
+                                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                    }
                                     BtnBatalActionPerformed(null);
                                 }
                             }else{

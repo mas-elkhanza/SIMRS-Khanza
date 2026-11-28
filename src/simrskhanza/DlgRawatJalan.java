@@ -6399,6 +6399,9 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                         tbPemeriksaan.setValueAt(KdPeg.getText(),tbPemeriksaan.getSelectedRow(), 23);
                                         tbPemeriksaan.setValueAt(TPegawai.getText(),tbPemeriksaan.getSelectedRow(), 24);
                                         tbPemeriksaan.setValueAt(Jabatan.getText(),tbPemeriksaan.getSelectedRow(), 25);
+                                        if(!TAlergi.getText().equals("")){
+                                            Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                        }
                                         TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                         TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
                                         TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
@@ -6450,6 +6453,9 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                                     tbPemeriksaan.setValueAt(KdPeg.getText(),tbPemeriksaan.getSelectedRow(), 23);
                                                     tbPemeriksaan.setValueAt(TPegawai.getText(),tbPemeriksaan.getSelectedRow(), 24);
                                                     tbPemeriksaan.setValueAt(Jabatan.getText(),tbPemeriksaan.getSelectedRow(), 25);
+                                                    if(!TAlergi.getText().equals("")){
+                                                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                                    }
                                                     TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                                     TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
                                                     TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
@@ -11485,8 +11491,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void isRawat(){
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,concat(pasien.nm_pasien,' (',reg_periksa.umurdaftar,' ',reg_periksa.sttsumur,')') as pasien,reg_periksa.kd_dokter,reg_periksa.tgl_registrasi,"+
-                    "reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
+                "select reg_periksa.no_rkm_medis,concat(pasien.nm_pasien,' (',reg_periksa.umurdaftar,' ',reg_periksa.sttsumur,')') as pasien,reg_periksa.kd_dokter,reg_periksa.tgl_registrasi,"+
+                "reg_periksa.jam_reg,alergi_pasien.alergi from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis left join alergi_pasien on alergi_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                "where reg_periksa.no_rawat=?"
+            );
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -11497,6 +11505,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     KdDok.setText(rs.getString("kd_dokter"));
                     TDokter.setText(Sequel.CariDokter(KdDok.getText()));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
+                    TAlergi.setText(rs.getString("alergi"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -15124,6 +15133,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),LingkarPerut.getText(),TindakLanjut.getText(),TPenilaian.getText(),TInstruksi.getText(),TEvaluasi.getText(),
                                         KdPeg.getText(),TPegawai.getText(),Jabatan.getText()
                                     });
+                                    if(!TAlergi.getText().equals("")){
+                                        Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                    }
                                     TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                     TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
                                     TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
@@ -15144,6 +15156,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),LingkarPerut.getText(),TindakLanjut.getText(),TPenilaian.getText(),TInstruksi.getText(),TEvaluasi.getText(),
                                             KdPeg.getText(),TPegawai.getText(),Jabatan.getText()
                                         });
+                                        if(!TAlergi.getText().equals("")){
+                                            Sequel.menyimpan2("alergi_pasien","?,?",2,new String[]{TNoRM.getText(),TAlergi.getText()},"no_rkm_medis=?","alergi=?",2,new String[]{TAlergi.getText(),TNoRM.getText()});
+                                        }
                                         TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                         TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
                                         TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");

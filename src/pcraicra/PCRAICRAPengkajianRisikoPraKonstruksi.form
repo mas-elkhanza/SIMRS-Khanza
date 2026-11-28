@@ -2573,7 +2573,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="26-11-2026 14:10:25"/>
+                                <StringItem index="0" value="26-11-2026 20:02:49"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2584,7 +2584,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="114" y="1500" width="130" height="23"/>
+                              <AbsoluteConstraints x="114" y="1500" width="140" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2604,7 +2604,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel15">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nomor Pengkajian Risiko Pra Konstruksi / PCRA / Persetujuan / Pengesahan :"/>
+                            <Property name="text" type="java.lang.String" value="Nomor Pengkajian Risiko Pra Konstruksi/PCRA/Persetujuan/Pengesahan :"/>
                             <Property name="name" type="java.lang.String" value="jLabel15" noResource="true"/>
                           </Properties>
                           <Constraints>

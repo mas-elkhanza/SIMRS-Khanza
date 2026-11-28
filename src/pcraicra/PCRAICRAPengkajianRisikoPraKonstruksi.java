@@ -2184,7 +2184,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         label31.setBounds(448, 1470, 70, 23);
 
         TanggalPengkajian.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPengkajian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-11-2026 14:10:25" }));
+        TanggalPengkajian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-11-2026 20:02:49" }));
         TanggalPengkajian.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPengkajian.setName("TanggalPengkajian"); // NOI18N
         TanggalPengkajian.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2193,7 +2193,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
             }
         });
         FormInput.add(TanggalPengkajian);
-        TanggalPengkajian.setBounds(114, 1500, 130, 23);
+        TanggalPengkajian.setBounds(114, 1500, 140, 23);
 
         label32.setText("Tanggal :");
         label32.setName("label32"); // NOI18N
@@ -2201,7 +2201,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         FormInput.add(label32);
         label32.setBounds(0, 1500, 110, 23);
 
-        jLabel15.setText("Nomor Pengkajian Risiko Pra Konstruksi / PCRA / Persetujuan / Pengesahan :");
+        jLabel15.setText("Nomor Pengkajian Risiko Pra Konstruksi/PCRA/Persetujuan/Pengesahan :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
         jLabel15.setBounds(250, 1500, 400, 23);
@@ -4154,6 +4154,7 @@ public final class PCRAICRAPengkajianRisikoPraKonstruksi extends javax.swing.JDi
         TanggalPengkajian.setDate(new Date());
         NomorPengkajian.setText("");
         NoProyek.requestFocus();
+        TabRawat.setSelectedIndex(0);
         Valid.autoNomer3(
             "select ifnull(MAX(CONVERT(RIGHT(pcra_icra_pengkajian_risiko_prakonstruksi.no_pcra,3),signed)),0) from pcra_icra_pengkajian_risiko_prakonstruksi where date_format(pcra_icra_pengkajian_risiko_prakonstruksi.tanggal_pengkajian,'%Y-%m-%d')='"+Valid.SetTgl(TanggalPengkajian.getSelectedItem()+"")+"' ",
             "PCRA"+TanggalPengkajian.getSelectedItem().toString().substring(6,10)+TanggalPengkajian.getSelectedItem().toString().substring(3,5)+TanggalPengkajian.getSelectedItem().toString().substring(0,2),3,NomorPengkajian
